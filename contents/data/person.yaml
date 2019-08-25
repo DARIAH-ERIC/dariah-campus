@@ -1,0 +1,250 @@
+- name: DARIAH Campus
+  slug: dariah
+  title: Editor
+  description:
+  avatar: ../images/authors/dariah.png
+  email:
+  linkedin:
+  twitter:
+  website:
+
+- name: Marie Annisius
+  slug: marie-annisius
+
+- name: Anne Baillot
+  slug: anne-baillot
+  twitter: AnneBaillot
+  email: anne.baillot@gmail.com
+
+- name: Nadja Baldszuhn
+  slug: nadja-baldszuhn
+
+- name: Christopher W. Blackwell
+  slug: christopher-blackwell
+  avatar: ../images/authors/christopher-blackwell.jpg
+  email: christopher.blackwell@furman.edu
+  website: http://www.furman.edu/academics/classics/about/Pages/FacultyandStaff.aspx
+
+- name: Roman Bleier
+  slug: roman-bleier
+  avatar: ../images/authors/roman-bleier.jpg
+
+- name: Julien Bordier
+  slug: julien-bordier
+  avatar: ../images/authors/julien-bordier.jpg
+  twitter: julbordier
+  email: julien.bordier@gmail.com
+
+- name: George Bruseker
+  slug: george-bruseker
+  avatar: ../images/authors/george-bruseker.jpg
+
+- name: Marjorie Burghart
+  slug: marjorie-burghart
+  avatar: ../images/authors/marjorie-burghart.jpg
+  email: marjorie.burghart@gmail.com
+  website: http://marjorie.burghart.online.fr/?q=en
+
+- name: Angeliki Chrysanthi
+  slug: angeliki-chrysanthi
+  avatar: ../images/authors/angeliki-chrysanthi.jpg
+
+- name: Claire Clivaz
+  slug: claire-clivaz
+  avatar: ../images/authors/claire-clivaz.jpg
+
+- name: Panos Constantopoulos
+  slug: panos-constantopoulos
+  avatar: ../images/authors/panos-constantopoulos.jpg
+
+- name: Gregory Crane
+  slug: gregory-crane
+  avatar: ../images/authors/gregory-crane.jpg
+  email: crane[AT]informatik.uni-leipzig[DOT]de
+
+- name: Jennifer Edmond
+  slug: jennifer-edmond
+  title: DARIAH Director
+  avatar: ../images/authors/jennifer-edmond.jpg
+
+- name: Darja Fišer
+  slug: darja-fiser
+  avatar: ../images/authors/darja-fiser.jpg
+
+- name: Patrick Flack
+  slug: patrick-flack
+  avatar: ../images/authors/patrick-flack.jpg
+  twitter: panflack
+  email: flack@sdvigpress.org
+
+- name: Tessa Free
+  slug: tessa-free
+  twitter: tessafree
+  email: tessa.free@oorlogsbronnen.nl
+
+- name: Ioana Galleron
+  slug: ioana-galleron
+  avatar: ../images/authors/ioana-galleron.jpg
+  twitter: ioanagalleron
+  email: ioana.galleron@evalhum.eu
+
+- name: Vicky Garnett
+  slug: vicky-garnett
+  avatar: ../images/authors/vicky-garnett.jpg
+
+- name: Marianne Huang
+  slug: marianne-huang
+  avatar: ../images/authors/marianne-huang.jpg
+
+- name: Klaus Illmayer
+  slug: klaus-illmayer
+  avatar: ../images/authors/klaus-illmayer.jpg
+
+- name: Ondřej Košarko
+  slug: ondrej-kosarko
+  email: kosarko@ufal.mff.cuni.cz
+  website: http://ufal.mff.cuni.cz/
+
+- name: Kira Kovalenko
+  slug: kira-kovalenko
+  email: kira.kovalenko@gmail.com
+
+- name: Steven Krauer
+  slug: steven-krauer
+  avatar: ../images/authors/steven-krauer.jpg
+
+- name: Jacob Kreutzfeldt
+  slug: jacob-kreutzfeldt
+  avatar: ../images/authors/jacob-kreutzfeldt.jpg
+
+- name: Stefanie Laepke
+  slug: stefanie-laepke
+  avatar: ../images/authors/stefanie-laepke.jpg
+
+- name: Nicolas Larrousse
+  slug: nicolas-larousse
+  email: nicolas.larrousse@huma-num.fr
+
+- name: Anna Lawaetz
+  slug: anna-lawaetz
+
+- name: Jakob Lenardič
+  slug: jakob-lenardic
+  avatar: ../images/authors/jakob-lenardic.jpg
+
+- name: Vojtěch Malínek
+  slug: vojtech-malinek
+  avatar: ../images/authors/vojtech-malinek.jpg
+  email: malinek@ucl.cas.cz
+
+- name: Maciej Maryl
+  slug: maciej-maryl
+  avatar: ../images/authors/maciej-maryl.jpg
+  twitter: maciejmaryl
+  email: maciej.maryl@ibl.waw.pl
+
+- name: Carlo Meghini
+  slug: carlo-meghini
+  avatar: ../images/authors/carlo-meghini.jpg
+
+- name: Adele Valeria Messina
+  slug: adele-valeria-messina
+  email: adelevaleria@gmail.com
+
+- name: Emmanuelle Morlock
+  slug: emmanuelle-morlock
+  avatar: ../images/authors/emmanuelle-morlock.jpg
+  twitter: emma_morlock
+  email: emmanuelle.morlock@gmail.com
+
+- name: Pierre Mounier
+  slug: pierre-mounier
+  avatar: ../images/authors/pierre-mounier.jpg
+  twitter: piotrr70
+  email: pierre.mounier@openedition.org
+
+- name: Matthew Munson
+  slug: matthew-munson
+  avatar: ../images/authors/matthew-munson.jpg
+  email: munson@dh.uni-leipzig.de
+  website: http://www.dh.uni-leipzig.de/wo/team/
+
+- name: Eliza Papaki
+  slug: eliza-papaki
+  avatar: ../images/authors/eliza-papaki.jpg
+  email: e.papaki@dcu.gr
+
+- name: Jean-Christophe Plantin
+  slug: jean-christophe-plantin
+  avatar: ../images/authors/jean-christophe-plantin.jpg
+  email: j.plantin1@lse.ac.uk
+  twitter: JCPlantin
+
+- name: Marie Puren
+  slug: marie-puren
+  avatar: ../images/authors/marie-puren.jpg
+  twitter: puren1406
+  email: marie.puren@inria.fr
+
+- name: Marco Raciti
+  slug: marco-raciti
+  title: European Project Manager
+  avatar: ../images/authors/marco-raciti.jpg
+
+- name: Charles Riondet
+  slug: charles-riondet
+  avatar: ../images/authors/charles-riondet.jpg
+  twitter: charlesriondet
+  email: charles.riondet@inria.fr
+
+- name: Martial Sankar
+  slug: martial-sankar
+  avatar: ../images/authors/martial-sankar.jpg
+
+- name: Stefan Schmunk
+  slug: stefan-schmunk
+  avatar: ../images/authors/stefan-schmunk.jpg
+
+- name: Joachim Schöpfel
+  slug: joachim-schopfel
+  avatar: ../images/authors/joachim-schopfel.jpg
+  twitter: schopfel
+
+- name: Susan Schreibman
+  slug: susan-schreibman
+  avatar: ../images/authors/susan-schreibman.jpg
+
+- name: Kristen Schuster
+  slug: kristen-schuster
+  avatar: ../images/authors/kristen-schuster.jpg
+
+  # I cannot find information, nor photo, online so note to ask Vicky Garnett
+- name: Rebecca Seirig
+  slug: rebecca-seirig
+
+- name: Juliane Stiller
+  slug: juliane-stiller
+  avatar: ../images/authors/juliane-stiller.jpg
+
+- name: Toma Tasovac
+  slug: toma-tasovac
+  title: DARIAH Director
+  avatar: ../images/authors/toma-tasovac.jpg
+
+- name: Klaus Thoden
+  slug: klaus-thoden
+  avatar: ../images/authors/klaus-thoden.jpg
+
+- name: Deborah Thorpe
+  slug: deborah-thorpe
+  title: Training & Education Officer
+  avatar: ../images/authors/deborah-thorpe.jpg
+
+- name: Erzsébet Tóth-Czifra
+  slug: erzsebet-toth-czifra
+  title: Open Science Officer
+  avatar: ../images/authors/erzsebet-toth-czifra.jpg
+
+- name: Ulrike Wuttke
+  slug: ulrike-wuttke
+  avatar: ../images/authors/ulrike-wuttke.jpg

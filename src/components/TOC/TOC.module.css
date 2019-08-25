@@ -1,0 +1,17 @@
+.toc {
+  margin: var(--margin-huge) 0;
+}
+
+.border {
+  border-left: 2px solid #ddd;
+  padding: var(--padding-small) var(--padding-large);
+  margin: var(--margin-large) 0;
+}
+
+.items {
+  list-style-type: none;
+}
+
+.item {
+  margin: 1rem;
+}

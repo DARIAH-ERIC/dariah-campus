@@ -1,0 +1,8 @@
+.lead-in {
+  color: var(--color-muted);
+  font-size: var(--font-size-heading1);
+  font-weight: 400;
+  line-height: 1.5;
+  margin: var(--margin-small);
+  text-align: center;
+}

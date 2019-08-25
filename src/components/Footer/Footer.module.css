@@ -1,0 +1,87 @@
+.footer {
+  color: var(--color-muted);
+  background-color: var(--color-primary-dark);
+  padding: var(--padding-huge) 0 var(--padding-large) 0;
+  position: relative;
+}
+
+/* We need to do this because the custom event css overwrites
+our global anchor style */
+.footer a {
+  color: inherit;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding-large);
+}
+
+.nav-items {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  font-weight: 500;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.nav-item {
+  margin: 0 var(--margin-medium);
+}
+
+.nav-link {
+  font-size: var(--font-size-small);
+  padding: 0 var(--padding-small);
+}
+
+.nav-link:hover {
+  color: var(--color-white);
+}
+
+.activeNavLink,
+.activeNavLink:visited {
+  color: var(--color-white);
+}
+
+.social {
+  padding: var(--padding-large);
+}
+
+.small-print {
+  display: flex;
+  font-size: var(--font-size-xsmall);
+}
+
+.small-print-item {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  margin: 0 var(--margin-large);
+}
+
+.small-print-item:last-child {
+  text-align: right;
+}
+
+.small-print-item-text {
+  flex: 1;
+  margin: var(--margin-large);
+}
+
+.small-print-item-text a:hover {
+  color: var(--color-white);
+}
+
+.small-print-item-image {
+  flex-basis: 6rem;
+  padding: var(--padding-small);
+}
+
+@media (max-width: 40rem) {
+  .small-print {
+    flex-direction: column;
+  }
+}

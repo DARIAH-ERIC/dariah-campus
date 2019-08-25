@@ -1,0 +1,6 @@
+.blockquote {
+  border-left: 2px solid currentColor;
+  font-size: var(--font-size-large);
+  margin: var(--margin-huge) 0;
+  padding-left: var(--padding-large);
+}

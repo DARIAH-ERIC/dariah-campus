@@ -1,0 +1,5 @@
+.list {
+  line-height: 2;
+  margin: var(--margin-medium) 0;
+  margin-left: var(--margin-large);
+}

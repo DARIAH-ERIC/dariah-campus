@@ -1,0 +1,125 @@
+//
+// == EM
+// --------------------------------------------------
+// This function translates pixel-based values to relatives ones.
+// Use it a lot!
+@function em($target, $context: $base-font-size) {
+  @if $target == 0 {
+    @return 0;
+  }
+  @return $target / $context + 0em;
+}
+
+//
+// == CALC
+// --------------------------------------------------
+// This mixin creates calc() fallback (FIXME: maybe not useful anymore with Autoprefixer)
+@mixin calc($property, $expression) {
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -o-calc(#{$expression});
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+//
+// == GHOST_VERTICAL_ALIGN
+// --------------------------------------------------
+// This mixin allows to vertically align stuff in the container extending it.
+// Don’t forget to inline-block content.
+@mixin ghostVerticalAlign() {
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 0.1px;
+  }
+}
+
+//
+// == TRUNCATE
+// --------------------------------------------------
+// This mixin creates text-overflow context.
+@mixin truncateText($overflow: ellipsis) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: $overflow; // values are: clip, ellipsis, or a string
+}
+
+//
+// == CSS_TRIANGLE
+// --------------------------------------------------
+// This mixin creates a triangle within a pseudo element and add positioning properties (ie. top, left).
+// $direction can be: up, down, left, right.
+// $ratio controls the shape of the arrow.
+@mixin triangle($direction: top, $size: 6px, $color: #222, $ratio: 1.25) {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0;
+  width: 0;
+
+  @if ($direction == 'top') {
+    top: -$size;
+    border-bottom: $size solid $color;
+    border-left: $ratio * $size solid transparent;
+    border-right: $ratio * $size solid transparent;
+  } @else if ($direction == 'bottom') {
+    bottom: -$size;
+    border-top: $size solid $color;
+    border-left: $ratio * $size solid transparent;
+    border-right: $ratio * $size solid transparent;
+  } @else if ($direction == 'left') {
+    left: -$size;
+    border-top: $ratio * $size solid transparent;
+    border-bottom: $ratio * $size solid transparent;
+    border-right: $size solid $color;
+  } @else if ($direction == 'right') {
+    right: -$size;
+    border-top: $ratio * $size solid transparent;
+    border-bottom: $ratio * $size solid transparent;
+    border-left: $size solid $color;
+  }
+}
+
+//
+// == VIEWPORT_SIZED_TYPOGRAPHY
+// --------------------------------------------------
+// Viewport sized typography with minimum and maximum values
+//
+// @author Eduardo Boucas (@eduardoboucas)
+//
+// @param {Number}   $responsive  - Viewport-based size
+// @param {Number}   $min         - Minimum font size (px)
+// @param {Number}   $max         - Maximum font size (px)
+//                                  (optional)
+// @param {Number}   $fallback    - Fallback for viewport-
+//                                  based units (optional)
+//
+// @example scss - 5vw font size (with 50px fallback),
+//                 minumum of 35px and maximum of 150px
+//  @include responsive-font(5vw, 35px, 150px, 50px);
+//
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+
+  @if $fallback {
+    font-size: $fallback;
+  }
+
+  font-size: $responsive;
+}

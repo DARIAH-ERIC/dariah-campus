@@ -1,0 +1,151 @@
+.header {
+  background-color: var(--color-white);
+}
+
+.nav {
+  display: flex;
+  height: var(--height-header);
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.nav-items {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  font-weight: 500;
+  list-style-type: none;
+}
+
+.nav-item {
+  margin: 0 var(--margin-medium);
+}
+
+.nav-link {
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  padding: 0 var(--padding-small);
+}
+
+.activeNavLink,
+.activeNavLink:visited {
+  color: var(--color-primary);
+}
+
+.button {
+  margin-right: var(--padding-large);
+}
+
+.mobile-nav {
+  display: none;
+  justify-content: space-between;
+}
+
+.mobile-nav-bar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mobile-nav-overlay {
+  background-color: rgba(0, 0, 0, 0.2);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity 0.2s ease;
+  width: 100vw;
+  z-index: 2;
+}
+
+.mobile-nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--padding-large);
+}
+
+.mobile-nav-search {
+  padding: var(--padding-large);
+  width: var(--margin-large);
+}
+
+.mobile-nav-panel {
+  background: var(--color-white);
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  width: 30rem;
+}
+
+.mobile-nav-close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  float: right;
+  font-size: var(--font-size-title);
+  margin: var(--margin-medium) var(--margin-large);
+}
+
+.mobile-nav-items {
+  list-style-type: none;
+  margin: var(--margin-huge) 0 var(--margin-medium);
+  padding: var(--padding-large) 0;
+}
+
+.mobile-nav-item {
+  padding: var(--padding-medium);
+}
+
+.mobile-nav-link {
+  font-size: var(--font-size-heading1);
+  padding: var(--padding-medium);
+}
+
+.mobile-active-nav-link,
+.mobile-active-nav-link:visited {
+  color: var(--color-primary);
+}
+
+@media (max-width: 60rem) {
+  .nav {
+    display: none;
+  }
+  .mobile-nav {
+    display: block;
+  }
+}
+
+.search-bar-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 var(--margin-large);
+}
+
+.search-bar-container {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  position: absolute;
+  right: 16rem;
+}
+
+.search-bar {
+  margin: 0;
+  padding: 0;
+}
+
+.search-bar input {
+  background-color: var(--color-white);
+  box-shadow: none;
+  font-size: var(--font-size-text);
+  padding: 1rem 1.5rem;
+}
+
+@media (max-width: 60rem) {
+  .search-bar-container {
+    display: none;
+  }
+}

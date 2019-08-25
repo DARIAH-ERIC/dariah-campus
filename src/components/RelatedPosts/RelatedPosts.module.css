@@ -1,0 +1,11 @@
+.container {
+  margin: var(--margin-large) 0;
+}
+
+.related-posts {
+  list-style-type: none;
+}
+
+.related-post {
+  margin: var(--margin-medium) 0;
+}

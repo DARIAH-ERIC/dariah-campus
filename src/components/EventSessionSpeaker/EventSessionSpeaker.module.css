@@ -1,0 +1,14 @@
+@media (max-width: 55rem) {
+  .session-speaker-avatar {
+    display: none;
+  }
+}
+
+.bio {
+}
+
+@media (max-width: 100rem) {
+  .bio {
+    column-count: 1 !important;
+  }
+}

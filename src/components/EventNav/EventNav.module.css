@@ -1,0 +1,9 @@
+.button-as-link {
+  color: #fff;
+  opacity: 0.5;
+  transition: opacity 400ms ease-out;
+}
+.button-as-link:hover {
+  opacity: 1;
+  transition-duration: 150ms;
+}

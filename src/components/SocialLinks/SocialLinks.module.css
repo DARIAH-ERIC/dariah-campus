@@ -1,0 +1,20 @@
+.social {
+}
+
+.social-items {
+  display: flex;
+  font-size: 1.8rem;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.social-item {
+  padding: 0 var(--padding-medium);
+}
+
+.social-link {
+}
+
+.social-link:hover {
+  color: var(--color-white);
+}

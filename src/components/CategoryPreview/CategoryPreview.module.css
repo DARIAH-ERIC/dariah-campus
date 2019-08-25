@@ -1,0 +1,17 @@
+.image-container {
+  display: flex;
+  height: 30rem;
+  flex: 1;
+}
+
+.image {
+  border-top-left-radius: var(--border-rounded-medium);
+  border-top-right-radius: var(--border-rounded-medium);
+  flex: 1;
+  /* height: 100%; */
+}
+
+.read-more-link {
+  flex: 1;
+  text-align: right;
+}

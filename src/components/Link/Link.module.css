@@ -1,0 +1,10 @@
+.link,
+.link:visited {
+}
+
+.link:hover {
+}
+
+.post-link {
+  color: var(--color-primary);
+}

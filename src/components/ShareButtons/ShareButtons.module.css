@@ -1,0 +1,10 @@
+.container {
+  color: var(--color-muted);
+  font-size: var(--font-size-heading1);
+  margin: var(--margin-huge) 0;
+  text-align: center;
+}
+
+.container > * {
+  margin: var(--margin-medium);
+}

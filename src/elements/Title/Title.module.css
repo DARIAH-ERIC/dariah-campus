@@ -1,0 +1,8 @@
+.title {
+  color: var(--color-black);
+  font-size: var(--font-size-title);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: var(--margin-medium) 0;
+  text-align: center;
+}

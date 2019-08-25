@@ -1,0 +1,43 @@
+- name: Audio
+  slug: audio
+  icon: audio
+
+- name: Event
+  slug: event
+  icon: people
+
+- name: Slides
+  slug: slides
+  icon: slides
+
+- name: Training module
+  slug: training module
+  icon: book
+
+- name: Video
+  slug: video
+  icon: video
+
+- name: Webinar recording
+  slug: webinar recording
+  icon: audio
+
+- name: website
+  slug: Website
+  icon: website
+# see https://github.com/stefanprobst/dariah-campus-mdx/issues/13
+# - name: blog
+# - name: Jupyter notebook
+# - name: manual
+# - name: pdf
+# - name: source code
+# - name: videos
+# - name: wiki
+# - name: google presentation
+# - name: google spreadsheet
+# - name: google Text Document
+# - name: doc word document
+# - name: xls spreadsheet document
+# - name: ppt powerpoint presentation
+# - name: others
+

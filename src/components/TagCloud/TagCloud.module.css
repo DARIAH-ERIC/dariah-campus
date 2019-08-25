@@ -1,0 +1,18 @@
+.tags {
+  margin: var(--margin-large);
+  text-align: center;
+}
+
+.tag {
+  color: var(--color-white) !important;
+  font-weight: 400;
+  line-height: 2;
+  margin: var(--margin-small);
+  padding: var(--padding-xsmall) var(--padding-medium);
+}
+
+@media (max-width: 30rem) {
+  .tags {
+    margin: var(--margin-large) 0;
+  }
+}

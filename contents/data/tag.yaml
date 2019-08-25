@@ -1,0 +1,123 @@
+- name: Augmented reality
+  slug: augmented-reality
+  description: Augmented reality
+
+- name: Big data
+  slug: big-data
+  description: Big data
+
+- name: Citizen science
+  slug: citizen-science
+  description: Citizen science
+
+- name: Data management
+  slug: data-management
+  description: Data management
+
+- name: Data modeling
+  slug: data-modeling
+  description: Data modeling
+
+- name: Data visualisation
+  slug: data-visualisation
+  description: Data visualisation
+
+- name: Design based research
+  slug: design-based-Research
+  description: Design based research
+
+- name: DH
+  slug: dh
+  description: DH
+
+- name: Editing tools
+  slug: editing-tools
+  description: Editing tools
+
+- name: eHeritage
+  slug: e-heritage
+  description: eHeritage
+
+- name: Feminism
+  slug: feminism
+  description: Feminism
+
+- name: Geotagging
+  slug: geotagging
+  description: Geotagging
+
+- name: Lexicography
+  slug: lexicography
+  description: Lexicography
+
+- name: Literacies
+  slug: literacies
+  description: Literacies
+
+- name: MOOC
+  slug: mooc
+  description: MOOC
+
+- name: Multimodality
+  slug: multimodality
+  description: Multimodality
+
+- name: Ontologies
+  slug: ontologies
+  description: Ontologies
+
+- name: Open access
+  slug: open-access
+  description: Open access
+
+- name: Open education
+  slug: open-education
+  description: Open education
+
+- name: Open science
+  slug: open-science
+  description: Open science
+
+- name: Research infrastructures
+  slug: research-infrastructures
+  description: Research infrastructures
+
+- name: Scholarly editions
+  slug: scholarly-editions
+  description: Scholarly editions
+
+- name: Scholarly publishing
+  slug: scholarly-publishing
+  description: Scholarly publishing
+
+- name: Sound studies
+  slug: sound-studies
+  description: Sound studies
+
+- name: Spatial humanities
+  slug: spatial-humanities
+  description: Spatial humanities
+
+- name: Speech technology
+  slug: speech-technology
+  description: Speech technology
+
+- name: Sustainability
+  slug: sustainability
+  description: sustainability
+
+- name: TEI
+  slug: tei
+  description: TEI
+
+- name: Training and education
+  slug: training-education
+  description: Training and education
+
+- name: XML
+  slug: xml
+  description: XML
+
+- name: XSLT
+  slug: xslt
+  description: XSLT

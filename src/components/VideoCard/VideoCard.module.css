@@ -1,0 +1,36 @@
+.item {
+  display: flex;
+  flex: 1;
+}
+
+@media (max-width: 60rem) {
+  .item {
+    flex: 1 0 100%;
+  }
+}
+
+.card {
+  box-shadow: var(--boxshadow-medium);
+  flex: 1;
+  margin: var(--margin-large);
+  padding: var(--padding-medium) 0;
+  text-align: center;
+}
+
+.card:hover {
+  box-shadow: var(--boxshadow-large);
+}
+
+.card-body {
+}
+
+.card-heading {
+  margin: var(--margin-medium) 0;
+}
+
+.card-text {
+}
+
+.card-image {
+  margin-bottom: var(--margin-large);
+}

@@ -1,0 +1,28 @@
+.heading {
+  color: var(--color-text);
+}
+
+.heading1 {
+  composes: heading;
+  font-size: var(--font-size-heading1);
+}
+
+.heading2 {
+  composes: heading;
+  font-size: var(--font-size-heading2);
+}
+
+.heading3 {
+  composes: heading;
+  font-size: var(--font-size-heading3);
+}
+
+.heading4 {
+  composes: heading;
+  font-size: var(--font-size-heading4);
+}
+
+.heading5 {
+  composes: heading;
+  font-size: var(--font-size-heading5);
+}

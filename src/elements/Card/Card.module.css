@@ -1,0 +1,29 @@
+.card {
+  border: 1px solid var(--color-light-grey);
+  border-radius: var(--border-rounded-medium);
+  box-shadow: var(--boxshadow-small);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card:hover {
+  box-shadow: var(--boxshadow-medium);
+}
+
+.card-body {
+  color: var(--color-muted);
+  flex: 1;
+  padding: var(--padding-huge);
+}
+
+.card-footer {
+  align-items: center;
+  background-color: var(--color-light-grey);
+  display: flex;
+  height: calc(var(--margin-huge) * 2);
+  padding: var(--padding-large);
+}
+
+.card-header {
+}

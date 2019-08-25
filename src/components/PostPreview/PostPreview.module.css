@@ -1,0 +1,13 @@
+.author-image {
+  border-radius: var(--border-round);
+  margin-right: var(--margin-small);
+}
+
+.read-more-link {
+  flex: 1;
+  text-align: right;
+}
+
+.text {
+  color: var(--color-muted);
+}
