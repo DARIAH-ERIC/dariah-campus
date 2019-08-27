@@ -118,6 +118,10 @@
   slug: xml
   description: XML
 
+- name: XPath
+  slug: xpath
+  description: XPath
+
 - name: XSLT
   slug: xslt
   description: XSLT
