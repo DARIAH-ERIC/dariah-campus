@@ -3,8 +3,6 @@ import React from 'react'
 import Footer from 'components/Footer/Footer'
 import Header from 'components/Header/Header'
 
-import '../../../fragments'
-
 import 'typeface-roboto'
 import 'styles/global.css'
 import styles from './Layout.module.css'
