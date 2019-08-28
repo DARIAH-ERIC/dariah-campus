@@ -45,7 +45,7 @@ This section is on basic text formatting.
 
 To create paragraphs simply:
 
-Insert a blank line to separate lines of text, like this. Do not indent new paragraphs with spaces or tabs.
+Insert a blank line to separate lines of text, just like above. Do not indent new paragraphs with spaces or tabs.
 
 You create **bold text** like this, using double asterisks, before and after the word or phrase. To italicise text you *use single asterisks* like this. You can create ***bold and italic*** using triple asterisks.
 
@@ -77,6 +77,8 @@ To create a link, enclose the link text in brackets (e.g., [click here]) and the
 
 To find training resources [click here](https://dariah.eu).
 
+To denote a word or phrase as code,within a line encase it in tick marks like `<this>`
+
 Finally, to turn a URL or email address into a link, enclose it in angle brackets:
 <info@dariah.eu>
 
@@ -98,10 +100,31 @@ To add a link to an image, enclose the Markdown for the image in brackets, and t
 
 This section is on videos.
 
-Video (insert video info)
+To insert a video, use the following code:
 
-Direct embedded YouTube videos (insert info)
-Grid component for videos
+<VideoCard
+  title="Title of the Video"
+  id="SI3u9nu7YEY&t=164s"
+  image="images/imagename.jpg"
+/>
+
+The "id" is the part of the url after the equals sign for a YouTube video. So, for "https://www.youtube.com/watch?v=SI3u9nu7YEY&t=164s" it is: "SI3u9nu7YEY&t=164s".
+
+"image" allows you to choose a screenshot that will appear until the learner clicks the play button.
+
+An alternative is to directly embed the video from YouTube, which you do in the following way:
+
+<Youtube id="OqYJNUmhJzw" caption="Laurent Romary (Former DARIAH Director)" />
+
+If you are including multiple videos, you might choose to arrange them in  a grid formation. You can do this in the following way:
+
+<Grid>
+
+<Youtube id="OqYJNUmhJzw" caption="Laurent Romary (Former DARIAH Director)" />
+<Youtube id="iwz0uhEhtg4" caption="Jennifer Edmond (DARIAH Director)" />
+<Youtube id="soL0itkLYpk" caption="Frank Fischer (DARIAH Director)" />
+
+</Grid>
 
 #### Heading level four
 
@@ -109,17 +132,10 @@ Some extended syntax.
 
 To add a table, use three or more hyphens (---) to create each column’s header, and use pipes (|) to separate each column. You can optionally add pipes on either end of the table.
 
-| Country     | City        |
-| ----------- | ----------- |
-| Ireland     | Dublin      |
-| Germany     | Berlin      |
-
-The cell width of the above can vary and the output will be the same. So the following is fine:
-
-| Country     | City        |
-| ----------- | ----------- |
-| Ireland     | Very, extra, long name |
-| Germany     | Berlin      |
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
 
 To add footnotes:
 
@@ -127,3 +143,5 @@ A simple footnote is created like this,[^1] and a longer one like this.[^bignote
 
 [^1]: This is the first footnote.
 [^bignote]: Longer footnote with extra details and description.
+
+Any questions can be directed to the DARIAH-Campus editors at any time in the preparation process.
