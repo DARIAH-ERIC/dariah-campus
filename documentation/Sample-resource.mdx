@@ -31,21 +31,99 @@ toc: true
 targetGroup: Domain researchers
 [//]: #one or more of the following: "Data managers", "Domain researchers", "Data service engineers", "Data scientists/analysts"
 domain: Social Sciences and Humanities
-[//]: #default is Social Sciences and Humanities. Discuss with DARIAH-Campus editor if there is any other target domain. 
+[//]: #default is Social Sciences and Humanities. Discuss with DARIAH-Campus editor if there is any other target domain.
 version: 1.0
 [//]: #unless this is a new version, this will be 1.0
 [//]: #end of metadata
 ---
 
-sThis is where the content for your training resource begins.
+This is where the content for your training resource begins. This sample resource contains guidance on all of the syntax you should need to use when creating your resource. If you have additional needs, there are many markdown guides online, and the DARIAH-Campus team are happy to give advice and guidance.
+
+# Heading level one
+
+This section is on basic text formatting.
+
+To create paragraphs simply:
+
+Insert a blank line to separate lines of text, like this. Do not indent new paragraphs with spaces or tabs.
+
+You create **bold text** like this, using double asterisks, before and after the word or phrase. To italicise text you *use single asterisks* like this. You can create ***bold and italic*** using triple asterisks.
+
+To create a blockquote, add a > in front of a paragraph.
+> like this
+>
+> To include multiple paragraphs in the blockquote, add a > on the blank line inbetween as above.
+
+Leave a line after the block quote.
+
+Ordered lists:
+1. Item one
+2. Item two
+3. Item three
+
+Bullet point lists:
+- Item
+- Item
+- Item
+
+To create code blocks, indent every line of the block by at least four spaces or one tab.
+
+     <html>
+      <head>
+      </head>
+     </html>
+
+To create a link, enclose the link text in brackets (e.g., [click here]) and then follow it immediately with the URL in parentheses (e.g., (https://dariah.eu)).
+
+To find training resources [click here](https://dariah.eu).
+
+Finally, to turn a URL or email address into a link, enclose it in angle brackets:
+<info@dariah.eu>
+
+## Heading level two
+
+This section is on images.
+
+You can insert an image as below:
+
+![Description of image](images/imagename.png)
+
+The path or URL to the image asset is in parentheses. The text in square brackets is the alt text.
+
+To add a link to an image, enclose the Markdown for the image in brackets, and then add the link in parentheses.
+
+[![Description of image](images/imagename.png)](https://linktotheimage.eu)
+
+### Heading level three
+
+This section is on videos.
 
 Video (insert video info)
 
 Direct embedded YouTube videos (insert info)
-
 Grid component for videos
 
+#### Heading level four
 
+Some extended syntax.
 
+To add a table, use three or more hyphens (---) to create each column’s header, and use pipes (|) to separate each column. You can optionally add pipes on either end of the table.
 
----
+| Country     | City        |
+| ----------- | ----------- |
+| Ireland     | Dublin      |
+| Germany     | Berlin      |
+
+The cell width of the above can vary and the output will be the same. So the following is fine:
+
+| Country     | City        |
+| ----------- | ----------- |
+| Ireland     | Very, extra, long name |
+| Germany     | Berlin      |
+
+To add footnotes:
+
+A simple footnote is created like this,[^1] and a longer one like this.[^bignote]
+
+[^1]: This is the first footnote.
+[^bignote]: Longer footnote with extra details and description.
