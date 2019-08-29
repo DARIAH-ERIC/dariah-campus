@@ -1,6 +1,12 @@
 const path = require('path')
 const camelCase = require('lodash.camelcase')
 
+const algoliaQueries = require('./algolia')
+
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 const siteUrl =
   process.env.URL ||
   process.env.DEPLOY_URL ||
@@ -223,6 +229,16 @@ module.exports = {
     //     postCssPlugins: [require('postcss-custom-properties')],
     //   },
     // },
+    {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_API_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
+        queries: algoliaQueries,
+        chunkSize: 10000, // default: 1000
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
