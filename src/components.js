@@ -19,6 +19,7 @@ import Panel from 'elements/Panel/Panel'
 import Paragraph from 'elements/Paragraph/Paragraph'
 import Section from 'elements/Section/Section'
 import Title from 'elements/Title/Title'
+import Table from 'elements/Table/Table'
 
 const components = {
   a: Link,
@@ -45,6 +46,7 @@ const components = {
   VideoCard,
   // wrapper: props => props.children,
   Youtube,
+  table: Table,
 }
 
 export default components
