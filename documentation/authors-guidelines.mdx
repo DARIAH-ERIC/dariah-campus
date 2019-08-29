@@ -73,7 +73,13 @@ To help with the process, we have created a DARIAH-Campus template. We are happy
 
 Learning resources benefit from images to break up the text and for illustrative and instructive purposes. The exact nature and content of these images is flexible according to the type and topic area of your learning resource. They can range from photographs; to infographics; diagrams; maps; screenshots and more. These images should be incorporated into the body of your resource using the following code:
 
-**CODE for images**
+    ![Description of image](images/imagename.png)
+
+The path or URL to the image asset is in parentheses. The text in square brackets is the alt text.
+
+To add a link to an image, enclose the Markdown for the image in brackets, and then add the link in parentheses.
+
+    [![Description of image](images/imagename.png)](https://linktotheimage.eu)
 
 We ask authors to use intelligible file names that either indicate the content of the image (data-reuse-diagram.png) or indicate which figure it is within the module (research-infrastructures-fig-1.png). Prepare either .png or .jpg and upload at largest possible size. Check image reuse rights and choose content in the public domain and under Creative Commons licenses. Provide a descriptive figure caption, including source for third-party images, and other information such as shelfmark where relevant.
 
@@ -81,7 +87,19 @@ We ask authors to use intelligible file names that either indicate the content o
 
 Videos are welcomed, since they provide vital contextual information on a subject and/or step-by-step guidance to complete exercises and practical task. To include a video as part of your material, you can upload it to the DARIAH-Campus YouTube channel, or link to the video on your own channel. These videos are included into the body of your material using the following code:
 
-**CODE for videos**
+To insert a YouTube video, use the following code:
+
+    <VideoCard
+     title="Title of the Video"
+     id="SI3u9nu7YEY&t=164s"
+    image="images/imagename.jpg"
+     />
+
+The "id" is the part of the url after the equals sign for a YouTube video. So, for "https://www.youtube.com/watch?v=SI3u9nu7YEY&t=164s" it is: "SI3u9nu7YEY&t=164s".
+
+"image" allows you to choose a screenshot that will appear until the learner clicks the play button.
+
+There are other options for inserting videos; guidance for these can be found in the [Sample-resource template](link)
 
 Any video published on the DARIAH-Campus YouTube Channel is covered by a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0). We ask that any externally-hosted videos that you produce as part of your materials are also licenced for reuse.
 
