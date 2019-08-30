@@ -1,4 +1,5 @@
-.panel {
+.panel,
+.notitlepanel {
   background-color: var(--color-primary);
   border-radius: var(--border-rounded-medium);
   color: var(--color-white);
@@ -6,7 +7,13 @@
   padding: var(--padding-huge);
 }
 
-.panel p {
+.notitlepanel {
+  padding: var(--padding-medium) var(--padding-huge) var(--padding-huge)
+    var(--padding-huge);
+}
+
+.panel p,
+.notitlepanel p {
   color: var(--color-white);
 }
 
