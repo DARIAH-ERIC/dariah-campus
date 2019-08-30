@@ -106,7 +106,7 @@ export const query = graphql`
         }
       }
       id
-      tableOfContents(maxDepth: 3)
+      tableOfContents(maxDepth: 4)
     }
     images: allFile(filter: { relativeDirectory: { eq: $imageFolder } }) {
       nodes {
