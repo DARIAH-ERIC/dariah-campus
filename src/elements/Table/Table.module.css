@@ -1,27 +1,27 @@
-table {
+.table {
   border-collapse: collapse;
-  width: 100%;
   margin: var(--margin-large) 0;
+  width: 100%;
 }
 
-td,
-th {
+.table td,
+.table th {
   border: 1px solid var(--color-table-border);
   padding: var(--padding-medium);
 }
 
-tr:nth-child(even) {
+.table tr:nth-child(even) {
   background-color: var(--color-light-grey);
 }
 
-tr:hover {
+.table tr:hover {
   background-color: var(--color-lighter-grey);
 }
 
-th {
-  padding-top: var(--padding-medium);
-  padding-bottom: var(--padding-medium);
-  text-align: left;
+.table th {
   background-color: var(--color-primary);
   color: var(--color-white);
+  padding-bottom: var(--padding-medium);
+  padding-top: var(--padding-medium);
+  text-align: left;
 }

@@ -35,7 +35,16 @@ const PostTemplate = ({ data }) => (
           components={{
             ...components,
             a: props => <PostLink {...props} />,
-            h2: props => <Heading level="1" {...props} />,
+            h2: props => (
+              <Heading
+                level="1"
+                style={{
+                  marginBottom: 'var(--margin-large)',
+                  marginTop: 'var(--margin-huge)',
+                }}
+                {...props}
+              />
+            ),
             VideoCard: props => (
               <VideoCard {...props} images={data.images.nodes} />
             ),
