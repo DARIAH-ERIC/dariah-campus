@@ -12,14 +12,17 @@ const query = `
           abstract
           authors {
             name
+            slug
           }
+          date
+          slug
           tags {
             name
+            slug
           }
           title
         }
         objectID: id
-        # text
       }
     }
   }
@@ -28,7 +31,12 @@ const query = `
 const queries = [
   {
     query,
-    transformer: ({ data }) => data.resources.nodes,
+    transformer: ({ data }) =>
+      data.resources.nodes.map(({ frontmatter, objectID }) => ({
+        ...frontmatter,
+        date: new Date(frontmatter.date).getTime(),
+        objectID,
+      })),
   },
 ]
 
