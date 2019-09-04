@@ -13,7 +13,13 @@ import Link from 'components/Link/Link'
 
 import styles from './EventHome.module.css'
 
-const EventHome = ({ index, sessions, showAboutOverlay, showPrepOverlay }) => (
+const EventHome = ({
+  index,
+  sessions,
+  showAboutOverlay,
+  showPrepOverlay,
+  social,
+}) => (
   <div
     id="body"
     className="home"
@@ -72,11 +78,12 @@ const EventHome = ({ index, sessions, showAboutOverlay, showPrepOverlay }) => (
           </div>
 
           <div className="home__aside">
-            <EventSocialLinks />
+            <EventSocialLinks social={social} />
             <EventNav
               download={index.frontmatter.synthesis}
               showAboutOverlay={showAboutOverlay}
               showPrepOverlay={showPrepOverlay}
+              social={social}
             />
           </div>
         </div>

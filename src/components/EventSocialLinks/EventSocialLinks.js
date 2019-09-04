@@ -9,11 +9,11 @@ import {
 
 import IconContainer from 'components/IconContainer/IconContainer'
 
-const EventSocialLinks = () => (
+const EventSocialLinks = ({ social }) => (
   <ul className="home__share">
     <li style={{ marginRight: '1rem' }}>
       <a
-        href="https://twitter.com/DARIAHeu"
+        href={social.twitter}
         className="home__share__twitter"
         aria-label="Share on Twitter"
       >
@@ -23,7 +23,7 @@ const EventSocialLinks = () => (
       </a>
     </li>
     <li style={{ marginRight: '1rem' }}>
-      <a href="http://dariah.eu/" aria-label="Visit website">
+      <a href={social.website} aria-label="Visit website">
         <IconContainer>
           <FaGlobe />
         </IconContainer>
@@ -31,7 +31,7 @@ const EventSocialLinks = () => (
     </li>
     <li style={{ marginRight: '1rem' }}>
       <a
-        href="#"
+        href={social.facebook}
         className="home__share__facebook"
         aria-label="Share on Facebook"
       >
@@ -42,7 +42,7 @@ const EventSocialLinks = () => (
     </li>
     <li style={{ marginRight: '1rem' }}>
       <a
-        href="#"
+        href={social.googleplus}
         className="home__share__googleplus"
         aria-label="Share on Google+"
       >
@@ -52,7 +52,7 @@ const EventSocialLinks = () => (
       </a>
     </li>
     <li style={{ marginRight: '1rem' }}>
-      <a href="#" aria-label="Contact">
+      <a href={social.email} aria-label="Contact">
         <IconContainer>
           <FaEnvelope />
         </IconContainer>

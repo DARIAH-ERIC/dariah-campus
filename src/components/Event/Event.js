@@ -23,6 +23,11 @@ const Event = ({ about, index, prep, sessions, downloads }) => {
     setOverlay(null)
   }
 
+  const social = index.frontmatter.social.reduce((acc, link) => {
+    acc[link.name] = link.url
+    return acc
+  }, {})
+
   return (
     <>
       <EventHome
@@ -30,6 +35,7 @@ const Event = ({ about, index, prep, sessions, downloads }) => {
         sessions={sessions.nodes}
         showAboutOverlay={showAboutOverlay}
         showPrepOverlay={showPrepOverlay}
+        social={social}
       />
       <div className="body__borders">
         <EventSessions sessions={sessions.nodes} downloads={downloads.nodes} />
@@ -41,6 +47,7 @@ const Event = ({ about, index, prep, sessions, downloads }) => {
         download={index.frontmatter.synthesis}
         showAboutOverlay={showAboutOverlay}
         showPrepOverlay={showPrepOverlay}
+        social={social}
       />
       {overlay ? (
         <EventOverlay overlay={overlay} onDismiss={onDismiss} />
