@@ -107,7 +107,8 @@ img {
   max-width: 100%;
 }
 
-.gatsby-resp-image-image {
+.gatsby-resp-image-image,
+.gatsby-resp-image-background-image {
   border-radius: 1rem;
 }
 
