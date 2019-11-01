@@ -22,8 +22,8 @@ import '@reach/combobox/styles.css'
 import styles from './SearchBar.module.css'
 
 const searchClient = algoliasearch(
-  process.env.ALGOLIA_APP_ID,
-  process.env.ALGOLIA_SEARCH_API_KEY
+  process.env.GATSBY_ALGOLIA_APP_ID,
+  process.env.GATSBY_ALGOLIA_SEARCH_API_KEY
 )
 
 const AutoComplete = ({
@@ -83,7 +83,7 @@ const SearchBar = ({ className }, ref) => {
       {({ navigate }) => (
         <InstantSearch
           searchClient={searchClient}
-          indexName={process.env.ALGOLIA_INDEX_NAME}
+          indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
         >
           <Configure hitsPerPage={5} />
           <AlgoliaSearchBar
