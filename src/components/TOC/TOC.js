@@ -18,6 +18,7 @@ const TOC = ({ className, toc }) => (
   <div className={clsx(styles.container, className)}>
     <div className={styles.toc}>
       <h2 className={styles.tocHeading}>Table of contents</h2>
+
       {createTocItems(toc.items)}
     </div>
   </div>

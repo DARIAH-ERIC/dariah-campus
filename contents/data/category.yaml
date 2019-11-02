@@ -2,7 +2,7 @@
   slug: dariah
   image: ../images/categories/dariah.jpg
   description:
-    DARIAH is a pan-european infrastructure for arts and humanities scholars
+    DARIAH is a pan-European infrastructure for arts and humanities scholars
     working with computational methods. It supports digital research as well as
     the teaching of digital research methods.
 
@@ -33,7 +33,9 @@
 - name: DARIAH Pathfinders
   slug: dariah-pathfinders
   image: ../images/categories/dariah-pathfinders.jpg
-  description: DARIAH Pathfinders
+  description:
+    Useful collections of external learning resources, curated and
+    contextualized by the DARIAH team.
 
 - name: Events
   slug: events

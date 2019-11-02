@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { FaCogs, FaFolderOpen, FaUsers } from 'react-icons/fa'
+import { FaCogs, FaUsers, FaDirections } from 'react-icons/fa'
 
 import Link from 'components/Link/Link'
 
@@ -24,7 +24,7 @@ const Browse = ({ className }) => (
         <Card className={styles.card}>
           <Card.Body className={styles.cardBody}>
             <FaCogs color="var(--color-primary)" size="5em" />
-            <Heading className={styles.cardHeading}>DARIAH Resources</Heading>
+            <Heading className={styles.cardHeading}>Resources</Heading>
             <div className={styles.cardText}>
               Learn about different topics with online resources provided by
               DARIAH
@@ -39,7 +39,7 @@ const Browse = ({ className }) => (
         <Card className={styles.card}>
           <Card.Body className={styles.cardBody}>
             <FaUsers color="var(--color-primary)" size="5em" />
-            <Heading className={styles.cardHeading}>DARIAH Events</Heading>
+            <Heading className={styles.cardHeading}>Events</Heading>
             <div className={styles.cardText}>
               Missed a face-to-face DARIAH event? Check out what happened
             </div>
@@ -52,11 +52,10 @@ const Browse = ({ className }) => (
       >
         <Card className={styles.card}>
           <Card.Body className={styles.cardBody}>
-            <FaFolderOpen color="var(--color-primary)" size="5em" />
-            <Heading className={styles.cardHeading}>DARIAH Pathfinders</Heading>
+            <FaDirections color="var(--color-primary)" size="5em" />
+            <Heading className={styles.cardHeading}>Pathfinders</Heading>
             <div className={styles.cardText}>
-              Useful collections of external resources curated by the DARIAH
-              team
+              Collections of external resources curated by the DARIAH team
             </div>
           </Card.Body>
         </Card>

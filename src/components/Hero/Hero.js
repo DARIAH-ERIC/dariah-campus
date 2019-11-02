@@ -8,7 +8,7 @@ import Container from 'elements/Container/Container'
 
 import styles from './Hero.module.css'
 
-const Hero = ({ className, image, subtitle, title }) => {
+const Hero = ({ className, image, subtitle, title, size }) => {
   // const { heroImages } = useStaticQuery(graphql`
   //   query {
   //     heroImages: allFile(filter: { relativeDirectory: { eq: "hero" } }) {
@@ -26,7 +26,7 @@ const Hero = ({ className, image, subtitle, title }) => {
   // `)
 
   return (
-    <Container size="medium" className={clsx(styles.hero, className)}>
+    <Container size={size} className={clsx(styles.hero, className)}>
       {image && <img className={styles.heroImage} src={image} alt="" />}
       <h1 className={styles.heroTitle}>{title}</h1>
       <h2 className={styles.heroSubtitle}>{subtitle}</h2>

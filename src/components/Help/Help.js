@@ -17,7 +17,7 @@ const Help = ({ className }) => {
         filter: {
           slug: {
             in: [
-              "deborah-thorpe"
+              "vicky-garnett"
               "erzsebet-toth-czifra"
               "marco-raciti"
               "toma-tasovac"

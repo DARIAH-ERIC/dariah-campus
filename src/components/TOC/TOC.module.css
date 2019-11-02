@@ -9,6 +9,11 @@
 .toc {
   position: sticky;
   top: 12rem;
+  opacity: 0.4;
+}
+
+.toc:hover {
+  opacity: 1;
 }
 
 .toc-heading {
@@ -17,7 +22,7 @@
 }
 
 .border {
-  border-left: 2px solid #ddd;
+  border-left: 1px solid #ddd;
   padding: var(--padding-small) var(--padding-large);
   margin: var(--margin-large) 0;
 }
