@@ -14,6 +14,11 @@
   max-width: var(--container-medium);
 }
 
+.container-mediumish {
+  composes: container;
+  max-width: var(--container-mediumish);
+}
+
 .container-large {
   composes: container;
   max-width: var(--container-large);
