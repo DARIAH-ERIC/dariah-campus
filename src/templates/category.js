@@ -13,7 +13,7 @@ import Title from 'elements/Title/Title'
 const CategoryTemplate = ({ data }) => (
   <Page>
     <Head title={`Posts in ${data.category.name}`} />
-    <Title>Source: {data.category.name}</Title>
+    <Title>{data.category.name}</Title>
     <LeadIn>{data.category.description}</LeadIn>
     <Masonry>
       {data.posts.nodes.map((post, i, posts) => (

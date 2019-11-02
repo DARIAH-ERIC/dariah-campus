@@ -90,6 +90,7 @@
 
 - name: Vicky Garnett
   slug: vicky-garnett
+  title: Training & Education Officer
   avatar: ../images/authors/vicky-garnett.jpg
 
 - name: Marianne Huang
@@ -218,7 +219,6 @@
   slug: kristen-schuster
   avatar: ../images/authors/kristen-schuster.jpg
 
-  # I cannot find information, nor photo, online so note to ask Vicky Garnett
 - name: Rebecca Seirig
   slug: rebecca-seirig
 
