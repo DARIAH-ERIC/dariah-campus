@@ -7,6 +7,7 @@ import {
   FaMicrophoneAlt,
   FaUsers,
   FaVideo,
+  FaDirections,
 } from 'react-icons/fa'
 
 import DefaultAvatar from 'components/DefaultAvatar/DefaultAvatar'
@@ -31,6 +32,7 @@ const icons = {
   slides: FaLayerGroup,
   video: FaVideo,
   website: FaLink,
+  directions: FaDirections,
 }
 
 const PostPreview = ({ className, excerpt, frontmatter, next, previous }) => {

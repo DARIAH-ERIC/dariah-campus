@@ -25,6 +25,10 @@
 - name: website
   slug: Website
   icon: website
+
+- name: pathfinder
+  slug: pathfinder
+  icon: directions
 # see https://github.com/stefanprobst/dariah-campus-mdx/issues/13
 # - name: blog
 # - name: Jupyter notebook
@@ -40,4 +44,3 @@
 # - name: xls spreadsheet document
 # - name: ppt powerpoint presentation
 # - name: others
-
