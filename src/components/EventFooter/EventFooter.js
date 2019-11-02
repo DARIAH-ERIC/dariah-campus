@@ -6,7 +6,12 @@ import clsx from 'clsx'
 import styles from './EventFooter.module.css'
 
 // FIXME: This is essentially the same nav as in EventHome.EventNav
-const EventFooterNav = ({ download, showAboutOverlay, showPrepOverlay }) => (
+const EventFooterNav = ({
+  download,
+  showAboutOverlay,
+  showPrepOverlay,
+  social,
+}) => (
   <ul className="footer__links">
     <li>
       <button
@@ -25,19 +30,19 @@ const EventFooterNav = ({ download, showAboutOverlay, showPrepOverlay }) => (
       </button>
     </li>
     <li>
-      <a href="#">
+      <a href={social.flickr}>
         <FaFlickr size="0.75em" style={{ marginRight: '0.4rem' }} />
         See the photos
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href={social.video}>
         <FaPlayCircle size="0.75em" style={{ marginRight: '0.4rem' }} />
         Watch the video
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href={social.twitter}>
         <FaTwitter size="0.75em" style={{ marginRight: '0.4rem' }} />
         Read the Storify
       </a>
@@ -90,6 +95,7 @@ const EventFooter = ({
   partners,
   showAboutOverlay,
   showPrepOverlay,
+  social,
 }) => (
   <div id="footer" className="clearfix">
     <div style={{ paddingLeft: '6.25%', paddingRight: '6.25%' }}>
@@ -101,6 +107,7 @@ const EventFooter = ({
         download={download}
         showAboutOverlay={showAboutOverlay}
         showPrepOverlay={showPrepOverlay}
+        social={social}
       />
 
       <h3 className="h3">Organisation</h3>

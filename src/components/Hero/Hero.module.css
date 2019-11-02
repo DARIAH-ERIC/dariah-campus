@@ -16,9 +16,9 @@
 }
 
 .hero-image {
-  height: 25rem;
-  width: 25rem;
-  margin: 0 auto;
+  height: 22rem;
+  width: 22rem;
+  margin: 0 auto var(--margin-large);
 }
 
 @media (max-width: 40rem) {

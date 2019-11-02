@@ -31,12 +31,59 @@ Union under grant no. 731081._
 1. Install GitHub Desktop on your computer
 2. Open GitHub Desktop
 3. Sign in with your GitHub credentials
-4. Go to https://github.com/DARIAH-ERIC/dariah-campus
-5. Click on "Clone or download" then select "Open in Desktop"
-6. In GitHub Desktop choose where you want to save the dariah-campus clone on
-   your computer
+4. Go to https://github.com/DARIAH-ERIC/dariah-campus and click on fork
+5. If you are a contributor to various organizational repositories, GitHub may
+   ask you to select where you would like to fork dariah-campus. Make your
+   choice.
+6. Once the forking finishes, you will be taken to your own personal fork of
+   DARIAH-CAMPUS. To make sure you are in the fork, check out the user name in
+   the upper left corner.
+7. Click on "Clone or download" then select "Open in Desktop"
+8. In GitHub Desktop choose where you want to save the cloned dariah-campus fork
+   on your computer
+9. The first you do this, it may take a couple of minutes, but don't despair,
+   this only happens the first time.
+10. To get to the folder with DARIAH-CAMPUS click on Open in Atom (or your
+    preferred editor, if you already set it up).
+11. install Toolbar Markdown Writer
+12. click yes on install dependencies
+
+### Atom
+
+- Download and instal Atom
+- go to Atom > Preferences (if you are on a Mac) or File > Settings (if you are
+  on Windows)
+- click on Install
+- In the search field, type "mdxjs" and click
+- you will see a package called language-mdxjs. Click on install.
+- in the search field, type "Markdown Preview Enhanced"
+- click install
+- one the install finishes, click on Setting
+- Click on the settings File extension field, and type a comma after
+  `.markdown`, and type `.mdx`
 
 ### Contributing to DARIAH-CAMPUS
+
+- do your work
+- save changes in atom
+- go to GitHub Desktop
+- make sure your changes are reflected in the Changes Tab
+- write a shore name for the changes you want to submit
+- click on "commit to master" (...)
+- click on Push origin (this will commit your changes to the remote server, i.e.
+  your fork of DARIAH-CAMPUS)
+- If you go to your fork on GitHub and click on commits, you will see that your
+  changes have been committed to your fork
+
+now you want to submit your changes to DARIAH-CAMPUS editors
+
+-- explain what Fetch origin does, and remind people to fetch origin before
+submitting new stuff
+
+- go to Branch > Create Pull Request
+- a new window will open in your Browser
+- click on the green button "Create pull request"
+- click on create pull request
 
 #### First-time contribution
 

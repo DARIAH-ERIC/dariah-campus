@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 import styles from './EventNav.module.css'
 
-const EventNav = ({ download, showAboutOverlay, showPrepOverlay }) => (
+const EventNav = ({ download, showAboutOverlay, showPrepOverlay, social }) => (
   <div>
     <ul className="home__links">
       <li>
@@ -24,19 +24,19 @@ const EventNav = ({ download, showAboutOverlay, showPrepOverlay }) => (
         </button>
       </li>
       <li>
-        <a href="https://www.flickr.com/photos/151019225@N04/sets/72157679126801606/">
+        <a href={social.flickr}>
           <FaFlickr size="0.75em" style={{ marginRight: '1rem' }} />
           <span>See the photos</span>
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href={social.video}>
           <FaPlayCircle size="0.75em" style={{ marginRight: '1rem' }} />
           <span>Watch the video</span>
         </a>
       </li>
       <li>
-        <a href="https://storify.com/Natct23452346/dariah-humanities-at-scale-winter-school-in-praha#publicize">
+        <a href={social.storify}>
           <FaTwitter size="0.75em" style={{ marginRight: '1rem' }} />
           <span>Read the Storify</span>
         </a>

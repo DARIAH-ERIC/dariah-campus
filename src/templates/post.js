@@ -23,7 +23,7 @@ import components from 'components'
 const PostTemplate = ({ data }) => (
   <Page>
     <Head article={data.post.frontmatter} type="article" />
-    <Container size="small">
+    <Container size="small" style={{ position: 'relative' }}>
       <Title>{data.post.frontmatter.title}</Title>
       <PostMetadata metadata={data.post.frontmatter} />
       {data.post.frontmatter.featuredImage && (
@@ -35,7 +35,16 @@ const PostTemplate = ({ data }) => (
           components={{
             ...components,
             a: props => <PostLink {...props} />,
-            h2: props => <Heading level="1" {...props} />,
+            h2: props => (
+              <Heading
+                level="1"
+                style={{
+                  marginBottom: 'var(--margin-large)',
+                  marginTop: 'var(--margin-huge)',
+                }}
+                {...props}
+              />
+            ),
             VideoCard: props => (
               <VideoCard {...props} images={data.images.nodes} />
             ),
@@ -106,7 +115,7 @@ export const query = graphql`
         }
       }
       id
-      tableOfContents(maxDepth: 3)
+      tableOfContents(maxDepth: 4)
     }
     images: allFile(filter: { relativeDirectory: { eq: $imageFolder } }) {
       nodes {

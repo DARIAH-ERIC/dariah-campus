@@ -1,6 +1,6 @@
 .search-bar {
-  margin: var(--margin-huge);
-  padding: 0 var(--padding-huge);
+  margin: var(--margin-huge) 0;
+  padding: 0;
 }
 
 .search-bar-input {

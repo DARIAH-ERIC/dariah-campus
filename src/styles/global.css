@@ -17,6 +17,7 @@
   --margin-medium: 1rem;
   --margin-large: 2rem;
   --margin-huge: 4rem;
+  --margin-huger: 6rem;
 
   --padding-xsmall: 0.2rem;
   --padding-small: 0.5rem;
@@ -52,6 +53,7 @@
   --line-height-large: 1.8;
 
   --container-small: 80rem;
+  --container-mediumish: 91rem;
   --container-medium: 100rem;
   --container-large: 120rem;
   --container-huge: 160rem;
@@ -107,7 +109,8 @@ img {
   max-width: 100%;
 }
 
-.gatsby-resp-image-image {
+.gatsby-resp-image-image,
+.gatsby-resp-image-background-image {
   border-radius: 1rem;
 }
 

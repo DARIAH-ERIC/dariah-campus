@@ -15,9 +15,11 @@ const createTocItems = (items, depth = 0) => (
 )
 
 const TOC = ({ className, toc }) => (
-  <div className={clsx(styles.toc, className)}>
-    <h2>Table of contents</h2>
-    {createTocItems(toc.items)}
+  <div className={clsx(styles.container, className)}>
+    <div className={styles.toc}>
+      <h2 className={styles.tocHeading}>Table of contents</h2>
+      {createTocItems(toc.items)}
+    </div>
   </div>
 )
 

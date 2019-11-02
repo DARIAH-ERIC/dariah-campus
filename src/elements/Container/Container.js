@@ -5,8 +5,11 @@ import { capitalize } from 'utils/capitalize'
 
 import styles from './Container.module.css'
 
-const Container = ({ children, className, size }) => (
-  <div className={clsx(styles[`container${capitalize(size)}`], className)}>
+const Container = ({ children, className, size, ...rest }) => (
+  <div
+    className={clsx(styles[`container${capitalize(size)}`], className)}
+    {...rest}
+  >
     {children}
   </div>
 )

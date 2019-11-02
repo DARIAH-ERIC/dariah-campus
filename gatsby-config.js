@@ -182,9 +182,6 @@ module.exports = {
         defaultLayouts: {
           data: path.resolve('./src/templates/component.js'),
           default: path.resolve('./src/templates/page.js'),
-          // events: path.resolve('./src/templates/events.js'),
-          // pages: path.resolve(''),
-          // posts: path.resolve(''),
         },
         gatsbyRemarkPlugins: [
           {
@@ -205,7 +202,6 @@ module.exports = {
             },
           },
         ],
-        remarkPlugins: [],
         plugins: [
           'gatsby-remark-images', // FIXME: Temporary workaround
           'gatsby-remark-autolink-headers', // FIXME: Temporary workaround
@@ -232,9 +228,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-algolia',
       options: {
-        appId: process.env.ALGOLIA_APP_ID,
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_API_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         queries: algoliaQueries,
         chunkSize: 10000, // default: 1000
       },
