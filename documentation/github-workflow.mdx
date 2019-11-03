@@ -9,9 +9,9 @@ toc: true
 
 DARIAH-CAMPUS learning resources are
 
-- written in Markdown, a lightweight markup language with easy-to-learn,
+- written in **Markdown**, a lightweight markup language with easy-to-learn,
   plain-text formatting syntax; and
-- hosted on GitHub, a popular repository hosting service based on the
+- hosted on **GitHub**, a popular repository hosting service based on the
   open-source version control sotware called git.
 
 To submit content to DARIAH-CAMPUS, you should:
@@ -89,17 +89,21 @@ DARIAH-CAMPUS learning resources.
 
 ## Contributing to DARIAH-CAMPUS
 
-NOTE: this is still in shorthand -- I will describe these in more detail (TT).
+### Work on your contribution
 
-- explain fetch origin vs. merge from upstream and list
+When you work on your own learning resource, you will work locally, on your
+computer, in the locally clown fork of DARIAH-CAMPUS.
 
-### Work on your fork
-
-1. **Fetch origin**
-2. **Merge from upstream** ![](images/github_merge_from_upstream.png)
-
+1. **Fetch origin**. Before you start a working session on your computer, make
+   sure you "fetch origin": ![](images/github_desktop_fetch_origin.png) This
+   will update your local fork with possible changes you've made to your remote
+   fork (if you're, for instance, working on more than one computer).
+2. **Merge from upstream**. Also, before you start your working session, you
+   should merge from upstream: ![](images/github_merge_from_upstream.png) This
+   will update your local fork with the changes that may have been submitted to
+   the "upstream" DARIAH-CAMPUS, i.e. the original repository owned by DARIAH.
 3. Do your work
-4. Save changes in atom
+4. Save changes in Atom
 5. Go to GitHub Desktop
 6. Make sure your recent changes are reflected in the Changes Tab:
    ![](images/github_changes.png)
@@ -116,38 +120,11 @@ NOTE: this is still in shorthand -- I will describe these in more detail (TT).
 
 1. make sure you have no uncommitted changes
 2. **Create a pull request.** Go to Branch > Create Pull Request.
-   - A new window will open in your Browser
-   - Click on the green button "Create pull request"
-   - Click on create pull request This will alert the editors to look into your
-     submission before making it public.
+   ![](images/github_desktop_branch_pull_request.png)
 
-### Subsequent contributions
-
-Before you make your next contribution, you have to make sure that your local
-branch is up to date. Remember, you created your special little branch off of
-the master at some point, but other people may have contributed to the master in
-the meantime. So it's very important that you follow this procedure _every time_
-you start doing work on your branch again.
-
-1. **In GitHub Desktop, in your branch, fetch origin.** This will check whether
-   there were any changes made to _your_ branch _remotely_.
-2. **If GitHub Desktop instructs you to pull origin, pull origin.** This will
-   make sure that _your local_ and _your remote branch_ are in sync. Which is
-   important, if you have, for instance, used a different computer to commit and
-   publish etc. Or if, God forbid, somebody messed around with your branch. They
-   shouldn't. But it did happen at least once. And Toma was to blame :)
-3. **Branch > Update from master** This will now, in addition, update _your
-   local branch_ with all the contributions that have meanwhile been merged into
-   the master from the other branches. Remember, each contributor works in their
-   own branch.
-4. **If GitHub Desktop instructs you to push origin, push origin.** This will
-   make sure that the changes from the master branch, which you've added to
-   _your local_ branch in the previous step, will also make it to _your remote
-   branch_. With your local and remote branch fully updated and sync you can
-   finally get to do your work.
-5. **Do your work.**
-6. **Commit your work.** This will save your work to _your_ branch _locally_.
-7. **Push origin.** This will save your work to _your_ branch _remotely_.
-8. **Create a pull request.** This will alert the repository admin person that
-   there are changes that should be merged into the master branch, i.e. made
-   public.
+- A new window will open in your Browser. Click on the green button "Create pull
+  request" ![](images/github_in_browser_create_pull_request.png)
+- If necessary, change the commit message. You don't have to leave a comment.
+  Click on the green button "Create pull request".
+  ![](images/github_in_browser_create_pull_request2.png) This will alert the
+  editors that you have submitted a contribution for publication.
