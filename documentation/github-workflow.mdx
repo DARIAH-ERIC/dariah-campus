@@ -1,0 +1,130 @@
+---
+title: GitHub Submission Workflow
+in DARIAH-Campus
+date: 2019-08-27
+toc: true
+---
+
+# GitHub Submission Workflow
+
+DARIAH-CAMPUS learning resources are
+
+- written in **Markdown**, a lightweight markup language with easy-to-learn,
+  plain-text formatting syntax; and
+- hosted on **GitHub**, a popular repository hosting service based on the
+  open-source version control sotware called git.
+
+To submit content to DARIAH-CAMPUS, you should:
+
+- use a text editor that supports Markdown. If you don't already use one, we
+  recommend Atom.
+- be familiar with our GitHub submission and editing workflow.
+
+## Setting up Atom
+
+If you don't already use a Markdown-enabled text editor but wish to create
+content for DARIAH-CAMPUS, you may want to use Atom, a customizable,
+cross-platform open-source text editor.
+
+If you already use a Mardkown-enabled editor, you should continue to do so.
+We're providing the instructions how to set up Atom only for those who are new
+to Markdown. You should stick to the tools you know (and hopefully like).
+
+1. Download and install [Atom](https://atom.io).
+2. Open Atom.
+3. Go to Atom > Preferences (if you are on a Mac) or File > Settings (if you are
+   on Windows). Then click on Install: ![](images/atom_settings.png)
+4. Make sure the "Packages" tab next to the search field is selected. Then type
+   "mdxjs" in the search field and wait for results to show up. You should see a
+   package called language-mdxjs in the results. Click on install.
+   ![](images/atom_install_mdxjs.png)
+5. In the search field, type: "Markdown Preview Enhanced". Install
+   markdown-preview-enhanced.
+6. Once the install finishes, click on Settings:
+   ![](images/atom_markdown_preview_settings.png)
+7. Once you open the settings for Markdown Preview Enhanced, you should see
+   something like this: ![](images/atom_markdown_preview_settings2.png)
+8. Click on the File Extension input field in Settings and type `, .mdx` after
+   `.markdown` like this: ![](images/atom_markdown_preview_settings3.png)
+9. Finally, go back to "Install", search for and install "Toolbar Markdown
+   Writer".
+10. Atom will ask you if you want to install dependencies, click on "Yes":
+    ![](images/atom_markdown_toolbar_and_dependencies.png)
+
+You should now have a functioning environment in Atom for your work on new
+DARIAH-CAMPUS learning resources.
+
+## Setting up DARIAH-CAMPUS on your computer
+
+1. If you haven't used GitHub before, make sure you
+   [sign up](https://github.com/join) for a free account before you proceed.
+2. Make sure you're logged in on GitHub.com.
+3. Download and install [GitHub Desktop](https://desktop.github.com) on your
+   computer.
+4. Open GitHub Desktop on your computer.
+5. Authenticate your GitHub Desktop application with your GitHub credentials by
+   following these
+   [instructions](https://help.github.com/en/desktop/getting-started-with-github-desktop/authenticating-to-github).
+6. In your browser, go to
+   [https://github.com/DARIAH-ERIC/dariah-campus](https://github.com/DARIAH-ERIC/dariah-campus)
+   and click on "fork". ![](images/github_fork.png)
+7. If you are a contributor to various organizational repositories, GitHub may
+   ask you to select where you would like to fork dariah-campus. Make your
+   choice. ![](images/github_fork_to_which_repo.png)
+8. Once the forking finishes, you will be taken to your own personal fork of
+   DARIAH-CAMPUS. To make sure you are in the fork, check out that your user
+   name (or the name of the organizational repository youo selected in step 7
+   above) is displayed in the upper left corner.
+   ![](images/github_fork_check_your_name.png)
+9. Click on "Clone or download", then select "Open in Desktop".
+   ![](images/github_clone_and_open_in_desktop.png)
+10. In GitHub Desktop, choose where you want to save the cloned DARIAH-CAMPUS
+    fork on your computer. ![](images/github_desktop_saving_a_fork.png)
+11. The first you do this, it may take a couple of minutes, but don't despair,
+    things will be quicker after the initial clone. Once you finish cloning your
+    fork, you should see something like this:
+    ![](images/github_desktop_result_of_cloned_fork.png)
+12. To get to the folder with DARIAH-CAMPUS on your computer, click on Open in
+    Atom (or your preferred editor, if you already set it up).
+
+## Contributing to DARIAH-CAMPUS
+
+### Work on your contribution
+
+When you work on your own learning resource, you will work locally, on your
+computer, in the locally clown fork of DARIAH-CAMPUS.
+
+1. **Fetch origin**. Before you start a working session on your computer, make
+   sure you "fetch origin": ![](images/github_desktop_fetch_origin.png) This
+   will update your local fork with possible changes you've made to your remote
+   fork (if you're, for instance, working on more than one computer).
+2. **Merge from upstream**. Also, before you start your working session, you
+   should merge from upstream: ![](images/github_merge_from_upstream.png) This
+   will update your local fork with the changes that may have been submitted to
+   the "upstream" DARIAH-CAMPUS, i.e. the original repository owned by DARIAH.
+3. Do your work
+4. Save changes in Atom
+5. Go to GitHub Desktop
+6. Make sure your recent changes are reflected in the Changes Tab:
+   ![](images/github_changes.png)
+7. Write a short commit message for the changes you want to submit. You can
+   leave the Description field emtpy: ![](images/github_commit_message.png)
+8. **Commit your work.** Click on "commit to master". This will save your
+   initial work to _your_ fork _locally_.
+9. **Push to your fork.** Click on Push origin. This will save your work to
+   _your_ fork _remotely_. ![](images/github_push_origin.png) After you push,
+   you can go to your fork on GitHub and click on "Commits". You will see that
+   your changes have been committed to your fork on github.com.
+
+### Submit to DARIAH-CAMPUS editors
+
+1. make sure you have no uncommitted changes
+2. **Create a pull request.** Go to Branch > Create Pull Request.
+   ![](images/github_desktop_branch_pull_request.png)
+
+- A new window will open in your Browser. Click on the green button "Create pull
+  request" ![](images/github_in_browser_create_pull_request.png)
+- If necessary, change the commit message. You don't have to leave a comment.
+  Click on the green button "Create pull request".
+  ![](images/github_in_browser_create_pull_request2.png) This will alert the
+  editors that you have submitted a contribution for publication.
