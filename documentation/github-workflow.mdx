@@ -46,9 +46,11 @@ to Markdown. You should stick to the tools you know (and hopefully like).
    something like this: ![](images/atom_markdown_preview_settings2.png)
 8. Click on the File Extension input field in Settings and type `, .mdx` after
    `.markdown` like this: ![](images/atom_markdown_preview_settings3.png)
-9. Finally, go back to "Install", search for and install "Toolbar Markdown
-   Writer".
-10. Atom will ask you if you want to install dependencies, click on "Yes":
+9. Uncheck the check box next to "Break On Single New Line":
+   ![](images/atom_markdown_preview_settings4.png)
+10. Finally, go back to "Install", search for and install "Toolbar Markdown
+    Writer".
+11. Atom will ask you if you want to install dependencies, click on "Yes":
     ![](images/atom_markdown_toolbar_and_dependencies.png)
 
 You should now have a functioning environment in Atom for your work on new
@@ -89,42 +91,56 @@ DARIAH-CAMPUS learning resources.
 
 ## Contributing to DARIAH-CAMPUS
 
+When you work on your own learning resource, you will work locally, on your
+computer, in the locally cloned fork of DARIAH-CAMPUS.
+
 ### Work on your contribution
 
-When you work on your own learning resource, you will work locally, on your
-computer, in the locally clown fork of DARIAH-CAMPUS.
+Make sure you get into the habit of regularly syncing your local clone with the
+remote clone and the original repository, as well as committing (saving) your
+work both to your local clone and your remote server.
+
+This may sound coumplicated, but is actually quite logical. Once you have done
+it several times, it will become like second nature to you:
 
 1. **Fetch origin**. Before you start a working session on your computer, make
    sure you "fetch origin": ![](images/github_desktop_fetch_origin.png) This
-   will update your local fork with possible changes you've made to your remote
-   fork (if you're, for instance, working on more than one computer).
+   will update your local fork with possible changes you've made to your
+   "origin", i.e. your fork on GitHub.com. This is important if you're, for
+   instance, working on more than one computer.
 2. **Merge from upstream**. Also, before you start your working session, you
    should merge from upstream: ![](images/github_merge_from_upstream.png) This
    will update your local fork with the changes that may have been submitted to
    the "upstream" DARIAH-CAMPUS, i.e. the original repository owned by DARIAH.
-3. Do your work
+3. Do your work. On how to set up a new learning resource see USING TEMPLATES.
+   TODO!
 4. Save changes in Atom
-5. Go to GitHub Desktop
-6. Make sure your recent changes are reflected in the Changes Tab:
-   ![](images/github_changes.png)
-7. Write a short commit message for the changes you want to submit. You can
+5. Go to GitHub Desktop. You can see your recent changes are reflected in the
+   Changes Tab: ![](images/github_changes.png)
+6. Write a short commit message for the changes you want to submit. You can
    leave the Description field emtpy: ![](images/github_commit_message.png)
-8. **Commit your work.** Click on "commit to master". This will save your
+7. **Commit your work.** Click on "commit to master". This will save your
    initial work to _your_ fork _locally_.
-9. **Push to your fork.** Click on Push origin. This will save your work to
+8. **Push to your fork.** Click on "Push origin". This will save your work to
    _your_ fork _remotely_. ![](images/github_push_origin.png) After you push,
    you can go to your fork on GitHub and click on "Commits". You will see that
-   your changes have been committed to your fork on github.com.
+   your changes have been committed to your fork on GitHub.com.
+
+You can repeat the above as many times as you want while working on your
+learning resource. None of the changes you commit and push as described above
+will be submitted to the DARIAH-CAMPUS editors.
 
 ### Submit to DARIAH-CAMPUS editors
 
-1. make sure you have no uncommitted changes
+Once you're ready to submit, follow these steps:
+
+1. Open GitHub Desktop and make sure you have no uncommitted changes in the
+   Changes tab.
 2. **Create a pull request.** Go to Branch > Create Pull Request.
    ![](images/github_desktop_branch_pull_request.png)
-
-- A new window will open in your Browser. Click on the green button "Create pull
-  request" ![](images/github_in_browser_create_pull_request.png)
-- If necessary, change the commit message. You don't have to leave a comment.
-  Click on the green button "Create pull request".
-  ![](images/github_in_browser_create_pull_request2.png) This will alert the
-  editors that you have submitted a contribution for publication.
+   - A new window will open in your Browser. Click on the green button "Create
+     pull request" ![](images/github_in_browser_create_pull_request.png)
+   - If necessary, change the commit message. You don't have to leave a comment.
+     Click on the green button "Create pull request".
+     ![](images/github_in_browser_create_pull_request2.png) This will alert the
+     editors that you have submitted a contribution for publication.
