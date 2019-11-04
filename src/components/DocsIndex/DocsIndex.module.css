@@ -1,0 +1,16 @@
+.toc {
+}
+
+.toc-heading {
+  font-size: var(--font-size-heading1);
+  margin-top: 4rem !important;
+  text-transform: uppercase;
+}
+
+.items {
+  list-style-type: none;
+}
+
+.item {
+  margin: 1.5rem 2rem;
+}

@@ -301,6 +301,21 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
+      docs: allMdx(
+        filter: {
+          fileInfo: {
+            name: { nin: ["index", "Sample-resource"] }
+            sourceInstanceName: { eq: "docs" }
+          }
+        }
+      ) {
+        nodes {
+          frontmatter {
+            slug
+          }
+          id
+        }
+      }
     }
   `)
 
@@ -335,6 +350,18 @@ exports.createPages = async ({ actions, graphql }) => {
 
       default:
     }
+  })
+
+  const docs = data.docs.nodes
+  const docsBasePath = paths.find(route => route.name === 'docs').path
+  docs.forEach(({ id, frontmatter }) => {
+    actions.createPage({
+      path: createPath(docsBasePath, frontmatter.slug),
+      component: path.resolve('./src/templates/docs.js'),
+      context: {
+        id,
+      },
+    })
   })
 
   const postsPreviews = Math.ceil(posts.length / POSTS_PER_PAGE)

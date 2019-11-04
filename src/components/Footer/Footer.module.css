@@ -3,6 +3,7 @@
   background-color: var(--color-primary-dark);
   padding: var(--padding-huge) 0 var(--padding-large) 0;
   position: relative;
+  z-index: 10;
 }
 
 /* We need to do this because the custom event css overwrites

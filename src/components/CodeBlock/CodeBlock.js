@@ -3,7 +3,7 @@ import Highlight, { defaultProps } from 'prism-react-renderer'
 import github from 'prism-react-renderer/themes/github'
 
 const CodeBlock = ({ children, className }) => {
-  const language = className.replace(/language-/, '')
+  const language = className ? className.replace(/language-/, '') : 'diff'
 
   return (
     <Highlight

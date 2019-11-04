@@ -65,6 +65,12 @@ module.exports = {
         top: true,
       },
       {
+        displayName: 'Docs',
+        name: 'docs',
+        path: '/docs',
+        top: false,
+      },
+      {
         displayName: 'Home',
         name: 'home',
         path: '/',
@@ -173,6 +179,13 @@ module.exports = {
       options: {
         name: 'posts',
         path: path.resolve('./contents/resources'),
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'docs',
+        path: path.resolve('./documentation'),
       },
     },
     {
