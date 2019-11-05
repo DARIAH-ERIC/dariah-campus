@@ -8,9 +8,7 @@ require('dotenv').config({
 })
 
 const siteUrl =
-  process.env.URL ||
-  process.env.DEPLOY_URL ||
-  'https://dariah-campus.netlify.com'
+  process.env.URL || process.env.DEPLOY_URL || 'https://campus.dariah.eu'
 
 module.exports = {
   siteMetadata: {
