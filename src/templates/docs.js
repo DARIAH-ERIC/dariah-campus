@@ -4,19 +4,44 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
 import Head from 'components/Head/Head'
-import TOC from 'components/TOC/TOC'
+import Link from 'components/Link/Link'
+import { TOCContainer, createTocItems } from 'components/TOC/TOC'
 
 import Container from 'elements/Container/Container'
 import Heading from 'elements/Heading/Heading'
 import Page from 'elements/Page/Page'
 import Title from 'elements/Title/Title'
 
+const styles = {
+  docsHeader: {
+    fontWeight: 700,
+    margin: '2rem 0 1rem',
+  },
+}
+
 const TagTemplate = ({ data }) => (
   <Page>
     <Head title={data.doc.frontmatter.title} />
     <Container size="small" style={{ position: 'relative' }}>
       <Title>{data.doc.frontmatter.title}</Title>
-      {data.doc.frontmatter.toc && <TOC toc={data.doc.tableOfContents} />}
+      <TOCContainer>
+        <div>
+          <Link to="/about">
+            <div style={styles.docsHeader}>Overview</div>
+          </Link>
+        </div>
+        {data.tocs.nodes.map(node => {
+          const prefix = `/docs/${node.frontmatter.slug}`
+          return (
+            <div key={prefix}>
+              <Link to={prefix}>
+                <div style={styles.docsHeader}>{node.frontmatter.title}</div>
+              </Link>
+              {createTocItems(node.tableOfContents.items || [], 0, prefix)}
+            </div>
+          )
+        })}
+      </TOCContainer>
       <article>
         <MDXProvider
           components={{
@@ -48,9 +73,25 @@ export const query = graphql`
       body
       frontmatter {
         title
-        toc
       }
-      tableOfContents(maxDepth: 4)
+    }
+    tocs: allMdx(
+      filter: {
+        fileInfo: {
+          sourceInstanceName: { eq: "docs" }
+          name: { nin: ["index", "Sample-resource"] }
+        }
+      }
+      sort: { fields: [frontmatter___number], order: [ASC] }
+    ) {
+      nodes {
+        frontmatter {
+          slug
+          title
+          toc
+        }
+        tableOfContents(maxDepth: 2)
+      }
     }
   }
 `
