@@ -1,10 +1,10 @@
 - name: Augmented reality
   slug: augmented-reality
-  description: Augmented reality
+  description: Augmented reality uses digital technologies to bring interactive experiences to real-life physical spaces or items using digital devices such as smartphones or tablets
 
 - name: Big data
   slug: big-data
-  description: Big data
+  description: Big data refers to extremely large and/or complex datasets, and the methods used to manage and analyse them
 
 - name: Citizen science
   slug: citizen-science
