@@ -8,120 +8,112 @@
 
 - name: Citizen science
   slug: citizen-science
-  description: Citizen science
+  description: Citizen Science is a method of research that relies on partnership with non-academic experts and enthusiasts in a given discipline to provide, process and/or analyse data
 
 - name: Data management
   slug: data-management
-  description: Data management
+  description: Data Management is a set of practices and techniques used by researchers to ensure that their data is organised, structured and easily reusable for future research
 
 - name: Data modeling
   slug: data-modeling
-  description: Data modeling
+  description: Data modeling refers to the process of creating a machine-readable conceptual representation of objects
 
 - name: Data visualisation
   slug: data-visualisation
-  description: Data visualisation
-
-- name: Design based research
-  slug: design-based-research
-  description: Design based research
+  description: Data visualisation looks at the different technologies and tools that a researcher can use to visualise their data and enhance the communication of their findings
 
 - name: DH
   slug: dh
-  description: DH
+  description: Digital Humanities (DH) is a scholarly discipline that deals with the use of computational methods in the study of the humanities
 
 - name: Editing tools
   slug: editing-tools
-  description: Editing tools
+  description: Editing tools help a researcher to manage, edit and visualise digital data
 
 - name: eHeritage
   slug: e-heritage
-  description: eHeritage
+  description: eHeritage refers to the practice of using digital technologies to create, enhance, preserve, visualise, or manage cultural heritage items
 
 - name: Feminism
   slug: feminism
-  description: Feminism
+  description: The focus of feminism in (digital) Humanities often looks at representations of gender within the field, gender issues and research practices and feminist scholarship for the digital age
 
 - name: Geotagging
   slug: geotagging
-  description: Geotagging
+  description: Geotagging is a process used in Spatial Humanities-based research that applies geo-spatial information to physical objects, events or artefacts
 
 - name: Lexicography
   slug: lexicography
-  description: Lexicography
-
-- name: Literacies
-  slug: literacies
-  description: Literacies
+  description: Lexicography is the art and craft of making dictionaries
 
 - name: MOOC
   slug: mooc
-  description: MOOC
+  description: Massive Open Online Courses (MOOCs) enable enthusiasts and scholars from all over the world to take part in a structured course around a specific subject
 
 - name: Multimodality
   slug: multimodality
-  description: Multimodality
+  description: How different communicative formats, platforms and methods interact in the digital world, and how can researchers apply critical anlysis to them?
 
 - name: Ontologies
   slug: ontologies
-  description: Ontologies
+  description: Ontologies are a means of structuring data in a way that is both human-friendly and machine readable
 
 - name: Open access
   slug: open-access
-  description: Open access
+  description: Open Access is a mechanism enabling scholars to access content for use and reuse, usually in a digital format, for free
 
 - name: Open education
   slug: open-education
-  description: Open education
+  description: Open Education provides open training materials to enable students, scholars and professionals to upskill in their chosen area
 
 - name: Open science
   slug: open-science
-  description: Open science
+  description: Open Science is the process or processes by which a scholar ensures that their research outputs, which might include data, publications and training activities, are available and open to all without restriction
 
 - name: Research infrastructures
   slug: research-infrastructures
-  description: Research infrastructures
+  description: Research Infrastructures are (virtual) meeting points for researchers in a broad disciplinary field to share, collaborate, network, develop and contribute solutions to the research needs of researchers in their community
 
 - name: Scholarly editions
   slug: scholarly-editions
-  description: Scholarly editions
+  description: Scholarly editions refer to trustworthy, annotated editions of primary texts
 
 - name: Scholarly publishing
   slug: scholarly-publishing
-  description: Scholarly publishing
+  description: Scholarly publishing relates to issues and best practice for (digital) publication of scholarly outputs
 
 - name: Sound studies
   slug: sound-studies
-  description: Sound studies
+  description: Sound Studies looks at methods and technologies for analysing audio data
 
 - name: Spatial humanities
   slug: spatial-humanities
-  description: Spatial humanities
+  description: Spatial Humanities is research that combines humanities, environmental sciences and geography-based practices to study physical, cognitive, perceptual and relational aspects of the human spatial experience
 
 - name: Speech technology
   slug: speech-technology
-  description: Speech technology
+  description: Speech technology is interested in the recognition, analysis and (re)production of spoken language
 
 - name: Sustainability
   slug: sustainability
-  description: sustainability
+  description: Sustainability ensures the long-term usablity of the outputs of any research or scholarly practice
 
 - name: TEI
   slug: tei
-  description: TEI
+  description: Text Encoding Initiative (TEI) is a de facto standard for the representation of texts in digital form
 
 - name: Training and education
   slug: training-education
-  description: Training and education
+  description: How does (digital) humanities-based research support, facilitate and contribute to training, education and continued professional development?
 
 - name: XML
   slug: xml
-  description: XML
+  description: XML (eXtensible Markup Language) is a markup language for storing and transporting data in both human-readable and machine-readable format, making it interoperable across digital platforms
 
 - name: XPath
   slug: xpath
-  description: XPath
+  description: XPath is a standard query language for selecting nodes from XML documents
 
 - name: XSLT
   slug: xslt
-  description: XSLT
+  description: XSLT (eXtensible Stylesheet Language Transformations) is a language for transforming XML documents
