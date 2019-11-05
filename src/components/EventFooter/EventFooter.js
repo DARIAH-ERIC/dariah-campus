@@ -29,24 +29,30 @@ const EventFooterNav = ({
         How to prepare
       </button>
     </li>
-    <li>
-      <a href={social.flickr}>
-        <FaFlickr size="0.75em" style={{ marginRight: '0.4rem' }} />
-        See the photos
-      </a>
-    </li>
-    <li>
-      <a href={social.video}>
-        <FaPlayCircle size="0.75em" style={{ marginRight: '0.4rem' }} />
-        Watch the video
-      </a>
-    </li>
-    <li>
-      <a href={social.twitter}>
-        <FaTwitter size="0.75em" style={{ marginRight: '0.4rem' }} />
-        Read the Storify
-      </a>
-    </li>
+    {social.flickr && (
+      <li>
+        <a href={social.flickr}>
+          <FaFlickr size="0.75em" style={{ marginRight: '0.4rem' }} />
+          See the photos
+        </a>
+      </li>
+    )}
+    {social.video && (
+      <li>
+        <a href={social.video}>
+          <FaPlayCircle size="0.75em" style={{ marginRight: '0.4rem' }} />
+          Watch the video
+        </a>
+      </li>
+    )}
+    {social.twitter && (
+      <li>
+        <a href={social.twitter}>
+          <FaTwitter size="0.75em" style={{ marginRight: '0.4rem' }} />
+          Read the Storify
+        </a>
+      </li>
+    )}
     {download ? (
       <li className="download">
         <a href={download.publicURL}>
