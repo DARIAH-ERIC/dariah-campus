@@ -35,6 +35,7 @@ const PostTemplate = ({ data }) => (
           components={{
             ...components,
             a: props => <PostLink {...props} />,
+            h1: () => null,
             h2: props => (
               <Heading
                 level="1"
