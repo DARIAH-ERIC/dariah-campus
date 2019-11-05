@@ -5,15 +5,18 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import DocsIndex from 'components/DocsIndex/DocsIndex'
 import Head from 'components/Head/Head'
 
+import Container from 'elements/Container/Container'
 import Page from 'elements/Page/Page'
 // import Title from 'elements/Title/Title'
 
 const About = ({ data }) => (
   <Page>
     <Head title="About" />
-    {/* <Title>About DARIAH Campus</Title> */}
-    <MDXRenderer>{data.index.body}</MDXRenderer>
-    <DocsIndex docs={data.docs.nodes} />
+    <Container size="small">
+      {/* <Title>About DARIAH Campus</Title> */}
+      <MDXRenderer>{data.index.body}</MDXRenderer>
+      <DocsIndex docs={data.docs.nodes} />
+    </Container>
   </Page>
 )
 

@@ -16,7 +16,9 @@ const createTocItems = (items, depth = 0, prefix) => (
 
 const TOC = ({ title, items, prefix }) => (
   <div className={styles.toc}>
-    <h2 className={styles.tocHeading}>{title}</h2>
+    <Link to={prefix}>
+      <h2 className={styles.tocHeading}>{title}</h2>
+    </Link>
     <nav>{createTocItems(items, 0, prefix)}</nav>
   </div>
 )
