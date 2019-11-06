@@ -1,5 +1,5 @@
 .container {
-  height: 100%;
+  height: calc(100% - 12rem);
   left: 100%;
   margin-left: var(--margin-huge);
   position: absolute;
