@@ -8,9 +8,7 @@ require('dotenv').config({
 })
 
 const siteUrl =
-  process.env.URL ||
-  process.env.DEPLOY_URL ||
-  'https://dariah-campus.netlify.com'
+  process.env.URL || process.env.DEPLOY_URL || 'https://campus.dariah.eu'
 
 module.exports = {
   siteMetadata: {
@@ -63,6 +61,12 @@ module.exports = {
         name: 'course-registry',
         path: '/course-registry',
         top: true,
+      },
+      {
+        displayName: 'Docs',
+        name: 'docs',
+        path: '/docs',
+        top: false,
       },
       {
         displayName: 'Home',
@@ -173,6 +177,13 @@ module.exports = {
       options: {
         name: 'posts',
         path: path.resolve('./contents/resources'),
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'docs',
+        path: path.resolve('./documentation'),
       },
     },
     {

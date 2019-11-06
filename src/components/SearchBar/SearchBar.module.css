@@ -58,3 +58,11 @@
 .search-bar li[data-highlighted] {
   color: var(--color-primary);
 }
+
+.search-result span[data-user-value] {
+  font-weight: 700;
+}
+
+.search-result span[data-suggested-value] {
+  font-weight: 400;
+}

@@ -17,8 +17,7 @@ tags:
   - first-tag
   - next-tag
 #choose up to five keywords for the resource. All lower case, multiple words joined by hyphens. The current tags are: augmented-reality; big-data; citizen-science; data-management; data-modeling; data-visualisation; design-based-research; dh; editing-tools; e-heritage; feminism; geotagging; lexicography; literacies; mooc; multimodality; ontologies; open-access; open-education; open-science; research-infrastructures; scholarly-editions; scholarly-publishing; sound-studies; spatial-humanities; speech-technology; sustainability; tei; training-education; xml; xpath; xslt. You can suggest more if required.
-abstract:
-  Up to 300 words of description of your resource.
+abstract: Up to 300 words of description of your resource.
 type: training module
 featuredImage: images/imagename.imagetype
 #eg. images/image.png. This is the image that you would like to represent your resource.
@@ -37,7 +36,10 @@ version: 1.0
 #end of metadata
 ---
 
-This is where the content for your training resource begins. This sample resource contains guidance on all of the syntax you should need to use when creating your resource. If you have additional needs, there are many markdown guides online, and the DARIAH-Campus team are happy to give advice and guidance.
+This is where the content for your training resource begins. This sample
+resource contains guidance on all of the syntax you should need to use when
+creating your resource. If you have additional needs, there are many markdown
+guides online, and the DARIAH-Campus team are happy to give advice and guidance.
 
 # Heading level one
 
@@ -45,42 +47,53 @@ This section is on basic text formatting.
 
 To create paragraphs simply:
 
-Insert a blank line to separate lines of text, just like above. Do not indent new paragraphs with spaces or tabs.
+Insert a blank line to separate lines of text, just like above. Do not indent
+new paragraphs with spaces or tabs.
 
-You create **bold text** like this, using double asterisks, before and after the word or phrase. To italicise text you *use single asterisks* like this. You can create ***bold and italic*** using triple asterisks.
+You create **bold text** like this, using double asterisks, before and after the
+word or phrase. To italicise text you _use single asterisks_ like this. You can
+create **_bold and italic_** using triple asterisks.
 
 To create a blockquote, add a > in front of a paragraph.
+
 > like this
 >
-> To include multiple paragraphs in the blockquote, add a > on the blank line inbetween as above.
+> To include multiple paragraphs in the blockquote, add a > on the blank line
+> inbetween as above.
 
 Leave a line after the block quote.
 
 Ordered lists:
+
 1. Item one
 2. Item two
 3. Item three
 
 Bullet point lists:
+
 - Item
 - Item
 - Item
 
-To create code blocks, indent every line of the block by at least four spaces or one tab.
+To create code blocks, indent every line of the block by at least four spaces or
+one tab.
 
      <html>
       <head>
       </head>
      </html>
 
-To create a link, enclose the link text in brackets (e.g., [click here]) and then follow it immediately with the URL in parentheses (e.g., (https://dariah.eu)).
+To create a link, enclose the link text in brackets (e.g., [click here]) and
+then follow it immediately with the URL in parentheses (e.g.,
+(https://dariah.eu)).
 
 To find training resources [click here](https://dariah.eu).
 
-To denote a word or phrase as code,within a line encase it in tick marks like `<this>`
+To denote a word or phrase as code,within a line encase it in tick marks like
+`<this>`
 
-Finally, to turn a URL or email address into a link, enclose it in angle brackets:
-<info@dariah.eu>
+Finally, to turn a URL or email address into a link, enclose it in angle
+brackets: <info@dariah.eu>
 
 ## Heading level two
 
@@ -90,9 +103,11 @@ You can insert an image as below:
 
 ![Description of image](images/imagename.png)
 
-The path or URL to the image asset is in parentheses. The text in square brackets is the alt text.
+The path or URL to the image asset is in parentheses. The text in square
+brackets is the alt text.
 
-To add a link to an image, enclose the Markdown for the image in brackets, and then add the link in parentheses.
+To add a link to an image, enclose the Markdown for the image in brackets, and
+then add the link in parentheses.
 
 [![Description of image](images/imagename.png)](https://linktotheimage.eu)
 
@@ -108,15 +123,20 @@ To insert a YouTube video, use the following code:
   image="images/imagename.jpg"
 />
 
-The "id" is the part of the url after the equals sign for a YouTube video. So, for "https://www.youtube.com/watch?v=SI3u9nu7YEY&t=164s" it is: "SI3u9nu7YEY&t=164s".
+The "id" is the part of the url after the equals sign for a YouTube video. So,
+for "https://www.youtube.com/watch?v=SI3u9nu7YEY&t=164s" it is:
+"SI3u9nu7YEY&t=164s".
 
-"image" allows you to choose a screenshot that will appear until the learner clicks the play button.
+"image" allows you to choose a screenshot that will appear until the learner
+clicks the play button.
 
-An alternative is to directly embed the video from YouTube, which you do in the following way:
+An alternative is to directly embed the video from YouTube, which you do in the
+following way:
 
 <Youtube id="OqYJNUmhJzw" caption="Laurent Romary (Former DARIAH Director)" />
 
-If you are including multiple videos, you might choose to arrange them in  a grid formation. You can do this in the following way:
+If you are including multiple videos, you might choose to arrange them in a grid
+formation. You can do this in the following way:
 
 <Grid>
 
@@ -130,18 +150,22 @@ If you are including multiple videos, you might choose to arrange them in  a gri
 
 Some extended syntax.
 
-To add a table, use three or more hyphens (---) to create each column’s header, and use pipes (|) to separate each column. You can optionally add pipes on either end of the table.
+To add a table, use three or more hyphens (---) to create each column’s header,
+and use pipes (|) to separate each column. You can optionally add pipes on
+either end of the table.
 
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+| First Header                | Second Header                |
+| --------------------------- | ---------------------------- |
+| Content from cell 1         | Content from cell 2          |
+| Content in the first column | Content in the second column |
 
 To add footnotes:
 
-A simple footnote is created like this,[^1] and a longer one like this.[^bignote]
+A simple footnote is created like this,[^1] and a longer one like
+this.[^bignote]
 
 [^1]: This is the first footnote.
 [^bignote]: Longer footnote with extra details and description.
 
-Any questions can be directed to the DARIAH-Campus editors at any time in the preparation process.
+Any questions can be directed to the DARIAH-Campus editors at any time in the
+preparation process.
