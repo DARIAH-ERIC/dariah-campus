@@ -304,12 +304,15 @@ exports.createPages = async ({ actions, graphql }) => {
       docs: allMdx(
         filter: {
           fileInfo: {
-            name: { nin: ["index", "Sample-resource"] }
+            name: { nin: ["Sample-resource"] }
             sourceInstanceName: { eq: "docs" }
           }
         }
       ) {
         nodes {
+          fileInfo {
+            name
+          }
           frontmatter {
             slug
           }
@@ -354,9 +357,13 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const docs = data.docs.nodes
   const docsBasePath = paths.find(route => route.name === 'docs').path
-  docs.forEach(({ id, frontmatter }) => {
+  docs.forEach(({ id, fileInfo, frontmatter }) => {
+    const docsPath =
+      fileInfo.name === 'index'
+        ? '/about'
+        : createPath(docsBasePath, frontmatter.slug)
     actions.createPage({
-      path: createPath(docsBasePath, frontmatter.slug),
+      path: docsPath,
       component: path.resolve('./src/templates/docs.js'),
       context: {
         id,

@@ -3,7 +3,6 @@
   "private": true,
   "description": "DARIAH Campus is a pilot project exploring different ways of capturing and consolidating DARIAH learning resources.",
   "version": "0.1.0",
-  "author": "Stefan Probst <stefanprobst@kolabnow.com>",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
@@ -68,10 +67,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stefanprobst/dariah-campus"
+    "url": "https://github.com/DARIAH-ERIC/dariah-campus"
   },
   "bugs": {
-    "url": "https://github.com/stefanprobst/dariah-campus/issues"
+    "url": "https://github.com/DARIAH-ERIC/dariah-campus/issues"
   },
   "husky": {
     "hooks": {
