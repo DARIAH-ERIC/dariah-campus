@@ -14,8 +14,7 @@ module.exports = {
   siteMetadata: {
     author: 'DARIAH Campus',
     description:
-      'DARIAH Campus is a pilot project exploring different ways of capturing ' +
-      'and consolidating DARIAH learning resources.',
+      'DARIAH-CAMPUS is a discovery framework and hosting platform for DARIAH learning resources. Currently in beta. ',
     email: 'https://www.dariah.eu/helpdesk/',
     keywords: ['Digital Humanities'],
     lang: 'en',
