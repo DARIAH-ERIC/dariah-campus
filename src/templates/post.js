@@ -23,7 +23,10 @@ import components from 'components'
 const PostTemplate = ({ data }) => (
   <Page>
     <Head article={data.post.frontmatter} type="article" />
-    <Container size="small" style={{ position: 'relative' }}>
+    <Container
+      size="small"
+      style={{ position: 'relative', flex: 1, marginBottom: '60px' }}
+    >
       <Title>{data.post.frontmatter.title}</Title>
       <PostMetadata metadata={data.post.frontmatter} />
       {data.post.frontmatter.featuredImage && (

@@ -22,7 +22,10 @@ export const createTocItems = (items, depth = 0, prefix) => (
 
 export const TOCContainer = ({ children, className }) => (
   <div className={clsx(styles.container, className)}>
-    <div className={styles.toc}>
+    <div
+      className={styles.toc}
+      style={{ overflowY: 'auto', maxHeight: '100%' }}
+    >
       <h2 className={styles.tocHeading}>Table of contents</h2>
 
       {children}

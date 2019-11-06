@@ -22,7 +22,10 @@ const styles = {
 const TagTemplate = ({ data }) => (
   <Page>
     <Head title={data.doc.frontmatter.title} />
-    <Container size="small" style={{ position: 'relative' }}>
+    <Container
+      size="small"
+      style={{ position: 'relative', flex: 1, marginBottom: '60px' }}
+    >
       <Title>{data.doc.frontmatter.title}</Title>
       <TOCContainer>
         <div>
