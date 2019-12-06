@@ -30,7 +30,7 @@ const TagTemplate = ({ data }) => (
       <TOCContainer>
         <div>
           <Link to="/about">
-            <div style={styles.docsHeader}>Overview</div>
+            <div style={styles.docsHeader}>What is DARIAH-Campus?</div>
           </Link>
         </div>
         {data.tocs.nodes.map(node => {
@@ -93,7 +93,7 @@ export const query = graphql`
           title
           toc
         }
-        tableOfContents(maxDepth: 2)
+        tableOfContents(maxDepth: 3)
       }
     }
   }
