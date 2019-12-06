@@ -2,103 +2,17 @@
 title: GitHub Workflow
 date: 2019-08-27
 toc: true
-number: 4
+number: 6
 ---
 
-# GitHub Workflow
+DARIAH-Campus uses GitHub for its editorial workflow.
 
-DARIAH-CAMPUS learning resources are
+Once you start working on your contribution, you should make sure you get into
+the habit of regularly syncing your local clone with the remote clone and the
+original repository, as well as committing (saving) your work both to your local
+clone and your remote server.
 
-- written in **Markdown**, a lightweight markup language with easy-to-learn,
-  plain-text formatting syntax; and
-- hosted on **GitHub**, a popular repository hosting service based on the
-  open-source version control software called git.
-
-To submit content to DARIAH-CAMPUS, you should:
-
-- use a text editor that supports Markdown. If you don't already use one, we
-  recommend Atom.
-- be familiar with our GitHub submission and editing workflow.
-
-## Setting up Atom
-
-If you don't already use a Markdown-enabled text editor but wish to create
-content for DARIAH-CAMPUS, you may want to use Atom, a customizable,
-cross-platform open-source text editor.
-
-If you already use a Markdown-enabled editor, you should continue to do so.
-We're providing the instructions how to set up Atom only for those who are new
-to Markdown. You should stick to the tools you know (and hopefully like).
-
-1. Download and install [Atom](https://atom.io).
-2. Open Atom.
-3. Go to Atom > Preferences (if you are on a Mac) or File > Settings (if you are
-   on Windows). Then click on Install: ![](images/atom_settings.png)
-4. Make sure the "Packages" tab next to the search field is selected. Then type
-   "mdxjs" in the search field and wait for results to show up. You should see a
-   package called language-mdxjs in the results. Click on install.
-   ![](images/atom_install_mdxjs.png)
-5. In the search field, type: "Markdown Preview Enhanced". Install
-   markdown-preview-enhanced.
-6. Once the install finishes, click on Settings:
-   ![](images/atom_markdown_preview_settings.png)
-7. Once you open the settings for Markdown Preview Enhanced, you should see
-   something like this: ![](images/atom_markdown_preview_settings2.png)
-8. Click on the File Extension input field in Settings and type `, .mdx` after
-   `.markdown` like this: ![](images/atom_markdown_preview_settings3.png)
-9. Uncheck the check box next to "Break On Single New Line":
-   ![](images/atom_markdown_preview_settings4.png) You don't need to hit save.
-10. Finally, go back to "Install", search for and install "Toolbar Markdown
-    Writer".
-11. Atom will ask you if you want to install dependencies, click on "Yes":
-    ![](images/atom_markdown_toolbar_and_dependencies.png)
-
-You should now have a functioning environment in Atom for your work on new
-DARIAH-CAMPUS learning resources.
-
-## Setting up DARIAH-CAMPUS on your computer
-
-1. If you haven't used GitHub before, make sure you
-   [sign up](https://github.com/join) for a free account before you proceed.
-2. Make sure you're logged in on GitHub.com.
-3. Download and install [GitHub Desktop](https://desktop.github.com) on your
-   computer.
-4. Open GitHub Desktop on your computer.
-5. Authenticate your GitHub Desktop application with your GitHub credentials by
-   following these
-   [instructions](https://help.github.com/en/desktop/getting-started-with-github-desktop/authenticating-to-github).
-6. In your browser, go to
-   [https://github.com/DARIAH-ERIC/dariah-campus](https://github.com/DARIAH-ERIC/dariah-campus)
-   and click on "fork". ![](images/github_fork.png)
-7. If you are a contributor to various organizational repositories, GitHub may
-   ask you to select where you would like to fork dariah-campus. Make your
-   choice. ![](images/github_fork_to_which_repo.png)
-8. Once the forking finishes, you will be taken to your own personal fork of
-   DARIAH-CAMPUS. To make sure you are in the fork, check out that your user
-   name (or the name of the organizational repository youo selected in step 7
-   above) is displayed in the upper left corner.
-   ![](images/github_fork_check_your_name.png)
-9. Click on "Clone or download", then select "Open in Desktop".
-   ![](images/github_clone_and_open_in_desktop.png)
-10. In GitHub Desktop, choose where you want to save the cloned DARIAH-CAMPUS
-    fork on your computer. ![](images/github_desktop_saving_a_fork.png)
-11. The first you do this, it may take a couple of minutes, but don't despair,
-    things will be quicker after the initial clone. Once you finish cloning your
-    fork, you should see something like this:
-    ![](images/github_desktop_result_of_cloned_fork.png)
-12. To get to the folder with DARIAH-CAMPUS on your computer, click on Open in
-    Atom (or your preferred editor, if you already set it up).
-
-## Adding your contribution to DARIAH-CAMPUS
-
-When you work on your own learning resource, you will work locally, on your
-computer, in the locally cloned fork of DARIAH-CAMPUS.
-
-### Work on your contribution
-
-Make sure you get into the habit of regularly syncing your local clone with the
-remote clone and the original repository, as well as committing (saving) your
-work both to your local clone and your remote server.
+## Saving your contribution
 
 This may sound coumplicated, but is actually quite logical. Once you have done
 it several times, it will become like second nature to you:
@@ -132,7 +46,7 @@ You can repeat the above as many times as you want while working on your
 learning resource. None of the changes you commit and push as described above
 will be submitted to the DARIAH-CAMPUS editors.
 
-### Submit to DARIAH-CAMPUS editors
+## Submitting your contribution
 
 Once you're ready to submit, follow these steps:
 
@@ -146,89 +60,3 @@ Once you're ready to submit, follow these steps:
      Click on the green button "Create pull request".
      ![](images/github_in_browser_create_pull_request2.png) This will alert the
      editors that you have submitted a contribution for publication.
-
-## Writing in Markdown
-
-Gatsby converts Markdown into HTML pages, and so we ask you to write your
-content in Markdown. This can seem intimidating if you have not done it before,
-but there are many online guides to getting started with Markdown. For instance,
-Programming Historian have an excellent introduction,
-[Getting Started with Markdown](https://programminghistorian.org/lessons/getting-started-with-markdown).
-
-Text must be provided in a text editor such as Atom, TextWrangler, TextEdit, or
-Notepad++ rather than in a word processor such as MS Word.
-
-To help with the process, we have created a DARIAH-Campus resources template,
-which can be found in `/templates/resources/resource-template-folder/index.mdx`.
-You can explore this file either on
-[GitHub](https://github.com/DARIAH-ERIC/dariah-campus/blob/master/documentation/Sample-resource.mdx),
-or locally, once you fork and clone the DARIAH-CAMPUS repository. For
-instructions on how to do that, see the documentation our
-[GitHub Workflow](/docs/github-workflow).
-
-We are happy to provide guidance with using this at any stage of the preparation
-and submission process
-
-### Images, Videos, Quizzes/exercises, and other Multimedia
-
-#### Images
-
-Learning resources benefit from images to break up the text and for illustrative
-and instructive purposes. The exact nature and content of these images is
-flexible according to the type and topic area of your learning resource. They
-can range from photographs; to infographics; diagrams; maps; screenshots and
-more. These images should be incorporated into the body of your resource using
-the following code:
-
-`![Description of image](images/imagename.png)`
-
-The path or URL to the image asset is in parentheses. The text in square
-brackets is the alt text.
-
-To add a link to an image, enclose the Markdown for the image in brackets, and
-then add the link in parentheses.
-
-`[![Description of image](images/imagename.png)](https://linktotheimage.eu)`
-
-We ask authors to use intelligible file names that either indicate the content
-of the image (data-reuse-diagram.png) or indicate which figure it is within the
-module (research-infrastructures-fig-1.png). Prepare either .png or .jpg and
-upload at largest possible size. Check image reuse rights and choose content in
-the public domain and under Creative Commons licenses. Provide a descriptive
-figure caption, including source for third-party images, and other information
-such as shelfmark where relevant.
-
-#### Videos
-
-Videos are welcomed, since they provide vital contextual information on a
-subject and/or step-by-step guidance to complete exercises and practical task.
-To include a video as part of your material, you can upload it to the
-DARIAH-Campus YouTube channel, or link to the video on your own channel. These
-videos are included into the body of your material using the following code:
-
-To insert a YouTube video, use the following code:
-
-     ```jsx
-     <VideoCard
-       title="Title of the Video"
-       id="SI3u9nu7YEY"
-       image="images/imagename.jpg"
-     />
-     ```
-
-- the "id" is the part of the url after "v=" and before "&". So, for
-  "https://www.youtube.com/watch?v=SI3u9nu7YEY&t=164s" it is: "SI3u9nu7YEY".
-- "image" allows you to choose a screenshot that will appear until the learner
-  clicks the play button.
-
-There are other options for inserting videos; guidance for these can be found in
-the [Sample-resource template](link)
-
-Any video published on the DARIAH-Campus YouTube Channel is covered by a
-Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC
-BY-NC-SA 4.0). We ask that any externally-hosted videos that you produce as part
-of your materials are also licenced for reuse.
-
-If linking to third-party videos, insert the video using the above code, and
-provide the full details as a caption in your course text, in the following
-format: "Title, Source, URL (Licence)".

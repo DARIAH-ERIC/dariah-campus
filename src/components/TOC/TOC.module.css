@@ -23,7 +23,7 @@
 
 .border {
   border-left: 1px solid #ddd;
-  padding: var(--padding-small) var(--padding-large);
+  padding: 0 var(--padding-small);
   margin: var(--margin-large) 0;
 }
 
