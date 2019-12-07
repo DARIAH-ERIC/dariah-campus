@@ -4,6 +4,7 @@ import Image from 'gatsby-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 
+import AdditionalMetadata from 'components/AdditionalMetadata/AdditionalMetadata'
 import Head from 'components/Head/Head'
 import { PostLink } from 'components/Link/Link'
 import PostMetadata from 'components/PostMetadata/PostMetadata'
@@ -57,6 +58,7 @@ const PostTemplate = ({ data }) => (
           <MDXRenderer>{data.post.body}</MDXRenderer>
         </MDXProvider>
       </article>
+      <AdditionalMetadata metadata={data.post.frontmatter} />
       <ShareButtons metadata={data.post.frontmatter} />
       {/* <PreviousNextPosts /> */}
       <RelatedPosts
@@ -96,6 +98,7 @@ export const query = graphql`
           slug
         }
         date
+        dateModified
         featuredImage {
           image: childImageSharp {
             fluid(maxWidth: 800) {
@@ -106,6 +109,7 @@ export const query = graphql`
         isoDate
         lang
         license {
+          name
           url
         }
         tags {
@@ -117,6 +121,7 @@ export const query = graphql`
         type {
           icon
         }
+        version
       }
       id
       tableOfContents(maxDepth: 4)

@@ -181,7 +181,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       categories: [Category!] @link(by: "slug")
       contributors: [Person!] @link(by: "slug")
       date: Date @dateformat(formatString: "MMM, DD YYYY")
-      # dateModified: Date @dateformat(formatString: "MMM, DD YYYY") @proxy(from: "fileInfo.mtime", fromNode: true)
+      dateModified: Date @dateformat(formatString: "MMM, DD YYYY") @proxy(from: "mtime", fromNode: true)
       domain: String @defaultValue(value: "Social Sciences and Humanities")
       editors: [Person!] @link(by: "slug")
       featuredImage: File @fileByRelativePath
@@ -196,7 +196,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String!
       toc: Boolean
       type: Resource @link(by: "slug")
-      version: Float
+      version: String
 
       # Event metadata
       logo: File @fileByRelativePath
