@@ -51,9 +51,9 @@ const EventFooterNav = ({
         </a>
       </li>
     )}
-    {social.twitter && (
+    {social.storify && (
       <li>
-        <a href={social.twitter}>
+        <a href={social.storify}>
           <FaTwitter size="0.75em" style={{ marginRight: '0.4rem' }} />
           Read the Storify
         </a>
