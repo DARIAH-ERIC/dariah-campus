@@ -3,22 +3,11 @@ import clsx from 'clsx'
 
 import DefaultAvatar from 'components/DefaultAvatar/DefaultAvatar'
 import Image from 'components/Image/Image'
-import Link from 'components/Link/Link'
 
-import { createPath } from 'utils/create-path'
+import { createLinks } from 'utils/create-links'
 import { getBasePath } from 'utils/get-base-path'
 
 import styles from './PostMetadata.module.css'
-
-const getNames = (entities, basePath) =>
-  entities.map((entity, i) => (
-    <React.Fragment key={entity.slug}>
-      {i ? ', ' : null}
-      <Link key={entity.slug} to={createPath(basePath, entity.slug)}>
-        {entity.name}
-      </Link>
-    </React.Fragment>
-  ))
 
 const PostMetadata = ({ className, metadata }) => (
   <div className={clsx(styles.metadata, className)}>
@@ -41,7 +30,7 @@ const PostMetadata = ({ className, metadata }) => (
       <div>
         {metadata.authors && metadata.authors.length ? (
           <div>
-            Written by {getNames(metadata.authors, getBasePath('author'))}
+            Written by {createLinks(metadata.authors, getBasePath('author'))}
           </div>
         ) : null}
         <time>{metadata.date}</time>
@@ -50,11 +39,11 @@ const PostMetadata = ({ className, metadata }) => (
     <div className={styles.metadataRight}>
       {metadata.categories && metadata.categories.length ? (
         <div>
-          Source: {getNames(metadata.categories, getBasePath('category'))}
+          Source: {createLinks(metadata.categories, getBasePath('category'))}
         </div>
       ) : null}
       {metadata.tags && metadata.tags.length ? (
-        <div>Topics: {getNames(metadata.tags, getBasePath('tag'))}</div>
+        <div>Topics: {createLinks(metadata.tags, getBasePath('tag'))}</div>
       ) : null}
     </div>
   </div>

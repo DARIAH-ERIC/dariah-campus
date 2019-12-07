@@ -97,8 +97,17 @@ export const query = graphql`
           name
           slug
         }
+        contributors {
+          name
+          slug
+        }
         date
         dateModified
+        domain
+        editors {
+          name
+          slug
+        }
         featuredImage {
           image: childImageSharp {
             fluid(maxWidth: 800) {
@@ -116,6 +125,7 @@ export const query = graphql`
           name
           slug
         }
+        targetGroup
         title
         toc
         type {
