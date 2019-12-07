@@ -23,24 +23,30 @@ const EventNav = ({ download, showAboutOverlay, showPrepOverlay, social }) => (
           <span>How to prepare</span>
         </button>
       </li>
-      <li>
-        <a href={social.flickr}>
-          <FaFlickr size="0.75em" style={{ marginRight: '1rem' }} />
-          <span>See the photos</span>
-        </a>
-      </li>
-      <li>
-        <a href={social.video}>
-          <FaPlayCircle size="0.75em" style={{ marginRight: '1rem' }} />
-          <span>Watch the video</span>
-        </a>
-      </li>
-      <li>
-        <a href={social.storify}>
-          <FaTwitter size="0.75em" style={{ marginRight: '1rem' }} />
-          <span>Read the Storify</span>
-        </a>
-      </li>
+      {social.flickr ? (
+        <li>
+          <a href={social.flickr}>
+            <FaFlickr size="0.75em" style={{ marginRight: '1rem' }} />
+            <span>See the photos</span>
+          </a>
+        </li>
+      ) : null}
+      {social.video ? (
+        <li>
+          <a href={social.video}>
+            <FaPlayCircle size="0.75em" style={{ marginRight: '1rem' }} />
+            <span>Watch the video</span>
+          </a>
+        </li>
+      ) : null}
+      {social.storify ? (
+        <li>
+          <a href={social.storify}>
+            <FaTwitter size="0.75em" style={{ marginRight: '1rem' }} />
+            <span>Read the Storify</span>
+          </a>
+        </li>
+      ) : null}
       {download ? (
         <li className="download">
           <a href={download.publicURL}>
