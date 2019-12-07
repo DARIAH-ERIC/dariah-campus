@@ -14,6 +14,8 @@ import Link from 'components/Link/Link'
 import styles from './EventHome.module.css'
 
 const EventHome = ({
+  hasAboutOverlay,
+  hasPrepOverlay,
   index,
   sessions,
   showAboutOverlay,
@@ -81,6 +83,8 @@ const EventHome = ({
             <EventSocialLinks social={social} />
             <EventNav
               download={index.frontmatter.synthesis}
+              hasAboutOverlay={hasAboutOverlay}
+              hasPrepOverlay={hasPrepOverlay}
               showAboutOverlay={showAboutOverlay}
               showPrepOverlay={showPrepOverlay}
               social={social}

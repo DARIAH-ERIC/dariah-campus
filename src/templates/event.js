@@ -23,8 +23,8 @@ export const query = graphql`
     $docsFolder: String!
     # $imageFolder: String!
     $indexId: String!
-    $aboutId: String!
-    $prepId: String!
+    $aboutId: String
+    $prepId: String
     $sessionIds: [String!]!
   ) {
     index: mdx(id: { eq: $indexId }) {

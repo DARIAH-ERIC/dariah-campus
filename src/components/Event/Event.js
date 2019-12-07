@@ -12,11 +12,15 @@ const Event = ({ about, index, prep, sessions, downloads }) => {
   const [overlay, setOverlay] = React.useState(null)
 
   const showAboutOverlay = () => {
-    setOverlay(about.body)
+    if (about) {
+      setOverlay(about.body)
+    }
   }
 
   const showPrepOverlay = () => {
-    setOverlay(prep.body)
+    if (prep) {
+      setOverlay(prep.body)
+    }
   }
 
   const onDismiss = () => {
@@ -33,6 +37,8 @@ const Event = ({ about, index, prep, sessions, downloads }) => {
       <EventHome
         index={index}
         sessions={sessions.nodes}
+        hasAboutOverlay={Boolean(about)}
+        hasPrepOverlay={Boolean(prep)}
         showAboutOverlay={showAboutOverlay}
         showPrepOverlay={showPrepOverlay}
         social={social}
@@ -42,9 +48,11 @@ const Event = ({ about, index, prep, sessions, downloads }) => {
         <EventSideNav sessions={sessions.nodes} />
       </div>
       <EventFooter
+        download={index.frontmatter.synthesis}
+        hasAboutOverlay={Boolean(about)}
+        hasPrepOverlay={Boolean(prep)}
         license={index.frontmatter.license}
         partners={index.frontmatter.partners}
-        download={index.frontmatter.synthesis}
         showAboutOverlay={showAboutOverlay}
         showPrepOverlay={showPrepOverlay}
         social={social}

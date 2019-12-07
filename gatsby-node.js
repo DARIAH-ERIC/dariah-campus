@@ -484,8 +484,8 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve('./src/templates/event.js'),
       context: {
         indexId: index.id,
-        aboutId: about.id,
-        prepId: prep.id,
+        aboutId: about && about.id,
+        prepId: prep && prep.id,
         sessionIds: sessions.map(node => node.id),
         docsFolder: `${directory}/docs`,
         imageFolder: `${directory}/images`,

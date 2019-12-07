@@ -4,25 +4,36 @@ import clsx from 'clsx'
 
 import styles from './EventNav.module.css'
 
-const EventNav = ({ download, showAboutOverlay, showPrepOverlay, social }) => (
+const EventNav = ({
+  download,
+  hasAboutOverlay,
+  hasPrepOverlay,
+  showAboutOverlay,
+  showPrepOverlay,
+  social,
+}) => (
   <div>
     <ul className="home__links">
-      <li>
-        <button
-          onClick={showAboutOverlay}
-          className={clsx('link-popin', styles.buttonAsLink)}
-        >
-          <span>About</span>
-        </button>
-      </li>
-      <li>
-        <button
-          onClick={showPrepOverlay}
-          className={clsx('link-popin', styles.buttonAsLink)}
-        >
-          <span>How to prepare</span>
-        </button>
-      </li>
+      {hasAboutOverlay ? (
+        <li>
+          <button
+            onClick={showAboutOverlay}
+            className={clsx('link-popin', styles.buttonAsLink)}
+          >
+            <span>About</span>
+          </button>
+        </li>
+      ) : null}
+      {hasPrepOverlay ? (
+        <li>
+          <button
+            onClick={showPrepOverlay}
+            className={clsx('link-popin', styles.buttonAsLink)}
+          >
+            <span>How to prepare</span>
+          </button>
+        </li>
+      ) : null}
       {social.flickr ? (
         <li>
           <a href={social.flickr}>

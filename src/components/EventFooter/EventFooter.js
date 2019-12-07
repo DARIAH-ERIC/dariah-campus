@@ -8,27 +8,33 @@ import styles from './EventFooter.module.css'
 // FIXME: This is essentially the same nav as in EventHome.EventNav
 const EventFooterNav = ({
   download,
+  hasAboutOverlay,
+  hasPrepOverlay,
   showAboutOverlay,
   showPrepOverlay,
   social,
 }) => (
   <ul className="footer__links">
-    <li>
-      <button
-        onClick={showAboutOverlay}
-        className={clsx('link-popin', styles.buttonAsLink)}
-      >
-        About
-      </button>
-    </li>
-    <li>
-      <button
-        onClick={showPrepOverlay}
-        className={clsx('link-popin', styles.buttonAsLink)}
-      >
-        How to prepare
-      </button>
-    </li>
+    {hasAboutOverlay ? (
+      <li>
+        <button
+          onClick={showAboutOverlay}
+          className={clsx('link-popin', styles.buttonAsLink)}
+        >
+          About
+        </button>
+      </li>
+    ) : null}
+    {hasPrepOverlay ? (
+      <li>
+        <button
+          onClick={showPrepOverlay}
+          className={clsx('link-popin', styles.buttonAsLink)}
+        >
+          How to prepare
+        </button>
+      </li>
+    ) : null}
     {social.flickr && (
       <li>
         <a href={social.flickr}>
@@ -97,6 +103,8 @@ const EventPartners = ({ partners }) => (
 
 const EventFooter = ({
   download,
+  hasAboutOverlay,
+  hasPrepOverlay,
   license,
   partners,
   showAboutOverlay,
@@ -111,6 +119,8 @@ const EventFooter = ({
 
       <EventFooterNav
         download={download}
+        hasAboutOverlay={hasAboutOverlay}
+        hasPrepOverlay={hasPrepOverlay}
         showAboutOverlay={showAboutOverlay}
         showPrepOverlay={showPrepOverlay}
         social={social}
