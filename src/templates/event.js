@@ -104,6 +104,7 @@ export const query = graphql`
             email
             linkedin
             name
+            orcid
             slug
             twitter
             website

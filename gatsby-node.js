@@ -141,6 +141,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       email: String
       linkedin: String
       name: String!
+      orcid: String
       posts: [Mdx] @link(by: "frontmatter.authors.slug", from: "slug")
       slug: String! @slug(from: "name")
       title: String

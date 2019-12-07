@@ -2,6 +2,8 @@ import React from 'react'
 import Image from 'gatsby-image'
 import { FaEnvelope, FaGlobe, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
+import OrcidIcon from '../../elements/OrcidIcon/OrcidIcon'
+
 import styles from './EventSessionSpeaker.module.css'
 
 const EventSessionSpeaker = ({ children, speaker, speakers }) => {
@@ -66,6 +68,18 @@ const EventSessionSpeaker = ({ children, speaker, speakers }) => {
               <a href={person.website} className="website">
                 <FaGlobe size="0.75em" style={{ marginRight: '0.4rem' }} />
                 Personal Website
+              </a>
+            </li>
+          ) : null}
+          {person.orcid ? (
+            <li>
+              <a href={`https://orcid.org/${person.orcid}`}>
+                <OrcidIcon
+                  width="0.75em"
+                  height="0.75em"
+                  style={{ marginRight: '0.4rem' }}
+                />
+                ORCID
               </a>
             </li>
           ) : null}
