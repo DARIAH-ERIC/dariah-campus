@@ -3,7 +3,6 @@
   display: flex;
   flex: 1;
   justify-content: center;
-  min-height: 20rem;
   overflow: hidden;
   position: relative;
   width: 100%;
