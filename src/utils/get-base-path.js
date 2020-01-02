@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
 export const getBasePath = path => {
+  /* eslint-disable-next-line react-hooks/rules-of-hooks */
   const { site } = useStaticQuery(graphql`
     query {
       site {
