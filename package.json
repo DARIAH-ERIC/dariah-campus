@@ -61,7 +61,7 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
-    "format": "prettier --write \"{gatsby*,{src,contents}/**/*.{js,yaml,md,mdx}}\"",
+    "format": "prettier --write \"{gatsby*,{src,contents,documentation}/**/*.{js,yaml,md,mdx}}\"",
     "serve": "gatsby serve",
     "start": "yarn develop"
   },
