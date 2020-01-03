@@ -4,7 +4,7 @@ const getLastUpdatedTimestamp = filepath => {
   const timestamp = spawnSync('git', [
     'log',
     '-1',
-    '--format=%ct',
+    '--format=%at',
     filepath,
   ]).stdout.toString('utf-8')
 
