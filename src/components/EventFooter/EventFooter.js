@@ -82,13 +82,14 @@ const EventPartners = ({ partners }) => (
               {partner.logo ? (
                 partner.logo.image ? (
                   <Image
-                    fluid={partner.logo.image.fluid}
                     alt={partner.name}
                     className={styles.partnerImage}
+                    fluid={partner.logo.image.fluid}
                     imgStyle={{ objectFit: 'contain' }}
                   />
                 ) : (
                   <img
+                    alt={partner.name}
                     className={styles.partnerImage}
                     src={partner.logo.publicURL}
                   />

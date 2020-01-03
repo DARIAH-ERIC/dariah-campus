@@ -30,8 +30,16 @@ const EventOverlay = ({ onDismiss, overlay }) => (
         <MDXProvider
           components={{
             a: Link,
-            h1: props => <h1 className="h1" {...props} />,
-            h2: props => <h1 className="h3" {...props} />,
+            h1: ({ children, ...props }) => (
+              <h1 className="h1" {...props}>
+                {children}
+              </h1>
+            ),
+            h2: ({ children, ...props }) => (
+              <h2 className="h3" {...props}>
+                {children}
+              </h2>
+            ),
           }}
         >
           <MDXRenderer>{overlay}</MDXRenderer>

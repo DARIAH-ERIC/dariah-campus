@@ -28,7 +28,11 @@ const EventSession = ({ session, downloads }) => {
             // We currently use the h1 separately in SessionTitle, so don't render it again
             h1: () => null,
             h2: EventSessionHeading,
-            h3: props => <h3 className="h3" {...props} />,
+            h3: ({ children, ...props }) => (
+              <h3 className="h3" {...props}>
+                {children}
+              </h3>
+            ),
             p: props => (
               <p
                 {...props}
