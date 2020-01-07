@@ -143,7 +143,7 @@ export const getSchemaOrgMetadata = ({
       '@context': 'http://schema.org',
       '@type': 'Article',
       copyrightYear: article.isoDate,
-      dateModified: article.isoDate, // More correct would be fileInfo.mtime
+      dateModified: article.dateModified,
       datePublished: article.isoDate,
       description: article.description,
       headline: article.title,

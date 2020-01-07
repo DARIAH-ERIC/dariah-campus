@@ -22,25 +22,10 @@
   slug: webinar recording
   icon: audio
 
-- name: website
-  slug: Website
+- name: Website
+  slug: website
   icon: website
 
-- name: pathfinder
+- name: Pathfinder
   slug: pathfinder
   icon: directions
-# see https://github.com/stefanprobst/dariah-campus-mdx/issues/13
-# - name: blog
-# - name: Jupyter notebook
-# - name: manual
-# - name: pdf
-# - name: source code
-# - name: videos
-# - name: wiki
-# - name: google presentation
-# - name: google spreadsheet
-# - name: google Text Document
-# - name: doc word document
-# - name: xls spreadsheet document
-# - name: ppt powerpoint presentation
-# - name: others

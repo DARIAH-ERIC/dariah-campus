@@ -130,6 +130,7 @@ export const query = graphql`
         toc
         type {
           icon
+          name
         }
         version
       }

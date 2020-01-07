@@ -5,6 +5,7 @@ const { markdownToHtml } = require('./src/utils/markdown-to-html')
 const { stripMarkdown } = require('./src/utils/strip-markdown')
 const { range } = require('./src/utils/range')
 const { slugify } = require('./src/utils/slugify')
+const getLastUpdatedTimestamp = require('./src/utils/get-last-updated-timestamp')
 
 const POSTS_PER_PAGE = 12
 
@@ -181,7 +182,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       categories: [Category!] @link(by: "slug")
       contributors: [Person!] @link(by: "slug")
       date: Date @dateformat(formatString: "MMM, DD YYYY")
-      dateModified: Date @dateformat(formatString: "MMM, DD YYYY") @proxy(from: "mtime", fromNode: true)
+      dateModified: Date @dateformat(formatString: "MMM, DD YYYY") @proxy(from: "fields.lastUpdated", fromNode: true)
       domain: String @defaultValue(value: "Social Sciences and Humanities")
       editors: [Person!] @link(by: "slug")
       featuredImage: File @fileByRelativePath
@@ -221,6 +222,28 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
     }
   `)
+}
+
+exports.onCreateNode = ({ node, actions, reporter }) => {
+  if (node.internal.type !== 'File') return
+  if (!/.mdx?$/.test(node.absolutePath)) return
+
+  reporter.info(`Getting timestamp for ${node.absolutePath}`)
+  let lastUpdated
+
+  try {
+    lastUpdated = new Date(getLastUpdatedTimestamp(node.absolutePath))
+  } catch (error) {
+    reporter.error(
+      `Could not get timestamp from ${node.absolutePath}. Error: ${error}`
+    )
+  }
+
+  actions.createNodeField({
+    node,
+    name: 'lastUpdated',
+    value: lastUpdated,
+  })
 }
 
 exports.createPages = async ({ actions, graphql }) => {

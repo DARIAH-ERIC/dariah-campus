@@ -5,7 +5,15 @@ import Spinner from 'elements/Spinner/Spinner'
 
 import styles from './IFrame.module.css'
 
-const IFrame = ({ aspectRatio, className, height, title, width, ...rest }) => {
+const IFrame = ({
+  aspectRatio,
+  className,
+  height,
+  style,
+  title,
+  width,
+  ...rest
+}) => {
   const [containerPaddingBottom, containerHeight] =
     !aspectRatio && (!height || !width)
       ? [0, '100%']
@@ -15,6 +23,8 @@ const IFrame = ({ aspectRatio, className, height, title, width, ...rest }) => {
     <div
       className={clsx(styles.container, className)}
       style={{
+        ...style,
+        flexBase: containerHeight,
         height: containerHeight,
         paddingBottom: containerPaddingBottom,
       }}
