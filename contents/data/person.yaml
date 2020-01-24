@@ -50,6 +50,9 @@
   slug: angeliki-chrysanthi
   avatar: ../images/authors/angeliki-chrysanthi.jpg
 
+- name: Arianna Ciula
+  slug: arianna-ciula
+
 - name: Claire Clivaz
   slug: claire-clivaz
   avatar: ../images/authors/claire-clivaz.jpg
@@ -222,6 +225,9 @@
 
 - name: Rebecca Seirig
   slug: rebecca-seirig
+
+- name: James Smithies
+  slug: james-smithies
 
 - name: Juliane Stiller
   slug: juliane-stiller
