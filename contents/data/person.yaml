@@ -58,10 +58,18 @@
   slug: panos-constantopoulos
   avatar: ../images/authors/panos-constantopoulos.jpg
 
+- name: Antonia Correia
+  slug: antonia-correia
+  avatar: ../images/authors/antonia-correia.jpg
+
 - name: Gregory Crane
   slug: gregory-crane
   avatar: ../images/authors/gregory-crane.jpg
   email: crane[AT]informatik.uni-leipzig[DOT]de
+
+- name: Javier de la Rosa
+  slug: javier-delarosa
+  avatar: ../images/authors/javier-delarosa.jpg
 
 - name: Jennifer Edmond
   slug: jennifer-edmond
@@ -130,9 +138,17 @@
 - name: Anna Lawaetz
   slug: anna-lawaetz
 
+- name: Delfim Leão
+  slug: delfim-leao
+  avatar: ../images/authors/delfim-leao.jpg
+
 - name: Jakob Lenardič
   slug: jakob-lenardic
   avatar: ../images/authors/jakob-lenardic.jpg
+
+- name: Frances Madden
+  slug: frances-madden
+  avatar: ../images/authors/frances-madden.jpg
 
 - name: Vojtěch Malínek
   slug: vojtech-malinek
@@ -199,6 +215,10 @@
   twitter: charlesriondet
   email: charles.riondet@inria.fr
 
+- name: Maria Fernanda Rollo
+  slug: mariafernanda-rollo
+  avatar: ../images/authors/mariafernanda-rollo.jpg
+
 - name: Martial Sankar
   slug: martial-sankar
   avatar: ../images/authors/martial-sankar.jpg
@@ -206,6 +226,10 @@
 - name: Stefan Schmunk
   slug: stefan-schmunk
   avatar: ../images/authors/stefan-schmunk.jpg
+
+- name: Walter Scholger
+  slug: walter-scholger
+  avatar: ../images/authors/walter-scholger.jpg
 
 - name: Joachim Schöpfel
   slug: joachim-schopfel
