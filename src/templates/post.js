@@ -24,17 +24,14 @@ import components from 'components'
 const PostTemplate = ({ data }) => (
   <Page>
     <Head article={data.post.frontmatter} type="article" />
-    <Container
-      size="small"
-      style={{ position: 'relative', flex: 1, marginBottom: '60px' }}
-    >
+    <Container size="small" style={{ flex: 1, marginBottom: '60px' }}>
       <Title>{data.post.frontmatter.title}</Title>
       <PostMetadata metadata={data.post.frontmatter} />
       {data.post.frontmatter.featuredImage && (
         <Image fluid={data.post.frontmatter.featuredImage.image.fluid} />
       )}
-      {data.post.frontmatter.toc && <TOC toc={data.post.tableOfContents} />}
-      <article>
+      <article style={{ position: 'relative' }}>
+        {data.post.frontmatter.toc && <TOC toc={data.post.tableOfContents} />}
         <MDXProvider
           components={{
             ...components,

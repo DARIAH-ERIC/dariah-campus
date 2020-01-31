@@ -17,6 +17,7 @@ const isAbsoluteUrl = url => url.startsWith('http')
 
 const Link = ({
   activeClassName,
+  activeStyle,
   children,
   className,
   href,
@@ -50,6 +51,7 @@ const Link = ({
   return (
     <RelativeLink
       activeClassName={clsx(styles.activeLink, activeClassName)}
+      activeStyle={activeStyle}
       className={clsx(styles.link, className)}
       rel={rel}
       to={to || href}
@@ -67,6 +69,7 @@ export const PostLink = ({ className, ...rest }) => (
 
 Link.propTypes = {
   activeClassName: PropTypes.string,
+  activeStyle: PropTypes.object,
   children: PropTypes.node,
   className: PropTypes.string,
   to: PropTypes.string.isRequired,
