@@ -46,12 +46,17 @@
   email: marjorie.burghart@gmail.com
   website: http://marjorie.burghart.online.fr/?q=en
 
+- name: Samantha Callaghan
+  slug: samantha-callaghan
+  avatar: ../images/authors/samantha-callaghan.jpg
+
 - name: Angeliki Chrysanthi
   slug: angeliki-chrysanthi
   avatar: ../images/authors/angeliki-chrysanthi.jpg
 
 - name: Arianna Ciula
   slug: arianna-ciula
+  avatar: ../images/authors/arianna-ciula.jpg
 
 - name: Claire Clivaz
   slug: claire-clivaz
@@ -100,6 +105,10 @@
 - name: Marianne Huang
   slug: marianne-huang
   avatar: ../images/authors/marianne-huang.jpg
+
+- name: Neil Jakeman
+  slug: neil-jakeman
+  avatar: ../images/authors/neil-jakeman.jpg
 
 - name: Klaus Illmayer
   slug: klaus-illmayer
@@ -228,6 +237,8 @@
 
 - name: James Smithies
   slug: james-smithies
+  avatar: ../images/authors/james-smithies.jpg
+  website: https://jamessmithies.org/
 
 - name: Juliane Stiller
   slug: juliane-stiller
