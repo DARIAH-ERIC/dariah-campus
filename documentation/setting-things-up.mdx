@@ -111,6 +111,8 @@ DARIAH-CAMPUS learning resources.
 
 ## Setting up a local host version of DARIAH-Campus for preview
 
+###Instructions for Mac-users
+
 To enable DARIAH-Campus to run locally on your machine so that you can preview
 any changes you make, you will need to install node packages. To do this:
 
@@ -135,6 +137,28 @@ any changes you make, you will need to install node packages. To do this:
 8. Copy the url given in Terminal into your browser, which will give you the
    DARIAH-Campus home page. Any saved edits you make to the DARIAH-Campus .mdx
    files in Atom will automatically be shown on your local version.
+
+###Instructions for Windows users (Instructions kindly provided by Ksenia
+Zaytseva, OEAW)
+
+1. Download node from [node.js https://nodejs.org/en/download/](node.js
+   https://nodejs.org/en/download/)
+2. Run node.js installer
+3. Open 'command line' and check node version by typing: `node -v`
+4. Download yarn from
+   [https://yarnpkg.com/lang/en/docs/install/#windows-stable](https://yarnpkg.com/lang/en/docs/install/#windows-stable)
+5. Type `Run yarn installer` (enter)
+6. Check yarn version: `yarn --version`
+7. In GitHub desktop, make sure that you have the most up-to-date version of
+   DARIAH-Campus. To do this, follow the instructions above to 'Fetch Origin'
+   and 'Merge' it to your local branch
+8. Once any changes from the DARIAH-Campus 'master' on GitHub has been merged to
+   your local branch, navigate to inside the dariah-campus directory (where the
+   file package.json is located) in your file manager.
+9. Run: `npm install`
+10. Run: `npm install -g nodemon` This will install all project dependencies
+11. Run: `npm start` This will launch the app running on localhost.
+12. Navigate to `localhost:8000` in your browser.
 
 > **REMEMBER!!** Any changes you make in Atom will only show up on your local
 > version, but will not make any changes to the actual live version of
