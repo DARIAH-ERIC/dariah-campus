@@ -50,7 +50,7 @@ There are many different types of controlled vocabularies, the most common among
 The diagram 1. below shows how controlled vocabularies are embedded in data architecture of an information system (the example is derived from DEFC  controlled vocabulary [^2]). In the example below, the Archeological site is a Universal abstract class, whereis Athens is an instance of Archaeological site class and a Particular that represents the exact and real archaeological site studied and described in the system.  Athens can be of one or many types that are defined in a controlled vocabulary, for example, it can be a type of ‘Hillside’. 
 
 
-![Diagram 1](images/cv_and_skos_diagram_1.jpg)
+![Diagram 1. Controlled vocabularies in data architecture](images/cv_and_skos_diagram_1.jpg)
 
 
 Controlled vocabularies (CVs) are prominently used in many domains of research and industry:
@@ -95,18 +95,18 @@ There are different approaches how CVs can be reused or made interoperable with 
 The diagram 2. Below shows how different projects use one controlled vocabulary to describe their data. Booth projects data can be queried with terms from this vocabulary. This is probably the best case scenario that can happen because it ensures full data interoperability.
 
 
-![Diagram 2](images/diagram_2.jpg)
+![Diagram 2. Usage of a common Controlled vocabulary for data description in different projects](images/diagram_2.jpg)
 
 
 The other approach (diagram 3) shows how different projects use their own project specific controlled vocabularies. The vocabularies are linked to each other through established relationships among concepts in both of them. Therefore we can refer to data in Project 1 using matching concepts from Controlled Vocabulary of Project 2. The linking happens on a level of a concept description when the statement is encoded that the concept is exact / related / close match (etc.) as a concept from another CV or from a large semantic network like, e.g. Dbpedia [^6].
 
 
-![Diagram 3](images/diagram_3.jpg)
+![Diagram 3. Interoperable Controlled vocabularies](images/diagram_3.jpg)
 
 
 There are also meta-vocabularies developed with a primary goal to be a high level overarching vocabulary for more domain specific CVs. Therefore making it easier to connect local CVs and establish relationships among them through common meta-level concepts. Backbone Thesaurus [^7] is one of the examples in DH domain that has as its purpose to allow interdisciplinary CVs development and integration.
 
-![BBT](images/bbt.png)
+![BBT - Backbone Thesaurus in Vocabs repository](images/bbt.png)
 
 
 # SKOS Standard
@@ -389,24 +389,25 @@ Consider the following styles: pop music, alternative rock, electronic music, pu
 ## CV in data management web application
 
 Controlled vocabularies provide data descriptors for future data retrieval. This directly impacts search and data discovery. CV is a building block in database design and is a part of information architecture in user interface. The following examples show how one CV is used in different parts of the web application.
+The following examples are taken from Iron-Age-Danube [^10] project's data management system.
 
 
-Picture 1. Visualization of IAD Thesaurus [^10]
+Picture 1. Visualization of IAD Thesaurus [^11]
 
-![Picture 1](images/iad_visualization.JPG)
+![Picture 1. Visualization of IAD thesaurus](images/iad_visualization.JPG)
 
 - Database values: CVs are closed lists in user interface represented as dropdown lists when creating or annotating a record.
 
 Picture 2. CV in data curation interface
 
-![Picture 2](images/cv_in_curation_interface.PNG)
+![Picture 2. Controlled vocabularies in IAD curation interface](images/cv_in_curation_interface.PNG)
 
 
 - Context information: when exploring data it is important to provide user with an explanation of used terms in interface.
 
 Picture 3. CV in user interface
 
-![Picture 3](images/cv_popup_in_userinterface.png)
+![Picture 3. Pop up with a vocabulary term definition and traslations in user interface](images/cv_popup_in_userinterface.png)
 
 
 - Faceted search based on CVs: dropdowns and autocompletes
@@ -414,20 +415,20 @@ Picture 3. CV in user interface
 Picture 4. CV in faceted search interface
 
 
-![Picture 4](images/cv_in_search_interface_01.png)
+![Picture 4. Controlled vocabularies in IAD search interface](images/cv_in_search_interface_01.png)
 
 
 Picture 5. CV in faceted search interface
 
 
-![Picture 5](images/cv_in_search_interface_02.PNG)
+![Picture 5. Controlled vocabularies in IAD search interface](images/cv_in_search_interface_02.PNG)
 
 
 - CVs are building blocks of Linked Open Data and used for connecting distributed datasets via concepts persistent URIs. Each concept has a unique stable and resolvable URI that can be reused by other projects to refer to this concept. The reference can be done by using directly URI or by retrieving URI using API of vocabulary repository.
 
 Picture 6. IAD Thesaurus in Vocabs repository
 
-![Picture 6](images/vocabs_iad.JPG)
+![Picture 6. IAD - Iron-Age-Danube Thesaurus in Vocabs repository](images/vocabs_iad.JPG)
 
 
 # Open source tools for vocabulary management
@@ -475,11 +476,11 @@ ACDH provides a suite of service for collaborative creation, maintenance and sha
 
 ACDH vocabs contains four major services covering different aspects of vocabulary usage:
 
-1. [Vocabs repository](https://vocabs.acdh.oeaw.ac.at/en/) is a services based on open source tool SKOSMOS [^11] to allow publication, reuse and retrieval of controlled vocabularies. It provides an API endpoint in order to integrate vocabulary terms in a web applications.
+1. [Vocabs repository](https://vocabs.acdh.oeaw.ac.at/en/) is a services based on open source tool SKOSMOS [^12] to allow publication, reuse and retrieval of controlled vocabularies. It provides an API endpoint in order to integrate vocabulary terms in a web applications.
 
 2. [Vocabs editor](https://vocabs.acdh.oeaw.ac.at/en/about#editor) is a web-based tool for collaborative development of controlled vocabularies of small and medium size. The editor follows the SKOS data model for the main elements of a vocabulary. The Dublin core schema is used to capture the metadata (such as date created, date modified, creator, contributor, source and other) about each element. Each concept scheme as well as each individual concept can be downloaded in RDF/XML and Turtle format. The user management system allows a user to share a concept scheme she/he created with other users (called 'curators') to create new, edit and delete concepts and collections within this concept scheme. Each user can find a summary of their latest activity on user's page. The tool also provides an API to retrieve the data.
 
-3. [Vocabs SPARQL](https://vocabs-sparql.acdh.oeaw.ac.at/) is an interface for querying vocabularies triple store with SPARQL queries. It is developed on top of Jena Fuseki [^12] triple store and uses YASGUI [^13] interface to access the endpoint.
+3. [Vocabs SPARQL](https://vocabs-sparql.acdh.oeaw.ac.at/) is an interface for querying vocabularies triple store with SPARQL queries. It is developed on top of Jena Fuseki [^13] triple store and uses YASGUI [^14] interface to access the endpoint.
 
 4. Vocabs visualize is a data visualization service developed to show the relationships between concepts in multiple vocabularies and see how the represented topics are connected.
 
@@ -543,10 +544,12 @@ Various domains Controlled vocabularies registry - [BARTOC](https://bartoc.org/e
 
 [^9] SKOS Reference https://www.w3.org/TR/skos-reference/
 
-[^10] IAD Thesaurus https://vocabs.acdh.oeaw.ac.at/iad_thesaurus/en/
+[^10] https://www.iron-age-danube.eu/
 
-[^11] http://skosmos.org/
+[^11] IAD Thesaurus https://vocabs.acdh.oeaw.ac.at/iad_thesaurus/en/
 
-[^12] https://jena.apache.org/documentation/fuseki2/
+[^12] http://skosmos.org/
 
-[^13] https://triply.cc/docs/yasgui
+[^13] https://jena.apache.org/documentation/fuseki2/
+
+[^14] https://triply.cc/docs/yasgui
