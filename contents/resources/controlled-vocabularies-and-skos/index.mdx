@@ -1,6 +1,6 @@
 ---
 title: Controlled Vocabularies and SKOS
-date: 2020-01-18
+date: 2020-02-15
 authors:
   - ksenia-zaytseva
 contributors:
@@ -130,7 +130,9 @@ The central element of SKOS is a Concept.
 > the terms used to label them." [SKOS Primer]
 
 How to assert that resource is a Concept:
+
 1. create Uniform Resource Identifier (URI) - to uniquely identify the concept
+
 2. identify URI  with rdf:type skos:Concept
 
 ```
@@ -341,6 +343,90 @@ ex:europeanWildcatLabel1 skosxl:labelRelation ex:europeanWildcatLabel2.
 ```
 
 ## SKOS Quiz
+
+Test your knowledge of SKOS standard with the quiz. The correct answers are in the end of the learning resource.
+
+**Question 1. Select all triples with <u>correct</u> RDF syntax.**
+_Please, assume the following prefixes for all options:_
+```
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex: <http://www.example.org/cats#> .
+@prefix wikidata: <http://www.wikidata.org/entity/> .
+```
+
+**Options**
+
+**1.** `ex:europeanWildcat a skos Concept; skos prefLabel “European wildcat”@en.`
+
+**2.** `ex:europeanWildcat rdf:type skos:Concept; skos:preflabel “European wildcat”@en.`
+
+**3.** `ex:europeanWildcat a skos:Concept; skos:prefLabel “European wildcat”@en.`
+
+**4.** `ex:europeanWildcat rdf:type skos:Concept, skos:preflabel “European wildcat”@en.`
+
+
+**Question 2. Select all <u>correct</u> SKOS records.**
+_Please, assume the following prefixes for all options:_
+```
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex: <http://www.example.org/cats#> .
+@prefix wikidata: <http://www.wikidata.org/entity/> .
+```
+
+**Options**
+
+**1.** `ex:eurasianLynx a skos:Concept; skos:prefLabel “Eurasian lynx”@en; skos:prefLabel “Lynx”@en.`
+
+**2.** `ex:eurasianLynx a skos:Concept; skos:prefLabel “Eurasian lynx”@en; skos:prefLabel “Eurasischer Luchs”@de.`
+
+**3.** `ex:eurasianLynx a skos:Concept; skos:prefLabel “Eurasian lynx”@en; skos:altLabel “Lynx”@en.`
+
+**4.** `ex:eurasianLynx a skos:Concept; skos:prefLabel “Eurasian lynx”@en; skos:prefLabel “Eurasischer Luchs”@en.`
+
+
+**Question 3. Select all <u>incorrect</u> SKOS records.**
+_Please, assume the following prefixes for all options:_
+```
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex: <http://www.example.org/cats#> .
+@prefix wikidata: <http://www.wikidata.org/entity/> .
+```
+
+**Options**
+
+**1.** `ex:europeanWildcat a skos:Concept; skos:exactMatch ex:eurasianLynx.`
+
+**2.** `ex:europeanWildcat a skos:Concept; skos:exactMatch wikidata:Q148833.`
+
+**3.** `ex:europeanWildcat a skos:Concept; skos:broader ex:wildcat; skos:broadMatch ex:wildcat.`
+
+**4.** `ex:europeanWildcat a skos:Concept; skos:broader ex:wildcat; skos:broadMatch wikidata:Q43576.`
+
+
+**Question 4. Select all <u>incorrect</u> statements.**
+
+**Options**
+
+**1.** Concept can be a top Concept of Concept Scheme and have a broader Concept in this Concept Scheme.
+
+**2.** Concept can have several preferred labels in one language.
+
+**3.** Concept can be broader and narrower of another Concept at the same time.
+
+**4.** Concept can have several alternative labels in one language.
+
+
+**Question 5. Select all <u>correct</u> statements.**
+
+**Options**
+
+**1.** Concept can’t have more than one preferred label in one language.
+
+**2.** It is recommended to create a new Concept for each synonym of a term.
+
+**3.** Concept can have a broader matching concept in another Concept Scheme and can be linked to it.
+
+**4.** Concept can have many matching Concepts in external Concept Schemas.
 
 
 ## SKOS vocabulary quality
@@ -553,3 +639,16 @@ Various domains Controlled vocabularies registry - [BARTOC](https://bartoc.org/e
 [^13] https://jena.apache.org/documentation/fuseki2/
 
 [^14] https://triply.cc/docs/yasgui
+
+
+## Quiz answers
+
+**Question 1.** Answer: 3
+
+**Question 2.** Answer: 2 and 3
+
+**Question 3.** Answer: 1 and 3
+
+**Question 4.** Answer: 1, 2 and 3
+
+**Question 5.** Answer: 1, 3 and 4
