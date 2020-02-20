@@ -20,21 +20,22 @@ export const createTocItems = (items, depth = 0, prefix) => (
   </ul>
 )
 
-export const TOCContainer = ({ children, className }) => (
-  <div className={clsx(styles.container, className)}>
-    <div
-      className={styles.toc}
-      style={{ overflowY: 'auto', maxHeight: '100%' }}
-    >
-      <h2 className={styles.tocHeading}>Table of contents</h2>
+export const TOCContainer = ({ children, className, left, title }) => (
+  <div
+    className={clsx(styles.container, left && styles.containerLeft, className)}
+  >
+    <div className={styles.toc}>
+      <h2 className={styles.tocHeading}>{title || 'Table of contents'}</h2>
 
       {children}
     </div>
   </div>
 )
 
-const TOC = ({ className, toc }) => (
-  <TOCContainer className={className}>{createTocItems(toc.items)}</TOCContainer>
+const TOC = ({ className, left, title, toc }) => (
+  <TOCContainer className={className} left={left} title={title}>
+    {createTocItems(toc.items)}
+  </TOCContainer>
 )
 
 export default TOC

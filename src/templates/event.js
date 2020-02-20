@@ -1,18 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
 
+import Annotator from 'components/Annotator/Annotator'
 import Head from 'components/Head/Head'
 import Event from 'components/Event/Event'
 
 const EventTemplate = ({ data }) => (
   <>
     <Head title={data.index.frontmatter.title} />
-    <Helmet>
-      <script async defer src="https://hypothes.is/embed.js" />
-    </Helmet>
 
-    <Event {...data} />
+    <Annotator>
+      <Event {...data} />
+    </Annotator>
   </>
 )
 

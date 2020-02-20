@@ -228,14 +228,13 @@ exports.onCreateNode = ({ node, actions, reporter }) => {
   if (node.internal.type !== 'File') return
   if (!/.mdx?$/.test(node.absolutePath)) return
 
-  reporter.info(`Getting timestamp for ${node.absolutePath}`)
   let lastUpdated
 
   try {
     lastUpdated = new Date(getLastUpdatedTimestamp(node.absolutePath))
   } catch (error) {
     reporter.error(
-      `Could not get timestamp from ${node.absolutePath}. Error: ${error}`
+      `Could not get timestamp for ${node.absolutePath}. Error: ${error}`
     )
   }
 

@@ -1,15 +1,26 @@
 .container {
-  height: calc(100% - 12rem);
+  bottom: 0;
   left: 100%;
   margin-left: var(--margin-huge);
   position: absolute;
-  width: 30rem;
+  top: 0;
+  width: 24rem;
+}
+
+.container-left {
+  left: unset;
+  margin-left: 0;
+  margin-right: var(--margin-huge);
+  right: 100%;
 }
 
 .toc {
-  position: sticky;
-  top: 12rem;
+  max-height: calc(100vh - var(--height-header));
   opacity: 0.4;
+  overflow-y: auto;
+  position: sticky;
+  top: var(--height-header);
+  transition: opacity 0.2s ease;
 }
 
 .toc:hover {
