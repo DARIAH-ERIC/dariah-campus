@@ -22,3 +22,13 @@
   slug: charles-university
   logo: ../images/organisations/charles-university--white.png
   url: https://www.cuni.cz/UKEN-1.html
+
+- name: DESIR
+  slug: desir
+  logo: ../images/organisations/desir--white.png
+  url: https://www.dariah.eu/activities/projects-and-affiliations/desir/
+
+- name: FCSH NOVA
+  slug: fcsh-nova
+  logo: ../images/organisations/fcshnova--white.png
+  url: https://www.fcsh.unl.pt/en/

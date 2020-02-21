@@ -58,10 +58,19 @@
   slug: panos-constantopoulos
   avatar: ../images/authors/panos-constantopoulos.jpg
 
+- name: Antonia Correia
+  slug: antonia-correia
+  avatar: ../images/authors/antonia-correia.jpg
+  orcid: 0000-0002-6610-8853
+
 - name: Gregory Crane
   slug: gregory-crane
   avatar: ../images/authors/gregory-crane.jpg
   email: crane[AT]informatik.uni-leipzig[DOT]de
+
+- name: Javier de la Rosa
+  slug: javier-delarosa
+  avatar: ../images/authors/javier-delarosa.jpg
 
 - name: Jennifer Edmond
   slug: jennifer-edmond
@@ -130,9 +139,19 @@
 - name: Anna Lawaetz
   slug: anna-lawaetz
 
+- name: Delfim Leão
+  slug: delfim-leao
+  avatar: ../images/authors/delfim-leao.jpg
+  orcid: 0000-0002-8107-9165
+
 - name: Jakob Lenardič
   slug: jakob-lenardic
   avatar: ../images/authors/jakob-lenardic.jpg
+
+- name: Frances Madden
+  slug: frances-madden
+  avatar: ../images/authors/frances-madden.jpg
+  orcid: 0000-0002-5432-6116
 
 - name: Vojtěch Malínek
   slug: vojtech-malinek
@@ -199,6 +218,11 @@
   twitter: charlesriondet
   email: charles.riondet@inria.fr
 
+- name: Maria Fernanda Rollo
+  slug: mariafernanda-rollo
+  avatar: ../images/authors/mariafernanda-rollo.jpg
+  orcid: 0000-0002-2249-7279
+
 - name: Martial Sankar
   slug: martial-sankar
   avatar: ../images/authors/martial-sankar.jpg
@@ -206,6 +230,11 @@
 - name: Stefan Schmunk
   slug: stefan-schmunk
   avatar: ../images/authors/stefan-schmunk.jpg
+
+- name: Walter Scholger
+  slug: walter-scholger
+  avatar: ../images/authors/walter-scholger.jpg
+  orcid: 0000-0002-9256-0958
 
 - name: Joachim Schöpfel
   slug: joachim-schopfel
@@ -245,6 +274,7 @@
   slug: erzsebet-toth-czifra
   title: Open Science Officer
   avatar: ../images/authors/erzsebet-toth-czifra.jpg
+  orcid: 0000-0002-5350-067X
 
 - name: Ulrike Wuttke
   slug: ulrike-wuttke
