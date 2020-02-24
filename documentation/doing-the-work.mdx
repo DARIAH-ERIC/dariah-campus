@@ -149,7 +149,9 @@ can range from photographs; to infographics; diagrams; maps; screenshots and
 more. These images should be incorporated into the body of your resource using
 the following code:
 
-`![Description of image](images/imagename.png)`
+```markdown
+![Description of image](images/imagename.png)
+```
 
 The path or URL to the image asset is in parentheses. The text in square
 brackets is the alt text.
@@ -157,7 +159,9 @@ brackets is the alt text.
 To add a link to an image, enclose the Markdown for the image in brackets, and
 then add the link in parentheses.
 
-`[![Description of image](images/imagename.png)](https://linktotheimage.eu)`
+```markdown
+[![Description of image](images/imagename.png)](https://linktotheimage.eu)
+```
 
 We ask authors to use intelligible file names that either indicate the content
 of the image (data-reuse-diagram.png) or indicate which figure it is within the
@@ -177,13 +181,13 @@ videos are included into the body of your material using the following code:
 
 To insert a YouTube video, use the following code:
 
-     ```jsx
-     <VideoCard
-       title="Title of the Video"
-       id="SI3u9nu7YEY"
-       image="images/imagename.jpg"
-     />
-     ```
+```jsx
+<VideoCard
+  title="Title of the Video"
+  id="SI3u9nu7YEY"
+  image="images/imagename.jpg"
+/>
+```
 
 - the "id" is the part of the url after "v=" and before "&". So, for
   "https://www.youtube.com/watch?v=SI3u9nu7YEY&t=164s" it is: "SI3u9nu7YEY".
