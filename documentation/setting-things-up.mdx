@@ -98,94 +98,72 @@ DARIAH-CAMPUS learning resources.
 
 ## Previewing DARIAH-Campus locally
 
-### Step 1 - installing all necessary apps/programs
+### Instructions for Mac-users
 
-#### Step 1a) Installing ‘Homebrew’
+1. Open up Terminal (usually found in ‘Utilities’ on a Mac).
+2. Go to `https://brew.sh/`
+3. Select the ‘Install Homebrew’ link and paste it into Terminal
+4. You will be prompted for a password in Terminal: enter your laptop password.
+   The installation will begin.
+5. Next, type: "`brew install node`" into Terminal and hit ‘return’
+6. Then, you need to install ‘Yarn'. Type "`brew install yarn`" into Terminal,
+   and hit ‘return’.
 
-- Open up Terminal (usually found in ‘Utilities’ on a Mac).
-- Go to `https://brew.sh/`
-- Select the ‘Install Homebrew’ link and paste it into Terminal
-- You will be prompted for a password in Terminal: enter your laptop password.
-  The installation will begin.
+Now that you have yarn installed on your system, you will be able to use it to
+install all the packages you need to run DARIAH-Campus locally on your computer.
+To do this:
 
-#### Step 1b) Installing Node.js
+1. In Finder, go to the folder in which you cloned your DARIAH-Campus fork.
+2. In Terminal, type "`cd`" to change directory (also note, be sure to add a
+   space after ‘cd’), then
+3. Drag and drop the folder from Finder into Terminal _on the same line as “cd
+   “_. This will automatically write the full path (‘breadcrumb’) to the
+   DARIAH-Campus folder in Terminal.
+4. Then type "`pwd`" (path to working directory) in Terminal and hit ‘return’
+   This will show the correct breadcrumb trail to the folder to make sure you
+   have the right one.
+5. Type "`yarn install`" into Terminal (remember to hit ‘enter’). Installation
+   may take a while if you haven’t installed this before. There is a progress
+   bar on the bottom of Terminal that shows you how far along you are.
 
-To do this,
+Now that you have all the packages you need to preview DARIAH-Campus, you can
+start the server and build the site like this:
 
-- type: "`brew install node`" into Terminal and hit ‘return’
+1. In Terminal, go to your local DARIAH-Campus folder (see previous steps 1, and
+   3 in the previous section for how to do this)
+2. Type "`yarn develop`" (+ enter). This build the whole site locally and start
+   a server to run it in. This may also take a little while.
+3. Once the build process is complete, you will be able to view DARIAH-Campus in
+   the browser using the link given to you in the terminal, which will look like
+   this: ⠀ `http://localhost:8000/`
+4. Copy the url given in Terminal into your browser, which will give you the
+   DARIAH-Campus home page. _Any saved edits you make to the DARIAH-Campus .mdx
+   files in your editor will automatically be shown in your browser._
 
-Then, you need to install ‘Yarn'
+### Instructions for Windows users
 
-- Type "`brew install yarn`" into Terminal, and hit ‘return’
+1. Download node.js from
+   [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+2. Run node.js installer
+3. Open 'command line' and check node version by typing: `node -v`
+4. Download yarn from
+   [https://yarnpkg.com/lang/en/docs/install/#windows-stable](https://yarnpkg.com/lang/en/docs/install/#windows-stable)
+5. Type `Run yarn installer` (enter)
+6. Check yarn version: `yarn --version`
+7. Install the necessary pacakges by typing `yarn install` (+ enter)
+8. In GitHub desktop, make sure that you have the most up-to-date version of
+   DARIAH-Campus. To do this, follow the instructions above to 'Fetch Origin'
+   and 'Merge' it to your local branch
+9. Once any changes from the DARIAH-Campus 'master' on GitHub has been merged to
+   your local branch, navigate to inside the dariah-campus directory (where the
+   file package.json is located) in your file manager.
+10. Run: `yarn develop`. This will build the entire website and launch a server
+    to run it in on your computer. Once the build process is complete, you can:
+11. Navigate to `localhost:8000` in your browser to preview DARIAH-Campus. _Any
+    saved edits you make to the DARIAH-Campus .mdx files in your editor will
+    automatically be shown in your browser._
 
-### Step 2 Installing Node packages
-
-#### Step 2a) Locating and linking folders on your machine
-
-To enable DARIAH-Campus to run locally on your machine, you will need to install
-node packages. To do this:
-
-- Find the folder you want to connect to node.js in ‘Finder’ (this will likely
-  be the ‘DARIAH-Campus’ folder that you use in Atom).
-- In Terminal, type "`cd`" to change direction (also note, be sure to add a
-  space after ‘cd’)
-- Drag and drop the folder from Finder into Terminal **on the same line as “cd
-  “**. This will automatically write the ‘breadcrumb’ to the folder in Terminal.
-- Then type "`pwd`" (path to working directory) in Terminal and hit ‘return’
-  This will show the correct breadcrumb trail to the folder to make sure you
-  have the right one.
-
-#### Step 2b) Installing node packages
-
-- Type "`yarn install`" into Terminal (remember to hit ‘enter’). Installation
-  may take a while if you haven’t installed this before. There is a progress bar
-  on the bottom of Terminal that shows you how far along you are.
-
-You are now ready to run DARIAH-Campus locally on your machine, so that you can
-preview any changes you make without having to commit them.
-
-### Step 3) Running and working with a local version of DARIAH-Campus
-
-#### Step 3a) Installing the package to allow editing
-
-- Type "`yarn develop`" (enter). This is the command to use if you want to
-  develop the whole site, with all the necessary options for links and markdown,
-  etc. This may also take a little while. If you do not have any problems
-  installing this, proceed to **Step 3c**.
-
-#### Step 3b) Troubleshooting any installation problems (if required)
-
-- Open GitHub Desktop.
-- Go to ‘Branch’ and select ‘Merge into Current Branch’, then select the most
-  recent ‘upstream/master’ file. You will be asked to confirm the merge. Click
-  on this.
-- You will probably then be prompted to ‘push to origin’ in the GitHub
-  interface. This will push it to your local fork.
-- Review any changes, and then if you’re happy with them, click on ‘commit to
-  master’.
-- Click on ‘push origin’.
-- In the box that comes up, select ‘open in Atom’.
-
-- In Atom, create a New File, and name it “.env.development”
-- In this file, copy and paste:
-
-`GATSBY_ALGOLIA_APP_ID=TTMMB715TN GATSBY_ALGOLIA_SEARCH_API_KEY=23e184697e638a863376dbd6c151a318 GATSBY_ALGOLIA_INDEX_NAME=dev_DARIAH-CAMPUS`
-
-- Make sure there are three lines, all starting with "`GATSBY`"
-- Save this file.
-- Once this is saved, re-run installation of ‘yarn develop’ (as in **Step 3a**).
-  This should now install correctly.
-
-#### Step 3c) Editing a local version of DARIAH-Campus
-
-You can now view dariah-campus in the browser using the link given to you in the
-terminal, which will look like this: ⠀ `http://localhost:8000/`
-
-Copy the url given in Terminal into your browser, which will give you the
-DARIAH-Campus home page. Any saved edits you make to the DARIAH-Campus .mdx
-files in Atom will automatically be shown on your local version.
-
-> **REMEMBER!!** Any changes you make in Atom will only show up on your local
+> **REMEMBER!** Any changes you make in Atom will only show up on your local
 > version, but will not make any changes to the actual live version of
 > DARIAH-Campus. This is useful if you want to try out a few things before
 > updating. However, it’s important to remember that if you WANT to make changes

@@ -37,12 +37,23 @@ const PostTemplate = ({ data }) => (
             ...components,
             a: props => <PostLink {...props} />,
             h1: () => null,
-            h2: props => (
+            h2: ({ style, ...props }) => (
               <Heading
                 level="1"
                 style={{
+                  ...style,
                   marginBottom: 'var(--margin-large)',
                   marginTop: 'var(--margin-huge)',
+                }}
+                {...props}
+              />
+            ),
+            h3: ({ style, ...props }) => (
+              <Heading
+                level="2"
+                style={{
+                  ...style,
+                  marginTop: 'var(--margin-large)',
                 }}
                 {...props}
               />
