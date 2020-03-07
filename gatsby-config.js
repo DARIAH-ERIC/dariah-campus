@@ -271,5 +271,11 @@ module.exports = {
     'gatsby-plugin-netlify',
     // 'gatsby-plugin-netlify-cache',
     // 'gatsby-plugin-netlify-cms',
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS_ID,
+      },
+    },
   ],
 }
