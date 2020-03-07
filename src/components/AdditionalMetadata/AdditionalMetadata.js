@@ -8,21 +8,22 @@ import styles from './AdditionalMetadata.module.css'
 
 const AdditionalMetadata = ({ metadata }) => (
   <div className={styles.metadata}>
+    {metadata.title && <span>Title: {metadata.title}</span>}
     {metadata.authors && (
       <span>
-        Authors: {metadata.authors.map(author => author.name).join(', ')}
+        Author(s): {metadata.authors.map(author => author.name).join(', ')}
       </span>
     )}
     {metadata.contributors && (
       <span>
-        Contributors:{' '}
+        Contributor(s):{' '}
         {metadata.contributors.map(contributor => contributor.name).join(', ')}
       </span>
     )}
     {metadata.domain && <span>Domain: {metadata.domain}</span>}
     {metadata.editors && (
       <span>
-        Editors: {metadata.editors.map(editor => editor.name).join(', ')}
+        Editor(s): {metadata.editors.map(editor => editor.name).join(', ')}
       </span>
     )}
     {metadata.lang && <span>Language: {metadata.lang}</span>}
