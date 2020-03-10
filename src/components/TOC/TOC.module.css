@@ -46,7 +46,7 @@
   margin: 1rem;
 }
 
-@media (max-width: 100rem) {
+@media (max-width: 100em) {
   .container {
     height: unset;
     margin: var(--margin-huge) 0;

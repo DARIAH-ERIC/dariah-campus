@@ -28,7 +28,7 @@
   text-align: right;
 }
 
-@media (max-width: 36rem) {
+@media (max-width: 36em) {
   .metadata-image-container {
     display: none;
   }

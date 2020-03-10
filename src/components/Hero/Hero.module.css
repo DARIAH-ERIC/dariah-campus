@@ -21,7 +21,7 @@
   margin: 0 auto var(--margin-large);
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 40em) {
   .hero-title {
     font-size: 5rem;
     line-height: 1.2;

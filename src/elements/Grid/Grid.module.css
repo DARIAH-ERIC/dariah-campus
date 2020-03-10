@@ -28,7 +28,7 @@
   );
 }
 
-@media (max-width: 30rem) {
+@media (max-width: 30em) {
   .grid {
     grid-template-columns: 1fr;
   }
