@@ -1,4 +1,4 @@
-@media (max-width: 55rem) {
+@media (max-width: 55em) {
   .session-speaker-avatar {
     display: none;
   }
@@ -7,7 +7,7 @@
 .bio {
 }
 
-@media (max-width: 100rem) {
+@media (max-width: 100em) {
   .bio {
     column-count: 1 !important;
   }

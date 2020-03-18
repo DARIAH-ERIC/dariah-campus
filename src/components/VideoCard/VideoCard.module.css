@@ -3,7 +3,7 @@
   flex: 1;
 }
 
-@media (max-width: 60rem) {
+@media (max-width: 60em) {
   .item {
     flex: 1 0 100%;
   }

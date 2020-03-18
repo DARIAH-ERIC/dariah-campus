@@ -108,7 +108,7 @@
   color: var(--color-primary);
 }
 
-@media (max-width: 60rem) {
+@media (max-width: 60em) {
   .nav {
     display: none;
   }
@@ -144,7 +144,7 @@
   padding: 1rem 1.5rem;
 }
 
-@media (max-width: 60rem) {
+@media (max-width: 60em) {
   .search-bar-container {
     display: none;
   }

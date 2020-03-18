@@ -81,7 +81,7 @@ our global anchor style */
   padding: var(--padding-small);
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 40em) {
   .small-print {
     flex-direction: column;
   }

@@ -14,14 +14,14 @@
   width: 100%;
 }
 
-@media (max-width: 60rem) {
+@media (max-width: 60em) {
   .search-bar {
     margin: var(--margin-large) var(--margin-medium);
     padding: 0 var(--padding-medium);
   }
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 40em) {
   .search-bar-input {
     font-size: var(--font-size-large);
     padding: var(--padding-large);

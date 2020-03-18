@@ -11,7 +11,7 @@
   padding: var(--padding-xsmall) var(--padding-medium);
 }
 
-@media (max-width: 30rem) {
+@media (max-width: 30em) {
   .tags {
     margin: var(--margin-large) 0;
   }
