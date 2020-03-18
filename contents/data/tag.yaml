@@ -18,6 +18,11 @@
     non-academic experts and enthusiasts in a given discipline to provide,
     process and/or analyse data
 
+- name: Controlled Vocabularies
+  slug:
+    controlled-vocabularies Controlled Vocabularies are organised structures for
+    words or phrases that allow for machine readability and easy retrieval
+
 - name: Data management
   slug: data-management
   description:
@@ -68,9 +73,21 @@
     Geotagging is a process used in Spatial Humanities-based research that
     applies geo-spatial information to physical objects, events or artefacts
 
+- name: Information Architecture
+  slug: information-architecture
+  description:
+    Information Architecture is the structural design of shared information
+    environments such as websites and online communities.
+
 - name: Lexicography
   slug: lexicography
   description: Lexicography is the art and craft of making dictionaries
+
+- name: Metadata
+  slug: metadata
+  description:
+    Metadata is simply 'data about data' that allows for organising information
+    in a structured way.
 
 - name: MOOC
   slug: mooc
@@ -126,6 +143,19 @@
   description:
     Scholarly publishing relates to issues and best practice for (digital)
     publication of scholarly outputs
+
+- name: Semantic Web
+  slug: semantic-web
+  description:
+    The Semantic Web is an extension of the World Wide Web that aims to made the
+    Internet data machine-readable
+
+- name: SKOS
+  slug: SKOS
+  description:
+    SKOS (Simple Knowedge Organisation System) develops standards that allow use
+    of knowledge representation or organisation systems such as thesauri or
+    taxonomies on the Semantic Web
 
 - name: Sound studies
   slug: sound-studies
