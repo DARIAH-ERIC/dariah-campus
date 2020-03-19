@@ -19,9 +19,10 @@
     process and/or analyse data
 
 - name: Controlled Vocabularies
-  slug:
-    controlled-vocabularies Controlled Vocabularies are organised structures for
-    words or phrases that allow for machine readability and easy retrieval
+  slug: controlled-vocabularies
+  description:
+    Controlled Vocabularies are organised structures for words or phrases that
+    allow for machine readability and easy retrieval
 
 - name: Data management
   slug: data-management
