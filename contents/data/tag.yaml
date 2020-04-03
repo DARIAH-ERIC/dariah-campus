@@ -109,6 +109,9 @@
     their research outputs, which might include data, publications and training
     activities, are available and open to all without restriction
 
+- name: Project management
+  slug: project-management
+
 - name: Research infrastructures
   slug: research-infrastructures
   description:
@@ -138,6 +141,10 @@
     Spatial Humanities is research that combines humanities, environmental
     sciences and geography-based practices to study physical, cognitive,
     perceptual and relational aspects of the human spatial experience
+
+- name: Software development
+  slug: software-development
+  description:
 
 - name: Speech technology
   slug: speech-technology

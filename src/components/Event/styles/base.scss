@@ -980,6 +980,16 @@ body {
       }
     }
 
+    .list-ordered {
+      margin-bottom: 1em;
+      list-style-type: decimal;
+
+      li {
+        margin-left: 1.5em;
+        margin-bottom: 0.5em;
+      }
+    }
+
     a {
       display: inline;
       border-bottom: 0.15vw solid $violet1;
@@ -1720,7 +1730,8 @@ body {
   .session .session__core p {
     font-size: 1.8rem;
   }
-  .session .session__core .list-standard li {
+  .session .session__core .list-standard li,
+  .session .session__core .list-ordered li {
     font-size: 1.8rem;
   }
   .session .session__core .floated .floated__caption {
@@ -2182,7 +2193,8 @@ body {
   .session .session__core p {
     font-size: 1.6rem;
   }
-  .session .session__core .list-standard li {
+  .session .session__core .list-standard li,
+  .session .session__core .list-ordered li {
     font-size: 1.6rem;
   }
   .session
@@ -2359,7 +2371,8 @@ body {
   .session .session__core p {
     font-size: 3rem;
   }
-  .session .session__core .list-standard li {
+  .session .session__core .list-standard li,
+  .session .session__core .list-ordered li {
     font-size: 3rem;
   }
   .session .session__core .floated .floated__caption {
