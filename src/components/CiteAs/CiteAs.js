@@ -49,6 +49,17 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
             <button onClick={() => copyToClipboard()}>Copy to Clipboard</button>
           </li>
         </ul>
+
+        <h2 className={styles.citeAsHeading}>{'Reuse conditions'}</h2>
+
+        <ul className={(styles.border, styles.items)}>
+          <li className={styles.item}>
+            Resources hosted on DARIAH-Campus are subjects to the{' '}
+            <a href="/docs/dariah-campus-training-materials-reuse-charter">
+              DARIAH-Campus Training Materials Reuse Charter
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   )
