@@ -8,6 +8,13 @@ import styles from './AdditionalMetadata.module.css'
 
 const AdditionalMetadata = ({ metadata }) => (
   <div className={styles.metadata}>
+    <h2>Cite as</h2>
+    <span>
+      {metadata.authors.map(author => author.name).join(', ')},{' '}
+      <i>{metadata.title}</i>
+    </span>
+    . DARIAH-Campus.
+    <h2>Full metadata</h2>
     {metadata.title && <span>Title: {metadata.title}</span>}
     {metadata.authors && (
       <span>
