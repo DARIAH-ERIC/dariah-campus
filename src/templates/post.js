@@ -112,6 +112,7 @@ export const query = graphql`
         categories {
           name
           slug
+          host
         }
         contributors {
           name
@@ -119,8 +120,8 @@ export const query = graphql`
         }
         date
         citationYear: date(formatString: "YYYY")
-        citeUrl
-        citePublisher
+        remoteUrl
+        host
         dateModified
         domain
         editors {

@@ -7,55 +7,33 @@ import { createPath } from 'utils/create-path'
 import { getBasePath } from 'utils/get-base-path'
 
 const CiteAs = ({ children, className, left, title, frontmatter }) => {
-  const path = createPath(getBasePath('post'), frontmatter.slug)
   // All resources get a citation
-  // D-C 'source' (category) is not the same as publisher: for instance DESIR is source, but DARIAH-Campus is publisher.
-  // also: we can't rely strictily on categories because some resources may be placed in two cateogries (DARIAH + ELEXIS), which can lead to confusion.
-  // which is why we need a category: citePublisher
-  // if there is no citePublisher, it will default to DARIAH-Campus
-
-  // for dariahTeach content, we need to add authors!!!
-  //
-  //
-  //
-
-  function printPublisher(source) {
-    switch (source) {
-      case 'parthenos':
-        return 'PARTHENOS Training Suite'
-        break
-      case 'desir':
-        return 'DARIAH-Campus'
-        break
-      case 'dariah-teach':
-        return 'DARIAH Teach'
-        break
-      default:
-        return 'DARIAH-Campus'
-        break
-    }
-  }
-
-  const citeAuthor = frontmatter.authors.map(author => author.name).join(', ')
-  const citeYear = ' (' + frontmatter.citationYear + '). '
-  const citeTitle = frontmatter.title + '. '
-  const citeVersion = frontmatter.version
+  // only remote resources have remoteUrl in YAML metadata
+  // DESIR videos are considered hosted (hence no remoteUrl)
+  const citedAuthor = frontmatter.authors.map(author => author.name).join(', ')
+  const citedYear = ' (' + frontmatter.citationYear + '). '
+  const citedTitle = frontmatter.title + '. '
+  const citedVersion = frontmatter.version
     ? 'Version ' + frontmatter.version + '. '
     : ''
-  const citePublisher = printPublisher(frontmatter.citePublisher) + '. '
-  const citeRestype = '[' + frontmatter.type.name + ']. '
-  const citeUrl = frontmatter.citeUrl
-    ? frontmatter.citeUrl
-    : 'https://campus.dariah.eu' + path
-
+  const citedPublisher = frontmatter.remoteUrl
+    ? frontmatter.categories
+        .filter(cat => cat.slug !== 'dariah')
+        .map(cat => cat.host) + '. '
+    : 'DARIAH-Campus. '
+  const citedRestype = '[' + frontmatter.type.name + ']. '
+  const citedUrl = frontmatter.remoteUrl
+    ? frontmatter.remoteUrl
+    : 'https://campus.dariah.eu' +
+      createPath(getBasePath('post'), frontmatter.slug)
   const dataCite =
-    citeAuthor +
-    citeYear +
-    citeTitle +
-    citeVersion +
-    citePublisher +
-    citeRestype +
-    citeUrl
+    citedAuthor +
+    citedYear +
+    citedTitle +
+    citedVersion +
+    citedPublisher +
+    citedRestype +
+    citedUrl
 
   function copyToClipboard() {
     var dummy = document.createElement('input')

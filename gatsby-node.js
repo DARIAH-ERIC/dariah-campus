@@ -130,6 +130,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       description: String @plain
       descriptionHtml: String @md @proxy(from: "description")
       name: String!
+      host: String
       image: File @fileByRelativePath
       posts: [Mdx] @link(by: "frontmatter.categories.slug", from: "slug")
       slug: String! @slug(from: "name")
@@ -180,8 +181,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       abstract: String
       authors: [Person!] @defaultValue(values: ["dariah"]) @link(by: "slug")
       categories: [Category!] @link(by: "slug")
-      citeUrl: String
-      citePublisher: String
+      remoteUrl: String
+      host: String
       contributors: [Person!] @link(by: "slug")
       date: Date @dateformat(formatString: "MMM, DD YYYY")
       dateModified: Date @dateformat(formatString: "MMM, DD YYYY") @proxy(from: "fields.lastUpdated", fromNode: true)
