@@ -180,7 +180,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       abstract: String
       authors: [Person!] @defaultValue(values: ["dariah"]) @link(by: "slug")
       categories: [Category!] @link(by: "slug")
-      citeable: Boolean
+      citeUrl: String
+      citePublisher: String
       contributors: [Person!] @link(by: "slug")
       date: Date @dateformat(formatString: "MMM, DD YYYY")
       dateModified: Date @dateformat(formatString: "MMM, DD YYYY") @proxy(from: "fields.lastUpdated", fromNode: true)

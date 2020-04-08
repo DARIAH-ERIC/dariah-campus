@@ -32,13 +32,13 @@ const PostTemplate = ({ data }) => (
         <Image fluid={data.post.frontmatter.featuredImage.image.fluid} />
       )}
       <article style={{ position: 'relative' }}>
-        {data.post.frontmatter.citeable && (
+        {
           <CiteAs
             left
             title="Cite As"
             frontmatter={data.post.frontmatter}
           ></CiteAs>
-        )}
+        }
         {data.post.frontmatter.toc && <TOC toc={data.post.tableOfContents} />}
         <MDXProvider
           components={{
@@ -119,7 +119,8 @@ export const query = graphql`
         }
         date
         citationYear: date(formatString: "YYYY")
-        citeable
+        citeUrl
+        citePublisher
         dateModified
         domain
         editors {
@@ -139,6 +140,7 @@ export const query = graphql`
           name
           url
         }
+        slug
         tags {
           name
           slug

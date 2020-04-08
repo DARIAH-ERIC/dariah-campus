@@ -29,9 +29,7 @@ const PostMetadata = ({ className, metadata }) => (
       </div>
       <div>
         {metadata.authors && metadata.authors.length ? (
-          <div>
-            Written by {createLinks(metadata.authors, getBasePath('author'))}
-          </div>
+          <div>{createLinks(metadata.authors, getBasePath('author'))}</div>
         ) : null}
         <time>{metadata.date}</time>
       </div>
