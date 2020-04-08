@@ -120,6 +120,7 @@ export const query = graphql`
         }
         date
         citationYear: date(formatString: "YYYY")
+        remoteCitationYear: remotePublicationDate(formatString: "YYYY")
         remoteUrl
         host
         dateModified

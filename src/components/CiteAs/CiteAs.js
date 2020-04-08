@@ -11,7 +11,9 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
   // only remote resources have remoteUrl in YAML metadata
   // DESIR videos are considered hosted (hence no remoteUrl)
   const citedAuthor = frontmatter.authors.map(author => author.name).join(', ')
-  const citedYear = ' (' + frontmatter.citationYear + '). '
+  const citedYear = frontmatter.remoteCitationYear
+    ? ' (' + frontmatter.remoteCitationYear + '). '
+    : ' (' + frontmatter.citationYear + '). '
   const citedTitle = frontmatter.title + '. '
   const citedVersion = frontmatter.version
     ? 'Version ' + frontmatter.version + '. '

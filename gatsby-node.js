@@ -181,7 +181,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       abstract: String
       authors: [Person!] @defaultValue(values: ["dariah"]) @link(by: "slug")
       categories: [Category!] @link(by: "slug")
-      remoteUrl: String
       host: String
       contributors: [Person!] @link(by: "slug")
       date: Date @dateformat(formatString: "MMM, DD YYYY")
@@ -193,6 +192,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       lang: String @defaultValue(value: "en")
       license: License @defaultValue(value: "CCBY 4.0") @link(by: "name")
       pid: ID
+      remotePublicationDate: Date@dateformat(formatString: "YYYY-MM-DD")
+      remoteUrl: String
       slug: String @slug(from: "title")
       tags: [Tag!] @link(by: "slug")
       """ one of ["Data managers", "Domain researchers", "Data service engineers", "Data scientists/analysts"] """
