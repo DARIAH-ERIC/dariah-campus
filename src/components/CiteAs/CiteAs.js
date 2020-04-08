@@ -20,7 +20,6 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
   //
 
   function printPublisher(source) {
-    const publ = ''
     switch (source) {
       case 'parthenos':
         return 'PARTHENOS Training Suite'
