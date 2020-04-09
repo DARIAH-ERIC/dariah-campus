@@ -49,6 +49,13 @@ const EventSession = ({ session, downloads }) => {
                 style={{ color: '#1e396c' }}
               />
             ),
+            ol: props => (
+              <ol
+                {...props}
+                className="list-ordered"
+                style={{ color: '#1e396c' }}
+              />
+            ),
             Download: props => (
               <EventSessionDownload {...props} downloads={downloads} />
             ),

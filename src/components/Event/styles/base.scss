@@ -966,13 +966,24 @@ body {
     }
 
     p,
-    .list-standard li {
+    .list-standard li,
+    .list-ordered li {
       font-size: 1.7vw; //TT changed from 1.75
     }
 
     .list-standard {
       margin-bottom: 1em;
       list-style-type: disc;
+
+      li {
+        margin-left: 1.5em;
+        margin-bottom: 0.5em;
+      }
+    }
+
+    .list-ordered {
+      margin-bottom: 1em;
+      list-style-type: decimal;
 
       li {
         margin-left: 1.5em;
@@ -1451,14 +1462,15 @@ body {
     }
 
     ul {
-      list-style-type: none;
-      display: flex;
-      align-items: flex-end;
-      flex-wrap: wrap;
+      // list-style-type: none;
+      // display: flex;
+      // align-items: flex-end;
+      // flex-wrap: wrap;
+      margin-left: 1.5em;
 
       li {
-        width: 33.3333%;
-        padding-right: 2.5rem;
+        // width: 33.3333%;
+        // padding-right: 2.5rem;
         margin-bottom: 0.5rem;
       }
 
@@ -1720,7 +1732,8 @@ body {
   .session .session__core p {
     font-size: 1.8rem;
   }
-  .session .session__core .list-standard li {
+  .session .session__core .list-standard li,
+  .session .session__core .list-ordered li {
     font-size: 1.8rem;
   }
   .session .session__core .floated .floated__caption {
@@ -2182,7 +2195,8 @@ body {
   .session .session__core p {
     font-size: 1.6rem;
   }
-  .session .session__core .list-standard li {
+  .session .session__core .list-standard li,
+  .session .session__core .list-ordered li {
     font-size: 1.6rem;
   }
   .session
@@ -2359,7 +2373,8 @@ body {
   .session .session__core p {
     font-size: 3rem;
   }
-  .session .session__core .list-standard li {
+  .session .session__core .list-standard li,
+  .session .session__core .list-ordered li {
     font-size: 3rem;
   }
   .session .session__core .floated .floated__caption {
