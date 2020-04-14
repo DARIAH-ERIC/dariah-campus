@@ -38,7 +38,7 @@ const CategoryPreview = ({
             {name}
           </ReadMoreLink>
         </Heading>
-        <Paragraph>{description}</Paragraph>
+        <div className={styles.text}>{description}</div>
       </Card.Body>
       <Card.Footer>
         <PostsCount posts={posts} />

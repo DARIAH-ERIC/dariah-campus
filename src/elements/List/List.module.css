@@ -1,5 +1,10 @@
 .list {
-  line-height: 2;
   margin: var(--margin-medium) 0;
-  margin-left: var(--margin-large);
+  margin-left: 1.25em;
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-large);
+}
+
+li .list {
+  margin-top: 0;
 }

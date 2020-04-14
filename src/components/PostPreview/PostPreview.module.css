@@ -10,4 +10,7 @@
 
 .text {
   color: var(--color-muted);
+  line-height: var(--line-height-large);
+  font-size: var(--font-size-medium);
+  margin: var(--margin-large) 0 0 0;
 }

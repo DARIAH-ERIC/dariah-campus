@@ -258,7 +258,6 @@ There are two types of relationships between concepts that can be established in
 a vocabulary:
 
 - Hierarchical via properties skos:broader, skos:narrower
-
   - SKOS model doesn’t state that broader & narrower are transitive, but it also
     doesn’t imply that these properties are intransitive (_Note on transitivity:
     the relationship is transitive if concept A is related to concept B. Concept
@@ -266,7 +265,6 @@ a vocabulary:
     C._)
   - For explicit transitivity use skos:broaderTransitive and
     skos:narrowerTransitive
-
 - Associative via property skos:related
   - is not defined as a transitive property
 
@@ -583,16 +581,13 @@ pop music, alternative rock, electronic music, punk rock, techno, rock, heavy
 metal.
 
 1. Structure/draw your own vocabulary called "Music styles"
-
 2. Model this vocabulary in a SKOS record:
-
    - model in RDF turtle format
    - add at least one documentary note for each concept
    - add labels in other languages
    - feel free to add more music styles
    - establish relationships to external LOD resources (dbpedia, wikidata)
    - save file in .ttl format
-
 3. Visualize "Music styles" using web tool
    [SKOS play](http://labs.sparna.fr/skos-play/upload). Try out different
    visualization types.
@@ -714,7 +709,6 @@ vocabulary usage:
    the open source tool SKOSMOS [^14] to allow publication, reuse and retrieval
    of controlled vocabularies. It provides an API endpoint in order to integrate
    vocabulary terms in web applications.
-
 2. [Vocabs editor](https://vocabs.acdh.oeaw.ac.at/en/about#editor) is a
    web-based tool for collaborative development of small and medium-sized
    controlled vocabularies. The editor follows the SKOS data model for the main
@@ -727,12 +721,10 @@ vocabulary usage:
    concepts and collections within this concept scheme. Each user can find a
    summary of their latest activity on the user's page. The tool also provides
    an API to retrieve the data.
-
 3. [Vocabs SPARQL](https://vocabs-sparql.acdh.oeaw.ac.at/) is an interface for
    querying vocabularies triple store with SPARQL queries. It is developed on
    top of Jena Fuseki [^15] triple store and uses a YASGUI [^16] interface to
    access the endpoint.
-
 4. Vocabs Visualize is a data visualization service developed to show the
    relationships between concepts in multiple vocabularies and see how the
    represented topics are connected.

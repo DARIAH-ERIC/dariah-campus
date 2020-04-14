@@ -57,10 +57,10 @@ const PostPreview = ({ className, excerpt, frontmatter, next, previous }) => {
             {frontmatter.title}
           </Link>
         </Heading>
-        <DateTime>{frontmatter.date}</DateTime>
-        <Paragraph className={styles.text}>
-          {frontmatter.abstract || excerpt}
-        </Paragraph>
+        {/* <DateTime>{frontmatter.date}</DateTime> */}
+        {/* I don't want Paragraph here because I want to styles
+          this text differently from the post paragraphs */}
+        <div className={styles.text}>{frontmatter.abstract || excerpt}</div>
       </Card.Body>
       <Card.Footer>
         {frontmatter.authors
