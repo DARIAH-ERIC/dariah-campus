@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import FocusLock from 'react-focus-lock'
 import clsx from 'clsx'
 import { FaSearch } from 'react-icons/fa'
