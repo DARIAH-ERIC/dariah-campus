@@ -2,8 +2,12 @@
   background-color: var(--color-white);
 }
 
-.activated {
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+/*
+this class should be applied to header when it becomes sticky,
+i.e. on scroll. Not implemented yet. 
+*/
+.shadowed {
+  box-shadow: var(--boxshadow-medium);
 }
 
 .nav {
