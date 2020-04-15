@@ -1,7 +1,7 @@
 .container {
   bottom: 0;
   left: 100%;
-  margin-left: var(--margin-huge);
+  margin-left: var(--margin-huger);
   position: absolute;
   top: 0;
   width: 24rem;
@@ -10,7 +10,7 @@
 .container-left {
   left: unset;
   margin-left: 0;
-  margin-right: var(--margin-huge);
+  margin-right: var(--margin-huger);
   right: 100%;
 }
 

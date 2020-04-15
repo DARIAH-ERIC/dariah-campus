@@ -15,3 +15,10 @@
   flex: 1;
   text-align: right;
 }
+
+.text {
+  color: var(--color-black);
+  line-height: var(--line-height-large);
+  font-size: var(--font-size-medium);
+  margin: var(--margin-large) 0 0 0;
+}

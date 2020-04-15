@@ -2,6 +2,14 @@
   background-color: var(--color-white);
 }
 
+/*
+this class should be applied to header when it becomes sticky,
+i.e. on scroll. Not implemented yet. 
+*/
+.shadowed {
+  box-shadow: var(--boxshadow-medium);
+}
+
 .nav {
   display: flex;
   height: var(--height-header);
