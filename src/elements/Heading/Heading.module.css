@@ -1,5 +1,6 @@
 .heading {
   color: var(--color-text);
+  line-height: var(--line-height-small);
 }
 
 .heading1 {

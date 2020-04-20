@@ -183,7 +183,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       categories: [Category!] @link(by: "slug")
       host: String
       contributors: [Person!] @link(by: "slug")
-      date: Date @dateformat(formatString: "MMM, DD YYYY")
+      date: Date @dateformat(formatString: "MMM DD, YYYY")
       dateModified: Date @dateformat(formatString: "MMM, DD YYYY") @proxy(from: "fields.lastUpdated", fromNode: true)
       domain: String @defaultValue(value: "Social Sciences and Humanities")
       editors: [Person!] @link(by: "slug")

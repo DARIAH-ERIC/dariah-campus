@@ -3,7 +3,9 @@
   border-radius: var(--border-rounded-medium);
   color: var(--color-white);
   margin: var(--margin-huge) 0;
-  padding: var(--padding-huge);
+  padding: var(--padding-huge) var(--padding-huge);
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-large);
 }
 
 .panel p {
