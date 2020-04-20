@@ -10,7 +10,19 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
   // All resources get a citation
   // only remote resources have remoteUrl in YAML metadata
   // DESIR videos are considered hosted (hence no remoteUrl)
-  const citedAuthor = frontmatter.authors.map(author => author.name).join(', ')
+  const citedAuthor = frontmatter.authors
+    .map(author => author.name)
+    .join(', ')
+    .replace(/,(?!.*,)/gim, ' and')
+  const citedEditors = frontmatter.editors
+    ? 'Edited by ' +
+      frontmatter.editors
+        .map(editor => editor.name)
+        .join(', ')
+        .replace(/,(?!.*,)/gim, ' and') +
+      '. '
+    : ''
+
   const citedYear = frontmatter.remoteCitationYear
     ? ' (' + frontmatter.remoteCitationYear + '). '
     : ' (' + frontmatter.citationYear + '). '
@@ -33,6 +45,7 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
     citedYear +
     citedTitle +
     citedVersion +
+    citedEditors +
     citedPublisher +
     citedRestype +
     citedUrl
@@ -58,7 +71,14 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
         <h2 className={styles.citeAsHeading}>{title || 'Cite As'}</h2>
 
         <ul className={(styles.border, styles.items)}>
-          <li className={styles.item}>{dataCite}</li>
+          <li className={styles.item}>
+            {citedAuthor + citedYear} <i>{citedTitle}</i>{' '}
+            {citedVersion +
+              citedEditors +
+              citedPublisher +
+              citedRestype +
+              citedUrl}
+          </li>
           <li>
             <button onClick={() => copyToClipboard()}>Copy to Clipboard</button>
           </li>

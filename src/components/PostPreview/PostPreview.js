@@ -63,18 +63,24 @@ const PostPreview = ({ className, excerpt, frontmatter, next, previous }) => {
         </Paragraph>
       </Card.Body>
       <Card.Footer>
+        {/*
+        it turns out we have some resources with 10 and more authors
+        so we can really display only the first three here
+        */}
         {frontmatter.authors
-          ? frontmatter.authors.map(author =>
-              author.avatar ? (
-                <Image
-                  key={author.slug}
-                  className={styles.authorImage}
-                  fixed={author.avatar.image.fixed}
-                />
-              ) : (
-                <DefaultAvatar className={styles.authorImage} />
+          ? frontmatter.authors
+              .filter((i, index) => index < 3)
+              .map(author =>
+                author.avatar ? (
+                  <Image
+                    key={author.slug}
+                    className={styles.authorImage}
+                    fixed={author.avatar.image.fixed}
+                  />
+                ) : (
+                  <DefaultAvatar className={styles.authorImage} />
+                )
               )
-            )
           : null}
         <Link className={styles.readMoreLink} to={path}>
           Read more &rarr;

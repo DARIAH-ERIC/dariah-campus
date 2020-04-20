@@ -11,6 +11,7 @@
   left: unset;
   margin-left: 0;
   margin-right: var(--margin-huge);
+  width: 24rem;
   right: 100%;
 }
 
