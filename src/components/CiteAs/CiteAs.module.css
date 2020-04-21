@@ -38,6 +38,14 @@
   margin: var(--margin-large) 0;
 }
 
+.citeAs:hover a {
+  color: var(--color-primary);
+}
+
+.citeAs:hover a:hover {
+  color: var(--color-primary-darkened);
+}
+
 .items {
   list-style-type: none;
   margin-bottom: var(--margin-large);
