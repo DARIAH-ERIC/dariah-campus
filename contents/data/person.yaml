@@ -143,6 +143,9 @@
 - name: Quinn Dombrowski
   slug: quinn-dombrowski
 
+- name: Matej Ďurčo
+  slug: matej-durco
+
 - name: Marten Düring
   slug: marten-during
 
@@ -305,6 +308,9 @@
 - name: Jennifer Middendorf
   slug: jennifer-middendorf
 
+- name: Nikos Minadakis
+  slug: nikos-minadakis
+
 - name: Emmanuelle Morlock
   slug: emmanuelle-morlock
   avatar: ../images/authors/emmanuelle-morlock.jpg
@@ -427,6 +433,9 @@
 - name: Rebecca Seirig
   slug: rebecca-seirig
 
+- name: Nienke Van Shaverbeke
+  slug: nienke-van-shaverbeke
+
 - name: Stéfan Sinclair
   slug: stefan-sinclair
 
@@ -515,9 +524,6 @@
 - name: Ksenia Zaytseva
   slug: ksenia-zaytseva
   avatar: ../images/authors/ksenia-zaytseva.jpg
-
-- name: Matej Ďurčo
-  slug: matej-durco
 
 - name: Tanja Wissik
   slug: tanja-wissik
