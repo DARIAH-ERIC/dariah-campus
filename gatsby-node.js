@@ -192,7 +192,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       lang: String @defaultValue(value: "en")
       license: License @defaultValue(value: "CCBY 4.0") @link(by: "name")
       pid: ID
-      remotePublicationDate: Date@dateformat(formatString: "YYYY-MM-DD")
+      remotePublicationDate: Date@dateformat(formatString: "MMM DD, YYYY")
       remoteUrl: String
       slug: String @slug(from: "title")
       tags: [Tag!] @link(by: "slug")

@@ -10,10 +10,17 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
   // All resources get a citation
   // only remote resources have remoteUrl in YAML metadata
   // DESIR videos are considered hosted (hence no remoteUrl)
-  const citedAuthor = frontmatter.authors
+
+  // concat contributors, if any, to the the authors
+  const comboAuthors = frontmatter.contributors
+    ? [...frontmatter.authors, ...frontmatter.contributors]
+    : frontmatter.authors
+
+  const citedAuthors = comboAuthors
     .map(author => author.name)
     .join(', ')
     .replace(/,(?!.*,)/gim, ' and')
+
   const citedEditors = frontmatter.editors
     ? 'Edited by ' +
       frontmatter.editors
@@ -41,7 +48,7 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
     : 'https://campus.dariah.eu' +
       createPath(getBasePath('post'), frontmatter.slug)
   const dataCite =
-    citedAuthor +
+    citedAuthors +
     citedYear +
     citedTitle +
     citedVersion +
@@ -72,7 +79,7 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
 
         <ul className={(styles.border, styles.items)}>
           <li className={styles.item}>
-            {citedAuthor + citedYear} <i>{citedTitle}</i>{' '}
+            {citedAuthors + citedYear} <i>{citedTitle}</i>{' '}
             {citedVersion +
               citedEditors +
               citedPublisher +
