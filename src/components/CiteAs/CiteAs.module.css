@@ -4,14 +4,18 @@
   margin-left: var(--margin-huge);
   position: absolute;
   top: 0;
-  width: 24rem;
+  width: 30rem;
 }
 
 .container-left {
   left: unset;
   margin-left: 0;
-  margin-right: var(--margin-huge);
+  margin-right: var(--margin-huger);
   right: 100%;
+}
+
+.citedUrl {
+  word-break: break-all;
 }
 
 .citeAs {
@@ -46,6 +50,23 @@
   color: var(--color-primary-darkened);
 }
 
+.citeAsButton {
+  color: var(--color-text);
+  border: 1px solid var(--color-text);
+}
+
+.citeAs:hover .citeAsButton {
+  color: var(--color-white);
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.citeAs:hover .citeAsButton:hover {
+  background: var(--color-primary-darkened);
+  color: var(--color-white);
+  border: 1px solid var(--color-primary-darkened);
+}
+
 .items {
   list-style-type: none;
   margin-bottom: var(--margin-large);
@@ -58,13 +79,12 @@
 @media (max-width: 100em) {
   .container {
     height: unset;
-    margin: var(--margin-huge) 0;
+    margin: var(--margin-large) 0;
     position: static;
     width: unset;
   }
 
   .citeAs-heading {
-    font-size: var(--font-size-heading1);
-    text-transform: unset;
+    font-size: var(--font-size-heading4);
   }
 }

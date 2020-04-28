@@ -2,6 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 
 import styles from './CiteAs.module.css'
+import Button from 'elements/Button/Button'
 
 import { createPath } from 'utils/create-path'
 import { getBasePath } from 'utils/get-base-path'
@@ -11,7 +12,7 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
   // only remote resources have remoteUrl in YAML metadata
   // DESIR videos are considered hosted (hence no remoteUrl)
 
-  // concat contributors, if any, to the the authors
+  // concat contributors, if any, to the end of the authors
   const comboAuthors = frontmatter.contributors
     ? [...frontmatter.authors, ...frontmatter.contributors]
     : frontmatter.authors
@@ -33,7 +34,9 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
   const citedYear = frontmatter.remoteCitationYear
     ? ' (' + frontmatter.remoteCitationYear + '). '
     : ' (' + frontmatter.citationYear + '). '
-  const citedTitle = frontmatter.title + '. '
+  const citedTitle = frontmatter.title.slice(-1).match(/[!?]/)
+    ? frontmatter.title + ' '
+    : frontmatter.title + '. '
   const citedVersion = frontmatter.version
     ? 'Version ' + frontmatter.version + '. '
     : ''
@@ -79,15 +82,17 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
 
         <ul className={(styles.border, styles.items)}>
           <li className={styles.item}>
-            {citedAuthors + citedYear} <i>{citedTitle}</i>{' '}
-            {citedVersion +
-              citedEditors +
-              citedPublisher +
-              citedRestype +
-              citedUrl}
+            {citedAuthors + citedYear} {citedTitle}{' '}
+            {citedVersion + citedEditors + citedPublisher + citedRestype}
+            <span className={styles.citedUrl}>{citedUrl}</span>
           </li>
           <li>
-            <button onClick={() => copyToClipboard()}>Copy to Clipboard</button>
+            <Button
+              className={styles.citeAsButton}
+              onClick={() => copyToClipboard()}
+            >
+              Copy citation
+            </Button>
           </li>
         </ul>
 

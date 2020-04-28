@@ -4,13 +4,13 @@
   margin-left: var(--margin-huger);
   position: absolute;
   top: 0;
-  width: 24rem;
+  width: 32rem;
 }
 
 .container-left {
   left: unset;
   margin-left: 0;
-  margin-right: var(--margin-huge);
+  margin-right: var(--margin-huger);
   right: 100%;
 }
 
@@ -49,13 +49,12 @@
 @media (max-width: 100em) {
   .container {
     height: unset;
-    margin: var(--margin-huge) 0;
+    margin: var(--margin-large) 0;
     position: static;
     width: unset;
   }
 
   .toc-heading {
-    font-size: var(--font-size-heading1);
-    text-transform: unset;
+    font-size: var(--font-size-heading4);
   }
 }

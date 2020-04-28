@@ -8,7 +8,7 @@
   display: inline-block;
   font-size: var(--font-size-small);
   font-weight: 500;
-  padding: var(--padding-small) var(--padding-large);
+  padding: var(--padding-small) var(--padding-medium);
 }
 
 .button:hover {
