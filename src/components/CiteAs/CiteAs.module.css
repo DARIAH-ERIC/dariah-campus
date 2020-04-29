@@ -1,10 +1,10 @@
 .container {
   bottom: 0;
   left: 100%;
-  margin-left: var(--margin-huger);
+  margin-left: var(--margin-huge);
   position: absolute;
   top: 0;
-  width: 32rem;
+  width: 30rem;
 }
 
 .container-left {
@@ -14,7 +14,11 @@
   right: 100%;
 }
 
-.toc {
+.citedUrl {
+  word-break: break-all;
+}
+
+.citeAs {
   max-height: calc(100vh - var(--height-header));
   opacity: 0.4;
   overflow-y: auto;
@@ -23,11 +27,11 @@
   transition: opacity 0.2s ease;
 }
 
-.toc:hover {
+.citeAs:hover {
   opacity: 1;
 }
 
-.toc-heading {
+.citeAs-heading {
   font-size: var(--font-size-medium);
   text-transform: uppercase;
 }
@@ -38,12 +42,38 @@
   margin: var(--margin-large) 0;
 }
 
+.citeAs:hover a {
+  color: var(--color-primary);
+}
+
+.citeAs:hover a:hover {
+  color: var(--color-primary-darkened);
+}
+
+.citeAsButton {
+  color: var(--color-text);
+  border: 1px solid var(--color-text);
+}
+
+.citeAs:hover .citeAsButton {
+  color: var(--color-white);
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.citeAs:hover .citeAsButton:hover {
+  background: var(--color-primary-darkened);
+  color: var(--color-white);
+  border: 1px solid var(--color-primary-darkened);
+}
+
 .items {
   list-style-type: none;
+  margin-bottom: var(--margin-large);
 }
 
 .item {
-  margin: 1rem;
+  margin: 1rem 0;
 }
 
 @media (max-width: 100em) {
@@ -54,7 +84,7 @@
     width: unset;
   }
 
-  .toc-heading {
+  .citeAs-heading {
     font-size: var(--font-size-heading4);
   }
 }

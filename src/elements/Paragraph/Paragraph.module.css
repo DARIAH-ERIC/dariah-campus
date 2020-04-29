@@ -4,3 +4,16 @@
   margin: var(--margin-large) 0;
   font-size: var(--font-size-large);
 }
+
+.paragraph a {
+  color: var(--color-primary);
+}
+
+.paragraph a:hover {
+  color: var(--color-primary-darkened);
+}
+
+/* preventing superscripts from affecting line heights  */
+.paragraph sup {
+  line-height: 0;
+}

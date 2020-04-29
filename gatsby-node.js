@@ -130,6 +130,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       description: String @plain
       descriptionHtml: String @md @proxy(from: "description")
       name: String!
+      host: String
       image: File @fileByRelativePath
       posts: [Mdx] @link(by: "frontmatter.categories.slug", from: "slug")
       slug: String! @slug(from: "name")
@@ -180,9 +181,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       abstract: String
       authors: [Person!] @defaultValue(values: ["dariah"]) @link(by: "slug")
       categories: [Category!] @link(by: "slug")
+      host: String
       contributors: [Person!] @link(by: "slug")
       date: Date @dateformat(formatString: "MMM DD, YYYY")
-      dateModified: Date @dateformat(formatString: "MMM, DD YYYY") @proxy(from: "fields.lastUpdated", fromNode: true)
+      dateModified: Date @dateformat(formatString: "MMM DD, YYYY") @proxy(from: "fields.lastUpdated", fromNode: true)
       domain: String @defaultValue(value: "Social Sciences and Humanities")
       editors: [Person!] @link(by: "slug")
       featuredImage: File @fileByRelativePath
@@ -190,6 +192,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       lang: String @defaultValue(value: "en")
       license: License @defaultValue(value: "CCBY 4.0") @link(by: "name")
       pid: ID
+      remotePublicationDate: Date@dateformat(formatString: "MMM DD, YYYY")
+      remoteUrl: String
       slug: String @slug(from: "title")
       tags: [Tag!] @link(by: "slug")
       """ one of ["Data managers", "Domain researchers", "Data service engineers", "Data scientists/analysts"] """
