@@ -48,6 +48,20 @@
     text encoding in XML/TEI. He contributed significantly to the establishment
     of the symogih.org and dataforhistory.org projects.
 
+- name: Helena Bermúdez Sabel
+  slug: helena-bermudez-sabel
+  avatar: ..images/authors/helena-bermudez-sabel
+  description:
+    Helena Bermúdez Sabel holds a PhD in Medieval Studies from the Universidade
+    de Santiago de Compostela (2019). Her doctoral research focused on the
+    exploration of digital scholarly editing models for the study of linguistic
+    variation. She is currently a postdoctoral researcher in the SNSF project A
+    World of Possibilities (WoPoss) hosted at the University of Lausanne. Before
+    this position, she has participated in projects at the intersection of
+    computational methods and philology. Helena is proficient in Semantic Web
+    and XML technologies. She is especially interested in data modeling and the
+    formalization of annotation schemes.
+
 - name: Loup Bernard
   slug: loup-bernard
   avatar: ../images/authors/loup-bernard.jpg
@@ -149,6 +163,19 @@
 - name: Javier de la Rosa
   slug: javier-delarosa
   avatar: ../images/authors/javier-delarosa.jpg
+
+- name: Francesca Dell'Oro
+  slug: francesca-dell-oro
+  avatar: ../images/authors/francesca-dell-oro.jpeg
+  description:
+    Francesca Dell’Oro is SNSF assistant professor of diachronic linguistics at
+    the University of Lausanne and the PI of the WoPoss SNSF project on
+    modalisation paths in the Latin language. She is a historical linguist with
+    a strong interest in semantics. Her research and expertise spans from the
+    linguistic analysis of ancient documents in their material context and the
+    epistemological analysis of key concepts in the history of linguistics to
+    the development of complementary methods which combine computational tools
+    and philological expertise.
 
 - name: Jennifer Edmond
   slug: jennifer-edmond
@@ -307,6 +334,23 @@
   avatar: ../images/authors/vojtech-malinek.jpg
   email: malinek@ucl.cas.cz
 
+- name: Paola Marongiu
+  slug: paola-marongiu
+  avatar: ../images/authors/paola-marongiu.jpg
+  description:
+    Paola Marongiu is a PhD student in Linguistics at the University of
+    Lausanne, Section des Sciences du Langage et de l’Information, and Assistant
+    in the FNS project A world of Possibilities (WoPoss). Her research interests
+    include Theoretical Linguistics, with a focus on Latin and Modality, Digital
+    Humanities and Computational Linguistics. In her PhD thesis she performs a
+    quantitative and qualitative analysis of the co-occurrence of modal markers
+    in Latin, employing computational methods and resources. In 2018 she
+    obtained a Master degree in Theoretical and Applied Linguistics from the
+    University of Pavia, with a thesis focused on the conversion of the Index
+    Thomisticus Treebank into the Universal Dependencies annotation style. She
+    has a Bachelor in Modern Studies, obtained from the University of Bologna in
+    2016.
+
 - name: Maciej Maryl
   slug: maciej-maryl
   avatar: ../images/authors/maciej-maryl.jpg
@@ -377,6 +421,19 @@
   title: European Project Manager
   avatar: ../images/authors/marco-raciti.jpg
 
+- name: Simone Rebora
+  slug: simone-rebora
+  avatar: ../images/authors/simone-rebora.jpg
+  description:
+    Simone Rebora holds a PhD in Foreign Literatures and Literary Studies
+    (University of Verona) and a BSc in Electronic Engineering (Polytechnic
+    University of Torino). Currently, he works as a research fellow at the
+    Digital Humanities Lab of the University of Basel and he teaches comparative
+    literature at the University of Verona. His main research interests are
+    theory and history of literary historiography and reader response studies.
+    In the field of digital humanities, he focused on tools and methods like
+    OCR, stylometry, and sentiment analysis.
+
 - name: Charles Riondet
   slug: charles-riondet
   avatar: ../images/authors/charles-riondet.jpg
@@ -419,6 +476,29 @@
 
 - name: Rebecca Seirig
   slug: rebecca-seirig
+
+- name: Violeta Seretan
+  slug: violeta-seretan
+  description:
+    Violeta Seretan is a Senior Researcher in Digital Humanities at the
+    University of Lausanne and a member of the ENLAC SNSF-funded project on
+    digital critical editing of apocryphal literature (2017-2021). She earned a
+    M.Sc. in Computer Science from the University of Iasi and a Ph.D. in
+    Computational Linguistics from the University of Geneva. Between 2002 and
+    2010, she conducted research in Natural Language Processing at the
+    Department of Linguistics of the University of Geneva, with a focus on the
+    automatic identification of phraseological units and their treatment in
+    syntactic parsing and machine translation. Her monograph “Syntax‑Based
+    Collocation Extraction” was awarded the Latsis Prize, the most prestigious
+    academic distinction in Switzerland. After a post-doctoral fellowship at the
+    Institute for Language, Cognition and Computation of the University of
+    Edinburgh, in 2011 she joined the Department of Translation Technology of
+    the University of Geneva, where she conducted research on pre-editing and
+    post-editing for machine translation in the framework of the ACCEPT European
+    project she was a coordinator of. She has taught extensively and authored
+    more than 50 publications on topics related to human language technology and
+    digital humanities, including syntactic parsing, machine translation,
+    lexical acquisition, text simplification, and digital scholarly editing.
 
 - name: James Smithies
   slug: james-smithies
