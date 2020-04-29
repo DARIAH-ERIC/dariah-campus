@@ -50,7 +50,7 @@
 
 - name: Helena Bermúdez Sabel
   slug: helena-bermudez-sabel
-  avatar: ..images/authors/helena-bermudez-sabel
+  avatar: ..images/authors/helena-bermudez-sabel.jpg
   description:
     Helena Bermúdez Sabel holds a PhD in Medieval Studies from the Universidade
     de Santiago de Compostela (2019). Her doctoral research focused on the
@@ -170,7 +170,7 @@
 
 - name: Francesca Dell'Oro
   slug: francesca-dell-oro
-  avatar: ../images/authors/francesca-dell-oro.jpeg
+  avatar: ../images/authors/francesca-dell-oro.jpg
   description:
     Francesca Dell’Oro is SNSF assistant professor of diachronic linguistics at
     the University of Lausanne and the PI of the WoPoss SNSF project on
@@ -483,6 +483,7 @@
 
 - name: Violeta Seretan
   slug: violeta-seretan
+  avatar: ../images/authors/violeta-seretan.jpg
   description:
     Violeta Seretan is a Senior Researcher in Digital Humanities at the
     University of Lausanne and a member of the ENLAC SNSF-funded project on
