@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import clsx from 'clsx'
 
 import styles from './CiteAs.module.css'
@@ -101,9 +102,9 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
         <ul className={(styles.border, styles.items)}>
           <li className={styles.item}>
             Resources hosted on DARIAH-Campus are subjects to the{' '}
-            <a href="/docs/dariah-campus-training-materials-reuse-charter">
+            <Link to="/docs/dariah-campus-reuse-charter">
               DARIAH-Campus Training Materials Reuse Charter
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
