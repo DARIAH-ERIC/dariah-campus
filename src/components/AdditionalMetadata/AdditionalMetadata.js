@@ -43,6 +43,9 @@ const AdditionalMetadata = ({ metadata }) => (
       </span>
     )}
     {metadata.date && <span>Published: {metadata.date}</span>}
+    {metadata.remotePublicationDate && (
+      <span>Remote publication date: {metadata.remotePublicationDate}</span>
+    )}
     {metadata.type && <span>Resource type: {metadata.type.name}</span>}
     {metadata.categories && (
       <span>

@@ -12,6 +12,7 @@ import PostMetadata from 'components/PostMetadata/PostMetadata'
 import RelatedPosts from 'components/RelatedPosts/RelatedPosts'
 import ShareButtons from 'components/ShareButtons/ShareButtons'
 import TOC from 'components/TOC/TOC'
+import CiteAs from 'components/CiteAs/CiteAs'
 import VideoCard from 'components/VideoCard/VideoCard'
 
 import Container from 'elements/Container/Container'
@@ -31,6 +32,13 @@ const PostTemplate = ({ data }) => (
         <Image fluid={data.post.frontmatter.featuredImage.image.fluid} />
       )}
       <article style={{ position: 'relative' }}>
+        {
+          <CiteAs
+            left
+            title="Cite As"
+            frontmatter={data.post.frontmatter}
+          ></CiteAs>
+        }
         {data.post.frontmatter.toc && <TOC toc={data.post.tableOfContents} />}
         <MDXProvider
           components={{
@@ -104,12 +112,18 @@ export const query = graphql`
         categories {
           name
           slug
+          host
         }
         contributors {
           name
           slug
         }
         date
+        citationYear: date(formatString: "YYYY")
+        remotePublicationDate
+        remoteCitationYear: remotePublicationDate(formatString: "YYYY")
+        remoteUrl
+        host
         dateModified
         domain
         editors {
@@ -129,6 +143,7 @@ export const query = graphql`
           name
           url
         }
+        slug
         tags {
           name
           slug
