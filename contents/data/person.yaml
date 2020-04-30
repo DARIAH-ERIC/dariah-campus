@@ -52,6 +52,7 @@
 
 - name: Estelle Bunout
   slug: estelle-bunout
+  avatar: ../images/authors/estelle-bunout.jpg
 
 - name: Marjorie Burghart
   slug: marjorie-burghart
@@ -507,6 +508,10 @@
 - name: Henk van den Heuvel
   slug: henk-van-den-heuvel
   title: Speech Technologist
+
+- name: Frank Uiterwaal
+  slug: frank-uiterwaal
+  avatar: ..images/authors.frank-uiterwaal.jpg
 
 - name: Dieter Van Uytvanck
   slug: dieter-van-uytvanck
