@@ -23,7 +23,7 @@
   opacity: 0.4;
   overflow-y: auto;
   position: sticky;
-  top: var(--height-header);
+  top: calc(var(--height-header) + 2rem);
   transition: opacity 0.2s ease;
 }
 

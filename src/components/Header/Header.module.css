@@ -2,11 +2,7 @@
   background-color: var(--color-white);
 }
 
-/*
-this class should be applied to header when it becomes sticky,
-i.e. on scroll. Not implemented yet. 
-*/
-.shadowed {
+.header[data-active='true'] {
   box-shadow: var(--boxshadow-medium);
 }
 
@@ -32,7 +28,7 @@ i.e. on scroll. Not implemented yet.
 
 .nav-link {
   font-size: var(--font-size-small);
-  font-weight: 400;
+  font-weight: 500;
   padding: 0 var(--padding-small);
 }
 
@@ -150,6 +146,11 @@ i.e. on scroll. Not implemented yet.
   box-shadow: none;
   font-size: var(--font-size-text);
   padding: 1rem 1.5rem;
+}
+
+.search-bar input:focus {
+  /* removes ugly blue border in Safari */
+  outline: none;
 }
 
 @media (max-width: 60em) {

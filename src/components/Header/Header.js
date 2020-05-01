@@ -222,13 +222,33 @@ const MobileNav = () => {
   )
 }
 
-const Header = ({ className }) => (
-  <header className={clsx(styles.header, className)}>
-    <Container>
-      <Nav />
-      <MobileNav />
-    </Container>
-  </header>
-)
+const Header = ({ className }) => {
+  // determine if page has scrolled
+  const [scrolled, setScrolled] = React.useState(false)
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10
+      if (isScrolled !== scrolled) {
+        setScrolled(!scrolled)
+      }
+    }
+
+    document.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      // clean up the event handler when the component unmounts
+      document.removeEventListener('scroll', handleScroll)
+    }
+  }, [scrolled])
+
+  return (
+    <header className={clsx(styles.header, className)} data-active={scrolled}>
+      <Container size="huger">
+        <Nav />
+        <MobileNav />
+      </Container>
+    </header>
+  )
+}
 
 export default Header
