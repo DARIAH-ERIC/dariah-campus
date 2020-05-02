@@ -35,48 +35,58 @@ const Nav = () => {
 
   return (
     <nav className={styles.nav}>
-      <ul className={styles.navItems}>
-        <li className={styles.navItem}>
-          <NavLink to="/">
-            <Logo critical text />
-          </NavLink>
-        </li>
-        <li className={styles.navItem}>
-          <NavLink to={getBasePath('posts')}>Resources</NavLink>
-        </li>
-        <li className={styles.navItem}>
-          <NavLink to={getBasePath('tags')}>Topics</NavLink>
-        </li>
-        <li className={styles.navItem}>
-          <NavLink to={getBasePath('categories')}>Sources</NavLink>
-        </li>
-        <li className={styles.navItem}>
-          <NavLink to="/course-registry">Course Registry</NavLink>
-        </li>
-        <li className={styles.navItem}>
-          <NavLink to="/about">About</NavLink>
-        </li>
-      </ul>
-      <div className={styles.searchBarContainer}>
-        {searchBarVisible ? (
-          <SearchBar ref={searchBarRef} className={styles.searchBar} />
-        ) : null}
+      <div class={styles.navLeft}>
+        <ul className={styles.navItems}>
+          <li className={styles.navLogoItem}>
+            <NavLink to="/">
+              <Logo critical text />
+            </NavLink>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink to={getBasePath('posts')}>Resources</NavLink>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink to={getBasePath('tags')}>Topics</NavLink>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink to={getBasePath('categories')}>Sources</NavLink>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink to="/course-registry">Course Registry</NavLink>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink to="/about">About</NavLink>
+          </li>
+        </ul>
       </div>
-      <button
-        onClick={() =>
-          setSearchBarVisible(searchBarVisible => !searchBarVisible)
-        }
-        className={styles.searchBarToggle}
-      >
-        <FaSearch />
-      </button>
-      <Button
-        as={Link}
-        className={styles.button}
-        to="https://www.dariah.eu/helpdesk/"
-      >
-        Contact
-      </Button>
+      <div class={styles.navRight}>
+        <ul className={styles.navItems}>
+          <li className={styles.searchBarContainer}>
+            {searchBarVisible ? (
+              <SearchBar ref={searchBarRef} className={styles.searchBar} />
+            ) : null}
+          </li>
+          <li className={styles.navItem}>
+            <button
+              onClick={() =>
+                setSearchBarVisible(searchBarVisible => !searchBarVisible)
+              }
+              className={styles.searchBarToggle}
+            >
+              <FaSearch />
+            </button>
+          </li>
+          <li className={styles.navItemButton}>
+            <Button
+              as={Link}
+              className={styles.button}
+              to="https://www.dariah.eu/helpdesk/"
+            >
+              Contact
+            </Button>
+          </li>
+        </ul>
+      </div>
     </nav>
   )
 }
@@ -145,6 +155,8 @@ const MobileNav = () => {
         <NavLink to="/">
           <Logo critical text />
         </NavLink>
+        {/* we actually don't have search in nav bar on mobile
+          think about whether we whould add it later in the panel */}
         <div className={styles.mobileNavSearch} />
       </div>
       <Portal>
@@ -165,7 +177,7 @@ const MobileNav = () => {
             <div
               className={styles.mobileNavPanel}
               style={{
-                transform: isVisible ? undefined : 'translateX(-100%)',
+                transform: isVisible ? undefined : 'translateX(100%)',
               }}
             >
               <button
@@ -243,10 +255,8 @@ const Header = ({ className }) => {
 
   return (
     <header className={clsx(styles.header, className)} data-active={scrolled}>
-      <Container size="huger">
-        <Nav />
-        <MobileNav />
-      </Container>
+      <Nav />
+      <MobileNav />
     </header>
   )
 }
