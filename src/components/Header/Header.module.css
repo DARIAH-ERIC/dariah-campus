@@ -2,37 +2,37 @@
   background-color: var(--color-white);
 }
 
-/*
-this class should be applied to header when it becomes sticky,
-i.e. on scroll. Not implemented yet. 
-*/
-.shadowed {
+.header[data-active='true'] {
   box-shadow: var(--boxshadow-medium);
 }
 
 .nav {
   display: flex;
-  height: var(--height-header);
-  align-items: center;
   justify-content: space-between;
-  position: relative;
 }
 
 .nav-items {
-  align-items: center;
   display: flex;
   flex: 1;
-  font-weight: 500;
   list-style-type: none;
 }
 
 .nav-item {
   margin: 0 var(--margin-medium);
+  margin-top: 36px;
+}
+
+.nav-item-button {
+  margin-top: 29px;
+  margin-right: var(--padding-large);
+}
+
+.nav-logo-item {
+  padding-right: var(--padding-medium);
 }
 
 .nav-link {
   font-size: var(--font-size-small);
-  font-weight: 400;
   padding: 0 var(--padding-small);
 }
 
@@ -42,17 +42,10 @@ i.e. on scroll. Not implemented yet.
 }
 
 .button {
-  margin-right: var(--padding-large);
 }
 
 .mobile-nav {
   display: none;
-  justify-content: space-between;
-}
-
-.mobile-nav-bar {
-  align-items: center;
-  display: flex;
   justify-content: space-between;
 }
 
@@ -71,7 +64,10 @@ i.e. on scroll. Not implemented yet.
   background: none;
   border: none;
   cursor: pointer;
-  padding: var(--padding-large);
+  float: right;
+  padding-right: var(--padding-large);
+  padding-top: 3.5rem;
+  outline: none;
 }
 
 .mobile-nav-search {
@@ -84,7 +80,9 @@ i.e. on scroll. Not implemented yet.
   height: 100%;
   overflow: hidden;
   transition: transform 0.2s ease;
-  width: 30rem;
+  width: 25rem;
+  float: right;
+  box-shadow: var(--boxshadow-medium);
 }
 
 .mobile-nav-close-button {
@@ -93,22 +91,20 @@ i.e. on scroll. Not implemented yet.
   cursor: pointer;
   float: right;
   font-size: var(--font-size-title);
-  margin: var(--margin-medium) var(--margin-large);
+  margin: var(--margin-large);
+  outline: none;
 }
 
 .mobile-nav-items {
   list-style-type: none;
-  margin: var(--margin-huge) 0 var(--margin-medium);
+  margin: var(--margin-huge) 0 0;
   padding: var(--padding-large) 0;
 }
 
-.mobile-nav-item {
-  padding: var(--padding-medium);
-}
-
 .mobile-nav-link {
-  font-size: var(--font-size-heading1);
-  padding: var(--padding-medium);
+  font-size: var(--font-size-medium);
+  padding: var(--padding-medium) 0 0 var(--padding-medium);
+  display: block;
 }
 
 .mobile-active-nav-link,
@@ -133,11 +129,8 @@ i.e. on scroll. Not implemented yet.
 }
 
 .search-bar-container {
-  align-items: center;
+  margin-top: 25px;
   display: flex;
-  height: 100%;
-  position: absolute;
-  right: 16rem;
 }
 
 .search-bar {
@@ -149,7 +142,13 @@ i.e. on scroll. Not implemented yet.
   background-color: var(--color-white);
   box-shadow: none;
   font-size: var(--font-size-text);
-  padding: 1rem 1.5rem;
+  padding: var(--padding-medium) var(--padding-large);
+  width: 20em;
+}
+
+.search-bar input:focus {
+  /* removes ugly blue border in Safari */
+  outline: none;
 }
 
 @media (max-width: 60em) {
