@@ -15,9 +15,7 @@ import Image from 'components/Image/Image'
 import Link from 'components/Link/Link'
 
 import Card from 'elements/Card/Card'
-import DateTime from 'elements/DateTime/DateTime'
 import Heading from 'elements/Heading/Heading'
-import Paragraph from 'elements/Paragraph/Paragraph'
 
 import { createPath } from 'utils/create-path'
 import { getBasePath } from 'utils/get-base-path'

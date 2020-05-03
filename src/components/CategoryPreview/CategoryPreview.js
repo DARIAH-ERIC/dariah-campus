@@ -6,7 +6,6 @@ import ReadMoreLink from 'components/ReadMoreLink/ReadMoreLink'
 
 import Card from 'elements/Card/Card'
 import Heading from 'elements/Heading/Heading'
-import Paragraph from 'elements/Paragraph/Paragraph'
 
 import { createPath } from 'utils/create-path'
 import { getBasePath } from 'utils/get-base-path'

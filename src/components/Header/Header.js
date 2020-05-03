@@ -9,7 +9,6 @@ import Portal from 'components/Portal/Portal'
 import SearchBar from 'components/SearchBar/SearchBar'
 
 import Button from 'elements/Button/Button'
-import Container from 'elements/Container/Container'
 
 import { getBasePath } from 'utils/get-base-path'
 
