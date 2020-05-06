@@ -9,7 +9,6 @@ import Portal from 'components/Portal/Portal'
 import SearchBar from 'components/SearchBar/SearchBar'
 
 import Button from 'elements/Button/Button'
-import Container from 'elements/Container/Container'
 
 import { getBasePath } from 'utils/get-base-path'
 
@@ -35,48 +34,58 @@ const Nav = () => {
 
   return (
     <nav className={styles.nav}>
-      <ul className={styles.navItems}>
-        <li className={styles.navItem}>
-          <NavLink to="/">
-            <Logo critical text />
-          </NavLink>
-        </li>
-        <li className={styles.navItem}>
-          <NavLink to={getBasePath('posts')}>Resources</NavLink>
-        </li>
-        <li className={styles.navItem}>
-          <NavLink to={getBasePath('tags')}>Topics</NavLink>
-        </li>
-        <li className={styles.navItem}>
-          <NavLink to={getBasePath('categories')}>Sources</NavLink>
-        </li>
-        <li className={styles.navItem}>
-          <NavLink to="/course-registry">Course Registry</NavLink>
-        </li>
-        <li className={styles.navItem}>
-          <NavLink to="/about">About</NavLink>
-        </li>
-      </ul>
-      <div className={styles.searchBarContainer}>
-        {searchBarVisible ? (
-          <SearchBar ref={searchBarRef} className={styles.searchBar} />
-        ) : null}
+      <div class={styles.navLeft}>
+        <ul className={styles.navItems}>
+          <li className={styles.navLogoItem}>
+            <NavLink to="/">
+              <Logo critical text />
+            </NavLink>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink to={getBasePath('posts')}>Resources</NavLink>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink to={getBasePath('tags')}>Topics</NavLink>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink to={getBasePath('categories')}>Sources</NavLink>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink to="/course-registry">Course Registry</NavLink>
+          </li>
+          <li className={styles.navItem}>
+            <NavLink to="/about">About</NavLink>
+          </li>
+        </ul>
       </div>
-      <button
-        onClick={() =>
-          setSearchBarVisible(searchBarVisible => !searchBarVisible)
-        }
-        className={styles.searchBarToggle}
-      >
-        <FaSearch />
-      </button>
-      <Button
-        as={Link}
-        className={styles.button}
-        to="https://www.dariah.eu/helpdesk/"
-      >
-        Contact
-      </Button>
+      <div class={styles.navRight}>
+        <ul className={styles.navItems}>
+          <li className={styles.searchBarContainer}>
+            {searchBarVisible ? (
+              <SearchBar ref={searchBarRef} className={styles.searchBar} />
+            ) : null}
+          </li>
+          <li className={styles.navItem}>
+            <button
+              onClick={() =>
+                setSearchBarVisible(searchBarVisible => !searchBarVisible)
+              }
+              className={styles.searchBarToggle}
+            >
+              <FaSearch />
+            </button>
+          </li>
+          <li className={styles.navItemButton}>
+            <Button
+              as={Link}
+              className={styles.button}
+              to="https://www.dariah.eu/helpdesk/"
+            >
+              Contact
+            </Button>
+          </li>
+        </ul>
+      </div>
     </nav>
   )
 }
@@ -145,6 +154,8 @@ const MobileNav = () => {
         <NavLink to="/">
           <Logo critical text />
         </NavLink>
+        {/* we actually don't have search in nav bar on mobile
+          think about whether we whould add it later in the panel */}
         <div className={styles.mobileNavSearch} />
       </div>
       <Portal>
@@ -165,7 +176,7 @@ const MobileNav = () => {
             <div
               className={styles.mobileNavPanel}
               style={{
-                transform: isVisible ? undefined : 'translateX(-100%)',
+                transform: isVisible ? undefined : 'translateX(100%)',
               }}
             >
               <button
@@ -222,13 +233,31 @@ const MobileNav = () => {
   )
 }
 
-const Header = ({ className }) => (
-  <header className={clsx(styles.header, className)}>
-    <Container>
+const Header = ({ className }) => {
+  // determine if page has scrolled
+  const [scrolled, setScrolled] = React.useState(false)
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10
+      if (isScrolled !== scrolled) {
+        setScrolled(!scrolled)
+      }
+    }
+
+    document.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      // clean up the event handler when the component unmounts
+      document.removeEventListener('scroll', handleScroll)
+    }
+  }, [scrolled])
+
+  return (
+    <header className={clsx(styles.header, className)} data-active={scrolled}>
       <Nav />
       <MobileNav />
-    </Container>
-  </header>
-)
+    </header>
+  )
+}
 
 export default Header

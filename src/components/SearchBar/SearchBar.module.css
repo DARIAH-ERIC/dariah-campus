@@ -14,6 +14,10 @@
   width: 100%;
 }
 
+.search-bar-input:focus {
+  outline: none;
+}
+
 @media (max-width: 60em) {
   .search-bar {
     margin: var(--margin-large) var(--margin-medium);
