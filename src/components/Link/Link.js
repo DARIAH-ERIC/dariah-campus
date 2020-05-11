@@ -39,6 +39,10 @@ const Link = ({
             // adjust scroll position for nav header
             el.scrollIntoView()
             window.scrollBy({ top: -100 })
+            // push hash link on history stack
+            if (window.location.hash !== hash) {
+              window.history.pushState({}, '', hash)
+            }
           }
         }}
       >
