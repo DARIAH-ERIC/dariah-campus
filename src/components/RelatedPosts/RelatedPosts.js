@@ -13,12 +13,12 @@ import styles from './RelatedPosts.module.css'
 const RELATED_POSTS_COUNT = 4
 
 const pick = (posts, n) => {
-  if (posts.length < n - 1) {
+  if (posts.length < n) {
     return posts
   }
 
   const picked = new Set()
-  while (picked.length < n - 1) {
+  while (picked.size < n) {
     picked.add(posts[Math.floor(Math.random() * posts.length)])
   }
 
