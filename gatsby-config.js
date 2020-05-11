@@ -200,6 +200,9 @@ module.exports = {
               maxWidth: 800,
               withWebp: true,
               linkImagesToOriginal: false,
+              // change to ['title', 'alt'] if we want to use alt text as fallback caption
+              showCaptions: ['title'],
+              markdownCaptions: true,
             },
           },
           'gatsby-remark-copy-linked-files',
@@ -275,6 +278,8 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        anonymize: true,
+        respectDNT: true,
       },
     },
   ],
