@@ -26,8 +26,21 @@ const Link = ({
   ...rest
 }) => {
   if (String(to || href).startsWith('#')) {
+    const hash = to || href
     return (
-      <a className={clsx(styles.link, className)} href={to || href}>
+      <a
+        className={clsx(styles.link, className)}
+        href={hash}
+        onClick={event => {
+          const el = document.getElementById(hash.slice(1))
+          if (el) {
+            event.preventDefault()
+            // adjust scroll position for nav header
+            el.scrollIntoView()
+            window.scrollBy({ top: -100 })
+          }
+        }}
+      >
         {children}
       </a>
     )

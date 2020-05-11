@@ -12,7 +12,7 @@ export const createTocItems = (items, depth = 0, prefix) => (
         {prefix ? (
           <Link to={`${prefix}${item.url}`}>{item.title}</Link>
         ) : (
-          <a href={item.url}>{item.title}</a>
+          <Link to={item.url}>{item.title}</Link>
         )}
         {item.items && createTocItems(item.items, depth + 1, prefix)}
       </li>
