@@ -13,7 +13,8 @@ import styles from './Link.module.css'
 //     return false
 //   }
 // }
-const isAbsoluteUrl = url => url.startsWith('http')
+const isAbsoluteUrl = url =>
+  url.startsWith('http') || url.startsWith('/static/')
 
 const Link = ({
   activeClassName,
