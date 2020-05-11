@@ -185,6 +185,8 @@ module.exports = {
         path: path.resolve('./documentation'),
       },
     },
+    'gatsby-remark-images', // FIXME: Temporary workaround
+    'gatsby-remark-autolink-headers', // FIXME: Temporary workaround
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -199,7 +201,8 @@ module.exports = {
             options: {
               maxWidth: 800,
               withWebp: true,
-              linkImagesToOriginal: false,
+              quality: 50,
+              linkImagesToOriginal: true,
               // change to ['title', 'alt'] if we want to use alt text as fallback caption
               showCaptions: ['title'],
               markdownCaptions: true,
@@ -210,14 +213,9 @@ module.exports = {
           {
             resolve: 'gatsby-remark-autolink-headers',
             options: {
-              offsetY: '400',
               icon: false,
             },
           },
-        ],
-        plugins: [
-          'gatsby-remark-images', // FIXME: Temporary workaround
-          'gatsby-remark-autolink-headers', // FIXME: Temporary workaround
         ],
       },
     },
