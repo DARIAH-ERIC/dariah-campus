@@ -6,21 +6,21 @@ import Layout from 'components/Layout/Layout'
 import components from 'components'
 
 export const shouldUpdateScroll = ({ routerProps, prevRouterProps }) => {
-  const { hash } = routerProps.location
-
-  // Scroll to top when navigating back from hash link
-  if (!hash && routerProps.location.path === prevRouterProps.location.path) {
-    return [0, 0]
-  }
-
-  // Handle hash links to event sessions ourselves and don't let
-  // `gatsby-remark-autolink-headers` mess with things
-  if (hash && hash.startsWith('#session-')) {
-    const element = document.getElementById(hash.slice(1))
-    // offsetTop is relative to the closest relatively positioned ancestor,
-    // so we need to add 100vh, which is the height of EventHome
-    const offset = element.offsetTop + window.innerHeight
-    return [0, offset]
+  if (routerProps.location.path === prevRouterProps.location.path) {
+    // Hash link navigation
+    const { hash } = routerProps.location
+    // Scroll to top when navigating back from hash link
+    if (!hash) {
+      return [0, 0]
+    } else {
+      const el = document.getElementById(hash.slice(1))
+      if (el) {
+        el.scrollIntoView()
+        // Adjust for header height
+        window.scrollBy({ top: -100 })
+        return false
+      }
+    }
   }
 
   // Let Gatsby handle the rest
