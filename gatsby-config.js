@@ -200,6 +200,9 @@ module.exports = {
               maxWidth: 800,
               withWebp: true,
               linkImagesToOriginal: false,
+              // change to ['title', 'alt'] if we want to use alt text as fallback caption
+              showCaptions: ['title'],
+              markdownCaptions: true,
             },
           },
           'gatsby-remark-copy-linked-files',
