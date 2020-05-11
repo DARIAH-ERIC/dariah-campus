@@ -34,7 +34,7 @@ const Nav = () => {
 
   return (
     <nav className={styles.nav}>
-      <div class={styles.navLeft}>
+      <div className={styles.navLeft}>
         <ul className={styles.navItems}>
           <li className={styles.navLogoItem}>
             <NavLink to="/">
@@ -58,7 +58,7 @@ const Nav = () => {
           </li>
         </ul>
       </div>
-      <div class={styles.navRight}>
+      <div className={styles.navRight}>
         <ul className={styles.navItems}>
           <li className={styles.searchBarContainer}>
             {searchBarVisible ? (
