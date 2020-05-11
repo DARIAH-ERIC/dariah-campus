@@ -127,3 +127,10 @@ div#eventoverlay[data-reach-dialog-content] {
   padding: unset;
   margin: unset;
 }
+
+figcaption.gatsby-resp-image-figcaption {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 90%;
+  padding: var(--padding-small);
+}
