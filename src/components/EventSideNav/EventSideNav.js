@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'components/Link/Link'
 
 const EventSideNav = ({ sessions }) => (
   <div
@@ -8,21 +9,21 @@ const EventSideNav = ({ sessions }) => (
   >
     <ol style={{ position: 'sticky', top: '10rem' }}>
       <li>
-        <a href="#body" className="internal-link">
+        <Link to="#body" className="internal-link">
           <strong>Scroll to top</strong>
-        </a>
+        </Link>
       </li>
       {sessions.map((session, i) => (
         <li key={session.frontmatter.number}>
-          <a href={`#session-${session.frontmatter.number}`}>
+          <Link to={`#session-${session.frontmatter.number}`}>
             <strong>{session.frontmatter.title}</strong>
-          </a>
+          </Link>
         </li>
       ))}
       <li>
-        <a href="#footer" className="internal-link">
+        <Link to="#footer" className="internal-link">
           <strong>Scroll to bottom</strong>
-        </a>
+        </Link>
       </li>
     </ol>
   </div>

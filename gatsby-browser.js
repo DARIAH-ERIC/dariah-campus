@@ -5,26 +5,35 @@ import Layout from 'components/Layout/Layout'
 
 import components from 'components'
 
-export const shouldUpdateScroll = ({ routerProps, prevRouterProps }) => {
-  const { hash } = routerProps.location
+import { scrollToElement } from 'utils/scroll-to-element'
 
-  // Scroll to top when navigating back from hash link
-  if (!hash && routerProps.location.path === prevRouterProps.location.path) {
-    return [0, 0]
-  }
+// shouldUpdateScroll does not fire on initial page load
+export const shouldUpdateScroll = ({
+  routerProps,
+  prevRouterProps,
+  getSavedScrollPosition,
+}) => {
+  // const savedPosition = getSavedScrollPosition(routerProps.location)
 
-  // Handle hash links to event sessions ourselves and don't let
-  // `gatsby-remark-autolink-headers` mess with things
-  if (hash && hash.startsWith('#session-')) {
-    const element = document.getElementById(hash.slice(1))
-    // offsetTop is relative to the closest relatively positioned ancestor,
-    // so we need to add 100vh, which is the height of EventHome
-    const offset = element.offsetTop + window.innerHeight
-    return [0, offset]
+  if (routerProps.location.pathname === prevRouterProps.location.pathname) {
+    // Hash link navigation
+    // remaining problem: if a user navigates to an element#id and
+    // then clicks the browser back button, this will scroll the page
+    // to the element referenced in the location.hash, not the previous
+    // scroll position (which is annoying for footnote nav)
+    const { hash } = routerProps.location
+    // Scroll to top when navigating back from hash link
+    if (!hash) {
+      return [0, 0]
+    } else {
+      const el = document.getElementById(hash.slice(1))
+      const position = scrollToElement(el)
+      return [0, position]
+    }
   }
 
   // Let Gatsby handle the rest
-  return undefined
+  return true
 }
 
 export const wrapRootElement = ({ element }) => (

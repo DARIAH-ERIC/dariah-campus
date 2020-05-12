@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link as RelativeLink } from 'gatsby'
 import clsx from 'clsx'
+import { scrollToElement } from 'utils/scroll-to-element'
 
 import styles from './Link.module.css'
 
@@ -13,7 +14,8 @@ import styles from './Link.module.css'
 //     return false
 //   }
 // }
-const isAbsoluteUrl = url => url.startsWith('http')
+const isAbsoluteUrl = url =>
+  url.startsWith('http') || url.startsWith('/static/')
 
 const Link = ({
   activeClassName,
@@ -26,8 +28,16 @@ const Link = ({
   ...rest
 }) => {
   if (String(to || href).startsWith('#')) {
+    const hash = to || href
     return (
-      <a className={clsx(styles.link, className)} href={to || href}>
+      <a
+        className={clsx(styles.link, className)}
+        href={hash}
+        onClick={() => {
+          const el = document.getElementById(hash.slice(1))
+          window.scrollTo({ top: scrollToElement(el) })
+        }}
+      >
         {children}
       </a>
     )
@@ -63,8 +73,12 @@ const Link = ({
 }
 
 // Overwrites for posts
-export const PostLink = ({ className, ...rest }) => (
-  <Link {...rest} className={clsx(className, styles.postLink)} />
+export const PostLink = ({ className, to, href, ...rest }) => (
+  <Link
+    {...rest}
+    className={clsx(className, styles.postLink)}
+    to={to || href}
+  />
 )
 
 Link.propTypes = {

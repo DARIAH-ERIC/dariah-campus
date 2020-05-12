@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import clsx from 'clsx'
 
 import Link from 'components/Link/Link'
@@ -13,12 +13,12 @@ import styles from './RelatedPosts.module.css'
 const RELATED_POSTS_COUNT = 4
 
 const pick = (posts, n) => {
-  if (posts.length < n - 1) {
+  if (posts.length < n) {
     return posts
   }
 
   const picked = new Set()
-  while (picked.length < n - 1) {
+  while (picked.size < n) {
     picked.add(posts[Math.floor(Math.random() * posts.length)])
   }
 
@@ -26,7 +26,10 @@ const pick = (posts, n) => {
 }
 
 const RelatedPosts = ({ byCategory, byTag, className }) => {
-  const related = pick([...byCategory, ...byTag], RELATED_POSTS_COUNT)
+  const related = useMemo(
+    () => pick([...byCategory, ...byTag], RELATED_POSTS_COUNT),
+    [byCategory, byTag]
+  )
 
   if (!related.length) {
     return null

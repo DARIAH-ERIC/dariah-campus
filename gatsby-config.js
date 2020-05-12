@@ -185,6 +185,14 @@ module.exports = {
         path: path.resolve('./documentation'),
       },
     },
+    'gatsby-remark-images', // FIXME: Temporary workaround
+    {
+      resolve: 'gatsby-remark-autolink-headers',
+      options: {
+        offsetY: 100,
+        icon: false,
+      },
+    },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -199,7 +207,11 @@ module.exports = {
             options: {
               maxWidth: 800,
               withWebp: true,
-              linkImagesToOriginal: false,
+              quality: 50,
+              linkImagesToOriginal: true,
+              // change to ['title', 'alt'] if we want to use alt text as fallback caption
+              showCaptions: ['title'],
+              markdownCaptions: true,
             },
           },
           'gatsby-remark-copy-linked-files',
@@ -207,14 +219,10 @@ module.exports = {
           {
             resolve: 'gatsby-remark-autolink-headers',
             options: {
-              offsetY: '400',
+              offsetY: 100,
               icon: false,
             },
           },
-        ],
-        plugins: [
-          'gatsby-remark-images', // FIXME: Temporary workaround
-          'gatsby-remark-autolink-headers', // FIXME: Temporary workaround
         ],
       },
     },
@@ -235,7 +243,7 @@ module.exports = {
     //     postCssPlugins: [require('postcss-custom-properties')],
     //   },
     // },
-    {
+    process.env.ALGOLIA_API_KEY && {
       resolve: 'gatsby-plugin-algolia',
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
@@ -275,7 +283,9 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        anonymize: true,
+        respectDNT: true,
       },
     },
-  ],
+  ].filter(Boolean),
 }

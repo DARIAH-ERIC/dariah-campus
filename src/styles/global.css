@@ -127,3 +127,16 @@ div#eventoverlay[data-reach-dialog-content] {
   padding: unset;
   margin: unset;
 }
+
+/* workaround for some os/browser combos which display the backref character in unicode emoji mode */
+a.footnote-backref {
+  font-family: monospace;
+  margin-left: 1ch;
+}
+
+figcaption.gatsby-resp-image-figcaption {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 90%;
+  padding: var(--padding-small);
+}
