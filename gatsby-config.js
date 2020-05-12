@@ -186,7 +186,13 @@ module.exports = {
       },
     },
     'gatsby-remark-images', // FIXME: Temporary workaround
-    'gatsby-remark-autolink-headers', // FIXME: Temporary workaround
+    {
+      resolve: 'gatsby-remark-autolink-headers',
+      options: {
+        offsetY: 100,
+        icon: false,
+      },
+    },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -213,6 +219,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-autolink-headers',
             options: {
+              offsetY: 100,
               icon: false,
             },
           },
@@ -236,7 +243,7 @@ module.exports = {
     //     postCssPlugins: [require('postcss-custom-properties')],
     //   },
     // },
-    {
+    process.env.ALGOLIA_API_KEY && {
       resolve: 'gatsby-plugin-algolia',
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
@@ -280,5 +287,5 @@ module.exports = {
         respectDNT: true,
       },
     },
-  ],
+  ].filter(Boolean),
 }

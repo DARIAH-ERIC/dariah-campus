@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import clsx from 'clsx'
 
 import Link from 'components/Link/Link'
@@ -26,7 +26,10 @@ const pick = (posts, n) => {
 }
 
 const RelatedPosts = ({ byCategory, byTag, className }) => {
-  const related = pick([...byCategory, ...byTag], RELATED_POSTS_COUNT)
+  const related = useMemo(
+    () => pick([...byCategory, ...byTag], RELATED_POSTS_COUNT),
+    [byCategory, byTag]
+  )
 
   if (!related.length) {
     return null

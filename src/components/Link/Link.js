@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link as RelativeLink } from 'gatsby'
 import clsx from 'clsx'
+import { scrollToElement } from 'utils/scroll-to-element'
 
 import styles from './Link.module.css'
 
@@ -32,18 +33,9 @@ const Link = ({
       <a
         className={clsx(styles.link, className)}
         href={hash}
-        onClick={event => {
+        onClick={() => {
           const el = document.getElementById(hash.slice(1))
-          if (el) {
-            event.preventDefault()
-            // adjust scroll position for nav header
-            el.scrollIntoView()
-            window.scrollBy({ top: -100 })
-            // push hash link on history stack
-            if (window.location.hash !== hash) {
-              window.history.pushState({}, '', hash)
-            }
-          }
+          window.scrollTo({ top: scrollToElement(el) })
         }}
       >
         {children}
@@ -81,8 +73,12 @@ const Link = ({
 }
 
 // Overwrites for posts
-export const PostLink = ({ className, ...rest }) => (
-  <Link {...rest} className={clsx(className, styles.postLink)} />
+export const PostLink = ({ className, to, href, ...rest }) => (
+  <Link
+    {...rest}
+    className={clsx(className, styles.postLink)}
+    to={to || href}
+  />
 )
 
 Link.propTypes = {

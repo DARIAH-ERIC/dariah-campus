@@ -34,7 +34,6 @@ const Logo = ({ critical, text }) => {
 
   return text ? (
     <Image
-      critical={critical}
       loading={critical ? 'eager' : 'auto'}
       fadeIn={!critical}
       fixed={
