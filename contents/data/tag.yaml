@@ -130,6 +130,12 @@
 - name: Project management
   slug: project-management
 
+- name: Repositories & Collections
+  slug: repositories-and-collections
+  description:
+    Repositories and Collections are a means of storing data, artefacts and
+    cultural heritage items for research purposes
+
 - name: Research infrastructures
   slug: research-infrastructures
   description:

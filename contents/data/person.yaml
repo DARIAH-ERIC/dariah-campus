@@ -198,6 +198,9 @@
 - name: James Cummings
   slug: james-cummings
 
+- name: DARIAH-DE
+  slug: dariah-de
+
 - name: Javier de la Rosa
   slug: javier-delarosa
   avatar: ../images/authors/javier-delarosa.jpg
