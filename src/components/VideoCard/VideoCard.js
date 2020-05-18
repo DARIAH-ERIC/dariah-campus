@@ -11,7 +11,15 @@ import Heading from 'elements/Heading/Heading'
 
 import styles from './VideoCard.module.css'
 
-const VideoCard = ({ className, id, image, images, title, subtitle }) => {
+const VideoCard = ({
+  className,
+  id,
+  image,
+  images,
+  title,
+  startTime,
+  subtitle,
+}) => {
   let placeholderImage = null
 
   // The `images` prop holds the injected images in the `images` folder of a post
@@ -24,7 +32,10 @@ const VideoCard = ({ className, id, image, images, title, subtitle }) => {
   }
 
   return (
-    <Lightbox overlay={<Youtube id={id} autoPlay />} className={styles.item}>
+    <Lightbox
+      overlay={<Youtube id={id} startTime={startTime} autoPlay />}
+      className={styles.item}
+    >
       <Card className={clsx(styles.card, className)}>
         <Card.Body className={styles.cardBody}>
           {placeholderImage ? (

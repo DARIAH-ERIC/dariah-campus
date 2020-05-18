@@ -9,6 +9,7 @@ const Youtube = ({
   caption,
   id,
   relatedVideos = false,
+  startTime, // in seconds, e.g. 60
   url,
 }) => {
   const aspectRatio = 9 / 16
@@ -44,6 +45,10 @@ const Youtube = ({
 
   if (autoPlay) {
     embedUrl.searchParams.set('autoplay', 1)
+  }
+
+  if (startTime) {
+    embedUrl.searchParams.set('start', startTime)
   }
 
   return (
