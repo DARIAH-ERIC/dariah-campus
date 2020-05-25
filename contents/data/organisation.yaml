@@ -3,6 +3,11 @@
   logo: ../images/organisations/dariah-eu--white.png
   url: http://dariah.eu/
 
+- name: DARIAH-CH
+  slug: dariah-ch
+  logo:
+  url:
+
 - name: Humanities at Scale
   slug: humanities-at-scale
   logo: ../images/organisations/has--white.png
@@ -32,3 +37,12 @@
   slug: fcsh-nova
   logo: ../images/organisations/fcshnova--white.png
   url: https://www.fcsh.unl.pt/en/
+
+- name: Université de Neuchâtel
+  slug: unine
+  logo:
+  url: https://www.unine.ch/
+
+- name: Swiss Intitute for Bioinformatics
+  slug: sib
+  url: https://www.sib.swiss/
