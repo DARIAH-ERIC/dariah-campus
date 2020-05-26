@@ -34,8 +34,19 @@ const Link = ({
         className={clsx(styles.link, className)}
         href={hash}
         onClick={() => {
-          const el = document.getElementById(hash.slice(1))
-          window.scrollTo({ top: scrollToElement(el) })
+          if (window.location.hash === hash) {
+            // we cannot simply event.preventDefault(), because that breaks the
+            // slide effect on the events side nav -- so we let the browser scroll,
+            // and adjust the scroll position in the next frame
+            const el = document.getElementById(hash.slice(1))
+            window.requestAnimationFrame(() => {
+              window.scrollTo({ top: scrollToElement(el) })
+              // and again, since sometimes the first wouldn't work
+              window.requestAnimationFrame(() => {
+                window.scrollTo({ top: scrollToElement(el) })
+              })
+            })
+          }
         }}
       >
         {children}

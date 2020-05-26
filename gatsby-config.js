@@ -219,7 +219,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-autolink-headers',
             options: {
-              offsetY: 100,
+              offsetY: 90,
               icon: false,
             },
           },
@@ -284,6 +284,7 @@ module.exports = {
       options: {
         trackingId: process.env.GOOGLE_ANALYTICS_ID,
         anonymize: true,
+        defer: true,
         respectDNT: true,
       },
     },
