@@ -1,4 +1,4 @@
-const offsetY = 100
+const offsetY = 90
 
 export const scrollToElement = el => {
   if (el) {
