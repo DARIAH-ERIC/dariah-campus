@@ -8,13 +8,7 @@ import components from 'components'
 import { scrollToElement } from 'utils/scroll-to-element'
 
 // shouldUpdateScroll does not fire on initial page load
-export const shouldUpdateScroll = ({
-  routerProps,
-  prevRouterProps,
-  getSavedScrollPosition,
-}) => {
-  // const savedPosition = getSavedScrollPosition(routerProps.location)
-
+export const shouldUpdateScroll = ({ routerProps, prevRouterProps }) => {
   if (routerProps.location.pathname === prevRouterProps.location.pathname) {
     // Hash link navigation
     // remaining problem: if a user navigates to an element#id and
