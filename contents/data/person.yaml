@@ -200,6 +200,7 @@
 
 - name: DARIAH-DE
   slug: dariah-de
+  avatar: ../images/authors/dariah-de.png
 
 - name: Javier de la Rosa
   slug: javier-delarosa
