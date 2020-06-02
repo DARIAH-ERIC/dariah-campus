@@ -181,7 +181,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       abstract: String
       authors: [Person!] @defaultValue(values: ["dariah"]) @link(by: "slug")
       categories: [Category!] @link(by: "slug")
-      host: String
       contributors: [Person!] @link(by: "slug")
       date: Date @dateformat(formatString: "MMM DD, YYYY")
       dateModified: Date @dateformat(formatString: "MMM DD, YYYY") @proxy(from: "fields.lastUpdated", fromNode: true)
@@ -192,6 +191,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       lang: String @defaultValue(value: "en")
       license: License @defaultValue(value: "CCBY 4.0") @link(by: "name")
       pid: ID
+      remotePublisher: String
       remotePublicationDate: Date@dateformat(formatString: "MMM DD, YYYY")
       remoteUrl: String
       slug: String @slug(from: "title")
