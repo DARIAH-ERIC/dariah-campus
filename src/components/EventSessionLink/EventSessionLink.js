@@ -19,20 +19,34 @@ const Link = ({ link, children }) => (
   </a>
 )
 
-/* If there is more than one link attached, we can't yet control the string displayed, i.e. it's still possible to do only:
+/* If there is more than one link attached, we can do:
 <Link
   links={[
     'https://prezi.com/ckdl-wi8a6vi/reseaux-du-structuralisme/',
     'http://acta.structuralica.org/2016/08/01/209/',
   ]}
 />
+
+or, in a slightly more clunky fashion, if we want to display the text which is different from the link:
+
+ <Link
+   links={[
+     {url:'https://prezi.com/ckdl-wi8a6vi/reseaux-du-structuralisme/', text:'Reseaux du structuralisme'},
+     {url:'http://acta.structuralica.org/2016/08/01/209/', text:'someothertitle'}
+   ]}
+ />
+
 */
 const EventSessionLink = ({ link, links, children }) => (
   <div className="session__downloads">
     {links ? (
-      links.map((link, i) => <Link key={i} link={link} />)
+      links.map((link, i) => (
+        <Link key={i} link={link.url ? link.url : link}>
+          {link.text ? link.text : link.url}
+        </Link>
+      ))
     ) : (
-      <Link link={(link, children)} />
+      <Link link={link}>{children}</Link>
     )}
   </div>
 )

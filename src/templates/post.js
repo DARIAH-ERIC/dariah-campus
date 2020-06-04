@@ -123,7 +123,7 @@ export const query = graphql`
         remotePublicationDate
         remoteCitationYear: remotePublicationDate(formatString: "YYYY")
         remoteUrl
-        host
+        remotePublisher
         dateModified
         domain
         editors {

@@ -12,6 +12,15 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
   // All resources get a citation
   // only remote resources have remoteUrl in YAML metadata
   // DESIR videos are considered hosted (hence no remoteUrl)
+  //
+  //
+  function implicitPublisher() {
+    return frontmatter.remoteUrl
+      ? frontmatter.categories
+          .filter(cat => cat.slug !== 'dariah')
+          .map(cat => cat.host) + '. '
+      : 'DARIAH-Campus. '
+  }
 
   // concat contributors, if any, to the end of the authors
   const comboAuthors = frontmatter.contributors
@@ -41,11 +50,14 @@ const CiteAs = ({ children, className, left, title, frontmatter }) => {
   const citedVersion = frontmatter.version
     ? 'Version ' + frontmatter.version + '. '
     : ''
-  const citedPublisher = frontmatter.remoteUrl
-    ? frontmatter.categories
-        .filter(cat => cat.slug !== 'dariah')
-        .map(cat => cat.host) + '. '
-    : 'DARIAH-Campus. '
+  const citedPublisher = frontmatter.remotePublisher
+    ? frontmatter.remotePublisher + '. '
+    : implicitPublisher()
+  // const citedPublisher = frontmatter.remoteUrl
+  //     ? frontmatter.categories
+  //         .filter(cat => cat.slug !== 'dariah')
+  //         .map(cat => cat.host) + '. '
+  //     : 'DARIAH-Campus. '
   const citedRestype = '[' + frontmatter.type.name + ']. '
   const citedUrl = frontmatter.remoteUrl
     ? frontmatter.remoteUrl
