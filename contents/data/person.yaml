@@ -9,8 +9,18 @@
   twitter:
   website:
 
-- name: Mark Algee-Hewitt
-  slug: mark-algee-hewitt
+- name: Marc Aberle
+  slug: marc-aberle
+  avatar: ../images/authors/marc-aberle.jpg
+  description:
+    Marc Aberlé works at the University of Neuchâtel as a member of the
+    SNF-funded [Reformation, local assemblies and
+    ballots](http://p3.snf.ch/project-162968) project. He is currently writing a
+    PhD thesis about the link between Protestantism and Democracy. In order to
+    deliver a better understanding of this relation, he analyses the complex
+    thought patterns and intellectual networks at the core of this idea, which
+    brought many protestant thinkers and political actors to find themselves
+    sharing common values.
 
 - name: Marie Annisius
   slug: marie-annisius
@@ -29,6 +39,49 @@
 
 - name: Agiatis Benardou
   slug: agiatis-benardou
+
+- name: Francesco Beretta
+  slug: francesco-beretta
+  avatar: ../images/authors/francesco-beretta.jpg
+  description:
+    Francesco Beretta is a CNRS research fellow. Since 2009 he is head of the
+    Pôle histoire numérique within the Laboratoire de recherche historique
+    Rhône-Alpes (LARHRA CNRS UMR 5190 – Universités de Lyon et Grenoble).
+    Specialist in the history of Roman Inquisition, in the intellectual history
+    of Catholicism and the history of science, he has taught in different
+    universities in Fribourg, Lausanne, Paris, Lyon and Neuchâtel. In digital
+    humanities, his domains of competence are notably in the field of data
+    modelling and curation, ontologies, relational databases, GIS and semantic
+    text encoding in XML/TEI. He contributed significantly to the establishment
+    of the symogih.org and dataforhistory.org projects.
+
+- name: Helena Bermúdez Sabel
+  slug: helena-bermudez-sabel
+  avatar: ..images/authors/helena-bermudez-sabel.jpg
+  description:
+    Helena Bermúdez Sabel holds a PhD in Medieval Studies from the Universidade
+    de Santiago de Compostela (2019). Her doctoral research focused on the
+    exploration of digital scholarly editing models for the study of linguistic
+    variation. She is currently a postdoctoral researcher in the SNSF project A
+    World of Possibilities (WoPoss) hosted at the University of Lausanne. Before
+    this position, she has participated in projects at the intersection of
+    computational methods and philology. Helena is proficient in Semantic Web
+    and XML technologies. She is especially interested in data modeling and the
+    formalization of annotation schemes.
+
+- name: Loup Bernard
+  slug: loup-bernard
+  avatar: ../images/authors/loup-bernard.jpg
+  description:
+    Loup BERNARD is teaching at the University of Strasbourg since 2007. His
+    work as an archaeologist on the Celtic settlements and territories in
+    Provence and Southern Germany led him to develop an online GIS, ArkeoGIS. It
+    is a multilingual, multichronological online and free tool. The platform
+    allows the aggregation and querying of database extracts in order to share
+    existing data between archaeologists and paleoenvironmentalists. After over
+    a decade of use, ArkeoGIS has proved helpful for datasharing and linking
+    open spatialized data and offers nowadays over 100 different datasets to
+    professional researchers.
 
 - name: Christopher W. Blackwell
   slug: christopher-blackwell
@@ -52,7 +105,7 @@
 
 - name: Estelle Bunout
   slug: estelle-bunout
-  avatar: ../images/authors/estelle-bunout.jpg
+  avatar: ..images/authors/estelle-bunout.jpg
 
 - name: Marjorie Burghart
   slug: marjorie-burghart
@@ -85,6 +138,17 @@
     Cycle. She also undertakes analysis, decommissioning documentation and
     outreach work, particularly in relation to Indigenous DH and decolonising
     practice in the GLAM sector.
+
+- name: Vera Chiquet
+  slug: vera-chiquet
+  avatar: ../images/authors/vera-chiquet.jpg
+  description:
+    Vera Chiquet is a research assistant at the DigitalHumanities Lab of the
+    University of Basel. She is doing research in the field of photography,
+    visual studies, digital humanities, art history, cultural heritage
+    preservation and computational photography. Besides research, lecturing and
+    academic administration she works at the DaSCH as research assistant and
+    consulting for project partners.
 
 - name: Angeliki Chrysanthi
   slug: angeliki-chrysanthi
@@ -134,9 +198,26 @@
 - name: James Cummings
   slug: james-cummings
 
+- name: DARIAH-DE
+  slug: dariah-de
+  avatar: ../images/authors/dariah-de.png
+
 - name: Javier de la Rosa
   slug: javier-delarosa
   avatar: ../images/authors/javier-delarosa.jpg
+
+- name: Francesca Dell'Oro
+  slug: francesca-dell-oro
+  avatar: ../images/authors/francesca-dell-oro.jpg
+  description:
+    Francesca Dell’Oro is SNSF assistant professor of diachronic linguistics at
+    the University of Lausanne and the PI of the WoPoss SNSF project on
+    modalisation paths in the Latin language. She is a historical linguist with
+    a strong interest in semantics. Her research and expertise spans from the
+    linguistic analysis of ancient documents in their material context and the
+    epistemological analysis of key concepts in the history of linguistics to
+    the development of complementary methods which combine computational tools
+    and philological expertise.
 
 - name: Joy Damousi
   slug: joy-damousi
@@ -179,10 +260,26 @@
   twitter: panflack
   email: flack@sdvigpress.org
 
+- name: Fabrice Flückiger
+  slug: fabrice-fluckiger
+  avatar: ../images/authors/fabrice-fluckiger.jpg
+  description:
+    Fabrice Flückiger works at the Ludwig-Maximilian-Universität in Munich on
+    “Les miroirs du magistrat”, a project about practices and representations of
+    the Good Government in 16th century reformed cities funded by the SNF. He
+    wrote a PhD on religious disputations held in the Swiss Confederacy during
+    the early years of the Reformation, before joining the “Reformation, local
+    assemblies and ballots” research project at the University of Neuchâtel. He
+    is also an associate researcher at the Centre Européen des Études
+    Républicaines (CEDRE) in Paris.
+
 - name: Tessa Free
   slug: tessa-free
   twitter: tessafree
   email: tessa.free@oorlogsbronnen.nl
+
+- name: Simon Gabay
+  slug: simon-gabay
 
 - name: Ioana Galleron
   slug: ioana-galleron
@@ -194,6 +291,23 @@
   slug: vicky-garnett
   title: Training & Education Officer
   avatar: ../images/authors/vicky-garnett.jpg
+
+- name: Martin Grandjean
+  slug: martin-grandjean
+  avatar: ../images/authors/martin-grandjean.jpg
+  description:
+    Martin Grandjean is a Junior Lecturer in Contemporary History at the
+    University of Lausanne, Switzerland. His research focuses on the structuring
+    of scientific and diplomatic circles in the interwar period. He specializes
+    in the analysis of large volumes of archival data and works on the uses of
+    network analysis and data visualization in history.
+
+- name: Henrike Hoffmann
+  slug: henrike-hoffmann
+  avatar: ../images/authors/henrike-hoffmann.jpg
+  description:
+    Henrike Hoffmann is a research assistant at the Chair for the History of
+    Technology at ETH Zurich and in the SNF-project "Digital Federalism".
 
 - name: Tamar Gordon
   slug: tamar-gordon
@@ -232,6 +346,23 @@
 
 - name: Sotiria Kogou
   slug: sotiria-kogou
+
+- name: Jan Kaßel
+  slug: jan-kassel
+  avatar: ../images/authors/jan-kassel.jpeg
+  description:
+    Jan Kaßel is pursuing his Master’s degree in Computer Science at Leipzig
+    University, Germany. Jan's work on Hyperwell, his thesis project, concerns
+    digital ownership questions by introducing a local-first, Peer-to-Peer
+    system supporting W3C standards.
+
+- name: Thomas Koentges
+  slug: thomas-koentges
+  avatar: ../images/authors/thomas-koentges.jpg
+  description:
+    Dr. Thomas Koentges is an Assistant Professor in Digital Humanities at
+    Leipzig University, Germany. Thomas is a driven researcher and teacher who
+    likes to advance digital tools in Classics and the Arts.
 
 - name: Ondřej Košarko
   slug: ondrej-kosarko
@@ -281,10 +412,37 @@
   avatar: ../images/authors/frances-madden.jpg
   orcid: 0000-0002-5432-6116
 
+- name: Moritz Mähr
+  slug: moritz-mahr
+  avatar: ../images/authors/moritz-mahr.jpg
+  description:
+    Moritz Mähr is a PhD candidate at Collegium Helveticum Zurich and at the
+    Chair for the History of Technology at ETH Zurich. He examines the emergence
+    of state action in a digital society in Switzerland in the second half of
+    the 20th century in the light of computer history. For this purpose he also
+    builds digital history tools.
+
 - name: Vojtěch Malínek
   slug: vojtech-malinek
   avatar: ../images/authors/vojtech-malinek.jpg
   email: malinek@ucl.cas.cz
+
+- name: Paola Marongiu
+  slug: paola-marongiu
+  avatar: ../images/authors/paola-marongiu.jpg
+  description:
+    Paola Marongiu is a PhD student in Linguistics at the University of
+    Lausanne, Section des Sciences du Langage et de l’Information, and Assistant
+    in the FNS project A world of Possibilities (WoPoss). Her research interests
+    include Theoretical Linguistics, with a focus on Latin and Modality, Digital
+    Humanities and Computational Linguistics. In her PhD thesis she performs a
+    quantitative and qualitative analysis of the co-occurrence of modal markers
+    in Latin, employing computational methods and resources. In 2018 she
+    obtained a Master degree in Theoretical and Applied Linguistics from the
+    University of Pavia, with a thesis focused on the conversion of the Index
+    Thomisticus Treebank into the Universal Dependencies annotation style. She
+    has a Bachelor in Modern Studies, obtained from the University of Bologna in
+    2016.
 
 - name: Laura Mandell
   slug: laura-mandell
@@ -333,6 +491,19 @@
   email: munson@dh.uni-leipzig.de
   website: http://www.dh.uni-leipzig.de/wo/team/
 
+- name: Elisa Nury
+  slug: elisa-nury
+  avatar: ../images/authors/elisa-nury.jpg
+  description:
+    Elisa Nury is a postdoctoral researcher at the University of Geneva for the
+    Grammateus project on Greek documentary papyri. In 2018, she completed a
+    Ph.D. in Digital Humanities at the University of King’s College London, UK,
+    on the topic of automated collation tools and digital critical editions. She
+    graduated from the University of Lausanne, Switzerland, with a
+    specialisation in History of the Book and Critical Edition. Her research
+    interests include Latin literature, digital humanities and digital scholarly
+    editing.
+
 - name: Angel Nieves
   slug: angel-nieves
 
@@ -346,6 +517,9 @@
 
 - name: Maija Paavolainen
   slug: maija-paavolainen
+
+- name: Elodie Paupe
+  slug: elodie-paupe
 
 - name: Christopher Pickup
   slug: christopher-pickup
@@ -372,6 +546,19 @@
   slug: marco-raciti
   title: European Project Manager
   avatar: ../images/authors/marco-raciti.jpg
+
+- name: Simone Rebora
+  slug: simone-rebora
+  avatar: ../images/authors/simone-rebora.jpg
+  description:
+    Simone Rebora holds a PhD in Foreign Literatures and Literary Studies
+    (University of Verona) and a BSc in Electronic Engineering (Polytechnic
+    University of Torino). Currently, he works as a research fellow at the
+    Digital Humanities Lab of the University of Basel and he teaches comparative
+    literature at the University of Verona. His main research interests are
+    theory and history of literary historiography and reader response studies.
+    In the field of digital humanities, he focused on tools and methods like
+    OCR, stylometry, and sentiment analysis.
 
 - name: Claudia Resch
   slug: claudia-resch
@@ -427,12 +614,39 @@
   slug: susan-schreibman
   avatar: ../images/authors/susan-schreibman.jpg
 
+- name: Sara Schulthess
+  slug: sara-schulthess
+
 - name: Kristen Schuster
   slug: kristen-schuster
   avatar: ../images/authors/kristen-schuster.jpg
 
 - name: Rebecca Seirig
   slug: rebecca-seirig
+
+- name: Violeta Seretan
+  slug: violeta-seretan
+  avatar: ../images/authors/violeta-seretan.jpg
+  description:
+    Violeta Seretan is a Senior Researcher in Digital Humanities at the
+    University of Lausanne and a member of the ENLAC SNSF-funded project on
+    digital critical editing of apocryphal literature (2017-2021). She earned a
+    M.Sc. in Computer Science from the University of Iasi and a Ph.D. in
+    Computational Linguistics from the University of Geneva. Between 2002 and
+    2010, she conducted research in Natural Language Processing at the
+    Department of Linguistics of the University of Geneva, with a focus on the
+    automatic identification of phraseological units and their treatment in
+    syntactic parsing and machine translation. Her monograph “Syntax‑Based
+    Collocation Extraction” was awarded the Latsis Prize, the most prestigious
+    academic distinction in Switzerland. After a post-doctoral fellowship at the
+    Institute for Language, Cognition and Computation of the University of
+    Edinburgh, in 2011 she joined the Department of Translation Technology of
+    the University of Geneva, where she conducted research on pre-editing and
+    post-editing for machine translation in the framework of the ACCEPT European
+    project she was a coordinator of. She has taught extensively and authored
+    more than 50 publications on topics related to human language technology and
+    digital humanities, including syntactic parsing, machine translation,
+    lexical acquisition, text simplification, and digital scholarly editing.
 
 - name: Nienke Van Shaverbeke
   slug: nienke-van-shaverbeke
@@ -511,7 +725,7 @@
 
 - name: Frank Uiterwaal
   slug: frank-uiterwaal
-  avatar: ..images/authors.frank-uiterwaal.jpg
+  avatar: ../images/authors/frank-uiterwaal.jpg
 
 - name: Dieter Van Uytvanck
   slug: dieter-van-uytvanck
@@ -529,6 +743,17 @@
 - name: Ksenia Zaytseva
   slug: ksenia-zaytseva
   avatar: ../images/authors/ksenia-zaytseva.jpg
+
+- name: Daniela Zetti
+  slug: daniela-zetti
+  avatar: ../images/authors/daniela-zetti.jpg
+  description:
+    Daniela Zetti is a historian and postdoctoral researcher at Collegium
+    Helveticum Zurich and ETH Zurich. She studies the history of technology and
+    digital societies and likes to work in interdisciplinary research groups.
+
+- name: Matej Ďurčo
+  slug: matej-durco
 
 - name: Tanja Wissik
   slug: tanja-wissik
