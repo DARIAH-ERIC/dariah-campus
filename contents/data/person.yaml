@@ -22,6 +22,10 @@
     brought many protestant thinkers and political actors to find themselves
     sharing common values.
 
+- name: Mark Algee-Hewitt
+  slug: mark-algee-hewitt
+  avatar: ../images/authors/mark-algee-hewitt.jpg
+
 - name: Marie Annisius
   slug: marie-annisius
 
@@ -197,6 +201,10 @@
 
 - name: James Cummings
   slug: james-cummings
+
+- name: DARIAH-DE
+  slug: dariah-de
+  avatar: ../images/authors/dariah-de.png
 
 - name: Javier de la Rosa
   slug: javier-delarosa
