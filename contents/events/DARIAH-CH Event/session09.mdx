@@ -1,8 +1,12 @@
 ---
 number: 9
-title: 'Digital Critical Edition of Apocryphal Literature: Sharing the Pipeline'
+title:
+  'The WoPoss Workflow: the Semantic Annotation of Modality in a Diachronic
+  Corpus'
 speakers:
-  - violeta-seretan
+  - francesca-dell-oro
+  - helena-bermudez-sabel
+  - paola-marongiu
 #Add relevant names as listed in the person.yaml doc.
 synthesis: docs/doc-name.pdf
 ---
@@ -11,46 +15,62 @@ synthesis: docs/doc-name.pdf
 
 ## Abstract
 
-The emerging field of Digital Scholarly Editing, concerned with the application
-of the digital paradigm to textual criticism, offers a range of software
-solutions for assisting critical editors in their task of documenting textual
-variation. But how to go from a set of disparate of tools and resources to an
-integrated pipeline, where the data travels seamlessly from one format to
-another while meeting the requirements of each component? In this paper, we
-explain how we build and share an integrated processing pipeline that takes us
-from manuscript transcriptions in TEI XML format to a graph representation of
-textual variation, which constitutes the basis for the editorial work and the
-creation of the actual edition. With Docker Compose as the only technical
-prerequisite, running the pipeline is only one command away: the environments
-needed to run each software component are set up automatically, the processing
-begins, and at the end, a web server is launched which displays the
-automatically‑built variant graphs ready for manual analysis using a dedicated
-online tool, Stemmaweb. This is an example of how technological advances are
-exploited to alleviate the technical burden put on editors.
+The FNS project A world of possibilities (WoPoss) studies the evolution of modal
+meanings in the Latin language. Passages expressing modal notions such as
+‘possibility and ‘necessity’ are annotated following a pipeline that combines
+both automatic and manual annotation. This paper discusses the creation,
+annotation and processing of the WoPoss corpus. Texts are first gathered from
+different online open access resources to create the initial dataset. Due to the
+heterogeneity of formats and encodings, these texts are regularized before the
+application of an automatic linguistic annotation. The annotated files are then
+uploaded to the annotation platform INCEpTION. Through this platform, annotators
+add the relevant linguistic and semantic information following the WoPoss
+guidelines. The results of the automatic annotation are also curated. The
+fine-grained semantic annotation is the core activity of the WoPoss workflow,
+thus this paper focuses on the preparation of files and how the semantic
+annotation task is tackled.
 
-<Link link="https://serval.unil.ch/notice/serval:BIB_C8802C82FDDF">Get full paper</Link>
+<Link link="https://zenodo.org/record/3739440#.Xod0qpMzZTY">Get full paper on Zenodo</Link>
 <Speakers>
-<Speaker speaker="violeta-seretan">
+<Speaker speaker="francesca-dell-oro">
 
-Violeta Seretan is a Senior Researcher in Digital Humanities at the University
-of Lausanne and a member of the ENLAC SNSF-funded project on digital critical
-editing of apocryphal literature (2017-2021). She earned a M.Sc. in Computer
-Science from the University of Iasi and a Ph.D. in Computational Linguistics
-from the University of Geneva. Between 2002 and 2010, she conducted research in
-Natural Language Processing at the Department of Linguistics of the University
-of Geneva, with a focus on the automatic identification of phraseological units
-and their treatment in syntactic parsing and machine translation. Her monograph
-“Syntax‑Based Collocation Extraction” was awarded the Latsis Prize, the most
-prestigious academic distinction in Switzerland. After a post-doctoral
-fellowship at the Institute for Language, Cognition and Computation of the
-University of Edinburgh, in 2011 she joined the Department of Translation
-Technology of the University of Geneva, where she conducted research on
-pre-editing and post-editing for machine translation in the framework of the
-ACCEPT European project she was a coordinator of. She has taught extensively and
-authored more than 50 publications on topics related to human language
-technology and digital humanities, including syntactic parsing, machine
-translation, lexical acquisition, text simplification, and digital scholarly
-editing.
+Francesca Dell’Oro is SNSF assistant professor of diachronic linguistics at the
+University of Lausanne and the PI of the WoPoss SNSF project on modalisation
+paths in the Latin language. She is a historical linguist with a strong interest
+in semantics. Her research and expertise spans from the linguistic analysis of
+ancient documents in their material context and the epistemological analysis of
+key concepts in the history of linguistics to the development of complementary
+methods which combine computational tools and philological expertise.
+
+</Speaker>
+
+<Speaker speaker="helena-bermudez-sabel">
+
+Helena Bermúdez Sabel holds a PhD in Medieval Studies from the Universidade de
+Santiago de Compostela (2019). Her doctoral research focused on the exploration
+of digital scholarly editing models for the study of linguistic variation. She
+is currently a postdoctoral researcher in the SNSF project A World of
+Possibilities (WoPoss) hosted at the University of Lausanne. Before this
+position, she has participated in projects at the intersection of computational
+methods and philology. Helena is proficient in Semantic Web and XML
+technologies. She is especially interested in data modeling and the
+formalization of annotation schemes.
+
+</Speaker>
+
+<Speaker speaker="paola-marongiu">
+
+Paola Marongiu is a PhD student in Linguistics at the University of Lausanne,
+Section des Sciences du Langage et de l’Information, and Assistant in the FNS
+project A world of Possibilities (WoPoss). Her research interests include
+Theoretical Linguistics, with a focus on Latin and Modality, Digital Humanities
+and Computational Linguistics. In her PhD thesis she performs a quantitative and
+qualitative analysis of the co-occurrence of modal markers in Latin, employing
+computational methods and resources. In 2018 she obtained a Master degree in
+Theoretical and Applied Linguistics from the University of Pavia, with a thesis
+focused on the conversion of the Index Thomisticus Treebank into the Universal
+Dependencies annotation style. She has a Bachelor in Modern Studies, obtained
+from the University of Bologna in 2016.
 
 </Speaker>
 
