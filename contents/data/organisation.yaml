@@ -40,7 +40,7 @@
 
 - name: Université de Neuchâtel
   slug: unine
-  logo:
+  logo: ../images/organisations/UNINE_blanc.png
   url: https://www.unine.ch/
 
 - name: Swiss Intitute for Bioinformatics
