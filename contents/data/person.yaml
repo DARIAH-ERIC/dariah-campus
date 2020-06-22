@@ -12,6 +12,7 @@
 - name: Marc Aberle
   slug: marc-aberle
   avatar: ../images/authors/marc-aberle.jpg
+  email: marc.aberle@unine.ch
   description:
     Marc Aberlé works at the University of Neuchâtel as a member of the
     SNF-funded [Reformation, local assemblies and
@@ -46,6 +47,8 @@
 - name: Francesco Beretta
   slug: francesco-beretta
   avatar: ../images/authors/francesco-beretta.jpg
+  email: francesco.beretta@cnrs.fr
+  orcid: 0000-0002-4389-4126
   description:
     Francesco Beretta is a CNRS research fellow. Since 2009 he is head of the
     Pôle histoire numérique within the Laboratoire de recherche historique
@@ -61,6 +64,8 @@
 - name: Helena Bermúdez Sabel
   slug: helena-bermudez-sabel
   avatar: ../images/authors/helena-bermudez-sabel.jpg
+  email: helena.bermudezsabel@unil.ch
+  orcid: 0000-0002-8627-1367
   description:
     Helena Bermúdez Sabel holds a PhD in Medieval Studies from the Universidade
     de Santiago de Compostela (2019). Her doctoral research focused on the
@@ -75,6 +80,7 @@
 - name: Loup Bernard
   slug: loup-bernard
   avatar: ../images/authors/loup-bernard.jpg
+  email: loup.bernard@unistra.fr
   description:
     Loup BERNARD is teaching at the University of Strasbourg since 2007. His
     work as an archaeologist on the Celtic settlements and territories in
@@ -145,6 +151,7 @@
 - name: Vera Chiquet
   slug: vera-chiquet
   avatar: ../images/authors/vera-chiquet.jpg
+  email: vera.chiquet@unibas.ch
   description:
     Vera Chiquet is a research assistant at the DigitalHumanities Lab of the
     University of Basel. She is doing research in the field of photography,
@@ -208,6 +215,8 @@
 - name: Francesca Dell'Oro
   slug: francesca-dell-oro
   avatar: ../images/authors/francesca-dell-oro.jpg
+  email: francesca.delloro@unil.ch
+  orcid: 0000-0002-8343-356X
   description:
     Francesca Dell’Oro is SNSF assistant professor of diachronic linguistics at
     the University of Lausanne and the PI of the WoPoss SNSF project on
@@ -262,6 +271,8 @@
 - name: Fabrice Flückiger
   slug: fabrice-fluckiger
   avatar: ../images/authors/fabrice-fluckiger.jpg
+  email: fabrice.fluckiger@bluewin.ch
+  orcid: 0000-0002-0994-4177
   description:
     Fabrice Flückiger works at the Ludwig-Maximilian-Universität in Munich on
     “Les miroirs du magistrat”, a project about practices and representations of
@@ -294,6 +305,8 @@
 - name: Martin Grandjean
   slug: martin-grandjean
   avatar: ../images/authors/martin-grandjean.jpg
+  email: martin.grandjean@unil.ch
+  orcid: 0000-0003-3184-3943
   description:
     Martin Grandjean is a Junior Lecturer in Contemporary History at the
     University of Lausanne, Switzerland. His research focuses on the structuring
@@ -348,6 +361,8 @@
 
 - name: Jan Kaßel
   slug: jan-kassel
+  email: jan@kassel.works
+  orcid: 0000-0002-1763-5059
   avatar: ../images/authors/jan-kassel.jpeg
   description:
     Jan Kaßel is pursuing his Master’s degree in Computer Science at Leipzig
@@ -358,6 +373,8 @@
 - name: Thomas Koentges
   slug: thomas-koentges
   avatar: ../images/authors/thomas-koentges.jpg
+  email: thomas.koentges@uni-leipzig.de
+  orcid: 0000-0002-9425-5850
   description:
     Dr. Thomas Koentges is an Assistant Professor in Digital Humanities at
     Leipzig University, Germany. Thomas is a driven researcher and teacher who
@@ -429,6 +446,8 @@
 - name: Paola Marongiu
   slug: paola-marongiu
   avatar: ../images/authors/paola-marongiu.jpg
+  email: Paola.Marongiu@unil.ch
+  orcid: 0000-0002-5060-3307
   description:
     Paola Marongiu is a PhD student in Linguistics at the University of
     Lausanne, Section des Sciences du Langage et de l’Information, and Assistant
@@ -493,6 +512,8 @@
 - name: Elisa Nury
   slug: elisa-nury
   avatar: ../images/authors/elisa-nury.jpg
+  email: elisa.nury@gmail.com
+  orcid: 0000-0003-4688-6567
   description:
     Elisa Nury is a postdoctoral researcher at the University of Geneva for the
     Grammateus project on Greek documentary papyri. In 2018, she completed a
@@ -549,6 +570,8 @@
 - name: Simone Rebora
   slug: simone-rebora
   avatar: ../images/authors/simone-rebora.jpg
+  email: simone.rebora81@gmail.com
+  orcid: 0000-0002-1501-3774
   description:
     Simone Rebora holds a PhD in Foreign Literatures and Literary Studies
     (University of Verona) and a BSc in Electronic Engineering (Polytechnic
@@ -626,6 +649,8 @@
 - name: Violeta Seretan
   slug: violeta-seretan
   avatar: ../images/authors/violeta-seretan.jpg
+  email: violeta.seretan@unil.ch
+  orcid: 0000-0002-9199-9467
   description:
     Violeta Seretan is a Senior Researcher in Digital Humanities at the
     University of Lausanne and a member of the ENLAC SNSF-funded project on
