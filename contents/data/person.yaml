@@ -12,6 +12,7 @@
 - name: Marc Aberle
   slug: marc-aberle
   avatar: ../images/authors/marc-aberle.jpg
+  email: marc.aberle@unine.ch
   description:
     Marc Aberlé works at the University of Neuchâtel as a member of the
     SNF-funded [Reformation, local assemblies and
@@ -47,6 +48,8 @@
 - name: Francesco Beretta
   slug: francesco-beretta
   avatar: ../images/authors/francesco-beretta.jpg
+  email: francesco.beretta@cnrs.fr
+  orcid: 0000-0002-4389-4126
   description:
     Francesco Beretta is a CNRS research fellow. Since 2009 he is head of the
     Pôle histoire numérique within the Laboratoire de recherche historique
@@ -61,7 +64,9 @@
 
 - name: Helena Bermúdez Sabel
   slug: helena-bermudez-sabel
-  avatar: ..images/authors/helena-bermudez-sabel.jpg
+  avatar: ../images/authors/helena-bermudez-sabel.jpg
+  email: helena.bermudezsabel@unil.ch
+  orcid: 0000-0002-8627-1367
   description:
     Helena Bermúdez Sabel holds a PhD in Medieval Studies from the Universidade
     de Santiago de Compostela (2019). Her doctoral research focused on the
@@ -76,6 +81,7 @@
 - name: Loup Bernard
   slug: loup-bernard
   avatar: ../images/authors/loup-bernard.jpg
+  email: loup.bernard@unistra.fr
   description:
     Loup BERNARD is teaching at the University of Strasbourg since 2007. His
     work as an archaeologist on the Celtic settlements and territories in
@@ -146,6 +152,7 @@
 - name: Vera Chiquet
   slug: vera-chiquet
   avatar: ../images/authors/vera-chiquet.jpg
+  email: vera.chiquet@unibas.ch
   description:
     Vera Chiquet is a research assistant at the DigitalHumanities Lab of the
     University of Basel. She is doing research in the field of photography,
@@ -213,6 +220,8 @@
 - name: Francesca Dell'Oro
   slug: francesca-dell-oro
   avatar: ../images/authors/francesca-dell-oro.jpg
+  email: francesca.delloro@unil.ch
+  orcid: 0000-0002-8343-356X
   description:
     Francesca Dell’Oro is SNSF assistant professor of diachronic linguistics at
     the University of Lausanne and the PI of the WoPoss SNSF project on
@@ -267,6 +276,8 @@
 - name: Fabrice Flückiger
   slug: fabrice-fluckiger
   avatar: ../images/authors/fabrice-fluckiger.jpg
+  email: fabrice.fluckiger@bluewin.ch
+  orcid: 0000-0002-0994-4177
   description:
     Fabrice Flückiger works at the Ludwig-Maximilian-Universität in Munich on
     “Les miroirs du magistrat”, a project about practices and representations of
@@ -299,6 +310,8 @@
 - name: Martin Grandjean
   slug: martin-grandjean
   avatar: ../images/authors/martin-grandjean.jpg
+  email: martin.grandjean@unil.ch
+  orcid: 0000-0003-3184-3943
   description:
     Martin Grandjean is a Junior Lecturer in Contemporary History at the
     University of Lausanne, Switzerland. His research focuses on the structuring
@@ -353,6 +366,8 @@
 
 - name: Jan Kaßel
   slug: jan-kassel
+  email: jan@kassel.works
+  orcid: 0000-0002-1763-5059
   avatar: ../images/authors/jan-kassel.jpeg
   description:
     Jan Kaßel is pursuing his Master’s degree in Computer Science at Leipzig
@@ -363,6 +378,8 @@
 - name: Thomas Koentges
   slug: thomas-koentges
   avatar: ../images/authors/thomas-koentges.jpg
+  email: thomas.koentges@uni-leipzig.de
+  orcid: 0000-0002-9425-5850
   description:
     Dr. Thomas Koentges is an Assistant Professor in Digital Humanities at
     Leipzig University, Germany. Thomas is a driven researcher and teacher who
@@ -385,6 +402,27 @@
   slug: jacob-kreutzfeldt
   avatar: ../images/authors/jacob-kreutzfeldt.jpg
 
+- name: Moniek Kuijpers
+  slug: moniek-kuijpers
+  avatar: ../images/authors/moniek-kuijpers.jpg
+  description:
+    Moniek’s research focuses mainly on absorbing reading experiences. She did
+    her PhD in empirical literary studies at Utrecht University in The
+    Netherlands, investigating the textual features that can lead to absorption
+    during reading. Her first post-doc at the Max Planck Institute for Empirical
+    Aesthetics in Frankfurt, Germany focused on the personality traits that
+    predict absorbed reading and the eye movement correlates of absorbed
+    reading. She is currently a post-doctoral researcher at the Digital
+    Humanities lab in Basel, Switzerland, where she is a PI on a SNSF-funded
+    “Digital Lives” research project teaching machine learning algorithms to
+    detect instances of absorption in online reader reviews. She is also a board
+    member of IGEL (the International Society for the Empirical Study of
+    Literature) in charge of their training school program, and a member of PALA
+    (Poetics and Linguistics Association) and E-READ (Evolution of Reading in
+    the Age of Digitization). Some of her other research interests involve
+    (absorbed) reading and well-being, bibliotherapy, story literacy, reading
+    habits, and psychometrics.
+
 - name: Stefanie Laepke
   slug: stefanie-laepke
   avatar: ../images/authors/stefanie-laepke.jpg
@@ -404,6 +442,25 @@
 - name: Jakob Lenardič
   slug: jakob-lenardic
   avatar: ../images/authors/jakob-lenardic.jpg
+
+- name: Proska Lendvai
+  slug: piroska-lendvai
+  avatar: ../images/authors/piroska-lendvai.jpg
+  description:
+    Piroska Lendvai studied Anglo-Saxon and Slavic philology (Pécs, Hungary).
+    Being inspired by seminal science fiction literature such as 'Blade Runner'
+    and 'Neuromancer', she decided to do a PhD in a field that combines
+    languages and AI - natural language processing (Tilburg, Netherlands). After
+    spending several years on training algorithms to understand what people do
+    when they must talk to a machine, for example about about train connections
+    ('Computer, I never told you I wanted to go to Mügli am See! Restart
+    again!'), or when they must sort zoology metadata into museum databases
+    ('Computer, 'dead humid leaves' should be the finding place of this animal,
+    not the cause of its death!'), she decided to go back to her roots, and has
+    taken up a position at the Research Institute for Linguistics (Budapest,
+    Hungary). Currently, she is affiliated to the Digital Humanities Lab of the
+    University of Basel (Switzerland), where she supports research in Humanities
+    and Social Sciences via tools and approaches from language technology.
 
 - name: Martin Lhoták
   slug: martin-lhotak
@@ -434,6 +491,8 @@
 - name: Paola Marongiu
   slug: paola-marongiu
   avatar: ../images/authors/paola-marongiu.jpg
+  email: Paola.Marongiu@unil.ch
+  orcid: 0000-0002-5060-3307
   description:
     Paola Marongiu is a PhD student in Linguistics at the University of
     Lausanne, Section des Sciences du Langage et de l’Information, and Assistant
@@ -498,6 +557,8 @@
 - name: Elisa Nury
   slug: elisa-nury
   avatar: ../images/authors/elisa-nury.jpg
+  email: elisa.nury@gmail.com
+  orcid: 0000-0003-4688-6567
   description:
     Elisa Nury is a postdoctoral researcher at the University of Geneva for the
     Grammateus project on Greek documentary papyri. In 2018, she completed a
@@ -554,6 +615,8 @@
 - name: Simone Rebora
   slug: simone-rebora
   avatar: ../images/authors/simone-rebora.jpg
+  email: simone.rebora81@gmail.com
+  orcid: 0000-0002-1501-3774
   description:
     Simone Rebora holds a PhD in Foreign Literatures and Literary Studies
     (University of Verona) and a BSc in Electronic Engineering (Polytechnic
@@ -631,6 +694,8 @@
 - name: Violeta Seretan
   slug: violeta-seretan
   avatar: ../images/authors/violeta-seretan.jpg
+  email: violeta.seretan@unil.ch
+  orcid: 0000-0002-9199-9467
   description:
     Violeta Seretan is a Senior Researcher in Digital Humanities at the
     University of Lausanne and a member of the ENLAC SNSF-funded project on
