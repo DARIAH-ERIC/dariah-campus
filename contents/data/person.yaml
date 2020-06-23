@@ -397,6 +397,27 @@
   slug: jacob-kreutzfeldt
   avatar: ../images/authors/jacob-kreutzfeldt.jpg
 
+- name: Moniek Kuijpers
+  slug: moniek-kuijpers
+  avatar: ../images/authors/moniek-kuijpers.jpg
+  description:
+    Moniek’s research focuses mainly on absorbing reading experiences. She did
+    her PhD in empirical literary studies at Utrecht University in The
+    Netherlands, investigating the textual features that can lead to absorption
+    during reading. Her first post-doc at the Max Planck Institute for Empirical
+    Aesthetics in Frankfurt, Germany focused on the personality traits that
+    predict absorbed reading and the eye movement correlates of absorbed
+    reading. She is currently a post-doctoral researcher at the Digital
+    Humanities lab in Basel, Switzerland, where she is a PI on a SNSF-funded
+    “Digital Lives” research project teaching machine learning algorithms to
+    detect instances of absorption in online reader reviews. She is also a board
+    member of IGEL (the International Society for the Empirical Study of
+    Literature) in charge of their training school program, and a member of PALA
+    (Poetics and Linguistics Association) and E-READ (Evolution of Reading in
+    the Age of Digitization). Some of her other research interests involve
+    (absorbed) reading and well-being, bibliotherapy, story literacy, reading
+    habits, and psychometrics.
+
 - name: Stefanie Laepke
   slug: stefanie-laepke
   avatar: ../images/authors/stefanie-laepke.jpg
@@ -416,6 +437,25 @@
 - name: Jakob Lenardič
   slug: jakob-lenardic
   avatar: ../images/authors/jakob-lenardic.jpg
+
+- name: Proska Lendvai
+  slug: piroska-lendvai
+  avatar: ../images/authors/piroska-lendvai.jpg
+  description:
+    Piroska Lendvai studied Anglo-Saxon and Slavic philology (Pécs, Hungary).
+    Being inspired by seminal science fiction literature such as 'Blade Runner'
+    and 'Neuromancer', she decided to do a PhD in a field that combines
+    languages and AI - natural language processing (Tilburg, Netherlands). After
+    spending several years on training algorithms to understand what people do
+    when they must talk to a machine, for example about about train connections
+    ('Computer, I never told you I wanted to go to Mügli am See! Restart
+    again!'), or when they must sort zoology metadata into museum databases
+    ('Computer, 'dead humid leaves' should be the finding place of this animal,
+    not the cause of its death!'), she decided to go back to her roots, and has
+    taken up a position at the Research Institute for Linguistics (Budapest,
+    Hungary). Currently, she is affiliated to the Digital Humanities Lab of the
+    University of Basel (Switzerland), where she supports research in Humanities
+    and Social Sciences via tools and approaches from language technology.
 
 - name: Martin Lhoták
   slug: martin-lhotak
