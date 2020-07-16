@@ -113,6 +113,22 @@
   slug: george-bruseker
   avatar: ../images/authors/george-bruseker.jpg
 
+- name: Mikey Bruun Andersen
+  slug: mikey-bruun-andersen
+  description:
+    MA Information Studies, Aarhus University, Denmark. He is currently involved
+    in developing teaching and learning platforms at the Centre for Teaching
+    Development and Digital Media, Aarhus University where he focuses on
+    programming and front-end development of educational materials and
+    platforms. Mikey’s MA Thesis focuses on hybrid learning and work spaces and
+    how technologies can be utilized to support new hybrid communication,
+    collaboration and community formats. He is also chairperson of Coding
+    Pirates Aarhus, where he leads and organises game jams and game design
+    processes in partnerships between students, youngsters and the creative
+    industries. Coding Pirates Denmark is an association with many local
+    chapters, hundreds of volunteers (many of them HE students) and thousands of
+    youngsters and children.
+
 - name: Estelle Bunout
   slug: estelle-bunout
   avatar: ..images/authors/estelle-bunout.jpg
@@ -259,6 +275,23 @@
   slug: jennifer-edmond
   title: DARIAH Director
   avatar: ../images/authors/jennifer-edmond.jpg
+
+- name: Jeanette Falk Olesen
+  slug: jeanette-falk-olesen
+  description:
+    PhD fellow at Department of Digital Design and Information Studies at Aarhus
+    University. During her PhD project, she has researched how design processes
+    are influenced and accelerated by both game jam and hackathon formats. She
+    uses a mix of qualitative and quantitative methods to gain insights into
+    these accelerated design processes, including participating in game jams and
+    hackathons herself. Her work has included studying how game jam and
+    hackathon formats can be adapted to facilitate creativity and support
+    academic processes, such as teaching, learning and researching. Her research
+    interests include how processes of imagining, designing and developing
+    technology can be democratised for example via formats which accelerates
+    design processes, and via maker materials which lowers the barrier to
+    technology development. She is also one of the founders of an Aarhus-based
+    game development meet-up group, called GOLD.
 
 - name: Frank Fischer
   slug: frank-fischer
@@ -780,6 +813,35 @@
 
 - name: Christopher Thomson
   slug: christopher-thomson
+
+- name: Claus Toft-Nielsen
+  slug: claus-toft-nielsen
+  description:
+    Assistant Professor, School of Communication and Culture, Aarhus University,
+    Denmark. Claus is an avid gamer, holds a PhD in media and game studies, and
+    has been researching digital games and game cultures for more than a decade.
+    His research focuses on digital games with a specific interest in games and
+    fan studies, game genres and gamers wider transmedia engagement, as well as
+    a focus on the intersections of gameplay, gaming practices and gender.
+    Parallel to this, he has also been teaching numerous courses on game
+    studies, theoretical perspectives on games and gaming, as well as digital
+    games and learning.
+
+- name: Rikke Toft Nørgård
+  slug: rikke-toft-norgard
+  description:
+    Assistant Professor in Educational Design and Technology, Aarhus University,
+    Denmark. Rikke holds a PhD in Game Studies and Game Design and she has for
+    the last 10 years been researching and teaching digital games and design.
+    Rikke works at the intersections of digital humanities, design, educational
+    development and future higher education. A focus of her research is within
+    higher education philosophy and theory on design, thinking and configuration
+    of higher education institutions with a special focus on the future of the
+    Arts and Humanities. She has also led and participated in several projects
+    on developing educational materials, modules and formats for students and
+    teachers, exploring how higher education can be transformed through digital
+    humanities pedagogy, student-society partnerships and leveraging the
+    potentials of design and technology within the Arts.
 
 - name: Justin Tonra
   slug: justin-tonra
