@@ -83,6 +83,10 @@
     of gender within the field, gender issues and research practices and
     feminist scholarship for the digital age
 
+- name: Game Jams
+  slug: game-jams
+  description: Games jams are contests where people create new video games.
+
 - name: Geotagging
   slug: geotagging
   description:
@@ -197,6 +201,8 @@
 - name: Software development
   slug: software-development
   description:
+    Software development is the process of creating, designing, deploying and
+    supporting standalone or individual software using programming language.
 
 - name: Speech technology
   slug: speech-technology
