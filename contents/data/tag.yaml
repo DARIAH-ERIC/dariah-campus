@@ -18,6 +18,14 @@
     non-academic experts and enthusiasts in a given discipline to provide,
     process and/or analyse data
 
+- name: Computational Imaging
+  slug: computational-imaging
+  description:
+    Computational Imaging is a field in computer science that studies the
+    computational extraction of information from digital photographs and has
+    democratised the process of capturing, preserving, disseminating, and
+    promoting heritage.
+
 - name: Controlled Vocabularies
   slug: controlled-vocabularies
   description:
