@@ -589,6 +589,21 @@
   email: munson@dh.uni-leipzig.de
   website: http://www.dh.uni-leipzig.de/wo/team/
 
+- name: Eslam Nofal
+  slug: eslam-nofal
+  description:
+    Eslam Nofal is a Postdoctoral Researcher in Digital Heritage at Maastricht
+    University (Netherlands). He is also affiliated to the Department of
+    Architecture at Assiut University (Egypt). His research interests fit in the
+    intersection of Human-Computer interaction and digital heritage, by
+    designing, implementing and evaluating interactive systems, aiming for
+    better communication and engagement of heritage in museums and beyond. He
+    received his PhD degree from KU Leuven (Belgium), where he introduced the
+    approach of “Phygital Heritage”, which entails how heritage information can
+    be disclosed via simultaneous and integrated physical and digital means, as
+    a potential medium for engaging and meaningful communication of heritage to
+    the broader public.
+
 - name: Elisa Nury
   slug: elisa-nury
   avatar: ../images/authors/elisa-nury.jpg
@@ -759,6 +774,18 @@
 
 - name: Nienke Van Shaverbeke
   slug: nienke-van-shaverbeke
+
+- name: Emilie Sitzia
+  slug: emilie-sitzia
+  description:
+    Emilie Sitzia holds a special chair at the University of Amsterdam and is an
+    associate professor Cultural Education in the department of Art and
+    Literature at the University of Maastricht. Professor Sitzia specialises in
+    the impact of art on audiences and word/image interdisciplinary studies. In
+    2020 she was a resident at the IMéRA research centre in Marseille to work
+    with MuCEM on matters of identity, narrative and multimodal exhibition
+    strategies. In 2019 she was a co-editor for the Stedelijk Studies issue
+    'Towards a Museum of Mutuality'.
 
 - name: Stéfan Sinclair
   slug: stefan-sinclair
