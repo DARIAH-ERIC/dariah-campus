@@ -115,6 +115,7 @@
 
 - name: Mikey Bruun Andersen
   slug: mikey-bruun-andersen
+  avatar: ../images/authors/mikey-bruun-andersen.jpeg
   description:
     MA Information Studies, Aarhus University, Denmark. He is currently involved
     in developing teaching and learning platforms at the Centre for Teaching
@@ -278,6 +279,7 @@
 
 - name: Jeanette Falk Olesen
   slug: jeanette-falk-olesen
+  avatar: ../images/authors/jeanette-falk-olesen.jpg
   description:
     PhD fellow at Department of Digital Design and Information Studies at Aarhus
     University. During her PhD project, she has researched how design processes
@@ -816,6 +818,7 @@
 
 - name: Claus Toft-Nielsen
   slug: claus-toft-nielsen
+  avatar: ../images/authors/claus-toft-nielsen.jpeg
   description:
     Assistant Professor, School of Communication and Culture, Aarhus University,
     Denmark. Claus is an avid gamer, holds a PhD in media and game studies, and
@@ -829,6 +832,7 @@
 
 - name: Rikke Toft Nørgård
   slug: rikke-toft-norgard
+  avatar: ../images/authors/rikke-toft-norgard.jpeg
   description:
     Assistant Professor in Educational Design and Technology, Aarhus University,
     Denmark. Rikke holds a PhD in Game Studies and Game Design and she has for
