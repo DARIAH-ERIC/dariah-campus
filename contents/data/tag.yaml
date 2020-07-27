@@ -83,9 +83,11 @@
     of gender within the field, gender issues and research practices and
     feminist scholarship for the digital age
 
-- name: Game Jams
-  slug: game-jams
-  description: Games jams are contests where people create new video games.
+- name: Game Studies
+  slug: game-studies
+  description:
+    Game studies looks at the cultural, social and economic significance of
+    video and computer games.
 
 - name: Geotagging
   slug: geotagging
