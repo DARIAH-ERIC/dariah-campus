@@ -29,6 +29,7 @@
 
 - name: Marie Annisius
   slug: marie-annisius
+  avatar: ../images/authors/marie-annisius.jpg
 
 - name: Marie-Louise Ayres
   slug: marie-louise-ayres
@@ -208,6 +209,7 @@
 
 - name: Sarah Cooper
   slug: sarah-cooper
+  avatar: ../images/authors/sarah-cooper.jpg
 
 - name: Antonia Correia
   slug: antonia-correia
@@ -260,6 +262,7 @@
 
 - name: Marten Düring
   slug: marten-during
+  avatar: ../images/authors/marten-during.jpg
 
 - name: Graeme Earl
   slug: graeme-earl
@@ -373,6 +376,7 @@
 
 - name: Heather Hodgson
   slug: heather-hodgson
+  avatar: ../images/authors/heather-hodgson.jpg
 
 - name: Marianne Huang
   slug: marianne-huang
@@ -395,9 +399,11 @@
 
 - name: Chris Jones
   slug: chris-jones
+  avatar: ../images/authors/chris-jones.jpg
 
 - name: Sotiria Kogou
   slug: sotiria-kogou
+  avatar: ../images/authors/sotiria-kogou.jpg
 
 - name: Jan Kaßel
   slug: jan-kassel
@@ -502,6 +508,7 @@
 
 - name: Haida Liang
   slug: haida-liang
+  avatar: ../images/authors/haida-liang.jpg
 
 - name: Frances Madden
   slug: frances-madden
@@ -852,6 +859,7 @@
 
 - name: Christopher Thomson
   slug: christopher-thomson
+  avatar: ../images/authors/christopher-thomson.jpg
 
 - name: Claus Toft-Nielsen
   slug: claus-toft-nielsen
@@ -910,6 +918,9 @@
 - name: Mitchell Whitelaw
   slug: mitchell-whitelaw
 
+- name: Tanja Wissik
+  slug: tanja-wissik
+
 - name: Ulrike Wuttke
   slug: ulrike-wuttke
   avatar: ../images/authors/ulrike-wuttke.jpg
@@ -928,9 +939,3 @@
     Daniela Zetti is a historian and postdoctoral researcher at Collegium
     Helveticum Zurich and ETH Zurich. She studies the history of technology and
     digital societies and likes to work in interdisciplinary research groups.
-
-- name: Matej Ďurčo
-  slug: matej-durco
-
-- name: Tanja Wissik
-  slug: tanja-wissik
