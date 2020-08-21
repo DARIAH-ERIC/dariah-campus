@@ -104,12 +104,18 @@
 - name: Lexicography
   slug: lexicography
   description: Lexicography is the art and craft of making dictionaries
-
+  
+- name: Maker Culture
+  slug: maker-culture
+  description:
+    Maker Culture is a subculture of DIY culture that intersects with hacker
+    culture to develop new software or devices, or adapts existing ones.
+    
 - name: Literacies
   slug: literacies
   description:
     The condition or quality of being knowledgeable in particular subjects or
-    fields
+    fields.
 
 - name: Metadata
   slug: metadata
