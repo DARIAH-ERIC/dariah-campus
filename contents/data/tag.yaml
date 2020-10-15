@@ -83,6 +83,12 @@
     of gender within the field, gender issues and research practices and
     feminist scholarship for the digital age
 
+- name: Game Studies
+  slug: game-studies
+  description:
+    Game studies looks at the cultural, social and economic significance of
+    video and computer games.
+
 - name: Geotagging
   slug: geotagging
   description:
@@ -98,6 +104,18 @@
 - name: Lexicography
   slug: lexicography
   description: Lexicography is the art and craft of making dictionaries
+  
+- name: Maker Culture
+  slug: maker-culture
+  description:
+    Maker Culture is a subculture of DIY culture that intersects with hacker
+    culture to develop new software or devices, or adapts existing ones.
+    
+- name: Literacies
+  slug: literacies
+  description:
+    The condition or quality of being knowledgeable in particular subjects or
+    fields.
 
 - name: Metadata
   slug: metadata
@@ -197,6 +215,8 @@
 - name: Software development
   slug: software-development
   description:
+    Software development is the process of creating, designing, deploying and
+    supporting standalone or individual software using programming language.
 
 - name: Speech technology
   slug: speech-technology
