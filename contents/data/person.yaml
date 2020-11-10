@@ -298,6 +298,15 @@
     technology development. She is also one of the founders of an Aarhus-based
     game development meet-up group, called GOLD.
 
+- name: Andreas Fickers
+  slug: andreas-fickers
+  description:
+    Professor for Contemporary and Digital History, Andreas is the Director of
+    the Luxembourg Centre for Contemporary and Digital History (C²DH) and head
+    of the DH-Lab at the University of Luxembourg. He's currently the Luxembourg
+    national coordinator of DARIAH-EU and member of the joint research board of
+    Humanities in the European Research Area (HERA).
+
 - name: Frank Fischer
   slug: frank-fischer
 
@@ -356,6 +365,13 @@
     of scientific and diplomatic circles in the interwar period. He specializes
     in the analysis of large volumes of archival data and works on the uses of
     network analysis and data visualization in history.
+
+- name: Daniele Guido
+  slug: daniele-guido
+  email: daniele.guido@uni.lu
+  description:
+    Daniele is a designer and full-stack developer at the Luxembourg Centre for
+    Contemporary and Digital History (C²DH) of the University of Luxembourg.
 
 - name: Henrike Hoffmann
   slug: henrike-hoffmann
@@ -935,6 +951,13 @@
 
 - name: Jolan Wuyts
   slug: jolan-wuyts
+
+- name: Gerben Zaagsma
+  slug: gerben-zaagsma
+  description:
+    Gerben is an Assistant Professor and Head of the Research Area Digital
+    History & Historiography at the Luxembourg Centre for Contemporary and
+    Digital History (C²DH), University of Luxembourg.
 
 - name: Ksenia Zaytseva
   slug: ksenia-zaytseva
