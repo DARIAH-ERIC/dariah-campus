@@ -59,6 +59,18 @@
     variety of disciplines, embracing an iterative rather than linear approach
     to project management.
 
+- name: Digital History
+  slug: digital-history
+  description: 'todo'
+
+- name: Digital Literacy
+  slug: digital-literacy
+  description: 'todo'
+
+- name: Digital Source Criticism
+  slug: digital-source-criticism
+  description: 'todo'
+
 - name: DH
   slug: dh
   description:
@@ -104,13 +116,13 @@
 - name: Lexicography
   slug: lexicography
   description: Lexicography is the art and craft of making dictionaries
-  
+
 - name: Maker Culture
   slug: maker-culture
   description:
     Maker Culture is a subculture of DIY culture that intersects with hacker
     culture to develop new software or devices, or adapts existing ones.
-    
+
 - name: Literacies
   slug: literacies
   description:
@@ -204,6 +216,10 @@
   slug: sound-studies
   description:
     Sound Studies looks at methods and technologies for analysing audio data
+
+- name: Source Criticism
+  slug: source-criticism
+  description: todo
 
 - name: Spatial humanities
   slug: spatial-humanities
