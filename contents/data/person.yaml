@@ -401,6 +401,9 @@
   slug: chris-jones
   avatar: ../images/authors/chris-jones.jpg
 
+- name: Iason Jongepier
+  slug: iason-jongepier
+
 - name: Sotiria Kogou
   slug: sotiria-kogou
   avatar: ../images/authors/sotiria-kogou.jpg
@@ -915,6 +918,9 @@
 
 - name: Dieter Van Uytvanck
   slug: dieter-van-uytvanck
+
+- name: Melvin Wevers
+  slug: melvin-wevers
 
 - name: Mitchell Whitelaw
   slug: mitchell-whitelaw
