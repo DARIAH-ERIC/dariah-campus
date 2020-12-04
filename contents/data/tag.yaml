@@ -59,17 +59,37 @@
     variety of disciplines, embracing an iterative rather than linear approach
     to project management.
 
+- name: Digital Archives
+  slug: digital-archives
+  description: Archive of digitized documents made available online
+
 - name: Digital History
   slug: digital-history
-  description: 'todo'
+  description:
+    'Digital history is a branch of Digital Humanities, referring to the use of
+    digital tools to conduct historical research. These can be applied in all
+    the phases of the research process: collect, annotate, analyse, present and
+    preserve historical data, and allow for a multimodal approach to historical
+    narratives.'
 
 - name: Digital Literacy
   slug: digital-literacy
-  description: 'todo'
+  description:
+    The ability to identify, retrieve, organize, understand, evaluate, and
+    analyze information using digital technology.
 
 - name: Digital Source Criticism
   slug: digital-source-criticism
-  description: 'todo'
+  description:
+    'The combination of the three terms, ‘digital’, ‘source’ and ‘criticism’
+    refers to the need to apply a key principle for the professional historian -
+    the critical assessment of the origin, authenticity and value of a
+    historical source - to the digitised and digital born sources that are
+    currently available on the web. This asks for a basic understanding of the
+    transformation process from analog to digital, the creation process of
+    digital born data, the publication of this information on the web, and the
+    computational mechanisms to retrieve this information that are performed by
+    search engines.'
 
 - name: DH
   slug: dh
@@ -219,7 +239,9 @@
 
 - name: Source Criticism
   slug: source-criticism
-  description: todo
+  description:
+    The critical assessment of the origin, authenticity and value of a
+    historical source.
 
 - name: Spatial humanities
   slug: spatial-humanities
