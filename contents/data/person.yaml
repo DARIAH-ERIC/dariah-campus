@@ -203,6 +203,9 @@
 - name: Amy Clotworthy
   slug: amy-clotworthy
 
+- name: Ilaria Comes
+  slug: ilaria-comes
+
 - name: Panos Constantopoulos
   slug: panos-constantopoulos
   avatar: ../images/authors/panos-constantopoulos.jpg
@@ -253,6 +256,9 @@
 
 - name: Joy Damousi
   slug: joy-damousi
+
+- name: Emmanuel Decker
+  slug: emmanuel-decker
 
 - name: Quinn Dombrowski
   slug: quinn-dombrowski
@@ -349,10 +355,16 @@
   twitter: ioanagalleron
   email: ioana.galleron@evalhum.eu
 
+- name: Cristina Garcia Martin
+  slug: cristina-garcia-martin
+
 - name: Vicky Garnett
   slug: vicky-garnett
   title: Training & Education Officer
   avatar: ../images/authors/vicky-garnett.jpg
+
+- name: Alexandre Germain
+  slug: alexandre-germain
 
 - name: Martin Grandjean
   slug: martin-grandjean
@@ -667,6 +679,9 @@
 - name: Elena Pierazzo
   slug: elena-pierazzo
 
+- name: Maria Cristina Piticco
+  slug: maria-cristina-piticco
+
 - name: Jean-Christophe Plantin
   slug: jean-christophe-plantin
   avatar: ../images/authors/jean-christophe-plantin.jpg
@@ -708,6 +723,9 @@
 
 - name: Claudia Resch
   slug: claudia-resch
+
+- name: Jordan Ricker
+  slug: jordan-ricker
 
 - name: Charles Riondet
   slug: charles-riondet
@@ -936,11 +954,17 @@
 - name: Dieter Van Uytvanck
   slug: dieter-van-uytvanck
 
+- name: Frederic weiss
+  slug: frederic-weiss
+
 - name: Mitchell Whitelaw
   slug: mitchell-whitelaw
 
 - name: Maria Wiederänders
   slug: maria-wiederanders
+
+- name: Sidney Wiltgen
+  slug: sidney-wiltgen
 
 - name: Tanja Wissik
   slug: tanja-wissik
