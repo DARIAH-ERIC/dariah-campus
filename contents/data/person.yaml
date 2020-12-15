@@ -432,6 +432,9 @@
   slug: chris-jones
   avatar: ../images/authors/chris-jones.jpg
 
+- name: Iason Jongepier
+  slug: iason-jongepier
+
 - name: Max Kemman
   slug: max-kemman
 
@@ -964,8 +967,8 @@
 - name: Dieter Van Uytvanck
   slug: dieter-van-uytvanck
 
-- name: Frederic weiss
-  slug: frederic-weiss
+- name: Melvin Wevers
+  slug: melvin-wevers
 
 - name: Mitchell Whitelaw
   slug: mitchell-whitelaw
