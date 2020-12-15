@@ -31,6 +31,9 @@
   slug: marie-annisius
   avatar: ../images/authors/marie-annisius.jpg
 
+- name: Florentina Armaselu
+  slug: florentina-armaselu
+
 - name: Marie-Louise Ayres
   slug: marie-louise-ayres
 
@@ -428,6 +431,9 @@
 - name: Chris Jones
   slug: chris-jones
   avatar: ../images/authors/chris-jones.jpg
+
+- name: Max Kemman
+  slug: max-kemman
 
 - name: Sotiria Kogou
   slug: sotiria-kogou
@@ -883,6 +889,10 @@
   slug: toma-tasovac
   title: DARIAH Director
   avatar: ../images/authors/toma-tasovac.jpg
+
+- name: Juliane Tatarinov
+  slug: juliane-tatarinov
+  website: https://www.c2dh.uni.lu/people/juliane-tatarinov
 
 - name: Melissa Terras
   slug: melissa-terras
