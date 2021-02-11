@@ -34,6 +34,13 @@
     issues and methods around them.
   host: PARTHENOS Training Suite
 
+- name: Ranke2.lu
+  slug: ranke2lu
+  description:
+    Training modules around historical (digital) source criticism aimed at
+    students, trainers and anyone with an interest in critical analysis of data.
+  host: Ranke2.lu
+
 - name: DARIAH Pathfinders
   slug: dariah-pathfinders
   image: ../images/categories/dariah-pathfinders.jpg
