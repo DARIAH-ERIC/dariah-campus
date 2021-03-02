@@ -394,7 +394,8 @@
     geospatial humanities and virtual reality.
 
 - name: Jonny Johnston
-- slug: jonny-johnston
+  slug: jonny-johnston
+  avatar: ../images/authors/jonny-johnston.jpg
 
 - name: Klaus Illmayer
   slug: klaus-illmayer
@@ -638,6 +639,7 @@
 
 - name: Kevin O'Connor
   slug: kevin-oconnor
+  avatar: ../images/authors/kevin-oconnor.png
 
 - name: Costas Papadopoulos
   slug: costas-papadopoulos
