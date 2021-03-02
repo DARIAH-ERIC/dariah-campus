@@ -36,6 +36,7 @@
 
 - name: Ranke2.lu
   slug: ranke2lu
+  image: ../images/categories/ranke2lu.png
   description:
     Training modules around historical (digital) source criticism aimed at
     students, trainers and anyone with an interest in critical analysis of data.
