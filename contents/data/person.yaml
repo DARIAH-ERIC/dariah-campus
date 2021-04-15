@@ -25,9 +25,14 @@
 
 - name: Mark Algee-Hewitt
   slug: mark-algee-hewitt
+  avatar: ../images/authors/mark-algee-hewitt.jpg
 
 - name: Marie Annisius
   slug: marie-annisius
+  avatar: ../images/authors/marie-annisius.jpg
+
+- name: Florentina Armaselu
+  slug: florentina-armaselu
 
 - name: Marie-Louise Ayres
   slug: marie-louise-ayres
@@ -112,9 +117,26 @@
   slug: george-bruseker
   avatar: ../images/authors/george-bruseker.jpg
 
+- name: Mikey Bruun Andersen
+  slug: mikey-bruun-andersen
+  avatar: ../images/authors/mikey-bruun-andersen.jpeg
+  description:
+    MA Information Studies, Aarhus University, Denmark. He is currently involved
+    in developing teaching and learning platforms at the Centre for Teaching
+    Development and Digital Media, Aarhus University where he focuses on
+    programming and front-end development of educational materials and
+    platforms. Mikey’s MA Thesis focuses on hybrid learning and work spaces and
+    how technologies can be utilized to support new hybrid communication,
+    collaboration and community formats. He is also chairperson of Coding
+    Pirates Aarhus, where he leads and organises game jams and game design
+    processes in partnerships between students, youngsters and the creative
+    industries. Coding Pirates Denmark is an association with many local
+    chapters, hundreds of volunteers (many of them HE students) and thousands of
+    youngsters and children.
+
 - name: Estelle Bunout
   slug: estelle-bunout
-  avatar: ..images/authors/estelle-bunout.jpg
+  avatar: ../images/authors/estelle-bunout.jpg
 
 - name: Marjorie Burghart
   slug: marjorie-burghart
@@ -184,12 +206,16 @@
 - name: Amy Clotworthy
   slug: amy-clotworthy
 
+- name: Ilaria Comes
+  slug: ilaria-comes
+
 - name: Panos Constantopoulos
   slug: panos-constantopoulos
   avatar: ../images/authors/panos-constantopoulos.jpg
 
 - name: Sarah Cooper
   slug: sarah-cooper
+  avatar: ../images/authors/sarah-cooper.jpg
 
 - name: Antonia Correia
   slug: antonia-correia
@@ -234,6 +260,9 @@
 - name: Joy Damousi
   slug: joy-damousi
 
+- name: Emmanuel Decker
+  slug: emmanuel-decker
+
 - name: Quinn Dombrowski
   slug: quinn-dombrowski
 
@@ -242,6 +271,7 @@
 
 - name: Marten Düring
   slug: marten-during
+  avatar: ../images/authors/marten-during.jpg
 
 - name: Graeme Earl
   slug: graeme-earl
@@ -258,6 +288,33 @@
   slug: jennifer-edmond
   title: DARIAH Director
   avatar: ../images/authors/jennifer-edmond.jpg
+
+- name: Jeanette Falk Olesen
+  slug: jeanette-falk-olesen
+  avatar: ../images/authors/jeanette-falk-olesen.jpg
+  description:
+    PhD fellow at Department of Digital Design and Information Studies at Aarhus
+    University. During her PhD project, she has researched how design processes
+    are influenced and accelerated by both game jam and hackathon formats. She
+    uses a mix of qualitative and quantitative methods to gain insights into
+    these accelerated design processes, including participating in game jams and
+    hackathons herself. Her work has included studying how game jam and
+    hackathon formats can be adapted to facilitate creativity and support
+    academic processes, such as teaching, learning and researching. Her research
+    interests include how processes of imagining, designing and developing
+    technology can be democratised for example via formats which accelerates
+    design processes, and via maker materials which lowers the barrier to
+    technology development. She is also one of the founders of an Aarhus-based
+    game development meet-up group, called GOLD.
+
+- name: Andreas Fickers
+  slug: andreas-fickers
+  description:
+    Professor for Contemporary and Digital History, Andreas is the Director of
+    the Luxembourg Centre for Contemporary and Digital History (C²DH) and head
+    of the DH-Lab at the University of Luxembourg. He's currently the Luxembourg
+    national coordinator of DARIAH-EU and member of the joint research board of
+    Humanities in the European Research Area (HERA).
 
 - name: Frank Fischer
   slug: frank-fischer
@@ -301,10 +358,16 @@
   twitter: ioanagalleron
   email: ioana.galleron@evalhum.eu
 
+- name: Cristina Garcia Martin
+  slug: cristina-garcia-martin
+
 - name: Vicky Garnett
   slug: vicky-garnett
   title: Training & Education Officer
   avatar: ../images/authors/vicky-garnett.jpg
+
+- name: Alexandre Germain
+  slug: alexandre-germain
 
 - name: Martin Grandjean
   slug: martin-grandjean
@@ -317,6 +380,13 @@
     of scientific and diplomatic circles in the interwar period. He specializes
     in the analysis of large volumes of archival data and works on the uses of
     network analysis and data visualization in history.
+
+- name: Daniele Guido
+  slug: daniele-guido
+  email: daniele.guido@uni.lu
+  description:
+    Daniele is a designer and full-stack developer at the Luxembourg Centre for
+    Contemporary and Digital History (C²DH) of the University of Luxembourg.
 
 - name: Henrike Hoffmann
   slug: henrike-hoffmann
@@ -337,6 +407,7 @@
 
 - name: Heather Hodgson
   slug: heather-hodgson
+  avatar: ../images/authors/heather-hodgson.jpg
 
 - name: Marianne Huang
   slug: marianne-huang
@@ -353,15 +424,27 @@
     important projects. His particular teresearch interests lie in the fields of
     geospatial humanities and virtual reality.
 
+- name: Jonny Johnston
+  slug: jonny-johnston
+  avatar: ../images/authors/jonny-johnston.jpg
+
 - name: Klaus Illmayer
   slug: klaus-illmayer
   avatar: ../images/authors/klaus-illmayer.jpg
 
 - name: Chris Jones
   slug: chris-jones
+  avatar: ../images/authors/chris-jones.jpg
+
+- name: Iason Jongepier
+  slug: iason-jongepier
+
+- name: Max Kemman
+  slug: max-kemman
 
 - name: Sotiria Kogou
   slug: sotiria-kogou
+  avatar: ../images/authors/sotiria-kogou.jpg
 
 - name: Jan Kaßel
   slug: jan-kassel
@@ -401,6 +484,27 @@
   slug: jacob-kreutzfeldt
   avatar: ../images/authors/jacob-kreutzfeldt.jpg
 
+- name: Moniek Kuijpers
+  slug: moniek-kuijpers
+  avatar: ../images/authors/moniek-kuijpers.jpg
+  description:
+    Moniek’s research focuses mainly on absorbing reading experiences. She did
+    her PhD in empirical literary studies at Utrecht University in The
+    Netherlands, investigating the textual features that can lead to absorption
+    during reading. Her first post-doc at the Max Planck Institute for Empirical
+    Aesthetics in Frankfurt, Germany focused on the personality traits that
+    predict absorbed reading and the eye movement correlates of absorbed
+    reading. She is currently a post-doctoral researcher at the Digital
+    Humanities lab in Basel, Switzerland, where she is a PI on a SNSF-funded
+    “Digital Lives” research project teaching machine learning algorithms to
+    detect instances of absorption in online reader reviews. She is also a board
+    member of IGEL (the International Society for the Empirical Study of
+    Literature) in charge of their training school program, and a member of PALA
+    (Poetics and Linguistics Association) and E-READ (Evolution of Reading in
+    the Age of Digitization). Some of her other research interests involve
+    (absorbed) reading and well-being, bibliotherapy, story literacy, reading
+    habits, and psychometrics.
+
 - name: Stefanie Laepke
   slug: stefanie-laepke
   avatar: ../images/authors/stefanie-laepke.jpg
@@ -421,11 +525,31 @@
   slug: jakob-lenardic
   avatar: ../images/authors/jakob-lenardic.jpg
 
+- name: Proska Lendvai
+  slug: piroska-lendvai
+  avatar: ../images/authors/piroska-lendvai.jpg
+  description:
+    Piroska Lendvai studied Anglo-Saxon and Slavic philology (Pécs, Hungary).
+    Being inspired by seminal science fiction literature such as 'Blade Runner'
+    and 'Neuromancer', she decided to do a PhD in a field that combines
+    languages and AI - natural language processing (Tilburg, Netherlands). After
+    spending several years on training algorithms to understand what people do
+    when they must talk to a machine, for example about about train connections
+    ('Computer, I never told you I wanted to go to Mügli am See! Restart
+    again!'), or when they must sort zoology metadata into museum databases
+    ('Computer, 'dead humid leaves' should be the finding place of this animal,
+    not the cause of its death!'), she decided to go back to her roots, and has
+    taken up a position at the Research Institute for Linguistics (Budapest,
+    Hungary). Currently, she is affiliated to the Digital Humanities Lab of the
+    University of Basel (Switzerland), where she supports research in Humanities
+    and Social Sciences via tools and approaches from language technology.
+
 - name: Martin Lhoták
   slug: martin-lhotak
 
 - name: Haida Liang
   slug: haida-liang
+  avatar: ../images/authors/haida-liang.jpg
 
 - name: Frances Madden
   slug: frances-madden
@@ -513,6 +637,22 @@
   email: munson@dh.uni-leipzig.de
   website: http://www.dh.uni-leipzig.de/wo/team/
 
+- name: Eslam Nofal
+  slug: eslam-nofal
+  avatar: ../images/authors/eslam-nofal.jpg
+  description:
+    Eslam Nofal is a Postdoctoral Researcher in Digital Heritage at Maastricht
+    University (Netherlands). He is also affiliated to the Department of
+    Architecture at Assiut University (Egypt). His research interests fit in the
+    intersection of Human-Computer interaction and digital heritage, by
+    designing, implementing and evaluating interactive systems, aiming for
+    better communication and engagement of heritage in museums and beyond. He
+    received his PhD degree from KU Leuven (Belgium), where he introduced the
+    approach of “Phygital Heritage”, which entails how heritage information can
+    be disclosed via simultaneous and integrated physical and digital means, as
+    a potential medium for engaging and meaningful communication of heritage to
+    the broader public.
+
 - name: Elisa Nury
   slug: elisa-nury
   avatar: ../images/authors/elisa-nury.jpg
@@ -531,8 +671,13 @@
 - name: Angel Nieves
   slug: angel-nieves
 
+- name: Kevin O'Connor
+  slug: kevin-oconnor
+  avatar: ../images/authors/kevin-oconnor.png
+
 - name: Costas Papadopoulos
   slug: costas-papadopoulos
+  avatar: ../images/authors/costas_papadopoulos.png
 
 - name: Eliza Papaki
   slug: eliza-papaki
@@ -551,11 +696,18 @@
 - name: Elena Pierazzo
   slug: elena-pierazzo
 
+- name: Maria Cristina Piticco
+  slug: maria-cristina-piticco
+
 - name: Jean-Christophe Plantin
   slug: jean-christophe-plantin
   avatar: ../images/authors/jean-christophe-plantin.jpg
   email: j.plantin1@lse.ac.uk
   twitter: JCPlantin
+
+- name: Riccardo Pozzo
+  slug: riccardo-pozzo
+  avatar: ../images/authors/riccardo-pozzo.png
 
 - name: Kenneth M. Price
   slug: kenneth-m-price
@@ -589,6 +741,9 @@
 - name: Claudia Resch
   slug: claudia-resch
 
+- name: Jordan Ricker
+  slug: jordan-ricker
+
 - name: Charles Riondet
   slug: charles-riondet
   avatar: ../images/authors/charles-riondet.jpg
@@ -605,6 +760,7 @@
 
 - name: Laurent Romary
   slug: laurent-romary
+  avatar: ../images/authors/laurent-romary.jpg
 
 - name: Salvador Ros
   slug: salvador-ros
@@ -621,6 +777,10 @@
 - name: Martial Sankar
   slug: martial-sankar
   avatar: ../images/authors/martial-sankar.jpg
+
+- name: Stefania Scagliola
+  slug: stefania-scagliola
+  avatar: ../images/authors/stefania-scagliola.jpg
 
 - name: Stefan Schmunk
   slug: stefan-schmunk
@@ -679,6 +839,19 @@
 - name: Nienke Van Shaverbeke
   slug: nienke-van-shaverbeke
 
+- name: Emilie Sitzia
+  slug: emilie-sitzia
+  avatar: ../images/authors/emilie-sitzia.jpg
+  description:
+    Emilie Sitzia holds a special chair at the University of Amsterdam and is an
+    associate professor Cultural Education in the department of Art and
+    Literature at the University of Maastricht. Professor Sitzia specialises in
+    the impact of art on audiences and word/image interdisciplinary studies. In
+    2020 she was a resident at the IMéRA research centre in Marseille to work
+    with MuCEM on matters of identity, narrative and multimodal exhibition
+    strategies. In 2019 she was a co-editor for the Stedelijk Studies issue
+    'Towards a Museum of Mutuality'.
+
 - name: Stéfan Sinclair
   slug: stefan-sinclair
 
@@ -698,6 +871,14 @@
 - name: Juliane Stiller
   slug: juliane-stiller
   avatar: ../images/authors/juliane-stiller.jpg
+
+- name: Guido Stompff
+  slug: guido-stompff
+  avatar: ../images/authors/guido-stompff.jpeg
+  description:
+    Guido Stompff is professor of design thinking at Inholland University of
+    Applied Aciences Sabien Douven, freelancer at Studio Sowieso and alumni
+    Communication & Multimedia Design
 
 - name: Kathryn Sutherland
   slug: kathryn-sutherland
@@ -720,6 +901,10 @@
   title: DARIAH Director
   avatar: ../images/authors/toma-tasovac.jpg
 
+- name: Juliane Tatarinov
+  slug: juliane-tatarinov
+  website: https://www.c2dh.uni.lu/people/juliane-tatarinov
+
 - name: Melissa Terras
   slug: melissa-terras
 
@@ -734,6 +919,38 @@
 
 - name: Christopher Thomson
   slug: christopher-thomson
+  avatar: ../images/authors/christopher-thomson.jpg
+
+- name: Claus Toft-Nielsen
+  slug: claus-toft-nielsen
+  avatar: ../images/authors/claus-toft-nielsen.jpeg
+  description:
+    Assistant Professor, School of Communication and Culture, Aarhus University,
+    Denmark. Claus is an avid gamer, holds a PhD in media and game studies, and
+    has been researching digital games and game cultures for more than a decade.
+    His research focuses on digital games with a specific interest in games and
+    fan studies, game genres and gamers wider transmedia engagement, as well as
+    a focus on the intersections of gameplay, gaming practices and gender.
+    Parallel to this, he has also been teaching numerous courses on game
+    studies, theoretical perspectives on games and gaming, as well as digital
+    games and learning.
+
+- name: Rikke Toft Nørgård
+  slug: rikke-toft-norgard
+  avatar: ../images/authors/rikke-toft-norgard.jpeg
+  description:
+    Assistant Professor in Educational Design and Technology, Aarhus University,
+    Denmark. Rikke holds a PhD in Game Studies and Game Design and she has for
+    the last 10 years been researching and teaching digital games and design.
+    Rikke works at the intersections of digital humanities, design, educational
+    development and future higher education. A focus of her research is within
+    higher education philosophy and theory on design, thinking and configuration
+    of higher education institutions with a special focus on the future of the
+    Arts and Humanities. She has also led and participated in several projects
+    on developing educational materials, modules and formats for students and
+    teachers, exploring how higher education can be transformed through digital
+    humanities pedagogy, student-society partnerships and leveraging the
+    potentials of design and technology within the Arts.
 
 - name: Justin Tonra
   slug: justin-tonra
@@ -758,8 +975,20 @@
 - name: Dieter Van Uytvanck
   slug: dieter-van-uytvanck
 
+- name: Melvin Wevers
+  slug: melvin-wevers
+
 - name: Mitchell Whitelaw
   slug: mitchell-whitelaw
+
+- name: Maria Wiederänders
+  slug: maria-wiederanders
+
+- name: Sidney Wiltgen
+  slug: sidney-wiltgen
+
+- name: Tanja Wissik
+  slug: tanja-wissik
 
 - name: Ulrike Wuttke
   slug: ulrike-wuttke
@@ -767,6 +996,13 @@
 
 - name: Jolan Wuyts
   slug: jolan-wuyts
+
+- name: Gerben Zaagsma
+  slug: gerben-zaagsma
+  description:
+    Gerben is an Assistant Professor and Head of the Research Area Digital
+    History & Historiography at the Luxembourg Centre for Contemporary and
+    Digital History (C²DH), University of Luxembourg.
 
 - name: Ksenia Zaytseva
   slug: ksenia-zaytseva
@@ -779,9 +1015,3 @@
     Daniela Zetti is a historian and postdoctoral researcher at Collegium
     Helveticum Zurich and ETH Zurich. She studies the history of technology and
     digital societies and likes to work in interdisciplinary research groups.
-
-- name: Matej Ďurčo
-  slug: matej-durco
-
-- name: Tanja Wissik
-  slug: tanja-wissik

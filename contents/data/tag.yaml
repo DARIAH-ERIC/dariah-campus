@@ -18,6 +18,14 @@
     non-academic experts and enthusiasts in a given discipline to provide,
     process and/or analyse data
 
+- name: Computational Imaging
+  slug: computational-imaging
+  description:
+    Computational Imaging is a field in computer science that studies the
+    computational extraction of information from digital photographs and has
+    democratised the process of capturing, preserving, disseminating, and
+    promoting heritage.
+
 - name: Controlled Vocabularies
   slug: controlled-vocabularies
   description:
@@ -44,6 +52,45 @@
     researcher can use to visualise their data and enhance the communication of
     their findings
 
+- name: Design Thinking
+  slug: design-thinking
+  description:
+    Design Thinking is a user-centred approach to design used across a wide
+    variety of disciplines, embracing an iterative rather than linear approach
+    to project management.
+
+- name: Digital Archives
+  slug: digital-archives
+  description: Archive of digitized documents made available online
+
+- name: Digital History
+  slug: digital-history
+  description:
+    'Digital history is a branch of Digital Humanities, referring to the use of
+    digital tools to conduct historical research. These can be applied in all
+    the phases of the research process: collect, annotate, analyse, present and
+    preserve historical data, and allow for a multimodal approach to historical
+    narratives.'
+
+- name: Digital Literacy
+  slug: digital-literacy
+  description:
+    The ability to identify, retrieve, organize, understand, evaluate, and
+    analyze information using digital technology.
+
+- name: Digital Source Criticism
+  slug: digital-source-criticism
+  description:
+    'The combination of the three terms, ‘digital’, ‘source’ and ‘criticism’
+    refers to the need to apply a key principle for the professional historian -
+    the critical assessment of the origin, authenticity and value of a
+    historical source - to the digitised and digital born sources that are
+    currently available on the web. This asks for a basic understanding of the
+    transformation process from analog to digital, the creation process of
+    digital born data, the publication of this information on the web, and the
+    computational mechanisms to retrieve this information that are performed by
+    search engines.'
+
 - name: DH
   slug: dh
   description:
@@ -68,11 +115,23 @@
     of gender within the field, gender issues and research practices and
     feminist scholarship for the digital age
 
+- name: Game Studies
+  slug: game-studies
+  description:
+    Game studies looks at the cultural, social and economic significance of
+    video and computer games.
+
 - name: Geotagging
   slug: geotagging
   description:
     Geotagging is a process used in Spatial Humanities-based research that
     applies geo-spatial information to physical objects, events or artefacts
+
+- name: History of Technology
+  slug: history-of-technology
+  description:
+    History of Technology focuses on the development over time of systematic
+    techniques for making and doing things
 
 - name: Information Architecture
   slug: information-architecture
@@ -83,6 +142,18 @@
 - name: Lexicography
   slug: lexicography
   description: Lexicography is the art and craft of making dictionaries
+
+- name: Maker Culture
+  slug: maker-culture
+  description:
+    Maker Culture is a subculture of DIY culture that intersects with hacker
+    culture to develop new software or devices, or adapts existing ones.
+
+- name: Literacies
+  slug: literacies
+  description:
+    The condition or quality of being knowledgeable in particular subjects or
+    fields.
 
 - name: Metadata
   slug: metadata
@@ -148,6 +219,12 @@
   description:
     Scholarly editions refer to trustworthy, annotated editions of primary texts
 
+- name: Scholarly practice
+  slug: scholarly-practice
+  description:
+    Scholarly practice encompasses all scholarly and research-based activities,
+    but also critiques and reflects on those activities
+
 - name: Scholarly publishing
   slug: scholarly-publishing
   description:
@@ -172,6 +249,12 @@
   description:
     Sound Studies looks at methods and technologies for analysing audio data
 
+- name: Source Criticism
+  slug: source-criticism
+  description:
+    The critical assessment of the origin, authenticity and value of a
+    historical source.
+
 - name: Spatial humanities
   slug: spatial-humanities
   description:
@@ -182,6 +265,8 @@
 - name: Software development
   slug: software-development
   description:
+    Software development is the process of creating, designing, deploying and
+    supporting standalone or individual software using programming language.
 
 - name: Speech technology
   slug: speech-technology
