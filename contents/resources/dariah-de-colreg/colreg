@@ -35,9 +35,12 @@ remotePublicationDate: 2018--mm-dd
 # end of metadata
 ---
 
-This manual describes and explains the DARIAH-DE Collection Registry, a tool that is commonly used in combination with the DARIAH-DE Publikator. The Collection Registry enables you to describe collections with metadata, using the DARIAH Collection Description Data Model (DCDDM). Based on the Dublin Core Collections Application Profile (DCCAP), the DCDDM allows for collection descriptions that are both human- and machine-readable. Not only digital collections but also analogoue collections can be described.
+This manual describes and explains the DARIAH-DE Collection Registry, a tool that is commonly used in combination with the **[DARIAH-DE Publikator](https://campus.dariah.eu/resource/dariah-de-publikator-tutorial)**. The Collection Registry enables you to describe collections with metadata, using the DARIAH Collection Description Data Model (DCDDM). Based on the Dublin Core Collections Application Profile (DCCAP), the DCDDM allows for collection descriptions that are both human- and machine-readable. Not only digital collections but also analogoue collections can be described.
+
+![Collection Registry](images/ColReg1.jpg)
 
 In the Collection Registry, collection references are collected and described, and not the data of the collections themselves (like in the Publikator). Via a graphical user interface, you can describe your collections in different categories, depending on the metadata you have available.
+
 The manual is conveniently divided into two sections: general information on collections, and a user guide. It gives step-by-step instructions on how to work with the Collection Registry. Eventually, best practice examples are given which illustrate an ideal case for your use of the Collection Registry.
 
 <CTA
