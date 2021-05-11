@@ -5,14 +5,11 @@ title: Collection Registry
 date: yyyy-mm-dd
 # date that the resource was published on DARIAH-Campus
 authors:
-  - firstname-lastname
-  - firstname-lastname
 # firstname-lastname is a slug pointing to the record in /contents/data/person.yaml
 contributors:
   - CLARIAH-DE
 # firstname-lastname is a slug pointing to the record in /contents/data/person.yaml. Contributors are optional.
 editors:
-  - firstname-lastname
 # firstname-lastname is a slug pointing to the record in /contents/data/person.yaml. Editors are optional.
 categories:
   - dariah
@@ -24,7 +21,7 @@ tags:
   - Open Access
   - Repositories & Collections
 # choose up to five keywords for the resource. All lower case, multiple words joined by hyphens (so-called "slugs"). A tag listed here must also exist in /contents/data/tag.yaml. If you think your resource needs a new tag, feel free to do so by listting it here and adding it (name, slug, description) in /contents/data/tag.yaml. The editors will try to keep the number of tags manageable. Tags are used to group resources around topics, see: https://campus.dariah.eu/tags
-abstract: Short teaser about the contents of your resource.
+abstract: 
 A virtual place where you can both register, store, and find descriptions of research collections - that place is the DARIAH-DE Collection Registry. Following up on the DARIAH-DE Publikator, the Collection Registry enables you to index the data you have uploaded to the DARIAH-DE Repository with an extensive metadata model (DCDDM).
 # Abstracts are displayed in the previews of individual resources, like here: https://campus.dariah.eu/resources. Abstracts should be very short and briefly introduce what the resource is about. Abstracts are not displayed at the beginning of the actual content of the resource. If you want to use the same text as the teaser and as the first paragraph of your resource, you need to put that text as abstract in the metadata, and as a regular paragraph at the beginning of your resource.
 type: training module
