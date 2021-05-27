@@ -161,6 +161,10 @@
     Metadata is simply 'data about data' that allows for organising information
     in a structured way.
 
+- name: Metamorphosis
+  slug: metamorphosis
+  description: Major change that makes someone or something very different
+
 - name: MOOC
   slug: mooc
   description:

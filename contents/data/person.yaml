@@ -273,6 +273,14 @@
   slug: marten-during
   avatar: ../images/authors/marten-during.jpg
 
+- name: Cécile Duval
+  slug: cecile-duval
+  avatar: ../images/authors/cecile-duval.jpg
+
+- name: Sarah Cooper
+  slug: sarah-cooper
+  avatar: ../images/authors/sarah-cooper.jpg
+
 - name: Graeme Earl
   slug: graeme-earl
   title:
@@ -368,6 +376,7 @@
 
 - name: Alexandre Germain
   slug: alexandre-germain
+  avatar: ../images/authors/alexandre-germain.jpg
 
 - name: Martin Grandjean
   slug: martin-grandjean
@@ -387,6 +396,11 @@
   description:
     Daniele is a designer and full-stack developer at the Luxembourg Centre for
     Contemporary and Digital History (C²DH) of the University of Luxembourg.
+  avatar: ../images/authors/daniele-guido.jpg
+
+- name: Emmanuelle Hingray
+  slug: emmanuelle-hingray
+  description: Emmanuelle is a Graphic designer at the University of Luxembourg.
 
 - name: Henrike Hoffmann
   slug: henrike-hoffmann
