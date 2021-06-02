@@ -424,6 +424,10 @@
     important projects. His particular teresearch interests lie in the fields of
     geospatial humanities and virtual reality.
 
+- name: Jonny Johnston
+  slug: jonny-johnston
+  avatar: ../images/authors/jonny-johnston.jpg
+
 - name: Klaus Illmayer
   slug: klaus-illmayer
   avatar: ../images/authors/klaus-illmayer.jpg
@@ -666,6 +670,10 @@
 
 - name: Angel Nieves
   slug: angel-nieves
+
+- name: Kevin O'Connor
+  slug: kevin-oconnor
+  avatar: ../images/authors/kevin-oconnor.png
 
 - name: Costas Papadopoulos
   slug: costas-papadopoulos

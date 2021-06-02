@@ -127,6 +127,12 @@
     Geotagging is a process used in Spatial Humanities-based research that
     applies geo-spatial information to physical objects, events or artefacts
 
+- name: History of Technology
+  slug: history-of-technology
+  description:
+    History of Technology focuses on the development over time of systematic
+    techniques for making and doing things
+
 - name: Information Architecture
   slug: information-architecture
   description:
@@ -212,6 +218,12 @@
   slug: scholarly-editions
   description:
     Scholarly editions refer to trustworthy, annotated editions of primary texts
+
+- name: Scholarly practice
+  slug: scholarly-practice
+  description:
+    Scholarly practice encompasses all scholarly and research-based activities,
+    but also critiques and reflects on those activities
 
 - name: Scholarly publishing
   slug: scholarly-publishing
