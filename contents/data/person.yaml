@@ -263,8 +263,18 @@
 - name: Emmanuel Decker
   slug: emmanuel-decker
 
+- name: Digital Repositry of Ireland
+  slug: dri
+  avatar: ../images/authors/dri-logo.jpg
+
 - name: Quinn Dombrowski
   slug: quinn-dombrowski
+
+- name: Siobhán Doyle
+  slug: siobhán-doyle
+
+- name: Tara Doyle
+  slug: tara-doyle
 
 - name: Matej Ďurčo
   slug: matej-durco
@@ -380,6 +390,9 @@
     of scientific and diplomatic circles in the interwar period. He specializes
     in the analysis of large volumes of archival data and works on the uses of
     network analysis and data visualization in history.
+
+- name: Jane Gray
+  slug: jane-gray
 
 - name: Daniele Guido
   slug: daniele-guido
@@ -505,9 +518,15 @@
     (absorbed) reading and well-being, bibliotherapy, story literacy, reading
     habits, and psychometrics.
 
+- name: Elizabeth Kiely
+  slug: elizabeth-kiely
+
 - name: Stefanie Laepke
   slug: stefanie-laepke
   avatar: ../images/authors/stefanie-laepke.jpg
+
+- name: David Landy
+  slug: david-landy
 
 - name: Nicolas Larrousse
   slug: nicolas-larousse
@@ -550,6 +569,9 @@
 - name: Haida Liang
   slug: haida-liang
   avatar: ../images/authors/haida-liang.jpg
+
+- name: Kevin Long
+  slug: kevin-long
 
 - name: Frances Madden
   slug: frances-madden
@@ -602,6 +624,9 @@
   twitter: maciejmaryl
   email: maciej.maryl@ibl.waw.pl
 
+- name: Barbara Mccormack
+  slug: barbara-mccormack
+
 - name: Carlo Meghini
   slug: carlo-meghini
   avatar: ../images/authors/carlo-meghini.jpg
@@ -615,6 +640,9 @@
 
 - name: Nikos Minadakis
   slug: nikos-minadakis
+
+- name: Jennifer Moore
+  slug: jennifer-moore
 
 - name: Emmanuelle Morlock
   slug: emmanuelle-morlock
@@ -670,6 +698,9 @@
 
 - name: Angel Nieves
   slug: angel-nieves
+
+- name: Aileen O’Carroll
+  slug: aileen-o’carroll
 
 - name: Kevin O'Connor
   slug: kevin-oconnor
@@ -768,8 +799,14 @@
 - name: James Rose
   slug: james-rose
 
+- name: Stephanie Rousseau
+  slug: stephanie-rousseau
+
 - name: Sinai Rusinek
   slug: sinai-rusinek
+
+- name: Maria Ryan
+  slug: maria-ryan
 
 - name: Basem Saifo
   slug: basem-saifo
@@ -896,6 +933,9 @@
     new research methods to obtain a deeper understanding of the manuscripts
     themselves.
 
+- name: Rónán Swan
+  slug: rónán-swan
+
 - name: Toma Tasovac
   slug: toma-tasovac
   title: DARIAH Director
@@ -975,6 +1015,9 @@
 - name: Dieter Van Uytvanck
   slug: dieter-van-uytvanck
 
+- name: Ciarán Wallace
+  slug: ciarán-wallace
+
 - name: Melvin Wevers
   slug: melvin-wevers
 
@@ -1015,46 +1058,3 @@
     Daniela Zetti is a historian and postdoctoral researcher at Collegium
     Helveticum Zurich and ETH Zurich. She studies the history of technology and
     digital societies and likes to work in interdisciplinary research groups.
-
-- name: Aileen O’Carroll
-  slug: aileen-o’carroll
-
-- name: Barbara Mccormack
-  slug: barbara-mccormack
-
-- name: Ciarán Wallace
-  slug: ciarán-wallace
-
-- name: David Landy
-  slug: david-landy
-
-- name: Digital Repositry of Ireland
-  slug: digital-repositry-of-ireland
-  avatar: ../images/authors/dri-logo.jpg
-
-- name: Elizabeth Kiely
-  slug: elizabeth-kiely
-
-- name: Jane Gray
-  slug: jane-gray
-
-- name: Jennifer Moore
-  slug: jennifer-moore
-
-- name: Kevin Long
-  slug: kevin-long
-
-- name: Maria Ryan
-  slug: maria-ryan
-
-- name: Rónán Swan
-  slug: rónán-swan
-
-- name: Siobhán Doyle
-  slug: siobhán-doyle
-
-- name: Stephanie Rousseau
-  slug: stephanie-rousseau
-
-- name: Tara Doyle
-  slug: tara-doyle
