@@ -47,3 +47,11 @@
   slug: sib
   url: https://www.sib.swiss/
   logo: ../images/organisations/sib1.png
+
+- name: SSHOC
+  slug: sshoc
+  url: https://sshopencloud.eu/
+
+- name: DARIAH Research Data Management Working group
+  slug: dariah-rdm
+  url: https://www.dariah.eu/activities/working-groups/research-data-management/
