@@ -78,19 +78,6 @@
     The ability to identify, retrieve, organize, understand, evaluate, and
     analyze information using digital technology.
 
-- name: Digital Source Criticism
-  slug: digital-source-criticism
-  description:
-    'The combination of the three terms, ‘digital’, ‘source’ and ‘criticism’
-    refers to the need to apply a key principle for the professional historian -
-    the critical assessment of the origin, authenticity and value of a
-    historical source - to the digitised and digital born sources that are
-    currently available on the web. This asks for a basic understanding of the
-    transformation process from analog to digital, the creation process of
-    digital born data, the publication of this information on the web, and the
-    computational mechanisms to retrieve this information that are performed by
-    search engines.'
-
 - name: DH
   slug: dh
   description:
