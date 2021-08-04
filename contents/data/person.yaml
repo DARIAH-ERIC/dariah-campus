@@ -43,6 +43,11 @@
   email: anne.baillot@gmail.com
   avatar: ../images/authors/anne-baillot.jpg
 
+- name: Keith Baker
+  slug: keith-baker
+  description: Keith Michael Baker is J.E. Wallace Sterling Professor of European History at Stanford University. Among his many publications, he is widely acclaimed for his books, Condorcet":" From Natural Philosophy to Social Mathematics, and Inventing the French Revolution. Most recently, he has edited (with Dan Edelstein) Scripting Revolution":" A Historical Approach to the Comparative Study of Revolutions.
+
+
 - name: Nadja Baldszuhn
   slug: nadja-baldszuhn
 
@@ -840,6 +845,12 @@
   slug: stefan-schmunk
   avatar: ../images/authors/stefan-schmunk.jpg
 
+- name: Jeffrey Schnapp
+  slug: jeffrey-schnapp
+  avatar: ../images/authors/jeffrey-schnapp.jpg
+  description: 
+    Jeffrey Schnapp is a professor at Harvard University and advocates for an applied structure of data in order to optimize the potential for knowledge extraction.
+
 - name: Walter Scholger
   slug: walter-scholger
   avatar: ../images/authors/walter-scholger.jpg
@@ -921,6 +932,10 @@
     editor, business analyst, and project manager. His monograph _The Digital
     Humanities and the Digital Modern_ was published by Palgrave Macmillan in
     2017.
+
+- name: Laura-Still
+  slug: laura-still
+  title: Editor
 
 - name: Juliane Stiller
   slug: juliane-stiller
@@ -1050,6 +1065,10 @@
 
 - name: Sidney Wiltgen
   slug: sidney-wiltgen
+
+- name: Florian Wiencek
+  slug: florian-wiencek
+  title: Editor
 
 - name: Tanja Wissik
   slug: tanja-wissik
