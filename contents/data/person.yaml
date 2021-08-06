@@ -27,9 +27,16 @@
   slug: mark-algee-hewitt
   avatar: ../images/authors/mark-algee-hewitt.jpg
 
+- name: Alexandra Angeletaki
+  slug: alexandra-angeletaki
+  description: University of Science and Technology, Trondheim/Norway
+
 - name: Marie Annisius
   slug: marie-annisius
   avatar: ../images/authors/marie-annisius.jpg
+
+- name: Stefanie Aquavella-Rauch
+  slug: stefanie-aquavella-rauch
 
 - name: Florentina Armaselu
   slug: florentina-armaselu
@@ -315,6 +322,10 @@
   title: DARIAH Director
   avatar: ../images/authors/jennifer-edmond.jpg
 
+- name: Marieke Van Erp
+  slug: marieke-van-erp
+  description: Marieke van Erp (NL) leads the Digital Humanities Lab at the KNAW Humanities Cluster in Amsterdam, the Netherlands. Her research is focused on combining natural language processing and semantic web technology in the digital humanities domain. She holds a PhD in computational linguistics from Tilburg University (2010) where she applied digital humanities methods to historic textual sources from the Naturalis Biodiversity Center. She previously worked on the European NewsReader project, which was aimed at building structured indexes of events from large volumes of financial news and the CLARIAH project, a large Dutch project to develop infrastructure for humanities research.
+
 - name: Jeanette Falk Olesen
   slug: jeanette-falk-olesen
   avatar: ../images/authors/jeanette-falk-olesen.jpg
@@ -440,13 +451,24 @@
 - name: Vanessa Hannesschläger
   slug: vanessa-hannesschlager
 
+- name: Natalie Harrower
+  slug: natalie-harrower
+  description: Natalie Harrower is the Director of the Digital Repository of Ireland (DRI), a national infrastructure for the preservation of Ireland’s social and cultural data. She sits on Ireland’s National Archives Advisory Committee, and chairs the ALLEA (All European Academies) E-Humanities Working Group. She is the Principal Investigator on Inspiring Ireland, Ireland’s collaborative Digital Cultural Heritage Platform. Dr. Harrower is the founding chair of the DPASSH conference":" Digital Preservation for the Arts, Humanities and Social Sciences, and a contributor to several European initiatives in data sharing and reuse. Prior to her appointment at the DRI, Dr. Harrower was a theatre and film scholar, specialising in Irish identity, politics, and historiography, as seen through the critical lens of contemporary Irish theatre and film.
+
 - name: Heather Hodgson
   slug: heather-hodgson
   avatar: ../images/authors/heather-hodgson.jpg
 
+- name: Dirk Hovy
+  slug: dirk-hovy
+  description: Dirk Hovy is associate professor of computer science at Bocconi University in Milan, Italy. Before that, he was faculty and postdoc in Copenhagen, got a PhD in NLP from USC, and a masters degree in linguistics from Marburg, Germany. 
+
 - name: Marianne Huang
   slug: marianne-huang
   avatar: ../images/authors/marianne-huang.jpg
+
+- name: Victoria Van Hyning
+  slug: victoria-van-hyning
 
 - name: Neil Jakeman
   slug: neil-jakeman
@@ -657,6 +679,9 @@
   slug: adele-valeria-messina
   email: adelevaleria@gmail.com
 
+- name: Miriah Meyer
+  slug: miriah-meyer
+
 - name: Jennifer Middendorf
   slug: jennifer-middendorf
 
@@ -727,6 +752,10 @@
 - name: Kevin O'Connor
   slug: kevin-oconnor
   avatar: ../images/authors/kevin-oconnor.png
+
+- name: Björn Ommer
+  slug: björn-ommer
+  description: University of Heidelberg, Germany
 
 - name: Costas Papadopoulos
   slug: costas-papadopoulos
@@ -1035,6 +1064,10 @@
 
 - name: Martina Trognitz
   slug: martina-trognitz
+
+- name: Jan Willem Tulp
+  slug: jan-willem-tulp
+  description: Jan Willem Tulp is an independent Data Experience Designer from the Netherlands. With his company TULP interactive he creates custom data visualizations for a variety of clients. For more than 6 years he has helped clients such as Google, European Space Agency, Scientific American, Nature and World Economic Forum by creating visualizations, both interactive and in print. His work has appeared in several books and magazines and he speaks regularly at international conferences.
 
 - name: Henk van den Heuvel
   slug: henk-van-den-heuvel
