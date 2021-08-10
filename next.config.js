@@ -4,6 +4,8 @@
 
 /** @type {NextConfig} */
 const config = {
+  /** Required by netlify. */
+  target: 'serverless',
   eslint: {
     dirs: ['.'],
     ignoreDuringBuilds: true,
