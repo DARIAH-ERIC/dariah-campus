@@ -1,0 +1,47 @@
+name: Propose a resource
+description: Provide metadata for a resource to be included in DARIAH-Campus
+title: '[new resource]: '
+labels:
+  - new resource
+body:
+  - type: markdown
+    attributes:
+      value:
+        Thanks for suggesting a new resource. Please fill out this form and we
+        will get back to you asap!
+  - type: input
+    id: title
+    attributes:
+      label: Title of the resource
+      description: Title of the resource
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Resource type
+      options:
+        - External Resource
+        - Hosted Resource
+        - Pathfinder
+        - Captured Event
+  - type: input
+    id: authors
+    attributes:
+      label: Authors, editors and contributors
+      description: Comma-separated list of authors, editors and contributors
+    validations:
+      required: true
+  - type: input
+    id: tags
+    attributes:
+      label: Topics (keywords)
+      description: Comma-separated list of topics
+  - type: textarea
+    id: abstract
+    attributes:
+      label: Abstract
+      description:
+        Short description of the resource (including learning outcomes)
+    validations:
+      required: true

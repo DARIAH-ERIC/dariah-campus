@@ -1,0 +1,22 @@
+{
+  "videos": [
+    {
+      "id": "OqYJNUmhJzw",
+      "title": "Laurent Romary",
+      "subtitle": "Former DARIAH Director",
+      "image": "romary-laurent.jpg"
+    },
+    {
+      "id": "iwz0uhEhtg4",
+      "title": "Jennifer Edmond",
+      "subtitle": "DARIAH Director",
+      "image": "edmond-jennifer.jpg"
+    },
+    {
+      "id": "soL0itkLYpk",
+      "title": "Frank Fischer",
+      "subtitle": "DARIAH Director",
+      "image": "fischer-frank.jpg"
+    }
+  ]
+}

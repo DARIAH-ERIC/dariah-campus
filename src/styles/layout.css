@@ -1,0 +1,8 @@
+:root {
+  --page-header-height: 88px;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: var(--page-header-height);
+}

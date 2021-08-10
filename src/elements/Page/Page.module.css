@@ -1,9 +1,0 @@
-.page {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  margin-bottom: var(--margin-large);
-  padding: var(--padding-huge) var(--padding-large);
-  position: relative;
-  width: 100%;
-}
