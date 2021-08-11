@@ -286,16 +286,18 @@ function EventToc(props: EventTocProps) {
 
   return (
     <ul className="home__index">
-      {sessions.map((session, index) => (
-        <li key={index}>
-          <a href={`#session-${index}`}>
-            <small>
-              <span>Session {index + 1}</span>
-            </small>
-            <strong>{session.title}</strong>
-          </a>
-        </li>
-      ))}
+      {sessions.map((session, index) => {
+        return (
+          <li key={index}>
+            <a href={`#session-${index}`}>
+              <small>
+                <span>Session {index + 1}</span>
+              </small>
+              <strong>{session.title}</strong>
+            </a>
+          </li>
+        )
+      })}
     </ul>
   )
 }
@@ -538,7 +540,9 @@ function EventSession(props: EventSessionProps) {
               const speaker = session.speakers
                 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 ?.filter(Boolean)
-                .find((speaker) => speaker.id === props.speaker)
+                .find((speaker) => {
+                  return speaker.id === props.speaker
+                })
 
               if (speaker == null) return null
 

@@ -22,7 +22,9 @@ export function useSearch(searchTerm: string): {
   status: SearchStatus
   error: Error | null
 } {
-  const [searchIndex] = useState(() => getAlgoliaSearchIndex())
+  const [searchIndex] = useState(() => {
+    return getAlgoliaSearchIndex()
+  })
   const [searchResults, setSearchResults] = useState<
     Array<Hit<IndexedResource | IndexedCourse>>
   >([])

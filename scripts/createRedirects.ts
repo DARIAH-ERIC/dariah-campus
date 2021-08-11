@@ -44,5 +44,7 @@ async function main() {
 }
 
 main()
-  .then(() => log.success('Successfully updated resource redirects.'))
+  .then(() => {
+    log.success('Successfully updated resource redirects.')
+  })
   .catch(log.error)

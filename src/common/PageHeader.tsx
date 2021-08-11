@@ -72,7 +72,9 @@ function PageNavigation() {
     <nav className="hidden md:items-center md:space-x-8 md:flex">
       <ul className="flex items-center space-x-8 text-sm font-medium">
         {Object.entries(navigation)
-          .filter(([key]) => key !== 'contact')
+          .filter(([key]) => {
+            return key !== 'contact'
+          })
           .map(([route, { href }]) => {
             return (
               <li key={route}>
@@ -157,7 +159,9 @@ function MobilePageNavigation() {
           <div className="flex flex-col">
             <ul className="flex flex-col my-6 space-y-4 overflow-y-auto font-medium">
               {Object.entries(navigation)
-                .filter(([key]) => key !== 'contact')
+                .filter(([key]) => {
+                  return key !== 'contact'
+                })
                 .map(([route, { href }]) => {
                   return (
                     <li key={route} className="flex px-2 py-2">

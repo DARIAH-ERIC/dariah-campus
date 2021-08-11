@@ -27,9 +27,9 @@ function withQuizCards() {
       switch (node.name) {
         case 'Quiz.Card': {
           const card = {} as { controls?: { validate?: string } }
-          const validateButtonLabel = node.attributes.find(
-            (attribute: any) => attribute.name === 'validateButtonLabel',
-          )?.value
+          const validateButtonLabel = node.attributes.find((attribute: any) => {
+            return attribute.name === 'validateButtonLabel'
+          })?.value
           /* @ts-expect-error Waiting for updated remark types. */
           if (validateButtonLabel != null && validateButtonLabel.length > 0) {
             card.controls = card.controls ?? {}
@@ -51,9 +51,9 @@ function withQuizCards() {
         case 'Quiz.Message': {
           const last = cards[cards.length - 1]
           last.messages = last.messages ?? {}
-          const type = node.attributes.find(
-            (attribute: any) => attribute.name === 'type',
-          )?.value
+          const type = node.attributes.find((attribute: any) => {
+            return attribute.name === 'type'
+          })?.value
           /* @ts-expect-error Waiting for updated remark types. */
           if (type != null && allowedQuizMessageTypes.includes(type)) {
             /* @ts-expect-error Waiting for updated remark types. */
@@ -81,10 +81,9 @@ function withQuizCards() {
               /* @ts-expect-error Waiting for updated remark types. */
               children: node.children,
             }),
-            isCorrect: node.attributes.some(
-              (attribute: any) =>
-                attribute.name === 'isCorrect' && attribute.value !== false,
-            ),
+            isCorrect: node.attributes.some((attribute: any) => {
+              return attribute.name === 'isCorrect' && attribute.value !== false
+            }),
           })
           break
         }
@@ -94,16 +93,16 @@ function withQuizCards() {
           last.type = 'XmlCodeEditor'
           last.question = ''
 
-          const codeAttribute = node.attributes.find(
-            (attribute: any) => attribute.name === 'code',
-          )
+          const codeAttribute = node.attributes.find((attribute: any) => {
+            return attribute.name === 'code'
+          })
           const code =
             codeAttribute != null
               ? getStringLiteralAttribute(codeAttribute.value)
               : ''
-          const solutionAttribute = node.attributes.find(
-            (attribute: any) => attribute.name === 'solution',
-          )
+          const solutionAttribute = node.attributes.find((attribute: any) => {
+            return attribute.name === 'solution'
+          })
           const solution =
             solutionAttribute != null
               ? getStringLiteralAttribute(solutionAttribute.value)

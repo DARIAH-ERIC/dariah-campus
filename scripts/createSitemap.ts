@@ -20,5 +20,7 @@ generate({
     )
   },
 })
-  .then(() => log.success('Successfully generated sitemap.'))
+  .then(() => {
+    log.success('Successfully generated sitemap.')
+  })
   .catch(log.error)

@@ -102,9 +102,9 @@ export async function getStaticProps(
 
   const page = Number(context.params?.page)
   const postPreviews = await getPostPreviewsByAuthorId(id, locale)
-  const sortedResources: Array<PostPreview> = postPreviews.sort((a, b) =>
-    a.date > b.date ? -1 : 1,
-  )
+  const sortedResources: Array<PostPreview> = postPreviews.sort((a, b) => {
+    return a.date > b.date ? -1 : 1
+  })
 
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
   const resources = paginate(sortedResources, pageSize)[page - 1]!
@@ -229,9 +229,9 @@ export default function AuthorPage(props: AuthorPageProps): JSX.Element {
           <Pagination
             page={posts.page}
             pages={posts.pages}
-            href={(page) =>
-              routes.author({ id: author.id, resourcePage: page })
-            }
+            href={(page) => {
+              return routes.author({ id: author.id, resourcePage: page })
+            }}
           />
         </section>
       </PageContent>

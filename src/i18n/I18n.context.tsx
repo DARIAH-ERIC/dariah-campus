@@ -29,7 +29,9 @@ export interface I18nProviderProps {
 export function I18nProvider(props: I18nProviderProps): JSX.Element {
   const { locale, dictionary } = props
 
-  const [service, setService] = useState(() => createI18n(locale, dictionary))
+  const [service, setService] = useState(() => {
+    return createI18n(locale, dictionary)
+  })
 
   useEffect(() => {
     setService(createI18n(locale, dictionary))

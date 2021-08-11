@@ -49,7 +49,11 @@ export async function getStaticProps(
   const dictionary = await loadDictionary(locale, ['common'])
 
   const teamIds = teamMembers.sort()
-  const team = await Promise.all(teamIds.map((id) => getPersonById(id, locale)))
+  const team = await Promise.all(
+    teamIds.map((id) => {
+      return getPersonById(id, locale)
+    }),
+  )
 
   const videos = await Promise.all(
     featured.videos.map(async (video) => {

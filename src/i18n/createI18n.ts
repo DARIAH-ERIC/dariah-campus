@@ -192,7 +192,9 @@ function createCacheKey(locale: string, options?: Record<string, unknown>) {
   return (
     locale +
     (options
-      ? Object.entries(options).sort((a, b) => (a[0] < b[0] ? -1 : 1))
+      ? Object.entries(options).sort((a, b) => {
+          return a[0] < b[0] ? -1 : 1
+        })
       : '')
   )
 }

@@ -28,12 +28,15 @@ async function main() {
     string,
     (uuid: string, slug: string) => string
   > = {
-    'redirects.resources.json': (uuid, slug) =>
-      `/id/${uuid} /resource/posts/${slug} 302`,
-    'redirects.events.json': (uuid, slug) =>
-      `/id/${uuid} /resource/events/${slug} 302`,
-    'redirects.courses.json': (uuid, slug) =>
-      `/id/${uuid} /curriculum/${slug} 302`,
+    'redirects.resources.json': (uuid, slug) => {
+      return `/id/${uuid} /resource/posts/${slug} 302`
+    },
+    'redirects.events.json': (uuid, slug) => {
+      return `/id/${uuid} /resource/events/${slug} 302`
+    },
+    'redirects.courses.json': (uuid, slug) => {
+      return `/id/${uuid} /curriculum/${slug} 302`
+    },
   }
 
   const temporaryRedirects = ['# temporary redirects']
@@ -54,12 +57,15 @@ async function main() {
     string,
     (oldSlug: string, slug: string) => string
   > = {
-    'redirects.legacy.resources.json': (oldSlug, slug) =>
-      `/resource/${oldSlug} /resource/posts/${slug} 301`,
-    'redirects.legacy.events.json': (oldSlug, slug) =>
-      `/resource/${oldSlug} /resource/events/${slug} 301`,
-    'redirects.legacy.persons.json': (oldSlug, slug) =>
-      `/author/${oldSlug}  /author/${slug} 301`,
+    'redirects.legacy.resources.json': (oldSlug, slug) => {
+      return `/resource/${oldSlug} /resource/posts/${slug} 301`
+    },
+    'redirects.legacy.events.json': (oldSlug, slug) => {
+      return `/resource/${oldSlug} /resource/events/${slug} 301`
+    },
+    'redirects.legacy.persons.json': (oldSlug, slug) => {
+      return `/author/${oldSlug}  /author/${slug} 301`
+    },
   }
 
   const permanentRedirects = ['# permanent redirects']
@@ -88,7 +94,7 @@ async function main() {
 }
 
 main()
-  .then(() =>
-    log.success('Successfully updated Netlify rewrites and redirects.'),
-  )
+  .then(() => {
+    return log.success('Successfully updated Netlify rewrites and redirects.')
+  })
   .catch(log.error)

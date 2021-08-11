@@ -44,7 +44,7 @@ async function main() {
 }
 
 main()
-  .then(() =>
-    log.success('Successfully dumped resource metadata to public folder.'),
-  )
+  .then(() => {
+    log.success('Successfully dumped resource metadata to public folder.')
+  })
   .catch(log.error)

@@ -101,7 +101,9 @@ export async function getStaticProps(
     )
   )
     .flat()
-    .filter((course) => course.id !== id)
+    .filter((course) => {
+      return course.id !== id
+    })
   const related = pickRandom(coursesWithSharedTags, RELATED_COURSES_COUNT)
 
   const lastUpdatedAt = await getLastUpdatedTimestamp(
@@ -157,7 +159,9 @@ export default function CoursePage(props: CoursePageProps): JSX.Element {
           version: metadata.version,
           // license: metadata.licence.url,
           // image: metadata.featuredImage,
-          keywords: metadata.tags.map((tag) => tag.name),
+          keywords: metadata.tags.map((tag) => {
+            return tag.name
+          }),
           publisher: {
             '@type': 'Organization',
             name: siteMetadata.title,
@@ -192,7 +196,9 @@ export default function CoursePage(props: CoursePageProps): JSX.Element {
         abstract={metadata.abstract}
         lang={metadata.lang}
         // licence={metadata.licence.name}
-        tags={metadata.tags.map((tag) => tag.name)}
+        tags={metadata.tags.map((tag) => {
+          return tag.name
+        })}
         siteTitle={siteMetadata.title}
       />
       <PageContent className="grid w-full max-w-screen-lg px-4 py-8 mx-auto space-y-10 xs:py-16 xs:px-8 2xl:space-y-0 2xl:grid-cols-content-layout 2xl:gap-x-10 2xl:max-w-none">

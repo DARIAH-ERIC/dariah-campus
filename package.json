@@ -68,7 +68,7 @@
     "hastscript": "^6.0.0",
     "js-yaml": "^4.1.0",
     "netlify-cms-app": "^2.15.35",
-    "next": "^11.0.2-canary.26",
+    "next": "^11.1.0",
     "nprogress": "^0.2.0",
     "patch-package": "^6.4.7",
     "react": "^17.0.2",
@@ -97,9 +97,10 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@next/bundle-analyzer": "^11.0.2-canary.26",
-    "@next/eslint-plugin-next": "^11.0.2-canary.26",
+    "@next/bundle-analyzer": "^11.1.0",
+    "@next/eslint-plugin-next": "^11.1.0",
     "@stefanprobst/commitlint-config": "^1.0.1",
+    "@stefanprobst/eslint-config-next": "^3.0.6",
     "@stefanprobst/favicons": "^1.0.8",
     "@stefanprobst/next-feed": "^1.0.0",
     "@stefanprobst/next-sitemap": "^1.0.6",
@@ -122,7 +123,7 @@
     "autoprefixer": "^10.2.6",
     "cross-env": "^7.0.3",
     "eslint": "^7.28.0",
-    "eslint-config-next": "^11.0.2-canary.25",
+    "eslint-config-next": "^11.1.0",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-jest": "^24.3.6",
     "jest": "^27.0.4",
@@ -154,121 +155,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:react-hooks/recommended",
-      "plugin:import/recommended",
-      "plugin:jsx-a11y/recommended",
-      "plugin:jest/recommended",
-      "plugin:jest/style",
-      "plugin:@next/next/core-web-vitals"
-    ],
-    "parser": "next/dist/compiled/babel/eslint-parser",
-    "parserOptions": {
-      "requireConfigFile": false,
-      "sourceType": "module",
-      "allowImportExportEverywhere": true,
-      "babelOptions": {
-        "presets": [
-          "next/babel"
-        ],
-        "caller": {
-          "supportsTopLevelAwait": true
-        }
-      }
-    },
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    },
-    "rules": {
-      "@next/next/no-img-element": "off",
-      "import/first": "error",
-      "import/newline-after-import": "error",
-      "import/no-duplicates": "error",
-      "import/no-named-as-default": "off",
-      "import/order": [
-        "error",
-        {
-          "newlines-between": "always",
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": true
-          }
-        }
-      ],
-      "jsx-a11y/anchor-is-valid": [
-        "error",
-        {
-          "components": [
-            "Link"
-          ],
-          "aspects": [
-            "invalidHref",
-            "preferButton"
-          ]
-        }
-      ],
-      "jsx-a11y/no-autofocus": [
-        "warn",
-        {
-          "ignoreNonDOM": true
-        }
-      ],
-      "jsx-a11y/no-onchange": "off",
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off"
-    },
-    "overrides": [
-      {
-        "files": [
-          "*.config.js"
-        ],
-        "env": {
-          "node": true
-        }
-      },
-      {
-        "files": [
-          "**/*.@(ts|tsx)"
-        ],
-        "extends": [
-          "plugin:@typescript-eslint/recommended",
-          "plugin:import/typescript"
-        ],
-        "parserOptions": {
-          "project": [
-            "./tsconfig.json"
-          ]
-        },
-        "settings": {
-          "import/resolver": {
-            "typescript": {
-              "alwaysTryTypes": true
-            }
-          }
-        },
-        "rules": {
-          "@typescript-eslint/array-type": [
-            "error",
-            {
-              "default": "generic"
-            }
-          ],
-          "@typescript-eslint/consistent-type-imports": "error",
-          "@typescript-eslint/no-unnecessary-condition": "warn",
-          "@typescript-eslint/no-unused-vars": [
-            "error",
-            {
-              "argsIgnorePattern": "^_",
-              "varsIgnorePattern": "^_"
-            }
-          ],
-          "@typescript-eslint/strict-boolean-expressions": "error",
-          "@typescript-eslint/switch-exhaustiveness-check": "error"
-        }
-      }
+      "@stefanprobst/eslint-config-next"
     ]
   },
   "lint-staged": {

@@ -68,13 +68,17 @@ export function Quiz(props: QuizProps): JSX.Element | null {
 
   function next() {
     if (hasNext) {
-      setCurrentIndex((currentIndex) => currentIndex + 1)
+      setCurrentIndex((currentIndex) => {
+        return currentIndex + 1
+      })
     }
   }
 
   function previous() {
     if (hasPrevious) {
-      setCurrentIndex((currentIndex) => currentIndex - 1)
+      setCurrentIndex((currentIndex) => {
+        return currentIndex - 1
+      })
     }
   }
 

@@ -96,7 +96,9 @@ export async function getStaticProps(
         }
       }),
     )
-  ).filter((tag) => tag.posts > 0) // FIXME: paginate after filtering - needs caching!
+  ).filter((tag) => {
+    return tag.posts > 0
+  }) // FIXME: paginate after filtering - needs caching!
 
   return {
     props: {

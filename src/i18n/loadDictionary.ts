@@ -22,7 +22,9 @@ export async function loadDictionary(
        */
       const dictionary = await import(
         `~/public/locales/${locale}/${namespace}.json`
-      ).then((module) => module.default)
+      ).then((module) => {
+        return module.default
+      })
 
       return [namespace, dictionary]
     }),

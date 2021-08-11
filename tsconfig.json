@@ -13,7 +13,7 @@
     "app-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "*.config.js"
+    "**/*.config.js"
   ],
   "exclude": ["node_modules"]
 }

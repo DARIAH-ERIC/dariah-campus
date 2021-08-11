@@ -46,7 +46,9 @@ export function Citation(props: CitationProps): JSX.Element {
 function getCitation(metadata: CitationProps['metadata'], siteUrl: string) {
   function createNameList(persons: Array<Person>) {
     return persons
-      .map((person) => getFullName(person))
+      .map((person) => {
+        return getFullName(person)
+      })
       .join(', ')
       .replace(/,(?!.*,)/gim, ' and')
   }
@@ -78,8 +80,12 @@ function getCitation(metadata: CitationProps['metadata'], siteUrl: string) {
       ? metadata.remote.publisher + '. '
       : metadata.remote?.url !== undefined
       ? metadata.categories
-          .filter((cat) => cat.id !== 'dariah')
-          .map((cat) => cat.host) + '. '
+          .filter((cat) => {
+            return cat.id !== 'dariah'
+          })
+          .map((cat) => {
+            return cat.host
+          }) + '. '
       : 'DARIAH-Campus. '
 
   const contentType = `[${metadata.type.name}]. `

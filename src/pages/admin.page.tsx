@@ -121,7 +121,9 @@ const Cms = dynamic(
       plugins: [],
     })
 
-    return () => null
+    return function () {
+      return null
+    }
   },
   {
     ssr: false,

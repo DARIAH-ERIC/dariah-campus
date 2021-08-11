@@ -9,6 +9,7 @@ import { useLocale } from '@/i18n/useLocale'
  */
 export function Favicons(): JSX.Element {
   const { locale, defaultLocale } = useLocale()
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   const prefix = locale === defaultLocale ? '' : `/${locale}`
 
   return (

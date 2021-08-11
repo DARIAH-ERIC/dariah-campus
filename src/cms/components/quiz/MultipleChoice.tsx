@@ -20,8 +20,12 @@ export function MultipleChoice(props: MultipleChoiceProps): JSX.Element {
   const options = childElements.filter(isMultipleChoiceOption)
 
   const correctAnswers = options
-    .filter((option) => option.props.isCorrect === true)
-    .map((option) => options.indexOf(option))
+    .filter((option) => {
+      return option.props.isCorrect === true
+    })
+    .map((option) => {
+      return options.indexOf(option)
+    })
   const isSingleChoice = props.variant === 'single'
   /**
    * Put `Set` in a 1-tuple, so we don't need to recreate the `Set` on every change.
@@ -48,7 +52,9 @@ export function MultipleChoice(props: MultipleChoiceProps): JSX.Element {
   function onValidate() {
     const isCorrect =
       correctAnswers.length === checked.size &&
-      correctAnswers.every((index) => checked.has(index))
+      correctAnswers.every((index) => {
+        return checked.has(index)
+      })
 
     quiz.setStatus(
       isCorrect === true ? QuizCardStatus.CORRECT : QuizCardStatus.INCORRECT,
@@ -67,7 +73,9 @@ export function MultipleChoice(props: MultipleChoiceProps): JSX.Element {
               <input
                 type={type}
                 name={name}
-                onChange={() => toggle(index)}
+                onChange={() => {
+                  toggle(index)
+                }}
                 checked={checked.has(index)}
               />
               {option}

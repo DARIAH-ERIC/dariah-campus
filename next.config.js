@@ -130,7 +130,7 @@ const plugins = [
       ...nextConfig,
       /** @type {(config: WebpackConfig, options: any) => WebpackConfig} */
       webpack(config, options) {
-        /* @ts-expect-error */
+        /* @ts-expect-error always defined */
         config.module.rules.push({
           test: /\.mdx?$/,
           use: [

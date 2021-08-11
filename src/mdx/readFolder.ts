@@ -13,7 +13,9 @@ export async function readFolder(
 
   if (fileExtension != null) {
     return fileNames
-      .filter((filename) => filename.endsWith(fileExtension))
+      .filter((filename) => {
+        return filename.endsWith(fileExtension)
+      })
       .map((fileName) => {
         return fileName.slice(0, -fileExtension.length)
       })

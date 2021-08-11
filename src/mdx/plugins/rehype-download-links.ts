@@ -34,7 +34,9 @@ export default function attacher(): Transformer {
 
       const urlAttribute = node.attributes.find(
         /** Ignore `MDXJsxExpressionAttribute`. */
-        (attribute) => 'name' in attribute && attribute.name === 'url',
+        (attribute) => {
+          return 'name' in attribute && attribute.name === 'url'
+        },
       )
 
       const paths = copyAsset(urlAttribute?.value, file.path, 'asset')

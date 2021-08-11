@@ -94,7 +94,9 @@ export async function getStaticProps(
   const eventPreviews = await getEventPreviews(locale)
   const resourcePreviews = [...postPreviews, ...eventPreviews]
   const sortedResources: Array<ResourcePreview> = resourcePreviews.sort(
-    (a, b) => (a.date > b.date ? -1 : 1),
+    (a, b) => {
+      return a.date > b.date ? -1 : 1
+    },
   )
 
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
@@ -114,8 +116,12 @@ export async function getStaticProps(
       }),
     )
   )
-    .filter((tag) => tag.posts > 0)
-    .sort((a, b) => (a.posts > b.posts ? -1 : 1))
+    .filter((tag) => {
+      return tag.posts > 0
+    })
+    .sort((a, b) => {
+      return a.posts > b.posts ? -1 : 1
+    })
     /** Display only the first page of tags with highest number of posts. */
     .slice(0, tagsPageSize)
 
@@ -160,7 +166,9 @@ export default function ResourcesPage(props: ResourcesPageProps): JSX.Element {
         <Pagination
           page={resources.page}
           pages={resources.pages}
-          href={(page) => routes.resources({ page })}
+          href={(page) => {
+            return routes.resources({ page })
+          }}
         />
       </PageContent>
     </Fragment>

@@ -21,9 +21,9 @@ function withSpeakers() {
     function onMdx(node: MDXJsxFlowElement) {
       switch (node.name) {
         case 'Speaker': {
-          const speaker = node.attributes.find(
-            (attribute: any) => attribute.name === 'speaker',
-          )
+          const speaker = node.attributes.find((attribute: any) => {
+            return attribute.name === 'speaker'
+          })
           speakers.push({
             speaker: speaker != null ? speaker.value : undefined,
             children: processor.stringify({

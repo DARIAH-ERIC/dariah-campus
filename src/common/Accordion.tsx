@@ -32,9 +32,9 @@ export function Accordion<T extends Record<string, unknown>>(
       className="flex flex-col w-full max-w-screen-md py-6 mx-auto space-y-6 text-lg"
       style={props.style}
     >
-      {[...state.collection].map((item) => (
-        <AccordionItem<T> key={item.key} item={item} state={state} />
-      ))}
+      {[...state.collection].map((item) => {
+        return <AccordionItem<T> key={item.key} item={item} state={state} />
+      })}
     </div>
   )
 }

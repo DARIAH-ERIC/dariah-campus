@@ -125,7 +125,9 @@ export default function EventPage(props: EventPageProps): JSX.Element {
             typeof metadata.featuredImage === 'string'
               ? metadata.featuredImage
               : metadata.featuredImage?.src,
-          keywords: metadata.tags.map((tag) => tag.name),
+          keywords: metadata.tags.map((tag) => {
+            return tag.name
+          }),
           publisher: {
             '@type': 'Organization',
             name: siteMetadata.title,
@@ -148,7 +150,9 @@ export default function EventPage(props: EventPageProps): JSX.Element {
         url={canonicalUrl}
         title={metadata.title}
         date={metadata.date}
-        authors={metadata.authors.map((author) => getFullName(author))}
+        authors={metadata.authors.map((author) => {
+          return getFullName(author)
+        })}
         abstract={metadata.abstract}
         lang={metadata.lang}
         siteTitle={siteMetadata.title}
@@ -156,11 +160,15 @@ export default function EventPage(props: EventPageProps): JSX.Element {
       <DublinCoreMetadata
         title={metadata.title}
         date={metadata.date}
-        authors={metadata.authors.map((author) => getFullName(author))}
+        authors={metadata.authors.map((author) => {
+          return getFullName(author)
+        })}
         abstract={metadata.abstract}
         lang={metadata.lang}
         licence={metadata.licence.name}
-        tags={metadata.tags.map((tag) => tag.name)}
+        tags={metadata.tags.map((tag) => {
+          return tag.name
+        })}
         siteTitle={siteMetadata.title}
       />
       <Event event={resource} />

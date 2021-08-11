@@ -213,5 +213,7 @@ async function generate() {
 }
 
 generate()
-  .then(() => log.success('Successfully updated Algolia search index.'))
+  .then(() => {
+    log.success('Successfully updated Algolia search index.')
+  })
   .catch(log.error)

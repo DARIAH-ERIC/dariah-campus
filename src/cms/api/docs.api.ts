@@ -96,13 +96,13 @@ export async function getDocs(locale: Locale): Promise<Array<Doc>> {
     }),
   )
 
-  docs.sort((a, b) =>
-    a.data.metadata.order === b.data.metadata.order
+  docs.sort((a, b) => {
+    return a.data.metadata.order === b.data.metadata.order
       ? 0
       : a.data.metadata.order > b.data.metadata.order
       ? 1
-      : -1,
-  )
+      : -1
+  })
 
   return docs
 }
@@ -133,9 +133,9 @@ export async function getDocPreviews(
     }),
   )
 
-  metadata.sort((a, b) =>
-    a.order === b.order ? 0 : a.order > b.order ? 1 : -1,
-  )
+  metadata.sort((a, b) => {
+    return a.order === b.order ? 0 : a.order > b.order ? 1 : -1
+  })
 
   return metadata
 }

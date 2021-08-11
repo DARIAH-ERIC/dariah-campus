@@ -143,13 +143,13 @@ export async function getCourses(locale: Locale): Promise<Array<Course>> {
     }),
   )
 
-  courses.sort((a, b) =>
-    a.data.metadata.date === b.data.metadata.date
+  courses.sort((a, b) => {
+    return a.data.metadata.date === b.data.metadata.date
       ? 0
       : a.data.metadata.date > b.data.metadata.date
       ? -1
-      : 1,
-  )
+      : 1
+  })
 
   return courses
 }
@@ -180,7 +180,9 @@ export async function getCoursePreviews(
     }),
   )
 
-  metadata.sort((a, b) => (a.date === b.date ? 0 : a.date > b.date ? -1 : 1))
+  metadata.sort((a, b) => {
+    return a.date === b.date ? 0 : a.date > b.date ? -1 : 1
+  })
 
   return metadata
 }

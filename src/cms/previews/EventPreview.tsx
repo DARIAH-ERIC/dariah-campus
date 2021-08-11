@@ -252,6 +252,7 @@ export function EventPreview(
                   : []
 
                 const body =
+                  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                   session.body != null
                     ? String(await compileMdx(session.body))
                     : ''

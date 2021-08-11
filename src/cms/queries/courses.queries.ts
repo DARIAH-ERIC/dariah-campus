@@ -27,9 +27,11 @@ export async function getCoursePreviewsByTagId(
 ): Promise<Array<CoursePreview>> {
   const postPreviews = await getCoursePreviews(locale)
 
-  const coursesByTag = postPreviews.filter((post) =>
-    post.tags.some((tag) => tag.id === id),
-  )
+  const coursesByTag = postPreviews.filter((post) => {
+    return post.tags.some((tag) => {
+      return tag.id === id
+    })
+  })
 
   return coursesByTag
 }
@@ -43,9 +45,11 @@ export async function getCoursePreviewsByResourceId(
 ): Promise<Array<CoursePreview>> {
   const postPreviews = await getCoursePreviews(locale)
 
-  const coursesByTag = postPreviews.filter((post) =>
-    post.resources.some((resource) => resource.id === id),
-  )
+  const coursesByTag = postPreviews.filter((post) => {
+    return post.resources.some((resource) => {
+      return resource.id === id
+    })
+  })
 
   return coursesByTag
 }

@@ -140,9 +140,9 @@ export default function CategoryPage(props: CategoryPageProps): JSX.Element {
           <Pagination
             page={posts.page}
             pages={posts.pages}
-            href={(page) =>
-              routes.category({ id: category.id, resourcePage: page })
-            }
+            href={(page) => {
+              return routes.category({ id: category.id, resourcePage: page })
+            }}
           />
         </section>
       </PageContent>

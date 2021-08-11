@@ -3,6 +3,11 @@ const { createMatchPath, loadConfig } = require('tsconfig-paths')
 const { postcss } = require('~/package.json')
 
 const tsconfig = loadConfig()
+
+if (tsconfig.resultType === 'failed') {
+  throw new Error('Failed to read tsconfig')
+}
+
 const resolve = createMatchPath(
   tsconfig.absoluteBaseUrl,
   tsconfig.paths,
@@ -17,7 +22,7 @@ const config = {
      * handled by `webpack` (`css-loader`).
      */
     'postcss-import': {
-      resolve(id) {
+      resolve(/** @type {string} */ id) {
         return resolve(id) ?? require.resolve(id)
       },
     },

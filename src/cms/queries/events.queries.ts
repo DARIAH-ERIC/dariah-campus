@@ -11,9 +11,11 @@ export async function getEventPreviewsByAuthorId(
 ): Promise<Array<EventPreview>> {
   const postPreviews = await getEventPreviews(locale)
 
-  const eventsByAuthor = postPreviews.filter((post) =>
-    post.authors.some((author) => author.id === id),
-  )
+  const eventsByAuthor = postPreviews.filter((post) => {
+    return post.authors.some((author) => {
+      return author.id === id
+    })
+  })
 
   return eventsByAuthor
 }
@@ -27,9 +29,11 @@ export async function getEventPreviewsByTagId(
 ): Promise<Array<EventPreview>> {
   const postPreviews = await getEventPreviews(locale)
 
-  const eventsByTag = postPreviews.filter((post) =>
-    post.tags.some((tag) => tag.id === id),
-  )
+  const eventsByTag = postPreviews.filter((post) => {
+    return post.tags.some((tag) => {
+      return tag.id === id
+    })
+  })
 
   return eventsByTag
 }

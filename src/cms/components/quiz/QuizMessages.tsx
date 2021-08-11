@@ -20,9 +20,9 @@ export function QuizMessages(props: QuizMessagesProps): JSX.Element | null {
   const { t } = useI18n()
   const quiz = useQuiz()
 
-  const statusMessages = messages.filter(
-    (message) => message.props.type === quiz.status,
-  )
+  const statusMessages = messages.filter((message) => {
+    return message.props.type === quiz.status
+  })
 
   if (statusMessages.length > 0) {
     return <Fragment>{statusMessages}</Fragment>

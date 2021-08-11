@@ -13,8 +13,7 @@ export async function generateBlurDataUrl(filePath: string): Promise<string> {
   return sharp(buffer)
     .resize(BLUR_SIZE)
     .toBuffer({ resolveWithObject: true })
-    .then(
-      ({ data, info }) =>
-        `data:image/${info.format};base64,` + data.toString('base64'),
-    )
+    .then(({ data, info }) => {
+      return `data:image/${info.format};base64,` + data.toString('base64')
+    })
 }

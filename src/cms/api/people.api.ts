@@ -78,7 +78,9 @@ export async function getPersons(locale: Locale): Promise<Array<Person>> {
     }),
   )
 
-  data.sort((a, b) => a.lastName.localeCompare(b.lastName, locale))
+  data.sort((a, b) => {
+    return a.lastName.localeCompare(b.lastName, locale)
+  })
 
   return data
 }

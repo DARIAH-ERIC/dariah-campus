@@ -11,6 +11,7 @@ export interface Logger {
  * Logs messages to the console.
  */
 export const log: Logger =
+  /* eslint-disable no-console */
   typeof window === 'undefined' || process.env.NODE_ENV !== 'production'
     ? {
         success(message) {

@@ -22,10 +22,9 @@ export function XmlCodeEditor(props: XmlCodeEditorProps): JSX.Element {
 
   const ref = useRef<HTMLDivElement>(null)
   const { getDocument, getSelection } = useCodeMirror(ref, props.code)
-  const solution = useMemo(
-    () => createDocumentFragment(normalizeWhitespace(props.solution)),
-    [props.solution],
-  )
+  const solution = useMemo(() => {
+    return createDocumentFragment(normalizeWhitespace(props.solution))
+  }, [props.solution])
 
   function onValidate() {
     const input =
