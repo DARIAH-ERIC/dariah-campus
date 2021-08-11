@@ -142,6 +142,9 @@
     "xast-util-feed": "^1.2.0",
     "xast-util-to-xml": "^3.0.0"
   },
+  "resolutions": {
+    "sharp": "0.28.3"
+  },
   "browserslist": [
     "defaults",
     "not ie 11",
