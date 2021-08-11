@@ -13,14 +13,14 @@ async function main() {
   const rewrites = [
     '# rewrites',
     '/resources /resources/page/1 200',
-    '/resources /resources/:type/page/1 200',
+    '/resources/:type /resources/:type/page/1 200',
     '/courses /courses/page/1 200',
     '/authors /authors/page/1 200',
-    '/author /author/:id/page/1 200',
+    '/author/:id /author/:id/page/1 200',
     '/tags /tags/page/1 200',
-    '/tag /tag/:id/page/1 200',
+    '/tag/:id /tag/:id/page/1 200',
     '/categories /categories/page/1 200',
-    '/category /category/:id/page/1 200',
+    '/category/:id /category/:id/page/1 200',
     '/about /docs/about 200',
   ]
 
