@@ -65,6 +65,33 @@ const config = {
           }
         },
       ),
+      ...Object.entries(require('./redirects.legacy.resources.json')).map(
+        ([legacyId, id]) => {
+          return {
+            source: `/resource/${legacyId}`,
+            destination: `/resource/posts/${id}`,
+            permanent: true,
+          }
+        },
+      ),
+      ...Object.entries(require('./redirects.legacy.events.json')).map(
+        ([legacyId, id]) => {
+          return {
+            source: `/resource/${legacyId}`,
+            destination: `/resource/events/${id}`,
+            permanent: true,
+          }
+        },
+      ),
+      ...Object.entries(require('./redirects.legacy.persons.json')).map(
+        ([legacyId, id]) => {
+          return {
+            source: `/author/${legacyId}`,
+            destination: `/author/${id}`,
+            permanent: true,
+          }
+        },
+      ),
     ]
   },
   async rewrites() {
