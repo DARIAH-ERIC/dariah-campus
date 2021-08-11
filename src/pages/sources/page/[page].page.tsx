@@ -154,7 +154,7 @@ export default function CategoriesPage(
                             <Image
                               src={category.image}
                               alt=""
-                              // placeholder="blur"
+                              placeholder="blur"
                               layout="responsive"
                               objectFit="cover"
                               sizes="(max-width: 640px) 584px, (max-width: 1024px) 943px, 584px"

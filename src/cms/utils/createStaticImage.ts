@@ -1,7 +1,7 @@
 import sizeOf from 'image-size'
 
 import { copyAsset } from '@/mdx/utils/copyAsset'
-// import { generateBlurDataUrl } from '@/mdx/utils/generateBlurDataUrl'
+import { generateBlurDataUrl } from '@/mdx/utils/generateBlurDataUrl'
 
 type StaticImageData = {
   src: string
@@ -26,13 +26,13 @@ export async function createStaticImage(
     const { width, height } = sizeOf(srcFilePath)
 
     if (width != null && height != null) {
-      // const blurDataURL = await generateBlurDataUrl(srcFilePath)
+      const blurDataURL = await generateBlurDataUrl(srcFilePath)
 
       return {
         src: publicPath,
         width,
         height,
-        // blurDataURL,
+        blurDataURL,
       }
     }
   }

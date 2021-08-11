@@ -7,7 +7,7 @@ import visit from 'unist-util-visit'
 import type { VFile } from 'vfile'
 
 import { copyAsset } from '@/mdx/utils/copyAsset'
-// import { generateBlurDataUrl } from '@/mdx/utils/generateBlurDataUrl'
+import { generateBlurDataUrl } from '@/mdx/utils/generateBlurDataUrl'
 
 /**
  * Rehype plugin which copies linked image assets, and adds width and height.
@@ -135,33 +135,33 @@ export default function attacher(): Transformer {
         })
       }
 
-      // imageBlurPromises.push(
-      //   generateBlurDataUrl(srcFilePath).then((dataUrl) => {
-      //     // if added to expression, need to update expression `value`
-      //     // imageSrcProps.properties.push({
-      //     //   type: 'Property',
-      //     //   key: {
-      //     //     type: 'Identifier',
-      //     //     name: 'blurDataURL',
-      //     //   },
-      //     //   value: {
-      //     //     type: 'Literal',
-      //     //     value: dataUrl,
-      //     //   },
-      //     //   kind: 'init',
-      //     // })
-      //     imageComponent.attributes.push({
-      //       type: 'mdxJsxAttribute',
-      //       name: 'blurDataURL',
-      //       value: dataUrl,
-      //     })
-      //     imageComponent.attributes.push({
-      //       type: 'mdxJsxAttribute',
-      //       name: 'placeholder',
-      //       value: 'blur',
-      //     })
-      //   }),
-      // )
+      imageBlurPromises.push(
+        generateBlurDataUrl(srcFilePath).then((dataUrl) => {
+          // if added to expression, need to update expression `value`
+          // imageSrcProps.properties.push({
+          //   type: 'Property',
+          //   key: {
+          //     type: 'Identifier',
+          //     name: 'blurDataURL',
+          //   },
+          //   value: {
+          //     type: 'Literal',
+          //     value: dataUrl,
+          //   },
+          //   kind: 'init',
+          // })
+          imageComponent.attributes.push({
+            type: 'mdxJsxAttribute',
+            name: 'blurDataURL',
+            value: dataUrl,
+          })
+          imageComponent.attributes.push({
+            type: 'mdxJsxAttribute',
+            name: 'placeholder',
+            value: 'blur',
+          })
+        }),
+      )
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       parent!.children.splice(index, 1, imageComponent)

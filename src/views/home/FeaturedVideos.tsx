@@ -55,7 +55,7 @@ function VideoCard(props: VideoCardProps) {
             alt=""
             layout="fill"
             sizes="(max-width: 640px) 544px, (max-width: 814px) 718px, 256px"
-            // placeholder="blur"
+            placeholder="blur"
           />
         </div>
         <Icon icon={PlayIcon} className="w-12 h-12 text-primary-600" />
