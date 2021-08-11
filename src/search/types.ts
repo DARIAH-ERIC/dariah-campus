@@ -19,7 +19,6 @@ export interface IndexedResource
     Pick<PostPreview['authors'][number], 'id' | 'firstName' | 'lastName'>
   >
   tags: Array<Pick<PostPreview['tags'][number], 'id' | 'name'>>
-  body: string
 }
 
 /**
@@ -30,7 +29,6 @@ export interface IndexedCourse
   type: 'courses'
   objectID: string
   tags: Array<Pick<CoursePreview['tags'][number], 'id' | 'name'>>
-  body: string
 }
 
 /**
@@ -41,5 +39,4 @@ export interface IndexedEvent
   type: 'events'
   objectID: string
   tags: Array<Pick<EventPreview['tags'][number], 'id' | 'name'>>
-  body: string
 }

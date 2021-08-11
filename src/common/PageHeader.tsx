@@ -282,12 +282,6 @@ function Search() {
                                   __html: result._snippetResult.abstract.value,
                                 }}
                               />
-                            ) : result._snippetResult?.body.value != null ? (
-                              <p
-                                dangerouslySetInnerHTML={{
-                                  __html: result._snippetResult.body.value,
-                                }}
-                              />
                             ) : null}
                             <dl>
                               <dt className="sr-only">{t('common.tags')}</dt>
