@@ -28,7 +28,7 @@ export interface CategoryYaml {
 export interface CategoryData extends Omit<CategoryYaml, 'image'> {
   image?:
     | FilePath
-    | { src: FilePath; width: number; height: number; blurDataURL: string }
+    | { src: FilePath; width: number; height: number; blurDataURL?: string }
 }
 
 export interface Category extends CategoryId, CategoryData {}

@@ -32,7 +32,7 @@ export function Team(props: TeamProps): JSX.Element {
                   height={96}
                   objectFit="cover"
                   layout="fixed"
-                  placeholder="blur"
+                  // placeholder="blur"
                 />
               ) : null}
               <h3 className="font-bold">{getFullName(person)}</h3>

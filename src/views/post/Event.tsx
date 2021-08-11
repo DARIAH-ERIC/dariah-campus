@@ -558,7 +558,7 @@ function EventSession(props: EventSessionProps) {
                           src={speaker.avatar}
                           alt=""
                           objectFit="cover"
-                          placeholder="blur"
+                          // placeholder="blur"
                           layout="fill"
                         />
                       )

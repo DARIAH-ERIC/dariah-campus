@@ -29,7 +29,7 @@ export interface FeaturedVideo {
   subtitle: string
   image:
     | FilePath
-    | { src: FilePath; width: number; height: number; blurDataURL: string }
+    | { src: FilePath; width: number; height: number; blurDataURL?: string }
 }
 
 export interface HomePageProps {

@@ -34,7 +34,7 @@ export interface PersonYaml {
 export interface PersonData extends Omit<PersonYaml, 'avatar'> {
   avatar?:
     | FilePath
-    | { src: FilePath; width: number; height: number; blurDataURL: string }
+    | { src: FilePath; width: number; height: number; blurDataURL?: string }
 }
 
 export interface Person extends PersonId, PersonData {}

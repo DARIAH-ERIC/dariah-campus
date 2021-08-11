@@ -28,7 +28,7 @@ export interface OrganisationYaml {
 export interface OrganisationData extends Omit<OrganisationYaml, 'logo'> {
   logo?:
     | FilePath
-    | { src: FilePath; width: number; height: number; blurDataURL: string }
+    | { src: FilePath; width: number; height: number; blurDataURL?: string }
 }
 
 export interface Organisation extends OrganisationId, OrganisationData {}
