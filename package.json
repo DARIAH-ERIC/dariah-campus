@@ -61,7 +61,7 @@
     "@stefanprobst/next-page-metadata": "^1.1.0",
     "@stefanprobst/next-svg": "^2.0.0",
     "@stefanprobst/rehype-extract-toc": "^1.0.3",
-    "@stefanprobst/rehype-shiki": "^1.1.0",
+    "@stefanprobst/rehype-shiki": "^1.1.1",
     "@stefanprobst/remark-resource-links": "^1.0.2",
     "algoliasearch": "^4.10.3",
     "hastscript": "^6.0.0",

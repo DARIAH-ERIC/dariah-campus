@@ -2488,10 +2488,10 @@
     hast-util-to-string "^1.0.4"
     unist-util-visit "^2.0.3"
 
-"@stefanprobst/rehype-shiki@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@stefanprobst/rehype-shiki/-/rehype-shiki-1.1.0.tgz#22ecbb526afd16b95bc4f09d65a6d187121ec9de"
-  integrity sha512-5hfaoD7ab03Uaf95MjZhioKIrh4ufLsObGK4qxAxNZR2pl+gOOqo+OeP1eJD2/2ZYcpWSKvggW+xNgG0HM0YIg==
+"@stefanprobst/rehype-shiki@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@stefanprobst/rehype-shiki/-/rehype-shiki-1.1.1.tgz#abceb0c55586bcdb013dad06eed4e01e44c250d2"
+  integrity sha512-seaIcRhgAQz6H/Y6k5dYRDd0dS7jdFGqlhsAs7/mEJlHdr8jEYs1p5MtoaSTRud3W0Co1CK7vwPJRbXoDN1IAw==
   dependencies:
     hast-util-raw "^6.1.0"
     hast-util-to-string "^1.0.4"
