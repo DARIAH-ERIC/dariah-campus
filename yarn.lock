@@ -3160,10 +3160,10 @@
     eslint-plugin-react "^7.24.0"
     eslint-plugin-react-hooks "^4.2.0"
 
-"@stefanprobst/favicons@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/@stefanprobst/favicons/-/favicons-1.0.8.tgz#6caa65dc11627adf580b85417dfa57655c86eeba"
-  integrity sha512-sTxdi0u1O7HEdcBqVCkHO7awtI6YHAmAluiknpYh2n4rJcCs3tS4xGIac/zAImC2ECAYm1tUqD3I0OFpqibxtw==
+"@stefanprobst/favicons@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.npmjs.org/@stefanprobst/favicons/-/favicons-1.0.9.tgz#8f1d40f66ff51aa975f14b4a7505689207efa63e"
+  integrity sha512-oKri1ZVKKcYEkfL0xl/CiVvehZiJ3wMJrls9uOmEyl/tH+CXAa1jRV0pz5SoU7lahCZsquaj01PkUzYQo/5YMA==
   dependencies:
     mri "^1.1.6"
     sharp "^0.28.3"
