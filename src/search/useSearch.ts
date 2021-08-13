@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 
 import { getAlgoliaSearchIndex } from '@/search/getAlgoliaSearchIndex'
 import type { IndexedCourse, IndexedResource } from '@/search/types'
+import { MAX_SEARCH_RESULTS, SNIPPET_WORDS } from '~/config/search.config'
 
 const searchStatus = [
   'idle',
@@ -48,10 +49,10 @@ export function useSearch(searchTerm: string): {
         const results = await searchIndex.search<
           IndexedResource | IndexedCourse
         >(searchTerm, {
-          hitsPerPage: 10,
+          hitsPerPage: MAX_SEARCH_RESULTS,
           attributesToRetrieve: ['type', 'kind', 'id', 'title', 'tags'],
           attributesToHighlight: ['title'],
-          attributesToSnippet: ['abstract', 'body'],
+          attributesToSnippet: [`abstract:${SNIPPET_WORDS}`],
           highlightPreTag: '<mark>',
           highlightPostTag: '</mark>',
           snippetEllipsisText: '&hellip;',

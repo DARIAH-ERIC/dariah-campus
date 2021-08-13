@@ -7,6 +7,7 @@ import type { I18nProviderProps } from '@/i18n/I18n.context'
 import { I18nProvider } from '@/i18n/I18n.context'
 import { useLocale } from '@/i18n/useLocale'
 import { SiteMetadataProvider } from '@/metadata/SiteMetadata.context'
+import { SearchDialog } from '@/search/SearchDialog'
 
 export interface ProvidersProps {
   children: ReactNode
@@ -24,7 +25,9 @@ export function Providers(props: ProvidersProps): JSX.Element {
       <I18nProvider locale={locale} dictionary={props.dictionary}>
         <UiI18nProvider locale={locale}>
           <SiteMetadataProvider>
-            <OverlayProvider>{props.children}</OverlayProvider>
+            <OverlayProvider>
+              <SearchDialog>{props.children}</SearchDialog>
+            </OverlayProvider>
           </SiteMetadataProvider>
         </UiI18nProvider>
       </I18nProvider>
