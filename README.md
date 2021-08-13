@@ -51,6 +51,12 @@ use your favourite text editor to make changes and commit via git. When using VS
 Code you can install the recommended extensions to get linting aud
 auto-formatting for markdown.
 
+### Edit directly on GitHub
+
+It is also possible to use
+[GitHub Codespaces](https://github.com/features/codespaces) to edit content
+directly in the browser.
+
 ### Contributing guidelines
 
 When contributing content directly via git, please use feature branches and
