@@ -4,7 +4,12 @@ import { useEffect, useState } from 'react'
 import { getAlgoliaSearchIndex } from '@/search/getAlgoliaSearchIndex'
 import type { IndexedCourse, IndexedResource } from '@/search/types'
 import { useDebouncedState } from '@/utils/useDebouncedState'
-import { MAX_SEARCH_RESULTS, SNIPPET_WORDS } from '~/config/search.config'
+import {
+  DEBOUNCE_MS,
+  MAX_SEARCH_RESULTS,
+  MIN_SEARCH_TERM_LENGTH,
+  SNIPPET_WORDS,
+} from '~/config/search.config'
 
 const searchStatus = [
   'idle',
@@ -13,9 +18,6 @@ const searchStatus = [
   'error',
   'disabled',
 ] as const
-
-export const MIN_SEARCH_TERM_LENGTH = 3
-const DEBOUNCE_MS = 100
 
 export type SearchStatus = typeof searchStatus[number]
 

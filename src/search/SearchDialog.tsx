@@ -20,7 +20,8 @@ import { useI18n } from '@/i18n/useI18n'
 import { routes } from '@/navigation/routes.config'
 import { SearchDialogContext } from '@/search/SearchDialog.context'
 import type { SearchStatus } from '@/search/useSearch'
-import { MIN_SEARCH_TERM_LENGTH, useSearch } from '@/search/useSearch'
+import { useSearch } from '@/search/useSearch'
+import { MIN_SEARCH_TERM_LENGTH } from '~/config/search.config'
 
 export interface SearchDialogProps {
   children: ReactNode
