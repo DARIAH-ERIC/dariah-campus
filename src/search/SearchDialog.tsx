@@ -20,7 +20,7 @@ import { useI18n } from '@/i18n/useI18n'
 import { routes } from '@/navigation/routes.config'
 import { SearchDialogContext } from '@/search/SearchDialog.context'
 import type { SearchStatus } from '@/search/useSearch'
-import { useSearch } from '@/search/useSearch'
+import { MIN_SEARCH_TERM_LENGTH, useSearch } from '@/search/useSearch'
 
 export interface SearchDialogProps {
   children: ReactNode
@@ -59,7 +59,7 @@ export function SearchDialog(props: SearchDialogProps): JSX.Element {
   // )
 
   function onSubmit(searchTerm: string) {
-    setSearchTerm(searchTerm.trim())
+    setSearchTerm(searchTerm)
   }
 
   useEffect(() => {
@@ -92,10 +92,8 @@ export function SearchDialog(props: SearchDialogProps): JSX.Element {
               onSubmit={onSubmit}
               isDisabled={status === 'disabled'}
               loadingState={status}
-              // FIXME: make search field controlled, or clear the searchresults when closing the dialog.
-              // otherwise we will see the search results, but not the search term in the input,
-              // when reopening the search dialog
-              // TODO: Loading indicator
+              value={searchTerm}
+              onChange={setSearchTerm}
             />
             {Array.isArray(searchResults) && searchResults.length > 0 ? (
               <ul className="overflow-y-auto">
@@ -148,7 +146,7 @@ export function SearchDialog(props: SearchDialogProps): JSX.Element {
                   )
                 })}
               </ul>
-            ) : searchTerm.length > 0 ? (
+            ) : searchTerm.trim().length >= MIN_SEARCH_TERM_LENGTH ? (
               <div className="py-4 text-center text-neutral-500">
                 {t('common.noResultsFound')}
               </div>
