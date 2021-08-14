@@ -35,7 +35,9 @@ import { useSiteMetadata } from '@/metadata/useSiteMetadata'
 import { routes } from '@/navigation/routes.config'
 import { createUrl } from '@/utils/createUrl'
 import type { IsoDateString } from '@/utils/ts/aliases'
+import { AuthorsAside } from '@/views/post/AuthorsAside'
 import { Course } from '@/views/post/Course'
+import { TagsAside } from '@/views/post/TagsAside'
 
 const RELATED_COURSES_COUNT = 4
 
@@ -202,13 +204,57 @@ export default function CoursePage(props: CoursePageProps): JSX.Element {
         siteTitle={siteMetadata.title}
       />
       <PageContent className="grid w-full max-w-screen-lg px-4 py-8 mx-auto space-y-10 xs:py-16 xs:px-8 2xl:space-y-0 2xl:grid-cols-content-layout 2xl:gap-x-10 2xl:max-w-none">
-        <aside />
+        <aside
+          className="sticky hidden w-full max-w-xs max-h-screen px-8 py-8 space-y-8 overflow-y-auto text-sm top-24 text-neutral-500 2xl:flex 2xl:flex-col justify-self-end"
+          style={{
+            maxHeight: 'calc(100vh - 12px - var(--page-header-height))',
+          }}
+        >
+          {metadata.editors != null ? (
+            <AuthorsAside authors={metadata.editors} />
+          ) : null}
+          <TagsAside tags={metadata.tags} />
+          <LessonsList resources={metadata.resources} />
+        </aside>
         <div className="min-w-0">
           <Course course={course} lastUpdatedAt={lastUpdatedAt} />
           <RelatedCourses courses={related} />
         </div>
       </PageContent>
     </Fragment>
+  )
+}
+
+interface LessonsListProps {
+  resources: CourseData['data']['metadata']['resources']
+}
+
+function LessonsList(props: LessonsListProps) {
+  const { resources } = props
+
+  const { t } = useI18n()
+
+  if (resources.length === 0) return null
+
+  return (
+    <nav aria-label={t('common.lessonsInCourse')} className="w-full space-y-2">
+      <h2 className="text-xs font-bold tracking-wide uppercase text-neutral-600">
+        {t('common.lessonsInCourse')}
+      </h2>
+      <ol className="space-y-2">
+        {resources.map((resource) => {
+          return (
+            <li key={resource.id}>
+              <Link href={routes.resource({ kind: 'posts', id: resource.id })}>
+                <a className="flex items-center text-sm space-x-1.5 transition hover:text-primary-600 relative focus:outline-none rounded focus-visible:ring focus-visible:ring-primary-600">
+                  {resource.shortTitle ?? resource.title}
+                </a>
+              </Link>
+            </li>
+          )
+        })}
+      </ol>
+    </nav>
   )
 }
 

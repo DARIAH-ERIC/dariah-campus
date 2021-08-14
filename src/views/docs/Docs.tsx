@@ -1,7 +1,5 @@
-import type { ImageProps } from 'next/image'
-import Image from 'next/image'
-
 import type { Doc as DocData, DocPreview } from '@/cms/api/docs.api'
+import { ResponsiveImage } from '@/common/ResponsiveImage'
 import { useI18n } from '@/i18n/useI18n'
 import { Mdx as DocsContent } from '@/mdx/Mdx'
 import type { IsoDateString } from '@/utils/ts/aliases'
@@ -45,8 +43,4 @@ export function Docs(props: DocsProps): JSX.Element {
       </footer>
     </article>
   )
-}
-
-function ResponsiveImage(props: ImageProps) {
-  return <Image layout="responsive" sizes="800px" {...props} alt={props.alt} />
 }

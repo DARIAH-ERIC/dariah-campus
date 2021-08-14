@@ -13,11 +13,11 @@ import { Fragment } from 'react'
 import { Svg as AcademicCapIcon } from '@/assets/icons/academic-cap.svg'
 import type { CoursePreview } from '@/cms/api/courses.api'
 import { getEventById, getEventIds } from '@/cms/api/events.api'
+import type { Post as PostData, PostPreview } from '@/cms/api/posts.api'
 import { getPostById, getPostFilePath, getPostIds } from '@/cms/api/posts.api'
-import type { PostPreview, Post as PostData } from '@/cms/api/posts.api'
 import type {
-  ResourceKind,
   Resource as ResourceData,
+  ResourceKind,
 } from '@/cms/api/resources.api'
 import { getCoursePreviewsByResourceId } from '@/cms/queries/courses.queries'
 import { getPostPreviewsByTagId } from '@/cms/queries/posts.queries'
@@ -39,6 +39,7 @@ import { useSiteMetadata } from '@/metadata/useSiteMetadata'
 import { routes } from '@/navigation/routes.config'
 import { createUrl } from '@/utils/createUrl'
 import type { IsoDateString } from '@/utils/ts/aliases'
+import { AuthorsAside } from '@/views/post/AuthorsAside'
 import { Citation } from '@/views/post/Citation'
 import { ContentTypeIcon } from '@/views/post/ContentTypeIcon'
 import { Event } from '@/views/post/Event'
@@ -46,6 +47,7 @@ import { FloatingTableOfContents } from '@/views/post/FloatingTableOfContents'
 import { Resource } from '@/views/post/Resource'
 import { ReUseConditions } from '@/views/post/ReUseConditions'
 import { TableOfContents } from '@/views/post/TableOfContents'
+import { TagsAside } from '@/views/post/TagsAside'
 
 const RELATED_RESOURCES_COUNT = 4
 
@@ -272,12 +274,18 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
             maxHeight: 'calc(100vh - 12px - var(--page-header-height))',
           }}
         >
+          <AuthorsAside authors={metadata.authors} />
+          <TagsAside tags={metadata.tags} />
+          <CourseLinks courses={courses} />
           <Citation metadata={metadata} />
           <ReUseConditions />
-          <CourseLinks courses={courses} />
         </aside>
         <div className="min-w-0">
           <Resource resource={resource} lastUpdatedAt={lastUpdatedAt} />
+          <div className="flex flex-col w-full pt-12 mx-auto mt-12 space-y-12 border-t text-neutral-500 border-neutral-200 max-w-80ch 2xl:hidden">
+            <Citation metadata={metadata} />
+            <ReUseConditions />
+          </div>
           <FullMetadata metadata={metadata} />
           <RelatedResources resources={related} />
         </div>
@@ -323,14 +331,18 @@ interface CourseLinksProps {
 function CourseLinks(props: CourseLinksProps) {
   const { courses } = props
 
-  const { t } = useI18n()
+  const { t, pluralize } = useI18n()
 
   if (courses.length === 0) return null
 
+  const label = t('common.containedIn', {
+    location: pluralize('common.thisCurriculum', courses.length),
+  })
+
   return (
-    <nav aria-label={t('common.containedIn')} className="w-full space-y-2">
+    <nav aria-label={label} className="w-full space-y-2">
       <h2 className="text-xs font-bold tracking-wide uppercase text-neutral-600">
-        {t('common.containedIn')}
+        {label}
       </h2>
       <ul className="space-y-2">
         {courses.map((course) => {

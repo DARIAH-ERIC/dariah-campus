@@ -53,7 +53,7 @@ export function PostSocialShareLinks(props: PostSocialShareLinks): JSX.Element {
           }),
         )}
       >
-        <a className="transition rounded-full hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
+        <a className="block transition rounded-full hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
           <Icon icon={TwitterIcon} />
           <span className="sr-only">
             {t('common.shareLink', { platform: 'Twitter' })}
@@ -72,7 +72,7 @@ export function PostSocialShareLinks(props: PostSocialShareLinks): JSX.Element {
           }),
         )}
       >
-        <a className="transition rounded-full hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
+        <a className="block transition rounded-full hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
           <Icon icon={FacebookIcon} />
           <span className="sr-only">
             {t('common.shareLink', { platform: 'Facebook' })}

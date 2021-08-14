@@ -37,7 +37,12 @@
   "nextPage": "Next page",
   "relatedResources": "Related resources",
   "courses": "Curricula",
-  "containedIn": "Contained in",
+  "containedIn": "Contained in {{location}}",
+  "thisCurriculum": {
+    "one": "this curriculum",
+    "other": "these curricula"
+  },
+  "lessonsInCourse": "Resources in curriculum",
   "tags": "Topics",
   "tagsPageTitle": "Interested in particular topics?",
   "tagsPageLeadIn": "Browse learning resources based on their topic",
