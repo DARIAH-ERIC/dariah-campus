@@ -27,12 +27,10 @@ export function Tags(props: TagsProps): JSX.Element | null {
               <li key={tag.id} className="inline">
                 <Link href={routes.tag({ id: tag.id })}>
                   <a className="transition hover:text-primary-700 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
-                    <span className={index !== 0 ? 'ml-1' : undefined}>
-                      {tag.name}
-                    </span>
+                    <span>{tag.name}</span>
                   </a>
                 </Link>
-                {index !== tags.length - 1 ? ', ' : null}
+                {index !== tags.length - 1 ? <span>, </span> : null}
               </li>
             )
           })}
