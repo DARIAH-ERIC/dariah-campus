@@ -282,7 +282,7 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
         </aside>
         <div className="min-w-0">
           <Resource resource={resource} lastUpdatedAt={lastUpdatedAt} />
-          <div className="flex flex-col w-full pt-12 mx-auto mt-12 space-y-12 border-t text-neutral-500 border-neutral-200 max-w-80ch 2xl:hidden">
+          <div className="flex flex-col w-full pt-12 mx-auto mt-12 space-y-12 text-sm border-t text-neutral-500 border-neutral-200 max-w-80ch 2xl:hidden">
             <Citation metadata={metadata} />
             <ReUseConditions />
           </div>

@@ -23,10 +23,10 @@ export function Course(props: CourseProps): JSX.Element {
   const { t, formatDate } = useI18n()
 
   return (
-    <article className="w-full mx-auto space-y-16 max-w-80ch">
+    <article className="w-full mx-auto space-y-10 max-w-80ch">
       <header className="space-y-10">
         <PageTitle>{title}</PageTitle>
-        <dl className="py-10 space-y-10 border-t border-b 2xl:hidden">
+        <dl className="py-10 space-y-6 border-t border-b 2xl:hidden">
           <Authors authors={authors} />
           <Tags tags={tags} />
         </dl>
@@ -46,7 +46,7 @@ export function Course(props: CourseProps): JSX.Element {
           </ol>
         </div>
       ) : null}
-      <footer>
+      <footer className="pt-2">
         {lastUpdatedAt != null ? (
           <p className="text-sm text-right text-neutral-500">
             <span>{t('common.lastUpdated')}: </span>

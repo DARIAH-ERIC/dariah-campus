@@ -26,10 +26,10 @@ export function Resource(props: ResourceProps): JSX.Element {
   const { t, formatDate } = useI18n()
 
   return (
-    <article className="w-full mx-auto space-y-16 max-w-80ch">
+    <article className="w-full mx-auto space-y-10 max-w-80ch">
       <header className="space-y-10">
         <PageTitle>{title}</PageTitle>
-        <dl className="py-10 space-y-10 border-t border-b 2xl:hidden">
+        <dl className="py-10 space-y-6 border-t border-b 2xl:hidden">
           <Authors authors={authors} />
           <Tags tags={tags} />
         </dl>
@@ -52,7 +52,7 @@ export function Resource(props: ResourceProps): JSX.Element {
           }}
         />
       </div>
-      <footer>
+      <footer className="pt-2">
         {isPreview !== true ? <PostSocialShareLinks post={resource} /> : null}
         {lastUpdatedAt != null ? (
           <p className="text-sm text-right text-neutral-500">
