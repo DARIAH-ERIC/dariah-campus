@@ -8,8 +8,6 @@ import type {
 } from 'next'
 import { Fragment } from 'react'
 
-import type { EventPreview } from '@/cms/api/events.api'
-import type { PostPreview } from '@/cms/api/posts.api'
 import { getTagById, getTagIds } from '@/cms/api/tags.api'
 import type { Tag as TagData } from '@/cms/api/tags.api'
 import { getEventPreviewsByTagId } from '@/cms/queries/events.queries'
@@ -27,6 +25,8 @@ import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { routes } from '@/navigation/routes.config'
+import type { ResourceListItem } from '@/views/post/getResourceListData'
+import { getResourceListData } from '@/views/post/getResourceListData'
 import { Pagination } from '@/views/post/Pagination'
 import { ResourcesList } from '@/views/post/ResourcesList'
 
@@ -40,7 +40,7 @@ export interface TagPageParams extends ParsedUrlQuery {
 export interface TagPageProps {
   dictionary: Dictionary
   tag: TagData
-  resources: Page<PostPreview | EventPreview>
+  resources: Page<ResourceListItem>
 }
 
 /**
@@ -99,10 +99,10 @@ export async function getStaticProps(
   const page = Number(context.params?.page)
   const posts = await getPostPreviewsByTagId(id, locale)
   const events = await getEventPreviewsByTagId(id, locale)
-  const sortedResources: Array<PostPreview | EventPreview> = [
+  const sortedResources: Array<ResourceListItem> = getResourceListData([
     ...posts,
     ...events,
-  ].sort((a, b) => {
+  ]).sort((a, b) => {
     return a.date > b.date ? -1 : 1
   })
 

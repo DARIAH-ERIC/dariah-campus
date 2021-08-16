@@ -2,17 +2,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Svg as DefaultAvatar } from '@/assets/icons/user.svg'
-import type { ResourcePreview } from '@/cms/api/resources.api'
 import { getFullName } from '@/cms/utils/getFullName'
 import { Icon } from '@/common/Icon'
 import { useI18n } from '@/i18n/useI18n'
 import { routes } from '@/navigation/routes.config'
 import { ContentTypeIcon } from '@/views/post/ContentTypeIcon'
+import type { ResourceListItem } from '@/views/post/getResourceListData'
 
 const MAX_AUTHORS = 3
 
 export interface ResourcePreviewCardProps {
-  resource: ResourcePreview
+  resource: ResourceListItem
 }
 
 /**
@@ -22,7 +22,7 @@ export function ResourcePreviewCard(
   props: ResourcePreviewCardProps,
 ): JSX.Element {
   const { resource } = props
-  const { id, kind, title, shortTitle, authors, abstract, type } = resource
+  const { id, kind, title, authors, abstract, type } = resource
 
   const { t } = useI18n()
 
@@ -40,7 +40,7 @@ export function ResourcePreviewCard(
                   className="flex-shrink-0 w-5 h-5"
                 />
               </span>
-              <span>{(shortTitle ?? '') || title}</span>
+              <span>{title}</span>
             </a>
           </Link>
         </h2>
@@ -55,7 +55,7 @@ export function ResourcePreviewCard(
                 <ul className="flex items-center space-x-1">
                   {authors.slice(0, MAX_AUTHORS).map((author) => {
                     return (
-                      <li key={author.id}>
+                      <li key={author.id} className="flex">
                         <span className="sr-only">{getFullName(author)}</span>
                         {author.avatar !== undefined ? (
                           <Image

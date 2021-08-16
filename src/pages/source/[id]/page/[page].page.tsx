@@ -10,9 +10,7 @@ import { Fragment } from 'react'
 
 import { getCategoryById, getCategoryIds } from '@/cms/api/categories.api'
 import type { Category as CategoryData } from '@/cms/api/categories.api'
-import type { EventPreview } from '@/cms/api/events.api'
 import { getEventPreviews } from '@/cms/api/events.api'
-import type { PostPreview } from '@/cms/api/posts.api'
 import { getPostPreviewsByCategoryId } from '@/cms/queries/posts.queries'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
 import type { Page } from '@/cms/utils/paginate'
@@ -24,6 +22,8 @@ import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { routes } from '@/navigation/routes.config'
+import type { ResourceListItem } from '@/views/post/getResourceListData'
+import { getResourceListData } from '@/views/post/getResourceListData'
 import { Pagination } from '@/views/post/Pagination'
 import { ResourcesList } from '@/views/post/ResourcesList'
 
@@ -37,7 +37,7 @@ export interface CategoryPageParams extends ParsedUrlQuery {
 export interface CategoryPageProps {
   dictionary: Dictionary
   category: CategoryData
-  posts: Page<PostPreview | EventPreview>
+  posts: Page<ResourceListItem>
 }
 
 /**
@@ -95,14 +95,13 @@ export async function getStaticProps(
   const category = await getCategoryById(id, locale)
 
   const page = Number(context.params?.page)
-  const resources =
+  const resources = getResourceListData(
     id === 'events'
       ? await getEventPreviews(locale)
-      : await getPostPreviewsByCategoryId(id, locale)
+      : await getPostPreviewsByCategoryId(id, locale),
+  )
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-  const paginated = paginate<PostPreview | EventPreview>(resources, pageSize)[
-    page - 1
-  ]!
+  const paginated = paginate<ResourceListItem>(resources, pageSize)[page - 1]!
 
   return {
     props: {

@@ -33,6 +33,8 @@ import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { routes } from '@/navigation/routes.config'
 import { createUrl } from '@/utils/createUrl'
+import type { ResourceListItem } from '@/views/post/getResourceListData'
+import { getResourceListData } from '@/views/post/getResourceListData'
 import { Pagination } from '@/views/post/Pagination'
 import { ResourcesList } from '@/views/post/ResourcesList'
 
@@ -46,7 +48,7 @@ export interface AuthorPageParams extends ParsedUrlQuery {
 export interface AuthorPageProps {
   dictionary: Dictionary
   author: PersonData
-  resources: Page<PostPreview>
+  resources: Page<ResourceListItem>
 }
 
 /**
@@ -64,7 +66,9 @@ export async function getStaticPaths(
         return (
           await Promise.all(
             ids.map(async (id) => {
-              const posts = await getPostPreviewsByAuthorId(id, locale)
+              const posts = getResourceListData(
+                await getPostPreviewsByAuthorId(id, locale),
+              )
 
               const pages = getPageRange(posts, pageSize)
               return pages.map((page) => {

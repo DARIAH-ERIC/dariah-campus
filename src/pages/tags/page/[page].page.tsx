@@ -9,7 +9,6 @@ import type {
 import { Fragment } from 'react'
 
 import { getTagIds, getTags } from '@/cms/api/tags.api'
-import type { Tag } from '@/cms/api/tags.api'
 import { getEventPreviewsByTagId } from '@/cms/queries/events.queries'
 import { getPostPreviewsByTagId } from '@/cms/queries/posts.queries'
 import type { Page } from '@/cms/utils/paginate'
@@ -24,12 +23,13 @@ import { useI18n } from '@/i18n/useI18n'
 import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
+import type { TagListItem } from '@/views/post/getTagListData'
 import { TagsList } from '@/views/post/TagsList'
 import { Svg as HeroImage } from '~/public/assets/images/study.svg'
 
 const pageSize = 50
 
-type TagWithPostCount = Tag & { posts: number }
+type TagWithPostCount = TagListItem & { posts: number }
 
 export interface TagsPageParams extends ParsedUrlQuery {
   page: string
@@ -91,7 +91,8 @@ export async function getStaticProps(
         const resourcesWithTag = [...postsWithTag, ...eventsWithTag]
 
         return {
-          ...tag,
+          id: tag.id,
+          name: tag.name,
           posts: resourcesWithTag.length,
         }
       }),

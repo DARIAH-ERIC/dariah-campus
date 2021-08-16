@@ -10,8 +10,6 @@ import { Fragment } from 'react'
 
 import { getEventIds, getEventPreviews } from '@/cms/api/events.api'
 import { getPostPreviews, getPostIds } from '@/cms/api/posts.api'
-import type { ResourcePreview } from '@/cms/api/resources.api'
-import type { Tag } from '@/cms/api/tags.api'
 import { getTags } from '@/cms/api/tags.api'
 import { getEventPreviewsByTagId } from '@/cms/queries/events.queries'
 import { getPostPreviewsByTagId } from '@/cms/queries/posts.queries'
@@ -28,6 +26,9 @@ import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { routes } from '@/navigation/routes.config'
+import { getResourceListData } from '@/views/post/getResourceListData'
+import type { ResourceListItem } from '@/views/post/getResourceListData'
+import type { TagListItem } from '@/views/post/getTagListData'
 import { Pagination } from '@/views/post/Pagination'
 import { ResourcesList } from '@/views/post/ResourcesList'
 import { TagsList } from '@/views/post/TagsList'
@@ -35,7 +36,7 @@ import { TagsList } from '@/views/post/TagsList'
 const pageSize = 12
 const tagsPageSize = 50
 
-type TagWithPostCount = Tag & { posts: number }
+type TagWithPostCount = TagListItem & { posts: number }
 
 export interface ResourcesPageParams extends ParsedUrlQuery {
   page: string
@@ -43,7 +44,7 @@ export interface ResourcesPageParams extends ParsedUrlQuery {
 
 export interface ResourcesPageProps {
   dictionary: Dictionary
-  resources: Page<ResourcePreview>
+  resources: Page<ResourceListItem>
   tags: Array<TagWithPostCount>
 }
 
@@ -92,8 +93,11 @@ export async function getStaticProps(
   const page = Number(context.params?.page)
   const postPreviews = await getPostPreviews(locale)
   const eventPreviews = await getEventPreviews(locale)
-  const resourcePreviews = [...postPreviews, ...eventPreviews]
-  const sortedResources: Array<ResourcePreview> = resourcePreviews.sort(
+  const resourcePreviews = getResourceListData([
+    ...postPreviews,
+    ...eventPreviews,
+  ])
+  const sortedResources: Array<ResourceListItem> = resourcePreviews.sort(
     (a, b) => {
       return a.date > b.date ? -1 : 1
     },
@@ -110,7 +114,8 @@ export async function getStaticProps(
         const eventsWithTag = await getEventPreviewsByTagId(tag.id, locale)
 
         return {
-          ...tag,
+          id: tag.id,
+          name: tag.name,
           posts: postsWithTag.length + eventsWithTag.length,
         }
       }),

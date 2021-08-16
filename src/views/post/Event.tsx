@@ -98,7 +98,13 @@ function EventOverview(props: EventOverviewProps) {
               className="absolute inset-0 object-cover h-full"
             />
           ) : (
-            <Image src={featuredImage} alt="" layout="fill" objectFit="cover" />
+            <Image
+              src={featuredImage}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              priority
+            />
           )}
           <div className="bg-gradient-to-b from-transparent via-transparent to-[rgba(0,0,0,0.65)] absolute inset-0" />
         </>

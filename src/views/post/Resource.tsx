@@ -29,10 +29,10 @@ export function Resource(props: ResourceProps): JSX.Element {
     <article className="w-full mx-auto space-y-10 max-w-80ch">
       <header className="space-y-10">
         <PageTitle>{title}</PageTitle>
-        <dl className="py-10 space-y-6 border-t border-b 2xl:hidden">
+        <div className="py-10 space-y-6 border-t border-b 2xl:hidden">
           <Authors authors={authors} />
           <Tags tags={tags} />
-        </dl>
+        </div>
       </header>
       <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
         {featuredImage != null ? (

@@ -5,7 +5,7 @@ export function getFullName({
   firstName,
   lastName,
 }: {
-  firstName: string | undefined
+  firstName?: string
   lastName: string
 }): string {
   return [firstName, lastName].filter(Boolean).join(' ')

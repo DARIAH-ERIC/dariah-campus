@@ -10,7 +10,6 @@ import Link from 'next/link'
 import { Fragment } from 'react'
 
 import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
-import type { Person } from '@/cms/api/people.api'
 import { getPersonIds, getPersons } from '@/cms/api/people.api'
 import { getPostPreviewsByAuthorId } from '@/cms/queries/posts.queries'
 import { getFullName } from '@/cms/utils/getFullName'
@@ -27,10 +26,12 @@ import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { routes } from '@/navigation/routes.config'
+import type { AuthorListItem } from '@/views/post/getAuthorListData'
+import { getAuthorListData } from '@/views/post/getAuthorListData'
 
 const pageSize = 50
 
-type AuthorWithPostCount = Person & { posts: number }
+type AuthorWithPostCount = AuthorListItem & { posts: number }
 
 export interface AuthorsPageParams extends ParsedUrlQuery {
   page: string
@@ -83,7 +84,10 @@ export async function getStaticProps(
 
   const page = Number(context.params?.page)
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-  const authors = paginate(await getPersons(locale), pageSize)[page - 1]!
+  const authors = paginate(
+    getAuthorListData(await getPersons(locale)),
+    pageSize,
+  )[page - 1]!
   const authorsWithPostCount = (
     await Promise.all(
       authors.items.map(async (author) => {

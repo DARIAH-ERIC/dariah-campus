@@ -10,7 +10,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Fragment } from 'react'
 
-import type { Category } from '@/cms/api/categories.api'
 import { getCategories, getCategoryIds } from '@/cms/api/categories.api'
 import { getEventPreviews } from '@/cms/api/events.api'
 import { getPostPreviewsByCategoryId } from '@/cms/queries/posts.queries'
@@ -27,6 +26,7 @@ import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { routes } from '@/navigation/routes.config'
+import type { CategoryListItem } from '@/views/post/getCategoryListData'
 
 const pageSize = 12
 
@@ -36,7 +36,7 @@ export interface CategoriesPageParams extends ParsedUrlQuery {
 
 export interface CategoriesPageProps {
   dictionary: Dictionary
-  categories: Page<Category & { posts: number }>
+  categories: Page<CategoryListItem & { posts: number }>
 }
 
 /**
@@ -89,7 +89,10 @@ export async function getStaticProps(
             ? await getEventPreviews(locale)
             : await getPostPreviewsByCategoryId(category.id, locale)
         return {
-          ...category,
+          id: category.id,
+          name: category.name,
+          description: category.description,
+          image: category.image,
           posts: resourcecsWithCategory.length,
         }
       }),
@@ -160,6 +163,7 @@ export default function CategoriesPage(
                               layout="responsive"
                               objectFit="cover"
                               sizes="(max-width: 640px) 584px, (max-width: 1024px) 943px, 584px"
+                              priority
                             />
                           )}
                         </a>

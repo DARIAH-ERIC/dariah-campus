@@ -1,9 +1,9 @@
-import type { ResourcePreview } from '@/cms/api/resources.api'
+import type { ResourceListItem } from '@/views/post/getResourceListData'
 import { ResourcePreviewCard } from '@/views/post/ResourcePreviewCard'
 import { useFakeMasonry } from '@/views/post/useFakeMasonry'
 
 export interface ResourcesListProps {
-  resources: Array<ResourcePreview>
+  resources: Array<ResourceListItem>
 }
 
 /**

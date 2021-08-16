@@ -16,7 +16,7 @@ import {
   getCourseFilePath,
   getCourseIds,
 } from '@/cms/api/courses.api'
-import type { Course as CourseData, CoursePreview } from '@/cms/api/courses.api'
+import type { Course as CourseData } from '@/cms/api/courses.api'
 import { getCoursePreviewsByTagId } from '@/cms/queries/courses.queries'
 import { getLastUpdatedTimestamp } from '@/cms/utils/getLastUpdatedTimestamp'
 import { pickRandom } from '@/cms/utils/pickRandom'
@@ -37,6 +37,8 @@ import { createUrl } from '@/utils/createUrl'
 import type { IsoDateString } from '@/utils/ts/aliases'
 import { AuthorsAside } from '@/views/post/AuthorsAside'
 import { Course } from '@/views/post/Course'
+import type { CourseListItem } from '@/views/post/getCourseListData'
+import { getCourseListData } from '@/views/post/getCourseListData'
 import { TagsAside } from '@/views/post/TagsAside'
 
 const RELATED_COURSES_COUNT = 4
@@ -48,7 +50,7 @@ export interface CoursePageParams extends ParsedUrlQuery {
 export interface CoursePageProps {
   dictionary: Dictionary
   course: CourseData
-  related: Array<CoursePreview>
+  related: Array<CourseListItem>
   lastUpdatedAt: IsoDateString | null
 }
 
@@ -106,7 +108,9 @@ export async function getStaticProps(
     .filter((course) => {
       return course.id !== id
     })
-  const related = pickRandom(coursesWithSharedTags, RELATED_COURSES_COUNT)
+  const related = getCourseListData(
+    pickRandom(coursesWithSharedTags, RELATED_COURSES_COUNT),
+  )
 
   const lastUpdatedAt = await getLastUpdatedTimestamp(
     getCourseFilePath(id, locale),
@@ -259,7 +263,7 @@ function LessonsList(props: LessonsListProps) {
 }
 
 interface RelatedCoursesProps {
-  courses: Array<CoursePreview>
+  courses: Array<CourseListItem>
 }
 
 /**

@@ -3,16 +3,16 @@ import Link from 'next/link'
 
 import { Svg as AcademicCapIcon } from '@/assets/icons/academic-cap.svg'
 import { Svg as DefaultAvatar } from '@/assets/icons/user.svg'
-import type { CoursePreview } from '@/cms/api/courses.api'
 import { getFullName } from '@/cms/utils/getFullName'
 import { Icon } from '@/common/Icon'
 import { useI18n } from '@/i18n/useI18n'
 import { routes } from '@/navigation/routes.config'
+import type { CourseListItem } from '@/views/post/getCourseListData'
 
 const MAX_AUTHORS = 3
 
 export interface CoursePreviewCardProps {
-  course: CoursePreview
+  course: CourseListItem
 }
 
 /**
@@ -20,7 +20,7 @@ export interface CoursePreviewCardProps {
  */
 export function CoursePreviewCard(props: CoursePreviewCardProps): JSX.Element {
   const { course } = props
-  const { id, title, shortTitle, editors: authors, abstract } = course // FIXME: editors / authors
+  const { id, title, editors: authors, abstract } = course
 
   const { t } = useI18n()
 
@@ -38,7 +38,7 @@ export function CoursePreviewCard(props: CoursePreviewCardProps): JSX.Element {
                   className="flex-shrink-0 w-5 h-5"
                 />
               </span>
-              <span>{(shortTitle ?? '') || title}</span>
+              <span>{title}</span>
             </a>
           </Link>
         </h2>
@@ -53,7 +53,7 @@ export function CoursePreviewCard(props: CoursePreviewCardProps): JSX.Element {
                 <ul className="flex items-center space-x-1">
                   {authors.slice(0, MAX_AUTHORS).map((author) => {
                     return (
-                      <li key={author.id}>
+                      <li key={author.id} className="flex">
                         <span className="sr-only">{getFullName(author)}</span>
                         {author.avatar !== undefined ? (
                           <Image

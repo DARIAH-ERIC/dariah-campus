@@ -59,7 +59,7 @@ function PageNavigation() {
   const { t } = useI18n()
 
   return (
-    <nav className="hidden md:items-center md:space-x-8 md:flex">
+    <nav className="hidden lg:items-center lg:space-x-8 lg:flex">
       <ul className="flex items-center space-x-8 text-sm font-medium">
         {Object.entries(navigation)
           .filter(([key]) => {
@@ -127,7 +127,7 @@ function MobilePageNavigation() {
   }, [router.events, dialogState.close])
 
   return (
-    <nav className="flex items-center space-x-6 md:hidden">
+    <nav className="flex items-center space-x-6 lg:hidden">
       <SearchDialog />
       <button
         {...openButtonProps}

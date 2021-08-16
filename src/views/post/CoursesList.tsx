@@ -1,8 +1,8 @@
-import type { CoursePreview } from '@/cms/api/courses.api'
 import { CoursePreviewCard } from '@/views/post/CoursePreviewCard'
+import type { CourseListItem } from '@/views/post/getCourseListData'
 
 export interface CoursesListProps {
-  courses: Array<CoursePreview>
+  courses: Array<CourseListItem>
 }
 
 /**

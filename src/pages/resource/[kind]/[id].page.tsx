@@ -11,9 +11,8 @@ import Link from 'next/link'
 import { Fragment } from 'react'
 
 import { Svg as AcademicCapIcon } from '@/assets/icons/academic-cap.svg'
-import type { CoursePreview } from '@/cms/api/courses.api'
 import { getEventById, getEventIds } from '@/cms/api/events.api'
-import type { Post as PostData, PostPreview } from '@/cms/api/posts.api'
+import type { Post as PostData } from '@/cms/api/posts.api'
 import { getPostById, getPostFilePath, getPostIds } from '@/cms/api/posts.api'
 import type {
   Resource as ResourceData,
@@ -44,6 +43,10 @@ import { Citation } from '@/views/post/Citation'
 import { ContentTypeIcon } from '@/views/post/ContentTypeIcon'
 import { Event } from '@/views/post/Event'
 import { FloatingTableOfContents } from '@/views/post/FloatingTableOfContents'
+import type { CourseListItem } from '@/views/post/getCourseListData'
+import { getCourseListData } from '@/views/post/getCourseListData'
+import type { ResourceListItem } from '@/views/post/getResourceListData'
+import { getResourceListData } from '@/views/post/getResourceListData'
 import { Resource } from '@/views/post/Resource'
 import { ReUseConditions } from '@/views/post/ReUseConditions'
 import { TableOfContents } from '@/views/post/TableOfContents'
@@ -59,8 +62,8 @@ export interface ResourcePageParams extends ParsedUrlQuery {
 export interface ResourcePageProps {
   dictionary: Dictionary
   resource: ResourceData
-  related: Array<PostPreview>
-  courses: Array<CoursePreview>
+  related: Array<ResourceListItem>
+  courses: Array<CourseListItem>
   lastUpdatedAt: IsoDateString | null
 }
 
@@ -140,9 +143,13 @@ export async function getStaticProps(
     .filter((resource) => {
       return resource.id !== id
     })
-  const related = pickRandom(resourcesWithSharedTags, RELATED_RESOURCES_COUNT)
+  const related = getResourceListData(
+    pickRandom(resourcesWithSharedTags, RELATED_RESOURCES_COUNT),
+  )
 
-  const courses = await getCoursePreviewsByResourceId(id, locale)
+  const courses = getCourseListData(
+    await getCoursePreviewsByResourceId(id, locale),
+  )
 
   const lastUpdatedAt = await getLastUpdatedTimestamp(
     getPostFilePath(id, locale),
@@ -322,7 +329,7 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
 }
 
 interface CourseLinksProps {
-  courses: Array<CoursePreview>
+  courses: Array<CourseListItem>
 }
 
 /**
@@ -441,7 +448,7 @@ function FullMetadata(props: FullMetadataProps) {
 }
 
 interface RelatedResourcesProps {
-  resources: Array<PostPreview>
+  resources: Array<ResourceListItem>
 }
 
 /**

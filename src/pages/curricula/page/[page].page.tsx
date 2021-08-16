@@ -8,7 +8,6 @@ import type {
 } from 'next'
 import { Fragment } from 'react'
 
-import type { CoursePreview } from '@/cms/api/courses.api'
 import { getCoursePreviews, getCourseIds } from '@/cms/api/courses.api'
 import type { Page } from '@/cms/utils/paginate'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
@@ -23,6 +22,8 @@ import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { routes } from '@/navigation/routes.config'
 import { CoursesList } from '@/views/post/CoursesList'
+import type { CourseListItem } from '@/views/post/getCourseListData'
+import { getCourseListData } from '@/views/post/getCourseListData'
 import { Pagination } from '@/views/post/Pagination'
 
 const pageSize = 12
@@ -33,7 +34,7 @@ export interface CoursesPageParams extends ParsedUrlQuery {
 
 export interface CoursesPageProps {
   dictionary: Dictionary
-  courses: Page<CoursePreview>
+  courses: Page<CourseListItem>
 }
 
 /**
@@ -77,8 +78,8 @@ export async function getStaticProps(
   const dictionary = await loadDictionary(locale, ['common'])
 
   const page = Number(context.params?.page)
-  const coursePreviews = await getCoursePreviews(locale)
-  const sortedCourses: Array<CoursePreview> = coursePreviews.sort((a, b) => {
+  const coursePreviews = getCourseListData(await getCoursePreviews(locale))
+  const sortedCourses: Array<CourseListItem> = coursePreviews.sort((a, b) => {
     return a.date > b.date ? -1 : 1
   })
 

@@ -20,7 +20,7 @@ export interface PersonId {
 type ID = PersonId['id']
 
 export interface PersonYaml {
-  firstName: string
+  firstName?: string
   lastName: string
   title?: string
   description?: string

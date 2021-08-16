@@ -1,11 +1,12 @@
 import Link from 'next/link'
 
-import type { Tag } from '@/cms/api/tags.api'
+import type { TagListItem } from './getTagListData'
+
 import { useI18n } from '@/i18n/useI18n'
 import { routes } from '@/navigation/routes.config'
 
 export interface TagsListProps {
-  tags: Array<Tag & { posts: number }>
+  tags: Array<TagListItem & { posts: number }>
 }
 
 /**
