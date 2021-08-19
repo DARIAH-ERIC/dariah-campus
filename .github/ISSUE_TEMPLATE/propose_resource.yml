@@ -1,6 +1,9 @@
 name: Propose a resource
 description: Provide metadata for a resource to be included in DARIAH-Campus
 title: '[new resource]: '
+assignees:
+  - ttasovac
+  - VickyGarnett
 labels:
   - new resource
 body:
@@ -38,10 +41,14 @@ body:
       label: Topics (keywords)
       description: Comma-separated list of topics
   - type: textarea
+    id: learning-outcomes
+    attributes:
+      label: Learning outcomes
+      description: Please add a list of learning outcomes
+  - type: textarea
     id: abstract
     attributes:
       label: Abstract
-      description:
-        Short description of the resource (including learning outcomes)
+      description: Short description of the resource
     validations:
       required: true
