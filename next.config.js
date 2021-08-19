@@ -4,8 +4,6 @@
 
 /** @type {NextConfig} */
 const config = {
-  /** Required by netlify. */
-  target: 'experimental-serverless-trace',
   eslint: {
     dirs: ['.'],
     ignoreDuringBuilds: true,
