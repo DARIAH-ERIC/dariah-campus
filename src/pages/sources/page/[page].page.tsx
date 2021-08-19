@@ -133,7 +133,7 @@ export default function CategoriesPage(
         <LeadIn>{t('common.categoryLeadIn')}</LeadIn>
         <section>
           <ul className="grid gap-8 lg:grid-cols-2">
-            {categories.items.map((category) => {
+            {categories.items.map((category, index) => {
               const href = routes.category({ id: category.id })
 
               return (
@@ -163,7 +163,7 @@ export default function CategoriesPage(
                               layout="responsive"
                               objectFit="cover"
                               sizes="(max-width: 640px) 584px, (max-width: 1024px) 943px, 584px"
-                              priority
+                              priority={index < 2}
                             />
                           )}
                         </a>
