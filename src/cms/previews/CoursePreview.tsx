@@ -115,6 +115,14 @@ export function CoursePreview(
             return resolveRelation(['editors', 'people'], id)
           })
           .filter(Boolean)
+          .map((editor) => {
+            // FIXME: how to resolve asset path on related item?
+            // We cannot use `getAsset` because that is bound to the `posts` collection.
+            return {
+              ...editor,
+              avatar: undefined,
+            }
+          })
       : []
 
     const tags = Array.isArray(frontmatter.tags)

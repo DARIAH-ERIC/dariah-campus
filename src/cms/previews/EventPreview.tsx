@@ -244,11 +244,22 @@ export function EventPreview(
           ? await Promise.all(
               allSessions.map(async (session) => {
                 const speakers = Array.isArray(session.speakers)
-                  ? await Promise.all(
-                      session.speakers.map((id) => {
-                        return resolveSpeaker(id)
-                      }),
+                  ? (
+                      await Promise.all(
+                        session.speakers.map((id) => {
+                          return resolveSpeaker(id)
+                        }),
+                      )
                     )
+                      .filter(Boolean)
+                      .map((speaker) => {
+                        // FIXME: how to resolve asset path on related item?
+                        // We cannot use `getAsset` because that is bound to the `posts` collection.
+                        return {
+                          ...speaker,
+                          avatar: undefined,
+                        }
+                      })
                   : []
 
                 const body =

@@ -15,7 +15,18 @@ export function ActionButton(props: ActionButtonProps): JSX.Element {
   const variant = props.variant
 
   const buttonRef = useRef<HTMLButtonElement>(null)
-  const { buttonProps } = useButton(props, buttonRef)
+  const { buttonProps } = useButton(
+    {
+      ...props,
+      /**
+       * FIXME: Needs investigation why `onPress` does not work inside the CMS preview `iframe`.
+       */
+      /* @ts-expect-error Needs investigation. */
+      onClick: props.onPress,
+      onPress: undefined,
+    },
+    buttonRef,
+  )
 
   return (
     <button
