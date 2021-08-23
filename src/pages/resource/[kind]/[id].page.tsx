@@ -382,7 +382,7 @@ interface FullMetadataProps {
 function FullMetadata(props: FullMetadataProps) {
   const { metadata } = props
 
-  const { t } = useI18n()
+  const { t, formatDate } = useI18n()
 
   return (
     <div className="w-full py-12 mx-auto mt-12 space-y-3 border-t border-neutral-200 max-w-80ch">
@@ -408,7 +408,7 @@ function FullMetadata(props: FullMetadataProps) {
         </div>
         <div className="flex space-x-1.5">
           <dt>{t('common.published')}:</dt>
-          <dd>{metadata.date}</dd>
+          <dd>{formatDate(new Date(metadata.date))}</dd>
         </div>
         <div className="flex space-x-1.5">
           <dt>{t('common.contentType')}:</dt>
