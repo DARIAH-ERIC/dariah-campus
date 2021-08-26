@@ -42,7 +42,7 @@
     "one": "this curriculum",
     "other": "these curricula"
   },
-  "lessonsInCourse": "This curriculum contains",
+  "curriculumOverview": "Curriculum overview",
   "tags": "Topics",
   "tagsPageTitle": "Interested in particular topics?",
   "tagsPageLeadIn": "Browse learning resources based on their topic",

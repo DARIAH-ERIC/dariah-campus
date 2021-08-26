@@ -38,9 +38,13 @@ export function Course(props: CourseProps): JSX.Element {
         <div className="flex flex-col space-y-4">
           <h2 className="text-2xl font-bold">{t('common.resources')}</h2>
           <ol className="space-y-8">
-            {resources.map((resource) => {
+            {resources.map((resource, index) => {
               return (
-                <ResourcePreviewCard key={resource.id} resource={resource} />
+                <ResourcePreviewCard
+                  id={`resource-${index}`}
+                  key={resource.id}
+                  resource={resource}
+                />
               )
             })}
           </ol>
