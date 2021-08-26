@@ -3,6 +3,8 @@ import type { AriaButtonProps } from '@react-types/button'
 import cx from 'clsx'
 import { useRef } from 'react'
 
+import { usePreview } from '@/cms/previews/Preview.context'
+
 export interface ActionButtonProps extends AriaButtonProps {
   variant?: 'error' | 'success'
 }
@@ -11,19 +13,28 @@ export interface ActionButtonProps extends AriaButtonProps {
  * Action button.
  */
 export function ActionButton(props: ActionButtonProps): JSX.Element {
+  const { isPreview } = usePreview()
   const isDisabled = props.isDisabled === true
   const variant = props.variant
 
   const buttonRef = useRef<HTMLButtonElement>(null)
+  const handlers =
+    isPreview === true
+      ? {
+          /**
+           * FIXME: onPress` does not work inside the CMS preview `iframe`,
+           * because event though rendered inside an iframe, the `document`,
+           * where `react-aria` attaches global event handlers, still refers
+           * to the global document.
+           */
+          onClick: props.onPress,
+          onPress: undefined,
+        }
+      : {}
   const { buttonProps } = useButton(
     {
       ...props,
-      /**
-       * FIXME: Needs investigation why `onPress` does not work inside the CMS preview `iframe`.
-       */
-      /* @ts-expect-error Needs investigation. */
-      onClick: props.onPress,
-      onPress: undefined,
+      ...handlers,
     },
     buttonRef,
   )

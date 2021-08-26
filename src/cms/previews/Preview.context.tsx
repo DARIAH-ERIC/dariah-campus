@@ -7,6 +7,7 @@ interface PreviewContextValues {
    * The preview iframe's `document`.
    */
   document?: Document
+  isPreview?: boolean
 }
 
 const PreviewContext = createContext<PreviewContextValues>({})
@@ -22,7 +23,7 @@ export function PreviewProvider(props: PreviewProviderProps): JSX.Element {
   const { document, children } = props
 
   const context = useMemo(() => {
-    return { document }
+    return { document, isPreview: true }
   }, [document])
 
   return (
