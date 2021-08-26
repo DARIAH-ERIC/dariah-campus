@@ -5,11 +5,11 @@ order: 5
 
 <SideNote type="note">
 
-We recommend that if you aren't familiar or confident using GitHub directly, then you use the [Content Management System](/docs/using-the-content-management-system).  However, if you want to use GitHub directly, the following guide should take you through the various steps.
+We recommend that if you aren't familiar or confident using GitHub directly, then you use the [Content Management System](/docs/using-the-content-management-system). However, if you want to use GitHub directly, the following guide should take you through the various steps.
 
 </SideNote>
 
-# Setting Things Up
+## Setting Things Up
 
 DARIAH-CAMPUS learning resources are
 
@@ -27,7 +27,7 @@ In this chapter, we'll help you:
 - get a copy of DARIAH-Campus on your computer so that you can work on your contribution locally
 - show you how to run DARIAH-Campus on your computer so that you can preview your contribution to see exactly what it would look like once it's published on DARIAH-Campus.
 
-## Setting up Atom
+### Setting up Atom
 
 If you don't already use a Markdown-enabled text editor but wish to create content for DARIAH-CAMPUS, you may want to use Atom, a customizable, cross-platform open-source text editor.
 
@@ -47,7 +47,7 @@ If you already use a Markdown-enabled editor, you should continue to do so. We'r
 
 You should now have a functioning environment in Atom for your work on new DARIAH-CAMPUS learning resources.
 
-## Setting up DARIAH-Campus locally
+### Setting up DARIAH-Campus locally
 
 1. If you haven't used GitHub before, make sure you [sign up](https://github.com/join) for a free account before you proceed.
 2. Make sure you're logged in on GitHub.com.
@@ -62,9 +62,9 @@ You should now have a functioning environment in Atom for your work on new DARIA
 11. The first you do this, it may take a couple of minutes, but don't despair, things will be quicker after the initial clone. Once you finish cloning your fork, you should see something like this: ![](images/github_desktop_result_of_cloned_fork.png)
 12. To get to the folder with DARIAH-CAMPUS on your computer, click on Open in Atom (or your preferred editor, if you already set it up).
 
-## Previewing DARIAH-Campus locally
+### Previewing DARIAH-Campus locally
 
-### Instructions for Mac-users
+#### Instructions for Mac-users
 
 1. Open up Terminal (usually found in ‘Utilities’ on a Mac).
 2. Go to `https://brew.sh/`
@@ -88,7 +88,7 @@ Now that you have all the packages you need to preview DARIAH-Campus, you can st
 3. Once the build process is complete, you will be able to view DARIAH-Campus in the browser using the link given to you in the terminal, which will look like this: ⠀ `http://localhost:3000/`
 4. Copy the url given in Terminal into your browser, which will give you the DARIAH-Campus home page. _Any saved edits you make to the DARIAH-Campus .mdx files in your editor will automatically be shown in your browser._
 
-### Instructions for Windows users
+#### Instructions for Windows users
 
 1. Download node.js from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 2. Run node.js installer
@@ -104,16 +104,15 @@ Now that you have all the packages you need to preview DARIAH-Campus, you can st
 
 > **REMEMBER!** Any changes you make in Atom will only show up on your local version, but will not make any changes to the actual live version of DARIAH-Campus. This is useful if you want to try out a few things before updating. However, it’s important to remember that if you WANT to make changes to the live version, you will need to ‘commit’ them, ‘push origin’ and then ‘create a pull request’ so that the DARIAH-Campus editors can approve the changes.
 
-
-# Doing the Work
+## Doing the Work
 
 When you work on your own learning resource, you will work locally, on your computer, in the locally cloned fork of DARIAH-Campus.
 
 To help you start working on your contribution in Markdown, we have created templates that you can use.
 
-## Starting with a template
+### Starting with a template
 
-### Hosted resource
+#### Hosted resource
 
 Once you have set up DARIAH-Campus on your computer, you can use the `resource-template-folder` as a basis for your contribution.
 
@@ -137,7 +136,7 @@ When you have your content in the index.mdx file, save it, and if you are runnin
 
 Once you are happy with your draft hosted resource, you can submit it to the DARIAH-Campus team via GitHub.
 
-### Pathfinder
+#### Pathfinder
 
 Once you have set up DARIAH-Campus on your computer, you can use the `pathfinder-template-folder` as a basis for your contribution.
 
@@ -163,7 +162,7 @@ When you have your content in the index.mdx file, save it (although we also reco
 
 Once you are happy with your draft hosted resource, you can submit it to the DARIAH-Campus team via GitHub.
 
-### Event
+#### Event
 
 Once you have set up DARIAH-Campus on your computer, you can use the `event-template-folder` as a basis for your contribution.
 
@@ -189,9 +188,9 @@ When you have your content in the index.mdx file, save it (although we also reco
 
 Once you are happy with your 'Captured Event', you can ‘commit’ it via GitHub to the DARIAH-Campus team.
 
-## Creating content
+### Creating content
 
-### Setting the Metadata for Citation
+#### Setting the Metadata for Citation
 
 The metadata of your resource is important as it forms the basis of the **citation** recommendation that you will see at the top of all the training resources. In order to ensure that this citation is correct, you will need to make sure you have the following information to hand:
 
@@ -206,7 +205,7 @@ You can see how these metadata items fit into the citation below: ![DARIAH-Campu
 
 The specific metadata that is required for your resource type is given at the top of all the index.mdx files in our template folders (see above), and it also comes with some guidance notes to help you find the information you need. There are more metadata fields for you to fill in, but these metadata fields above are particularly important for the citation.
 
-### Writing in Markdown
+#### Writing in Markdown
 
 DARIAH-Campus content needs to be written in Markdown. This can seem intimidating if you have not done it before, but there are many online guides to getting started with Markdown. For instance, Programming Historian have an excellent introduction, [Getting Started with Markdown](https://programminghistorian.org/lessons/getting-started-with-markdown).
 
@@ -214,9 +213,9 @@ Text must be provided in a text editor such as Atom, VS Code, TextWrangler, Text
 
 The templates provided in the previous section should help you get started, but we'll be happy to provide more guidance at any stage of the preparation and submission process.
 
-### Multimedia
+#### Multimedia
 
-#### Images
+##### Images
 
 Learning resources benefit from images to break up the text and for illustrative and instructive purposes. The exact nature and content of these images is flexible according to the type and topic area of your learning resource. They can range from photographs; to infographics; diagrams; maps; screenshots and more. These images should be incorporated into the body of your resource using the following code:
 
@@ -234,7 +233,7 @@ To add a link to an image, enclose the Markdown for the image in brackets, and t
 
 We ask authors to use intelligible file names that either indicate the content of the image (data-reuse-diagram.png) or indicate which figure it is within the module (research-infrastructures-fig-1.png). Prepare either .png or .jpg and upload at largest possible size. Check image reuse rights and choose content in the public domain and under Creative Commons licenses. Provide a descriptive figure caption, including source for third-party images, and other information such as shelfmark where relevant.
 
-#### Videos
+##### Videos
 
 Videos are welcomed, since they provide vital contextual information on a subject and/or step-by-step guidance to complete exercises and practical task. To include a video as part of your material, you can upload it to the DARIAH-Campus YouTube channel, or link to the video on your own channel. These videos are included into the body of your material using the following code:
 
@@ -257,32 +256,31 @@ Any video published on the DARIAH-Campus YouTube Channel is covered by a Creativ
 
 If linking to third-party videos, insert the video using the above code, and provide the full details as a caption in your course text, in the following format: "Title, Source, URL (Licence)".
 
-## Self-assessment activities
+### Self-assessment activities
 
 Self-assessment activities such as online tests or quizzes enliven the learning process; address different learning styles; and provide opportunities to expand upon the course content in the classroom or independently. These can include quizzes; exercises; assignments; questions to consider in a group discussion; practical step-by-step tutorials guiding learners through a task; and much more. Since the technical guidelines for including this kind of material will vary according to their nature, the DARIAH-Campus editorial team will be happy to discuss your requirements as you develop your resource.
 
-## Language and readability
+### Language and readability
 
 Where writing in English, keep an international audience in mind and avoid idioms and colloquialisms where possible. We are open to submissions in languages other than English. We are committed to inclusiveness, and welcome new additions to the editorial and reviewing team, in order to expand our reach. Please contact us via the DARIAH Helpdesk, if you would like to be a part of this team.
 
-## Openness and Licencing
+### Openness and Licencing
 
 DARIAH-Campus learning materials are licensed under a Creative Commons CC BY-SA licence. This ensures that they are available for free; can be re-mixed and repurposed; and are easy to combine with other materials and courses. The integrity of the resource is ensured under the ‘Attribution’ requirement, whereby re-users must give appropriate credit, provide a link to the license, and indicate if changes were made.
 
-
-# GitHub Workflow
+## GitHub Workflow
 
 DARIAH-Campus uses GitHub for its editorial workflow.
 
 Once you start working on your contribution, you should make sure you get into the habit of regularly syncing your local clone with the remote clone and the original repository, as well as committing (saving) your work both to your local clone and your remote server.
 
-## Saving your contribution
+### Saving your contribution
 
 This may sound complicated, but is actually quite logical. Once you have done it several times, it will become like second nature to you:
 
 1. **Fetch origin**. Before you start a working session on your computer, make sure you "fetch origin": ![](images/github_desktop_fetch_origin.png) This will update your local fork with possible changes you've made to your "origin", i.e. your fork on GitHub.com. This is important if you're, for instance, working on more than one computer.
 2. **Merge from upstream**. Also, before you start your working session, you should merge from upstream by going to Branch > Merge into current branch > Select upstream/master and then clicking on "Merge upstream/master into master" ![](images/github_merge_from_upstream.png) This will update your local fork with the changes that may have been submitted to the "upstream" DARIAH-CAMPUS, i.e. the original repository owned by DARIAH.
-3. Do your work. 
+3. Do your work.
 4. Save changes in Atom
 5. Go to GitHub Desktop. You can see your recent changes are reflected in the Changes Tab: ![](images/github_changes.png)
 6. Write a short commit message for the changes you want to submit. You can leave the Description field emtpy: ![](images/github_commit_message.png)
@@ -291,7 +289,7 @@ This may sound complicated, but is actually quite logical. Once you have done it
 
 You can repeat the above as many times as you want while working on your learning resource. None of the changes you commit and push as described above will be submitted to the DARIAH-CAMPUS editors.
 
-## Submitting your contribution
+### Submitting your contribution
 
 Once you're ready to submit, follow these steps:
 
