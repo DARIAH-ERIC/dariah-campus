@@ -111,7 +111,7 @@ export default function CoursesPage(props: CoursesPageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="flex flex-col w-full max-w-screen-xl px-4 py-8 mx-auto space-y-10 xs:py-16 xs:px-8">
+      <PageContent className="flex flex-col w-full max-w-screen-xl px-4 py-8 mx-auto space-y-10 xs:py-16 xs:px-8 outline-none">
         <PageTitle>{t('common.courses')}</PageTitle>
         <CoursesList courses={courses.items} />
         <Pagination

@@ -128,7 +128,7 @@ export default function CategoryPage(props: CategoryPageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="w-full max-w-screen-xl px-4 py-8 mx-auto space-y-10 xs:py-16 xs:px-8">
+      <PageContent className="w-full max-w-screen-xl px-4 py-8 mx-auto space-y-10 xs:py-16 xs:px-8 outline-none">
         <h1 className="text-4.5xl font-bold text-center">{category.name}</h1>
         <p className="text-lg text-center text-neutral-500">
           {category.description}

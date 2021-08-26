@@ -98,7 +98,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="w-full max-w-screen-lg px-4 py-8 mx-auto space-y-24 xs:px-8 xs:py-16 md:py-24">
+      <PageContent className="w-full max-w-screen-lg px-4 py-8 mx-auto space-y-24 xs:px-8 xs:py-16 md:py-24 outline-none">
         <Hero />
         <SearchDialog />
         <Browse />
