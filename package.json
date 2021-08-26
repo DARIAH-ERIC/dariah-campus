@@ -33,7 +33,7 @@
     "test:coverage": "yarn run test --coverage",
     "test:watch": "yarn run test --watch",
     "typecheck": "tsc --noEmit",
-    "validate": "yarn run format && yarn run lint && yarn run typecheck && yarn test"
+    "validate": "yarn run format:fix && yarn run lint && yarn run typecheck && yarn test"
   },
   "engines": {
     "node": "14.x",
