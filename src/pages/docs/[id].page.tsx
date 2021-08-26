@@ -114,7 +114,12 @@ export default function DocsPage(props: DocsPageProps): JSX.Element {
         languageAlternates={languageAlternates}
       />
       <PageContent className="grid w-full max-w-screen-lg px-4 py-8 mx-auto space-y-24 xs:py-16 xs:px-8 2xl:grid-cols-content-layout 2xl:space-y-0 2xl:gap-x-10 2xl:max-w-none">
-        <aside className="hidden w-full max-w-xs space-y-2 text-sm text-neutral-500 2xl:block 2xl:justify-self-end">
+        <aside
+          className="sticky hidden w-full max-w-xs max-h-screen px-8 space-y-8 overflow-y-auto text-sm top-24 text-neutral-500 2xl:flex 2xl:flex-col justify-self-end"
+          style={{
+            maxHeight: 'calc(100vh - 12px - var(--page-header-height))',
+          }}
+        >
           <DocsNav nav={nav} />
         </aside>
         <Docs docs={docs} lastUpdatedAt={lastUpdatedAt} nav={nav} />
