@@ -1,4 +1,5 @@
 import type { Doc as DocData, DocPreview } from '@/cms/api/docs.api'
+import { RelativeOrAbsoluteLink } from '@/common/RelativeOrAbsoluteLink'
 import { ResponsiveImage } from '@/common/ResponsiveImage'
 import { useI18n } from '@/i18n/useI18n'
 import { Mdx as DocsContent } from '@/mdx/Mdx'
@@ -27,7 +28,10 @@ export function Docs(props: DocsProps): JSX.Element {
         </div>
       </header>
       <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
-        <DocsContent code={docs.code} components={{ Image: ResponsiveImage }} />
+        <DocsContent
+          code={docs.code}
+          components={{ Image: ResponsiveImage, a: RelativeOrAbsoluteLink }}
+        />
       </div>
       <footer>
         {lastUpdatedAt != null ? (
