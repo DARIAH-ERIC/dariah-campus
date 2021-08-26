@@ -99,8 +99,8 @@ export interface EventPreviewMetadata
   type: ContentType
   licence: Licence
   partners: Array<Organisation>
-  featuredImage?: FilePath | { src: FilePath; width: number; height: number }
-  logo?: FilePath | { src: FilePath; width: number; height: number }
+  featuredImage?: FilePath | StaticImageData
+  logo?: FilePath | StaticImageData
 }
 
 export interface EventMetadata

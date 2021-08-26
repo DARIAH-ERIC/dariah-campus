@@ -31,9 +31,7 @@ export interface FeaturedVideo {
   id: string
   title: string
   subtitle: string
-  image:
-    | FilePath
-    | { src: FilePath; width: number; height: number; blurDataURL?: string }
+  image: FilePath | StaticImageData
 }
 
 export interface HomePageProps {

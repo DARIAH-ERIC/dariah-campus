@@ -93,7 +93,7 @@ export interface PostMetadata
   categories: Array<Category>
   type: ContentType
   licence: Licence
-  featuredImage?: FilePath | { src: FilePath; width: number; height: number }
+  featuredImage?: FilePath | StaticImageData
 }
 
 export interface PostData {

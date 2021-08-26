@@ -10,6 +10,7 @@ const config = {
   },
   experimental: {
     esmExternals: true,
+    nftTracing: true,
   },
   future: {
     strictPostcssConfiguration: true,

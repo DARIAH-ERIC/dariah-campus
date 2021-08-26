@@ -32,9 +32,7 @@ export interface PersonYaml {
 }
 
 export interface PersonData extends Omit<PersonYaml, 'avatar'> {
-  avatar?:
-    | FilePath
-    | { src: FilePath; width: number; height: number; blurDataURL?: string }
+  avatar?: FilePath | StaticImageData
 }
 
 export interface Person extends PersonId, PersonData {}

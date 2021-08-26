@@ -12,7 +12,7 @@ import type { FilePath } from '@/utils/ts/aliases'
 export interface VideoCardProps extends Omit<VideoProps, 'caption'> {
   title: string
   subtitle: string
-  image: FilePath | { src: FilePath; width: number; height: number }
+  image: FilePath | StaticImageData
 }
 
 /**
