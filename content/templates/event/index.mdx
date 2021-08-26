@@ -1,0 +1,97 @@
+---
+## Unique identifier for this resource.
+## You can generate an id by running `yarn nanoid`.
+uuid: lfEtcr9YiK6Qco7N2M9ZI
+
+## Resource title.
+## If the title has a colon in it, you have to "Put it: In Double Quotes".
+## If it also includes a quote, "You Can:'nest them'".
+title: Sample Event Capture Template
+
+## Optional short title (will be displayed on the resource overview pages).
+# shortTitle: Short title of your resource
+
+## Optional event type.
+# eventType: Winter School
+
+## Date that the resource was published on DARIAH-Campus
+date: 2022-08-27
+
+## List of event organizers.
+## Should reference file names in the `content/people` folder (without file extension).
+authors:
+  - lastname-firstname
+  - lastname-firstname
+
+## Categories are what on the frontend we call sources, see: https://campus.dariah.eu/sources.
+## Please leave as "events".
+categories:
+  - events
+
+## Choose up to five keywords for the resource.
+## A tag listed here must also exist in `contents/tags`.
+## If you think your resource needs a new tag, feel free to do so by listing it here and adding it (name, description) in `contents/tags`.
+## The editors will try to keep the number of tags manageable. Tags are used to group resources around topics, see: https://campus.dariah.eu/tags
+tags:
+  - first-tag
+  - next-tag
+
+## Abstracts are displayed on the resource overview pages.
+## Abstracts should be very short and briefly introduce what the resource is about. Abstracts are not displayed at the beginning of the actual content of the resource. If you want to use the same text as the teaser and as the first paragraph of your resource, you need to put that text as abstract in the metadata, and as a regular paragraph at the beginning of your resource.
+abstract: Short description of the event (max around 100 words).
+
+## Content type. Please leave as "event".
+type: event
+
+## Optional featured image.
+## Images should be colocated with the resource and placed in the `images` folder.
+# featuredImage: images/image.png
+
+## Unless you have discussed a different licence with a DARIAH-Campus editor, please leave the default "CCBY 4.0".
+licence: ccby-4.0
+
+## This is the image that you would like to represent your event.
+logo: images/logo.png
+
+## This will sit as the background image. You can find a sample image in the 'event-template-folder/images' folder.  You should make sure that any images you use in your event are included in the 'images' folder within your event folder.
+featuredImage?: images/bg-image.jpg
+
+## Markdown for the "About" popup dialog. See examples in `content/events`.
+about: string
+
+## Markdown for the "Prep" popup dialog (optional).
+# prep: string
+
+## Optional Event organisers, must be listed in `content/organisations`.
+# partners:
+#   - dariah-eu
+#   - humanities-at-scale
+
+## Optional social links.
+# social:
+#   website: https://example.com
+#   email: me@example.com
+#   twitter: twitterhandle
+#   flickr: flickr-url
+
+## If you created a summary or report on the activities at the event, you can include it here as a .pdf.
+## Files should be colocated with the event and placed in the `downloads` folder.
+# synthesis: downloads/all-slides-of-the-event.pdf
+
+## List of event sessions. See examples in `content/events`.
+sessions:
+  - ## First session
+    ## Session title
+    title: First session
+    ## Markdown description of the session.
+    body: Let me tell you about this session.
+    ## List of speakers. Must reference filename (without file extension) in `content/people`.
+    speakers:
+      - lastname-firstname
+---
+
+# Header one (Probably the name of the main event)
+
+## Header 2 (short description with location and dates of event)
+
+This is where you write a short description outline the main focus of the event and who the target audience were.
