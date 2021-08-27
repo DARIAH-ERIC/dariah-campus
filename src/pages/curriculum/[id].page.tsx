@@ -241,15 +241,18 @@ function LessonsList(props: LessonsListProps) {
   if (resources.length === 0) return null
 
   return (
-    <nav aria-label={t('common.lessonsInCourse')} className="w-full space-y-2">
+    <nav
+      aria-label={t('common.curriculumOverview')}
+      className="w-full space-y-2"
+    >
       <h2 className="text-xs font-bold tracking-wide uppercase text-neutral-600">
-        {t('common.lessonsInCourse')}
+        {t('common.curriculumOverview')}
       </h2>
       <ol className="space-y-2">
-        {resources.map((resource) => {
+        {resources.map((resource, index) => {
           return (
             <li key={resource.id}>
-              <Link href={routes.resource({ kind: 'posts', id: resource.id })}>
+              <Link href={{ hash: `resource-${index}` }}>
                 <a className="flex items-center text-sm space-x-1.5 transition hover:text-primary-600 relative focus:outline-none rounded focus-visible:ring focus-visible:ring-primary-600">
                   {resource.shortTitle ?? resource.title}
                 </a>

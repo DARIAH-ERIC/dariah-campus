@@ -13,6 +13,7 @@ const MAX_AUTHORS = 3
 
 export interface ResourcePreviewCardProps {
   resource: ResourceListItem
+  id?: string
 }
 
 /**
@@ -29,7 +30,10 @@ export function ResourcePreviewCard(
   const href = routes.resource({ kind, id })
 
   return (
-    <article className="flex flex-col overflow-hidden border shadow-sm rounded-xl hover:shadow-md border-neutral-150">
+    <article
+      id={props.id}
+      className="flex flex-col overflow-hidden border shadow-sm rounded-xl hover:shadow-md border-neutral-150"
+    >
       <div className="flex flex-col px-10 py-10 space-y-5">
         <h2 className="text-2xl font-semibold">
           <Link href={href}>
