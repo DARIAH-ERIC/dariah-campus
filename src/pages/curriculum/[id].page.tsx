@@ -1,6 +1,7 @@
 import type { ParsedUrlQuery } from 'querystring'
 
 import { SchemaOrg as SchemaOrgMetadata } from '@stefanprobst/next-page-metadata'
+import cx from 'clsx'
 import type {
   GetStaticPathsContext,
   GetStaticPathsResult,
@@ -40,6 +41,7 @@ import { Course } from '@/views/post/Course'
 import type { CourseListItem } from '@/views/post/getCourseListData'
 import { getCourseListData } from '@/views/post/getCourseListData'
 import { TagsAside } from '@/views/post/TagsAside'
+import { useTableOfContentsHighlight } from '@/views/post/useTableOfContentsHighlight'
 
 const RELATED_COURSES_COUNT = 4
 
@@ -237,6 +239,7 @@ function LessonsList(props: LessonsListProps) {
   const { resources } = props
 
   const { t } = useI18n()
+  const highlightId = useTableOfContentsHighlight('resource-preview')
 
   if (resources.length === 0) return null
 
@@ -250,10 +253,18 @@ function LessonsList(props: LessonsListProps) {
       </h2>
       <ol className="space-y-2">
         {resources.map((resource, index) => {
+          const hash = `resource-${index}`
+          const isCurrent = highlightId === hash
+
           return (
             <li key={resource.id}>
-              <Link href={{ hash: `resource-${index}` }}>
-                <a className="flex items-center text-sm space-x-1.5 transition hover:text-primary-600 relative focus:outline-none rounded focus-visible:ring focus-visible:ring-primary-600">
+              <Link href={{ hash }}>
+                <a
+                  className={cx(
+                    'flex items-center text-sm space-x-1.5 transition hover:text-primary-600 relative focus:outline-none rounded focus-visible:ring focus-visible:ring-primary-600',
+                    isCurrent && 'font-bold',
+                  )}
+                >
                   {resource.shortTitle ?? resource.title}
                 </a>
               </Link>
