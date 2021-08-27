@@ -32,7 +32,7 @@ export function ResourcePreviewCard(
   return (
     <article
       id={props.id}
-      className="flex flex-col overflow-hidden border shadow-sm rounded-xl hover:shadow-md border-neutral-150"
+      className="flex flex-col overflow-hidden border shadow-sm resource-preview rounded-xl hover:shadow-md border-neutral-150"
     >
       <div className="flex flex-col px-10 py-10 space-y-5">
         <h2 className="text-2xl font-semibold">

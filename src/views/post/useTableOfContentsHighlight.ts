@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react'
 
 // TODO: move to config to avoid including rehype-heading-links in client bundle
-import { headingAnchorClassName } from '@/mdx/plugins/rehype-heading-links'
+import { headingAnchorClassName as mdxHeadingAnchorClassName } from '@/mdx/plugins/rehype-heading-links'
 
 /**
  * Highlights table of contents entry corresponding to current scroll position.
  */
-export function useTableOfContentsHighlight(): string | undefined {
-  const [firstHeadingInViewport, setFirstHeadingInViewport] = useState<string>()
+export function useTableOfContentsHighlight(
+  headingAnchorClassName = mdxHeadingAnchorClassName,
+): string | undefined {
+  const [firstHeadingInViewport, setFirstHeadingInViewport] = useState<
+    string | undefined
+  >()
 
   const topOffset = 0
 
@@ -38,7 +42,7 @@ export function useTableOfContentsHighlight(): string | undefined {
       document.removeEventListener('resize', getFirstHeadingInViewport)
       document.removeEventListener('scroll', getFirstHeadingInViewport)
     }
-  }, [])
+  }, [headingAnchorClassName])
 
   return firstHeadingInViewport
 }
