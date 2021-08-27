@@ -88,24 +88,13 @@ function EventOverview(props: EventOverviewProps) {
     <section id="body" className="!h-screen !min-h-screen w-full home">
       {featuredImage != null ? (
         <>
-          {/* FIXME: next/image does not support blob */}
-          {typeof featuredImage === 'string' &&
-          featuredImage.startsWith('blob:') ? (
-            <img
-              src={featuredImage}
-              alt=""
-              loading="lazy"
-              className="absolute inset-0 object-cover h-full"
-            />
-          ) : (
-            <Image
-              src={featuredImage}
-              alt=""
-              layout="fill"
-              objectFit="cover"
-              priority
-            />
-          )}
+          <Image
+            src={featuredImage}
+            alt=""
+            layout="fill"
+            objectFit="cover"
+            priority
+          />
           <div className="bg-gradient-to-b from-transparent via-transparent to-[rgba(0,0,0,0.65)] absolute inset-0" />
         </>
       ) : null}
@@ -116,17 +105,7 @@ function EventOverview(props: EventOverviewProps) {
             <div className="relative home__main">
               {logo != null ? (
                 <div className="absolute bottom-full left-[-3.125vw] w-32">
-                  {/* FIXME: next/image does not support blob */}
-                  {typeof logo === 'string' && logo.startsWith('blob:') ? (
-                    <img
-                      src={logo}
-                      alt=""
-                      loading="lazy"
-                      className="absolute inset-0 object-cover h-full"
-                    />
-                  ) : (
-                    <Image src={logo} alt="" layout="fill" objectFit="cover" />
-                  )}
+                  <Image src={logo} alt="" layout="fill" objectFit="cover" />
                 </div>
               ) : null}
 
@@ -556,22 +535,13 @@ function EventSession(props: EventSessionProps) {
                 <li>
                   <div className="hidden event-md:block absolute w-[9.375vw] h-[9.375vw]">
                     {speaker.avatar != null ? (
-                      typeof speaker.avatar === 'string' ? (
-                        <img
-                          src={speaker.avatar}
-                          alt=""
-                          loading="lazy"
-                          className="object-cover"
-                        />
-                      ) : (
-                        <Image
-                          src={speaker.avatar}
-                          alt=""
-                          objectFit="cover"
-                          placeholder="blur"
-                          layout="fill"
-                        />
-                      )
+                      <Image
+                        src={speaker.avatar}
+                        alt=""
+                        objectFit="cover"
+                        placeholder="blur"
+                        layout="fill"
+                      />
                     ) : (
                       <Icon
                         icon={AvatarIcon}
@@ -844,24 +814,15 @@ function EventFooter(props: EventFooterProps) {
                   className="flex items-center w-full h-full"
                 >
                   {partner.logo != null ? (
-                    typeof partner.logo === 'string' ? (
-                      <img
+                    <div className="relative flex-1 h-full">
+                      <Image
                         alt={partner.name}
-                        className="text-white opacity-75 flex-1 h-full transition duration-[400ms] ease-out hover:opacity-100 hover:duration-150 object-contain"
+                        className="text-white opacity-75 transition duration-[400ms] ease-out hover:opacity-100 hover:duration-150"
                         src={partner.logo}
-                        loading="lazy"
+                        objectFit="contain"
+                        layout="fill"
                       />
-                    ) : (
-                      <div className="relative flex-1 h-full">
-                        <Image
-                          alt={partner.name}
-                          className="text-white opacity-75 transition duration-[400ms] ease-out hover:opacity-100 hover:duration-150"
-                          src={partner.logo}
-                          objectFit="contain"
-                          layout="fill"
-                        />
-                      </div>
-                    )
+                    </div>
                   ) : (
                     partner.name
                   )}

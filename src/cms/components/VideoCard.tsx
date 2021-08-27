@@ -28,31 +28,16 @@ export function VideoCard(props: VideoCardProps): JSX.Element {
         className="flex flex-col items-center w-full p-12 space-y-4 transition rounded shadow-lg text-neutral-800 hover:shadow-xl focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
       >
         <div className="w-full">
-          {/* 'next/image' currently does not support blob urls */}
-          {typeof props.image === 'string' &&
-          props.image.startsWith('blob:') ? (
-            <img
-              src={props.image}
-              alt=""
-              className="!my-0 object-cover w-full"
-              width="16"
-              height="9"
-              sizes="640px"
-            />
-          ) : (
-            <Image
-              src={
-                typeof props.image === 'string' ? props.image : props.image.src
-              }
-              alt=""
-              className="!my-0"
-              layout="responsive"
-              width="16"
-              height="9"
-              objectFit="cover"
-              sizes="640px"
-            />
-          )}
+          <Image
+            src={props.image}
+            alt=""
+            className="!my-0"
+            layout="responsive"
+            width="16"
+            height="9"
+            objectFit="cover"
+            sizes="640px"
+          />
         </div>
         <Icon icon={PlayIcon} className="w-16 h-16 text-primary-600" />
         <strong className="text-2xl font-bold">{props.title}</strong>

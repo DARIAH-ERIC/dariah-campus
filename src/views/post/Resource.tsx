@@ -36,11 +36,7 @@ export function Resource(props: ResourceProps): JSX.Element {
       </header>
       <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
         {featuredImage != null ? (
-          typeof featuredImage === 'string' ? (
-            <img src={featuredImage} alt="" />
-          ) : (
-            <ResponsiveImage {...featuredImage} alt="" priority />
-          )
+          <ResponsiveImage src={featuredImage} alt="" priority />
         ) : null}
         <Mdx
           code={resource.code}
