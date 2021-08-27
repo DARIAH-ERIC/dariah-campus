@@ -7,8 +7,8 @@ import * as validation from '@/cms/utils/validation'
  */
 export const collection: CmsCollection = {
   name: 'posts',
-  label: 'Posts',
-  label_singular: 'Post',
+  label: 'Resources',
+  label_singular: 'Resource',
   description: '',
   folder: 'content/posts',
   path: '{{slug}}/index',
