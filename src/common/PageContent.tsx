@@ -21,7 +21,7 @@ export function PageContent(props: PageContentProps): JSX.Element {
       className={cx(
         className,
         'flex-1 mt-[var(--page-header-height)]',
-        'focus-visible:ring-inset focus-visible:ring focus-visible:ring-primary-600',
+        'focus:outline-none focus-visible:ring-inset focus-visible:ring focus-visible:ring-primary-600',
       )}
     >
       {children}
