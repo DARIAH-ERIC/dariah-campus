@@ -136,7 +136,7 @@ function SearchDialog() {
         className="flex items-center flex-1 max-w-2xl px-4 py-3 text-lg transition border rounded-full shadow-xl border-neutral-150 text-neutral-500 hover:text-primary-600 hover:border-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600 focus-visible:border-primary-600"
       >
         <Icon icon={SearchIcon} className="flex-shrink-0 w-10 h-10 p-2" />
-        <span>Search</span>
+        <span>{t('common.search')}</span>
       </button>
     </div>
   )
