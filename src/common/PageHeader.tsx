@@ -60,7 +60,7 @@ function PageNavigation() {
 
   return (
     <nav className="hidden lg:items-baseline lg:space-x-8 lg:flex">
-      <ul className="flex items-center space-x-8 text-md">
+      <ul className="flex items-center space-x-8 text-base">
         {Object.entries(navigation)
           .filter(([key]) => {
             return key !== 'contact'
@@ -132,9 +132,9 @@ function MobilePageNavigation() {
       <button
         {...openButtonProps}
         ref={openButtonRef}
-        className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600 "
+        className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
       >
-        <Icon icon={MenuIcon} className="flex-shrink-1 w-9 h-9 p-2" />
+        <Icon icon={MenuIcon} className="flex-shrink-0 p-2 w-9 h-9" />
       </button>
       {dialogState.isOpen ? (
         <ModalDialog

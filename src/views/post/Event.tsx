@@ -224,6 +224,7 @@ function EventOverlay(props: EventOverlayProps) {
       onClose={onDismiss}
       isDismissable
       style={{ padding: 0, overflowY: 'auto' }}
+      className="max-w-screen-2xl"
     >
       <div className="popin-content flex flex-col relative bg-[#0870ac] shadow-md px-[6.25vw]">
         <button

@@ -7,6 +7,7 @@ import {
   usePreventScroll,
   OverlayContainer,
 } from '@react-aria/overlays'
+import cx from 'clsx'
 import type { CSSProperties, ReactNode } from 'react'
 import { useRef } from 'react'
 
@@ -15,6 +16,7 @@ import { usePreview } from '@/cms/previews/Preview.context'
 export interface ModalDialogProps extends AriaOverlayProps {
   title?: string
   children: ReactNode
+  className?: string
   style?: CSSProperties
 }
 
@@ -43,7 +45,10 @@ export function ModalDialog(props: ModalDialogProps): JSX.Element {
       >
         <FocusScope contain restoreFocus autoFocus>
           <div
-            className="flex flex-col w-full max-w-screen-md p-8 overflow-auto bg-white rounded shadow-md focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+            className={cx(
+              'flex flex-col w-full max-w-screen-md p-8 overflow-auto bg-white rounded shadow-md focus:outline-none focus-visible:ring focus-visible:ring-primary-600',
+              props.className,
+            )}
             {...overlayProps}
             {...dialogProps}
             {...modalProps}
