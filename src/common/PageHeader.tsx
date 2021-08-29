@@ -26,7 +26,7 @@ export function PageHeader(): JSX.Element {
   return (
     <header
       className={cx(
-        'fixed inset-x-0 z-20 bg-neutral-50 flex items-center justify-between px-4 xs:px-8 py-4',
+        'fixed inset-x-0 z-20 bg-neutral-50 flex items-baseline justify-between px-4 xs:px-8 py-4',
         isShadowVisible && 'shadow',
       )}
       style={{ minHeight: 'var(--page-header-height)' }}
@@ -59,8 +59,8 @@ function PageNavigation() {
   const { t } = useI18n()
 
   return (
-    <nav className="hidden lg:items-center lg:space-x-8 lg:flex">
-      <ul className="flex items-center space-x-8 text-sm font-medium">
+    <nav className="hidden lg:items-baseline lg:space-x-8 lg:flex">
+      <ul className="flex items-center space-x-8 text-md">
         {Object.entries(navigation)
           .filter(([key]) => {
             return key !== 'contact'
@@ -132,9 +132,9 @@ function MobilePageNavigation() {
       <button
         {...openButtonProps}
         ref={openButtonRef}
-        className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+        className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600 "
       >
-        <Icon icon={MenuIcon} className="flex-shrink-0 w-10 h-10 p-2" />
+        <Icon icon={MenuIcon} className="flex-shrink-1 w-9 h-9 p-2" />
       </button>
       {dialogState.isOpen ? (
         <ModalDialog
@@ -196,7 +196,7 @@ function SearchDialog() {
         ref={openButtonRef}
         className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
       >
-        <Icon icon={SearchIcon} className="flex-shrink-0 w-10 h-10 p-2" />
+        <Icon icon={SearchIcon} className="flex-shrink-0 w-4 h-4 stroke-3" />
       </button>
     </div>
   )

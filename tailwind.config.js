@@ -7,6 +7,9 @@ const config = {
   darkMode: false,
   theme: {
     extend: {
+      strokeWidth: {
+        3: '3',
+      },
       boxShadow: {
         sm: 'rgba(0, 0, 0, 0.08) 0px 2px 8px 0px',
         md: 'rgba(0, 0, 0, 0.08) 0px 5px 15px 0px',
@@ -86,6 +89,26 @@ const config = {
               },
               strong: {
                 color: 'inherit',
+              },
+              h2: {
+                fontSize: theme('fontSize.2xl')[0],
+                fontWeight: theme('fontWeight.bold'),
+              },
+              h3: {
+                fontSize: theme('fontSize.xl')[0],
+                fontWeight: theme('fontWeight.bold'),
+              },
+              h4: {
+                fontSize: theme('fontSize.lg')[0],
+                fontWeight: theme('fontWeight.bold'),
+              },
+              h5: {
+                fontSize: theme('fontSize.base')[0],
+                fontWeight: theme('fontWeight.bold'),
+              },
+              h6: {
+                fontSize: theme('fontSize.base')[0],
+                fontStyle: 'italic',
               },
             },
           },

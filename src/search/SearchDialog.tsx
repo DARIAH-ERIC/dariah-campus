@@ -182,8 +182,7 @@ function SearchField(props: SearchFieldProps) {
 
   return (
     <label {...labelProps} className="flex flex-col space-y-1.5">
-      <span className="text-sm font-medium">{label}</span>
-      <div className="flex px-4 py-2 space-x-4 border rounded border-neutral-200 focus-within:ring-primary-600 focus-within:ring">
+      <div className="flex items-center flex-1 w-full px-4 py-2 text-lg transition border rounded-full shadow-xl border-primary-600 text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600 focus-visible:border-primary-600">
         {loadingState === 'loading' ? (
           <Spinner className="flex-shrink-0 w-5 h-5 text-primary-600" />
         ) : loadingState === 'error' ? (
@@ -192,12 +191,12 @@ function SearchField(props: SearchFieldProps) {
             className="flex-shrink-0 w-5 h-5 text-error-600"
           />
         ) : (
-          <Icon icon={SearchIcon} className="flex-shrink-0 w-5 h-5" />
+          <Icon icon={SearchIcon} className="flex-shrink-0 w-5 h-5 stroke-2" />
         )}
         <input
           {...inputProps}
           ref={inputRef}
-          className="flex-1 min-w-0 focus:outline-none"
+          className="flex-1 min-w-0 p-2 focus:outline-none"
         />
         {state.value !== '' ? (
           <button {...buttonProps} ref={buttonRef}>
