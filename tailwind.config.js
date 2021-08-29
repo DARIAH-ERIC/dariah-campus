@@ -90,6 +90,26 @@ const config = {
               strong: {
                 color: 'inherit',
               },
+              h2: {
+                fontSize: theme('fontSize.2xl')[0],
+                fontWeight: theme('fontWeight.bold'),
+              },
+              h3: {
+                fontSize: theme('fontSize.xl')[0],
+                fontWeight: theme('fontWeight.bold'),
+              },
+              h4: {
+                fontSize: theme('fontSize.lg')[0],
+                fontWeight: theme('fontWeight.bold'),
+              },
+              h5: {
+                fontSize: theme('fontSize.base')[0],
+                fontWeight: theme('fontWeight.bold'),
+              },
+              h6: {
+                fontSize: theme('fontSize.base')[0],
+                fontStyle: 'italic',
+              },
             },
           },
         }
