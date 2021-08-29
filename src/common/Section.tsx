@@ -26,7 +26,7 @@ interface SectionTitleProps {
  * Section title.
  */
 function SectionTitle(props: SectionTitleProps): JSX.Element {
-  return <h2 className="text-4xl font-bold tracking-tight">{props.children}</h2>
+  return <h2 className="text-3xl lg:text-4xl font-bold">{props.children}</h2>
 }
 
 interface SectionLeadInProps {
@@ -37,7 +37,5 @@ interface SectionLeadInProps {
  * Section lead-in.
  */
 function SectionLeadIn(props: SectionLeadInProps): JSX.Element {
-  return (
-    <p className="text-xl font-medium text-neutral-500">{props.children}</p>
-  )
+  return <p className="text-lg lg:text-xl text-neutral-500">{props.children}</p>
 }
