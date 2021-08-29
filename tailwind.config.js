@@ -7,6 +7,9 @@ const config = {
   darkMode: false,
   theme: {
     extend: {
+      strokeWidth: {
+        3: '3',
+      },
       boxShadow: {
         sm: 'rgba(0, 0, 0, 0.08) 0px 2px 8px 0px',
         md: 'rgba(0, 0, 0, 0.08) 0px 5px 15px 0px',

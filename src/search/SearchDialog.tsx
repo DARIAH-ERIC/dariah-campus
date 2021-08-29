@@ -191,7 +191,7 @@ function SearchField(props: SearchFieldProps) {
             className="flex-shrink-0 w-5 h-5 text-error-600"
           />
         ) : (
-          <Icon icon={SearchIcon} className="flex-shrink-0 w-5 h-5" />
+          <Icon icon={SearchIcon} className="flex-shrink-0 w-5 h-5 stroke-2" />
         )}
         <input
           {...inputProps}
