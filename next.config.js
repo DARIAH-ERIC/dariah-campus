@@ -20,20 +20,6 @@ const config = {
   },
   pageExtensions: ['page.tsx', 'api.ts'],
   poweredByHeader: false,
-  async headers() {
-    return [
-      /** Disallow indexing by search engines. */
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'noindex, nofollow',
-          },
-        ],
-      },
-    ]
-  },
   async redirects() {
     return [
       ...Object.entries(require('./redirects.resources.json')).map(
