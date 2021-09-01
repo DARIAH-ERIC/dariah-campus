@@ -148,17 +148,30 @@ The "id" is the part of the url after the equals sign for a YouTube video. So, f
 
 An alternative is to directly embed the video from YouTube, which you do in the following way:
 
-<Youtube id="OqYJNUmhJzw" caption="Laurent Romary (Former DARIAH Director)" />
+<Video id="OqYJNUmhJzw" caption="Laurent Romary (Former DARIAH Director)" />
 
 If you are including multiple videos, you might choose to arrange them in a grid formation. You can do this in the following way:
 
 <Grid>
 
-<Youtube id="OqYJNUmhJzw" caption="Laurent Romary (Former DARIAH Director)" />
-<Youtube id="iwz0uhEhtg4" caption="Jennifer Edmond (DARIAH Director)" />
-<Youtube id="soL0itkLYpk" caption="Frank Fischer (DARIAH Director)" />
+<Video id="OqYJNUmhJzw" caption="Laurent Romary (Former DARIAH Director)" />
+<Video id="iwz0uhEhtg4" caption="Jennifer Edmond (DARIAH Director)" />
+<Video id="soL0itkLYpk" caption="Frank Fischer (DARIAH Director)" />
 
 </Grid>
+
+To include videos hosted on platforms other than YouTube, you can specify a `provider`. Currently supported providers are: `youtube`, `vimeo` and `nakala`.
+
+<Video
+  id="10.34847/nkl.f734kiqd/4701b123138c721007562e3caacecd6a208d329f"
+  provider="nakala"
+  caption="Nakala example"
+/>
+<VideoCard
+  id="10.34847/nkl.f734kiqd/4701b123138c721007562e3caacecd6a208d329f"
+  provider="nakala"
+  title="Nakala example"
+/>
 
 #### Heading level four
 
