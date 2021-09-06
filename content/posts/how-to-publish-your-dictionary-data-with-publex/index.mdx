@@ -578,8 +578,6 @@ The search result appears as a list below the search mask. From here, the dictio
 
 ![Search result](images/search_result.png)
 
-
-
 ## Publication
 
 #### Requirements
@@ -605,3 +603,29 @@ The published dictionaries are displayed with basic metadata and can be accessed
 ![Published Dictionaries](published_dictionaries.png)
 
 - Each published dictionary is also given its own persistent address it can be accessed through. The dictionary's own URL is composed as follows: \[to be finalised].
+
+#### Reverse a publication
+
+You can reverse a publication of your dictionary by changing the toggle button from "published" to "unpublished".
+
+![Reverse a publication](unpublish_button.png)
+
+## File Management: Update a dictionary
+
+You would like to update a dictionary that has already been published?
+
+**Case 1) You want to change the display of your dictionary, but the content data remains unchanged.**
+
+To do this, log in to Publex and call up the corresponding dictionary in the Dictionary Overview. Select "Edit dictionary" and change the styling rules of the dictionary. Click on "Save" to apply your changes to the published dictionary.
+
+**Case 2) <a id="update-data"></a> You want to update the dictionary data.**
+
+If you want to publish your dictionary in a new edition, we recommend to create a new dictionary and publish the data in a new version under a different URL.
+
+But you can also reimport the data for the existing dictionary. To do this, follow the steps below:
+
+1. First, save the styling rules defined for the dictionary by exporting them and saving them locally (see [Export of styling rules](#export)).
+2. Go to the Dictionary Overview and change the publication status to "Unpublished" (see [Reverse a publication](#reverse-a-publication)).
+3. Go to the import page (see [Import](#import)), fill in the information where you stored the updated data and hit the "Reimport" button.
+4. After the data import is done, you can reimport the locally stored styling rules (see [Import of styling rules](#import)). Please check if the rules still match the XML encoding.
+5. Finally publish the dictionary (see [Publication](#publication)).
