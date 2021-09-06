@@ -124,8 +124,6 @@ Here you can see an example with the special character "u with superscripted plu
 
 ![Entities](images/uplusabove_entities.png)
 
-
-
 2. If you want to use a specific entity from the allEntities file, replace the corresponding special character in the XML file with `&entity name;` (entity name = "plusaboveu" in the following example).
 
 ![uplusabove_in_xml](images/uplusabove_xml.png)
@@ -133,8 +131,6 @@ Here you can see an example with the special character "u with superscripted plu
 And this is how the character is finally displayed using the KomplettFont:
 
 ![u_plus_above](images/uplusabove_wbnetz.png)
-
-
 
 3. Next, download the allEntities file \[here] (link to follow). It must be uploaded with the dictionary files during import. How this works, you will find out [here](#import-entity-file).
    To display the special characters in the published dictionary, it is necessary to select the KompLett font in the configuration. Details can be found in [this section](#define-your-styling-rules).
@@ -156,11 +152,7 @@ The data is imported into Publex from Bitbucket, a Git repository.
 
 ![Welcome page Bitbucket](images/home_bitbucket.png)
 
-
-
 ![Create new repository](images/create_repo.png)
-
-
 
 - Select a **project** to which the repo is to be assigned to. If you do not have any projects in your Bitbucket account yet, you can also create a new project at this point.
 - Enter a **name** for the new repository, e.g. you can name it after your dictionary.
@@ -174,8 +166,6 @@ This is how it looks now:
 
 ![New repository](images/new_repo.png)
 
-
-
 4. Now you can **upload your dictionary data to the repository**.
 
 - To do this, you first have to **clone the repository** which means that you create a copy of it on your local system. When you click the "clone"-button in the right corner, a window will open, **copy the clone command** that appears.
@@ -188,9 +178,7 @@ First open the terminal. This works differently depending on the platform you us
 
 a) using Windows: Hold down the Windows key on your keyboard and then press the "R" key. Now the "Run" tool will open in a new pop-up window. Type in "cmd" and hit "OK".
 
-
 b) using Mac: To open terminal from your applications folder, click your desktop to bring "Finder" into focus. In the menu bar, click "Go" and select "Applications".
-
 
 c) using Linux: Press Ctrl+Alt+T.
 
@@ -221,8 +209,6 @@ Now we are prepared to create a new dictionary in Publex!
 
 ![Add new dictionary](images/new_dictionary.png)
 
-
-
 3. Now you have two different options:
 
    a) You can create an empty dictionary first and import the data at a later time. Then click on "Create empty dictionary". The new dictionary will appear in the Dictionary Overview afterwards.
@@ -249,11 +235,7 @@ a) The **URL of the Bitbucket repository** where you stored the data. You get th
 
 ![Clone Button](images/clone_button_bitbucket.png)
 
-
-
 ![Repo URL](images/clone_ssh.png)
-
-
 
 b) The **branch** in which the data is stored. It's the one you chose as default branch name when creating your Bitbucket repository (see [here](#branch-name)).
 
@@ -261,13 +243,11 @@ c) Tell Publex, whether your repository is public or private.
 
 1. If your repository is public, no further settings are necessary for the import.  If it is a private repository, please mark the checkbox "This is a private Git repository!".
 
-
    ![Private Git](images/privategit.png)
 2. By activating the button, a SSH key becomes visible. Please add this key to your Bitbucket account.
 
 - Copy the key.
 - In your Bitbucket account, go to your personal settings (see the icon for your account in the left corner on the bottom).
-
 
   ![Personal settings](images/personal_settings.png)
 - In personal settings, go to "SSH keys" and click on "Add key". A Window opens where you can paste your key you copied from Publex.
@@ -309,11 +289,13 @@ c) Tell Publex, whether your repository is public or private.
 
 ![Metadata Management](images/metadata_management.png)
 
-
-
 On this page, you are able to change the title and edit the dictionary description. You also can add a project website and classify your dictionary into one of the following categories: General language dictionary, Multilingual dictionary, Historical language dictionary, Etymological dictionary, Regional or dialect dictionary, Foreign learners' dictionary, Technical and terminological dictionary, Authors' dictionary or Unspecified.
 
 ![Dictionary Categories](images/metadata_categories.png)
+
+<SideNote type="warning" title=" ">
+Don't forget to hit the "Save"-Button to make sure Publex records your changes.
+</SideNote>
 
 Don't forget to hit the "Save"-Button to make sure Publex records your changes.
 
@@ -322,13 +304,9 @@ Don't forget to hit the "Save"-Button to make sure Publex records your changes.
 The configuration module is the heart of Publex. Here you can define how each XML element should appear in the online dictionary.
 The following is a general explanation of how styling with Publex works. It becomes clearer and more concrete in the [example](#styling-example) below.
 
-
-
 Go to the configuration page:
 
-
   a) You will get here directly after importing your dictionary data by clicking "Next" after the import has been completed.
-
 
  b) In the Dictionary Overview, select a dictionary that has already been added and click on **"Edit Dictionary"**. Then, in the menu bar on the left, under **"Dictionary Management"**, select **"Styling Rules"**.
 
