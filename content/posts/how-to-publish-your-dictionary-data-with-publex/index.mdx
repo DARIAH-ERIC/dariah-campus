@@ -108,8 +108,6 @@ Logged in to your account in the upper menu bar, the profile button takes you to
 
 ##### a) Dictionary entries
 
-
-
 - The files are required to be provided in **valid XML**.
 - Please make sure that every dictionary text you want to be printed is annotated as a text node. **Dictionary texts should not be encoded as an attribute value**.
 - In case of large dictionaries, the files for the dictionary entries should be split into several files. The individual files should **not** be **larger than 16 MB**.
@@ -118,6 +116,20 @@ Logged in to your account in the upper menu bar, the profile button takes you to
 
 <a id="use-of-non-unicode-characters"></a>If your dictionary contains special characters which are not available in the Unicode standard, it is possible to **use** our **self-defined entities of the [KompLett font](https://tcdh.uni-trier.de/en/projekt/komplett)**. To do this, proceed as follows:
 
-1. Check in this overview [link to table with name, code position, image to follow] whether your special characters are contained in the allEntities file.
+1. Check in this overview \[link to table with name, code position, image to follow] whether your special characters are contained in the allEntities file.
+
+Every entry in the allEntities file is structered as follows: the declaration of a new entry `<!ENTITY` followed by the name, the Unicode `position` (or position in the private used area) and a closing `>`.
+
+Here you can see an example with the special character "u with superscripted plus":
+
+![Entities](images/uplusabove_entities.png)
 
 
+
+2. If you want to use a specific entity from the allEntities file, replace the corresponding special character in the XML file with `&entity name;` (entity name = "plusaboveu" in the following example).
+
+![uplusabove_in_xml](images/uplusabove_xml.png)
+
+And this is how the character is finally displayed using the KomplettFont:
+
+![u_plus_above](images/uplusabove_wbnetz.png)
