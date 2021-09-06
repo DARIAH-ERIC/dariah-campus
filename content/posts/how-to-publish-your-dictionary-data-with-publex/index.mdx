@@ -183,3 +183,30 @@ This is how it looks now:
 ![Copy clone command](images/clone_command.png)
 
 If you prefer to use Bitbucket through a user-friendly interface, we recommend to download [Sourcetree](https://www.sourcetreeapp.com/). In the following, we describe how to perform the steps with the command line:
+
+First open the terminal. This works differently depending on the platform you use:
+
+a) using Windows: Hold down the Windows key on your keyboard and then press the "R" key. Now the "Run" tool will open in a new pop-up window. Type in "cmd" and hit "OK".
+
+
+b) using Mac: To open terminal from your applications folder, click your desktop to bring "Finder" into focus. In the menu bar, click "Go" and select "Applications".
+
+
+c) using Linux: Press Ctrl+Alt+T.
+
+- Once opened the terminal window, change into the local directory where you want to clone your repository.
+  `cd <path_to_directory>`
+- Paste the command you copied from Bitbucket, e.g.:
+  `git clone https://Trifoglio@bitbucket.org/Trifoglio/my_dictionary.git`
+- Now a new sub-directory should appear on your local drive with the same name as the repository.
+- In this directory, **create a new folder** which you call "data" for example.
+- **Put all the files that belong to your dictionary into this folder**. Note: If you want to use entities from the KompLett font, you must also place the file allEntities.xml in this folder.
+- Now you are almost finished. The final step is to transfer the locally added files to the remote Bitbucket Cloud repository. In your terminal window:
+
+  - enter `cd <path_to_local_repo>`
+  - enter `git add --all`
+  - enter  `git commit -m '<commit_message>'` with a commit message that describes your changes, e.g. `git commit -m 'upload dictionary data'`
+  - enter `git push`
+
+If everything worked fine, you should now see the files in your repository online in your Bitbucket account.
+Now we are prepared to create a new dictionary in Publex!
