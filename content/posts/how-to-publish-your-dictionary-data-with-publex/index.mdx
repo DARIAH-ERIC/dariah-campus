@@ -458,8 +458,6 @@ We first examine which information units have a special typographical representa
 
 ![](images/typo_types.png)
 
-
-
 After these pre-considerations, the styling rules can now be defined.
 
 Since the rules should be sorted from general to specific, we first define the basic layout for our entries.
@@ -524,13 +522,9 @@ Now the styling for our example entry is defined. We save the rule with the "Sav
 In parallel with the creation of the styling rules, you can view a current representation of your dictionary in the [dictionary preview](#preview).
 </SideNote>
 
-
-
 In the dictionary preview, our example entry _bluome_ now looks like this:
 
 ![Preview entry bluome](bluome_preview.png)
-
-
 
 ## The Dictionary Viewer: Preview your dictionary
 
@@ -553,3 +547,33 @@ The viewer as well as the later published dictionary are divided into three part
 1. the display of the entries
 2. the lemma list
 3. The dictionary look-up
+
+### Display of the entries
+
+Here, the dictionary entries are displayed as defined in the Styling Rules. Only one entry is visible at a time. The user can navigate to other entries using the lemma list.
+
+### Lemma list
+
+All fields a lemma rule has been defined in the styling rules for appear in the lemma list (see [here](#lemma-field)). Clicking on an item in the list displays the corresponding dictionary entry. The entries in the lemma list can be searched by using the search field. A truncated search is possible.
+
+![Search lemma list](images/lemmalist_search.png)
+
+### The dictionary look-up
+
+The dictionary look-up offers search options in all information fields the checkbox "set as searchable field" has been activated for in the styling rules (see [here](#searchable-field)). In our example configuration, these are the lemma, the grammatical information, the definition and the source information.
+
+![](images/search_categories.png)
+
+Further search fields can be added via the plus button. These can be linked with the logical operators AND, OR and NOT.
+
+Upper and lower case are irrelevant for the entry. Special characters can be replaced by their basic characters in the search, e.g. diacritics do not have to be entered (ë = e).
+
+A truncated search is possible. For example, _bach*_ returns all words beginning with this character string and _\*bach_ returns the words ending with this string.
+
+When entering multi-word units, it is necessary to enclose the search string in inverted commas to search for the entered word sequence (e.g. _"laut und buchstabe"_), otherwise the word order will not be taken into account.
+
+The search is started by pressing the enter key.
+
+The search result appears as a list below the search mask. From here, the dictionary entries can be called up directly.
+
+![Search result](images/search_result.png)
