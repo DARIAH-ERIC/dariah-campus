@@ -458,3 +458,74 @@ We first examine which information units have a special typographical representa
 
 ![](images/typo_types.png)
 
+
+
+After these pre-considerations, the styling rules can now be defined.
+
+Since the rules should be sorted from general to specific, we first define the basic layout for our entries.
+
+#### The basic layout
+
+The first rule, therefore, refers to the `entry` element.
+If not defined more specifically by further rules, the text of the dictionary entries shall be displayed in KomplettFont, font size 12 pt, font colour black and with no other special features:
+
+![entry rule](entry_rule.png)
+
+By activating the checkbox "Set as searchable field" here, we later enable a full-text search in the published dictionary.
+
+Now we create more specific rules for individual entry parts that override the `entry` rule:
+
+#### The lemma
+
+Each dictionary should have a lemma. The tag for this is `<form type="lemma">`.
+
+In contrast to the regular entry text, the lemma should appear in bold type in our example. To make it more distinctive, we also choose a larger font size of 16 pt.
+In addition, we have to activate the box "add to lemma list" so that the lemmas appear in the lemma list and are searchable in the dictionary look-up.
+
+![Defining lemma rule](lemma_rule.png)
+
+#### Grammatical information
+
+The grammatical information contained in the `gram` tag is to be displayed in italics. We also want to enable a search for the grammatical indication in the dictionary and therefore activate the checkbox "Set as searchable field".
+
+![Defining grammar rule](grammar_rule.png)
+
+#### Definition
+
+The text contained in `<def>` should also be set in italics. We additionally activate the checkbox "Set as searchable field".
+
+ ![Defining definition rule](def_rule.png)
+
+#### Citation
+
+Quoted examples are coded with `<cit type="example">` and should be displayed in green.
+
+ ![Defining citation rule](citation_rule.png)
+
+#### Source authors
+
+The cited examples are followed by the source, which is annotated with `<author>` and which we want to display in blue font colour. The sources should also be a search field in the look-up.
+
+![Defining author rule](author_rule.png)
+
+#### Recte and superscript
+
+Finally, we define the rules for the elements that mark typographic features. In our example, these are italics, recte (used to mark punctuation marks as recte in a paragraph displayed italics) and superscript.
+
+![Defining italics rule](italics_rule.png)
+
+![Defining recte rule](recte_rule.png)
+
+![Defining superscript rule](superscript_rule.png)
+
+Now the styling for our example entry is defined. We save the rule with the "Save" button and create a backup copy by exporting the configuration as a JSON file.
+
+<SideNote type="tip">
+In parallel with the creation of the styling rules, you can view a current representation of your dictionary in the [dictionary preview](#preview).
+</SideNote>
+
+
+
+In the dictionary preview, our example entry _bluome_ now looks like this:
+
+![Preview entry bluome](bluome_preview.png)
