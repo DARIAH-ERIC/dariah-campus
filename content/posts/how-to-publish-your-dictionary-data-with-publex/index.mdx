@@ -397,3 +397,60 @@ Finally, you can define the concrete layout. A wide variety of text formatting f
 ![Styling functions II](images/functions_ii.png)
 
 ### Save and discard
+
+When you have defined a new rule or made changes, save them with the save button at the top of the right.
+
+![Save](save.png)
+
+Single rules can be deleted via the bin button.
+
+![Delete rule](delete_rule.png)
+
+If you want to discard all changes since the last save, you can do this with the "Discard changes" button. This is hidden behind the "more" button next to the save button.
+
+![Discard changes](discard_changes.png)
+
+## Lock a styling rule
+
+As an assistance in creating the styling rules, individual rules can be locked. This prevents them from being accidentally deleted and can serve as your own orientation to check which rules have already been created.
+
+Clicking on the lock symbol locks a rule, clicking again unlocks it for editing.
+
+![Lock rule](lock_rule.png)
+
+### Export and import a configuration
+
+You have the option of exporting the styling rules as a JSON file in order to save your results and re-import them later if required. This is particularly necessary if you want to [update the dictionary data](#update-data) at a later time. We, therefore, strongly recommend exporting and saving the configurations locally after making changes to the styling rules.
+
+The buttons for the export and the import are hidden under the "more" button next to the save button at the top of the right.
+
+![Export and Import Styling Rules](export_import.png)
+
+#### Export
+
+To export your styling rules, click on "Export configuration file". A window opens asking you to specify the local storage location of the file.
+
+#### Import
+
+To import exported styling rules, click on "Import configuration file". A window opens in which you have to copy the contents of the exported JSON file. To do this, you can open the JSON file in any text editor and select and copy the text it contains. 
+
+![Import Styling Rules](import_config.png)
+
+After clicking on "OK", the rules are imported and displayed.
+
+<SideNote type="warning" title="Saving">
+Make sure to click on "Save" after importing the rules.
+</SideNote>
+
+
+## Styling a Dictionary: An Example
+
+<a id="styling-example"></a>For a concrete demonstration of the different functions and the procedure, we use the dictionary entry _bluome_ from the _Mittelhochdeutsches Handwörterbuch_ by Matthias Lexer as an example in the following:
+
+![Lexer bluome Foto](bluome_categories.png)
+
+This is how the XML annotated entry looks like:
+
+![Lexer bluome XML](bluome_xml.png)
+
+We first examine which information units have a special typographical representation and which XML elements correspond to them. In this example, we follow the print image, but use the additional advantages of the digital publication form: For example, we additionally display the citations in red and the authors in blue, which serves to improve the visual structuring of the document examples.
