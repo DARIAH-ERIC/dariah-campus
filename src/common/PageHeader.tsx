@@ -127,7 +127,7 @@ function MobilePageNavigation() {
   }, [router.events, dialogState.close])
 
   return (
-    <nav className="flex items-center space-x-6 lg:hidden">
+    <nav className="flex items-center space-x-4 lg:hidden">
       <SearchDialog />
       <button
         {...openButtonProps}
@@ -194,7 +194,7 @@ function SearchDialog() {
       <button
         {...openButtonProps}
         ref={openButtonRef}
-        className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+        className="transition p-2.5 rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
       >
         <Icon icon={SearchIcon} className="flex-shrink-0 w-4 h-4 stroke-3" />
       </button>

@@ -120,7 +120,7 @@ const config = {
       xs: '480px',
       sm: '640px',
       md: '840px',
-      lg: '1024px',
+      lg: '1048px',
       xl: '1280px',
       '2xl': '1440px',
       'event-md': '55.125em',
