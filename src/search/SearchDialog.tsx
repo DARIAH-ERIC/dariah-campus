@@ -21,7 +21,6 @@ import { routes } from '@/navigation/routes.config'
 import { SearchDialogContext } from '@/search/SearchDialog.context'
 import type { SearchStatus } from '@/search/useSearch'
 import { useSearch } from '@/search/useSearch'
-import { MIN_SEARCH_TERM_LENGTH } from '~/config/search.config'
 
 export interface SearchDialogProps {
   children: ReactNode
@@ -147,7 +146,7 @@ export function SearchDialog(props: SearchDialogProps): JSX.Element {
                   )
                 })}
               </ul>
-            ) : searchTerm.trim().length >= MIN_SEARCH_TERM_LENGTH ? (
+            ) : status === 'success' ? (
               <div className="py-4 text-center text-neutral-500">
                 {t('common.noResultsFound')}
               </div>
