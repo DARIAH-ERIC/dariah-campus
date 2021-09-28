@@ -195,11 +195,19 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
       />
       <SchemaOrgMetadata
         schema={{
-          '@type': 'LearningResource',
+          /**
+           * The best option would probably be `LearningResource`, which
+           * unfortunately does not currently seem to be recognized by Google.
+           *
+           * @see https://developers.google.com/search/docs/advanced/structured-data/search-gallery
+           */
+          '@type': 'Course',
           url: canonicalUrl,
           headline: metadata.title,
+          name: metadata.title,
           datePublished: metadata.date,
           abstract: metadata.abstract,
+          description: metadata.abstract,
           inLanguage: metadata.lang,
           author: metadata.authors.map((author) => {
             return {
@@ -231,6 +239,14 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
           keywords: metadata.tags.map((tag) => {
             return tag.name
           }),
+          ...(metadata.remote != null && metadata.remote.publisher != null
+            ? {
+                provider: {
+                  '@type': 'Organization',
+                  name: metadata.remote.publisher,
+                },
+              }
+            : {}),
           publisher: {
             '@type': 'Organization',
             name: siteMetadata.title,
