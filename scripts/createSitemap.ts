@@ -15,7 +15,7 @@ generate({
       route !== '/' &&
       !route.endsWith('/404') &&
       !route.endsWith('/500') &&
-      !route.endsWith('/cms') &&
+      !route.endsWith('/admin') &&
       !route.endsWith('/imprint')
     )
   },
