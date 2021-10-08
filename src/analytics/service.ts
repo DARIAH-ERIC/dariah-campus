@@ -8,17 +8,25 @@ export interface AnalyticsService {
 
 export const service: AnalyticsService = {
   registerPageView(url) {
-    /* @ts-expect-error Google Analytics is initialized in `@/analytics/Analytics`. */
-    window.gtag?.('config', googleAnalyticsId, {
+    /* @ts-expect-error Google Analytics is initialized in `@/analytics/GoogleAnalytics`. */
+    window.gtag?.('event', 'page_view', {
       page_path: url,
     })
   },
   optIn() {
     /* @ts-expect-error All good. */
     window[`ga-disable-${googleAnalyticsId}`] = false
+    /* @ts-expect-error All good. */
+    window.gtag?.('consent', 'update', {
+      analytics_storage: 'granted',
+    })
   },
   optOut() {
     /* @ts-expect-error All good. */
     window[`ga-disable-${googleAnalyticsId}`] = true
+    /* @ts-expect-error All good. */
+    window.gtag?.('consent', 'update', {
+      analytics_storage: 'denied',
+    })
   },
 }

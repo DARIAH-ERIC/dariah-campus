@@ -40,12 +40,12 @@ export default function App(props: AppProps): JSX.Element {
       <Favicons />
       <WebManifest />
       <Feed />
-      <GoogleAnalytics />
       <ErrorBoundary fallback={ClientError} resetOnChange={[router.asPath]}>
         <Providers {...pageProps}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
+          <GoogleAnalytics />
         </Providers>
       </ErrorBoundary>
     </Fragment>

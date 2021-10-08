@@ -2,12 +2,15 @@ import Script from 'next/script'
 import { Fragment } from 'react'
 
 import { googleAnalyticsId } from '@/analytics/analytics.config'
-import { service } from '@/analytics/service'
+import { ConsentBanner } from '@/analytics/ConsentBanner'
+import { useConsent } from '@/analytics/useConsent'
 
 /**
  * Initializes analytics service on page load in disabled state. Requires explicit opt-in to enable.
  */
 export function GoogleAnalytics(): JSX.Element | null {
+  const [status, { accept, decline }] = useConsent()
+
   if (
     googleAnalyticsId === undefined ||
     process.env.NODE_ENV !== 'production'
@@ -15,10 +18,11 @@ export function GoogleAnalytics(): JSX.Element | null {
     return null
   }
 
-  service.optOut()
-
   return (
     <Fragment>
+      {status === 'unknown' ? (
+        <ConsentBanner onAccept={accept} onDecline={decline} />
+      ) : null}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
       />
@@ -28,11 +32,15 @@ export function GoogleAnalytics(): JSX.Element | null {
           __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            window['ga-disable-${googleAnalyticsId}'] = true;
             gtag('js', new Date());
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied'
+            });
             gtag('config', '${googleAnalyticsId}', {
               'transport_type': 'beacon',
               'anonymize_ip': true,
-              page_path: window.location.pathname,
             });
           `,
         }}
