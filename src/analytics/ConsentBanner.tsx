@@ -5,7 +5,7 @@ import { routes } from '@/navigation/routes.config'
 
 export interface ConsentBannerProps {
   onAccept: () => void
-  onDecline: () => void
+  onReject: () => void
 }
 
 /**
@@ -26,9 +26,9 @@ export function ConsentBanner(props: ConsentBannerProps): JSX.Element {
       </p>
       <button
         className="px-3 py-1 text-sm font-medium bg-white rounded-full text-primary-600 focus:ring focus:ring-white focus:ring-offset-primary-600"
-        onClick={props.onDecline}
+        onClick={props.onReject}
       >
-        {t('common.consent.decline')}
+        {t('common.consent.reject')}
       </button>
       <button
         className="px-3 py-1 text-sm font-medium bg-white rounded-full text-primary-600 focus:ring focus:ring-white focus:ring-offset-primary-600"

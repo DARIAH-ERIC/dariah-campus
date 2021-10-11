@@ -9,7 +9,7 @@ import { useConsent } from '@/analytics/useConsent'
  * Initializes analytics service on page load in disabled state. Requires explicit opt-in to enable.
  */
 export function GoogleAnalytics(): JSX.Element | null {
-  const [status, { accept, decline }] = useConsent()
+  const [status, { accept, reject }] = useConsent()
 
   if (
     googleAnalyticsId === undefined ||
@@ -21,7 +21,7 @@ export function GoogleAnalytics(): JSX.Element | null {
   return (
     <Fragment>
       {status === 'unknown' ? (
-        <ConsentBanner onAccept={accept} onDecline={decline} />
+        <ConsentBanner onAccept={accept} onReject={reject} />
       ) : null}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
