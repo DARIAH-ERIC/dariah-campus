@@ -31,8 +31,8 @@ Visit the website at [https://campus.dariah.eu](https://campus.dariah.eu).
 
 Sign-in to the CMS with your GitHub account at [https://campus.dariah.eu/admin].
 
-For edits to articles you can also directly click the "Suggest changes to this
-resource" links at the bottom of each post.
+For edits to existing articles you can also directly click the "Suggest changes
+to this resource" link at the bottom of each post.
 
 ### Run a local CMS backend
 
@@ -47,13 +47,13 @@ and push changes via `git`.
 ### Use your favorite text editor
 
 Since content is saved to `.mdx` files in the `content/posts` folder, you can
-use your favourite text editor to make changes and commit via git. When using VS
-Code you can install the recommended extensions to get linting aud
+use your favourite text editor to make changes and commit via `git`. When using
+VS Code you can install the recommended extensions to get linting aud
 auto-formatting for markdown.
 
 ### Contributing guidelines
 
-When contributing content directly via git, please use feature branches and
+When contributing content directly via `git`, please use feature branches and
 don't push to `main`, to allow for review.
 
 ### Note on writing Markdown
