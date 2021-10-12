@@ -78,7 +78,7 @@ function getCitation(metadata: CitationProps['metadata'], siteUrl: string) {
   const publisher =
     metadata.remote?.publisher !== undefined
       ? metadata.remote.publisher + '. '
-      : metadata.remote?.url !== undefined
+      : hasRemoteUrl(metadata)
       ? metadata.categories
           .filter((cat) => {
             return cat.id !== 'dariah'
@@ -90,13 +90,19 @@ function getCitation(metadata: CitationProps['metadata'], siteUrl: string) {
 
   const contentType = `[${metadata.type.name}]. `
 
-  const url =
-    metadata.remote?.url !== undefined && metadata.remote.url.length > 0
-      ? metadata.remote.url
-      : String(new URL(`/id/${metadata.uuid}`, siteUrl))
+  const url = hasRemoteUrl(metadata)
+    ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      metadata.remote!.url
+    : String(new URL(`/id/${metadata.uuid}`, siteUrl))
 
   const citation =
     authors + year + title + version + editors + publisher + contentType + url
 
   return citation
+}
+
+function hasRemoteUrl(metadata: CitationProps['metadata']) {
+  return (
+    metadata.remote?.url !== undefined && metadata.remote.url.trim().length > 0
+  )
 }
