@@ -91,7 +91,7 @@ function getCitation(metadata: CitationProps['metadata'], siteUrl: string) {
   const contentType = `[${metadata.type.name}]. `
 
   const url =
-    metadata.remote?.url !== undefined
+    metadata.remote?.url !== undefined && metadata.remote.url.length > 0
       ? metadata.remote.url
       : String(new URL(`/id/${metadata.uuid}`, siteUrl))
 
