@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { service } from '@/analytics/service'
 
-type Status = 'accepted' | 'declined'
+type Status = 'accepted' | 'rejected'
 type StoreStatus = 'initial' | 'unknown' | Status
 
 export const consentStore = {
@@ -16,7 +16,7 @@ export const consentStore = {
 
 export function useConsent(): [
   StoreStatus,
-  { accept: () => void; decline: () => void },
+  { accept: () => void; reject: () => void },
 ] {
   const [status, setStatus] = useState<StoreStatus>('initial')
 
@@ -25,7 +25,7 @@ export function useConsent(): [
 
     switch (consent) {
       case 'accepted':
-      case 'declined':
+      case 'rejected':
         setStatus(consent)
         break
       default:
@@ -39,7 +39,7 @@ export function useConsent(): [
         consentStore.set(status)
         service.optIn()
         break
-      case 'declined':
+      case 'rejected':
         consentStore.set(status)
         service.optOut()
         break
@@ -51,9 +51,9 @@ export function useConsent(): [
     setStatus('accepted')
   }
 
-  function decline() {
-    setStatus('declined')
+  function reject() {
+    setStatus('rejected')
   }
 
-  return [status, { accept, decline }]
+  return [status, { accept, reject }]
 }

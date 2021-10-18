@@ -6,7 +6,7 @@ import { routes } from '@/navigation/routes.config'
 
 export interface ConsentBannerProps {
   onAccept: () => void
-  onDecline: () => void
+  onReject: () => void
 }
 
 /**
@@ -25,7 +25,7 @@ export function ConsentBanner(props: ConsentBannerProps): JSX.Element {
           </a>
         </Link>
       </p>
-      <Button onClick={props.onDecline}>{t('common.consent.decline')}</Button>
+      <Button onClick={props.onDecline}>{t('common.consent.reject')}</Button>
       <Button onClick={props.onAccept}>{t('common.consent.accept')}</Button>
     </div>
   )
