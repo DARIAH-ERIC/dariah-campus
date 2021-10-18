@@ -9,7 +9,7 @@ export function OptOutButton(
   props: ComponentPropsWithoutRef<'button'>,
 ): JSX.Element {
   function decline() {
-    consentStore.set('declined')
+    consentStore.set('rejected')
   }
 
   return (
