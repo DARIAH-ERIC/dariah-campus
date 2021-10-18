@@ -25,7 +25,7 @@ export function ConsentBanner(props: ConsentBannerProps): JSX.Element {
           </a>
         </Link>
       </p>
-      <Button onClick={props.onDecline}>{t('common.consent.reject')}</Button>
+      <Button onClick={props.onReject}>{t('common.consent.reject')}</Button>
       <Button onClick={props.onAccept}>{t('common.consent.accept')}</Button>
     </div>
   )
