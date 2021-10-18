@@ -39,7 +39,9 @@ body:
     id: tags
     attributes:
       label: Topics (keywords)
-      description: Comma-separated list of topics
+      description:
+        Comma-separated list of topics. Please have a look at the [list of
+        existing topics](https://campus.dariah.eu/tags).
   - type: textarea
     id: learning-outcomes
     attributes:
