@@ -4,8 +4,9 @@
 
 declare module '*.mdx' {
   import type { ComponentType } from 'react'
+  import type { MdxContentProps } from '@/mdx/runMdxSync'
 
-  const Component: ComponentType
+  const Component: ComponentType<MdxContentProps>
   const metadata: Record<string, unknown>
 
   export { metadata }

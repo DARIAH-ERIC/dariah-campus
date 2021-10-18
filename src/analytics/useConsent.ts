@@ -5,11 +5,11 @@ import { service } from '@/analytics/service'
 type Status = 'accepted' | 'rejected'
 type StoreStatus = 'initial' | 'unknown' | Status
 
-const consentStore = {
-  get() {
+export const consentStore = {
+  get(): string | null {
     return window.localStorage.getItem('analytics-consent')
   },
-  set(status: Status) {
+  set(status: Status): void {
     window.localStorage.setItem('analytics-consent', status)
   },
 }
