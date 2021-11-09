@@ -36,7 +36,7 @@
     "validate": "yarn run format:fix && yarn run lint && yarn run typecheck && yarn test"
   },
   "engines": {
-    "node": "14.x",
+    "node": "14.x||16.x",
     "yarn": "1.x"
   },
   "dependencies": {
