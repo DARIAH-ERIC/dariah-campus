@@ -1,6 +1,8 @@
 import type { GetStaticPropsContext, GetStaticPropsResult } from 'next'
+import type { ComponentPropsWithoutRef } from 'react'
 import { Fragment } from 'react'
 
+import { OptOutButton as UnstyledOptOutButton } from '@/analytics/OptOutButton'
 import { PageContent } from '@/common/PageContent'
 import { PageTitle } from '@/common/PageTitle'
 import { getLocale } from '@/i18n/getLocale'
@@ -45,10 +47,14 @@ export default function ImprintPage(): JSX.Element {
         <div className="min-w-0 space-y-16">
           <PageTitle>{t('common.page.imprint')}</PageTitle>
           <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
-            <Mdx />
+            <Mdx components={{ OptOutButton }} />
           </div>
         </div>
       </PageContent>
     </Fragment>
   )
+}
+
+function OptOutButton(props: ComponentPropsWithoutRef<'button'>) {
+  return <UnstyledOptOutButton {...props} className="font-medium underline" />
 }

@@ -20,9 +20,9 @@
     "format:fix": "yarn run format --write",
     "lint": "next lint --cache --ignore-path .gitignore",
     "lint:fix": "yarn run lint --fix",
-    "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
+    "lint:md": "remark . --quiet --ignore-path .gitignore --ignore-pattern README.md",
     "lint:md:fix": "yarn run lint:md --output",
-    "lint:mdx": "xdm . --quiet --frail --ignore-path .gitignore",
+    "lint:mdx": "xdm . --quiet --ignore-path .gitignore --ignore-pattern **/content/templates/**",
     "lint:mdx:fix": "yarn run lint:mdx --output",
     "postbuild": "yarn run create:feed && yarn run create:sitemap && yarn run create:metadata-dump && yarn run create:redirects",
     "postinstall": "patch-package",
@@ -36,7 +36,7 @@
     "validate": "yarn run format:fix && yarn run lint && yarn run typecheck && yarn test"
   },
   "engines": {
-    "node": "14.x",
+    "node": "14.x||16.x",
     "yarn": "1.x"
   },
   "dependencies": {
@@ -119,7 +119,9 @@
     "@typescript-eslint/eslint-plugin": "^4.26.1",
     "@typescript-eslint/parser": "^4.26.1",
     "autoprefixer": "^10.2.6",
+    "check-links": "^1.1.8",
     "cross-env": "^7.0.3",
+    "dlv": "^1.1.3",
     "eslint": "^7.28.0",
     "eslint-config-next": "^11.1.0",
     "eslint-import-resolver-typescript": "^2.4.0",
@@ -134,12 +136,12 @@
     "postcss-nesting": "^8.0.1",
     "prettier": "^2.3.1",
     "remark-cli": "^9.0.0",
-    "remark-lint-no-dead-urls": "^1.1.0",
     "simple-git-hooks": "^2.4.1",
     "tailwindcss": "^2.2.0",
     "ts-node": "^10.1.0",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.3.2",
+    "unified-lint-rule": "^1.0.6",
     "xast-util-feed": "^1.2.0",
     "xast-util-to-xml": "^3.0.0"
   },
@@ -158,16 +160,16 @@
   },
   "lint-staged": {
     "*.@(js|ts|tsx)": [
-      "eslint --cache --fix",
+      "eslint --cache --cache-location .next/cache/eslint/ --fix",
       "prettier --write"
     ],
     "*.@(css|json|yml)": "prettier --write",
     "*.md": [
-      "remark --quiet",
+      "remark --output --quiet",
       "prettier --write"
     ],
     "*.mdx": [
-      "xdm --quiet",
+      "xdm --output --quiet",
       "prettier --write"
     ]
   },
@@ -187,14 +189,13 @@
       "remark-footnotes",
       "@stefanprobst/remark-preset",
       [
-        "remark-lint-no-dead-urls",
+        "./scripts/checkDeadUrls.js",
         {
-          "skipLocalhost": true
+          "fields": [
+            "remote.url"
+          ]
         }
       ]
-    ],
-    "ignorePatterns": [
-      "README.md"
     ]
   },
   "simple-git-hooks": {
