@@ -63,10 +63,8 @@ function getCitation(metadata: CitationProps['metadata'], siteUrl: string) {
       ? `Edited by ${createNameList(metadata.editors)}. `
       : ''
 
-  const date =
-    metadata.remote?.date !== undefined && metadata.remote.date.length > 0
-      ? metadata.remote.date
-      : metadata.date
+  const remoteDate = metadata.remote?.date
+  const date = isNotEmpty(remoteDate) ? remoteDate : metadata.date
   const year = ` (${new Date(date).getFullYear()}). `
 
   const title = metadata.title.slice(-1).match(/[!?]/)
@@ -75,18 +73,19 @@ function getCitation(metadata: CitationProps['metadata'], siteUrl: string) {
 
   const version = metadata.version ? `Version ${metadata.version}. ` : ''
 
-  const publisher =
-    metadata.remote?.publisher !== undefined
-      ? metadata.remote.publisher + '. '
-      : hasRemoteUrl(metadata)
-      ? metadata.categories
-          .filter((cat) => {
-            return cat.id !== 'dariah'
-          })
-          .map((cat) => {
-            return cat.host
-          }) + '. '
-      : 'DARIAH-Campus. '
+  const remotePublisher = metadata.remote?.publisher
+  const publisher = isNotEmpty(remotePublisher)
+    ? remotePublisher + '. '
+    : hasRemoteUrl(metadata)
+    ? metadata.categories
+        .filter((cat) => {
+          return cat.id !== 'dariah'
+        })
+        .map((cat) => {
+          return cat.host
+        })
+        .join('') + '. '
+    : 'DARIAH-Campus. '
 
   const contentType = `[${metadata.type.name}]. `
 
@@ -102,7 +101,9 @@ function getCitation(metadata: CitationProps['metadata'], siteUrl: string) {
 }
 
 function hasRemoteUrl(metadata: CitationProps['metadata']) {
-  return (
-    metadata.remote?.url !== undefined && metadata.remote.url.trim().length > 0
-  )
+  return isNotEmpty(metadata.remote?.url)
+}
+
+function isNotEmpty(val: string | undefined): val is string {
+  return val != null && val.trim().length > 0
 }
