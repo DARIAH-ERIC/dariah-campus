@@ -4,8 +4,8 @@ import { useMemo } from 'react'
 
 import type { Locale } from '@/i18n/i18n.config'
 import { useLocale } from '@/i18n/useLocale'
-import { useSiteMetadata } from '@/metadata/useSiteMetadata'
 import { createUrl } from '@/utils/createUrl'
+import { url as baseUrl } from '~/config/site.config'
 
 /**
  * Returns URLs to be used in `hreflang` attributes.
@@ -18,21 +18,20 @@ export function useAlternateUrls(
 ): Array<{ hrefLang: Locale; href: string }> {
   const router = useRouter()
   const { locales } = useLocale()
-  const { url: siteUrl } = useSiteMetadata()
 
   const urls = useMemo(() => {
     return locales.map((locale) => {
       const { pathname } = createUrl({ pathname: router.asPath })
       const url = createUrl({
-        baseUrl: siteUrl,
+        baseUrl,
         locale,
-        pathname: pathname,
+        pathname,
         query,
       })
 
       return { hrefLang: locale, href: String(url) }
     })
-  }, [router, locales, siteUrl, query])
+  }, [router, locales, query])
 
   return urls
 }
