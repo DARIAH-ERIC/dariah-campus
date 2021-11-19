@@ -33,7 +33,12 @@ export function Metadata({
       openGraph={{
         type: 'website',
         siteName: siteTitle,
-        images: [siteImage],
+        images: [
+          {
+            src: siteImage.publicPath,
+            alt: '',
+          },
+        ],
         ...openGraph,
       }}
       twitter={{
