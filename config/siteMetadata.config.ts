@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/i18n.config'
+import { defaultLocale } from '@/i18n/i18n.config'
 import { createUrl } from '@/utils/createUrl'
 import { url } from '~/config/site.config'
 
@@ -54,7 +55,14 @@ export const siteMetadata: Record<Locale, SiteMetadata> = {
     },
     image: {
       src: 'public/assets/images/logo-with-text.svg',
-      publicPath: '/open-graph.webp',
+      publicPath: String(
+        createUrl({
+          pathname: '/open-graph.webp',
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+          locale: 'en' === defaultLocale ? undefined : 'en',
+          baseUrl: url,
+        }),
+      ),
       alt: '',
     },
     twitter: 'DARIAHeu',
