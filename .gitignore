@@ -48,6 +48,7 @@ public/favicon-16x16.png
 public/favicon-32x32.png
 public/favicon.ico
 public/site.webmanifest
+public/open-graph.webp
 public/de/android-chrome-192x192.png
 public/de/android-chrome-512x512.png
 public/de/apple-touch-icon.png
@@ -55,6 +56,7 @@ public/de/favicon-16x16.png
 public/de/favicon-32x32.png
 public/de/favicon.ico
 public/de/site.webmanifest
+public/de/open-graph.webp
 
 # auto-generated files
 public/feed.xml
