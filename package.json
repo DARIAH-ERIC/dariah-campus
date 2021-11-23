@@ -106,8 +106,8 @@
     "@stefanprobst/remark-preset": "^1.0.1",
     "@stefanprobst/tsconfig": "^1.1.0",
     "@stefanprobst/xdm-cli": "^1.0.2",
-    "@tailwindcss/aspect-ratio": "^0.2.1",
-    "@tailwindcss/typography": "^0.4.1",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/typography": "^0.5.0-alpha.3",
     "@types/hast": "^2.3.1",
     "@types/js-yaml": "^4.0.1",
     "@types/node": "^15.12.2",
@@ -137,7 +137,7 @@
     "prettier": "^2.3.1",
     "remark-cli": "^9.0.0",
     "simple-git-hooks": "^2.4.1",
-    "tailwindcss": "^2.2.0",
+    "tailwindcss": "^3.0.0-alpha.2",
     "ts-node": "^10.1.0",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.3.2",
@@ -156,7 +156,10 @@
   "eslintConfig": {
     "extends": [
       "@stefanprobst/eslint-config-next"
-    ]
+    ],
+    "rules": {
+      "@next/next/no-img-element": "off"
+    }
   },
   "lint-staged": {
     "*.@(js|ts|tsx)": [

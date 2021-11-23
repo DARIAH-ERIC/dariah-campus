@@ -46,7 +46,7 @@ export default function ImprintPage(): JSX.Element {
         <aside />
         <div className="min-w-0 space-y-16">
           <PageTitle>{t('common.page.imprint')}</PageTitle>
-          <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
+          <div className="prose-sm prose sm:prose">
             <Mdx components={{ OptOutButton }} />
           </div>
         </div>

@@ -34,7 +34,7 @@ export function Resource(props: ResourceProps): JSX.Element {
           <Tags tags={tags} />
         </div>
       </header>
-      <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
+      <div className="prose-sm prose sm:prose">
         {featuredImage != null ? (
           typeof featuredImage === 'string' ? (
             <img src={featuredImage} alt="" />

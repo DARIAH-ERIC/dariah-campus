@@ -25,7 +25,7 @@ export function VideoCard(props: VideoCardProps): JSX.Element {
     <Fragment>
       <button
         onClick={lightbox.open}
-        className="flex flex-col items-center w-full p-12 space-y-4 transition rounded shadow-lg text-neutral-800 hover:shadow-xl focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+        className="flex flex-col items-center w-full p-12 my-12 space-y-4 transition rounded shadow-lg not-prose text-neutral-800 hover:shadow-xl focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
       >
         <div className="w-full">
           {props.image != null ? (
@@ -35,7 +35,7 @@ export function VideoCard(props: VideoCardProps): JSX.Element {
               <img
                 src={props.image}
                 alt=""
-                className="!my-0 object-cover w-full"
+                className="object-cover w-full"
                 width="16"
                 height="9"
                 sizes="640px"
@@ -48,7 +48,6 @@ export function VideoCard(props: VideoCardProps): JSX.Element {
                     : props.image.src
                 }
                 alt=""
-                className="!my-0"
                 layout="responsive"
                 width="16"
                 height="9"

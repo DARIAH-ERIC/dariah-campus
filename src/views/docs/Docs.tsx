@@ -27,7 +27,7 @@ export function Docs(props: DocsProps): JSX.Element {
           <DocsNav nav={nav} />
         </div>
       </header>
-      <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
+      <div className="prose-sm prose sm:prose">
         <DocsContent
           code={docs.code}
           components={{ Image: ResponsiveImage, a: RelativeOrAbsoluteLink }}
