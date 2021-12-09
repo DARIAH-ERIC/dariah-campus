@@ -55,7 +55,7 @@ export function PageFooter(): JSX.Element {
           <EuLogo className="flex-shrink-0 h-6" />
           <span>
             Co-funded by the Horizon 2020 innovation and research programme of
-            the European Union under grant no. 731081.
+            the European Union under grants no. 731081 and 823782.
           </span>
         </div>
         <div className="flex items-center justify-end space-x-4">

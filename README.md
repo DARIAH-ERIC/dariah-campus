@@ -19,7 +19,7 @@ sustainability of training resources, and to achieve best practice in the
 production and management of open educational resources in the DARIAH ecosystem.
 
 _Co-funded by the Horizon 2020 innovation and research programme of the European
-Union under grant no. 731081._
+Union under grants no. 731081 and 823782._
 
 ## View content
 
@@ -29,7 +29,8 @@ Visit the website at [https://campus.dariah.eu](https://campus.dariah.eu).
 
 ### Contribute or edit content via CMS
 
-Sign-in to the CMS with your GitHub account at [https://campus.dariah.eu/admin].
+Sign-in to the CMS with your GitHub account at
+\[[https://campus.dariah.eu/admin](https://campus.dariah.eu/admin)].
 
 For edits to existing articles you can also directly click the "Suggest changes
 to this resource" link at the bottom of each post.
