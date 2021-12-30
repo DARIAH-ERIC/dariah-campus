@@ -28,12 +28,11 @@ remote:
 licence: ccby-4.0
 toc: true
 uuid: IbZ4arshkA06y5Uem0UsT
-shortTitle: Publex
 categories:
   - dariah
 ---
 
-### Learning Outcomes
+## Learning Outcomes
 
 After using this resource you should:
 
@@ -48,7 +47,7 @@ After using this resource you should:
 
 Publex is a software that allows anyone to publish his/her dictionary data annotated in XML. You can define the display of your dictionary individually. For this, you do not need to be a professional. The application is very simple, as the program and the user instructions guide you through the entire process. Moreover, no installation is required. Publex is accessed and operated via the web browser, and the data is stored and published on the Elexis server.
 
-### Three steps to the publication of your dictionary:
+### Three steps to the publication of your dictionary
 
 **1. Upload + Metadata**
 
@@ -77,8 +76,6 @@ Learn about it [here](#publication).
 ## Let's get started
 
 ### Creating an account
-
-<img src="images/register.svg" alt="Register" width="15%" />
 
 ![Register](images/register.svg)
 
@@ -149,7 +146,8 @@ And this is how the character is finally displayed using the KomplettFont:
 
 - You _don't need_ the allEntities file if your special characters are all defined in the Unicode standard and if you encode all your special characters with hexadecimal codes.
 - If you have special characters in your dictionary that are **neither defined in the Unicode Standard nor in our allEntities**, please contact the Publex team \[e-mail address to follow].
-  </SideNote>
+
+</SideNote>
 
 #### 2. Store the data in a Bitbucket repository
 
@@ -310,7 +308,7 @@ On this page, you are able to change the title and edit the dictionary descripti
 
 ![Dictionary Categories](images/metadata_categories.png)
 
-<SideNote type="warning" title=" ">
+<SideNote type="warning">
   Don't forget to hit the "Save"-Button to make sure Publex records your
   changes.
 </SideNote>
@@ -328,37 +326,40 @@ a) You will get here directly after importing your dictionary data by clicking "
 b) In the Dictionary Overview, select a dictionary that has already been added and click on **"Edit Dictionary"**. Then, in the menu bar on the left, under **"Dictionary Management"**, select **"Styling Rules"**.
 
 <SideNote type="info" title="Defining styling rules">
+
 There are a few basic things to keep in mind when defining the styling rules:
 
 - The requirement for the publication of a dictionary is the presence of a **lemma rule** (i.e. for one of the rules, the field ["Add to lemma list"](#lemma-field) must be selected).
 - The order of the rules is relevant: **Subordinate rules override the preceding ones**. For example: I want the font size of my entries to be 12 pt, so I define this feature in a rule for all `<entry>` elements. Thus, all the texts contained in `<entry>` will be formatted accordingly. However, the lemma (e.g. `<form type="lemma">`) should be bolded and displayed in a larger font. If I define this in a subordinate rule, the definition from the first rule is overwritten specifically for these elements. Therefore it is recommended: More general rules should be placed at the beginning of the list.
 
-  </SideNote>
+</SideNote>
 
 - The order can be modified at any time using the arrow buttons.
 
   ![Change Order](images/arrows.png)
 
-  <SideNote type="tip" title="Advice for the choice of font">
+<SideNote type="tip" title="Advice for the choice of font">
 
-  - It is recommended to use the [KompLett font](https://tcdh.uni-trier.de/en/projekt/komplett), as it contains more characters compared to other fonts and, therefore, the probability is higher that all characters can be displayed.
-    </SideNote>
+- It is recommended to use the [KompLett font](https://tcdh.uni-trier.de/en/projekt/komplett), as it contains more characters compared to other fonts and, therefore, the probability is higher that all characters can be displayed.
 
-  ### Adding a new rule
+</SideNote>
 
-  A new styling rule is created by using the "Add styling rule" button.
+### Adding a new rule
 
-  ![Add new sytyling rule](images/add_new_rule.svg)
+A new styling rule is created by using the "Add styling rule" button.
 
-  A window for defining a new styling rule is displayed.
+![Add new sytyling rule](images/add_new_rule.svg)
 
-  ### Naming the rule
+A window for defining a new styling rule is displayed.
+
+### Naming the rule
 
 Type in the name for the rule.
 
 ![Name rule](images/name_rule.png)
 
 <SideNote type="tip">
+
 Try to use meaningful names, e.g. "lemma", "definition" or "citation".
 
 This helps you to keep a better overview of the rules. In addition, in the [dictionary look-up](#the-dictionary-look-up), the name serves as the label of the associated search field (if ["set as searchable field"](#searchable-field) is selected).
@@ -393,10 +394,7 @@ For each rule, there are different options you can select in the settings:
 ![settings](images/settings.png)
 
 - **Display text on website** This checkbox is activated by default. You should only deactivate it if you do NOT want the text of the element to be displayed.
-- **Set as searchable field**
-  {" "}
-  <a id="searchable-field"></a>If you want the selected element to appear as a
-  search field in the dictionary look-up, activate this field.
+- **Set as searchable field** <a id="searchable-field"></a>If you want the selected element to appear as a search field in the dictionary look-up, activate this field.
 - **Add to lemma list**<a id="lemma-field"></a> By activating this field, you define a so-called lemma rule. This means that the text contained in the element appears in the lemma list and makes the associated dictionary entries accessible. Note: At the same time, "Set as searchable field" is activated. Lemmas always form a search field.
 
 ### Define the styling
@@ -647,7 +645,7 @@ But you can also reimport the data for the existing dictionary. To do this, foll
 
 ## \[Planned Additions]
 
-### It’s getting technical - for programmers and developers
+### It's getting technical - for programmers and developers
 
 ```
 Technical infrastructure used to build PUBLEX
