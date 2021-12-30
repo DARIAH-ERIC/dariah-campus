@@ -122,10 +122,10 @@ Logged in to your account in the upper menu bar, the profile button takes you to
 
 ##### b) Use of non-unicode characters
 
-<a id="use-of-non-unicode-characters"></a>If your dictionary contains special characters
-which are not available in the Unicode standard, it is possible to **use** our **self-defined
-entities of the [KompLett font](https://tcdh.uni-trier.de/en/projekt/komplett)**.
-To do this, proceed as follows:
+<a id="use-of-non-unicode-characters" />
+If your dictionary contains special characters which are not available in the Unicode
+standard, it is possible to **use** our **self-defined entities of the [KompLett
+font](https://tcdh.uni-trier.de/en/projekt/komplett)**. To do this, proceed as follows:
 
 1. Check in this overview \[link to table with name, code position, image to follow] whether your special characters are contained in the allEntities file.
 
@@ -146,10 +146,12 @@ And this is how the character is finally displayed using the KomplettFont:
 3. Next, download the allEntities file \[here] (link to follow). It must be uploaded with the dictionary files during import. How this works, you will find out [here](#import-entity-file). To display the special characters in the published dictionary, it is necessary to select the KompLett font in the configuration. Details can be found in [this section](#define-your-styling-rules).
 
 <SideNote type="note">
-
-- You _don't need_ the allEntities file if your special characters are all defined in the Unicode standard and if you encode all your special characters with hexadecimal codes.
-- If you have special characters in your dictionary that are **neither defined in the Unicode Standard nor in our allEntities**, please contact the Publex team \[e-mail address to follow].
-  </SideNote>
+  - You _don't need_ the allEntities file if your special characters are all
+  defined in the Unicode standard and if you encode all your special characters
+  with hexadecimal codes. - If you have special characters in your dictionary
+  that are **neither defined in the Unicode Standard nor in our allEntities**,
+  please contact the Publex team \[e-mail address to follow].
+</SideNote>
 
 #### 2. Store the data in a Bitbucket repository
 
@@ -167,7 +169,7 @@ The data is imported into Publex from Bitbucket, a Git repository.
 - Enter a **name** for the new repository, e.g. you can name it after your dictionary.
 - Choose the **access level**. If you decide to make your repository **public**, all the data you store in it will be accessible online for everyone. If you do not want this to be possible, select **private**.
 - You can include a **README** with a short information about the content of your repository, but this is not necessary for your upload to Publex.
-- We recommend to choose 'main' as **default branch name** as suggested by Bitbucket.<a id="branch-name"></a>
+- We recommend to choose 'main' as **default branch name** as suggested by Bitbucket.<a id="branch-name"/>
 - For the field "Include .gitignore?" you can simply use the default setting.
 - Now you are ready to hit the "Create repository"-button.
 
@@ -252,6 +254,7 @@ c) Tell Publex, whether your repository is public or private.
 2. By activating the button, a SSH key becomes visible. Please add this key to your Bitbucket account.
 
 - Copy the key.
+
 - In your Bitbucket account, go to your personal settings (see the icon for your account in the left corner on the bottom).
 
   ![Personal settings](images/personal_settings.png)
@@ -264,35 +267,35 @@ c) Tell Publex, whether your repository is public or private.
 
   e) The **file extension** of your files containing the dictionary data which should be **xml** as recommended.
 
-  f) <a id="import-entity-file"></a> The **entity file name**: If you would like to use our self-defined entities to display non-unicode characters (see [here](#use-of-non-unicode-characters)), enter the file name **"allEntities.xml"** here. If not, the field should remain empty.
+  f) <a id="import-entity-file"/> The **entity file name**: If you would like to use our self-defined entities to display non-unicode characters (see [here](#use-of-non-unicode-characters)), enter the file name **"allEntities.xml"** here. If not, the field should remain empty.
 
   Now you are ready to hit the button **Import Data**. The import starts now. It may take a couple of time depending on how large your data is. In the output window, you can follow the progress of the import and also see if problems or errors occur. If "Everything successfully imported." is displayed, the import was successful. Click "Go to Styling Rules" to continue with the [configuration](#define-your-styling-rules) of your dictionary.
 
-  #### Publex Test-Git
+#### Publex Test-Git
 
-  As assistance we offer a small dictionary test data set. Via the button "Use Publex Test-Git" the corresponding data are entered into the form and the test dictionary can be imported.
+As assistance we offer a small dictionary test data set. Via the button "Use Publex Test-Git" the corresponding data are entered into the form and the test dictionary can be imported.
 
 - ![Test_Git](images/button_test_git.png)
 
-  ### Deleting and locking a dictionary
+### Deleting and locking a dictionary
 
-  A dictionary can be deleted by clicking on the delete button (bin symbol). Make sure that the status of the dictionary is "unpublished".
+A dictionary can be deleted by clicking on the delete button (bin symbol). Make sure that the status of the dictionary is "unpublished".
 
-  ![Delete dictionary](images/delete_dictionary.png)
+![Delete dictionary](images/delete_dictionary.png)
 
-  You have the possibility to lock a dictionary to protect it from unwanted changes. The lock icon changes the status to "not editable". Click the icon again to unlock.
+You have the possibility to lock a dictionary to protect it from unwanted changes. The lock icon changes the status to "not editable". Click the icon again to unlock.
 
-  ![Lock a dictionary](images/lock_dictionary.png)
+![Lock a dictionary](images/lock_dictionary.png)
 
-  ![Locked dictionary](images/locked_dictionary.png)
+![Locked dictionary](images/locked_dictionary.png)
 
-  ### Metadata Management
+### Metadata Management
 
-  The metadata for the dictionaries will appear later on the page of the published dictionaries.
+The metadata for the dictionaries will appear later on the page of the published dictionaries.
 
-  To add and edit the metadata of your dictionary, choose your dictionary in the Dictionary Overview, hit the "Edit Dictionary"-Button and select **"Metadata"** from the left side menu.
+To add and edit the metadata of your dictionary, choose your dictionary in the Dictionary Overview, hit the "Edit Dictionary"-Button and select **"Metadata"** from the left side menu.
 
-  ![](images/edit_dictionary.png)
+![](images/edit_dictionary.png)
 
 ![Metadata Management](images/metadata_management.png)
 
@@ -327,8 +330,11 @@ a) You will get here directly after importing your dictionary data by clicking "
 
 b) In the Dictionary Overview, select a dictionary that has already been added and click on **"Edit Dictionary"**. Then, in the menu bar on the left, under **"Dictionary Management"**, select **"Styling Rules"**.
 
-<SideNote type="info" title="Defining styling rules">
-There are a few basic things to keep in mind when defining the styling rules:
+<SideNote
+  type="info"
+  title="Defining styling rules"
+>
+  There are a few basic things to keep in mind when defining the styling rules:
 
 - The requirement for the publication of a dictionary is the presence of a **lemma rule** (i.e. for one of the rules, the field ["Add to lemma list"](#lemma-field) must be selected).
 - The order of the rules is relevant: **Subordinate rules override the preceding ones**. For example: I want the font size of my entries to be 12 pt, so I define this feature in a rule for all `<entry>` elements. Thus, all the texts contained in `<entry>` will be formatted accordingly. However, the lemma (e.g. `<form type="lemma">`) should be bolded and displayed in a larger font. If I define this in a subordinate rule, the definition from the first rule is overwritten specifically for these elements. Therefore it is recommended: More general rules should be placed at the beginning of the list.
@@ -340,26 +346,28 @@ There are a few basic things to keep in mind when defining the styling rules:
   ![Change Order](images/arrows.png)
 
   <SideNote type="tip" title="Advice for the choice of font">
+    - It is recommended to use the [KompLett
+    font](https://tcdh.uni-trier.de/en/projekt/komplett), as it contains more
+    characters compared to other fonts and, therefore, the probability is higher
+    that all characters can be displayed.
+  </SideNote>
 
-  - It is recommended to use the [KompLett font](https://tcdh.uni-trier.de/en/projekt/komplett), as it contains more characters compared to other fonts and, therefore, the probability is higher that all characters can be displayed.
-    </SideNote>
+### Adding a new rule
 
-  ### Adding a new rule
+A new styling rule is created by using the "Add styling rule" button.
 
-  A new styling rule is created by using the "Add styling rule" button.
+![Add new sytyling rule](images/add_new_rule.svg)
 
-  ![Add new sytyling rule](images/add_new_rule.svg)
+A window for defining a new styling rule is displayed.
 
-  A window for defining a new styling rule is displayed.
-
-  ### Naming the rule
+### Naming the rule
 
 Type in the name for the rule.
 
 ![Name rule](images/name_rule.png)
 
 <SideNote type="tip">
-Try to use meaningful names, e.g. "lemma", "definition" or "citation".
+  Try to use meaningful names, e.g. "lemma", "definition" or "citation".
 
 This helps you to keep a better overview of the rules. In addition, in the [dictionary look-up](#the-dictionary-look-up), the name serves as the label of the associated search field (if ["set as searchable field"](#searchable-field) is selected).
 
@@ -394,10 +402,10 @@ For each rule, there are different options you can select in the settings:
 
 - **Display text on website** This checkbox is activated by default. You should only deactivate it if you do NOT want the text of the element to be displayed.
 - **Set as searchable field**
-  {" "}
-  <a id="searchable-field"></a>If you want the selected element to appear as a
-  search field in the dictionary look-up, activate this field.
-- **Add to lemma list**<a id="lemma-field"></a> By activating this field, you define a so-called lemma rule. This means that the text contained in the element appears in the lemma list and makes the associated dictionary entries accessible. Note: At the same time, "Set as searchable field" is activated. Lemmas always form a search field.
+  <a id="searchable-field" />
+  If you want the selected element to appear as a search field in the dictionary
+  look-up, activate this field.
+- **Add to lemma list**<a id="lemma-field"/> By activating this field, you define a so-called lemma rule. This means that the text contained in the element appears in the lemma list and makes the associated dictionary entries accessible. Note: At the same time, "Set as searchable field" is activated. Lemmas always form a search field.
 
 ### Define the styling
 
@@ -455,9 +463,10 @@ After clicking on "OK", the rules are imported and displayed.
 
 ## Styling a Dictionary: An Example
 
-<a id="styling-example"></a>For a concrete demonstration of the different functions
-and the procedure, we use the dictionary entry _bluome_ from the _Mittelhochdeutsches
-Handwörterbuch_ by Matthias Lexer as an example in the following:
+<a id="styling-example" />
+For a concrete demonstration of the different functions and the procedure, we use
+the dictionary entry _bluome_ from the _Mittelhochdeutsches Handwörterbuch_ by Matthias
+Lexer as an example in the following:
 
 ![Lexer bluome Foto](images/bluome_categories.png)
 
@@ -540,11 +549,12 @@ In the dictionary preview, our example entry _bluome_ now looks like this:
 
 ## The Dictionary Viewer: Preview your dictionary
 
-<a id="preview"></a>In the Dictionary Viewer, the user can see how his/her published
-dictionary will look later. While defining the styling rules, the user can directly
-see how they will be implemented for the display of the dictionary entries. After
-each saved update in the Styling Rules, the changes become visible when reloading
-the page (e.g. with F5).
+<a id="preview" />
+In the Dictionary Viewer, the user can see how his/her published dictionary will
+look later. While defining the styling rules, the user can directly see how they
+will be implemented for the display of the dictionary entries. After each saved update
+in the Styling Rules, the changes become visible when reloading the page (e.g. with
+F5).
 
 You can get there by clicking on "Preview Website" in the left side menu:
 
@@ -633,7 +643,7 @@ You would like to update a dictionary that has already been published?
 
 To do this, log in to Publex and call up the corresponding dictionary in the Dictionary Overview. Select "Edit dictionary" and change the styling rules of the dictionary. Click on "Save" to apply your changes to the published dictionary.
 
-**Case 2) <a id="update-data"></a> You want to update the dictionary data.**
+**Case 2) <a id="update-data"/> You want to update the dictionary data.**
 
 If you want to publish your dictionary in a new edition, we recommend to create a new dictionary and publish the data in a new version under a different URL.
 
