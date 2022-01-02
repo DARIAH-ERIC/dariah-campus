@@ -41,7 +41,7 @@ export const cms_branch = window.location.hostname.includes(
   'elexis.humanistika',
 )
   ? 'elexis'
-  : 'main'
+  : process.env.NEXT_PUBLIC_GIT_BRANCH
 
 export const config: CmsConfig = {
   site_url: url,
@@ -52,7 +52,7 @@ export const config: CmsConfig = {
   backend: {
     name: 'github',
     repo: process.env.NEXT_PUBLIC_GIT_REPO ?? 'DARIAH-ERIC/dariah-campus',
-    branch: process.env.NEXT_PUBLIC_GIT_BRANCH ?? cms_branch,
+    branch: cms_branch,
     base_url: url,
     auth_endpoint: 'api/auth/github',
     auth_scope: 'public_repo',
