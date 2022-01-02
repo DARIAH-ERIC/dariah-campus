@@ -36,6 +36,13 @@ export const collections: Record<string, CmsCollection> = {
  * @see https://www.netlifycms.org/docs/configuration-options/
  * @see https://www.netlifycms.org/docs/beta-features/
  */
+
+export const cms_branch = window.location.hostname.includes(
+  'elexis.humanistika',
+)
+  ? 'elexis'
+  : process.env.NEXT_PUBLIC_GIT_BRANCH
+
 export const config: CmsConfig = {
   site_url: url,
   logo_url: '/assets/images/logo-with-text.svg',
@@ -45,7 +52,7 @@ export const config: CmsConfig = {
   backend: {
     name: 'github',
     repo: process.env.NEXT_PUBLIC_GIT_REPO ?? 'DARIAH-ERIC/dariah-campus',
-    branch: process.env.NEXT_PUBLIC_GIT_BRANCH ?? 'main',
+    branch: cms_branch,
     base_url: url,
     auth_endpoint: 'api/auth/github',
     auth_scope: 'public_repo',
