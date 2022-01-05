@@ -124,7 +124,7 @@ function renderSuccessTemplate(
                 var domainParts = host.split("--");
                 host = domainParts[domainParts.length - 1];
 
-                if (host === "${allowedOrigin}" || host === "localhost") {
+                if (host === "${allowedOrigin}" || host === "localhost" || host === "elexis.humanistika.org") {
                   window.opener.postMessage(
                     'authorization:${provider}:success:{"token":"${data.access_token}","provider":"${provider}"}',
                     e.origin
