@@ -2,11 +2,10 @@ import type { ReactNode } from 'react'
 
 import { Svg as PencilIcon } from '@/assets/icons/pencil.svg'
 import type { collections } from '@/cms/cms.config'
-import { site_url as baseUrl } from '@/cms/cms.config'
 import { Icon } from '@/common/Icon'
 import { routes } from '@/navigation/routes.config'
 import { createUrl } from '@/utils/createUrl'
-//import { url as baseUrl } from '~/config/site.config'
+import { url as baseUrl } from '~/config/site.config'
 
 export interface EditLinkProps {
   children: ReactNode
