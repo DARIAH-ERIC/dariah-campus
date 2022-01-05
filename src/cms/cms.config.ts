@@ -43,8 +43,12 @@ export const cms_branch = window.location.hostname.includes(
   ? 'elexis'
   : process.env.NEXT_PUBLIC_GIT_BRANCH
 
+export const new_url = window.location.hostname.includes('elexis.humanistika')
+  ? 'https://elexis.humanistika.org'
+  : url
+
 export const config: CmsConfig = {
-  site_url: url,
+  site_url: new_url,
   logo_url: '/assets/images/logo-with-text.svg',
   load_config_file: false,
   local_backend: process.env.NEXT_PUBLIC_USE_LOCAL_CMS === 'true',
