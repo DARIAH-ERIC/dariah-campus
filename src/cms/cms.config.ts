@@ -37,12 +37,8 @@ export const collections: Record<string, CmsCollection> = {
  * @see https://www.netlifycms.org/docs/beta-features/
  */
 
-export const new_url = window.location.hostname.includes('elexis.humanistika')
-  ? 'https://elexis.humanistika.org'
-  : url
-
 export const config: CmsConfig = {
-  site_url: new_url,
+  site_url: url,
   logo_url: '/assets/images/logo-with-text.svg',
   load_config_file: false,
   local_backend: process.env.NEXT_PUBLIC_USE_LOCAL_CMS === 'true',
