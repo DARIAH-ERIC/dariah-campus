@@ -8,7 +8,12 @@ authors:
   - mccrae-john
 tags:
   - lexicography
-abstract: This course explores the principles of open access, open data, FAIR principles and open science as they apply to lexicography including the specific challenges posed by intellectual property rights and copyright issues in the context of lexicographic work.
+categories:
+  - dariah
+abstract: This course explores the principles of open access, open data, FAIR
+  principles and open science as they apply to lexicography including the
+  specific challenges posed by intellectual property rights and copyright issues
+  in the context of lexicographic work.
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: training-module
@@ -17,11 +22,8 @@ remote:
 licence: ccby-4.0
 toc: true
 uuid: n7FC_lX46pwvJQN50Dtjs
-categories:
-  - dariah
 ---
-
-Technology should not necessarily be seen as the ultimate challenge facing lexicography today: social, cultural and legal obstacles often stand in the way of collaboration and knowledge sharing. This course explores the principles of open access, open data, FAIR principles and open science as they apply to lexicography including the specific challenges posed by intellectual property rights and copyright issues in the context of lexicographic work.
+Technology should not necessarily be seen as the main challenge facing lexicography today: social, cultural and legal obstacles often stand in the way of greater collaboration and knowledge sharing. This course will explore the principles of open science, open data, and the FAIR principles and open science as they apply to lexicography.
 
 ## Learning Outcomes
 
@@ -31,4 +33,136 @@ Upon completion of this course, students will be able to
 - Understand how the FAIR principles can apply to lexicographic resources both from the user and creator’s point of view,
 - Understand how standards and infrastructures can help in the creation and maintenance of FAIR resources,
 - Understand the main initiatives, projects and organisations which promote FAIR
-- Have a basic grasp of the main IPR licences and when to use them
+
+## Prerequisites
+
+Although this course is listed as intermediate it does not require any particular specialised knowledge.  However it is recommended that users of the course have some basic grasp of what metadata is and how to use it (a good introduction to Metadata can be found [here](https://www.dublincore.org/resources/metadata-basics/)). Similarly it will be helpful to have a minimal understanding of formats such as XML and RDF. A general introduction to some of these themes can be found in the ELEXIS course Capturing, Modeling and Transforming Lexical Data: An Introduction ТODO Add link (Toma) and Modeling Dictionaries in OntoLex-Lemon (for RDF) ТODO Add link (Toma).
+
+## A Brief introduction to Open Science & Open Data
+
+In this first part of the lesson we will look at what it is that we mean by the terms _Open Science_ and _Open Data_.
+
+The first term, _Open Science_, refers to a cross-disciplinary movement which aims to make the whole research life-cycle more **open**: that is to make it as _transparent_, _accessible_ and _reproducible_ as possible. By the research life-cycle here we refer, broadly speaking, to the following consecutive stages of the research process: the formulation of hypotheses; the collection and processing of data; the storage of data (both the original data and the results obtained after it has been processed); the long term storage of this data; and finally its publication and distribution and its re-use. Moreover, since it’s a cycle we arrive back again at the formulation of (new) hypotheses and so on.  It is important not to be misled by the use of the word _Science_ here, since  the term Open Science covers all areas of research and not just those are that are  traditionally termed the natural or hard sciences. That is, the term Open Science also covers the Humanities and Social Sciences, including lexicography. 
+
+The Open Science movement was partly a reaction to a crisis of reproducibility in sciences such as psychology and medicine, but it was also a response to the increasing necessity for better documentation for data and resources. It responds to a general need for making data and resources more easily reusable as well as getting rid of a series of other obstacles to research, including notably, the lack of accessibility to research articles and other scientific resources due to paywalls as well as the insufficient interoperability of scientific resources.  
+
+Numerous measures have been implemented by organisations including the [European Commission](https://www.dtls.nl/2016/04/20/european-commission-allocates-e2-billion-to-make-research-data-fair/) in order to promote Open Sciences practices throughout the whole of the research life-cycle described above. This includes the drafting of so-called _Data Management Plans_ that describe, among other things, how researchers plan to collect or acquire their data, and how they intend to store it, make it available and ensure its long term preservation (so that it remains accessible in the future).  
+
+Before continuing with the course, take a look at the [DMP template for Horizon Europe Projects ](https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/temp-form/report/data-management-plan-template_he_en.docx)and try to imagine how you would answer each of the listed requirements for your current project, one that you are planning to work on, or one which you have been involved in the past.
+
+This leads us onto next topic, that of _Open Data_. This topic is clearly related to the topic of Open Science, since data that is subject to access restrictions is by definition less accessible and re-usable. Firstly, however, we should clarify in some more detail what it is that we _mean_ here by Open Data, that is, when can we say that data is open? We will take our definition from the [Open Data Handbook](http://opendatahandbook.org/) which has been produced by the [Open Knowledge Foundation](https://okfn.org/): 
+
+> Data is open if it can be freely accessed, used, modified and shared by anyone for any purpose - subject only, at most, to requirements to provide attribution and/or [share-alike](http://opendatahandbook.org/glossary/en/terms/share-alike-license/). Specifically, open data is defined by the [Open Definition](http://opendatahandbook.org/glossary/en/terms/open-definition/) and requires that the data be A. Legally open: that is, available under an open (data) license that permits anyone freely to access, reuse and redistribute B. Technically open: that is, that the data be available for no more than the cost of reproduction and in [machine-readable](http://opendatahandbook.org/glossary/en/terms/machine-readable/) and [bulk](http://opendatahandbook.org/glossary/en/terms/bulk/) form.
+
+That is open data should have an open license, should be readily accessible to potential users and be available in a machine readable form. 
+
+We will not deal with the topic of licences and legal issues for lexicographic resources here since it is amply covered in the ELEXIS deliverable [D6.2 ‘’On Legal and IPR  Issues for Lexicography”](https://elex.is/wp-content/uploads/2020/02/ELEXIS_D6_2_Reccommendations_on_Legal_and_IPR_Issues_for_Lexicography.pdf). 
+
+It is, of course, not always possible to publish data with an open license. This might be for reasons due to copyright, the sensitivity of the data and/or other ethical issues. (However where there are no such reasons involved there is arguably a moral obligation to make data that is the result of publicly funded research available with an open license.) Hence the slogan "as open as possible, as closed as necessary" which is found in the [H2020 Program Guidelines on FAIR Data](https://ec.europa.eu/research/participants/data/ref/h2020/grants_manual/hi/oa_pilot/h2020-hi-oa-data-mgt_en.pdf). 
+
+However even in those cases where we cannot publish data openly there **are** other things we can do to make it more _open_ in the sense of making it more _findable_, _accessible_, _interoperable_, and _re-usable_. We can do this by providing informative open metadata that lists, among other things, both the specific license for the data and who to contact for enquiries for accessing the data, as well of course as a description of the data itself. This, then, leads us onto the next part of the course which deals with the topic of FAIR data. 
+
+### Further Information
+
+A good introduction to Open Science can be found at the FOSTER Open Science Site:
+
+- [What is Open Science? Introduction | FOSTER (fosteropenscience.eu)](https://www.fosteropenscience.eu/content/what-open-science-introduction)
+
+The FOSTER Open Science site also includes a number of Open Science related courses:
+
+- [Courses | FOSTER (fosteropenscience.eu)](https://www.fosteropenscience.eu/courses)
+
+We have taken our definition of Open Data from the Open Data Handbook. The whole handbook can be found here:
+
+- [Open Data (opendatahandbook.org)](http://opendatahandbook.org/glossary/en/terms/open-data/)
+
+Another definition of Open Data from the Open Knowledge Foundation can be found here:
+
+- [The Open Definition - Open Definition - Defining Open in Open Data, Open Content and Open Knowledge](https://opendefinition.org/)
+
+ The PARTHENOS project gives an introduction to Open Data, Open Access and Open Science specifically targeted to Humanists, with a description of three relevant use cases.
+
+- [Open Data, Open Access and Open Science – Parthenos training (parthenos-project.eu](https://training.parthenos-project.eu/sample-page/manage-improve-and-open-up-your-research-and-data/open-data-open-access-and-open-science/#1548163357532-b92625c4-4e24)
+
+DARIAH Campus also offers a course on Open Science. 
+
+- **[https://campus.dariah.eu/resource/open-science-is-just-good-science](https://campus.dariah.eu/resource/open-science-is-just-good-science)**
+
+## An introduction to the FAIR principles for lexicographers
+
+In this section we will give a very basic introduction to the so-called _FAIR principles_, relating them to the preceding part of this course and its discussion of Open Science and Open Data. For each of the different sections/groupings of the principles (Findable, Accessible, Interoperable, Reusable) we will mention relevant  initiatives, projects, and tools which will be relevant for applying the principles in question to lexicographic resources and datasets. 
+
+### The FAIR Principles
+
+The FAIR principles were originally formulated in an article published in the journal Scientific Data in 2016, [The FAIR Guiding Principles for scientific data management and stewardship](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4792175/). These principles outline a series of **15** recommendations with the principal aim of making research data (or more broadly speaking ‘research objects’) more _machine-actionable_, that is easier for computers to access and to work with (potentially without direct human intervention). They propose to do this by making such more findable, accessible, interoperable and reusable, hence the acronym _FAIR_. 
+
+These 15 recommendations are each classified under a different letter of the FAIR acronym.  As we mentioned above there is a strong connection here between the Open Science and Open Data movements and FAIR. In reality, as the [GO FAIR site](https://www.go-fair.org/resources/faq/what-fair-is-not/) points out, the FAIR principles were inspired by Open Science, although they “explicitly and deliberately do not address moral and ethical issues pertaining to the openness of data”. On the other hand, the FAIR principles _do_ “require clarity and transparency around the conditions governing access and reuse” and require data to have (among other things) “to have a clear, preferably machine readable, license”.
+
+In what follows we will give each of these guidelines in turn following the categorisation of each of the principles given in the original FAIR paper and which can also be found on the [GOFAIR site](https://www.go-fair.org/). We will also add a description below each grouping of principles describing broadly how these principles can be applied in the case of lexicographic datasets. 
+
+#### Findability
+
+The first group of recommendations relate to the findability of both data and metadata for that, by both human and computers. As the GOFAIR site points out “\[m]achine-readable metadata are essential for automatic discovery of datasets and services” which makes this “an essential component of the FAIRification process”. 
+
+The recommendations grouped under Findability are as follows:
+
+- F1. (Meta)data are assigned a globally unique and persistent identifier
+- F2. Data are described with rich metadata (defined by R1 below)
+- F3. Metadata clearly and explicitly include the identifier of the data they describe
+- F4. (Meta)data are registered or indexed in a searchable resource
+
+Guidelines F1 and F4 can be implemented with the help of a data repository which provides this service. Data repositories can also help with F2 and F3 . Note that it is  recommended to use a discipline-specific repository as this greatly assists in the task of making your dataset or resource more findable. If none exists then a more generic repository such as [Zenodo](https://zenodo.org/) can be used. 
+
+Luckily, lexicographic resources (including lexicons as well as related resources such as corpora and thesauri), as well as tools for working with them, are covered in Europe by the [CLARIN infrastructure](https://www.clarin.eu/) and its network of data repositories since [CLARIN repositories](https://www.clarin.eu/content/repositories) are specifically intended to handle textual resources for the social sciences and humanities (SSH). A dataset that is deposited in a CLARIN repository will be a given a globally unique and persistent[ identifier](https://www.clarin.eu/content/persistent-identifiers) (a handle), the metadata for that dataset will also be [harvested and indexed in the CLARIN Virtual Language Observatory (VLO)](https://www.clarin.eu/faq-page/275) along with data from all the other CLARIN centres. CLARIN also offers a framework, [CMDI](https://www.clarin.eu/content/component-metadata), for integrating together ‘components’ from different metadata sets to create specific ‘profiles’ for different kinds of datasets, these are registered in a central repository. In particular these CLARIN services help to implement recommendations F1 and F4.
+
+The recommendations listed above, along with those other FAIR which we will list below, highlight the importance of good metadata vocabularies or metadata sets for making resources more accessible. Unfortunately we cannot offer an extended survey of the main metadata sets available for lexicographic resources here. However, useful generic metadata sets include the [Dublin Core](http://purl.org/dc/terms),[ the Data Category Vocabulary (DCAT)](http://www.w3.org/TR/vocab-dcat/), [PROV-O](http://www.w3.org/TR/prov-o/) (for provenance information for linked data datasets),  and [VoID ](https://www.w3.org/TR/void/)(for describing links between linked data datasets). Specialised metadata sets which are relevant for lexicographic resources include the TEI headers [[1](http://tei.oucs.ox.ac.uk/Talks/2010-07-oxford/talk-03-metadata.xml), [2](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html)] for TEI-XML documents and META-SHARE and [LIME](https://www.w3.org/2016/05/ontolex/#metadata-lime) for linked data datasets, and the [ISO 639-3 language tag sets](https://iso639-3.sil.org/). 
+
+For those who want to learn more about what the CLARIN infrastructure can offer lexicographers we recommend the ELEXIS course [CLARIN Tools and Resources for Lexicographic Work](http://tacheles.humanistika.org/dFSUorICTUeSFiTSuBfe9A?both).
+
+#### Accessibility
+
+The second set of guidelines, grouped under the heading of ‘Accessibility’ and concern how a user, once they have located some data, can access. In some cases this may involve an authentication and authorisation procedure. The guidelines are as follows.  
+
+- A1. (Meta)data are retrievable by their identifier using a standardised communications protocol
+
+  - A1.1 The protocol is open, free, and universally implementable
+  - A1.2 The protocol allows for an authentication and authorisation procedure, where necessary
+- A2. Metadata are accessible, even when the data are no longer available
+
+As in the previous set of guidelines, the choice of a trustworthy repository (such as for instance a **CLARIN** data centre) can help take care of A1 and A2 so that the user doesn’t necessarily need to know the details of which protocol is used (e.g., [OAI-PMH](http://www.openarchives.org/pmh/)) although this is useful information to know. However it is also important that a user be clear about accessibility issues in the metadata for their data when they are depositing it including any potential periods of **data embargo**.
+
+#### Interoperable
+
+The third grouping of guidelines concerns interoperability. As the GOFAIR site points out, data often need to be integrated together with other data as well as being  interoperable with “applications or workflows for analysis, storage, and processing.” The FAIR guidelines under this heading are as follows:
+
+- I1. (Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.
+- I2. (Meta)data use vocabularies that follow FAIR principles
+- I3. (Meta)data include qualified references to other (meta)data
+
+The use of the **eXtensible Markup Language** (XML) and/or the **Resource Data Framework** (RDF) in its XML, Turtle, or JSON serialisations (appropriate for the creation of resources such as lexicons, thesauri, data category registers, and textual corpora and for the creation of resource metadata) can serve to implement guideline I1. In addition, the use of vocabularies, thesauri and ontologies that are compatible with XML and RDF in the creation of resources will enhance the interoperability of those resources. Indeed they will help to make them more _semantically interoperable_, that is at the level of the meaning of data. 
+
+For instance, if I am using the definition of the term _lemma_ from a common vocabulary or ontology this will render my data more interoperable with other resources using the same definition. A number of such vocabularies/ontologies and standards of this sort are described in the course _Standards for Representing Lexical Data: An Overview_ and include LMF, TEI-XML/TEI Lex-0, and OntoLex-Lemon.  OntoLex-Lemon is  described in further detail in the course _Modeling Dictionaries in OntoLex-Lemon_. Indeed the use of linked data to publish lexicographic resources using a model like OntoLex-Lemon also makes it easier to (re)use existing vocabularies and to include references (via links) to other data and metadata and to fulfil I3.
+
+#### Reusable
+
+Finally in this brief tour of the FAIR guidelines we will look at the last grouping of guidelines which are intended to promote the reusability of data. As the GOFAIR website points out “\[t]_he ultimate goal of FAIR is to optimise the reuse of data”_. In order to achieve this “_metadata and data should be well-described so that they can be replicated and/or combined in different settings.”_ The guidelines are as follows: 
+
+- R1. (Meta)data are richly described with a plurality of accurate and relevant attributes
+
+  - R1.1. (Meta)data are released with a clear and accessible data usage license
+  - R1.2. (Meta)data are associated with detailed provenance
+  - R1.3. (Meta)data meet domain-relevant community standards
+
+As for R1.1 an extended discussion of different kinds of issues around legal and IPR issues for lexicography, including a detailed description of different kinds of licenses can be found in the ELEXIS deliverable [D6.2 ‘’On Legal and IPR  Issues for Lexicography”](https://elex.is/wp-content/uploads/2020/02/ELEXIS_D6_2_Reccommendations_on_Legal_and_IPR_Issues_for_Lexicography.pdf).  On the other hand the use of lexicographic standards such as TEI and LMF (as mentioned above these are described in more detail in the course _Standards for Representing Lexical Data: An Overview_) will help to fulfil R1.3; LMF for instance is an ISO standard and TEI/TEI Lex-0 and OntoLex-Lemon are regarded as de facto community standards for lexical resources.  Moreover the metadata in the TEI header element (link) can be used to give detailed provenance information, and OntoLex-Lemon includes its own metadata module LIME. In addition linked data resources can use vocabularies such as Dublin Core and PROV-O (listed above) to give extensive details as regards to provenance. 
+
+Finding out more: Initiatives, projects, and organisations which promote FAIR
+
+A list of initiatives, projects and organisations which promote FAIR and which lexicographers can contribute to and find out more about FAIR from
+
+- [GOFAIR](https://www.go-fair.org/today/fair-matrix/)
+- [SSHOC](https://sshopencloud.eu/)
+
+### Other relevant resources
+
+- [An Introduction to Conceptual Modelling](https://campus.dariah.eu/resource/an-introduction-to-conceptual-modelling)
+- [FAIR Data in Trustworthy Data Repositories](https://youtu.be/dcL9xcIapyI)
