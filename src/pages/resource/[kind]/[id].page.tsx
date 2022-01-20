@@ -22,6 +22,7 @@ import { getCoursePreviewsByResourceId } from '@/cms/queries/courses.queries'
 import { getPostPreviewsByTagId } from '@/cms/queries/posts.queries'
 import { getFullName } from '@/cms/utils/getFullName'
 import { getLastUpdatedTimestamp } from '@/cms/utils/getLastUpdatedTimestamp'
+import { isResourceHidden } from '@/cms/utils/isResourceHidden'
 import { pickRandom } from '@/cms/utils/pickRandom'
 import { Icon } from '@/common/Icon'
 import { PageContent } from '@/common/PageContent'
@@ -131,6 +132,10 @@ export async function getStaticProps(
   }
 
   const resource = await getPostById(id, locale)
+
+  if (isResourceHidden(resource.data.metadata.draft)) {
+    return { notFound: true }
+  }
 
   const resourcesWithSharedTags = (
     await Promise.all(

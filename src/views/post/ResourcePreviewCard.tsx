@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { Svg as DefaultAvatar } from '@/assets/icons/user.svg'
 import { getFullName } from '@/cms/utils/getFullName'
+import { isResourceHidden } from '@/cms/utils/isResourceHidden'
 import { Icon } from '@/common/Icon'
 import { useI18n } from '@/i18n/useI18n'
 import { routes } from '@/navigation/routes.config'
@@ -23,11 +24,12 @@ export function ResourcePreviewCard(
   props: ResourcePreviewCardProps,
 ): JSX.Element {
   const { resource } = props
-  const { id, kind, title, authors, abstract, type } = resource
+  const { id, kind, title, authors, abstract, type, draft } = resource
 
   const { t } = useI18n()
 
   const href = routes.resource({ kind, id })
+  const isHidden = isResourceHidden(draft)
 
   return (
     <article
@@ -36,8 +38,8 @@ export function ResourcePreviewCard(
     >
       <div className="flex flex-col px-10 py-10 space-y-5">
         <h2 className="text-2xl font-semibold">
-          <Link href={href}>
-            <a className="block transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
+          {isHidden ? (
+            <div>
               <span className="inline-flex mr-2 text-primary-600">
                 <ContentTypeIcon
                   type={type.id}
@@ -45,8 +47,20 @@ export function ResourcePreviewCard(
                 />
               </span>
               <span>{title}</span>
-            </a>
-          </Link>
+            </div>
+          ) : (
+            <Link href={href}>
+              <a className="block transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
+                <span className="inline-flex mr-2 text-primary-600">
+                  <ContentTypeIcon
+                    type={type.id}
+                    className="flex-shrink-0 w-5 h-5"
+                  />
+                </span>
+                <span>{title}</span>
+              </a>
+            </Link>
+          )}
         </h2>
         <div className="leading-7 text-neutral-500">{abstract}</div>
       </div>
@@ -84,11 +98,15 @@ export function ResourcePreviewCard(
             </div>
           ) : null}
         </dl>
-        <Link href={href}>
-          <a tabIndex={-1} className="transition hover:text-primary-600">
-            {t('common.readMore')} &rarr;
-          </a>
-        </Link>
+        {isHidden ? (
+          <span className="text-neutral-500">{t('common.comingSoon')}</span>
+        ) : (
+          <Link href={href}>
+            <a tabIndex={-1} className="transition hover:text-primary-600">
+              {t('common.readMore')} &rarr;
+            </a>
+          </Link>
+        )}
       </footer>
     </article>
   )

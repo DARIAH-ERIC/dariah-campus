@@ -259,5 +259,13 @@ export const collection: CmsCollection = {
       widget: 'boolean',
       default: false,
     },
+    {
+      name: 'draft',
+      label: 'Hide this resource',
+      hint: '',
+      required: false,
+      widget: 'boolean',
+      default: false,
+    },
   ],
 }
