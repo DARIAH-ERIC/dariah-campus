@@ -8,6 +8,7 @@ export interface ResourceListItem
   extends Pick<ResourcePreview, 'id' | 'kind' | 'title' | 'date' | 'abstract'> {
   type: Pick<ResourcePreview['type'], 'id'>
   authors: Array<AuthorListItem>
+  draft?: boolean
 }
 
 /**
@@ -21,6 +22,7 @@ export function getResourceListData(
       id: resource.id,
       kind: resource.kind,
       type: resource.type,
+      draft: resource.kind === 'posts' && resource.draft === true,
       title: resource.shortTitle ?? resource.title,
       date: resource.date,
       abstract: resource.abstract,

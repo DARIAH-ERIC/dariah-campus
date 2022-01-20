@@ -13,6 +13,7 @@ import { getPostPreviews, getPostIds } from '@/cms/api/posts.api'
 import { getTags } from '@/cms/api/tags.api'
 import { getEventPreviewsByTagId } from '@/cms/queries/events.queries'
 import { getPostPreviewsByTagId } from '@/cms/queries/posts.queries'
+import { isResourceHidden } from '@/cms/utils/isResourceHidden'
 import type { Page } from '@/cms/utils/paginate'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
 import { Accordion } from '@/common/Accordion'
@@ -94,7 +95,9 @@ export async function getStaticProps(
   const postPreviews = await getPostPreviews(locale)
   const eventPreviews = await getEventPreviews(locale)
   const resourcePreviews = getResourceListData([
-    ...postPreviews,
+    ...postPreviews.filter((preview) => {
+      return !isResourceHidden(preview.draft)
+    }),
     ...eventPreviews,
   ])
   const sortedResources: Array<ResourceListItem> = resourcePreviews.sort(

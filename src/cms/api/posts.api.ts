@@ -72,6 +72,7 @@ export interface PostFrontmatter {
   }
   licence: LicenceId['id']
   toc?: boolean
+  draft?: boolean
 }
 
 export interface PostMetadata
