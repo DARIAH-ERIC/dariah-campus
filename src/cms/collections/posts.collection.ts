@@ -156,6 +156,7 @@ export const collection: CmsCollection = {
         'SideNote',
         'ExternalResource',
         'Quiz',
+        'ResourceLink',
       ],
     },
     {

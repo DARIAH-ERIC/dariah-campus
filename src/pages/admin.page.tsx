@@ -31,6 +31,7 @@ const Cms = dynamic(
     const { CoursePreview } = await import('@/cms/previews/CoursePreview')
     const { EventPreview } = await import('@/cms/previews/EventPreview')
     const { DocPreview } = await import('@/cms/previews/DocPreview')
+
     const { downloadWidget } = await import('@/cms/widgets/Download')
     const { sideNoteEditorWidget } = await import('@/cms/widgets/SideNote')
     const { videoEditorWidget } = await import('@/cms/widgets/Video')
@@ -48,6 +49,8 @@ const Cms = dynamic(
     const { eventSessionLinkEditorWidget } = await import(
       '@/cms/widgets/EventSessionLink'
     )
+    const { resourceLinkWidget } = await import('@/cms/widgets/ResourceLink')
+
     const { default: withResourceLinks } = await import(
       '@stefanprobst/remark-resource-links'
     )
@@ -107,6 +110,7 @@ const Cms = dynamic(
     Cms.registerEditorComponent(eventSessionSpeakersEditorWidget)
     Cms.registerEditorComponent(eventSessionDownloadEditorWidget)
     Cms.registerEditorComponent(eventSessionLinkEditorWidget)
+    Cms.registerEditorComponent(resourceLinkWidget)
 
     /**
      * Register plugins to the richtext editor widget to (i) avoid saving
