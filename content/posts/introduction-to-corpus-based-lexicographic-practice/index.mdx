@@ -111,12 +111,11 @@ In his paper ‘[getting to know your corpus](https://www.sketchengine.eu/wp-con
 
 ### Some notes of caution when using corpora
 
-Most corpora that you will use, will contain various levels of linguistic annotation.  Although automatic processing and annotation tools provide excellent results, they are not flawless and each step has its own particular challenges.
+Most corpora that you will use, will contain various levels of linguistic annotation.  Although automatic corpus processing and annotation tools provide excellent results, they are not flawless and each step has its own particular challenges.
 
-Here, we just give a few examples of some known issues in automatic processing and annotating of corpora. 
+For instance, contractions can sometimes be a problem. Is _aren’t_ considered as one token or as two, and if it split into two tokens, which two - _are n't, or are not._
 
-- Tokenisation issues: _aren’t_  or _are n't_
-- Lemmatisation issues: compounds in English that can be written with or without a space, e.g. _website_ versus _web site_. These are normally not lemmatised to one and the same lemma form.
+Compounds that can have different orthographic forms (i.e. written with or without a space or with a hyphen) can also cause problems.  For example, _website_ versus _web site_. It is important to realise that automatic procedures do not normally lemmatise these to one and the same lemma form.
 
 Finally it is important to realise that we are dealing with authentic material and that this material may also contain errors or idiosyncratic instances.
 
