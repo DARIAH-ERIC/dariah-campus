@@ -65,11 +65,11 @@ export function MultipleChoice(props: MultipleChoiceProps): JSX.Element {
   const type = isSingleChoice ? 'radio' : 'checkbox'
 
   const component = (
-    <ul className="flex flex-col space-y-4">
+    <ul className="flex flex-col space-y-4 choices">
       {options.map((option, index) => {
         return (
           <li key={index} className="!p-0 !m-0 before:!hidden">
-            <label className="flex items-center space-x-4">
+            <label className="flex items-center space-x-4 choice">
               <input
                 type={type}
                 name={name}

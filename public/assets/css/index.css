@@ -35,6 +35,14 @@ html {
   scroll-snap-type: y mandatory;
   scroll-padding-top: var(--page-header-height);
 }
+/* temporary hack for quiz questions */
+.choices {
+  margin-top: 0 !important;
+}
+.choice span p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 /** Highlight tags in Algolia search results. */
 mark {
   background-color: transparent;
