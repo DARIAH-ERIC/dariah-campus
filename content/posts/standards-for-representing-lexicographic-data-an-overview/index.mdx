@@ -105,7 +105,7 @@ TEI Lex-0 was launched in 2016, and it is led by the DARIAH Working Group on Lex
 The TEI Lex-0 imposes different types of restrictions compared with the TEI, as follows:
 
 - It reduces the number of elements available (e.g., the TEI Lex-0 uses only `<entry>`, while TEI has several elements for the basic microstructure unit of the dictionary). These are `<entry>` (a single structured entry in any kind of lexical resource), `<entryFree>` (a single structured entry), `<superEntry>` (a single unstructured entry), `<re>` (an entry related to a lemma within an entry), and `<hom>` (homograph within an entry). While the document precisely describes when each should be used (entry forces a structure) (Bański, Bowers & Erjavec, 2017), `<entryFree>` provides a flat representation and allows unstructured entries that should be avoided but may be necessary for some dictionaries, and `<superEntry>` is a mechanism that can group other entries, such as homonyms). This freedom makes it difficult for different authors to keep their dictionaries coherent in terms of structure.
-- It makes certain attribute values required (e.g., xml:lang and xml:id in `<entry>`).
+- It makes certain attribute values required (e.g., `xml:lang` and `xml:id` in `<entry>`).
 - It reduces the number of possible attribute values on specific elements (such as `<usg>`).
 - It applies additional syntactic constraints (e.g., `<def>` can only appear within a `<sense>`) or, when necessary, allows for new syntactic constructions (e.g., necessary entries).
 
@@ -248,7 +248,7 @@ We are going now to define core vocabulary that helps the lexicographer structur
 
 According to the core vocabulary we have defined, we propose a minimal microstructure of a lexicographic article. 
 
-Figure 1: Minimal microstructure of a lexicographic article
+![](images/minimal_structure.png "Figure 20: Minimal microstructure of a lexicographic article")
 
 Having this minimal microstructure of a lexicographic article in mind we will now identify the structured set of lexicographic components related to the headword ‘fly’ (English), ‘mouche’ (French), ‘mosca’ (Portuguese).
 
@@ -281,8 +281,6 @@ The following Turtle code is an example for the lexical entry of “fly”:
 ### 3.3 LMF
 
 ![]( "The LMF encoding for fly")
-
-
 
 ## References
 
