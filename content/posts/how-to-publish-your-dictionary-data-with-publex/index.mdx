@@ -119,33 +119,8 @@ Logged in to your account in the upper menu bar, the profile button takes you to
 
 ##### Use of non-unicode characters
 
-If your dictionary contains special characters which are not available in the Unicode standard, it is possible to **use** our **self-defined entities of the [KompLett font](https://tcdh.uni-trier.de/en/projekt/komplett)**. To do this, proceed as follows:
+If your dictionary contains special characters which are not available in the Unicode standard, it is possible to **use** our **self-defined entities of the [KompLett font](https://tcdh.uni-trier.de/en/projekt/komplett)**. To do this, please contact us (klee@uni-trier.de).
 
-1. Check in this overview \[link to table with name, code position, image to follow] whether your special characters are contained in the allEntities file.
-
-Every entry in the allEntities file is structered as follows: the declaration of a new entry `<!ENTITY` followed by the name, the Unicode `position` (or position in the private used area) and a closing `>`.
-
-Here you can see an example with the special character "u with superscripted plus":
-
-![Entities](images/uplusabove_entities.png)
-
-2. If you want to use a specific entity from the allEntities file, replace the corresponding special character in the XML file with `&entity name;` (entity name = "plusaboveu" in the following example).
-
-![uplusabove_in_xml](images/uplusabove_xml.png)
-
-And this is how the character is finally displayed using the KomplettFont:
-
-![u_plus_above](images/uplusabove_wbnetz.png)
-
-3. Next, download the allEntities file \[here] (link to follow). It must be uploaded with the dictionary files during import. How this works, you will find out [here](#import-entity-file). To display the special characters in the published dictionary, it is necessary to select the KompLett font in the configuration. Details can be found in [this section](#define-your-styling-rules).
-
-<SideNote type="note">
-  You _don't need_ the allEntities file if your special characters are all
-  defined in the Unicode standard and if you encode all your special characters
-  with hexadecimal codes. - If you have special characters in your dictionary
-  that are **neither defined in the Unicode Standard nor in our allEntities**,
-  please contact the Publex team \[e-mail address to follow].
-</SideNote>
 
 #### 2. Store the data in a Bitbucket repository
 
