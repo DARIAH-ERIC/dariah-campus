@@ -111,9 +111,14 @@ The TEI Lex-0 imposes different types of restrictions compared with the TEI, as 
 
 ### 2. ISO Standards related to lexicography
 
-**ISO**[^9](https://www.iso.org/home.html) is an international non-governmental organisation composed of several national standardisation bodies that develop and publish a wide range of standards. The international standards are the result of the work carried out through ISO Technical Committees, generally compounded by specialists and governmental and non-governmental international organisations.
+**ISO**[^9] is an international non-governmental organisation composed of several national standardisation bodies that develop and publish a wide range of standards. The international standards are the result of the work carried out through ISO Technical Committees, generally compounded by specialists and governmental and non-governmental international organisations.
 
-International standards related to lexicography are the ones developed by the TC 37, ‘Language and terminology’, namely the Subcommittee 2 (SC2)[^10](https://www.iso.org/committee/48124.html) and Subcommittee 4 (SC4)[^11](https://www.iso.org/committee/297592.html), ‘Language and resource management’. ISO 1951 (2007) is an ISO TC37, SC2 standard that ‘specifies a formal generic structure independent of the publishing media and it proposes means of presenting entries in print and electronic dictionaries’ (ISO 1951, 2007, p. 1). The purpose of the standard is “to facilitate the production, merging, comparison, extraction, exchange, dissemination and retrieval of lexicographical data in dictionaries” (_ibidem_). The standard, right under a revision process, starting in 2022.
+[^9]:[https://www.iso.org/home.html](https://www.iso.org/home.html]
+
+International standards related to lexicography are the ones developed by the TC 37, ‘Language and terminology’, namely the Subcommittee 2 (SC2)[^10] and Subcommittee 4 (SC4)[^11], ‘Language and resource management’. ISO 1951 (2007) is an ISO TC37, SC2 standard that ‘specifies a formal generic structure independent of the publishing media and it proposes means of presenting entries in print and electronic dictionaries’ (ISO 1951, 2007, p. 1). The purpose of the standard is “to facilitate the production, merging, comparison, extraction, exchange, dissemination and retrieval of lexicographical data in dictionaries” (_ibidem_). The standard, right under a revision process, starting in 2022.
+
+[^10]:[https://www.iso.org/committee/48124.html](https://www.iso.org/committee/48124.html)
+[^11]:[https://www.iso.org/committee/297592.html](https://www.iso.org/committee/297592.html)
 
 According to ISO 1951 (2007), the information contained in each dictionary entry is organised following three mechanisms (‘compositional elements’):
 
@@ -135,11 +140,21 @@ There are, however, other ISO standards developed as high-level specifications t
 
 W3C develops technical specifications and guidelines for the standardisation of web technologies.
 
-**OntoLex-Lemon**[^12](https://www.w3.org/2016/05/ontolex/) is a ‘vocabulary for publishing lexical data as a knowledge graph, in an RDF format and/or as Linguistic Linked Open Data’ developed by the W3C Ontology-Lexica Community Group[^13](https://www.w3.org/community/ontolex/) (Cimiano, McCrae, & Buitelaar, 2016) based particular particularly on a Ontology Web Language – OWL (McGuinness & van Harmelen, 2004) and the Lexicon Model for Ontologies, also known as lemon model (McCrae et al., 2012).
+**OntoLex-Lemon**[^12] is a ‘vocabulary for publishing lexical data as a knowledge graph, in an RDF format and/or as Linguistic Linked Open Data’ developed by the W3C Ontology-Lexica Community Group[^13] (Cimiano, McCrae, & Buitelaar, 2016) based particular particularly on a Ontology Web Language – OWL (McGuinness & van Harmelen, 2004) and the Lexicon Model for Ontologies, also known as lemon model (McCrae et al., 2012).
 
-OntoLex-Lemon has become widely known for the representation of lexical data on the semantic web, including Princeton WordNet and FrameNet, and has gradually acquired the status of a _de facto_ standard[^14](https://en.wikipedia.org/wiki/Knowledge_graph;https://www.w3.org/community/ontolex/). Concerning the conversion of lexicographic resources into linked open data (LOD)[^15](https://www.w3.org/standards/semanticweb/data#summary), this model is the preferred choice of many researchers (Klimek & Brümmer, 2015; Declerck et al., 2019; Abromeit et al., 2016; Bosque-Gil et al., 2016; McCrae et al., 2019).
+[^12]:[https://www.w3.org/2016/05/ontolex/](https://www.w3.org/2016/05/ontolex/)
+
+[^13]:[https://www.w3.org/community/ontolex/](https://www.w3.org/community/ontolex/)
+
+OntoLex-Lemon has become widely known for the representation of lexical data on the semantic web, including Princeton WordNet and FrameNet, and has gradually acquired the status of a _de facto_ standard[^14]. Concerning the conversion of lexicographic resources into linked open data (LOD)[^15], this model is the preferred choice of many researchers (Klimek & Brümmer, 2015; Declerck et al., 2019; Abromeit et al., 2016; Bosque-Gil et al., 2016; McCrae et al., 2019).
+
+[^14]:[https://en.wikipedia.org/wiki/Knowledge_graph;https://www.w3.org/community/ontolex/](https://en.wikipedia.org/wiki/Knowledge_graph;https://www.w3.org/community/ontolex/)
+
+[^15]:[https://www.w3.org/standards/semanticweb/data#summary](https://www.w3.org/standards/semanticweb/data#summary)
 
 OntoLex-Lemon modelling is based on RDF triplets[^16](https://www.w3.org/RDF/): subject, predicate and object. The (ISO 24613-1, 2019) Lexical Markup Framework (LMF) standard also played an important role in defining OntoLex-Lemon – the LMF directly inspired this module in defining lexical entries as the core element of the lexicon. Trying to overcome some OntoLex-Lemon limitations when modelling lexicographic information as linked data, the OntoLex community developed the lexicography module (lexicog), a model to encode existing dictionaries as Linguistic Linked Open Data. This module operates in combination with the OntoLex core module. Nevertheless, Lexicog is not a W3C Standard, nor is it on the W3C Standards Track, the reason why, we are going to stick to the OntoLex core module.
+
+[^16]: [https://www.w3.org/RDF/](https://www.w3.org/RDF/)
 
 
 ## Part 2: Formal Representation of Lexical Data
