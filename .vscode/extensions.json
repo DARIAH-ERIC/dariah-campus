@@ -3,7 +3,6 @@
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
     "esbenp.prettier-vscode",
-    "JounQin.vscode-mdx",
-    "stefanprobst.remark-lint"
+    "JounQin.vscode-mdx"
   ]
 }
