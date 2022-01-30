@@ -52,7 +52,10 @@ function createObjectId(...args: [IndexedType, ...Array<string>]) {
 async function getResourceObjects(
   locale: Locale,
 ): Promise<Array<IndexedResource>> {
-  const resources = await getPostPreviews(locale)
+  const _resources = await getPostPreviews(locale)
+  const resources = _resources.filter((resource) => {
+    return resource.draft !== true
+  })
   const type = 'resources' as const
 
   return Promise.all(
