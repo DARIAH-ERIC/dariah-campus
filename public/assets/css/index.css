@@ -16,10 +16,10 @@
 body {
   min-height: 100vh;
   --tw-bg-opacity: 1;
-  background-color: rgba(250, 250, 250, var(--tw-bg-opacity));
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity));
   font-family: Roboto, system-ui, sans-serif;
   --tw-text-opacity: 1;
-  color: rgba(23, 23, 23, var(--tw-text-opacity));
+  color: rgb(23 23 23 / var(--tw-text-opacity));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -361,7 +361,6 @@ input[type='search']::-webkit-search-decoration {
   text-transform: uppercase;
   line-height: 0.95;
   font-size: 1rem;
-  font-size: 0.95vw;
   font-size: 1.05vw;
 }
 .h1 strong {
