@@ -11,9 +11,7 @@ tags:
   - lexicography
 categories:
   - dariah
-abstract: "This course introduces Elexifier, a cloud-based dictionary service
-  for the conversion of legacy XML and PDF dictionaries into a shared data
-  format based on the ELEXIS Data Model. "
+abstract: "This course introduces Elexifier, a cloud-based dictionary service for the conversion of legacy XML and PDF dictionaries into a shared data format based on the ELEXIS Data Model. "
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: training-module
@@ -24,7 +22,8 @@ toc: true
 draft: true
 uuid: ltlzUH-fnmgzR5O0bgqwu
 ---
-This course introduces Elexifier, a cloud-based dictionary service for the conversion of legacy XML and PDF dictionaries into a shared data format based on the ELEXIS Data Model. 
+
+This course introduces Elexifier, a cloud-based dictionary service for the conversion of legacy XML and PDF dictionaries into a shared data format based on the ELEXIS Data Model.
 
 ## Learning Outcomes
 
@@ -40,7 +39,7 @@ This course requires basic knowledge of XML, which can be acquired from the cour
 
 ### What is Elexifier?
 
-Elexifier is a cloud-based dictionary conversion service for conversion of legacy XML and PDF dictionaries into a shared data format so that it can be integrated in the ELEXIS infrastructure. It takes as input an XML or PDF dictionary and produces a TEI-compliant XML file in line with the specifications of the Elexis Data Model. The figure below shows the position of the Elexifier tool (the green circle) in relation to the complete set of the ELEXIS Dictionary Tools. 
+Elexifier is a cloud-based dictionary conversion service for conversion of legacy XML and PDF dictionaries into a shared data format so that it can be integrated in the ELEXIS infrastructure. It takes as input an XML or PDF dictionary and produces a TEI-compliant XML file in line with the specifications of the Elexis Data Model. The figure below shows the position of the Elexifier tool (the green circle) in relation to the complete set of the ELEXIS Dictionary Tools.
 
 ![](images/lex1.png "Graphic guide to the ELEXIS Dictionary Tools")
 
@@ -50,13 +49,13 @@ Elexifier is easy to use, as the interface and the user instructions guide you t
 
 ### What is the ELEXIS Data Model?
 
-[This section will be added in spring 2022. If you already want to read more about the ELEXIS Data Model, see e.g. [Towards the ELEXIS data model: defining a common vocabulary for lexicographic resources](https://elex.link/elex2021/wp-content/uploads/2021/08/eLex_2021_03_pp56-77.pdf) and the ongoing work on [LEXIDMA](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=lexidma).]
+\[This section will be added in spring 2022. If you already want to read more about the ELEXIS Data Model, see e.g. [Towards the ELEXIS data model: defining a common vocabulary for lexicographic resources](https://elex.link/elex2021/wp-content/uploads/2021/08/eLex_2021_03_pp56-77.pdf) and the ongoing work on [LEXIDMA](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=lexidma).]
 
 ## Let’s get started
 
 ### Accessing Elexifier
 
-Elexifier can be accessed at: [https://app.elexifier.elex.is](https://app.elexifier.elex.is) 
+Elexifier can be accessed at: [https://app.elexifier.elex.is](https://app.elexifier.elex.is)
 
 ### Create a user account and log in
 
@@ -74,7 +73,7 @@ See the [user guide](https://elexifier.elex.is/help/#XMLtransformation) for deta
 
 ## Transforming a PDF dictionary
 
-In the PDF scenario a more complex process is needed. The PDF is first transformed in a flat structure using a pdf2xml conversion script (based on [https://github.com/kermitt2/pdf2xml](https://github.com/kermitt2/pdf2xml)). Then, a chunk of the resulting XML file is sent to [Lexonomy](https://lexonomy.elex.is/)  ([Měchura 2017](https://www.lexonomy.eu/docs/elex2017.pdf)), the online dictionary editing tool for manual annotation. Approximately 4 pages need to be annotated.  The annotated text is then used as the training material for machine learning algorithms that produce the entire dictionary converted to TEI Lex-0 compliant format. 
+In the PDF scenario a more complex process is needed. The PDF is first transformed in a flat structure using a pdf2xml conversion script (based on [https://github.com/kermitt2/pdf2xml](https://github.com/kermitt2/pdf2xml)). Then, a chunk of the resulting XML file is sent to [Lexonomy](https://lexonomy.elex.is/)  ([Měchura 2017](https://www.lexonomy.eu/docs/elex2017.pdf)), the online dictionary editing tool for manual annotation. Approximately 4 pages need to be annotated.  The annotated text is then used as the training material for machine learning algorithms that produce the entire dictionary converted to TEI Lex-0 compliant format.
 
 See the [user guide](https://elexifier.elex.is/help/#PDFtransformation) for detailed instructions on how to use the PDF transformation.
 
