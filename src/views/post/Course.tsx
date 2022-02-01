@@ -31,7 +31,7 @@ export function Course(props: CourseProps): JSX.Element {
           <Tags tags={tags} />
         </div>
       </header>
-      <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
+      <div className="prose-sm prose sm:prose">
         <Mdx code={course.code} components={{ Image: ResponsiveImage }} />
       </div>
       {resources.length > 0 ? (

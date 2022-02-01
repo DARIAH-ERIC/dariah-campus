@@ -65,10 +65,11 @@ export function MultipleChoice(props: MultipleChoiceProps): JSX.Element {
   const type = isSingleChoice ? 'radio' : 'checkbox'
 
   const component = (
-    <ul className="flex flex-col space-y-4">
+    // eslint-disable-next-line jsx-a11y/no-redundant-roles
+    <ul className="flex flex-col space-y-4 no-list" role="list">
       {options.map((option, index) => {
         return (
-          <li key={index} className="!p-0 !m-0 before:!hidden">
+          <li key={index}>
             <label className="flex items-center space-x-4">
               <input
                 type={type}

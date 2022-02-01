@@ -2,9 +2,7 @@
 const colors = require('tailwindcss/colors')
 
 const config = {
-  mode: 'jit',
-  purge: ['src/**/*.@(ts|tsx)'],
-  darkMode: false,
+  content: ['src/**/*.@(ts|tsx)'],
   theme: {
     extend: {
       strokeWidth: {
@@ -18,7 +16,7 @@ const config = {
       colors: {
         error: colors.red,
         neutral: {
-          ...colors.trueGray,
+          ...colors.neutral,
           150: '#ebecee',
         },
         primary: {
@@ -64,6 +62,7 @@ const config = {
         return {
           DEFAULT: {
             css: {
+              maxWidth: 'none',
               /** Don't add quotes around `blockquote`. */
               'blockquote p:first-of-type::before': null,
               'blockquote p:last-of-type::after': null,
@@ -110,6 +109,14 @@ const config = {
                 fontSize: theme('fontSize.base')[0],
                 fontStyle: 'italic',
               },
+              '.no-list': {
+                listStyle: 'none',
+                paddingLeft: 0,
+              },
+              '.no-list p': {
+                marginTop: '0.5em',
+                marginBottom: '0.5em',
+              },
             },
           },
         }
@@ -128,14 +135,7 @@ const config = {
     },
   },
   variants: {
-    extend: {
-      backgroundColor: ['focus-visible'],
-      ringColor: ['focus-visible'],
-      ringOffsetColor: ['focus-visible'],
-      ringOffsetWidth: ['focus-visible'],
-      ringWidth: ['focus-visible'],
-      textColor: ['focus-visible'],
-    },
+    extend: {},
   },
   plugins: [
     /* @ts-expect-error Missing module declaration. */

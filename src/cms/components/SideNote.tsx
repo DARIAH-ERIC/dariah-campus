@@ -55,7 +55,7 @@ export function SideNote(props: SideNoteProps): JSX.Element {
   return (
     <aside
       className={cx(
-        'border-l-4 px-6 py-6 my-6 space-y-3 rounded',
+        'not-prose border-l-4 px-6 py-6 my-12 space-y-3 rounded',
         styles[type],
       )}
     >
