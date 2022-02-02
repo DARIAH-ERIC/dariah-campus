@@ -63,7 +63,7 @@ export function SideNote(props: SideNoteProps): JSX.Element {
         <Icon icon={icons[type]} className="flex-shrink-0" />
         <span>{title}</span>
       </strong>
-      <div>{props.children}</div>
+      <div className="underlined-links">{props.children}</div>
     </aside>
   )
 }

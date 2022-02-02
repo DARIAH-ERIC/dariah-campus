@@ -487,20 +487,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1.2em;
 }
 
-.prose a {
+.prose :where(a):not(:where([class~='not-prose'] *)) {
   color: var(--tw-prose-links);
   text-decoration: underline;
   font-weight: 500;
-}
-
-:where(.prose a:focus):not(:where([class~='not-prose'] *)) {
-  outline: none;
-}
-
-:where(.prose a:focus-visible):not(:where([class~='not-prose'] *)) {
-  border-radius: 0.25rem;
-  color: #006699;
-  box-shadow: white 0px 0px 0px 2px, #006699 0px 0px 0px 5px;
 }
 
 .prose :where(strong):not(:where([class~='not-prose'] *)) {
@@ -879,6 +869,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .prose {
   overflow-wrap: break-word;
+}
+
+.prose :where(a:focus):not(:where([class~='not-prose'] *)) {
+  outline: none;
+}
+
+.prose :where(a:focus-visible):not(:where([class~='not-prose'] *)) {
+  border-radius: 0.25rem;
+  color: #006699;
+  box-shadow: white 0px 0px 0px 2px, #006699 0px 0px 0px 5px;
 }
 
 .prose :where(h5):not(:where([class~='not-prose'] *)) {
@@ -2768,20 +2768,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-bottom: 1.2em;
   }
 
-  .sm\:prose a {
+  .sm\:prose :where(a):not(:where([class~='not-prose'] *)) {
     color: var(--tw-prose-links);
     text-decoration: underline;
     font-weight: 500;
-  }
-
-  :where(.sm\:prose a:focus):not(:where([class~='not-prose'] *)) {
-    outline: none;
-  }
-
-  :where(.sm\:prose a:focus-visible):not(:where([class~='not-prose'] *)) {
-    border-radius: 0.25rem;
-    color: #006699;
-    box-shadow: white 0px 0px 0px 2px, #006699 0px 0px 0px 5px;
   }
 
   .sm\:prose :where(strong):not(:where([class~='not-prose'] *)) {
@@ -3165,6 +3155,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .sm\:prose {
     overflow-wrap: break-word;
+  }
+
+  .sm\:prose :where(a:focus):not(:where([class~='not-prose'] *)) {
+    outline: none;
+  }
+
+  .sm\:prose :where(a:focus-visible):not(:where([class~='not-prose'] *)) {
+    border-radius: 0.25rem;
+    color: #006699;
+    box-shadow: white 0px 0px 0px 2px, #006699 0px 0px 0px 5px;
   }
 
   .sm\:prose :where(h5):not(:where([class~='not-prose'] *)) {

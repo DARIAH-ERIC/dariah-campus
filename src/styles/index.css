@@ -1,4 +1,5 @@
 @import '@/styles/globals.css';
+@import '@/styles/utils.css';
 @import '@/styles/layout.css';
 @import '@/styles/search.css';
 @import '@/styles/nprogress.css';

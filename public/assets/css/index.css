@@ -28,6 +28,10 @@ body {
     min-height: -webkit-fill-available;
   }
 }
+:where(.underlined-links) a {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
 :root {
   --page-header-height: 88px;
 }

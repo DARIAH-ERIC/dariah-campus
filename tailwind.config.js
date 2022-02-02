@@ -70,17 +70,15 @@ const config = {
               'code::before': null,
               'code::after': null,
               'overflow-wrap': 'break-word',
-              a: {
-                '&:focus': {
-                  outline: 'none',
-                },
-                '&:focus-visible': {
-                  borderRadius: theme('borderRadius.DEFAULT'),
-                  color: theme('colors.primary.600'),
-                  boxShadow: `white 0px 0px 0px 2px, ${theme(
-                    'colors.primary.600',
-                  )} 0px 0px 0px 5px`,
-                },
+              'a:focus': {
+                outline: 'none',
+              },
+              'a:focus-visible': {
+                borderRadius: theme('borderRadius.DEFAULT'),
+                color: theme('colors.primary.600'),
+                boxShadow: `white 0px 0px 0px 2px, ${theme(
+                  'colors.primary.600',
+                )} 0px 0px 0px 5px`,
               },
               pre: {
                 /** Match `poimandres` theme. */

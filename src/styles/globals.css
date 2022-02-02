@@ -14,9 +14,3 @@
 body {
   @apply min-h-screen font-sans antialiased text-neutral-900 bg-neutral-50;
 }
-
-.not-prose a {
-  color: inherit;
-  font-weight: inherit;
-  text-underline-offset: 0.25em;
-}
