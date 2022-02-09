@@ -121,7 +121,7 @@ Logged in to your account in the upper menu bar, the profile button takes you to
 
 If your dictionary contains special characters which are not available in the Unicode standard, it is possible to **use** our **self-defined entities of the [KompLett font](https://tcdh.uni-trier.de/en/projekt/komplett)**. To do this, proceed as follows:
 
-1. Check in this overview \[link to table with name, code position, image to follow] whether your special characters are contained in the allEntities file. 
+1. Check in this overview [link to table with name, code position, image to follow] whether your special characters are contained in the allEntities file. 
 
 Every entry in the allEntities file is structured as follows: the declaration of a new entry `<!ENTITY` followed by the name, the Unicode position (or position in the private used area) and a closing `>`.
 
@@ -137,10 +137,10 @@ And this is how the character is finally displayed using the KomplettFont:
 
 ![u with superscripted plus (displayed)](images/uplusabove_wbnetz.png)
 
-3. Next, download the allEntities file \[here] (link to follow). It must be uploaded with the dictionary files during import. How this works, you will find out [here](#import). To display the special characters in the published dictionary, it is necessary to select the KompLett font in the configuration. Details can be found in [this section](#define-your-styling-rules).
+3. Next, download the allEntities file [here] (link to follow). It must be uploaded with the dictionary files during import. How this works, you will find out [here](#import). To display the special characters in the published dictionary, it is necessary to select the KompLett font in the configuration. Details can be found in [this section](#define-your-styling-rules).
 
 <SideNote type="note">
-You _don't need_ the allEntities file if your special characters are all defined in the Unicode standard and if you encode all your special characters with hexadecimals codes. - If you have special characters in your dictionary that are **neither defined in the Unicode Standard nor in our allEntities**, please contact the Publex team \[e-mail adress to follow].
+You _don't need_ the allEntities file if your special characters are all defined in the Unicode standard and if you encode all your special characters with hexadecimals codes. - If you have special characters in your dictionary that are **neither defined in the Unicode Standard nor in our allEntities**, please contact the Publex team [e-mail adress to follow].
 </SideNote>
 
 #### 2. Store the data in a Bitbucket repository
@@ -173,7 +173,7 @@ This is how it looks now:
 
 ![Copy clone command](images/clone_command.png)
 
-If you prefer to use Bitbucket through a user-friendly interface, we recommend to download \[Sourcetree](https://www.sourcetreeapp.com/). In the following, we describe how to perform the steps with the command line:
+If you prefer to use Bitbucket through a user-friendly interface, we recommend to download [Sourcetree](https://www.sourcetreeapp.com/). In the following, we describe how to perform the steps with the command line:
 
 First open the terminal. This works differently depending on the platform you use:
 
@@ -256,7 +256,7 @@ c) Tell Publex, whether your repository is public or private.
 
   f) <a id="import-entity-file"/> The **entity file name**: If you would like to use our self-defined entities to display non-unicode characters (see [here](#use-of-non-unicode-characters)), enter the file name **"allEntities.xml"** here. If not, the field should remain empty.
 
-  Now you are ready to hit the button **Import Data**. The import starts now. It may take a couple of time depending on how large your data is. In the output window, you can follow the progress of the import and also see if problems or errors occur. If "Everything successfully imported." is displayed, the import was successful. Click "Go to Styling Rules" to continue with the \[configuration](#define-your-styling-rules) of your dictionary.
+  Now you are ready to hit the button **Import Data**. The import starts now. It may take a couple of time depending on how large your data is. In the output window, you can follow the progress of the import and also see if problems or errors occur. If "Everything successfully imported." is displayed, the import was successful. Click "Go to Styling Rules" to continue with the [configuration](#define-your-styling-rules) of your dictionary.
 
 #### Publex Test-Git
 
@@ -307,7 +307,7 @@ On this page, you are able to change the title and edit the dictionary descripti
 
 ## Define your styling rules
 
-The configuration module is the heart of Publex. Here you can define how each XML element should appear in the online dictionary. The following is a general explanation of how styling with Publex works. It becomes clearer and more concrete in the \[example](#styling-example) below.
+The configuration module is the heart of Publex. Here you can define how each XML element should appear in the online dictionary. The following is a general explanation of how styling with Publex works. It becomes clearer and more concrete in the [example](#styling-example) below.
 
 Go to the configuration page:
 
@@ -419,7 +419,7 @@ Clicking on the lock symbol locks a rule, clicking again unlocks it for editing.
 
 ### Export and import a configuration
 
-You have the option of exporting the styling rules as a JSON file in order to save your results and re-import them later if required. This is particularly necessary if you want to \[update the dictionary data](#update-data) at a later time. We, therefore, strongly recommend exporting and saving the configurations locally after making changes to the styling rules.
+You have the option of exporting the styling rules as a JSON file in order to save your results and re-import them later if required. This is particularly necessary if you want to [update the dictionary data](#update-data) at a later time. We, therefore, strongly recommend exporting and saving the configurations locally after making changes to the styling rules.
 
 The buttons for the export and the import are hidden under the "more" button next to the save button at the top of the right.
 
@@ -556,13 +556,13 @@ Here, the dictionary entries are displayed as defined in the Styling Rules. Only
 
 ### Lemma list
 
-All fields a lemma rule has been defined in the styling rules for appear in the lemma list (see \[here](#lemma-field)). Clicking on an item in the list displays the corresponding dictionary entry. The entries in the lemma list can be searched by using the search field. A truncated search is possible.
+All fields a lemma rule has been defined in the styling rules for appear in the lemma list (see [here](#lemma-field)). Clicking on an item in the list displays the corresponding dictionary entry. The entries in the lemma list can be searched by using the search field. A truncated search is possible.
 
 ![Search lemma list](images/lemmalist_search.png)
 
 ### The dictionary look-up
 
-The dictionary look-up offers search options in all information fields the checkbox "set as searchable field" has been activated for in the styling rules (see \[here](#searchable-field)). In our example configuration, these are the lemma, the grammatical information, the definition and the source information.
+The dictionary look-up offers search options in all information fields the checkbox "set as searchable field" has been activated for in the styling rules (see [here](#searchable-field)). In our example configuration, these are the lemma, the grammatical information, the definition and the source information.
 
 ![](images/search_categories.png)
 
@@ -587,7 +587,7 @@ The search result appears as a list below the search mask. From here, the dictio
 In order to publish a dictionary, the following requirements must be fulfilled:
 
 1. The corresponding data must have been imported into Publex.
-2. The styling rules must have been defined. At least a \[lemma rule](#lemma-field) has to be defined.
+2. The styling rules must have been defined. At least a [lemma rule](#lemma-field) has to be defined.
 
 #### How to publish?
 
@@ -625,10 +625,10 @@ If you want to publish your dictionary in a new edition, we recommend to create 
 
 But you can also reimport the data for the existing dictionary. To do this, follow the steps below:
 
-1. First, save the styling rules defined for the dictionary by exporting them and saving them locally (see \[Export of styling rules](#export)).
-2. Go to the Dictionary Overview and change the publication status to "Unpublished" (see \[Reverse a publication](#reverse-a-publication)).
-3. Go to the import page (see \[Import](#import)), fill in the information where you stored the updated data and hit the "Reimport" button.
-4. After the data import is done, you can reimport the locally stored styling rules (see \[Import of styling rules](#import)). Please check if the rules still match the XML encoding.
-5. Finally publish the dictionary (see \[Publication](#publication)).
+1. First, save the styling rules defined for the dictionary by exporting them and saving them locally (see [Export of styling rules](#export)).
+2. Go to the Dictionary Overview and change the publication status to "Unpublished" (see [Reverse a publication](#reverse-a-publication)).
+3. Go to the import page (see [Import](#import)), fill in the information where you stored the updated data and hit the "Reimport" button.
+4. After the data import is done, you can reimport the locally stored styling rules (see [Import of styling rules](#import)). Please check if the rules still match the XML encoding.
+5. Finally publish the dictionary (see [Publication](#publication)).
 
  SupportCancel Full-text Access
