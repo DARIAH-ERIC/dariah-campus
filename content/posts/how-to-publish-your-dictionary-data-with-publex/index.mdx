@@ -319,7 +319,7 @@ b) In the Dictionary Overview, select a dictionary that has already been added a
 
 There are a few basic things to keep in mind when defining the styling rules:
 
-- The requirement for the publication of a dictionary is the presence of a **lemma rule** (i.e. for one of the rules, the field ["Add to lemma list"](#lemma-field) must be selected).
+- The requirement for the publication of a dictionary is the presence of a **lemma rule** (i.e. for one of the rules, the field ["Add to lemma list"](#search-and-lemma-field) must be selected).
 - The order of the rules is relevant: **Subordinate rules override the preceding ones**. For example: I want the font size of my entries to be 12 pt, so I define this feature in a rule for all `<entry>` elements. Thus, all the texts contained in `<entry>` will be formatted accordingly. However, the lemma (e.g. `<form type="lemma">`) should be bolded and displayed in a larger font. If I define this in a subordinate rule, the definition from the first rule is overwritten specifically for these elements. Therefore it is recommended: More general rules should be placed at the beginning of the list.
 
 </SideNote>
@@ -385,7 +385,7 @@ For each rule, there are different options you can select in the settings:
 
 - **Display text on website** This checkbox is activated by default. You should only deactivate it if you do NOT want the text of the element to be displayed.
 - **Set as searchable field** If you want the selected element to appear as a search field in the dictionary look-up, activate this field.
-- **Add to lemma list**<a id="lemma-field"/> By activating this field, you define a so-called lemma rule. This means that the text contained in the element appears in the lemma list and makes the associated dictionary entries accessible. Note: At the same time, "Set as searchable field" is activated. Lemmas always form a search field.
+- **Add to lemma list** By activating this field, you define a so-called lemma rule. This means that the text contained in the element appears in the lemma list and makes the associated dictionary entries accessible. Note: At the same time, "Set as searchable field" is activated. Lemmas always form a search field.
 
 ### Define the styling
 
@@ -556,7 +556,7 @@ Here, the dictionary entries are displayed as defined in the Styling Rules. Only
 
 ### Lemma list
 
-All fields a lemma rule has been defined in the styling rules for appear in the lemma list (see [here](#lemma-field)). Clicking on an item in the list displays the corresponding dictionary entry. The entries in the lemma list can be searched by using the search field. A truncated search is possible.
+All fields a lemma rule has been defined in the styling rules for appear in the lemma list (see [here](#search-and-lemma-field)). Clicking on an item in the list displays the corresponding dictionary entry. The entries in the lemma list can be searched by using the search field. A truncated search is possible.
 
 ![Search lemma list](images/lemmalist_search.png)
 
@@ -587,7 +587,7 @@ The search result appears as a list below the search mask. From here, the dictio
 In order to publish a dictionary, the following requirements must be fulfilled:
 
 1. The corresponding data must have been imported into Publex.
-2. The styling rules must have been defined. At least a [lemma rule](#lemma-field) has to be defined.
+2. The styling rules must have been defined. At least a [lemma rule](#search-and-lemma-field) has to be defined.
 
 #### How to publish?
 
