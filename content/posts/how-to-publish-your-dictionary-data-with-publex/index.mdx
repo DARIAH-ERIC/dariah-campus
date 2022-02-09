@@ -119,8 +119,11 @@ Logged in to your account in the upper menu bar, the profile button takes you to
 
 ##### Use of non-unicode characters
 
-If your dictionary contains special characters which are not available in the Unicode standard, it is possible to **use** our **self-defined entities of the [KompLett font](https://tcdh.uni-trier.de/en/projekt/komplett)**. To do this, please contact us (klee@uni-trier.de).
+If your dictionary contains special characters which are not available in the Unicode standard, it is possible to **use** our **self-defined entities of the [KompLett font](https://tcdh.uni-trier.de/en/projekt/komplett)**. To do this, proceed as follows:
 
+Check in this overview \[link to table with name, code position, image to follow] whether your special characters are contained in the allEntities file. 
+
+Every entry in the allEntities file is structured as follows: the declaration of a new entry `<!ENTITY` followed by the name, the Unicode position (or position in the private used area) and a closing `>`.
 
 #### 2. Store the data in a Bitbucket repository
 
@@ -152,7 +155,7 @@ This is how it looks now:
 
 ![Copy clone command](images/clone_command.png)
 
-If you prefer to use Bitbucket through a user-friendly interface, we recommend to download [Sourcetree](https://www.sourcetreeapp.com/). In the following, we describe how to perform the steps with the command line:
+If you prefer to use Bitbucket through a user-friendly interface, we recommend to download \[Sourcetree](https://www.sourcetreeapp.com/). In the following, we describe how to perform the steps with the command line:
 
 First open the terminal. This works differently depending on the platform you use:
 
