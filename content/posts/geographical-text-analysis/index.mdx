@@ -35,8 +35,6 @@ uuid: n6QGzjFXm03e0vWt9xDup
 categories:
   - dariah
 ---
-![]()
-
 Geographical Text Analysis (GTA) is a relatively recent development in the approach to studying, analysing, and extracting the content of textual sources. Combining techniques from Natural Language Processing (NLP), Corpus Linguistics, and Geographic Information Systems (GIS), GTA offers a new methodology for employing these computational tools in Humanities research. The development of this methodology by researchers at Lancaster University builds upon the ‘distant reading’ approach coined by Franco Moretti in the field of Literature. With a focused interest in querying the geographic nature of textual sources, GTA focuses on the identification, manipulation, and analysis of spatial information on a large scale.
 
 **The following points briefly summarise how this process works:**
@@ -101,12 +99,14 @@ The main user interface to GeoNames consists of a simple menu, as shown below:
 
 ![](images/picture-1.jpg)
 
-This interface is intended to aid users who wish only to look up information on a particular place; however, it is also possible to download all of the data for a particular country. In this practical, you will use the GeoNames ‘country file’ containing entries for the UK, **GB.txt**. This has already been downloaded to the DARIAH-GTA.zip file for you. Other country’s data is available by following the link to *Free Gazetteer Data* under *Download*.
+This interface is intended to aid users who wish only to look up information on a particular place; however, it is also possible to download all of the data for a particular country. In this practical, you will use the GeoNames ‘country file’ containing entries for the UK, **GB.txt**. This has already been downloaded to the DARIAH-GTA.zip file for you. Other country’s data is available by following the link to _Free Gazetteer Data_ under _Download_.
 
 ### SUMMARIZED GUIDELINES FOR COMPLETING TUTORIAL
+
 First, we will load the **Cole_other.csv** file into QGIS – this file already contains coordinates, so it is a straight-forward process to visualise this data in QGIS.
 
 Next, we will take the **Wordsworth_Guide.txt** text excerpt and use a series of techniques to assign coordinates to the places referenced in the text. To do this, we will: 
+
 - Load **Wordsworth_Guide.txt** into Recogito.
 - Use Recogito to annotate and assign coordinates to key place-names.
 - Export our data from Recogito.
@@ -115,4 +115,26 @@ Next, we will take the **Wordsworth_Guide.txt** text excerpt and use a series of
 - Edit and clean data within QGIS.
 - Explore the GeoNames data and join it with our data. 
 
+### STEP-BY-STEP INSTRUCTIONS
 
+**1.	Georeferencing a table that contains coordinates**
+
+The file **Cole_other.csv** is a Comma Separated Values file that contains places mentioned in Coleridge’s text together with some other information and, crucially, the latitude and longitude that the place names refer to. (It doesn’t matter whether these files are database tables, or text files such as csv or tab delimited, when you have information that has coordinates, loading it into QGIS, georeferencing it and saving it as a GeoPackage is easy.)
+
+**a.	Check the file in Excel**
+
+- Open Excel.
+- Go to _File_ > _Open_, and then select _Browse_.
+
+![](images/picture-2.jpg)
+
+- When the dialog box appears, navigate to location where you saved the DARIAH-GTA folder earlier, and make sure to change the menu in the bottom right corner from _All Excel Files_ to _Text Files_ (see above).
+- Click on **Cole_other.csv**.
+- Press _Open_.
+- Because this is a .csv file, a ‘Text Import Wizard’ will appear to guide you through opening this data in Excel. On Step 1, make sure that **Delimited** is selected under the ‘Original data type’, and that the ‘My data has headers’ box is ticked. 
+
+![](images/picture-3.jpg)
+
+- Click *Next* to proceed to Step 2, where you need to select your ‘Delimiters’: make sure **Comma** is selected. You can then click *Finish* (leaving the defaults selected for Step 3).
+- You should now see the contents of **Cole.csv** loaded in Excel. You will notice that the file contains two versions of place name. The first, **pl_name**, is the spelling from the text, the second, **st_name**, (meaning standardised name) is the spelling that appears in the gazetteer that was used to georeferenced this. The file also contains latitude and longitude, and a range of other data.
+- When you are happy, close the file (you don’t need to save the file as we haven’t made any changes).
