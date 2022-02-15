@@ -51,3 +51,18 @@ When the OntoLex-lemon model was first developed the following requirements were
 3. **Semantics by Reference:** Meaning in this model should be represented by means of reference to ontologies, ensuring the representation methods from knowledge graphs, in particular OWL, can be used to represent the semantics. As such, this means that senses in an OntoLex-lemon model are defined by the elements in the ontology they refer to.
 4. **Openness:** The OntoLex-lemon model is an open model in several senses. Firstly, it is free both in the sense that there are no finanical costs associated with any documentation of the model (free as in 'free beer') but also free to be extended and worked with (free as in 'free speech'). Further, the community group is open to anyone and all discussions on mailing lists are openly available on the web.
 5. **Reuse standards:** The model should wherever possible reuse vocabulary and modelling from standards in order to avoid reinventing the wheel. In particular, we are reusing models such as OWL, RDF, SKOS, Dublin Core, the Lexical Markup Framework (LMF) and the Terminological Markup Framework.
+
+# The Model
+
+The OntoLex-lemon model was introduced due to the observation that ontologies contain very little information about how words are represented in natural language. The basic model of OWL allows for a linguistic label to be added to a ontology entity with a language tag given by the BCP-74 standard, for example we can describe the concept [Q315](https://www.wikidata.org/wiki/Q315) in the Wikidata as follows:
+
+```
+<https://www.wikidata.org/wiki/Q315> rdfs:label "language"@en ,
+  "Sprache"@de, "teanga"@ga, "言語"@ja .
+```
+
+However, this representation is very limited and does not cover how the label is used in real language. For example, the Irish term "teanga" may appear in a very different form such as in "Cuairt Liteartha do **Theangacha** Mionlaigh san Eoraip" (Literary tour of minority languages in Europe), which would be very difficult to identify from the lemma alone, and other key information such as readings of the Japanese lemma cannot easily be represented.
+
+Another issue is the large number of synonyms that exist for many terms both in language and in ontologies. For example, the term "edema" is a medical condition that can be represented by many identifiers for example Q152234 in Wikidata, D00487 in the Medical Subject Headings (MeSH), C0013604 in the Unified Medical Language System (UMLS) and R60.9 in the International Classification of Diseases (ICD). Moreover, we may have several terms that can be used to refer to this, including the irregular plural form "edemata" and alternative terms such as "dropsy". Linking all of these together could be very complex as shown in the image below:
+
+![](images/edema_messy.png "Modelling links between knowledge graphs and lexical information can lead to many links between the concepts")
