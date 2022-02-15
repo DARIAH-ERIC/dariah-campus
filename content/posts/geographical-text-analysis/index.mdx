@@ -39,31 +39,32 @@ Geographical Text Analysis (GTA) is a relatively recent development in the appro
 
 **The following points briefly summarise how this process works:**
 
-1) Use of NLP techniques to automatically identify proper nouns (this may be augmented/refined through the use of ontologies designed specifically for a certain corpus/subject interest).
-
-2) Assigning coordinates automatically to place-names in the corpus by matching these to place-names in a geographical dictionary or gazetteer, a technique called geoparsing.
-
-3) Implementation of Corpus Linguistics techniques to reveal significant linguistic regularities or patterns. This is particularly important for verifying key concepts as they relate to individual places.
-
-4) The mapping of identified data and, subsequently, the spatial analysis of this data using GIS software.
+1. Use of NLP techniques to automatically identify proper nouns (this may be augmented/refined through the use of ontologies designed specifically for a certain corpus/subject interest).
+2. Assigning coordinates automatically to place-names in the corpus by matching these to place-names in a geographical dictionary or gazetteer, a technique called geoparsing.
+3. Implementation of Corpus Linguistics techniques to reveal significant linguistic regularities or patterns. This is particularly important for verifying key concepts as they relate to individual places.
+4. The mapping of identified data and, subsequently, the spatial analysis of this data using GIS software.
 
 Each of these individual steps requires expertise in distinct fields. By bringing these techniques together, we have the opportunity to ask new, complex questions and reveal new insights into large corpora that would otherwise require years of close-reading. Of course, it is vital to recognise that the use of computational approaches in these circumstances is a complementary endeavour, and should not be viewed as a replacement to close-reading.
 
 The following two case studies provide a brief insight into the application of these techniques practice:
 
 ## MAPPING THE LAKES: A Literary GIS
+
 This pilot project at Lancaster University explored the use of GIS technology in furthering our understanding of the literature of space and place. Mapping out two historical textual accounts of journeys through the landscape of the Lake District in the UK, this project explored the processes, tools, and possibilities of Geographical Text Analysis.
 Read more about the project: https://www.lancaster.ac.uk/mappingthelakes/
 
 ## DIGGING INTO EARLY COLONIAL MEXICO: A large-scale computational analysis of 16th century historical sources
+
 This collaborative, interdisciplinary project brings together experts from three countries and institutions in the fields of History, Archaeology, Geography, and Computer Science. Their work combines techniques from Corpus Linguistics, Text Mining, NLP, Machine Learning, and GIS in order to analyse the Relaciones Geográficas, a large corpus of geographic reports produced in sixteenth-century New Spain. In doing so, its key objective is to advance and develop new computational approaches for the investigation and analysis of historical sources in particular. 
 Read more about the project: https://www.lancaster.ac.uk/digging-ecm/
 
 ### FUTURE DEVELOPMENTS
+
 A dedicated Geographical Text Analysis tool is currently in development as part of the aforementioned Digging Into Early Colonial Mexico project. The GTA tool – available later in 2021 – will streamline the process of identifying, georeferencing, processing, and mapping geographical information contained within textual sources in a non-specialist, user-friendly way. Users will be able to upload their own text, with each of the previously mentioned steps being computed automatically in the background, producing a dataset that can be both visualised within the tool and downloaded for further external analysis.
 To keep up to date with progress of the GTA tool, follow the project on Twitter: [@DiggingCH](https://twitter.com/DiggingCH). 
 
 ### TUTORIAL BACKGROUND
+
 Place names are the most widely used way of expressing a location. They occur in a wide range of different types of sources, from quantitative sources such as census data, where each row of data is referred to by place name, to unstructured texts such as a description of a journey or an official report. As such, place names are extremely important to humanities geographies. One of the major challenges in building a GIS database is often to convert place names into the precisely defined, coordinate-based locations required by spatial data in GIS.
 
 Sometimes, place names refer to a specific and precisely defined administrative unit such as a municipality, district or county in census data. In these cases, polygons are usually the most suitable way of representing the places that the names refer to. More often, however, the location a place name refers to is vaguer. In phrases such as “Scarlet fever was prevalent in Manchester and Salford” or “Helm Crag is a high mountain near Grasmere” (place names are shown in italics) the places that the text is referring to are not precisely delimited, indeed, Grasmere can refer to either the lake or the village next to it. In these cases, a point is usually a much more satisfactory and convenient way of representing the location. The challenge, however, is to find coordinates for the place names.
@@ -73,8 +74,6 @@ Gazetteers can be particularly useful, if not crucial, for performing this task.
 Google Maps, Google Earth and other online mapping tools also have large gazetteers behind them as part of their search facilities. These are not available to download but can be used to locate places individually if they are not in one of the publicly available gazetteers. 
 
 ### DATA SOURCES
+
 The aim of this exercise is to georeference two sources. The first is a table derived from Samuel Taylor Coleridge’s 1802 Tour of the Lake District and already has coordinates. The second is an excerpt from William Wordsworth’s 1835 Guide through the District of the Lakes in the North of England, from which we will need to extract place-names and assign coordinates. To do this, we will use Recogito (an online annotation tool) and then find and correct any places that fail to be identified using Recogito. 
 Before getting started, make sure you download the DARIAH-GTA.zip file, then right click on it to ‘Extract all’ (or ‘unzip’ the file) somewhere on your computer, so that we can use the data within (all the shapefiles we need are in their own QGIS-Shapefiles.zip folder contained within DARIAH-GTA.zip – do not unzip QGIS-Shapefiles.zip) The following table provides a summary of all files contained within the DARIAH-GTA.zip file:
-
-
- 
