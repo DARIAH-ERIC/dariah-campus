@@ -168,7 +168,7 @@ Note we can specify the usage of these terms, as British or American English, us
 
 ## Syntax and Semantics
 
-![](https://www.w3.org/2016/05/ontolex/Lemon_Syntax_and_Semantics.png "The synsem module")
+![](images/lemon_syntax_and_semantics.png "The synsem module")
 
 The synsem (syntax and semantics) module allows us to represent the syntax of entries and how this maps to structures in our knowledge graphs. This is primarily done by the creation of `SyntaticFrame`s. For example, we can model **know** as a transitive verb as follows:
 
@@ -215,7 +215,7 @@ In this case the frame can also act as ontology mapping and is typed as being an
 
 ## Decomposition
 
-![](https://www.w3.org/2016/05/ontolex/Lemon_Decomposition.png "The decomposition module")
+![](images/lemon_decomposition.png "The decomposition module")
 
 The decomposition module is used to represent how multiword or compound expressions are composed of single word terms. There are two main ways of doing this: either simply by means of the subterm property which relates two lexical entries, or by the means of constituents which can capture the order and specific properties of the decomposition. 
 
@@ -240,3 +240,33 @@ The decomposition module is used to represent how multiword or compound expressi
 ```
 
 In the above example, we see that the English term **summer school** is indicated as being composed of the words **summer** and **school** by means of the `subterm` property. For the French example **école d'été**, we go for a more complex representation capturing the order of the words and creating identifiers including `<#école_d’été/de>`, which indicate the usage of the word **de** within the multiword expression and allow us to indicate properties, in this case that the word is in a contracted form.
+
+## Variation and Translation
+
+![](images/lemon_variation_and_translation.png)
+
+The variation and translation module allows us to model how lexical entries and other elements of the lexical model are related. Relations between entries can include WordNet-style relationships such synonymy and antonymy, but also morphological relations such as derived or inflected forms. Translation is seen as a special case of relationships between elements in particular between elements from different languages. 
+
+![](images/introduction-to-the-ontolex-lemon-model-5-.png "Translation modelling in OntoLex-lemon")
+
+Translation can be modelled in four different ways in this module:
+
+1. **Shared reference**: this simplest way to model translation involves no extra work. Knowledge graphs are by their nature multilingual and so two terms in different languages referring to the same concept are by definition translations.
+2. **Translation**: the standard method for representing translation is to add the translation link between two senses. This preferred as it captures that translation is a relationship between words that depends on meaning.
+3. **Reified Translation:** in addition, the model allows a named `Translation` object to be introduced that can be further described with properties, for example the provenance of a translation.
+4. **Translatable As:** the model also has a special property `translatableAs` which links entries. This may be useful for terminological resources or other models where there are very few senses. It says that implicitly there is a translation between senses of these entries, but not which senses are actually translations.
+
+## Linguistic Metadata
+
+![](images/lemon_lime_metadata.png "The LiME model")
+
+The LiMe (Linguistic Metadata) module allows us to represent information about the contents of an OntoLex-lemon model. This includes information about the number of entries, senses and the ratio between the number of senses and entries as well as information about the languages used. This module aims to simplify the process of finding lexicons that are suitable for a range of applications and can be used alongside existing metadata schema such as Dublin Core.
+
+Lexicography
+
+# Further Reading
+
+The OntoLex-lemon specification gives further examples of usage of the model:
+
+- https://www.w3.org/2016/05/ontolex/
+- https://www.w3.org/2019/09/lexicog/ (Lexicography module)
