@@ -213,4 +213,30 @@ foaf:knows a rdf:Property ;
 
 In this case the frame can also act as ontology mapping and is typed as being an `OntoMap`, which is a common design pattern. We can also use ontological information on the knowledge graph, such as  that `foaf:knows` relates two `Person`s to model selectional preferences.
 
-Decom
+## Decomposition
+
+![](https://www.w3.org/2016/05/ontolex/Lemon_Decomposition.png "The decomposition module")
+
+The decomposition module is used to represent how multiword or compound expressions are composed of single word terms. There are two main ways of doing this: either simply by means of the subterm property which relates two lexical entries, or by the means of constituents which can capture the order and specific properties of the decomposition. 
+
+```turtle
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix decomp: <http://www.w3.org/ns/lemon/decomp#> .
+
+<#summer_school> a ontolex:MultiWordExpression ;
+  decomp:subterm <#summer>, <#school> .
+
+<#école_d’été> a ontolex:MultiWordExpression ;
+  decomp:constituent <#école_d’été/école> , 
+                     <#école_d’été/de> ,
+                     <#école_d’été/été> ;
+  rdf:_1 <#école_d’été/école> ;
+  rdf:_2 <#école_d’été/de> ;
+  rdf:_3 <#école_d’été/été> ;
+
+<#école_d’été/de> a decomp:Component ;
+  decomp:correspondsTo <#de> ;
+  lexinfo:lexTermType lexinfo:contraction .
+```
+
+In the above example, we see that the English term **summer school** is indicated as being composed of the words **summer** and **school** by means of the `subterm` property. For the French example **école d'été**, we go for a more complex representation capturing the order of the words and creating identifiers including `<#école_d’été/de>`, which indicate the usage of the word **de** within the multiword expression and allow us to indicate properties, in this case that the word is in a contracted form.
