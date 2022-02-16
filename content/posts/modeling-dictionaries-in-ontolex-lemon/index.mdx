@@ -299,15 +299,62 @@ The lexicography module was introduced in 2019 to improve the modelling of lexic
 <#animal_adj> a ontolex:LexicalEntry .
 ```
 
-Entires in the lexicography module can also capture the structure of an entry including subsenses. For example, a dictionary entry containing structure such as the entry below for **fish** may be captured using `LexicographicComponent`s.
+Entries in the lexicography module can also capture the structure of an entry including subsenses. For example, a dictionary entry containing structure such as the entry below for **fish** may be captured using `LexicographicComponent`s.
 
-**fish (noun)**
+> **fish (noun)**
+>
+> 1. An invertebrate marine animal with gills
+>
+>    1. The meat of this animal
+>    2. Any invertebrate animal living in water
+> 2. A fishing trip
 
-1. An invertebrate marine animal with gills
+This may be modelled as follows:
 
-   1. The meat of this animal
-   2. Any inverterbrate animal living in water
-2. A fishing trip
+```turtle
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix lexicog: <http://www.w3.org/ns/lemon/lexicog#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<#fishEntry> a lexicog:Entry ;
+  rdfs:member <#fishSubsense1>, <#fishSubsense2> .
+
+<#fishSubsense1> a lexicog:LexicographicComponent ;
+  lexicog:describes <#fishSense1> ;
+  lexicog:subComponent <#fishSubsense1.1> , <#fishSubsense1.2> .
+
+<#fishSubsense1.1> a lexicog:LexicographicComponent ;
+  lexicog:describes <#fishSense2> .
+
+<#fishSubsense1.2> a lexicog:LexicographicComponent ;
+  lexicog:describes <#fishSense3> .
+
+<#fishSubsense2> a lexicog:LexicographicComponent ;
+  lexicog:describes <#fishSense4> .
+
+<#fish> a ontolex:LexicalEntry ;
+  ontolex:sense <#fishSense1> , <#fishSense2> , <#fishSense3> , <#fishSense4> .
+
+<#fishSense1> a ontolex:LexicalSense ;
+  ontolex:isLexicalizedSenseOf [ 
+    skos:definition "An invertebrate marine animal with gills"@en ].
+
+<#fishSense2> a ontolex:LexicalSense ;
+  ontolex:isLexicalizedSenseOf [ 
+    skos:definition "The meat of invertebrate marine animal with gills"@en ].
+
+<#fishSense3> a ontolex:LexicalSense ;
+  ontolex:isLexicalizedSenseOf [ 
+    skos:definition "Any invertebrate animal living in water"@en ].
+
+<#fishSense4> a ontolex:LexicalSense ;
+  ontolex:isLexicalizedSenseOf [ 
+    skos:definition "A fishing trip"@en ].
+
+
+```
+
+Note that here we have a flat sense structure using the core elements as described above and the a hierarchy of lexicographic components capturing the structure of the sense
 
 # Further Reading
 
