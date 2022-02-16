@@ -114,11 +114,25 @@ The core model describes how we can represent lexical entries relative to ontolo
   ontolex:canonicalForm [
      ontolex:writtenRep "cat"@en ] ;
 
-  ontolex:denotes [
-    skos:definition "A four-legged, furry animal"@en ] .
+  ontolex:denotes <https://www.wikidata.org/wiki/Q146> .
 ```
 
-We first give the relevant prefixes including the URL for the core model which is `http://www.w3.org/ns/lemon/ontolex#`. We then describe our entry as a word with a lemma and a reference to an ontology entity. Note that we use the `denotes` property to link the entry directly to the knowledge graph entity and thus we do not have any lexical sense in this modelling.
+We first give the relevant prefixes including the URL for the core model which is `http://www.w3.org/ns/lemon/ontolex#`. We then describe our entry as a word with a lemma and a reference to an ontology entity, in this case Wikidata's [Q146](https://www.wikidata.org/wiki/Q146) (house cat). Note that we use the `denotes` property to link the entry directly to the knowledge graph entity and thus we do not have any lexical sense in this modelling.
+
+In the case that we are modelling a dictionary that is not connected to an ontology, we can instead use lexical concepts to capture the meaning of a word. In this case the property used to connect the lexical entry to the lexical concept is `evokes`.
+
+```turtle
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<#cat> a ontolex:Word ;
+
+  ontolex:canonicalForm [
+     ontolex:writtenRep "cat"@en ] ;
+
+  ontolex:evokes [ a ontolex:LexicalConcept ;
+    skos:definition "A four-legged, furry animal"@en ] .
+```
 
 We can now add some more specific grammatical information to this entry. For this we will use the LexInfo ontology, which is maintained by the OntoLex community and is aligned with the model.
 
@@ -138,8 +152,7 @@ We can now add some more specific grammatical information to this entry. For thi
      ontolex:writtenRep "cats"@en ;
      lexinfo:number lexinfo:plural ] ;
 
-  ontolex:denotes [
-    skos:definition "A four-legged, furry animal"@en ] .
+  ontolex:denotes <https://www.wikidata.org/wiki/Q146> .
 ```
 
 We have now added an inflected ('other') form and we can add properties from LexInfo to describe the forms as a singular and plural form.
@@ -207,8 +220,6 @@ prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
 foaf:knows a rdf:Property ;
   rdfs:domain foaf:Person ;
   rdfs:range foaf:Person .
-
-
 ```
 
 In this case the frame can also act as ontology mapping and is typed as being an `OntoMap`, which is a common design pattern. We can also use ontological information on the knowledge graph, such as  that `foaf:knows` relates two `Person`s to model selectional preferences.
@@ -266,7 +277,29 @@ The LiMe (Linguistic Metadata) module allows us to represent information about t
 
 ![](images/ontolex-lexicography-module_v.5.png "The lexicography module")
 
-The lexicography module was introduced in 2019 to improve the modelling of lexicographic resources in OntoLex-lemon. It introduce 
+The lexicography module was introduced in 2019 to improve the modelling of lexicographic resources in OntoLex-lemon. First, it introduced the `Entry` class which generalises the `LexicalEntry` class by allowing it contain homographs and entries of multiple part-of-speech or gender. For example, we can model the entry **animal** consisting of two lexical entries `animal_n` and `animal_adj` as follows:
+
+```turtle
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix lime: <http://www.w3.org/ns/lemon/lime#> .
+@prefix lexicog: <http://www.w3.org/ns/lemon/lexicog#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+<#myDictionary> a lexicog:LexicographicResource ;
+  dc:language "en" ;
+  lexicog:entry <#animalEntry> .
+    
+<#animalEntry> a lexicog:Entry .
+
+<#myLexicon> a lime:Lexicon;
+  lime:language "en" ;
+  lime:entry <#animal_n>, <#animal_adj> .
+
+<#animal_n> a ontolex:LexicalEntry .
+<#animal_adj> a ontolex:LexicalEntry .
+```
+
+
 
 # Further Reading
 
