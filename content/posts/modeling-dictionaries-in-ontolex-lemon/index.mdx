@@ -52,7 +52,7 @@ When the OntoLex-lemon model was first developed the following requirements were
 4. **Openness:** The OntoLex-lemon model is an open model in several senses. Firstly, it is free both in the sense that there are no finanical costs associated with any documentation of the model (free as in 'free beer') but also free to be extended and worked with (free as in 'free speech'). Further, the community group is open to anyone and all discussions on mailing lists are openly available on the web.
 5. **Reuse standards:** The model should wherever possible reuse vocabulary and modelling from standards in order to avoid reinventing the wheel. In particular, we are reusing models such as OWL, RDF, SKOS, Dublin Core, the Lexical Markup Framework (LMF) and the Terminological Markup Framework.
 
-# The Model
+# Motivation
 
 The OntoLex-lemon model was introduced due to the observation that ontologies contain very little information about how words are represented in natural language. The basic model of OWL allows for a linguistic label to be added to a ontology entity with a language tag given by the BCP-74 standard, for example we can describe the concept [Q315](https://www.wikidata.org/wiki/Q315) in the Wikidata as follows:
 
@@ -66,3 +66,21 @@ However, this representation is very limited and does not cover how the label is
 Another issue is the large number of synonyms that exist for many terms both in language and in ontologies. For example, the term "edema" is a medical condition that can be represented by many identifiers for example Q152234 in Wikidata, D00487 in the Medical Subject Headings (MeSH), C0013604 in the Unified Medical Language System (UMLS) and R60.9 in the International Classification of Diseases (ICD). Moreover, we may have several terms that can be used to refer to this, including the irregular plural form "edemata" and alternative terms such as "dropsy". Linking all of these together could be very complex as shown in the image below:
 
 ![](images/edema_messy.png "Modelling links between knowledge graphs and lexical resources can lead to many links between the concepts")
+
+Instead, it makes sense to introduce an element between the lexical forms and the knowledge graph elements, which we can term a lexical entry. In this way we can simplify the modelling and group related forms such as "edema" and "edemata":
+
+![](images/introduction-to-the-ontolex-lemon-model-2-.png "Modelling with lexical entries")
+
+### Lexical Entries
+
+Lexical entries are the core part of a dictionary model, however the exact definition of a lexical entry often varies between different dictionaries. As OntoLex-lemon aims to be a model that can support natural language processing applications, we need a clear definition of what constitutes a lexical entry. The definition given in the specification is:
+
+> A lexical entry represents a unit of analysis of the lexicon that consists of a set of forms that are grammatically related and a set of base meanings that are associated with these forms. Thus, a lexical entry is a word, multiword expression or affix with a single part-of-speech, morphological pattern, etymology and set of senses.
+
+For example, the following distinctions are made in an OntoLex-lemon model:
+
+- All inflected forms of a word, e.g., **work** and **works**, are part of the same lexical entry.
+- Derived forms such as **worker** are different lexical entries to the base form (**work**).
+- Words of different part-of-speech are different lexical entries (such as work as a **verb** and a **noun**)
+- Words that have the same written lemma or different morphology are different entries. For example, **lead** can be read as /lɛd/ or /liːd/ and should be different lexical entries. Similarly, the German noun **Band** should be different lexical entries for the neuter noun with plural **Bänder** (meaning 'ribbon') and the feminine noun with plural **Bands** (the loan word from English meaning a musical group). In this case both gender and plurals are reasons to split the entries.
+- Homographs are modelled as different lexical entries even if they have no difference in pronunciation, morphology or syntax. For example, **bank** (meaning financial institute and derived from the Italian 'banca') is a distinct entry to **bank** (meaning side of a river and derived from the Old English 'hōbanca').
