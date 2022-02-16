@@ -82,5 +82,15 @@ For example, the following distinctions are made in an OntoLex-lemon model:
 - All inflected forms of a word, e.g., **work** and **works**, are part of the same lexical entry.
 - Derived forms such as **worker** are different lexical entries to the base form (**work**).
 - Words of different part-of-speech are different lexical entries (such as work as a **verb** and a **noun**)
-- Words that have the same written lemma or different morphology are different entries. For example, **lead** can be read as /lɛd/ or /liːd/ and should be different lexical entries. Similarly, the German noun **Band** should be different lexical entries for the neuter noun with plural **Bänder** (meaning 'ribbon') and the feminine noun with plural **Bands** (the loan word from English meaning a musical group). In this case both gender and plurals are reasons to split the entries.
-- Homographs are modelled as different lexical entries even if they have no difference in pronunciation, morphology or syntax. For example, **bank** (meaning financial institute and derived from the Italian 'banca') is a distinct entry to **bank** (meaning side of a river and derived from the Old English 'hōbanca').
+- Words that have the same written lemma or different morphology are different entries. For example, **lead** can be read as /lɛd/ or /liːd/ and should be different lexical entries. Similarly, the German noun **Band** should be different lexical entries for the neuter noun with plural **Bänder** (meaning 'ribbon') and the feminine noun with plural **Bands** (the loan word from English meaning a musical group). In this case both gender and plurals are reasons to seperate the entries.
+- Homographs are modelled as different lexical entries even if they have no difference in pronunciation, morphology or syntax. For example, **bank** (meaning financial institute and derived from the Italian 'banca') is a distinct entry to **bank** (meaning side of a river and derived from the Old English 'hōbanca'). These words are homographs as they have a different etymology.
+
+### Lexical Forms
+
+In RDF, it is not possible to describe properties of a string directly. Instead if we wish to provide descriptions of a form, for example saying that **edemata** is a plural form, it is necessary to introduce an identifier for the form that can be described as follows:
+
+![](images/introduction-to-the-ontolex-lemon-model-3-.png "Named forms allow for grammatical properties such as plural to be represented")
+
+### **Lexical Senses**
+
+Similarly, there are often reasons to be able to describe the connection between a lexical entry and a knowledge graph. As such, it is necessary to introduce a named element between the meaning of the word and its lexical entry. We call this element a **lexical sense**, although it should be noted that this term is specific in meaning to this model. A lexical sense is used for properties that are dependent on **both** a specific meaning and a specific word
