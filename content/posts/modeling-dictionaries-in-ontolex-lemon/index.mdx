@@ -87,7 +87,7 @@ For example, the following distinctions are made in an OntoLex-lemon model:
 
 ### Lexical Forms
 
-In RDF, it is not possible to describe properties of a string directly. Instead if we wish to provide descriptions of a form, for example saying that **edemata** is a plural form, it is necessary to introduce an identifier for the form that can be described as follows:
+In RDF, it is not possible to describe properties of a string directly. Instead if we wish to provide descriptions of a form, for example saying that **edemata** is a plural form, it is necessary to introduce an identifier for the form that can be described as in the diagram below.
 
 ![](images/introduction-to-the-ontolex-lemon-model-3-.png "Named forms allow for grammatical properties such as plural to be represented")
 
@@ -201,7 +201,7 @@ The synsem (syntax and semantics) module allows us to represent the syntax of en
 In this example we say that **know** is associated with a frame with a (syntactic) subject and direct object. We may want to link this to the knowledge graph by associating it with a property such as `foaf:knows`. Properties in knowledge graphs have a subject (source) value and an object (target) value, so we may say that `John_McCrae foaf:knows Fahad_Khan`. It is not necessarily the case that the knowledge graph subject corresponds to the syntactic subject, so we need to make this explicit with a mapping object as follows:
 
 ```turtle
-prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
 @prefix synsem: <http://www.w3.org/ns/lemon/synsem#> .
 @prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
