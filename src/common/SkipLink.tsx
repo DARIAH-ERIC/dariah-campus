@@ -30,7 +30,7 @@ export function SkipLink(): JSX.Element {
       {/* eslint-disable jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <a
         onClick={moveFocus}
-        className="absolute z-10 flex px-6 py-3 m-3 font-medium transform -translate-y-full bg-white rounded focus-visible:ring focus:outline-none focus-visible:ring-primary-600 focus:translate-y-0"
+        className="absolute z-50 flex px-6 py-3 m-3 font-medium transform -translate-y-full bg-white rounded focus-visible:ring focus:outline-none focus-visible:ring-primary-600 focus:translate-y-0"
       >
         {t('common.skipToMainContent')}
       </a>
