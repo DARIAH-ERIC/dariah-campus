@@ -33,6 +33,7 @@
     "test:coverage": "yarn run test --coverage",
     "test:watch": "yarn run test --watch",
     "typecheck": "tsc --noEmit",
+    "update:search-index": "cross-env NEXT_PUBLIC_BASE_URL=https://campus.dariah.eu yarn run create:search-index",
     "validate": "yarn run format:fix && yarn run lint && yarn run typecheck && yarn test"
   },
   "engines": {
