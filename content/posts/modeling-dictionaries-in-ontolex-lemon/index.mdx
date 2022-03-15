@@ -8,6 +8,8 @@ authors:
   - khan-fahad
 tags:
   - lexicography
+categories:
+  - dariah
 abstract: This course describes the OntoLex-Lemon model, a recent standard for
   the representation of lexical information on the Web as linked data.
 domain: Social Sciences and Humanities
@@ -18,8 +20,6 @@ remote:
 licence: ccby-4.0
 toc: true
 uuid: XUpXflNpQ08j3hdNp7pSi
-categories:
-  - dariah
 ---
 This course describes the OntoLex-Lemon model, a recent standard for the representation of lexical information on the Web as linked data. In addition to providing a basic introduction to linked data and the Resource Description Framework (RDF), the course will cover the core model of OntoLex and how to represent basic lexical information. Additional modules of the OntoLex module for the description of syntax, term decomposition, variation & translation, metadata, lexicography, morphology and corpus information will also be described. At the end of the course, students should be able to express lexicons as linked data using the model.
 
@@ -32,17 +32,17 @@ Upon completion of this course, students will be able to
 - Use the OntoLex-Lemon module to model lexical information
 - Design a schema based on OntoLex-Lemon to represent a specific lexical resource
 
-# Introduction
+## Introduction
 
 OntoLex-lemon is a vocabulary developed by the [OntoLex Community Group](https://www.w3.org/community/ontolex/) of the W3C for the representation of dictionaries as [RDF](https://www.w3.org/RDF/) data. The model has a modular architecture which means that you can select the modules which are relevant to your specific data. The original design goals of the model were also focused on the development of lexical information for ontologies, however modules have been developed to represent all kinds of lexical resources. This course assumes some familiarity with RDF, in particular in the Turtle syntax, for those unfamiliar with this we suggest that you look at the primer here: https://www.w3.org/2007/02/turtle/primer/
 
-## History of the model
+### History of the model
 
 ![](images/introduction-to-the-ontolex-lemon-model.png "Timeline of the development of the OntoLex-Lemon model")
 
 The model has been developed over a long period and originates with three models that were developed independently, the [LingInfo](http://lrec.elra.info/proceedings/lrec2006/workshops/W14/Ontolex06.pdf#page=32) model developed by Paul Buitelaar, the [LexOnto](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.73.1056&rep=rep1&type=pdf) model developed by Philipp Cimiano and the[ Linguistic Information Repository (LIR) ](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/BBB120E33DBD895791136BDB61A8A228/S1351324910000082a.pdf/enriching-ontologies-with-multilingual-information.pdf)developed by Elena Montiel and colleagues. Realising the common overlap of these models, these researchers came together to develop first the [LexInfo](https://lexinfo.net/) model and the _[lemon](https://lemon-model.net/)_ (Lexicon Model for Ontologies) models. The model was then opened to a wider community by means of the founding of the community group, which developed the first version of the model, with the final specification being released in 2016 and a further module focused on representing lexicographic resources was released in 2019.
 
-## Model Requirements
+### Model Requirements
 
 When the OntoLex-lemon model was first developed the following requirements were seen as key goals of the model
 
@@ -52,7 +52,7 @@ When the OntoLex-lemon model was first developed the following requirements were
 4. **Openness:** The OntoLex-lemon model is an open model in several senses. Firstly, it is free both in the sense that there are no finanical costs associated with any documentation of the model (free as in 'free beer') but also free to be extended and worked with (free as in 'free speech'). Further, the community group is open to anyone and all discussions on mailing lists are openly available on the web.
 5. **Reuse standards:** The model should wherever possible reuse vocabulary and modelling from standards in order to avoid reinventing the wheel. In particular, we are reusing models such as OWL, RDF, SKOS, Dublin Core, the Lexical Markup Framework (LMF) and the Terminological Markup Framework.
 
-# Motivation
+## Motivation
 
 The OntoLex-lemon model was introduced due to the observation that ontologies contain very little information about how words are represented in natural language. The basic model of OWL allows for a linguistic label to be added to a ontology entity with a language tag given by the BCP-74 standard, for example we can describe the concept [Q315](https://www.wikidata.org/wiki/Q315) in the Wikidata as follows:
 
@@ -91,15 +91,15 @@ In RDF, it is not possible to describe properties of a string directly. Instead 
 
 ![](images/introduction-to-the-ontolex-lemon-model-3-.png "Named forms allow for grammatical properties such as plural to be represented")
 
-### **Lexical Senses**
+### Lexical Senses
 
 Similarly, there are often reasons to be able to describe the connection between a lexical entry and a knowledge graph. As such, it is necessary to introduce a named element between the meaning of the word and its lexical entry. We call this element a **lexical sense**, although it should be noted that this term is specific in meaning to this model. A lexical sense is used for properties that are dependent on **both** a specific meaning and a specific word. For example, definitions are typically given on the knowledge graph elements as they can be shared between synonyms, where as usage examples are typically attached to the lexical sense as they show the usage of a particular word with a particular meaning. In the example, below we indicate that 'dropsy' is an antiquated term for the disease. This cannot be marked in the knowledge graph as other terms for the disease are not antiquated, nor can it be marked on the lexical entry as the term is still in use for other diseases (e.g., a disease of fish).
 
 ![](images/introduction-to-the-ontolex-lemon-model-4-.png "Lexical sense are named elements that describe the usage of a particular word with a particular meaning")
 
-# The OntoLex-lemon Model
+## The OntoLex-lemon Model
 
-## The core model
+### The core model
 
 ![](images/lemon_ontolex_core.png "The OntoLex-lemon core model")
 
@@ -179,7 +179,7 @@ For most models, we also require lexical senses in order to capture some propert
 
 Note we can specify the usage of these terms, as British or American English, using the `usage` property. We also link to the concept of Typha using both the `denotes` property and the chain of two properties `sense` and `reference`. These are equivalent and most resources will use only one of these options.
 
-## Syntax and Semantics
+### Syntax and Semantics
 
 ![](images/lemon_syntax_and_semantics.png "The synsem module")
 
@@ -224,7 +224,7 @@ foaf:knows a rdf:Property ;
 
 In this case the frame can also act as ontology mapping and is typed as being an `OntoMap`, which is a common design pattern. We can also use ontological information on the knowledge graph, such as  that `foaf:knows` relates two `Person`s to model selectional preferences.
 
-## Decomposition
+### Decomposition
 
 ![](images/lemon_decomposition.png "The decomposition module")
 
@@ -252,7 +252,7 @@ The decomposition module is used to represent how multiword or compound expressi
 
 In the above example, we see that the English term **summer school** is indicated as being composed of the words **summer** and **school** by means of the `subterm` property. For the French example **école d'été**, we go for a more complex representation capturing the order of the words and creating identifiers including `<#école_d’été/de>`, which indicate the usage of the word **de** within the multiword expression and allow us to indicate properties, in this case that the word is in a contracted form.
 
-## Variation and Translation
+### Variation and Translation
 
 ![](images/lemon_variation_and_translation.png)
 
@@ -267,13 +267,13 @@ Translation can be modelled in four different ways in this module:
 3. **Reified Translation:** in addition, the model allows a named `Translation` object to be introduced that can be further described with properties, for example the provenance of a translation.
 4. **Translatable As:** the model also has a special property `translatableAs` which links entries. This may be useful for terminological resources or other models where there are very few senses. It says that implicitly there is a translation between senses of these entries, but not which senses are actually translations.
 
-## Linguistic Metadata
+### Linguistic Metadata
 
 ![](images/lemon_lime_metadata.png "The LiME model")
 
 The LiMe (Linguistic Metadata) module allows us to represent information about the contents of an OntoLex-lemon model. This includes information about the number of entries, senses and the ratio between the number of senses and entries as well as information about the languages used. This module aims to simplify the process of finding lexicons that are suitable for a range of applications and can be used alongside existing metadata schema such as Dublin Core.
 
-## Lexicography
+### Lexicography
 
 ![](images/ontolex-lexicography-module_v.5.png "The lexicography module")
 
@@ -350,13 +350,11 @@ This may be modelled as follows:
 <#fishSense4> a ontolex:LexicalSense ;
   ontolex:isLexicalizedSenseOf [ 
     skos:definition "A fishing trip"@en ].
-
-
 ```
 
 Note that here we have a flat sense structure using the core elements as described above and the a hierarchy of lexicographic components capturing the structure of the sense
 
-# Further Reading
+## Further Reading
 
 The OntoLex-lemon specification gives further examples of usage of the model:
 
