@@ -17,6 +17,10 @@ import { noop } from '@/utils/noop'
 
 loadEnvConfig(process.cwd(), false, { info: noop, error: log.error })
 
+const isProductionDeploy = process.env['NEXT_PUBLIC_BASE_URL']?.startsWith(
+  'https://campus.dariah.eu',
+)
+
 /**
  * Returns algolia search client configured with admin permissions.
  */
@@ -153,8 +157,12 @@ async function generate() {
   return searchIndex.saveObjects([...resources, ...courses, ...events])
 }
 
-generate()
-  .then(() => {
-    log.success('Successfully updated Algolia search index.')
-  })
-  .catch(log.error)
+if (isProductionDeploy === true) {
+  generate()
+    .then(() => {
+      log.success('Successfully updated Algolia search index.')
+    })
+    .catch(log.error)
+} else {
+  log.warn('Algolia index not updated.')
+}
