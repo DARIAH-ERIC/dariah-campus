@@ -2,6 +2,10 @@
 /** @typedef {import('next').NextConfig & {i18n?: {locales: Array<Locale>; defaultLocale: Locale}}} NextConfig */
 /** @typedef {import('webpack').Configuration} WebpackConfig */
 
+const isProductionDeploy = process.env['NEXT_PUBLIC_BASE_URL']?.startsWith(
+  'https://campus.dariah.eu',
+)
+
 /** @type {NextConfig} */
 const config = {
   eslint: {
@@ -13,6 +17,25 @@ const config = {
   },
   future: {
     strictPostcssConfiguration: true,
+  },
+  async headers() {
+    const headers = []
+
+    if (isProductionDeploy !== true) {
+      headers.push({
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      })
+
+      console.warn('⚠️ Indexing by search engines is disallowed.')
+    }
+
+    return headers
   },
   i18n: {
     locales: ['en'],
