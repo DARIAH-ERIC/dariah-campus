@@ -174,6 +174,99 @@ Before constructing a corpus, it is advisable to double-check that a corpus with
 
 
 
+### Corpus design and composition
+
+#### Representativeness
+
+The purpose of a corpus is to serve as an empirical basis for the study of language. Therefore, it is important that the corpus reflects the wide variety of ways in which language is used. In other words, the corpus should be representative. The following two quotes illustrate what representativeness means in corpus linguistics: 
+
+> "A corpus is thought to be representative of the language variety it is supposed to represent if the findings based on its contents can be generalized to the said language variety"
+>
+> (Leech 1991)
+
+
+
+> "For a corpus (a sample of language use) to be representative of a particular language, the distribution of linguistic phenomena (words, grammatical structures, etc.) would have to be identical to their distribution in the language as a whole (or in the variety under investigation)"
+>
+> (Stefanowitsch 2020:28)
+
+Kilgarriff and Grefenstette (2003: 8) state that “representativeness” is a fuzzy notion and that outside very narrow, specialised domains, we do not know with any certainty what existing corpora might be representative of. Indeed, in most circumstances, a truly representative corpus is unattainable. Therefore corpus creators typically aim at the more modest goal of a balanced corpus. A balanced corpus is a corpus that systematically includes in the corpus different manifestations of the language it is meant to represent in proportions that reflect their incidence in the speech community in question. Thus, the very first step in building a corpus is to carefully identify which types of texts should be included in the corpus and in what proportions.
+
+Example:
+
+_If you want a corpus which is representative of general English, a corpus of newspapers will not do._
+
+_If you want a corpus representative of English newspapers, a corpus containing only The Times will not do._
+
+#### Corpus Size
+
+Another important characteristic of corpora is their size. Corpus size is typically reported as the number of tokens in the corpus. 
+
+> **Types and tokens**
+>
+> A [](https://www.sketchengine.eu/my_keywords/token/)token is the smallest unit that a corpus consists of.A type ...
+
+For major languages like English, data sparseness is not an issue anymore and the size of corpora is still growing. In the 1960s, collecting a corpus of 1 million words was immensely ambitious and technically demanding (e.g. Brown corpus). In the 1990s corpora of 100 million tokens (BNC) had become the norm. These days we have gigaword corpora for languages such as English. But how large does a corpus need to be?
+
+There is no easy answer to this question. What can be said in general, however, is that, even in the age of gigaword corpora, Robert Mercer’s claim ‘more data is better data’ ([Church and Mercer 1993](https://www-oxfordhandbooks-com.ezproxy.leidenuniv.nl/view/10.1093/oxfordhb/9780199691630.001.0001/oxfordhb-9780199691630-bibliography-1#oxfordhb-9780199691630-bibliography-1-bibItem-582)) still applies. The more data we have, the more we learn. This is especially important when items at the lower end of the frequency range are examined, be it a word, a meaning or a combination of words. You simply need a lot of data to yield enough instances of those rare items.
+
+#### Constraints on corpus development
+
+In practice, the ideal corpus composition and size are often hampered by limitations on resources and other practical considerations. The texts that you would ideally like to include in your corpus, may not be available in digital format or they may be subject to some copyright protection or other restrictions on usage.  \[LINK TO MORE INFORMATION, E.G. DELIVERABLE 6.?]
+
+### Corpus annotation
+
+Minimally, a corpus consists of a large, diverse collection of files containing language samples as raw text, but more often than not, corpus texts are enriched with additional linguistic information, which we call corpus annotations. These annotations add value to a corpus and enable more advanced querying, e.g.  
+
+- You will not only be able to search for a particular word form, but also for a lemma and retrieve all forms that occur for that lemma;
+- You will be able to search for adjectives that occur frequently with a particular lemma;
+- You will be able to search for syntactic constructions;
+- You will be able to search for a lemma in one of its senses in your corpus.
+
+In this section, we look at different types of corpus annotation and we will illustrate these on the basis of a short newspaper article from The [Guardian](https://www.theguardian.com/science/2022/mar/01/tyrannosaurus-rex-may-have-been-three-species-scientists-say) (The Guardian, Nicola Davis, 01-03-2022).
+
+![](https://lh4.googleusercontent.com/DXUUcLdn8bayhptZ6O7c5yMReIeofKH9Tl_7UKr-7_7G12F3IWdq3DajoJCSRNtVJlZMO6PNI-SPP_Dixp-bayiqJZ8LuiczvzVvel5BFCaHsMq8tXggSk7hyqw0Q6Dvaf2u-608)
+
+We start with tokenisation, then part-of-speech tagging, followed by lemmatisation, and then syntactic and semantic annotation. More annotation layers can be added, but these will not be discussed here. See \[LINK]?? for more information.
+
+##### Tokenisation
+
+Tokenisation means splitting the text into tokens and sentences. This is illustrated in the figure below for an extract from our example text. The text is split into tokens and each token is put on a separate line. The <s> tag marks the beginning and the end of a sentence.
+
+![](https://lh4.googleusercontent.com/lcjIGEb0rVhJkds3pR4WpRlOGZB_DiUH1Uc7T9VETHyWkfSL3fimdtL7rd7XLQz7b5Lp1zyZSFqIkU2Eryy57MQSITekpccv7FAUvQzRSdUyeFlEO11nyEVMClfWdgS3ogAmJ3h4)
+
+Identifying the boundaries of word tokens and sentences may seem straightforward, but even for a language such as English or French, this is not at all trivial. Should forms such as aren’t in English or au (à le) in French be considered as one token or as two? 
+
+> Note This tokenisation decision also affects how you need to search for them, i.e. as one token aren’t or as two are n’t (or are not?).
+
+Tokenisation of the texts is a prerequisite for most of the other types of annotation.
+
+##### Part-of-speech tagging
+
+One of the most widely used types of corpus enrichment is part-of-speech (POS) tagging. As the name suggests, this means that the words are coded for their part-of-speech, i.e. the word class they belong to. Note that part-of-speech tags can contain more information than the conventional parts of speech. Additional features, such as singular and plural of nouns, person, and number of verbs, can also be encoded in these tags. 
+
+The tags that can be used are defined in a tagset. Different tagsets exist \[ADD LINKS]:
+
+- Brown tagset
+- London-Lund corpus tagset
+- Stuttgart-Tübingen tagset
+- [Universal Dependencies tagset](https://universaldependencies.org/u/pos/)
+
+Apart from the different names that are used for the tags, pos taggers can also differ in their approach, i.e. “functional” versus “lexical” tagging. For example, _walking_ in the sentence _(The) walking is good for your health_ will be tagged as a NOUN in a functional approach and as a VERB in a lexical approach. The UD annotation, for instance, is based on a lexicalist view of syntax.
+
+To avoid surprises in the results from your corpus analysis, it is always wise to check the documentation of your corpus to see which tagset is used. In Sketch Engine you can find this ….under corpus info\[ADD IMAGE AND LINK]
+
+For mainstream languages (e.g. English, German, French) tagging accuracy of up to 97-98% is achieved. For non-mainstream languages, this percentage is considerably lower. Despite the high accuracy in mainstream languages, there are still some tricky cases, e.g.:
+
+- Multiword expressions (so that, in spite of)
+- Variably spelled compounds (noticeboard, notice-board, notice board)
+
+Some of these problems are illustrated in our example text. T rex is tokenised and tagged separately and rex is tagged as a plural noun.
+
+![](https://lh4.googleusercontent.com/19G3WXJPkYBGLKsJFkNYsD0oWe_-PxfViJ0k3HRB-Bz1FxeUyGkZPeoUXY71Hd4PIFYMCSbnkCESg51XL6DSc8q85FduFyqxNsLrz2eQdzvWwBxsNqxRm8ZyR8stNd5Prw3fYoAY)
+
+
+
 
 
 #### Corpus Encoding and Metadata 
