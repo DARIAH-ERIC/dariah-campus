@@ -82,11 +82,11 @@ Now you can see what the entry would look like if you decided to publish your di
 
 If you click edit, you will see the underlying structure of the entry in XML. There are two editing views: the Nerd view (more advanced) and the Laic view (less advanced) - you can switch between them by clicking on the icons at the bottom of the editing screen.
 
-Let's create a **new entry**! If you click _New_, Lexonomy will generate a new, basic XML structure for your new entry - this is the backbone of dictionary creation. Every entry in Lexonomy is a small XML document that consists of elements, such as a headword and one or multiple senses. For example, the headword is an element of your entry in XML. It starts with the opening tag `<headword>` and ends with the closing tag `</headword>`. The content of the element (the headword itself) comes between these two - that is how the system recognises what constitutes which part of an entry.
+Let's create a **new entry**! If you click _New_, Lexonomy will generate a basic XML structure for your new entry - this is the backbone of dictionary creation. Every entry in Lexonomy is a small XML document that consists of elements, such as a headword and one or multiple senses. For example, in XML, the headword is an element of your entry. It starts with the opening tag `<headword>` and ends with the closing tag `</headword>`. The content of the element (the headword itself) comes between these two - that is how the system recognises what constitutes which part of an entry.
 
 ![](images/new.png)
 
-To create an entry, you will need to define the headword in the XML structure (that is, to add a word between the opening and the closing tag) and then click on _Save_. An entry minimally requires a headword and one sense (this can even be empty), deleting any of these from the structure will cause errors. Lexonomy displays a little yellow warning triangle in the opening tag for any element that contains crucial errors. If you click the triangle, you can read a description of the error.
+To create an entry, you will need to define the headword in the XML structure (that is, to add a word between the opening and the closing tag) and then click on _Save_. If you work with one of the templates of Lexonomy, an entry minimally requires a headword and one sense (this can even be empty). Deleting any of these from the structure will cause errors in the form of little yellow warning triangles. If you click the triangle, you can read a description of the error.
 
 ![](https://www.lexonomy.eu/docs/02-06.png)
 
@@ -110,15 +110,23 @@ ThesaurusItems
 
 Definitions
 
-### Editing a dictionary
+### Configuring a dictionary
 
 Click the _Configure_ link and Lexonomy will take you to its configuration interface. This is where you can set up various things that affect the entire dictionary, i.e. **Dictionary settings**, **Entry settings**, **Publishing**, **External data sources**.
 
-First, let's see the entry settings under _Configure_ - _Entry structure_. You can change the structure of the entries here, and Lexonomy will adjust its warning messages (what elements are allowed where, what content can go inside an element, etc.) to these settings. 
+First, let's see the **entry settings** under _Configure_ - _Entry structure_. You can change the structure of the entries here, and Lexonomy will adjust its warning messages (what elements are allowed where, what content can go inside an element, etc.) to these settings. 
 
-Note that once your dictionary already contains some entries (i.e. it is not empty), you will need to be careful with what you do here. It is easy to make changes that will render your existing entries full of warning triangles - after all, they followed different rules when you created them. An easy way to navigate this is if you only add to the existing rules but do not take away. On the other hand, feel free to play around with these settings as much as you want if you have an empty dictionary: you can rename elements, change the hierarchy of elements, and so on, to make Lexonomy a better fit for your purposes.
+Note that once your dictionary already contains some entries (i.e. it is not empty), you will need to be careful with what you do here. It is easy to make changes that will render your existing entries full of warning triangles - after all, they followed different rules when you created them. An easy way to navigate this is if you only add to the existing rules but do not take away. On the other hand, feel free to play around with these settings as much as you want if you have an empty dictionary: you can rename elements, change the hierarchy of elements, create subentries, specify searchable elements, and so on, to make Lexonomy a better fit for your purposes. Now let's move on to exploring these!
 
+While defining the entry structure, you can set certain sections of the XML as 'shareable', thus **creating subentries**. These are pieces of XML that are allowed to appear in several entries simultaneously. Shareable subentries have a shaded background in the editing interface of Lexonomy, and are followed by a button that tells you the number of entries that make use of the subentry besides the current one.
 
+You can **configure the headword list** and its display, and select the element that contains the entry's headword - normally, it is the headword element, but you can configure this too. You can also change how the entry list is sorted, just specify the element that should be used for sorting (e.g. part-of-speech) or the alphabet. If you wish, you can display additional content besides the headword in the entry list, for example, part-of-speech labels or homograph numbers. 
+
+You may wish to reach additional information about an entry and not only its headword. To **change the search box settings**, just select the contents of elements you want to be able to search for in the search section in _Configure_.
+
+You can also **flag entries** to monitor their status. Do this by adding an element such as `<status>` with workflow values, such as "AE", "L", and "C", standing for "automatic entry not yet checked", "checked by lexicographer" and "confirmed by the editor". Then, if you select this element in the Flags section, you can specify the values the flags should consult, their labels, and how they will be visualised (colours). If you click on the flag circle next to an entry, you can see its status label and change it.
+
+![](https://www.lexonomy.eu/docs/ConfigFlags1.png)
 
 #### Changing dictionary settings
 
@@ -149,7 +157,39 @@ If you have a team of people working on the dictionary, generally, it is a good 
 
 - ### setting up the dictionary for publishing
 
-entry formatting
+<!--StartFragment-->
+
+### Publishing
+
+#### Entry formatting
+
+This is where you tell Lexonomy what your entries should look like to the end-user: which parts should be in which font and so on. If you have worked with CSS (Cascading Stylesheets) or XSL (Extensible Stylesheet Language) before, you will be at home here. If not, leave the worrying to us and start your dictionary from a template.
+
+<!--EndFragment-->
+
+<!--StartFragment-->
+
+#### Public access
+
+Lexonomy is not just a tool for writing dictionaries, it is a tool for making dictionaries publicly available on the web too. Doing that is almost effortless, you just need to change a few things in the configuration: go into _Public access_ and change the access level from _Private_ to _Public_.
+
+From the moment you click the _Save_ button, your dictionary will be publicly viewable.
+
+<!--StartFragment-->
+
+When you visit the dictionary's homepage now, you will notice that it has changed: it now contains a searchbox and a few other things that allow people to search and browse the dictionary.
+
+<!--StartFragment-->
+
+You can of course change the dictionary back to _Private_ any time. One thing you need to be aware of is that when making a dictionary public, you're making it available under an open-source licence. The exact type of licence is up to you and can be selected in _Public access_ in the _Configure_ section, as you've probably noticed. All the options available there are open-source licences which allow other people to reuse your data freely, without the restrictions of copyright (the only thing they are legally required to do is acknowledge you publicly as the author of the data).
+
+<!--EndFragment-->
+
+<!--EndFragment-->
+
+<!--EndFragment-->
+
+
 
 public acess
 
