@@ -96,9 +96,9 @@ To create an entry, you will need to add a headword to the XML structure (that i
 
 > _Warning messages appear in the form of little yellow warning triangles. If you click the triangle, you can read a description of the error._
 
-![](https://www.lexonomy.eu/docs/02-06.png)
+![](images/error.png)
 
-You can do the same with element names as well: a menu will appear listing all the actions you can perform on that element. 
+You can do the same with element names as well: if you click on an element, a menu will appear listing all the actions you can perform on it. 
 
 > An important feature of Lexonomy is that it only allows decisions that "make sense" according to the dictionary structure you have selected or defined. This promotes consistency. 
 
@@ -114,9 +114,11 @@ Lexonomy provides the option to upload existing data instead of creating all ent
 
 You can choose to remove everything from your dictionary by ticking the _purge before upload_ box, in which case all data that is currently in your dictionary will be permanently deleted as you upload your new data.
 
-Lexonomy can be used together with **Sketch Engine**, a popular corpus query system. You can "pull" example sentences and other data (even an entire pre-generated dictionary) from a Sketch Engine corpus into Lexonomy. 
+Lexonomy can be used together with **Sketch Engine**, a popular corpus query system. Everything related to Sketch Engine can be reached under the Sketch Engine menu in _Configure_. You can "pull" example sentences and other data (even an entire pre-generated dictionary) from a Sketch Engine corpus into Lexonomy.
 
 This can be done by configuring your connection with Sketch Engine. This happens in two steps. First, click on your email address in the top right corner, and select _Your profile_. Here, you will need to link your Lexonomy account to your Sketch Engine account. You will be redirected to the Sketch Engine website. Second, open the _Configure_ menu, and click _Connection_. This will lead you to the _Connection_ page. Here, you need to fill in the _Sketch Engine URL_, _Sketch Engine API URL_ and _Corpus name_ mandatory fields. Note that the _Corpus name_ field will only be available once you have completed step one and linked your Sketch Engine account to your Lexonomy profile.
+
+![](images/sketchengine.png)
 
 Now, we move to the specific things you can do once you have linked your Sketch Engine and Lexonomy profiles. In Lexonomy, **pulling example sentences** (picture below) works just as **pulling collocations, thesaurus items, and definitions** from Sketch Engine. In all of these cases, you need to select the element in which every example will be put (wrapped), then provide a general XML template for every example, collocation, thesaurus item or definition that will be inserted into your entries. In the case of examples, you can select the element that marks the headword in the entries, if relevant. 
 
@@ -203,6 +205,8 @@ To publish your dictionary, go into the _Configure_ menu, click _Publishing_, an
 However, if you decide to stick with your published dictionary, you will notice that its webpage has changed: it now contains a search box and a few other things that allow people to search and browse the dictionary.
 
 One thing you need to be aware of is that when making a dictionary public, you're making it available under an open-source licence. The exact type of licence is up to you and can be selected in _Public access_ in the _Configure_ section, as you've probably noticed. All the options available there are open-source licences which allow other people to reuse your data freely, without the restrictions of copyright (the only thing they are legally required to do is acknowledge you publicly as the author of the data).
+
+> Don't forget that Lexonomy does not have any backups of your dictionary - if you wish to have one, you have to manually download the XML file by clicking _Download_ in the menu bar on the top of the page. This will lead you to a page showing nameofyourdictionary.xml. If you click on the file name, the XML file of your dictionary will automatically download in your browser.
 
 ### A case study
 
