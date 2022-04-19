@@ -29,7 +29,7 @@ uuid: Qm_2SzS_rGB-Py9YTCHYm
 categories:
   - dariah
 ---
-The course will explore how software tools for dictionary production (so-called dictionary writing systems, or DWS) can be used to streamline and facilitate the structural coherence and quality assurance in a dictionary project by focusing on Lexonomy, a dictionary-writing system developed as part of ELEXIS. At the end of this course, the students will know how to use Lexonomy in various stages of the lexicographic workflow, from creating a dictionary, selecting a suitable data model, and setting up different configuration options, to using advanced features such as workflow monitoring, and preparing the dictionary for publication. Selected existing projects will be used as case studies.
+The course will explore how software tools for dictionary production (so-called dictionary writing systems, or DWS) can be used to streamline and facilitate the structural coherence and quality assurance in a dictionary project by focusing on Lexonomy, a dictionary-writing system developed as part of ELEXIS. At the end of this course, the students will know how to use Lexonomy in various stages of the lexicographic workflow, from creating a dictionary, selecting a suitable data model, and setting up different configuration options, to using advanced features such as workflow monitoring, and preparing the dictionary for publication. **Selected existing projects will be used as case studies.**
 
 ## Learning Outcomes
 
@@ -46,7 +46,7 @@ Upon completion of this course, students will be able to
 
 ### Introduction
 
-In this short course, we will first look into software-led dictionary creation through dictionary writing systems (DWS) in general, and with the use of Lexonomy more specifically. The course contains guidance on creating dictionaries in Lexonomy from scratch and from an automatically generated draft. Then, we focus on editing a dictionary in preparation for publication, and finally, we present \_\_\_\__, which serves as a case study to demonstrate several of the featured actions and what can be achieved.
+In this short course, we will first look into software-led dictionary creation through dictionary writing systems (DWS) in general, and then more specifically through Lexonomy. The course contains guidance on creating dictionaries in Lexonomy from scratch and from an automatically generated draft. Then, we focus on editing a dictionary in preparation for publication, and finally, we present \_\_\_\__, which serves as a case study to demonstrate several of the featured actions and what can be achieved.
 
 - ### What is a DWS
 
@@ -66,15 +66,17 @@ First, you will need to create a Lexonomy account. To do this, click _[Get an ac
 
 - ### Creating a new dictionary from scratch
 
-On the _Home_ page, you will see a section called _Your dictionaries_. To create a dictionary, click _Create a dictionary_, set a title, an URL and select a template if you want to use one. Using a template is highly recommended if this is your first time experimenting with Lexonomy - the tool provides a _simple monolingual_ _dictionary_ or a _simple bilingual dictionary_ template in a drop-down list. You can also use your own XML schema by selecting none in the template drop-down list and then configuring your dictionary.
+On the _Home_ page, you will see a section called _Your dictionaries_. To create a dictionary, click _Create a dictionary_, set a title, an URL and select a template if you want to use one. Using a template is highly recommended if this is your first time experimenting with Lexonomy - the tool offers a _simple monolingual_ _dictionary_ and a _simple bilingual dictionary_ template in a drop-down list. You can also use your own XML schema by selecting none in the template drop-down list and then configuring the XML structure by yourself (more on this later - see _Structure_ under the _Entry settings_ header).
 
-Don't worry, these basic settings can all be changed later on the _Configure_ page, in case you change your mind. (If you wish to read more about general dictionary settings, just scroll down to the _Configuring a dictionary_ header!) Once you are ready, click the URL to go to the home page of your newly created dictionary.
+Don't worry, these basic settings can all be changed later on the _Configure_ page, in case you change your mind about anything. (If you wish to read more about general dictionary settings, just scroll down to the _Configuring a dictionary_ header!) Once you are ready, click the URL to go to the home page of your newly created dictionary.
 
 By clicking the _Edit_ button on the home page of the dictionary, you can access **Lexonomy's editing interface** (image below). 
 
 ![](https://www.lexonomy.eu/docs/02-01.png "Lexonomy's editing interface.")
 
-On the left-hand side, you see a list of the entries in the dictionary. A few entries will be automatically created for you if you select a dictionary template while creating your dictionary. Automatically generated sample entries can be deleted just like any other entry. The number of entries is unlimited in Lexonomy. To access an entry, just select it from the list.
+On the left-hand side, you see a list of the entries in the dictionary. A few entries will be automatically created for you if you select a dictionary template while creating your dictionary. Automatically generated sample entries can be deleted just like any other entry. To access an entry, just select it from the list. 
+
+> Note: The number of entries is unlimited in Lexonomy. 
 
 ![](https://www.lexonomy.eu/docs/02-02.png)
 
@@ -82,21 +84,35 @@ Now you can see what the entry would look like if you decided to publish your di
 
 If you click edit, you will see the underlying structure of the entry in XML. There are two editing views: the Nerd view (more advanced) and the Laic view (less advanced) - you can switch between them by clicking on the icons at the bottom of the editing screen.
 
-Let's create a **new entry**! If you click _New_, Lexonomy will generate a basic XML structure for your new entry - this is the backbone of dictionary creation. Every entry in Lexonomy is a small XML document that consists of elements, such as a headword and one or multiple senses. For example, in XML, the headword is an element of your entry. It starts with the opening tag `<headword>` and ends with the closing tag `</headword>`. The content of the element (the headword itself) comes between these two - that is how the system recognises what constitutes which part of an entry.
+Let's create a **new entry**! If you click _New_, Lexonomy will generate a basic XML structure for your new entry - this is the backbone of dictionary creation. 
+
+> Every entry in Lexonomy is a small XML document that consists of elements, such as a headword and one or multiple senses. 
+
+For example, in XML, the headword is an element of your entry. It starts with the opening tag `<headword>` and ends with the closing tag `</headword>`. The content of the element (the headword itself) comes between these two - that is how the system recognises what constitutes which part of an entry.
 
 ![](images/new.png)
 
-To create an entry, you will need to add a headword to the XML structure (that is, to add a word between the opening and the closing tag) and then click on _Save_. If you work with one of the templates of Lexonomy, an entry minimally requires a headword and one sense (this can even be empty). Deleting any of these from the structure will cause errors in the form of little yellow warning triangles. If you click the triangle, you can read a description of the error.
+To create an entry, you will need to add a headword to the XML structure (that is, to add a word between the opening and the closing tag) and then click on _Save_. If you work with one of the templates of Lexonomy, an entry minimally requires a headword and one sense (this can even be empty). Deleting any of these from the structure will cause errors. 
+
+> _Warning messages appear in the form of little yellow warning triangles. If you click the triangle, you can read a description of the error._
 
 ![](https://www.lexonomy.eu/docs/02-06.png)
 
-You can do the same with element names as well: a menu will appear listing all the actions you can perform on that element. An important feature of Lexonomy is that it only allows decisions that "make sense" according to the dictionary structure you have selected or defined (more on this later).  This helps you to maintain consistency. For example, if you work with any of the set Lexonomy dictionary templates, you will only be able to add a new `example` element to an entry within a `sense`, and nowhere else. This is because of the entry structure defined by the template: examples always belong to a sense first and only then to the headword. Similarly, sometimes, when you click on a piece of text between tags, you will be given a choice from a list instead of a free-form textbox. This is because Lexonomy knows what is supposed to go inside each element and acts accordingly.
+You can do the same with element names as well: a menu will appear listing all the actions you can perform on that element. 
+
+> An important feature of Lexonomy is that it only allows decisions that "make sense" according to the dictionary structure you have selected or defined. This promotes consistency. 
+
+For example, if you work with any of the set Lexonomy dictionary templates, you will only be able to add a new `example` element to an entry within a `sense`, and nowhere else. This is because of the entry structure defined by the template: examples always belong to a sense first and only then to the headword. Similarly, sometimes, when you click on a piece of text between tags, you will be given a choice from a list instead of a free-form textbox. This is because Lexonomy knows what is supposed to go inside each element and acts accordingly.
 
 ![](https://www.lexonomy.eu/docs/02-07.png)
 
 - ### Creating a new dictionary from an automatically generated draft
 
-Lexonomy provides the option to upload existing data instead of creating all entries by hand. You can do this by clicking _Upload_ in the top menu. Keep in mind, however, that this is an advanced feature that needs careful attention. The XML data you are uploading must match the entry structure of the dictionary in Lexonomy, or you need to upload your own XML schema as well. You can choose to remove everything from your dictionary by ticking the _purge before upload_ box, in which case all data that is currently in your dictionary will be permanently deleted as you upload your new data.
+Lexonomy provides the option to upload existing data instead of creating all entries by hand. You can do this by clicking _Upload_ in the top menu. Keep in mind, however, that this is an advanced feature that needs careful attention. 
+
+> The XML data you are uploading must match the entry structure of the dictionary in Lexonomy, or you need to upload your own XML schema as well. 
+
+You can choose to remove everything from your dictionary by ticking the _purge before upload_ box, in which case all data that is currently in your dictionary will be permanently deleted as you upload your new data.
 
 Lexonomy can be used together with **Sketch Engine**, a popular corpus query system. You can "pull" example sentences and other data (even an entire pre-generated dictionary) from a Sketch Engine corpus into Lexonomy. 
 
@@ -130,25 +146,51 @@ Of course, creating a dictionary involves lots of work by many people. You can *
 
 ![](https://www.lexonomy.eu/docs/03-03.png)
 
-If you have a team of people working on the dictionary, generally, it is a good idea to only have one person with permission to _Configure_. This way, while your co-workers will be able to contribute to the dictionary, they won't be able to accidentally remove you from the dictionary or modify other users' access permissions. It is also possible to add someone with view-only access (in case of a private dictionary), in this case, you need to add them without selecting any of the above options, and then click _Save_.
+> If you have a team of people working on the dictionary, generally, it is a good idea to only have one person with permission to Configure the dictionary.
+
+This way, while your co-workers will be able to contribute to the dictionary, they won't be able to accidentally remove you from the dictionary or modify other users' access permissions. It is also possible to add someone with view-only access (in case of a private dictionary), in this case, you need to add them without selecting any of the above options, and then click _Save_.
 
 ##### Entry settings
 
-Now, let's see the second group, **Entry settings**. If you click _Structure_, you can change the structure of the entries here, and Lexonomy will adjust its warning messages (what elements are allowed where, what content can go inside an element, etc.) to these settings. 
+Now, let's see the **Entry settings**. If you click _Structure_, you can change the structure of the entries here, and Lexonomy will adjust its warning messages (what elements are allowed where, what content can go inside an element, etc.) to these settings. 
 
-Note that once your dictionary already contains some entries (i.e. it is not empty), you will need to be careful with what you do here. It is easy to make changes that will render your existing entries full of warning triangles - after all, they followed different rules when you created them. An easy way to navigate this is if you only add to the existing rules but do not take away. On the other hand, feel free to play around with these settings as much as you want if you have an empty dictionary: you can rename elements, change the hierarchy of elements, create subentries, specify searchable elements, and so on, to make Lexonomy a better fit for your purposes. Now let's move on to exploring these!
+![](https://www.lexonomy.eu/docs/04-01.png)
 
-You can **configure the headword list** and its display, and select the element that contains the entry's headword - normally, it is the headword element, but you can configure this too. You can also change how the entry list is sorted, just specify the element that should be used for sorting (e.g. part-of-speech) or the alphabet. If you wish, you can display additional content besides the headword in the entry list, for example, part-of-speech labels or homograph numbers. 
+> Note that once your dictionary already contains some entries (i.e. it is not empty), you will need to be careful with what you do with the entry structure. It is easy to make changes that will render your existing entries full of warning triangles - after all, they followed different rules when you created them. An easy way to navigate this is if you only add to the existing rules but do not take away. 
 
-You may wish to reach additional information about an entry and not only its headword. To **change the search box settings**, just select the contents of elements you want to be able to search for in the search section in _Configure_.
+On the other hand, feel free to play around with these settings as much as you want if you have an empty dictionary: you can rename elements, change the hierarchy of elements, create subentries, specify searchable elements, and so on, to make Lexonomy a better fit for your purposes. Now let's move on to exploring these!
+
+Under _Headword list_, you can **configure the headword list** and its display, and select the element that contains the entry's headword - normally, it is the headword element, but you can change this too. You can also change how the entry list is sorted, just specify the element that should be used for sorting (e.g. part-of-speech, source, sense). You can also sort these items in a descending order. If you wish, you can display additional content besides the headword in the entry list, for example, part-of-speech labels or homograph numbers. This is also the place where you can look up any language and select its alphabet for sorting items in alphabetical order. 
+
+![](images/headwords.png)
+
+You may wish to reach additional information about an entry and not only its headword. To **change the search box settings**, just select _Searching_ in _Configure_, and tick the elements you want to be able to search for.
+
+![](images/search.png)
 
 #### Some expert settings
 
-While defining the entry structure, you can set certain sections of the XML as 'shareable', thus **creating subentries**. These are pieces of XML that are allowed to appear in several entries simultaneously. Shareable subentries have a shaded background in the editing interface of Lexonomy, and are followed by a button that tells you the number of entries that make use of the subentry besides the current one.
+Now that we have covered creating and editing a dictionary and its entries, and using Sketch Engine with Lexonomy, it's time to look into some more advanced features. 
 
-You can also **flag entries** to monitor their status. Do this by adding an element such as `<status>` with workflow values, such as "AE", "L", and "C", standing for "automatic entry not yet checked", "checked by lexicographer" and "confirmed by the editor". Then, if you select this element in the Flags section, you can specify the values the flags should consult, their labels, and how they will be visualised (colours). If you click on the flag circle next to an entry, you can see its status label and change it.
+> Some of these Expert settings really require some expertise with JavaScript or CSS, while others are just extra ways to make dictionary creation even smoother for you. This course won't cover all of these in depth; however, if you decide to read what follows, you will get a basic understanding of every option you see in the menu.
+
+You can change the default setting of the entry editor (Nerd or Laic mode) on the **Entry editor** page. The size of the editor can also be set to either a single-line or a multi-line view. The page also contains some options to customise the entry editor for yourself using JavaScript and CSS.
+
+With **Flags**, you can flag entries to monitor their status. Do this by adding an element such as `<status>` with workflow values, such as "AE", "L", and "C", standing for "automatic entry not yet checked", "checked by lexicographer" and "confirmed by the editor". Then, if you select this element in the Flags section, you can specify the values the flags should consult, their labels, and how they will be visualised (colours). If you click on the flag circle next to an entry, you can see its status label and change it.
 
 ![](https://www.lexonomy.eu/docs/ConfigFlags1.png)
+
+Entry elements can be numbered automatically using **Auto-numbering**. You can see detailed instructions about this on the Auto-numbering page. Note that this is not the same as generating the ID of the dictionary entry. 
+
+![](images/autonumbering.png)
+
+It is also possible to create links between entries (cross-reference) using **Linking**. You can read more about how this works on the Linking page.
+
+Under **Download settings**, you can set an XSLT transformation that will apply automatically when the dictionary is downloaded. This is not required to download the dictionary. If your XSLT input is not valid in this editor, no transformation will be applied.
+
+You can select the elements you want to function as subentries on the **Subentries** page. These will be the sections of the XML that are 'shareable', that is, these are the pieces of XML that are allowed to appear in several entries simultaneously. Shareable subentries have a shaded background in the editing interface of Lexonomy, and are followed by a button that tells you the number of entries that make use of the subentry besides the current one. 
+
+If you want your dictionary to have pictures or text-to-speech, use the **Multimedia API** page. Here, select the licence type you want your pictures to have in the dictionary. Pictures can come from several websites, such as Google search or Pixabay. For text-to-speech, you will need to insert your VoiceRSS API key also on this page to enable TTS. 
 
 ### Publishing a dictionary
 
