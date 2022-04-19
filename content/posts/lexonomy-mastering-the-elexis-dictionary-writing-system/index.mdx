@@ -56,7 +56,7 @@ Generally, the main aim of a DWS is to provide an efficient, ergonomic and custo
 
 - ### Introducing Lexonomy
 
-Lexonomy is a free, cloud-based, open-source dictionary writing and publishing system that is part of the ELEXIS project infrastructure. It aims to provide an easy, standardised, straightforward platform for dictionary creation. The tool is highly scalable, so it can be used for large dictionary projects as well as small glossaries or terminology resources. Since its introduction in 2017, over 5000 dictionaries were created in Lexonomy by more than 2500 users, hosting more than 34 million entries. Lexonomy is compatible with Sketch Engine, enabling already existing dictionary data to be imported, edited, and published through Lexonomy.
+Lexonomy is a free, cloud-based, open-source dictionary writing and publishing system that is part of the ELEXIS project infrastructure. It aims to provide an easy, standardised, straightforward platform for dictionary creation using XML (Extensible Markup Language). The tool is highly scalable, so it can be used for large dictionary projects as well as small glossaries or terminology resources. Since its introduction in 2017, over 5000 dictionaries were created in Lexonomy by more than 2500 users, hosting more than 34 million entries. Lexonomy is compatible with Sketch Engine, enabling already existing dictionary data to be imported, edited, and published through Lexonomy.
 
 ![Lexonomy home page](images/main.png "Lexonomy home page at https://www.lexonomy.eu/")
 
@@ -70,7 +70,7 @@ On the Home page, you will see a section called _Your dictionaries_. To create a
 
 Don't worry, these basic settings can all be changed later in the _Configure settings_ page, in case you change your mind. Once you are ready, click the URL to go to the home page of your newly created dictionary.
 
-By clicking the _Edit_ button on the home page of the dictionary, you can access Lexonomy's editing interface (image below). 
+By clicking the _Edit_ button on the home page of the dictionary, you can access **Lexonomy's editing interface** (image below). 
 
 ![](https://www.lexonomy.eu/docs/02-01.png "Lexonomy's editing interface.")
 
@@ -78,9 +78,15 @@ On the left-hand side, you see a list of the entries in the dictionary. A few en
 
 ![](https://www.lexonomy.eu/docs/02-02.png)
 
-Now you can see what the entry would look like if you decided to publish your dictionary through the Lexonomy server right away. This is also where you can create and modify the entries in your dictionary: you can edit the entry (by clicking _Edit_) or delete it (by clicking _Delete_), or change the ID of the entry. You can also create new entries by clicking _New_. 
+Now you can see what the entry would look like if you decided to publish your dictionary through the Lexonomy server right away. This is also where you can create and modify the entries in your dictionary: you can edit the entry (by clicking _Edit_), duplicate it (by clicking _Clone_) and delete it (_Delete_). Note that you cannot modify the ID of the entry, the ID bar is only for finding entries.
 
 If you click edit, you will see the underlying structure of the entry in XML. There are two editing views: the Nerd view (more advanced) and the Laic view (less advanced) - you can switch between them by clicking on the icons at the bottom of the editing screen.
+
+Let's create a **new entry**! If you click _New_, Lexonomy will generate a new, basic XML structure for your new entry - this is the backbone of dictionary creation. Every entry in Lexonomy is a small XML document that consists of elements, such as a headword and one or multiple senses. For example, the headword is an element of your entry in XML. It starts with the opening tag `<headword>` and ends with the closing tag `</headword>`. The content of the element (the headword itself) comes between these two - that is how the system recognises what constitutes which part of an entry.
+
+To create an entry, you will need to define the headword in the XML structure (that is, to add a word between the opening and the closing tag) and then click on _Save_. An entry minimally requires a headword and one sense (this can even be empty), deleting any of these from the structure will cause errors. Lexonomy displays a little yellow warning triangle in the opening tag for any element that contains crucial errors.
+
+![](images/new.png)
 
 
 
