@@ -60,19 +60,19 @@ Elexifier can be accessed at: [https://app.elexifier.elex.is](https://app.elexif
 
 ### Create a user account and log in
 
-See [user guide](https://elexifier.elex.is/help/) on how to.
+To get started, you need to create a user account and log in. See [user guide](https://elexifier.elex.is/help/) on how to do this.
 
 For a quick introduction to Elexifier, check out the following video.
 
 <Video provider="youtube" id="kqYLWdGR_Qo" />
 
-## Transforming an XML dictionary
+### Transforming an XML dictionary
 
-In the custom XML scenario, XPath formalisms are used for identifying the core elements in the original dictionary data and transforming these to a TEI-compliant format. All information contained in the original dictionary is kept, and only the core elements are transformed to the shared format. The supported core elements are the same as those defined in the ELEXIS common vocabulary \[ADD LINK].
+In the custom XML scenario, XPath formalisms are used for identifying the core elements in the original dictionary data and transforming these to a TEI-compliant format. All information contained in the original dictionary is kept, and only the core elements are transformed into the shared format. The supported core elements are the same as those defined in the ELEXIS common vocabulary (see above in the section on the ELEXIS Data Model).
 
 See the [user guide](https://elexifier.elex.is/help/#XMLtransformation) for detailed instructions on how to use the XML transformation.
 
-## Transforming a PDF dictionary
+### Transforming a PDF dictionary
 
 In the PDF scenario a more complex process is needed. The PDF is first transformed in a flat structure using a pdf2xml conversion script (based on [https://github.com/kermitt2/pdf2xml](https://github.com/kermitt2/pdf2xml)). Then, a chunk of the resulting XML file is sent to [Lexonomy](https://lexonomy.elex.is/)  ([Měchura 2017](https://www.lexonomy.eu/docs/elex2017.pdf)), the online dictionary editing tool for manual annotation. Approximately 4 pages need to be annotated.  The annotated text is then used as the training material for machine learning algorithms that produce the entire dictionary converted to TEI-compliant format.
 
@@ -86,7 +86,7 @@ See the [user guide](https://elexifier.elex.is/help/#PDFtransformation) for deta
 
 #### Importing your dictionary into the Dictionary Matrix
 
-The ELEXIS Dictionary Matrix is one of the main results of the ELEXIS project. It is a universal repository of linked senses, meaning descriptions, collocations, phraseology, translation equivalents, examples of usage and other types of lexical information found in existing lexicographic resources, monolingual, multilingual, modern, historical etc.. In the course **[Mastering LEX1: The Dictionary Matrix](/resource/posts/mastering-lex1-the-dictionary-matrix)** you can find out more about the Dictionary Matrix.
+The ELEXIS Dictionary Matrix is one of the main results of the ELEXIS project. It is a universal repository of linked senses, meaning descriptions, collocations, phraseology, translation equivalents, examples of usage and other types of lexical information found in existing lexicographic resources. In the course **[Mastering LEX1: The Dictionary Matrix](/resource/posts/mastering-lex1-the-dictionary-matrix)** you can find out more about the Dictionary Matrix.
 
 #### Editing your dictionary in Lexonomy
 
