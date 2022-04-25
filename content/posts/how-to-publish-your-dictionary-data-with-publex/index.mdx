@@ -128,15 +128,15 @@ If your dictionary contains special characters which are not available in the Un
 
 ![](images/glyphr_studio_import_all.png)
 
-- After the file has been loaded, you can view the font characters it contains. The special characters defined in the allEntities file are located in the Private Use Area of the font. Therefore, select this area for display:
+- After the file has been loaded, you can view the font characters it contains. The special characters defined in the allEntities file are located in the **Private Use Area** of the font. Therefore, select this area for display:
 
   ![](images/glyphr_studio_private_use_area.png)
 
-2. When you have found your desired character in the overview, find out its position. To do this, move the mouse over the character. The position is displayed in a mouseover after the string "Private Use Area". In the following example it is "EA4C".
+2. When you have found your desired character in the overview, **find out its position**. To do this, move the mouse over the character. The position is displayed in a mouseover after the string "Private Use Area". In the following example it is "EA4C".
 
 ![](images/glyphr_studio_zeichenansicht.png)
 
-3. Using the position number, look up the character's name in the [allEntities file](<link to follow>).
+3. Using the position number, **look up the character's name** in the [allEntities file](<link to follow>).
 
 - Every entry in the allEntities file is structured as follows: the declaration of a new entry `<!ENTITY` followed by the name, the Unicode position (or position in the private used area) and a closing `>`.
 
@@ -144,7 +144,7 @@ Here you can see an example with the special character “u with superscripted p
 
 ![u with superscripted plus (entity file)](images/uplusabove.png)
 
-4. In the XML file of your dictionary text, replace the corresponding special character  with `&entity name;` (entity name = “plusaboveu” in the following example).
+4. In the XML file of your dictionary text, replace the corresponding special character  with `&entity name;` (entity name = “plusaboveu” in the following example; used as "&plusaboveu;").
 
 ![u with superscripted plus (xml)](images/uplusabove_xml.png)
 
