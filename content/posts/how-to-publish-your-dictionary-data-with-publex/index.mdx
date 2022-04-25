@@ -136,13 +136,15 @@ If your dictionary contains special characters which are not available in the Un
 
 ![](images/glyphr_studio_zeichenansicht.png)
 
-Every entry in the allEntities file is structured as follows: the declaration of a new entry `<!ENTITY` followed by the name, the Unicode position (or position in the private used area) and a closing `>`.
+3. Using the position number, look up the character's name in the [allEntities file](<link to follow>).
+
+- Every entry in the allEntities file is structured as follows: the declaration of a new entry `<!ENTITY` followed by the name, the Unicode position (or position in the private used area) and a closing `>`.
 
 Here you can see an example with the special character “u with superscripted plus”:
 
 ![u with superscripted plus (entity file)](images/uplusabove.png)
 
-2. If you want to use a specific entity from the allEntities file, replace the corresponding special character in the XML file with `&entity name;` (entity name = “plusaboveu” in the following example).
+4. In the XML file of your dictionary text, replace the corresponding special character  with `&entity name;` (entity name = “plusaboveu” in the following example).
 
 ![u with superscripted plus (xml)](images/uplusabove_xml.png)
 
@@ -150,7 +152,9 @@ And this is how the character is finally displayed using the KomplettFont:
 
 ![u with superscripted plus (displayed)](images/uplusabove_wbnetz.png)
 
-3. Next, download the allEntities file \[here] (link to follow). It must be uploaded with the dictionary files during import. How this works, you will find out [here](#import). To display the special characters in the published dictionary, it is necessary to select the KompLett font in the configuration. Details can be found in [this section](#define-your-styling-rules).
+<SideNote type="info">
+The allEntities file must be uploaded with the dictionary files during import. How this works, you will find out [here](#import). To display the special characters in the published dictionary, it is necessary to select the KompLett font in the configuration. Details can be found in [this section](#define-your-styling-rules).
+</SideNote>
 
 <SideNote type="note">
 You _don't need_ the allEntities file if your special characters are all defined in the Unicode standard and if you encode all your special characters with hexadecimals codes. - If you have special characters in your dictionary that are **neither defined in the Unicode Standard nor in our allEntities**, please contact the Publex team \[klee@uni-trier.de].
