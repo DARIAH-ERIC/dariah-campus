@@ -78,7 +78,7 @@ This was further refined: 
 
 Following Grimm, De Vries, founder of the Dictionary of the Dutch Language (Woordenboek der Nederlandsche Taal ), specified that each word to be included in the dictionary had to be 'marked' on a separate sheet of 'Dutch writing paper', quarto format, with cut edges which were kept in specifically designed boxes. Where possible, these paper slips should also contain quotations and comments regarding etymology or grammar. This way everything that was needed for writing the dictionary entry was collected on those sheets saving a great deal of time because the entry could be edited 'almost completely without checking and comparing books' (De Vries, Verl. 1854, 14).
 
-\[IMAGE]
+![](images/int_slips.png "Citation slips used in the compilation of the Dictionary of the Dutch Language")
 
 As one can imagine, excerption is laborious and time-consuming work. In addition, owing to the computerisation, citation files no longer form the primary source of evidence and have gradually been replaced by large corpora. However, excerption is sometimes still used as a way for users to contribute new words through special forms on dictionary publishers’ websites.
 
@@ -186,7 +186,7 @@ Kilgarriff and Grefenstette (2003: 8) state that “representativeness” is a f
 
 Example:
 
-_If you want a corpus which is representative of general English, a corpus of newspapers will not do._
+_If you want a corpus that is representative of general English, a corpus of newspapers will not do._
 
 _If you want a corpus representative of English newspapers, a corpus containing only The Times will not do._
 
@@ -196,13 +196,13 @@ Another important characteristic of corpora is their size. Corpus size is typica
 
 > **Types and tokens**
 >
-> A [](https://www.sketchengine.eu/my_keywords/token/)token is the smallest unit that a corpus consists of.A type ...
+> A [](https://www.sketchengine.eu/my_keywords/token/)token is the smallest unit that a corpus consists of.A type ...\[ADD]
 
 For major languages like English, data sparseness is not an issue anymore and the size of corpora is still growing. In the 1960s, collecting a corpus of 1 million words was immensely ambitious and technically demanding (e.g. Brown corpus). In the 1990s corpora of 100 million tokens (BNC) had become the norm. These days we have gigaword corpora for languages such as English. But how large does a corpus need to be?
 
 There is no easy answer to this question. What can be said in general, however, is that, even in the age of gigaword corpora, Robert Mercer’s claim ‘more data is better data’ ([Church and Mercer 1993](https://www-oxfordhandbooks-com.ezproxy.leidenuniv.nl/view/10.1093/oxfordhb/9780199691630.001.0001/oxfordhb-9780199691630-bibliography-1#oxfordhb-9780199691630-bibliography-1-bibItem-582)) still applies. The more data we have, the more we learn. This is especially important when items at the lower end of the frequency range are examined, be it a word, a meaning or a combination of words. You simply need a lot of data to yield enough instances of those rare items.
 
-#### Constraints on corpus development
+#### Constraints on corpus composition and size
 
 In practice, the ideal corpus composition and size are often hampered by limitations on resources and other practical considerations. The texts that you would ideally like to include in your corpus, may not be available in digital format or they may be subject to some copyright protection or other restrictions on usage.  \[LINK TO MORE INFORMATION, E.G. DELIVERABLE 6.?]
 
@@ -219,7 +219,7 @@ In this section, we look at different types of corpus annotation and we will ill
 
 ![](https://lh4.googleusercontent.com/DXUUcLdn8bayhptZ6O7c5yMReIeofKH9Tl_7UKr-7_7G12F3IWdq3DajoJCSRNtVJlZMO6PNI-SPP_Dixp-bayiqJZ8LuiczvzVvel5BFCaHsMq8tXggSk7hyqw0Q6Dvaf2u-608)
 
-We start with tokenisation, then part-of-speech tagging, followed by lemmatisation, and then syntactic and semantic annotation. More annotation layers can be added, but these will not be discussed here. See \[LINK]?? for more information.
+We start with tokenisation, then part-of-speech tagging, followed by lemmatisation, and then syntactic and semantic annotation. More annotation layers can be added, but these will not be discussed here. 
 
 ##### Tokenisation
 
@@ -246,7 +246,7 @@ The tags that can be used are defined in a tagset. Different tagsets exist \[ADD
 
 Apart from the different names that are used for the tags, pos taggers can also differ in their approach, i.e. “functional” versus “lexical” tagging. For example, _walking_ in the sentence _(The) walking is good for your health_ will be tagged as a NOUN in a functional approach and as a VERB in a lexical approach. The UD annotation, for instance, is based on a lexicalist view of syntax.
 
-To avoid surprises in the results from your corpus analysis, it is always wise to check the documentation of your corpus to see which tagset is used. In Sketch Engine you can find this ….under corpus info\[ADD IMAGE AND LINK]
+To avoid surprises in the results from your corpus analysis, it is always wise to check the documentation of your corpus to see which tagset is used. 
 
 For mainstream languages (e.g. English, German, French) tagging accuracy of up to 97-98% is achieved. For non-mainstream languages, this percentage is considerably lower. Despite the high accuracy in mainstream languages, there are still some tricky cases, e.g.:
 
@@ -284,8 +284,8 @@ Each word line contains the following fields:
 1. ID: Word index, integer starting at 1 for each new sentence; may be a range for tokens with multiple words.
 2. FORM: Word form or punctuation symbol.
 3. LEMMA: Lemma or stem of word form.
-4. UPOSTAG: [Universal part-of-speech tag](https://universaldependencies.org/docs/u/pos/index.html) drawn from our revised version of the Google universal POS tags.
-5. XPOSTAG: Language-specific part-of-speech tag; underscore if not available.
+4. UPOS: [Universal part-of-speech tag](https://universaldependencies.org/docs/u/pos/index.html) drawn from our revised version of the Google universal POS tags.
+5. XPOS: Language-specific part-of-speech tag; underscore if not available.
 6. FEATS: List of morphological features from the [universal feature inventory](https://universaldependencies.org/docs/u/feat/index.html) or from a defined [language-specific extension](https://universaldependencies.org/docs/ext-feat-index.html); underscore if not available.
 7. HEAD: Head of the current token, which is either a value of ID or zero (0).
 8. DEPREL: [Universal Stanford dependency relation](https://universaldependencies.org/docs/u/dep/index.html) to the HEAD (root iff HEAD = 0) or a defined language-specific subtype of one.
@@ -298,7 +298,9 @@ The final layer of annotation that we discuss here, is semantic annotation. This
 
 ![](https://lh3.googleusercontent.com/oe_StqUCy1oPoMt-UWhL1y6MqeH8AfujAnSai9BHBaTPlLB9n2cnNAgp9O36BkowjE-YYHqUh9kSBeNgW0begsRDELs9PGYi_lFiGPzwJZWhWYdmgVtGHGAAtjzg9Rme4BQ81b6_)
 
-Semantically annotated corpora are used in NLP for Word Sense Diambiguation (WSD). +… Within ELEXIS a parallel semantically annotated dataset in 10 languages has been created (see ref) and deliverable 4.XX \[LINK]
+Semantically annotated corpora are used in NLP for Word Sense Disambiguation (WSD).
+
+> Within ELEXIS a parallel semantically annotated dataset in 10 languages has been created (ADD LINK)
 
 ##### Other types of annotation
 
@@ -316,7 +318,7 @@ If you want to adopt a standard, we recommend following the guidelines from the 
 
 ##### Metadata
 
-When building a corpus, corpus creators often record “extra info” about the corpus and the texts in it, such as titles of the texts, names of authors,  the size of a corpus, the recording date of a specific file, the purpose for which annotations were created, etc. We call this metadata, that is data about data. (See [CLARIN](https://www.clarin.eu/faq-page/273#t273n2850)  \[LINK]??)
+When building a corpus, corpus creators often record “extra info” about the corpus and the texts in it, such as titles of the texts, names of authors,  the size of a corpus, the recording date of a specific file, the purpose for which annotations were created, etc. We call this metadata, that is data about data. (See [CLARIN](https://www.clarin.eu/faq-page/273#t273n2850))
 
 ### Corpus query systems
 
@@ -346,11 +348,7 @@ In his paper ‘[getting to know your corpus](https://www.sketchengine.eu/wp-con
 
 ### Some notes of caution when using corpora
 
-Most corpora that you will use, will contain various levels of linguistic annotation.  Although automatic corpus processing and annotation tools provide excellent results, they are not flawless. Contractions, for instance,  can sometimes be problematic in automatic processing. Is _aren’t_ considered as one token or as two, and if it is split into two tokens, which two - _are n't, or are not._ Different systems do different things. 
-
-> ADD EXAMPLE IN SKE
-
-compounds that can have different orthographic forms (i.e. written with or without a space or with a hyphen) can also cause problems.  For example, _website_ versus _web site_. Searching for _website_ will not normally return hits for _web site_ as automatic procedures do not lemmatise these to one and the same lemma form. Therefore you should always check how they are treated in your corpus. Finally, it is important to realise that we are dealing with authentic material and that this material may also contain errors or idiosyncratic instances. 
+Most corpora that you will use, will contain various levels of linguistic annotation.  Although automatic corpus processing and annotation tools provide excellent results, they are not flawless. Contractions, for instance,  can sometimes be problematic in automatic processing. Is _aren’t_ considered as one token or as two, and if it is split into two tokens, which two - _are n't, or are not._ Different systems do different things. Compounds that can have different orthographic forms (i.e. written with or without a space or with a hyphen) can also cause problems.  For example, _website_ versus _web site_. Searching for _website_ will not normally return hits for _web site_ as automatic procedures do not lemmatise these to one and the same lemma form. Therefore you should always check how they are treated in your corpus. Finally, it is important to realise that we are dealing with authentic material and that this material may also contain errors or idiosyncratic instances. 
 
 ## Next steps
 
