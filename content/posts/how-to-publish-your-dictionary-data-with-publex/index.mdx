@@ -17,8 +17,7 @@ contributors:
   - weyand-sandra
 tags:
   - lexicography
-abstract: This course introduces the legacy dictionary viewer Publex, a generic,
-  modular dictionary publication tool for retrodigitized dictionaries.
+abstract: This course introduces the legacy dictionary viewer Publex, a generic, modular dictionary publication tool for retrodigitized dictionaries.
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: training-module
@@ -30,6 +29,7 @@ uuid: IbZ4arshkA06y5Uem0UsT
 categories:
   - dariah
 ---
+
 This course introduces the legacy dictionary viewer Publex, a generic, modular dictionary publication tool for retrodigitized dictionaries.
 
 ## Learning Outcomes
@@ -122,15 +122,15 @@ If your dictionary contains special characters which are not available in the Un
 
 1. Check whether your special characters are contained in the [allEntities](https://bitbucket.org/tcdh/publex-allentities/src/master/allEntities.xml) file. For this, you can explore the KompLett font in the GlyphrStudio web tool:
 
-- Load the file KompLettR.ttf you find [here](https://bitbucket.org/tcdh/publex-allentities/src/master/KompLett_R.ttf) into [Glyphr Studio](www.glyphrstudio.com/online/) and make sure you choose to import all glyphs:
+- Load the file KompLettR.ttf you find [here](https://bitbucket.org/tcdh/publex-allentities/src/master/KompLett_R.ttf) into [Glyphr Studio](http://www.glyphrstudio.com/online) and make sure you choose to import all glyphs:
 
-  ![Import Komplett Font file](images/glyphr_studio_load_a_file.png)
+![Import Komplett Font file](images/glyphr_studio_load_a_file.png)
 
 ![](images/glyphr_studio_import_all.png)
 
 - After the file has been loaded, you can view the font characters it contains. The special characters defined in the allEntities file are located in the **Private Use Area** of the font. Therefore, select this area for display:
 
-  ![](images/glyphr_studio_private_use_area.png)
+![](images/glyphr_studio_private_use_area.png)
 
 2. When you have found your desired character in the overview, **find out its position**. To do this, move the mouse over the character. The position is displayed in a mouseover after the string "Private Use Area". In the following example it is "EA4C".
 
@@ -144,7 +144,7 @@ Here you can see an example with the special character “u with superscripted p
 
 ![u with superscripted plus (entity file)](images/uplusabove.png)
 
-4. In the XML file of your dictionary text, replace the corresponding special character  with `&entity name;` (entity name = “plusaboveu” in the following example; used as "&plusaboveu;").
+4. In the XML file of your dictionary text, replace the corresponding special character with `&entity name;` (entity name = “plusaboveu” in the following example; used as "\&plusaboveu;").
 
 ![u with superscripted plus (xml)](images/uplusabove_xml.png)
 
@@ -153,11 +153,20 @@ And this is how the character is finally displayed using the KomplettFont:
 ![u with superscripted plus (displayed)](images/uplusabove_wbnetz.png)
 
 <SideNote type="info">
-The allEntities file must be uploaded with the dictionary files during import. How this works, you will find out [here](#import). To display the special characters in the published dictionary, it is necessary to select the KompLett font in the configuration. Details can be found in [this section](#define-your-styling-rules).
+  The allEntities file must be uploaded with the dictionary files during import.
+  How this works, you will find out [here](#import). To display the special
+  characters in the published dictionary, it is necessary to select the KompLett
+  font in the configuration. Details can be found in [this
+  section](#define-your-styling-rules).
 </SideNote>
 
 <SideNote type="note">
-You _don't need_ the allEntities file if your special characters are all defined in the Unicode standard and if you encode all your special characters with hexadecimals codes. - If you have special characters in your dictionary that are **neither defined in the Unicode Standard nor in our allEntities**, please contact the Publex team \[kompetenzzentrum@uni-trier.de].
+  You _don't need_ the allEntities file if your special characters are all
+  defined in the Unicode standard and if you encode all your special characters
+  with hexadecimals codes. - If you have special characters in your dictionary
+  that are **neither defined in the Unicode Standard nor in our allEntities**,
+  please contact the Publex team
+  \[[kompetenzzentrum@uni-trier.de](mailto:kompetenzzentrum@uni-trier.de)].
 </SideNote>
 
 #### 2. Store the data in a Bitbucket repository
@@ -201,16 +210,24 @@ b) using Mac: To open terminal from your applications folder, click your desktop
 c) using Linux: Press Ctrl+Alt+T.
 
 - Once opened the terminal window, change into the local directory where you want to clone your repository. `cd <path_to_directory>`
+
 - Paste the command you copied from Bitbucket, e.g.: `git clone https://Trifoglio@bitbucket.org/Trifoglio/my_dictionary.git`
+
 - Now a new sub-directory should appear on your local drive with the same name as the repository.
+
 - In this directory, **create a new folder** which you call "data" for example.
+
 - **Put all the files that belong to your dictionary into this folder**. Note: If you want to use entities from the KompLett font, you must also place the file allEntities.xml in this folder.
+
 - Now you are almost finished. The final step is to transfer the locally added files to the remote Bitbucket Cloud repository. In your terminal window:
 
-  - enter `cd <path_to_local_repo>`
-  - enter `git add --all`
-  - enter `git commit -m '<commit_message>'` with a commit message that describes your changes, e.g. `git commit -m 'upload dictionary data'`
-  - enter `git push`
+- enter `cd <path_to_local_repo>`
+
+- enter `git add --all`
+
+- enter `git commit -m '<commit_message>'` with a commit message that describes your changes, e.g. `git commit -m 'upload dictionary data'`
+
+- enter `git push`
 
 If everything worked fine, you should now see the files in your repository online in your Bitbucket account. Now we are prepared to create a new dictionary in Publex!
 
@@ -257,23 +274,25 @@ c) Tell Publex, whether your repository is public or private.
 1. If your repository is public, no further settings are necessary for the import. If it is a private repository, please mark the checkbox "This is a private Git repository!".
 
    ![Private Git](images/privategit.png)
+
 2. By activating the button, a SSH key becomes visible. Please add this key to your Bitbucket account.
 
 - Copy the key.
 - In your Bitbucket account, go to your personal settings (see the icon for your account in the left corner on the bottom).
 
-  ![Personal settings](images/personal_settings.png)
+![Personal settings](images/personal_settings.png)
+
 - In personal settings, go to "SSH keys" and click on "Add key". A Window opens where you can paste your key you copied from Publex.
 
   ![Add key](images/add_key.png)
 
-  d) The **name of the directory** you stored you dictionary files in, e.g. "data" as chosen in our example.
+d) The **name of the directory** you stored you dictionary files in, e.g. "data" as chosen in our example.
 
-  e) The **file extension** of your files containing the dictionary data which should be **xml** as recommended.
+e) The **file extension** of your files containing the dictionary data which should be **xml** as recommended.
 
-  f) The **entity file name**: If you would like to use our self-defined entities to display non-unicode characters (see [here](#use-of-non-unicode-characters)), enter the file name **"allEntities.xml"** here. If not, the field should remain empty.
+f) The **entity file name**: If you would like to use our self-defined entities to display non-unicode characters (see [here](#use-of-non-unicode-characters)), enter the file name **"allEntities.xml"** here. If not, the field should remain empty.
 
-  Now you are ready to hit the button **Import Data**. The import starts now. It may take a couple of time depending on how large your data is. In the output window, you can follow the progress of the import and also see if problems or errors occur. If "Everything successfully imported." is displayed, the import was successful. Click "Go to Styling Rules" to continue with the [configuration](#define-your-styling-rules) of your dictionary.
+Now you are ready to hit the button **Import Data**. The import starts now. It may take a couple of time depending on how large your data is. In the output window, you can follow the progress of the import and also see if problems or errors occur. If "Everything successfully imported." is displayed, the import was successful. Click "Go to Styling Rules" to continue with the [configuration](#define-your-styling-rules) of your dictionary.
 
 #### Publex Test-Git
 
@@ -332,14 +351,16 @@ a) You will get here directly after importing your dictionary data by clicking "
 
 b) In the Dictionary Overview, select a dictionary that has already been added and click on **"Edit Dictionary"**. Then, in the menu bar on the left, under **"Dictionary Management"**, select **"Styling Rules"**.
 
-<SideNote type="info" title="Defining styling rules">
-
-There are a few basic things to keep in mind when defining the styling rules:
+<SideNote
+  type="info"
+  title="Defining styling rules"
+>
+  There are a few basic things to keep in mind when defining the styling rules:
 
 - The requirement for the publication of a dictionary is the presence of a **lemma rule** (i.e. for one of the rules, the field ["Add to lemma list"](#search-and-lemma-field) must be selected).
 - The order of the rules is relevant: **Subordinate rules override the preceding ones**. For example: I want the font size of my entries to be 12 pt, so I define this feature in a rule for all `<entry>` elements. Thus, all the texts contained in `<entry>` will be formatted accordingly. However, the lemma (e.g. `<form type="lemma">`) should be bolded and displayed in a larger font. If I define this in a subordinate rule, the definition from the first rule is overwritten specifically for these elements. Therefore it is recommended: More general rules should be placed at the beginning of the list.
 
-</SideNote>
+  </SideNote>
 
 - The order can be modified at any time using the arrow buttons.
 
@@ -367,7 +388,7 @@ Type in the name for the rule.
 ![Name rule](images/name_rule.png)
 
 <SideNote type="tip">
-Try to use meaningful names, e.g. "lemma", "definition" or "citation".
+  Try to use meaningful names, e.g. "lemma", "definition" or "citation".
 
 This helps you to keep a better overview of the rules. In addition, in the [dictionary look-up](#the-dictionary-look-up), the name serves as the label of the associated search field (if ["set as searchable field"](#searchable-field) is selected).
 
@@ -540,7 +561,8 @@ Now the styling for our example entry is defined. We save the rule with the "Sav
 
 <SideNote type="tip">
   In parallel with the creation of the styling rules, you can view a current
-  representation of your dictionary in the [dictionary preview](#the-dictionary-viewer:-preview-your-dictionary).
+  representation of your dictionary in the [dictionary
+  preview](#the-dictionary-viewer:-preview-your-dictionary).
 </SideNote>
 
 In the dictionary preview, our example entry _bluome_ now looks like this:
@@ -597,7 +619,7 @@ Further search fields can be added via the plus button. These all are linked wit
 
 Upper and lower case are irrelevant for the entry and blank characters are ignored. Special characters can be replaced by their basic characters in the search, e.g. diacritics do not have to be entered (ë = e).
 
-A truncated search is possible. For example, _bach*_ returns all words beginning with this character string and _\*bach_ returns the words ending with this string.
+A truncated search is possible. For example, _bach\*_ returns all words beginning with this character string and _\*bach_ returns the words ending with this string.
 
 When entering multi-word units, it is necessary to enclose the search string in inverted commas to search for the entered word sequence (e.g. _"laut und buchstabe"_), otherwise the word order will not be taken into account.
 
@@ -657,10 +679,6 @@ But you can also reimport the data for the existing dictionary. To do this, foll
 3. Go to the import page (see [Import](#import)), fill in the information where you stored the updated data and hit the "Reimport" button.
 4. After the data import is done, you can reimport the locally stored styling rules (see [Import of styling rules](#import)). Please check if the rules still match the XML encoding.
 5. Finally publish the dictionary (see [Publication](#publication)).
-
-
-
-
 
 # Further information
 
