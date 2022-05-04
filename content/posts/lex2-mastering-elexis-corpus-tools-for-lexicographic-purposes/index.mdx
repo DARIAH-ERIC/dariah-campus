@@ -33,13 +33,11 @@ Upon completion of this course, students will be able to
 - build a corpus in Sketch Engine
 - use Sketch Engine for data analysis in the lexicographic workflow
 
-<!--StartFragment-->
-
 ## Introduction
 
 Sketch Engine contains many screens, settings, controls and statistics. It is beyond the scope of this course to give detailed information about each one of them. The user will, however, find lots of useful information with links pointing to related resources directly in the interface in the form of tooltips. Please pay attention to the question marks in the interface.
 
-
+![](images/uwixrq-1-.jpg)
 
 ## Building a corpus
 
@@ -52,6 +50,146 @@ The module supports two main approaches:
 
 A corpus can be built by either method and even by combining both methods.
 
+### From user's own data (data upload)
+
+This methods assumes that the user has texts in a common electronic format such as doc, docx, txt, html or pdf. The texts should be uploaded in a similar manner as uploading documents in any web service. Once the documents are uploaded, they will be tokenized, lemmatized and tagged automatically and processed into a corpus. 
+
+To learn to build a corpus by uploading your own data, use these resources:
+
+Web: [https://www.sketchengine.eu/guide/create-corpus-from-files/](https://www.sketchengine.eu/guide/create-corpus-from-files/)
+
+YouTube: [https://youtu.be/gMicxJAS024](https://youtu.be/gMicxJAS024)
+
+Metadata linked to the whole documents can be added prior to uploading or later using the built-in document annotation tool [https://www.sketchengine.eu/guide/document-annotation-tool/](https://www.sketchengine.eu/guide/document-annotation-tool/). Metadata related to smaller segments (phrases, sentences etc.) must be inserted only prior to uploading. They cannot be inserted after the data have been uploaded. The annotation tool cannot be used.
+
+### From the web (web search, web scraping, web harvesting)
+
+The corpus building module also supports automatic collection of linguistically valuable text data from the web. There are 3 modes:
+
+- web search\
+  The user must specify at least 3 keywords (or key phrases) that define the desired topic of the future corpus. Sketch Engine uses interact with the Bing search engine to find the most relevant web pages corresponding to the keywords. 
+- URLs\
+  The user must supply a list of urls pointing to concrete webpages that should be downloaded. A virtually unlimited number of urls can be supplied. Links found on the pages will not be followed.
+- website\
+  The user must specify one website that should be downloaded. Links found on the pages will be followed. Links pointing to other websites will not be followed.
+
+Use the tooltips in the interface to learn about the different options and their basic and advanced settings.
+
+In all three modes, the pages are downloaded, cleaned, deduplicated, tokenized, tagged for parts-of-speech, lemmatized and processed into a corpus.
+
+To learn to build a corpus from the web, use these resources:
+
+Web: [https://www.sketchengine.eu/guide/create-a-corpus-from-the-web/](https://www.sketchengine.eu/guide/create-a-corpus-from-the-web/)
+
+YouTube: [https://youtu.be/VjHC4lMop-s](https://youtu.be/VjHC4lMop-s)
+
+To learn about the process of cleaning and deduplication: [https://www.sketchengine.eu/blog/build-a-corpus-from-the-web/](https://www.sketchengine.eu/blog/build-a-corpus-from-the-web/)
+
+### Making the corpus bigger
+
+The process can be repeated as many times as required to make the corpus bigger. The same corpus can be build by combining the two approaches: data upload and texts downloaded from the web.
+
+When downloading texts from the web, each web page will only be included in the corpus once even if the user tries to add the same page again or of a different web search finds the same page again. 
+
+## Evaluate the quality and suitability for the lexicographic task
+
+link to course Introduction to Corpus-Based Lexicographic Practice - 
+
+## Using corpus tools to extract lexicographic information from corpora: 
+
+### Headword list
+
+The headword list can be obtained in several ways depending on the purpose of the dictionary. The list of the most common words in the corpus should be obtained using the wordlist tool. This will list words sorted by their frequency. This approach is suitable for a general-purpose dictionary where the aim is to include all words based on their frequency of use rather than on their other qualities.
+
+To learn to use the wordlist, use these resources:
+
+Web\
+[https://www.sketchengine.eu/quick-start-guide/word-list-lesson/](https://www.sketchengine.eu/quick-start-guide/word-list-lesson/)
+
+[https://www.sketchengine.eu/guide/wordlist-frequency-lists/](https://www.sketchengine.eu/guide/wordlist-frequency-lists/)
+
+YouTube: [https://youtu.be/nqpCIICCEdw](https://youtu.be/nqpCIICCEdw)
+
+### Keyword/Term list
+
+When the aim of the dictionary is to provide information about domain-specific words or specialized terminology, the headword list should be generated by using the keyword and term extraction tool. This also assumes that a specialized domain-specific corpus is used. The keyword and term extraction tool will automatically eliminate general vocabulary and will only return words which are specific of the corpus, typically nouns, adjectives and noun phrases. 
+
+Because the extraction of keywords and terms requires a domain-specific corpus, it is common for the user to have to build their own copora. Therefore, the procedure of extracting terminology is included in the videos about corpus building:
+
+[https://youtu.be/VjHC4lMop-s](https://youtu.be/VjHC4lMop-s)
+
+[https://youtu.be/gMicxJAS024](https://youtu.be/gMicxJAS024)
+
+Related web resources
+
+[https://www.sketchengine.eu/quick-start-guide/keywords-and-terms-lesson/](https://www.sketchengine.eu/quick-start-guide/keywords-and-terms-lesson/)
+
+[https://www.sketchengine.eu/guide/keywords-and-term-extraction/](https://www.sketchengine.eu/guide/keywords-and-term-extraction/)
+
+### Frequency information
+
+Frequency information is the basic statistic displayed in all Sketch Engine tools. There are, however, different types of frequency. Frequencies can be displayed by adjusting the view options accessible via an icon above the search results of each screen.
+
+Absolute frequency – (also called number of hits) The most frequently used frequency, available in all tools in Sketch Engine. It shows how many times a word or phrase was found in the corpus. It cannot be used for comparing frequencies obtained from different corpora of uneven sizes. [https://www.sketchengine.eu/my_keywords/frequency/](https://www.sketchengine.eu/my_keywords/frequency/)
+
+frequency per million – (also called normalized frequency or relative frequency) It indicates the number of hits in 1 million words. Frequencies obtained form corpora of uneven sizes should be compared using this frequency. [https://www.sketchengine.eu/my_keywords/freqmill/](https://www.sketchengine.eu/my_keywords/freqmill/)
+
+ARF – (average reduced frequency)  ARF is a modified frequency whose calculation prevents the results from being excessively influenced by a high concentration of a token in only one or more small parts of the corpus. If the token is distributed evenly in the corpus, ARF and absolute frequency have similar or identical values. [https://www.sketchengine.eu/documentation/average-reduced-frequency/](https://www.sketchengine.eu/documentation/average-reduced-frequency/)
+
+Document frequency – It indicates how many documents contain a word or phrase. [https://www.sketchengine.eu/my_keywords/document-frequency/](https://www.sketchengine.eu/my_keywords/document-frequency/)
+
+The tools to that should be used to get the frequency of:
+
+| **frequency required for**                                                                          | **use this tool**                                                 |
+| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| tokens (words)                                                                                      | wordlist                                                          |
+| keywords or terms                                                                                   | keywords                                                          |
+| collocations                                                                                        | word sketch or the frequency distribution tool in the concordance |
+| multiword expressions (n-grams)                                                                     | n-grams or the frequency distribution tool in the concordance     |
+| phrases, grammatical and lexical structures and also any other information contained in the corpus" | frequency distribution tool in the concordance                    |
+
+#### Resources to learn to use the tools
+
+Wordlist
+
+[https://www.sketchengine.eu/quick-start-guide/word-list-lesson/](https://www.sketchengine.eu/quick-start-guide/word-list-lesson/)
+
+[https://www.sketchengine.eu/guide/wordlist-frequency-lists/](https://www.sketchengine.eu/guide/wordlist-frequency-lists/)
+
+[https://youtu.be/nqpCIICCEdw](https://youtu.be/nqpCIICCEdw)
+
+Keywords and terms
+
+[https://www.sketchengine.eu/quick-start-guide/keywords-and-terms-lesson/](https://www.sketchengine.eu/quick-start-guide/keywords-and-terms-lesson/)
+
+[https://www.sketchengine.eu/guide/keywords-and-term-extraction/](https://www.sketchengine.eu/guide/keywords-and-term-extraction/)
+
+Word Sketch (collocations)
+
+[https://www.sketchengine.eu/quick-start-guide/word-sketch-lesson/](https://www.sketchengine.eu/quick-start-guide/word-sketch-lesson/)
+
+[https://youtu.be/tKdEa1E-p2Y](https://youtu.be/tKdEa1E-p2Y)
+
+Frequency distribution in the concordance
+
+[https://youtu.be/GP5p8XEvwfM](https://youtu.be/GP5p8XEvwfM)
+
+[https://www.sketchengine.eu/quick-start-guide/concordance-lesson/](https://www.sketchengine.eu/quick-start-guide/concordance-lesson/)
+
+[https://www.sketchengine.eu/guide/concordance-a-tool-to-search-a-corpus/](https://www.sketchengine.eu/guide/concordance-a-tool-to-search-a-corpus/)
 
 
-<!--EndFragment-->
+
+## Part of speech information
+
+Part of speech (POS) information can be retrieved from the corpus and can be used in searches and analysis provided the corpus is tagged for parts of speech. The corpus info page gives information about it and also lists the most frequent tags and contains a link to the full tagset. See: [https://www.sketchengine.eu/guide/corpus-info-page/](https://www.sketchengine.eu/guide/corpus-info-page/)
+
+POS is indicated on the result screen of many tools such as the word sketch:
+
+![](https://lh3.googleusercontent.com/N0Ei0feF9pw9Atuj3JtrcdkWP-A-r02m3Ljqem5HNJ__keCyG5NngkR1ghNN8YnjTu40xUZJsWBgRGGWPK_kT5dQkSGSnAdFa_LJv_CAg--SajVsn3HaQ5gu9leR6oV27dN55_1z4HP_lEM5bw)![](https://lh3.googleusercontent.com/Uz6lyuKicvqlb7cmRAHCcBO77lv2Igfjd7pEYioxuy3yIj-PudP-kYfsTFsm8fW-mBj-HM-sGWXPfOQ-L7jieZ7aNCjZpn3mqt7k_x22w5mLFzA-gLsPvO9ZWoQtnB5OLZ10ld5ZaTJEM6E7pw)
+
+The most comprehensive POS information including the full POS tag can be found in the concordance. Use View options to configure which information should be displayed together with the concordance lines. Watch this video to learn how to configure what you see in the concordance: [https://youtu.be/EnDLYycJLHs](https://youtu.be/EnDLYycJLHs)
+
+![](https://lh6.googleusercontent.com/ZPAxLVwQfewAZW0DyWAwAQBdFiObiJRKHVxqGjl0QQxrCSbhrhcM68Mf7q6yynt5XCBEJPbCWpTfv1rsOwoDuVvD9nnAt7hy_axsRVyR4gv9zLGU73iqZ_M1WGSUVqFogtgIGD2tn5CR0OnCJQ)
+
+## Collocations
