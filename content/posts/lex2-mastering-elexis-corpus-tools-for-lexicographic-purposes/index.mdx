@@ -60,6 +60,8 @@ Web: [https://www.sketchengine.eu/guide/create-corpus-from-files/](https://www.s
 
 YouTube: [https://youtu.be/gMicxJAS024](https://youtu.be/gMicxJAS024)
 
+<Video provider="youtube" id="gMicxJAS024" />
+
 Metadata linked to the whole documents can be added prior to uploading or later using the built-in document annotation tool [https://www.sketchengine.eu/guide/document-annotation-tool/](https://www.sketchengine.eu/guide/document-annotation-tool/). Metadata related to smaller segments (phrases, sentences etc.) must be inserted only prior to uploading. They cannot be inserted after the data have been uploaded. The annotation tool cannot be used.
 
 ### From the web (web search, web scraping, web harvesting)
@@ -82,6 +84,8 @@ To learn to build a corpus from the web, use these resources:
 Web: [https://www.sketchengine.eu/guide/create-a-corpus-from-the-web/](https://www.sketchengine.eu/guide/create-a-corpus-from-the-web/)
 
 YouTube: [https://youtu.be/VjHC4lMop-s](https://youtu.be/VjHC4lMop-s)
+
+<Video provider="youtube" id="VjHC4lMop-s" />
 
 To learn about the process of cleaning and deduplication: [https://www.sketchengine.eu/blog/build-a-corpus-from-the-web/](https://www.sketchengine.eu/blog/build-a-corpus-from-the-web/)
 
@@ -109,6 +113,8 @@ Web\
 [https://www.sketchengine.eu/guide/wordlist-frequency-lists/](https://www.sketchengine.eu/guide/wordlist-frequency-lists/)
 
 YouTube: [https://youtu.be/nqpCIICCEdw](https://youtu.be/nqpCIICCEdw)
+
+<Video provider="youtube" id="nqpCIICCEdw" />
 
 ### Keyword/Term list
 
@@ -204,6 +210,8 @@ Web
 
 YouTube [https://youtu.be/tKdEa1E-p2Y](https://youtu.be/tKdEa1E-p2Y)
 
+<Video provider="youtube" id="tKdEa1E-p2Y" />
+
 For an easy to understand introduction for non-mathematicians, use this link to understand how Sketch Engine defines typicality and identifies typical collocations: [https://www.sketchengine.eu/blog/most-frequent-or-most-typical-collocations/](https://www.sketchengine.eu/blog/most-frequent-or-most-typical-collocations/)
 
 Concordance - Collocations
@@ -238,6 +246,134 @@ The concordance allows annotating and sorting the concordance lines according to
 
 After concordance lines are annotated, they can be analyses further or subcorpora based on senses can be created from them. Once subcorpora are created, other Sketch Engine tools can be used to analyse them. 
 
-**Learn to use the annotation tool here [https://www.sketchengine.eu/guide/manual-annotation-skema/](https://www.sketchengine.eu/guide/manual-annotation-skema/)**
+Learn to use the annotation tool here [https://www.sketchengine.eu/guide/manual-annotation-skema/](https://www.sketchengine.eu/guide/manual-annotation-skema/)
 
-**\-------**
+## Syntactic patterns
+
+There are several ways of to explore syntactic patterns of a word.
+
+### N-grams for discovering patterns
+
+Generating n-grams of different sizes that contain the word can show preposition and other function words frequently found before and after the word. The ADVANCED tab of the n-gram tools lets the user specify various search options and restricting conditions.
+
+![](https://lh5.googleusercontent.com/ghu2bWwbqIiouQnb7dz0feMoNhPrn8Md40xy_FhM2EZugVSht63olpfTrW8TQQNV1J1NSlPp0OUPnCrd8gc-vDcM0-V6-LP8cN3-AuD04pKtxTsXwWc2k1HiICSRb6rnao0QgITAr3M6ILTejA)
+
+See also https://www.sketchengine.eu/my_keywords/n-gram/
+
+Learn to use n-grams here https://www.sketchengine.eu/guide/n-grams-multiword-expressions/
+
+### Word sketches for discovering patterns
+
+Word sketches contain some grammatical relations specifically designed to identify the typical patterns, such as prepositions before and after the word or usage patterns:
+
+![](https://lh4.googleusercontent.com/Qy-DJZ1OTghd3W1mCjVFj17GOX1tBmkz4Vskb6XFjyBMlEbUkuTiRUgZdp5KKLUU8U-jP14blzfVFTlaFxybWBRkoiBsqJ7fbFobem1CqWrTuYHD3g7Zzzh0X9HKHhOfM01eB1T0euqAGbljKg)
+
+Use these resources to learn to use the word sketch:
+
+YouTube [https://youtu.be/tKdEa1E-p2Y](https://youtu.be/tKdEa1E-p2Y)
+
+Web guide\
+[https://www.sketchengine.eu/quick-start-guide/word-sketch-lesson/](https://www.sketchengine.eu/quick-start-guide/word-sketch-lesson/)
+
+[https://www.sketchengine.eu/guide/word-sketch-collocations-and-word-combinations/](https://www.sketchengine.eu/guide/word-sketch-collocations-and-word-combinations/)
+
+### Concordance for discovering patterns
+
+Using the concordance for discovering patterns involves mainly two concordance tools:
+
+- sorting the concordance lines
+- frequency distribution
+
+Sorting
+
+Sorting is only practical when the number of concordance lines is very small, typically a few dozen. Therefore, sorting has a very limited use and is generally unsuitable for multi-billion-word corpora which typically produce thousands of hits even when searching for rare phenomena.
+
+Frequency distribution
+
+Frequency distribution refers to a function that operates like a calculator of concordance lines. It produces counts of words, lemmas, tags and other attributes in specific positions of a concordance line. This frequency distribution shows the frequency of the POS attribute following a/the total of. It is easy to see that a total of has a strong tendency to be followed by a number (e.g. a total of 15 people) while the total of is frequently followed by noun. A close look at the actual lines would reveal that other (x) and adjective (j) refers to a determiner followed by a noun or adjective followed by a noun.
+
+![](https://lh6.googleusercontent.com/v3R72UzHkawBFggIjVbzIKLlHr9HZnbkIuKOCq6-VhaYv3Qw_LU4WXOgMnGVC_liaxoyVLnP9YRCaHQH6v0R6vScoOcSCIxTbcCrskhIyaWgKJlLAJ-70HZIzSN7dKLhLx8QJDSCxpAwIadHPg)
+
+A similar technique can be used to analyse the left or right context or of other lexical or grammatical structures.
+
+## Translations
+
+### Parallel concordance
+
+A parallel corpus is required for translation lookup. 
+
+This example shows segments in English and their translations into French and German. The yellow highlighting indicates the most probable place in the translated segment where the translation of the word could be located. The highlighting does not claim to be a direct translation.
+
+![](https://lh4.googleusercontent.com/RrzqpzcMjfouLWCZH9mbOvvMCVmhDNZIbKAZc6IO8qhK7s7OA3DImn3pkgyF8DoRDROoeMlgk72F4uoe2ggg8DLb0uVvqtmR4eSYQyrbyQRK7Fu1cIIFm7XG8DSo2BV6ZAnMQznHq2nCO0D7NQ)
+
+To learn to use the parallel concordance, use these resources:
+
+https://www.sketchengine.eu/quick-start-guide/parallel-concordance-lesson/
+
+https://www.sketchengine.eu/guide/parallel-concordance-searching-translations/
+
+YouTube [https://youtu.be/vklUWMRV1ew](https://youtu.be/vklUWMRV1ew)
+
+<Video provider="youtube" id="vklUWMRV1ew" />
+
+### Bilingual word sketch
+
+A very convenient way of looking up translations of collocations is the bilingual word sketch. A parallel corpus is not required. Two corpora in two languages will suffice. The result will be more relevant if the two corpora are comparable corpora. The tool will display the word sketches for the same lemma in two languages next to each other. Although this does not use any specific algorithms or statistics and it is only a different way of displaying the two word sketches, it makes it easy to locate the translation in the other language. 
+
+![](https://lh5.googleusercontent.com/txqBU8xEI9SwICypTQtvmTfqznMRkvuuPYwxyJ7pSPeUOBExXfwx744r7C0EaxDDDIfu8TvyAjlWEwrtYy82cAxvmsCipm5x8hCzaUoJzPZlhTBvreBOVWE1cwumkcw6FP9onqmCyL3f1KuOtw)
+
+![](https://lh6.googleusercontent.com/lWPbSVkxxFZUuWe3unleE9rRHs-yPHyJIjMO0Ua1a0p8SmnocJRWIiA1Dy2k38Z31qGt1J3l93yjiHKnfKTVxoVgXr2ZNAxuIUP2n2h8u8hCmrwdVduzghxg5UmH6LKrESmAWnX7VLcMlpuS-A)
+
+## Neologisms
+
+The tool to identify neologisms is called Trends. It requires time-stamped data to identify lexical items whose frequency of use changes in time. It will, therefore, identify neologisms, but also other words whose use increased or decreased over time because a certain topic started to be talked about frequently or because they are going out of use as outdated language or a topic with decreasing level of importance or interest.
+
+It is important to understand that the tool only takes into the change of the frequency in time. It does not perform any analysis whether the item  in question is a valid word or a neologism in the lexicographic sense of the word. Therefore, the result will always include many other tokens whose frequency changed in time but are not necessarily neologisms or legitimate words at all. Despite the high number of unwanted items, the result is still extremely useful. Although it still requires the user to go through the list and identify the real neologisms,  it may only take a couple of hours to go through a list of several thousand items and end up with a few dozen neologism candidates. When compared to the traditional, completely non-automated procedure of simply reading texts, it speeds the process up immensely. Months of searching are reduced to mere hours.
+
+![](https://lh3.googleusercontent.com/-TDkUteP7LuJFsV52sDIdWOrxOrhVf8wM0mcxuN9vUcgWWcVIUWb9nKjL64zaAqYvxjqwtqJr09E3FiISL92uZTOwU1fG1Ak0FuISFl4h-FxqsbX5Z971mC2Sykq7bxO5TjF_0V3IWCJnLNnJQ)
+
+Use this resource to learn the details: https://www.sketchengine.eu/guide/trends/
+
+## Thesaurus
+
+The tool to identify synonyms and words belonging to the same semantic field is called the Thesaurus in Sketch Engine. It uses a fully automatic process that evaluates lemmas in the corpus based on the collocations they form. The words that frequently co-occur with similar collocates are identified as similar in meaning. 
+
+Visit this link to understand better how the identification of synonyms works [https://www.sketchengine.eu/blog/automatic-thesaurus-synonyms-for-all-words/](https://www.sketchengine.eu/blog/automatic-thesaurus-synonyms-for-all-words/)
+
+The quality of the thesaurus is heavily influenced by the size of the corpus. For best results, both the headword and the synonyms should have a sufficient frequency, ideally thousands of hits or preferably much more. This means that  the largest possible corpus should be used.
+
+Use these resources to understand and learn to use the thesaurus:
+
+YouTube [https://youtu.be/kLsNUdTrTLk](https://youtu.be/kLsNUdTrTLk)
+
+<Video provider="youtube" id="kLsNUdTrTLk" />
+
+Web guide:
+
+[https://www.sketchengine.eu/quick-start-guide/thesaurus/](https://www.sketchengine.eu/quick-start-guide/thesaurus/)
+
+[https://www.sketchengine.eu/guide/thesaurus-synonyms-antonyms-similar-words/](https://www.sketchengine.eu/guide/thesaurus-synonyms-antonyms-similar-words/)
+
+## Concordance annotation tool
+
+Although Sketch Engine offers a multitude of options to generate the required result automatically, it is sometimes inevitable to process concrete hits (concordance lines) manually and divide them into groups or label them before the required analysis can be performed. This is typical in the case of corpora with a limited amount of metadata or when working with word senses or with phenomena that cannot be distinguished automatically.
+
+For this reason, Sketch Engine contains a concordance annotation tool which can be used to assign labels to concordance lines. 
+
+All tools  in Sketch Engine are linked to the concordance. It is therefore always possible to display the hits (the concrete concordance lines) which produced the concrete result and process them further manually.
+
+![](https://lh6.googleusercontent.com/uLEHUQixYSOJeeXI7aPX8l3GJP0_AZF59Dd3ixaRhnkZtSH6wtIK931QHLd8G4rPmnXy2wwy4RBL8n-BRyxPMMSO_X0G9S7xPQ6p0UIpoPhaHdoe9K9TTIAywTvdHUz7YRpPTl4nz3bAZQn8SQ)
+
+Use this link to learn to use [https://www.sketchengine.eu/guide/manual-annotation-skema/](https://www.sketchengine.eu/guide/manual-annotation-skema/)
+
+## CQL - Concordance advanced search
+
+The Corpus Query Language is a special code or query language used in Sketch Engine to search for complex grammatical or lexical patterns or to use search criteria which cannot be set using the standard user interface. CQL can make use of any information contained in the corpus such as the attribute (word form, lemma, tag…), text types, token positions, structure beginnings and ends (sentence, paragraph, dcoument…) and combine them into the same search query. 
+
+CQL can be used to construct simple as well as enormously complex search queries. 
+
+To learn to use CQL, it is best to start by watching these instructional videos: [https://www.youtube.com/playlist?list=PLPVgp0Xm6hWBLZzD7haCVbhC9pSfWZk1S](https://www.youtube.com/playlist?list=PLPVgp0Xm6hWBLZzD7haCVbhC9pSfWZk1S)
+
+<Video provider="youtube" id="playlist?list=PLPVgp0Xm6hWBLZzD7haCVbhC9pSfWZk1S" />
+
+**A detailed web guide can be found here: [https://www.sketchengine.eu/documentation/corpus-querying/](https://www.sketchengine.eu/documentation/corpus-querying/)**
