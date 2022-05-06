@@ -148,6 +148,7 @@ export const collection: CmsCollection = {
       widget: 'markdown',
       editor_components: [
         'image',
+        'Figure',
         'code-block',
         'Grid',
         'Download',

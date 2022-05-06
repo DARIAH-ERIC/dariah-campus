@@ -1,4 +1,5 @@
 import type { Doc as DocData, DocPreview } from '@/cms/api/docs.api'
+import { Figure } from '@/cms/components/Figure'
 import { RelativeOrAbsoluteLink } from '@/common/RelativeOrAbsoluteLink'
 import { ResponsiveImage } from '@/common/ResponsiveImage'
 import { useI18n } from '@/i18n/useI18n'
@@ -30,7 +31,11 @@ export function Docs(props: DocsProps): JSX.Element {
       <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
         <DocsContent
           code={docs.code}
-          components={{ Image: ResponsiveImage, a: RelativeOrAbsoluteLink }}
+          components={{
+            Image: ResponsiveImage,
+            a: RelativeOrAbsoluteLink,
+            Figure,
+          }}
         />
       </div>
       <footer>
