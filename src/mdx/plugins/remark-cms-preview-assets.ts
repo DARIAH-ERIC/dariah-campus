@@ -1,3 +1,4 @@
+import type { MDXJsxFlowElement } from 'hast-util-to-estree'
 import type * as Mdast from 'mdast'
 import type { PreviewTemplateComponentProps } from 'netlify-cms-core'
 import type { Transformer } from 'unified'
@@ -20,6 +21,20 @@ export default function attacher(
 
     function visitor(node: Mdast.Image) {
       node.url = String(getAsset(node.url))
+    }
+
+    visit(tree, 'mdxJsxFlowElement', onFigure)
+
+    function onFigure(node: MDXJsxFlowElement) {
+      node.attributes.forEach((attribute) => {
+        if (
+          'name' in attribute &&
+          attribute.name === 'src' &&
+          typeof attribute.value === 'string'
+        ) {
+          attribute.value = String(getAsset(attribute.value))
+        }
+      })
     }
   }
 }

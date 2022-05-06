@@ -1,4 +1,5 @@
 import type { Course as CourseData } from '@/cms/api/courses.api'
+import { Figure } from '@/cms/components/Figure'
 import { PageTitle } from '@/common/PageTitle'
 import { ResponsiveImage } from '@/common/ResponsiveImage'
 import { useI18n } from '@/i18n/useI18n'
@@ -32,7 +33,10 @@ export function Course(props: CourseProps): JSX.Element {
         </div>
       </header>
       <div className="prose-sm prose sm:prose">
-        <Mdx code={course.code} components={{ Image: ResponsiveImage }} />
+        <Mdx
+          code={course.code}
+          components={{ Image: ResponsiveImage, Figure }}
+        />
       </div>
       {resources.length > 0 ? (
         <div className="flex flex-col space-y-4">

@@ -26,6 +26,7 @@ import { extractFrontmatter } from '@/mdx/extractFrontmatter'
 import withDownloadsLinks from '@/mdx/plugins/rehype-download-links'
 import withHeadingLinks from '@/mdx/plugins/rehype-heading-links'
 import withImageCaptions from '@/mdx/plugins/rehype-image-captions'
+import withFigureImages from '@/mdx/plugins/rehype-lazy-loading-figure-images'
 import withLazyLoadingImages from '@/mdx/plugins/rehype-lazy-loading-images'
 import withMdxImageAttributes from '@/mdx/plugins/rehype-mdx-image-attributes'
 import withNoReferrerLinks from '@/mdx/plugins/rehype-no-referrer-links'
@@ -340,6 +341,7 @@ async function compileMdx(file: VFile): Promise<VFile> {
       withHeadingLinks,
       withNoReferrerLinks,
       withLazyLoadingImages,
+      withFigureImages,
       withImageCaptions,
       withMdxImageAttributes,
       withDownloadsLinks,
