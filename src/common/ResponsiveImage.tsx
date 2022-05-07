@@ -7,5 +7,13 @@ export function ResponsiveImage(props: ImageProps): JSX.Element {
     return <img alt="" {...props} src={props.src} />
   }
 
-  return <Image layout="responsive" sizes="800px" {...props} alt={props.alt} />
+  return (
+    <Image
+      layout="responsive"
+      sizes="800px"
+      objectFit="contain"
+      {...props}
+      alt={props.alt}
+    />
+  )
 }
