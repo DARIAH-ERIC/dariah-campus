@@ -15,10 +15,13 @@ import { Svg as OrcidIcon } from '@/assets/icons/brand/orcid.svg'
 import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
 import { Svg as CloseIcon } from '@/assets/icons/x.svg'
 import type { Event as EventData } from '@/cms/api/events.api'
+import { Figure } from '@/cms/components/Figure'
+import { Video } from '@/cms/components/Video'
 import { getFullName } from '@/cms/utils/getFullName'
 import { Icon } from '@/common/Icon'
 import { ModalDialog } from '@/common/ModalDialog'
 import { PageContent } from '@/common/PageContent'
+import { ResponsiveImage } from '@/common/ResponsiveImage'
 import { Mdx as EventContent, Mdx } from '@/mdx/Mdx'
 
 export interface EventProps {
@@ -162,6 +165,8 @@ function EventOverview(props: EventOverviewProps) {
                   p: function EventIntro(props) {
                     return <p className="home__intro">{props.children}</p>
                   },
+                  Figure,
+                  Image: ResponsiveImage,
                 }}
               />
 
@@ -273,6 +278,8 @@ function EventOverlay(props: EventOverlayProps) {
               ul: function EventOverlayList(props) {
                 return <ul className="list-disc">{props.children}</ul>
               },
+              Figure,
+              Image: ResponsiveImage,
             }}
           />
         </div>
@@ -693,6 +700,9 @@ function EventSession(props: EventSessionProps) {
                 </ol>
               )
             },
+            Figure,
+            Video,
+            Image: ResponsiveImage,
           }}
         />
         {session.synthesis != null ? (

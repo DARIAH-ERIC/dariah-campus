@@ -1,5 +1,6 @@
 import type { Post as PostData } from '@/cms/api/posts.api'
 import { ExternalResource } from '@/cms/components/ExternalResource'
+import { Figure } from '@/cms/components/Figure'
 import { Quiz } from '@/cms/components/quiz/Quiz'
 import { VideoCard } from '@/cms/components/VideoCard'
 import { PageTitle } from '@/common/PageTitle'
@@ -46,6 +47,7 @@ export function Resource(props: ResourceProps): JSX.Element {
           code={resource.code}
           components={{
             Image: ResponsiveImage,
+            Figure,
             Quiz,
             VideoCard,
             ExternalResource,

@@ -983,6 +983,11 @@ input[type='search']::-webkit-search-decoration {
   color: #fff;
   text-decoration: none;
 }
+.home__intro a {
+  display: inline;
+  color: inherit;
+  text-decoration: underline;
+}
 .session {
   position: relative;
   border-top: 3.125vw solid var(--violet2);

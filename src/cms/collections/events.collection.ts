@@ -266,6 +266,7 @@ export const collection: CmsCollection = {
           widget: 'markdown',
           editor_components: [
             'image',
+            'Figure',
             'code_block',
             'Video',
             'EventSessionSpeakers',

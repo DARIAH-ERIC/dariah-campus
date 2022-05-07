@@ -866,6 +866,11 @@
   color: #fff;
   text-decoration: none;
 }
+.home__intro a {
+  display: inline;
+  color: inherit;
+  text-decoration: underline;
+}
 
 .session {
   position: relative;

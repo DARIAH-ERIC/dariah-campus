@@ -36,6 +36,7 @@ const Cms = dynamic(
     const { videoEditorWidget } = await import('@/cms/widgets/Video')
     const { quizEditorWidget } = await import('@/cms/widgets/Quiz')
     const { videoCardEditorWidget } = await import('@/cms/widgets/VideoCard')
+    const { figureEditorWidget } = await import('@/cms/widgets/Figure')
     const { externalResourceEditorWidget } = await import(
       '@/cms/widgets/ExternalResource'
     )
@@ -103,6 +104,7 @@ const Cms = dynamic(
     Cms.registerEditorComponent(videoEditorWidget)
     Cms.registerEditorComponent(quizEditorWidget)
     Cms.registerEditorComponent(videoCardEditorWidget)
+    Cms.registerEditorComponent(figureEditorWidget)
     Cms.registerEditorComponent(externalResourceEditorWidget)
     Cms.registerEditorComponent(eventSessionSpeakersEditorWidget)
     Cms.registerEditorComponent(eventSessionDownloadEditorWidget)
