@@ -59,8 +59,22 @@ Thus what is labelled as ‘example’ in one dataset should be the same as an e
 The aim of the ELEXIS Data Model is to ensure semantic interoperability in the ELEXIS infrastructure between lexicographic resources by focussing on a set of core elements. These core elements are the elements that are considered useful for linking dictionary data in the Dictionary Matrix and these are also the elements that you can extract and transform from your custom XML or PDF data using Elexifier.
 
 The following core elements are distinguished and can be transformed in Elexifier:
-
-\[INSERT TABLE: entry; headword; sense; definition; translation (headword translation, example translation); example; part of speech; secondary headword; variant headword; inflected form; label; sense indicator; note; cross-reference]
+| Core element | Description |
+| --- | ----------- |
+| entry | part of a lexicographic resource which contains information related to at least one headword. |
+| headword | organising element of an entry in a lexicographic resource. Note: In printed dictionaries typically at the top of an entry.
+| secondary headword | headword-like lexical item occurring within an entry in a lexicographic resource, for example derived forms, feminine forms, multiword expressions. Often an organising element of a part of an entry. |
+| variant headword | lexical item representing one of the alternative forms of the headword, for example spelling variation or regional variation. |
+| inflected form | form of the inflectional paradigm of the headword. |
+| part of speech | any of the word classes to which a lexical item may be assigned, e.g. noun, verb, adjective, etc. |
+| sense | part of an entry which groups together information relating to a meaning of a headword (or secondary headword), for example definitions, examples, and translations. |
+| sense indicator | short statement that gives an indication of a meaning and permits its differentiation from other meanings within a sense structure of an entry. |
+| definition | statement that describes a meaning and permits its differentiation from other meanings within a sense structure of an entry. |
+| example | instance of a lexical item's usage in a specific sense. |
+| translation | equivalent in another language of any element in an entry. In Elexifier you can have a translation of the headword and of the example. |
+| label | item from a controlled vocabulary indicating some kind of restriction on the use of the lexical item, for example, time, region, domain, register. |
+| note | free text remark that can accompany any element in a lexicographic resource. |
+| cross-reference | element providing any kind of link or reference to another element within or outside the lexicographic resource. |
 
 Table 1. ELEXIS core elements that can be transformed using Elexifier.
 
