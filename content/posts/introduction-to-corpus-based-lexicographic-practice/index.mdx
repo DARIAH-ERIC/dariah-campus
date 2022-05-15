@@ -9,7 +9,10 @@ tags:
   - lexicography
 categories:
   - dariah
-abstract: This course will explore the notion of lexicographic evidence and the limitation of subjective views on language by tracing the changes in lexicographic practice from the extensive use of manually selected citations to the employment of large language corpora.
+abstract: This course will explore the notion of lexicographic evidence and the
+  limitation of subjective views on language by tracing the changes in
+  lexicographic practice from the extensive use of manually selected citations
+  to the employment of large language corpora.
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: training-module
@@ -19,7 +22,6 @@ licence: ccby-4.0
 toc: true
 uuid: 50Ga8xo5uDgdrz2eIIifW
 ---
-
 This course will explore the notion of lexicographic evidence and the limitation of subjective views on language by tracing the changes in lexicographic practice from the extensive use of manually selected citations to the employment of large language corpora. The course will introduce the fundamentals of corpus linguistics and corpus design, as well as the role played by various NLP tools such as taggers and parsers. At the end of this course, the students will have a basic understanding of how corpora can be used in dictionary writing, both for lemma selection, sense disambiguation, composing good definitions, choosing good examples and for automatic term and collocation extraction.
 
 ## Learning Outcomes
@@ -475,6 +477,101 @@ This example shows segments in English and their translations into French and Ge
 
 ![](https://lh5.googleusercontent.com/uwiK5N7EU0Eyb3rYCL5klLO9YuqHmNbWtzlaHkIzBUrSFdgsELoGpx792ldkgt76MWVKds3fodls8xXBtVP-pJpSDDWLrcKD3lyS5QYZcLadiP646ZW0EOBmx9eTVUpkHZgtEFCQtOty5OfwvQ)
 
+### Syntactic patterns
+
+There are several ways to explore syntactic patterns of a word.
+
+#### N-grams for discovering patterns
+
+Generating n-grams of different sizes that contain the word can show prepositions and other function words frequently found before and after the word. In Sketch Engine, the ADVANCED tab of the n-gram tools lets the user specify various search options and restricting conditions.
+
+![](https://lh6.googleusercontent.com/EBoY2x5ncS2SlOurDIigmizTIJ4ekpCdTBPuO1Zo8QiqVmA8u5XHv6ndJeb4joeWaFXJzKzzYSX6OFRBFozSZpHiE_7UOmIH1veF1MBig1lUyaNogoURd1SKAxSA59-Fb_eZ9410dD_xcB1L5w)
+
+#### Word sketches for discovering patterns
+
+Word sketches contain some grammatical relations specifically designed to identify the typical patterns, such as prepositions before and after the word or usage patterns:
+
+![](https://lh4.googleusercontent.com/sE77wTNcEmMGBk4UbN7xkMlhZNQ7hC8NOzC-r9C_FAdelZFyx1_gN4PXXOlEYV-iB6cWfXwlrp7fMizC25F1H5RrlmThXoKTO_R7IFHH0gmJjD-O-6Xn-UPqvP8De-c2HdwN_AgBrnZi42FQpA)
+
+#### Concordance for discovering patterns
+
+Using the concordance for discovering patterns involves mainly two concordance tools:
+
+- sorting the concordance lines
+- frequency distribution
+
+##### Sorting
+
+Sorting is only practical when the number of concordance lines is very small, typically a few dozen. Therefore, sorting has a very limited use and is generally unsuitable for multi-billion-word corpora which typically produce thousands of hits even when searching for rare phenomena.
+
+##### Frequency distribution
+
+Frequency distribution refers to a function that operates like a calculator of concordance lines. It produces counts of words, lemmas, tags and other attributes in specific positions of a concordance line. This frequency distribution shows the frequency of the POS attribute following a/the total of. It is easy to see that a total of has a strong tendency to be followed by a number (e.g. a total of 15 people) while the total of is frequently followed by noun. A close look a the actual lines would reveal that other (x) and adjective (j) refers to a determiner followed by a noun or adjective followed by a noun.
+
+![](https://lh5.googleusercontent.com/KS9KJFrEXcVEqOwVtIAmp6gffBzUUM17C5PA2z2GjCTi-wD-Fe-sN_hzyImB0BQ7ckk8yFo0N6tznwnxs4Oxe-4n6xyHvOYRDx_MCORtm_OIaR1sYq0KM8yVnySu9BYIeH5lWO5raAL6kLyGvg)
+
+A similar technique can be used to analyse the left or right context or of other lexical or grammatical structures.
+
+### Statistics
+
+Different tools which are part of a corpus software offer various types of statistics. It is beyond the scope of this course to provide a detailed explanation of each of them. However, when using Sketch Engine, the interface provides quick reference as well as detailed information about the various types of statistics via tooltips that are displayed upon hovering the mouse over the statistic or over the column header. The tooltips frequently contain links to more detailed information.
+
+![](https://lh5.googleusercontent.com/tP9qIUGtSQFZNTWUO_7vFuONBqNNrYtjq4EQdpDy7cWPVE7iuL2rke0PYvNp7co0nRa6I6aB-X0fJxRKAIOB86rLTWpTu4HoEb_AUQ2WUOonU-XgXed06zTMxOxNeqlPumbnKiCBPZLPLbDEYQ)
+
+
+
+#### Corpus size
+
+The size of the corpus is typically given in the number of words. Different corpus systems, however, have different ways of defining what a word is and it is common to see slightly different sizes depending on which corpus software is used. Sketch Engine provides different size measures, the most frequently used ones are the size in words and tokens whose definitions can be found on these links:
+
+[https://www.sketchengine.eu/my_keywords/token/](https://www.sketchengine.eu/my_keywords/token/)
+
+[https://www.sketchengine.eu/my_keywords/word/](https://www.sketchengine.eu/my_keywords/word/)
+
+#### Frequency
+
+The frequency is the basic statistics in corpora. It refers to the number of hits (the number of times the search word or phrase was found). It can only be used to compare information derived from the same corpus. It cannot be used to compare two different corpora because two corpora have different corpus sizes and, naturally, a larger corpus will produce a higher frequency than the smaller corpus. See also [https://www.sketchengine.eu/my_keywords/frequency/](https://www.sketchengine.eu/my_keywords/frequency/)
+
+#### Relative frequency, normalized frequency, frequency per million
+
+All three terms refer to the same statistic. Relative frequency is used to compare information derived from corpora of different sizes. The value does not depend on the corpus size. Sketch Engine uses frequency per million. Thus, a relative  frequency of 10 per million means that there are 10 hits in each million tokens on average. If the corpus is smaller than a million, it indicates what the frequency would be if the corpus had a million tokens. See also [https://www.sketchengine.eu/my_keywords/freqmill/](https://www.sketchengine.eu/my_keywords/freqmill/)
+
+#### Association scores and collocation metrics
+
+There are several statistical methods to discover collocations and to measure how strong, important or typical the relationship between the lexical items is.
+
+Historically, it was the T-score and MI Score that were used most frequently but the current corpora, which are many times larger than the corpora 30 years ago, require a more suitable metric such as the logDice.
+
+##### T-score
+
+The T-score expresses the certainty with which we can argue that there is an association between the words, i.e. their co-occurrence is not random. It will bring to the top the co-occurrences which are frequent enough. 
+
+Unfortunately, with multi-billion-word corpora, the corpus size affects the score to such an extent, that it mainly brings up co-occurrences which are only frequent without being particularly interesting or useful.
+
+See also [https://www.sketchengine.eu/my_keywords/t-score/](https://www.sketchengine.eu/my_keywords/t-score/)
+
+##### MI Score
+
+The Mutual Information Score will highlight pairs of words that frequently appear together and rarely combine with other words. It will successfully detect fixed phrases or technical terms.
+
+Since the score is affected by the corpus size, it is not particularly useful with modern large corpora where it frequently detects various random fixed items of little interest, for example, combinations of words which are misspelt and only appear very infrequently in the corpus. 
+
+See also [https://www.sketchengine.eu/my_keywords/mi-score/](https://www.sketchengine.eu/my_keywords/mi-score/)
+
+##### logDice
+
+The logDice score is a better option suited to large corpora. It is only based on the frequency of the node and the collocate and the frequency of the whole collocation (co-occurrence of the node and collocate). logDice is not affected by the size of the corpus and, therefore, can be used to compare scores between different corpora.
+
+See also [https://www.sketchengine.eu/my_keywords/logdice/](https://www.sketchengine.eu/my_keywords/logdice/)
+
+#### Keyness score
+
+The keyness score refers to any type of score used to identify keywords which are words with an unusually high frequency compared to some reference data, typically compared to another corpus. Keywords can also be understood as lexical items which are typical of or representative of your data when making a comparison with the reference data. 
+
+##### Simple Math
+
+The score used in Sketch Engine is called Simple Maths. It is used to identify keywords (single word items), terms (mutliword items), key n-grams and also key collocations. See also [https://www.sketchengine.eu/my_keywords/simple-maths/](https://www.sketchengine.eu/my_keywords/simple-maths/)
+
 ## Next steps
 
 This course provided you with the necessary theoretical background to use corpora in lexicographic practice. If you are interested in getting hands-on experience, we suggest continuing with the course LEX2: Mastering ELEXIS Corpus Tools for Lexicographic Purposes.
@@ -505,7 +602,7 @@ Hanks, P. (2013) Lexical Analysis: Norms and Exploitations. The MIT Press. Cambr
 
 Hartmann, R. R. K. (ed.). 1983. Lexicography; Principles and practice. London: Academic Press.
 
-Jurafksy D. and D.H. Martin (2021). Speech and Language Processing (3rd ed. Draft) Available at: [https://web.stanford.edu/\~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/) (accessed 30 April 2022).
+Jurafksy D. and D.H. Martin (2021). Speech and Language Processing (3rd ed. Draft) Available at: [https://web.stanford.edu/~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/) (accessed 30 April 2022).
 
 Kilgarriff A. and G. Grefenstette (2003). [Introduction to the Special Issue on Web as Corpus.](https://www.kilgarriff.co.uk/Publications/2003-KilgGrefenstette-WACIntro.pdf) Computational Linguistics 29 (3).
 
@@ -541,4 +638,4 @@ Svensén, B. (2009). A Handbook of Lexicography. The Theory and Practice of Dict
 
 Vries, M, de, Verslag der Redactie van het Nederlandsch Woordenboek. Haarlem: Kruseman, 1854-1862.
 
-Wortel, D. (1997). Het woordenboekcitaat in de oudste WNT-delen. In Voortgang. Jaarboek voor de Neerlandistiek, 17. 191-206. Available at: [https://www.dbnl.org/tekst/\_voo004199701_01/\_voo004199701_01_0009.php](https://www.dbnl.org/tekst/_voo004199701_01/_voo004199701_01_0009.php) (accessed 23 July 2021)
+Wortel, D. (1997). Het woordenboekcitaat in de oudste WNT-delen. In Voortgang. Jaarboek voor de Neerlandistiek, 17. 191-206. Available at: [https://www.dbnl.org/tekst/_voo004199701_01/_voo004199701_01_0009.php](https://www.dbnl.org/tekst/_voo004199701_01/_voo004199701_01_0009.php) (accessed 23 July 2021)
