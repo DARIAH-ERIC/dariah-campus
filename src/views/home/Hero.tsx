@@ -11,8 +11,8 @@ export function Hero(): JSX.Element {
         Looking for learning resources?
       </h1>
       <p className="text-xl lg:text-2xl text-neutral-500">
-        DARIAH-CAMPUS is a discovery framework and hosting platform for DARIAH
-        learning resources.
+        DARIAH-CAMPUS is a discovery framework and hosting platform for learning
+        resources.
       </p>
     </div>
   )
