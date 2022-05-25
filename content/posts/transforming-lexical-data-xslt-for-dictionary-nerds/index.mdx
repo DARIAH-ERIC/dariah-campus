@@ -64,7 +64,7 @@ This really bears repeating: you can't do XSLT without XPATH. This is because XS
 
 XSLT was created specifically for trasnforming XML. It's data-centric, purpose-built and quite clever: unlike general programming languages, which can be used to create all sorts of different pieces of software, XSLT does one thing, and it does it well. 
 
-<figure style={{ width: "40%", float: "right" }}>
+<figure style={{ width: "40%", float: "right", "margin": "0 0 0 0.5em" }}>
   <img src="https://i.imgur.com/kYSdoof.jpg" alt="Trulli" />
   <figcaption>
     Like a lazy cat, XSLT goes for the absolute minimum! <span style={{ fontSize: "70%" }}>(Photo by <a href="https://unsplash.com/photos/9UUoGaaHtNE">@ludemeula</a>)</span>
@@ -89,7 +89,7 @@ When you click on the project file, `XSLTforDictionaryNerds.xpr` the project wil
 
 TODO: Add screenshot (when all the files to be used in this course can be seen in the project file.)
 
-To get us started, in your Project View, click on the file `johnson-in-bad-TEI`.xml. As the title suggests, this is not a "good" TEI file. And oXygen will tell you the same by:
+To get us started, in your Project View, click on the file `johnson-in-bad-TEI.xml`. As the title suggests, this is not a "good" TEI file. And oXygen will tell you the same by:
 - underlining problematic content in the main editing pane;
 - displying red markers in the right-side vertical stripe; and
 - displaying the overall result of the failed validation in at the bottom of the screen with a total number of errors.
@@ -454,9 +454,10 @@ So, what's wrong with our TEI example and what changes to we want to see in it?
 
 1. there is no `<lemma>` element in TEI; we should replace it with a `<form type='lemma'><orth></orth></form>` contstruct;
 2. `<pos>` exists in TEI, but it can't be the child of `<entry>`; we should replace it with a `<gramGrp><gram type='pos'></gram></gramGrp>` construct;
-3. there is no `<etymology>` in TEI and the whole section is a mess with a bunch of made-up elements; for the sake of simplicity, let's skip it, i.e. not have it in the output at all
-4. `<quote>` is a valid TEI element, but it's not allowed as a child of `<sense>`; let's wrap the `<quote>` with a `<cit type='example'></cit>`
-5. there is no `<author>` in TEI; let's replace it with `<bibl>` and let's also make sure it's grouped together with `<quote>` inside `<cit type='example'></cit>`.
+3. there is no `<etymology>` in TEI and the whole section is a mess with a bunch of made-up elements; for the sake of simplicity, let's skip it, i.e. not have it in the output at all;
+4. `<quote>` is a valid TEI element, but it's not allowed as a child of `<sense>`; let's wrap the `<quote>` with a `<cit type='example'></cit>`;
+5. there is no `<author>` in TEI; let's replace it with `<bibl>`; and 
+6. let's also make sure the newly created `<bibl>` is grouped together with `<quote>` inside `<cit type='example'></cit>`.
 
 So let's write templates for each of these problems:
     
@@ -488,8 +489,252 @@ So let's write templates for each of these problems:
     
     **Action:** copy the above template to your stylesheet and run the transformation! 
     
+2. To tranform `<pos>` into `<gramGrp><gram type='pos'></gram></gramGrp>`, we should use the same kind of template as we did above for transforming our `<lemma>` element. 
 
+     **Action:** Try it on your own! If you run into difficulties, you'll be able to check out the solution in the full stylesheet at the end of this section. 
  
+3. With apologies to our dear etymologist friends, we've decided to skip the entire `<etmymology>` section. We've actually covered this already above, when we were playing around with the `<entry>` element. 
+
+     **Action:** Write a template which will not output any content from `<etymology>`. If you run into difficulties, you'll be able to check out the solution in the full stylesheet at the end of this section.
+     
+4. To wrap the `<quote>` with a `<cit type='example'></cit>`, we should follow the same approach as above, but since we'll be wrapping an element around `<quote>`, which is itself an element, we won't be able to use the instruction `<xsl:value-of>`. So let's look at this more closely. 
+
+    To begin with, add this template to the stylesheet:
+    
+    ```xml
+    <xsl:template match="quote">
+        <cit type="example">
+            
+        </cit>
+    </xsl:template>
+    ```
+    
+    When you run the trasnformation containing this template, your transformed `<sense>` will look like this:
+    
+    ```xml
+    <sense>
+       <def>A writer of dictionaries; a harmless drudge, that busies himself with tracing the original, and detailing the signification of words.</def>
+       <cit type="example"/>
+       <author>Watts.</author>
+    </sense>
+    ```
+    
+    As a next step, we want to copy the original `<quote>` element together with its content. How do we do this? 
+    
+    If you have been practicing all the steps so far, you should have encountered the `<xsl:copy>` instruction, which copies the context node, but not its attributes or children. You should also be familiar with how to copy the content of the text node from the previous examples, using `<xsl:value-of>`. So in principle, you should be able to concoct a template like this:
+
+    ```xml
+    <xsl:template match="quote">
+        <cit type="example">
+            <xsl:copy>
+               <xsl:value-of select="./text()"/>
+            </xsl:copy>  
+        </cit>
+    </xsl:template>
+    ```
+    The `<xsl:copy>` instruction copies the context node, which is `<quote>` and inside it the `<xsl:value-of>` instruction selects and copies the text value of the same context node.
+    
+    But, as you will learn when working with XSLT, there are numerous ways of achieving the same thing. And there is an easier way to achieve the above using the `<xsl:copy-of>` instruction, which copies not only the context node, but also all its children. Try the following template in our stylesheet:
+    
+    ```xml
+    <xsl:template match="quote">
+        <cit type="example">
+            <xsl:copy-of select="."/>  
+        </cit>
+    </xsl:template>
+   ```
+   The resulting `<sense>` element will be the same as in the previous example. You will get: 
+   
+    ```xml    
+    <sense>
+        <def>A writer of dictionaries; a harmless drudge, that busies himself in tracing the original, and detailing the signification of words.</def>
+            <cit type="example">
+                 <quote>Commentators and lexicographers acquainted with the Syriac language, have given these hints in their writings on scripture.</quote>
+            </cit>
+         <author>Watts.</author>
+    </sense> 
+    ```   
+
+5. So the only remaining thing for us to do is to make sure that the non-valid element `<author>` is transformed into `<bibl>` and output as the child of `<cit>` and not `<sense>`. 
+
+    First of all, we'll need to add a second `<copy-of>` instruction inside `<cit>` in order to select the `<author>`:
+    
+    ```xml
+    <xsl:template match="quote">
+        <cit type="example">
+            <xsl:copy-of select="."/>
+            <!--here we need to transform <author> into <bibl>-->
+        </cit>
+    </xsl:template>   
+    ```   
+    First of all, we need to figure out what is the relationship of the context node (`<quote>`) and `<author>`? How do we get from `<quote>` to `<author>` in XPATH? `<quote>` and `<author>` are siblings. If `.` is the context node, then we need to go one step up the tree to the parent node (which in this case would be `<sense>`) and then one step down to `<author>`. As you, do doubt, will remember from our XPATH course, going one step up the XML hierarchy is achieved with two dots. 
+    
+    So let's, for a moment, just make sure that our dot notation works. Try running the following template:
+    
+     ```xml
+    <xsl:template match="quote">
+        <cit type="example">
+            <xsl:copy-of select="."/>
+            <xsl:copy-of select="../author"/>      
+        </cit>
+    </xsl:template>   
+    ```      
+    The resulting XML shouldn't surprise you. 
+
+    ```xml    
+    <sense>
+         <def>A writer of dictionaries; a harmless drudge, that busies himself in tracing the original, and detailing the signification of words.</def>
+             <cit type="example">
+               <quote>Commentators and lexicographers acquainted with the Syriac language, have given these hints in their writings on scripture.</quote>
+               <author>Watts.</author>
+            </cit>
+         <author>Watts.</author>
+    </sense> 
+    ```   
+
+    We're getting closer to where we want to be, but we're not quite there yet. With `<xsl:copy-of select="../author"/>`,  we selected the right node, but `<xsl:copy-of>` selected the `<author>` element as well, which we don't want to have in the output. So we need a different strategy. 
+    
+    We should explicitly create the correct TEI element to replace the `<author>` and then either copy the value of the text node from `<author>`: 
+
+    ```xml
+    <xsl:template match="quote">
+        <cit type="example">
+            <xsl:copy-of select="."/>
+            <bibl>
+                <xsl:value-of select="../author/text()"/>
+            </bibl> 
+        </cit>
+    </xsl:template>
+    ```
+    
+    Running the above template inside our stylesheet will produce this output: 
+
+    ```xml    
+    <sense>
+         <def>A writer of dictionaries; a harmless drudge, that busies himself in tracing the original, and detailing the signification of words.</def>
+             <cit type="example">
+               <quote>Commentators and lexicographers acquainted with the Syriac language, have given these hints in their writings on scripture.</quote>
+               <bibl>Watts.</bibl>
+            </cit>
+         <author>Watts.</author>
+    </sense> 
+    ``` 
+    As far as our `cit` object is concerned, we are done: we have both the `quote` and the `bibl` inside the `cit`, where they belong, according to TEI Gospel. But take a good look at our last output. There is is still one thing left to do. What do you think it is? 
+    
+    We still have a dangling `<author>` element oustide the `<cit>`? Why is that? This is because we didn't create a special template to match the `cit` element. We got to the value of the `author` text node from within the template which matched `quote`. This means that, from the point of view of our lazy XSLT processor, `<author>` was not explictly matched, and therefore it was subject to the shallow copy instruction on no match, which we introduced at the top of our stylesheet. 
+
+    It is essential, however, that you remember the difference between `<xsl:copy>` and `<xsl:copy-of>` as well as how these two instructions differ from `<xsl:value-of>`. We'll review them one more time at the end of this section.
+    
+6. To get rid of the dangling author, write a template that will match it and produce no output. We have encountered this kind of template before. If you can't remember, go over the previous sections and remember what happened when we started playing with the entry. 
+
+By now, you should have a working stylesheet that turn bad TEI into good TEI. As an additional bonus, you should change the title in your `teiHeader` to something more appropriate than "Bad TEI example..."
+
+Make sure you've tried all the steps above before simply copying and pasting the following full stylesheet into oXygen.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:tei="http://www.tei-c.org/ns/1.0"
+    exclude-result-prefixes="tei"
+    xpath-default-namespace="http://www.tei-c.org/ns/1.0"
+    version="3.0"> 
+    
+    <xsl:mode on-no-match="shallow-copy"/>
+    
+    <xsl:template match="entry">
+        <xsl:copy>
+            <xsl:comment>This is a fancy dicitonary entry.</xsl:comment>
+            <xsl:apply-templates/>        
+        </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="lemma">
+        <form type="lemma">
+            <orth>
+                <xsl:value-of select="text()"/>
+            </orth>
+        </form>
+    </xsl:template>
+    
+    <xsl:template match="pos">
+        <gramGrp>
+            <gram type="pos">
+                <xsl:value-of select="text()"/>
+            </gram>
+        </gramGrp>  
+    </xsl:template>
+    
+    <xsl:template match="etymology"/>
+    
+    <xsl:template match="quote">
+        <cit type="example">
+            <xsl:copy-of select="."/>
+            <bibl>
+                <xsl:value-of select="../author/text()"/>
+            </bibl>           
+        </cit>
+    </xsl:template>
+    
+    <xsl:template match="title">
+        <xsl:copy>
+            Good TEI example, transformed by XSLT, of Johnson's entry 'Lexicographer'
+        </xsl:copy>
+    </xsl:template>
+</xsl:stylesheet>
+```
+
+Running the above stylesheet on our `johnson-in-bad-TEI.xml` file will now produce the following output:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title> Good TEI example, transformed by XSLT, of Johnson's entry 'Lexicographer'
+                </title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Data for the DARIAH-Campus course "Transforming Lexicographic Data: XSLT for
+                    Dictionary Nerds"</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Information about the source</p>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <entry>
+                <!--This is a fancy dicitonary entry.-->
+                <form type="lemma">
+                    <orth>Lexico'grapher</orth>
+                </form>
+                <gramGrp>
+                    <gram type="pos">n.s.</gram>
+                </gramGrp>
+                <sense>
+                    <def>A writer of dictionaries; a harmless drudge, that busies himself in tracing
+                        the original, and detailing the signification of words.</def>
+                    <cit type="example">
+                        <quote>Commentators and lexicographers acquainted with the Syriac language,
+                            have given these hints in their writings on scripture.</quote>
+                        <bibl>Watts.</bibl>
+                    </cit>               
+                </sense>
+            </entry>
+        </body>
+    </text>
+</TEI>
+```
+
+#### Review
+
+- what have we learned so far
+- `xsl:copy` vs. `xsl:copy-of` vs. `xsl:value-of`
+
+TODO: Quizz
 
 ## Processing dictionary data
 
@@ -506,3 +751,4 @@ So let's write templates for each of these problems:
 ### Gathering HTML views of dictionary content
 
 ## Exercises
+
