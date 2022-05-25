@@ -38,10 +38,9 @@ Upon completion of this course, students will be able to
 XSLT (Extensible Stylesheet Language Transformations) is a standard, XML-based programming language for transforming XML documents. 
 
 With XSLT, an XML file can be transformed into:
-
-1. a different kind of XML (for instance, if you decide to rename your elements, change your attribute values or altogether express the content of your file using a different XML vocabulary or schema).
-2. HTML, for displaying your content in a web-browser; or
-3. an altogether different format, such as, for instance, PDF.
+1) a different kind of XML (for instance, if you decide to rename your elements, change your attribute values or altogether express the content of your file using a different XML vocabulary or schema).
+2) HTML, for displaying your content in a web-browser; or
+3) an altogether different format, such as, for instance, PDF.
 
 ### What is an XSLT stylesheet?
 
@@ -65,15 +64,16 @@ This really bears repeating: you can't do XSLT without XPATH. This is because XS
 
 XSLT was created specifically for trasnforming XML. It's data-centric, purpose-built and quite clever: unlike general programming languages, which can be used to create all sorts of different pieces of software, XSLT does one thing, and it does it well. 
 
-TODO: Convert to smaller floating image image if possible or get rid of 
-
-<Figure src="https://i.imgur.com/kYSdoof.jpg" alt="Cat sleeping">
-Like a lazy cat, XSLT goes for the absolute minimum! (Photo by <a href="https://unsplash.com/photos/9UUoGaaHtNE">@ludemeula</a>)
-</Figure>
+<figure style={{ width: "50%", float: "right", "margin-left": "1em", "margin-bottom": "0", "margin-top": "0.5em", "margin-bottom": "0"  }}>
+  <img src="https://i.imgur.com/kYSdoof.jpg" alt="Trulli" />
+  <figcaption>
+    Like a lazy cat, XSLT goes for the absolute minimum! <span style={{ fontSize: "70%" }}>(Photo by <a href="https://unsplash.com/photos/9UUoGaaHtNE">@ludemeula</a>)</span>
+  </figcaption>
+</figure>
 
 When you start writing and using XSLT stylesheets, you will notice a particular kind of slacker logic: XSLT never wants you to go for anything but the bare minimum! Instead of writing specific rules for each and every element in your XML tree, XSLT teaches you to do more by doing less. You will write one generic, default rule, which will cover all your elements and attributes unless you add specific templates to override them.
 
-Why is this cool? Just imagine how much effort it would take to write explicit rules for every single element in your dictionary if all you want to do is, for instance, change the numbering of your senses, or add brackets around your usage labels? XSLT makes it possible to write specific transformation rules or _templates_, as they are known in the XSLT universe, and apply them only there where you want to see something other than the default behavior. 
+Why is this cool? Just imagine how much effort it would take to write explicit rules for every single element in your dictionary if all you want to do is, for instance, change the numbering of your senses, or add brackets around your usage labels? XSLT makes it possible to write specific transformation rules or *templates*, as they are known in the XSLT universe, and apply them only there where you want to see something other than the default behavior. 
 
 If your stylesheet does not contain any templates of your own, XSLT will output all the plain text from your XML without any markup. In other words, unless you instruct your XSLT processor ohterwise, it will navigate from the document node at the top of your XML tree (in our case, most likely from the root `/TEI` node ) all the way down, outputting text whenever it encounters it. This is probably not particularly useful -- after all, you encoded your dictionary in TEI XML so that you can do more interesting things than simply strip the file of all markup -- but it illustrates the power of defaults in XSLT.
 
@@ -88,14 +88,43 @@ When you click on the project file, `XSLTforDictionaryNerds.xpr` the project wil
 TODO: Add screenshot (when all the files to be used in this course can be seen in the project file.)
 
 To get us started, in your Project View, click on the file `johnson-in-bad-TEI`.xml. As the title suggests, this is not a "good" TEI file. And oXygen will tell you the same by:
-
 - underlining problematic content in the main editing pane;
 - displying red markers in the right-side vertical stripe; and
 - displaying the overall result of the failed validation in at the bottom of the screen with a total number of errors.
 
 ![](https://i.imgur.com/hnNWChF.png)
+![](https://i.imgur.com/jczYdcg.png)
 
-We will create an XSLT stylesheet to fix all these errors. 
+We will create an XSLT stylesheet to fix all these errors.
+
+To begin with, let's create a new XSLT stylesheet.
+
+1. Click the New button (which looks like an empty sheet of paper) on the toolbar or select File > New from the main menu.
+2. If you don't see "XSLT Stylesheet" in the popup window, type "XSLT" in the filter search box.
+3. Click on "XSLT Stylesheet" to select it as the document type you want to create.
+4. Check the "Save as" checkbox and specify the file path. You can enter the file path by hand or choose the folder on your file system by clicking on the yellow folder icon next to the default file path. Make sure that you save the newly created stylesheet in the same folder as your `johnson-in-bad-TEI.xml` and name it `johnson2TEI.xsl`.
+
+  ![](https://i.imgur.com/ffeDBxm.png)
+  
+5. Click on the blue "Create" button.
+
+    This will create a new stylesheet file with the following content:
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        exclude-result-prefixes="xs"
+        version="2.0">
+        
+    </xsl:stylesheet>
+    ```
+
+    We'll explain a little later what these lines of code mean. But let's first finish setting up oXygen in such a way that we can view both our bad TEI _and_ the XSLT stylesheet. To do that:
+
+6. Select Window > Open perspective > XSLT Debugger from the main menu, or click on the XSLT icon in the upper right conrer of the main window. 
+
+    ![](https://i.imgur.com/cKkYPSC.png)
 
 ## XSLT syntax and processing model
 
