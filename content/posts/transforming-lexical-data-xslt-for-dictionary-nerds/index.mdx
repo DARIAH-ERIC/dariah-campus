@@ -21,7 +21,6 @@ licence: ccby-4.0
 toc: true
 uuid: DPF60ESE5Bf1jmjtPXzWI
 ---
-
 The course builds upon Extracting Lexical Data: XPath for Dictionary Nerds and introduces the basics of XSL Transformations (XSLT), a standard language for transforming XML documents. After explaining the basic syntax and processing model of XSLT (stylesheet declarations, templates, pattern matching etc.), the course will guide students through a number of real-life dictionary-specific scenarios (renaming, adding or removing elements and attributes, rearranging and sorting elements, performing tests, hiding and showing portions of the dictionary content etc.) in order to help them improve their skills. At the end of this course, students will be able to write their own XSLT stylesheets to transform lexicographic data.
 
 ## Learning Outcomes
@@ -36,9 +35,67 @@ Upon completion of this course, students will be able to
 
 ### What is XSLT?
 
+XSLT (Extensible Stylesheet Language Transformations) is a standard, XML-based programming language for transforming XML documents. 
+
+With XSLT, an XML file can be transformed into:
+
+1. a different kind of XML (for instance, if you decide to rename your elements, change your attribute values or altogether express the content of your file using a different XML vocabulary or schema).
+2. HTML, for displaying your content in a web-browser; or
+3. an altogether different format, such as, for instance, PDF.
+
+### What is an XSLT stylesheet?
+
+An XSLT stylesheet is a script which defines rules for transforming XML files using the XSLT langauge. In this course, you will learn how to write your own stylesheets to trasnform lexicographic data.
+
+### What is an XSLT processor?
+
+To perform an XSLT trasnformation, you will need an XSLT processor or a text editor which comes with a bundled XSLT Processor. 
+
+An XSLT processor is a piece of software which takes one or more XML files as input and applies rules defined in XSLT stylesheet(s) in order to produce the desired output. 
+
+In this course, we'll be using Oxygen XML Editor. 
+
 ### Prerequisites
 
-### XPATH vs. XSLT
+You should already be familiar with the fundamentals of XML and XPATH. If not, you could visit the sections on XML in Intro to modeling TODO:ADD LINK, and Extracting Lexicographic Data: XPath for Dictionary Nerds TODO: ADD LINK.  
+
+This really bears repeating: you can't do XSLT without XPATH. This is because XSLT uses XPATH to identify the parts of the XML that you want to transform.
+
+### The logic of XSLT
+
+XSLT was created specifically for trasnforming XML. It's data-centric, purpose-built and quite clever: unlike general programming languages, which can be used to create all sorts of different pieces of software, XSLT does one thing, and it does it well. 
+
+TODO: Convert to smaller floating image image if possible or get rid of 
+
+<Figure src="https://i.imgur.com/kYSdoof.jpg" alt="Cat sleeping">
+Like a lazy cat, XSLT goes for the absolute minimum! (Photo by <a href="https://unsplash.com/photos/9UUoGaaHtNE">@ludemeula</a>)
+</Figure>
+
+When you start writing and using XSLT stylesheets, you will notice a particular kind of slacker logic: XSLT never wants you to go for anything but the bare minimum! Instead of writing specific rules for each and every element in your XML tree, XSLT teaches you to do more by doing less. You will write one generic, default rule, which will cover all your elements and attributes unless you add specific templates to override them.
+
+Why is this cool? Just imagine how much effort it would take to write explicit rules for every single element in your dictionary if all you want to do is, for instance, change the numbering of your senses, or add brackets around your usage labels? XSLT makes it possible to write specific transformation rules or _templates_, as they are known in the XSLT universe, and apply them only there where you want to see something other than the default behavior. 
+
+If your stylesheet does not contain any templates of your own, XSLT will output all the plain text from your XML without any markup. In other words, unless you instruct your XSLT processor ohterwise, it will navigate from the document node at the top of your XML tree (in our case, most likely from the root `/TEI` node ) all the way down, outputting text whenever it encounters it. This is probably not particularly useful -- after all, you encoded your dictionary in TEI XML so that you can do more interesting things than simply strip the file of all markup -- but it illustrates the power of defaults in XSLT.
+
+## Your first XSLT transformation
+
+To proceed with this course, you will need to get some files and make sure you know how to create and apply XSLT stylesheets in oXygen XML Editor.  
+
+TODO: Add instructions for downloading the files from the DARIAH lexical resources Github. 
+
+When you click on the project file, `XSLTforDictionaryNerds.xpr` the project will open in oXygen. You should see something like this:
+
+TODO: Add screenshot (when all the files to be used in this course can be seen in the project file.)
+
+To get us started, in your Project View, click on the file `johnson-in-bad-TEI`.xml. As the title suggests, this is not a "good" TEI file. And oXygen will tell you the same by:
+
+- underlining problematic content in the main editing pane;
+- displying red markers in the right-side vertical stripe; and
+- displaying the overall result of the failed validation in at the bottom of the screen with a total number of errors.
+
+![](https://i.imgur.com/hnNWChF.png)
+
+We will create an XSLT stylesheet to fix all these errors. 
 
 ## XSLT syntax and processing model
 
