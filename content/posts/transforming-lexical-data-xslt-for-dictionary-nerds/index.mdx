@@ -64,7 +64,7 @@ This really bears repeating: you can't do XSLT without XPATH. This is because XS
 
 XSLT was created specifically for trasnforming XML. It's data-centric, purpose-built and quite clever: unlike general programming languages, which can be used to create all sorts of different pieces of software, XSLT does one thing, and it does it well. 
 
-<figure style={{ width: "50%", float: "right", "margin-left": "1em", "margin-bottom": "0", "margin-top": "0.5em", "margin-bottom": "0"  }}>
+<figure style={{ width: "40%", float: "right" }}>
   <img src="https://i.imgur.com/kYSdoof.jpg" alt="Trulli" />
   <figcaption>
     Like a lazy cat, XSLT goes for the absolute minimum! <span style={{ fontSize: "70%" }}>(Photo by <a href="https://unsplash.com/photos/9UUoGaaHtNE">@ludemeula</a>)</span>
@@ -79,6 +79,8 @@ If your stylesheet does not contain any templates of your own, XSLT will output 
 
 ## Your first XSLT transformation
 
+### Get the files
+
 To proceed with this course, you will need to get some files and make sure you know how to create and apply XSLT stylesheets in oXygen XML Editor.  
 
 TODO: Add instructions for downloading the files from the DARIAH lexical resources Github. 
@@ -92,12 +94,11 @@ To get us started, in your Project View, click on the file `johnson-in-bad-TEI`.
 - displying red markers in the right-side vertical stripe; and
 - displaying the overall result of the failed validation in at the bottom of the screen with a total number of errors.
 
-![](https://i.imgur.com/hnNWChF.png)
 ![](https://i.imgur.com/jczYdcg.png)
 
 We will create an XSLT stylesheet to fix all these errors.
 
-To begin with, let's create a new XSLT stylesheet.
+### Create a new stylesheet
 
 1. Click the New button (which looks like an empty sheet of paper) on the toolbar or select File > New from the main menu.
 2. If you don't see "XSLT Stylesheet" in the popup window, type "XSLT" in the filter search box.
@@ -108,7 +109,7 @@ To begin with, let's create a new XSLT stylesheet.
   
 5. Click on the blue "Create" button.
 
-    This will create a new stylesheet file with the following content:
+    This will create a new stylesheet file with the so-called `stylesheet declaration`, i.e. the `<xsl:stylesheet>` element which tells the processor that this file is indeed an XSLT stylesheet:
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -120,19 +121,375 @@ To begin with, let's create a new XSLT stylesheet.
     </xsl:stylesheet>
     ```
 
-    We'll explain a little later what these lines of code mean. But let's first finish setting up oXygen in such a way that we can view both our bad TEI _and_ the XSLT stylesheet. To do that:
+    We'll explain a little later what these lines of code mean. But let's first finish setting up oXygen in such a way that we can view both our bad TEI _and_ the XSLT stylesheet, and making sure that we can run an XSLT trasnformation. To do that:
 
-6. Select Window > Open perspective > XSLT Debugger from the main menu, or click on the XSLT icon in the upper right conrer of the main window. 
+6. Select Window > Open perspective > XSLT Debugger from the main menu, or click on the XSLT icon in the upper right conrer of the main window. This will open the XSLT Debugger perspective, in which you will see both of your files side-by-side. 
+
+7. If you have other files open in oXygen, make sure that you've selected `johnson-in-bad-TEI.xml` from the XML dropdown menu in the upper left corner of the window, as well as `johson2TEI.xsl` in the XSL dropdown next to it. 
 
     ![](https://i.imgur.com/cKkYPSC.png)
 
+8. To test the XSLT transformation in the Debugger Perspective, click, on the blue arrow icon below the XSL dropdow, or select Debugger > Run from the main menu.
+
+    ![](https://i.imgur.com/A0kkc1R.png)
+
+    Congratulations! You've just run your first XSLT transformation. In the Output pane, to the right of your stylesheet, you will see that the text from your XML file has been copied without any markup. This is the result of the built-in default because you didn't provide any specific rules in your stylesheet. 
+
+    ![](https://i.imgur.com/2icosvY.png)
+
+
 ## XSLT syntax and processing model
 
-### Stylesheet declarations
+XSLT stylesheets are written in XML. So everything you already know about elements and attributes in XML will apply here as well. 
 
-### Templates
+As you could see from the template created by oXygen for you, XSLT uses the `xsl` namespace to distinguish itself from the xml content it will be transforming.
 
-### Pattern matching
+### Stylesheet declaration
+
+Because we'll be working with TEI files for the rest of this course, let's learn how to adjust the default stylesheet declaration from oXygen to something that will make our life just a little bit easier when working with TEI. 
+
+Replace the content of `johnson2TEI.xsl` with this:
+
+  ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+        xmlns:tei="http://www.tei-c.org/ns/1.0"
+        exclude-result-prefixes="tei"
+        xpath-default-namespace="http://www.tei-c.org/ns/1.0"
+        version="3.0"> 
+    
+    </xsl:stylesheet>
+  ```
+
+You will notice several things:
+
+- the namespace declaration for XSL itself: `xmlns:xsl="http://www.w3.org/1999/XSL/Transform"` which will tell the XSLT processor that all the elements in the `xsl` namespace will contain trasnformation instructions;
+- the namespace declaration for TEI: `xmlns:tei="http://www.tei-c.org/ns/1.0"`, which will tell the XSLT processor that all the element in this namespace are TEI content;
+- the `exclude-result-prefixes` attribute wtih a signle value `tei`, which will tell the XSLT processor that it doesn't have to add explicit `tei` prefix to the output document, because we know that the entire document will be in TEI anyway, so that would be a little superflous;
+- the `xpath-default-namespace` attribute with the value `http://www.tei-c.org/ns/1.0` which declares the TEI namespace also to be default namespace for identifying nodes in the XML file. This way when you look for the `entry` node in your TEI file, you'll be able to type `//entry` as opposed to `//tei:entry`; and
+- the `version` attribute, which instructs your XSLT processor which version of the XSLT language to use. In the rest of this course, we'll be using XSLT 3.0. 
+
+After you've replaced the content of your `johnson2TEI.xsl` file, try running the transformation again. The result won't be any different, because we haven't yet added any specific rules, but do this anyway to make sure that you've copied things correctly. 
+
+### Default behavior
+
+Another thing we want to change is the default behavior of the XSTL processor. We don't want to output all text of every node for which we haven't created a specific rule. 
+
+Add this line to your stylesheet: 
+
+```xml
+<xsl:mode on-no-match="shallow-copy"/>
+```
+
+With this instruction, the XSLT processor will know that you want it to copy each node for which it has not encountered any specific instructions and then continue doing the same with its children: copy, unless there are more specific instructions.
+
+So, your current stylesheet should look like this:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:tei="http://www.tei-c.org/ns/1.0"
+    exclude-result-prefixes="tei"
+    xpath-default-namespace="http://www.tei-c.org/ns/1.0"
+    version="3.0"> 
+    
+    <xsl:mode on-no-match="shallow-copy"/>
+    
+</xsl:stylesheet>
+```
+
+Now, run this transformation. 
+
+What happened? The entire structure and content of your "bad" TEI file has been reproduced in the output. This is because we told the XSLT processor to copy every node and every attribute for which it couldn't find specific rules, and keep doing that until it reaches the end of the "bad" TEI file. 
+
+### Templates and pattern matching
+
+So let's start making some real changes! 
+
+XSLT rules are packaged as templates. For instance, the following template will identify all entry elements in your dictionary:
+
+```xml    
+<xsl:template match="entry">
+    <!-- here you need to give specific
+    instructions regarding output -->
+</xsl:template>
+
+```
+
+What will happen if you add this template to your stylesheet (in a new row after the `<xsl:mode on-no-match="shallow-copy"/>`) and run the transformation in oXygen? 
+
+In the output, you should be seeing something like this:  
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Bad TEI example of Johnson's entry 'Lexicographer'</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Data for the DARIAH-Campus course "Transforming Lexicographic Data: XSLT for Dictionary Nerds"</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         
+      </body>
+   </text>
+</TEI
+```
+
+Wait, what? Why did my precious entry from Johnson's dictionary disapper? This is a feature, not a bug. In our stylesheet, we created a template for entries, but we didn't tell the processor what to do when it encounters an entry. Because our entry was empty, the processor understood that we want to skip all entries. 
+
+Remember, you have to be explicit, otherwise XSLT slacker entropy will prevail! 
+
+Take a look at the following stylesheet:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:tei="http://www.tei-c.org/ns/1.0"
+    exclude-result-prefixes="tei"
+    xpath-default-namespace="http://www.tei-c.org/ns/1.0"
+    version="3.0"> 
+    
+    <xsl:mode on-no-match="shallow-copy"/>
+    
+    <xsl:template match="entry">
+        This is a fancy dictionary entry. 
+    </xsl:template>
+    
+</xsl:stylesheet>
+```
+
+What do you think will happen when you run this transformation on your Johnson entry? 
+
+The processor will think: ok, this dictionary nerd wants me to look for entries in their dictionary. When I encounter an entry, I should spit out this literal stament "I like dictionary entry.". An this is, indeed what happened:
+
+```xml 
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Bad TEI example of Johnson's entry 'Lexicographer'</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Data for the DARIAH-Campus course "Transforming Lexicographic Data: XSLT for Dictionary Nerds"</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         
+        This is a fancy dictionary entry. 
+    
+      </body>
+   </text>
+</TEI
+```
+
+Hm... But why did the content of the entry disappear? Wasn't the `<xsl:mode on-no-match="shallow-copy"/>` supposed to let us copy everything that we don't have an explicit rule for?
+
+Yes, and that's actually what happened. As you can see, everything else but the entry element was copied correctly. The processor didn't process the children of `<entry>` because we gave it a very explit rule: when you match an entry, simply print out: "This is a fancy dictionary entry." and that's it. Remember the rule of doing the bare minimum? This is it in practice. 
+
+If we wanted to print out the text "This is a fancy dictionary entry." and make sure that the children of entry do not disappear, we would have to tell the XSLT processor to stop being so lazy and keep working. 
+
+If you add `<xsl:apply-templates/>` to your entry-template like this:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:tei="http://www.tei-c.org/ns/1.0"
+    exclude-result-prefixes="tei"
+    xpath-default-namespace="http://www.tei-c.org/ns/1.0"
+    version="3.0"> 
+    
+    <xsl:mode on-no-match="shallow-copy"/>
+    
+    <xsl:template match="entry">
+        This is a fancy dicitonary entry.
+        <xsl:apply-templates/>
+    </xsl:template>
+    
+</xsl:stylesheet>
+```
+and you run the transformation again (don't just read about it here, do it in oXygen!), the output will be different:
+
+```xml 
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?><TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Bad TEI example of Johnson's entry 'Lexicographer'</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Data for the DARIAH-Campus course "Transforming Lexicographic Data: XSLT for Dictionary Nerds"</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         
+        This is a fancy dicitonary entry.
+        
+            <lemma>Lexico'grapher</lemma>
+            <pos>n.s.</pos>
+            <etymology>[<greek>λεξικὸν</greek> and <greek>γράφω</greek>;
+                  <italic>lexicographe</italic>, <language>Fr.</language>]</etymology>
+            <sense>
+               <def>A writer of dictionaries; a harmless drudge, that busies himself in tracing the
+                  original, and detailing the signification of words.</def>
+               <quote>Commentators and lexicographers acquainted with the Syriac language, have
+                  given these hints in their writings on scripture.</quote>
+               <author>Watts.</author>
+            </sense>
+         
+      </body>
+   </text>
+</TEI>
+```
+
+Wait, seriously? The `<entry></entry>` is still missing? We have our sentence and the contents of entry, but not the entry element itself? Why is that?
+
+Because the XSLT processor took our instructions literally. The instructions said:
+
+- when you find an entry node in my dictionary, do the following:
+  - print out the sentence "This is a fancy dicitonary entry"; and then
+  - keep slaving away for these dictionary nerds, by processing the rest of the entry.
+  
+The "rest of the dictionary entry" does not include the element `<entry>` itself.
+
+So, how would be go about including both the entry element, _and_ our sentence _and_ the rest of the content? 
+
+It will be quite easy with the help of the `<xsl:copy></xsl:copy>` instruction, which copies the context node, i.e. it copies the whatever node our current template has matched, but it does so in the so-called shallow mode, without the attributes, children etc.
+
+So let's try the following stylesheet:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:tei="http://www.tei-c.org/ns/1.0"
+    exclude-result-prefixes="tei"
+    xpath-default-namespace="http://www.tei-c.org/ns/1.0"
+    version="3.0"> 
+    
+    <xsl:mode on-no-match="shallow-copy"/>
+    
+    <xsl:template match="entry">
+        <xsl:copy>
+            <xsl:comment>This is a fancy dicitonary entry.</xsl:comment>
+            <xsl:apply-templates/>        
+        </xsl:copy>
+    </xsl:template>
+    
+</xsl:stylesheet>
+```
+
+Note that we enclosed our fancy sentence in an `<xsl:comment></xsl:comment>`, which tells the processor to comment out our sentence in the output. When you run the transformation, you should be seeing this: 
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Bad TEI example of Johnson's entry 'Lexicographer'</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Data for the DARIAH-Campus course "Transforming Lexicographic Data: XSLT for Dictionary Nerds"</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <entry><!--This is a fancy dicitonary entry.-->
+            <lemma>Lexico'grapher</lemma>
+            <pos>n.s.</pos>
+            <etymology>[<greek>λεξικὸν</greek> and <greek>γράφω</greek>;
+                  <italic>lexicographe</italic>, <language>Fr.</language>]</etymology>
+            <sense>
+               <def>A writer of dictionaries; a harmless drudge, that busies himself in tracing the
+                  original, and detailing the signification of words.</def>
+               <quote>Commentators and lexicographers acquainted with the Syriac language, have
+                  given these hints in their writings on scripture.</quote>
+               <author>Watts.</author>
+            </sense>
+         </entry>
+      </body>
+   </text>
+</TEI>
+```
+
+### Let's fix that bad TEI
+
+So far, we've been playing with XSLT and getting to know how it works. What have we learned so far:
+
+- how to create new XSLT stylesheets in oXygen
+- how to run trasnformations
+- how to write an XSLT 3.0 instruction on what to do with unmatched elements
+- how to match a particular element (`<entry>`), add a comment to it and process the rest of it by issuing the `<xsl:apply-templates/>` instruction. 
+
+We should now move on to do _actual_ work on the bad TEI example. Let's first analyze what we need to do. Before writing your own XSLT stylesheets, you should always make sure that you know both the structure of your current XML file and the structure that you want to transform it to. So, always start with a bit of anylsis and formulate specific goals.
+
+So, what's wrong with our TEI example and what changes to we want to see in it?
+
+1. there is no `<lemma>` element in TEI; we should replace it with a `<form type='lemma'><orth></orth></form>` contstruct;
+2. `<pos>` exists in TEI, but it can't be the child of `<entry>`; we should replace it with a `<gramGrp><gram type='pos'></gram></gramGrp>` construct;
+3. there is no `<etymology>` in TEI and the whole section is a mess with a bunch of made-up elements; for the sake of simplicity, let's skip it, i.e. not have it in the output at all
+4. `<quote>` is a valid TEI element, but it's not allowed as a child of `<sense>`; let's wrap the `<quote>` with a `<cit type='example'></cit>`
+5. there is no `<author>` in TEI; let's replace it with `<bibl>` and let's also make sure it's grouped together with `<quote>` inside `<cit type='example'></cit>`.
+
+So let's write templates for each of these problems:
+    
+1. To transform `<lemma>Lexico'grapher</lemma>` into `<form type='lemma'><orth>Lexico'grapher</orth></form>`, we need to create a template that will
+    - match the `<lemma>` element
+    - create a typed `<form>` element
+    - create a nested `<orth>` element inside `<form>`, and 
+    - copy the text content of the original `<lemma>` element.
+
+    This can be achieved with the following template:
+    
+    ```xml
+    <xsl:template match="lemma">
+        <form type="lemma">
+            <orth>
+                <xsl:value-of select="./text()"/>
+            </orth>
+        </form>
+    </xsl:template>
+    ```
+    You should be familiar with what's going on here because of what we tried to do with the entry element above. But there are some new things happenning here as well:
+    - we're creating a `<form>` element with an attribute `@type`;
+    - we're nesting an `<orth>` element inside `<form>`; and
+    - we're using `<xsl:value-of select="./text()"/>` instruction to select the text value from the original XML file that we want to insert. 
+
+    From XPATH, you should be familiar with the dot notation: the dot indicates the current context node. What is the context node in this, for the lack of a better word, context? Because we're inside a template that's matching on the `<lemma>` element, that means that the current context node _is_ the `<lemma>` in our original XML file. 
+    
+    From XPATH, you should also know that `./text()` will select the text of the current context node, which in our case is `Lexico'grapher`.
+    
+    **Action:** copy the above template to your stylesheet and run the transformation! 
+    
+
+ 
 
 ## Processing dictionary data
 
