@@ -798,10 +798,13 @@ Your template will not extract any real value because your `<form>` element is s
 Ok, XSLT gods were not very creative here when naming the two copying instructions. They sound very similar, but you really need to distinguish one from the other. Let's see.
 
 <table>
-  <tr>
-    <th><code>&lt;xsl:copy&gt;</code></th>
+  <thead>
+    <tr>
+    <th style={{width: "50%"}}><code>&lt;xsl:copy&gt;</code></th>
     <th><code>&lt;xsl:copy-of&gt;</code></th>
   </tr>
+    </thead>
+    <tbody>
   <tr>
     <td>shallow copy</td>
     <td>deep copy</td>
@@ -815,10 +818,13 @@ Ok, XSLT gods were not very creative here when naming the two copying instructio
     <td>must have a <code>@select</code> attribute</td>
   </tr>
   <tr>
-    <td>can have children itself, because it copies an empty element from the input document that can be then filled with content</td>
+    <td>can have children, because it copies an empty element that can be then filled with content</td>
     <td>can't possibly have children, because it copies an element with all of its content</td>
   </tr>
+</tbody>
 </table>
+
+
 
 
 
