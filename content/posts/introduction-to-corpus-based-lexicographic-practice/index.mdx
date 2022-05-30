@@ -153,7 +153,7 @@ Web corpora that contain texts from the World Wide Web are also a type of specia
 
 Medium refers to the material manifestation - written, audio or visual. Corpora containing written material are most common, as this kind of material is the easiest to collect. Corpora can also contain audiovisual material. If the corpus contains data in more than one medium, we speak of a multimedia corpus. Examples of multimedia corpora are spoken corpora and sign language corpora. A spoken corpus is a corpus constructed with the principal aim of investigating language as used in spoken interaction. [FOLK, the Research and Teaching Corpus of Spoken German](http://agd.ids-mannheim.de/folk.shtml) is an example of such a spoken corpus.
 
-A sign language corpus is a corpus in which the focus is not on the acoustic/articulatory modality of a spoken language, but on the visual/gestural modality of a signed language. Transcription of sign language corpora is typically done with the help of specialized transcription systems for sign languages. The [British Sign Language Corpus](https://bslcorpusproject.org/) is a prototypical example of a sign language corpus. For more information on multimedia corpora (their annotation and encoding) see [https://www.exmaralda.org/files/CLARIN_Standards](https://www.exmaralda.org/files/CLARIN_Standards). \[more recent LINK?]
+A sign language corpus is a corpus in which the focus is not on the acoustic/articulatory modality of a spoken language, but on the visual/gestural modality of a signed language. Transcription of sign language corpora is typically done with the help of specialized transcription systems for sign languages. The [British Sign Language Corpus](https://bslcorpusproject.org/) is a prototypical example of a sign language corpus. For more information on multimedia corpora (their annotation and encoding) see, for instance, [](https://www.exmaralda.org/files/CLARIN_Standards)Chapter 6 of the [CLARIN Deliverable: D5.C-3 Interoperability and Standards](https://office.clarin.eu/pp/D5C-3.pdf).
 
 #### Time
 
@@ -211,7 +211,7 @@ There is no easy answer to this question. What can be said in general, however, 
 
 #### Constraints on corpus composition and size
 
-In practice, the ideal corpus composition and size are often hampered by limitations on resources and other practical considerations. The texts that you would ideally like to include in your corpus, may not be available in digital format or they may be subject to some copyright protection or other restrictions on usage. \[LINK TO MORE INFORMATION, E.G. DELIVERABLE 6.?]
+In practice, the ideal corpus composition and size are often hampered by limitations on resources and other practical considerations. The texts that you would ideally like to include in your corpus, may not be available in digital format or they may be subject to some copyright protection or other restrictions on usage. 
 
 ### Corpus annotation
 
@@ -244,11 +244,10 @@ Tokenisation of the texts is a prerequisite for most of the other types of annot
 
 One of the most widely used types of corpus enrichment is part-of-speech (POS) tagging. As the name suggests, this means that the words are coded for their part-of-speech, i.e. the word class they belong to. Note that part-of-speech tags can contain more information than the conventional parts of speech. Additional features, such as singular and plural of nouns, person, and number of verbs, can also be encoded in these tags.
 
-The tags that can be used are defined in a tagset. Different tagsets exist \[ADD LINKS]:
+The tags that can be used are defined in a tagset. Different tagsets exist, e.g.
 
-- Brown tagset
-- London-Lund corpus tagset
-- Stuttgart-Tübingen tagset
+- [Brown tagset](http://korpus.uib.no/icame/manuals/BROWN/INDEX.HTM#bc6)
+- [Stuttgart-Tübingen tagset](https://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/germantagsets/)
 - [Universal Dependencies tagset](https://universaldependencies.org/u/pos/)
 
 Apart from the different names that are used for the tags, pos taggers can also differ in their approach, i.e. "functional" versus "lexical" tagging. For example, _walking_ in the sentence _(The) walking is good for your health_ will be tagged as a NOUN in a functional approach and as a VERB in a lexical approach. The UD annotation, for instance, is based on a lexicalist view of syntax.
@@ -305,13 +304,11 @@ The final layer of annotation that we discuss here, is semantic annotation. This
 
 ![](https://lh3.googleusercontent.com/oe_StqUCy1oPoMt-UWhL1y6MqeH8AfujAnSai9BHBaTPlLB9n2cnNAgp9O36BkowjE-YYHqUh9kSBeNgW0begsRDELs9PGYi_lFiGPzwJZWhWYdmgVtGHGAAtjzg9Rme4BQ81b6_)
 
-Semantically annotated corpora are used in NLP for Word Sense Disambiguation (WSD).
-
-> Within ELEXIS a parallel semantically annotated dataset in 10 languages has been created (ADD LINK)
+Semantically annotated corpora are, for instance, used in NLP for Word Sense Disambiguation (WSD).
 
 ##### Other types of annotation
 
-Depending on the kind of research other types of annotation can be used or added, e.g. for discourse analysis and in multimedia corpora. For more information on these, we refer to the relevant literature \[ADD LINK TO LITERATURE]
+Depending on the kind of research other types of annotation can be used or added, e.g. for discourse analysis,  in multimedia corpora. For more information on these, we refer to the relevant literature (e.g. Gries and Berez 2017).
 
 #### Corpus Encoding and Metadata
 
@@ -333,7 +330,7 @@ In addition to a well-prepared corpus, lexicographers need access to a good corp
 
 There are many corpus tools available, and a comprehensive up-to-date list of corpus tools can be found at [https://corpus-analysis.com/tag/concordancer](https://corpus-analysis.com/tag/concordancer). It should be noted that the list is missing the in-house corpus tools developed by some institutions. Corpus tools can be grouped into standalone, or computer-based tools, and online tools. Standalone tools are usually corpus-independent, i.e. they can be used for the analysis of any corpus stored on the user's computer. Some standalone tools work only on selected platforms (e.g. Windows), whereas others work on all platforms. The limitations of standalone tools are mainly in the amount of corpus data they can process (this can be related to the tool itself, and/or to the computer on which the tool is used), which significantly reduces their usefulness for lexicographers, considering the size of modern reference corpora. Online tools, on the other hand, can be either corpus-bound, so limited to a particular corpus or corpora, or corpus-independent. Examples of corpus-bound online tools include Mark Davies' tools at [https://www.english-corpora.org/](https://www.english-corpora.org/), KorpusDK at [https://ordnet.dk/korpusdk](https://ordnet.dk/korpusdk) (for accessing a reference corpus of Danish), and a corpus tool for accessing German corpora at the Berlin-Brandenburg Academy of Sciences and Humanities ([https://www.dwds.de/r](https://www.dwds.de/r)). The Sketch Engine is an example of a hybrid corpus-bound and corpus-independent tool, as it contains many pre-prepared corpora, but it also offers the users the option of uploading their own corpora. The main advantages of online corpus tools are that the users can access corpora from any computer and that they can provide quick searching of very large corpora. Moreover, because online tools can process more data, their developers can provide additional advanced features for corpus analysis. Consequently, online corpus tools are nowadays used in the majority of dictionary projects.
 
-Features offered by corpus tools vary significantly, but all the tools offer at least the concordance, which is the main basic feature of corpus tools and represents the essence of corpus interrogation for lexicographers. As defined by Kosem (2016), "the concordance is a listing of the occurrences of a searched item, with each occurrence shown with a surrounding context." Concordance lines can be displayed in two ways, as sentences, or in the KWIC (Key Word in Context) format, with the lines centred according to the searched item." The differences between different corpus tools can be found at the level of complexity offered for conducting searches in the corpus. Other features offered by corpus tools involve some type of statistical calculation, for example, word lists, collocations, synonyms, and so forth (see the section on Corpora in lexicographic practice for more). Among the more advanced features highly, found in the Sketch Engine and in some other tools and highly valuable to lexicographers, are detailed collocation presentation, good dictionary example identification tool, definition extraction, word sense induction
+Features offered by corpus tools vary significantly, but all the tools offer at least the concordance, which is the main basic feature of corpus tools and represents the essence of corpus interrogation for lexicographers. As defined by Kosem (2016), "the concordance is a listing of the occurrences of a searched item, with each occurrence shown with a surrounding context." Concordance lines can be displayed in two ways, as sentences, or in the KWIC (Key Word in Context) format, with the lines centred according to the searched item." The differences between different corpus tools can be found at the level of complexity offered for conducting searches in the corpus. Other features offered by corpus tools involve some type of statistical calculation, for example, word lists, collocations, synonyms, and so forth (see the section on Corpora in lexicographic practice for more). Among the more advanced features highly, found in the Sketch Engine and in some other tools and highly valuable to lexicographers, are detailed collocation presentation, good dictionary example identification tool, definition extraction, word sense induction.
 
 ## Getting to know your corpus
 
@@ -435,8 +432,6 @@ These conditions can be met by only selecting sentences which:
 
 This may seem relatively easy, but, as lexicographers know all too well, finding good dictionary examples that meet all of these criteria is a difficult task. For example, short sentences might be preferred over long ones for intelligibility reasons. However, without (enough) context, short example sentences can quickly lose their informative value, and in cases where the original example has been shortened, even their naturalness. In some cases, like in dictionaries for language learners, where the productive value of examples is very important, examples with more context are actually preferred. (Kosem et al. 2018: 120)
 
-
-
 ### Neologisms
 
 Corpora can also be used to find new words. Neologisms are of great interest to lexicographers because they are the first to be judged by the dictionary users when determining how up-to-date the lexicographic product is. Metcalf (2002) suggested 5 factors (referred to as FUDGE scale) that help us determine the probability of a word's survival: (1) frequency of the word; (2) unobtrusiveness, i.e., a successful word should not be exotic or too cleverly coined; (3) diversity of use, i.e., the range users and contexts; (4)
@@ -518,8 +513,6 @@ Different tools which are part of a corpus software offer various types of stati
 
 ![](https://lh5.googleusercontent.com/tP9qIUGtSQFZNTWUO_7vFuONBqNNrYtjq4EQdpDy7cWPVE7iuL2rke0PYvNp7co0nRa6I6aB-X0fJxRKAIOB86rLTWpTu4HoEb_AUQ2WUOonU-XgXed06zTMxOxNeqlPumbnKiCBPZLPLbDEYQ)
 
-
-
 #### Corpus size
 
 The size of the corpus is typically given in the number of words. Different corpus systems, however, have different ways of defining what a word is and it is common to see slightly different sizes depending on which corpus software is used. Sketch Engine provides different size measures, the most frequently used ones are the size in words and tokens whose definitions can be found on these links:
@@ -593,6 +586,8 @@ EAGLES Evaluation Working Group (1996). Evaluation of Natural Language Processin
 Geyken, A. (2007). The DWDS Corpus: A reference corpus for the German language of the 20th century. In C. Fellbaum (ed.) Idioms and Collocations: Corpus-based Linguistic and Lexicographic Studies. London: Continuum Press23–40.
 
 Gries, S. (2009). [What is corpus linguistics?](https://stgries.info/research/2009_STG_CorpLing_LangLingCompass.pdf) Language and Linguistics Compass 3. 1-17.
+
+Gries, S. and· A.L. Berez (2017). [Linguistic Annotation in/for Corpus Linguistics](https://scholarspace.manoa.hawaii.edu/server/api/core/bitstreams/2a1388a5-104f-4495-b547-068b7ec04ccf/content). In N. Ide and J. Pustejovsky (eds.), Handbook of Linguistic Annotation. 379-409.
 
 Green, J. (1996). Chasing the sun; Dictionary-makers and the dictionaries they made. London: Pimlico.
 
