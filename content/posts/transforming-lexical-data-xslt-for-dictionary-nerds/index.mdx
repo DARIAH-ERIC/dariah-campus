@@ -35,7 +35,7 @@ Upon completion of this course, students will be able to
 
 ### What is XSLT?
 
-XSLT (Extensible Stylesheet Language Transformations) is a standard, XML-based programming language for transforming XML documents. 
+XSLT (Extensible Stylesheet Language Transformations) is a standard, XML-based programming language for transforming XML documents.
 
 With XSLT, an XML file can be transformed into:
 1) a different kind of XML (for instance, if you decide to rename your elements, change your attribute values or altogether express the content of your file using a different XML vocabulary or schema).
@@ -48,17 +48,17 @@ An XSLT stylesheet is a script which defines rules for transforming XML files us
 
 ### What is an XSLT processor?
 
-To perform an XSLT trasnformation, you will need an XSLT processor or a text editor which comes with a bundled XSLT Processor. 
+To perform an XSLT trasnformation, you will need an XSLT processor or a text editor which comes with a bundled XSLT Processor.
 
-An XSLT processor is a piece of software which takes one or more XML files as input and applies rules defined in XSLT stylesheet(s) in order to produce the desired output. 
+An XSLT processor is a piece of software which takes one or more XML files as input and applies rules defined in XSLT stylesheet(s) in order to produce the desired output.
 
-In this course, we'll be using Oxygen XML Editor. 
+In this course, we'll be using Oxygen XML Editor.
 
 ### Prerequisites
 
-You should already be familiar with the fundamentals of XML and XPATH. If not, you could visit the sections on XML in Intro to modeling TODO:ADD LINK, and Extracting Lexicographic Data: XPath for Dictionary Nerds TODO: ADD LINK.  
+You should already be familiar with the fundamentals of XML and XPath. If not, you could visit the sections on XML in Intro to modeling TODO:ADD LINK, and Extracting Lexicographic Data: XPath for Dictionary Nerds TODO: ADD LINK.  
 
-This really bears repeating: you can't do XSLT without XPATH. This is because XSLT uses XPATH to identify the parts of the XML that you want to transform.
+This really bears repeating: you can't do XSLT without XPath. This is because XSLT uses XPath to identify the parts of the XML that you want to transform.
 
 ### The logic of XSLT
 
@@ -73,7 +73,7 @@ XSLT was created specifically for trasnforming XML. It's data-centric, purpose-b
 
 When you start writing and using XSLT stylesheets, you will notice a particular kind of slacker logic: XSLT never wants you to go for anything but the bare minimum! Instead of writing specific rules for each and every element in your XML tree, XSLT teaches you to do more by doing less. You will write one generic, default rule, which will cover all your elements and attributes unless you add specific templates to override them.
 
-Why is this cool? Just imagine how much effort it would take to write explicit rules for every single element in your dictionary if all you want to do is, for instance, change the numbering of your senses, or add brackets around your usage labels? XSLT makes it possible to write specific transformation rules or *templates*, as they are known in the XSLT universe, and apply them only there where you want to see something other than the default behavior. 
+Why is this cool? Just imagine how much effort it would take to write explicit rules for every single element in your dictionary if all you want to do is, for instance, change the numbering of your senses, or add brackets around your usage labels? XSLT makes it possible to write specific transformation rules or *templates*, as they are known in the XSLT universe, and apply them only there where you want to see something other than the default behavior.
 
 If your stylesheet does not contain any templates of your own, XSLT will output all the plain text from your XML without any markup. In other words, unless you instruct your XSLT processor ohterwise, it will navigate from the top of your XML tree (in our case, most likely from the root `/TEI` node ) all the way down, outputting text whenever it encounters it. This is probably not particularly useful -- after all, you encoded your dictionary in TEI XML so that you can do more interesting things than simply strip the file of all markup -- but it illustrates the power of defaults in XSLT.
 
@@ -83,7 +83,7 @@ If your stylesheet does not contain any templates of your own, XSLT will output 
 
 To proceed with this course, you will need to get some files and make sure you know how to create and apply XSLT stylesheets in oXygen XML Editor.  
 
-TODO: Add instructions for downloading the files from the DARIAH lexical resources Github. 
+TODO: Add instructions for downloading the files from the DARIAH lexical resources Github.
 
 When you click on the project file, `XSLTforDictionaryNerds.xpr` the project will open in oXygen. You should see something like this:
 
@@ -123,9 +123,9 @@ We will create an XSLT stylesheet to fix all these errors.
 
     We'll explain a little later what these lines of code mean. But let's first finish setting up oXygen in such a way that we can view both our bad TEI _and_ the XSLT stylesheet, and making sure that we can run an XSLT trasnformation. To do that:
 
-6. Select Window > Open perspective > XSLT Debugger from the main menu, or click on the XSLT icon in the upper right conrer of the main window. This will open the XSLT Debugger perspective, in which you will see both of your files side-by-side. 
+6. Select Window > Open perspective > XSLT Debugger from the main menu, or click on the XSLT icon in the upper right conrer of the main window. This will open the XSLT Debugger perspective, in which you will see both of your files side-by-side.
 
-7. If you have other files open in oXygen, make sure that you've selected `johnson-in-bad-TEI.xml` from the XML dropdown menu in the upper left corner of the window, as well as `johson2TEI.xsl` in the XSL dropdown next to it. 
+7. If you have other files open in oXygen, make sure that you've selected `johnson-in-bad-TEI.xml` from the XML dropdown menu in the upper left corner of the window, as well as `johson2TEI.xsl` in the XSL dropdown next to it.
 
     ![](https://i.imgur.com/cKkYPSC.png)
 
@@ -133,17 +133,17 @@ We will create an XSLT stylesheet to fix all these errors.
 
     ![](https://i.imgur.com/A0kkc1R.png)
 
-    Congratulations! You've just run your first XSLT transformation. In the Output pane, to the right of your stylesheet, you will see that the text from your XML file has been copied without any markup. This is the result of the built-in default because you didn't provide any specific rules in your stylesheet. 
+    Congratulations! You've just run your first XSLT transformation. In the Output pane, to the right of your stylesheet, you will see that the text from your XML file has been copied without any markup. This is the result of the built-in default because you didn't provide any specific rules in your stylesheet.
 
     ![](https://i.imgur.com/2icosvY.png)
 
 ### Stylesheet declaration
 
-XSLT stylesheets are written in XML. So everything you already know about elements and attributes in XML will apply here as well. 
+XSLT stylesheets are written in XML. So everything you already know about elements and attributes in XML will apply here as well.
 
 As you could see from the template created by oXygen for you, XSLT uses the `xsl` namespace to distinguish itself from the xml content it will be transforming.
 
-Because we'll be working with TEI files for the rest of this course, let's learn how to adjust the default stylesheet declaration from oXygen to something that will make our life just a little bit easier when working with TEI. 
+Because we'll be working with TEI files for the rest of this course, let's learn how to adjust the default stylesheet declaration from oXygen to something that will make our life just a little bit easier when working with TEI.
 
 Replace the content of `johnson2TEI.xsl` with this:
 
@@ -153,7 +153,7 @@ Replace the content of `johnson2TEI.xsl` with this:
         xmlns:tei="http://www.tei-c.org/ns/1.0"
         exclude-result-prefixes="tei"
         xpath-default-namespace="http://www.tei-c.org/ns/1.0"
-        version="3.0"> 
+        version="3.0">
     
     </xsl:stylesheet>
   ```
@@ -164,15 +164,15 @@ You will notice several things:
 - the namespace declaration for TEI: `xmlns:tei="http://www.tei-c.org/ns/1.0"`, which will tell the XSLT processor that all the element in this namespace are TEI content;
 - the `exclude-result-prefixes` attribute wtih a signle value `tei`, which will tell the XSLT processor that it doesn't have to add explicit `tei` prefix to the output document, because we know that the entire document will be in TEI anyway, so that would be a little superflous;
 - the `xpath-default-namespace` attribute with the value `http://www.tei-c.org/ns/1.0` which declares the TEI namespace also to be default namespace for identifying nodes in the XML file. This way when you look for the `entry` node in your TEI file, you'll be able to type `//entry` as opposed to `//tei:entry`; and
-- the `version` attribute, which instructs your XSLT processor which version of the XSLT language to use. In the rest of this course, we'll be using XSLT 3.0. 
+- the `version` attribute, which instructs your XSLT processor which version of the XSLT language to use. In the rest of this course, we'll be using XSLT 3.0.
 
-After you've replaced the content of your `johnson2TEI.xsl` file, try running the transformation again. The result won't be any different, because we haven't yet added any specific rules, but do this anyway to make sure that you've copied things correctly. 
+After you've replaced the content of your `johnson2TEI.xsl` file, try running the transformation again. The result won't be any different, because we haven't yet added any specific rules, but do this anyway to make sure that you've copied things correctly.
 
 ### Default behavior
 
-Another thing we want to change is the default behavior of the XSTL processor. We don't want to output all text of every node for which we haven't created a specific rule. 
+Another thing we want to change is the default behavior of the XSTL processor. We don't want to output all text of every node for which we haven't created a specific rule.
 
-Add this line to your stylesheet: 
+Add this line to your stylesheet:
 
 ```xml
 <xsl:mode on-no-match="shallow-copy"/>
@@ -188,20 +188,20 @@ So, your current stylesheet should look like this:
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="tei"
     xpath-default-namespace="http://www.tei-c.org/ns/1.0"
-    version="3.0"> 
+    version="3.0">
     
     <xsl:mode on-no-match="shallow-copy"/>
     
 </xsl:stylesheet>
 ```
 
-Now, run this transformation. 
+Now, run this transformation.
 
-What happened? The entire structure and content of your "bad" TEI file has been reproduced in the output. This is because we told the XSLT processor to copy every node and every attribute for which it couldn't find specific rules, and keep doing that until it reaches the end of the "bad" TEI file. 
+What happened? The entire structure and content of your "bad" TEI file has been reproduced in the output. This is because we told the XSLT processor to copy every node and every attribute for which it couldn't find specific rules, and keep doing that until it reaches the end of the "bad" TEI file.
 
 ### Templates and pattern matching
 
-So let's start making some real changes! 
+So let's start making some real changes!
 
 XSLT rules are packaged as templates. For instance, the following template will identify all entry elements in your dictionary:
 
@@ -213,7 +213,7 @@ XSLT rules are packaged as templates. For instance, the following template will 
 
 ```
 
-What will happen if you add this template to your stylesheet (in a new row after the `<xsl:mode on-no-match="shallow-copy"/>`) and run the transformation in oXygen? 
+What will happen if you add this template to your stylesheet (in a new row after the `<xsl:mode on-no-match="shallow-copy"/>`) and run the transformation in oXygen?
 
 In the output, you should be seeing something like this:  
 
@@ -242,9 +242,9 @@ In the output, you should be seeing something like this:
 </TEI
 ```
 
-Wait, what? Why did my precious entry from Johnson's dictionary disapper? This is a feature, not a bug. In our stylesheet, we created a template for entries, but we didn't tell the processor what to do when it encounters an entry. Because our entry template was empty, the processor understood that it didn't need to produce _any_ output when encountering an entry. 
+Wait, what? Why did my precious entry from Johnson's dictionary disapper? This is a feature, not a bug. In our stylesheet, we created a template for entries, but we didn't tell the processor what to do when it encounters an entry. Because our entry template was empty, the processor understood that it didn't need to produce _any_ output when encountering an entry.
 
-Remember, you have to be explicit, otherwise XSLT slacker entropy will prevail! 
+Remember, you have to be explicit, otherwise XSLT slacker entropy will prevail!
 
 Take a look at the following stylesheet:
 
@@ -254,22 +254,22 @@ Take a look at the following stylesheet:
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="tei"
     xpath-default-namespace="http://www.tei-c.org/ns/1.0"
-    version="3.0"> 
+    version="3.0">
     
     <xsl:mode on-no-match="shallow-copy"/>
     
     <xsl:template match="entry">
-        This is a fancy dictionary entry. 
+        This is a fancy dictionary entry.
     </xsl:template>
     
 </xsl:stylesheet>
 ```
 
-What do you think will happen when you run this transformation on your Johnson entry? 
+What do you think will happen when you run this transformation on your Johnson entry?
 
 The processor will think: ok, this dictionary nerd wants me to look for entries in their dictionary. When I encounter an entry, I should spit out this literal stament "This is a fancy dictionary entry.". An this is, indeed what happened:
 
-```xml 
+```xml
 <?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
@@ -289,7 +289,7 @@ The processor will think: ok, this dictionary nerd wants me to look for entries 
    <text>
       <body>
          
-        This is a fancy dictionary entry. 
+        This is a fancy dictionary entry.
     
       </body>
    </text>
@@ -298,9 +298,9 @@ The processor will think: ok, this dictionary nerd wants me to look for entries 
 
 Hm...  Isn't the `<xsl:mode on-no-match="shallow-copy"/>` supposed to let us copy everything that we don't have an explicit rule for? Shulnd't that also apply to the descendants of `<entry>`? How come they, too, have vanished without a trace? Is `<xsl:mode on-no-match="shallow-copy"/>` workign as it's supposed to?
 
-Well yes it is, thank you for asking! As you can see, everything else but the entry element was copied correctly. The processor didn't process the descendants of `<entry>` because we gave it a very explit rule: when you match an entry, simply print out: "This is a fancy dictionary entry." and and don't do anything else there. Remember the rule of doing the bare minimum? This is it in practice. 
+Well yes it is, thank you for asking! As you can see, everything else but the entry element was copied correctly. The processor didn't process the descendants of `<entry>` because we gave it a very explit rule: when you match an entry, simply print out: "This is a fancy dictionary entry." and and don't do anything else there. Remember the rule of doing the bare minimum? This is it in practice.
 
-If we wanted to print out the text "This is a fancy dictionary entry." and make sure that the descendants of `<entry>` do not disappear, we would have to tell the XSLT processor to stop being so lazy and keep working. 
+If we wanted to print out the text "This is a fancy dictionary entry." and make sure that the descendants of `<entry>` do not disappear, we would have to tell the XSLT processor to stop being so lazy and keep working.
 
 If you add `<xsl:apply-templates/>` to your entry-template like this:
 
@@ -310,7 +310,7 @@ If you add `<xsl:apply-templates/>` to your entry-template like this:
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="tei"
     xpath-default-namespace="http://www.tei-c.org/ns/1.0"
-    version="3.0"> 
+    version="3.0">
     
     <xsl:mode on-no-match="shallow-copy"/>
     
@@ -323,7 +323,7 @@ If you add `<xsl:apply-templates/>` to your entry-template like this:
 ```
 and you run the transformation again (don't just read about it here, do it in oXygen!), the output will be different:
 
-```xml 
+```xml
 <?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?><TEI xmlns="http://www.tei-c.org/ns/1.0">
    <teiHeader>
@@ -371,7 +371,7 @@ Because the XSLT processor takes our instructions literally. The instructions sa
   
 The "rest of the dictionary entry" does not include the element `<entry>` itself.
 
-So, how would be go about including both the entry element, _and_ our sentence _and_ the rest of the content? 
+So, how would be go about including both the entry element, _and_ our sentence _and_ the rest of the content?
 
 It will be quite easy with the help of the `<xsl:copy></xsl:copy>` instruction, which copies the context node, i.e. it copies the whatever node our current template has matched, but it does so in the so-called shallow mode, without the attributes, children etc.
 
@@ -383,7 +383,7 @@ So let's try the following stylesheet:
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="tei"
     xpath-default-namespace="http://www.tei-c.org/ns/1.0"
-    version="3.0"> 
+    version="3.0">
     
     <xsl:mode on-no-match="shallow-copy"/>
     
@@ -397,7 +397,7 @@ So let's try the following stylesheet:
 </xsl:stylesheet>
 ```
 
-Note that we enclosed our fancy sentence in an `<xsl:comment></xsl:comment>`, which tells the processor to comment out our sentence in the output. When you run the transformation, you should be seeing this: 
+Note that we enclosed our fancy sentence in an `<xsl:comment></xsl:comment>`, which tells the processor to comment out our sentence in the output. When you run the transformation, you should be seeing this:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -443,7 +443,7 @@ So far, we've been playing with XSLT and getting to know how it works. What have
 - how to create new XSLT stylesheets in oXygen
 - how to run trasnformations
 - how to write an XSLT 3.0 instruction on what to do with unmatched elements
-- how to match a particular element (`<entry>`), coppy the context node, add a comment to it and process the rest of it by issuing the `<xsl:apply-templates/>` instruction. 
+- how to match a particular element (`<entry>`), coppy the context node, add a comment to it and process the rest of it by issuing the `<xsl:apply-templates/>` instruction.
 
 We should now move on to do _actual_ work on the bad TEI example. Let's first analyze what we need to do. Before writing your own XSLT stylesheets, you should always make sure that you know both the structure of your current XML file and the structure that you want to transform it to. So, always start with a bit of anylsis and formulate specific goals.
 
@@ -453,7 +453,7 @@ So, what's wrong with our TEI example and what changes to we want to see in it?
 2. `<pos>` exists in TEI, but it can't be the child of `<entry>`; let's replace it with a `<gramGrp><gram type='pos'></gram></gramGrp>` construct;
 3. there is no `<etymology>` in TEI and the whole section is a mess with a bunch of made-up elements; for the sake of simplicity, let's just skip it, i.e. not have it in the output at all;
 4. `<quote>` is a valid TEI element, but it's not allowed as a child of `<sense>`; let's wrap the `<quote>` with a `<cit type='example'></cit>`;
-5. there is no `<author>` in TEI; let's replace it with `<bibl>`; and 
+5. there is no `<author>` in TEI; let's replace it with `<bibl>`; and
 6. let's also make sure the newly created `<bibl>` is grouped together with `<quote>` inside `<cit type='example'></cit>`.
 
 So let's write templates for each of these problems:
@@ -461,7 +461,7 @@ So let's write templates for each of these problems:
 1. To transform `<lemma>Lexico'grapher</lemma>` into `<form type='lemma'><orth>Lexico'grapher</orth></form>`, we need to create a template that will
     - match the `<lemma>` element
     - create a typed `<form>` element
-    - create a nested `<orth>` element inside `<form>`, and 
+    - create a nested `<orth>` element inside `<form>`, and
     - copy the text content of the original `<lemma>` element.
 
     This can be achieved with the following template:
@@ -478,23 +478,23 @@ So let's write templates for each of these problems:
     You should be familiar with what's going on here because of what we tried to do with the entry element above. But there are some new things happenning here as well:
     - we're creating a `<form>` element with an attribute `@type`;
     - we're nesting an `<orth>` element inside `<form>`; and
-    - we're using `<xsl:value-of select="./text()"/>` instruction to select the text value from the original XML file that we want to insert. 
+    - we're using `<xsl:value-of select="./text()"/>` instruction to select the text value from the original XML file that we want to insert.
 
-    From XPATH, you should be familiar with the dot notation: the dot indicates the current context node. What is the context node in this, for the lack of a better word, context? Because we're inside a template that's matching on the `<lemma>` element, that means that the current context node _is_ the `<lemma>` in our original XML file. 
+    From XPath, you should be familiar with the dot notation: the dot indicates the current context node. What is the context node in this, for the lack of a better word, context? Because we're inside a template that's matching on the `<lemma>` element, that means that the current context node _is_ the `<lemma>` in our original XML file.
     
-    From XPATH, you should also know that `./text()` will select the text of the current context node, which in our case is `Lexico'grapher`.
+    From XPath, you should also know that `./text()` will select the text of the current context node, which in our case is `Lexico'grapher`.
     
-    **Action:** copy the above template to your stylesheet and run the transformation! 
+    **Action:** copy the above template to your stylesheet and run the transformation!
     
-2. To tranform `<pos>` into `<gramGrp><gram type='pos'></gram></gramGrp>`, we should use the same kind of template as we did above for transforming our `<lemma>` element. 
+2. To tranform `<pos>` into `<gramGrp><gram type='pos'></gram></gramGrp>`, we should use the same kind of template as we did above for transforming our `<lemma>` element.
 
-     **Action:** Try it on your own! If you run into difficulties, you'll be able to check out the solution in the full stylesheet at the end of this section. 
+     **Action:** Try it on your own! If you run into difficulties, you'll be able to check out the solution in the full stylesheet at the end of this section.
  
-3. With apologies to our dear etymologist friends, we've decided to skip the entire `<etmymology>` section. We've actually covered this already above, when we were playing around with the `<entry>` element. 
+3. With apologies to our dear etymologist friends, we've decided to skip the entire `<etmymology>` section. We've actually covered this already above, when we were playing around with the `<entry>` element.
 
      **Action:** Write a template which will not output any content from `<etymology>`. If you run into difficulties, you'll be able to check out the solution in the full stylesheet at the end of this section.
      
-4. To wrap the `<quote>` with a `<cit type='example'></cit>`, we should follow the same approach as above, but since we'll be wrapping an element around `<quote>`, which is itself an element, we won't be able to use the instruction `<xsl:value-of>`. So let's look at this more closely. 
+4. To wrap the `<quote>` with a `<cit type='example'></cit>`, we should follow the same approach as above, but since we'll be wrapping an element around `<quote>`, which is itself an element, we won't be able to use the instruction `<xsl:value-of>`. So let's look at this more closely.
 
     To begin with, add this template to the stylesheet:
     
@@ -516,7 +516,7 @@ So let's write templates for each of these problems:
     </sense>
     ```
     
-    As a next step, we want to copy the original `<quote>` element together with its content. How do we do this? 
+    As a next step, we want to copy the original `<quote>` element together with its content. How do we do this?
     
     If you have been practicing all the steps so far, you should have encountered the `<xsl:copy>` instruction, which copies the context node, but not its attributes or children. You should also be familiar with how to copy the content of the text node from the previous examples, using `<xsl:value-of>`. So in principle, you should be able to concoct a template like this:
 
@@ -531,7 +531,7 @@ So let's write templates for each of these problems:
     ```
     The `<xsl:copy>` instruction copies the context node, which is `<quote>` and inside it the `<xsl:value-of>` instruction selects and copies the text value of the same context node.
     
-    But, as you will learn when working with XSLT, there are often numerous ways of achieving the same result. And there is an easier way to achieve the above using the `<xsl:copy-of>` instruction, which copies not only the context node, but also all its attributes, children and descendants. This is what is referred to as _deep copy_. 
+    But, as you will learn when working with XSLT, there are often numerous ways of achieving the same result. And there is an easier way to achieve the above using the `<xsl:copy-of>` instruction, which copies not only the context node, but also all its attributes, children and descendants. This is what is referred to as _deep copy_.
     
     Let's try the following template in our stylesheet:
     
@@ -542,7 +542,7 @@ So let's write templates for each of these problems:
         </cit>
     </xsl:template>
    ```
-   The resulting `<sense>` element will be the same as in the previous example. You will get: 
+   The resulting `<sense>` element will be the same as in the previous example. You will get:
    
     ```xml    
     <sense>
@@ -551,7 +551,7 @@ So let's write templates for each of these problems:
                  <quote>Commentators and lexicographers acquainted with the Syriac language, have given these hints in their writings on scripture.</quote>
             </cit>
          <author>Watts.</author>
-    </sense> 
+    </sense>
     ```   
 
 5. So the only remaining thing for us to do is to make sure that the non-valid element `<author>` is transformed into `<bibl>` and output as the child of `<cit>` and not `<sense>`:
@@ -564,7 +564,7 @@ So let's write templates for each of these problems:
         </cit>
     </xsl:template>   
     ```   
-    First of all, we need to figure out what is the relationship of the context node (`<quote>`) and `<author>` in our input XML? How do we get from `<quote>` to `<author>` with XPATH? In our input XML, `<quote>` and `<author>` are _siblings_. If `.` is the context node, then we need to go one step up the tree to the parent node (which in this case would be `<sense>`) and then one step down to `<author>`. As you, do doubt, will remember from our XPATH course, going one step up the XML hierarchy is expressed with two dots. 
+    First of all, we need to figure out what is the relationship of the context node (`<quote>`) and `<author>` in our input XML? How do we get from `<quote>` to `<author>` with XPath? In our input XML, `<quote>` and `<author>` are _siblings_. If `.` is the context node, then we need to go one step up the tree to the parent node (which in this case would be `<sense>`) and then one step down to `<author>`. As you, do doubt, will remember from our XPath course, going one step up the XML hierarchy is expressed with two dots.
     
     So let's, for a moment, just make sure that our dot notation works. Try running the following template:
     
@@ -576,7 +576,7 @@ So let's write templates for each of these problems:
         </cit>
     </xsl:template>   
     ```      
-    The resulting XML shouldn't surprise you. 
+    The resulting XML shouldn't surprise you.
 
     ```xml    
     <sense>
@@ -586,12 +586,12 @@ So let's write templates for each of these problems:
                <author>Watts.</author>
             </cit>
          <author>Watts.</author>
-    </sense> 
+    </sense>
     ```   
 
-    We're getting closer to where we want to be, but we're not quite there yet. With `<xsl:copy-of select="../author"/>`,  we selected the right node, but `<xsl:copy-of>` selected the `<author>` element as well, which we don't want to have in the output. So we need a different strategy. 
+    We're getting closer to where we want to be, but we're not quite there yet. With `<xsl:copy-of select="../author"/>`,  we selected the right node, but `<xsl:copy-of>` selected the `<author>` element as well, which we don't want to have in the output. So we need a different strategy.
     
-    We should explicitly create the correct TEI element to replace the `<author>` and then either copy the value of the text node from `<author>`: 
+    We should explicitly create the correct TEI element to replace the `<author>` and then either copy the value of the text node from `<author>`:
 
     ```xml
     <xsl:template match="quote">
@@ -599,12 +599,12 @@ So let's write templates for each of these problems:
             <xsl:copy-of select="."/>
             <bibl>
                 <xsl:value-of select="../author/text()"/>
-            </bibl> 
+            </bibl>
         </cit>
     </xsl:template>
     ```
     
-    Running the above template inside our stylesheet will produce this output: 
+    Running the above template inside our stylesheet will produce this output:
 
     ```xml    
     <sense>
@@ -614,19 +614,19 @@ So let's write templates for each of these problems:
                <bibl>Watts.</bibl>
             </cit>
          <author>Watts.</author>
-    </sense> 
-    ``` 
-    As far as our `cit` object is concerned, we are done: we have both the `quote` and the `bibl` inside the `cit`, where they belong, according to TEI Gospel. But take a good look at our last output. There is is still one thing left to do. What do you think it is? 
+    </sense>
+    ```
+    As far as our `cit` object is concerned, we are done: we have both the `quote` and the `bibl` inside the `cit`, where they belong, according to TEI Gospel. But take a good look at our last output. There is is still one thing left to do. What do you think it is?
     
-    We still have a dangling `<author>` element oustide the `<cit>`? Why is that? This is because we didn't create a special template to match the `cit` element. We got to the value of the `author` text node from within the template which matched `quote`. This means that, from the point of view of our lazy XSLT processor, `<author>` was not explictly matched, and therefore it was subject to the shallow copy instruction on no match, which we introduced at the top of our stylesheet. 
+    We still have a dangling `<author>` element oustide the `<cit>`? Why is that? This is because we didn't create a special template to match the `cit` element. We got to the value of the `author` text node from within the template which matched `quote`. This means that, from the point of view of our lazy XSLT processor, `<author>` was not explictly matched, and therefore it was subject to the shallow copy instruction on no match, which we introduced at the top of our stylesheet.
 
     It is essential, however, that you remember the difference between `<xsl:copy>` and `<xsl:copy-of>` as well as how these two instructions differ from `<xsl:value-of>`. We'll review them one more time at the end of this section.
     
-6. To get rid of the dangling author, write a template that will match it and produce no output. We have encountered this kind of template before. If you can't remember, go over the previous sections and remember what happened when we started playing with the entry. 
+6. To get rid of the dangling author, write a template that will match it and produce no output. We have encountered this kind of template before. If you can't remember, go over the previous sections and remember what happened when we started playing with the entry.
 
 By now, you should have a working stylesheet that turn bad TEI into good TEI. As an additional bonus, you should change the title in your `teiHeader` to something more appropriate than "Bad TEI example..."
 
-*Make sure you've tried all the steps above before simply copying and pasting the following full stylesheet into oXygen*. Seriously, you need to understand all of the above steps and experiment with them yourself, otherwise it will be very hard, if not impossible, for you to continue with this course. 
+*Make sure you've tried all the steps above before simply copying and pasting the following full stylesheet into oXygen*. Seriously, you need to understand all of the above steps and experiment with them yourself, otherwise it will be very hard, if not impossible, for you to continue with this course.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -634,7 +634,7 @@ By now, you should have a working stylesheet that turn bad TEI into good TEI. As
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="tei"
     xpath-default-namespace="http://www.tei-c.org/ns/1.0"
-    version="3.0"> 
+    version="3.0">
     
     <xsl:mode on-no-match="shallow-copy"/>
     
@@ -726,37 +726,46 @@ Running the above stylesheet on our `johnson-in-bad-TEI.xml` file will now produ
 </TEI>
 ```
 
+### Saving the output
+
+If you'd like to save the output of the XSLT Debugger menu, ctrl-click or right-click anywhere in the Output Pane and select "Save as."
+
+Later in the course, we'll learn how to create and use XSLT transformation scenarios, which will allow you to apply transformations on selected files from the main editor, i.e. without launching the XSLT Debugger Perspective. 
+
+You should use the XSLT Debugger Perspective when experimenting with and writing your XSTL stylesheets, but not necessarily to perform regular transformations in your projects. 
+
+
 ### Takeaways
 
-In the previous exercise, we've successfully corrected bad TEI in a dictionary entry by creating different elements in the output from the ones that were used in the input file, and by moving some content to a different part of the XML tree. In doing so, we have also dealt with some fundamental XSLT concepts like templates and instructions. 
+In the previous exercise, we've successfully corrected bad TEI in a dictionary entry by creating different elements in the output from the ones that were used in the input file, and by moving some content to a different part of the XML tree. In doing so, we have also dealt with some fundamental XSLT concepts like templates and instructions.
 
-Let's review in one place the most fundamental things we've learned so far. Do _not_ skip this section. We'll be consolidating the things we've covered so far, but also expanding some of them in preparation for the rest of this course. 
+Let's review in one place the most fundamental things we've learned so far. Do _not_ skip this section. We'll be consolidating the things we've covered so far, but also expanding some of them in preparation for the rest of this course.
 
 #### Template order doesn't matter
 
-Ok, let's be honest: we didn't speak about this explicitly. But this is still important to understand. 
+Ok, let's be honest: we didn't speak about this explicitly. But this is still important to understand.
 
 Did you notice in our full stylesheet how we placed the template to change the `<title>` element in the `<teiHeader>` at the bottom of the stylesheet even though the `<teiHeader>` is, as every TEI nerd knows, always at the top of the TEI file? This means that the order in which we write our templates does not have to follow the order in which the nodes appear in our XML input file. Why is that?
 
-Each template rule in an XSLT stylesheet describes how a particular element type or other construct should be processed, but the order in which we write those templates is irrelevant. The XSLT processor _will_ start from the top of your XML document, but it will take into consideration _all_ of your templates as it traverses down the XML document and always apply the most specific one to the node it's currently processing. 
+Each template rule in an XSLT stylesheet describes how a particular element type or other construct should be processed, but the order in which we write those templates is irrelevant. The XSLT processor _will_ start from the top of your XML document, but it will take into consideration _all_ of your templates as it traverses down the XML document and always apply the most specific one to the node it's currently processing.
 
 This is why XSLT is considered to be a _declarative_ language: it makes it possible to specify what output should be produced when particular patterns occur in the input, as opposed to _procedural_ programming languages, which are built to say what tasks are to be performed in what order.
 
 #### Know your context node
 
-The matched node in your template will always be your _context node_. This means that all the XPATH expressions you write inside your template will be relative to that same _context node_. If your template matches on `<entry>`, then using the current-node (`.`) within the template will refer to the same `<entry>` node; `./@xml:id` will select the `@xml:id` attribute of the `<entry>` node; and `./descendant::node()` will select each and every descendant of the `<entry>` node.
+The matched node in your template will always be your _context node_. This means that all the XPath expressions you write inside your template will be relative to that same _context node_. If your template matches on `<entry>`, then using the current-node (`.`) within the template will refer to the same `<entry>` node; `./@xml:id` will select the `@xml:id` attribute of the `<entry>` node; and `./descendant::node()` will select each and every descendant of the `<entry>` node.
 
-In XSLT, context is everything. You have to be aware of your context so that you can write XPATH expressions relative to that context. 
+In XSLT, context is everything. You have to be aware of your context so that you can write XPath expressions relative to that context.
 
-#### Know your XPATH
+#### Know your XPath
 
-We said this at the beginning, but we have to say it one more time. You can't do XSLT without XPATH. Once you get the hang of the basics of XSLT, your most challenging tasks will often come down to expressing what you need in XPATH and not losing your bearings in the input XML tree.  
+We said this at the beginning, but we have to say it one more time. You can't do XSLT without XPath. Once you get the hang of the basics of XSLT, your most challenging tasks will often come down to expressing what you need in XPath and not losing your bearings in the input XML tree.  
 
 #### Appreciate `<xsl:mode on-no-match="shallow-copy"/>`
 
-In most contexts, you should use -- and learn to love -- your shallow copy instruction. Even when converting to different formats, like HTML for example, it's useful to have shallow copying for unmatched nodes: they will not be valid HTML, but they will show you, the clever human behind the lazy XSLT, that your templates haven't covered all the transformations that are necessary. 
+In most contexts, you should use -- and learn to love -- your shallow copy instruction. Even when converting to different formats, like HTML for example, it's useful to have shallow copying for unmatched nodes: they will not be valid HTML, but they will show you, the clever human behind the lazy XSLT, that your templates haven't covered all the transformations that are necessary.
 
-*When should you _not_ use the shallow copy instruction?* For instance, if you are writing an XSLT to _extract_ rather than _transform_ your lexical data, copying everything by default will make no sense. Later in this course, we'll show you, for instance, how to create a lemma list out of your dictionary and what `<xsl:mode>` to use in those cases. 
+*When should you _not_ use the shallow copy instruction?* For instance, if you are writing an XSLT to _extract_ rather than _transform_ your lexical data, copying everything by default will make no sense. Later in this course, we'll show you, for instance, how to create a lemma list out of your dictionary and what `<xsl:mode>` to use in those cases.
 
 Note: `<xsl:mode>` works in XSLT 3.0 only. In previous versions, one needed a more complex identity template to express the same construct. So make sure you are using XSLT 3.0.
 
@@ -766,9 +775,9 @@ Do not forget to apply your templates! `<xsl:mode>` will tell your processor wha
 
 #### Know your `<xsl:value-of>`
 
-`<xsl:value-of>` will, as the name suggest, extract the value of the selected node. You will always need to explicitly say what node you're talking about: `@select` attribute is mandatory. 
+`<xsl:value-of>` will, as the name suggest, extract the value of the selected node. You will always need to explicitly say what node you're talking about: `@select` attribute is mandatory.
 
-You can extract values from elements and attributes.`<xsl:value-of select="./form/@type">` will extract the value of the attribute `@type` from the `<form>` element which is the child of the context node. `<xsl:value-of select="./form[@type='lemma']">` will select the value of the `<form type='"lemma">` which is the child of the context node. 
+You can extract values from elements and attributes.`<xsl:value-of select="./form/@type">` will extract the value of the attribute `@type` from the `<form>` element which is the child of the context node. `<xsl:value-of select="./form[@type='lemma']">` will select the value of the `<form type='"lemma">` which is the child of the context node.
 
 *But beware of mixed and nested content!* `<xsl:value-of>` will always extract the value of the selected element, but not its children or descendats. In other words, `<xsl:value-of>` is not recursive.
 
@@ -788,11 +797,12 @@ and you write a template like this:
 </xsl:template>
 ```
 
-Your template will not extract any real value because your `<form>` element is simply a container for the `<orth>`, and only `<orth>` contains a value that can be extracted. 
+Your template will not extract any real value because your `<form>` element is simply a container for the `<orth>`, and only `<orth>` contains a value that can be extracted.
 
 #### Tell your `<xsl:copy>` from `<xsl:copy-of>`
 
 Ok, XSLT gods were not very creative here when naming the two copying instructions. They sound very similar, but you really need to distinguish one from the other. Let's see.
+
 
 <table>
   <thead>
@@ -811,46 +821,300 @@ Ok, XSLT gods were not very creative here when naming the two copying instructio
     <td>copies the selected node with all it's attributes and descendants</td>
   </tr>
   <tr>
-    <td>can't take a <code>@select</code> attribute</td>
+    <td>can't have a <code>@select</code> attribute</td>
     <td>must have a <code>@select</code> attribute</td>
   </tr>
   <tr>
-    <td>can have children, because it copies an empty element that can be then filled with content</td>
+    <td>can have children itself, because it copies an empty element from the input document that can be then filled with content</td>
     <td>can't possibly have children, because it copies an element with all of its content</td>
   </tr>
 </tbody>
 </table>
-
-
-
-
 
 So, in a nutshell:
 
 1. use `<xsl:copy>` when you want to copy the context node and have other plans for its children; and
 2. use `<xsl:copy-of>` when you want to copy the XPath-selected nodes _and_ their children, recursively.
 
-
-
-
-
-
 TODO: Quizz
 
 ## Processing dictionary data
 
-### Manipulating elements
+In the rest of this course, we'll look at some concrete solutions to typical issues when dealing with lexicographic data. For the sake of simplicity, we'll be looking at issues in individual templates and their outputs. Do not expect full-blown XSLT stylesheets. Based on what you have learned in the first half of this course, you should be able to put things together on your own.
 
-### Manipulating attributes
+### Dealing with elements
+
+#### Intercepting the root element
+
+If your goal is to create HMTL out of your XML data, you will need to intercept the root element, i.e. wrap all of your data in some HTML tags. 
+
+```xml 
+<xsl:template match="/">
+    <html>
+        <body>
+            <xsl:apply-templates/>
+        </body>
+    </html>
+</xsl:template>
+
+```
+
+#### Making elements bold or italic in HTML
+
+When you're working on creating a HTML representation of your data, you will often want to add some styling to your elements. Traditionally, lemmas are bold:
+
+```xml
+<xsl:template match="form[@type='lemma']/orth">
+    <b>
+        <xsl:apply-templates/>
+    </b>
+</xsl:template>
+
+```
+and often examples are set in italics:
+
+```xml
+<xsl:template match="cit[@type='example']/quote">
+    <i>
+        <xsl:apply-templates/>
+    </i>
+</xsl:template>
+```
+
+#### Putting square brackets around pronuncation
+
+```xml
+<xsl:template match="pron">
+    <xsl:text>[</xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>]</xsl:text>
+</xsl:template>
+```
+
+### Dealing with attributes
+
+#### Numbering senses
+
+In TEI, one usually nubmers `<sense>` elements using the `@n` attribute. The following template will automatically number all senses.
+
+```xml
+<xsl:template match="sense">
+    <xsl:copy>
+        <!-- copy all attributes except @n -->
+        <xsl:copy-of select="@* except @n"></xsl:copy-of>
+        <!-- create a new attribute @n -->
+        <xsl:attribute name="n">
+            <xsl:value-of select="count(preceding-sibling::sense)+1"/>
+        </xsl:attribute>
+        <xsl:apply-templates/>
+    </xsl:copy>
+</xsl:template>
+```
+
+What if our dictionary had both senses _and_ subsenses, and if we wanted to number them like this: `1`, `1.1`, `1.2`, `2`, `2.1`, `2.2` etc.
+
+Here, our approach will be very similar to the one we did above, except we'll have to create two separate templates, one for senses and one for subsenses (which in TEI will be expressed as nested senses.)
+
+So, starting with this kind of XML:
+
+```xml
+<entry>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+</entry>
+```
+
+and applying these templates:
+
+```xml
+<xsl:template match="sense[not(parent::sense)]">
+    <xsl:copy>  
+        <xsl:copy-of select="@*"></xsl:copy-of>
+        <xsl:attribute name="n">
+            <xsl:value-of select="count(preceding-sibling::sense)+1"/>
+        </xsl:attribute>
+        <xsl:apply-templates/>
+    </xsl:copy>
+</xsl:template>
+
+<xsl:template match="sense[parent::sense]">
+    <xsl:copy>  
+        <xsl:copy-of select="@*"></xsl:copy-of>
+        <xsl:attribute name="n">
+            <!-- recalculate the sense number of the parent sense -->
+            <xsl:value-of select="count(parent::sense/preceding-sibling::sense)+1"/>
+            <xsl:text>.</xsl:text>
+            <xsl:value-of select="count(preceding-sibling::sense)+1"/>
+        </xsl:attribute>
+    </xsl:copy>
+</xsl:template>
+```
+
+will produce this output:
+
+```xml 
+<entry>
+    <sense n="1">
+        <sense n="1.1"/>
+        <sense n="1.2"/>
+        <sense n="1.3"/>
+    </sense>
+    <sense n="2">
+        <sense n="2.1"/>
+        <sense n="2.2"/>
+    </sense>
+</entry>
+```
+
+#### Generating unique xml:ids
+
+Let's say you have a TEI-endoced dictionary and you're moving to TEI Lex-0. TEI Lex-0 is more strict than plain TEI and one of the strict requirements in the latter is that both entries and senses need to have unique `xml:id` attributes. 
+
+For this, you could use the `generate-id()` function, which returns a string value that uniquely identifies a specified node. If you omit the node-set parameter in the function, it defaults to the current node.
+
+Starting with this XML:
+
+```xml
+<entry>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+</entry>
+<entry>
+    <sense/>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+</entry>
+```
+
+and applying these templates:
+
+```xml 
+<xsl:template match="entry">
+    <xsl:copy>  
+        <xsl:copy-of select="@*"></xsl:copy-of>
+        <xsl:attribute name="xml:id">
+            <xsl:value-of select="generate-id(.)"/>
+        </xsl:attribute>
+        <xsl:apply-templates></xsl:apply-templates>
+    </xsl:copy>
+</xsl:template>
+
+<xsl:template match="sense">
+    <xsl:copy>  
+        <xsl:copy-of select="@*"></xsl:copy-of>
+        <xsl:attribute name="xml:id">
+            <xsl:value-of select="generate-id()"/>
+        </xsl:attribute>
+        <xsl:apply-templates></xsl:apply-templates>
+    </xsl:copy>
+</xsl:template>
+```
+
+will produce this output:
+
+```xml
+<entry xml:id="d1e30">
+    <sense xml:id="d1e32">
+        <sense xml:id="d1e34"/>
+        <sense xml:id="d1e36"/>
+        <sense xml:id="d1e38"/>
+    </sense>
+    <sense xml:id="d1e41">
+        <sense xml:id="d1e43"/>
+        <sense xml:id="d1e45"/>
+    </sense>
+</entry>
+<entry xml:id="d1e49">
+    <sense xml:id="d1e51"/>
+    <sense xml:id="d1e53">
+        <sense xml:id="d1e55"/>
+        <sense xml:id="d1e57"/>
+    </sense>
+</entry>
+```
+Note that `<xsl:value-of select="generate-id(.)"/` and `<xsl:value-of select="generate-id()"/` are functionally the same, because by default the function `generate-id()/` will generate the id for the current node. 
 
 ### Counting dictionary components
 
-### Performing tests
+#### Countring entries
 
-### Hiding and showing dictionary components
+If you'd like to know how many entries your dictionary contains, you could use the XSLT `count()` funciton.
 
-### Gathering HTML views of dictionary content
+Starting with this XML:
 
-## Exercises
+```xml 
+<entry>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+</entry>
+<entry>
+    <sense/>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+</entry>
+<entry>
+    <sense></sense>
+</entry>
+```
 
+and applying these templates:
 
+```xml
+<xsl:template match="/">
+    <xsl:text>Total number of entries: </xsl:text>
+    <xsl:value-of select="count(//entry)"/>
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>Total number of first-level senses: </xsl:text>
+    <xsl:value-of select="count(//sense[not(parent::sense)])"/>
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>Total number of second-level senses: </xsl:text>
+    <xsl:value-of select="count(//sense[parent::sense])"/>
+</xsl:template>
+```
+
+will produce this result:
+
+```
+Total number of entries: 3
+Total number of first-level senses: 5
+Total number of second-level senses: 7
+```
+
+## What next
+
+Learning a new programming language is difficult. XSLT is a complex language, and it takes a lot of practice and working with real dictioanry data to become profficient in it. 
+
+As you continue to learn and use XSLT in real-life scenarios, make sure to:
+
+1. know your source XML well;
+2. understand the output form you're trying to convert to; and
+3. test your XPATH expressions before you start applying them in XSLT.
+
+The above pieces of advice may sound as obvious, but they will be worth following nonetheless. You need to know the structure of your original dictionary data so that you can write templates that correctly identify and select the parts of the dictionary that you want to convert. You also need to be certain what kind of output you want to create and in order to write a successful information. And, finally: if your transformation requires complex XPATH expressions, make sure you test them in oXygen (the way we did in the XPATH course here on DARIAH-Campus) before including them in your templates. That way you can be sure that your templates will select the nodes that you need. 
+
+This course will continue to be updated. 
