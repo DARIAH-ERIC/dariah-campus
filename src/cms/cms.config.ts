@@ -36,6 +36,7 @@ export const collections: Record<string, CmsCollection> = {
  * @see https://www.netlifycms.org/docs/configuration-options/
  * @see https://www.netlifycms.org/docs/beta-features/
  */
+
 export const config: CmsConfig = {
   site_url: url,
   logo_url: '/assets/images/logo-with-text.svg',

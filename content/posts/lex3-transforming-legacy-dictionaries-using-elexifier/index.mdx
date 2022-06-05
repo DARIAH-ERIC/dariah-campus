@@ -1,0 +1,125 @@
+---
+title: "LEX3: Transforming Legacy Dictionaries using Elexifier"
+lang: en
+date: 2022-01-01T05:20:50.667Z
+version: 1.0.0
+authors:
+  - tiberius-carole
+  - munda-tina
+  - repar-andraž
+tags:
+  - lexicography
+categories:
+  - dariah
+abstract: "This course introduces Elexifier, a cloud-based dictionary service for the conversion of legacy XML and PDF dictionaries into a shared data format based on the ELEXIS Data Model. "
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: ""
+licence: ccby-4.0
+toc: true
+draft: true
+uuid: ltlzUH-fnmgzR5O0bgqwu
+---
+
+This course introduces Elexifier, a cloud-based dictionary service for the conversion of legacy XML and PDF dictionaries into a shared data format based on the ELEXIS Data Model.
+
+## Learning Outcomes
+
+Upon completion of this course, students will be able to:
+
+- convert XML or PDF dictionaries into TEI-compliant XML in line with the specification described in the ELEXIS Data Model.
+
+## Prerequisites
+
+This course requires basic knowledge of XML, which can be acquired from the course [Capturing, Modeling and Transforming Lexical Data: An Introduction](/resource/posts/capturing-modeling-and-transforming-lexical-data-an-introduction). Especially the part on Modeling lexicographic data (with XML) is essential. In addition to this, we recommend doing the course [Extracting Lexical Data: XPath for Dictionary Nerds](/resource/posts/xpath-for-dictionary-nerds) if you want to grasp the finer details of defining transformations in Elexifier. For transforming PDF dictionaries, basic knowledge of Lexonomy is recommended. For this, check out the course **[Lexonomy: Mastering the ELEXIS Dictionary Writing System](/resource/posts/lexonomy-mastering-the-elexis-dictionary-writing-system)**. Finally, if you want to learn more about the Dictionary Matrix, we suggest you do the course **[Mastering LEX1: The Dictionary Matrix](/resource/posts/mastering-lex1-the-dictionary-matrix)**.
+
+## Introduction
+
+### What is Elexifier?
+
+Elexifier is a cloud-based dictionary conversion service for conversion of legacy XML and PDF dictionaries into a shared data format so that these dictionaries can be integrated into the ELEXIS infrastructure. It takes as input an XML or PDF dictionary and produces a TEI-compliant XML file in line with the specifications of the Elexis Data Model. The figure below shows the position of the Elexifier tool (the green circle) in relation to the complete set of the ELEXIS Dictionary Tools.
+
+![Graphic guide to the ELEXIS Dictionary Tools](images/elexis_dictionary_tools.png "Graphic guide to the ELEXIS Dictionary Tools")
+
+Dictionaries that have been transformed using Elexifier, can be edited further in Lexonomy or can be imported into the Dictionary Matrix.
+
+Elexifier is easy to use, as the interface and the user instructions guide you through the entire process. Moreover, no installation is required. Elexifier is accessed and operated via the web browser, and the data is stored on the Elexis server.
+
+### What is the ELEXIS Data Model?
+
+In each and every European country, elaborate efforts are put into the development of lexicographic resources describing the language(s) of the community. Although confronted with similar problems relating to technologies for producing and making these resources available, cooperation on a larger European scale has long been limited. As a consequence, many lexicographic resources are typically encoded in their own custom data format. This forms a major obstacle if we want to link, edit, enrich and publish data from various sources reliably as envisaged in the ELEXIS infrastructure (see Figure Graphic guide to the ELEXIS Dictionary Tools above). For this, semantic interoperability between the different lexicographic datasets is needed.
+
+> “semantic interoperability exists when two systems have the ability to automatically interpret exchanged information meaningfully and accurately in order to produce useful results via deference to a common information exchange reference model”.  [Ide and Pustejovsky (2010)](http://www.cs.vassar.edu/~ide/papers/ICGL10.pdf)
+
+Thus what is labelled as ‘example’ in one lexicographic resource should be the same as an element labelled ‘example’ in another lexicographic resource. To realise semantic operability among the ELEXIS lexicographic resources, the ELEXIS data model has been developed which aims to a) streamline the integration of lexicographic data into the infrastructure (using the ELEXIFIER tool), b) enable reliable linking of the data in the Dictionary Matrix, and c) provide a basic template for the creation of new lexicographic resources (e.g. in Lexonomy).
+
+The aim of the ELEXIS Data Model is to ensure semantic interoperability in the ELEXIS infrastructure between lexicographic resources by focussing on a set of core elements. These core elements are the elements that are considered useful for linking dictionary data in the Dictionary Matrix and these are also the elements that you can extract and transform from your custom XML or PDF data using Elexifier.
+
+The following core elements are distinguished and can be transformed in Elexifier:
+
+| Core element | Description |
+| --- | --- |
+| entry | part of a lexicographic resource which contains information related to at least one headword. |
+| headword | organising element of an entry in a lexicographic resource. Note: In printed dictionaries typically at the top of an entry. |
+| secondary headword | headword-like lexical item occurring within an entry in a lexicographic resource, for example derived forms, feminine forms, multiword expressions. Often an organising element of a part of an entry. |
+| variant headword | lexical item representing one of the alternative forms of the headword, for example spelling variation or regional variation. |
+| inflected form | form of the inflectional paradigm of the headword. |
+| part of speech | any of the word classes to which a lexical item may be assigned, e.g. noun, verb, adjective, etc. |
+| sense | part of an entry which groups together information relating to a meaning of a headword (or secondary headword), for example definitions, examples, and translations. |
+| sense indicator | short statement that gives an indication of a meaning and permits its differentiation from other meanings within a sense structure of an entry. |
+| definition | statement that describes a meaning and permits its differentiation from other meanings within a sense structure of an entry. |
+| example | instance of a lexical item's usage in a specific sense. |
+| translation | equivalent in another language of any element in an entry. In Elexifier you can have a translation of the headword and of the example. |
+| label | item from a controlled vocabulary indicating some kind of restriction on the use of the lexical item, for example, time, region, domain, register. |
+| note | free text remark that can accompany any element in a lexicographic resource. |
+| cross-reference | element providing any kind of link or reference to another element within or outside the lexicographic resource. |
+
+Table 1. ELEXIS core elements that can be transformed using Elexifier.
+
+If you already want to read more about the ELEXIS Data Model, see [Towards the ELEXIS data model: defining a common vocabulary for lexicographic resources](https://elex.link/elex2021/wp-content/uploads/2021/08/eLex_2021_03_pp56-77.pdf) and the ongoing work on [LEXIDMA](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=lexidma).
+
+## Let’s get started
+
+### Accessing Elexifier
+
+Elexifier can be accessed at: [https://app.elexifier.elex.is](https://app.elexifier.elex.is)
+
+### Create a user account and log in
+
+To get started, you need to create a user account and log in. See [user guide](https://elexifier.elex.is/help/) on how to do this.
+
+For a quick introduction to Elexifier, check out the following video.
+
+<Video provider="youtube" id="kqYLWdGR_Qo" />
+
+### Transforming an XML dictionary
+
+In the custom XML scenario, XPath formalisms are used for identifying the core elements in the original dictionary data and transforming these to a TEI-compliant format. All information contained in the original dictionary is kept, and only the core elements are transformed into the shared format. The supported core elements are the same as those defined in the ELEXIS common vocabulary (see above in the section on the ELEXIS Data Model).
+
+See the [user guide](https://elexifier.elex.is/help/#XMLtransformation) for detailed instructions on how to use the XML transformation.
+
+### Transforming a PDF dictionary
+
+In the PDF scenario a more complex process is needed. The PDF is first transformed in a flat structure using a pdf2xml conversion script (based on [https://github.com/kermitt2/pdf2xml](https://github.com/kermitt2/pdf2xml)). Then, a chunk of the resulting XML file is sent to [Lexonomy](https://lexonomy.elex.is/)  ([Měchura 2017](https://www.lexonomy.eu/docs/elex2017.pdf)), the online dictionary editing tool for manual annotation. Approximately 4 pages need to be annotated.  The annotated text is then used as the training material for machine learning algorithms that produce the entire dictionary converted to TEI-compliant format.
+
+See the [user guide](https://elexifier.elex.is/help/#PDFtransformation) for detailed instructions on how to use the PDF transformation.
+
+## Hands-on exercise
+
+\[Exercise will be added shortly]
+
+## Next steps 
+
+#### Importing your dictionary into the Dictionary Matrix
+
+The ELEXIS Dictionary Matrix is one of the main results of the ELEXIS project. It is a universal repository of linked senses, meaning descriptions, collocations, phraseology, translation equivalents, examples of usage and other types of lexical information found in existing lexicographic resources. In the course **[Mastering LEX1: The Dictionary Matrix](/resource/posts/mastering-lex1-the-dictionary-matrix)** you can find out more about the Dictionary Matrix.
+
+#### Editing your dictionary in Lexonomy
+
+Lexonomy is a cloud-based, open-source platform for writing and publishing dictionaries. In the course **[Lexonomy: Mastering the ELEXIS Dictionary Writing System](/resource/posts/lexonomy-mastering-the-elexis-dictionary-writing-system)** you learn how to use Lexonomy.
+
+## Read More
+
+[Deliverable 1.4 ELEXIS Conversion Tools](https://elex.is/wp-content/uploads/2021/05/ELEXIS_D1_4_ELEXIS_Conversion_Tools.pdf) The appendix of this deliverable contains examples from dictionaries from ELEXIS partners, showing the input format together with the transformed output from Elexifier.
