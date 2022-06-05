@@ -405,7 +405,7 @@ So let's try the following stylesheet:
     <xsl:template match="entry">
         <xsl:copy>
             <xsl:comment>This is a fancy dicitonary entry.</xsl:comment>
-            <xsl:apply-templates />        
+            <xsl:apply-templates />
         </xsl:copy>
     </xsl:template>
     
@@ -544,7 +544,7 @@ So let's write templates for each of these problems:
        <cit type="example">
            <xsl:copy>
               <xsl:value-of select="./text()" />
-           </xsl:copy>  
+           </xsl:copy>
        </cit>
    </xsl:template>
    ```
@@ -558,7 +558,7 @@ So let's write templates for each of these problems:
    ```xml
    <xsl:template match="quote">
        <cit type="example">
-           <xsl:copy-of select="." />  
+           <xsl:copy-of select="." />
        </cit>
    </xsl:template>
    ```
@@ -596,7 +596,7 @@ So let's write templates for each of these problems:
    <xsl:template match="quote">
       <cit type="example">
           <xsl:copy-of select="." />
-          <xsl:copy-of select="../author" />      
+          <xsl:copy-of select="../author" />
       </cit>
    </xsl:template>
    ```
@@ -673,7 +673,7 @@ _Make sure you've tried all the steps above before simply copying and pasting th
     <xsl:template match="entry">
         <xsl:copy>
             <xsl:comment>This is a fancy dicitonary entry.</xsl:comment>
-            <xsl:apply-templates />        
+            <xsl:apply-templates />
         </xsl:copy>
     </xsl:template>
     
@@ -690,7 +690,7 @@ _Make sure you've tried all the steps above before simply copying and pasting th
             <gram type="pos">
                 <xsl:value-of select="text()" />
             </gram>
-        </gramGrp>  
+        </gramGrp>
     </xsl:template>
     
     <xsl:template match="etymology" />
@@ -700,7 +700,7 @@ _Make sure you've tried all the steps above before simply copying and pasting th
             <xsl:copy-of select="." />
             <bibl>
                 <xsl:value-of select="../author/text()" />
-            </bibl>           
+            </bibl>
         </cit>
     </xsl:template>
     
@@ -796,7 +796,7 @@ We said this at the beginning, but we have to say it one more time. You can't do
 
 In most contexts, you should use -- and learn to love -- your shallow copy instruction. Even when converting to different formats, like HTML for example, it's useful to have shallow copying for unmatched nodes: they will not be valid HTML, but they will show you, the clever human behind the lazy XSLT, that your templates haven't covered all the transformations that are necessary.
 
-_When should you \_not_ use the shallow copy instruction?_ For instance, if you are writing an XSLT to \_extract_ rather than _transform_ your lexical data, copying everything by default will make no sense. Later in this course, we'll show you, for instance, how to create a lemma list out of your dictionary and what `<xsl:mode>` to use in those cases.
+_When should you \_not_ use the shallow copy instruction?\_ For instance, if you are writing an XSLT to \_extract\_ rather than _transform_ your lexical data, copying everything by default will make no sense. Later in this course, we'll show you, for instance, how to create a lemma list out of your dictionary and what `<xsl:mode>` to use in those cases.
 
 Note: `<xsl:mode>` works in XSLT 3.0 only. In previous versions, one needed a more complex identity template to express the same construct. So make sure you are using XSLT 3.0.
 
@@ -838,11 +838,15 @@ Ok, XSLT gods were not very creative here when naming the two copying instructio
   <thead>
     <tr>
       <th style={{width: "50%"}}>
-        <code><xsl:copy></code>
+        <code>
+          \<xsl:copy>
+        </code>
       </th>
 
       <th>
-        <code><xsl:copy-of></code>
+        <code>
+          \<xsl:copy-of>
+        </code>
       </th>
     </tr>
 
@@ -864,9 +868,6 @@ Ok, XSLT gods were not very creative here when naming the two copying instructio
         copies the context node only, no attributes or descendants
       </td>
 
-
-
-
       <td>
         copies the selected node with all it's attributes and descendants
       </td>
@@ -875,21 +876,14 @@ Ok, XSLT gods were not very creative here when naming the two copying instructio
     <tr>
       <td>
         can't have a
-
         <code>@select</code>
-
-         attribute
+        attribute
       </td>
-
-
-
 
       <td>
         must have a
-
         <code>@select</code>
-
-         attribute
+        attribute
       </td>
     </tr>
 
@@ -897,9 +891,6 @@ Ok, XSLT gods were not very creative here when naming the two copying instructio
       <td>
         can have children itself, because it copies an empty element from the input document that can be then filled with content
       </td>
-
-
-
 
       <td>
         can't possibly have children, because it copies an element with all of its content
