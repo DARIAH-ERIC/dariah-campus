@@ -827,13 +827,13 @@ As we have already seen, children are elements that are immediately nested withi
 
 These relationships provide a powerful structure for other software, as well as other XML-standards, such as XPath and XQuery, to navigate the tree structure for formatting, for searching, and for extracting information from the XML document instance. We will be returning to these relationships later in other courses, so make sure you remember what they stand for.
 
-### Exercise: XML in oXygen
+## Introducing oXygen XML Editor
 
 This is all fine and dandy, but how does one _actually_ work with XML files in an XML editor? In this section, we'll show you how to create a new XML file, insert an unmarked dictionary entry in it, and then mark it up. You will learn how to check that your document is well-formed, and then format-and-indent it — all this using an XML editor called [oXygen](https://www.oxygenxml.com). 
 
 oXygen is commercial software, so it does require a licence. If you're just starting and want to check it out, you can obtain a trial license. Needless to say, you do \_not\_ have to use commercial software to work with XML. There are open-source alternatives. Many general-purpose text editors such as [Atom](https://atom.io), [Visual Studio Code](https://code.visualstudio.com) or [jEdit](http://www.jedit.org), that are free, offer XML support. 
 
-#### Creating a new file
+### Creating a new file
 
 1. Start up the oXygen XML Editor 
 2. Select File > New and make the contents of the New Document folder visible by clicking on it. Alternatively, type in "xml" in search field. 
@@ -855,7 +855,7 @@ oXygen is commercial software, so it does require a licence. If you're just star
 
    Once you do add the above, the error about your file being not well-formed will dissappear, the red marker in right margin will turn to green, and oXygen will purr with happiness. Ok, the last bit won't happen, but oXygen will keep track of your XML file all the time, letting you know when things go frong. ![](http://i.imgur.com/PX0zBGq.png)
 
-#### Formatting and indenting XML
+### Formatting and indenting XML
 
 When you paste some text or some XML into your newly created document in oXygen, it may appear all on one line. But don't worry: this doesn't mean, you will need to edit your XML while infinitely scrolling to the right. You can tell oXygen to reformat your XML so that it fits better in your window:
 
@@ -864,7 +864,7 @@ When you paste some text or some XML into your newly created document in oXygen,
 
 You can format and indent any time while working on your XML files.
 
-#### Creating a TEI file in oXygen
+### Creating a TEI file in oXygen
 
 oXygen comes with pre-built templates for various frameworks, including TEI. To create a new TEI file:
 
@@ -874,7 +874,7 @@ oXygen comes with pre-built templates for various frameworks, including TEI. To 
 
 A new TEI file will be created for you with a rudimentary structure consisting of `teiHeader`, `text` and `body` elements.
 
-#### Fold and unfold
+### Fold and unfold
 
 XML in general, and TEI, in particular, are verbose languages.  It takes quite a bit of programmatic yadda-yadda-yadda to encode lexical data in a way that describes each and every component in it in an explicit, machine-readable way. So for the overtired, human eyes, there may be too much stuff to look at. 
 
@@ -886,7 +886,7 @@ The folds are persistent in oXygen. The next time you open the document the fold
 
 **Exercise.** If you right-click the folding triangle, you will discover several useful fodling actions that should be self-explanatory. Make sure to check them out. 
 
-#### Automatic validation
+### Automatic validation
 
 We already saw above an example in which oXygen complained about an XML document which was not well-formed. By default, oXygen will also automatically check for validation errors. The [Enable automatic validation option](https://www.oxygenxml.com/doc/versions/24.1/ug-editor/topics/preferences-editor-document-checking.html#preferences-editor-document-checking__enable-auto-validation) in the [Document Checking preferences page](https://www.oxygenxml.com/doc/versions/24.1/ug-editor/topics/preferences-editor-document-checking.html#preferences-editor-document-checking) controls whether or not all validation errors and warnings will automatically be highlighted in the editor panel.
 
@@ -894,7 +894,7 @@ The automatic validation starts parsing the document and marking the errors afte
 
 ![](http://i.imgur.com/OavdVsI.png)
 
-#### Smart editing
+### Smart editing
 
 oXygen includes _smart editing_ features to help you edit XML documents in Text mode. These include, for instance:
 
