@@ -276,12 +276,66 @@ and your examples will probably look like this:
 ```xml 
 <cit type="example">
     <quote><!--example text--></quote>
-    <bibl><!--optionally, a bibliographic source of the example--></bibl>
+    <bibl><!--optionally, a bibliographic source--></bibl>
 </cit>
 ```
 With code templates, you can create such code fragments and assign specific shortcuts to them, so that they are always at your fingertips.
 
+#### Create a code template
 
+1. Make sure the Project Options checkbox is checked.
+2. Click on New in the Editor / Templates / Code Editor window.
+3. Enter the abbreviated name for our code templates.
+4. Enter the description which explains what the code template does
+5. Associate the code template with an edtior: for TEI always choose XML.
+6. Create the shortcut key by clicking into the input field and pressing the desired key combo, for instance: `Option` + `Command` + `L` (Mac) / `Ctrl` + `Alt` + `L` (Windows)
+7. Write the XML code you want to have in the template in the Content field, then place the cursor where you want the selected text to appear.
+8. Click on the little green arrow next to the Content field to select an editor variable; choose the "Current Selected Text".
+9. Then repeat the last two steps to indicate where you want the caret to appear after your code has been inserted. 
+10. Finally, click OK to save your code template.
+11. Click OK to exit save all your preferences.
+
+![](https://i.imgur.com/383sMoY.png)
+
+#### Use a code template
+
+To use a code template, you can either:
+
+- select from a list of available templates in the **content completion list**; or
+- use a **shorcut key** that you have assigned to your template.
+
+Let's see how to do both with our newly created lemma code template.
+
+##### Use a content completion list
+
+For the lemma template, we need to select the word in the entry that corresponds to a lemma. 
+
+1. Open the `dictionary.xml` file, in case you don't already have it open. You will most likely see something like this:
+    ![](https://i.imgur.com/lYrtO9L.png)
+2. Remove the manually created `<form></form>` and `<orth></orth>` tags. Ideally, you should do this by clicking within the word "Lexicographer" and then using the default "Delete element" shortcut that we introduced above. You should then reuse the same shortcut to get rid of the `<form></form>` tags. If you don't remember the shortcut, you can look it up above -- or inside your oXygen preference. You should then be seeing this:
+    ![](https://i.imgur.com/XvNbPVB.png)
+3. Now, select the word "Lexicographer" and press `Command` + `Space` (on macOS) / `Ctrl` + `Space` (on Windows) to retrieve a content completion list. You should get a list of your custom code templates. Since we have only just created one, you should be seeing this:
+    ![](https://i.imgur.com/Y3Zi7Bb.png)
+4. Click on the `lm` code template. This should wrap the selection and you should, once again, have a fully encoded lemma in your dictionary:
+    ![](https://i.imgur.com/lYrtO9L.png)
+
+##### Use a shortcut
+
+If you are like Tom Cruise and you feel the need for speed, you may want to use the shortcut you created for this template without calling a content completion list.
+
+1. Remove the `<form></form>` and `<orth></orth>` tags you've created in the previous section.
+2. Select the word "Lexicographer"
+3. Press the shortcut you assigned to the lemma template: `Option` + `Command` + `L` (Mac) / `Ctrl` + `Alt` + `L` (Windows)
+4. With one shortcut, the word "Lexicographer" should be now fully encoded as a TEI lemma. 
+
+<SideNote type="info" title="Takeaways">
+    
+1. Code templates and custom shortcuts are _very_ cool. 
+2. Don't create a code template for everything: think about the contsructs that you or members of your team will use most often.
+3. Shortcuts work best if they are easy to remember. Use mnemonic devices such as `Option` + `Command` + `L` (Mac) / `Ctrl` + `Alt` + `L` (Windows) for **L**emma. 
+4. If no text is selected and you use a code template that expects a selection, it will still work. Try it out! 
+
+</SideNote>
 
 ## Author Mode
 
@@ -294,5 +348,3 @@ Including how to "Surround with code", edit attributes etc.
 ### Modifying CSS Stylesheets
 
 How to modify the provided template CSS stylesheet for dictionaries
-
-
