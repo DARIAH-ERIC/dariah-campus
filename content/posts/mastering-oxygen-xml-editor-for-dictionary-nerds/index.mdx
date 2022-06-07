@@ -328,23 +328,135 @@ If you are like Tom Cruise and you feel the need for speed, you may want to use 
 3. Press the shortcut you assigned to the lemma template: `Option` + `Command` + `L` (Mac) / `Ctrl` + `Alt` + `L` (Windows)
 4. With one shortcut, the word "Lexicographer" should be now fully encoded as a TEI lemma. 
 
+**Exercise.** Create a shortcut for a dictionary example in TEI and apply it to the same entry as above.  
+
 <SideNote type="info" title="Takeaways">
     
 1. Code templates and custom shortcuts are _very_ cool. 
 2. Don't create a code template for everything: think about the contsructs that you or members of your team will use most often.
-3. Shortcuts work best if they are easy to remember. Use mnemonic devices such as `Option` + `Command` + `L` (Mac) / `Ctrl` + `Alt` + `L` (Windows) for **L**emma. 
-4. If no text is selected and you use a code template that expects a selection, it will still work. Try it out! 
+3. If no text is selected and you use a code template that expects a selection, it will still work. Try it out! 
 
 </SideNote>
 
-## Author Mode
+## Editing modes
 
-CSS-styled XML. Why would you need it? Use cases. 
+oXygen offers three different editing modes:
 
-### Using Author Mode
+- **Text Mode** working directly with XML source code; 
+- **Grid Mode**, which displays the XML document as a structured grid of nested tables where the text content can be modified without directly interacting with the XML markup; and
+- Author Mode, which allows you to visually edit XML documents in a user-friendly interface that is similar to a WYSIWYG word processor. 
 
-Including how to "Surround with code", edit attributes etc.
+So far, in this course, we've been using the default Text Mode, in which you deal with XML in all it goary detail: with elements, attributes and angle brackets. Let's see what these other modes look like.
 
-### Modifying CSS Stylesheets
+Before we begin, make sure that you have completed the encoding of our sample entry in the Text Mode. It should look like this:
+
+```xml
+<entry>
+    <form type="lemma">
+        <orth>Lexico'grapher</orth>
+    </form>
+    <sense>
+        <def>A writer of dictionaries; a harmless drudge, that busies himself in tracing the
+            original, and detailing the signification of words.</def>
+        <cit type="example">
+            <quote>Commentators and lexicographers acquainted with the Syriac language, have
+                given these hints in their writings on scripture.</quote>
+            <bibl>Watts.</bibl>
+        </cit>
+    </sense>
+</entry>
+```
+
+To change from one mode to another, use the three tabs at the bottom of your editing window. 
+
+![](https://i.imgur.com/RIM5Znb.png)
+
+### Grid Mode
+
+When you switch to Grid Mode, your sample entry should now look like this:
+
+![](https://i.imgur.com/WD0hYwo.png)
+
+You can easily expand or collapse elements within the table and the document structure can be changed with simple contextual menu actions, drag/drop, or copy/paste operations. The text content can be modified simply by editing the value of cells that contain the text and a useful Content Completion Assistant is also available to help you edit or insert XML elements.
+
+You can also resize the columns in order to make it easier for you to see content-relevant columns. For instance, you can minimize the width of the TEI, text and body columns in order to focus on the content of the entry:
+
+![](https://i.imgur.com/gWxF8HD.png)
+
+#### Navigtating the grid
+
+You can use the `Tab` key to move to the next editable value in a table row and `Shift` + `Tab` to move to the previous editable value. `Enter` will let you begin editing a cell, and it will also commit the changes after you finish editing. 
+
+#### Adding elements
+
+To add a new sense, ctr-click (or right-click) on the existing sense, and from the contextual menu select Insert After > Element:  
+
+![](https://i.imgur.com/mHsfDbd.png)
+
+This will create a new Element as a sibling of `sense` and immediately call an autocomplete dropdown, which will offer you the list of elements that could, according to the TEI schema, be valid in this particular context.
+
+The autocomplete dropdown will react to your typing, so that as soon as you type letter `s`, sense will be the first element to show up:
+
+![](https://i.imgur.com/CfiVo8e.png)
+
+Clicking on `sense` will create another sense:
+
+#### Is Grid Mode useful?
+
+Is the Grid Mode useful for editing lexicographic data? The answer depends on the nature of your data. For complex dictionaries with heavy markup and mixed content, probably not. 
+
+If, however, you're working on word lists, or simple dictionaries (usually the kind whose whose markup doesn't involve too many nested elements), you may find that the Grid Mode is easier to work with than the Text View.
+
+Whatever mode you choose to work in, you should make sure than the underlying XML encoding is sound and that working in the given mode doesn't hamper you in doing your editing job. 
+
+### Author Mode
+
+When you switch to Author Mode, your sample entry should now look like this:
+
+![](https://i.imgur.com/HszAmZV.png)
+
+Wait, that's it? Well, it doesn't look like much. If you too feel underwhelmed, that will be completely understandable. By default, dictionary entries don't look all that great because oXygen hasn't created any dictionary-specific styling rules for the display of TEI dictionary data. 
+
+We'll learn how to do that by creating a CSS stylesheet and by writing some dictionary-specific styles. But before we do that, we'll need to do a extend the default TEI framework in oXygen. 
+
+<SideNote type="info" title="Frameworks in oXygen">
+    
+oXygen includes a variety of specialized editors, views, and features that are dynamic according to the type of document that you open or create. It also comes with built-in frameworks for the most popular XML document types, including TEI.
+    
+A *framework* is a set of rules and settings that improve editing capabilities for its particular file type. The framework settings include:
+    
+- A schema used for validation and content completion in both Author mode and Text mode.
+- CSS stylesheets for rendering XML documents in Author mode.
+- User actions invoked from toolbars or menus in Author mode.
+- Built-in transformation scenarios used for publishing XML documents.
+- New document templates to make it easy to create XML documents.
+
+</SideNote>
+
+When you open a TEI file in oXygen, oXygen will recognize it as a TEI file because of its namespace. oXygen will then apply the defaults defined by the TEI framework, including CSS stylesheets for the Author Mode. But as we saw above, the default CSS stylesheets for the TEI framework do not tell oXygen how to display dictioanry data. We'll extend the framework and a new stylesheet ourselves. Fun times! :) 
+
+#### Extending the TEI framework
+
+1. In oXygen Preferences, search for Locations and select them. Locations is a submenu of Document Type Associtations.
+2. Make sure that "Project Options" is selected in the bottom of the window.
+3. Click on the Add button in the lower right corner. This will bring up a new window. 
+4. Click on the icon with a green arrow and select `${pd} - Project directory` from the dropdown. Add `/frameworks` to the input field. This will tell oXygen to look for framework definitions inside the frameworks folder inside the project directory. Click OK.
+    ![](https://i.imgur.com/IAXgEGO.png)
+7. Click Apply.
+6. Click on Document Type Association. Make sure that "Project Options is selected". Look for TEI P5 in the list of frameworks.
+7. Select TEI P5 from the list and click on Extend. This will open a new window.
+7. For storage, check the "External" radio button
+8. Click on the folder icon to choose where to save the TEI 5 Extension. Navigate to your project directory, then create a folder called `frameworks` inside it, another one called `tei` inside that one and clcik Save. 
+9. Click Ok.
+
+What have we now done? We've created an extension to the TEI framework, we've saved the extended framework inside our project folder, and now we'll be ready to use that extended framework to set up our custom stylesheets for Author Mode.  
+
+
+### CSS for Author Mode
 
 How to modify the provided template CSS stylesheet for dictionaries
+
+### Shortcuts in Author Mode
+
+Including how to "Surround with code", edit attributes etc.
+CSS-styled XML. Why would you need it? Use cases. 
