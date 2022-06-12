@@ -119,7 +119,52 @@ First, have a look at the input XML and see if you understand its structure. An 
 
 ![](https://lh5.googleusercontent.com/oqXnBUD-dywul9jPV_qJdEGzJup9xh_QnZzmankQ-MtyKygDmgRqOI77gVScBhTp7Spy-lgF7Qm91qvf9IgjawuZKfX0WRcRgwu1-ZJInMJNZpQ0nG9RFZGGudFXcXSnm_8mawNUMbLNxnwEfw)
 
-Extract from GLOBAL French Portuguese Dictionary © K Dictionaried Ltd
+Figure: Extract from GLOBAL French Portuguese Dictionary © K Dictionaried Ltd
+
+
+
+### Transform the Sample Dictionary using Elexifier
+
+Now we are going to transform the data using Elexifier.  What do you need to do?
+
+#### 1. Login to Elexifier
+
+To login in to Elexifier go to: [https://elexifier.elex.is/](https://elexifier.elex.is/)
+
+#### 2. Import the Sample Dictionary file into Elexifier
+
+How to import a file into Elexifier?
+
+- Select the xml icon on the left-hand side of the screen and click “upload a dictionary”
+- choose the file you want to upload and complete the template.
+
+![](https://lh6.googleusercontent.com/rS3Q_YpepxG9eJJAkUrCyD7-6Eg_nuZCmFvnM40hIiw3bmjLkbQFeP7kQJecgcwcRB4McYjAHBr6l63t3Fv3QMsfdnZlvftQQUuU5aKKzUREkz_tu0gt7vHXwzsrMzUYgGeUfNmNIiAhqE2NAg)
+
+What do you need to fill in?
+
+**TITLE**  the name of the dictionary that you uploaded
+
+**ACRONYM** the acronym of the dictionary
+
+**PUBLISHER** if you know who published the dictionary you should type the name of the publisher here. 
+
+Only the acronym is obligatory as it is used to create unique identifiers for different elements in the transformation.
+
+Under **CREATE A TRANSFORMATION** you need to complete the values for:
+
+**ENTRY ELEMENT** This is the name of the XML tag that contains the entries in the dictionary that you are uploading
+
+**HEADWORD ELEMENT** This is the name of the XML tag that contains the headwords in the dictionary that you are uploading
+
+**TRANSFORMATION NAME** The name of your transformation, e.g. the name of the dictionary, e.g. SampleTransformation-v1
+
+> Note: You should have already identified these elements in the original XML when you had a detailed look at the XML structure of the entry for ‘coffee’.
+
+Your data is uploaded and on the screen you will see two panes one above the other. The top one contains the original imported XML file and the bottom one shows a preview of the transformed data.
+
+![](https://lh6.googleusercontent.com/XrY7X6oszqc1IfpWTt8uk9BRUHqhqGCqWR4IcKWPrvfCjZkquX9t1jxSLkRtTCAvKIOVI4i-I9zvLQhjqubH1FOBQJPEFK2kJpwjo81gA1nU08fVU_iNZI5ppoPlAwxtz2c6-DPeGjDUwQ2WvA)
+
+As you can see in the bottom pane on your screen, the entry and headword elements have already been transformed to the TEI Lex-0 format, i.e. 
 
 
 
