@@ -121,8 +121,6 @@ First, have a look at the input XML and see if you understand its structure. An 
 
 Figure: Extract from GLOBAL French Portuguese Dictionary © K Dictionaried Ltd
 
-
-
 ### Transform the Sample Dictionary using Elexifier
 
 Now we are going to transform the data using Elexifier.  What do you need to do?
@@ -165,6 +163,177 @@ Your data is uploaded and on the screen you will see two panes one above the oth
 ![](https://lh6.googleusercontent.com/XrY7X6oszqc1IfpWTt8uk9BRUHqhqGCqWR4IcKWPrvfCjZkquX9t1jxSLkRtTCAvKIOVI4i-I9zvLQhjqubH1FOBQJPEFK2kJpwjo81gA1nU08fVU_iNZI5ppoPlAwxtz2c6-DPeGjDUwQ2WvA)
 
 As you can see in the bottom pane on your screen, the entry and headword elements have already been transformed to the TEI Lex-0 format, i.e. 
+
+```
+<entry>
+  <form type="lemma">
+     <orth>boire</orth>
+  </form>
+</entry>
+```
+
+All the elements which have not yet been transformed, are encoded in between **dictScrap** and **seg** tags. You can gradually edit your transformation, as we will show in the next section.
+
+> **dictScrap & seg**
+>
+> dictScrap and seg are TEI elements that are used to enclose elements of the original dictionaries which do not have a defined transformation mapping. In other words, if you do not define a transformation mapping for an element of the original dictionary, it will be transformed into a dictScrap or seg element.
+>
+> You can learn more about TEI Lex-0 in the course Modelling Dictionaries in TEI Lex-0 (ADD LINK)
+
+
+
+#### 3. Define the transformation
+
+We are now going to define a complete transformation of the Sample Dictionary, transforming as many elements in the input as possible. 
+
+To edit your transformation, you need to click edit.
+
+![](https://lh5.googleusercontent.com/XR20CqpMPy8Lm1uIrbp8T-so3cJHiCo0B8b1W2wpt4pEDcSyy4HBUZXMWHYiKHzX3cDB9I0_TGAVIzgAvncUrQbRlXRzTohec9RjzqNLHm01pe3RRVGI1rA2SOF66SKuFCFVmuwu5-noc8bsAg)
+
+
+
+The transformation already contains three elements, i.e. entry, headword and sense. 
+
+![](https://lh5.googleusercontent.com/6ezu_t0ItGY5y7vgLg9uJd-ZE-8DMMlrERlNpaK1EpMGQA66Sw8tgcA_xVMT9Qb68eLdJBl2zmNpINOo4IegA0JccCEv-ZOgKFgsbWN_sdHgEfRyeslqpnqHkKEoB8syKkzT-ltcUJRCPAPmiw)
+
+
+
+> Note: It is recommended to add the language of the headwords in your dictionary to the entry element. 
+
+The first two elements were already specified when uploading the XML file; sense is given a ‘dummy’ value by default. You need to define it and set it to the name of the XML tag which contains the sense information in the input.
+
+![](https://lh6.googleusercontent.com/DwXzvHuE0B5bEfJoZtXyYpSuXDYfsh_duSepXmYD-fJgktcxn9rwwOosAKArcWBT4cwjHIWmj61IFD1-OO2wIG4ZSqYD2Zs_y330FjSK9nqqtR-qOVV2BLgOCHzmnzfeki84OOOxbYgDl2wR4g)
+
+![](https://lh6.googleusercontent.com/ZFO17ogEMuZkpAGpNprKA2G0OLBxH27781bwXp4gKFGTx5EDXp5A9k_CmBs46UlSfc3ezenjgqfmzCoUmXDSpQu9ZTbv_Ehy1RdU-yYwtrOBa2doo6iC9TEQ6sMLwz1ASxq8FoDE1hC9IHL01g)
+
+You can now start identifying the other elements in the data using simple XPATH expressions, selecting an element with a specific name and if needed the path to the element. 
+
+> Note: You can learn more about XPATH in the course Extracting Lexical Data: XPath for Dictionary Nerds (ADD LINK)
+
+To add an element, click on “ADD CORE ELEMENT” and add for instance “DEFINITION” and specify the element that contains the definition element in the input.
+
+![](https://lh3.googleusercontent.com/omHv1ODtgu9vB3O92EMZSC0BLs2tvomPR8ktmWjinmSEIW1OEqKXaTOjz4aeI3QGgP1stTjLlQv5KElnCFMaBAma5dYYjFQEyMRwGwa0YS8r67f2YNQgJ73TOOQPvbH6aSnEWbY4pQYSpYq5Vg)
+
+After you have done this, you can click on Update. In the bottom pane, you can inspect the result of the current version of the transformation. Note that at the top of this pane you have the option to strip off namespaces and dictScrap elements. 
+
+
+
+Note:
+
+Namespaces:
+
+Elexifier can encode original dictionary information in a dedicated namespace. Assume that in a German dictionary the headword is encoded in a tag called Stichwort. Elexifier encodes this original tagname in a dedicated namespace in the transformed file. By using the Strip namespaces checkbox, you can remove these elements resulting in a clean TEI Lex-0 file.
+
+dictScrap:
+
+The Strip dictScrap checkbox removes all elements that do not have a defined mapping (and are therefore transformed into either dictScrap or seg element) which makes it easier for the users to see what was transformed.
+
+
+
+Ticking these boxes will make your output more understandable.
+
+![](https://lh4.googleusercontent.com/4l-6oh7GslVhYlcSe1HxirDSH_uPXIDIC1ZZhilRQR88y-nWlkY2qhqNbqJ2rlYm49kRh-Vk9-Z0268IDui7n0f72stsPeMxQOxCtMaApWNX17O2ZyzdmxMBMdLOIk9zm0uhiKugqAZf9tPD1w)
+
+
+
+So far so good. Let’s now look at “PART OF SPEECH”. 
+
+Transforming the Part of Speech tag is a little more difficult in our Sample Dictionary as the part of speech value is stored in an attribute of the PartOfSpeech tag.
+
+
+
+![](https://lh5.googleusercontent.com/l38pQRWaZzn7jatj0JommeX-R2b7CCw8EV24X2WZuc97HJbVDBlpolJHnZQdKLpMj_Nn-9nav_0RE4dRrP9QqaXoUOwuGpxq2Gu_KP0eV_shMTEVzcE_p5qJ-X5Mei_Op3ndBs5C9WGOKgzGkg)
+
+
+
+To transform the Part of Speech, you first need to specify the tag name, i.e. PartOfSpeech and then you need to select the value of the attribute. You do this by selecting the option ‘attribute value’ from the dropdown menu.
+
+
+
+![](https://lh6.googleusercontent.com/YUkFwtu9lrx9jhkJJgwNQan62GoCemvOyeA9f_qr9sRX5uwd0fyNmOdTlB4xyMvASsEVWgtjmvjKu649skkw-B0tTutbu-PI2MbZSd6bHtglTf714aURthTZUm6oRom_rxgjOv4gG2keiLFI4Q)
+
+
+
+In the box behind ATTRIBUTE VALUE, you can then type the name of the attribute that contains the content you want to extract, e.g. value in this case.
+
+
+
+![](https://lh5.googleusercontent.com/HWHs0S5WAPLJN-JlOBTb8XZjCoToUYFKOL1y9pWpC6ufmq50aHop-YwYIEPeCMREySsPYO5eGJH-qCRTNmWxKPfCeN-pFSUTWN0yZJKY9edSJy9X0dPwZIGOWseWTSkGFIRSQKgmihfn-aNpLw)
+
+
+
+Mapping POS labels to Universal Dependencies
+
+Under PART OF SPEECH you also have the option to map the Part of Speech label occurring in the XML file with the tags from [Universal Dependencies](https://universaldependencies.org/u/pos/index.html). It is recommended that you do this as this will make it easier to link your data more reliably to other lexicographic resources in the ELEXIS infrastructure. In our Sample Dictionary, the Part of Speech labels that are used are already compatible with Universal Dependencies.
+
+
+
+![](https://lh6.googleusercontent.com/FPWb2IwsQhgw_rT_ATYop2sF4bsLuRBSigQqJeIxPFjAZV4tk-lIHNfm5WRGyYVGhrRCdbj7zhIqGIu_3Qovbl9z4388nE9DwVL7NmBM04_5s4QZw3aIOY8_c5j-PHHc3rz1P7KDTuOiAYhWiA)
+
+
+
+Try to to add the following core elements to your transformation:
+
+- Sense indicator
+- Headword Translation
+- Example
+- Example Translation
+
+
+
+Note: It is recommended to add language to Headword Translation and Example Translation.
+
+
+
+![](https://lh4.googleusercontent.com/MZQAZiQB8OqiyRSfolBJfBJpKUlNZE1xteD39UdTYLPNlMjgaRlTP5AxAYUo77EknJndirha5b33EKm4m0GVBpliaJAPJEHiMAl1f8uwizFiiSbNpySrfv91V42jM8ccKSMaVzNbO9OLWkR38Q)
+
+
+
+Note: If your dictionary contains the example translation you want to have it inside the example tag. You do this by adding ADOPT SELECTOR in the EXAMPLE element.
+
+
+
+![](https://lh3.googleusercontent.com/ER_aTr63PtiCoD1zHuY-4bMirNLeQDTNetHd5IQZUCjcG_TIjZc3HyKDNnvccfDdemkyTDbyRZbYC8jV4KY900B9ISfSMeHdMmWtn9vA7cDfJkLJya3eN0KxQ7fWbFA9HFPfayR1kYEZ_x9V4w)
+
+
+
+You then set the path to the example translation element. 
+
+
+
+![](https://lh4.googleusercontent.com/fDnPBjLk-PFPA8HjdlAWy0238UquJe3EyJNyGxTPsGxyDQf9cD7QAXrM_20OIgGM1OvwM5QeZkoVFa2iH5TkogfumwBR6o23u7AytEQiMcUF_TdbPNXqLPhLDjRVyzaZ71ltld7sEhHlAQrkZA)
+
+
+
+What this expression does is ask the algorithm to move one level up, finds all Translation elements and moves them within the Example element.
+
+See in the preview pane the changed position of the example translation.
+
+## Export the data for later use
+
+
+
+Once you are done with the transformation, you can download the data for later use, by clicking on “Download”. You need to close the transformation editing pane, by clicking on the name of your dictionary on the left-hand side. Then the Download option will appear again.
+
+
+
+![](https://lh6.googleusercontent.com/b_iSR49-3m6O1-93uOu8Sm60Pu9X64lVVQjy86_sLIQQ55ZJxRV-k7I7yYR5yvZKw_x71cr70NpZD-ZBsBVOFhM-XT3TPEuDFrrSvONyd8pKN4jnJ6K9WGgCcdceLc9jG4yW2SOcJhyVpDwGfg)
+
+
+
+You can then choose to download with or without namespaces. 
+
+
+
+![](https://lh5.googleusercontent.com/kXw1mzanyCUjTsLey1S5Ohf6ObTY2g8y4apo_MKokDlh3WR_vnvYLzZ4GnHMU6JCVf3ccAayF7hikfm-Q7pBEo_uszCAtk3tjSpcp7M2-Hl4V094k3IZ3rKkJqt8_MXWMOkqN5pP_t7mYch_-Q)
+
+
+
+A download with namespaces of the transformed data that we prepared for these two entries can be found here. \[ADD LINK]
+
+For more help on Elexifier, click on Help: [https://elexifier.elex.is/help/](https://elexifier.elex.is/help/)
+
+
 
 
 
