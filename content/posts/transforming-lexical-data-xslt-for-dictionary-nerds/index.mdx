@@ -754,3 +754,432 @@ Running the above stylesheet on our `johnson-in-bad-TEI.xml` file will now produ
     </text>
 </TEI>
 ```
+### Saving the output
+
+If you'd like to save the output of the XSLT Debugger menu, ctrl-click or right-click anywhere in the Output Pane and select "Save as."
+
+Later in the course, we'll learn how to create and use XSLT transformation scenarios, which will allow you to apply transformations on selected files from the main editor, i.e. without launching the XSLT Debugger Perspective.
+
+You should use the XSLT Debugger Perspective when experimenting with and writing your XSTL stylesheets, but not necessarily to perform regular transformations in your projects.
+
+### Takeaways
+
+In the previous exercise, we've successfully corrected bad TEI in a dictionary entry by creating different elements in the output from the ones that were used in the input file, and by moving some content to a different part of the XML tree. In doing so, we have also dealt with some fundamental XSLT concepts like templates and instructions.
+
+Let's review in one place the most fundamental things we've learned so far. Do _not_ skip this section. We'll be consolidating the things we've covered so far, but also expanding some of them in preparation for the rest of this course.
+
+#### Template order doesn't matter
+
+Ok, let's be honest: we didn't speak about this explicitly. But this is still important to understand.
+
+Did you notice in our full stylesheet how we placed the template to change the `<title>` element in the `<teiHeader>` at the bottom of the stylesheet even though the `<teiHeader>` is, as every TEI nerd knows, always at the top of the TEI file? This means that the order in which we write our templates does not have to follow the order in which the nodes appear in our XML input file. Why is that?
+
+Each template rule in an XSLT stylesheet describes how a particular element type or other construct should be processed, but the order in which we write those templates is irrelevant. The XSLT processor _will_ start from the top of your XML document, but it will take into consideration _all_ of your templates as it traverses down the XML document and always apply the most specific one to the node it's currently processing.
+
+This is why XSLT is considered to be a _declarative_ language: it makes it possible to specify what output should be produced when particular patterns occur in the input, as opposed to _procedural_ programming languages, which are built to say what tasks are to be performed in what order.
+
+#### Know your context node
+
+The matched node in your template will always be your _context node_. This means that all the XPath expressions you write inside your template will be relative to that same _context node_. If your template matches on `<entry>`, then using the current-node (`.`) within the template will refer to the same `<entry>` node; `./@xml:id` will select the `@xml:id` attribute of the `<entry>` node; and `./descendant::node()` will select each and every descendant of the `<entry>` node.
+
+In XSLT, context is everything. You have to be aware of your context so that you can write XPath expressions relative to that context.
+
+#### Know your XPath
+
+We said this at the beginning, but we have to say it one more time. You can't do XSLT without XPath. Once you get the hang of the basics of XSLT, your most challenging tasks will often come down to expressing what you need in XPath and not losing your bearings in the input XML tree.
+
+#### Appreciate `<xsl:mode on-no-match="shallow-copy"/>`
+
+In most contexts, you should use -- and learn to love -- your shallow copy instruction. Even when converting to different formats, like HTML for example, it's useful to have shallow copying for unmatched nodes: they will not be valid HTML, but they will show you, the clever human behind the lazy XSLT, that your templates haven't covered all the transformations that are necessary.
+
+_When should you \_not_ use the shallow copy instruction?\_ For instance, if you are writing an XSLT to \_extract\_ rather than _transform_ your lexical data, copying everything by default will make no sense. Later in this course, we'll show you, for instance, how to create a lemma list out of your dictionary and what `<xsl:mode>` to use in those cases.
+
+Note: `<xsl:mode>` works in XSLT 3.0 only. In previous versions, one needed a more complex identity template to express the same construct. So make sure you are using XSLT 3.0.
+
+#### Know your `<xsl:apply-templates>`
+
+Do not forget to apply your templates! `<xsl:mode>` will tell your processor what to do on unmatched nodes. But with each template you'll be matching certain nodes. In some cases, when you are absolutely certain that those nodes contain text only, you'll be able to select `text()` from them and be done with them. But in most cases, you will want to `<apply-templates>` from within the matched node, either by telling the processor to keep processing the contents of the node, or telling the processor to select a different node and to process their contents from within the matched template.
+
+#### Know your `<xsl:value-of>`
+
+`<xsl:value-of>` will, as the name suggest, extract the value of the selected node. You will always need to explicitly say what node you're talking about: `@select` attribute is mandatory.
+
+You can extract values from elements and attributes.`<xsl:value-of select="./form/@type">` will extract the value of the attribute `@type` from the `<form>` element which is the child of the context node. `<xsl:value-of select="./form[@type='lemma']">` will select the value of the `<form type='"lemma">` which is the child of the context node.
+
+_But beware of mixed and nested content!_ `<xsl:value-of>` will always extract the value of the selected element, but not its children or descendats. In other words, `<xsl:value-of>` is not recursive.
+
+If your XML contains something like this:
+
+```xml
+<form type="lemma">
+    <orth>oopsy daisy</orth>
+</form>
+```
+
+and you write a template like this:
+
+```xml
+<xsl:template match="form">
+    <xsl:value-of select="." />
+</xsl:template>
+```
+
+Your template will not extract any real value because your `<form>` element is simply a container for the `<orth>`, and only `<orth>` contains a value that can be extracted.
+
+#### Tell your `<xsl:copy>` from `<xsl:copy-of>`
+
+Ok, XSLT gods were not very creative here when naming the two copying instructions. They sound very similar, but you really need to distinguish one from the other. Let's see.
+
+<table>
+  <thead>
+    <tr>
+      <th style={{width: "50%"}}>
+        <code>
+          \<xsl:copy>
+        </code>
+      </th>
+
+      <th>
+        <code>
+          \<xsl:copy-of>
+        </code>
+      </th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        shallow copy
+      </td>
+
+      <td>
+        deep copy
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        copies the context node only, no attributes or descendants
+      </td>
+
+      <td>
+        copies the selected node with all it's attributes and descendants
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        can't have a
+        <code>@select</code>
+        attribute
+      </td>
+
+      <td>
+        must have a
+        <code>@select</code>
+        attribute
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        can have children itself, because it copies an empty element from the input document that can be then filled with content
+      </td>
+
+      <td>
+        can't possibly have children, because it copies an element with all of its content
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+So, in a nutshell:
+
+1. use `<xsl:copy>` when you want to copy the context node and have other plans for its children; and
+2. use `<xsl:copy-of>` when you want to copy the XPath-selected nodes _and_ their children, recursively.
+
+TODO: Quizz
+
+## Processing dictionary data
+
+In the rest of this course, we'll look at some concrete solutions to typical issues when dealing with lexicographic data. For the sake of simplicity, we'll be looking at issues in individual templates and their outputs. Do not expect full-blown XSLT stylesheets. Based on what you have learned in the first half of this course, you should be able to put things together on your own.
+
+### Dealing with elements
+
+#### Intercepting the root element
+
+If your goal is to create HMTL out of your XML data, you will need to intercept the root element, i.e. wrap all of your data in some HTML tags.
+
+```xml
+<xsl:template match="/">
+    <html>
+        <body>
+            <xsl:apply-templates />
+        </body>
+    </html>
+</xsl:template>
+```
+
+#### Making elements bold or italic in HTML
+
+When you're working on creating a HTML representation of your data, you will often want to add some styling to your elements. Traditionally, lemmas are bold:
+
+```xml
+<xsl:template match="form[@type='lemma']/orth">
+    <b>
+        <xsl:apply-templates />
+    </b>
+</xsl:template>
+```
+
+and often examples are set in italics:
+
+```xml
+<xsl:template match="cit[@type='example']/quote">
+    <i>
+        <xsl:apply-templates />
+    </i>
+</xsl:template>
+```
+
+#### Putting square brackets around pronuncation
+
+```xml
+<xsl:template match="pron">
+    <xsl:text>[</xsl:text>
+    <xsl:apply-templates />
+    <xsl:text>]</xsl:text>
+</xsl:template>
+```
+
+### Dealing with attributes
+
+#### Numbering senses
+
+In TEI, one usually nubmers `<sense>` elements using the `@n` attribute. The following template will automatically number all senses.
+
+```xml
+<xsl:template match="sense">
+    <xsl:copy>
+        <!-- copy all attributes except @n -->
+        <xsl:copy-of select="@* except @n" />
+        <!-- create a new attribute @n -->
+        <xsl:attribute name="n">
+            <xsl:value-of select="count(preceding-sibling::sense)+1" />
+        </xsl:attribute>
+        <xsl:apply-templates />
+    </xsl:copy>
+</xsl:template>
+```
+
+What if our dictionary had both senses _and_ subsenses, and if we wanted to number them like this: `1`, `1.1`, `1.2`, `2`, `2.1`, `2.2` etc.
+
+Here, our approach will be very similar to the one we did above, except we'll have to create two separate templates, one for senses and one for subsenses (which in TEI will be expressed as nested senses.)
+
+So, starting with this kind of XML:
+
+```xml
+<entry>
+    <sense>
+        <sense />
+        <sense />
+        <sense />
+    </sense>
+    <sense>
+        <sense />
+        <sense />
+    </sense>
+</entry>
+```
+
+and applying these templates:
+
+```xml
+<xsl:template match="sense[not(parent::sense)]">
+    <xsl:copy>
+        <xsl:copy-of select="@*"></xsl:copy-of>
+        <xsl:attribute name="n">
+            <xsl:value-of select="count(preceding-sibling::sense)+1"/>
+        </xsl:attribute>
+        <xsl:apply-templates/>
+    </xsl:copy>
+</xsl:template>
+
+<xsl:template match="sense[parent::sense]">
+    <xsl:copy>
+        <xsl:copy-of select="@*"></xsl:copy-of>
+        <xsl:attribute name="n">
+            <!-- recalculate the sense number of the parent sense -->
+            <xsl:value-of select="count(parent::sense/preceding-sibling::sense)+1"/>
+            <xsl:text>.</xsl:text>
+            <xsl:value-of select="count(preceding-sibling::sense)+1"/>
+        </xsl:attribute>
+    </xsl:copy>
+</xsl:template>
+```
+
+will produce this output:
+
+```xml
+<entry>
+    <sense n="1">
+        <sense n="1.1" />
+        <sense n="1.2" />
+        <sense n="1.3" />
+    </sense>
+    <sense n="2">
+        <sense n="2.1" />
+        <sense n="2.2" />
+    </sense>
+</entry>
+```
+
+#### Generating unique xml:ids
+
+Let's say you have a TEI-endoced dictionary and you're moving to TEI Lex-0. TEI Lex-0 is more strict than plain TEI and one of the strict requirements in the latter is that both entries and senses need to have unique `xml:id` attributes.
+
+For this, you could use the `generate-id()` function, which returns a string value that uniquely identifies a specified node. If you omit the node-set parameter in the function, it defaults to the current node.
+
+Starting with this XML:
+
+```xml
+<entry>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+</entry>
+<entry>
+    <sense/>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+</entry>
+```
+
+and applying these templates:
+
+```xml
+<xsl:template match="entry">
+    <xsl:copy>
+        <xsl:copy-of select="@*"></xsl:copy-of>
+        <xsl:attribute name="xml:id">
+            <xsl:value-of select="generate-id(.)"/>
+        </xsl:attribute>
+        <xsl:apply-templates></xsl:apply-templates>
+    </xsl:copy>
+</xsl:template>
+
+<xsl:template match="sense">
+    <xsl:copy>
+        <xsl:copy-of select="@*"></xsl:copy-of>
+        <xsl:attribute name="xml:id">
+            <xsl:value-of select="generate-id()"/>
+        </xsl:attribute>
+        <xsl:apply-templates></xsl:apply-templates>
+    </xsl:copy>
+</xsl:template>
+```
+
+will produce this output:
+
+```xml
+<entry xml:id="d1e30">
+    <sense xml:id="d1e32">
+        <sense xml:id="d1e34"/>
+        <sense xml:id="d1e36"/>
+        <sense xml:id="d1e38"/>
+    </sense>
+    <sense xml:id="d1e41">
+        <sense xml:id="d1e43"/>
+        <sense xml:id="d1e45"/>
+    </sense>
+</entry>
+<entry xml:id="d1e49">
+    <sense xml:id="d1e51"/>
+    <sense xml:id="d1e53">
+        <sense xml:id="d1e55"/>
+        <sense xml:id="d1e57"/>
+    </sense>
+</entry>
+```
+
+Note that `<xsl:value-of select="generate-id(.)"/` and `<xsl:value-of select="generate-id()"/` are functionally the same, because by default the function `generate-id()/` will generate the id for the current node.
+
+### Counting dictionary components
+
+#### Countring entries
+
+If you'd like to know how many entries your dictionary contains, you could use the XSLT `count()` funciton.
+
+Starting with this XML:
+
+```xml
+<entry>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+</entry>
+<entry>
+    <sense/>
+    <sense>
+        <sense></sense>
+        <sense></sense>
+    </sense>
+</entry>
+<entry>
+    <sense></sense>
+</entry>
+```
+
+and applying these templates:
+
+```xml
+<xsl:template match="/">
+    <xsl:text>Total number of entries: </xsl:text>
+    <xsl:value-of select="count(//entry)" />
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>Total number of first-level senses: </xsl:text>
+    <xsl:value-of select="count(//sense[not(parent::sense)])" />
+    <xsl:text>&#xa;</xsl:text>
+    <xsl:text>Total number of second-level senses: </xsl:text>
+    <xsl:value-of select="count(//sense[parent::sense])" />
+</xsl:template>
+```
+
+will produce this result:
+
+```
+Total number of entries: 3
+Total number of first-level senses: 5
+Total number of second-level senses: 7
+```
+
+## What next
+
+Learning a new programming language is difficult. XSLT is a complex language, and it takes a lot of practice and working with real dictioanry data to become profficient in it.
+
+As you continue to learn and use XSLT in real-life scenarios, make sure to:
+
+1. know your source XML well;
+2. understand the output form you're trying to convert to; and
+3. test your XPATH expressions before you start applying them in XSLT.
+
+The above pieces of advice may sound as obvious, but they will be worth following nonetheless. You need to know the structure of your original dictionary data so that you can write templates that correctly identify and select the parts of the dictionary that you want to convert. You also need to be certain what kind of output you want to create and in order to write a successful information. And, finally: if your transformation requires complex XPATH expressions, make sure you test them in oXygen (the way we did in the XPATH course here on DARIAH-Campus) before including them in your templates. That way you can be sure that your templates will select the nodes that you need.
+
+This course will continue to be updated.
