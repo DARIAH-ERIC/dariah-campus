@@ -136,7 +136,7 @@ There are, however, other ISO standards developed as high-level specifications t
 
 **ISO 704 (2009):** ‘Terminology Work – Vocabulary – Principles and Methods. It establishes the basic principles and methods for preparing and compiling terminologies and describes the terminological representation that we adopted in this research.
 
-**ISO 24613 (2019, 2020, 2021):** The Lexical Markup Framework (LMF) is a de jure multi‐part standard within ISO 24613 (ISO 24613-1, 2019; ISO 24613-2, 2020; ISO 24613-3, 2021; ISO 24613-4, 2021; ISO 24613-5, 2021) that provides a common standardised structure to have a flexible specification platform for lexical data, mainly for NLP applications with an extension to represent lexical resources and machine-readable dictionaries (MRD). This standard has been prepared and maintained by the technical subcommittee ISO/TC37/SC4/WG4. The main classes are Lexical Resource, Global Information, Lexicon, Lexical Entry, Lemma and Word Form. The UML specification can be somewhat abstract for the lexicographers community, who are not used to formalising data structures.
+**ISO 24613 (2019, 2020, 2021):** The Lexical Markup Framework (LMF) is a de jure multi‐part standard within ISO 24613 (ISO 24613-1, 2019; ISO 24613-2, 2020; ISO 24613-3, 2021; ISO 24613-4, 2021; ISO 24613-5, 2021) that provides a common standardised structure to have a flexible specification platform for lexical data, mainly for NLP applications with an extension to represent lexical resources and machine-readable dictionaries (MRD). This standard has been prepared and maintained by the technical subcommittee ISO/TC37/SC4/WG4. The main classes are Lexical Resource, Global Information, Lexicon, Lexical Entry, Lemma and Word Form. The UML specification can be somewhat abstract for the lexicographer's community, who are not used to formalising data structures.
 
 **ISO 24156-1 (2014):** This standard ‘gives guidelines for using a subset of UML symbols independent of their normal UML meaning, to represent concepts in concept models that result from concept analysis. It describes how UML symbols can be used for that. A UML profile designed for this purpose is used to represent concepts and concept relations in terminology work’ (p. 1).
 
@@ -256,9 +256,9 @@ The concepts are defined using three different approaches in order to serve seve
 
 ## 2. Lexicographic article
 
-According to the core vocabulary we have defined, we propose a minimal microstructure of a lexicographic article.
+According to the core vocabulary we have defined, we propose a minimal microstructure of a monolingual lexicographic article.
 
-![](images/minimal_structure.png "Figure 20: Minimal microstructure of a lexicographic article")
+![](images/minimal_structure.png "Figure 20: XML representation of minimal microstructure of a monolingual lexicographic article")
 
 Having this minimal microstructure of a lexicographic article in mind we will now identify the structured set of lexicographic components related to the headword ‘fly’ (English), ‘mouche’ (French), ‘mosca’ (Portuguese).
 
@@ -266,15 +266,15 @@ The lexicographic articles used below, despite having a more complex structure a
 
 ### 2.1 English lexicographic article: fly
 
-![](images/fly.drawio.png "Retrieved from: Oxford English Dictionary, https://www.oed.com (07/01/2022)")
+![](images/fly.drawio.png "English lexicographic article. Retrieved from: Oxford English Dictionary, https://www.oed.com (07/01/2022)")
 
 ### 2.2 French lexicographic article: mouche
 
-![](images/mouche.drawio.png "Retrieved from: Le Robert, https://dictionnaire.lerobert.com/definition/mouche (07/01/2022)")
+![](images/mouche.drawio.png "French lexicographic article. Retrieved from: Le Robert, https://dictionnaire.lerobert.com/definition/mouche (07/01/2022)")
 
 ### 2.3 Portuguese lexicographic article: mosca
 
-![](images/mosca.drawio.png "Retrieved from:  Dicionário da Língua Portuguesa Contemporânea, Academia das Ciências de Lisboa (2001)")
+![](images/mosca.drawio.png "Portuguese lexicographic article. Retrieved from:  Dicionário da Língua Portuguesa Contemporânea, Academia das Ciências de Lisboa (2001)")
 
 ## 3. Modelling and encoding lexicographic article
 
@@ -286,25 +286,25 @@ The two core classes of the lexicon ontology model are the class `Lexical Entry`
 
 The following Turtle code is an example for the lexical entry of ‘fly':
 
-![](images/fly_ontolex.png "Fly in OntoLex")
+![](images/fly_ontolex.png "Representation following Turtle code")
 
 ### 3.2 TEI LEx-0
 
-TEI Lex-0 is a stricter subset of TEI that aims for a stricter TEI representation of heterogeneous TEI-based lexical resources. Its goal is to establish a baseline encoding and a target format to facilitate the interoperability of heterogeneously encoded lexical resources.
+TEI Lex-0 is a stricter subset of TEI that aims for a stricter TEI representation of heterogeneous TEI-based lexical resources. Its goal is to establish a baseline encoding and a target format to facilitate the interoperability of heterogeneously encoded lexical resources. We present an example, which purpose is to give a representation of an encoded lexicographic article according to the core vocabulary we have defined.
 
-![](images/fly_tei.png "Fly in TEI Lex-0")
+![](images/fly_tei.png "TEI Lex-0 encoded lexicographic article")
 
 ### 3.3 LMF
 
-The Lexical Markup Framework (LMF) is a de jure multi‐part standard within ISO 24613 (ISO 24613-1, 2019; ISO 24613-2, 2020; ISO 24613-3, 2021; ISO 24613-4, 2021; ISO 24613-5, 2021) that provides a common standardised structure to have a flexible specification platform for lexical data, mainly for NLP applications with an extension to represent lexical resources and machine-readable dictionaries (MRD).
+The Lexical Markup Framework (LMF) is a de jure multi‐part standard within ISO 24613 (ISO 24613-1, 2019; ISO 24613-2, 2020; ISO 24613-3, 2021; ISO 24613-4, 2021; ISO 24613-5, 2021) that provides a common standardised structure to have a flexible specification platform for lexical data, mainly for NLP applications with an extension to represent lexical resources and machine-readable dictionaries (MRD). We present an example, which purpose is to give a representation of a structured lexicographic article according to the core vocabulary we have defined.
 
-![](images/fly_lmf.png "LMF encoding for fly")
+![](images/fly_lmf.png "LMF encoded lexicographic article")
 
 ## 4. LexModel – Core Terminology for Lexicography
 
-LexModel, which is made up of the core terminology for lexicographic work, is directed to organise, structure and represent monolingual dictionaries. LexModel has been elaborated for teaching, training and learning purposes in the context of ELEXIS curriculum design.
+LexModel defines the core terminology for organising, structuring and representing monolingual dictionaries and has been elaborated for teaching, training, and learning purposes in the context of ELEXIS curriculum design.
 
-<Figure src="images/lexml_18_07_22.png">
+<Figure src="images/lexml_18_07_22.png" alt="LexModel">
 
 </Figure>
 
