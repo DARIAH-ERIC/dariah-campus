@@ -1,5 +1,6 @@
 ---
-title: ELEXIS Pathfinder to Computional Lexicography for Developers and Computational Linguists
+title: ELEXIS Pathfinder to Computional Lexicography for Developers and
+  Computational Linguists
 lang: en
 date: 2022-01-02T14:38:37.079Z
 version: 1.0.0
@@ -11,7 +12,11 @@ tags:
 categories:
   - dariah
   - dariah-pathfinders
-abstract: This learning resource provides software developers and computational linguists with an overview of the typical  computational processing tasks and software tools in the lexicographic workflow. The resource introduces the most widely used custom developed tools for corpus-based lexicography as well as their functionality.
+abstract: This learning resource provides software developers and computational
+  linguists with an overview of the typical  computational processing tasks and
+  software tools in the lexicographic workflow. The resource introduces the most
+  widely used custom developed tools for corpus-based lexicography as well as
+  their functionality.
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: training-module
@@ -21,23 +26,73 @@ licence: ccby-4.0
 toc: true
 uuid: VL3saRXgj1b2la911h1yK
 ---
-
-This learning resource provides software developers and computational linguists with an overview of the typical  computational processing tasks and software tools in the lexicographic workflow. The resource introduces the most widely used custom developed tools for corpus-based lexicography as well as their functionality. Additionally, we give pointers to trending R\&D topics in computational lexicography ranging from automatic extraction of good examples and word-sense disambiguation to machine learning. The course is aimed at developers and computational linguists who are new to lexicography and who quickly want to familiarise themselves with the most important literature and/or available learning resources which can bring them up to speed in the fast-changing field and prepare them to collaborate  in a multidisciplinary team of lexicographers, computational linguists and software developers.
+This learning resource provides software developers and computational linguists with an overview of the typical  computational processing tasks and software tools in the lexicographic workflow. The resource introduces the most widely used custom developed tools for corpus-based lexicography as well as their functionality. Additionally, we give pointers to trending R&D topics in computational lexicography ranging from automatic extraction of good examples and word-sense disambiguation to machine learning. The course is aimed at developers and computational linguists who are new to lexicography and who quickly want to familiarise themselves with the most important literature and/or available learning resources which can bring them up to speed in the fast-changing field and prepare them to collaborate  in a multidisciplinary team of lexicographers, computational linguists and software developers.
 
 ## Learning Outcomes
 
-Upon completion of this course, students will be able to
+Upon completion of this course, students/developers will be able to
 
 - assess different tools used in the lexicographic workflow
-- understand the typical functions and custom features of lexicographic tools
+- understand the typical functions and custom features of lexicographic software tools
 - compare and evaluate different approaches to automatic extraction of lexicographic data (e.g. headword lists, collocations and example sentences)
-- find the most important literature and/or available learning resources in computational lexicography
+- find the most important literature and/or available learning resources in computational lexicography   
+
+## Tools in the lexicographic workflow
+
+Two tools are more or less indispensable in a good lexicographic workflow, i.e. a dictionary writing system (DWS) and a corpus query system (CQS).
+
+A DWS is a type of specialised software that is used to support the dictionary editing process whilst ensuring structural coherence and facilitating project management. A CQS is a tool that allows lexicographers to analyse, search, manipulate and save corpus data. It should be noted that lexicographers are probably the most demanding users of corpus query systems – they require and regularly use the highest number of features in CQS.
+
+Another important type of lexicographic software that should be mentioned are dictionary user interfaces (UI). These are strictly speaking not part of the lexicographic production workflow and will not be discussed further here, but see e.g. Klosa-Kückelhaus & Michaelis (2022) for more on the design of internet dictionaries.
+
+In the courses, [Lexonomy: Mastering the ELEXIS Dictionary Writing System](https://campus.dariah.eu/id/Qm_2SzS_rGB-Py9YTCHYm) and [LEX2:  Mastering ELEXIS Corpus Tools for Lexicographic Purposes](https://campus.dariah.eu/id/vfyLBgtN4bMmxC4Me97gl), you can learn how to use the DWS Lexonomy and the CQS Sketch Engine. In this pathfinder, we take a broader perspective. We describe in a nutshell what a DWS and a CQS is, what the main characteristics are and what kinds of systems there are and where you can find them.
+
+## Dictionary Writing Systems
+
+### What is a DWS?
+
+The core function of a DWS is to support lexicographers in editing dictionary entries, relieving them of routine tasks and automating many procedures that had to be taken care of manually before. However, a DWS is much more than an editor. It is designed to manage the entire dictionary production workflow, from the first entry to the final product ready for publication in print or electronic format. In addition to an editing interface, it also includes a set of administrative tools for project management and publication.
+
+Other English terms for a DWS that you may encounter, are dictionary editing system, dictionary compilation software, lexicography software or dictionary production software, lexicographic workbench, dictionary management system or lexicographer’s workbench, dictionary editing tool, dictionary building software, or simply editorial system.
+
+### What kinds of DWS are there and where can you find them?
+
+Within the lexicographic community, different kinds of DWS are used: 
+
+- Off-the-shelf systems
+- - commercial systems
+  - open-source systems
+- in-house systems
+- customised general-purpose XML editors
+
+Examples of off-the-shelf commercial systems are products such as [IDM DPS](http://dps.cw.idm.fr/index.html) and [TLex](https://tshwanedje.com/tshwanelex/). Open-source systems include [Lexonomy](https://lexonomy.elex.is), [FLex](https://software.sil.org/fieldworks/) (Fieldworks), and [LanguageForge](https://languageforge.org/). The latter two are mainly used in the area of field linguistics. In-house systems can typically be found in institutions which have a long tradition in lexicography. These institutions often use their own, dedicated DWS that has been developed exclusively for their purposes, e.g.  [EKILEX](https://ekilex.ee/) of the Estonian Language Institute and INL-DWS (see [Tiberius et al. 2014](http://slovenscina2.0.trojina.si/arhiv/2014/2/Slo2.0_2014_2_06.pdf)) at the Dutch Language Institute.  Examples of general-purpose editors which have been customised to the particular needs of a project are the XML editor oXygen (See the course [Mastering oXygen XML Editor for Dictionary Nerds](https://campus.dariah.eu/id/CPYfBfo_5Rz1d8tow9Gfu)) and XMetal.
+
+In the ELEXIS surveys on Lexicographer’s Needs (Kallas et al. 2019a,b; Tiberius et al. 2022), many DWSs were mentioned. The table below gives an overview of the different systems that were mentioned in the surveys. This is by no means an exhaustive list. 
+
+> In the survey a DWS was defined as “a piece of software for writing and producing a dictionary. It might include an editor, a database, a Web interface and various management tools – for allocating work etc. Specialised dictionary editing software includes customisations of existing/standard (XML) editors”. We are uncertain if all the systems mentioned in the survey results fulfil this definition as some seem to be more targeted at terminology or corpus development.
+
+### What are the main characteristics of a DWS?
+
+To support the editing process, a DWS has an editing interface, often with a form-like presentation, which allows lexicographers to enter their text into predefined slots or spaces. Dictionary entries are highly structured objects with many recurring elements, e.g. headword, part of speech, sense, definition, translation (in bilingual and multilingual dictionaries), and examples. 
+
+Drop-down lists are generally used for elements which allow a limited number of values and character strings (e.g. possible values for part-of-speech could be noun, verb, adjective, etc. ). Furthermore, the editing interface should allow lexicographers to copy and paste text, for example from the CQS into the DWS, and to move fields or entire groups of fields, for example, to other parts of the entry or dictionary (including e.g. re-ordering and renumbering of senses).This requires automatic validation of the entry structure: if text elements are inserted in the wrong order, the system should alert the user. In addition, the system should alert the lexicographer when a headword is already present in the dictionary. A DWS usually offers one editing interface but several different ways of viewing the data, i.e. a view to explore the raw data together with the markup, a form-like view and a WYSIWYG view, previewing the entry as it may be shown in an online dictionary.
+
+In addition to an editing interface, a DWS also offers ‘housekeeping’ tools that help to manage large projects, keeping track of progress against the working schedule and budget. This includes functionalities such as allocating a batch of entries to be compiled or edited by a particular lexicographer, keeping a record of who is working on which entries and the status of the entries (e.g. finished, in progress or not yet started). Furthermore, it should be possible to set different levels of authorisation so that, for example, freelance staff are allowed to edit only the dictionary project or entries they have been hired for. Other useful features are version control, track changes, and scriptability. Bulk operations can be useful to make the same correction to a whole set of entries with a single operation. 
+
+The ideal system is highly customisable, both in terms of functionalities and interface.
+
+A DWS should also have good import and export facilities. It should support batch merges, allowing large amounts of data to be added to the system quickly and easily and it should be able to export the data from the system in different formats for further processing or publication. From the ELEXIS surveys (Kallas et al. 2019a,b; Tiberius et al. 2022) we learn that XML is still the most used exchange format. Some systems such as Lexonomy also allow online publication of the dictionary within the system.
+
+As noted by Abel (2012)  “A dictionary writing system should never be viewed in isolation, but rather within the framework of a specific dictionary project and its whole environment, including related projects, long term perspectives, etc.” This quote is even more important in the current situation. Over the past decades, the field of lexicography has undergone radical changes. A new trend can be observed which is characterised by linking, reusing and sharing of lexicographic data and thinking beyond individual dictionary projects.
+
+These changes result in some additional requirements for a DWS, including:
+
+- interoperability with other resources, operating systems and tools
+- support for automatic data extraction
+- possibility to link to other (external) sources
+- API support
 
 ## Software development in a lexicographic team
-
-## Overview of tools in the lexicographic workflow
-
-## Typical functions and custom features of lexicographic tools
 
 ## Automatic extraction of lexicographically relevant information from corpora 
 
