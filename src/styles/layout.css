@@ -15,3 +15,14 @@ html {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+/* temp hack for figure and image spacing */
+
+figure img,
+figure figcaption p {
+  @apply my-0 !important;
+}
+
+figure figcaption {
+  @apply mt-3 mb-0 text-center !important;
+}
