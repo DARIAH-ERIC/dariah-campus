@@ -6,3 +6,23 @@ html {
   scroll-snap-type: y mandatory;
   scroll-padding-top: var(--page-header-height);
 }
+
+/* temporary hack for quiz questions */
+.choices {
+  margin-top: 0 !important;
+}
+.choice span p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* temp hack for figure and image spacing */
+
+figure img,
+figure figcaption p {
+  @apply my-0 !important;
+}
+
+figure figcaption {
+  @apply mt-3 mb-0 text-center !important;
+}
