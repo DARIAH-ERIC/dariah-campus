@@ -1,0 +1,50 @@
+---
+title: Processing (ancient) corpora with Text-Fabric
+shortTitle: text-fabric
+lang: en
+date: 2022-08-16T07:32:41.797Z
+version: 1.0.0
+authors:
+  - dariah-campus
+tags:
+  - dh
+abstract: "Text-Fabric is an opiniated tool, written as a Python library to work
+  with (ancient) text corpora and collections of annotations. The emphasis is on
+  preprocessing, data extraction, and querying. It facilitates browsing,
+  searching and displaying the text material with their annotations. It is
+  agnostic to the kind of texts and the kind of annotations involved. It helps
+  users to turn research outputs into new annotation sets that can be used by
+  others with no friction. There is a big family of tutorials available for
+  specific corpora, such as the Hebrew Bible, Cuneiform Tablets, and the
+  Dhammapada. "
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: pathfinder
+remote:
+  date: 2016-01-01T07:57:28.535Z
+  url: https://github.com/annotation/text-fabric
+licence: ccby-4.0
+toc: true
+draft: false
+uuid: h7Zk0nvFMGqihJgX4UNmV
+categories:
+  - dariah
+  - dariah-pathfinders
+---
+When researchers work with (ancient) text corpora there is usually a significant effort to manipulate the data so that it can be used to address research questions. This is called preprocessing. Even when the texts are in a standard form, such as TEI, preprocessing is needed to extract the bits of data that are needed for research tasks, such as statistical analysis in R or topic modelling, or linguistic analysis. 
+
+There is a way to make preprocessing less tedious: storing the data in a kind of warehouse, neatly stacked and ordered, with identifying codes on each single object. It turns out that this idea improves the logistics of textual processing a lot.
+
+When texts and their annotations are treated as warehouses of data the following benefits can be reaped:
+
+1. it becomes much easier to share research outputs against a corpus
+
+2. there is no implicit tree model in the data, which alleviates the problem of conflicting hierarchies in XML
+
+3. corpus analysis is no longer dependent on tool chains that process a specific format, such as the XML tool chain.
+
+However, the underlying data model is a drastic leap away from an XML encoded text with TEI markup. TEI feature structures is what comes closest, and in fact Text-Fabric uses a radical notion of stand-off markup, to the extent that the text itself is the content of a stand-off feature.
+
+It takes a mental investment to get used to the model and ethos of Text-Fabric, including the practice to recycle annotation data freely.
+
+This course is here to train you in the logistics of processing text and annotations.
