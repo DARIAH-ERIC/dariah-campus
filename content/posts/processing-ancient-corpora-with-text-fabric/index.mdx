@@ -8,15 +8,20 @@ authors:
   - dariah-campus
 tags:
   - dh
-abstract: "Text-Fabric is an opiniated tool, written as a Python library to work
+categories:
+  - dariah
+  - dariah-pathfinders
+featuredImage: images/tf.png
+abstract: Text-Fabric is an opiniated tool, written as a Python library to work
   with (ancient) text corpora and collections of annotations. The emphasis is on
   preprocessing, data extraction, and querying. It facilitates browsing,
   searching and displaying the text material with their annotations. It is
   agnostic to the kind of texts and the kind of annotations involved. It helps
   users to turn research outputs into new annotation sets that can be used by
-  others with no friction. There is a big family of tutorials available for
-  specific corpora, such as the Hebrew Bible, Cuneiform Tablets, and the
-  Dhammapada. "
+  others with no friction. There is a big family of tutorials available, as
+  Jupyter notebooks, for specific corpora, such as the Hebrew Bible, Cuneiform
+  Tablets, and the Dhammapada. We intend to use the letters of Descartes as an
+  example of how to convert a TEI resource into Text-Fabric.
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: pathfinder
@@ -27,9 +32,6 @@ licence: ccby-4.0
 toc: true
 draft: false
 uuid: h7Zk0nvFMGqihJgX4UNmV
-categories:
-  - dariah
-  - dariah-pathfinders
 ---
 When researchers work with (ancient) text corpora there is usually a significant effort to manipulate the data so that it can be used to address research questions. This is called preprocessing. Even when the texts are in a standard form, such as TEI, preprocessing is needed to extract the bits of data that are needed for research tasks, such as statistical analysis in R or topic modelling, or linguistic analysis. 
 
@@ -45,6 +47,22 @@ However, the underlying data model is a drastic leap away from an XML encoded te
 
 It takes a mental investment to get used to the model and ethos of Text-Fabric, including the practice to recycle annotation data freely.
 
-This course is here to train you in the logistics of processing text and annotations.
+This course is here to train you in the logistics of processing text and annotations. You will learn:
 
-![text-fabric logo](images/tf.png "text-fabric logo")
+1. the data model of text and annotations: slots, nodes, edges, features
+
+2. how to compute your way inside a text-fabric resource: counting, frequency analysis, navigating
+
+3. how to use the query language of text-fabric as a shorthand to hand-coding
+
+4. how to switch back and forth between querying and hand-coding
+
+5. how to extract data and use it in other tools, such as R, NL-toolkit, BRAT
+
+5. how to save research outputs as new features and publish them on GitHub/GitLab
+
+6. how to load other people's features
+
+7. how to convert a corpus into text-fabric and publish it on GitHub/GitLab
+
+The benefits of Text-Fabric do not come for free: a prerequisite is that you have a beginner's grasp of programming in Python. The reward is that you will not be constrained in what you want by limitations of the tool: text-fabric is a library that you can use in your program alongside whatever else you want to use. You can choose to give it a big role or a small role in your program.
