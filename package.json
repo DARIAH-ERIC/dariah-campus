@@ -202,7 +202,6 @@
     ]
   },
   "simple-git-hooks": {
-    "commit-msg": "yarn commitlint --edit",
     "pre-commit": "yarn lint-staged",
     "pre-push": "yarn run validate"
   },
