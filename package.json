@@ -166,14 +166,12 @@
       "eslint --cache --cache-location .next/cache/eslint/ --fix",
       "prettier --write"
     ],
-    "*.@(css|json|yml)": "prettier --write",
+    "*.@(css|json)": "prettier --write",
     "*.md": [
-      "remark --output --quiet",
-      "prettier --write"
+      "remark --output --quiet"
     ],
     "*.mdx": [
-      "xdm --output --quiet",
-      "prettier --write"
+      "xdm --output --quiet"
     ]
   },
   "postcss": {
