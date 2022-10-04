@@ -38,31 +38,23 @@ toc: false
 draft: false
 uuid: be5aUc62TBkd9ijpj0rFD
 ---
-[![](https://blog.ehri-project.eu/wp-content/uploads/2020/08/VisualSearch_Full-787x1024.png)](https://yale-fortunoff.github.io/metadash/)
+The Fortunoff Video Archive For Holocaust Testimonies and the Yale Digital Humanities Lab (DHLab) began building a [_Visual Search_ tool](https://yale-fortunoff.github.io/metadash/) in 2019 in order to provide a simple overview of the Fortunoff Archive’s collection and enable quick filtering and discovery of relevant testimonies. Uninitiated researchers approaching Fortunoff’s collection, in particular undergraduate students tasked with using the collection in a course, could often find searching in Yale’s public access catalog for testimonies an opaque process. Although there is a catalog record for each of the circa 4500 testimonies in the collection, they are contained in the “books+” section of Yale’s public catalog — commingling with millions of other records. Despite the large number of items in the catalog, Books+ is still an excellent way to push the collection in front of students and researchers looking for resources on the experience of the Holocaust, who might be unfamiliar with our collection. After all, a simple search in the catalog for a term like “Gross-Rosen” would reveal dozens of relevant monographs as well as many of our testimonies, thereby opening up the research process to include archival materials that are often hidden in other search engines. The library catalog as primary search interface for our collection also made sense because we began this work before it even existed, and for many years it was _the_ sole means of engaging electronically with library materials — long before the initiation of local archival search engines and EAD finding aid databases. Moreover, reflecting the era in the 1980s when our cataloging practices emerged, testimonies in the collection were indeed cataloged to a certain extent like monographs, each story an autobiographical recording tagged with important themes, geographic and institutional access points in the form of Library of Congress subject headings. But it was more of a a hybrid document, leaning on archival standards for description at the time, and it resembled the offspring of a catalog record for a monograph and an conventional archival finding aid, since each catalog record also contains a free text biographical note that summarizes basic information like year and place of birth, number of siblings, as well as a terse chronology of the individual’s life story as reflected in the underlying testimony. Normal monograph and archival cataloging praxis, however, would certainly find the level of detail in our records an unsustainable monstrosity, with some records including dozens of LC subject headings. We would disagree, and it has served our purposes well during an age when search was limited to Boolean library catalogs, and when we lacked detailed searchable indices and transcripts that more closely reflect the word-for-word text of the testimony. Thankfully, this exacting cataloging praxis lends itself well for repurposing in a project like the Visual Search.[![](https://blog.ehri-project.eu/wp-content/uploads/2020/08/VisualSearch_Full-787x1024.png)](https://yale-fortunoff.github.io/metadash/)
 
 Visual Search Tool
-
-The Fortunoff Video Archive For Holocaust Testimonies and the Yale Digital Humanities Lab (DHLab) began building a [_Visual Search_ tool](https://yale-fortunoff.github.io/metadash/) in 2019 in order to provide a simple overview of the Fortunoff Archive’s collection and enable quick filtering and discovery of relevant testimonies. Uninitiated researchers approaching Fortunoff’s collection, in particular undergraduate students tasked with using the collection in a course, could often find searching in Yale’s public access catalog for testimonies an opaque process. Although there is a catalog record for each of the circa 4500 testimonies in the collection, they are contained in the “books+” section of Yale’s public catalog — commingling with millions of other records. Despite the large number of items in the catalog, Books+ is still an excellent way to push the collection in front of students and researchers looking for resources on the experience of the Holocaust, who might be unfamiliar with our collection. After all, a simple search in the catalog for a term like “Gross-Rosen” would reveal dozens of relevant monographs as well as many of our testimonies, thereby opening up the research process to include archival materials that are often hidden in other search engines. The library catalog as primary search interface for our collection also made sense because we began this work before it even existed, and for many years it was _the_ sole means of engaging electronically with library materials — long before the initiation of local archival search engines and EAD finding aid databases. Moreover, reflecting the era in the 1980s when our cataloging practices emerged, testimonies in the collection were indeed cataloged to a certain extent like monographs, each story an autobiographical recording tagged with important themes, geographic and institutional access points in the form of Library of Congress subject headings. But it was more of a a hybrid document, leaning on archival standards for description at the time, and it resembled the offspring of a catalog record for a monograph and an conventional archival finding aid, since each catalog record also contains a free text biographical note that summarizes basic information like year and place of birth, number of siblings, as well as a terse chronology of the individual’s life story as reflected in the underlying testimony. Normal monograph and archival cataloging praxis, however, would certainly find the level of detail in our records an unsustainable monstrosity, with some records including dozens of LC subject headings. We would disagree, and it has served our purposes well during an age when search was limited to Boolean library catalogs, and when we lacked detailed searchable indices and transcripts that more closely reflect the word-for-word text of the testimony. Thankfully, this exacting cataloging praxis lends itself well for repurposing in a project like the Visual Search.
 
 Prior to the Visual Search, there was no shortcut for the painstaking process of learning the intricacies and idiosyncrasies of our catalog and the records it contained. One needed to game the catalog by using advance search and quotations marks to search for phrases within long, undefined text notes. For instance, while it was possible to tease out birthyears, affiliates, or places of birth by using phrase searching, it can be fraught and often does not yield relevant results. Searching through this valuable metadata, produced across decades of careful cataloging, evaluating whether the results are indeed relevant, reforming and rephrasing searches iteratively, is an enormous investment of time. Simplifying this process would free up researchers to tackle the more important task of actually watching the materials. Less searching, more watching was the motto behind this tool’s development.
 
 In addition to search efficiency, we aimed to make the testimonies more discoverable by adding features not present in existing catalog tools. These tools provide robust search capabilities, but they first require the user to supply the terms to retrieve any results. This conventional query-based approach can be problematic for new and experienced researchers alike, because it limits what users can find to what they already know or expect to find in the collection. The Fortunoff Archive’s Visual Search tool — which aims to remove this limitation   — evolved through several stages of design, data processing, and application development, with each stage informing the others: design and development work revealed limitations of the underlying collection metadata, and developing working prototypes with real data illustrated the need to revise design assumptions. The very process of repurposing conventional library catalog data for quantitative visualization has helped the Fortunoff Archive improve its underlying data. In fact, both researchers and internal staff can use this tool to perform sophisticated queries about the collection’s composition – the weight of gender, language, birth dates, the rise and cessation of Fortunoff affiliate recording projects worldwide. All of these queries can be performed with little prior knowledge, and instantaneously provide quantitative results expressed in a visual manner that allows the researcher to glean insights into the collection as a whole.
 
-
-
 ## USER INTERFACE AND FUNCTIONALITY
 
 _Visual Search_ is a tool for both data visualization and collection discovery. The default state of the tool displays the entire collection. As the user interactively applies filters the interface is updated to reflect only the resulting subset of the collection. The user interface is composed of the following sections, arranged in a single column layout: a prose summary, a visualization cluster, a subject heading pool, and a result list.
-
-
 
 ## PROSE SUMMARY
 
 The prose summary describes the data being displayed in the lower sections. A human-readable introduction aims to give the tool a more human feel, and to describe to new users what they are seeing. The intent is for the summary to serve as minimal documentation for a tool that we hope most users feel is intuitive to use.
 
 ![](https://blog.ehri-project.eu/wp-content/uploads/2020/08/VisualSearch_Components_Prose-1024x60.jpg)
-
-
 
 ## VISUALIZATION CLUSTER
 
@@ -76,15 +68,11 @@ Provenance information includes: year of recording, displayed a histogram; inter
 
 These visualizations also act as inputs. Interacting with these visualizations immediately applies a filter and updates the other visualizations, the prose summary, and the remaining sections. For example, clicking or tapping the “English” row in the language list will filter out all testimonies with a primary language other than English.
 
-
-
 ## SUBJECT HEADING POOL
 
 The subject heading pool displays all of the Library of Congress and local subject headings from every testimony in a continuously scrollable window. Each subject heading appears as a “pill” in user interface parlance. A text field allows a user to filter this list by searching for a term. With each keypress, the pool is automatically filtered to only subject headings that contain the term the user is typing. By clicking on a subject heading pill, a filter is applied and all testimonies without this subject heading are eliminated from the current subset. These subject headings may be combined, with each subject heading the user selects implying a Boolean AND between the terms.
 
 ![](https://blog.ehri-project.eu/wp-content/uploads/2020/08/VisualSearch_Components_Subjects-1024x168.jpg)
-
-
 
 ## RESULT LIST
 
@@ -92,15 +80,11 @@ The result list contains a list of cards that represent a testimony, with  basi
 
 ![](https://blog.ehri-project.eu/wp-content/uploads/2020/08/VisualSearch_Components_Results-1-1024x456.jpg)
 
-
-
 ## THE SOURCE DATA
 
 Most of the underlying data for this project comes from catalog records, which are stored in the relational database system ArchivesSpace, but a number of additional  sources were used to augment and clean the catalog data. Interviewee gender and language existed in the catalog, but place of birth and birth year did not. Interviewer name, affiliate program, and recording year were all in the catalog as well.
 
 Birth information was recorded on pre-interview forms that had been digitized and keyed into a spreadsheet some time ago. However, this data required significant quality assurance (QA) work to improve the quality (such as standardizing and de-duplicating place names), and it is likely that some issues remain. As we continue to improve data for this tool, we will continue to integrate these improvements into catalog records for the testimony.
-
-
 
 ## THE AGILE DEVELOPMENT PROCESS
 
@@ -117,8 +101,6 @@ The following is a first working prototype of the circle pack layout. It has far
 A great deal of work was put into cleaning up this data. When we finally did, we reached a state where the names were reconciled fairly well, so there were far less of these singleton place names.
 
 ![](https://blog.ehri-project.eu/wp-content/uploads/2020/08/VisualSearch_Cluster_3-1024x1011.jpg)
-
-
 
 ## THE TECHNOLOGY STACK
 
