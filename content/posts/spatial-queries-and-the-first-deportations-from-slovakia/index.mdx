@@ -1,0 +1,158 @@
+---
+title: Spatial Queries and the First Deportations from Slovakia
+lang: en
+date: 2019-12-12T10:27:37.891Z
+version: 1.0.0
+authors:
+  - frankl-michal
+tags:
+  - big-data
+  - computational-imaging
+  - data-visualisation
+  - e-heritage
+  - geotagging
+  - metadata
+  - repositories-and-collections
+categories:
+  - dariah
+  - ehri
+abstract: This practically oriented blog describes the process of analysis and
+  the approaches as well as tools used and shows how a spatially enabled
+  database can be made useful in the research process in the humanities. While
+  none of the steps described is path-breaking from the technological point of
+  view, the described workflow seems to be rarely, if at all, used by Holocaust
+  historians.
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: 2019-12-12T10:30:40.849Z
+  url: https://blog.ehri-project.eu/2019/12/12/spatial-queries-first-deportations-slovakia/
+licence: ccby-4.0
+toc: false
+draft: false
+uuid: hH4GpAnb9AoX5wDFz1mje
+---
+<!--StartFragment-->
+
+As a part of my research on the history of refugee no man’s land at the end of the 1930s in East-Central Europe, I examined the deportations of Jews from Slovakia in November 1938, many of whom were subsequently trapped along the demarcation line between the Czecho-Slovak and Hungarian posts. The little known and extremely chaotic deportations were ordered by the Slovak President Jozef Tiso who blamed Jewish influence for the [First Vienna Award](https://en.wikipedia.org/wiki/First_Vienna_Award), an international arbitration which forced (Czecho-)Slovakia to cede southern Slovakia to Hungary.[1](https://blog.ehri-project.eu/2019/12/12/spatial-queries-first-deportations-slovakia/#en-3886-1)
+
+For my paper given at the Lessons & Legacies in Munich, in November 2019, I wanted to better understand the background and migration trajectories of the approx. four thousand Jews picked for deportation. Given the dearth of information on the decision making on the local level, I hoped that the surviving lists of deportees will provide insights into who and why was targeted, at a moment’s notice. What kind of knowledge did the local officials apply to recognize “alien” Jews? Particularly important for my analysis was to establish the citizenship of those who were deported. Were they citizens of Hungary, in the new borders, or of other states? How many were stateless? And how many Czechoslovak citizens were put on trucks and sent towards the Hungarian border?
+
+To answer such questions, we have digitised lists kept in the [Slovak National Archives](https://portal.ehri-project.eu/institutions/sk-003250) and compiled a database of the deportees containing information about their birth places, domicile and/or citizenship and place from which they were deported. The lists which could be found for about three quarters of deportees vary in form and detail: some contain rich information whereas others only list names, moreover only for family heads.[2](https://blog.ehri-project.eu/2019/12/12/spatial-queries-first-deportations-slovakia/#en-3886-2)
+
+<!--StartFragment-->
+
+To conduct the analysis, it was necessary to effectively group places according to the shifting state borders, accounting especially to changes between the Habsburg Monarchy, inter-war Czechoslovak Republic as well as Czechoslovakia in the borders after the First Vienna Award. For a deeper analysis, I also needed to isolate those with their domicile, or place of birth, in specific regions, such as the Southern part of Slovakia awarded to Hungary, or Subcarpathian Russia.
+
+Rather than interpreting the history of the deportations and formulating conclusions, this practically oriented article describes the process of analysis and the approaches as well as tools used and shows how a spatially enabled database can be made useful in the research process in the humanities. While none of the steps described below is path-breaking from the technological point of view, the described workflow seems to be rarely, if at all, used by Holocaust historians.
+
+## IDENTIFICATION OF PLACES
+
+We first had to disambiguate the places of birth, the domicile (and/or citizenship) and enrich the data with the geographic coordinates. To do so, we manually searched the [Geonames](https://www.geonames.org/) service, a freely accessible geographic database, to map all identifiable locations to authoritative records. The alternate names of the Geonames database also contain, even if not quite systematically, many historical names as well as names in multiple languages which made it easier to find places in the region of East-Central Europe, characterized by its multi-lingual character and changing borders. Where the specific place was impossible to locate with a reasonable certainty, we have at least tried to identify it with a wider region or a state. Rather than extracting the Geonames identifier, we only copied the Geonames URL at this stage, making processing quicker and a future review of the data easier.
+
+EHRI also provides an experimental [Entity Matching Tool](https://emt.ehri-project.eu/) which makes it possible to search the Geonames database as well as EHRI data sets and to enrich research data with location coordinates and other metadata.
+
+Random sample of ten places of domicile with Geonames URLs:
+
+|                      |                                                       |
+| -------------------- | ----------------------------------------------------- |
+| **Domicile**         | **Geonames URL**                                      |
+| Sp. Belá             | https://www.geonames.org/723529/spisska-bela.html     |
+| Porač                | https://www.geonames.org/723839/porac.html            |
+| Brno                 | https://www.geonames.org/3078610/brno.html            |
+| Opiná, okr. Košice   | https://www.geonames.org/723975/opina.html            |
+| Tuchyne              | https://www.geonames.org/3063886/tuchyne.html         |
+| Karlovy Vary         | https://www.geonames.org/3073803/karlovy-vary.html    |
+| Bátorkeszi           | https://www.geonames.org/3056725/batorove-kosihy.html |
+| Baračka, okr. Vráble | https://www.geonames.org/3061176/bardonovo.html       |
+| Kapošvár             | https://www.geonames.org/3050616/kaposvar.html        |
+| Pezinok              | https://www.geonames.org/3058210/pezinok.html         |
+
+### Bringing the Data Together
+
+To perform the analysis itself, I have chosen the [PostgreSQL](https://www.postgresql.org/) relational database, a reliable open source software with a long tradition, and its spatial extension [PostGIS](https://postgis.net/) which provides query capabilities useful for geographic data. It allows, for instance, to find locations within or overlapping with other geographies, or to measure distances.
+
+To perform the such queries, I first needed to import three core data sets into a PostgreSQL database:
+
+- Complete Geonames place database which can be [downloaded for free](http://download.geonames.org/export/dump/). A useful guide to import Geonames data into Postgres is available [here](https://github.com/colemanm/gazetteer/blob/master/docs/geonames_postgis_import.md). (Labelled as “geonames” in the example below.)
+- Shapefiles for European borders from the period of the World War II which reflect the territorial changes during the Nazi expansion and the defeat of the Third Reich. As in other EHRI publications, I have used the borders developed by the Holocaust Geographies Collaborative, based on more than 100 hundred historical maps.[3](https://blog.ehri-project.eu/2019/12/12/spatial-queries-first-deportations-slovakia/#en-3886-3) I have only imported data for those months which were needed for the analysis, into separate tables, using the shp2pgsql tool (a part of PostGIS). Keep on mind that it is necessary to provide the correct geographic projection. (Labelled as “borders” + date in the example below.)
+- Personal trajectories derived from deportation lists in which place names from the original sources were mapped on Geonames URLs. (Labelled as “trajectories” in the example below.)
+
+## QUERYING BORDERS AND DISTANCES
+
+Now that all the bits and pieces are brought together, it’s time to query the database. Spatial functions of PostGIS allow to match places against the territory of nation states, based on historical borders. Such a query uses a join to link together the place in the trajectories table and the Geonames data and matches the coordinates (constructed as a geographic point) against the border shape at a given point in time.
+
+For instance querying on Košice (city in Eastern Slovakia) against the borders at before the First Vienna Award
+
+```
+
+```
+
+returns “Czechoslovakia”; the same query against the borders at the end of November 1938
+
+```
+
+```
+
+returns “Hungary”.
+
+Explanation of the spatial functions used:
+
+- ST_POINT(g.longitude, g.latitude): constructs a geographic point based on coordinates from Geonames.
+- ST_SetSRID(\[geometry], 4326): sets the correct geographic projection.
+- ST_WITHIN(\[geometry1], \[geometry2]): returns true if geometry1 is within geometry2.
+
+Similar (even if more complex) queries allowed me to, for instance, generate citizenship data for deportees for all Slovak communities where such information was available. Visualized in the following map, the data demonstrates the chaotic character of the deportations, the regional differences as well as the fact that only a smaller part of those deported to Hungary were thought of as Hungarian citizens.
+
+![](https://blog.ehri-project.eu/wp-content/uploads/2019/11/Karte_Slowakei.jpg)
+
+To find those born in or with domicile in Southern Slovakia, I have matched the data against two sets of borders: Czechoslovakia’s before the First Vienna Award and Hungarian after this event.
+
+As a bonus, I have also measured distance between the birth places and deportation places as follows:
+
+```
+
+```
+
+Random sample of measured distance between birth place and place of deportation (or last residence, where known):
+
+|                   |                                           |                          |
+| ----------------- | ----------------------------------------- | ------------------------ |
+| **Birth place**   | **Place of deportation / Last residence** | **Distance (in meters)** |
+| Kék               | Michalovce                                | 70955.96                 |
+| Baligród          | Michalovce                                | 69443.71                 |
+| Serednye          | Michalovce                                | 49278.44                 |
+| Sobrance          | Michalovce                                | 19229.57                 |
+| Spišské Podhradie | Kežmarok                                  | 27689.34                 |
+| Trenčín           | Kežmarok                                  | 176281.82                |
+| Slatina-Doly      | Levoča                                    | 268273.5                 |
+| Košice            | Giraltovce                                | 48347.13                 |
+| Vienna            | Poprad                                    | 303637.67                |
+| Bochnia           | Poprad                                    | 101372.66                |
+
+While measuring life trajectories as geographic distances between places is a very imprecise and rough approach, it at least gives researcher a sense of the data and generates further questions. (In this case, it helped me to focus on shorter-distance migration within the borders of the former Habsburg Monarchy.)
+
+I have used spatial queries to draw trajectories between birth places and places of residence/deportation in 1938 and to demonstrate that while most all of the Jews deported in 1938 migrated, the absolute majority were born in the Habsburg monarchy.
+
+![](https://blog.ehri-project.eu/wp-content/uploads/2019/12/birth_placeshabs-1024x623.png)
+
+Map showing trajectories of all deportees.
+
+![](https://blog.ehri-project.eu/wp-content/uploads/2019/12/birth_placesno_habs2-1024x623.png)
+
+Map showing trajectories of those deportees who were born outside of the Habsburg Monarchy.
+
+### Why use spatial functions, after all?
+
+In theory, the same results could also be achieved by manually categorizing these places according to state borders at different periods. Using Geonames (or any similar resource) and spatial queries is in no way a form of distant reading in which the researcher only works with aggregated data. Mapping the place names as given in the sources, in different languages, historical versions, and with frequent misspellings, requires tedious manual work and close experience with regional geography. The original time investment is probably not very different from more traditional approaches.
+
+Once this has been done, however, the difference becomes clear: whereas the traditional approach restricts the freedom of the researcher to change the parameters and perspective (or at least makes it very costly in terms of additional time needed to re-categorize), with place coordinates, historical borders and spatial queries, the researcher is free to ask any questions and rephrase the original ones at any moment in the research process.
+
+Moreover, the standardisation also makes building of visualisations, for instance in the form of maps, much smoother. And visualisations also feed back into the research process by revealing connections and patterns which otherwise would remain invisible.
+
+_This article was written as a part of the [„Unlikely refuge?“](https://www.unlikely-refuge.eu/) project funded by the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation program (grant agreement No 819461)._
+
+1. James Mace Ward, ‘The 1938 First Vienna Award and the Holocaust in Slovakia’, _Holocaust and Genocide Studies_ 29, no. 1 (2015): 76–108, https://doi.org/10.1093/hgs/dcv004; Eduard Nižňanský and Veronika Slneková, ‘Die Deportationen der Juden in der Zeit des autonomen Landes Slowakei am 4./5. 11. 1938’, _Bohemia_ 39, no. 1 (1998): 33–51.
+2. Slovenský národný archiv (Slovak National Archives), Krajinský úrad Bratislava (Provincial Office Bratislava), call number P IV-cudz, box 309.
+3. Michael De Groot, ‘Building the New Order: 1938-1945’, Spatial History Project, Stanford University, 24 August 2010, https://web.stanford.edu/group/spatialhistory/cgi-bin/site/pub.php?id=51&project_id=.
