@@ -1,0 +1,112 @@
+---
+title: Georeferencing Service for Archives
+lang: en
+date: 2019-02-12T10:57:54.806Z
+version: 1.0.0
+authors:
+  - van-nispen-annelies
+tags:
+  - big-data
+  - data-visualisation
+  - digital-archives
+  - e-heritage
+  - geotagging
+  - metadata
+  - ontologies
+  - repositories-and-collections
+categories:
+  - dariah
+  - ehri
+abstract: >-
+  Archives often have the wish to make their collections searchable and findable
+  on a map like Google Maps or Open Street Map. This is a nice interface for
+  users on which they can zoom in on a specific geographic location and see what
+  collections are linked to it. This promise of a user friendly geographic
+  search interface is appealing. But for most archives identifying geographical
+  information in their collections and develop services for their users is still
+  often in an experimental or first phase. 
+
+
+  In EHRI knowledge about Named Entity Recognition (NER) is available, as is in many larger European projects or research infrastructures. This technique is used to scan the metadata (or OCR’d archival material) and identify geographic information, but it is also possible to identify persons, organisations, keywords or other specific information units.
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: 2019-02-12T00:00:00.000Z
+  url: https://blog.ehri-project.eu/2019/02/12/georeferencing-service-for-archives/
+licence: ccby-4.0
+toc: false
+draft: false
+uuid: DLrC9PZ-BJyIq54oBrlcw
+---
+Archives often have the wish to make their collections searchable and findable on a map like Google Maps or Open Street Map. This is a nice interface for users on which they can zoom in on a specific geographic location and see what collections are linked to it. This promise of a user friendly geographic search interface is appealing. But for most archives identifying geographical information in their collections and develop services for their users is still often in an experimental or first phase.
+
+In [EHRI](https://ehri-project.eu/) knowledge about Named Entity Recognition (NER) is available, as is in many larger European projects or research infrastructures. This technique is used to scan the metadata (or OCR’d archival material) and identify geographic information, but it is also possible to identify persons, organisations, keywords or other specific information units.
+
+In WP13 an experiment with the archival data of the [NIOD](https://www.niod.nl/en) that is available on the[ EHRI portal](https://portal.ehri-project.eu/) has been done. The descriptions in EAD were used by our partner [Ontotext](https://ontotext.com/) to extract geographical units. This is an example of the geocoded city of Nijmegen in the Netherlands, coming from
+
+<!--StartFragment-->
+
+“name”: “Nijmegen”,
+
+“startOffset”: 28981,
+
+“endOffset”: 28989,
+
+“type”: “Location”,
+
+“features”: {
+
+“inst”: “http://ontology.ontotext.com/resource/tsk7mubknklc”,
+
+“class”: “http://ontology.ontotext.com/taxonomy/Location”,
+
+“isTrusted”: “true”,
+
+“latitude”: \[ “51.833333333333”],
+
+“confidence”: 0.9598331840614004,
+
+“relevanceScore”: 0.0030287676928402248,
+
+“longitude”: \[ “5.85”],
+
+“externalLinks”: [
+
+“http://dbpedia.org/resource/Nijmegen”,
+
+“http://sws.geonames.org/2750053/”,
+
+“http://sws.geonames.org/2750052/”
+
+The geographic information is mostly found in the title or description field of the archival metadata. The EAD-element of _unittitle_ gives the most hits.
+
+**<did>**
+
+**<unitid>**MF1606956**</unitid>**
+
+**<unittitle encodinganalog=”3.1.2″>**Rapport over het noodevacuatieplan voor inwoners van **Nijmegen** die zal plaatsvinden, zodra de krijgsoperaties van de geallieerden dit noodzakelijk maken, 12 januari 1944.**</unittitle>**
+
+ ** <physdesc encodinganalog=”3.1.5″>**1 stuk**</physdesc>**
+
+ **</did>**
+
+The specific piece of information is matched against a knowledge base, in this case the ontotext location ontology is used (_“class”: “[http://ontology.ontotext.com/taxonomy/Location](http://ontology.ontotext.com/taxonomy/Location)“)_. The matched location refers to two external sources [Geonames](http://www.geonames.org/) (a large geographical database on the web that covers all countries and contains over eleven million place names) and [DBpedia](http://wiki.dbpedia.org/) (a sort of wikipedia for data).
+
+![](https://blog.ehri-project.eu/wp-content/uploads/2018/04/nijmegen.png)
+
+**Nijmegen “http://sws.geonames.org/2750053/”**
+
+Through this technique different pieces of information can be identified in archival descriptions and this can be used to enrich the metadata and the [EHRI](http://ehri-project.eu/) vocabularies. It can improve geographical search on [EHRI](https://ehri-project.eu/) collections and makes map-representations possible (with Open Streetmap, Google maps and other geographical plug-ins).
+
+The technical knowledge about extracting location information is mostly available at larger projects and research infrastructures. At this level information from several archives or Heritage Institutions is aggregated and integrated into eg. the [EHRI portal](https://portal.ehri-project.eu/), [Archives Portal Europe](https://www.archivesportaleurope.net/) or [Europeana](https://www.europeana.eu/portal).
+
+It is possible to give the archives the extracted and/or enriched information back like links to geonames and coordinates when the data is geocoded on the aggregated level. Alas most archives find it very difficult or impossible to include these coordinates and links to the specific archives in their collection management systems, this is also true for the [NIOD](https://www.niod.nl/en).
+
+The importing of this sort of information is still not standard functionality of Collection Management systems.The importing is often not possible, difficult or has to be custom made/built.
+
+Also the possibility to store geographic metadata (coordinates, links to geonames or other external web vocabularies) is often not well developed or present in the current collection management systems. This is logical, because they are optimized to describe archives and new options that come from Linked Open Data take time to get accepted and implemented.
+
+For most archives it is still difficult to develop and run georeferencing services over their current collection management systems because they are not open (enough) and can hardly store very detailed and linked geographic information. At the [NIOD](https://www.niod.nl/en) we are also investigating how we can import and use the enriched geographically metadata. Initiatives as [EHRI](https://ehri-project.eu/) and [Archives Portal Europe](https://www.archivesportaleurope.net/) are working on improving access and hopefully this will also reach the archival metadata within the institutions.
+
+The promise remains.
