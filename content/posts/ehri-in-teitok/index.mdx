@@ -1,0 +1,137 @@
+---
+title: EHRI in TEITOK
+lang: en
+date: 2022-10-04T10:32:36.793Z
+version: 1.0.0
+authors:
+  - janssen-maarten
+tags:
+  - big-data
+  - data-management
+  - repositories-and-collections
+  - research-infrastructures
+  - metadata
+categories:
+  - dariah
+abstract: This blog examines TEITOK, which is a corpus framework used as an
+  alternative to Omeka. TEITOK is centered around texts and is similar to the
+  Omeka interface – both allow you to search through the documents, and display
+  the transcription. The main difference is that Omeka treats the transcription
+  as an object description, whereas TEITOK not only shows that a word appears in
+  a document, but also where it appears and how it is used.
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: 2021-03-17T10:35:02.641Z
+  url: https://blog.ehri-project.eu/2021/03/17/ehri-in-teitok/
+licence: ccby-4.0
+toc: false
+draft: false
+uuid: qrC5H0q4rTMOlKCH_NUaE
+---
+The Institute for Formal and Applied Linguistics (UFAL) put together an experimental interface for the EHRI digital editions, a corpus framework called TEITOK, as an alternative to the current interface in Omeka. Where the current interface of EHRI based is centered around documents, TEITOK is centered around texts. In many aspects, the TEITOK interface for EHRI is similar to the Omeka interface – both allow you to search through the documents, and display the transcription. The main difference is that in Omeka, when you search for a word in the documents, it is not aware where that term appears in the text – the transcription is treated as an object description. Since TEITOK is aware where the words appear, it can not only show that a word appears in a document, but also where it appears and how it is used.
+
+In this document, we will first quickly explain what TEITOK is, and then describe the design of the experimental EHRI interface, as well as how it was created and how the result differs from the Omeka interface of EHRI. The first two parts are unavoidable technical in nature. That is why the last section illustrates the resulting system using some actual examples from the EHRI project.
+
+
+
+## TEITOK
+
+TEITOK is a corpus tool that was designed initially for the [PostScriptum](http://ps.clul.ul.pt/) project. PostScriptum is a European project that digitalized 4000 private letter in TEI, written Spanish and Portuguese between the 16th and the 19th century. The project involved partners both from linguistics and history, and as such needed an interface that would cater to the needs of both. In the initial design of the project, two separate interfaces were used. One concentrating on a detailed rendering of the letter and its contents, where the full transcription was done in TEI/XML, with a historical settings for each letter described in the header of the XML file. And the other concentrating on providing linguistic annotations for the words in the letters. But this design had two significant drawbacks – firstly, the two types of documents needed to be maintained independently, and while the project was still in progress, correcting were still being made at all levels. The second more profound problem was that it did not allow the two types of information to be combined in research questions.
+
+For that reason, we developed a dedicated tool that can combine both types of representation in a single format, in which the TEI/XML format was tokenized (ie. split into words), and then the linguistic annotations were added directly over those words in the TEI/XML file. And from the start, the tool was built to be reusable, and as such as a highly customizable design in order to be able to not only use it within the scope of PostScriptum, but also for other projects that might benefit from this combined approach. TEITOK has a modular set-up, in which small programs are used to perform specific tasks on TEI/XML files, such as edit them, display them, search through them, etc. And although many modules focus on linguistc aspects, the tool has from the beginning been developed with strong feedback from researchers in other areas, especially those from historical studies due to the nature of the PostScriptum project. 
+
+TEITOK has proven to be a useful tool that is easy to use for both corpus administators and visitors, and is being used in a growing number of projects, with currently well over 50 different project using it, with various other on the way. With the continued development, it is providing an increasing number of functions, trying to fill the needs of corpus projects of very different origins, and currently includes modules to work with spoken corpora, do map-based searches, align between facsimile images and transcription, provide syntactic analyses, display lexicographic resources, etc. 
+
+
+
+## PREPARING THE DEMO
+
+The [demo](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/index.php?action=home) is based on the files of the [BeGrenzte Flucht](https://begrenzte-flucht.ehri-project.eu/) edition of EHRI. The conversion from the current documents to a TEITOK corpus was relatively straightforward, since both use TEI/XML as the format for their transcriptions.
+
+As a first step, all the documents of the edition were downloaded in their TEI/XML original, as well as the facsimile images associated with each TEI file. The corpus in this [demo](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/index.php?action=home) consists of exactly that set of XML files, which have been automatically enhanced, in three steps: tokenization, creation of a central NER index, and linking. And then an interface dedicated to named entities was added to TEITOK.
+
+And in order to annotate in TEITOK, it is necessary to first tokenize the document, which is to say, to add token nodes around all the words (and punctuation marks) in the document. This because most of the functions in TEITOK revolve around editing tokens. 
+
+[![](https://blog.ehri-project.eu/wp-content/uploads/2021/03/TEITOK-1024x670.png)](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/index.php?action=home)
+
+_[Click to view the TEITOK demo of the EHRI online edition](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/index.php?action=home)_
+
+A TEITOK corpus consists not only of the TEI/XML files, but also of definition files. In order to have access to all the named entities in the corpus, a definition file called _ner.xml_ was added, that contains the TEI definition of all the named entities in the various TEI/XML files. This ner.xml file was created by harversing all the named entities in all the teiHeader definitions of the corpus files. For place names with a reference to geonames, a script was used to lookup information in the geonames website if it was missing from the teiHeader records. And each NER record was provided with a unique ID.
+
+Since in TEITOK, annotations are used directly from the transcription, it is necessary to link each named entity in the transcriptions to an entry in the ner.xml file. In order to do that, an automatic script went through all the named entities in all the descriptions, and attempted to provide it with a @corresp attribute linking it to a record in the ner.xml files. In principle, the corresponding record should refer to the same link as the @ref attribute on the named entity in the text. In the cases where no such record existed, a new record was created for it.
+
+As mentioned, the default interface in TEITOK is oriented towards linguistic information, which is not the primary concern in EHRI. That is why two modules were added to TEITOK that are centered around what in linguistics are called _named entities_, which correspond largely to the indexes in EHRI. The first is a module view the central _ner.xml_ file as a vocabulary – it allows you to first select the type of index (place name, person, organization, or term), and then select the index you are interested in from the list. This will show all the available information about the index: its orthographic form, the type of index, where available a description, and additional information like geocoordinates. And since TEITOK is centered around texts, below the description is a list of all the occurrences of the index in the texts, shown as a _keyword in context_ (KWIC) list, which shown not only how the index was used, but also a short context in which it was used. And next to the KWIC line is a link to the full text display.
+
+The second visualization is a display of the full text, much along the way in which it is shown in the Omeka: a title, the relevant metadata about the text, and the full text, where in the text the indexes are highlighted. Moving your mouse an index will make the sytem lookup the corresponding entry in the _ner.xml_ file, from which it displays the lemmatized form, as well as a snippet where available, where in the case of EHRI the snippet corresponds to the _note_ field in the entry.
+
+Apart from these two new modules, the [demo](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/index.php?action=home) also provides the option to use the standard display options of TEITOK, which includes a linguistically oriented display, a search function, and the option to get statistical data about indexes as well as any other data about the texts or words in those texts. 
+
+
+
+## EXAMPLE
+
+The best way to understand the interface for using named [indexes of the EHRI demo](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/index.php?action=ner) in TEITOK is to show it by example. Like in the Omeka interface, you can access indexes directly in a set-up that has three levels of display, as shown below, with the three levels of display: the type selection, the choice of index, and the index details.
+
+[![](https://blog.ehri-project.eu/wp-content/uploads/2021/03/test_neu-1024x379.png)](https://blog.ehri-project.eu/wp-content/uploads/2021/03/test_neu.png)
+
+The first two levels are similar to the way they are displayed in Omeka. But the third level is quite different in nature. In Omeka, the “page” for an index displays all the documents in which that index appears, displayed in a library-like fashion. But it does not show any information about the index itself, or how and where the index is used in the text. In TEITOK, on the other hand, the index page provides direct information about the index itself, taken from the central _ner.xml_ file. In the example above, it displays some short biographical data about Walter Basch, as well as all available external links that provide more information about him. And below that, it displays the three occurrences of that name in the corpus, all from the same document in this case (EHRI-BF-10380719). Notice that the occurrences are shown in their original form, which can differ from the canonical form, like the occurrence of _Valtr_ in the second line. The reason why TEITOK is able to directly show the context of the indexes is because where Omeka takes the indexes from the metadata header, TEITOK takes the indexes from the transcription itself. 
+
+Clicking on the document name will bring you directly to the corresponding occurrence in the original document, as show below. It highlights the occurrences of the selected index in the text, and will scroll automatically to the selected occurrence if the transcription is longer than the visible page. In the screenshot, you see the title of the document, the date, place, collection, and bibliographic reference. And below that, the full text, with the indexes displayed in colour: green for places, blue for people, and orange for terms. Moving you mouse over Walter Basch will display the canonical name, as well as the same bibliographic information show in the index detail page. And clicking on the index would bring you back to the page displayed above.
+
+![Named Entity View](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/Images/nerview.png)
+
+Apart from the interface focussed around named entities, the EHRI [demo](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/index.php?action=home) of course also makes available all the standard functions of TEITOK, which include viewing the text aligned with the facsimile images, browse through the documents, search for (sequences of) words by text or metadata restrictions, display documents on the world map, and get statistical data about search results.
+
+
+
+## TEITOK AS AN EDITING TOOL
+
+Although the [demo](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/index.php?action=home) was not initially designed with that perspective in mind, TEITOK can also be used as a tool to create new digital editions from scratch. To create a digital edition directly in TEITOK, several steps have to be followed: transcribe, provide metadata and annotate.
+
+
+
+### Transcription
+
+For the transcription, there are various options depending on the preferences of the editor. It is possible to transcribe directly in raw TEI/XML using the built-in XML editor. Or it is possible to use automatic recognition software such as tesseract or Transkribus, and convert the output file to the TEITOK format using our [conversion tool](https://github.com/ufal/teitok-tools). But for the kind of documents found in EHRI, probably the easiest tool is TEITOK’s page-by-page transcription. This is a tool that will display the facsimile image next to the a simple text editor, where you can easily type in the transcription. And example is shown below. The format used in this transcription is almost TEI/XML, except that it uses pages as full nodes instead of empty nodes, so that it is easy to edit individual pages. Once the text is transcribed, this pre-TEI format can be automatically converted to standard TEI, and tokenized. The token nodes can easily be removed if the file needs to be exported to tools that do not like tokenization nodes, such as Omeka.
+
+
+
+### Metadata
+
+For the metadata of the file, TEITOK provides a simple HTML form to easily edit all the relevant data in the teiHeader. This page is based on a set of defininition, in which you once define which metadata fields (expressed in terms of XPath) are considered relevant in the project. Once that is done, it is not needed to edit the metadata in raw XML for any of the other files since the system facilitates the editing of all those fields.
+
+
+
+### Annotation
+
+Once the document is tokenized, the system allows the easy marking of named entities for corpus administrators. It does this by allowing you to select one or more words in the text display, which will create a pop-up where you can select the type of entity, and create the corresponding node. This will insert a node in the TEI/XML document around the tokens you selected. Once the Named Entity is created, the data about it can be easily edited in an HTML form in much the same way as metadata are edited, and you likewise define which attributes you want to keep for which entities.
+
+![](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/Images/nercreate.png)
+
+![](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/Images/neredit.png)
+
+In this way, it is quick and easy to add new entities, and since entities that have already been annotated are coloured in the text, it is easy to see which entities still have to be annotated. This annotation method, when applied to text normalization at least, has proven to be very fast and efficient in the past.
+
+On top of this manual annotation, there is also an option to quickly annotate known named entities semi-automatically. For this, the system goes through all the previously annotated documents, and lists all the named entities in those document. When the same text appears in the current document, it is marked out as a potential named entity. In the table of recognized entities, it shows the text as it appears in the document, the reference to the entity record in the ner.xml file, and the reference name of that record.
+
+![](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/Images/nerdetect.png)
+
+By selecting the correctly identified named entities, the system will add not only the corresponding nodes, but also automatically provides them with the same information as was found in the previous nodes. This is a simple text-based comparison, that does not use any external resources nor does it disambiguate – but since it only used known named entities from the same project, matching entities are much more likely to refer to the same entity. TEITOK can also provide interfaces to run automatic processes, including Named Entity Recognition, which could be used to pre-process the corpus and already introduce the named entities. Since the notion of a named entity in EHRI slightly differs from that used in linguistics (for instance, adjectives like German are also linked to the place name Germany), it is an open question that only experience will tell whether automatic pre-processing with existing tools works well, or whether it would be better to stick to more light-weight techniques or rather invest in dedicated NER tools. 
+
+So rather than providing a complicated workflow with several tools, TEITOK provides a single interface in which it is easy to transcribe a document, provide the relevant metadata, and annotate the named entities in the file.
+
+
+
+## OUTLOOK
+
+The [demo](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/index.php?action=home) as it stands provides a good idea what a TEITOK version of the EHRI editions can do. But there are several aspects of the [demo](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/index.php?action=home) that have to be adapted before the interface can be made public, and for that several decisions would have to be made first. The most important decision would be whether to use the TEITOK interface for the EHRI editions, and if so, in which way: as an alternative interface providing only the search functions, as fully functional alternative platform presenting the entire project, or even as the main platform for the presentation of the editions, where editing is done in TEITOK. And depending on that choice, various other choices have to be made: whether to present it as a CLARIAH-CZ corpus or change the layout to the EHRI style, and on which server to host the corpus.
+
+The current [demo](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/index.php?action=home) only contains the German transcriptions of the letters, while many documents are available both in their original language and in German translation. What is yet to be decided is what to do with those different languages – and TEITOK provides various options to deal with this, and it is still to be decided which would work best for the EHRI editions. The three main options are to treat the translation (or rather the original) as a metadata field in much the same way the transcription is used in Omeka – searchable, but without a direct link to the position in the text. Or to provide a translation for each sentence in the document, which makes it possible to provided all sentences with their translation below, and makes searches point to the correct sentence though not to the word directly; or to see the translation as a full tokenized transcription in its own right, potentially with links to the original at various levels.       
+
+Another thing that is not yet done in this [demo](http://quest.ms.mff.cuni.cz/teitok-dev/teitok/ehri/index.php?action=home) is to lemmatize the words in the document, and provide them with a so-called part-of-speech label. The reason to do that is, in case of EHRI, to be able to search by lemma – that is to say, if we are looking for the word _verfassen_, we would also like to find the inflected form _verfasst_ in the text. This is made easy by lemmatizing all the words in the text – ie. by providing each word node in the XML document with an attribute that specifies the kind of word it is (VERB), as well as it lemmatized form (verfassen). The search language used in TEITOK then makes it easy to search for words by their lemma, and not by the form by which they appear in the text. 
+
+The set-up of TEITOK at LINDAT provides not only a TEITOK corpus (which uses the Corpus WorkBench as a backend) but also a Kontext corpus from the same data – Kontext is a completely independent search interface that might offer better results for certain people, so it would also be needed to see where and how to integrate the presentation in Kontext. 
+
+And of course, there might be functionalities that are missing or are not working in the most expected way – especially in cross-discliplinary collaborations, it always takes same time to figure out how to best match the expectations of the target audience with existing tools. So more than anything else, the current document is designed as a point of departure, to demonstrate what advantages the token-based approach brings to the EHRI editions, and to open the discussion on where to go from here.
