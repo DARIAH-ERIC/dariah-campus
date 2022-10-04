@@ -37,10 +37,6 @@ toc: false
 draft: false
 uuid: y9swff6JvZALxwbjwJagO
 ---
-
-
-<!--StartFragment-->
-
 Many Galleries, Libraries, Archives, and Museums (GLAM) face difficulties sharing their collections meta-data in standardised and sustainable ways due to the absence of in-house Information Technology (IT) support or capabilities [1](https://blog.ehri-project.eu/2022/04/25/converting-from-excel-to-ead-xml/#en-5309-1). This situation means that staff rely on more familiar general purpose office programs like text processors, spreadsheets, or low-code databases. However, while these tools offer an easy approach for data registration and digitisation they don’t allow for more advanced uses.
 
 For example, text processors’ content is readable by humans who can interpret and understand the structure and the meaning of what is written. However, machines cannot understand the meaning of the text as it is written in what is called Natural Language (NL) without any predictable structure. NL presents a lot of challenges for the Computer Science field as humans’ way of expressing themselves can include sarcasm, irony, double-meaning, among others. Furthermore, the Ethnologue portal estimates that 7139 languages are spoken today on earth[2](https://blog.ehri-project.eu/2022/04/25/converting-from-excel-to-ead-xml/#en-5309-2). A fact that complicates even more the task of the very active research field of Natural Language Processing (NLP) [3](https://blog.ehri-project.eu/2022/04/25/converting-from-excel-to-ead-xml/#en-5309-3). Therefore, encoding meta-data in Word files and PDFs is not a convenient form of preservation as its conversion will be very complex and will rarely – if ever – be able to achieve 100% accuracy for its conversions.
@@ -50,8 +46,6 @@ Spreadsheets offer a structured way of registering data which makes them more ea
 In the case of our latest example, low-code databases offer a similar approach to fully-fledged databases but with less powerful DataBase Management System (DBMS) engines and less functionality. But they do offer a User Interface (UI) that abstracts into a great amount the complexity of administering a complete database. They are a great solution for small offices and teams that want to preserve the information in a sustainable and low-budget way. Compared to spreadsheets they are based on the relational model which allows to normalise data preventing ambiguity and duplicate problems. In addition, they incorporate integrity rules that notify users whenever the inputted data has violated one of the implemented rules, avoiding data ending up in an inconsistent state.
 
 As a side note, these differences and difficulties correlate with the 5-star model proposed by Tim Berners-Lee[4](https://blog.ehri-project.eu/2022/04/25/converting-from-excel-to-ead-xml/#en-5309-4) in which the use of open standards, highly structured formats and unambiguous identifiers confer the data with more stars in the proposed classification system. These stars are then understood as how easy your data can be processed and connected with other systems and data, allowing for better data integration and governance.
-
-
 
 ## **THE CASE OF CZECH COLLECTIONS FOR THE YERUSHA PROJECT**
 
@@ -63,8 +57,6 @@ Before going into further detail about the designed workflow, we are going to br
 
 Looking at this overview on data integration in the EHRI portal, we established that we would have to perform a conversion outside the EHRI portal, and, in order to avoid a double conversion phase, we should map the Excel file directly to EAD files. It is tempting to think that scripting can solve this problem quite easily and quickly. Although it could solve this problem, these kinds of _ad-hoc_ solutions normally lack the attributes of repeatability (if you need to perform a similar procedure for other data you should develop another script from the scratch), maintainability (a little change in the data could mean a big change in the code) and shareability (only trained users will be capable of using the developed script). Therefore, any solution should cover the mentioned attributes in order to be usable in the future for other cases and also be able to be shared with the whole community, like we are doing in this post.
 
-
-
 ## **TOOL SELECTION AND IMPORTING DATA**
 
 The most straightforward solution was to design the workflow using OpenRefine[12](https://blog.ehri-project.eu/2022/04/25/converting-from-excel-to-ead-xml/#en-5309-12) which as stated by its creators it is “a powerful tool for working with messy data: cleaning it; transforming it from one format into another; and extending it with web services and external data”. Open Refine is able to: deal with different input formats (including Excel sheets), perform transformations on the data (they will be needed to perform some cleaning and splitting some elements), facet and filtering (required as we have different institutions in the same Excel sheet) and output files in different formats. Moreover, it offers an intuitive UI that allows people to perform transformations on their data with minimal training. In this post we describe the workflow we designed to transform an Excel spreadsheet into EAD files that can be directly ingested by the EHRI portal.
@@ -74,8 +66,6 @@ The first step is to install OpenRefine, following the tutorial on OpenRefine’
 It is important that in the preview phase you adjust the following settings: Ignore first line(s) at beginning of file setting it to 1 and Parse next line(s) as column headers setting it to 1. This will ignore the first row with the numbers and will use the second row as the headers for our columns. This is something specifically needed for this spreadsheet as the first row is not useful for our case and it will prevent a correct interpretation of the data by Open Refine. After importing the file, OpenRefine will show us a preview of some rows from the input data. The use of this interface is very similar to the Excel one. If we click on the edit button in any cell we can edit its value. On the column name we can click on the arrow to see the option that we can apply to all the cells in that column, e.g., facet, filter, sort, and transform data.
 
 [![](https://blog.ehri-project.eu/wp-content/uploads/2022/04/Spreadsheet_2-1024x548.jpg)](https://blog.ehri-project.eu/wp-content/uploads/2022/04/Spreadsheet_2-scaled.jpg)
-
-
 
 ## **DATA TRANSFORMATIONS**
 
@@ -97,15 +87,11 @@ This snippet divides the value using the semicolon as the separator, then leadin
 
 ```
 
-
-
 **“Access points: persons/families”:**
 
 ```
 
 ```
-
-
 
 **“Access points: corporate bodies”:**
 
@@ -113,15 +99,11 @@ This snippet divides the value using the semicolon as the separator, then leadin
 
 ```
 
-
-
 **“Access points: subject terms”:**
 
 ```
 
 ```
-
-
 
 **“Finding aids”:**
 
@@ -129,25 +111,17 @@ This snippet divides the value using the semicolon as the separator, then leadin
 
 ```
 
-
-
 **“Links to finding aids” (in this case instead of the semicolon we are using the line break to split the values):**
 
 ```
 
 ```
 
-
-
-
-
 ## **FACETING THE DATA FOR EXPORTING**
 
 Before exporting the data, we will have to group the collections according to the institution they come from. To do that we can use the “Yerusha identifier (created by Yerusha)”, “Name of institution (English)” or “Name of institution (official language)” fields and go to the option “Facet”, “Text Facet”. A panel will be shown in the left side of the window with the different values for this column. To only show the collections from a specific institution we can select it from the list and the rows will be filtered accordingly. Now we can start the export process, taking into account that we have to change the institution in each export to create all the EAD files.
 
 [![](https://blog.ehri-project.eu/wp-content/uploads/2022/04/Spreadsheet_5-1024x478.jpg)](https://blog.ehri-project.eu/wp-content/uploads/2022/04/Spreadsheet_5-scaled.jpg)
-
-
 
 It is possible to export all the data at once (and then perform a slicing) or to export each record separately (no slicing required). However, as the EHRI portal works in an ingestion per institution model, we can only group the files that belong to the same institution. Therefore, following the faceted model, we can click on “Export”, “Templating…”. Here, OpenRefine allows us to format the output that we want using free text and including the values from our transformed table as we want. Therefore, we can put an EAD template and include the expressions to extract the values. Remember that we have already transformed multiple values on multiple XML tags, so we have this issue covered already. 
 
@@ -157,15 +131,11 @@ So, now we fill the dialog fields with the following values: prefix empty, row t
 
 Now you have a single file with many EADs inside, you only need to split them in different files using the line break as the separator. For doing so you can use the convenient command below in your preferred terminal. It will divide the big file into small EAD files called part-xx.xml. Note: for opening the terminal you search for the “Terminal” application in Linux and MacOS or “Command Prompt” in Windows. The command csplit might not be installed by default in your Windows or MacOS system, if so, you can either install it or use an alternative command. Remember to change the export.txt for the actual path and filename produced by OpenRefine.
 
-
-
 ## **CONCLUSIONS**
 
 As mentioned at the beginning of this post, there are many benefits to using this methodology as we can share the procedure and the resources used. In addition, as OpenRefine offers an easy-to-use interface, this workflow can be also explored by non-expert users. Apart from that, designing this complete workflow and the attached export template allows us to apply the same procedure to further data that comes in a spreadsheet but also in other formats supported by OpenRefine which in the end makes this workflow very adaptable and flexible. For new cases little effort is required for data normalisation and cleansing. The same template can be used to produce EAD files that are ready to be uploaded to the EHRI portal.
 
 This post explains a procedure for producing EAD files from an Excel spreadsheet using OpenRefine. We have seen the benefits that this procedure can bring alongside the possibilities that it opens for non-expert users by means of an easy-to-use UI. All the materials and resources used in this tutorial can be freely and openly accessed in the following Github repository[15](https://blog.ehri-project.eu/2022/04/25/converting-from-excel-to-ead-xml/#en-5309-15).
-
-
 
 - - -
 
