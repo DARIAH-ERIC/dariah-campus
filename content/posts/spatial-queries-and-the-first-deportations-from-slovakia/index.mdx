@@ -39,8 +39,6 @@ For my paper given at the Lessons & Legacies in Munich, in November 2019, I want
 
 To answer such questions, we have digitised lists kept in the [Slovak National Archives](https://portal.ehri-project.eu/institutions/sk-003250) and compiled a database of the deportees containing information about their birth places, domicile and/or citizenship and place from which they were deported. The lists which could be found for about three quarters of deportees vary in form and detail: some contain rich information whereas others only list names, moreover only for family heads.[2](https://blog.ehri-project.eu/2019/12/12/spatial-queries-first-deportations-slovakia/#en-3886-2)
 
-<!--StartFragment-->
-
 To conduct the analysis, it was necessary to effectively group places according to the shifting state borders, accounting especially to changes between the Habsburg Monarchy, inter-war Czechoslovak Republic as well as Czechoslovakia in the borders after the First Vienna Award. For a deeper analysis, I also needed to isolate those with their domicile, or place of birth, in specific regions, such as the Southern part of Slovakia awarded to Hungary, or Subcarpathian Russia.
 
 Rather than interpreting the history of the deportations and formulating conclusions, this practically oriented article describes the process of analysis and the approaches as well as tools used and shows how a spatially enabled database can be made useful in the research process in the humanities. While none of the steps described below is path-breaking from the technological point of view, the described workflow seems to be rarely, if at all, used by Holocaust historians.
@@ -83,15 +81,21 @@ Now that all the bits and pieces are brought together, it’s time to query the 
 
 For instance querying on Košice (city in Eastern Slovakia) against the borders at before the First Vienna Award
 
-```
-
-```
+**select country.name
+from trajectories t, geonames g
+left join borders19380331 country 
+ on ST_WITHIN(ST_SetSRID(ST_POINT(g.longitude, g.latitude), 4326), country.geom)
+where split_part(t.domicile_geo, '/', 4)::integer = g.geonameid
+ and t.domicile_geo = 'https://www.geonames.org/724443/kosice.html';**
 
 returns “Czechoslovakia”; the same query against the borders at the end of November 1938
 
-```
-
-```
+**select country.name
+from trajectories t, geonames g
+left join borders19381130 country 
+	on ST_WITHIN(ST_SetSRID(ST_POINT(g.longitude, g.latitude), 4326), country.geom)
+where split_part(t.domicile_geo, '/', 4)::integer = g.geonameid
+	and t.domicile_geo = 'https://www.geonames.org/724443/kosice.html';**
 
 returns “Hungary”.
 
@@ -109,9 +113,13 @@ To find those born in or with domicile in Southern Slovakia, I have matched the 
 
 As a bonus, I have also measured distance between the birth places and deportation places as follows:
 
-```
-
-```
+**select t.birth_place as birthplace, t.deportation_place as deportation_place, 
+ST_DISTANCE(ST_SetSRID(ST_POINT(b.longitude, b.latitude), 4326),
+ST_SetSRID(ST_POINT(l.longitude, l.latitude), 4326), false)
+as distance 
+from trajectories t
+left join geonames b on split_part(t.birth_place_geo, '/', 4)::integer = b.geonameid
+left join geonames l on split_part(t.deportation_place_geo, '/', 4)::integer =l.geonameid;**
 
 Random sample of measured distance between birth place and place of deportation (or last residence, where known):
 
