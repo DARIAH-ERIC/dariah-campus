@@ -71,11 +71,21 @@ It is important that in the preview phase you adjust the following settings: Ign
 
 Now we will need to make some transformations in the data as some fields cannot be placed in the XML file in their current state. This is the case for: “Language(s)”, “Access points: locations”, “Access points: persons/families”, “Access points: corporate bodies”, “Access points: subject terms”, “Finding aids”, “Contact information” and “Links to finding aids”. As you can see, apart from “Contact information” all these fields are meant to have more than a single entity. As we have mentioned at the beginning of this post this is one of the problems that spreadsheets pose for data management. In XML files we can hold multiple instances of a value using multiple tags inside another tag. This is known as a sequence which is normally ordered but can also be unordered. In the next paragraphs we are going to see the transformations that we need to carry out in these fields before converting them to EAD.
 
-We are going to start with the column that only needs some data normalisation: “Contact information”. If we take a look at the data we can see that telephone abbreviation can appear in two forms (i.e., “tel.:” or “tel:” ). In this case we want to remove any kind of abbreviation from the data as we want the raw number with the prefix. Then, we choose the “Edit cells”, “Transform…”. Here we can write some code that performs a transformation per value. In our case we are going to use the “Python / Jython” language (select the Open Refine option with the same name). Then introduce the following snippet of code:[![](https://blog.ehri-project.eu/wp-content/uploads/2022/04/Spreadsheet_3-1024x349.jpg)](https://blog.ehri-project.eu/wp-content/uploads/2022/04/Spreadsheet_3-scaled.jpg)
+We are going to start with the column that only needs some data normalisation: “Contact information”. If we take a look at the data we can see that telephone abbreviation can appear in two forms (i.e., “tel.:” or “tel:” ). In this case we want to remove any kind of abbreviation from the data as we want the raw number with the prefix. Then, we choose the “Edit cells”, “Transform…”. Here we can write some code that performs a transformation per value. In our case we are going to use the “Python / Jython” language (select the Open Refine option with the same name). Then introduce the following snippet of code:
+
+**import re**
+
+**pattern = re.compile(r"(t|T)el.?:?")
+return pattern.sub("", value)**
+
+[![](https://blog.ehri-project.eu/wp-content/uploads/2022/04/Spreadsheet_3-1024x349.jpg)](https://blog.ehri-project.eu/wp-content/uploads/2022/04/Spreadsheet_3-scaled.jpg)
 
 As shown above, this removes the telephone abbreviations as expected. This snippet relies on Regular Expressions which are syntactic constructions that allow for a certain pattern within a text to be searched. This can be then used to match and replace parts of a text in a very effective and concise manner. In our case we are using it to match both ways that telephone has been abbreviated but it can also take into account the omission of the final colon. Then, it just removes the matching sub-sequence, leaving only the raw number as we wanted.
 
 Now we are going to deal with the multiple values in one cell taking “Language(s)” as a simple example. In this case we have multiple languages encoded with their ISO 639-3 code and divided by a semicolon. The latter is crucial as we need this separator to tell the software where one language code ends and another one begins. As we did with the “Contact information” field we are going to apply a transformation to this column, using the following code:
+
+**f = lambda i: '<language langcode="%s">%s</language>' % (i.strip(), i.strip())
+return "".join(map(f, value.split(';')))**
 
 [![](https://blog.ehri-project.eu/wp-content/uploads/2022/04/Spreadsheet_4-1024x349.jpg)](https://blog.ehri-project.eu/wp-content/uploads/2022/04/Spreadsheet_4-scaled.jpg)
 
@@ -83,39 +93,33 @@ This snippet divides the value using the semicolon as the separator, then leadin
 
 **“Access points: locations”:**
 
-```
-
-```
+f = lambda i: '<geogname>%s</geogname>' % (i.strip())
+return "".join(map(f, value.split(';')))
 
 **“Access points: persons/families”:**
 
-```
-
-```
+f = lambda i: '<persname>%s</persname>' % (i.strip())
+return "".join(map(f, value.split(';')))
 
 **“Access points: corporate bodies”:**
 
-```
-
-```
+f = lambda i: '<corpname>%s</corpname>' % (i.strip())
+return "".join(map(f, value.split(';')))
 
 **“Access points: subject terms”:**
 
-```
-
-```
+f = lambda i: '<subject>%s</subject>' % (i.strip())
+return "".join(map(f, value.split(';')))
 
 **“Finding aids”:**
 
-```
-
-```
+f = lambda i: '<otherfindaid><p>%s</p></otherfindaid>' % (i.strip())
+return "".join(map(f, value.split('; ')))
 
 **“Links to finding aids” (in this case instead of the semicolon we are using the line break to split the values):**
 
-```
-
-```
+f = lambda i: '<p>%s</p>' % (i.strip())
+return "".join(map(f, value.split('\n')))
 
 ## **FACETING THE DATA FOR EXPORTING**
 
