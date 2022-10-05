@@ -16,7 +16,7 @@
     "create:sitemap": "ts-node scripts/createSitemap",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "dev": "next dev",
-    "format": "prettier . -l --ignore-path .gitignore",
+    "format": "prettier ./src ./public --check --ignore-path .gitignore",
     "format:fix": "yarn run format --write",
     "lint": "next lint --cache --ignore-path .gitignore",
     "lint:fix": "yarn run lint --fix",
