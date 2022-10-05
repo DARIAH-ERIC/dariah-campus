@@ -6,3 +6,33 @@ html {
   scroll-snap-type: y mandatory;
   scroll-padding-top: var(--page-header-height);
 }
+
+/* temporary hack for quiz questions */
+/* without this hack, multiple choice questions look like this
+https://i.imgur.com/6yPvsb8.png
+and with the hack like this:
+https://i.imgur.com/uu3SHb1.png
+this is still not ideal, but it's better than what we had
+until now. this should be done properly with tailwind
+in the component itself
+*/
+
+.choice span p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.choices {
+  margin-bottom: 1em;
+}
+
+/* temp hack for figure and image spacing */
+
+figure img,
+figure figcaption p {
+  @apply my-0 !important;
+}
+
+figure figcaption {
+  @apply mt-3 mb-0 text-center !important;
+}

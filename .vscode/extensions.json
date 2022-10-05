@@ -3,6 +3,6 @@
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
     "esbenp.prettier-vscode",
-    "JounQin.vscode-mdx"
+    "unifiedjs.vscode-mdx"
   ]
 }
