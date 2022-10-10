@@ -1,3 +1,5 @@
+import { basename } from 'path'
+
 import type * as Hast from 'hast'
 import type { MDXJsxTextElement, MDXJsxFlowElement } from 'hast-util-to-estree'
 import type { Transformer } from 'unified'
@@ -24,7 +26,7 @@ export default function attacher(): Transformer {
 
       node.properties = node.properties ?? {}
       node.properties.href = publicPath
-      node.properties.download = true
+      node.properties.download = file.path != null ? basename(file.path) : true
     }
 
     visit(tree, ['mdxJsxTextElement', 'mdxJsxFlowElement'], onMdxJsxElement)
@@ -45,6 +47,20 @@ export default function attacher(): Transformer {
 
       if (urlAttribute != null) {
         urlAttribute.value = publicPath
+      }
+
+      const fileNameAttribute = node.attributes.find(
+        /** Ignore `MDXJsxExpressionAttribute`. */
+        (attribute) => {
+          return 'name' in attribute && attribute.name === 'fileName'
+        },
+      )
+      if (fileNameAttribute == null && file.path != null) {
+        node.attributes.push({
+          type: 'mdxJsxAttribute',
+          name: 'fileName',
+          value: basename(file.path),
+        })
       }
     }
   }
