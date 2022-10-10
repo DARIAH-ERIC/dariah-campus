@@ -148,6 +148,13 @@ export async function getEventById(id: ID, locale: Locale): Promise<Event> {
   const [file, previewMetadata] = await readFileAndGetEventMetadata(id, locale)
   const code = String(await compileMdx(file))
 
+  if (previewMetadata.synthesis != null) {
+    const paths = copyAsset(previewMetadata.synthesis, file.path, 'asset')
+    if (paths != null) {
+      previewMetadata.synthesis = paths.publicPath
+    }
+  }
+
   const metadata = {
     ...previewMetadata,
     sessions: await Promise.all(
