@@ -4,9 +4,7 @@ order: 5
 ---
 
 <SideNote type="note">
-
-We recommend that if you aren't familiar or confident using GitHub directly, then you use the [Content Management System](/docs/using-the-content-management-system). However, if you want to use GitHub directly, the following guide should take you through the various steps.
-
+  We recommend that if you aren't familiar or confident using GitHub directly, then you use the [Content Management System](/docs/using-the-content-management-system). However, if you want to use GitHub directly, the following guide should take you through the various steps.
 </SideNote>
 
 ## Setting Things Up
@@ -70,7 +68,7 @@ You should now have a functioning environment in Atom for your work on new DARIA
 2. Go to `https://brew.sh/`
 3. Select the 'Install Homebrew' link and paste it into Terminal
 4. You will be prompted for a password in Terminal: enter your laptop password. The installation will begin.
-5. Next, type: "`brew install node`" into Terminal and hit 'return'
+5. Next, type: "`brew install node@14`" into Terminal and hit 'return'
 6. Then, you need to install 'Yarn'. Type "`brew install yarn`" into Terminal, and hit 'return'.
 
 Now that you have yarn installed on your system, you will be able to use it to install all the packages you need to run DARIAH-Campus locally on your computer. To do this:
@@ -92,7 +90,7 @@ Now that you have all the packages you need to preview DARIAH-Campus, you can st
 
 1. Download node.js from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 2. Run node.js installer
-3. Open 'command line' and check node version by typing: `node -v`
+3. Open 'command line' and check node version by typing: `node -v`.  The current version we recommend is Node 14.
 4. Download yarn from [https://yarnpkg.com/lang/en/docs/install/#windows-stable](https://yarnpkg.com/lang/en/docs/install/#windows-stable)
 5. Type `Run yarn installer` (enter)
 6. Check yarn version: `yarn --version`
@@ -118,21 +116,21 @@ Once you have set up DARIAH-Campus on your computer, you can use the `content/te
 
 You can find this template folder in your local working copy, i.e: `dariah-campus > content > templates > resource`
 
-![Copying the resource template folder](images/DC_HostRes_img1_copying.png)
+![Copying the resource template folder](images/DC_HostRes_img1\_copying.png)
 
 **Copy** (do not 'drag and drop') the entire folder, and then **paste** it into the `content/posts` folder:
 
-![Copying the resource template folder](images/DC_HostRes_img2_pasting.png)
+![Copying the resource template folder](images/DC_HostRes_img2\_pasting.png)
 
 Once you have copied the template to your local `content/posts` folder, you can start editing. You can see an example of the `index.mdx` file here:
 
-![Copying the resource template folder](images/DC_HostRes_img3_green.png)
+![Copying the resource template folder](images/DC_HostRes_img3\_green.png)
 
 Within this file, you will write all the content you want to include in your resource. If you need a little more assistance in how to format this, or to include certain elements, such as videos, images, or tables, please take a look at our ["Writing in Markdown" guide](#writing-in-markdown) in the GitHub Workflow section.
 
 When you have your content in the `index.mdx` file, save it, and if you are running a local version of DARIAH-Campus in your browser, you should see your event appear in the 'Resources' page, as in here:
 
-![Copying the resource template folder](images/DC_HostRes_img4_inBrowser.png)
+![Copying the resource template folder](images/DC_HostRes_img4\_inBrowser.png)
 
 Once you are happy with your draft hosted resource, you can submit it to the DARIAH-Campus team via GitHub.
 
@@ -140,21 +138,21 @@ Once you are happy with your draft hosted resource, you can submit it to the DAR
 
 Once you have set up DARIAH-Campus on your computer, you can use the `content/templates/pathfinder` folder as a basis for your contribution.
 
-![Copying the resource template folder](images/DC_PFndr_img1_copy.png)
+![Copying the resource template folder](images/DC_PFndr_img1\_copy.png)
 
 **Copy** (do not 'drag and drop') the entire folder, and then **paste** it into the `content/posts` folder in your fork
 
-![Copying the resource template folder](images/DC_PFndr_img2_paste.png)
+![Copying the resource template folder](images/DC_PFndr_img2\_paste.png)
 
 When you have copied the template to your local `content/posts` folder, you can start editing. You can see an example of the edited `index.mdx` file here:
 
-![Copying the resource template folder](images/DC_PFndr_img3_index.png)
+![Copying the resource template folder](images/DC_PFndr_img3\_index.png)
 
 Within this file, you will write all the content you want to include in your resource. If you need a little more assistance in how to format this, or to include certain elements, such as videos, images, or tables, please take a look at our ["Writing in Markdown" guide](#writing-in-markdown) in the 'GitHub Workflow section.
 
 When you have your content in the `index.mdx` file, save it (although we also recommend saving this iteratively in your GitHub editor as a matter of course), and if you are running a local version of DARIAH-Campus in your browser you should see your event appear in the 'Resources' page, as in here:
 
-![Copying the resource template folder](images/DC_PFndr_img4_inBrowser.png)
+![Copying the resource template folder](images/DC_PFndr_img4\_inBrowser.png)
 
 Once you are happy with your draft hosted resource, you can submit it to the DARIAH-Campus team via GitHub.
 
@@ -162,21 +160,21 @@ Once you are happy with your draft hosted resource, you can submit it to the DAR
 
 Once you have set up DARIAH-Campus on your computer, you can use the `content/templates/event` as a basis for your contribution.
 
-![Copying the event template folder](images/DC_CapEvent_img1_copy.png)
+![Copying the event template folder](images/DC_CapEvent_img1\_copy.png)
 
 **Copy** (do not 'drag and drop') the entire folder, and then **paste** it into the `content/events` folder in your fork.
 
-![Copying the resource template folder](images/DC_CapEvent_img2_paste.png)
+![Copying the resource template folder](images/DC_CapEvent_img2\_paste.png)
 
 When you have copied the template in your local `content/events` folder, you can start editing. You can see an example of the edited `index.mdx` file here:
 
-![Copying the resource template folder](images/DC_CapEvent_img3_ingreen.png)
+![Copying the resource template folder](images/DC_CapEvent_img3\_ingreen.png)
 
 Within this file, you will write all the content you want to include in your captured event. If you need a little more assistance in how to format this, or to include certain elements, such as videos, images, or tables, please take a look at our ["Writing in Markdown" guide](#writing-in-markdown) in the 'GitHub Workflow section.
 
 When you have your content in the `index.mdx` file, save it (although we also recommend saving this iteratively in your GitHub editor as a matter of course), and if you are running a local version of DARIAH-Campus in your browser you should see your event appear in the 'Events' page, as in here:
 
-![Copying the event template folder](images/DC_CapEvent_img4_inBrowser.png)
+![Copying the event template folder](images/DC_CapEvent_img4\_inBrowser.png)
 
 Once you are happy with your 'Captured Event', you can 'commit' it via GitHub to the DARIAH-Campus team.
 
@@ -239,7 +237,7 @@ To insert a YouTube video, use the following code:
 />
 ```
 
-- the "id" is the part of the url after "v=" and before "&". So, for "https://www.youtube.com/watch?v=SI3u9nu7YEY&t=164s" it is: "SI3u9nu7YEY".
+- the "id" is the part of the url after "v=" and before "&". So, for "[https://www.youtube.com/watch?v=SI3u9nu7YEY\&t=164s](https://www.youtube.com/watch?v=SI3u9nu7YEY\&t=164s)" it is: "SI3u9nu7YEY".
 - "image" allows you to choose a screenshot that will appear until the learner clicks the play button.
 
 There are other options for inserting videos; guidance for these can be found in the [Sample-resource template](https://github.com/DARIAH-ERIC/dariah-campus/blob/main/content/templates/resource/index.mdx?plain=1).
