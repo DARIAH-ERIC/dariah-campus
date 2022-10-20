@@ -117,9 +117,13 @@ In any case, the planning phase is essential for funding applications, and for t
 At the end of the project planning phase - or, rather, at the end of this course, your planing document should contain:
 
 - an overview of the project background
+
 - an overall vision and a mission statement
+
 - a clear and concise description of the project and its target audience
+
 - overview of what should be archived (midterm and longterm goals)
+
 - an overview of project activities
 
   - what steps need to be taken to achieve project goals
@@ -127,7 +131,9 @@ At the end of the project planning phase - or, rather, at the end of this course
   - milestones
 
 - an evaluation framework
+
 - a maintenance workflow
+
 - a sustainability plan
 
 It is often useful to start with smaller, pilot projects to get a taste of the challenges involved. If you are planning to digitize a multi-volume dictionary, for instance, it is certainly worthwhile to start small: with one volume, or even part of a volume. Pilot projects can reveal previously unforeseen complications and difficulties, and can help with cost estimates.
@@ -157,30 +163,7 @@ Not all digital objects are created equal. We can distinguish two types of metho
 
 **Text capture** refers to the transposition of image-based textual content into a sequence of alphanumerical characters, which can be accomplished either by human operators who retype the original text; or, automatically, by using an optical character recognition (OCR) or handwritten character recognition (HRT) software to convert images into machine-readable (and, ultimately, searchable) strings.
 
-TODO: render image before publishing
-
-```mermaid
-graph LR
-  PD(Print Dictionary) --> MI(Manual input)
-    subgraph Image Capture
-    S(Scanning)
-    P(Photographing)
-    end
-    PD-->S(Scanning)
-    PD-->P(Photographing)
-    subgraph Text Capture
-    OCR/HRT
-    MI
-    end
-    S-->OCR/HRT
-    P-->OCR/HRT
-
-
-  OCR/HRT --> MRT(Machine-readable text)
-  MI-->MRT
-```
-
-TODO: do i include post-correction in the graph?
+![Print Dictionary to Machine Readable Text](http://i.imgur.com/a18wpcc.png)
 
 ### Image capture
 
@@ -355,9 +338,7 @@ A quick run of some pages of a dictionary can give you a first impression of the
 
 Recognition of the hand-written text presents even grater challenges. The usual OCR software tools are not equipped to recognize handwritten texts because the writing in handwritten manuscripts is less consistent and because individual letters are much more difficult to isolate. Still, handwritten text recognition (HRT) is an active area of academic and professional inquiry.
 
-It is beyond the scope of this course to explore this area. If you are intersted, we recommend that you check out [Transkribus](https://transkribus.eu) and their [How-to guide](https://transkribus.eu/Transkribus/docs/How%20to%20use%20TRANSKRIBUS-0.1.7.pdf).
-
-TODO: Add info on eScriptorium! Perhaps some videos on both Transkribus and eScriptorium...
+It is beyond the scope of this course to explore this area. If you are intersted, we recommend that you learn more about [Transkribus](https://transkribus.eu) and their [How-to guide](https://transkribus.eu/Transkribus/docs/How%20to%20use%20TRANSKRIBUS-0.1.7.pdf) and [eScriptorium](https://www.resilience-ri.eu/blog/resilience-tool-escriptorium/).
 
 #### Manual input
 
@@ -428,7 +409,7 @@ Imagine you were an alien from the Hollywood blockbuster "Arrival". Amy Adams, w
 
 Unlike an alien, a computer will know that your dictionary file consists of words -- because a text editor that contains the text of your dictionary has been programmed to recognize words as strings of characters delimited by spaces. It will probably also be smart enough not to count periods as parts of words, so that if you double-click a word followed by a comma, it will probably select only the word. But that's about it. If all you have is plain text of a dictionary, all the words in that file will be treated the same by the computer. And you know very well that a dictionary entry is a hierarchical space. Different positions in this hierarchy are associated with different types of information. And only if you tell the computer: a Latin word starts here and ends there, or a translation equivalent starts here and ends there, will you be able to do type-specific searches and retrieve entries only based on their Latin origins or translation equivalents.
 
-### Textual Hierarchies
+### Textual hierarchies
 
 A dictionary is a kind of text. It's a specific kind of text, but it is text nonetheless: print dictionaries are mostly made of words, and these words as they appear on paper are ususally differently styled from each other. The main word in the entry -- lemma -- is usually bold, whereas examples, for instance, can be set apart from the rest of the text by cursive. Different dictionaries use different presentational styles to make it easier for their readers to find and extract particular bits of information that they are looking for. But despite the variety of styles used, all dictionaries share a hierarchical model of organizing information.
 
@@ -446,11 +427,15 @@ Dictionary entries are, by conventions of the genre, already hierarchical. If yo
 
 Unlike some of our colleagues who are eternally damned to ponder the overlapping hierarchies in poetry, for instance, dictionary encoders will most likely never encounter this problem.
 
-### Textual Markup
+### Textual markup
 
 For centuries textual scholars have made choices in disambiguating marks on page, in deciding how to format text as it migrates from one form to another, to show changes in a work over time, be they authorial (i.e. created by the author of the work) or by other agents (editors, relations, friends, or unknown scribes).
 
-![](http://i.imgur.com/BgYAA8o.jpg)
+<figure style="padding-top:1em; padding-bottom:1em; padding-left:1em; float:right;">
+  <img src="http://i.imgur.com/BgYAA8o.jpg"/>
+
+  <figcaption style="color:gray;font-size:80%;text-align:right"/>
+</figure>
 
 In the eighteenth and nineteenth centuries as print became the de facto medium in which to transmit en masse the textual record, be it for pleasure (the rise of the novel), for religious purposes (the reproduction of sacred texts and commentary), for or political purposes (as a way of defining the new nation states and their peoples by their literary inheritance), so too the need arose for individuals to adjudicate on the version of the text to be published, what introductory material might be included, or which texts should be group together and published as collections.
 
@@ -795,6 +780,7 @@ oXygen is commercial software, so it does require a licence. If you're just star
 ### Creating a new file
 
 1. Start up the oXygen XML Editor
+
 2. Select File > New and make the contents of the New Document folder visible by clicking on it. Alternatively, type in "xml" in search field.
 
    <Figure src="http://i.imgur.com/le073Bh.png" />
@@ -857,8 +843,11 @@ The automatic validation starts parsing the document and marking the errors afte
 oXygen includes *smart editing* features to help you edit XML documents in Text mode. These include, for instance:
 
 - **Closing tag auto-expansion** - This feature helps save some keystrokes by automatically inserting a closing tag when you insert a complete start tag and the cursor is automatically placed in between the start and end tags. For instance, after entering a start `<entry>`, the corresponding closing `</entry>` is automatically inserted and the cursor is placed between the two (`<entry>`|`</entry>`.
+
 - **Auto-rename matching tag** - When you edit the name of a start tag, Oxygen XML Editor will mirror-edit the name of the matching end tag. This feature can be controlled from the [**Content Completion** option page](https://www.oxygenxml.com/doc/versions/24.1/ug-editor/topics/preferences-content-completion.html#preferences-content-completion__auto-edit-matching-tag).
+
 - **Auto-breaking the edited line** - The [**Hard line wrap** option](https://www.oxygenxml.com/doc/versions/24.1/ug-editor/topics/preferences-editor-format.html#preferences-editor-format__hard-line-wrap-li) automatically breaks the edited line when its length exceeds the maximum line length [defined for the format and indent operation](https://www.oxygenxml.com/doc/versions/24.1/ug-editor/topics/preferences-editor-format.html#preferences-editor-format__line-width-ph).
+
 - **Double-click** - A double-click selects certain text, depending on the position of the click in the document:
 
   - If the click position is on a start tag or end tag, then the element name is selected.
