@@ -21,6 +21,7 @@ licence: ccby-4.0
 toc: true
 uuid: DPF60ESE5Bf1jmjtPXzWI
 ---
+
 The course builds upon Extracting Lexical Data: XPath for Dictionary Nerds and introduces the basics of XSL Transformations (XSLT), a standard language for transforming XML documents. After explaining the basic syntax and processing model of XSLT (stylesheet declarations, templates, pattern matching etc.), the course will guide students through a number of real-life dictionary-specific scenarios (renaming, adding or removing elements and attributes, rearranging and sorting elements, performing tests, hiding and showing portions of the dictionary content etc.) in order to help them improve their skills. At the end of this course, students will be able to write their own XSLT stylesheets to transform lexicographic data.
 
 ## Learning Outcomes
@@ -57,7 +58,7 @@ In this course, we'll be using Oxygen XML Editor.
 
 ### Prerequisites
 
-You should already be familiar with the fundamentals of XML and XPath. If not, you could visit the sections on XML in Intro to modeling TODO:ADD LINK, and Extracting Lexicographic Data: XPath for Dictionary Nerds TODO: ADD LINK.
+You should already be familiar with the fundamentals of XML and XPath. If not, you could visit the sections on XML in [Capturing, Modeling and Transforming Lexical Data: An Introduction](/id/3yV0rXgfTgBFa3jXHm1HX), and [Extracting Lexicographic Data: XPath for Dictionary Nerds](/id/XUDsnt3PCB0WTEr-6EM7w).
 
 This really bears repeating: you can't do XSLT without XPath. This is because XSLT uses XPath to identify the parts of the XML that you want to transform.
 
@@ -165,6 +166,7 @@ Replace the content of `johnson2TEI.xsl` with this:
 
   </xsl:stylesheet>
 ```
+
 You will notice several things:
 
 - the namespace declaration for XSL itself: `xmlns:xsl="http://www.w3.org/1999/XSL/Transform"` which will tell the XSLT processor that all the elements in the `xsl` namespace will contain trasnformation instructions;
@@ -174,7 +176,6 @@ You will notice several things:
 - the `version` attribute, which instructs your XSLT processor which version of the XSLT language to use. In the rest of this course, we'll be using XSLT 3.0.
 
 After you've replaced the content of your `johnson2TEI.xsl` file, try running the transformation again. The result won't be any different, because we haven't yet added any specific rules, but do this anyway to make sure that you've copied things correctly.
-
 
 ### Default behavior
 
@@ -250,6 +251,7 @@ In the output, you should be seeing something like this:
    </text>
 </TEI>
 ```
+
 Wait, what? Why did my precious entry from Johnson's dictionary disapper? This is a feature, not a bug. In our stylesheet, we created a template for entries, but we didn't tell the processor what to do when it encounters an entry. Because our entry template was empty, the processor understood that it didn't need to produce _any_ output when encountering an entry.
 
 Remember, you have to be explicit, otherwise XSLT slacker entropy will prevail!
@@ -274,6 +276,7 @@ Take a look at the following stylesheet:
     
 </xsl:stylesheet>
 ```
+
 What do you think will happen when you run this transformation on your Johnson entry?
 
 The processor will think: ok, this dictionary nerd wants me to look for entries in their dictionary. When I encounter an entry, I should spit out this literal stament "This is a fancy dictionary entry.". An this is, indeed what happened:
@@ -304,6 +307,7 @@ The processor will think: ok, this dictionary nerd wants me to look for entries 
    </text>
 </TEI>
 ```
+
 Hm... Isn't the `<xsl:mode on-no-match="shallow-copy"/>` supposed to let us copy everything that we don't have an explicit rule for? Shulnd't that also apply to the descendants of `<entry>`? How come they, too, have vanished without a trace? Is `<xsl:mode on-no-match="shallow-copy"/>` workign as it's supposed to?
 
 Well yes it is, thank you for asking! As you can see, everything else but the entry element was copied correctly. The processor didn't process the descendants of `<entry>` because we gave it a very explit rule: when you match an entry, simply print out: "This is a fancy dictionary entry." and and don't do anything else there. Remember the rule of doing the bare minimum? This is it in practice.
@@ -448,6 +452,7 @@ Note that we enclosed our fancy sentence in an `<xsl:comment></xsl:comment>`, wh
    </text>
 </TEI>
 ```
+
 ### Let's fix that bad TEI
 
 So far, we've been playing with XSLT and getting to know how it works. What have we learned so far:
@@ -754,6 +759,7 @@ Running the above stylesheet on our `johnson-in-bad-TEI.xml` file will now produ
     </text>
 </TEI>
 ```
+
 ### Saving the output
 
 If you'd like to save the output of the XSLT Debugger menu, ctrl-click or right-click anywhere in the Output Pane and select "Save as."
@@ -845,7 +851,6 @@ Ok, XSLT gods were not very creative here when naming the two copying instructio
         </code>
       </th>
     </tr>
-
   </thead>
 
   <tbody>
@@ -892,7 +897,6 @@ Ok, XSLT gods were not very creative here when naming the two copying instructio
         can't possibly have children, because it copies an element with all of its content
       </td>
     </tr>
-
   </tbody>
 </table>
 
