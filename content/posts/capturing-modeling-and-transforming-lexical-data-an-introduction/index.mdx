@@ -37,7 +37,15 @@ The Library of Alexandria -- one of the wonders of the Ancient World, was founde
 
 While the destruction of the Library of Alexandria is to this day seen as a symbol of tragic loss of knowledge and culture, it is by no means a singular incident in history. Wars, civil unrest and natural disasters, but sometimes also mere accidents, continue to destroy and damage the human record. A 2004 fire in the Duchess Ana Amalia Library in Weimer destroyed some 50,000 volumes of which 12,500 are considered irreplaceable.
 
-![](http://i.imgur.com/NNw9TI3l.jpg) CC-BY-SA-3.0 E.Herzel [https://commons.wikimedia.org/wiki/File%3ABrand_Anna_Amalia\_22.30Uhr.JPG](https://commons.wikimedia.org/wiki/File%3ABrand_Anna_Amalia\_22.30Uhr.JPG)
+<figure style={{'marginTop':'0.4em', 'marginBottom':'0em', 'marginLeft':'1em', 'float':'right', 'width': '40%'}}>
+  <img src="http://i.imgur.com/NNw9TI3l.jpg"/>
+
+  <figcaption>
+    CC-BY-SA-3.0 
+
+    <a href="https://commons.wikimedia.org/wiki/File%3ABrand_Anna_Amalia\_22.30Uhr.JPG">E.Herzel</a>
+  </figcaption>
+</figure>
 
 Digitization is not a cure for all ills and should not be embraced all too hastily as a replacement for proper preservation strategies. Yet there is no doubt that digital objects contribute to both the preservation and accessibility of cultural heritage. From an institutional point of view, the opportunities created by digital resources "for learning, teaching, research, scholarship, documentation, and public accountability" (Kenney and Rieger, 2000, 1) are immense.
 
@@ -276,7 +284,16 @@ Before you invest time and effort into OCRing your dictionary, you should consid
 
 Some texts are totally  un-ocr-able, while some can in principle be recognized, but the quality will be too bad to make it worthwhile to even try.
 
-![](http://i.imgur.com/gL9q7IR.png) OCRing this Serbian-German dictionary produces mostly gibberish
+<figure>
+  <img
+    src="http://i.imgur.com/gL9q7IR.png"
+    style={{width:'100%'}}
+  />
+
+  <figcaption>
+    OCRing this German-Serbian dictionary produces mostly gibberish
+  </figcaption>
+</figure>
 
 Fortunately, there are also numerous dictionaries, especially the more modern ones, which can be handled well by OCR.
 
@@ -316,21 +333,85 @@ How well does OCR work? You can judge yourself based on the following examples c
 
 The screenshots are from the [Transkribus Transcription Platform](http://www.transkribus.eu). The OCR has been performed by the finereader SDK, either offline, or from the Transkribus tool itself.
 
-**Linde** ![](http://i.imgur.com/ibLRh2V.png) Example 1. Linde Dictionary: decent OCR by the ABBYY Cloud OCR service.
+**Linde**
 
-**Czech-Polish Dictionary** ![](http://i.imgur.com/ZiR7oXj.png) Example 2. Czech-Polish dictionary: here also the OCR result is quite decent.
+<figure>
+  <img src="http://i.imgur.com/ibLRh2V.png"/>
 
-**Rechnik malyj** ![](http://i.imgur.com/r8OsT9C.png) Example 3. Rechnik Malyj: the German OCR works a bit, the (old style) Cyrillic is useless.
+  <figcaption>
+    Example 1. Linde Dictionary: decent OCR by the ABBYY Cloud OCR service.
+  </figcaption>
+</figure>
 
-**Mikloshich** ![](http://i.imgur.com/i7e5KJd.png) Example 4. Mikloshich, Old Slavonic-Greek dictionary: again, the old-style Cyrillic is hopeless.
+**Czech-Polish Dictionary**
 
-**Serbian Etymological Dictionary** ![](http://i.imgur.com/mMpTAsW.png) Example 5. Serbian Etymological Dictionary: The OCR of modern Cyrillic is of acceptable quality
+<figure>
+  <img src="http://i.imgur.com/ZiR7oXj.png"/>
 
-**Grimm** ![](http://i.imgur.com/LcgMewV.png) Example 6. Grimm: OCR is reasonable, but could have been better with a higher resolution image.
+  <figcaption>
+    Example 2. Czech-Polish dictionary: here also the OCR result is quite decent.
+  </figcaption>
+</figure>
 
-**Bernolak** ![](http://i.imgur.com/a2cySIK.png) Example 7. The Bernolak dictionary: rather bad OCR.
+**Rechnik malyj**
 
-**Warsaw Dictionary** ![](http://i.imgur.com/w8vBdD4.png) Example 8. The Warsaw dictionary.
+<figure>
+  <img src="http://i.imgur.com/r8OsT9C.png"/>
+
+  <figcaption>
+    Example 3. Rechnik Malyj: the German OCR works a bit, the (old style) Cyrillic is useless.
+  </figcaption>
+</figure>
+
+**Mikloshich**
+
+<figure>
+  <img src="http://i.imgur.com/i7e5KJd.png"/>
+
+  <figcaption>
+    Example 4. Mikloshich, Old Slavonic-Greek dictionary: again, the old-style Cyrillic is hopeless.
+  </figcaption>
+</figure>
+
+**Serbian Etymological Dictionary**
+
+<figure>
+  <img src="http://i.imgur.com/mMpTAsW.png"/>
+
+  <figcaption>
+    Example 5. Serbian Etymological Dictionary: The OCR of modern Cyrillic is of acceptable quality
+  </figcaption>
+</figure>
+
+**Grimm**
+
+<figure>
+  <img src="http://i.imgur.com/LcgMewV.png"/>
+
+  <figcaption>
+    Example 6. Grimm: OCR is reasonable, but could have been better with a higher resolution image.
+  </figcaption>
+</figure>
+
+**Bernolak**
+
+<figure>
+  <img src="http://i.imgur.com/a2cySIK.png"/>
+
+  <figcaption>
+    Example 7. The Bernolak dictionary: rather bad OCR.
+  </figcaption>
+</figure>
+
+**Warsaw Dictionary**
+
+<figure>
+  <img src="http://i.imgur.com/w8vBdD4.png"/>
+
+  <figcaption>
+    Example 8. The Warsaw dictionary.
+  </figcaption>
+</figure>
 
 A quick run of some pages of a dictionary can give you a first impression of the quality of OCR. For thorough evaluation, ground-truth evaluation material should be produced, i.e. a correctly transcribed sample of the dictionary you want to OCR, so that it can be compared with the raw OCR results.
 
@@ -367,7 +448,13 @@ Providers of data entry services using the double-keying method generally advert
 
 Then use the online diff tool [Mergely](http://www.mergely.com/editor) to compare the two samples. The tool will easily let you spot the differences, as in following the screenshot:
 
-![](http://i.imgur.com/m7KgRCc.png) Comparison of a double-keyed entry with highlighted differences
+<figure>
+  <img src="http://i.imgur.com/m7KgRCc.png"/>
+
+  <figcaption>
+    Comparison of a double-keyed entry with highlighted differences
+  </figcaption>
+</figure>
 
 #### References
 
@@ -405,7 +492,13 @@ Computers are incredibly efficient machine, but not very smart on their own. Wit
 
 Imagine you were an alien from the Hollywood blockbuster "Arrival". Amy Adams, who plays a linguist trying to decipher your extraterrestrial language, presents you with a page from a dictionary. What you would make of it? Probably very little. All you would see would be different shapes without any meaning.
 
-![](http://i.imgur.com/VrVwmXY.jpg) Aliens in "Arrival" use logograms to communicate
+<figure>
+  <img src="http://i.imgur.com/VrVwmXY.jpg"/>
+
+  <figcaption>
+    Aliens in "Arrival" use logograms to communicate
+  </figcaption>
+</figure>
 
 Unlike an alien, a computer will know that your dictionary file consists of words -- because a text editor that contains the text of your dictionary has been programmed to recognize words as strings of characters delimited by spaces. It will probably also be smart enough not to count periods as parts of words, so that if you double-click a word followed by a comma, it will probably select only the word. But that's about it. If all you have is plain text of a dictionary, all the words in that file will be treated the same by the computer. And you know very well that a dictionary entry is a hierarchical space. Different positions in this hierarchy are associated with different types of information. And only if you tell the computer: a Latin word starts here and ends there, or a translation equivalent starts here and ends there, will you be able to do type-specific searches and retrieve entries only based on their Latin origins or translation equivalents.
 
@@ -415,7 +508,16 @@ A dictionary is a kind of text. It's a specific kind of text, but it is text non
 
 This is, in fact, something that can be said of most texts. Whether we draw our source of inspiration from Russian _matryoshkas_ or Chinese boxes, we all know how structural 'nesting' works in books: a book may consist of chapters, a chapter may consist of sections, each section may contain a separate title and several paragraphs. Inside paragraphs we may find, for instance, lists etc. These content objects fit neatly into one another, from the smallest (a letter or a word) to the largest (a book or monograph), with a myriad of other nested units in between (sentences, paragraphs etc).
 
-![](http://i.imgur.com/Kz6BAM8m.jpg) Help! I'm trapped inside a text. CC BY 3.0 J. Ronald Lee
+<figure style={{'marginTop':'0.4em', 'marginBottom':'0em', 'marginLeft':'1em', 'float':'right'}}>
+  <img
+    src="http://i.imgur.com/Kz6BAM8m.jpg"
+    style={{width:'100%'}}
+  />
+
+  <figcaption>
+    Help! I'm trapped inside a text. CC BY 3.0 J. Ronald Lee
+  </figcaption>
+</figure>
 
 While this theory was instrumental for conceptualizing the practice of text encoding, it never fully accounted for the problem of **overlapping hierarchies**. Overlapping hierarchies break the neatly nesting pattern described above. For example, a metaphor in a poem may cut across two or more lines. The creators of the OHCO theory concede that this may be more than a technical issue and that it may point to some of the thorniest issues surrounding text encoding as an intellectual endeavor.
 
@@ -431,12 +533,10 @@ Unlike some of our colleagues who are eternally damned to ponder the overlapping
 
 For centuries textual scholars have made choices in disambiguating marks on page, in deciding how to format text as it migrates from one form to another, to show changes in a work over time, be they authorial (i.e. created by the author of the work) or by other agents (editors, relations, friends, or unknown scribes).
 
-<figure style={{'marginTop':'0em', 'marginBottom':'0em', 'marginLeft':'1em', 'float':'right'}}>
+<figure style={{'marginTop':'0.4em', 'marginBottom':'0em', 'marginLeft':'1em', 'float':'right'}}>
   <img src="http://i.imgur.com/BgYAA8o.jpg"/>
 
-  <figcaption style={{'color':'gray','fontSize':'80%','textAlign':'right'}}>
-    Some caption
-  </figcaption>
+  <figcaption/>
 </figure>
 
 In the eighteenth and nineteenth centuries as print became the de facto medium in which to transmit en masse the textual record, be it for pleasure (the rise of the novel), for religious purposes (the reproduction of sacred texts and commentary), for or political purposes (as a way of defining the new nation states and their peoples by their literary inheritance), so too the need arose for individuals to adjudicate on the version of the text to be published, what introductory material might be included, or which texts should be group together and published as collections.
@@ -510,7 +610,7 @@ Markup languages are used to enrich plain text with information which is readabl
 
 There is always an opening tag (e.g. `<h1>`) and a closing tag (e.g. `</h1>`) indicating the start and the end of a heading. The only difference between an opening and a closing tag is the slash `/` which appears after the opening angle bracket in the closing tag. It's not exactly what Freud had in mind when he wrote of the "narcissism of small differences", but this small difference does matter a lot. We'll see why in the rest of this course.
 
-## XML as a markup language
+### XML as a markup language
 
 XML (or eXtensible Markup Language), like SGML before it, defines a set of rules for encoding texts. Unlike a natural language, which consists of identifiable and definable words, XML, on its own, gives you an apparatus for _creating_ "words" or what we in XML lingo call _elements_.
 
@@ -551,7 +651,7 @@ DTDs represent an abstract model for structuring document, while providing a mec
 
 It is beyond the scope of this course for you to learn how to write your own schemas, but we will be using schemas specifically developed for dictionaries in order to mark up lexicographic data.
 
-### XML and its advantages
+#### XML and its advantages
 
 XML is a specification of the World Wide Web Consortium (W3C). As discussed in the previous section, XML is a metalanguage and can be used to create custom markup languages that conform to the basic rules of XML. The entire XML specification can be found on the W3C website at [https://www.w3.org/XML/](https://www.w3.org/XML/)
 
@@ -565,19 +665,19 @@ XML was originally developed as a standard for data exchange over the web. Its m
 - fine-grained searchability; and
 - transformability.
 
-#### Device independence
+##### Device independence
 
 One of the main advantages of XML is its high degree of interoperability. XML data can be used by different programs on different platforms. XML files are simple text files and are not platform or software dependent. Consequently, an XML document can be written on a Mac, stored on a Linux server and downloaded to a Windows PC. All these operating systems are able to read an XML file. At the same time, XML can be used to exchange data between different programs. For instance, since Microsoft Word introduced its xml-based document format, Word documents can be viewed and edited by other software such as LibreOffice.
 
-#### Machine and human readability
+##### Machine and human readability
 
 Another advantage of XML is that it can be written, read and altered by humans as well as computers. No special software is required to access the data in XML documents. A simple text editor such as Notepad, Vi or TextEdit can be used to open and edit XML documents.
 
-#### Separation of data and presentation
+##### Separation of data and presentation
 
 The third major advantage of XML documents is that XML promotes a clear separation of data and its visual presentation. This enables the possibility, for instance, of exchanging "pure" data without superfluous information about font sizes, colors or textual alignment. On the one hand, this reduces file size overhead and is an advantage for the exchange of huge amounts of data over networks. On the other hand, it allows for the presentation of the same data in different formats.
 
-#### Fine-grained searchability
+##### Fine-grained searchability
 
 XML-encoded texts can offer a high degree of precise, fine-grained searchability. In a plain-text search, all strings are considered equal and your text edtior will return all the hits containing the search string, regardless of its position in the dictionary hierarchy. This can be ok for quick-and-dirty searches, but it can also produce a lot of noise, if we are looking for something really specific.
 
@@ -585,7 +685,7 @@ In an XML-encoded dictionary, you can create separate searches through dictionar
 
 Once you've learned the basics of working with XML, you can explore XPath, a standard query language for selecting nodes from XML documents. [Extracting Lexical Data: XPath for Dictionary Nerds](https://campus.dariah.eu/id/XUDsnt3PCB0WTEr-6EM7w) may be a good place to start.
 
-#### Transformability
+##### Transformability
 
 Another advantage of XML-encoded documents is that they are trasnformable: using an XML parser, a software developed to access and manipulate XML documents and XSLT (Extensible Stylesheet Language Transformations), a standard programming language for transforming XML documents, XML-encoded data can be converted to different formats such as HTML (for display in a web-browser), PDF etc.
 
@@ -909,7 +1009,7 @@ These are very different modes of publication. Software products allow consultat
 
 It is therefore recommended, whenever possible and whenever copyright laws allow it, to share the source of your digitized dictionary data either via your own institutional repository or a public one such as [GitHub](https://github.com).
 
-The creation of user interfaces and storage of digitized lexical datasets in databases is beyond the scope of this course. But, if you are interested, you could check out the ELEXIS course [How to Publish Your Dictionary Data with Publex](/id/IbZ4arshkA06y5Uem0UsT) here on DARIAH-Campus.
+The creation of user interfaces and storage of digitized lexical datasets in databases is beyond the scope of this course.
 
 ## Maintenance
 
