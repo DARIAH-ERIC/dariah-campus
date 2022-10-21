@@ -24,6 +24,7 @@ toc: true
 draft: true
 uuid: ltlzUH-fnmgzR5O0bgqwu
 ---
+
 This course introduces Elexifier, a cloud-based dictionary service for the conversion of legacy XML and PDF dictionaries into a shared data format based on the ELEXIS Data Model.
 
 ## Learning Outcomes
@@ -34,7 +35,7 @@ Upon completion of this course, students will be able to:
 
 ## Prerequisites
 
-This course requires basic knowledge of XML, which can be acquired from the course [Capturing, Modeling and Transforming Lexical Data: An Introduction](/resource/posts/capturing-modeling-and-transforming-lexical-data-an-introduction). Especially the part on Modeling lexicographic data (with XML) is essential. In addition to this, we recommend doing the course [Extracting Lexical Data: XPath for Dictionary Nerds](/resource/posts/xpath-for-dictionary-nerds) if you want to grasp the finer details of defining transformations in Elexifier. For transforming PDF dictionaries, basic knowledge of Lexonomy is recommended. For this, check out the course **[Lexonomy: Mastering the ELEXIS Dictionary Writing System](/resource/posts/lexonomy-mastering-the-elexis-dictionary-writing-system)**. Finally, if you want to learn more about the Dictionary Matrix, we suggest you do the course **[Mastering LEX1: The Dictionary Matrix](/resource/posts/mastering-lex1-the-dictionary-matrix)**.
+This course requires basic knowledge of XML, which can be acquired from the course [Capturing, Modeling and Transforming Lexical Data: An Introduction](/id/3yV0rXgfTgBFa3jXHm1HX). Especially the part on Modeling lexicographic data (with XML) is essential. In addition to this, we recommend doing the course [Extracting Lexical Data: XPath for Dictionary Nerds](/id/XUDsnt3PCB0WTEr-6EM7w) if you want to grasp the finer details of defining transformations in Elexifier. For transforming PDF dictionaries, basic knowledge of Lexonomy is recommended. For this, check out the course [Lexonomy: Mastering the ELEXIS Dictionary Writing System](/id/Qm\_2SzS_rGB-Py9YTCHYm).
 
 ## Introduction
 
@@ -52,7 +53,7 @@ Elexifier is easy to use, as the interface and the user instructions guide you t
 
 In each and every European country, elaborate efforts are put into the development of lexicographic resources describing the language(s) of the community. Although confronted with similar problems relating to technologies for producing and making these resources available, cooperation on a larger European scale has long been limited. As a consequence, many lexicographic resources are typically encoded in their own custom data format. This forms a major obstacle if we want to link, edit, enrich and publish data from various sources reliably as envisaged in the ELEXIS infrastructure (see Figure Graphic guide to the ELEXIS Dictionary Tools above). For this, semantic interoperability between the different lexicographic datasets is needed.
 
-> “semantic interoperability exists when two systems have the ability to automatically interpret exchanged information meaningfully and accurately in order to produce useful results via deference to a common information exchange reference model”.  [Ide and Pustejovsky (2010)](http://www.cs.vassar.edu/~ide/papers/ICGL10.pdf)
+> “semantic interoperability exists when two systems have the ability to automatically interpret exchanged information meaningfully and accurately in order to produce useful results via deference to a common information exchange reference model”.  [Ide and Pustejovsky (2010)](http://www.cs.vassar.edu/\~ide/papers/ICGL10.pdf)
 
 Thus what is labelled as ‘example’ in one lexicographic resource should be the same as an element labelled ‘example’ in another lexicographic resource. To realise semantic operability among the ELEXIS lexicographic resources, the ELEXIS data model has been developed which aims to a) streamline the integration of lexicographic data into the infrastructure (using the ELEXIFIER tool), b) enable reliable linking of the data in the Dictionary Matrix, and c) provide a basic template for the creation of new lexicographic resources (e.g. in Lexonomy).
 
@@ -79,7 +80,7 @@ The following core elements are distinguished and can be transformed in Elexifie
 
 Table 1. ELEXIS core elements that can be transformed using Elexifier.
 
-If you already want to read more about the ELEXIS Data Model, see [Towards the ELEXIS data model: defining a common vocabulary for lexicographic resources](https://elex.link/elex2021/wp-content/uploads/2021/08/eLex_2021_03_pp56-77.pdf) and the ongoing work on [LEXIDMA](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=lexidma).
+If you already want to read more about the ELEXIS Data Model, see [Towards the ELEXIS data model: defining a common vocabulary for lexicographic resources](https://elex.link/elex2021/wp-content/uploads/2021/08/eLex\_2021\_03\_pp56-77.pdf) and the ongoing work on [LEXIDMA](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=lexidma).
 
 ## Let’s get started
 
@@ -93,7 +94,10 @@ To get started, you need to create a user account and log in. See [user guide](h
 
 For a quick introduction to Elexifier, check out the following video.
 
-<Video provider="youtube" id="kqYLWdGR_Qo" />
+<Video
+  provider="youtube"
+  id="kqYLWdGR_Qo"
+/>
 
 ### Transforming an XML dictionary
 
@@ -117,7 +121,7 @@ The Sample Dictionary is an extract from the GLOBAL French Portuguese Dictionary
 
 First, have a look at the input XML and see if you understand its structure. An extract of the XML of the entry for café ‘coffee’ is given below.
 
-![](https://lh5.googleusercontent.com/oqXnBUD-dywul9jPV_qJdEGzJup9xh_QnZzmankQ-MtyKygDmgRqOI77gVScBhTp7Spy-lgF7Qm91qvf9IgjawuZKfX0WRcRgwu1-ZJInMJNZpQ0nG9RFZGGudFXcXSnm_8mawNUMbLNxnwEfw)
+![](https://lh5.googleusercontent.com/oqXnBUD-dywul9jPV_qJdEGzJup9xh_QnZzmankQ-MtyKygDmgRqOI77gVScBhTp7Spy-lgF7Qm91qvf9IgjawuZKfX0WRcRgwu1-ZJInMJNZpQ0nG9RFZGGudFXcXSnm\_8mawNUMbLNxnwEfw)
 
 Figure: Extract from GLOBAL French Portuguese Dictionary © K Dictionaries Ltd
 
@@ -142,7 +146,6 @@ Figure: Extract from GLOBAL French Portuguese Dictionary © K Dictionaries Ltd
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
-
 
 ### Transform the Sample Dictionary using Elexifier
 
@@ -209,7 +212,7 @@ We are now going to define a complete transformation of the Sample Dictionary, t
 
 To edit your transformation, you need to click edit.
 
-![](https://lh5.googleusercontent.com/XR20CqpMPy8Lm1uIrbp8T-so3cJHiCo0B8b1W2wpt4pEDcSyy4HBUZXMWHYiKHzX3cDB9I0_TGAVIzgAvncUrQbRlXRzTohec9RjzqNLHm01pe3RRVGI1rA2SOF66SKuFCFVmuwu5-noc8bsAg)
+![](https://lh5.googleusercontent.com/XR20CqpMPy8Lm1uIrbp8T-so3cJHiCo0B8b1W2wpt4pEDcSyy4HBUZXMWHYiKHzX3cDB9I0\_TGAVIzgAvncUrQbRlXRzTohec9RjzqNLHm01pe3RRVGI1rA2SOF66SKuFCFVmuwu5-noc8bsAg)
 
 The transformation already contains three elements, i.e. entry, headword and sense. 
 
@@ -247,7 +250,7 @@ Ticking these boxes will make your output more understandable.
 
 So far so good. Let’s now look at “PART OF SPEECH”. 
 
-Transforming the Part of Speech tag is a little more difficult in our Sample Dictionary as the part of speech value is stored in an attribute of the PartOfSpeech tag.![](https://lh5.googleusercontent.com/l38pQRWaZzn7jatj0JommeX-R2b7CCw8EV24X2WZuc97HJbVDBlpolJHnZQdKLpMj_Nn-9nav_0RE4dRrP9QqaXoUOwuGpxq2Gu_KP0eV_shMTEVzcE_p5qJ-X5Mei_Op3ndBs5C9WGOKgzGkg)To transform the Part of Speech, you first need to specify the tag name, i.e. PartOfSpeech and then you need to select the value of the attribute. You do this by selecting the option ‘attribute value’ from the dropdown menu.
+Transforming the Part of Speech tag is a little more difficult in our Sample Dictionary as the part of speech value is stored in an attribute of the PartOfSpeech tag.![](https://lh5.googleusercontent.com/l38pQRWaZzn7jatj0JommeX-R2b7CCw8EV24X2WZuc97HJbVDBlpolJHnZQdKLpMj_Nn-9nav\_0RE4dRrP9QqaXoUOwuGpxq2Gu_KP0eV_shMTEVzcE_p5qJ-X5Mei_Op3ndBs5C9WGOKgzGkg)To transform the Part of Speech, you first need to specify the tag name, i.e. PartOfSpeech and then you need to select the value of the attribute. You do this by selecting the option ‘attribute value’ from the dropdown menu.
 
 ![](https://lh6.googleusercontent.com/YUkFwtu9lrx9jhkJJgwNQan62GoCemvOyeA9f_qr9sRX5uwd0fyNmOdTlB4xyMvASsEVWgtjmvjKu649skkw-B0tTutbu-PI2MbZSd6bHtglTf714aURthTZUm6oRom_rxgjOv4gG2keiLFI4Q)
 
@@ -259,7 +262,7 @@ In the box behind ATTRIBUTE VALUE, you can then type the name of the attribute t
 
 Under PART OF SPEECH you also have the option to map the Part of Speech label occurring in the XML file with the tags from [Universal Dependencies](https://universaldependencies.org/u/pos/index.html). It is recommended that you do this as this will make it easier to link your data more reliably to other lexicographic resources in the ELEXIS infrastructure. In our Sample Dictionary, the Part of Speech labels that are used are already compatible with Universal Dependencies.
 
-![](https://lh6.googleusercontent.com/FPWb2IwsQhgw_rT_ATYop2sF4bsLuRBSigQqJeIxPFjAZV4tk-lIHNfm5WRGyYVGhrRCdbj7zhIqGIu_3Qovbl9z4388nE9DwVL7NmBM04_5s4QZw3aIOY8_c5j-PHHc3rz1P7KDTuOiAYhWiA)
+![](https://lh6.googleusercontent.com/FPWb2IwsQhgw_rT_ATYop2sF4bsLuRBSigQqJeIxPFjAZV4tk-lIHNfm5WRGyYVGhrRCdbj7zhIqGIu\_3Qovbl9z4388nE9DwVL7NmBM04\_5s4QZw3aIOY8\_c5j-PHHc3rz1P7KDTuOiAYhWiA)
 
 Try to add the following core elements to your transformation:
 
@@ -278,7 +281,7 @@ If your dictionary contains an example translation you want it to occur inside t
 
 You then set the path to the example translation element. 
 
-![](https://lh4.googleusercontent.com/fDnPBjLk-PFPA8HjdlAWy0238UquJe3EyJNyGxTPsGxyDQf9cD7QAXrM_20OIgGM1OvwM5QeZkoVFa2iH5TkogfumwBR6o23u7AytEQiMcUF_TdbPNXqLPhLDjRVyzaZ71ltld7sEhHlAQrkZA)
+![](https://lh4.googleusercontent.com/fDnPBjLk-PFPA8HjdlAWy0238UquJe3EyJNyGxTPsGxyDQf9cD7QAXrM\_20OIgGM1OvwM5QeZkoVFa2iH5TkogfumwBR6o23u7AytEQiMcUF_TdbPNXqLPhLDjRVyzaZ71ltld7sEhHlAQrkZA)
 
 What this expression does is ask the algorithm to move one level up, to find all Translation elements, and to move them within the **example** element. In the preview pane, you will the changed position of the example translation. after you have updated your transformation.
 
@@ -286,26 +289,18 @@ What this expression does is ask the algorithm to move one level up, to find all
 
 Once you are done with the transformation, you can download the data for later use, by clicking on “Download”. You need to close the transformation editing pane, by clicking on the name of your dictionary on the left-hand side. Then the Download option will appear again.
 
-![](https://lh6.googleusercontent.com/b_iSR49-3m6O1-93uOu8Sm60Pu9X64lVVQjy86_sLIQQ55ZJxRV-k7I7yYR5yvZKw_x71cr70NpZD-ZBsBVOFhM-XT3TPEuDFrrSvONyd8pKN4jnJ6K9WGgCcdceLc9jG4yW2SOcJhyVpDwGfg)
+![](https://lh6.googleusercontent.com/b_iSR49-3m6O1-93uOu8Sm60Pu9X64lVVQjy86\_sLIQQ55ZJxRV-k7I7yYR5yvZKw_x71cr70NpZD-ZBsBVOFhM-XT3TPEuDFrrSvONyd8pKN4jnJ6K9WGgCcdceLc9jG4yW2SOcJhyVpDwGfg)
 
 You can then choose to download with or without namespaces. 
 
-![](https://lh5.googleusercontent.com/kXw1mzanyCUjTsLey1S5Ohf6ObTY2g8y4apo_MKokDlh3WR_vnvYLzZ4GnHMU6JCVf3ccAayF7hikfm-Q7pBEo_uszCAtk3tjSpcp7M2-Hl4V094k3IZ3rKkJqt8_MXWMOkqN5pP_t7mYch_-Q)
+![](https://lh5.googleusercontent.com/kXw1mzanyCUjTsLey1S5Ohf6ObTY2g8y4apo_MKokDlh3WR_vnvYLzZ4GnHMU6JCVf3ccAayF7hikfm-Q7pBEo_uszCAtk3tjSpcp7M2-Hl4V094k3IZ3rKkJqt8\_MXWMOkqN5pP_t7mYch\_-Q)
 
-A download without namespaces of the transformed data that we prepared for these two entries can be found [here](https://github.com/elexis-eu/elexifier/blob/master/docs/examples/ElexifierSampleDictionary-v2-SampleTransformation-v2-full_without-nmspcs-output.xml). 
+A download without namespaces of the transformed data that we prepared for these two entries can be found [here](https://github.com/elexis-eu/elexifier/blob/master/docs/examples/ElexifierSampleDictionary-v2-SampleTransformation-v2-full_without-nmspcs-output.xml).
 
 For more help on Elexifier, click on Help: [https://elexifier.elex.is/help/](https://elexifier.elex.is/help/)
 
 ## Next steps 
 
-#### Importing your dictionary into the Dictionary Matrix
+Lexonomy is a cloud-based, open-source platform for writing and publishing dictionaries. In the course [Lexonomy: Mastering the ELEXIS Dictionary Writing System](/id/Qm\_2SzS_rGB-Py9YTCHYm) you learn how to use Lexonomy.
 
-The ELEXIS Dictionary Matrix is one of the main results of the ELEXIS project. It is a universal repository of linked senses, meaning descriptions, collocations, phraseology, translation equivalents, examples of usage and other types of lexical information found in existing lexicographic resources. In the course **[Mastering LEX1: The Dictionary Matrix](/resource/posts/mastering-lex1-the-dictionary-matrix)** you can find out more about the Dictionary Matrix.
-
-#### Editing your dictionary in Lexonomy
-
-Lexonomy is a cloud-based, open-source platform for writing and publishing dictionaries. In the course **[Lexonomy: Mastering the ELEXIS Dictionary Writing System](/resource/posts/lexonomy-mastering-the-elexis-dictionary-writing-system)** you learn how to use Lexonomy.
-
-## Read More
-
-[Deliverable 1.4 ELEXIS Conversion Tools](https://elex.is/wp-content/uploads/2021/05/ELEXIS_D1_4_ELEXIS_Conversion_Tools.pdf) The appendix of this deliverable contains examples from dictionaries from ELEXIS partners, showing the input format together with the transformed output from Elexifier.
+You may be also interested in checking out [Deliverable 1.4 ELEXIS Conversion Tools](https://elex.is/wp-content/uploads/2021/05/ELEXIS_D1\_4\_ELEXIS_Conversion_Tools.pdf) The appendix of this deliverable contains examples from dictionaries from ELEXIS partners, showing the input format together with the transformed output from Elexifier.
