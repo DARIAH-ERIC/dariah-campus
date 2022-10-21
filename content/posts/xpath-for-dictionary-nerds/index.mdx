@@ -1,8 +1,8 @@
 ---
-title: XPath for Dictionary Nerds
+title: "Extracting Lexical Data: XPath for Dictionary Nerds"
 lang: en
 date: 2019-08-26
-version: 1.1.3
+version: 2.0.0
 authors:
   - tasovac-toma
 tags:
@@ -32,73 +32,9 @@ In this tutorial, you will learn how to write XPath expressions in order to navi
 
 ### Prerequisites
 
-#### Tree structure
+To take this course, you should have a sound understanding of XML, its node types and relationships. This is not one of those nice-to-have requirements, but an abolute must. XPATH will make very little sense unless you're well-versed in the basics of XML terminology.
 
-You should already be familiar with the fundamentals of the XML tree structure:
-
-- The **root** element forms the basis of the XML tree and all other element nodes, attribute nodes and text nodes reach out like branches and leaves from this topmost element
-- Moreover, various relationships between elements exist. In the **child-parent relationship** one element (the child) is nested inside another element (the parent). In the following example, the element `<orth>` is nested in the element `<form>`. Consequently, `<orth>` is the child of `<form>` and `<form>` the parent of `<orth>`:
-
-  ```xml
-  <form type="lemma">
-    <orth>lexicographer</orth>
-  </form>
-  ```
-
-- A **sibling** relationship means that elements (the siblings) have the same parent element. For instance, in the following example, the elements `<form>`, `<gramGrp>` and `<sense>` have the same parent element and are hence siblings to each other:
-
-  ```xml
-  <entry>
-    <form type="lemma">
-      <orth>lexicographer</orth>
-    </form>
-    <gramGrp>
-      <gram type="pos">noun</gram>
-    </gramGrp>
-    <sense>
-      <def>A harmless drudge.</def>
-      <cit type="example">
-        <quote>Some lexicographers are mad!</quote>
-      </cit>
-    </sense>
-  </entry>
-  ```
-
-- `<def>` is a child element of `<sense>` and a sibling of `<cit>` etc.
-
-#### Different ways of representing the tree structure
-
-To best understand the tree structure, you should find a way to visualize it that makes the most sense to you.
-
-##### 1. The world upside down
-
-Tree-structures resemble trees, but in a world turned upside-down: the root of the tree is at the top, and the branches are at the bottom. The root element has one or more children. Children with the same parent (there can be only one parent in XML) are siblings etc.
-
-![](images/tree.png)
-
-##### 2. Little boxes made of ticky-tacky
-
-A different way of imagining the tree structure is to think of a series of boxes of different sizes. There is one giant box at the top, which contains a number of smaller boxes. Each of these can have one or more boxes inside. The boxes that live in the same bigger box are siblings etc.
-
-![](images/boxes.png)
-
-##### 3. A folder, a folder, my kingdom for a folder!
-
-Yet another way is to think of the tree structure as a bunch of folders on your computer. The root folder contains all the other folders. The folders that live inside the same folder are siblings to each other etc.
-
-![](images/folders.png)
-
-#### Types of nodes in XML
-
-You should already be familiar with the basics of XML notation: ![](images/xml-notation.png) and different types of nodes in XML:
-
-- **element**
-- **attribute**
-- **text**
-- **namespace**
-- **processing-instruction**
-- **comment**
-- **document**
+If you're new to XML, make sure you review the basics by (re)visiting the ELEXIS course [Capturing, Modeling and Transforming Lexical Data: An Introduction](/id/3yV0rXgfTgBFa3jXHm1HX) and, in partiuclar, sections on [XML building blocks and basic rules](/id/3yV0rXgfTgBFa3jXHm1HX#xml-building-blocks-and-basic-rules)
 
 ### Another language? Why, oh why?
 
@@ -190,8 +126,6 @@ To execute an XPath from the XPath/XQuery Builder, you have two options:
 1. Click on the small red "play" icon inside the Builder area; or
 2. Press `⌘-return` (Mac) or `ctrl-return` (Windows).
 
-TODO: check if ctrl is the META character on Windows.
-
 ## XPath Expressions
 
 XPath uses so-called _path expressions_ to select nodes in a tree by means of a series of steps.
@@ -210,14 +144,14 @@ In the following examples, we'll be working with the file you downloaded earlier
 
 #### Selecting nodes
 
-| Expression | Description |
-| --- | --- |
-| _nodename_ | Selects all nodes with the name "_nodename_" |
-| `/` | Selects from the document node |
-| `//` | Selects nodes in the document from the current node that match the selection no matter where they are |
-| `.` | Selects the current node |
-| `..` | Selects the parent of the current node |
-| `@` | Selects attributes |
+| Expression | Description                                                                                           |
+| ---------- | ----------------------------------------------------------------------------------------------------- |
+| _nodename_ | Selects all nodes with the name "_nodename_"                                                          |
+| `/`        | Selects from the document node                                                                        |
+| `//`       | Selects nodes in the document from the current node that match the selection no matter where they are |
+| `.`        | Selects the current node                                                                              |
+| `..`       | Selects the parent of the current node                                                                |
+| `@`        | Selects attributes                                                                                    |
 
 What does that mean concretely when applied to our dictionary file? Try all of the following in the XPath Builder:
 
@@ -255,17 +189,17 @@ Predicates are your friends. They are used for selecting specific nodes or nodes
 
 Predicates are always written in _square brackets_.
 
-| Expression | Selects |
-| --- | --- |
-| `//body/entry[1]` | first entry |
-| `//body/entry[last()]` | last entry |
-| `//body/entry[last()-1]` | penultimate entry |
-| `//body/entry[position() < 4]` | first three entries |
-| `//body/entry[position() > last() - 3`] | last three entries |
-| `//cit[@type]` | all cit nodes with type attribute |
-| `//cit[not(@type)]` | all cit nodes without type attribute |
-| `//cit[@type='translation']` | all cit nodes of type translation |
-| `//form[orth="competitor"]` | all forms whose orth = competitor |
+| Expression                              | Selects                              |
+| --------------------------------------- | ------------------------------------ |
+| `//body/entry[1]`                       | first entry                          |
+| `//body/entry[last()]`                  | last entry                           |
+| `//body/entry[last()-1]`                | penultimate entry                    |
+| `//body/entry[position() < 4]`          | first three entries                  |
+| `//body/entry[position() > last() - 3`] | last three entries                   |
+| `//cit[@type]`                          | all cit nodes with type attribute    |
+| `//cit[not(@type)]`                     | all cit nodes without type attribute |
+| `//cit[@type='translation']`            | all cit nodes of type translation    |
+| `//form[orth="competitor"]`             | all forms whose orth = competitor    |
 
 Now, as you can see, it's easy to select a node such as `form` whose child (`orth`) is of a particular value. But what if you want to select the entire `entry` whose orthographic form is of a particular value? Let's take this in three steps:
 
@@ -303,11 +237,11 @@ Write XPath expressions to select:
 
 To select more than one path, we use the or operator (`|`). For instance:
 
-| Expression | Selects |  |
-| --- | --- | --- |
-| `//form/orth` | selects all orths |  |
-| `//form/pron` | selects all prons |  |
-| `//form/orths \| //form/pron` | selects all orths and all prons (by selecting either orths or prons) |  |
+| Expression                    | Selects                                                              |   |
+| ----------------------------- | -------------------------------------------------------------------- | - |
+| `//form/orth`                 | selects all orths                                                    |   |
+| `//form/pron`                 | selects all prons                                                    |   |
+| `//form/orths \| //form/pron` | selects all orths and all prons (by selecting either orths or prons) |   |
 
 ![](images/oxygen-exercise-01.png)
 
@@ -317,21 +251,21 @@ Remember, how we said that `//entry[.//orth="competitor"]` would select all the 
 
 XPath offers numerous ways of selecting axes, i.e. node sets that are in relation to the current node. A different, more explicit, way of writing the above expression would be: `//entry[descendant::orth="competitor"]`. Note the `::` which separates the axis name (`descendant`) from the node name (`orth`).
 
-| AxisName | Result |
-| --- | --- |
-| ancestor | Selects all ancestors (parent, grandparent, etc.) of the current node |
-| ancestor-or-self | Selects all ancestors (parent, grandparent, etc.) of the current node and the current node itself |
-| attribute | Selects all attributes of the current node |
-| child | Selects all children of the current node |
-| descendant | Selects all descendants (children, grandchildren, etc.) of the current node |
-| descendant-or-self | Selects all descendants (children, grandchildren, etc.) of the current node and the current node itself |
-| following | Selects everything in the document after the closing tag of the current node |
-| following-sibling | Selects all siblings after the current node |
-| namespace | Selects all namespace nodes of the current node |
-| parent | Selects the parent of the current node |
-| preceding | Selects all nodes that appear before the current node in the document, except ancestors, attribute nodes and namespace nodes |
-| preceding-sibling | Selects all siblings before the current node |
-| self | Selects the current node |
+| AxisName           | Result                                                                                                                       |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| ancestor           | Selects all ancestors (parent, grandparent, etc.) of the current node                                                        |
+| ancestor-or-self   | Selects all ancestors (parent, grandparent, etc.) of the current node and the current node itself                            |
+| attribute          | Selects all attributes of the current node                                                                                   |
+| child              | Selects all children of the current node                                                                                     |
+| descendant         | Selects all descendants (children, grandchildren, etc.) of the current node                                                  |
+| descendant-or-self | Selects all descendants (children, grandchildren, etc.) of the current node and the current node itself                      |
+| following          | Selects everything in the document after the closing tag of the current node                                                 |
+| following-sibling  | Selects all siblings after the current node                                                                                  |
+| namespace          | Selects all namespace nodes of the current node                                                                              |
+| parent             | Selects the parent of the current node                                                                                       |
+| preceding          | Selects all nodes that appear before the current node in the document, except ancestors, attribute nodes and namespace nodes |
+| preceding-sibling  | Selects all siblings before the current node                                                                                 |
+| self               | Selects the current node                                                                                                     |
 
 So, what does mean in practice? Let's see one example in three individual steps:
 
@@ -349,13 +283,11 @@ Now, the interesting thing about the last expression is that it will also select
 
 As we learned above, `*` selects any element node, and if you look for `//orth/following-sibling::*` you will also match orths that follow orth. If this is not what you want, you could rewrite the expression in such a way to select any element node which follows orth but which is itself _not_ orth. That would look like this:
 
-| Expressions | Selects |
-| --- | --- |
+| Expressions                                    | Selects                            |
+| ---------------------------------------------- | ---------------------------------- |
 | `//orth/following-sibling::*[not(self::orth)]` | non-orth elements that follow orth |
 
 ![](images/oxygen-axes-02.png)
-
-TODO: Add more examples, especially explaining the difference between the first occurrence of a sibling and the immediate sibling.
 
 **Exercise**
 
