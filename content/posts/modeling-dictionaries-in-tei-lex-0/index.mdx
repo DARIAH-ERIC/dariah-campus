@@ -18,6 +18,7 @@ remote:
 licence: ccby-4.0
 toc: true
 uuid: en5qQnz7D4o0SHU33KqiS
+draft: true
 ---
 
 The course will focus on modeling dictionaries using TEI Lex-0, a subset of the community standard TEI (Text Encoding Initiative). The course will focus on best-practices and recommendations in view of accuracy, consistency and interoperability of lexicographic data. At the end of this course, the students will become familiar with the underlying principles and the explicit guidelines of TEI Lex-0 by learning how to encode a number of dictionary entries through step-by-step tutorials with the ultimate goal of being able to adopt TEI Lex-0 in their own work.
@@ -64,7 +65,7 @@ In the rest of this unit, we will learn how to use _TEI_ in general, and how to 
 
 - Lou Burnard, The Evolution of the Text Encoding Initiative: From Research Project to Research Infrastructure, in Journal of the Text Encoding Initiative, 2013, [http://jtei.revues.org/811](http://jtei.revues.org/811)
 - Lou Burnard, What is the Text Encoding Initiative, 2014, [http://books.openedition.org/oep/426?lang=en](http://books.openedition.org/oep/426?lang=en)
-- Nancy M. Ide and C. M. Sperberg-McQueen, The Text Encoding Initiative: Its History, Goals, and Future Development:[http://www.cs.vassar.edu/\~ide/papers/teiHistory.pdf](http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf)
+- Nancy M. Ide and C. M. Sperberg-McQueen, The Text Encoding Initiative: Its History, Goals, and Future Development:[http://www.cs.vassar.edu/\~ide/papers/teiHistory.pdf](http://www.cs.vassar.edu/\~ide/papers/teiHistory.pdf)
 
 ## Starting with TEI
 
@@ -75,11 +76,17 @@ We'll start this lesson by converting one part of the XML-encoded entry for _lex
 This is just to give you a taste of all those wonderful things to come and to give you a little more practice in using oXygen to rename existing elements and attributes or to create new ones. We'll cover different TEI elements in more depth later on.
 
 1. Select File › New from the menu
+
 2. Type "tei" in the search field
+
 3. Double-click on the template called _All_ in the TEI5 folder
+
 4. Find the element `<title>` (which is the child of `<titleStmt>`, which itself is a child of `<fileDesc>`, which is a child of `<teiHeader>`) and give your file an appropriate tile by writing it between the `<title>` and `</title>`
+
 5. Add element `<author>` after `</title>` and write the name of Samuel Johnson
+
 6. Go the extra mile and add the element `<respStmt>` after `</author>`, and within it two more elements: `<resp>` and `<name>`. As the text value of `<resp>` describe your role in the production of this file, and in `<name>` state your own name. Since this is just an exercise, you can call yourself whatever you want. Batman. Superman. Queen Victoria.
+
 7. Click on the downward pointing arrow next to `<teiHeader>` to fold the contents of the teiHeader.
 
    ![](http://i.imgur.com/4sChbKf.png)
@@ -89,11 +96,13 @@ This is just to give you a taste of all those wonderful things to come and to gi
    ![](http://i.imgur.com/fUhNsam.png)
 
 9. if you hover with your mouse over the elements `<lemma>` and `<grammar>` you will learn that they are "not allowed anywhere". That means that TEI doesn't know elements with such names. We'll fix them in due course. But there is another error in this document that you should be able to fix without any knowledge of TEI. Can you think what it is?
+
 10. Hover with your mouse over the underlined end tag `</body>` to see what error oXygen will report there.
 
     ![](http://i.imgur.com/OavdVsI.png)
 
 11. When we asked you to copy and paste from your old file, we asked you to copy a fragment of xml which itself was not well-formed: `<entry><lemma normalized='lexicographer'>Lexico‘grapher</lemma>. <grammar>n.s.</grammar>` is not well-formed because each starting tag in XML must be matched by its end tag. That's why you need to enter `</entry>`in the empty row above `</body>`.
+
 12. Now, double-click the element name in `<lemma>`.
 
     ![](http://i.imgur.com/mF7Z2eG.png)
@@ -160,29 +169,29 @@ The TEI Guidelines cover some 500 predefined elements organized in modules. A TE
 
 The following table contains a list of all TEI modules with links to the chapters of the _TEI Guidelines_ where they are defined.
 
-| Module name | Formal public identifier | Corresponding TEI Chapter |
-| --- | --- | --- |
-| analysis | Analysis and Interpretation | [17 Simple Analytic Mechanisms](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/AI.html) |
-| certainty | Certainty and Uncertainty | [21 Certainty, Precision, and Responsibility](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/CE.html) |
-| core | Common Core | [3 Elements Available in All TEI Documents](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/CO.html) |
-| corpus | Metadata for Language Corpora | [15 Language Corpora](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/CC.html) |
-| dictionaries | Print Dictionaries | [9 Dictionaries](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DI.html) |
-| drama | Performance Texts | [7 Performance Texts](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DR.html) |
-| figures | Tables, Formulae, Figures | [14 Tables, Formulæ, Graphics and Notated Music](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/FT.html) |
-| gaiji | Character and Glyph Documentation | [5 Characters, Glyphs, and Writing Modes](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/WD.html) |
-| header | Common Metadata | [2 The TEI Header](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html) |
-| iso-fs | Feature Structures | [18 Feature Structures](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/FS.html) |
-| linking | Linking, Segmentation, and Alignment | [16 Linking, Segmentation, and Alignment](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/SA.html) |
-| msdescription | Manuscript Description | [10 Manuscript Description](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/MS.html) |
-| namesdates | Names, Dates, People, and Places | [13 Names, Dates, People, and Places](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ND.html) |
-| nets | Graphs, Networks, and Trees | [19 Graphs, Networks, and Trees](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/GD.html) |
-| spoken | Transcribed Speech | [8 Transcriptions of Speech](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/TS.html) |
-| tagdocs | Documentation Elements | [22 Documentation Elements](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/TD.html) |
-| tei | TEI Infrastructure | [1 The TEI Infrastructure](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html) |
-| textcrit | Text Criticism | [12 Critical Apparatus](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/TC.html) |
-| textstructure | Default Text Structure | [4 Default Text Structure](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DS.html) |
-| transcr | Transcription of Primary Sources | [11 Representation of Primary Sources](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html) |
-| verse | Verse | [6 Verse](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/VE.html) |
+| Module name   | Formal public identifier             | Corresponding TEI Chapter                                                                                     |
+| ------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| analysis      | Analysis and Interpretation          | [17 Simple Analytic Mechanisms](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/AI.html)                  |
+| certainty     | Certainty and Uncertainty            | [21 Certainty, Precision, and Responsibility](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/CE.html)    |
+| core          | Common Core                          | [3 Elements Available in All TEI Documents](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/CO.html)      |
+| corpus        | Metadata for Language Corpora        | [15 Language Corpora](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/CC.html)                            |
+| dictionaries  | Print Dictionaries                   | [9 Dictionaries](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DI.html)                                 |
+| drama         | Performance Texts                    | [7 Performance Texts](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DR.html)                            |
+| figures       | Tables, Formulae, Figures            | [14 Tables, Formulæ, Graphics and Notated Music](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/FT.html) |
+| gaiji         | Character and Glyph Documentation    | [5 Characters, Glyphs, and Writing Modes](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/WD.html)        |
+| header        | Common Metadata                      | [2 The TEI Header](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html)                               |
+| iso-fs        | Feature Structures                   | [18 Feature Structures](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/FS.html)                          |
+| linking       | Linking, Segmentation, and Alignment | [16 Linking, Segmentation, and Alignment](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/SA.html)        |
+| msdescription | Manuscript Description               | [10 Manuscript Description](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/MS.html)                      |
+| namesdates    | Names, Dates, People, and Places     | [13 Names, Dates, People, and Places](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ND.html)            |
+| nets          | Graphs, Networks, and Trees          | [19 Graphs, Networks, and Trees](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/GD.html)                 |
+| spoken        | Transcribed Speech                   | [8 Transcriptions of Speech](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/TS.html)                     |
+| tagdocs       | Documentation Elements               | [22 Documentation Elements](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/TD.html)                      |
+| tei           | TEI Infrastructure                   | [1 The TEI Infrastructure](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html)                       |
+| textcrit      | Text Criticism                       | [12 Critical Apparatus](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/TC.html)                          |
+| textstructure | Default Text Structure               | [4 Default Text Structure](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DS.html)                       |
+| transcr       | Transcription of Primary Sources     | [11 Representation of Primary Sources](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html)           |
+| verse         | Verse                                | [6 Verse](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/VE.html)                                        |
 
 As you can see, _The TEI Guidelines_ are themselves quite massive. Finding your way around may be difficult at first. We'll be focusing on Chapter 9: Print Dictionaries, which will make your job somewhat easier.
 
