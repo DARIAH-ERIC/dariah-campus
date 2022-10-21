@@ -559,7 +559,9 @@ XML was originally developed as a standard for data exchange over the web. Its m
 
 - device independence
 - machine and human readability
-- clear separation of data and visual presentation.
+- clear separation of data and visual presentation
+- fine-grained searchability; and
+- transformability.
 
 #### Device independence
 
@@ -569,21 +571,21 @@ One of the main advantages of XML is its high degree of interoperability. XML da
 
 Another advantage of XML is that it can be written, read and altered by humans as well as computers. No special software is required to access the data in XML documents. A simple text editor such as Notepad, Vi or TextEdit can be used to open and edit XML documents.
 
-For instance, before Microsoft Word used XML, it was very difficult to rescue your data from a corrupted Word document. Now, XML content of a Microsoft document can easily be extracted and viewed with a simple text editor. The following video will show you how you can open a Microsoft Word document and read its XML content. Try to follow it on your own computer and stop the video if necessary. Instead of a Microsoft Word document, you could also try the exercise with a LibreOffice document.
-
-TODO: add video? maybe? [https://www.youtube.com/embed/cYGy9Zt\_\_lk](https://www.youtube.com/embed/cYGy9Zt__lk)
-
 #### Separation of data and presentation
 
 The third major advantage of XML documents is that XML promotes a clear separation of data and its visual presentation. This enables the possibility, for instance, of exchanging "pure" data without superfluous information about font sizes, colors or textual alignment. On the one hand, this reduces file size overhead and is an advantage for the exchange of huge amounts of data over networks. On the other hand, it allows for the presentation of the same data in different formats.
 
 #### Fine-grained searchability
 
-TODO: Briefly explain and point to XPATH tutorial.
+XML-encoded texts can offer a high degree of precise, fine-grained searchability. In a plain-text search, all strings are considered equal and your text edtior will return all the hits containing the search string, regardless of its position in the dictionary hierarchy. This can be ok for quick-and-dirty searches, but it can also produce a lot of noise, if we are looking for something really specific.
+
+In an XML-encoded dictionary, you can create separate searches through dictionary lemmas, definitions, examples etc. as long as you know the names of the tags used to mark up these particular structural elements of the dictionary.
+
+Once you've learned the basics of working with XML, you can explore XPath, a standard query language for selecting nodes from XML documents. [Extracting Lexical Data: XPath for Dictionary Nerds](https://campus.dariah.eu/id/XUDsnt3PCB0WTEr-6EM7w) may be a good place to start.
 
 #### Transformability
 
-Using an XML parser, a software developed to access and manipulate XML documents, the same underlying data can be used in multiple and very different presentation scenarios: the same XML document can be convert to a PDF, a Microsoft Word document.
+Using an XML parser, a software developed to access and manipulate XML documents, the same underlying data can be used in multiple and very different presentation scenarios: the same XML document can be converted to a PDF, a Microsoft Word document or any other format.
 
 ![](http://i.imgur.com/s1iiWwE.png)
 
