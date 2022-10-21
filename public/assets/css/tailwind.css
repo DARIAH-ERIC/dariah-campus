@@ -1258,6 +1258,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 0.75rem;
 }
 
+.\!m-0 {
+  margin: 0px !important;
+}
+
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -2095,6 +2099,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 1vw;
 }
 
+.\!p-0 {
+  padding: 0px !important;
+}
+
 .p-10 {
   padding: 2.5rem;
 }
@@ -2204,6 +2212,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
+}
+
+.pb-8 {
+  padding-bottom: 2rem;
 }
 
 .pt-12 {
@@ -2511,6 +2527,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.before\:\!hidden::before {
+  content: var(--tw-content);
+  display: none !important;
 }
 
 .hover\:border-primary-600:hover {
