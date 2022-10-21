@@ -1,4 +1,10 @@
 {
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
   "files.exclude": {
     "**/node_modules": true,
     ".eslintcache": true,
@@ -10,18 +16,10 @@
   "search.exclude": {
     "yarn.lock": true
   },
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "workbench.startupEditor": "readme",
-  "[markdown]": {
-    "editor.wordWrap": "on"
-  },
-  "[markdownreact]": {
+  "[markdown][mdx]": {
+    "editor.formatOnSave": false,
     "editor.wordWrap": "on"
   }
 }
