@@ -585,13 +585,45 @@ Once you've learned the basics of working with XML, you can explore XPath, a sta
 
 #### Transformability
 
-Using an XML parser, a software developed to access and manipulate XML documents, the same underlying data can be used in multiple and very different presentation scenarios: the same XML document can be converted to a PDF, a Microsoft Word document or any other format.
+Another advantage of XML-encoded documents is that they are trasnformable: using an XML parser, a software developed to access and manipulate XML documents and XSLT (Extensible Stylesheet Language Transformations), a standard programming language for transforming XML documents, XML-encoded data can be converted to different formats such as HTML (for display in a web-browser), PDF etc.
 
 ![](http://i.imgur.com/s1iiWwE.png)
 
-TODO: Briefly explain and point to XSLT tutorial
+As part of the ELEXIS Curriculum on DARIAH-Campus, we offer an introductory course on [Transforming Lexical Data: XSLT for Dictionary Nerds](https://campus.dariah.eu/id/DPF60ESE5Bf1jmjtPXzWI).
 
 ## XML: Building blocks and basic rules
+
+### Tree structure
+
+XML documents have a hierarchical structure: this means that they consists of various nested components that have a clear relationship to each other. This hierarchical structure is often described as a tree structure.
+
+The **root** element forms the basis of the XML tree and all other componenets reach out like branches and leaves from this topmost element
+
+#### Different ways of representing the tree structure
+
+To best understand the tree structure, you should find a way to visualize it that makes the most sense to you.
+
+##### 1. The world upside down
+
+Tree-structures resemble trees, but in a world turned upside-down: the root of the tree is at the top, and the branches are at the bottom. The root element has one or more children. Children with the same parent (there can be only one parent in XML) are siblings etc.
+
+![](images/tree.png)
+
+##### 2. Little boxes made of ticky-tacky
+
+A different way of imagining the tree structure is to think of a series of boxes of different sizes. There is one giant box at the top, which contains a number of smaller boxes. Each of these can have one or more boxes inside. The boxes that live in the same bigger box are siblings etc.
+
+![](images/boxes.png)
+
+##### 3. A folder, a folder, my kingdom for a folder!
+
+Yet another way is to think of the tree structure as a bunch of folders on your computer. The root folder contains all the other folders. The folders that live inside the same folder are siblings to each other etc.
+
+![](images/folders.png)
+
+We'll look more closely into the relatinships between different components of the XML tree later in this course, but before we do that, we should explore different types of componenets that make up the XML document.
+
+### Elements
 
 Within an XML document, data is contained within elements. Elements have a **start-tag** and an **end-tag**. Start and end tags consist of an element name, which is a string of text such as 'lexicographer', and a delimiter indicating the beginning and end of a tag. XML tags are delimited from the stored "raw" data by use of angle brackets. The left angle bracket `<` is used to indicate the beginning of an XML tag, whereas the right angle bracket `>` is used to indicate the end of a tag.
 
@@ -603,7 +635,7 @@ As we mentioned earlier on, the only difference between a start tag and and end 
 
 A special case are so-called **empty elements**. Empty elements do not contain PCDATA, and one tag functions as both the start and end tag. Empty elements are typically used as milestones. The XHTML element `<br/>` which indicates line breaks would be typical of this. This structure is frequently necessary to indicate where breaks occur in a source text (e.g. a page or section break in a book or an article).
 
-### Rules for element names
+#### Rules for element names
 
 XML element names:
 
@@ -697,15 +729,8 @@ The XML specifications require that within an XML document all elements have to 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <dictionary>
-
-    <entry>
-        This is the first entry!
-    </entry>
-
-    <entry>
-        This is the second entry!
-    </entry>
-
+    <entry> This is the first entry! </entry>
+    <entry> This is the second entry! </entry>
 </dictionary>
 ```
 
@@ -713,13 +738,13 @@ In this example, all `<entry>` elements are nested within `<dictionary>` element
 
 ```xml
 <entry>
-        <lemma>lexicographer</lemma>
-        <grammar>noun</grammar>
-        <sense>
-          <definition>A harmless drudge.</definition>
-          <example>Some lexicographers are mad!</example>
-        </sense>
-    </entry>
+    <lemma>lexicographer</lemma>
+    <grammar>noun</grammar>
+    <sense>
+        <definition>A harmless drudge.</definition>
+        <example>Some lexicographers are mad!</example>
+    </sense>
+</entry>
 ```
 
 ### Well-formed vs. valid XML
@@ -740,13 +765,11 @@ There are five key rules that need to be respected in order to write a **well-fo
 
 ### Relationships between elements
 
-TODO: in this section, i need to trasnfer some of the intro stuff from the xpath tutorial then refer back to here from there
+As we already mentioned above, the structure of an XML document is a tree structure. The root element, forms the basis of the XML tree and all other element nodes, attribute nodes and text nodes reach out like braches and leaves.
 
-Conceptually, the structure of an XML document is a tree structure. The root element, forms the basis of the XML tree and all other element nodes, attribute nodes and text nodes reach out like braches and leaves. Visually this could be represented as a tree graph:
+This makes it possible and necessary for us to speak of the various relationships that exist between various building blocks of the XML tree.
 
-![](http://i.imgur.com/pSfhfx4.png)
-
-Moreover, various relationships between elements exist. In the **child-parent relationship** one element (the child) is nested inside another element (the parent). In the following example, the element `<lemma>` is nested in the element `<entry>`. Consequently, `<lemma>` is the child of `<entry>` and `<entry>` the parent of `<lemma>`.
+In the **child-parent relationship** one element (the child) is nested inside another element (the parent). In the following example, the element `<lemma>` is nested in the element `<entry>`. Consequently, `<lemma>` is the child of `<entry>` and `<entry>` the parent of `<lemma>`.
 
 ```xml
 <entry>
@@ -867,7 +890,7 @@ oXygen includes *smart editing* features to help you edit XML documents in Tex
 
 **Exercise.** Test all of the above smart features and make sure you understand what they're about.
 
-Keep in mind, there is a lot more to learn about oXygen. If you're interested, make sure to check out a DARIAH-Campus course on TODO: add link.
+Keep in mind, there is a lot more to learn about oXygen. If you're interested, make sure to check out the ELEXIS course [Mastering oXygen XML Editor for Dictionary Nerds](https://campus.dariah.eu/id/CPYfBfo_5Rz1d8tow9Gfu) here on DARIAH-Campus.
 
 ## Publication
 
