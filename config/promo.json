@@ -1,0 +1,16 @@
+{
+  "videos": [
+    {
+      "id": "7tVuL0XX0GY",
+      "title": "Learners",
+      "subtitle": "Some text",
+      "image": "students3.png"
+    },
+    {
+      "id": "vWh6Wmn635w",
+      "title": "Trainers",
+      "subtitle": "Some other text",
+      "image": "typing.png"
+    }
+  ]
+}
