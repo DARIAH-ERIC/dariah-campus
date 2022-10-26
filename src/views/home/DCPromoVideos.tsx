@@ -20,7 +20,7 @@ export interface DCPromoVideosProps {
 export function DCPromoVideos(props: DCPromoVideosProps): JSX.Element {
   return (
     <Section>
-      <Section.Title>Is DARIAH-Campus for you?</Section.Title>
+      <Section.Title>How can DARIAH-Campus support you?</Section.Title>
       <Section.LeadIn>
         Check out what DARIAH-Campus has in store for both learners and training
         providers
