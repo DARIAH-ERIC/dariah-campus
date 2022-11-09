@@ -1,6 +1,7 @@
 import type { EditorComponentOptions } from 'netlify-cms-core'
 
 import { videoProviders } from '@/cms/components/Video'
+import { decodeQuotes, encodeQuotes } from '@/cms/utils/quotes'
 
 /**
  * Netlify CMS richtext editor widget for Video component.
@@ -58,7 +59,7 @@ export const videoEditorWidget: EditorComponentOptions = {
     return {
       provider: provider ? provider[1] : undefined,
       id: id ? id[1] : undefined,
-      caption: caption ? caption[1] : undefined,
+      caption: caption ? decodeQuotes(caption[1]) : undefined,
       autoPlay: autoPlay ? true : undefined,
       startTime: startTime ? startTime[1] : undefined,
     }
@@ -72,7 +73,7 @@ export const videoEditorWidget: EditorComponentOptions = {
     if (data.id) attrs += ` id="${data.id}"`
 
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    if (data.caption) attrs += ` caption="${data.caption}"`
+    if (data.caption) attrs += ` caption="${encodeQuotes(data.caption)}"`
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (data.autoPlay) attrs += ` autoPlay`
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
