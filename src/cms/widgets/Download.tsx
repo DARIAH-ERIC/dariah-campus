@@ -1,5 +1,7 @@
 import type { EditorComponentOptions } from 'netlify-cms-core'
 
+import { decodeQuotes, encodeQuotes } from '@/cms/utils/quotes'
+
 /**
  * Netlify CMS richtext editor widget for Download component.
  */
@@ -28,7 +30,7 @@ export const downloadWidget: EditorComponentOptions = {
 
     return {
       url: url ? url[1] : undefined,
-      title: title ? title[1] : undefined,
+      title: title ? decodeQuotes(title[1]) : undefined,
     }
   },
   toBlock(data) {
@@ -37,7 +39,7 @@ export const downloadWidget: EditorComponentOptions = {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (data.url) attrs += ` url="${data.url}"`
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    if (data.title) attrs += ` title="${data.title}"`
+    if (data.title) attrs += ` title="${encodeQuotes(data.title)}"`
 
     return `<Download${attrs} />`
   },

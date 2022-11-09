@@ -1,5 +1,7 @@
 import type { EditorComponentOptions } from 'netlify-cms-core'
 
+import { decodeQuotes, encodeQuotes } from '@/cms/utils/quotes'
+
 /**
  * Netlify CMS richtext editor widget for ExternalResource component.
  */
@@ -39,8 +41,8 @@ export const externalResourceEditorWidget: EditorComponentOptions = {
     const url = /url="([^"]*)"/.exec(attrs)
 
     return {
-      title: title ? title[1] : undefined,
-      subtitle: subtitle ? subtitle[1] : undefined,
+      title: title ? decodeQuotes(title[1]) : undefined,
+      subtitle: subtitle ? decodeQuotes(subtitle[1]) : undefined,
       url: url ? url[1] : undefined,
     }
   },
@@ -48,9 +50,9 @@ export const externalResourceEditorWidget: EditorComponentOptions = {
     let attrs = ''
 
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    if (data.title) attrs += ` title="${data.title}"`
+    if (data.title) attrs += ` title="${encodeQuotes(data.title)}"`
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    if (data.subtitle) attrs += ` subtitle="${data.subtitle}"`
+    if (data.subtitle) attrs += ` subtitle="${encodeQuotes(data.subtitle)}"`
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (data.url) attrs += ` url="${data.url}"`
 

@@ -1,5 +1,7 @@
 import type { EditorComponentOptions } from 'netlify-cms-core'
 
+import { decodeQuotes, encodeQuotes } from '@/cms/utils/quotes'
+
 /**
  * Netlify CMS richtext editor widget for Figure component.
  */
@@ -32,7 +34,7 @@ export const figureEditorWidget: EditorComponentOptions = {
 
     return {
       src: src ? src[1] : undefined,
-      alt: alt ? alt[1] : undefined,
+      alt: alt ? decodeQuotes(alt[1]) : undefined,
       children: match[2],
     }
   },
@@ -42,7 +44,7 @@ export const figureEditorWidget: EditorComponentOptions = {
     /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
     if (data.src) attrs += ` src="${data.src}"`
     /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
-    if (data.alt) attrs += ` alt="${data.alt}"`
+    if (data.alt) attrs += ` alt="${encodeQuotes(data.alt)}"`
 
     return `<Figure${attrs}>
 ${data.children ?? ''}
