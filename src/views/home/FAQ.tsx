@@ -26,22 +26,18 @@ export function FAQ(): JSX.Element {
       ),
     },
     {
-      title: 'What is DARIAH-CAMPUS?',
+      title: 'What is DARIAH-Campus?',
       text: (
         <Fragment>
           <p>
-            DARIAH-Campus is a pilot project exploring different ways of
-            capturing and consolidating DARIAH learning resources. It is being
-            developed in the context of a H2020-funded project{' '}
+            DARIAH-Campus is a discovery framework and hosting platform for
+            learning resources. It was developed as a pilot in the context of
+            the H2020-funded project{' '}
             <Anchor href="https://www.dariah.eu/activities/projects-and-affiliations/desir/">
               DESIR
             </Anchor>
-            .
-          </p>
-          <p>
-            Being a pilot project, DESIR-CAMPUS is not yet ready for an official
-            release. We will be evaluating the project in the coming months and
-            make a decision on how to proceed.
+            . Today, it is one of the core services of{' '}
+            <Anchor href="https://www.dariah.eu/">DARIAH</Anchor>.
           </p>
         </Fragment>
       ),
@@ -51,10 +47,9 @@ export function FAQ(): JSX.Element {
       text: (
         <Fragment>
           <p>
-            Definitely not. It’s a pilot project and therefore limited in scope.
-            If you can think of ways to contribute or if you know of resources
-            that should be represented on DARIAH-CAMPUS, feel free to get in
-            touch.
+            Definitely not. But we&apos;re constantly adding new content. If you
+            can think of ways to contribute or if you know of resources that
+            should be represented on DARIAH-CAMPUS, feel free to get in touch.
           </p>
         </Fragment>
       ),

@@ -1,0 +1,16 @@
+{
+  "videos": [
+    {
+      "id": "7tVuL0XX0GY",
+      "title": "For learners",
+      "subtitle": "Providing trustworthy, reusable, open learning resources",
+      "image": "students3.png"
+    },
+    {
+      "id": "vWh6Wmn635w",
+      "title": "For trainers",
+      "subtitle": "Ensuring the impact and sustainability of training resources",
+      "image": "typing.png"
+    }
+  ]
+}

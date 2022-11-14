@@ -20,14 +20,25 @@ import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { useSearchDialog } from '@/search/SearchDialog.context'
 import type { FilePath } from '@/utils/ts/aliases'
 import { Browse } from '@/views/home/Browse'
+import { DCPromoVideos } from '@/views/home/DCPromoVideos'
 import { FAQ } from '@/views/home/FAQ'
 import { FeaturedVideos } from '@/views/home/FeaturedVideos'
 import { Hero } from '@/views/home/Hero'
 import { Team } from '@/views/home/Team'
 import featured from '~/config/featured.json'
+import promo from '~/config/promo.json'
 import teamMembers from '~/config/team.json'
 
 export interface FeaturedVideo {
+  id: string
+  title: string
+  subtitle: string
+  image:
+    | FilePath
+    | { src: FilePath; width: number; height: number; blurDataURL?: string }
+}
+
+export interface DCPromoVideo {
   id: string
   title: string
   subtitle: string
@@ -40,6 +51,7 @@ export interface HomePageProps {
   dictionary: Dictionary
   team: Array<Person>
   videos: Array<FeaturedVideo>
+  promos: Array<DCPromoVideo>
 }
 
 /**
@@ -74,11 +86,27 @@ export async function getStaticProps(
     }),
   )
 
+  const promos = await Promise.all(
+    promo.videos.map(async (video) => {
+      return {
+        ...video,
+        image: await createStaticImage(
+          video.image,
+          path.join(
+            process.cwd(),
+            'public/assets/images/featured-videos/image.png',
+          ),
+        ),
+      }
+    }),
+  )
+
   return {
     props: {
       dictionary,
       team,
       videos,
+      promos,
     },
   }
 }
@@ -102,6 +130,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         <Hero />
         <SearchDialog />
         <Browse />
+        <DCPromoVideos videos={props.promos} />
         <FAQ />
         <FeaturedVideos videos={props.videos} />
         <Team team={props.team} />

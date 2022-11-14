@@ -1,5 +1,7 @@
 import type { EditorComponentOptions } from 'netlify-cms-core'
 
+import { decodeQuotes, encodeQuotes } from '@/cms/utils/quotes'
+
 /**
  * Netlify CMS richtext editor widget for EventSessionLink component.
  */
@@ -31,7 +33,7 @@ export const eventSessionLinkEditorWidget: EditorComponentOptions = {
 
     return {
       href: href ? href[1] : undefined,
-      label: label ? label[1] : undefined,
+      label: label ? decodeQuotes(label[1]) : undefined,
     }
   },
   toBlock(data) {
@@ -40,7 +42,7 @@ export const eventSessionLinkEditorWidget: EditorComponentOptions = {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (data.href) attrs += ` href="${data.href}"`
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    if (data.label) attrs += ` label="${data.label}"`
+    if (data.label) attrs += ` label="${encodeQuotes(data.label)}"`
 
     return `<Link${attrs} />`
   },

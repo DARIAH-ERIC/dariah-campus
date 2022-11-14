@@ -1,6 +1,7 @@
 import type { EditorComponentOptions } from 'netlify-cms-core'
 
 import { types as options } from '@/cms/components/SideNote'
+import { decodeQuotes, encodeQuotes } from '@/cms/utils/quotes'
 
 /**
  * Netlify CMS richtext editor widget for SideNote component.
@@ -38,7 +39,7 @@ export const sideNoteEditorWidget: EditorComponentOptions = {
 
     return {
       type: type ? type[1] : undefined,
-      title: title ? title[1] : undefined,
+      title: title ? decodeQuotes(title[1]) : undefined,
       children: match[2],
     }
   },
@@ -48,7 +49,7 @@ export const sideNoteEditorWidget: EditorComponentOptions = {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (data.type) attrs += ` type="${data.type}"`
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    if (data.title) attrs += ` title="${data.title}"`
+    if (data.title) attrs += ` title="${encodeQuotes(data.title)}"`
 
     return `<SideNote${attrs}>
 ${data.children ?? ''}
