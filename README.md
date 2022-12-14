@@ -55,7 +55,7 @@ auto-formatting for markdown.
 ### Contributing guidelines
 
 When contributing content directly via `git`, please use feature branches and
-don't push to `main` to allow for review.
+don't push to `main`, to allow for review.
 
 ### Note on writing Markdown
 
