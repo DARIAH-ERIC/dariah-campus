@@ -107,7 +107,7 @@ export async function getStaticProps(
   )
 
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-  const resources = paginate(sortedResources, pageSize)[page - 1]!
+  const resources = paginate(sortedResources, pageSize)[page - 1]! ?? []
 
   const tags = await getTags(locale)
   const tagsWithPostCount = (
@@ -134,7 +134,7 @@ export async function getStaticProps(
     .slice(0, tagsPageSize)
 
   if (page === 13) {
-    console.dir(resources, { depth: null })
+    console.dir({resources}, { depth: null })
   }
 
   return {
