@@ -106,7 +106,8 @@ export async function getStaticProps(
     },
   )
 
-  /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+  // FIXME: remove fallback, we should never return an empty page from `paginage()`
+  /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unnecessary-condition */
   const resources = paginate(sortedResources, pageSize)[page - 1]! ?? {
     items: [],
     page,
@@ -136,10 +137,6 @@ export async function getStaticProps(
     })
     /** Display only the first page of tags with highest number of posts. */
     .slice(0, tagsPageSize)
-
-  if (page === 13) {
-    console.dir({ resources, sortedResources }, { depth: null })
-  }
 
   return {
     props: {
