@@ -133,6 +133,10 @@ export async function getStaticProps(
     /** Display only the first page of tags with highest number of posts. */
     .slice(0, tagsPageSize)
 
+  if (page === 13) {
+    console.dir(resources, { depth: null })
+  }
+
   return {
     props: {
       dictionary,
