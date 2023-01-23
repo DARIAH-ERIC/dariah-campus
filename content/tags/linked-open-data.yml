@@ -1,5 +1,3 @@
 name: Linked Open Data
-description: '"Linked Open Data is a way of publishing structured data that
-  allows metadata to be connected and enriched, so that different
-  representations of the same content can be found, and links made between
-  related resources." https://pro.europeana.eu/page/linked-open-data '
+description: Linked Open Data is a way of publishing structured data that
+  allows linking to other related resources.
