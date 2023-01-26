@@ -1,7 +1,7 @@
 ---
 title: "quod: A Tool for Querying and Organising Digitised Historical Documents"
 lang: en
-date: 2023-01-19T14:24:52.217Z
+date: 2023-01-26T14:24:52.217Z
 version: 1.0.0
 authors:
   - de-valk-reinier
@@ -14,7 +14,7 @@ tags:
   - repositories-and-collections
 categories:
   - ehri
-abstract: The archives of the International Tracing Service (ITS) in Bad Arolsen, Germany focus on the topics of wartime incarceration, forced labour, and liberated survivors.  Among their items lies a collection of c.4.2 million images of documents that have been collated without accounting for their provenance, making work with these items somewhat laborious.  The usability of this collection can be improved significantly by (i) making it machine-readable and therefore open to querying, and (ii) organising it automatically.  This blog post demonstrates the challenges and processes to address these two tasks.
+abstract: This blog post from EHRI introduces 'quod'(querying OCRed documents), a prototype Python-based command line tool for OCRing and querying digitised historical documents, which can be used to organise large collections and improve information about provenance.  To demonstrate its use in context, this blog takes the reader through a case study of the International Tracing Service, showing workflows and the steps taken from start to finish.
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: training-module
@@ -28,21 +28,18 @@ draft: false
 uuid: STkX7KbfvIW6sj8j1yhqy
 ---
 
+In this blog post we introduce 'quod'(querying OCRed documents), a prototype Python-based command line tool for OCRing and querying digitised historical documents, which can be used to organise large collections.  To demonstrate its use in context, this blog takes the reader through a case study of the International Tracing Service, showing workflows and the steps taken from start to finish.
+
 The archives of the [International Tracing Service](https://www.its-arolsen.org/en/archives/) (ITS) in Bad Arolsen, Germany focus on the topics of wartime incarceration, forced labour, and liberated survivors.  Within their holdings is a collection of approximately 4.2 million images of documents that have been rearranged without taking into account their provenance. This makes it difficult — or at least highly laborious — to determine, for example, to which subcollection an image originally belongs; or to organise the collections in certain ways.
 
 ITS has rearranged many of its collections following the needs of the tracing tasks. As a consequence it is relatively easy to search for names of people in the collection. Yet, at the same time, due to the loss of provenance and context information it is hard to approach the collections with research questions. For example, a researcher or archivist may want to define employers of forced labourers and even arrange the collections according to these.
 
-In this blog post we introduce 'quod', a prototype tool for OCRing and querying digitised historical documents, which can be used to organise large collections.
-
-<SideNote type="note" title="This training resource is located in the GitHub environment, so please go straight to the text in the 'readme' file.">
-
-</SideNote>
 
 ## L﻿earning outcomes
 
 A﻿fter viewing this training resource, users will be able to:
 
 - recognise how important metadata and provenance are in the management of archive materials
-- understand how "quod" can be used to organise large collections within archives
+- understand how the Python prototype command line "quod" can be used to organise large collections within archives
 
 <ExternalResource title="Interested in learning more?" subtitle="Check out: quod: A Tool for Querying and Organising Digitised Historical Documents" url="https://blog.ehri-project.eu/2018/03/29/quod/" />
