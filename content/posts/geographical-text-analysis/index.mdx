@@ -309,3 +309,8 @@ To do this, we will use the **Advanced Digitizing Toolbar**. We need to open thi
 - Now left click on the pencil icon at the top left of the attribute table to **Toggle Editing**
 
   ![](images/picture-29.jpg)
+
+  - QGIS stores its geometry data separately from the attribute table that we are working with. This means that we cannot simply add our coordinates into the LAT/LONG columns in our attribute table. Instead, we are going to use the **Add Part** feature in order to create a geometry for a place that currently has no geometry.
+  - Within the ‘Wordsworth-Recogito-GPKG’ attribute table, left-click on the row header for your chosen place-name (i.e. the Feature id, not the ‘fid’ column) and make sure that this highlights the entire row, as shown in red below: 
+
+    ![](images/picture-30.jpg)
