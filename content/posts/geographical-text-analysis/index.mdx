@@ -275,3 +275,13 @@ We will now load this .csv into QGIS, using the same method from earlier in the 
 
 - Return to your QGIS project and select **Layer > Add Layer >Add delimited text layer** from the drop-down menus at the top. Locate the .csv file we just downloaded and updated (Wordsworth-Recogito.csv), and follow the same procedure as in Step 1c. Make sure ‘X field’ is set to LNG (longitude) and ‘Y field’ to LAT (latitude)
 - Depending on which places you successfully located within Recogito, you should see something similar to the map below, with Wordsworth’s places shown here in light blue:
+
+  ![](images/picture-24.jpg)
+
+  - It is likely that most of your annotations within Recogito were ‘unidentified’ places and, therefore, not all of your annotated places appear within QGIS. You can open the attribute table for your Wordsworth-Recogito layer to check this.
+
+This means that we still have a number of places for which we do not have coordinates. We have already manually added coordinates to Hardraw Scar using Google Maps, but what if we want to make a change to our data now that we are working in QGIS? To do this, we need to transform **Wordsworth-Recogito** into a ‘GeoPackage’ (this is an open format file for GIS software, equivalent to a shapefile).
+
+**b. Exporting data to a GeoPackage.**
+
+Currently, **Wordsworth-Recogito** it is still just a .csv file, simply visualised as ‘vector’ data within QGIS. This means that it has limited functionality compared to a GeoPackage. We can change the symbology and open the attribute table, for example, but we will not be able to make any meaningful changes to it. We will transform this .csv into a GeoPackage now.
