@@ -260,8 +260,7 @@ We will now explore the process of making manual additions to our data, starting
 ![](images/picture-22.jpg)
 
 - You may notice that Google Maps, too, does not directly refer to ‘Hardraw Scar’
-
-  - This is one of the key challenges with disambiguating potentially more ambiguous places such as this. Where exactly should you place a precise ‘point’ to refer to a feature that may not be so precise? The same question can apply to large urban areas: should the point be at its geographic centre, or its commercial/social ‘city centre’? It is important to take these kinds of question into consideration when making decisions such as these, as your decisions may have consequences for your data further down the line.
+- This is one of the key challenges with disambiguating potentially more ambiguous places such as this. Where exactly should you place a precise ‘point’ to refer to a feature that may not be so precise? The same question can apply to large urban areas: should the point be at its geographic centre, or its commercial/social ‘city centre’? It is important to take these kinds of question into consideration when making decisions such as these, as your decisions may have consequences for your data further down the line.
 - In this case, it is reasonable for us to equate Hardraw Scar with the Hardraw Force waterfall. To retrieve the coordinates, right click on the place-marker for Hardraw Force Waterfall on Google Maps. A sub-menu will appear, with the coordinates shown at the top.
 
   ![](images/picture-23.jpg)
@@ -277,8 +276,7 @@ We will now load this .csv into QGIS, using the same method from earlier in the 
 - Depending on which places you successfully located within Recogito, you should see something similar to the map below, with Wordsworth’s places shown here in light blue:
 
   ![](images/picture-24.jpg)
-
-  - It is likely that most of your annotations within Recogito were ‘unidentified’ places and, therefore, not all of your annotated places appear within QGIS. You can open the attribute table for your Wordsworth-Recogito layer to check this.
+- It is likely that most of your annotations within Recogito were ‘unidentified’ places and, therefore, not all of your annotated places appear within QGIS. You can open the attribute table for your Wordsworth-Recogito layer to check this.
 
 This means that we still have a number of places for which we do not have coordinates. We have already manually added coordinates to Hardraw Scar using Google Maps, but what if we want to make a change to our data now that we are working in QGIS? To do this, we need to transform **Wordsworth-Recogito** into a ‘GeoPackage’ (this is an open format file for GIS software, equivalent to a shapefile).
 
@@ -314,3 +312,9 @@ To do this, we will use the **Advanced Digitizing Toolbar**. We need to open thi
   - Within the ‘Wordsworth-Recogito-GPKG’ attribute table, left-click on the row header for your chosen place-name (i.e. the Feature id, not the ‘fid’ column) and make sure that this highlights the entire row, as shown in red below: 
 
     ![](images/picture-30.jpg)
+- Now that you have selected this feature, locate the **Add Part** icon in the Advanced Digitizing Toolbar that we opened earlier. 
+
+  ![](images/picture-31.jpg)
+
+- Left-click on Add Part, and then left-click again anywhere on the map. This will immediately create a point for your selected feature, assigning it the coordinates of wherever you clicked your mouse.\
+- Now that we have attached a ‘geometry’ to our feature, we can edit this geometry and input our correct coordinates. 
