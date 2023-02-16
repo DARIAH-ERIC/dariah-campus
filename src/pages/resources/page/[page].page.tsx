@@ -106,8 +106,28 @@ export async function getStaticProps(
     },
   )
 
-  /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-  const resources = paginate(sortedResources, pageSize)[page - 1]!
+  /**
+   * Note that we need to guard against `undefined` here, because the page
+   * number calculation in `getStaticPaths` takes *all* resource ids into
+   * account when calculating the pages, while here we filter out any
+   * resources with `draft: true` via `isResourceHidden()`.
+   *
+   * We *could* take the `draft` frontmatter field into account in `getStaticPaths`,
+   * but since `getStaticPaths` and `getStaticProps` run in different workers,
+   * they cannot share state, so we would unnecessarily parse *every* resource,
+   * just to be able to read the `draft` field.
+   *
+   * In the worst case, this can generate an empty page, which can be accessed
+   * by entering the corresponding URL, e.g. `/resources/page/13`, but it will
+   * *not* be linked with a "Next page" link, so this should be fine.
+   */
+  const resources =
+    paginate(sortedResources, pageSize)[page - 1] ??
+    ({
+      items: [],
+      page,
+      pages: getPageRange(sortedResources, pageSize).length,
+    } as Page<ResourceListItem>)
 
   const tags = await getTags(locale)
   const tagsWithPostCount = (
