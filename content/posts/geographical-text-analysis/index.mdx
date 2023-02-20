@@ -350,3 +350,13 @@ Now imagine that we have assigned geometries and coordinates to all of our unide
     ![](images/picture-36.jpg)
   - When the **Remove Duplicate Points** window opens, select your ‘Wordsworth-Recogito-GPKG’ layer for the **Points** option, then select ‘QUOTE_TRANSCRIPTION’ for the **Attribute** option. This tells the tool to search this column from our table to identify any duplicates.
   - Make sure to save this new layer to your computer, calling it **Wordsworth-Recogito-Points**. Leave all the other options as they are, and click **Run** when ready.
+
+![](images/picture-37.jpg)
+
+- When this new layer is added to your map, right-click to open its **Attribute Table**. You will now see the same table with far fewer entries, no duplicate locations, and an extra column (‘Duplicates’) that tells you how many duplicate values each unique location had (e.g. in the example below, there were 17 instances of the ‘Ambleside’ annotation, which are now all represented by a single point on our map).
+
+![](images/picture-38.jpg)
+
+You may have noticed that any of your features that did not have geometries (no attached coordinates) have also now been removed from your dataset and no longer appear in the attribute table. This is fine for the purposes of this tutorial, but think about the consequences of removing all places that you were unable to locate – what implications might this have for any future analysis/users of your data?
+
+4﻿. Understanding Gazetteers
