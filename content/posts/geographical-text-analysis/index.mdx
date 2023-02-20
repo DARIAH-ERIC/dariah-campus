@@ -321,4 +321,21 @@ To do this, we will use the **Advanced Digitizing Toolbar**. We need to open thi
 
 ![](images/picture-32.jpg)
 
-.
+- Navigate to the point on your map that you just created, then hover over the point with your mouse and **right-click** on it. This opens the **Vertex Editor** at the bottom left of your screen, showing the point’s coordinate data.
+- Using Google Maps again, as we did in Step 3a, search for your chosen location. When you have located it, copy the coordinates. Now open Notepad (or any text editor) and right-click to paste these coordinates there **before** inputting them into QGIS. \
+  This is because the fields in QGIS’ attribute table will only allow you to paste a single coordinate value (e.g. 54.6676) and cannot accept the full coordinate with both x and y (e.g. 54.6676, -3.2269).
+- Now that you have pasted the coordinates, copy the latitude and longitude coordinates one at a time and paste them into the ‘x’ and ‘y’ columns in the Vertex Editor.
+
+  ![](images/picture-33.jpg)
+
+
+- You will notice that your layer will immediately update, moving the point to your new coordinates.
+- Now make sure you click the Save Layer Edits button at the top of your screen when you are done: 
+
+  ![](images/picture-34.jpg)
+- You can now click the **Toggle Editing** icon to turn editing off. If you haven’t already saved your edits, QGIS will ask you if you want to save before turning editing off.
+
+You now know how to edit coordinate data once it is within QGIS. You can use this same process, by using the Vertex Tool, to make changes to places with existing coordinates. For example, if we made a mistake within Recogito, accidentally georeferencing the wrong place (e.g. if we had confirmed Rokeby, Australia rather than Rokeby, UK in the first example), we could update these coordinates within QGIS using the Vertex Editor. 
+
+**d﻿. Cleaning data in QGIS**\
+Now imagine that we have assigned geometries and coordinates to all of our unidentified places (for the purposes of this tutorial, we won’t go through all of them). You may have already noticed that the attribute table for **Wordsworth-Recogito-GPKG** contains many duplicate entries for the same place (e.g. there are multiple rows with instances of Lake Windermere). Left-click on the QUOTE_TRANSRIPTION column header (to sort data alphabetically) to check this. These duplicates represent each individual instance of the annotation within our text. For visualising this data within GIS, however, we need it is more useful to remove these duplicates, cleaning our data. We will walk through this process now.
