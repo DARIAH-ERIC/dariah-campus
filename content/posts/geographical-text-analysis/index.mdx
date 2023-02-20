@@ -339,3 +339,14 @@ You now know how to edit coordinate data once it is within QGIS. You can use thi
 
 **d﻿. Cleaning data in QGIS**\
 Now imagine that we have assigned geometries and coordinates to all of our unidentified places (for the purposes of this tutorial, we won’t go through all of them). You may have already noticed that the attribute table for **Wordsworth-Recogito-GPKG** contains many duplicate entries for the same place (e.g. there are multiple rows with instances of Lake Windermere). Left-click on the QUOTE_TRANSRIPTION column header (to sort data alphabetically) to check this. These duplicates represent each individual instance of the annotation within our text. For visualising this data within GIS, however, we need it is more useful to remove these duplicates, cleaning our data. We will walk through this process now.
+
+- To start manipulating our data, we need to open the **Processing Toolbox** in QGIS. To do this, you can select **Processing > Toolbox** from the drop-down menu at the top, or you can click on the ‘gear’ icon highlighted in red below:
+
+  ![](images/picture-35.jpg)
+
+  - The **Processing Toolbox** contains all of the tools available within QGIS to perform various data analyses.
+  - When the Processing Toolbox appears on your screen, search for ‘duplicate’ in the ‘search’ bar. Double-click with the left mouse button to open the **Remove duplicate points** tool. 
+
+    ![](images/picture-36.jpg)
+  - When the **Remove Duplicate Points** window opens, select your ‘Wordsworth-Recogito-GPKG’ layer for the **Points** option, then select ‘QUOTE_TRANSCRIPTION’ for the **Attribute** option. This tells the tool to search this column from our table to identify any duplicates.
+  - Make sure to save this new layer to your computer, calling it **Wordsworth-Recogito-Points**. Leave all the other options as they are, and click **Run** when ready.
