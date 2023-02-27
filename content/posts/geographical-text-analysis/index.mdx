@@ -358,3 +358,9 @@ Now imagine that we have assigned geometries and coordinates to all of our unide
 You may have noticed that any of your features that did not have geometries (no attached coordinates) have also now been removed from your dataset and no longer appear in the attribute table. This is fine for the purposes of this tutorial, but think about the consequences of removing all places that you were unable to locate – what implications might this have for any future analysis/users of your data?
 
 #### **4﻿. Understanding Gazetteers**
+
+For our last steps, we are going to take a look at the gazetteer data from GeoNames, one of the largest gazetteers used within Recogito. Most of the places you successfully georeferenced within Recogito back in step 2 were likely matched with data from the GeoNames gazetteer (you can check this by looking at the URI column in your attribute table – this contains the **Uniform Resource Identifier**, which tells us where the coordinates came from when annotating in Recogito).
+
+It is helpful to understand how large datasets such as these are organised, so that we can manage this data (and our own creations) accordingly. We can then use this larger dataset to augment our own.
+
+Within the DARIAH-GTA.zip file you downloaded earlier, you will find the **readme.txt** file. This was downloaded from the GeoNames site and is useful to understand both the content and structure of the gazetteer data file. Open the **readme.txt** file using WordPad (to do this, right click on the file in Windows Explorer, and select **Open with > WordPad**). You should see something like this:
