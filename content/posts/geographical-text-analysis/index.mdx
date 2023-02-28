@@ -387,3 +387,18 @@ The “main ‘geoname’ table” referred to is in fact the gazetteer file for
 
 Finally, note that latitude/longitude information is recorded as decimal degrees (WGS84).\
 Leave this file open in the Wordpad window, while we take a look at the gazetteer file.
+
+**a.	Explore the GeoNames data file**
+
+Use Excel to open the file **GB.txt** using the techniques we learned in step 1. This time, it is a text file that is delimited using tabs, so make sure that you select **Tab** as the delimiter in step 2 of the Import Wizard (as shown below). 
+
+![](images/picture-45.jpg)
+
+Once it is opened it should look similar to below. You may want to widen some of the columns to get rid of the “###” effect and reveal the data.
+
+![](images/picture-46.jpg)
+
+There are two things to notice. First, this file does not contain column headings, so you will need to add these as described below. Second, the file contains a lot of fields that you may not want – effectively everything after latitude, so from column G (“Feature Class” according to the metadata) onwards.
+
+
+Although it is not essential, it saves time to delete many of these unneeded fields. To do this, highlight the fields by clicking on the heading for column G and dragging across to column Q. All of these columns should be highlighted. Now right-click on the column heading and click Delete on the menu that appears.
