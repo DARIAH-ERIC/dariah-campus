@@ -400,7 +400,6 @@ Once it is opened it should look similar to below. You may want to widen some of
 
 There are two things to notice. First, this file does not contain column headings, so you will need to add these as described below. Second, the file contains a lot of fields that you may not want – effectively everything after latitude, so from column G (“Feature Class” according to the metadata) onwards.
 
-
 Although it is not essential, it saves time to delete many of these unneeded fields. To do this, highlight the fields by clicking on the heading for column G and dragging across to column Q. All of these columns should be highlighted. Now right-click on the column heading and click **Delete** on the menu that appears.
 
 You now need to add a row containing column headings:
@@ -409,11 +408,6 @@ You now need to add a row containing column headings:
 
   ![](images/picture-47.jpg)
 
-  -
-  -
-  -
-  -
-  -
   - _Either_: Type the column names into cells A1, B1, etc. by hand.
   - _Or_: Copy each of the column headings from **readme.txt** and paste them into the appropriate column as shown below. Make sure you don’t include any extra ‘spaces’ at the start or end of the text in each cell.
   - If you did not delete the data after the coordinates you will also note that the field before _Country Code_ (which is a combination of _feature code_ and _feature class_) is undocumented. Give it whatever name you want. 
@@ -428,5 +422,9 @@ You now need to add a row containing column headings:
 
     ![](images/picture-48.jpg)
 
-  **b. Load GeoNames data into QGIS and use it to update Wordsworth-Recogito.**
+    **b. Load GeoNames data into QGIS and use it to update Wordsworth-Recogito.**
+  - As in step 1c, you can add this new text file to QGIS by selecting **Layer > Add Layer >Add delimited text layer** and locating the **GB_Gaz file**. This time, however, we need to tell QGIS that this is a **tab delimited file** (rather than comma delimited). To do this, simply select **Custom Delimiters** under the File Format section, then select **Tab**. Click to add this data when you’re ready. 
 
+    ![](images/picture-49.jpg)
+
+    - You should now be able to see all of the places from within the GeoNames file visualized within QGIS, covering all of Great Britain.
