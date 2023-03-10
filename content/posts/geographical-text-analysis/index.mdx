@@ -458,10 +458,33 @@ Whilst this hasn’t allowed us to locate any previously unassigned places in th
 
 #### FURTHER WORK AND THINGS TO CONSIDER
 
-
-
 1. Compare the locations of the places named in Wordsworth-Guide with any locations of the same place name from Cole_other. Are these always the same? What might account for the differences? Might this have implications for analysis?
 2. Consider what types of research question you could ask/answer with your Wordsworth and Cole datasets. What other spatial information might you need to answer more complex questions? How would you account for any places that you were unable to locate, and are therefore missing from your GIS dataset?
 3. See if you can add an entirely new feature to any of your GeoPackage layers and populate its fields in the attribute table. Hint: this requires using the Digitizing Toolbars that we used in Step 3c.
 4. Look back at the attribute table for the ‘Joined layer’ you created in the final step (the join of ‘Wordsworth-Recogito-Points’ and ‘GB_Gaz’). There are a lot of columns in this dataset now – what might the implications of this be? Would the column headings be understandable to someone else using your data?
-5. Experiment with creating an attractive/functional map of your data by altering the symbology of each layer (accessed by double-clicking on the symbol in the ‘Layers’ list, or right-clicking on your layer, then ‘Properties’)
+5. Experiment with creating an attractive/functional map of your data by altering the symbology of each layer (accessed by double-clicking on the symbol in the ‘Layers’ list, or right-clicking on your layer, then ‘Properties’) 
+
+#### RECAP
+
+
+If you have a spreadsheet/.csv file that includes coordinates, loading it into QGIS is straightforward:
+
+- Select Layer > Add Layer > Add delimited text layer to add the file into QGIS.
+  •	Remember that this only visualises your data within QGIS, we would need to convert this file to a GeoPackage in order to make edits to it.
+  If you have a text excerpt that you want to extract place-names from, you can use Recogito to both extract the place-name itself and assign coordinates to it using Recogito’s built-in gazetteers.
+  •	Upload your text into Recogito
+  •	Identify and annotate place-names within Recogito, using the built-in gazetteers to assign coordinates to places where possible.
+  •	When ready, export your data from Recogito in .csv format.
+  If there are any places you were unable to identify within Recogito, or if you accidentally assign the wrong coordinates, you can fix these errors using various methods:
+  •	Before loading your exported .csv file from Recogito into QGIS, you can use other sources (e.g. Google Maps) to locate coordinates and manually add them to your .csv using Microsoft Excel.
+  •	You can load your .csv file into QGIS and convert it to a GeoPackage, enabling you to edit your data in various ways. To make any edits to your layers in QGIS, you first need to Toggle Editing to allow changes.
+  •	The Add Part feature of the Advanced Digitizing Toolbar allows you to add geometries to features in your data that did not have coordinates when you first loaded them into QGIS. You can then modify the coordinates of this feature using the Vertex Tool.
+  •	You can use the Remove Duplicate Points tool (located within the Processing Toolbox) to clean your dataset, which in this case included duplicate entries of place-names (reflecting the frequency of their occurrence within the original text).
+  It is also important to understand the structure of any datasets we might use – in this case, we looked closely at the GeoNames data file before we joined it with our own data:
+  •	Once loaded in QGIS, you can use the Join attributes by field value tool to join two separate datasets by shared attributes. 
+-
+-
+-
+-
+-
+-
