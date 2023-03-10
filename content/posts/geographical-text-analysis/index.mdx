@@ -442,12 +442,14 @@ You now need to add a row containing column headings:
             - This tells the _Join Attributes_ tool to search both of these columns from each layer. It then extracts data from the second input layer whenever it encounters an exact match. This data is appended to our first input layer, to create a new layer that contains attributes from both our inputs.
 
             ![](images/picture-52.jpg)
-
-           - Leave all the other settings as they are, then click **Run**.
-              Because we didn’t choose where to save this result, it will only exist as a **temporary file.** If you wished to save this layer after clicking ‘Run’, you can save it as a GeoPackage using the same technique we learned in step 3b.
+          - Leave all the other settings as they are, then click **Run**.
+             Because we didn’t choose where to save this result, it will only exist as a **temporary file.** If you wished to save this layer after clicking ‘Run’, you can save it as a GeoPackage using the same technique we learned in step 3b.
           - This will add a new layer to your QGIS project called **‘Joined layer’**. As you might expect, this produces a point layer that (most likely) shows exactly the same locations that you were able to georeference within Recogito (mirroring your **Wordsworth-Recogito** layer). You can see this is the case on the example image to the right, with the larger red dots showing the **Joined layer**, and the lighter blue dots showing the **Wordsworth-Recogito** layer. 
-              - This is because the ‘Join’ that we just ran within QGIS essentially ran the same process that was working in the background when we annotated places in Recogito (searching for matching place-names), therefore producing the same results. 
+
+            - This is because the ‘Join’ that we just ran within QGIS essentially ran the same process that was working in the background when we annotated places in Recogito (searching for matching place-names), therefore producing the same results. 
 
               ![](images/picture-53.jpg)
 
-Whilst this hasn’t allowed us to locate any previously unassigned places in this instance, it has joined our two tables together, bringing additional information from GeoNames, such as the **alternativenames** column. Compare the differences yourself by opening the attribute tables for each layer, as shown below. (You can also ‘hide’ columns in your attribute table by right-clicking on the column headers and selecting **Hide**)
+Whilst this hasn’t allowed us to locate any previously unassigned places in this instance, it has joined our two tables together, bringing additional information from GeoNames, such as the **alternativenames** column. Compare the differences yourself by opening the attribute tables for each layer, as shown below. (You can also ‘hide’ columns in your attribute table by right-clicking on the column headers and selecting **Hide**). 
+
+![](images/picture-54.jpg)
