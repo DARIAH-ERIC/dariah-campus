@@ -404,3 +404,19 @@ There are two things to notice. First, this file does not contain column heading
 Although it is not essential, it saves time to delete many of these unneeded fields. To do this, highlight the fields by clicking on the heading for column G and dragging across to column Q. All of these columns should be highlighted. Now right-click on the column heading and click **Delete** on the menu that appears.
 
 You now need to add a row containing column headings:
+
+- You will first need to insert a new top row into the Excel file. Do this by highlighting the top row, right clicking, and clicking _Insert_.
+
+  ![](images/picture-47.jpg)
+
+  - _Either_: Type the column names into cells A1, B1, etc. by hand.
+  - _Or_: Copy each of the column headings from **readme.txt** and paste them into the appropriate column as shown below. Make sure you don’t include any extra ‘spaces’ at the start or end of the text in each cell.
+  - If you did not delete the data after the coordinates you will also note that the field before _Country Code_ (which is a combination of _feature code_ and _feature class_) is undocumented. Give it whatever name you want. 
+
+  Field names in QGIS:
+
+  1. QGIS (and GIS software in general) is not good at handling field names that contain certain characters, such as spaces. In the present case, this means that it would have difficulty in reading, for example, ‘field class’ (if you have not deleted it) as the title for one field. The easiest way to deal with this issue is to edit field names containing spaces, to remove the spaces – so, for example, ‘field class’ would be edited to ‘field_class’ or ‘fieldclass’. You also need to be careful that there are no spaces at the start or the end of the field name and that the field name does not start with a number or piece of punctuation.
+  2. Similarly, QGIS does not like long field names. It may be worth shortening the fields to less than 10 characters. For example, ‘alternatenames’ might be better truncated to ‘altnames’.
+
+  - Finally, save the file as a text file by clicking _Save As_ and selecting _Text (Tab delimited)_. Call the file **GB_Gaz.**
+  - C﻿lose the file in Excel.
