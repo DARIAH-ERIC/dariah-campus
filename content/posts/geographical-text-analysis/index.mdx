@@ -432,6 +432,11 @@ You now need to add a row containing column headings:
       ![](images/picture-50.jpg)
 
       - The vast majority of these places are not needed for our purposes, however. We can join our **Wordsworth-Recogito-Points** data to GeoNames’ **GB_Gaz** to create a new layer that combines this data.
-      - First, open the **Processing Toolbox** again (as we did in Step 3c) This time, type ‘join’ into the search box and locate **Join attributes by field value** (under the ‘Vector general’ heading). Double-click on this.
 
-        ![](images/picture-51.jpg)
+        - First, open the **Processing Toolbox** again (as we did in Step 3c) This time, type ‘join’ into the search box and locate **Join attributes by field value** (under the ‘Vector general’ heading). Double-click on this.
+
+          ![](images/picture-51.jpg)
+
+          - This will open the ‘Join Attributes by Field Value’ dialogue box. For **Input layer**, select **Wordsworth-Recogito-Points**, with the **Table field** as **QUOTE_TRANSCRIPTION** (this selects the column within Wordsworth-Recogito that contains the annotation you created within Recogito). For **Input layer 2**, select **GB_Gaz**, with **Table field 2** as **name**.
+
+            - This tells the _Join Attributes_ tool to search both of these columns from each layer. It then extracts data from the second input layer whenever it encounters an exact match. This data is appended to our first input layer, to create a new layer that contains attributes from both our inputs.
