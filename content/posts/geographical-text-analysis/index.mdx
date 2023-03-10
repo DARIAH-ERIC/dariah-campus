@@ -466,24 +466,13 @@ Whilst this hasn’t allowed us to locate any previously unassigned places in th
 
 #### RECAP
 
-
 If you have a spreadsheet/.csv file that includes coordinates, loading it into QGIS is straightforward:
 
-- Select Layer > Add Layer > Add delimited text layer to add the file into QGIS.
-  •	
-  •	
-  •	
-  •	
-  •	
-  •	
-  •	
-  •	
-
-  •	Once loaded in QGIS, you can use the Join attributes by field value tool to join two separate datasets by shared attributes. 
+- Select **Layer > Add Layer > Add delimited text layer** to add the file into QGIS.
 - Remember that this only visualises your data within QGIS, we would need to convert this file to a GeoPackage in order to make edits to it.
   If you have a text excerpt that you want to extract place-names from, you can use Recogito to both extract the place-name itself and assign coordinates to it using Recogito’s built-in gazetteers.
-- Upload your text into Recogito.
-- Identify and annotate place-names within Recogito, using the built-in gazetteers to assign coordinates to places where possible.
+- Upload your text into **Recogito**.
+- **Identify** and **annotate** place-names within Recogito, using the built-in gazetteers to **assign coordinates** to places where possible.
 - When ready, export your data from Recogito in .csv format.
   If there are any places you were unable to identify within Recogito, or if you accidentally assign the wrong coordinates, you can fix these errors using various methods:
 
@@ -493,3 +482,5 @@ If you have a spreadsheet/.csv file that includes coordinates, loading it into Q
   - You can use the Remove Duplicate Points tool (located within the Processing Toolbox) to clean your dataset, which in this case included duplicate entries of place-names (reflecting the frequency of their occurrence within the original text).
 
 It is also important to understand the structure of any datasets we might use – in this case, we looked closely at the GeoNames data file before we joined it with our own data:
+
+- Once loaded in QGIS, you can use the Join attributes by field value tool to join two separate datasets by shared attributes.
