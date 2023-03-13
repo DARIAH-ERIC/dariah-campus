@@ -1,7 +1,7 @@
 ---
 title: Geographical Text Analysis
 lang: en
-date: 2022-01-31T00:00:00.000Z
+date: 2023-03-15T00:00:00.000Z
 version: 1.0.0
 authors:
   - bellamy-katherine
@@ -11,7 +11,6 @@ authors:
 tags:
   - spatial-humanities
   - data-visualisation
-  - dh
   - geotagging
 categories:
   - dariah
@@ -21,7 +20,7 @@ abstract: "Geographical Text Analysis (GTA) is a relatively recent development
   Linguistics, and Geographic Information Systems (GIS), GTA offers a new
   methodology for employing these computational tools in Humanities research.
   The development of this methodology by researchers at Lancaster
-  University  builds upon the ‘distant reading’ approach coined by Franco
+  University builds upon the ‘distant reading’ approach coined by Franco
   Moretti in the field of Literature.  With a focused interest in querying the
   geographic nature of textual sources, GTA focuses on the identification,
   manipulation, and analysis of spatial information on a large scale. "
@@ -57,13 +56,13 @@ Read more about the project: https://www.lancaster.ac.uk/mappingthelakes/
 
 ## DIGGING INTO EARLY COLONIAL MEXICO: A large-scale computational analysis of 16th century historical sources
 
-This collaborative, interdisciplinary project brings together experts from three countries and institutions in the fields of History, Archaeology, Geography, and Computer Science. Their work combines techniques from Corpus Linguistics, Text Mining, NLP, Machine Learning, and GIS in order to analyse the Relaciones Geográficas, a large corpus of geographic reports produced in sixteenth-century New Spain. In doing so, its key objective is to advance and develop new computational approaches for the investigation and analysis of historical sources in particular. 
+This collaborative, interdisciplinary project brings together experts from three countries and institutions in the fields of History, Archaeology, Geography, and Computer Science. Their work combines techniques from Corpus Linguistics, Text Mining, NLP, Machine Learning, and GIS in order to analyse the Relaciones Geográficas, a large corpus of geographic reports produced in sixteenth-century New Spain. In doing so, its key objective is to advance and develop new computational approaches for the investigation and analysis of historical sources in particular.
 Read more about the project: https://www.lancaster.ac.uk/digging-ecm/
 
 ### FUTURE DEVELOPMENTS
 
 A dedicated Geographical Text Analysis tool is currently in development as part of the aforementioned Digging Into Early Colonial Mexico project. The GTA tool – available later in 2021 – will streamline the process of identifying, georeferencing, processing, and mapping geographical information contained within textual sources in a non-specialist, user-friendly way. Users will be able to upload their own text, with each of the previously mentioned steps being computed automatically in the background, producing a dataset that can be both visualised within the tool and downloaded for further external analysis.
-To keep up to date with progress of the GTA tool, follow the project on Twitter: [@DiggingCH](https://twitter.com/DiggingCH). 
+To keep up to date with progress of the GTA tool, follow the project on Twitter: [@DiggingCH](https://twitter.com/DiggingCH).
 
 ### TUTORIAL BACKGROUND
 
@@ -73,11 +72,23 @@ Sometimes, place names refer to a specific and precisely defined administrative 
 
 Gazetteers can be particularly useful, if not crucial, for performing this task. A gazetteer can be thought of as a sort of ‘geographical directory’ that provides basic reference information about the geographical makeup of a country, a region, or even a continent. From a GIS perspective, a gazetteer must contain a minimum of place names and coordinates for those places. It may also contain additional information such as population size, areas, heights, feature types (town, mountain, river, etc.), and so on. Gazetteers are becoming increasingly available for free. In this exercise we will look at the GeoNames gazetteer (www.GeoNames.org) in particular, however, many other gazetteers are also available. We will also encounter GeoNames and some other gazetteers when we annotate place-names in a text within Recogito, an online annotation tool.
 
-Google Maps, Google Earth and other online mapping tools also have large gazetteers behind them as part of their search facilities. These are not available to download but can be used to locate places individually if they are not in one of the publicly available gazetteers. 
+Google Maps, Google Earth and other online mapping tools also have large gazetteers behind them as part of their search facilities. These are not available to download but can be used to locate places individually if they are not in one of the publicly available gazetteers.
+
+<SideNote type="tip" title="Tools and resources">
+T﻿o complete this module, you will need to make sure you have the following downloaded and installed, or open on your computer:
+
+- **Q﻿GIS**\
+  D﻿ownload the latest stable or Long Term Release (LTR) here: [https://www.qgis.org/en/site/forusers/download.html](https://www.qgis.org/en/site/forusers/download.html)
+- **G﻿eoNames Gazeteer**\
+  G﻿o to[ www.GeoNames.org](https://www.GeoNames.org)
+- **R﻿ecogito.org**﻿\
+  G﻿o to https://recogito.pelagios.org/ to create an account and access datasets
+- **D﻿ARIAH-GTA.zip file** - available in Recogito
+</SideNote>
 
 ### DATA SOURCES
 
-The aim of this exercise is to georeference two sources. The first is a table derived from Samuel Taylor Coleridge’s 1802 Tour of the Lake District and already has coordinates. The second is an excerpt from William Wordsworth’s 1835 Guide through the District of the Lakes in the North of England, from which we will need to extract place-names and assign coordinates. To do this, we will use Recogito (an online annotation tool) and then find and correct any places that fail to be identified using Recogito. 
+The aim of this exercise is to georeference two sources. The first is a table derived from Samuel Taylor Coleridge’s 1802 Tour of the Lake District and already has coordinates. The second is an excerpt from William Wordsworth’s 1835 Guide through the District of the Lakes in the North of England, from which we will need to extract place-names and assign coordinates. To do this, we will use Recogito (an online annotation tool) and then find and correct any places that fail to be identified using Recogito.
 Before getting started, make sure you download the DARIAH-GTA.zip file, then right click on it to ‘Extract all’ (or ‘unzip’ the file) somewhere on your computer, so that we can use the data within (all the shapefiles we need are in their own QGIS-Shapefiles.zip folder contained within DARIAH-GTA.zip – do not unzip QGIS-Shapefiles.zip) The following table provides a summary of all files contained within the DARIAH-GTA.zip file:
 
 | File Name            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -107,7 +118,7 @@ This interface is intended to aid users who wish only to look up information on 
 
 First, we will load the **Cole_other.csv** file into QGIS – this file already contains coordinates, so it is a straight-forward process to visualise this data in QGIS.
 
-Next, we will take the **Wordsworth_Guide.txt** text excerpt and use a series of techniques to assign coordinates to the places referenced in the text. To do this, we will: 
+Next, we will take the **Wordsworth_Guide.txt** text excerpt and use a series of techniques to assign coordinates to the places referenced in the text. To do this, we will:
 
 - Load **Wordsworth_Guide.txt** into Recogito.
 - Use Recogito to annotate and assign coordinates to key place-names.
@@ -115,7 +126,7 @@ Next, we will take the **Wordsworth_Guide.txt** text excerpt and use a series of
 - Use other sources to locate coordinates for places unidentified within Recogito
 - Convert our textual data into a GeoPackage.
 - Edit and clean data within QGIS.
-- Explore the GeoNames data and join it with our data. 
+- Explore the GeoNames data and join it with our data.
 
 ### STEP-BY-STEP INSTRUCTIONS
 
@@ -133,7 +144,7 @@ The file **Cole_other.csv** is a Comma Separated Values file that contains place
 - When the dialog box appears, navigate to location where you saved the DARIAH-GTA folder earlier, and make sure to change the menu in the bottom right corner from _All Excel Files_ to _Text Files_ (see above).
 - Click on **Cole_other.csv**.
 - Press _Open_.
-- Because this is a .csv file, a ‘Text Import Wizard’ will appear to guide you through opening this data in Excel. On Step 1, make sure that **Delimited** is selected under the ‘Original data type’, and that the ‘My data has headers’ box is ticked. 
+- Because this is a .csv file, a ‘Text Import Wizard’ will appear to guide you through opening this data in Excel. On Step 1, make sure that **Delimited** is selected under the ‘Original data type’, and that the ‘My data has headers’ box is ticked.
 
 ![](images/picture-3.jpg)
 
@@ -154,7 +165,7 @@ The file **Cole_other.csv** is a Comma Separated Values file that contains place
 
 ![](images/picture-5.jpg)
 
-- Click _Add_ within the Data Source Manager. QGIS will then ask you which Layers you would like to add. **Select all** those that appear within the ‘QGIS-Shapefiles’ folder, as follows: (**Coast.shp**; **Lake_Cnty.shp**; **Lakes.shp**; **Lakes_towns.shp**; **Main_Roads.shp**) 
+- Click _Add_ within the Data Source Manager. QGIS will then ask you which Layers you would like to add. **Select all** those that appear within the ‘QGIS-Shapefiles’ folder, as follows: (**Coast.shp**; **Lake_Cnty.shp**; **Lakes.shp**; **Lakes_towns.shp**; **Main_Roads.shp**)
 
 ![](images/picture-6.jpg)
 
@@ -181,7 +192,7 @@ The file **Cole_other.csv** is a Comma Separated Values file that contains place
 
 **2.  Georeferencing data that does not contain coordinates**
 
-The file **Wordsworth_Guide.txt** is an excerpt taken from Wordsworth’s _A Guide through the District of the Lakes in the North of England_. The file contains the text from the first chapter ‘Directions and Information for the Tourist’. We are going to use **Recogito**, a free online annotation tool for texts and images, to identify and extract the place-names within. 
+The file **Wordsworth_Guide.txt** is an excerpt taken from Wordsworth’s _A Guide through the District of the Lakes in the North of England_. The file contains the text from the first chapter ‘Directions and Information for the Tourist’. We are going to use **Recogito**, a free online annotation tool for texts and images, to identify and extract the place-names within.
 
 **a.	Upload a text into Recogito**
 
@@ -192,7 +203,7 @@ The file **Wordsworth_Guide.txt** is an excerpt taken from Wordsworth’s _A Gui
 
 - As you can probably guess, this chapter excerpt contains lots of place-names for the Lake District and surrounding area. We are going to annotate these places within Recogito, and then extract this data for use in QGIS. Recogito also has an in-built gazetteer (which draws on various different sources, including GeoNames), which we can use to assign coordinates to the more well-known or obvious locations.
 
-**b. Annotating in Recogito**  
+**b. Annotating in Recogito**
 
 - Because we are only interested in annotating ‘place-names’ within our text, you can select the **QUICK** drop-down menu at the top, then select **Places**. This means that all of our annotations will automatically be classed as ‘places’ (so we won’t have to manually select ‘place’ each time we create an annotation).
 
@@ -242,7 +253,7 @@ The file **Wordsworth_Guide.txt** is an excerpt taken from Wordsworth’s _A Gui
 
 **3.Updating values and correcting errors**
 
-We will now explore the process of making manual additions to our data, starting with locating coordinates using Google Maps and adding this to our Wordsworth-Recogito .csv file _before_ we load it within QGIS. 
+We will now explore the process of making manual additions to our data, starting with locating coordinates using Google Maps and adding this to our Wordsworth-Recogito .csv file _before_ we load it within QGIS.
 
 **a. Getting coordinates from a different source**
 
@@ -255,7 +266,7 @@ We will now explore the process of making manual additions to our data, starting
 - You might remember that ‘Hardraw Scar’ is a geographic place-name for a limestone gorge (with the text also making reference to a waterfall named ‘Hardraw Force’), and it did not appear in any of Recogito’s gazetteers We therefore ‘flagged’ the place-name as **Not Identifiable**. We will now add coordinates to this place-name manually, using Google Maps.
 - In a web browser go to: [http://maps.google.com](http://maps.google.com).
 - Type “Hardraw Scar” into the search box in the top-left corner (do not use the auto complete options that appear). Click ‘search’ or press ‘return’ on your keyboard.
-- You will be zoomed in to a point as shown below - you may want to zoom out to check that you are in approximately the right location. 
+- You will be zoomed in to a point as shown below - you may want to zoom out to check that you are in approximately the right location.
 
 ![](images/picture-22.jpg)
 
@@ -296,7 +307,7 @@ Currently, **Wordsworth-Recogito** it is still just a .csv file, simply visualis
 - To avoid any confusion, you can remove the previous Wordsworth-Recogito layer by right-clicking it in your Layers list and selecting Remove Layer.
 
 **c﻿. Editing point data with QGIS**\
-Now that we can edit our data within QGIS, we are going to experiment with adding coordinates to one of our locations that currently has no ‘geometry’ within QGIS: i.e. those places in ‘Wordsworth-Recogito-GPKG’ that do not have coordinates. 
+Now that we can edit our data within QGIS, we are going to experiment with adding coordinates to one of our locations that currently has no ‘geometry’ within QGIS: i.e. those places in ‘Wordsworth-Recogito-GPKG’ that do not have coordinates.
 To do this, we will use the **Advanced Digitizing Toolbar**. We need to open this toolbar by right clicking anywhere in the toolbars located at the top of your QGIS window, then ticking the ‘Advanced Digitizing Toolbar’ option. This can also be accessed by clicking V**iew > Toolbars > Advanced Digitizing Toolbar**.
 
 ![](images/picture-27.jpg)
@@ -309,14 +320,14 @@ To do this, we will use the **Advanced Digitizing Toolbar**. We need to open thi
   ![](images/picture-29.jpg)
 
   - QGIS stores its geometry data separately from the attribute table that we are working with. This means that we cannot simply add our coordinates into the LAT/LONG columns in our attribute table. Instead, we are going to use the **Add Part** feature in order to create a geometry for a place that currently has no geometry.
-  - Within the ‘Wordsworth-Recogito-GPKG’ attribute table, left-click on the row header for your chosen place-name (i.e. the Feature id, not the ‘fid’ column) and make sure that this highlights the entire row, as shown in red below: 
+  - Within the ‘Wordsworth-Recogito-GPKG’ attribute table, left-click on the row header for your chosen place-name (i.e. the Feature id, not the ‘fid’ column) and make sure that this highlights the entire row, as shown in red below:
 
     ![](images/picture-30.jpg)
-- Now that you have selected this feature, locate the **Add Part** icon in the Advanced Digitizing Toolbar that we opened earlier. 
+- Now that you have selected this feature, locate the **Add Part** icon in the Advanced Digitizing Toolbar that we opened earlier.
 
   ![](images/picture-31.jpg)
 - Left-click on **Add Part**, and then left-click again anywhere on the map. This will immediately create a point for your selected feature, assigning it the coordinates of wherever you clicked your mouse.
-- Now that we have attached a ‘geometry’ to our feature, we can **edit** this geometry and input our correct coordinates. 
+- Now that we have attached a ‘geometry’ to our feature, we can **edit** this geometry and input our correct coordinates.
 - Find the **Vertex Tool**, located in the editing toolbar towards the top of the screen. Left-click to select. This will allow us to edit the vertices of our layer – in this case, our points.
 
 ![](images/picture-32.jpg)
@@ -328,12 +339,12 @@ To do this, we will use the **Advanced Digitizing Toolbar**. We need to open thi
 
   ![](images/picture-33.jpg)
 - You will notice that your layer will immediately update, moving the point to your new coordinates.
-- Now make sure you click the Save Layer Edits button at the top of your screen when you are done: 
+- Now make sure you click the Save Layer Edits button at the top of your screen when you are done:
 
   ![](images/picture-34.jpg)
 - You can now click the **Toggle Editing** icon to turn editing off. If you haven’t already saved your edits, QGIS will ask you if you want to save before turning editing off.
 
-You now know how to edit coordinate data once it is within QGIS. You can use this same process, by using the Vertex Tool, to make changes to places with existing coordinates. For example, if we made a mistake within Recogito, accidentally georeferencing the wrong place (e.g. if we had confirmed Rokeby, Australia rather than Rokeby, UK in the first example), we could update these coordinates within QGIS using the Vertex Editor. 
+You now know how to edit coordinate data once it is within QGIS. You can use this same process, by using the Vertex Tool, to make changes to places with existing coordinates. For example, if we made a mistake within Recogito, accidentally georeferencing the wrong place (e.g. if we had confirmed Rokeby, Australia rather than Rokeby, UK in the first example), we could update these coordinates within QGIS using the Vertex Editor.
 
 **d﻿. Cleaning data in QGIS**\
 Now imagine that we have assigned geometries and coordinates to all of our unidentified places (for the purposes of this tutorial, we won’t go through all of them). You may have already noticed that the attribute table for **Wordsworth-Recogito-GPKG** contains many duplicate entries for the same place (e.g. there are multiple rows with instances of Lake Windermere). Left-click on the QUOTE_TRANSRIPTION column header (to sort data alphabetically) to check this. These duplicates represent each individual instance of the annotation within our text. For visualising this data within GIS, however, we need it is more useful to remove these duplicates, cleaning our data. We will walk through this process now.
@@ -343,7 +354,7 @@ Now imagine that we have assigned geometries and coordinates to all of our unide
   ![](images/picture-35.jpg)
 
   - The **Processing Toolbox** contains all of the tools available within QGIS to perform various data analyses.
-  - When the Processing Toolbox appears on your screen, search for ‘duplicate’ in the ‘search’ bar. Double-click with the left mouse button to open the **Remove duplicate points** tool. 
+  - When the Processing Toolbox appears on your screen, search for ‘duplicate’ in the ‘search’ bar. Double-click with the left mouse button to open the **Remove duplicate points** tool.
 
     ![](images/picture-36.jpg)
   - When the **Remove Duplicate Points** window opens, select your ‘Wordsworth-Recogito-GPKG’ layer for the **Points** option, then select ‘QUOTE_TRANSCRIPTION’ for the **Attribute** option. This tells the tool to search this column from our table to identify any duplicates.
@@ -368,7 +379,7 @@ Within the DARIAH-GTA.zip file you downloaded earlier, you will find the **readm
 ![](images/picture-42.jpg)
 
 Take a quick look through the entire file. The important points are:\
-1﻿. The table contains tab-delimited data: 
+1﻿. The table contains tab-delimited data:
 
 ![](images/picture-43.jpg)
 
@@ -383,14 +394,14 @@ The “main ‘geoname’ table” referred to is in fact the gazetteer file for
 - You will see that there are 19 separate fields in the gazetteer file. The most important ones are:
 
   - Three fields that contain place names (‘name’ is the basic one ‘ascii name’ and ‘alternatenames’ given varients on this)
-  - Coordinate information (‘latitude’ and ‘longitude’) 
+  - Coordinate information (‘latitude’ and ‘longitude’)
 
 Finally, note that latitude/longitude information is recorded as decimal degrees (WGS84).\
 Leave this file open in the Wordpad window, while we take a look at the gazetteer file.
 
 **a.	Explore the GeoNames data file**
 
-Use Excel to open the file **GB.txt** using the techniques we learned in step 1. This time, it is a text file that is delimited using tabs, so make sure that you select **Tab** as the delimiter in step 2 of the Import Wizard (as shown below). 
+Use Excel to open the file **GB.txt** using the techniques we learned in step 1. This time, it is a text file that is delimited using tabs, so make sure that you select **Tab** as the delimiter in step 2 of the Import Wizard (as shown below).
 
 ![](images/picture-45.jpg)
 
@@ -410,7 +421,7 @@ You now need to add a row containing column headings:
 
   - _Either_: Type the column names into cells A1, B1, etc. by hand.
   - _Or_: Copy each of the column headings from **readme.txt** and paste them into the appropriate column as shown below. Make sure you don’t include any extra ‘spaces’ at the start or end of the text in each cell.
-  - If you did not delete the data after the coordinates you will also note that the field before _Country Code_ (which is a combination of _feature code_ and _feature class_) is undocumented. Give it whatever name you want. 
+  - If you did not delete the data after the coordinates you will also note that the field before _Country Code_ (which is a combination of _feature code_ and _feature class_) is undocumented. Give it whatever name you want.
 
   Field names in QGIS:
 
@@ -418,16 +429,16 @@ You now need to add a row containing column headings:
   2. Similarly, QGIS does not like long field names. It may be worth shortening the fields to less than 10 characters. For example, ‘alternatenames’ might be better truncated to ‘altnames’.
 
   - Finally, save the file as a text file by clicking _Save As_ and selecting _Text (Tab delimited)_. Call the file **GB_Gaz.**
-  - C﻿lose the file in Excel. 
+  - C﻿lose the file in Excel.
 
     ![](images/picture-48.jpg)
 
     **b. Load GeoNames data into QGIS and use it to update Wordsworth-Recogito.**
-  - As in step 1c, you can add this new text file to QGIS by selecting **Layer > Add Layer >Add delimited text layer** and locating the **GB_Gaz file**. This time, however, we need to tell QGIS that this is a **tab delimited file** (rather than comma delimited). To do this, simply select **Custom Delimiters** under the File Format section, then select **Tab**. Click to add this data when you’re ready. 
+  - As in step 1c, you can add this new text file to QGIS by selecting **Layer > Add Layer >Add delimited text layer** and locating the **GB_Gaz file**. This time, however, we need to tell QGIS that this is a **tab delimited file** (rather than comma delimited). To do this, simply select **Custom Delimiters** under the File Format section, then select **Tab**. Click to add this data when you’re ready.
 
     ![](images/picture-49.jpg)
 
-    - You should now be able to see all of the places from within the GeoNames file visualized within QGIS, covering all of Great Britain. 
+    - You should now be able to see all of the places from within the GeoNames file visualized within QGIS, covering all of Great Britain.
 
       ![](images/picture-50.jpg)
 
@@ -444,13 +455,13 @@ You now need to add a row containing column headings:
             ![](images/picture-52.jpg)
           - Leave all the other settings as they are, then click **Run**.
              Because we didn’t choose where to save this result, it will only exist as a **temporary file.** If you wished to save this layer after clicking ‘Run’, you can save it as a GeoPackage using the same technique we learned in step 3b.
-          - This will add a new layer to your QGIS project called **‘Joined layer’**. As you might expect, this produces a point layer that (most likely) shows exactly the same locations that you were able to georeference within Recogito (mirroring your **Wordsworth-Recogito** layer). You can see this is the case on the example image to the right, with the larger red dots showing the **Joined layer**, and the lighter blue dots showing the **Wordsworth-Recogito** layer. 
+          - This will add a new layer to your QGIS project called **‘Joined layer’**. As you might expect, this produces a point layer that (most likely) shows exactly the same locations that you were able to georeference within Recogito (mirroring your **Wordsworth-Recogito** layer). You can see this is the case on the example image to the right, with the larger red dots showing the **Joined layer**, and the lighter blue dots showing the **Wordsworth-Recogito** layer.
 
-            - This is because the ‘Join’ that we just ran within QGIS essentially ran the same process that was working in the background when we annotated places in Recogito (searching for matching place-names), therefore producing the same results. 
+            - This is because the ‘Join’ that we just ran within QGIS essentially ran the same process that was working in the background when we annotated places in Recogito (searching for matching place-names), therefore producing the same results.
 
               ![](images/picture-53.jpg)
 
-Whilst this hasn’t allowed us to locate any previously unassigned places in this instance, it has joined our two tables together, bringing additional information from GeoNames, such as the **alternativenames** column. Compare the differences yourself by opening the attribute tables for each layer, as shown below. (You can also ‘hide’ columns in your attribute table by right-clicking on the column headers and selecting **Hide**). 
+Whilst this hasn’t allowed us to locate any previously unassigned places in this instance, it has joined our two tables together, bringing additional information from GeoNames, such as the **alternativenames** column. Compare the differences yourself by opening the attribute tables for each layer, as shown below. (You can also ‘hide’ columns in your attribute table by right-clicking on the column headers and selecting **Hide**).
 
 ![](images/picture-54.jpg)
 
@@ -462,7 +473,7 @@ Whilst this hasn’t allowed us to locate any previously unassigned places in th
 2. Consider what types of research question you could ask/answer with your Wordsworth and Cole datasets. What other spatial information might you need to answer more complex questions? How would you account for any places that you were unable to locate, and are therefore missing from your GIS dataset?
 3. See if you can add an entirely new feature to any of your GeoPackage layers and populate its fields in the attribute table. Hint: this requires using the Digitizing Toolbars that we used in Step 3c.
 4. Look back at the attribute table for the ‘Joined layer’ you created in the final step (the join of ‘Wordsworth-Recogito-Points’ and ‘GB_Gaz’). There are a lot of columns in this dataset now – what might the implications of this be? Would the column headings be understandable to someone else using your data?
-5. Experiment with creating an attractive/functional map of your data by altering the symbology of each layer (accessed by double-clicking on the symbol in the ‘Layers’ list, or right-clicking on your layer, then ‘Properties’) 
+5. Experiment with creating an attractive/functional map of your data by altering the symbology of each layer (accessed by double-clicking on the symbol in the ‘Layers’ list, or right-clicking on your layer, then ‘Properties’)
 
 #### RECAP
 
