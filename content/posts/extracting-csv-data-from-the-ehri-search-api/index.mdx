@@ -1,7 +1,7 @@
 ---
 title: Extracting CSV data from the EHRI Search API
 lang: en
-date: 2022-11-14T15:14:28.421Z
+date: 2023-03-15T15:14:28.421Z
 version: 1.0.0
 authors:
   - bryant-mike
@@ -10,11 +10,9 @@ tags:
 categories:
   - ehri
 abstract: The EHRI (European Holocaust Research Infrastructure) Search API
-  provides a way of retrieving information about items in the EHRI portal in
+  provides a way to retrieve information about items in the EHRI portal in
   JSON (JavaScript Object Notation) format by making HTTP requests to particular
-  URLs. Instead of using a web browser to make web requests which return HTML
-  pages, we use a command line tool (CuRL) that fetches structured data we can
-  then transform into CSV (comma separated values), a format we can then import
+  URLs. This short tutorial shows learners how use a command line tool (CuRL) to fetch structured data and transform it into CSV (comma separated values) format for import
   into a spreadsheet like Excel or Google Docs.
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
@@ -35,14 +33,13 @@ This tutorial shows you how to use some popular command-line tools (available on
 
 Both Curl and Jq are available on various platforms, but precise details of usage may vary depending on the version and platform. This guide will assume you're using a system with a standard Unix-like shell (such as Bash), standard on MacOS or Linux and available on Windows in various forms such as [WSL](https://itsfoss.com/install-bash-on-windows/) or [Git for Windows](https://gitforwindows.org/).
 
-<SideNote type="note" title="This training resource is located in the GitHub environment, so please go straight to the text in the 'readme' file. ">
 
-</SideNote>
-
-## L﻿earning outcome
+## L﻿earning outcomes
 
 A﻿fter viewing this training resource, users will be able to:
 
-- use some popular command-line tools (available on MacOS, Linux, and Windows) to extract data from the EHRI Search API and convert it to CSV, where it can be imported into Excel or a relational database
+- use some popular command-line tools (available on MacOS, Linux, and Windows) to extract data from the EHRI Search API
+- convert extracted data to CSV format
+- import data from a CSV file into Excel or a relational database
 
-<ExternalResource title="Interested in learning more?" subtitle="Check out Extracting CSV data from the EHRI Search API" url="https://github.com/EHRI/ehri-data-analysis-tools/tree/master/ehri-search-api" />
+<ExternalResource title="Interested in learning more?" subtitle="Check out Extracting CSV data from the EHRI Search API" url="https://github.com/EHRI/ehri-data-analysis-tools/tree/master/ehri-search-api#readme" />
