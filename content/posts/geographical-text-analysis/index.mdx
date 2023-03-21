@@ -33,7 +33,7 @@ uuid: n6QGzjFXm03e0vWt9xDup
 ---
 ![]()
 
-##Introduction
+## Introduction
 
 Geographical Text Analysis (GTA) is a relatively recent development in the approach to studying, analysing, and extracting the content of textual sources. Combining techniques from Natural Language Processing (NLP), Corpus Linguistics, and Geographic Information Systems (GIS), GTA offers a new methodology for employing these computational tools in Humanities research. The development of this methodology by researchers at Lancaster University builds upon the ‘distant reading’ approach coined by Franco Moretti in the field of Literature. With a focused interest in querying the geographic nature of textual sources, GTA focuses on the identification, manipulation, and analysis of spatial information on a large scale.
 
@@ -59,22 +59,22 @@ After completing this module, learners will be able to:
 
 The following two case studies provide a brief insight into the application of the techniques of Natural Language Processing, Corpus Linguistics and Geographical Insformation Systems in practice:
 
-### MAPPING THE LAKES: A Literary GIS
+### Mapping the Lakes: A Literary GIS
 
 This pilot project at Lancaster University explored the use of GIS technology in furthering our understanding of the literature of space and place. Mapping out two historical textual accounts of journeys through the landscape of the Lake District in the UK, this project explored the processes, tools, and possibilities of Geographical Text Analysis.
 Read more about the project: https://www.lancaster.ac.uk/mappingthelakes/
 
-### DIGGING INTO EARLY COLONIAL MEXICO: A large-scale computational analysis of 16th century historical sources
+### Digging into Early Colonial Mexico: A large-scale computational analysis of 16th century historical sources
 
 This collaborative, interdisciplinary project brings together experts from three countries and institutions in the fields of History, Archaeology, Geography, and Computer Science. Their work combines techniques from Corpus Linguistics, Text Mining, NLP, Machine Learning, and GIS in order to analyse the Relaciones Geográficas, a large corpus of geographic reports produced in sixteenth-century New Spain. In doing so, its key objective is to advance and develop new computational approaches for the investigation and analysis of historical sources in particular.
 Read more about the project: https://www.lancaster.ac.uk/digging-ecm/
 
-#### FUTURE DEVELOPMENTS
+#### Future Developments
 
 A dedicated Geographical Text Analysis tool is currently in development as part of the aforementioned Digging Into Early Colonial Mexico project. The GTA tool – available later in 2021 – will streamline the process of identifying, georeferencing, processing, and mapping geographical information contained within textual sources in a non-specialist, user-friendly way. Users will be able to upload their own text, with each of the previously mentioned steps being computed automatically in the background, producing a dataset that can be both visualised within the tool and downloaded for further external analysis.
 To keep up to date with progress of the GTA tool, follow the project on Twitter: [@DiggingCH](https://twitter.com/DiggingCH).
 
-#### TUTORIAL BACKGROUND
+#### Tutorial Background
 
 Place names are the most widely used way of expressing a location. They occur in a wide range of different types of sources, from quantitative sources such as census data, where each row of data is referred to by place name, to unstructured texts such as a description of a journey or an official report. As such, place names are extremely important to humanities geographies. One of the major challenges in building a GIS database is often to convert place names into the precisely defined, coordinate-based locations required by spatial data in GIS.
 
@@ -96,7 +96,7 @@ T﻿o complete this module, you will need to make sure you have the following do
 - **D﻿ARIAH-GTA.zip file** - available via [Zenodo ](https://doi.org/10.5281/zenodo.7740854)
 </SideNote>
 
-#### DATA SOURCES
+#### Data Sources
 
 The aim of this exercise is to georeference two sources. The first is a table derived from Samuel Taylor Coleridge’s 1802 Tour of the Lake District and already has coordinates. The second is an excerpt from William Wordsworth’s 1835 Guide through the District of the Lakes in the North of England, from which we will need to extract place-names and assign coordinates. To do this, we will use Recogito (an online annotation tool) and then find and correct any places that fail to be identified using Recogito.
 Before getting started, make sure you download the DARIAH-GTA.zip file, then right click on it to ‘Extract all’ (or ‘unzip’ the file) somewhere on your computer, so that we can use the data within (all the shapefiles we need are in their own QGIS-Shapefiles.zip folder contained within DARIAH-GTA.zip – do not unzip QGIS-Shapefiles.zip) The following table provides a summary of all files contained within the DARIAH-GTA.zip file:
@@ -114,7 +114,7 @@ Before getting started, make sure you download the DARIAH-GTA.zip file, then rig
 | Lakes                | A polygon shapefile containing the major Lakes in the Lake District. **Name** gives the name of the Lake.                                                                                                                                                                                                                                                                                                                                          |
 | Coast                | A polygon shapefile containing part of the UK coastline, for reference.                                                                                                                                                                                                                                                                                                                                                                            |
 
-#### THE GeoNames GAZETTEER
+#### The GeoNames Gazetteer
 
 GeoNames is on online, freely available gazetteer, with which it is possible to view and download a variety of basic information about places (see www.GeoNames.org). GeoNames draws its information from a wide range of sources, the full list of which can be viewed by clicking here. In addition, GeoNames is an ‘open’ development, meaning that users may edit, correct and add new information to the existing database. At the time of writing this practical, the GeoNames database contains over 25 million geographical names, from all around the Earth. Geographical coordinates for locations are given in latitude/longitude measurements in the WGS84 (World Geodetic System 1984) geographic coordinate system.
 
@@ -124,7 +124,7 @@ The main user interface to GeoNames consists of a simple menu, as shown below:
 
 This interface is intended to aid users who wish only to look up information on a particular place; however, it is also possible to download all of the data for a particular country. In this practical, you will use the GeoNames ‘country file’ containing entries for the UK, **GB.txt**. This has already been downloaded to the DARIAH-GTA.zip file for you. Other country’s data is available by following the link to _Free Gazetteer Data_ under _Download_.
 
-#### SUMMARIZED GUIDELINES FOR COMPLETING TUTORIAL
+#### Summarizing Guidelines for Completing This Tutorial
 
 First, we will load the **Cole_other.csv** file into QGIS – this file already contains coordinates, so it is a straight-forward process to visualise this data in QGIS.
 
@@ -477,7 +477,7 @@ Whilst this hasn’t allowed us to locate any previously unassigned places in th
 
 **Note:** it is also useful to notice that the ‘QUOTE_TRANSCRIPTION’ column from our Recogito data retains the place-name spelling as it appeared in our original source material. It is important to maintain this data, alongside the ‘normalised’ spellings that appear in gazetteers such as GeoNames. This allows users of your data (including yourself!) to keep track of any differences/alterations.
 
-### FURTHER WORK AND THINGS TO CONSIDER
+### Further Work and Things to Consider
 
 1. Compare the locations of the places named in Wordsworth-Guide with any locations of the same place name from Cole_other. Are these always the same? What might account for the differences? Might this have implications for analysis?
 2. Consider what types of research question you could ask/answer with your Wordsworth and Cole datasets. What other spatial information might you need to answer more complex questions? How would you account for any places that you were unable to locate, and are therefore missing from your GIS dataset?
@@ -485,7 +485,7 @@ Whilst this hasn’t allowed us to locate any previously unassigned places in th
 4. Look back at the attribute table for the ‘Joined layer’ you created in the final step (the join of ‘Wordsworth-Recogito-Points’ and ‘GB_Gaz’). There are a lot of columns in this dataset now – what might the implications of this be? Would the column headings be understandable to someone else using your data?
 5. Experiment with creating an attractive/functional map of your data by altering the symbology of each layer (accessed by double-clicking on the symbol in the ‘Layers’ list, or right-clicking on your layer, then ‘Properties’)
 
-## RECAP
+## Recap of this Module
 
 If you have a spreadsheet/.csv file that includes coordinates, loading it into QGIS is straightforward:
 
