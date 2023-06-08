@@ -1,62 +1,41 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+node_modules/
+.pnpm-store/
 
-# testing
-/coverage
+# logs
+*.log
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
+# non-public environment variables
+.env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*.local
+
+# caches
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
 
 # vercel
 .vercel
 
-# caches
-.eslintcache
-.tsbuildinfo
+# misc
+.DS_Store
+.idea/
 
-# storybook
-/storybook-static
+# next.js
+.next/
+next-env.d.ts
+out/
 
 # auto-generated favicons
-public/android-chrome-192x192.png
-public/android-chrome-512x512.png
-public/apple-touch-icon.png
-public/favicon-16x16.png
-public/favicon-32x32.png
-public/favicon.ico
-public/site.webmanifest
-public/open-graph.webp
-public/de/android-chrome-192x192.png
-public/de/android-chrome-512x512.png
-public/de/apple-touch-icon.png
-public/de/favicon-16x16.png
-public/de/favicon-32x32.png
-public/de/favicon.ico
-public/de/site.webmanifest
-public/de/open-graph.webp
+public/**/android-chrome-192x192.png
+public/**/android-chrome-512x512.png
+public/**/apple-touch-icon.png
+public/**/favicon-16x16.png
+public/**/favicon-32x32.png
+public/**/favicon.ico
+public/**/site.webmanifest
+public/**/open-graph.webp
 
 # auto-generated files
 public/feed.xml
@@ -65,6 +44,3 @@ public/sitemap.xml
 
 # metadata dump
 public/metadata/*.json
-
-# TODO
-TODO.md

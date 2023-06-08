@@ -1,19 +1,19 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "pwa-node",
-      "request": "attach",
-      "name": "Next.js: Attach",
-      "skipFiles": ["<node_internals>/**"],
-      "port": 9229
-    },
-    {
-      "type": "pwa-node",
-      "request": "attach",
-      "name": "Next.js: Attach by Process ID",
-      "skipFiles": ["<node_internals>/**"],
-      "processId": "${command:PickProcess}"
-    }
-  ]
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "pwa-node",
+			"request": "attach",
+			"name": "Next.js: Attach",
+			"skipFiles": ["<node_internals>/**"],
+			"port": 9229
+		},
+		{
+			"type": "pwa-node",
+			"request": "attach",
+			"name": "Next.js: Attach by Process ID",
+			"skipFiles": ["<node_internals>/**"],
+			"processId": "${command:PickProcess}"
+		}
+	]
 }

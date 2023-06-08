@@ -1,7 +1,7 @@
-import type { Event, EventPreview } from '@/cms/api/events.api'
-import type { Post, PostPreview } from '@/cms/api/posts.api'
+import { type Event, type EventPreview } from "@/cms/api/events.api";
+import { type Post, type PostPreview } from "@/cms/api/posts.api";
 
-export type Resource = Post | Event
-export type ResourcePreview = PostPreview | EventPreview
+export type Resource = Event | Post;
+export type ResourcePreview = EventPreview | PostPreview;
 
-export type ResourceKind = Resource['kind']
+export type ResourceKind = Resource["kind"];

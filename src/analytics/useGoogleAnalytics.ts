@@ -1,19 +1,19 @@
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-import { service } from '@/analytics/service'
+import { service } from "@/analytics/service";
 
 /**
  * Registers client side route transitions with an analytics service.
  */
 export function useGoogleAnalytics(): void {
-  const router = useRouter()
+	const router = useRouter();
 
-  useEffect(() => {
-    router.events.on('routeChangeComplete', service.registerPageView)
+	useEffect(() => {
+		router.events.on("routeChangeComplete", service.registerPageView);
 
-    return () => {
-      router.events.off('routeChangeComplete', service.registerPageView)
-    }
-  }, [router.events])
+		return () => {
+			router.events.off("routeChangeComplete", service.registerPageView);
+		};
+	}, [router.events]);
 }
