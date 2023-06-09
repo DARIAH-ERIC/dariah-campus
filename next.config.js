@@ -21,6 +21,11 @@ const config = {
 		dirs: ["."],
 		ignoreDuringBuilds: true,
 	},
+	experimental: {
+		outputFileTracingExcludes: {
+			"**/*": ["./content/**/*", "node_modules/**/@swc/core*"],
+		},
+	},
 	async headers() {
 		const headers = [];
 
