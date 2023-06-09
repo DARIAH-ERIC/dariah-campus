@@ -1,144 +1,140 @@
-import withSyntaxHighlighting from '@stefanprobst/rehype-shiki'
-import type { PreviewTemplateComponentProps } from 'netlify-cms-core'
-import { useState, useEffect, useMemo } from 'react'
-import withHeadingIds from 'rehype-slug'
-import withFootnotes from 'remark-footnotes'
-import withGitHubMarkdown from 'remark-gfm'
-import type { Highlighter } from 'shiki'
-import { compile } from 'xdm'
+import { compile } from "@mdx-js/mdx";
+import withSyntaxHighlighting from "@stefanprobst/rehype-shiki";
+import { type PreviewTemplateComponentProps } from "netlify-cms-core";
+import { useEffect, useMemo, useState } from "react";
+import withHeadingIds from "rehype-slug";
+import withGitHubMarkdown from "remark-gfm";
+import { type Highlighter } from "shiki";
 
-import type { DocFrontmatter, DocMetadata } from '@/cms/api/docs.api'
-import { getSyntaxHighlighter } from '@/cms/previews/getSyntaxHighlighter'
-import { Preview } from '@/cms/previews/Preview'
-import { Spinner } from '@/common/Spinner'
-import withHeadingLinks from '@/mdx/plugins/rehype-heading-links'
-import withImageCaptions from '@/mdx/plugins/rehype-image-captions'
-import withNoReferrerLinks from '@/mdx/plugins/rehype-no-referrer-links'
-import withCmsPreviewAssets from '@/mdx/plugins/remark-cms-preview-assets'
-import withTypographicQuotesAndDashes from '@/mdx/plugins/remark-smartypants'
-import { useDebouncedState } from '@/utils/useDebouncedState'
-import { Docs } from '@/views/docs/Docs'
+import { type DocFrontmatter, type DocMetadata } from "@/cms/api/docs.api";
+import { getSyntaxHighlighter } from "@/cms/previews/getSyntaxHighlighter";
+import { Preview } from "@/cms/previews/Preview";
+import { Spinner } from "@/common/Spinner";
+import withHeadingLinks from "@/mdx/plugins/rehype-heading-links";
+import withImageCaptions from "@/mdx/plugins/rehype-image-captions";
+import withNoReferrerLinks from "@/mdx/plugins/rehype-no-referrer-links";
+import withCmsPreviewAssets from "@/mdx/plugins/remark-cms-preview-assets";
+import withTypographicQuotesAndDashes from "@/mdx/plugins/remark-smartypants";
+import { useDebouncedState } from "@/utils/useDebouncedState";
+import { Docs } from "@/views/docs/Docs";
 
 const initialMetadata: DocMetadata = {
-  title: '',
-  order: 1,
-}
+	title: "",
+	order: 1,
+};
 
 /**
  * CMS preview for documentation page.
  */
 export function DocPreview(props: PreviewTemplateComponentProps): JSX.Element {
-  const entry = useDebouncedState(props.entry, 250)
-  const { getAsset } = props
+	const entry = useDebouncedState(props.entry, 250);
+	const { getAsset } = props;
 
-  const data = entry.get('data')
-  const body = entry.getIn(['data', 'body'])
+	const data = entry.get("data");
+	const body = entry.getIn(["data", "body"]);
 
-  const [metadata, setMetadata] = useState<DocMetadata>(initialMetadata)
-  const [mdxContent, setMdxContent] = useState<string | null | Error>(null)
-  const [highlighter, setHighlighter] = useState<Highlighter | null>(null)
+	const [metadata, setMetadata] = useState<DocMetadata>(initialMetadata);
+	const [mdxContent, setMdxContent] = useState<Error | string | null>(null);
+	const [highlighter, setHighlighter] = useState<Highlighter | null>(null);
 
-  useEffect(() => {
-    async function initializeHighlighter() {
-      const highlighter = await getSyntaxHighlighter()
-      setHighlighter(highlighter)
-    }
+	useEffect(() => {
+		async function initializeHighlighter() {
+			const highlighter = await getSyntaxHighlighter();
+			setHighlighter(highlighter);
+		}
 
-    initializeHighlighter()
-  }, [])
+		initializeHighlighter();
+	}, []);
 
-  const compileMdx = useMemo(() => {
-    if (highlighter == null) return null
+	const compileMdx = useMemo(() => {
+		if (highlighter == null) return null;
 
-    return async (code: string) => {
-      return String(
-        await compile(code, {
-          outputFormat: 'function-body',
-          useDynamicImport: false,
-          remarkPlugins: [
-            withGitHubMarkdown,
-            withFootnotes,
-            withTypographicQuotesAndDashes,
-            [withCmsPreviewAssets, getAsset],
-          ],
-          rehypePlugins: [
-            [withSyntaxHighlighting, { highlighter }],
-            withHeadingIds,
-            withHeadingLinks,
-            withNoReferrerLinks,
-            withImageCaptions,
-          ],
-        }),
-      )
-    }
-  }, [getAsset, highlighter])
+		return async (code: string) => {
+			return String(
+				await compile(code, {
+					development: false,
+					outputFormat: "function-body",
+					useDynamicImport: false,
+					remarkPlugins: [
+						withGitHubMarkdown,
+						withTypographicQuotesAndDashes,
+						[withCmsPreviewAssets, getAsset],
+					],
+					rehypePlugins: [
+						[withSyntaxHighlighting, { highlighter }],
+						withHeadingIds,
+						withHeadingLinks,
+						withNoReferrerLinks,
+						withImageCaptions,
+					],
+				}),
+			);
+		};
+	}, [getAsset, highlighter]);
 
-  useEffect(() => {
-    const { body: _, ...partialFrontmatter } = data.toJS()
-    const frontmatter = partialFrontmatter as Partial<DocFrontmatter>
+	useEffect(() => {
+		const { body: _, ...partialFrontmatter } = data.toJS();
+		const frontmatter = partialFrontmatter as Partial<DocFrontmatter>;
 
-    const metadata = {
-      ...initialMetadata,
-      ...frontmatter,
-    }
+		const metadata = {
+			...initialMetadata,
+			...frontmatter,
+		};
 
-    setMetadata(metadata)
-  }, [data])
+		setMetadata(metadata);
+	}, [data]);
 
-  useEffect(() => {
-    let wasCanceled = false
+	useEffect(() => {
+		let wasCanceled = false;
 
-    async function processMdx() {
-      try {
-        if (compileMdx == null) return Promise.resolve()
-        const code = await compileMdx(body)
+		async function processMdx() {
+			try {
+				if (compileMdx == null) return Promise.resolve();
+				const code = await compileMdx(body);
 
-        if (!wasCanceled) {
-          setMdxContent(code)
-        }
-      } catch (error) {
-        console.error(error)
-        setMdxContent(new Error('Failed to render mdx.'))
-      }
-    }
+				if (!wasCanceled) {
+					setMdxContent(code);
+				}
+			} catch (error) {
+				console.error(error);
+				setMdxContent(new Error("Failed to render mdx."));
+			}
+		}
 
-    processMdx()
+		processMdx();
 
-    return () => {
-      wasCanceled = true
-    }
-  }, [body, compileMdx])
+		return () => {
+			wasCanceled = true;
+		};
+	}, [body, compileMdx]);
 
-  return (
-    <Preview {...props}>
-      {typeof mdxContent === 'string' ? (
-        <Docs
-          docs={{
-            id: entry.get('slug'),
-            code: mdxContent,
-            data: {
-              metadata,
-              toc: [],
-            },
-          }}
-          nav={[]}
-          lastUpdatedAt={null}
-          isPreview
-        />
-      ) : mdxContent instanceof Error ? (
-        <div>
-          <p>Failed to render preview.</p>
-          <p>This usually indicates a syntax error in the Markdown content.</p>
-        </div>
-      ) : (
-        <div className="flex items-center space-x-2">
-          <Spinner
-            className="w-6 h-6 text-primary-600"
-            aria-label="Loading..."
-          />
-          <p>Trying to render preview...</p>
-        </div>
-      )}
-    </Preview>
-  )
+	return (
+		<Preview {...props}>
+			{typeof mdxContent === "string" ? (
+				<Docs
+					docs={{
+						id: entry.get("slug"),
+						code: mdxContent,
+						data: {
+							metadata,
+							toc: [],
+						},
+					}}
+					nav={[]}
+					lastUpdatedAt={null}
+					isPreview
+				/>
+			) : mdxContent instanceof Error ? (
+				<div>
+					<p>Failed to render preview.</p>
+					<p>This usually indicates a syntax error in the Markdown content.</p>
+				</div>
+			) : (
+				<div className="flex items-center space-x-2">
+					<Spinner className="w-6 h-6 text-primary-600" aria-label="Loading..." />
+					<p>Trying to render preview...</p>
+				</div>
+			)}
+		</Preview>
+	);
 }

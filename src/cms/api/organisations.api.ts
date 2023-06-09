@@ -1,34 +1,32 @@
-import { join } from 'path'
+import { join } from "node:path";
 
-import * as YAML from 'js-yaml'
-import type { VFile } from 'vfile'
+import { type VFile } from "vfile";
+import * as YAML from "yaml";
 
-import { createStaticImage } from '@/cms/utils/createStaticImage'
-import type { Locale } from '@/i18n/i18n.config'
-import { readFile } from '@/mdx/readFile'
-import { readFolder } from '@/mdx/readFolder'
-import type { FilePath, UrlString } from '@/utils/ts/aliases'
+import { createStaticImage } from "@/cms/utils/createStaticImage";
+import { type Locale } from "@/i18n/i18n.config";
+import { readFile } from "@/mdx/readFile";
+import { readFolder } from "@/mdx/readFolder";
+import { type FilePath, type UrlString } from "@/utils/ts/aliases";
 
-const organisationsFolder = join(process.cwd(), 'content', 'organisations')
-const organisationExtension = '.yml'
+const organisationsFolder = join(process.cwd(), "content", "organisations");
+const organisationExtension = ".yml";
 
 export interface OrganisationId {
-  /** Slug. */
-  id: string
+	/** Slug. */
+	id: string;
 }
 
-type ID = OrganisationId['id']
+type ID = OrganisationId["id"];
 
 export interface OrganisationYaml {
-  name: string
-  url?: UrlString
-  logo?: FilePath
+	name: string;
+	url?: UrlString;
+	logo?: FilePath;
 }
 
-export interface OrganisationData extends Omit<OrganisationYaml, 'logo'> {
-  logo?:
-    | FilePath
-    | { src: FilePath; width: number; height: number; blurDataURL?: string }
+export interface OrganisationData extends Omit<OrganisationYaml, "logo"> {
+	logo?: FilePath | { src: FilePath; width: number; height: number; blurDataURL?: string };
 }
 
 export interface Organisation extends OrganisationId, OrganisationData {}
@@ -36,81 +34,66 @@ export interface Organisation extends OrganisationId, OrganisationData {}
 /**
  * Returns all organisation ids (slugs).
  */
-export async function getOrganisationIds(
-  _locale: Locale,
-): Promise<Array<string>> {
-  const ids = await readFolder(organisationsFolder, organisationExtension)
+export async function getOrganisationIds(_locale: Locale): Promise<Array<string>> {
+	const ids = await readFolder(organisationsFolder, organisationExtension);
 
-  return ids
+	return ids;
 }
 
 /**
  * Returns organisation data.
  */
-export async function getOrganisationById(
-  id: ID,
-  locale: Locale,
-): Promise<Organisation> {
-  const file = await getOrganisationFile(id, locale)
-  const data = await getOrganisationData(file, locale)
+export async function getOrganisationById(id: ID, locale: Locale): Promise<Organisation> {
+	const file = await getOrganisationFile(id, locale);
+	const data = await getOrganisationData(file, locale);
 
-  if (
-    typeof data.logo === 'string' &&
-    data.logo.length > 0 &&
-    file.path != null
-  ) {
-    data.logo = await createStaticImage(data.logo, file.path)
-  }
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+	if (typeof data.logo === "string" && data.logo.length > 0 && file.path != null) {
+		data.logo = await createStaticImage(data.logo, file.path);
+	}
 
-  return { id, ...data }
+	return { id, ...data };
 }
 
 /**
  * Returns data for all organisations, sorted by name.
  */
-export async function getOrganisations(
-  locale: Locale,
-): Promise<Array<Organisation>> {
-  const ids = await getOrganisationIds(locale)
+export async function getOrganisations(locale: Locale): Promise<Array<Organisation>> {
+	const ids = await getOrganisationIds(locale);
 
-  const data = await Promise.all(
-    ids.map(async (id) => {
-      return getOrganisationById(id, locale)
-    }),
-  )
+	const data = await Promise.all(
+		ids.map(async (id) => {
+			return getOrganisationById(id, locale);
+		}),
+	);
 
-  return data
+	return data;
 }
 
 /**
  * Reads organisation file.
  */
 async function getOrganisationFile(id: ID, locale: Locale): Promise<VFile> {
-  const filePath = getOrganisationFilePath(id, locale)
-  const file = await readFile(filePath)
+	const filePath = getOrganisationFilePath(id, locale);
+	const file = await readFile(filePath);
 
-  return file
+	return file;
 }
 
 /**
  * Returns file path for organisation.
  */
 export function getOrganisationFilePath(id: ID, _locale: Locale): FilePath {
-  const filePath = join(organisationsFolder, id + organisationExtension)
+	const filePath = join(organisationsFolder, id + organisationExtension);
 
-  return filePath
+	return filePath;
 }
 
 /**
  * Returns organisation data.
  */
-async function getOrganisationData(
-  file: VFile,
-  _locale: Locale,
-): Promise<OrganisationData> {
-  const data = YAML.load(String(file), {
-    schema: YAML.CORE_SCHEMA,
-  }) as OrganisationData
+async function getOrganisationData(file: VFile, _locale: Locale): Promise<OrganisationData> {
+	const data = YAML.parse(String(file)) as OrganisationData;
 
-  return data
+	return data;
 }

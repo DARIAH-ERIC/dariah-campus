@@ -1,27 +1,21 @@
-/* eslint-disable import/no-duplicates, import/order */
+/// <reference types="@stefanprobst/next-svg/types" />
 
-/// <reference types="@stefanprobst/next-svg" />
+declare module "*.mdx" {
+	import { type ComponentType } from "react";
 
-declare module '*.mdx' {
-  import type { ComponentType } from 'react'
-  import type { MdxContentProps } from '@/mdx/runMdxSync'
+	import { type MdxContentProps } from "@/mdx/runMdxSync";
 
-  const Component: ComponentType<MdxContentProps>
-  const metadata: Record<string, unknown>
+	const Component: ComponentType<MdxContentProps>;
+	const frontmatter: Record<string, unknown>;
 
-  export { metadata }
-  export default Component
+	export { frontmatter };
+	export default Component;
 }
 
-declare module 'retext' {
-  import type { Processor } from 'unified'
+declare module "*.svg?symbol" {
+	import { type FC, type SVGProps } from "react";
 
-  const retext: Processor
-  export = retext
-}
-declare module 'retext-smartypants' {
-  import type { Plugin } from 'unified'
+	const Image: FC<SVGProps<SVGSVGElement> & { title?: string }>;
 
-  const smartypants: Plugin
-  export = smartypants
+	export default Image;
 }

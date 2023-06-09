@@ -1,173 +1,169 @@
 /** @typedef {import('@/i18n/i18n.config').Locale} Locale */
 /** @typedef {import('next').NextConfig & {i18n?: {locales: Array<Locale>; defaultLocale: Locale}}} NextConfig */
-/** @typedef {import('webpack').Configuration} WebpackConfig */
 
-const isProductionDeploy = process.env['NEXT_PUBLIC_BASE_URL']?.startsWith(
-  'https://campus.dariah.eu',
-)
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+
+import createBundleAnalyzer from "@next/bundle-analyzer";
+import createMdxPlugin from "@next/mdx";
+import createSvgPlugin from "@stefanprobst/next-svg";
+import withFrontmatter from "remark-frontmatter";
+import withGfm from "remark-gfm";
+import withMdxFrontmatter from "remark-mdx-frontmatter";
+
+const isProductionDeploy = process.env["NEXT_PUBLIC_BASE_URL"]?.startsWith(
+	"https://campus.dariah.eu",
+);
 
 /** @type {NextConfig} */
 const config = {
-  eslint: {
-    dirs: ['.'],
-    ignoreDuringBuilds: true,
-  },
-  experimental: {
-    esmExternals: true,
-  },
-  future: {
-    strictPostcssConfiguration: true,
-  },
-  async headers() {
-    const headers = []
+	eslint: {
+		dirs: ["."],
+		ignoreDuringBuilds: true,
+	},
+	experimental: {
+		outputFileTracingExcludes: {
+			/**
+			 * Next.js standalone output incorrectly includes the content folder,
+			 * which will lead to deployment error:
+			 * "Max serverless function size of 50 MB compressed or 250 MB uncompressed reached"
+			 */
+			"**/*": ["./content/**/*", "node_modules/**/@swc/core*"],
+		},
+	},
+	async headers() {
+		const headers = [];
 
-    if (isProductionDeploy !== true) {
-      headers.push({
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'noindex, nofollow',
-          },
-        ],
-      })
+		if (isProductionDeploy !== true) {
+			headers.push({
+				source: "/:path*",
+				headers: [
+					{
+						key: "X-Robots-Tag",
+						value: "noindex, nofollow",
+					},
+				],
+			});
 
-      console.warn('⚠️ Indexing by search engines is disallowed.')
-    }
+			console.warn("⚠️ Indexing by search engines is disallowed.");
+		}
 
-    return headers
-  },
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
-  },
-  pageExtensions: ['page.tsx', 'api.ts'],
-  poweredByHeader: false,
-  async redirects() {
-    return [
-      ...Object.entries(require('./redirects.resources.json')).map(
-        ([uuid, id]) => {
-          return {
-            source: `/id/${uuid}`,
-            destination: `/resource/posts/${id}`,
-            permanent: false,
-          }
-        },
-      ),
-      ...Object.entries(require('./redirects.courses.json')).map(
-        ([uuid, id]) => {
-          return {
-            source: `/id/${uuid}`,
-            destination: `/curriculum/${id}`,
-            permanent: false,
-          }
-        },
-      ),
-      ...Object.entries(require('./redirects.events.json')).map(
-        ([uuid, id]) => {
-          return {
-            source: `/id/${uuid}`,
-            destination: `/resource/events/${id}`,
-            permanent: false,
-          }
-        },
-      ),
-      ...Object.entries(require('./redirects.legacy.resources.json')).map(
-        ([legacyId, id]) => {
-          return {
-            source: `/resource/${legacyId}`,
-            destination: `/resource/posts/${id}`,
-            permanent: true,
-          }
-        },
-      ),
-      ...Object.entries(require('./redirects.legacy.events.json')).map(
-        ([legacyId, id]) => {
-          return {
-            source: `/resource/${legacyId}`,
-            destination: `/resource/events/${id}`,
-            permanent: true,
-          }
-        },
-      ),
-      ...Object.entries(require('./redirects.legacy.persons.json')).map(
-        ([legacyId, id]) => {
-          return {
-            source: `/author/${legacyId}`,
-            destination: `/author/${id}`,
-            permanent: true,
-          }
-        },
-      ),
-    ]
-  },
-  async rewrites() {
-    return [
-      { source: '/resources', destination: '/resources/page/1' },
-      { source: '/resources/:type', destination: '/resources/:type/page/1' },
-      { source: '/courses', destination: '/courses/page/1' },
-      { source: '/authors', destination: '/authors/page/1' },
-      { source: '/author/:id', destination: '/author/:id/page/1' },
-      { source: '/tags', destination: '/tags/page/1' },
-      { source: '/tag/:id', destination: '/tag/:id/page/1' },
-      { source: '/categories', destination: '/categories/page/1' },
-      { source: '/category/:id', destination: '/category/:id/page/1' },
-      { source: '/about', destination: '/docs/about' },
-    ]
-  },
-}
+		return headers;
+	},
+	i18n: {
+		locales: ["en"],
+		defaultLocale: "en",
+	},
+	output: "standalone",
+	pageExtensions: ["page.tsx", "page.mdx", "api.ts"],
+	poweredByHeader: false,
+	async redirects() {
+		return [
+			...Object.entries(
+				JSON.parse(
+					await readFile(join(process.cwd(), "./redirects.resources.json"), { encoding: "utf-8" }),
+				),
+			).map(([uuid, id]) => {
+				return {
+					source: `/id/${uuid}`,
+					destination: `/resource/posts/${id}`,
+					permanent: false,
+				};
+			}),
+			...Object.entries(
+				JSON.parse(
+					await readFile(join(process.cwd(), "./redirects.courses.json"), { encoding: "utf-8" }),
+				),
+			).map(([uuid, id]) => {
+				return {
+					source: `/id/${uuid}`,
+					destination: `/curriculum/${id}`,
+					permanent: false,
+				};
+			}),
+			...Object.entries(
+				JSON.parse(
+					await readFile(join(process.cwd(), "./redirects.events.json"), { encoding: "utf-8" }),
+				),
+			).map(([uuid, id]) => {
+				return {
+					source: `/id/${uuid}`,
+					destination: `/resource/events/${id}`,
+					permanent: false,
+				};
+			}),
+			...Object.entries(
+				JSON.parse(
+					await readFile(join(process.cwd(), "./redirects.legacy.resources.json"), {
+						encoding: "utf-8",
+					}),
+				),
+			).map(([legacyId, id]) => {
+				return {
+					source: `/resource/${legacyId}`,
+					destination: `/resource/posts/${id}`,
+					permanent: true,
+				};
+			}),
+			...Object.entries(
+				JSON.parse(
+					await readFile(join(process.cwd(), "./redirects.legacy.events.json"), {
+						encoding: "utf-8",
+					}),
+				),
+			).map(([legacyId, id]) => {
+				return {
+					source: `/resource/${legacyId}`,
+					destination: `/resource/events/${id}`,
+					permanent: true,
+				};
+			}),
+			...Object.entries(
+				JSON.parse(
+					await readFile(join(process.cwd(), "./redirects.legacy.persons.json"), {
+						encoding: "utf-8",
+					}),
+				),
+			).map(([legacyId, id]) => {
+				return {
+					source: `/author/${legacyId}`,
+					destination: `/author/${id}`,
+					permanent: true,
+				};
+			}),
+		];
+	},
+	async rewrites() {
+		return [
+			{ source: "/resources", destination: "/resources/page/1" },
+			{ source: "/resources/:type", destination: "/resources/:type/page/1" },
+			{ source: "/courses", destination: "/courses/page/1" },
+			{ source: "/authors", destination: "/authors/page/1" },
+			{ source: "/author/:id", destination: "/author/:id/page/1" },
+			{ source: "/tags", destination: "/tags/page/1" },
+			{ source: "/tag/:id", destination: "/tag/:id/page/1" },
+			{ source: "/categories", destination: "/categories/page/1" },
+			{ source: "/category/:id", destination: "/category/:id/page/1" },
+			{ source: "/about", destination: "/docs/about" },
+		];
+	},
+	typescript: {
+		ignoreBuildErrors: true,
+	},
+};
 
 /** @type {Array<(config: NextConfig) => NextConfig>} */
 const plugins = [
-  /** @ts-expect-error Missing module declaration. */
-  require('@stefanprobst/next-svg')({
-    svgo: {
-      plugins: [
-        { prefixIds: true },
-        { removeDimensions: true },
-        { removeViewBox: false },
-      ],
-    },
-    svgr: {
-      titleProp: true,
-    },
-  }),
-  function (nextConfig = {}) {
-    return {
-      ...nextConfig,
-      /** @type {(config: WebpackConfig, options: any) => WebpackConfig} */
-      webpack(config, options) {
-        /* @ts-expect-error always defined */
-        config.module.rules.push({
-          test: /\.mdx?$/,
-          use: [
-            options.defaultLoaders.babel,
-            {
-              loader: require.resolve('xdm/webpack.cjs'),
-              options: {
-                remarkPlugins: [
-                  require('remark-gfm'),
-                  require('remark-frontmatter'),
-                  [
-                    require('remark-mdx-frontmatter').remarkMdxFrontmatter,
-                    { name: 'metadata' },
-                  ],
-                ],
-              },
-            },
-          ],
-        })
+	createBundleAnalyzer({ enabled: process.env.BUNDLE_ANALYZER === "enabled" }),
+	createMdxPlugin({
+		extension: /\.mdx?/,
+		options: {
+			remarkPlugins: [withFrontmatter, withMdxFrontmatter, withGfm],
+		},
+	}),
+	createSvgPlugin({}),
+];
 
-        if (typeof nextConfig.webpack === 'function') {
-          return nextConfig.webpack(config, options)
-        }
-
-        return config
-      },
-    }
-  },
-]
-
-module.exports = plugins.reduce((config, plugin) => {
-  return plugin(config)
-}, config)
+export default plugins.reduce((config, plugin) => {
+	return plugin(config);
+}, config);
