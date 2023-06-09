@@ -1,4 +1,4 @@
 :where(.underlined-links) a {
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
+	text-decoration: underline;
+	text-underline-offset: 0.25em;
 }

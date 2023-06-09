@@ -1,6 +1,6 @@
 name: Propose a resource
 description: Provide metadata for a resource to be included in DARIAH-Campus
-title: '[new resource]: '
+title: "[new resource]: "
 assignees:
   - ttasovac
   - VickyGarnett
@@ -10,8 +10,8 @@ body:
   - type: markdown
     attributes:
       value:
-        Thanks for suggesting a new resource. Please fill out this form and we
-        will get back to you asap!
+        Thanks for suggesting a new resource. Please fill out this form and we will get back to you
+        asap!
   - type: input
     id: title
     attributes:
@@ -40,8 +40,8 @@ body:
     attributes:
       label: Topics (keywords)
       description:
-        Comma-separated list of topics. Please have a look at the [list of
-        existing topics](https://campus.dariah.eu/tags).
+        Comma-separated list of topics. Please have a look at the [list of existing
+        topics](https://campus.dariah.eu/tags).
   - type: textarea
     id: learning-outcomes
     attributes:

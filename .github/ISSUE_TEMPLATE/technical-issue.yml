@@ -8,8 +8,8 @@ body:
   - type: markdown
     attributes:
       value:
-        Please provide details on (i) what you were trying to do, (ii) what you
-        expected to happen, and (iii) what happened instead.
+        Please provide details on (i) what you were trying to do, (ii) what you expected to happen,
+        and (iii) what happened instead.
   - type: textarea
     id: bug
     attributes:
