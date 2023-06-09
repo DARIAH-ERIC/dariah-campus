@@ -23,6 +23,11 @@ const config = {
 	},
 	experimental: {
 		outputFileTracingExcludes: {
+			/**
+			 * Next.js standalone output incorrectly includes the content folder,
+			 * which will lead to deployment error:
+			 * "Max serverless function size of 50 MB compressed or 250 MB uncompressed reached"
+			 */
 			"**/*": ["./content/**/*", "node_modules/**/@swc/core*"],
 		},
 	},
