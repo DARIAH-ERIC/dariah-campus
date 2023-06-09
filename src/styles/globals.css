@@ -1,16 +1,16 @@
 :focus:not(:focus-visible) {
-  outline: none;
+	outline: none;
 }
 :focus:not(:focus-visible):-moz-focusring {
-  outline: none;
+	outline: none;
 }
 
 :root {
-  -webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: transparent;
 
-  text-size-adjust: none;
+	text-size-adjust: none;
 }
 
 body {
-  @apply min-h-screen font-sans antialiased text-neutral-900 bg-neutral-50;
+	@apply min-h-screen font-sans antialiased text-neutral-900 bg-neutral-50;
 }

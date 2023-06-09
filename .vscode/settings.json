@@ -1,25 +1,25 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
-  "files.exclude": {
-    "**/node_modules": true,
-    ".eslintcache": true,
-    ".tsbuildinfo": true,
-    ".next": true,
-    "out": true,
-    "storybook-build": true
-  },
-  "search.exclude": {
-    "yarn.lock": true
-  },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "workbench.startupEditor": "readme",
-  "[markdown][mdx]": {
-    "editor.formatOnSave": false,
-    "editor.wordWrap": "on"
-  }
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"eslint.validate": ["javascript", "typescript", "typescriptreact"],
+	"files.exclude": {
+		"**/node_modules": true,
+		".eslintcache": true,
+		".tsbuildinfo": true,
+		".next": true,
+		"out": true,
+		"storybook-build": true
+	},
+	"search.exclude": {
+		"yarn.lock": true
+	},
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"workbench.startupEditor": "readme",
+	"[markdown][mdx]": {
+		"editor.formatOnSave": false,
+		"editor.wordWrap": "on"
+	}
 }

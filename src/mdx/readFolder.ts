@@ -1,25 +1,25 @@
-import { promises as fs } from 'fs'
+import { promises as fs } from "node:fs";
 
-import type { FolderPath } from '@/utils/ts/aliases'
+import { type FolderPath } from "@/utils/ts/aliases";
 
 /**
  * Reads folder contents and returns file names without extension.
  */
 export async function readFolder(
-  folderPath: FolderPath,
-  fileExtension?: string,
+	folderPath: FolderPath,
+	fileExtension?: string,
 ): Promise<Array<string>> {
-  const fileNames = await fs.readdir(folderPath)
+	const fileNames = await fs.readdir(folderPath);
 
-  if (fileExtension != null) {
-    return fileNames
-      .filter((filename) => {
-        return filename.endsWith(fileExtension)
-      })
-      .map((fileName) => {
-        return fileName.slice(0, -fileExtension.length)
-      })
-  }
+	if (fileExtension != null) {
+		return fileNames
+			.filter((filename) => {
+				return filename.endsWith(fileExtension);
+			})
+			.map((fileName) => {
+				return fileName.slice(0, -fileExtension.length);
+			});
+	}
 
-  return fileNames
+	return fileNames;
 }
