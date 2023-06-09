@@ -27,7 +27,7 @@ import { type TagListItem } from "@/views/post/getTagListData";
 import { TagsList } from "@/views/post/TagsList";
 import HeroImage from "~/public/assets/images/study.svg";
 
-const pageSize = 50;
+const pageSize = 500;
 
 type TagWithPostCount = TagListItem & { posts: number };
 
