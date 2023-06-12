@@ -5,9 +5,9 @@
 	"type": "module",
 	"engines": {
 		"node": "18.x",
-		"yarn": "1.x"
+		"pnpm": "8.x"
 	},
-	"packageManager": "yarn@1.22.19",
+	"packageManager": "pnpm@8.6.1",
 	"scripts": {
 		"analyze": "cross-env BUNDLE_ANALYZER='enabled' next build --no-lint",
 		"build": "next build",
@@ -22,13 +22,13 @@
 		"debug": "cross-env NODE_OPTIONS='--inspect' next dev",
 		"dev": "next dev",
 		"format:check": "prettier . !./content --cache --check --ignore-path .gitignore",
-		"format:fix": "yarn run format:check --write",
+		"format:fix": "pnpm run format:check --write",
 		"lint:check": "eslint . --cache --ignore-path .gitignore",
-		"lint:fix": "yarn run lint:check --fix",
+		"lint:fix": "pnpm run lint:check --fix",
 		"lint:md:check": "remark . --quiet --ignore-path .gitignore --ignore-pattern README.md",
-		"lint:md:fix": "yarn run lint:md:check --output",
+		"lint:md:fix": "pnpm run lint:md:check --output",
 		"lint:mdx:check": "remark . --use mdx --quiet --ignore-path .gitignore --ignore-pattern **/content/templates/**",
-		"lint:mdx:fix": "yarn run lint:mdx:check --output",
+		"lint:mdx:fix": "pnpm run lint:mdx:check --output",
 		"postbuild": "run-s create:search-index create:sitemap",
 		"prebuild": "run-s create:favicons cms:styles create:feed create:metadata-dump create:redirects",
 		"prepare": "run-s setup",
@@ -36,7 +36,7 @@
 		"start": "next start",
 		"test": "exit 0",
 		"types:check": "tsc --noEmit",
-		"update:search-index": "cross-env NEXT_PUBLIC_BASE_URL=https://campus.dariah.eu yarn run create:search-index",
+		"update:search-index": "cross-env NEXT_PUBLIC_BASE_URL=https://campus.dariah.eu pnpm run create:search-index",
 		"validate": "run-s format:check lint:check types:check test"
 	},
 	"dependencies": {
@@ -195,7 +195,7 @@
 		]
 	},
 	"simple-git-hooks": {
-		"pre-commit": "yarn lint-staged"
+		"pre-commit": "pnpm exec lint-staged"
 	},
 	"volta": {
 		"node": "18.16.0"

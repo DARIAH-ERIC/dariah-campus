@@ -156,9 +156,7 @@ export async function getEventById(id: ID, locale: Locale): Promise<Event> {
 					}),
 				);
 
-				const code = String(
-					await compileMdx(new VFile({ value: session.body, path: file.path })),
-				);
+				const code = String(await compileMdx(new VFile({ value: session.body, path: file.path })));
 
 				const sessionData = {
 					...session,

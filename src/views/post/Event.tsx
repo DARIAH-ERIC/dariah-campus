@@ -16,7 +16,7 @@ import { ModalDialog } from "@/common/ModalDialog";
 import { PageContent } from "@/common/PageContent";
 import { ResponsiveImage } from "@/common/ResponsiveImage";
 import { Mdx as EventContent, Mdx } from "@/mdx/Mdx";
-import { isNonEmptyString } from '@/utils/isNonEmptyString'
+import { isNonEmptyString } from "@/utils/isNonEmptyString";
 
 export interface EventProps {
 	event: EventData;
@@ -424,16 +424,18 @@ function EventSession(props: EventSessionProps) {
 					<span className="square" />
 					<strong>{session.title}</strong>
 				</h1>
-				{isNonEmptyString(session.synthesis) ? <a
-					href={session.synthesis}
-					download
-					target="_blank"
-					rel="noopener noreferrer"
-					className="!flex items-center justify-center text-white link-download p-[1vw]"
-				>
-					<FaFilePdf size="1.5em" className="w-full h-full" />
-					<span className="sr-only">Download the session synthesis</span>
-				</a> : null}
+				{isNonEmptyString(session.synthesis) ? (
+					<a
+						href={session.synthesis}
+						download
+						target="_blank"
+						rel="noopener noreferrer"
+						className="!flex items-center justify-center text-white link-download p-[1vw]"
+					>
+						<FaFilePdf size="1.5em" className="w-full h-full" />
+						<span className="sr-only">Download the session synthesis</span>
+					</a>
+				) : null}
 			</div>
 
 			<div className="session__core">
