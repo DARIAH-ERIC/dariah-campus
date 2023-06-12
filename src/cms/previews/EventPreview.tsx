@@ -1,5 +1,6 @@
 import { compile } from "@mdx-js/mdx";
 import withSyntaxHighlighting from "@stefanprobst/rehype-shiki";
+// eslint-disable-next-line import/no-unresolved
 import { type PreviewTemplateComponentProps } from "netlify-cms-core";
 import { useEffect, useMemo, useState } from "react";
 import withGitHubMarkdown from "remark-gfm";
@@ -224,7 +225,7 @@ export function EventPreview(props: PreviewTemplateComponentProps): JSX.Element 
 			try {
 				if (compileMdx == null) return Promise.resolve();
 
-				const allSessions: EventFrontmatter["sessions"] = sessions.toJS() ?? [];
+				const allSessions: EventFrontmatter["sessions"] = sessions?.toJS() ?? [];
 				const mdxSessions = Array.isArray(allSessions)
 					? await Promise.all(
 							allSessions.map(async (session) => {

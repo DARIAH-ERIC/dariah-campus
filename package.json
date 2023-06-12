@@ -7,7 +7,7 @@
 		"node": "18.x",
 		"pnpm": "8.x"
 	},
-	"packageManager": "pnpm@8.6.1",
+	"packageManager": "pnpm@8.6.2",
 	"scripts": {
 		"analyze": "cross-env BUNDLE_ANALYZER='enabled' next build --no-lint",
 		"build": "next build",
