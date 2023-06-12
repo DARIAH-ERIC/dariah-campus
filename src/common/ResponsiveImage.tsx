@@ -1,19 +1,11 @@
-import Image from 'next/image'
-import type { ImageProps } from 'next/image'
+import { type ImageProps } from "next/image";
+import Image from "next/image";
 
 export function ResponsiveImage(props: ImageProps): JSX.Element {
-  if (typeof props.src === 'string') {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img alt="" {...props} src={props.src} />
-  }
+	if (typeof props.src === "string") {
+		// @ts-expect-error It's fine.
+		return <img alt="" {...props} src={props.src} />;
+	}
 
-  return (
-    <Image
-      layout="responsive"
-      sizes="800px"
-      objectFit="contain"
-      {...props}
-      alt={props.alt}
-    />
-  )
+	return <Image sizes="800px" className="object-contain" {...props} alt={props.alt} />;
 }

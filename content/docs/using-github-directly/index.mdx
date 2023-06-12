@@ -67,39 +67,39 @@ You should now have a functioning environment in Atom for your work on new DARIA
 #### Instructions for Mac-users
 
 1. Open up Terminal (usually found in 'Utilities' on a Mac).
-2. Go to `https://brew.sh/`
+2. Go to [https://brew.sh](https://brew.sh)
 3. Select the 'Install Homebrew' link and paste it into Terminal
 4. You will be prompted for a password in Terminal: enter your laptop password. The installation will begin.
-5. Next, type: "`brew install node`" into Terminal and hit 'return'
-6. Then, you need to install 'Yarn'. Type "`brew install yarn`" into Terminal, and hit 'return'.
+5. Next, type: "`brew install node@18`" into Terminal and hit 'return'
+6. Then, you need to install 'pnpm'. Type "`brew install pnpm`" into Terminal, and hit 'return'.
 
-Now that you have yarn installed on your system, you will be able to use it to install all the packages you need to run DARIAH-Campus locally on your computer. To do this:
+Now that you have `pnpm` installed on your system, you will be able to use it to install all the packages you need to run DARIAH-Campus locally on your computer. To do this:
 
 1. In Finder, go to the folder in which you cloned your DARIAH-Campus fork.
 2. In Terminal, type "`cd`" to change directory (also note, be sure to add a space after 'cd'), then
 3. Drag and drop the folder from Finder into Terminal _on the same line as “cd “_. This will automatically write the full path ('breadcrumb') to the DARIAH-Campus folder in Terminal.
 4. Then type "`pwd`" (path to working directory) in Terminal and hit 'return' This will show the correct breadcrumb trail to the folder to make sure you have the right one.
-5. Type "`yarn install`" into Terminal (remember to hit 'enter'). Installation may take a while if you haven't installed this before. There is a progress bar on the bottom of Terminal that shows you how far along you are.
+5. Type "`pnpm install`" into Terminal (remember to hit 'enter'). Installation may take a while if you haven't installed this before. There is a progress bar on the bottom of Terminal that shows you how far along you are.
 
 Now that you have all the packages you need to preview DARIAH-Campus, you can start the server and build the site like this:
 
 1. In Terminal, go to your local DARIAH-Campus folder (see previous steps 1, and 3 in the previous section for how to do this)
-2. Type "`yarn dev`" (+ enter). This build the whole site locally and start a server to run it in. This may also take a little while.
-3. Once the build process is complete, you will be able to view DARIAH-Campus in the browser using the link given to you in the terminal, which will look like this: ⠀ `http://localhost:3000/`
+2. Type "`pnpm dev`" (+ enter). This build the whole site locally and start a server to run it in. This may also take a little while.
+3. Once the build process is complete, you will be able to view DARIAH-Campus in the browser using the link given to you in the terminal, which will look like this: `http://localhost:3000/`
 4. Copy the url given in Terminal into your browser, which will give you the DARIAH-Campus home page. _Any saved edits you make to the DARIAH-Campus .mdx files in your editor will automatically be shown in your browser._
 
 #### Instructions for Windows users
 
-1. Download node.js from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+1. Download node.js from [https://nodejs.org/en/download](https://nodejs.org/en/download/)
 2. Run node.js installer
-3. Open 'command line' and check node version by typing: `node -v`
-4. Download yarn from [https://yarnpkg.com/lang/en/docs/install/#windows-stable](https://yarnpkg.com/lang/en/docs/install/#windows-stable)
-5. Type `Run yarn installer` (enter)
-6. Check yarn version: `yarn --version`
-7. Install the necessary pacakges by typing `yarn install` (+ enter)
+3. Open 'command line' and check node version by typing: `node -v`. The current version we recommend is Node 18.
+4. Download `pnpm` from [https://pnpm.io/installation](https://pnpm.io/installation)
+5. Type `Run pnpm installer` (enter)
+6. Check `pnpm` version: `pnpm --version`
+7. Install the necessary pacakges by typing `pnpm install` (+ enter)
 8. In GitHub desktop, make sure that you have the most up-to-date version of DARIAH-Campus. To do this, follow the instructions above to 'Fetch Origin' and 'Merge' it to your local branch
 9. Once any changes from the DARIAH-Campus 'main' on GitHub has been merged to your local branch, navigate to inside the dariah-campus directory (where the file package.json is located) in your file manager.
-10. Run: `yarn dev`. This will build the entire website and launch a server to run it in on your computer. Once the build process is complete, you can:
+10. Run: `pnpm dev`. This will build the entire website and launch a server to run it in on your computer. Once the build process is complete, you can:
 11. Navigate to `localhost:3000` in your browser to preview DARIAH-Campus. _Any saved edits you make to the DARIAH-Campus .mdx files in your editor will automatically be shown in your browser._
 
 > **REMEMBER!** Any changes you make in Atom will only show up on your local version, but will not make any changes to the actual live version of DARIAH-Campus. This is useful if you want to try out a few things before updating. However, it's important to remember that if you WANT to make changes to the live version, you will need to 'commit' them, 'push origin' and then 'create a pull request' so that the DARIAH-Campus editors can approve the changes.
@@ -239,7 +239,7 @@ To insert a YouTube video, use the following code:
 />
 ```
 
-- the "id" is the part of the url after "v=" and before "&". So, for "https://www.youtube.com/watch?v=SI3u9nu7YEY&t=164s" it is: "SI3u9nu7YEY".
+- the "id" is the part of the url after "v=" and before "&". So, for "[https://www.youtube.com/watch?v=SI3u9nu7YEY&t=164s](https://www.youtube.com/watch?v=SI3u9nu7YEY&t=164s)" it is: "SI3u9nu7YEY".
 - "image" allows you to choose a screenshot that will appear until the learner clicks the play button.
 
 There are other options for inserting videos; guidance for these can be found in the [Sample-resource template](https://github.com/DARIAH-ERIC/dariah-campus/blob/main/content/templates/resource/index.mdx?plain=1).

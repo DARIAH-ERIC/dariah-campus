@@ -1,17 +1,17 @@
-import type { ReactNode } from 'react'
+import { type ReactNode } from "react";
 
-import { Svg as PencilIcon } from '@/assets/icons/pencil.svg'
-import type { collections } from '@/cms/cms.config'
-import { Icon } from '@/common/Icon'
-import { routes } from '@/navigation/routes.config'
-import { createUrl } from '@/utils/createUrl'
-import { url as baseUrl } from '~/config/site.config'
+import PencilIcon from "@/assets/icons/pencil.svg?symbol";
+import { type collections } from "@/cms/cms.config";
+import { Icon } from "@/common/Icon";
+import { routes } from "@/navigation/routes.config";
+import { createUrl } from "@/utils/createUrl";
+import { url as baseUrl } from "~/config/site.config";
 
 export interface EditLinkProps {
-  children: ReactNode
-  className?: string
-  collection: keyof typeof collections
-  id: string
+	children: ReactNode;
+	className?: string;
+	collection: keyof typeof collections;
+	id: string;
 }
 
 /**
@@ -22,21 +22,21 @@ export interface EditLinkProps {
  * back via browser back button.
  */
 export function EditLink(props: EditLinkProps): JSX.Element {
-  const { className, collection, id, children } = props
+	const { className, collection, id, children } = props;
 
-  return (
-    <a
-      href={String(
-        createUrl({
-          ...routes.cms(),
-          hash: `/collections/${collection}/entries/${id}/index`,
-          baseUrl,
-        }),
-      )}
-      className={className}
-    >
-      <Icon icon={PencilIcon} className="flex-shrink-0" />
-      {children}
-    </a>
-  )
+	return (
+		<a
+			href={String(
+				createUrl({
+					...routes.cms(),
+					hash: `/collections/${collection}/entries/${id}/index`,
+					baseUrl,
+				}),
+			)}
+			className={className}
+		>
+			<Icon icon={PencilIcon} className="flex-shrink-0" />
+			{children}
+		</a>
+	);
 }
