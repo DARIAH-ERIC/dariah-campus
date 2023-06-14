@@ -5,9 +5,9 @@
 	"type": "module",
 	"engines": {
 		"node": "18.x",
-		"yarn": "1.x"
+		"pnpm": "8.x"
 	},
-	"packageManager": "yarn@1.22.19",
+	"packageManager": "pnpm@8.6.2",
 	"scripts": {
 		"analyze": "cross-env BUNDLE_ANALYZER='enabled' next build --no-lint",
 		"build": "next build",
@@ -22,13 +22,13 @@
 		"debug": "cross-env NODE_OPTIONS='--inspect' next dev",
 		"dev": "next dev",
 		"format:check": "prettier . !./content --cache --check --ignore-path .gitignore",
-		"format:fix": "yarn run format:check --write",
+		"format:fix": "pnpm run format:check --write",
 		"lint:check": "eslint . --cache --ignore-path .gitignore",
-		"lint:fix": "yarn run lint:check --fix",
+		"lint:fix": "pnpm run lint:check --fix",
 		"lint:md:check": "remark . --quiet --ignore-path .gitignore --ignore-pattern README.md",
-		"lint:md:fix": "yarn run lint:md:check --output",
+		"lint:md:fix": "pnpm run lint:md:check --output",
 		"lint:mdx:check": "remark . --use mdx --quiet --ignore-path .gitignore --ignore-pattern **/content/templates/**",
-		"lint:mdx:fix": "yarn run lint:mdx:check --output",
+		"lint:mdx:fix": "pnpm run lint:mdx:check --output",
 		"postbuild": "run-s create:search-index create:sitemap",
 		"prebuild": "run-s create:favicons cms:styles create:feed create:metadata-dump create:redirects",
 		"prepare": "run-s setup",
@@ -36,7 +36,7 @@
 		"start": "next start",
 		"test": "exit 0",
 		"types:check": "tsc --noEmit",
-		"update:search-index": "cross-env NEXT_PUBLIC_BASE_URL=https://campus.dariah.eu yarn run create:search-index",
+		"update:search-index": "cross-env NEXT_PUBLIC_BASE_URL=https://campus.dariah.eu pnpm run create:search-index",
 		"validate": "run-s format:check lint:check types:check test"
 	},
 	"dependencies": {
@@ -51,12 +51,12 @@
 		"@stefanprobst/rehype-extract-toc": "^2.2.0",
 		"@stefanprobst/rehype-shiki": "^2.2.1",
 		"@stefanprobst/remark-resource-links": "^1.0.2",
-		"algoliasearch": "^4.17.1",
+		"algoliasearch": "^4.17.2",
 		"codemirror": "^6.0.1",
 		"hastscript": "^7.2.0",
 		"image-size": "^1.0.2",
 		"netlify-cms-app": "^2.15.72",
-		"next": "^13.4.4",
+		"next": "^13.4.5",
 		"nprogress": "^0.2.0",
 		"react": "^18.2.0",
 		"react-aria": "^3.25.0",
@@ -74,7 +74,7 @@
 		"retext-smartypants": "^5.2.0",
 		"rosetta": "^1.1.0",
 		"sharp": "^0.32.1",
-		"shiki": "^0.14.1",
+		"shiki": "^0.14.2",
 		"strip-indent": "^4.0.0",
 		"strip-markdown": "^5.0.1",
 		"unified": "^10.1.2",
@@ -93,9 +93,9 @@
 		"@commitlint/cli": "^17.6.5",
 		"@mdx-js/loader": "^2.3.0",
 		"@mdx-js/mdx": "^2.3.0",
-		"@next/bundle-analyzer": "^13.4.4",
-		"@next/eslint-plugin-next": "^13.4.4",
-		"@next/mdx": "^13.4.4",
+		"@next/bundle-analyzer": "^13.4.5",
+		"@next/eslint-plugin-next": "^13.4.5",
+		"@next/mdx": "^13.4.5",
 		"@react-types/shared": "^3.18.1",
 		"@stefanprobst/favicons": "^2.2.2",
 		"@stefanprobst/next-feed": "^1.0.0",
@@ -106,7 +106,7 @@
 		"@types/mdx": "^2.0.5",
 		"@types/node": "^18.16.16",
 		"@types/nprogress": "^0.2.0",
-		"@types/react": "^18.2.8",
+		"@types/react": "^18.2.11",
 		"@types/unist": "^2.0.6",
 		"autoprefixer": "^10.4.14",
 		"check-links": "^2.1.2",
@@ -131,9 +131,6 @@
 		"unified-lint-rule": "^2.1.2",
 		"xast-util-feed": "^1.2.3",
 		"xast-util-to-xml": "^3.0.2"
-	},
-	"resolutions": {
-		"intl-messageformat": "10.3.5"
 	},
 	"browserslist": [
 		"defaults",
@@ -198,7 +195,7 @@
 		]
 	},
 	"simple-git-hooks": {
-		"pre-commit": "yarn lint-staged"
+		"pre-commit": "pnpm exec lint-staged"
 	},
 	"volta": {
 		"node": "18.16.0"

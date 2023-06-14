@@ -1,5 +1,5 @@
 import { runSync } from "@mdx-js/mdx";
-import { type FC } from "react";
+import { type FC, Fragment } from "react";
 import * as runtime from "react/jsx-runtime";
 
 import { type MdxComponentMap } from "@/mdx/components";
@@ -21,6 +21,8 @@ export interface Mdx<T extends Record<string, unknown> = Record<string, unknown>
 export function runMdxSync<T extends Record<string, unknown> = Record<string, unknown>>(
 	code: string,
 ): Mdx<T> {
+	if (code.length === 0) return { MdxContent: Fragment, metadata: {} } as unknown as Mdx<T>;
+
 	const { default: MdxContent, ...metadata } = runSync(code, runtime);
 
 	return { MdxContent, metadata };
