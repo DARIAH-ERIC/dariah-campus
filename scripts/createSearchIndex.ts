@@ -1,4 +1,4 @@
-import { loadEnvConfig } from "@next/env";
+import env from "@next/env";
 import { type SearchIndex } from "algoliasearch";
 import algoliasearch from "algoliasearch";
 
@@ -16,7 +16,7 @@ import { log } from "@/utils/log";
 import { noop } from "@/utils/noop";
 
 // eslint-disable-next-line import/no-named-as-default-member
-loadEnvConfig(process.cwd(), false, { info: noop, error: log.error });
+env.loadEnvConfig(process.cwd(), false, { info: noop, error: log.error });
 
 const isProductionDeploy = process.env["NEXT_PUBLIC_BASE_URL"]?.startsWith(
 	"https://campus.dariah.eu",
