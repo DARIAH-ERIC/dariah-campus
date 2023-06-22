@@ -35,7 +35,6 @@
 		"start": "next start",
 		"test": "exit 0",
 		"types:check": "tsc --noEmit",
-		"update:search-index": "NEXT_PUBLIC_BASE_URL=\"https://campus.dariah.eu\" pnpm run create:search-index",
 		"validate": "run-s format:check lint:check types:check test"
 	},
 	"dependencies": {
