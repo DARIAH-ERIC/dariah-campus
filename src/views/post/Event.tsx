@@ -1,3 +1,4 @@
+import cx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -463,6 +464,8 @@ function EventSession(props: EventSessionProps) {
 		window.navigator.clipboard.writeText(citation);
 	}
 
+	const hasSynthesis = isNonEmptyString(session.synthesis);
+
 	return (
 		<div id={`session-${index}`} className="session">
 			<div className="session__heading">
@@ -472,14 +475,17 @@ function EventSession(props: EventSessionProps) {
 				</h1>
 				<div className="flex">
 					<button
-						className="!mx-4 !flex items-center justify-center text-white link-download p-[1vw]"
+						className={cx(
+							"!flex items-center justify-center text-white link-download p-[1vw]",
+							hasSynthesis && "!mx-4",
+						)}
 						onClick={onCopyCitation}
 						title="Copy citation to clipboard"
 					>
 						<FaClipboard size="1.5em" className="w-full h-full" />
 						<span className="sr-only">Copy citation to clipboard</span>
 					</button>
-					{isNonEmptyString(session.synthesis) ? (
+					{hasSynthesis ? (
 						<a
 							href={session.synthesis}
 							download
