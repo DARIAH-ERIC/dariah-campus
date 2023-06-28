@@ -1,13 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaCloud, FaEnvelope, FaFilePdf, FaFlickr, FaGlobe, FaTwitter } from "react-icons/fa";
+import {
+	FaClipboard,
+	FaCloud,
+	FaEnvelope,
+	FaFilePdf,
+	FaFlickr,
+	FaGlobe,
+	FaTwitter,
+} from "react-icons/fa";
 import { type OverlayTriggerState } from "react-stately";
 import { useOverlayTriggerState } from "react-stately";
 
 import OrcidIcon from "@/assets/icons/brand/orcid.svg?symbol";
 import AvatarIcon from "@/assets/icons/user.svg?symbol";
 import CloseIcon from "@/assets/icons/x.svg?symbol";
-import { type Event as EventData } from "@/cms/api/events.api";
+import { type Event as EventData, type EventMetadata } from "@/cms/api/events.api";
 import { Figure } from "@/cms/components/Figure";
 import { Video } from "@/cms/components/Video";
 import { getFullName } from "@/cms/utils/getFullName";
@@ -40,6 +48,7 @@ export function Event(props: EventProps): JSX.Element {
 				<EventSessions
 					sessions={metadata.sessions}
 					// downloads={metadata.downloads}
+					meta={metadata}
 				/>
 				<EventSideNav sessions={metadata.sessions} />
 			</div>
@@ -144,7 +153,7 @@ function EventOverview(props: EventOverviewProps) {
 						</div>
 
 						<aside className="home__aside">
-							<EventSocialLinks social={social} />
+							<EventSocialLinks social={social} meta={metadata} />
 							<EventNav
 								hasAboutOverlay={Boolean(metadata.about)}
 								hasPrepOverlay={Boolean(metadata.prep)}
@@ -269,23 +278,41 @@ function EventToc(props: EventTocProps) {
 
 interface EventSocialLinksProps {
 	social: EventProps["event"]["data"]["metadata"]["social"];
+	meta: EventMetadata;
 }
 
 /**
  * Event social media links.
  */
 function EventSocialLinks(props: EventSocialLinksProps) {
-	const { social } = props;
+	const { social = {}, meta } = props;
 
-	if (social == null) return <div />;
+	function onCopyCitation() {
+		const citation = [
+			meta.authors.map((person) => [person.firstName, person.lastName].join(" ")).join(", "),
+			`(${new Date(meta.date).getUTCFullYear()})` + ":",
+			meta.title + ".",
+			meta.eventType,
+		].join(" ");
+
+		window.navigator.clipboard.writeText(citation);
+	}
 
 	return (
 		<ul className="home__share">
+			<li className="mr-2.5">
+				<button onClick={onCopyCitation} className="!inline-grid" title="Copy citation">
+					<div className="relative flex items-center justify-center h-full">
+						<FaClipboard />
+						<span className="sr-only">Copy citation</span>
+					</div>
+				</button>
+			</li>
 			{isNonEmptyString(social.twitter) ? (
 				<li className="mr-2.5">
 					<a
 						href={String(new URL(social.twitter, "https://twitter.com"))}
-						className="home__share__twitter"
+						className="home__share__twitter !inline-grid"
 						aria-label="Share on Twitter"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -301,6 +328,7 @@ function EventSocialLinks(props: EventSocialLinksProps) {
 					<a
 						href={social.website}
 						aria-label="Visit website"
+						className="!inline-grid"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
@@ -395,15 +423,16 @@ function EventNav(props: EventNavProps) {
 
 interface EventSessionsProps {
 	sessions: EventProps["event"]["data"]["metadata"]["sessions"];
+	meta: EventMetadata;
 }
 
 function EventSessions(props: EventSessionsProps) {
-	const { sessions = [] } = props;
+	const { meta, sessions = [] } = props;
 
 	return (
 		<div className="relative">
 			{sessions.map((session, index) => {
-				return <EventSession key={index} session={session} index={index} />;
+				return <EventSession key={index} session={session} index={index} meta={meta} />;
 			})}
 		</div>
 	);
@@ -412,10 +441,27 @@ function EventSessions(props: EventSessionsProps) {
 interface EventSessionProps {
 	session: EventProps["event"]["data"]["metadata"]["sessions"][number];
 	index: number;
+	meta: EventMetadata;
 }
 
 function EventSession(props: EventSessionProps) {
-	const { session, index } = props;
+	const { session, index, meta } = props;
+
+	function onCopyCitation() {
+		const speakers = session.speakers.map((person) =>
+			[person.firstName, person.lastName].join(" "),
+		);
+
+		const year = `(${new Date(meta.date).getUTCFullYear()})`;
+
+		const title = session.title;
+
+		const citation = [speakers, year + ":", title, "in:", meta.title + ".", meta.eventType].join(
+			" ",
+		);
+
+		window.navigator.clipboard.writeText(citation);
+	}
 
 	return (
 		<div id={`session-${index}`} className="session">
@@ -424,18 +470,28 @@ function EventSession(props: EventSessionProps) {
 					<span className="square" />
 					<strong>{session.title}</strong>
 				</h1>
-				{isNonEmptyString(session.synthesis) ? (
-					<a
-						href={session.synthesis}
-						download
-						target="_blank"
-						rel="noopener noreferrer"
-						className="!flex items-center justify-center text-white link-download p-[1vw]"
+				<div className="flex">
+					<button
+						className="!mx-4 !flex items-center justify-center text-white link-download p-[1vw]"
+						onClick={onCopyCitation}
+						title="Copy citation to clipboard"
 					>
-						<FaFilePdf size="1.5em" className="w-full h-full" />
-						<span className="sr-only">Download the session synthesis</span>
-					</a>
-				) : null}
+						<FaClipboard size="1.5em" className="w-full h-full" />
+						<span className="sr-only">Copy citation to clipboard</span>
+					</button>
+					{isNonEmptyString(session.synthesis) ? (
+						<a
+							href={session.synthesis}
+							download
+							target="_blank"
+							rel="noopener noreferrer"
+							className="!flex items-center justify-center text-white link-download p-[1vw]"
+						>
+							<FaFilePdf size="1.5em" className="w-full h-full" />
+							<span className="sr-only">Download the session synthesis</span>
+						</a>
+					) : null}
+				</div>
 			</div>
 
 			<div className="session__core">
