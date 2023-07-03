@@ -7,6 +7,7 @@ export const videoProviders = {
 	youtube: "YouTube",
 	vimeo: "Vimeo",
 	nakala: "Nakala",
+	"uni-helsinki": "University of Helsinki",
 } as const;
 
 export type VideoProvider = keyof typeof videoProviders;
@@ -65,6 +66,8 @@ function useVideo(provider: VideoProvider, id: string, autoPlay = false, startTi
 			return getVimeoUrl(id, autoPlay, startTime);
 		case "nakala":
 			return getNakalaUrl(id, autoPlay, startTime);
+		case "uni-helsinki":
+			return getUniHelsinkiUrl(id, autoPlay, startTime);
 	}
 }
 
@@ -103,6 +106,18 @@ function getNakalaUrl(id: string, _autoPlay = false, _startTime?: number) {
 
 	const embedUrl = createUrl({
 		pathname: id,
+		baseUrl: BASE_URL,
+	});
+
+	return embedUrl;
+}
+
+function getUniHelsinkiUrl(id: string, _autoPlay = false, _startTime?: number) {
+	const BASE_URL = "https://unitube.it.helsinki.fi";
+
+	const embedUrl = createUrl({
+		pathname: "/unitube/",
+		query: { id },
 		baseUrl: BASE_URL,
 	});
 

@@ -12,7 +12,7 @@ export interface DownloadProps {
 export function Download(props: DownloadProps): JSX.Element | null {
 	const { url, title, fileName } = props;
 
-	if (url.length === 0) return null
+	if (url.length === 0) return null;
 
 	return (
 		<a href={url} download={fileName ?? true}>
