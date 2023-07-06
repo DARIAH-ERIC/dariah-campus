@@ -1,35 +1,29 @@
-import type { LinkProps } from 'next/link'
-import Link from 'next/link'
-import { Children, cloneElement } from 'react'
+import Link, { type LinkProps } from "next/link";
+import { type ReactNode } from "react";
 
-import type { RouteMatcher } from '@/navigation/useCurrentRoute'
-import { useCurrentRoute } from '@/navigation/useCurrentRoute'
+import { type RouteMatcher, useCurrentRoute } from "@/navigation/useCurrentRoute";
 
 export interface NavLinkProps extends LinkProps {
-  children: JSX.Element | ((isCurrent: boolean) => JSX.Element)
-  isMatching?: RouteMatcher
+	children: ReactNode;
+	isMatching?: RouteMatcher;
+	className?: string | ((isCurrent: boolean) => string);
 }
 
 /**
  * Navigation link, sets `aria-current`.
  */
 export function NavLink(props: NavLinkProps): JSX.Element {
-  const { href, isMatching, children } = props
+	const { href, isMatching, children, className } = props;
 
-  const isCurrent = useCurrentRoute(href, isMatching)
+	const isCurrent = useCurrentRoute(href, isMatching);
 
-  const anchorElement =
-    typeof children === 'function'
-      ? children(isCurrent)
-      : Children.only(children)
-
-  return (
-    <Link href={href}>
-      {isCurrent
-        ? cloneElement(anchorElement, {
-            'aria-current': 'page',
-          })
-        : anchorElement}
-    </Link>
-  )
+	return (
+		<Link
+			href={href}
+			aria-current={isCurrent ? "page" : undefined}
+			className={typeof className === "function" ? className(isCurrent) : className}
+		>
+			{children}
+		</Link>
+	);
 }

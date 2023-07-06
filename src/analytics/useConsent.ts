@@ -1,59 +1,56 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
-import { service } from '@/analytics/service'
+import { service } from "@/analytics/service";
 
-type Status = 'accepted' | 'rejected'
-type StoreStatus = 'initial' | 'unknown' | Status
+type Status = "accepted" | "rejected";
+type StoreStatus = Status | "initial" | "unknown";
 
 export const consentStore = {
-  get(): string | null {
-    return window.localStorage.getItem('analytics-consent')
-  },
-  set(status: Status): void {
-    window.localStorage.setItem('analytics-consent', status)
-  },
-}
+	get(): string | null {
+		return window.localStorage.getItem("analytics-consent");
+	},
+	set(status: Status): void {
+		window.localStorage.setItem("analytics-consent", status);
+	},
+};
 
-export function useConsent(): [
-  StoreStatus,
-  { accept: () => void; reject: () => void },
-] {
-  const [status, setStatus] = useState<StoreStatus>('initial')
+export function useConsent(): [StoreStatus, { accept: () => void; reject: () => void }] {
+	const [status, setStatus] = useState<StoreStatus>("initial");
 
-  useEffect(() => {
-    const consent = consentStore.get()
+	useEffect(() => {
+		const consent = consentStore.get();
 
-    switch (consent) {
-      case 'accepted':
-      case 'rejected':
-        setStatus(consent)
-        break
-      default:
-        setStatus('unknown')
-    }
-  }, [])
+		switch (consent) {
+			case "accepted":
+			case "rejected":
+				setStatus(consent);
+				break;
+			default:
+				setStatus("unknown");
+		}
+	}, []);
 
-  useEffect(() => {
-    switch (status) {
-      case 'accepted':
-        consentStore.set(status)
-        service.optIn()
-        break
-      case 'rejected':
-        consentStore.set(status)
-        service.optOut()
-        break
-      default:
-    }
-  }, [status])
+	useEffect(() => {
+		switch (status) {
+			case "accepted":
+				consentStore.set(status);
+				service.optIn();
+				break;
+			case "rejected":
+				consentStore.set(status);
+				service.optOut();
+				break;
+			default:
+		}
+	}, [status]);
 
-  function accept() {
-    setStatus('accepted')
-  }
+	function accept() {
+		setStatus("accepted");
+	}
 
-  function reject() {
-    setStatus('rejected')
-  }
+	function reject() {
+		setStatus("rejected");
+	}
 
-  return [status, { accept, reject }]
+	return [status, { accept, reject }];
 }

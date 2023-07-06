@@ -1,11 +1,11 @@
-import type * as Hast from 'hast'
-import type { MDXJsxFlowElement } from 'hast-util-to-estree'
-import sizeOf from 'image-size'
-import type { Transformer } from 'unified'
-import visit from 'unist-util-visit'
-import type { VFile } from 'vfile'
+import type * as Hast from "hast";
+import sizeOf from "image-size";
+import { type MdxJsxFlowElement } from "mdast-util-mdx-jsx";
+import { type Transformer } from "unified";
+import { visit } from "unist-util-visit";
+import { type VFile } from "vfile";
 
-import { copyAsset } from '@/mdx/utils/copyAsset'
+import { copyAsset } from "@/mdx/utils/copyAsset";
 
 /**
  * Rehype plugin which copies image assets referenced in an mdx `image` attribute,
@@ -17,90 +17,91 @@ import { copyAsset } from '@/mdx/utils/copyAsset'
  * TODO: add blur placeholder.
  */
 export default function attacher(): Transformer {
-  return transformer
+	return transformer;
 
-  async function transformer(tree: Hast.Node, file: VFile) {
-    const imageBlurPromises: Array<Promise<void>> = []
+	async function transformer(tree: Hast.Node, file: VFile) {
+		const imageBlurPromises: Array<Promise<void>> = [];
 
-    visit(tree, 'mdxJsxFlowElement', visitor)
+		visit(tree, "mdxJsxFlowElement", visitor);
 
-    await Promise.all(imageBlurPromises)
+		await Promise.all(imageBlurPromises);
 
-    function visitor(node: MDXJsxFlowElement) {
-      const attribute = node.attributes.find((attribute) => {
-        return 'name' in attribute && attribute.name === 'image'
-      })
-      if (attribute == null) return
+		function visitor(node: MdxJsxFlowElement) {
+			const attribute = node.attributes.find((attribute) => {
+				return "name" in attribute && attribute.name === "image";
+			});
+			if (attribute == null) return;
 
-      const src = attribute.value
-      if (typeof src !== 'string') return
+			const src = attribute.value;
+			if (typeof src !== "string") return;
 
-      const paths = copyAsset(src, file.path)
-      if (paths == null) return
-      const { publicPath, srcFilePath } = paths
+			const paths = copyAsset(src, file.path);
+			if (paths == null) return;
+			const { publicPath, srcFilePath } = paths;
 
-      /** When the image does not exist this will throw. */
-      const { width, height } = sizeOf(srcFilePath)
+			/** When the image does not exist this will throw. */
+			const { width, height } = sizeOf(srcFilePath);
 
-      const imageSrcProps = {
-        type: 'ObjectExpression',
-        properties: [
-          {
-            type: 'Property',
-            key: {
-              type: 'Identifier',
-              name: 'src',
-            },
-            value: {
-              type: 'Literal',
-              value: publicPath,
-            },
-            kind: 'init',
-          },
-          {
-            type: 'Property',
-            key: {
-              type: 'Identifier',
-              name: 'width',
-            },
-            value: {
-              type: 'Literal',
-              value: width,
-            },
-            kind: 'init',
-          },
-          {
-            type: 'Property',
-            key: {
-              type: 'Identifier',
-              name: 'height',
-            },
-            value: {
-              type: 'Literal',
-              value: height,
-            },
-            kind: 'init',
-          },
-        ],
-      }
+			const imageSrcProps = {
+				type: "ObjectExpression",
+				properties: [
+					{
+						type: "Property",
+						key: {
+							type: "Identifier",
+							name: "src",
+						},
+						value: {
+							type: "Literal",
+							value: publicPath,
+						},
+						kind: "init",
+					},
+					{
+						type: "Property",
+						key: {
+							type: "Identifier",
+							name: "width",
+						},
+						value: {
+							type: "Literal",
+							value: width,
+						},
+						kind: "init",
+					},
+					{
+						type: "Property",
+						key: {
+							type: "Identifier",
+							name: "height",
+						},
+						value: {
+							type: "Literal",
+							value: height,
+						},
+						kind: "init",
+					},
+				],
+			};
 
-      attribute.value = {
-        type: 'mdxJsxAttributeValueExpression',
-        value: `{ src: "${publicPath}", width: {${width}}, height: {${height}} }`,
-        data: {
-          estree: {
-            type: 'Program',
-            sourceType: 'module',
-            comments: [],
-            body: [
-              {
-                type: 'ExpressionStatement',
-                expression: imageSrcProps,
-              },
-            ],
-          },
-        },
-      }
-    }
-  }
+			attribute.value = {
+				type: "mdxJsxAttributeValueExpression",
+				value: `{ src: "${publicPath}", width: {${width}}, height: {${height}} }`,
+				data: {
+					estree: {
+						type: "Program",
+						sourceType: "module",
+						comments: [],
+						body: [
+							{
+								type: "ExpressionStatement",
+								// @ts-expect-error Fix later.
+								expression: imageSrcProps,
+							},
+						],
+					},
+				},
+			};
+		}
+	}
 }

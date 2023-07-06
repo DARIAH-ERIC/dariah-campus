@@ -1,10 +1,10 @@
 :root {
-  --page-header-height: 88px;
+	--page-header-height: 88px;
 }
 
 html {
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: var(--page-header-height);
+	scroll-snap-type: y mandatory;
+	scroll-padding-top: var(--page-header-height);
 }
 
 /* temporary hack for quiz questions */
@@ -18,21 +18,21 @@ in the component itself
 */
 
 .choice span p {
-  margin-top: 0;
-  margin-bottom: 0;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .choices {
-  margin-bottom: 1em;
+	margin-bottom: 1em;
 }
 
 /* temp hack for figure and image spacing */
 
 figure img,
 figure figcaption p {
-  @apply my-0 !important;
+	@apply my-0 !important;
 }
 
 figure figcaption {
-  @apply mt-3 mb-0 text-center !important;
+	@apply mt-3 mb-0 text-center !important;
 }

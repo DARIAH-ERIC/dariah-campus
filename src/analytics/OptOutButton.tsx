@@ -1,20 +1,18 @@
-import type { ComponentPropsWithoutRef } from 'react'
+import { type ComponentPropsWithoutRef } from "react";
 
-import { consentStore } from '@/analytics/useConsent'
+import { consentStore } from "@/analytics/useConsent";
 
 /**
  * Button to opt-out of analytics service.
  */
-export function OptOutButton(
-  props: ComponentPropsWithoutRef<'button'>,
-): JSX.Element {
-  function decline() {
-    consentStore.set('rejected')
-  }
+export function OptOutButton(props: ComponentPropsWithoutRef<"button">): JSX.Element {
+	function decline() {
+		consentStore.set("rejected");
+	}
 
-  return (
-    <button {...props} onClick={decline}>
-      {props.children}
-    </button>
-  )
+	return (
+		<button {...props} onClick={decline}>
+			{props.children}
+		</button>
+	);
 }

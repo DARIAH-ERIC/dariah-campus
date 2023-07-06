@@ -2,7 +2,7 @@
 title: "LEX3: Publishing Legacy Dictionaries with Publex"
 lang: en
 date: 2022-04-25T09:14:43.829Z
-version: 1.0.0
+version: 1.0.1
 authors:
   - klee-anne
 editors:
@@ -17,7 +17,8 @@ contributors:
   - weyand-sandra
 tags:
   - lexicography
-abstract: This course introduces the legacy dictionary viewer Publex, a generic, modular dictionary publication tool for retrodigitized dictionaries.
+abstract: This course introduces Publex, a modern, generic, modular dictionary
+  publication tool for retrodigitized / legacy dictionaries.
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: training-module
@@ -29,7 +30,6 @@ uuid: IbZ4arshkA06y5Uem0UsT
 categories:
   - dariah
 ---
-
 This course introduces the legacy dictionary viewer Publex, a generic, modular dictionary publication tool for retrodigitized dictionaries.
 
 ## Learning Outcomes
@@ -112,7 +112,7 @@ Logged in to your account in the upper menu bar, the profile button takes you to
 
 ##### Dictionary entries
 
-- The files are required to be provided in **valid XML**.
+- The files are required to be provided in **valid XML**. (We recommend providing the data according to the [guidelines of TEI Lex-0](https://dariah-eric.github.io/lexicalresources/pages/TEILex0/TEILex0.html).)
 - Please make sure that every dictionary text you want to be printed is annotated as a text node. **Dictionary texts should not be encoded as an attribute value**.
 - In case of large dictionaries, the files for the dictionary entries should be split into several files. The individual files should **not** be **larger than 16 MB**.
 
@@ -144,7 +144,7 @@ Here you can see an example with the special character “u with superscripted p
 
 ![u with superscripted plus (entity file)](images/uplusabove.png)
 
-4. In the XML file of your dictionary text, replace the corresponding special character with `&entity name;` (entity name = “plusaboveu” in the following example; used as "\&plusaboveu;").
+4. In the XML file of your dictionary text, replace the corresponding special character with `&entity name;` (entity name = “plusaboveu” in the following example; used as "&plusaboveu;").
 
 ![u with superscripted plus (xml)](images/uplusabove_xml.png)
 
@@ -210,23 +210,14 @@ b) using Mac: To open terminal from your applications folder, click your desktop
 c) using Linux: Press Ctrl+Alt+T.
 
 - Once opened the terminal window, change into the local directory where you want to clone your repository. `cd <path_to_directory>`
-
 - Paste the command you copied from Bitbucket, e.g.: `git clone https://Trifoglio@bitbucket.org/Trifoglio/my_dictionary.git`
-
 - Now a new sub-directory should appear on your local drive with the same name as the repository.
-
 - In this directory, **create a new folder** which you call "data" for example.
-
 - **Put all the files that belong to your dictionary into this folder**. Note: If you want to use entities from the KompLett font, you must also place the file allEntities.xml in this folder.
-
 - Now you are almost finished. The final step is to transfer the locally added files to the remote Bitbucket Cloud repository. In your terminal window:
-
 - enter `cd <path_to_local_repo>`
-
 - enter `git add --all`
-
 - enter `git commit -m '<commit_message>'` with a commit message that describes your changes, e.g. `git commit -m 'upload dictionary data'`
-
 - enter `git push`
 
 If everything worked fine, you should now see the files in your repository online in your Bitbucket account. Now we are prepared to create a new dictionary in Publex!
@@ -274,13 +265,12 @@ c) Tell Publex, whether your repository is public or private.
 1. If your repository is public, no further settings are necessary for the import. If it is a private repository, please mark the checkbox "This is a private Git repository!".
 
    ![Private Git](images/privategit.png)
-
 2. By activating the button, a SSH key becomes visible. Please add this key to your Bitbucket account.
 
 - Copy the key.
-- In your Bitbucket account, go to your personal settings (see the icon for your account in the left corner on the bottom).
+- In your Bitbucket account, go to your personal settings (see the settings-icon in the upper right corner).
 
-![Personal settings](images/personal_settings.png)
+![Personal settings](images/bitbucket_personal-settings.png)
 
 - In personal settings, go to "SSH keys" and click on "Add key". A Window opens where you can paste your key you copied from Publex.
 
@@ -617,7 +607,7 @@ Further search fields can be added via the plus button. These all are linked wit
 
 Upper and lower case are irrelevant for the entry and blank characters are ignored. Special characters can be replaced by their basic characters in the search, e.g. diacritics do not have to be entered (ë = e).
 
-A truncated search is possible. For example, _bach\*_ returns all words beginning with this character string and _\*bach_ returns the words ending with this string.
+A truncated search is possible. For example, _bach*_ returns all words beginning with this character string and _\*bach_ returns the words ending with this string.
 
 When entering multi-word units, it is necessary to enclose the search string in inverted commas to search for the entered word sequence (e.g. _"laut und buchstabe"_), otherwise the word order will not be taken into account.
 

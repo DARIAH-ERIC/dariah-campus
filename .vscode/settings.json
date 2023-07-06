@@ -1,25 +1,36 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
-  "files.exclude": {
-    "**/node_modules": true,
-    ".eslintcache": true,
-    ".tsbuildinfo": true,
-    ".next": true,
-    "out": true,
-    "storybook-build": true
-  },
-  "search.exclude": {
-    "yarn.lock": true
-  },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "workbench.startupEditor": "readme",
-  "[markdown][mdx]": {
-    "editor.formatOnSave": false,
-    "editor.wordWrap": "on"
-  }
+	"css.validate": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.inlayHints.enabled": "offUnlessPressed",
+	"editor.linkedEditing": true,
+	"editor.quickSuggestions": {
+		"strings": true
+	},
+	"editor.rulers": [100],
+	"eslint.enable": true,
+	"eslint.validate": ["javascript", "typescript", "typescriptreact"],
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"files.eol": "\n",
+	"less.validate": false,
+	"mdx.experimentalLanguageServer": true,
+	"scss.validate": false,
+	"stylelint.enable": true,
+	"stylelint.snippet": ["css", "postcss", "tailwindcss"],
+	"stylelint.validate": ["css", "postcss", "tailwindcss"],
+	"tailwindCSS.validate": true,
+	"terminal.integrated.enablePersistentSessions": false,
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"typescript.inlayHints.parameterNames.enabled": "all",
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"workbench.editor.labelFormat": "medium",
+	"[markdown][mdx]": {
+		"editor.wordWrap": "on"
+	}
 }
