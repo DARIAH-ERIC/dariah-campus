@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { type EditorComponentOptions } from "netlify-cms-core";
 
 import { videoProviders } from "@/cms/components/Video";

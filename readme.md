@@ -36,8 +36,8 @@ link at the bottom of each post.
 ### Run a local CMS backend
 
 You can run a local CMS backend which writes directly to the filesystem, and does not require
-authentication, with `yarn cms:dev`. Then run either a production build of the website with
-`NEXT_PUBLIC_USE_LOCAL_CMS='true' yarn build && yarn start` or a development build with `yarn dev`
+authentication, with `pnpm run cms:dev`. Then run either a production build of the website with
+`NEXT_PUBLIC_USE_LOCAL_CMS='true' pnpm build && pnpm start` or a development build with `pnpm dev`
 and visit [http://localhost:3000/cms](http://localhost:3000/admin). Don't forget to commit and push
 changes via `git`.
 
