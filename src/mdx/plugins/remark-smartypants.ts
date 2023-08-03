@@ -1,12 +1,12 @@
-import type * as Mdast from 'mdast'
-import retext from 'retext'
-import smartypants from 'retext-smartypants'
-import type { Transformer } from 'unified'
-import type * as Unist from 'unist'
-import visit from 'unist-util-visit'
+import type * as Mdast from "mdast";
+import { retext } from "retext";
+import smartypants from "retext-smartypants";
+import { type Transformer } from "unified";
+import type * as Unist from "unist";
+import { visit } from "unist-util-visit";
 
-const options = { dashes: 'oldschool' }
-const processor = retext().use(smartypants, options)
+const options = { dashes: "oldschool" };
+const processor = retext().use(smartypants, options);
 
 /**
  * Transforms regular punctuation marks with typographic quotes, dashes and ellipses.
@@ -14,13 +14,13 @@ const processor = retext().use(smartypants, options)
  * @see https://github.com/retextjs/retext-smartypants
  */
 export default function attacher(): Transformer {
-  return transformer
+	return transformer;
 
-  function transformer(tree: Unist.Node) {
-    visit(tree, 'text', onNode)
+	function transformer(tree: Unist.Node) {
+		visit(tree, "text", onNode);
 
-    function onNode(node: Mdast.Text) {
-      node.value = String(processor.processSync(node.value))
-    }
-  }
+		function onNode(node: Mdast.Text) {
+			node.value = String(processor.processSync(node.value));
+		}
+	}
 }

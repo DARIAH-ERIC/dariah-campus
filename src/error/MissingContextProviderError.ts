@@ -1,7 +1,7 @@
 export class MissingContextProviderError extends Error {
-  name = 'MissingContextProviderError'
+	name = "MissingContextProviderError";
 
-  constructor(hook: string, provider: string) {
-    super(`\`${hook}\` must be nested inside a \`${provider}\`.`)
-  }
+	constructor(hook: string, provider: string) {
+		super(`\`${hook}\` must be nested inside a \`${provider}\`.`);
+	}
 }

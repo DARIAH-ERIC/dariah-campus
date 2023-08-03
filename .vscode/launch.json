@@ -1,19 +1,24 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "pwa-node",
-      "request": "attach",
-      "name": "Next.js: Attach",
-      "skipFiles": ["<node_internals>/**"],
-      "port": 9229
-    },
-    {
-      "type": "pwa-node",
-      "request": "attach",
-      "name": "Next.js: Attach by Process ID",
-      "skipFiles": ["<node_internals>/**"],
-      "processId": "${command:PickProcess}"
-    }
-  ]
+	"configurations": [
+		{
+			"name": "Apps: Web (server-side)",
+			"request": "launch",
+			"runtimeArgs": ["run", "dev"],
+			"runtimeExecutable": "pnpm",
+			"skipFiles": ["<node_internals>/**"],
+			"type": "node"
+		},
+		{
+			"name": "Apps: Web (client-side)",
+			"type": "chrome",
+			"request": "launch",
+			"url": "http://localhost:3000"
+		}
+	],
+	"compounds": [
+		{
+			"name": "Apps: Web",
+			"configurations": ["Apps: Web (server-side)", "Apps: Web (client-side)"]
+		}
+	]
 }
