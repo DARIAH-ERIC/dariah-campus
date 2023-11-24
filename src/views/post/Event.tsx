@@ -492,9 +492,17 @@ function EventSession(props: EventSessionProps) {
 
 	const year = `(${new Date(meta.date).getUTCFullYear()})`;
 
-	const title = session.title;
+	const title = `"${session.title}"`;
 
-	const citation = [speakers, year + ":", title, "in:", meta.title + ".", meta.eventType].join(" ");
+	const citation = [
+		speakers,
+		year + ":",
+		title,
+		"in:",
+		meta.title + ".",
+		meta.eventType + ".",
+		`Session ${index + 1}`,
+	].join(" ");
 
 	function onCopyCitation() {
 		setCopied(true);
