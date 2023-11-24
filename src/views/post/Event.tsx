@@ -1,7 +1,10 @@
 import cx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { Button, OverlayArrow, Tooltip, TooltipTrigger } from "react-aria-components";
 import {
+	FaCheck,
 	FaClipboard,
 	FaCloud,
 	FaEnvelope,
@@ -10,8 +13,7 @@ import {
 	FaGlobe,
 	FaTwitter,
 } from "react-icons/fa";
-import { type OverlayTriggerState } from "react-stately";
-import { useOverlayTriggerState } from "react-stately";
+import { type OverlayTriggerState, useOverlayTriggerState } from "react-stately";
 
 import OrcidIcon from "@/assets/icons/brand/orcid.svg?symbol";
 import AvatarIcon from "@/assets/icons/user.svg?symbol";
@@ -281,33 +283,68 @@ interface EventSocialLinksProps {
 	social: EventProps["event"]["data"]["metadata"]["social"];
 	meta: EventMetadata;
 }
-
 /**
  * Event social media links.
  */
 function EventSocialLinks(props: EventSocialLinksProps) {
 	const { social = {}, meta } = props;
 
-	function onCopyCitation() {
-		const citation = [
-			meta.authors.map((person) => [person.firstName, person.lastName].join(" ")).join(", "),
-			`(${new Date(meta.date).getUTCFullYear()})` + ":",
-			meta.title + ".",
-			meta.eventType,
-		].join(" ");
+	const [isOpen, setOpen] = useState(false);
+	const [copied, setCopied] = useState(false);
 
+	const citation = [
+		meta.authors.map((person) => [person.firstName, person.lastName].join(" ")).join(", "),
+		`(${new Date(meta.date).getUTCFullYear()})` + ":",
+		meta.title + ".",
+		meta.eventType,
+	].join(" ");
+
+	function onCopyCitation() {
+		setCopied(true);
 		window.navigator.clipboard.writeText(citation);
+		window.setTimeout(() => {
+			setCopied(false);
+		}, 2500);
 	}
 
 	return (
 		<ul className="home__share">
 			<li className="mr-2.5">
-				<button onClick={onCopyCitation} className="!inline-grid" title="Copy citation">
-					<div className="relative flex items-center justify-center h-full">
-						<FaClipboard />
-						<span className="sr-only">Copy citation</span>
-					</div>
-				</button>
+				<TooltipTrigger delay={750} isOpen={isOpen || copied} onOpenChange={setOpen}>
+					<Button onPress={onCopyCitation} className="!inline-grid">
+						<div
+							className={cx(
+								"relative flex items-center justify-center h-full",
+								copied && "bg-green-600",
+							)}
+						>
+							{copied ? <FaCheck /> : <FaClipboard />}
+							<span className="sr-only">Copy citation</span>
+						</div>
+					</Button>
+					<Tooltip className="rounded text-xs bg-neutral-800 text-white px-4 py-2 outline-none shadow max-w-[320px] data-[placement=top]:mb-2 data-[placement=bottom]:mt-2 group">
+						<OverlayArrow>
+							<svg
+								width={8}
+								height={8}
+								viewBox="0 0 8 8"
+								className="block fill-neutral-800 group-data-[placement=bottom]:rotate-180"
+							>
+								<path d="M0 0 L4 4 L8 0" />
+							</svg>
+						</OverlayArrow>
+						<div className="overflow-auto max-h-[200px]">
+							{copied ? (
+								<span>Citation copied</span>
+							) : (
+								<>
+									<strong className="mb-1 block">Copy citation to clipboard:</strong>
+									<div>{citation}</div>
+								</>
+							)}
+						</div>
+					</Tooltip>
+				</TooltipTrigger>
 			</li>
 			{isNonEmptyString(social.twitter) ? (
 				<li className="mr-2.5">
@@ -448,20 +485,23 @@ interface EventSessionProps {
 function EventSession(props: EventSessionProps) {
 	const { session, index, meta } = props;
 
+	const [isOpen, setOpen] = useState(false);
+	const [copied, setCopied] = useState(false);
+
+	const speakers = session.speakers.map((person) => [person.firstName, person.lastName].join(" "));
+
+	const year = `(${new Date(meta.date).getUTCFullYear()})`;
+
+	const title = session.title;
+
+	const citation = [speakers, year + ":", title, "in:", meta.title + ".", meta.eventType].join(" ");
+
 	function onCopyCitation() {
-		const speakers = session.speakers.map((person) =>
-			[person.firstName, person.lastName].join(" "),
-		);
-
-		const year = `(${new Date(meta.date).getUTCFullYear()})`;
-
-		const title = session.title;
-
-		const citation = [speakers, year + ":", title, "in:", meta.title + ".", meta.eventType].join(
-			" ",
-		);
-
+		setCopied(true);
 		window.navigator.clipboard.writeText(citation);
+		window.setTimeout(() => {
+			setCopied(false);
+		}, 2500);
 	}
 
 	const hasSynthesis = isNonEmptyString(session.synthesis);
@@ -474,17 +514,48 @@ function EventSession(props: EventSessionProps) {
 					<strong>{session.title}</strong>
 				</h1>
 				<div className="flex">
-					<button
-						className={cx(
-							"!flex items-center justify-center text-white link-download p-[1vw]",
-							hasSynthesis && "!mx-4",
-						)}
-						onClick={onCopyCitation}
-						title="Copy citation to clipboard"
-					>
-						<FaClipboard size="1.5em" className="w-full h-full" />
-						<span className="sr-only">Copy citation to clipboard</span>
-					</button>
+					<TooltipTrigger delay={750} isOpen={isOpen || copied} onOpenChange={setOpen}>
+						<Button
+							className={cx(
+								"!flex items-center justify-center text-white link-download p-[1vw]",
+								hasSynthesis && "!mx-4",
+								copied && "!bg-green-600",
+							)}
+							onPress={onCopyCitation}
+						>
+							{copied ? (
+								<FaCheck size="1.5em" className="w-full h-full" />
+							) : (
+								<FaClipboard size="1.5em" className="w-full h-full" />
+							)}
+							<span className="sr-only">Copy citation to clipboard</span>
+						</Button>
+						<Tooltip
+							isOpen={copied || undefined}
+							className="rounded text-xs overflow-auto bg-neutral-800 text-white px-4 py-2 outline-none shadow max-w-[320px] data-[placement=top]:mb-2 data-[placement=bottom]:mt-2 group"
+						>
+							<OverlayArrow>
+								<svg
+									width={8}
+									height={8}
+									viewBox="0 0 8 8"
+									className="block fill-neutral-800 group-data-[placement=bottom]:rotate-180"
+								>
+									<path d="M0 0 L4 4 L8 0" />
+								</svg>
+							</OverlayArrow>
+							<div className="overflow-auto max-h-[200px]">
+								{copied ? (
+									<span>Citation copied</span>
+								) : (
+									<>
+										<strong className="mb-1 block">Copy citation to clipboard:</strong>
+										<div>{citation}</div>
+									</>
+								)}
+							</div>
+						</Tooltip>
+					</TooltipTrigger>
 					{hasSynthesis ? (
 						<a
 							href={session.synthesis}
