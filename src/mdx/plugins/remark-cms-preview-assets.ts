@@ -1,6 +1,6 @@
+import { type PreviewTemplateComponentProps } from "decap-cms-core";
 import type * as Mdast from "mdast";
 import { type MdxJsxFlowElement } from "mdast-util-mdx-jsx";
-import { type PreviewTemplateComponentProps } from "netlify-cms-core";
 import { type Transformer } from "unified";
 import type * as Unist from "unist";
 import { visit } from "unist-util-visit";

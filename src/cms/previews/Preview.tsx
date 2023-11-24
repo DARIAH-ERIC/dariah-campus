@@ -1,12 +1,10 @@
 import { ErrorBoundary, useError } from "@stefanprobst/next-error-boundary";
-import { type PreviewTemplateComponentProps } from "netlify-cms-core";
-import { type ReactNode } from "react";
-import { useEffect, useState } from "react";
+import { type PreviewTemplateComponentProps } from "decap-cms-core";
+import { type ReactNode, useEffect, useState } from "react";
 
 import { PreviewProvider } from "@/cms/previews/Preview.context";
 import { I18nProvider } from "@/i18n/I18n.context";
-import { type Dictionary } from "@/i18n/loadDictionary";
-import { loadDictionary } from "@/i18n/loadDictionary";
+import { type Dictionary, loadDictionary } from "@/i18n/loadDictionary";
 
 export interface PreviewProps extends PreviewTemplateComponentProps {
 	children?: ReactNode;

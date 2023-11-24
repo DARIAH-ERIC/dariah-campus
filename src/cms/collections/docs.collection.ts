@@ -1,4 +1,4 @@
-import { type CmsCollection } from "netlify-cms-core";
+import { type CmsCollection } from "decap-cms-core";
 
 /**
  * Docs collection.

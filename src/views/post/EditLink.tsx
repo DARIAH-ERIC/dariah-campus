@@ -17,7 +17,7 @@ export interface EditLinkProps {
 /**
  * Link to directly edit resource via cms.
  *
- * We cannot link to CMS via client-side transition, because Netlify CMS
+ * We cannot link to CMS via client-side transition, because Decap CMS
  * unfortunately sets global styles, which would bleed into the app when navigating
  * back via browser back button.
  */

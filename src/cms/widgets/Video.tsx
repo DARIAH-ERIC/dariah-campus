@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/no-unresolved
-import { type EditorComponentOptions } from "netlify-cms-core";
+import { type EditorComponentOptions } from "decap-cms-core";
 
 import { videoProviders } from "@/cms/components/Video";
 import { decodeQuotes, encodeQuotes } from "@/cms/utils/quotes";
 
 /**
- * Netlify CMS richtext editor widget for Video component.
+ * Decap CMS richtext editor widget for Video component.
  */
 export const videoEditorWidget: EditorComponentOptions = {
 	id: "Video",

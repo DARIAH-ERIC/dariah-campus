@@ -1,6 +1,6 @@
 import { remarkMarkAndUnravel as withUnraveledJsxChildren } from "@mdx-js/mdx/lib/plugin/remark-mark-and-unravel.js";
+import { type EditorComponentOptions } from "decap-cms-core";
 import { type MdxJsxFlowElement } from "mdast-util-mdx-jsx";
-import { type EditorComponentOptions } from "netlify-cms-core";
 import { remark } from "remark";
 import withGitHubMarkdown from "remark-gfm";
 import withMdx from "remark-mdx";
@@ -59,7 +59,7 @@ const processor = remark()
 	.use(withSpeakers);
 
 /**
- * Netlify CMS richtext editor widget for EventSessionSpeakers component.
+ * Decap CMS richtext editor widget for EventSessionSpeakers component.
  */
 export const eventSessionSpeakersEditorWidget: EditorComponentOptions = {
 	id: "EventSessionSpeakers",

@@ -1,6 +1,5 @@
-import { type PreviewTemplateComponentProps } from "netlify-cms-core";
-import { type ReactNode } from "react";
-import { createContext, useContext, useMemo } from "react";
+import { type PreviewTemplateComponentProps } from "decap-cms-core";
+import { createContext, type ReactNode, useContext, useMemo } from "react";
 
 interface PreviewContextValues {
 	/**

@@ -1,9 +1,9 @@
-import { type EditorComponentOptions } from "netlify-cms-core";
+import { type EditorComponentOptions } from "decap-cms-core";
 
 import { decodeQuotes, encodeQuotes } from "@/cms/utils/quotes";
 
 /**
- * Netlify CMS richtext editor widget for EventSessionLink component.
+ * Decap CMS richtext editor widget for EventSessionLink component.
  */
 export const eventSessionLinkEditorWidget: EditorComponentOptions = {
 	id: "EventSessionLink",
