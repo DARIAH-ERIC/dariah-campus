@@ -1,13 +1,24 @@
+import cx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { FaCloud, FaEnvelope, FaFilePdf, FaFlickr, FaGlobe, FaTwitter } from "react-icons/fa";
-import { type OverlayTriggerState } from "react-stately";
-import { useOverlayTriggerState } from "react-stately";
+import { useState } from "react";
+import { Button, OverlayArrow, Tooltip, TooltipTrigger } from "react-aria-components";
+import {
+	FaCheck,
+	FaClipboard,
+	FaCloud,
+	FaEnvelope,
+	FaFilePdf,
+	FaFlickr,
+	FaGlobe,
+	FaTwitter,
+} from "react-icons/fa";
+import { type OverlayTriggerState, useOverlayTriggerState } from "react-stately";
 
 import OrcidIcon from "@/assets/icons/brand/orcid.svg?symbol";
 import AvatarIcon from "@/assets/icons/user.svg?symbol";
 import CloseIcon from "@/assets/icons/x.svg?symbol";
-import { type Event as EventData } from "@/cms/api/events.api";
+import { type Event as EventData, type EventMetadata } from "@/cms/api/events.api";
 import { Figure } from "@/cms/components/Figure";
 import { Video } from "@/cms/components/Video";
 import { getFullName } from "@/cms/utils/getFullName";
@@ -40,6 +51,7 @@ export function Event(props: EventProps): JSX.Element {
 				<EventSessions
 					sessions={metadata.sessions}
 					// downloads={metadata.downloads}
+					meta={metadata}
 				/>
 				<EventSideNav sessions={metadata.sessions} />
 			</div>
@@ -144,7 +156,7 @@ function EventOverview(props: EventOverviewProps) {
 						</div>
 
 						<aside className="home__aside">
-							<EventSocialLinks social={social} />
+							<EventSocialLinks social={social} meta={metadata} />
 							<EventNav
 								hasAboutOverlay={Boolean(metadata.about)}
 								hasPrepOverlay={Boolean(metadata.prep)}
@@ -269,23 +281,76 @@ function EventToc(props: EventTocProps) {
 
 interface EventSocialLinksProps {
 	social: EventProps["event"]["data"]["metadata"]["social"];
+	meta: EventMetadata;
 }
-
 /**
  * Event social media links.
  */
 function EventSocialLinks(props: EventSocialLinksProps) {
-	const { social } = props;
+	const { social = {}, meta } = props;
 
-	if (social == null) return <div />;
+	const [isOpen, setOpen] = useState(false);
+	const [copied, setCopied] = useState(false);
+
+	const citation = [
+		meta.authors.map((person) => [person.firstName, person.lastName].join(" ")).join(", "),
+		`(${new Date(meta.date).getUTCFullYear()})` + ":",
+		meta.title + ".",
+		meta.eventType,
+	].join(" ");
+
+	function onCopyCitation() {
+		setCopied(true);
+		window.navigator.clipboard.writeText(citation);
+		window.setTimeout(() => {
+			setCopied(false);
+		}, 2500);
+	}
 
 	return (
 		<ul className="home__share">
+			<li className="mr-2.5">
+				<TooltipTrigger delay={750} isOpen={isOpen || copied} onOpenChange={setOpen}>
+					<Button onPress={onCopyCitation} className="!inline-grid">
+						<div
+							className={cx(
+								"relative flex items-center justify-center h-full",
+								copied && "bg-green-600",
+							)}
+						>
+							{copied ? <FaCheck /> : <FaClipboard />}
+							<span className="sr-only">Copy citation</span>
+						</div>
+					</Button>
+					<Tooltip className="rounded text-xs bg-neutral-800 text-white px-4 py-2 outline-none shadow max-w-[320px] data-[placement=top]:mb-2 data-[placement=bottom]:mt-2 group">
+						<OverlayArrow>
+							<svg
+								width={8}
+								height={8}
+								viewBox="0 0 8 8"
+								className="block fill-neutral-800 group-data-[placement=bottom]:rotate-180"
+							>
+								<path d="M0 0 L4 4 L8 0" />
+							</svg>
+						</OverlayArrow>
+						<div className="overflow-auto max-h-[200px]">
+							{copied ? (
+								<span>Citation copied</span>
+							) : (
+								<>
+									<strong className="mb-1 block">Copy citation to clipboard:</strong>
+									<div>{citation}</div>
+								</>
+							)}
+						</div>
+					</Tooltip>
+				</TooltipTrigger>
+			</li>
 			{isNonEmptyString(social.twitter) ? (
 				<li className="mr-2.5">
 					<a
 						href={String(new URL(social.twitter, "https://twitter.com"))}
-						className="home__share__twitter"
+						className="home__share__twitter !inline-grid"
 						aria-label="Share on Twitter"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -301,6 +366,7 @@ function EventSocialLinks(props: EventSocialLinksProps) {
 					<a
 						href={social.website}
 						aria-label="Visit website"
+						className="!inline-grid"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
@@ -395,15 +461,16 @@ function EventNav(props: EventNavProps) {
 
 interface EventSessionsProps {
 	sessions: EventProps["event"]["data"]["metadata"]["sessions"];
+	meta: EventMetadata;
 }
 
 function EventSessions(props: EventSessionsProps) {
-	const { sessions = [] } = props;
+	const { meta, sessions = [] } = props;
 
 	return (
 		<div className="relative">
 			{sessions.map((session, index) => {
-				return <EventSession key={index} session={session} index={index} />;
+				return <EventSession key={index} session={session} index={index} meta={meta} />;
 			})}
 		</div>
 	);
@@ -412,10 +479,40 @@ function EventSessions(props: EventSessionsProps) {
 interface EventSessionProps {
 	session: EventProps["event"]["data"]["metadata"]["sessions"][number];
 	index: number;
+	meta: EventMetadata;
 }
 
 function EventSession(props: EventSessionProps) {
-	const { session, index } = props;
+	const { session, index, meta } = props;
+
+	const [isOpen, setOpen] = useState(false);
+	const [copied, setCopied] = useState(false);
+
+	const speakers = session.speakers.map((person) => [person.firstName, person.lastName].join(" "));
+
+	const year = `(${new Date(meta.date).getUTCFullYear()})`;
+
+	const title = `"${session.title}"`;
+
+	const citation = [
+		speakers,
+		year + ":",
+		title,
+		"in:",
+		meta.title + ".",
+		meta.eventType + ".",
+		`Session ${index + 1}`,
+	].join(" ");
+
+	function onCopyCitation() {
+		setCopied(true);
+		window.navigator.clipboard.writeText(citation);
+		window.setTimeout(() => {
+			setCopied(false);
+		}, 2500);
+	}
+
+	const hasSynthesis = isNonEmptyString(session.synthesis);
 
 	return (
 		<div id={`session-${index}`} className="session">
@@ -424,18 +521,62 @@ function EventSession(props: EventSessionProps) {
 					<span className="square" />
 					<strong>{session.title}</strong>
 				</h1>
-				{isNonEmptyString(session.synthesis) ? (
-					<a
-						href={session.synthesis}
-						download
-						target="_blank"
-						rel="noopener noreferrer"
-						className="!flex items-center justify-center text-white link-download p-[1vw]"
-					>
-						<FaFilePdf size="1.5em" className="w-full h-full" />
-						<span className="sr-only">Download the session synthesis</span>
-					</a>
-				) : null}
+				<div className="flex">
+					<TooltipTrigger delay={750} isOpen={isOpen || copied} onOpenChange={setOpen}>
+						<Button
+							className={cx(
+								"!flex items-center justify-center text-white link-download p-[1vw]",
+								hasSynthesis && "!mx-4",
+								copied && "!bg-green-600",
+							)}
+							onPress={onCopyCitation}
+						>
+							{copied ? (
+								<FaCheck size="1.5em" className="w-full h-full" />
+							) : (
+								<FaClipboard size="1.5em" className="w-full h-full" />
+							)}
+							<span className="sr-only">Copy citation to clipboard</span>
+						</Button>
+						<Tooltip
+							isOpen={copied || undefined}
+							className="rounded text-xs overflow-auto bg-neutral-800 text-white px-4 py-2 outline-none shadow max-w-[320px] data-[placement=top]:mb-2 data-[placement=bottom]:mt-2 group"
+						>
+							<OverlayArrow>
+								<svg
+									width={8}
+									height={8}
+									viewBox="0 0 8 8"
+									className="block fill-neutral-800 group-data-[placement=bottom]:rotate-180"
+								>
+									<path d="M0 0 L4 4 L8 0" />
+								</svg>
+							</OverlayArrow>
+							<div className="overflow-auto max-h-[200px]">
+								{copied ? (
+									<span>Citation copied</span>
+								) : (
+									<>
+										<strong className="mb-1 block">Copy citation to clipboard:</strong>
+										<div>{citation}</div>
+									</>
+								)}
+							</div>
+						</Tooltip>
+					</TooltipTrigger>
+					{hasSynthesis ? (
+						<a
+							href={session.synthesis}
+							download
+							target="_blank"
+							rel="noopener noreferrer"
+							className="!flex items-center justify-center text-white link-download p-[1vw]"
+						>
+							<FaFilePdf size="1.5em" className="w-full h-full" />
+							<span className="sr-only">Download the session synthesis</span>
+						</a>
+					) : null}
+				</div>
 			</div>
 
 			<div className="session__core">
