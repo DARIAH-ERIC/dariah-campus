@@ -9,6 +9,7 @@ import { useI18n } from "@/i18n/useI18n";
 import { routes } from "@/navigation/routes.config";
 import { ContentTypeIcon } from "@/views/post/ContentTypeIcon";
 import { type ResourceListItem } from "@/views/post/getResourceListData";
+import { LanguageTag } from "@/views/post/LanguageTag";
 
 const MAX_AUTHORS = 3;
 
@@ -22,7 +23,7 @@ export interface ResourcePreviewCardProps {
  */
 export function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element {
 	const { resource } = props;
-	const { id, kind, title, authors, abstract, type, draft } = resource;
+	const { id, kind, title, authors, abstract, type, draft, lang } = resource;
 
 	const { t } = useI18n();
 
@@ -55,7 +56,10 @@ export function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Elemen
 						</Link>
 					)}
 				</h2>
-				<div className="leading-7 text-neutral-500">{abstract}</div>
+				<div className="flex">
+					<LanguageTag lang={lang} />
+				</div>
+				<div className="leading-7 text-neutral-500">{abstract}dLanguageTag</div>
 			</div>
 			<footer className="flex items-center justify-between h-20 px-10 py-5 bg-neutral-100">
 				<dl>
