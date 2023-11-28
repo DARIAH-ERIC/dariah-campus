@@ -1,0 +1,65 @@
+name: Generate handle ids
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - content/**/*.mdx
+
+jobs:
+  generate-doi:
+    name: Generate handle ids
+    runs-on: ubuntu-latest
+    if: github.event.forced == false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Use node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Get changed files
+        id: get-changed-files
+        run: |
+          files=$(git diff --diff-filter=AMR --name-only ${{ github.event.before }} ${{ github.event.after }} -- content/**/*.mdx | xargs)
+          echo files="$files" >> $GITHUB_OUTPUT
+
+      - name: Generate handle ids
+        if: steps.get-changed-files.outputs.files
+        env:
+          HANDLE_USERNAME: ${{ secrets.HANDLE_USERNAME }}
+          HANDLE_PASSWORD: ${{ secrets.HANDLE_PASSWORD }}
+          HANDLE_PROVIDER: ${{ vars.HANDLE_PROVIDER }}
+          HANDLE_PREFIX: ${{ vars.HANDLE_PREFIX }}
+          HANDLE_RESOLVER: ${{ vars.HANDLE_RESOLVER }}
+          NUXT_PUBLIC_APP_BASE_URL: ${{ vars.NUXT_PUBLIC_APP_BASE_URL }}
+        run: |
+          for file in ${{ steps.get-changed-files.outputs.files }}
+          do
+            node ./scripts/generate-handle-ids.mjs $file
+            git add $file
+          done
+          if [ -n "$(git diff --staged)" ];
+          then
+            git config user.name "${{ vars.GITHUB_USERNAME }}"
+            git config user.email "${{ vars.GITHUB_EMAIL }}"
+            git commit -m "content: add handle ids"
+            git push origin
+          fi
