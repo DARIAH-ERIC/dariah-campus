@@ -58,8 +58,8 @@ jobs:
           done
           if [ -n "$(git diff --staged)" ];
           then
-            git config user.name "${{ vars.GITHUB_USERNAME }}"
-            git config user.email "${{ vars.GITHUB_EMAIL }}"
+            git config user.name "${{ vars.GIT_USERNAME }}"
+            git config user.email "${{ vars.GIT_EMAIL }}"
             git commit -m "content: add handle ids"
             git push origin
           fi
