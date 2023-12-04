@@ -52,7 +52,7 @@ const configSchema = z.object({
 
 const config = configSchema.parse({
 	resource: {
-		baseUrl: process.env.NUXT_PUBLIC_APP_BASE_URL,
+		baseUrl: process.env.NEXT_PUBLIC_APP_BASE_URL,
 		filePath: process.argv.at(2),
 	},
 	handle: {

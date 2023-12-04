@@ -49,7 +49,7 @@ jobs:
           HANDLE_PROVIDER: ${{ vars.HANDLE_PROVIDER }}
           HANDLE_PREFIX: ${{ vars.HANDLE_PREFIX }}
           HANDLE_RESOLVER: ${{ vars.HANDLE_RESOLVER }}
-          NUXT_PUBLIC_APP_BASE_URL: ${{ vars.NUXT_PUBLIC_APP_BASE_URL }}
+          NEXT_PUBLIC_APP_BASE_URL: ${{ vars.NEXT_PUBLIC_APP_BASE_URL }}
         run: |
           for file in ${{ steps.get-changed-files.outputs.files }}
           do
