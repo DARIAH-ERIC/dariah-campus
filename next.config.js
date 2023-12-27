@@ -61,7 +61,7 @@ const config = {
 		return [
 			/**
 			 * Permanent redirects for renamed resources.
-			 * Should include full pathname, without base url.
+			 * Should include full uri-encoded pathname, without base url.
 			 *
 			 * @example
 			 * ```json
