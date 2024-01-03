@@ -100,8 +100,6 @@ Sample Prompt: "Here's a template: 'Can you \[action] \[object]?' Now fill in th
 </Quiz>
 
 
-
-
 #### 3. Branching
 
 Explanation: The Branching method is used in multi-step processes or when dealing with multiple options. It involves structured inputs that guide the AI through separate steps.
@@ -137,8 +135,6 @@ Sample Prompt: "Let's troubleshoot. First tell me what's not working. Then I'll 
 </Quiz>
 
 
-
-
 #### 4. Stemming and Lemmatization (Pre-processing)
 
 Explanation: This method simplifies words to their root forms, aiding in the AI's understanding and processing of prompts.
@@ -147,19 +143,34 @@ When to Use: Ideal for linguistic analysis, enhancing consistency in language pr
 
 Sample Prompt: "Convert 'running', 'ran', and 'runner' to their root form 'run'."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Stemming and Lemmatization?
+      </Quiz.Question>
 
-"Which prompt is an example of Stemming and Lemmatization?"
+      <Quiz.MultipleChoice.Option>
+        “List synonyms for ‘happy’.”
+      </Quiz.MultipleChoice.Option>
 
-A) "List synonyms for 'happy'."
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Change ‘better’, ‘best’ to ‘good’.”
+      </Quiz.MultipleChoice.Option>
 
-B) "Change 'better', 'best' to 'good'."
+      <Quiz.MultipleChoice.Option>
+        “What is the capital of Italy?”
+      </Quiz.MultipleChoice.Option>
 
-C) "What is the capital of Italy?"
+      <Quiz.MultipleChoice.Option>
+        “Describe the process of evaporation.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Describe the process of evaporation."
 
-Correct Answer: B
+
 
 #### 5. Domain-Specific Language
 
@@ -169,19 +180,34 @@ When to Use: Suitable when dealing with topics requiring technical knowledge or 
 
 Sample Prompt: "Using medical terminology, explain the symptoms of diabetes."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Domain-Specific Language
+      </Quiz.Question>
 
-"Which prompt is an example of Domain-Specific Language?"
+      <Quiz.MultipleChoice.Option>
+        “Tell me a story about a knight and a dragon.”
+      </Quiz.MultipleChoice.Option>
 
-A) "Tell me a story about a knight and a dragon."
+      <Quiz.MultipleChoice.Option>
+        “Explain quantum entanglement in simple terms.”
+      </Quiz.MultipleChoice.Option>
 
-B) "Explain quantum entanglement in simple terms."
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Using legal terms, define ‘contract law’.”
+      </Quiz.MultipleChoice.Option>
 
-C) "Using legal terms, define 'contract law'."
+      <Quiz.MultipleChoice.Option>
+        “What is the recipe for a chocolate cake?”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "What is the recipe for a chocolate cake?"
 
-Correct Answer: C
+
 
 #### 6. Syntactic Cues
 
@@ -191,19 +217,34 @@ When to Use: Effective for structuring responses, teaching language patterns, or
 
 Sample Prompt: "In a bullet-point format, list the steps in photosynthesis."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Syntactic Cues?
+      </Quiz.Question>
 
-"Which prompt is an example of Syntactic Cues?"
+      <Quiz.MultipleChoice.Option>
+        “List the presidents of the USA in chronological order.”
+      </Quiz.MultipleChoice.Option>
 
-A) "List the presidents of the USA in chronological order."
+      <Quiz.MultipleChoice.Option>
+        “Write a poem about the sea.”
+      </Quiz.MultipleChoice.Option>
 
-B) "Write a poem about the sea."
+      <Quiz.MultipleChoice.Option isCorrect>
+        “In five sentences, summarize World War II.”
+      </Quiz.MultipleChoice.Option>
 
-C) "In five sentences, summarize World War II."
+      <Quiz.MultipleChoice.Option>
+        “What are the benefits of yoga?”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "What are the benefits of yoga?"
 
-Correct Answer: C
+
 
 #### 7. Parallel Prompts
 
@@ -213,19 +254,34 @@ When to Use: Best suited for comparative studies, thematic analyses, or when eva
 
 Sample Prompt: "Compare 'night' and 'day' in separate but structurally similar sentences."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Parallel Prompts?
+      </Quiz.Question>
 
-"Which prompt is an example of Parallel Prompts?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Describe the climate in Australia and then in Canada.”
+      </Quiz.MultipleChoice.Option>
 
-A) "Describe the climate in Brazil and then in Canada."
+      <Quiz.MultipleChoice.Option>
+        “What are the rules of chess?”
+      </Quiz.MultipleChoice.Option>
 
-B) "What are the rules of chess?"
+      <Quiz.MultipleChoice.Option>
+        “List all the planets in the Solar System.”
+      </Quiz.MultipleChoice.Option>
 
-C) "List all the planets in the Solar System."
+      <Quiz.MultipleChoice.Option>
+        “Write a story about a lost treasure.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Write a story about a lost treasure."
 
-Correct Answer: A
+
 
 #### 8. Identity Assignation
 
@@ -235,19 +291,34 @@ When to Use: Useful for role-playing scenarios, expert simulations, or when a di
 
 Sample Prompt: "As a nutritionist, recommend a healthy meal plan for a day."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Identity Assignation?
+      </Quiz.Question>
 
-"Which prompt is an example of Identity Assignation?"
+      <Quiz.MultipleChoice.Option>
+        “What is the history of the Roman Empire?”
+      </Quiz.MultipleChoice.Option>
 
-A) "What is the history of the Roman Empire?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “As a travel guide, suggest a one-week itinerary for Paris.”
+      </Quiz.MultipleChoice.Option>
 
-B) "As a travel guide, suggest a one-week itinerary for Paris."
+      <Quiz.MultipleChoice.Option>
+        “Solve this algebra problem.”
+      </Quiz.MultipleChoice.Option>
 
-C) "Solve this algebra problem."
+      <Quiz.MultipleChoice.Option>
+        “Describe the life cycle of a butterfly.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Describe the life cycle of a butterfly."
 
-Correct Answer: B
+
 
 #### 9. Multi-Turn Refinement
 
@@ -257,19 +328,34 @@ When to Use: Effective in collaborative tasks, refining ideas, or when initial r
 
 Sample Prompt: "Start by describing a basic concept. Then, I will ask follow-up questions to explore it in depth."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Multi-Turn Refinement?
+      </Quiz.Question>
 
-"Which prompt is an example of Multi-Turn Refinement?"
+      <Quiz.MultipleChoice.Option>
+        “Explain the theory of relativity.”
+      </Quiz.MultipleChoice.Option>
 
-A) "Explain the theory of relativity."
+      <Quiz.MultipleChoice.Option>
+        “What are the main ingredients in a pizza?”
+      </Quiz.MultipleChoice.Option>
 
-B) "What are the main ingredients in a pizza?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “First, give a brief overview of the French Revolution. I’ll ask more after.”
+      </Quiz.MultipleChoice.Option>
 
-C) "First, give a brief overview of the French Revolution. I'll ask more after."
+      <Quiz.MultipleChoice.Option>
+        “Write a haiku about spring.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Write a haiku about spring."
 
-Correct Answer: C
+
 
 #### 10. Emotion and Tone Indicators
 
@@ -279,19 +365,34 @@ When to Use: Ideal for creative writing, customer service interactions, or when 
 
 Sample Prompt: "Write a motivational message in an uplifting tone."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Emotion and Tone Indicators?
+      </Quiz.Question>
 
-"Which prompt is an example of Emotion and Tone Indicators?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “In a humorous tone, tell me about your day.”
+      </Quiz.MultipleChoice.Option>
 
-A) "In a humorous tone, tell me about your day."
+      <Quiz.MultipleChoice.Option>
+        “List the capitals of European countries.”
+      </Quiz.MultipleChoice.Option>
 
-B) "List the capitals of European countries."
+      <Quiz.MultipleChoice.Option>
+        “Explain how a computer works.”
+      </Quiz.MultipleChoice.Option>
 
-C) "Explain how a computer works."
+      <Quiz.MultipleChoice.Option>
+        “What’s the latest news in technology?”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "What's the latest news in technology?"
 
-Correct Answer: A
+
 
 #### 11. Synonym Variation
 
@@ -301,19 +402,34 @@ When to Use: Effective for language teaching, enhancing vocabulary skills, or wh
 
 Sample Prompt: "Write about 'happiness', 'joy', and 'contentment', treating each as a unique concept."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Synonym Variation?
+      </Quiz.Question>
 
-"Which prompt is an example of Synonym Variation?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Define ‘liberty’, ‘freedom’, and ‘independence’.”
+      </Quiz.MultipleChoice.Option>
 
-A) "Define 'liberty', 'freedom', and 'independence'."
+      <Quiz.MultipleChoice.Option>
+        “Describe the process of photosynthesis.”
+      </Quiz.MultipleChoice.Option>
 
-B) "Describe the process of photosynthesis."
+      <Quiz.MultipleChoice.Option>
+        “What is the tallest mountain in the world?”
+      </Quiz.MultipleChoice.Option>
 
-C) "What is the tallest mountain in the world?"
+      <Quiz.MultipleChoice.Option>
+        “Translate this sentence into French.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Translate this sentence into French."
 
-Correct Answer: A
+
 
 #### 12. Anaphoric References
 
@@ -323,19 +439,34 @@ When to Use: Suitable for enhancing narrative coherence, practicing language ski
 
 Sample Prompt: "After explaining a concept, refer to it as 'this theory' in subsequent sentences."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Anaphoric References?
+      </Quiz.Question>
 
-"Which prompt is an example of Anaphoric References?"
+      <Quiz.MultipleChoice.Option>
+        “Explain photosynthesis and its importance.”
+      </Quiz.MultipleChoice.Option>
 
-A) "Explain photosynthesis and its importance."
+      <Quiz.MultipleChoice.Option isCorrect>
+        “After discussing a novel, refer to its main character as ‘he’ or ‘she’.”
+      </Quiz.MultipleChoice.Option>
 
-B) "After discussing a novel, refer to its main character as 'he' or 'she'."
+      <Quiz.MultipleChoice.Option>
+        “List the planets in our solar system.”
+      </Quiz.MultipleChoice.Option>
 
-C) "List the planets in our solar system."
+      <Quiz.MultipleChoice.Option>
+        “Describe your favorite holiday.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Describe your favorite holiday."
 
-Correct Answer: B
+
 
 #### 13. Time Constraints
 
@@ -345,19 +476,34 @@ When to Use: Particularly useful for historical analysis, discussing trends, or 
 
 Sample Prompt: "Describe the evolution of smartphones over the last 20 years."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Time Constraints?
+      </Quiz.Question>
 
-"Which prompt is an example of Time Constraints?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Describe the evolution of transportation in the 20th century.”
+      </Quiz.MultipleChoice.Option>
 
-A) "Describe the evolution of transportation in the 20th century."
+      <Quiz.MultipleChoice.Option>
+        “List the benefits of regular exercise.”
+      </Quiz.MultipleChoice.Option>
 
-B) "List the benefits of regular exercise."
+      <Quiz.MultipleChoice.Option>
+        “What is the formula for calculating speed?”
+      </Quiz.MultipleChoice.Option>
 
-C) "What is the formula for calculating speed?"
+      <Quiz.MultipleChoice.Option>
+        “Explain how to bake a cake.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Explain how to bake a cake."
 
-Correct Answer: A
+
 
 #### 14. Scenario Setting
 
@@ -367,19 +513,34 @@ When to Use: Ideal for brainstorming, problem-solving, or when requiring creativ
 
 Sample Prompt: "Imagine you're a detective solving a mystery. How would you proceed?"
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Scenario Setting?
+      </Quiz.Question>
 
-"Which prompt is an example of Scenario Setting?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Imagine you’re an astronaut on Mars. Describe your day.”
+      </Quiz.MultipleChoice.Option>
 
-A) "Imagine you're an astronaut on Mars. Describe your day."
+      <Quiz.MultipleChoice.Option>
+        “Who was the first person to climb Mount Everest?”
+      </Quiz.MultipleChoice.Option>
 
-B) "Who was the first person to climb Mount Everest?"
+      <Quiz.MultipleChoice.Option>
+        “List the ingredients in a Margherita pizza.”
+      </Quiz.MultipleChoice.Option>
 
-C) "List the ingredients in a Margherita pizza."
+      <Quiz.MultipleChoice.Option>
+        “What are the rules of soccer?”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "What are the rules of soccer?"
 
-Correct Answer: A
+
 
 #### 15. Comparative and Contrastive Prompts
 
@@ -389,19 +550,34 @@ When to Use: Useful for analytical thinking, decision-making processes, and unde
 
 Sample Prompt: "Compare and contrast renewable and non-renewable energy sources."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Comparative and Contrastive Prompts?
+      </Quiz.Question>
 
-"Which prompt is an example of Comparative and Contrastive Prompts?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Compare and contrast classical and modern music.”
+      </Quiz.MultipleChoice.Option>
 
-A) "Compare and contrast classical and modern music."
+      <Quiz.MultipleChoice.Option>
+        “Describe the water cycle.”
+      </Quiz.MultipleChoice.Option>
 
-B) "Describe the water cycle."
+      <Quiz.MultipleChoice.Option>
+        “What are the health benefits of yoga?”
+      </Quiz.MultipleChoice.Option>
 
-C) "What are the health benefits of yoga?"
+      <Quiz.MultipleChoice.Option>
+        “Explain the process of photosynthesis.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Explain the process of photosynthesis."
 
-Correct Answer: A
+
 
 #### 16. Problem-Solution Format
 
@@ -411,19 +587,34 @@ When to Use: Excellent for brainstorming, educational exercises, and scenarios w
 
 Sample Prompt: "Identify the main challenges of remote learning and suggest potential solutions."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Problem-Solution Format?
+      </Quiz.Question>
 
-"Which prompt is an example of Problem-Solution Format?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “What are the causes of global warming and how can we mitigate them?”
+      </Quiz.MultipleChoice.Option>
 
-A) "What are the causes of global warming and how can we mitigate them?"
+      <Quiz.MultipleChoice.Option>
+        “Describe the process of photosynthesis.”
+      </Quiz.MultipleChoice.Option>
 
-B) "Describe the process of photosynthesis."
+      <Quiz.MultipleChoice.Option>
+        “List the countries in South America.”
+      </Quiz.MultipleChoice.Option>
 
-C) "List the countries in South America."
+      <Quiz.MultipleChoice.Option>
+        “Explain the rules of basketball.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Explain the rules of basketball."
 
-Correct Answer: A
+
 
 #### 17. Explicit Reference
 
@@ -433,19 +624,34 @@ When to Use: Useful when analyzing specific references or citing sources for edu
 
 Sample Prompt: "Referring to Orwell's '1984', discuss the theme of surveillance."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Explicit Reference?
+      </Quiz.Question>
 
-"Which prompt is an example of Explicit Reference?"
+      <Quiz.MultipleChoice.Option>
+        What is the capital of Japan?
+      </Quiz.MultipleChoice.Option>
 
-A) "Referring to Shakespeare's 'Hamlet', analyze the character of Ophelia."
+      <Quiz.MultipleChoice.Option>
+        “Describe how a volcano erupts.”
+      </Quiz.MultipleChoice.Option>
 
-B) "What is the capital of Japan?"
+      <Quiz.MultipleChoice.Option>
+        “List the benefits of a balanced diet.”
+      </Quiz.MultipleChoice.Option>
 
-C) "Describe how a volcano erupts."
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Referring to Shakespeare’s ‘Hamlet’, analyze the character of Ophelia.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "List the benefits of a balanced diet."
 
-Correct Answer: A
+
 
 #### 18. Feedback Loop Integration
 
@@ -455,19 +661,34 @@ When to Use: Ideal for collaborative tasks, refining ideas, or when the initial 
 
 Sample Prompt: "Provide feedback on each draft of the essay, and I'll revise accordingly."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Feedback Loop Integration?
+      </Quiz.Question>
 
-"Which prompt is an example of Feedback Loop Integration?"
+      <Quiz.MultipleChoice.Option>
+        “What is the theory of evolution?”
+      </Quiz.MultipleChoice.Option>
 
-A) "Give me different versions of this story, and I'll tell you what to change each time."
+      <Quiz.MultipleChoice.Option>
+        “How do you make scrambled eggs?”
+      </Quiz.MultipleChoice.Option>
 
-B) "What is the theory of evolution?"
+      <Quiz.MultipleChoice.Option>
+        “List the planets in the solar system.”
+      </Quiz.MultipleChoice.Option>
 
-C) "How do you make scrambled eggs?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Give me different versions of this story, and I’ll tell you what to change each time.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "List the planets in the solar system."
 
-Correct Answer: A
+
 
 #### 19. User-Generated Examples
 
@@ -477,19 +698,34 @@ When to Use: Great for personalized learning, enhancing user engagement, and cre
 
 Sample Prompt: "Give me an example of a time you felt happy, and I'll analyze its emotional components."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of User-Generated Examples?
+      </Quiz.Question>
 
-"Which prompt is an example of User-Generated Examples?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Tell me about a memorable vacation and I’ll describe the cultural aspects.”
+      </Quiz.MultipleChoice.Option>
 
-A) "Tell me about a memorable vacation and I'll describe the cultural aspects."
+      <Quiz.MultipleChoice.Option>
+        “What is the distance between the Earth and the Moon?”
+      </Quiz.MultipleChoice.Option>
 
-B) "What is the distance between the Earth and the Moon?"
+      <Quiz.MultipleChoice.Option>
+        “List the functions of the human heart.”
+      </Quiz.MultipleChoice.Option>
 
-C) "List the functions of the human heart."
+      <Quiz.MultipleChoice.Option>
+        “Explain Newton’s laws of motion.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Explain Newton's laws of motion."
 
-Correct Answer: A
+
 
 #### 20. Conditional and Hypothetical Scenarios
 
@@ -499,19 +735,34 @@ When to Use: Useful for exploring possibilities, creative writing, and decision-
 
 Sample Prompt: "If humans could live on Mars, how would society be structured?"
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Conditional and Hypothetical Scenarios?
+      </Quiz.Question>
 
-"Which prompt is an example of Conditional and Hypothetical Scenarios?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “If you could travel back in time, where would you go and why?”
+      </Quiz.MultipleChoice.Option>
 
-A) "If you could travel back in time, where would you go and why?"
+      <Quiz.MultipleChoice.Option>
+        “Describe the process of photosynthesis.”
+      </Quiz.MultipleChoice.Option>
 
-B) "Describe the process of photosynthesis."
+      <Quiz.MultipleChoice.Option>
+        “What are the benefits of meditation?”
+      </Quiz.MultipleChoice.Option>
 
-C) "What are the benefits of meditation?"
+      <Quiz.MultipleChoice.Option>
+        “List the countries in Africa.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "List the countries in Africa."
 
-Correct Answer: A
+
 
 #### 21. Instructional Prompts
 
@@ -521,19 +772,34 @@ When to Use: Ideal for educational content, DIY guides, or scenarios requiring p
 
 Sample Prompt: "Explain how to bake a chocolate cake from scratch."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Instructional Prompts?
+      </Quiz.Question>
 
-"Which prompt is an example of Instructional Prompts?"
+      <Quiz.MultipleChoice.Option>
+        “What is the capital of Canada?”
+      </Quiz.MultipleChoice.Option>
 
-A) "Describe how to change a tire on a car."
+      <Quiz.MultipleChoice.Option>
+        “List the works of William Shakespeare.”
+      </Quiz.MultipleChoice.Option>
 
-B) "What is the capital of Canada?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Describe how to change a tire on a car.”
+      </Quiz.MultipleChoice.Option>
 
-C) "List the works of William Shakespeare."
+      <Quiz.MultipleChoice.Option>
+        “Explain the theory of general relativity.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Explain the theory of general relativity."
 
-Correct Answer: A
+
 
 #### 22. Metaphorical Language
 
@@ -543,19 +809,34 @@ When to Use: Excellent for creative writing, making abstract concepts tangible, 
 
 Sample Prompt: "Describe the internet as if it were a vast ocean."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Metaphorical Language?
+      </Quiz.Question>
 
-"Which prompt is an example of Metaphorical Language?"
+      <Quiz.MultipleChoice.Option>
+        “Explain the rules of baseball.”
+      </Quiz.MultipleChoice.Option>
 
-A) "Imagine the stock market as a rollercoaster. Describe its ups and downs."
+      <Quiz.MultipleChoice.Option>
+        “List the countries in Europe."
+      </Quiz.MultipleChoice.Option>
 
-B) "What is the process of evaporation?"
+      <Quiz.MultipleChoice.Option>
+        “What is the process of evaporation?”
+      </Quiz.MultipleChoice.Option>
 
-C) "List the countries in South America."
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Imagine the stock market as a rollercoaster. Describe its ups and downs.”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Explain the rules of baseball."
 
-Correct Answer: A
+
 
 #### 23. Opinion-Driven Prompts
 
@@ -565,19 +846,34 @@ When to Use: Useful for generating discussions, exploring subjective topics, or 
 
 Sample Prompt: "What is your opinion on the impact of social media on communication?"
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Opinion-Driven Prompts?
+      </Quiz.Question>
 
-"Which prompt is an example of Opinion-Driven Prompts?"
+      <Quiz.MultipleChoice.Option>
+        “How does a refrigerator work?”
+      </Quiz.MultipleChoice.Option>
 
-A) "What are the pros and cons of online education?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “What are the pros and cons of online education?”
+      </Quiz.MultipleChoice.Option>
 
-B) "How does a refrigerator work?"
+      <Quiz.MultipleChoice.Option>
+        “List the major rivers in Asia.”
+      </Quiz.MultipleChoice.Option>
 
-C) "List the major rivers in Asia."
+      <Quiz.MultipleChoice.Option>
+        “Who was the first person to walk on the moon?”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "Who was the first person to walk on the moon?"
 
-Correct Answer: A
+
 
 #### 24. Collaborative Storytelling
 
@@ -587,19 +883,34 @@ When to Use: Great for creative exercises, language learning, and engaging story
 
 Sample Prompt: "I'll start a story about a mysterious island. You continue from where I leave off."
 
-Multiple Choice Question:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which prompt is an example of Collaborative Storytelling?
+      </Quiz.Question>
 
-"Which prompt is an example of Collaborative Storytelling?"
+      <Quiz.MultipleChoice.Option>
+        “Describe the life cycle of a frog.”
+      </Quiz.MultipleChoice.Option>
 
-A) "Continue the story: A young girl discovers a secret garden..."
+      <Quiz.MultipleChoice.Option>
+        “List the elements on the periodic table.”
+      </Quiz.MultipleChoice.Option>
 
-B) "What is the formula for calculating area?"
+      <Quiz.MultipleChoice.Option isCorrect>
+        “Continue the story: A young girl discovers a secret garden…”
+      </Quiz.MultipleChoice.Option>
 
-C) "Describe the life cycle of a frog."
+      <Quiz.MultipleChoice.Option>
+        “What is the formula for calculating area?”
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-D) "List the elements on the periodic table."
 
-Correct Answer: A
+
 
 ### Conclusion
 
