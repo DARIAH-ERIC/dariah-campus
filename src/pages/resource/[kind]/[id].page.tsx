@@ -298,6 +298,7 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
 					<CourseLinks courses={courses} />
 					<Citation metadata={metadata} />
 					<ReUseConditions />
+					<Translations translations={metadata.translations} />
 				</aside>
 				<div className="min-w-0">
 					<Resource resource={resource} lastUpdatedAt={lastUpdatedAt} />
@@ -496,5 +497,38 @@ function RelatedResources(props: RelatedResourcesProps) {
 				})}
 			</ul>
 		</nav>
+	);
+}
+
+interface TranslationsProps {
+	translations: PostData["data"]["metadata"]["translations"];
+}
+
+function Translations(props: TranslationsProps) {
+	const { translations } = props;
+
+	const format = new Intl.DisplayNames(["en"], { type: "language" });
+
+	if (translations.length === 0) return null;
+
+	return (
+		<div className="space-y-1.5">
+			<h2 className="text-xs font-bold tracking-wide uppercase text-neutral-600">Translations</h2>
+			<ul role="list" className="grid gap-2">
+				{translations.map((translation) => {
+					return (
+						<li key={translation.id}>
+							<span>This resource is also available in {format.of(translation.lang)}: </span>
+							<Link
+								className="transition text-primary-600"
+								href={`/resource/posts/${translation.id}`}
+							>
+								{translation.title}
+							</Link>
+						</li>
+					);
+				})}
+			</ul>
+		</div>
 	);
 }

@@ -73,6 +73,7 @@ export interface PostFrontmatter {
 	licence: LicenceId["id"];
 	toc?: boolean;
 	draft?: boolean;
+	translations?: Array<PostId["id"]>;
 }
 
 export interface PostMetadata
@@ -85,6 +86,7 @@ export interface PostMetadata
 		| "featuredImage"
 		| "licence"
 		| "tags"
+		| "translations"
 		| "type"
 	> {
 	authors: Array<Person>;
@@ -95,6 +97,7 @@ export interface PostMetadata
 	type: ContentType;
 	licence: Licence;
 	featuredImage?: FilePath | { src: FilePath; width: number; height: number };
+	translations: Array<Pick<PostId, "id"> & Pick<PostMetadata, "lang" | "title">>;
 }
 
 export interface PostData {
@@ -261,6 +264,20 @@ async function getPostMetadata(file: VFile, locale: Locale): Promise<PostMetadat
 			: [],
 		type: await getContentTypeById(matter.type, locale),
 		licence: await getLicenceById(matter.licence, locale),
+		translations: Array.isArray(matter.translations)
+			? await Promise.all(
+					matter.translations.map(async (_id) => {
+						const id = _id.slice(0, -"/index".length);
+						const vfile = await getPostFile(id, "en");
+						const metadata = await getPostFrontmatter(vfile, "en");
+						return {
+							id,
+							lang: metadata.lang,
+							title: metadata.title,
+						};
+					}),
+			  )
+			: [],
 	};
 
 	if (matter.featuredImage != null) {
