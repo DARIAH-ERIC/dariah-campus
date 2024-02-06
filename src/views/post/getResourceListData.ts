@@ -5,7 +5,7 @@ type AuthorListItem = Pick<
 	"avatar" | "firstName" | "id" | "lastName"
 >;
 export interface ResourceListItem
-	extends Pick<ResourcePreview, "abstract" | "date" | "id" | "kind" | "title"> {
+	extends Pick<ResourcePreview, "abstract" | "date" | "id" | "kind" | "lang" | "title"> {
 	type: Pick<ResourcePreview["type"], "id">;
 	authors: Array<AuthorListItem>;
 	draft?: boolean;
@@ -23,6 +23,7 @@ export function getResourceListData(resources: Array<ResourcePreview>): Array<Re
 			draft: resource.kind === "posts" && resource.draft === true,
 			title: resource.shortTitle ?? resource.title,
 			date: resource.date,
+			lang: resource.lang,
 			abstract: resource.abstract,
 			authors: resource.authors.map((author) => {
 				const authorListItem: AuthorListItem = {
