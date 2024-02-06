@@ -702,7 +702,14 @@ input[type="search"]::-webkit-search-decoration {
 .home .home__wrapper-1 .home__wrapper-2 .home__wrapper-3 .home__aside .home__share li {
 	margin-bottom: 1.5625vw;
 }
-.home .home__wrapper-1 .home__wrapper-2 .home__wrapper-3 .home__aside .home__share li a {
+.home
+	.home__wrapper-1
+	.home__wrapper-2
+	.home__wrapper-3
+	.home__aside
+	.home__share
+	li
+	:is(a, button) {
 	position: relative;
 	overflow: hidden;
 	display: inline-block;
@@ -714,7 +721,14 @@ input[type="search"]::-webkit-search-decoration {
 	font-size: 2vw;
 	line-height: 3.125vw;
 }
-.home .home__wrapper-1 .home__wrapper-2 .home__wrapper-3 .home__aside .home__share li a::before {
+.home
+	.home__wrapper-1
+	.home__wrapper-2
+	.home__wrapper-3
+	.home__aside
+	.home__share
+	li
+	:is(a, button)::before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -725,7 +739,6 @@ input[type="search"]::-webkit-search-decoration {
 	transform: translateX(-100%);
 	transition: transform 400ms ease-out;
 }
-.home .home__wrapper-1 .home__wrapper-2 .home__wrapper-3 .home__aside .home__share li a .svg-icon,
 .home
 	.home__wrapper-1
 	.home__wrapper-2
@@ -733,7 +746,16 @@ input[type="search"]::-webkit-search-decoration {
 	.home__aside
 	.home__share
 	li
-	a
+	:is(a, button)
+	.svg-icon,
+.home
+	.home__wrapper-1
+	.home__wrapper-2
+	.home__wrapper-3
+	.home__aside
+	.home__share
+	li
+	:is(a, button)
 	.uk-icon
 	svg {
 	position: relative;
@@ -778,7 +800,7 @@ input[type="search"]::-webkit-search-decoration {
 	.home__aside
 	.home__share
 	li
-	a:hover::before,
+	:is(a, button):hover::before,
 .home
 	.home__wrapper-1
 	.home__wrapper-2
@@ -786,7 +808,7 @@ input[type="search"]::-webkit-search-decoration {
 	.home__aside
 	.home__share
 	li
-	a:focus::before {
+	:is(a, button):focus::before {
 	transform: translateX(0);
 	transition-duration: 150ms;
 }
@@ -1712,7 +1734,14 @@ input[type="search"]::-webkit-search-decoration {
 		position: static;
 		padding: 1.25rem 0;
 	}
-	.home .home__wrapper-1 .home__wrapper-2 .home__wrapper-3 .home__aside .home__share li a {
+	.home
+		.home__wrapper-1
+		.home__wrapper-2
+		.home__wrapper-3
+		.home__aside
+		.home__share
+		li
+		:is(a, button) {
 		width: 1.875rem;
 		height: 1.875rem;
 		line-height: 1.875rem;
@@ -2073,7 +2102,14 @@ input[type="search"]::-webkit-search-decoration {
 		font-size: 1.563rem;
 	}
 
-	.home .home__wrapper-1 .home__wrapper-2 .home__wrapper-3 .home__aside .home__share li a {
+	.home
+		.home__wrapper-1
+		.home__wrapper-2
+		.home__wrapper-3
+		.home__aside
+		.home__share
+		li
+		:is(a, button) {
 		font-size: 1.625rem;
 	}
 

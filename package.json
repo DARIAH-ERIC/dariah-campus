@@ -40,9 +40,8 @@
 	"dependencies": {
 		"@codemirror/lang-xml": "^6.0.2",
 		"@codemirror/view": "^6.13.2",
-		"@react-aria/accordion": "^3.0.0-alpha.18",
-		"@react-aria/utils": "^3.17.0",
-		"@react-types/accordion": "^3.0.0-alpha.14",
+		"@react-aria/accordion": "^3.0.0-alpha.24",
+		"@react-aria/utils": "^3.22.0",
 		"@stefanprobst/next-error-boundary": "^3.0.2",
 		"@stefanprobst/next-page-metadata": "^2.0.5",
 		"@stefanprobst/next-svg": "^4.2.1",
@@ -50,6 +49,7 @@
 		"@stefanprobst/rehype-shiki": "^2.2.1",
 		"@stefanprobst/remark-resource-links": "^1.0.2",
 		"algoliasearch": "^4.17.2",
+		"clsx": "^2.0.0",
 		"codemirror": "^6.0.1",
 		"hastscript": "^7.2.0",
 		"image-size": "^1.0.2",
@@ -57,10 +57,11 @@
 		"next": "^13.4.7",
 		"nprogress": "^0.2.0",
 		"react": "^18.2.0",
-		"react-aria": "^3.25.0",
+		"react-aria": "^3.30.0",
+		"react-aria-components": "^1.0.0-rc.0",
 		"react-dom": "^18.2.0",
 		"react-icons": "^4.10.1",
-		"react-stately": "^3.23.0",
+		"react-stately": "^3.28.0",
 		"rehype-autolink-headings": "^6.1.1",
 		"rehype-slug": "^5.1.0",
 		"remark": "^14.0.3",
@@ -94,7 +95,8 @@
 		"@next/bundle-analyzer": "^13.4.7",
 		"@next/eslint-plugin-next": "^13.4.7",
 		"@next/mdx": "^13.4.7",
-		"@react-types/shared": "^3.18.1",
+		"@react-types/accordion": "^3.0.0-alpha.18",
+		"@react-types/shared": "^3.22.0",
 		"@stefanprobst/favicons": "^2.2.2",
 		"@stefanprobst/next-feed": "^1.0.0",
 		"@stefanprobst/next-sitemap": "^1.0.6",
@@ -196,6 +198,6 @@
 		"pre-commit": "pnpm exec lint-staged"
 	},
 	"volta": {
-		"node": "18.16.0"
+		"node": "18.18.2"
 	}
 }

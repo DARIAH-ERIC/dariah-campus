@@ -11,8 +11,12 @@ import { Fragment } from "react";
 
 import AcademicCapIcon from "@/assets/icons/academic-cap.svg?symbol";
 import { getEventById, getEventIds } from "@/cms/api/events.api";
-import { type Post as PostData } from "@/cms/api/posts.api";
-import { getPostById, getPostFilePath, getPostIds } from "@/cms/api/posts.api";
+import {
+	getPostById,
+	getPostFilePath,
+	getPostIds,
+	type Post as PostData,
+} from "@/cms/api/posts.api";
 import { type Resource as ResourceData, type ResourceKind } from "@/cms/api/resources.api";
 import { getCoursePreviewsByResourceId } from "@/cms/queries/courses.queries";
 import { getPostPreviewsByTagId } from "@/cms/queries/posts.queries";
@@ -23,8 +27,7 @@ import { pickRandom } from "@/cms/utils/pickRandom";
 import { Icon } from "@/common/Icon";
 import { PageContent } from "@/common/PageContent";
 import { getLocale } from "@/i18n/getLocale";
-import { type Dictionary } from "@/i18n/loadDictionary";
-import { loadDictionary } from "@/i18n/loadDictionary";
+import { type Dictionary, loadDictionary } from "@/i18n/loadDictionary";
 import { useI18n } from "@/i18n/useI18n";
 import { DublinCore as DublinCoreMetadata } from "@/metadata/DublinCore";
 import { Highwire as HighwireMetadata } from "@/metadata/Highwire";
@@ -33,17 +36,15 @@ import { useAlternateUrls } from "@/metadata/useAlternateUrls";
 import { useCanonicalUrl } from "@/metadata/useCanonicalUrl";
 import { useSiteMetadata } from "@/metadata/useSiteMetadata";
 import { routes } from "@/navigation/routes.config";
+import EventPage from "@/pages/event/[id].page";
 import { createUrl } from "@/utils/createUrl";
 import { type IsoDateString } from "@/utils/ts/aliases";
 import { AuthorsAside } from "@/views/post/AuthorsAside";
 import { Citation } from "@/views/post/Citation";
 import { ContentTypeIcon } from "@/views/post/ContentTypeIcon";
-import { Event } from "@/views/post/Event";
 import { FloatingTableOfContents } from "@/views/post/FloatingTableOfContents";
-import { type CourseListItem } from "@/views/post/getCourseListData";
-import { getCourseListData } from "@/views/post/getCourseListData";
-import { type ResourceListItem } from "@/views/post/getResourceListData";
-import { getResourceListData } from "@/views/post/getResourceListData";
+import { type CourseListItem, getCourseListData } from "@/views/post/getCourseListData";
+import { getResourceListData, type ResourceListItem } from "@/views/post/getResourceListData";
 import { Resource } from "@/views/post/Resource";
 import { ReUseConditions } from "@/views/post/ReUseConditions";
 import { TableOfContents } from "@/views/post/TableOfContents";
@@ -173,7 +174,8 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
 	const siteMetadata = useSiteMetadata();
 
 	if (resource.kind === "events") {
-		return <Event event={resource} />;
+		/** FIXME: we currently render event page both at `/events/:id` and `/resource/events/:id`. */
+		return <EventPage dictionary={{}} resource={resource} />;
 	}
 
 	const { metadata, toc } = resource.data;

@@ -59,6 +59,29 @@ const config = {
 	poweredByHeader: false,
 	async redirects() {
 		return [
+			/**
+			 * Permanent redirects for renamed resources.
+			 * Should include full uri-encoded pathname, without base url.
+			 *
+			 * @example
+			 * ```json
+			 * {
+			 *   "/resource/posts/old-resource": "/resource/posts/new-resource"
+			 * }
+			 *
+			 */
+			...Object.entries(
+				JSON.parse(await readFile(join(process.cwd(), "./redirects.json"), { encoding: "utf-8" })),
+			).map(([source, destination]) => {
+				return {
+					source,
+					destination,
+					permanent: true,
+				};
+			}),
+			/**
+			 * Auto-generated redirects for uuids.
+			 */
 			...Object.entries(
 				JSON.parse(
 					await readFile(join(process.cwd(), "./redirects.resources.json"), { encoding: "utf-8" }),
@@ -92,6 +115,9 @@ const config = {
 					permanent: false,
 				};
 			}),
+			/**
+			 * Redirects for legacy resources from previous iteration of dariah-campus.
+			 */
 			...Object.entries(
 				JSON.parse(
 					await readFile(join(process.cwd(), "./redirects.legacy.resources.json"), {
