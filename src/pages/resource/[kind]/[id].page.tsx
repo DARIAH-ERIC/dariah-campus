@@ -11,8 +11,12 @@ import { Fragment } from "react";
 
 import AcademicCapIcon from "@/assets/icons/academic-cap.svg?symbol";
 import { getEventById, getEventIds } from "@/cms/api/events.api";
-import { type Post as PostData } from "@/cms/api/posts.api";
-import { getPostById, getPostFilePath, getPostIds } from "@/cms/api/posts.api";
+import {
+	getPostById,
+	getPostFilePath,
+	getPostIds,
+	type Post as PostData,
+} from "@/cms/api/posts.api";
 import { type Resource as ResourceData, type ResourceKind } from "@/cms/api/resources.api";
 import { getCoursePreviewsByResourceId } from "@/cms/queries/courses.queries";
 import { getPostPreviewsByTagId } from "@/cms/queries/posts.queries";
@@ -23,8 +27,7 @@ import { pickRandom } from "@/cms/utils/pickRandom";
 import { Icon } from "@/common/Icon";
 import { PageContent } from "@/common/PageContent";
 import { getLocale } from "@/i18n/getLocale";
-import { type Dictionary } from "@/i18n/loadDictionary";
-import { loadDictionary } from "@/i18n/loadDictionary";
+import { type Dictionary, loadDictionary } from "@/i18n/loadDictionary";
 import { useI18n } from "@/i18n/useI18n";
 import { DublinCore as DublinCoreMetadata } from "@/metadata/DublinCore";
 import { Highwire as HighwireMetadata } from "@/metadata/Highwire";
@@ -40,10 +43,8 @@ import { AuthorsAside } from "@/views/post/AuthorsAside";
 import { Citation } from "@/views/post/Citation";
 import { ContentTypeIcon } from "@/views/post/ContentTypeIcon";
 import { FloatingTableOfContents } from "@/views/post/FloatingTableOfContents";
-import { type CourseListItem } from "@/views/post/getCourseListData";
-import { getCourseListData } from "@/views/post/getCourseListData";
-import { type ResourceListItem } from "@/views/post/getResourceListData";
-import { getResourceListData } from "@/views/post/getResourceListData";
+import { type CourseListItem, getCourseListData } from "@/views/post/getCourseListData";
+import { getResourceListData, type ResourceListItem } from "@/views/post/getResourceListData";
 import { Resource } from "@/views/post/Resource";
 import { ReUseConditions } from "@/views/post/ReUseConditions";
 import { TableOfContents } from "@/views/post/TableOfContents";
