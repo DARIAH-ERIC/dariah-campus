@@ -1,10 +1,10 @@
-import { type EditorComponentOptions } from "netlify-cms-core";
+import { type EditorComponentOptions } from "decap-cms-core";
 
 import { types as options } from "@/cms/components/SideNote";
 import { decodeQuotes, encodeQuotes } from "@/cms/utils/quotes";
 
 /**
- * Netlify CMS richtext editor widget for SideNote component.
+ * Decap CMS richtext editor widget for SideNote component.
  */
 export const sideNoteEditorWidget: EditorComponentOptions = {
 	id: "SideNote",
@@ -23,7 +23,7 @@ export const sideNoteEditorWidget: EditorComponentOptions = {
 			name: "children",
 			label: "Content",
 			widget: "markdown",
-			// FIXME: https://github.com/netlify/netlify-cms/issues/5514
+			// FIXME: https://github.com/decaporg/decap-cms/issues/5514
 			// @ts-expect-error Missing in upstream types.
 			editor_components: ["image", "code-block"],
 			// modes: ['raw'],

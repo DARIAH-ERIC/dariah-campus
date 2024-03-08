@@ -1,4 +1,4 @@
-import { type CmsCollection, type CmsConfig } from "netlify-cms-core";
+import { type CmsCollection, type CmsConfig } from "decap-cms-core";
 
 import { collection as categories } from "@/cms/collections/categories.collection";
 import { collection as contentTypes } from "@/cms/collections/contentTypes.collection";
@@ -31,10 +31,10 @@ export const collections: Record<string, CmsCollection> = {
 };
 
 /**
- * Netlify CMS config.
+ * Decap CMS config.
  *
- * @see https://www.netlifycms.org/docs/configuration-options/
- * @see https://www.netlifycms.org/docs/beta-features/
+ * @see https://decapcms.org/docs/configuration-options/
+ * @see https://decapcms.org/docs/beta-features/
  */
 
 export const config: CmsConfig = {

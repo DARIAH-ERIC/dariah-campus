@@ -1,7 +1,7 @@
 import { compile } from "@mdx-js/mdx";
 import withSyntaxHighlighting from "@stefanprobst/rehype-shiki";
 // eslint-disable-next-line import/no-unresolved
-import { type PreviewTemplateComponentProps } from "netlify-cms-core";
+import { type PreviewTemplateComponentProps } from "decap-cms-core";
 import { useEffect, useMemo, useState } from "react";
 import withGitHubMarkdown from "remark-gfm";
 import { type Highlighter } from "shiki";

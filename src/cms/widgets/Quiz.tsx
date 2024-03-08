@@ -1,6 +1,6 @@
 import { remarkMarkAndUnravel as withUnraveledJsxChildren } from "@mdx-js/mdx/lib/plugin/remark-mark-and-unravel.js";
+import { type EditorComponentOptions } from "decap-cms-core";
 import { type MdxJsxFlowElement } from "mdast-util-mdx-jsx";
-import { type EditorComponentOptions } from "netlify-cms-core";
 import { remark } from "remark";
 import withGitHubMarkdown from "remark-gfm";
 import withMdx from "remark-mdx";
@@ -222,7 +222,7 @@ const quizControls = {
 };
 
 /**
- * Netlify CMS richtext editor widget for Quiz component.
+ * Decap CMS richtext editor widget for Quiz component.
  */
 export const quizEditorWidget: EditorComponentOptions = {
 	id: "Quiz",

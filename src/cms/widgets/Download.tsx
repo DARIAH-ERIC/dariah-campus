@@ -1,9 +1,9 @@
-import { type EditorComponentOptions } from "netlify-cms-core";
+import { type EditorComponentOptions } from "decap-cms-core";
 
 import { decodeQuotes, encodeQuotes } from "@/cms/utils/quotes";
 
 /**
- * Netlify CMS richtext editor widget for Download component.
+ * Decap CMS richtext editor widget for Download component.
  */
 export const downloadWidget: EditorComponentOptions = {
 	id: "Download",
@@ -13,7 +13,7 @@ export const downloadWidget: EditorComponentOptions = {
 			name: "url",
 			label: "Document",
 			widget: "file",
-			// FIXME: https://github.com/netlify/netlify-cms/issues/5514
+			// FIXME: https://github.com/decaporg/decap-cms/issues/5514
 			// @ts-expect-error Missing in upstream types.
 			media_folder: "downloads",
 			public_folder: "downloads",

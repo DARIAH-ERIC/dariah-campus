@@ -1,6 +1,6 @@
 import { compile } from "@mdx-js/mdx";
 import withSyntaxHighlighting from "@stefanprobst/rehype-shiki";
-import { type PreviewTemplateComponentProps } from "netlify-cms-core";
+import { type PreviewTemplateComponentProps } from "decap-cms-core";
 import { useEffect, useMemo, useState } from "react";
 import withHeadingIds from "rehype-slug";
 import withGitHubMarkdown from "remark-gfm";

@@ -4,16 +4,16 @@ import { Fragment, memo } from "react";
 import { Metadata } from "@/metadata/Metadata";
 
 /**
- * Lazy-loads CMS on the client, because Netlify CMS cannot be server-rendered.
+ * Lazy-loads CMS on the client, because Decap CMS cannot be server-rendered.
  */
 const Cms = dynamic(
 	async () => {
 		const { nanoid } = await import("nanoid");
 		/**
-		 * We cannot use the ESM build because `netlify-cms-app` imports global css,
+		 * We cannot use the ESM build because `decap-cms-app` imports global css,
 		 * which is disallowed by Next.js.
 		 */
-		const { default: Cms } = await import("netlify-cms-app");
+		const { default: Cms } = await import("decap-cms-app");
 		const { config } = await import("@/cms/cms.config");
 		const { collection: posts } = await import("@/cms/collections/posts.collection");
 		const { collection: courses } = await import("@/cms/collections/courses.collection");
@@ -146,7 +146,7 @@ export default function CmsPage(): JSX.Element {
 			<style jsx global>
 				{`
 					/* Temporary workaround to stop tailwind reset bleeding into richtext editor. */
-					/* Should be fixed upstream: Netlify CMS richtext editor should explicitly set styles.
+					/* Should be fixed upstream: Decap CMS richtext editor should explicitly set styles.
              and not rely on browser defaults. */
 					#nc-root .cms-editor-visual div[data-slate-editor="true"] ul {
 						list-style: disc;

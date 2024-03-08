@@ -1,10 +1,10 @@
-import { type EditorComponentOptions } from "netlify-cms-core";
+import { type EditorComponentOptions } from "decap-cms-core";
 
 import { videoProviders } from "@/cms/components/Video";
 import { decodeQuotes, encodeQuotes } from "@/cms/utils/quotes";
 
 /**
- * Netlify CMS richtext editor widget for VideoCard component.
+ * Decap CMS richtext editor widget for VideoCard component.
  */
 export const videoCardEditorWidget: EditorComponentOptions = {
 	id: "VideoCard",
