@@ -59,7 +59,7 @@ export function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Elemen
 				<div className="flex">
 					<LanguageTag lang={lang} />
 				</div>
-				<div className="leading-7 text-neutral-500">{abstract}dLanguageTag</div>
+				<div className="leading-7 text-neutral-500">{abstract}</div>
 			</div>
 			<footer className="flex items-center justify-between h-20 px-10 py-5 bg-neutral-100">
 				<dl>
