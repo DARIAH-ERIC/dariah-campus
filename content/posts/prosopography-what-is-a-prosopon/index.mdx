@@ -1,0 +1,198 @@
+---
+title: "Prosopography: What is a Prosopon?"
+lang: en
+date: 2024-07-01T12:40:00.000Z
+version: 1.0.0
+authors:
+  - genatowski-emily
+tags:
+  - digital-archives
+categories:
+  - dariah
+abstract: "A prosopon is a collected literary representation of a person. A
+  common problem in prosopography is known as the Rusudan Problem whereby
+  disambiguation is necessitated through a lack of information. This issue
+  requires personalized standards and careful consideration. This resource will
+  provide guidance on how to create and implement these standards. The students
+  will be able to tackle three main issues with prosopography by the end of the
+  course: multiple people with the same name, anonymous entries and fictional
+  people."
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: ""
+licence: ccby-4.0
+toc: false
+draft: false
+uuid: 4uVYdl570HdYBNIoJlQzQ
+---
+A key Concept: the prosopon 
+
+A prosopon is a collected literary representation of a person. 
+
+In some ways, it’s true that all we can ever get to about past people is their construction in source, 
+
+whether through other people’s (and in a few cases their own) literary representations of them, or 
+
+record documents, or artefacts. The term prosopon is therefore important for distinguishing our 
+
+collection of what people said and thought about a person – the image of that person we are able to 
+
+construct today – from the person themselves, who this may or may not be an accurate depiction of. 
+
+From your reading last week you should know the difference between person-prosopon and factoid 
+
+models. In a person-prosopon database, a prosopon is meant to represent an actual, real, living 
+
+person: they’re treated as being the same thing, and it’s the job of the database’s author to get 
+
+them as close as possible, resolving any contradictions in the source material. In a factoid database, 
+
+this isn’t the case, and the prosopon can be internally contradictory: it’s just a collection of things 
+
+people said about this constructed person. 
+
+Disambiguation: or, the Rusudan Problem 
+
+Everyone I’ve met who has done prosopography has a different name for this problem: it’s always 
+
+named after whichever name they have most common problems disambiguating. In my case that’s 
+
+references to “Rusudan”, the most popular womens’ name among the 12th century Georgian ruling 
+
+family. This means that there can often be two or three Rusudans at court at the same time, without 
+
+many easy ways to tell them apart. This is a problem in all eras of prosopography: even in the 
+
+nineteenth century when the widespread use of surnames (not always a given) makes people more 
+
+identifiable. For example, a private letter from a letter collection won’t necessarily identify which 
+
+acquaintance of a particular given name is being mentioned e.g. “We went to William’s for dinner” 
+
+when the person might well know at two or three Williams as close acquaintances given it’s common 
+
+status as a name.
+
+So, how do you disambiguate – and when do you do so? 
+
+ A lot of disambiguation work is based on context and happens on a case by case basis. There 
+
+ is no perfect rule and no right answer. 
+
+ One result of this is that some databases try to avoid disambiguation as much as possible. In 
+
+ these cases, if someone cannot be fairly definitively identified as being a specific person, they get a separate record entry. 
+
+ You can link record entries together, by having a table or edge type called “IsSameAs” or 
+
+“ProbablySameAs”, to store those links. This can be important when you want the option to  suggest that two people might be the same, without absolute certainty. 
+
+ My advice would be to avoid probabilistic disambiguation: that is, don’t try to attach numbers like “I think there’s a 25% chance that this person is this person.” Such numerical indicators can give both you and future users a false sense of scientism and accuracy.
+
+Where you do disambiguate, always ensure that there is some storage of your reasoning for  doing so. Not only future users, but also you in a year or two’s time, might well want to know on what basis you made a decision of this kind. 
+
+Sometimes disambiguation is impossible – you have two (or more) options of equal probability. This is where having a system for probable similarity can help, as you can make multiple of those connections. Or you can pick one, and just note that the other is possible. 
+
+It’s up to you, but be consistent with your method if those cases arise.
+
+Anonymi 
+
+One of the biggest problems is how to deal with anonymous individuals (anonymi – it’s a Latin 
+
+plural). 
+
+Imagine you find an inscription saying “The Emperor was murdered here.” How many people are 
+
+identified here? 
+
+At the fewest, zero – there’s nobody definitively named, and you might not be sure which Emperor is 
+
+mentioned, so it would be methodologically valid to scrap this as evidence altogether. Most 
+
+methodologies would probably input to one person record from this – the Emperor is clearly 
+
+discussed, and even if you’re not sure now which Emperor it was, the surrounding information is 
+
+enough that someone in the future might make the link. 
+
+You can have even more people though. By definition, murder requires a murderer, otherwise it’s 
+
+just a death, so there’s an implied anonymous murderer involved. It would be valid to put in a record 
+
+for that person, in case you can track down details about them from identifying the event later. And 
+
+that’s not all – Emperors rarely come from nowhere, so you might well be able to assume some 
+
+details about the Emperor’s parents. Everyone in history thus far has at least two biological parents, 
+
+after all. So you could generate four people from this simple sentence. 
+
+So we’ve seen several sorts of anonymi here that you may or may not want to account for:
+
+People with very specific job or noble titles without names. If the title is rare enough, these may be some of the easier people to identify. 
+
+People mentioned with some other key individualising feature e.g. “Sir William’s Wife”. This 
+
+is quite a specific identifier. 
+
+People discussed in detail without title (so for example “and then a man with red hair and a lion on his shield rode out at the head of the army” or “and then the cunning herald of the 
+
+Emperor came to see the rebels”. These are hypothetically identifiable people, but the probabilities will be more or less good depending on the depth of source material available. 
+
+People who may well be literary devices. This is more difficult. For example, a chronicler might create a vignette where an unnamed peasant talks to the Emperor about the hardships of the common people. It’s possible that such an even existed, but it’s also possible that the words are given to the peasant as a literary device. Parents. You’ll often know more about the parents of someone, even if they’re never explicitly mentioned, than you do about, especially in cultures where a lot of aspects of status are heritable. However, of course extrapolating ancestors could be a potentially infinite process – my instinct is to generally not do this unless you have good methodological cause. One good reason to do it, as an example, is if you want to simplify family relationships to being parent-child only, which may make processing them easier. In this case, if you had a sibling relationship in the text but the parents were unmentioned, you’d need to include them to represent the sibling relationship properly. 
+
+Implied actors, such as the murderer in the above example, who are only identified by the fact that someone must have done the action. In general I suspect most methodologies will exclude these, but you might have a good reason for including them – for example in trade studies, if you have information that some goods went from point A to point B then the implied merchants who must have carried them may well be of prosopographical interest to you. 
+
+You don’t have to include anonymi at all – that’s a valid methodological choice – but it’s likely you’ll 
+
+want to include some of them, and you should develop a clear idea of which ones you want to 
+
+include, based on a) the chance of identifying them later and b) which ones are likely to be 
+
+appropriate for the kinds of questions you want to answer. 
+
+Fictional persons: or, the Alexander the Great Problem 
+
+A prosopon isn’t necessarily a “real” person. This seems like it shouldn’t be much of an issue – surely 
+
+people are either real or not real? Unfortunately, there isn’t actually any clear boundary between a 
+
+“real” person and a “fictional” one in much of our source material. This may seem counter-intuitive – 
+
+after all, someone either existed or they didn’t – but let’s consider Alexander the Great as an 
+
+example. 
+
+We’re pretty sure Alexander existed, and he’s probably one of the people most mentioned in 
+
+ancient and medieval historical sources from a huge range of countries. But stories about Alexander 
+
+in historical materials cover a complete range of plausibility: we’re all fairly confident that Alexander 
+
+was king of Macedon, and was at battles like Gaugamela, but how confident should we be of the 
+
+stories about him visiting oracles, or the various tales (which conflict) about him solving the Gordian 
+
+Knot? And what about Alexander as he appears in the founding myths of other countries, where he’s 
+
+used as a legitimising device? Or in some medieval texts, which basically go all the way up to full￾fledged fantasy romances? To what extent are these meaningfully the same Alexander? And where 
+
+should we draw the “plausibility line”? 
+
+This poses problems for all types of database. In a factoid database, the problem is where your 
+
+definition of the person ends: if your collection of sources includes some obviously fantastical and 
+
+some plausible information about the same person, do you treat that as being one person or two? 
+
+Because of the factoid model’s agnosticism about whether information has any truth values, there 
+
+can therefore be a cluttering problem for some individuals as information at very differing 
+
+plausibility levels is mixed. In a person-prosopon model, your issue meanwhile is to actually decide 
+
+what you think is true and where the boundary lies, and therefore what should be included. This is 
+
+likely to be a case by case process.
