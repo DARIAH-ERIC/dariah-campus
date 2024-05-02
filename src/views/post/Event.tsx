@@ -5,12 +5,12 @@ import { useState } from "react";
 import { Button, OverlayArrow, Tooltip, TooltipTrigger } from "react-aria-components";
 import {
 	FaCheck,
-	FaClipboard,
 	FaCloud,
 	FaEnvelope,
 	FaFilePdf,
 	FaFlickr,
 	FaGlobe,
+	FaQuoteLeft,
 	FaTwitter,
 } from "react-icons/fa";
 import { type OverlayTriggerState, useOverlayTriggerState } from "react-stately";
@@ -318,7 +318,7 @@ function EventSocialLinks(props: EventSocialLinksProps) {
 								copied && "bg-green-600",
 							)}
 						>
-							{copied ? <FaCheck /> : <FaClipboard />}
+							{copied ? <FaCheck /> : <FaQuoteLeft />}
 							<span className="sr-only">Copy citation</span>
 						</div>
 					</Button>
@@ -534,7 +534,7 @@ function EventSession(props: EventSessionProps) {
 							{copied ? (
 								<FaCheck size="1.5em" className="w-full h-full" />
 							) : (
-								<FaClipboard size="1.5em" className="w-full h-full" />
+								<FaQuoteLeft size="1.5em" className="w-full h-full" />
 							)}
 							<span className="sr-only">Copy citation to clipboard</span>
 						</Button>
