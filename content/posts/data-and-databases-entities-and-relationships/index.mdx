@@ -1,0 +1,128 @@
+---
+title: "Data and Databases: Entities and Relationships"
+lang: en
+date: 2024-06-30T16:47:00.000Z
+version: 1.0.0
+authors:
+  - genatowski-emily
+  - baille-james
+tags:
+  - data-management
+categories:
+  - dariah
+abstract: An entity is an object with its own characteristics, defined according
+  to the specificities of a given field. This resource covers associations
+  between entities, attributes of entities, identifiers of entities and
+  cardinalities of entities.
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: ""
+licence: ccby-4.0
+toc: false
+draft: false
+uuid: MZew48ay3zmPjbtKYqR5q
+---
+## Introduction
+
+An entity is an object with its own characteristics, defined according to the specificities of a given field. Entities can represent concrete or abstract entities. For example, in a commercial context, we can identify customers, orders, and products. Each of them is an entity of the domain and each entity belongs to a class or type of entities. In this example, we could define three types of entities which will be called CUSTOMER, ORDER and PRODUCT.
+
+## Learning outcomes
+
+After completing this resource, learners should be able to:
+
+- Define associations between entities
+- Identify attributes of entities
+- Note identifiers of entities
+- Describe cardinalities of entities
+
+## Association
+
+An association between entities is a relationship linking two or more entities.
+
+An order is linked to the customer who placed it; there is therefore an association between this order and this customer. We will say that all associations of this nature belong to the type of association Place between the two entities CUSTOMER and ORDER.
+
+When an entity participatesin some type of association, it is said to be playing a role. We will use this term to designate one end of an association. One entity can play multiple roles in the same association.
+
+Each entity participating in an association is characterized by a pair of min-max values called cardinalities.
+
+Let E and F be two entities and an association A between E and F.
+
+Cardinalities describe the maximum number of occurrences of entity F for each occurrence of entity E and vice versa. The main cases of cardinalities are the following:
+
+\- type 1: 1 (or one-to-one) association if at one occurrence of entity E can correspond by association A to at most one occurrence of entity F and that, conversely to an occurrence of the entity F cannot correspond to more than one occurrence of entity E.
+
+\- type 1: n association (or one-to-many): if at an occurrence of entity E can correspond by association to several occurrences of entity F but to one occurrence of entity at most one occurrence of entity E.
+
+\- n: n type association (or many-to-many): if at an occurrence of the entity E can correspond to several occurrences of the entity F and vice versa.
+
+We can also have n-ary associations which are established between n entities (n>2).
+
+## Attributes
+
+An attribute or a property is an elementary data that we perceive on an entity or on an association between objects.
+
+Each customer is characterized by a number, a name and an address. We will model these facts by providing the CUSTOMER entity with the attributes CustomerNum, Name and Address.
+
+We will specify the type of each attribute: numeric, character, date, etc. as well as his length.
+
+An attribute of an association is a property that depends on all the entities involved in the association.
+
+Example: The REGISTERED association defined between the STUDENT and MODULE entities has forattribute the year of the student's first enrollment in teaching. This year of registration is an attribute of the association and not of one of the entities, because it is necessary to know the student and the module to be able to determine it.
+
+## Identifiers
+
+Typically, an entity has an attribute that uniquely identifies it among entities of that type. The entityCUSTOMER, for example, has a CustomerNum attribute such that at any time the occurrences of the CUSTOMER entity have separate CustomerNumvalues. In other words, given a any value of CustomerNum, we have the guarantee that there will be no more of an occurrence of the CUSTOMER entity with this value. We will say that CustomerNum is aCUSTOMER ID: it acts as an identifier for the CUSTOMER entity.
+
+The identifier of an entity is, then, a particular attribute of the entity such as each value of the property matches one and only one occurrence of the entity.
+
+In addition, it may happen that an entity has more than one identifier. In this case, one of them can be declared primary while all the others are secondary.
+
+The value of an attribute may not be known at the time the information on the entity are registered. If we admit that this attribute may not have a value for certain occurrences of the entity, it will be declared optional. Otherwise this attribute is mandatory.
+
+In the E / A diagram, the identifiers are underlined.
+
+It is especially useful and important in some types of humanities data to ensure that unique numerical identifiers are used for entities, because of the specific problems that can be caused by confused or contested identification of entities. For example, categories like name which are commonly used as identifiers may be repeated in a data-set, whereas numerical identifiers will not be.
+
+## Cardinalities
+
+A cardinality is a measure of how many instances of one entity can be connected to another. The cardinality of a type of entity, in relation to any type of association it can participate in, is expressed by two numbers called minimum cardinality and maximum cardinality.
+
+Cardinalities are mentioned to explicitly indicate details about the associations. More precisely, they allow to explicitly mention how many occurrences of the association are associated to a given occurrence of an entity.
+
+This also has an impact on the way they will be transformed to a relational DB.
+
+The minimum cardinality (generally equal to 0 or 1) is the minimum number of times an occurrence of an entity participates in the occurrences of the association.
+
+If the minimum cardinality is 0, it means that among all occurrences of the entity at least one occurrence is not participating in the occurrences of the association.
+
+If the minimum cardinality is equal to 1, this corresponds to the fact that each occurrence of the entity always participates in one occurrence of the association.
+
+We can also have a constant value as a min cardinality (2, 10, etc.)
+
+The maximum cardinality indicates the maximum number of times an occurrence of the entity participates in the occurrences of the relationship. It can be 1, or many (represented by N). It can also be a constant value (2, 10, etc.).
+
+Given the illustration presented in figure 1, cardinalities are read differently in each side.
+
+![Figure 1: ER Diagram with cardinalities In figure 2, Minimum cardinality is the minimum number of associated occurrences/instances of entity B  for a given occurrence of entity A. Whereas, Maximum cardinality is the maximum number of  occurrences/instances associated to a given occurrence of entity A. Figure 2: Cardinalities between Entity A and the association In figure 3, we can read that for a given occurrence of entity B, we define the minimum number of  associated occurrences/instances of entity A and the maximum number of occurrences/instances of entity  A.](images/screenshot-2024-05-30-6.53.11-pm.png)
+
+
+
+## More examples
+
+Example 1: Parent and children
+
+A parent may not have children. That is why min cardinality is 0. Also, a parent may have many children. 
+
+That is why maximum cardinality is N (many).
+
+On the other side, a child always has exactly two parents. That is why minimum cardinality and maximum cardinality are both equal to 2.
+
+![Example 2: Football players and matches A football player may not participate to any match. That is why minimum cardinality is 0. But he may  participate in many matches. That is why maximum cardinality is N (many). On the other side, a match always involves 22 football players (11 players for each team).](images/screenshot-2024-05-30-6.55.30-pm.png)
+
+
+
+## Conclusion
+
+By completing this resource, you should now know that an entity is an object with its own characteristics, defined according to the specificities of a given field. Entities can represent concrete or abstract entities. You should now understand an association, which is a relationship between two or more entities. You should be familiar with an attribute, which is an elementary data that we perceive on an entity or on an association between objects. After completing the resource you should be able to explain that an identifier is an entity has an attribute that uniquely identifies it among entities of that type as well as what a cardinality is, which is a measure of how many instances of one entity can be connected to another.
