@@ -1,0 +1,676 @@
+---
+title: Langzeitarchivierung
+lang: de
+date: 2022-07-14
+version: 1.0.0
+authors:
+  - trognitz-martina
+editors:
+  - wiencek-florian
+tags:
+  - data-management
+categories:
+  - acdh-ch
+abstract: Definition des Begriffs Archivierung - Analoge vs. digitale
+  Archivierung, mit besonderem Augenmerk auf die digitale Langzeitarchivierung -
+  Praktische Hinweise aus der Sicht der Datenersteller*innen
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+licence: ccby-4.0
+toc: true
+draft: false
+
+---
+
+## Lernziele
+
+* Den Begriff und die Notwendigkeit der (Langzeit)Archivierung verstehen
+* Die Unterschiede von analoger und digitaler Archivierung erklären können
+* Digitale Langzeitarchive finden, kennenlernen und vergleichen
+* Digitale Langzeitarchivierung für das eigene Projekt planen und umsetzen
+
+<SideNote type="tip" title="Tipp: Video verfügbar">
+  Die Inhalte des Kapitels beruhen auf dem Impulsvortrag "Langzeitarchivierung" der Tool Gallery 7.2. (17. November 2021) des ACDH-CH, dessen Aufzeichnung (Deutsch) auf Youtube verfügbar ist.
+</SideNote>
+
+<Video provider="youtube" id="G3MsDinXS7U" startTime={12}>
+  Impulsvortrag zu Langzeitarchivierung von Martina Trognitz im Rahmen der ACDH-CH Tool Gallery 7.2, 17.11.2021.
+</Video>
+
+## A. Einleitung
+
+Im letzten Kapitel der Reihe zu Datenmanagement geht es um das Thema digitale Langzeitarchivierung. Bei diesem Schritt zeigt sich auch, ob man im Projekt ein aktives und konsistentes Datenmanagement betrieben hat, oder nicht. Umso wichtiger ist es, die Archivierung bereits bei der Planung und Implementierung eines Projekts mit zu berücksichtigen. Bevor wir aber zu den konkreten Planungsschritten und Arbeitsabläufen in der digitalen Langzeitarchivierung kommen, fangen wir zunächst mit der Klärung der Grundbegriffe zur Archivierung an.
+
+## B. Definition von Archivierung
+
+Die Definition für das Archiv auf Wikipedia bietet bereits eine sehr gute Ausgangsbasis:
+
+> "Ein Archiv (lat. archivum 'Aktenschrank'; aus altgr. ἀρχεῖον archeíon 'Amtsgebäude') ist eine Institution oder Organisationseinheit, in der Archivgut zeitlich unbegrenzt im Rahmen der Zuständigkeit des Archivs oder des jeweiligen Sammlungsschwerpunktes aufbewahrt, benutzbar gemacht und erhalten wird (Archivierung)." [(Wikipedia, Archiv)](https://de.wikipedia.org/wiki/Archiv)
+
+Dies zeigt, dass die Begriffe "Archiv" und "Archivierung" eng zusammenhängen.
+
+Analoge Archive – also Archive, die physisches Material aufbewahren – enthalten dabei die zu bewahrenden Objekte sowie eventuell begleitendes Material, das diese Objekte dokumentiert. Bei analogen Archiven sind die Objekte und das archivierte Material nur lokal am physischen Ort des Archivs zugänglich. Als digitales Hilfsmittel gibt es aber Online-Findbücher – zumeist eine digitale Version der analogen Findbücher oder Karteikarten – um die Objekte im physischen Archiv zu finden. Findbücher dienen auch als ein Verzeichnis des erschlossenen archivierten Materials. Neben einem physischen Standort benötigt ein analoges Archiv auch spezifische klimatische Bedingungen in den Räumlichkeiten, um z.B. alte Manuskripte zu erhalten.
+
+### Digitale Archivierung
+
+Wenn man dieser Beschreibung die digitale Archivierung (auch digitale Langzeitarchivierung) gegenüberstellt, so wird deutlich, dass man es im Digitalen - vor allem bei Digitalisaten von physischen Objekten - im Grunde *nur* mit Dokumentationsmaterial zu tun hat: entweder direkt digital erstellt oder digitalisiert. Die physischen Objekte wie ein Buch oder ein Keramikgefäß wird man im Digitalen nicht finden, sondern immer nur ihre digitalen Surrogate. Dabei gehen Informationen und Qualitäten der physischen Objekte verloren, die durch das Dokumentationsmaterial bzw. die Metadaten ergänzt und angereichert werden müssen. Der Vorteil von einem digitalen Archiv ist, dass die darin gespeicherten Daten ortsunabhängig angesehen und abgerufen werden können. Um Daten in einem digitalen Archiv zu finden, gibt es analog zu den Findbüchern durchsuchbare Online-Kataloge.
+
+Ein digitales Archiv hat allerdings auch eine physische Komponente, denn es benötigt redundanten Speicherplatz in der physischen Welt. Redundant bedeutet, dass die Daten idealerweise nicht nur in einem, sondern parallel in zwei oder drei Rechenzentren gespeichert werden. Daneben braucht es spezialisierte Workflows um Daten ins Archiv zu überführen und langfristig dort zu behalten. Eine Dokumentation und Spezifikation von verschiedenen Aufgaben im Bereich der digitalen Archivierung aus Sicht der Betreiber\*innen eines digitalen Archivs findet sich im [OAIS Referenzmodell](http://www.oais.info/).
+
+<Figure src="images/oais_functional_model_-en-_wikimediacommons.svg">
+  Abbildung: "Diagramm des funktionellen Modells von OAIS." Quelle: Wikimedia Commons, [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0).
+</Figure>
+
+Das primäre Ziel der digitalen Archivierung ist es, digitale Materialien zu bewahren, um diese zu lesen, zu öffnen und deren Bearbeitung zu ermöglichen. Wenn man von Langzeitarchivierung spricht, geht man von einem Zeitraum von mindestens 10 Jahren aus. Eine Festlegung auf eine bestimmte Aufbewahrungsdauer ist jedoch schwierig, da sie u.a. davon abhängig ist, wie lange die bewahrende Institution besteht und wie es um die Finanzierung des Archivs bestellt ist.
+
+Es gibt generell zwei unterschiedliche Ansätze zur digitalen Archivierung:
+
+* Die **Migration von Dateiformaten:** Hierbei werden veraltete bzw. obsolete Dateiformate in ein aktuelles Dateiformat überführt. Ein gutes Beispiel ist MS Word. Das Dateiformat von MS Word wurde mit Microsoft Word 2007 von `.doc` auf das XML-basierte Dateiformat `.docx` umgestellt. Wenn ein Archiv nun Dateien im MS-Word-Format archiviert, dann müssten alle vorhandenen Dokumente in `.doc`-Format nach `.docx` überführt, also migriert, werden.
+* Die **Emulation von Softwareumgebungen:** In diesem zweiten Ansatz belässt man Dateien in ihrem originalen Format. Stattdessen stellt das Archiv Softwarepakete bereit, welche die originale Softwareumgebung bei der Erstellung und Bearbeitung einer Datei emulieren und somit ermöglichen, die Dateien im Ausgangsformat öffnen und nutzen zu können.
+
+Zusätzlich zu den Daten werden weitere Informationen wie beispielsweise Metadaten gespeichert, die dann dabei helfen, das Material zu finden, zu lokalisieren und abzurufen bzw. zu öffnen.
+
+## C. Digitale Langzeitarchivierung
+
+Kommen wir zum Thema der digitalen Langzeitarchivierung. Zunächst stellt sich die Frage: Warum sollte man eigentlich Daten archivieren? Dies wurde in den Grundlagen des Datenmanagements schon ausführlicher behandelt. Das Hauptziel ist es, den Lebenszyklus der Daten zu erhalten.
+
+<Figure src="images/datalifecycle.png">
+  Abbildung: "DataLifeCycle", von Martina Trognitz, lizenziert unter [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0). Die Abbildung basiert auf dem IANUS-Lebenszyklus und dem Zyklus des UK Data Service.
+</Figure>
+
+Gerade die Aspekte archivieren (preserve) und teilen (share) sind wichtige Bestandteile aus diesem Lebenszyklus, für den eine Langzeitarchivierung Grundvoraussetzung ist, um nachhaltig zu funktionieren.
+
+Ein weiterer Grund, Daten zu archivieren, ist die Einhaltung der [FAIR-Data-Prinzipien](https://www.go-fair.org/fair-principles/). Diese wurden 2016 in der Zeitschrift "[Scientific Data](https://www.nature.com/articles/sdata201618)" veröffentlicht und beziehen sich sowohl auf digitale Daten als auch deren Metadaten. Das Akronym FAIR steht für "**F**indable – **A**ccessible – **I**nteroperable – **R**eusable". Diese Prinzipien sollen den Zugang und die Nachnutzung von Daten nicht nur für Menschen erleichtern, sondern auch die Maschinenlesbarkeit der Daten spielt eine große Rolle.
+
+Was versteckt sich nun hinter den Schlagwörtern?
+
+* **Findable:** Daten sollen auffindbar sein. Relevant dafür sind die Metadaten sowie auch ein persistenter Identifikator (PID), mit dem man die Daten wieder finden kann.
+* **Accessible:** Die Daten sollen zugänglich sein. Dies bedeutet nicht unbedingt "frei zugänglich", sondern – gerade im Hinblick auf maschinenlesbare Daten – über ein standardisiertes Protokoll abrufbar und zugreifbar.
+* **Interoperable:** Daten sollen interoperabel sein, also mit Daten aus anderen Quellen kombiniert werden können. Dies bedingt, dass Standards für Daten und Metadaten angewendet werden, um sicherzustellen, dass Daten nicht nur in ihrer eigenen Umgebung verwendet werden, sondern auch zusammen mit anderen Daten nachgenutzt werden können.
+* **Reusable:** Daten sollen zudem auch nachnutzbar sein. Dies bedingt unter anderem eine hinreichende Dokumentation der Daten, also die Beantwortung der Frage: Wie und in welchem Kontext sind die Daten zu verstehen? Zudem soll über eine Lizenzinformation geklärt werden, in welcher Form oder unter welchen Bedingungen die Daten nachgenutzt werden können. Wichtig ist es auch hier, institutions- und fachabhängige Standards einzuhalten.
+
+Die meisten Archive sorgen dafür, dass möglichst viele FAIR-Data-Prinzipien eingehalten werden. Dies bedeutet, dass man sich im besten Falle nur noch darum kümmern muss, eine ordentliche Dokumentation bereitzustellen und die passende Lizenz auszuwählen.
+
+<SideNote type="note" title="Mehr Informationen zu den FAIR-Prinzipien">
+  Mehr Informationen zu den FAIR-Prinzipien unter folgenden URLs:
+
+  * [Forschungsdaten.info, FAIRE Daten](https://www.forschungsdaten.info/themen/veroeffentlichen-und-archivieren/faire-daten/)
+  * [Top 10 FAIR Data & Software Things](https://librarycarpentry.org/Top-10-FAIR/)
+  * [A FAIRy tale](https://doi.org/10.5281/zenodo.2248200)
+  * [FAIR Data Austria](https://forschungsdaten.at/fda/)
+  * [Jones & Grootveld 2017](https://www.cessda.eu/content/download/3845/35038/file/20170707_How_FAIR_are_your_data_Jones.pdf)
+</SideNote>
+
+### Beispiele für digitale Archive
+
+Es gibt eine Vielzahl an digitalen Archiven, die man grob in fachübergreifende bzw. auf bestimmte Disziplinen fokussierte Repositorien einteilen kann. Hier einige Beispiele:
+
+Fachübergreifende Archive:
+
+* [DANS in Den Haag (NL)](https://easy.dans.knaw.nl/ui/home)
+* [GAMS in Graz (AT)](http://gams.uni-graz.at/context:gams)
+* [ARCHE in Wien (AT)](https://arche.acdh.oeaw.ac.at/browser/)
+* [SND Swedish National Data Service in Göteborg (SWE)](https://snd.gu.se/en)
+* [Zenodo (CERN) in Genf (CH)](https://zenodo.org/)
+
+Auf die Disziplin Archäologie fokussierte Archive:
+
+* [ads Archaeology Data Service in York (UK)](https://archaeologydataservice.ac.uk/)
+* [tDAR The Digital Archaeological Record in Tempe, AZ](https://www.tdar.org/about/) & [Open Context in San Francisco, CA](https://opencontext.org/) (USA)
+* [AIS CR Archaeological Information System of the Czech Republic in Brünn/Prag (CZ)](http://www.aiscr.cz/en/)
+
+## D. Wie findet man ein digitales Archiv für seine Daten?
+
+Ein empfehlenswerter Startpunkt ist die Suche über **[re3data.org](http://www.re3data.org)** (*Registry of Research Data Repositories*). Dort kann man Repositorien zum Beispiel nach Land, Fachdisziplin und anderen Kriterien filtern. Ähnliche Portale sind [OpenDOAR](https://v2.sherpa.ac.uk/opendoar/) und [ROAR](http://roar.eprints.org/). Auf letzteren Portalen sind aber viele Repositorien gelistet, die rein auf Publikationen spezialisiert sind. Idealerweise beginnt man daher die Suche auf re3data.org, und wenn man dort zu keinem zufriedenstellenden Ergebnis kommt, kann man über die anderen Portale weitersuchen.
+
+### Welche Fragen sollte man sich bei der Suche nach einem geeigneten Archiv für seine Daten stellen?
+
+**Passen die Daten in die Sammlungsstrategie des Archivs?**
+
+In [ARCHE](https://arche.acdh.oeaw.ac.at/) werden beispielsweise nur geisteswissenschaftliche Daten aufgenommen. Das heißt z.B. eine meteorologische Sammlung wäre dort nicht gut aufgehoben und müsste in einem anderen Archiv abgelegt werden.
+
+**Werden alle Datentypen innerhalb der eigenen Daten vom Archiv unterstützt?**
+
+Gerade wenn man beispielsweise mit 3D-Modellen oder geoinformatischen Daten arbeitet, sollte man darauf achten, ob das Archiv Expertise im Umgang mit diesen Daten hat und diese unterstützt.
+
+**Ist das Archiv vertrauenswürdig?**
+
+Um das zu beurteilen, gibt es verschiedene Mechanismen oder Hinweise. Zum einen kann man sich die Webpräsenz des Archivs ansehen, quasi als dessen Visitenkarte. Zum anderen kann man sich die Zertifizierungen des Archivs ansehen. Hier gibt es zum Beispiel das [CoreTrustSeal](https://www.coretrustseal.org/), die [Nestor](https://www.langzeitarchivierung.de/Webs/nestor/DE/Zertifizierung/zertifizierung_node.html)-Zertifizierung oder eine Zertifizierung nach [ISO 16363](http://www.iso16363.org/). Bei Archiven mit einem Core Trust Seal – dem am leichtesten zu erreichenden Zertifikat der drei Beispiele – ist man aber schon sehr gut aufgehoben. Üblicherweise halten sich die zertifizierten Archive an bestimmte Referenzmodelle – allen voran das [OAIS Referenzmodell](http://www.oais.info/) (siehe auch [Open Archival Information System](https://www.oclc.org/research/publications/2000/lavoie-oais.html), sowie [CCSDS, Magenta Book](https://public.ccsds.org/pubs/650x0m2.pdf).)
+
+## E. Datensammlungen und Archivinterfaces in der Praxis
+
+Schauen wir uns ein paar Beispielen an, wie Datensammlungen in verschiedenen Archiven aussehen und wie ihre jeweilige Präsentation aufgebaut ist.
+
+### E.1. DANS - French Literary Manuscripts in England, 1100-1500
+
+URL: [https://easy.dans.knaw.nl/ui/datasets/id/easy-dataset:111039](https://easy.dans.knaw.nl/ui/datasets/id/easy-dataset:111039)
+
+Als erstes werfen wir einen Blick in das Archiv DANS des KNAW und NWO (NL) mit dem System “Easy”.
+
+<Figure src="images/dans_overview_2.png">
+  Übersichtsinformation der Datensammlung "French Literary Manuscripts in England, 1100-1500" in DANS.
+</Figure>
+
+Oben findet sich die Suchmaske, auf dem unteren Teil der Seite wird die Detailansicht einer Datensammlung angezeigt – in unserem Beispiel die "French Literary Manuscripts in England, 1100-1500". Die Detailansicht gliedert sich in drei Reiter: Übersicht (Overview), Beschreibung (Description) und die Dateien der Datensammlung (Data files). Die Übersicht gliedert sich in einen Zitierhinweis, eine allgemeine Beschreibung und die Beziehungen z.B. zu anderen Datensammlungen.
+
+<Figure src="images/dans_description_2.png">
+  Beschreibung der Datensammlung "French Literary Manuscripts in England, 1100-1500" in DANS.
+</Figure>
+
+Die Beschreibung listet detaillierte Metadaten zur Datensammlung auf.
+
+<Figure src="images/dans_datafiles_2.png">
+  Dateienübersicht der Datensammlung "French Literary Manuscripts in England, 1100-1500" in DANS.
+</Figure>
+
+Der Reiter Dateien beinhaltet ein Downloadinterface für alle Dateien der Datensammlung. Hier kann man einzelne Dateien anklicken und diese entweder herunterladen oder – wenn ein Online-Viewer für das jeweilige Format eingebaut ist – sich diese auch direkt online ansehen.
+
+**Vertiefende Fragen zu DANS**
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+        Sie möchten im Archiv DANS nach Datenbanken suchen, die sich mit Menschenrechten beschäftigen. Gehen Sie auf die Website und finden Sie heraus, was Sie dabei beachten sollten.
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        Da DANS eine niederländische Datenbank ist, kann ich den Begriff nur auf Niederländisch eingeben.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Ich benutze die englische Übersetzung "human rights" und muss nichts weiter beachten.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Ich benuzte die englische Übersetzung "human rights". Da diese aus zwei Wörtern besteht, benutze ich doppelte Anführungszeichen in der Suchanfrage.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Sehr gut - das ist richtig! DANS akzeptiert nur englische und niederländische Begriffe und Wortkombinationen sollten in Anführungszeichen gesetzt werden.
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Falsch - In der Hilfeseite finden Sie Tipps zur Suche.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+        Mit welcher Lizenz ist die Datenbank "Human Rights Uses Consensus", die man im Archiv DANS finden kann, versehen?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        CC-BY
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        CC-BY-SA
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        CC-BY-NC
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Sehr gut, das ist richtig!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Das ist nicht korrekt - die Lizenzangabe finden Sie unter "Description".
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+### E.2. GAMS – CoReMa (Cooking Recipes of the Middle Ages)
+
+URL: [https://gams.uni-graz.at/context:corema](https://gams.uni-graz.at/context:corema)
+
+<Figure src="images/gams_corema_startseite.png">
+  Startseite des Projekts "CoReMA" in GAMS.
+</Figure>
+
+Das zweite Beispiel kommt von GAMS in Graz. Das Repositorium verfolgt einen projektbasierten Ansatz mit individuell gestalteten Oberflächen. Hier zu sehen ist das Projekt "Cooking Recipes of the Middle Ages", in dem die verschiedenen Rezepte zu sehen und aufzurufen sind. Über ein Menü kann man innerhalb des Projekts navigieren und weitere Informationen dazu finden. Eine Übersicht über die Anzahl der vorhandenen Rezepte oder alle Daten ist hier nicht sofort ersichtlich.
+
+<Figure src="images/gams_corema_rezept.png">
+  Detailansicht eines Rezepts im Projekt "CoReMA" in GAMS.
+</Figure>
+
+**Vertiefende Fragen zu GAMS**
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+        Sie möchten gerne die Datensammlung "CoReMa" aus GAMS zitieren. Wo finden Sie die notwendigen bibliographischen Angaben auf der Website?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        In der Fußzeile mit dem Link "Imprint" kann ich eine Informationsseite öffnen und hier den Zitierhinweis für die Datenbanksammlung finden.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Im Reiter "To-Dos" finde ich die notwendigen Hinweise.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Im Reiter "Project" finden sich neben Informationen zum Projekt und dessen Gestaltung auch der Zitierhinweis für die gesammte Sammlung.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Richtig! Unter "Imprint" finden Sie den Zitierhinweis für die gesamte Datenbanksammlung "CoReMa".
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Leider nicht richtig. To-Dos ist eine Aufgabenliste; "Projects" bietet zwar ebenfalls eine Option "How to cite", allerdings bezieht sich dies auf den Artikel mit den Projektinformationen (About the project).
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Dürfen Sie die mittelalterlichen Rezepte aus "CoReMa" weiterverwenden und z.B. auf Ihrer eigenen Projektseite veröffentlichen? (Mehrfachantwort)
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        Sowohl die Texte als auch alle in GAMS vorliegenden Faksimilies dürfen uneingeschränkt und sofort weiterverwendet werden.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Bei den Bildern ist vorab zu prüfen, welche Lizenz die Besitzer\*innen der Originalobjekte dafür vorgesehen und vergeben haben.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Ich darf die Texte veröffentlichen, da sie mit einer entsprechenden Lizenz versehen sind.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Sehr gut! Die Texte haben eine CC-BY 4.0 Lizenz, während bei den Bildern die Lizenzen vorab zu überprüfen sind.
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Leider falsch. Schauen Sie nochmal unter "Imprint" nach, welche Lizenzen vergeben wurden.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+### E.3. ARCHE – travel!digital Collection
+
+URL: [https://arche.acdh.oeaw.ac.at/browser/oeaw\_detail/19641](https://arche.acdh.oeaw.ac.at/browser/oeaw_detail/19641)
+
+Unser hauseigenes Archiv am ACDH-CH ist [ARCHE](https://arche.acdh.oeaw.ac.at/). Hier dargestellt, ist das Beispiel der travel!digital Collection.
+
+<Figure src="images/arche_traveldigital_overview.png">
+  Überblick über die Sammlung "travel!digital" in ARCHE in der Basisansicht (Basic-View).
+</Figure>
+
+Als Einstieg in die Sammlung bekommt man eine Liste an Metadaten, die sich mithilfe der Expertenansicht (Expert-View) erweitern lässt.
+
+<Figure src="images/arche_traveldigital_expertview.png">
+  Überblick über die Sammlung "travel!digital" in ARCHE in der Expertenansicht (Expert-View).
+</Figure>
+
+<Figure src="images/arche_disseminationservices.png">
+  "Dissemination Services" der Sammlung "travel!digital" in ARCHE.
+</Figure>
+
+Mithilfe der "Dissemination Services" hat man die Möglichkeit, die Daten der Sammlung herunterzuladen, ihre Metadaten und auch die einzelnen Dateien in verschiedenen Formaten anzuzeigen und mit ihnen zu arbeiten.
+
+<Figure src="images/arche_traveldigital_summary_v2.png">
+  Zusammenfassung, Zitationshinweis und "Child-Resources" als Teil des Überblicks über die Sammlung "travel!digital" in ARCHE.
+</Figure>
+
+Es gibt einen Zitierhinweis, und unter "Child Resources" wird aufgelistet, welche Dateien Bestandteil der Sammlung sind. Die Elemente in "Child Resources" können entweder als Liste oder mittels "Tree-View" als aufklappbarer Dateibaum betrachtet werden.
+
+<Figure src="images/arche_traveldigital_childresources_treeview.png">
+  "Child Resources" der Sammlung "travel!digital" in ARCHE als Baumansicht.
+</Figure>
+
+<Figure src="images/arche_traveldigital_metadatendatei.png">
+  Überblick über die Metadaten einer Datei aus der Sammlung "travel!digital" in ARCHE in der Basisansicht.
+</Figure>
+
+Wenn man dann auf eine Datei klickt, wird man – anders als in DANS – nicht gleich zum Download weitergeleitet, sondern bekommt zunächst eine Ansicht der Metadaten der ausgewählten Datei. Der Download ist von dieser Überblicksseite über den Download-Button als einer von vielen "Dissemination Services" möglich.
+
+**Vertiefende Fragen zu ARCHE des ACDH-CH**
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+        Öffnen Sie die Website von ARCHE ([https://arche.acdh.oeaw.ac.at](https://arche.acdh.oeaw.ac.at)). Welche Linzenzmodelle werden bei ARCHE für eingereichte Daten bevorzugt?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        Um die gespeicherten Daten jederzeit allen zugänglich zu machen, können diese nur mit einer CC0-Lizenz hinterlegt werden.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Im Sinne von FAIR Data und Open Access empfiehlt ARCHE die Nutzung von CC-BY oder CC-BY-SA.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Da Forschungsdaten eine oder mehrere Urheber\*innen haben und nicht verändert werden sollten, können diese nur mit der Lizenz CC-BY-NC-SA im Archiv hinterlegt werden.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Sehr gut! Das ist richtig.
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Das stimmt nicht - schauen Sie noch einmal in den FAQs unter "Archivierung" nach.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+        Was ist laut den FAQs auf der ARCHE-Website die PID, die für digitale Objekte in ARCHE vergeben wird?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        PID steht für Persistent Identifier und ist eine eindeutige Zeichenfolge, die einem digitalen Objekt dauerhaft zugewiesen wird.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        PID steht für Personal Identification Number, die jede\*r Autor\*in in ARCHE bei der ersten Registrierung zugewiesen bekommt.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        PID steht für Process ID. Aus ihr kann man das Erstellungs- und Archivierungsdatum einer digitalen Datei ablesen.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Sehr gut! Das ist richtig.
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Leider falsch. Sehen Sie auf der ARCHE Website unter FAQs nach.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+### E.4. SND – Climate history database for Sweden 1500-1870
+
+URL: [https://snd.gu.se/en/catalogue/study/snd1216/1/1#dataset](https://snd.gu.se/en/catalogue/study/snd1216/1/1#dataset)
+
+<Figure src="images/snd_klimahistoriskdatabas_dokumentation-und-daten_2_en.png">
+  Die Datensammlung "Climate history database for Sweden 1500-1870" des SND in der Ansicht "Data and documentation".
+</Figure>
+
+Das Beispiel des Swedish National Dataservice (SND) beinhaltet eine Datenbank mit aus historischen Dokumenten extrahierten Klimadaten. Es gibt die Reiter Beschreibung (Description) sowie Daten und ihre Dokumentation (Data and documentation). Letzterer wird zuerst angezeigt und beinhaltet einen Zitierhinweis mit der Option, sich das Zitat in bestimmten Zitierstilen oder Formaten (z.B. Harvard, BibTex oder RIS) herunterzuladen. Zudem finden sich weitere Eckdaten wie Information zu Personen, die an der Erstellung der Datensammlung beteiligt waren oder der Lizenzhinweis.
+
+<Figure src="images/snd_klimahistoriskdatabas_beschreibung_en.png">
+  Beschreibung der Datenquelle von "Climate history database for Sweden 1500-1870" des SND.
+</Figure>
+
+Im Reiter "Description" findet sich die Beschreibung der Ressourcen inklusive Metadaten zum Projekt wie etwa die genaue Zeitspanne, die mit den Daten abgedeckt wird, die Projektförderung, die beteiligten Wissenschaftler\*innen sowie Publikationen, die mit der Ressource zusammenhängen.
+
+**Vertiefende Fragen zum Swedish National Dataservice**
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+        Das SND nutzt unterschiedliche Symbole, um die Zugänglichkeit der enthaltenen Datenbanken zu kennzeichnen. Finden Sie mit Hilfe der Website heraus, welches Symbol anzeigt, dass Daten frei zugänglich sind?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        Das Logo des SND in der Form von zwei Ringen mit einem Pfeil.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Der nach oben gerichtete Pfeil.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Das offene Schloss.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Sehr gut!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Leider nein. Die Erkärung der Symbole finden Sie unter "Accessibility levels".
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+        Schauen Sie sich noch einmal die Archive und Suchfunktionen genau an. Welches der zuvor vorgestellten Archive bietet genauso wie die SND die Möglichkeit an, CLARIN Virtual Collection Registry zu nutzen?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        ARCHE
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        DANS
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        GAMS
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Richtig!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Leider falsch! Schauen Sie sich die Archive noch einmal an.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+### E.5. Zenodo - Official GO FAIR Foundation icons for the Three-Point FAIRification Framework
+
+URL: [https://zenodo.org/record/4678333#.Yfp1YurMKPo](https://zenodo.org/record/4678333#.Yfp1YurMKPo)
+
+<Figure src="images/zenodo_recordoverview.png">
+  Übersicht über die Sammlung "Official GO FAIR Foundation Icons for the Three-Point FAIRification Framework" auf Zenodo.
+</Figure>
+
+Auch auf Zenodo werden Name, Titel, die Bestandteile der Datensammlung sowie Metadaten angezeigt. Letztere sind bei Zenodo allerdings nicht ganz so umfangreich wie bei den bisherigen Beispielen.
+
+Die fünf angeführten Beispiele machen deutlich, dass es einige grundlegenden Elemente gibt, die sich innerhalb aller Repositorien wiederfinden:
+
+* Eine Sammlung von Dateien (Datensammlung)
+* Metadaten für die Datensammlung und teilweise für einzelne Dateien
+* Ein Link, meist in Form eines persistenten Identifikators wie DOI oder Handle
+* Hinweise und Funktionalitäten für die Nutzung der Dateien
+
+  * Ein Zitierhinweis
+  * Eine Lizenz
+  * Eine Download-Funktion
+
+**Vertiefende Fragen zum Archiv Zenodo**
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Sie haben sich nun schon unterschiedliche Archive und deren Websites angesehen. Was unterscheidet Zenodo von den anderen, in diesem Kapitel vorgestellten, Beispielen von Datensammlungen? (Mehrfachantwort)
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        Zenodo akzeptiert nur offene Daten.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Zenodo akzeptiert Forschungsdaten aus allen Disziplinen.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Für einen Upload von Daten benötigt man einen GitHub-Account.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Zenodo wird von keiner Forschungseinrichtung betrieben.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Das ist richtig!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Das stimmt nicht ganz. Überprüfen Sie Ihre Angaben noch einmal auf der Website von Zenodo.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+## F. Praxishinweise für Langzeitarchivierung
+
+Diese grundlegenden Gemeinsamkeiten der Repositorien bilden eine gute Basis für einige Praxishinweise. Aus den im vorherigen Abschnitt präsentierten sichtbaren Elementen lassen sich aus Sicht des Archivs folgende zentrale Komponenten der Langzeitarchivierung einer Datensammlung auflisten:
+
+<SideNote type="note" title="Zentrale Komponenten der Langzeitarchivierung einer Datensammlung">
+  * Eine Datensammlung enthält zumeist eine **Reihe an Dateien**, die in **bestimmten Formaten** vorliegen.
+  * Die Dateien werden mit **Metadaten** näher beschrieben – je nach Archiv mit verschiedenen Attributen und zumeist ist eine Lizenzangabe enthalten.
+  * Es gibt eine **[persistente URI](https://ianus-fdz.de/sites/default/files/ianusredfiles/pdf/PID-TestbedErgebnisse.pdf)** – z.B. in Form eines DOI, Handle, URI, ARK o.ä.
+
+  Zwei weitere, meist nicht sehr sichtbare, jedoch wichtige Komponenten aus Sicht des Archivs sind folgende:
+
+  * Im Hintergrund besteht meist eine **redundante Datenspeicherung**.
+  * Es gibt in den meisten Fällen einen definierten **Workflow zur Vorbereitung der Daten**, welcher der Einspeisung ins Archiv vorausgeht.
+</SideNote>
+
+Für die **Datengeber\*innen** resultieren daraus folgende Aufgaben:
+
+* Die Beschäftigung mit **Formatvorgaben der Ziel-Archive**. [DANS](https://dans.mijnonlinedevelopment.nl/en/file-formats/), [GAMS](http://gams.uni-graz.at/archive/objects/context:gams/methods/sdef:Context/get?mode=about\&locale=de), [ARCHE](https://arche.acdh.oeaw.ac.at/browser/formats-filenames-and-metadata) (vgl. [IANUS](https://www.ianus-fdz.de/it-empfehlungen/dateiformate)), oder [SND](https://snd.gu.se/en/manage-data/organise/file-format) haben Vorgaben zu Dateiformaten. Zenodo hat keine spezifischen Vorgaben zu Dateiformaten. Allerdings garantiert Zenodo im Gegensatz zu den genannten Archiven auch nicht, dass die Dateien immer zu öffnen sind, sondern lediglich, dass die Dateien, so wie sie abgelegt sind, nicht kaputt gehen, also eine sog. *data degradation* oder *bit rot* vermieden wird.
+* Die Archive haben unterschiedliche **Metadatenschemata** (dazu mehr in Kapitel Metadaten) in Verwendung. Beispiele sind [Dublin Core](https://www.dublincore.org/), [DataCite](https://schema.datacite.org/), [ARCHE](https://arche.acdh.oeaw.ac.at/browser/formats-filenames-and-metadata#metadata), etc.
+* Zudem ist eine **Lizenz** für die Daten auszuwählen. Gut geeignet sind meist [Creative Commons](https://creativecommons.org/)-Lizenzen. Der [Licence Selector](https://ufal.github.io/public-license-selector/) ist ein sehr empfehlenswertes Tool, das Unterstützung bei der Entscheidung für eine bestimmte Lizenz bieten kann.
+* Die oben genannten Aufgaben kann man als Datengeber\*in bereits im **Datenmanagementplan** vorsehen, um so die Vorbereitung der Daten zur Langzeitarchivierung bereits von Projektbeginn an zu berücksichtigen und die nötigen Arbeitsschritte einzuplanen (siehe nächster Abschnitt).
+
+Um eine persistente URI und den redundanten Speicher kümmert sich das Archiv.
+
+## G. Planung der Langzeitarchivierung im Datenmanagementplan
+
+Um die Archivierung schon vor oder bei Projektstart im **Datenmanagementplan** einzuplanen, sollte man folgende Überlegungen anstellen:
+
+<Figure src="images/arche_depositionprocess-crop.png">
+  Abbildung: "ARCHE - Deposition Process", [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0).
+</Figure>
+
+* **Welches Archiv** möchte man zur Archivierung seiner Daten verwenden?
+
+  * Welche Vorgaben macht das Zielarchiv?
+  * Welche Vorlaufzeiten sind einzuplanen und welche Kosten fallen an?
+  * Es empfiehlt sich, frühzeitig Kontakt mit dem Zielarchiv im Hinblick auf eine beabsichtigte Archivierung und deren Planung aufzunehmen.
+
+* Bereits im Laufe des Projekts – z.B. am Ende eines Arbeitspakets – sollte man die **Daten auswählen, die aus dem entsprechenden Arbeitsschritt archiviert werden sollen**. Am Ende des Projekts erfolgt dann noch einmal ein Review und eine Zusammenstellung aller zu archivierenden Daten.
+
+* Anhand der Informationen des Archivs zur Datenvorbereitung kann man planen, wie die Daten vorbereitet werden müssen.
+
+  * Welche **Dateiformate** müssen am Ende vorliegen?
+  * Welche **Metadaten** muss ich am Ende bereitstellen?
+
+* Bereits am Anfang des Projekts sollte man sich über die anzuwendende **Lizenz** Gedanken machen.
+
+  * ARCHE und auch [DARIAH Open](https://dariahopen.hypotheses.org/495) empfehlen die [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) Lizenz. Diese kommt den Praktiken einer klassischen wissenschaftlichen Arbeit mit Zitation und Nachnutzung von Information sowie Daten am Nächsten.
+
+* Zudem muss man sich überlegen, **wann** man die **Daten ans Archiv übergeben** möchte.
+
+Wenn man diese Überlegungen von Anfang an mit ins Datenmanagement einbezieht, minimiert das den Arbeitsaufwand am Ende des Projekts.
+
+### Auswahlkriterien für die zu archivierenden Daten
+
+Um Daten für die Archivierung auszuwählen, gibt es eine Reihe von sinnvollen **Auswahlkriterien**.
+
+* Relevanz wie z. B. der wissenschaftliche oder historische Wert der Daten.
+
+* Sind die Daten einzigartig oder leicht replizierbar?
+
+  * Wenn die Daten bereits an anderer Stelle archiviert sind, müssen sie nicht ein zweites Mal archiviert werden.
+  * Wenn Daten leicht replizierbar sind, ist eine Archivierung ggf. nicht unbedingt notwendig. Jedoch sollten die Schritte zur Replikation dokumentiert und ggf. archiviert werden.
+
+* Wie ist das Disseminationspotential der Daten?
+
+  * Kann ich die Daten gut teilen?
+  * Sind die Daten gut nachnutzbar?
+
+* Gibt es rechtliche Vorgaben, die eine Archivierung verhindern oder einschränken?
+
+* Die Qualität der Daten ist relevant für die Archivierung.
+
+  * Verwackelte Fotos muss man nicht unbedingt archivieren, es sei denn, es ist z.B. das einzige verbleibende Foto eines wichtigen historischen Objekts, das zerstört wurde.
+
+* Wie hoch sind die Kosten für die Datenerstellung?
+
+  * In der Herstellung sehr zeit- oder kostenintensive Daten sollten eher archiviert werden.
+  * Liegt eine ausreichende Dokumentation vor, die insbesondere eine Nachnutzung der Daten ermöglicht?
+
+**Quizfragen zum Abschnitt „Praxishinweise für Langzeitarchvierung“**
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Um welche der folgenden Aspekte können Sie sich schon während des Projekts kümmern, um eine effiziente Übergabe Ihrer Forschungsdaten an ein Archiv zu gewährleisten? (Mehrfachantwort)
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Ich kann mich vorab informieren, welche Dateiformate vom gewünschten Archiv präferiert werden und Daten in dieser Form abspeichern.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Ich kann eine geeignete Lizenz für meine Daten auswählen.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Ich kann vorab eine URI für meine Daten beantragen und an das Archiv übermitteln.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Das ist richtig!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Das stimmt nicht. Die persistente URI wird immer vom Archiv bei der Einreichung erstellt.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Bei welcher Art von Forschungsdaten ist eine Archivierung zu empfehlen?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Die vorliegenden Forschungsdaten sind in keinem anderem Archiv zugänglich und haben einen historischen Wert.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Eine Nachnutzung der Daten ist aufgrund von rechtlichen Vorgaben nur schwer möglich.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Die Forschungsdaten wurden von einem großen Team über einen längeren Zeitraum erhoben und waren daher in der Erstellung sehr kostenintensiv.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Die Forschungsdaten wurden bereits in zwei anderen Archiven abgesichert, damit sie nicht verloren gehen.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Richtig! Historisch wertvolle und in der Erstellung kostenintensive Daten sollten archiviert werden.
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Das stimmt nicht ganz. Schauen Sie sich die Kriterien noch einmal an und überlegen Sie, welche zwei Bedingungen für eine Archivierung sprechen.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
