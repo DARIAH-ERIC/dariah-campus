@@ -1,5 +1,5 @@
 ---
-title: Langzeitarchivierung
+title: Long-term preservation / Langzeitarchivierung
 lang: de
 date: 2022-07-14
 version: 1.0.0
@@ -11,7 +11,10 @@ tags:
   - data-management
 categories:
   - acdh-ch
-abstract: Definition des Begriffs Archivierung - Analoge vs. digitale
+abstract: >-
+	The course provides an insight into the long-term preservation of digital data, i.e. archiving of digital data. Practical tips from the perspective of data creators are provided.
+
+	Definition des Begriffs Archivierung - Analoge vs. digitale
   Archivierung, mit besonderem Augenmerk auf die digitale Langzeitarchivierung -
   Praktische Hinweise aus der Sicht der Datenersteller*innen
 domain: Social Sciences and Humanities
@@ -99,7 +102,7 @@ Die meisten Archive sorgen dafür, dass möglichst viele FAIR-Data-Prinzipien ei
   * [Top 10 FAIR Data & Software Things](https://librarycarpentry.org/Top-10-FAIR/)
   * [A FAIRy tale](https://doi.org/10.5281/zenodo.2248200)
   * [FAIR Data Austria](https://forschungsdaten.at/fda/)
-  * [Jones & Grootveld 2017](https://www.cessda.eu/content/download/3845/35038/file/20170707_How_FAIR_are_your_data_Jones.pdf)
+  * [Jones & Grootveld 2017](https://doi.org/10.5281/zenodo.1065991)
 </SideNote>
 
 ### Beispiele für digitale Archive
@@ -538,7 +541,7 @@ Diese grundlegenden Gemeinsamkeiten der Repositorien bilden eine gute Basis für
 <SideNote type="note" title="Zentrale Komponenten der Langzeitarchivierung einer Datensammlung">
   * Eine Datensammlung enthält zumeist eine **Reihe an Dateien**, die in **bestimmten Formaten** vorliegen.
   * Die Dateien werden mit **Metadaten** näher beschrieben – je nach Archiv mit verschiedenen Attributen und zumeist ist eine Lizenzangabe enthalten.
-  * Es gibt eine **[persistente URI](https://ianus-fdz.de/sites/default/files/ianusredfiles/pdf/PID-TestbedErgebnisse.pdf)** – z.B. in Form eines DOI, Handle, URI, ARK o.ä.
+  * Es gibt eine **[persistente URI](https://www.fosteropenscience.eu/content/final-report-testbed-persistent-identifiers)** – z.B. in Form eines DOI, Handle, URI, ARK o.ä.
 
   Zwei weitere, meist nicht sehr sichtbare, jedoch wichtige Komponenten aus Sicht des Archivs sind folgende:
 
@@ -548,7 +551,7 @@ Diese grundlegenden Gemeinsamkeiten der Repositorien bilden eine gute Basis für
 
 Für die **Datengeber\*innen** resultieren daraus folgende Aufgaben:
 
-* Die Beschäftigung mit **Formatvorgaben der Ziel-Archive**. [DANS](https://dans.mijnonlinedevelopment.nl/en/file-formats/), [GAMS](http://gams.uni-graz.at/archive/objects/context:gams/methods/sdef:Context/get?mode=about\&locale=de), [ARCHE](https://arche.acdh.oeaw.ac.at/browser/formats-filenames-and-metadata) (vgl. [IANUS](https://www.ianus-fdz.de/it-empfehlungen/dateiformate)), oder [SND](https://snd.gu.se/en/manage-data/organise/file-format) haben Vorgaben zu Dateiformaten. Zenodo hat keine spezifischen Vorgaben zu Dateiformaten. Allerdings garantiert Zenodo im Gegensatz zu den genannten Archiven auch nicht, dass die Dateien immer zu öffnen sind, sondern lediglich, dass die Dateien, so wie sie abgelegt sind, nicht kaputt gehen, also eine sog. *data degradation* oder *bit rot* vermieden wird.
+* Die Beschäftigung mit **Formatvorgaben der Ziel-Archive**. [DANS](https://dans.knaw.nl/en/file-formats/), [GAMS](http://gams.uni-graz.at/archive/objects/context:gams/methods/sdef:Context/get?mode=about\&locale=de), [ARCHE](https://arche.acdh.oeaw.ac.at/browser/formats-filenames-and-metadata) (vgl. [IANUS](https://ianus-fdz.de/it-empfehlungen/dateiformate/index)), oder [SND](https://snd.gu.se/en/manage-data/organise/file-format) haben Vorgaben zu Dateiformaten. Zenodo hat keine spezifischen Vorgaben zu Dateiformaten. Allerdings garantiert Zenodo im Gegensatz zu den genannten Archiven auch nicht, dass die Dateien immer zu öffnen sind, sondern lediglich, dass die Dateien, so wie sie abgelegt sind, nicht kaputt gehen, also eine sog. *data degradation* oder *bit rot* vermieden wird.
 * Die Archive haben unterschiedliche **Metadatenschemata** (dazu mehr in Kapitel Metadaten) in Verwendung. Beispiele sind [Dublin Core](https://www.dublincore.org/), [DataCite](https://schema.datacite.org/), [ARCHE](https://arche.acdh.oeaw.ac.at/browser/formats-filenames-and-metadata#metadata), etc.
 * Zudem ist eine **Lizenz** für die Daten auszuwählen. Gut geeignet sind meist [Creative Commons](https://creativecommons.org/)-Lizenzen. Der [Licence Selector](https://ufal.github.io/public-license-selector/) ist ein sehr empfehlenswertes Tool, das Unterstützung bei der Entscheidung für eine bestimmte Lizenz bieten kann.
 * Die oben genannten Aufgaben kann man als Datengeber\*in bereits im **Datenmanagementplan** vorsehen, um so die Vorbereitung der Daten zur Langzeitarchivierung bereits von Projektbeginn an zu berücksichtigen und die nötigen Arbeitsschritte einzuplanen (siehe nächster Abschnitt).
