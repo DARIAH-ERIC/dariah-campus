@@ -1,10 +1,12 @@
-import { Children, isValidElement, type ReactElement, type ReactNode } from "react";
+import { type ReactElement, type ReactNode } from "react";
 import {
 	Tab as AriaTab,
 	TabList as AriaTabList,
 	TabPanel as AriaTabPanel,
 	Tabs as AriaTabs,
 } from "react-aria-components";
+
+import { getChildElements } from "@/cms/components/quiz/getChildElements";
 
 interface TabsProps {
 	children: ReactNode;
@@ -13,8 +15,7 @@ interface TabsProps {
 export function Tabs(props: TabsProps) {
 	const { children } = props;
 
-	/** Note that we actually get back children wrapped with `React.lazy`. */
-	const tabs = getChildrenElements(children) as Array<ReactElement<TabProps>>;
+	const tabs = getChildElements(children) as Array<ReactElement<TabProps>>;
 
 	return (
 		<AriaTabs>
@@ -58,8 +59,4 @@ interface TabProps {
 
 export function Tab(_props: TabProps) {
 	return null;
-}
-
-function getChildrenElements(children: ReactNode) {
-	return Children.toArray(children).filter(isValidElement);
 }
