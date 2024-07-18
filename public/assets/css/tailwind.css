@@ -1815,6 +1815,10 @@ video {
 	gap: 2rem;
 }
 
+.gap-x-4 {
+	column-gap: 1rem;
+}
+
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-x-reverse: 0;
 	margin-right: calc(0.25rem * var(--tw-space-x-reverse));
@@ -1983,6 +1987,10 @@ video {
 	border-bottom-width: 1px;
 }
 
+.border-b-2 {
+	border-bottom-width: 2px;
+}
+
 .border-l-2 {
 	border-left-width: 2px;
 }
@@ -2038,6 +2046,10 @@ video {
 .border-red-600 {
 	--tw-border-opacity: 1;
 	border-color: rgb(220 38 38 / var(--tw-border-opacity));
+}
+
+.border-transparent {
+	border-color: transparent;
 }
 
 .border-yellow-500 {
@@ -3181,6 +3193,11 @@ video {
 	color: rgb(8 112 172 / var(--tw-text-opacity));
 }
 
+.hover\:text-neutral-950:hover {
+	--tw-text-opacity: 1;
+	color: rgb(10 10 10 / var(--tw-text-opacity));
+}
+
 .hover\:text-primary-600:hover {
 	--tw-text-opacity: 1;
 	color: rgb(0 102 153 / var(--tw-text-opacity));
@@ -3340,6 +3357,14 @@ video {
 
 .data-\[placement\=top\]\:mb-2[data-placement="top"] {
 	margin-bottom: 0.5rem;
+}
+
+.data-\[selected\]\:border-current[data-selected] {
+	border-color: currentColor;
+}
+
+.data-\[selected\]\:font-medium[data-selected] {
+	font-weight: 500;
 }
 
 .group[data-placement="bottom"] .group-data-\[placement\=bottom\]\:rotate-180 {
