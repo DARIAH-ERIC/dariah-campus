@@ -40,11 +40,11 @@ VS Code is an example for code editors. Using the command line or terminal inste
 
 <Tabs>
   <Tab title="Windows">
-    ![](/assets/content/resources/git-vs-code/vscode_first_start_windows.png)
+    ![](images/vscode_first_start_windows.png)
   </Tab>
 
   <Tab title="MacOS">
-    ![](/assets/content/resources/git-vs-code/vscode-first-start-macos.png)
+    ![](images/vscode-first-start-macos.png)
   </Tab>
 
   <Tab title="Linux">
@@ -60,7 +60,7 @@ For example we want to clone `teapot` from [https://github.com/acdh-oeaw/howto\_
 
 On the top right there is a `Clone` button which, when clicked, gives you two options `HTTPS` and `GitHub CLI`. We need the HTTPS option. On the right there is a copy to the clipboard button we can use.
 
-![](/assets/content/resources/git-vs-code/github_clone_repo.png)
+![](images/github_clone_repo.png)
 
 <SideNote type="note">
   Getting access to the data on [https://github.com/acdh-oeaw](https://github.com/acdh-oeaw) is different on all three operating systems.
@@ -71,21 +71,21 @@ On the top right there is a `Clone` button which, when clicked, gives you two op
     <Tab title="Windows">
       You can paste the `https://...` of any git repository from a server in the text field that appears when we click `Clone Git repository...` on the start screen of Visual Studio Code.
 
-      ![](/assets/content/resources/git-vs-code/githubrepo_clone_from_url.png)
+      ![](images/githubrepo_clone_from_url.png)
 
       After you hit enter a dialog appears asking you where to store the contents of the repository locally:
 
-      ![](/assets/content/resources/git-vs-code/clone_select_folder_windows.png)
+      ![](images/clone_select_folder_windows.png)
     </Tab>
 
     <Tab title="MacOS">
       You can paste the `https://...` of any git repository from a server in the text field that appears when we click `Clone Git repository...` on the start screen of Visual Studio Code:
 
-      ![](/assets/content/resources/git-vs-code/vscode_getting_started_macos.png)
+      ![](images/vscode_getting_started_macos.png)
 
       On MacOS Visual Studio Code asks us for our username and password when we try to clone the repository the first time.
 
-      ![](/assets/content/resources/git-vs-code/username_password_macos.png)
+      ![](images/username_password_macos.png)
 
       These are passed to Git and Git saves them in the "keychain" which also for example *Safari* uses to save credentials.
     </Tab>
@@ -111,29 +111,29 @@ On the top right there is a `Clone` button which, when clicked, gives you two op
 
           The very first time for each web site like GitLab and GitHub in Windows, a dialog will open that asks us for user name and password.
 
-          ![](/assets/content/resources/git-vs-code/credentials_dialog_windows.png "credentials dialogue Windows")
+          ![](images/credentials_dialog_windows.png "credentials dialogue Windows")
 
           We recommend to `Sign in with your browser`. A browser window will open for you to log in to GitHub. Once you're successfully authenticated, you can close the browser window.
 
-          ![](/assets/content/resources/git-vs-code/authentication_successful_browser_github.png)
+          ![](images/authentication_successful_browser_github.png)
         </Tab>
 
         <Tab title="MacOS">
           If you happen to work with a private GitHub repository you will need to authenticate. Visual Studio Code will ask you if you want to sign in with GitHub:
 
-          ![](/assets/content/resources/git-vs-code/sign_in_using_github_macos.png)
+          ![](images/sign_in_using_github_macos.png)
 
           This will open a dialog screen on GitHub.com:
 
-          ![](/assets/content/resources/git-vs-code/github_dialog_authorize.png)
+          ![](images/github_dialog_authorize.png)
 
           After providing your password the browser asks if it may communicate with Visual Studio Code. Please allow that:
 
-          ![](/assets/content/resources/git-vs-code/browser_allow_communicate_with_vscode.png)
+          ![](images/browser_allow_communicate_with_vscode.png)
 
           And also Visual Studio Code asks if it may accept the message from the browser. Please allow that too:
 
-          ![](/assets/content/resources/git-vs-code/vscode_allow_receive_from_browser.png)
+          ![](images/vscode_allow_receive_from_browser.png)
         </Tab>
       </Tabs>
     </Tab>
@@ -142,11 +142,11 @@ On the top right there is a `Clone` button which, when clicked, gives you two op
 
 At the end there is a little dialog in the bottom right corner, click open there:
 
-![](/assets/content/resources/git-vs-code/open_cloned_project.png)
+![](images/open_cloned_project.png)
 
 Because Visual Studio Code is a development environment where developers can execute code they just downloaded from somewhere on the internet, Visual Studio Code asks if we trust the current repository. Therefore, choose to "trust" the repository that you downloaded from a team you know.
 
-![](/assets/content/resources/git-vs-code/trust_authors_windows.png)
+![](images/trust_authors_windows.png)
 
 See our GIT collaboration guide to learn more about [cloning a remote repository](/resource/posts/git-collaboration#cloning-a-remote-repository).
 
@@ -166,7 +166,7 @@ Now we can select the third mode from the top (three connected circles, the grap
 
 This only lists those files that we changed since we last made our changes permanent, committed (to) them. The `teapot.txt` is listed. If we click on it we get the following view:
 
-![](/assets/content/resources/git-vs-code/review_changes.png)
+![](images/review_changes.png)
 
 If we are not 100% sure about the changes we will now **stage**, that is prepare to be **committed**, we can open each file and see the differences per line. This might also give us a hint what we did if the last **commit** was a while back and we don't remember exactly why we changed the files.
 
@@ -174,11 +174,11 @@ If we are not 100% sure about the changes we will now **stage**, that is prepare
 
 Let's tell Git that we are committed to our changes in the document `teapot.txt`:
 
-![](/assets/content/resources/git-vs-code/stage_change.png)
+![](images/stage_change.png)
 
 We put changes in the **staging area**, before we commit.
 
-![](/assets/content/resources/git-vs-code/staged_change.png)
+![](images/staged_change.png)
 
 <SideNote type="note" title="Adding multiple files">
   We can add multiple files by selecting the names as usual using shift or ctrl or command and then hit the `+`.
@@ -193,7 +193,7 @@ Keep that in mind.
 
 When all related changes have been added to the "staging area", we can save them together as a current snapshot of our data, a **commit**, with a **commit message** that briefly describes *why* changes were made. This makes it easier to understand them later when viewing the version history. **Committing** means permanently recording a snapshot of contents at a specific point in time. In VS Code you use the `commit` button.
 
-![](/assets/content/resources/git-vs-code/commit_message_and_commit_button.png)
+![](images/commit_message_and_commit_button.png)
 
 <SideNote type="note" title="Commit messages">
   Whether on the command line or in an editor, choose to write meaningful commit messages. This helps your work process when revisiting your changes.
@@ -205,11 +205,11 @@ If you are on a new machine and/or just installed Git you will get an error. Her
 
 <Tabs>
   <Tab title="Windows">
-    ![First-commit error - windows](/assets/content/resources/git-vs-code/first-commit-error-windows.png)
+    ![First-commit error - windows](images/first-commit-error-windows.png)
   </Tab>
 
   <Tab title="MacOS">
-    ![First-commit error MacOS](/assets/content/resources/git-vs-code/first-commit-error-macos.png)
+    ![First-commit error MacOS](images/first-commit-error-macos.png)
   </Tab>
 
   <Tab title="Linux">
@@ -220,7 +220,7 @@ If you are on a new machine and/or just installed Git you will get an error. Her
 Whether you use `Learn More` or `Open Git log`, you will eventually see that Git just wants to know who commits here. We suggest to use `Open Git log` which shows a new set of controls at the bottom right.
 
 <SideNote type="note" title="The tell me who you are - message">
-  ![](/assets/content/resources/git-vs-code/scroll_up_to_see_tip.png)
+  ![](images/scroll_up_to_see_tip.png)
 
   Text for copying:
 
@@ -239,7 +239,7 @@ Whether you use `Learn More` or `Open Git log`, you will eventually see that Git
 
 There is no graphical interface for this one time configuration. You need to copy the two suggested `git config` commands and fill in your own details and execute them in a terminal. Create a new text file with `File`->`New text file`, copy the above lines starting with `git config` and fill in your information. Use the Visual Studio Code tab `Terminal` at the bottom. Alternatively you can select "Terminal" and "New Terminal" from the menu bar.
 
-![](/assets/content/resources/git-vs-code/menu_bar_terminal.png)
+![](images/menu_bar_terminal.png)
 
 <SideNote type="note" title="Unfortunately this differs again between the three operating systems">
   <Tabs>
@@ -248,7 +248,7 @@ There is no graphical interface for this one time configuration. You need to cop
 
       Unfortunately when you click on "Terminal" now you get a terminal that does not know `git` (yet). If you want to set your e-mail and name you need to click on the `V` next to the `+` next to `powershell`. This will open a `Git bash`.
 
-      ![](/assets/content/resources/git-vs-code/windows_open_git_bash.png)
+      ![](images/windows_open_git_bash.png)
     </Tab>
 
     <Tab title="MacOS">
@@ -257,7 +257,7 @@ There is no graphical interface for this one time configuration. You need to cop
       Only on MacOS as a first time user you are asked to configure your shell a little. You can either
       skip that or maybe look at the defaults and use them. The keys you need to type are listed.
 
-      ![](/assets/content/resources/git-vs-code/first_time_terminal_macos.png "first time terminal MacOS")
+      ![](images/first_time_terminal_macos.png "first time terminal MacOS")
     </Tab>
 
     <Tab title="Linux">
@@ -274,36 +274,36 @@ See our GIT version control via command line guide to learn more about [bundle c
 
 To get our changes to the server, so other people in our team can fetch them to review or amend them, we now `push` what we `committed` on our machine to the server.
 
-![](/assets/content/resources/git-vs-code/push.png)
+![](images/push.png)
 
 <SideNote type="note">
   <Tabs>
     <Tab title="Windows">
       When you push your first commit, GitHub will ask you to authenticate.
 
-      ![](/assets/content/resources/git-vs-code/credentials_dialog_windows.png)
+      ![](images/credentials_dialog_windows.png)
 
       We recommend to `Sign in with your browser`. A browser window will open for you to log in to GitHub. Once you're successfully authenticated, you can close the browser window.
 
-      ![](/assets/content/resources/git-vs-code/authentication_successful_browser_github.png)
+      ![](images/authentication_successful_browser_github.png)
     </Tab>
 
     <Tab title="MacOS">
       When you push your first commit, Visual Studio Code will ask you if you want to sign in with GitHub:
 
-      ![](/assets/content/resources/git-vs-code/sign_in_using_github_macos.png "sign in using GitHub MacOS")
+      ![](images/sign_in_using_github_macos.png "sign in using GitHub MacOS")
 
       This will open a dialog screen on GitHub.com:
 
-      ![](/assets/content/resources/git-vs-code/github_dialog_authorize.png "GitHub dialog authorize")
+      ![](images/github_dialog_authorize.png "GitHub dialog authorize")
 
       After providing your password the browser asks if it may communicate with Visual Studio Code. Please allow that:
 
-      ![](/assets/content/resources/git-vs-code/browser_allow_communicate_with_vscode.png "browser allow communicate with vscode")
+      ![](images/browser_allow_communicate_with_vscode.png "browser allow communicate with vscode")
 
       And also Visual Studio Code asks if it may accept the message from the browser. Please allow that too:
 
-      ![](/assets/content/resources/git-vs-code/vscode_allow_receive_from_browser.png "vscode allow receive from browser")
+      ![](images/vscode_allow_receive_from_browser.png "vscode allow receive from browser")
     </Tab>
   </Tabs>
 </SideNote>
@@ -331,19 +331,19 @@ The other change
 
 Note that Visual Studio Code provides us with a few controls we can click to resolve the conflict.
 
-![](/assets/content/resources/git-vs-code/conflicting_edits.png)
+![](images/conflicting_edits.png)
 
 We now can decide which is the better change (or use both if applicable). Visual Studio Code shows you different options in a three-way-editor:
 
-![](/assets/content/resources/git-vs-code/accept_current_change.png)
+![](images/accept_current_change.png)
 
 And for example, accept the incoming change.
 
-![](/assets/content/resources/git-vs-code/incorporate_incoming_change.png)
+![](images/incorporate_incoming_change.png)
 
 And after resolving **all** the conflicts we do a `merge commit` (the text is there automatically).
 
-![](/assets/content/resources/git-vs-code/commit_merge_to_resolve.png)
+![](images/commit_merge_to_resolve.png)
 
 <SideNote type="danger" title="Resolve all conflicts">
   **Never** commit before resolving all conflicts, removing all conflict markers. You will make the maker lines permanent. They are made like this to break any programming language and XML.
