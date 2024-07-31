@@ -1,5 +1,5 @@
 ---
-title: Git collaboration
+title: Git Collaboration
 lang: en
 date: 2023-11-05
 version: 1.0.0
@@ -10,7 +10,7 @@ tags:
   - git
 categories:
   - acdh-ch
-abstract: This post will help you understand how to work with git in a
+abstract: This post will help you understand how to work with Git in a
   collaborative setting; including the use of platforms like GitHub or GitLab.
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
@@ -20,15 +20,19 @@ toc: true
 draft: false
 
 ---
+## Introduction
 
-## Learning outcomes
+This post will help you understand how to work with Git in an open and collaborative setting; including the use of platforms like GitHub or GitLab. Using Git for version control to work on the same project in small teams is a good way to share and co-edit content and to keep track of all the changes.
 
-* work collaboratively with git
+## Learning Outcomes
+
+After completing this learning resource, you will be able to:
+* work collaboratively with Git
 * create, clone and change a remote repository
 * understand the commands git fetch, git push and git pull
 * create a personal access token to use in a code editor
 
-## Using Git for collaborative team work
+## Using Git for Collaborative Team Work
 
 In this section we'll look at using Git to manage files in a project that is being worked on by more than one person as this is the most likely reason why you might be asked to use Git.
 
@@ -42,18 +46,18 @@ If you get into the Git workflow you may want to use it also locally for any kin
 
 Most importantly however, everything we have learned in the first part is still valid: in Git everybody always works on a local copy of a project, and Git helps to keep local project copies in sync. This is why Git is sometimes called a distributed version control system.
 
-## Remote repositories
+## Remote Repositories
 
 Remote repositories are versions of your project that are hosted "elsewhere", usually somewhere on the internet. There can be multiple such remote versions. Remote repositories are the principle mechanism that allow to synchronize changes between collaborators in a team. While it would be in principle possible to set up the local repository of a colleague as a remote repository and synchronize directly between individual colleagues, this would become complicated very quickly with teams of more than two members. Therefore almost invariably a dedicated Git hosting provider like GitHub or GitLab is used to store a primary copy of our project, with which all team members can synchronize their local project copies.
 
-In the following, we will learn a few new git commands needed to work with remote repositories.
+In the following, we will learn a few new Git commands needed to work with remote repositories.
 
-### Creating a remote repository
+### Creating a Remote Repository
 
 If no remote repository for a project has been established yet, you need to create a new one.
 
 <SideNote type="note" title="Git hosting providers">
-  There are various git hosting providers out there, some of the most prominent ones being GitHub and GitLab.
+  There are various Git hosting providers out there, some of the most prominent ones being GitHub and GitLab.
 
   We are going to use **GitHub** in this section, but other services like GitLab work very similarly. Although **GitHub** has a nice **browser-based graphical user interface at [https://github.com](https://github.com)**, and also provides a **Desktop client** for all operating systems, we are going to keep using the terminal to communicate with GitHub first.
 
@@ -74,7 +78,7 @@ git remote add origin https://github.com/my-git-username/my-test-project
 
 By convention, the remote repository which holds the primary copy of a project is called “origin”.
 
-### Cloning a remote repository
+### Cloning a Remote Repository
 
 In a collaborative setup, there is a good chance that a remote repository has already been set up and we just need to "connect" to it, that is, create a local copy, or **clone** a remote repository, which will take care of initializing the project locally, connecting it with the remote, and synchronizing the local project with the current state of the remote.
 
@@ -84,17 +88,17 @@ To **clone** a local repository from a remote repository, we just need to specif
 git clone https://github.com/my-git-username/my-test-project
 ```
 
-The above will create a local directory for the git repository that has the same name as the remote repo, "my-test-project". You are free to choose the local directory's name to your liking:
+The above will create a local directory for the Git repository that has the same name as the remote repo, "my-test-project". You are free to choose the local directory's name to your liking:
 
 ```bash
 git clone https://github.com/my-git-username/my-test-project the_new_project
 ```
 
-Now, our local git repo sits in a directory called `the_new_project`.
+Now, our local Git repo sits in a directory called `the_new_project`.
 
-Alternatively to the `https://` protocol, you can also use the SSH transfer protocol. Check the [git documentation](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) for further information.
+Alternatively to the `https://` protocol, you can also use the SSH transfer protocol. Check the [Git documentation](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) for further information.
 
-### Keeping repositories in sync: fetch, pull, push
+### Keeping Repositories In Sync: Fetch, Pull, Push
 
 Working collaboratively also means keeping in sync with changes that have been created as well as bringing your own work back into the remote repository.
 
@@ -104,25 +108,25 @@ These three commands are essential to keep your local version in sync with the r
 git fetch
 ```
 
-`git fetch` fetches any changes that have been made to the remote repository while you were working on your own local repository. The command will show changes that are not in your local version yet. They need to be integrated before you can push your version back into the remote repository. You can specify which branch you want to fetch by adding its name. Using `git log` in the terminal will give you further information on the changes. Use `git commit` and `git merge` to integrate the changes.
+`Git fetch` fetches any changes that have been made to the remote repository while you were working on your own local repository. The command will show changes that are not in your local version yet. They need to be integrated before you can push your version back into the remote repository. You can specify which branch you want to fetch by adding its name. Using `git log` in the terminal will give you further information on the changes. Use `git commit` and `git merge` to integrate the changes.
 
 ```bash
 git pull
 ```
 
-`git pull` is similar to `git fetch`. However, when you use this command, the change in the remote repository or remote branch are merged into your local copy straight away. While `git fetch` gives you more control, `git pull` is faster when you want to perform multiple actions.
+`Git pull` is similar to `git fetch`. However, when you use this command, the change in the remote repository or remote branch are merged into your local copy straight away. While `git fetch` gives you more control, `git pull` is faster when you want to perform multiple actions.
 
 ```bash
 git push
 ```
 
-`git push` is the opposite action of `git fetch` and `git pull`. You *push back* your local branch or repository into the remote repository. If you have already an upstream remote for your local branch, `git push` can push to that branch as a default. In case you don't want to use the default branch, you can specify the branch every time you push: `git push <remote> <branch-name>`.
+`Git push` is the opposite action of `git fetch` and `git pull`. You *push back* your local branch or repository into the remote repository. If you have already an upstream remote for your local branch, `git push` can push to that branch as a default. In case you don't want to use the default branch, you can specify the branch every time you push: `git push <remote> <branch-name>`.
 
 <SideNote type="tip" title="Good practice when collaborating">
   When you collaborate with others, it is considered good practice to `git pull` before you `git push` to the remote. This way, you can resolve conflicts locally and avoid conflicts in the remote. These so-called *merge conflicts* are sometimes difficult to entangle, so take your time when pushing your work. Code editors clearly visualize conflicts and help you with a clean work flow.
 </SideNote>
 
-## Working collaboratively in code editors
+## Working Collaboratively in Code Editors
 
 Alternatively to working on the command line, some hosting providers like GitHub offer a desktop client or a browser based interface. In addition, there are various code editors available that provide a graphical user interface that support working with your team fast, diligently and easily.
 Some of the more well-known ones are [VS Codium](https://vscodium.com/), [Visual Studio Code](https://code.visualstudio.com/), and [Git Kraken](https://www.gitkraken.com/).
@@ -133,7 +137,7 @@ In order to work with your team but use a code editor, you need to link the code
   In the Git: VS Code resource, you can find more details on how to use a code editor, for example VS Code and VSCodium. In that resource, the hosting service is GitLab.
 </SideNote>
 
-### Getting a throw away password for Git: Creating an access token
+### Getting a Throw Away Password for Git: Creating an Access Token
 
 Security experts will tell you that you should never save a password on a computer. Write it down on a peace of paper and put it into a locked drawer maybe but never save it to a computer in a readable way. This of course can mean that you need to type a password again and again and again when working with some data and that is tiresome.
 
@@ -239,7 +243,7 @@ Similar to GitLab, an access token can be created in GitHub too:
   </Quiz.Card>
 </Quiz>
 
-### Training task
+### Training Task
 
 Open your terminal / command line / git shell. Clone the repository "[https://github.com/acdh-oeaw/howto\_trainingmaterials](https://github.com/acdh-oeaw/howto_trainingmaterials)" to your local work station.
 

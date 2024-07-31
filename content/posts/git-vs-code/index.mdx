@@ -10,8 +10,7 @@ tags:
   - git
 categories:
   - acdh-ch
-abstract: Getting access to the data on gitlab.oeaw.ac.at is different on all
-  three operating systems.
+abstract: Getting access to the data on GitLab is different on all three operating systems.
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: training-module
@@ -20,9 +19,13 @@ toc: false
 draft: false
 
 ---
+## Introduction
 
-## Learning outcomes
+Getting access to the data on GitLab is different on all three operating systems. This post shows how to use the code editor VS Code with its graphical user interface for working collaboratively in Git with Windows, Mac and Linux.
 
+## Learning Outcomes
+
+After completing this learning resource, you will be able to:
 * use code editor VS Code for working collaboratively in Git with Windows, Mac and Linux
 * track changes in VS Code
 * clone and push a remote repository from the code editor
@@ -34,7 +37,7 @@ draft: false
   2. [Visual Studio Code](https://code.visualstudio.com/)
 </SideNote>
 
-## Starting our editor with add-ons: Visual Studio Code
+## Starting our Editor with Add-Ons: Visual Studio Code
 
 VS Code is an example for code editors. Using the command line or terminal instead has the same results. However, in a code editor, you can work in a graphical user interface.
 
@@ -52,9 +55,9 @@ VS Code is an example for code editors. Using the command line or terminal inste
   </Tab>
 </Tabs>
 
-### Working with git in the editor
+### Working with Git in the Editor
 
-#### Cloning a repository and getting data
+#### Cloning a Repository and Getting Data
 
 For example we want to clone `teapot` from [https://github.com/acdh-oeaw/howto\_trainingmaterials](https://github.com/acdh-oeaw/howto_trainingmaterials). The data at this location, in this repository, is marked as public. So you do not need to log into the Oeaw GitHub, but you need to be logged into your GitHub account that you set up to see the contents.
 
@@ -69,7 +72,7 @@ On the top right there is a `Clone` button which, when clicked, gives you two op
 <SideNote type="note">
   <Tabs>
     <Tab title="Windows">
-      You can paste the `https://...` of any git repository from a server in the text field that appears when we click `Clone Git repository...` on the start screen of Visual Studio Code.
+      You can paste the `https://...` of any Git repository from a server in the text field that appears when we click `Clone Git repository...` on the start screen of Visual Studio Code.
 
       ![](images/githubrepo_clone_from_url.png)
 
@@ -79,7 +82,7 @@ On the top right there is a `Clone` button which, when clicked, gives you two op
     </Tab>
 
     <Tab title="MacOS">
-      You can paste the `https://...` of any git repository from a server in the text field that appears when we click `Clone Git repository...` on the start screen of Visual Studio Code:
+      You can paste the `https://...` of any Git repository from a server in the text field that appears when we click `Clone Git repository...` on the start screen of Visual Studio Code:
 
       ![](images/vscode_getting_started_macos.png)
 
@@ -148,9 +151,9 @@ Because Visual Studio Code is a development environment where developers can exe
 
 ![](images/trust_authors_windows.png)
 
-See our GIT collaboration guide to learn more about [cloning a remote repository](/resource/posts/git-collaboration#cloning-a-remote-repository).
+See our Git collaboration guide to learn more about [cloning a remote repository](/resource/posts/git-collaboration#cloning-a-remote-repository).
 
-### Tracking changes
+### Tracking Changes
 
 Git is very helpful in tracking changes in a project.
 
@@ -170,7 +173,7 @@ This only lists those files that we changed since we last made our changes perma
 
 If we are not 100% sure about the changes we will now **stage**, that is prepare to be **committed**, we can open each file and see the differences per line. This might also give us a hint what we did if the last **commit** was a while back and we don't remember exactly why we changed the files.
 
-### Mark content changes to be included in the version history
+### Mark Content Changes to be Included in the Version History
 
 Let's tell Git that we are committed to our changes in the document `teapot.txt`:
 
@@ -184,9 +187,9 @@ We put changes in the **staging area**, before we commit.
   We can add multiple files by selecting the names as usual using shift or ctrl or command and then hit the `+`.
 </SideNote>
 
-See our GIT version control via command line guide to learn more about [adding files](/resource/posts/git-version-control-via-command-line#mark-content-changes-to-be-included-in-the-version-history).
+See our Git version control via command line guide to learn more about [adding files](/resource/posts/git-version-control-via-command-line#mark-content-changes-to-be-included-in-the-version-history).
 
-### Bundle changes into meaningful chunks and commit to them
+### Bundle Changes into Meaningful Chunks and commit to Them
 
 Including content changes in Git's version history involves a two-step process. First, related changes are added to create semantically meaningful units of changes. These changes wait in the staging area but it needs an extra step to propagate these changes and feed them into the documents.
 Keep that in mind.
@@ -199,7 +202,7 @@ When all related changes have been added to the "staging area", we can save them
   Whether on the command line or in an editor, choose to write meaningful commit messages. This helps your work process when revisiting your changes.
 </SideNote>
 
-#### The very first commit error
+#### The Very First Commit Error
 
 If you are on a new machine and/or just installed Git you will get an error. Here is how it looks:
 
@@ -268,7 +271,7 @@ There is no graphical interface for this one time configuration. You need to cop
   </Tabs>
 </SideNote>
 
-See our GIT version control via command line guide to learn more about [bundle changes into meaningful chunks and commit to them](/resource/posts/git-version-control-via-command-line#bundle-changes-into-meaningful-chunks).
+See our Git version control via command line guide to learn more about [bundle changes into meaningful chunks and commit to them](/resource/posts/git-version-control-via-command-line#bundle-changes-into-meaningful-chunks).
 
 ### Keeping repositories in sync: fetch, pull, push
 
@@ -312,7 +315,7 @@ The opposite action is to `pull` from the server. This means getting all the cha
 
 If we just want to download all change not integrating them at the same time we `fetch` from the server.
 
-### Merging and conflict resolution
+### Merging and Conflict Resolution
 
 What happens if two people edit the same file? Well it depends:
 
@@ -349,7 +352,7 @@ And after resolving **all** the conflicts we do a `merge commit` (the text is th
   **Never** commit before resolving all conflicts, removing all conflict markers. You will make the maker lines permanent. They are made like this to break any programming language and XML.
 </SideNote>
 
-### Training task
+### Training Task
 
 Open your code editor. Clone the repository [https://github.com/acdh-oeaw/howto\_trainingmaterials](https://github.com/acdh-oeaw/howto_trainingmaterials) to your local work station. We used it in the **Git collaboration** - resource too.
 

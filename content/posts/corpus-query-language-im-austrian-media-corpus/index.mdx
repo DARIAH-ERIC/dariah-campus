@@ -27,16 +27,6 @@ draft: true
 
 ---
 
-## Lernziele
-
-* das Austrian Media Corpus (amc) kennenlernen
-
-* einen Einblick in die Funktionalität der Korpussuchmaschine Sketch/NoSketch Engine erhalten
-
-* einfache Suchabfragen im amc durchführen
-
-* mit der Corpus-Query-Language (CQL) komplexere Suchabfragen formulieren
-
 ## Einführung
 
 ### Das Austrian Media Corpus (amc)
@@ -46,6 +36,16 @@ Das Austrian Media Corpus (amc) ist eines der größten Textkorpora in deutscher
 Das amc kann auf Anfrage genutzt werden, allerdings ausschließlich für Zwecke der wissenschaftlichen Forschung und Lehre und nur für die Untersuchung *sprachwissenschaftlicher* Fragestellungen. Ermöglicht wird das amc durch eine Kooperation zwischen der Austria Presse Agentur (APA) und der Österreichischen Akademie der Wissenschaften (ÖAW), konkret dem Austrian Centre for Digital Humanities and Cultural Heritage (ACDH-CH). Die APA sammelt die Textproduktion der Printmedien und stellt diese dem ACDH-CH zur Verfügung.
 
 Das amc wird jährlich am Jahresanfang um die Publikationen des soeben abgelaufenen Jahres aktualisiert, d.h. der aktuelle Datenbestand des amc reicht jeweils bis zum Ende des Vorjahrs.
+
+## Lernergebnisse
+
+* das Austrian Media Corpus (amc) kennenlernen
+
+* einen Einblick in die Funktionalität der Korpussuchmaschine Sketch/NoSketch Engine erhalten
+
+* einfache Suchabfragen im amc durchführen
+
+* mit der Corpus-Query-Language (CQL) komplexere Suchabfragen formulieren
 
 ### Mit dem amc arbeiten
 
@@ -259,9 +259,9 @@ Typischerweise finden sich in den Attributen des `<doc>`-Elements die Metadaten 
   </Quiz.Card>
 </Quiz>
 
-## Schnelleinstieg: Suche mit "Simple search"
+## Schnelleinstieg: Suche mit "simple search"
 
-Die einfachste Form der Suche im amc ist die sogenannte **Simple search**.
+Die einfachste Form der Suche im amc ist die sogenannte **simple search**.
 
 Diese kann in der SkE innerhalb der "Concordance"-Funktion aufgerufen werden:
 
@@ -279,15 +279,15 @@ Gibt man hier eine Wortform ein, so sucht die SkE
 
 Es kann auch eine Abfolge mehrerer Wörter angegeben werden, die SkE sucht dann nach genau dieser Abfolge, z.B. *ein schönes Haus*.
 
-Da bei der **Simple search** wie erwähnt auch nach den **Wortformen eines Lemmas** gesucht wird, findet eine Suchanfrage *schön Haus* auch alle Paarungen der Wortformen des Lemmas *schön* und der Wortformen des Lemmas *Haus* und das unabhängig von Groß- oder Kleinschreibung. Somit erscheinen im Ergebnis z.B. *schönes Haus*, *schönsten Hauses*, *Schöneren Häusern* etc.
+Da bei der **simple search** wie erwähnt auch nach den **Wortformen eines Lemmas** gesucht wird, findet eine Suchanfrage *schön Haus* auch alle Paarungen der Wortformen des Lemmas *schön* und der Wortformen des Lemmas *Haus* und das unabhängig von Groß- oder Kleinschreibung. Somit erscheinen im Ergebnis z.B. *schönes Haus*, *schönsten Hauses*, *Schöneren Häusern* etc.
 
-<SideNote type="note" title="Definite und indefinite Artikel in der Simple search">
+<SideNote type="note" title="Definite und indefinite Artikel in der simple search">
   Das Lemma für **definite Artikel** ist übrigens *die*, für **indefinite** ist es *eine*. Das heißt, die Abfrage *die schön Haus* oder *eine schön Haus* liefert die entsprechenden Kombinationen in allen Kasus und Numeri.
 </SideNote>
 
 ### Wildcards
 
-In der Simple search ist die Verwendung des Wildcards `*` (Jokerzeichen, Asterisk) möglich: es steht für beliebig viele (auch null!) beliebige Zeichen.
+In der simple search ist die Verwendung des Wildcards `*` (Jokerzeichen, Asterisk) möglich: es steht für beliebig viele (auch null!) beliebige Zeichen.
 
 #### Beispiele:
 
@@ -297,11 +297,11 @@ In der Simple search ist die Verwendung des Wildcards `*` (Jokerzeichen, Asteris
 
 * Ha`*`s: alle Wörter, die mit Ha beginnen, und mit *s* enden: *Has*, *Haus*, *Hass*, *Handelsabschluss*, *Hafenmeistergattinnenpendlerbus*, etc. Wegen der beiden speziellen Eigenschaften case-insensitiv und Lemma-Suche wird aber auch z.B. *haltlos* (case-insensitive) und *haltlose* gefunden (Ergebnis der impliziten Lemma-Suche, obwohl die gefundene Wortform dann gar nicht auf *s* endet!)
 
-Ein weiteres Beispiel für den case-insensitiven Charakter der Simple search: *deutsch\** findet: *deutsch*, *deutsche*, *deutsches* ... aber auch: *Deutschlands*, *Deutschmatura*,...
+Ein weiteres Beispiel für den case-insensitiven Charakter der simple search: *deutsch\** findet: *deutsch*, *deutsche*, *deutsches* ... aber auch: *Deutschlands*, *Deutschmatura*,...
 
 ## "Vollsuche" mit der Corpus Query Language (CQL)
 
-Wie wir gesehen haben, kann in der Simple search nur nach Token und dabei auch nur nach Wortformen und (implizit) Lemmata gesucht werden, oder exakter ausgedrückt: es kann nach Werten im Attribut *word* gesucht werden (wobei implizit intern zusätzlich auch noch die Attribute *lc* und *lemma* zur Suche mitherangezogen werden).
+Wie wir gesehen haben, kann in der simple search nur nach Token und dabei auch nur nach Wortformen und (implizit) Lemmata gesucht werden, oder exakter ausgedrückt: es kann nach Werten im Attribut *word* gesucht werden (wobei implizit intern zusätzlich auch noch die Attribute *lc* und *lemma* zur Suche mitherangezogen werden).
 
 Im Gegensatz hierzu bietet die **CQL** weit mehr Möglichkeiten:
 
@@ -361,8 +361,8 @@ verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche er
 
 * `[pos="N.Reg.*Pl.*"]` findet alle Nomen im Plural
 
-<SideNote type="note" title="Unterschiedliche Bedeutung des Asterisk in Simple search und CQL">
-  Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple search: dort steht ein `*` allein schon als Platzhalter für 0, 1, oder beliebig viele beliebige Zeichen. In einem regulären Ausdruck bezieht sich hingegen ein `*` immer auf den *linken Nachbarn*: die Suchanfrage `Haus*` liefert in der Simple query bekanntlich alle Wörter, die mit "Haus" beginnen, in der CQL jedoch "Hau", "Haus", "Hauss", "Haussss" etc., also "Hau" gefolgt von 0, 1, oder beliebig vielen "s", da sich der `*` in der CQL immer auf das vorhergehende Element – hier eben das "s" – bezieht. Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL also wie folgt lauten: `[word="Haus.*"]`.
+<SideNote type="note" title="Unterschiedliche Bedeutung des Asterisk in simple search und CQL">
+  Beachten Sie den Unterschied zur Wirkungsweise des `*` in der simple search: dort steht ein `*` allein schon als Platzhalter für 0, 1, oder beliebig viele beliebige Zeichen. In einem regulären Ausdruck bezieht sich hingegen ein `*` immer auf den *linken Nachbarn*: die Suchanfrage `Haus*` liefert in der simple query bekanntlich alle Wörter, die mit "Haus" beginnen, in der CQL jedoch "Hau", "Haus", "Hauss", "Haussss" etc., also "Hau" gefolgt von 0, 1, oder beliebig vielen "s", da sich der `*` in der CQL immer auf das vorhergehende Element – hier eben das "s" – bezieht. Will man ein Suchverhalten wie in der simple query erreichen, muss die Abfrage in der CQL also wie folgt lauten: `[word="Haus.*"]`.
 </SideNote>
 
 ### Quiz
@@ -776,7 +776,7 @@ z.B.: Suche nach dem Lemma "Hund" in dessen linker oder rechter Umgebung im maxi
 
 ## Suche auf Strukturebene in CQL
 
-Sowohl bei der **Simple search** als auch bei den bisherigen Beispielen zur **CQL** blieben Informationen auf der **Strukturebene** (Dokumente, Absätze, Sätze) unberücksichtigt. Hier wird nun gezeigt, wie *auf* und *mit* **Strukturinformationen** gesucht werden kann. Wie oben gezeigt, werden
+Sowohl bei der **simple search** als auch bei den bisherigen Beispielen zur **CQL** blieben Informationen auf der **Strukturebene** (Dokumente, Absätze, Sätze) unberücksichtigt. Hier wird nun gezeigt, wie *auf* und *mit* **Strukturinformationen** gesucht werden kann. Wie oben gezeigt, werden
 Struktur-Informationen in den Input-Daten für die SkE mithilfe von XML-Elementen kodiert. In HTML und XML gelten die folgenden Notationskonventionen:
 
 * `<S>` Beginn-tag einer Struktur namens "S"

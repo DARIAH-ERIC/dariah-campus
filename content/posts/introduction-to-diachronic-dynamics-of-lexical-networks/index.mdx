@@ -12,7 +12,7 @@ tags:
   - data-management
 categories:
   - acdh-ch
-abstract: A quick reference guide to the DYLEN tool.
+abstract: This post is a quick reference guide to the DYLEN tool, an interactive visualisation tool that the Diachronic Dynamics of Lexical Networks project team created to provide insights into the dynamic lexical changes of Austrian German during the 21st century. It helps lexicographers and linguists to analyse the development of Austrian German lexemes over the course of time. It is an open source tool that can be used free of charge..
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: training-module
@@ -21,6 +21,10 @@ toc: false
 draft: false
 
 ---
+
+## Introduction
+
+[DYLEN](https://dylen-tool.acdh.oeaw.ac.at/) is the acronym of the **Diachronic Dynamics of Lexical Networks** (Baumann et al. 2019). It is an interactive visualisation tool (Yim et al. 2022) that the Diachronic Dynamics of Lexical Networks project team created to provide insights into the dynamic lexical changes of Austrian German during the 21st century. It helps lexicographers and linguists to analyse the development of Austrian German lexemes over the course of time. It is an open source tool that can be used free of charge.
 
 ## Learning outcomes
 
@@ -34,9 +38,7 @@ After completing this resource, you will
 
 * generate a general network analysis
 
-## Introduction
-
-[DYLEN](https://dylen-tool.acdh.oeaw.ac.at/) is the acronym of the **Diachronic Dynamics of Lexical Networks** (Baumann et al. 2019). It is an interactive visualisation tool (Yim et al. 2022) that the Diachronic Dynamics of Lexical Networks project team created to provide insights into the dynamic lexical changes of Austrian German during the 21st century. It helps lexicographers and linguists to analyse the development of Austrian German lexemes over the course of time. It is an open source tool that can be used free of charge.
+## Diachronic Dynamics of Lexical Networks
 
 [DYLEN](https://dylen-tool.acdh.oeaw.ac.at/) enables lexical network research on large-scale authentic language data that are taken from two Austrian Geman corpora, the [Austria Media Corpus (amc)](https://amc.acdh.oeaw.ac.at/), (Ransmayr et al. 2017) and [Corpus of Austrian Parliamentary Records (ParlAT)](https://www.oeaw.ac.at/acdh/tools/parlat).
 
@@ -74,7 +76,7 @@ Diachronic networks derive from the texts in amc and ParlAT with the help of wor
 
 The user interface is very intuitive but every search starts with deciding on either an **ego network** or a **general network** (**party** or **speaker**). In each network type, you can analyse various parameters of a single entity or compare two entities. The first step on your diachronic network journey is to select the network that you would like to generate.
 
-### Ego network
+### Ego Network
 
 Connected words are **semantic neighbours** that share some aspects of the **target word**. Some can even substitute the target word in a particular context. The ego network visualises the **50** most closely related semantic neighbours of a target word. Note that it does not show the target word itself because it would render the visualisation impossible to read. The semantic neighbours are classified as parts of speech (POS), e.g. noun, proper nouns and verbs.
 
@@ -98,7 +100,7 @@ On the input field on the left side bar, you can
 
 4. and finally click *Visualise*.
 
-#### Understanding the visualisation
+#### Understanding the Visualisation
 
 Once you clicked on visualise, DYLEN will generate your network. Let us stick with our "Geld" (money) example.
 
@@ -112,7 +114,7 @@ Above, you see the semantic neighbours represented by nodes that can be dragged 
 
 The Time Series Analysis allows to compare two words over time; the comparison can be relative to the first year, last year or previous year.
 
-#### Metrics and Node metric comparison
+#### Metrics and Node Metric Comparison
 
 <Figure src="images/parallelcoordinatesoptions.png" alt="A bar with five sliders">
   Parallel coordinates options: normalised frequency, degree centrality, betweenness centrality, pagerank, clustering coefficient.
@@ -129,11 +131,11 @@ In addition, you can select the metrics for the parallel coordinates with the sl
 
   ...represents how often a word occurs.
 
-  #### Degree centrality
+  #### Degree Centrality
 
   ...represents how connected a word is. It shows the total number of edges linked to a node. In the example, "Haft" has a higher degree centrality than "Strafe", meaning that it is more strongly connected.
 
-  #### Betweenness centrality
+  #### Betweenness Centrality
 
   ...represents the number of shortest paths that pass through that node. It shows how frequently nodes tand between each other. Again, "Haft" shows more betweenness centrality than "Strafe", meaning that more shorter paths pass through "Haft".
 
@@ -141,14 +143,14 @@ In addition, you can select the metrics for the parallel coordinates with the sl
 
   ...represents the notion that a node is as important as the combined importance of its linked nodes.
 
-  #### Clustering coefficient
+  #### Clustering Coefficient
 
   ...measures the degree to which nodes in a graph tend to cluster together.
 
   *The above explanations are taken from the* DYLEN *tool website and can be accessed and read in more detail via the information button in the node metric analysis visualisation.*
 </SideNote>
 
-### General networks
+### General Networks
 
 General networks reflect the speeches of a particular politician or a political party. Those networks are larger than ego networks and require more filters that make the visualisation more legible. Under general networks you can explore **frequent lexemes** used by particular political parties **(general network (party))** or individual politicians **(general network (speaker))** in the Austrian Parliament.
 
@@ -500,7 +502,7 @@ In the general network analysis, the development of speakers or parties can be t
     </Quiz.Card>
 </Quiz>
 
-## Practical understanding and exercises
+## Practical Understanding and Exercises
 
 Please use our DYLEN tool integration or open the
 tool<a href="https://dylen-tool.acdh.oeaw.ac.at" target="_blank"> in a new tab</a> to complete the

@@ -1,5 +1,5 @@
 ---
-title: Git version control via command line
+title: Git Version Control via Command Line
 lang: en
 date: 2023-11-05
 version: 1.0.0
@@ -12,7 +12,7 @@ categories:
   - acdh-ch
 abstract: This article introduces the main concepts in Git and basic Git
   commands that can be used from the command line. Understanding these commands
-  will help you with using git in a code editor, the git desktop and other
+  will help you with using Git in a code editor, the Git desktop and other
   options, like GitHub online.
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
@@ -22,16 +22,20 @@ toc: false
 draft: false
 
 ---
+## Introduction
 
-## Learning outcomes
+This post introduces the main concepts in Git and basic Git commands that can be used from the command line. Understanding these commands will help you with using Git in a code editor, the Git desktop and other options, like GitHub online.
 
-* be familiar with git terminology
-* be familiar with the git workflow
-* install git
-* understand essential git commands
-* use git commands in the terminal / command line
+## Learning Outcomes
 
-## Version control and tracking changes
+After completing this learning resource, you will be able to:
+* be familiar with Git terminology
+* be familiar with the Git workflow
+* install Git
+* understand essential Git commands
+* use Git commands in the terminal / command line
+
+## Version Control and Tracking Changes
 
 **Git**'s main purpose is to track changes in files and folders of a project, either for yourself or when working collaboratively in a team. It works best when used with **plaintext file formats** such as **source code, XML/TEI documents** or **Markdown content**. While Git will happily store *images*, *audio files*, or `.doc` and `.pdf` documents, it is not able to help you with changes in documents in so-called binary formats.
 
@@ -54,7 +58,7 @@ Git allows to create separate branches for changes to any document. For example,
 
 The paragraph above features **terminology** (in bold) that will become essential commands that enable us to work with Git.
 
-### Official terminology: Working Area, Staging Area, Repository
+### Official Terminology: Working Area, Staging Area, Repository
 
 This diagram is a great summary of how content moves in Git, between the “working area”, which is simply the files and folders in a project as they exist on your computer, the “staging area”, which we can call a “holding zone”, and the “repository”, which are the permanently recorded commit snapshots.
 
@@ -74,7 +78,7 @@ However, if you prefer to work with Git via a **graphical user interface (GUI)**
   The commands you learn for working in a local project also apply for working collaboratively. Working in the terminal helps to understand what is going on behind the scenes.
 </SideNote>
 
-## Installing git
+## Installing Git
 
 <SideNote type="tip" title="Don't be afraid of the command line interface (CLI)">
   Many users, particularly Windows users, depend on using Graphical User Interfaces (GUI) in their daily lives and work schedules. GUIs have tabs, menus and windows that you can click on. GUIs are perceived as more user-friendly because they graphically represent the actions you take when you interact with the machine in front of you.
@@ -109,30 +113,30 @@ However, if you prefer to work with Git via a **graphical user interface (GUI)**
 
       [One exception might be the editor](https://git-intro-wboe.acdh-dev.oeaw.ac.at/simple_windows_editors). But if you follow this howto, its use is not essential.
 
-      ### Editors with git-support
+      ### Editors with Git-Support
 
-      In order to have an editor that supports us when working with git version control, we would suggest you to use [Visual Studio Code.](https://code.visualstudio.com/) Just download the suggested stable build and install it.
+      In order to have an editor that supports us when working with Git version control, we would suggest you to use [Visual Studio Code.](https://code.visualstudio.com/) Just download the suggested stable build and install it.
 
       We would suggest you to let the setup program add an icon on your desktop. You can of course just search the start menu for (Visual Studio)Code.
 
-      Note that other specialized editors also support managing git repositories themselves. One notable example would be OxygenXML.
+      Note that other specialized editors also support managing Git repositories themselves. One notable example would be OxygenXML.
     </Tab>
 
     <Tab title="Mac">
-      There are several ways to install git on MacOS. Depending on your needs and your familiarity with the command line we suggest one of the following two ways:
+      There are several ways to install Git on MacOS. Depending on your needs and your familiarity with the command line we suggest one of the following two ways:
 
-      ### 1. Using the Git bundled with XCode Command Line Tools
+      ### 1. Using the Git Bundled with XCode Command Line Tools
 
-      Apple ships an older version of git with some add on tools for their MacOS. To get this git version you only have to
+      Apple ships an older version of Git with some add on tools for their MacOS. To get this Git version you only have to
 
       * open a "terminal" (type "terminal" in Spotlight search, start the respective app)
-      * type `git` and press enter and try to run git
+      * type `git` and press enter and try to run Git
 
       Doing this will tell MacOS to get a few more programs from the internet. The bundle is called "Xcode Command Line Tools". So if this already happened for some reason you are ready. If not, you have to go through a few dialogs and after about 10 minutes everything is installed.
 
-      ### 2. Using an installation package
+      ### 2. Using an Installation Package
 
-      The easiest way to install git on a Mac is to use an installer-package provided by Tim Harper.
+      The easiest way to install Git on a Mac is to use an installer-package provided by Tim Harper.
       However
 
       * it will not give you the latest version of Git
@@ -165,16 +169,16 @@ However, if you prefer to work with Git via a **graphical user interface (GUI)**
 
       By pressing enter and starting the script the installation procedure will run in the terminal. At each step the installer will pause and let you confirm, before it continues.
 
-      #### Installing git using Homebrew
+      #### Installing Git Using Homebrew
 
-      After having installed Homebrew, please paste the following into your MacOS terminal: `$ brew install git`. This prompt will run the git-installation.
+      After having installed Homebrew, please paste the following into your MacOS terminal: `$ brew install git`. This prompt will run the Git-installation.
 
-      ### Editors with git-support
+      ### Editors with Git-Support
 
-      To have an editor that supports us when working with git version control, we would suggest you to use
+      To have an editor that supports us when working with Git version control, we would suggest you to use
       [Visual Studio Code](https://code.visualstudio.com/). Just download the suggested stable build and install it.
 
-      Note that other specialized editors also support managing git repositories themselves. One notable
+      Note that other specialized editors also support managing Git repositories themselves. One notable
       example would be OxygenXML.
     </Tab>
 
@@ -183,15 +187,15 @@ However, if you prefer to work with Git via a **graphical user interface (GUI)**
 
       Git is part of every Linux Distribution nowadays and you install it using the usual package management tools (like `apt`, `dnf`, `pacman`, `yum`, `zypper` etc.).
 
-      ### Editors with git-support
+      ### Editors with Git-Support
 
-      To have an editor that supports us when working with git version control we would suggest you to use
+      To have an editor that supports us when working with Git version control we would suggest you to use
       [Visual Studio Code](https://code.visualstudio.com/). Just download the suggested stable build and install it.
 
-      Note that other specialized editors also support managing git repositories themselves. One notable
+      Note that other specialized editors also support managing Git repositories themselves. One notable
       example would be OxygenXML.
 
-      ## Save your username and password, so type it only once
+      ## Save your Username and Password, so Type It Only Once
 
       You also should make sure the `git-credential-libsecret` package is installed. This package exists
       on fedora based distributions. On Ubuntu and debian you need to execute these commands in a terminal:
@@ -206,7 +210,7 @@ However, if you prefer to work with Git via a **graphical user interface (GUI)**
   </Tabs>
 </SideNote>
 
-## Initialize a Git project in your terminal
+## Initialize a Git Project in Your Terminal
 
 First, we need to tell Git that it should start to manage a project directory and keep an eye on changes to documents there. On a **Windows** PC, run the program **git shell** **(Git Bash)**, on **Mac** or **Linux** use the terminal of your choice. Navigate to the folder which contains the data you want to version (usually done by typing `cd {folder-name}`, e.g. *cd Documents*), and afterwards type:
 
@@ -214,7 +218,7 @@ First, we need to tell Git that it should start to manage a project directory an
 git init
 ```
 
-This will initially set up Git's internal bookkeeping metadata, which is stored in a hidden .git folder. Git will respond with:
+This will initially set up Git's internal bookkeeping metadata, which is stored in a hidden .Git folder. Git will respond with:
 
 <Figure src="images/git_initialise_empty_gitrepo.png">
   Initialize an empty Git repository on your local machine.
@@ -226,7 +230,7 @@ Let's also create some new content. In a real research project this would mean e
 echo "This is my text document." > my-document.txt
 ```
 
-### Check status
+### Check Status
 
 We can always check what Git knows about the state of our project with:
 
@@ -240,7 +244,7 @@ Note that Git informs us that changes have been made to a file called `my-docume
   In the image you can see that a text file was created and that the status was checked. There are no commits yet, but some changes are already staged, others yet untracked.
 </Figure>
 
-## Mark content changes to be included in the version history
+## Mark Content Changes to be Included in the Version History
 
 Let's follow the advice and use `git add` to tell Git to keep an eye on changes to the newly created document `my-document.txt`:
 
@@ -264,7 +268,7 @@ git add my-document.txt
 
 Note that `git add` does not automatically **commit** the changes, but places them in the **staging area**.
 
-### Bundle changes into meaningful chunks
+### Bundle Changes into Meaningful Chunks
 
 Including content changes in Git's version history involves a two-step process. First, we put changes in the “holding zone” or **“staging area”**. We can continue adding related changes to other documents, or additional newly created documents. This allows **creating semantically meaningful units of changes**.
 
@@ -302,7 +306,7 @@ Below, you see a sample information message that your terminal returns. It inclu
 
 If you type `git log` instead, more detailed information will be displayed, including the individual add that are bundled in your commit (if you have any) and the longer internal identifier.
 
-### View individual snapshot
+### View Individual Snapshot
 
 Git will display the exact changes which were made in a commit snapshot with:
 
@@ -312,7 +316,7 @@ git show 7f733ac
 
 That last bit is the unique identifier which is assigned to every commit in Git's version history. We've seen above how we can figure out these ids from inspecting the changelog displayed with `git log`. Note that when you have followed the steps in this introduction on your own computer, the unique identifier you see will be different from the one above. This is because identifiers are calculated from filename and content, author, commit message, and commit date.
 
-### Compare two snapshots
+### Compare Two Snapshots
 
 It is also possible to show changes between two specific commit snapshots. Let's first add another change, so there are actually two separate entries in our commit history (again, how creating and editing a document on the terminal works is unimportant here, but the two-step process of creating a snapshot with `git add` and `git commit` should already be familiar):
 
@@ -346,7 +350,7 @@ git diff 7f733ac ab9b27f
 
 The format in which the changes are displayed can be a bit hard to read in the terminal, especially for larger changesets, so it's best to view them in a real text editor.
 
-### Time travel
+### Time Travel
 
 Alternatively, Git allows to "time travel" to a specific point in a project's history. You can inspect how each document looked like at that point in time, without losing any subsequent changes:
 
@@ -362,7 +366,7 @@ git checkout main
 
 The `main` identifier is just a shortcut way to refer to the default timeline (it's actually the default *branch* of the timeline, because there can be multiple parallel timelines 🤯. Branches were mentioned in the beginning and we'll have a look at these branches in the post about [keeping repositories in sync](/resource/posts/git-collaboration#keeping-repositories-in-sync-fetch-pull-push).
 
-### Undo changes
+### Undo Changes
 
 Finally, Git also allows to undo changes. Even though Git forces us to be very intentional about which changes end up in the changelog (we needed to go through the two-step `git add` and `git commit` process after all), sometimes you'll still want to discard some of them.
 
@@ -452,13 +456,13 @@ git commit --amend
   </Quiz.Card>
 </Quiz>
 
-## Training task
+## Training Task
 
 First, install `git` if you need to do so on your machine.
 
 Second, create a new directory in your home directory (often the C://) called "Howto-Git".
 
-Use the terminal or the git shell and navigate to this directory on the command line.
+Use the terminal or the Git shell and navigate to this directory on the command line.
 
 Run the `git init` command.
 
