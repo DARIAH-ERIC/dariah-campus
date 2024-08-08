@@ -1,6 +1,7 @@
 import { type ComponentType } from "react";
 
 import { Download } from "@/cms/components/Download";
+import { Embed } from "@/cms/components/Embed";
 import { Grid } from "@/cms/components/Grid";
 import { SideNote } from "@/cms/components/SideNote";
 import { Video } from "@/cms/components/Video";
@@ -58,6 +59,7 @@ const legacyComponents: MdxComponentMap = {
 export const components: MdxComponentMap = {
 	...legacyComponents,
 	Download,
+	Embed,
 	Grid,
 	SideNote,
 	Video,

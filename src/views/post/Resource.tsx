@@ -2,6 +2,7 @@ import { type Post as PostData } from "@/cms/api/posts.api";
 import { ExternalResource } from "@/cms/components/ExternalResource";
 import { Figure } from "@/cms/components/Figure";
 import { Quiz } from "@/cms/components/quiz/Quiz";
+import { Tab, Tabs } from "@/cms/components/Tabs";
 import { VideoCard } from "@/cms/components/VideoCard";
 import { PageTitle } from "@/common/PageTitle";
 import { ResponsiveImage } from "@/common/ResponsiveImage";
@@ -51,6 +52,8 @@ export function Resource(props: ResourceProps): JSX.Element {
 						Quiz,
 						VideoCard,
 						ExternalResource,
+						Tabs,
+						Tab,
 					}}
 				/>
 			</div>

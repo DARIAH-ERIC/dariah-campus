@@ -28,7 +28,7 @@ export interface SideNoteProps {
 }
 
 const styles: Record<SideNoteType, string> = {
-	note: "bg-neutral-50 border-neutral-600 text-neutral-800",
+	note: "bg-neutral-100 border-neutral-600 text-neutral-800",
 	info: "bg-blue-50 border-blue-600 text-blue-800",
 	tip: "bg-green-50 border-green-600 text-green-800",
 	warning: "bg-yellow-50 border-yellow-500 text-yellow-800",
@@ -52,7 +52,7 @@ export function SideNote(props: SideNoteProps): JSX.Element {
 	const title = props.title ?? capitalize(type);
 
 	return (
-		<aside className={cx("not-prose border-l-4 px-6 py-6 my-12 space-y-3 rounded", styles[type])}>
+		<aside className={cx("border-l-4 px-6 py-6 my-12 space-y-3 rounded", styles[type])}>
 			<strong className="flex items-center space-x-2 font-bold">
 				<Icon icon={icons[type]} className="flex-shrink-0" />
 				<span>{title}</span>

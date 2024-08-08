@@ -8,7 +8,7 @@ export interface QuizQuestionProps {
  * Quiz question.
  */
 export function QuizQuestion(props: QuizQuestionProps): JSX.Element {
-	return <div className="flex flex-col space-y-2">{props.children}</div>;
+	return <div className="flex flex-col space-y-2 question">{props.children}</div>;
 }
 
 /**
