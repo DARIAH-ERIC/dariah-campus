@@ -190,7 +190,7 @@ In the general network analysis, the development of speakers or parties can be t
 
 <Quiz>
   <Quiz.Card>
-    <Quiz.MultipleChoice variant="single" name="What research does DYLEN support?">
+    <Quiz.MultipleChoice variant="single">
       <Quiz.Question>
        What research does DYLEN support?
       </Quiz.Question>
@@ -215,11 +215,10 @@ In the general network analysis, the development of speakers or parties can be t
         Sorry! Have a look at the tool description again.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
   <Quiz.Card>
-    <Quiz.MultipleChoice variant="multiple" name="Which corpora feed into DYLEN?">
+    <Quiz.MultipleChoice variant="multiple">
       <Quiz.Question>
         Which corpora feed into DYLEN?
       </Quiz.Question>
@@ -252,11 +251,10 @@ In the general network analysis, the development of speakers or parties can be t
         Sorry, the answer was incorrect or incomplete.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
-    <Quiz.Card>
-    <Quiz.MultipleChoice variant="single" name="The data in DYLEN is primarily represented in">
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
       <Quiz.Question>
        The data in DYLEN is primarily represented in...
       </Quiz.Question>
@@ -281,11 +279,10 @@ In the general network analysis, the development of speakers or parties can be t
         Sorry, the answer was incorrect.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
-    <Quiz.Card>
-    <Quiz.MultipleChoice variant="single" name="What are semantic neighbours?">
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
       <Quiz.Question>
        What are semantic neighbours?
       </Quiz.Question>
@@ -310,11 +307,10 @@ In the general network analysis, the development of speakers or parties can be t
         Sorry, the answer was incorrect.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
-    <Quiz.Card>
-    <Quiz.MultipleChoice variant="single" name="An Ego Network visualises the">
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
       <Quiz.Question>
        An Ego Network visualises the...
       </Quiz.Question>
@@ -339,11 +335,10 @@ In the general network analysis, the development of speakers or parties can be t
         Sorry, the answer was incorrect.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
-    <Quiz.Card>
-    <Quiz.MultipleChoice variant="single" name="In a visualisation, the nodes represented">
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
       <Quiz.Question>
        In a visualisation, the nodes represented
       </Quiz.Question>
@@ -371,8 +366,8 @@ In the general network analysis, the development of speakers or parties can be t
 
   </Quiz.Card>
 
-    <Quiz.Card>
-    <Quiz.MultipleChoice variant="single" name="The colours in the visualisation represent">
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
       <Quiz.Question>
        The colours in the visualisation represent
       </Quiz.Question>
@@ -404,8 +399,8 @@ In the general network analysis, the development of speakers or parties can be t
 
   </Quiz.Card>
 
-    <Quiz.Card>
-    <Quiz.MultipleChoice variant="single" name="To explore frequent lexemes used by a particular party or politician, you can visualise a">
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
       <Quiz.Question>
        To explore frequent lexemes used by a particular party or politician, you can visualise a
       </Quiz.Question>
@@ -430,11 +425,10 @@ In the general network analysis, the development of speakers or parties can be t
         Sorry, the answer was incorrect.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
-    <Quiz.Card>
-    <Quiz.MultipleChoice variant="single" name="The so-called node metrics comparison is available for ego networks and general networks. How is the comparison visualised?">
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
       <Quiz.Question>
        The so-called node metrics comparison is available for ego networks and general networks. How is the comparison visualised?
       </Quiz.Question>
@@ -459,11 +453,10 @@ In the general network analysis, the development of speakers or parties can be t
         Sorry, the answer was incorrect.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
-    <Quiz.Card>
-    <Quiz.MultipleChoice variant="single" name="You can also analyse the ... development of speakers' or parties' language use in a general network">
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
       <Quiz.Question>
        You can also analyse the ... development of speakers' or parties' language use in a general network
       </Quiz.Question>
@@ -491,15 +484,14 @@ In the general network analysis, the development of speakers or parties can be t
       <Quiz.Message type="incorrect">
         Sorry, the answer was incorrect.
       </Quiz.Message>
-
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
-    	<Quiz.Card>
-    	<Quiz.MultipleChoice name="Knowledge - done">
-    		<Quiz.Question>Yay, you are done! Please move on to the tasks below.</Quiz.Question>
-    	</Quiz.MultipleChoice>
-    </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>Yay, you are done! Please move on to the tasks below.</Quiz.Question>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
 </Quiz>
 
 ## Practical Understanding and Exercises
@@ -515,28 +507,28 @@ open the Dylen tool's navigation bar including links to "Ego Network" etc.
 />
 
 <Quiz>
-  <Quiz.Card>
-	<Quiz.TextInput name="basic word search">
+  <Quiz.Card validateButtonLabel="Submit">
+	  <Quiz.TextInput>
       <Quiz.Question>
 			**Basic word search**
 
-       You are interested in the use of the word “AHS” in 2016 in the KRONE subcorpus. Please find out which other words are often used in this context and name three of them.
+       You are interested in the use of the word "AHS" in 2016 in the KRONE subcorpus. Please find out which other words are often used in this context and name three of them.
       </Quiz.Question>
     </Quiz.TextInput>
-
   </Quiz.Card>
-  <Quiz.Card>
-	<Quiz.TextInput name="visualisation">
+
+  <Quiz.Card validateButtonLabel="Submit">
+	  <Quiz.TextInput>
       <Quiz.Question>
 			**Visualisation**
 
        Please select the three words you just named and visualize their metrics. Name the one with the highest Pagerank.
       </Quiz.Question>
     </Quiz.TextInput>
-
   </Quiz.Card>
-  <Quiz.Card>
-	<Quiz.TextInput name="graph comparison">
+
+  <Quiz.Card validateButtonLabel="Submit">
+	  <Quiz.TextInput>
       <Quiz.Question>
 			**Graph Comparison**
 
@@ -544,10 +536,10 @@ open the Dylen tool's navigation bar including links to "Ego Network" etc.
     		 Please visualize its network underneath the first one and select a word that has more than four connections to other words in the network.
       </Quiz.Question>
     </Quiz.TextInput>
-
   </Quiz.Card>
-	<Quiz.Card>
-		<Quiz.TextInput name="table view visualisation">
+
+	<Quiz.Card validateButtonLabel="Submit">
+		<Quiz.TextInput>
       <Quiz.Question>
 			**Table View Visualisation**
 
@@ -555,10 +547,10 @@ open the Dylen tool's navigation bar including links to "Ego Network" etc.
 
       </Quiz.Question>
     </Quiz.TextInput>
-
   </Quiz.Card>
+
 	<Quiz.Card>
-		<Quiz.MultipleChoice name="tasks - done">
+		<Quiz.MultipleChoice>
 			<Quiz.Question>Yay, you are done! You may now finish the experiment by clicking on the button below.</Quiz.Question>
 		</Quiz.MultipleChoice>
 	</Quiz.Card>

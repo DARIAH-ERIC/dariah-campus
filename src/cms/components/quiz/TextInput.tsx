@@ -28,7 +28,7 @@ export function TextInput(props: TextInputProps): JSX.Element {
 		<label>
 			<div className="sr-only">{label}</div>
 			<input
-				className="border-2"
+				className="border-2 mt-4 mb-6"
 				name={name}
 				onChange={(event) => {
 					setInput(event.currentTarget.value as string);
