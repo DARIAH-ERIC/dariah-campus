@@ -31,15 +31,12 @@ At the end of this course, students will:
 - Understand how linguistic data is used to a train a spaCy statistical language model (features provide model with information to improve predictions)
 - Comprehend the capabilities and limitations of NLP 🦜 (predictive, machine errors, best to augment and scale existing research practices/not replace them)
 
-## Introduction
 
 ## Basic Concepts of Machine Learning
 
 In machine learning, "model" is a very commonly used term that typically refers to a specific instance that produces output for a given input. For machine learning models -- in contrast to rule-based models, for example -- there are no explicit rules put in place that specify the output for a given input. Instead, during training the model 'learns' from data by comparing its predicted output with the desired output and modifies its internal parameters ("memory") such that afterwards the predicted output is more similar to the desired output. The goal of this process is to yield a model that is able to produce sensible output for input that it has not seen during training ("generalization").
 
 ### Stages of the model
-
-
 
 The most important difference between the model stages is whether the model's parameters are modifiable. We will discuss the four stages training, evaluation, testing and production. Typically, the model is only modified during training and is then fixed for all other stages. Usually, during training, evaluation and testing, the model not only gets the sequence as input but also the desired output (so-called 'labels' or 'ground truth').
 
@@ -75,7 +72,7 @@ There are many different machine learning methods but in this curriculum we most
 
 At the final layer of the network, the predicted output is compared with the desired output with a loss function. The loss can be defined in different ways but intuitively it is the difference between the predicted output and the desired output. 
 
-with a neural network $f_\theta$ we can define the loss $\mathcal{L}_\theta = d(f_\theta, y)$ and try to minimize $\underset{\theta}{min}~\mathcal{L}_\theta$. This can be done with the gradient descent algorithm: $\theta_{t+1} \leftarrow \theta_t - \gamma\nabla \mathcal{L}_{\theta_t}$.  
+``with a neural network $f_\theta$ we can define the loss $\mathcal{L}_\theta = d(f_\theta, y)$ and try to minimize $\underset{\theta}{min}~\mathcal{L}_\theta$. This can be done with the gradient descent algorithm: $\theta_{t+1} \leftarrow \theta_t - \gamma\nabla \mathcal{L}_{\theta_t}$.`` 
 
 We've already discussed that the model performace will be monitored regularly during training. This is important to see if the model does learn at all and also to know when to actually stop training. There are different metrics to evaluate the model and with the `spacy train` command, the loss is printed, and also precision, recall and the f1 score. 
 
