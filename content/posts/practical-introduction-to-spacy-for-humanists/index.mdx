@@ -33,6 +33,7 @@ We'll then turn to statistical language models and use them to identify entities
 ## Learning outcomes
 
 At the end of this course, students will be able to:
+
 - Match patterns in a text corpus using spaCy matcher
 - Control the "fuzziness" of their searches
 - Generate data on term frequencies and other corpus metadata
@@ -50,6 +51,7 @@ text = "Ukraine has many rivers."
 for index, char in enumerate(text):
     print(index, char)
 ```
+
 ```
 0  U
 1  k
@@ -83,6 +85,7 @@ When we ask Python to find a word, say “rivers”, in a larger text, it is act
 text = "Ukraine has many rivers."
 text.find("rivers")
 ```
+
 ```
 15
 ```
@@ -93,12 +96,11 @@ Keep in mind that computers are very precise and picky.  Any messiness in the te
 
 While pure Python is sufficient for many tasks, natural language processing (NLP) libraries allow us to work computationally with the text as language. NLP reveals a whole host of linguistic attributes of the text that can be used for analysis.  For example, the machine will know if a word is a noun or a verb with part of speech tagging.  We can find the direct object of a verb to determine who is speaking and the subject of that speech.  NLP gives your programs an instant boost of information that opens new forms of analysis. 
 
-
-Where computers and regular expressions work at the charachter level, NLP works with words or "tokens." Tokenization, splitting text into tokens, is often our first task . This is where our text is split into meaningful parts; usually word tokens, spans ("New York City") or sentences. The sentence, “Ukraine has many rivers.” can be split into five tokens: ```<Ukraine><has><many><rivers><.>```  Note that the ending punctuation is now a distinct token from the word rivers. The rules for tokenization depend on the language your are using. For English and other languages with spaces between words, you often get good results simply by splitting the tokens on spaces (`.split()`). However, a host of rules are often needed to separate punctuation from a token, to split and normalize words (ex. "Let's" = "Let us") as well as specific exceptions that don't follow regular patterns. spaCy and other NLP libraries come with default settings that will help you with many languages, but not all.  Luckily, spaCy can be customized to work with nearly any language and that is one of the main objectives of this course -- to teach you how to make NLP work for your research needs.  
+Where computers and regular expressions work at the charachter level, NLP works with words or "tokens." Tokenization, splitting text into tokens, is often our first task . This is where our text is split into meaningful parts; usually word tokens, spans ("New York City") or sentences. The sentence, “Ukraine has many rivers.” can be split into five tokens: `<Ukraine><has><many><rivers><.>`  Note that the ending punctuation is now a distinct token from the word rivers. The rules for tokenization depend on the language your are using. For English and other languages with spaces between words, you often get good results simply by splitting the tokens on spaces (`.split()`). However, a host of rules are often needed to separate punctuation from a token, to split and normalize words (ex. "Let's" = "Let us") as well as specific exceptions that don't follow regular patterns. spaCy and other NLP libraries come with default settings that will help you with many languages, but not all.  Luckily, spaCy can be customized to work with nearly any language and that is one of the main objectives of this course -- to teach you how to make NLP work for your research needs.  
 
 ### The spaCy Doc object
 
-Let's create a simple Doc object and access its tokens. First, we'll need to install and import spacy [note on pip and shell]. We then create a variable named `nlp` for the language model. With spaCy, we typically either load a [pretrained statistical language model](https://spacy.io/usage/models) `spacy.load('name of model')` or we load a basic [Language](https://spacy.io/api/language) object. You can find a list of supported languages in the [Documentation](https://spacy.io/usage/models#languages). To load the Serbian object, for example, we'd type `nlp = spacy.blank('sr')`. The language object only contains the defaults for a particular language. As a general rule, it's best to start simple with a Language object and then upgrade to models when their capabilities are relevant to your project. Later in the course, you'll learn all about models and their various components and capabilities.  
+Let's create a simple Doc object and access its tokens. First, we'll need to install and import spacy \[note on pip and shell]. We then create a variable named `nlp` for the language model. With spaCy, we typically either load a [pretrained statistical language model](https://spacy.io/usage/models) `spacy.load('name of model')` or we load a basic [Language](https://spacy.io/api/language) object. You can find a list of supported languages in the [Documentation](https://spacy.io/usage/models#languages). To load the Serbian object, for example, we'd type `nlp = spacy.blank('sr')`. The language object only contains the defaults for a particular language. As a general rule, it's best to start simple with a Language object and then upgrade to models when their capabilities are relevant to your project. Later in the course, you'll learn all about models and their various components and capabilities.  
 
 ```python
 import spacy 
@@ -107,6 +109,7 @@ doc = nlp('Ukraine has many rivers.')
 for token in doc:
     print(token.i, token.text)
 ```
+
 ```
 0 Ukraine
 1 has
@@ -137,6 +140,7 @@ doc = nlp('Ukraine has many rivers.')
 for token in doc:
     print(token.lemma_)
 ```
+
 ```
 Ukraine
 have
@@ -144,6 +148,7 @@ many
 river
 .
 ```
+
 By lemmatizing the text, we can count every occurence of the verb "to have" regardless of its conjugation. This is essential for many term frequency tasks. For highly inflected languages such as Latin or Polish, lemmatization is an essential first step when processing texts.
 
 Token attributes add a wide variety of useful information to your text. Some of the most common attributes are:
@@ -172,12 +177,14 @@ doc = nlp("Welcome to New York")
 ny_span = doc[2:4]
 print(ny_span.text, ny_span.start, ny_span.end)
 ```
+
 ```
 New York 2 4
 ```
 
 **Sentences** 
 If the model you are using has a sentencizer, your doc object with have a `doc.sents` attribute. This gives the ability to iterate through the document at the sentence level. Each sentence is a Span and has all the attributes as any other Span. 
+
 ```python
 for sent in doc.sents:
     print(sent.text)
@@ -214,6 +221,7 @@ for word, freq in sorted(counter.items(), key=lambda x: x[1], reverse=True):
     token_text = doc.vocab[word].text
     print(token_text, freq)
 ```
+
 ```bash
 said 39
 cat 26
@@ -238,7 +246,7 @@ One of my favorite examples of the power of dependency parsing is the [Dependenc
 Another example can be found in this post, ["Holy NLP,"](https://pmbaumgartner.github.io/blog/holy-nlp/) by Peter Baumgartner. He uses spaCy to identify the people in the Bible and the actions that they take. In the `token_is_subject_with_action` function below, he identifies the nominal subject (`nsubj`) of a sentence with a related verb. He uses the `token.ent_type_` attribute to identify that the subject is a person. At the end, we have a nice table of the people in the Bible and the actions that they take.
 
 | name    | most common | count |
-|---------|-------------|-------|
+| ------- | ----------- | ----- |
 | LORD    | said        | 197   |
 | Jesus   | said        | 89    |
 | Solomon | made        | 20    |
@@ -296,7 +304,8 @@ for match_id, start, end in matches:
 
 To expand our search to include both the title and the person's name, we can adapt our pattern. There are several options we can experiment with:
 
-__the token after Mahraja in title case__
+**the token after Mahraja in title case**
+
 ```python
 pattern = [{'ORTH': 'Maharaja'},{'IS_TITLE': True}]
 #Output
@@ -304,7 +313,8 @@ pattern = [{'ORTH': 'Maharaja'},{'IS_TITLE': True}]
 26 28 Maharaja Purnawarman
 ```
 
-__the token after Mahraja in title case followed by 'king' and two tokens__
+**the token after Mahraja in title case followed by 'king' and two tokens**
+
 ```python
 pattern = [{'ORTH': 'Maharaja'},
            {'IS_TITLE': True},
@@ -350,9 +360,9 @@ The text categorizer (`textcat` and `textcat_multilabel`) can be useful when sor
 
 Training a text categorizer component is a relatively advanced topic. Luckily, the spaCy developers created a tutorial that walks you through the process. You can find the tutorial [here](https://github.com/explosion/projects/tree/v3/tutorials/textcat_docs_issues).
 
-There is also a library in the "spaCy Universe" that makes it easier to classify texts using few-shot learning. With [Classy Classification](https://spacy.io/universe/project/classyclassification
-), you provide examples of the classes that you would like to identify.
+There is also a library in the "spaCy Universe" that makes it easier to classify texts using few-shot learning. With [Classy Classification](https://spacy.io/universe/project/classyclassification), you provide examples of the classes that you would like to identify.
 For example, say we want to identify direct speech and reported speech. We can provide examples of each class and then use the model to predict the class of new texts. Note that direct speech uses the exact same word as were spoken. Reported speech changes the words, but conveys the meaning.
+
 ```python
 import spacy
 
@@ -378,18 +388,18 @@ print(nlp("""They never said "eat your vegetables," they just put them on my pla
 
 print(nlp("He said to eat vegetables, but I never saw him touch them himself.")._.cats)
 {'direct-speech': 0.1008749448079187, 'reported-speech': 0.8991250551920813}
-``` 
+```
 
 ## Span categorization
 
 Text annotation is an essential research task and one that Ed Ayers identifies as a key "[scholarly primitive](https://people.brandeis.edu/~unsworth/Kings.5-00/primitives.html)." Annotation identifies distinct sections of text and assigns a meaningful label or metadata. It could be a bit of underlined text or a marginal note. With machine-readable text, we can scale these practices to annotate entire corpora of texts in ways that advance research. 
 
-The spaCy developers refer to annotation as "span categorization" ([spancat](https://explosion.ai/blog/spancat
-)). The span categorizer component learns to predict likely spans of text and assigns them a label. Spancat is especially useful when you're identifying irregular sections of text that don't follow a regular pattern. This approach can be very useful for document segmentation. Spancat can categorize sections of a text, such as the introduction, conclusion, references, and footnotes. This is useful if you'd like to focus on a particular type of text in the document. Similarly, you may want to capture descriptive context. We can easily find references to "her." But spancat can also capture, "the woman from Paris," "the heiress and her entourage," and other gendered terms and their context. Proper names by contrast typically appear in a consistent format, "Mr. Brown" or "Charles Brown," and can be identified with pattern matching or named entity recognition (detailed in the next section).  
+The spaCy developers refer to annotation as "span categorization" ([spancat](https://explosion.ai/blog/spancat)). The span categorizer component learns to predict likely spans of text and assigns them a label. Spancat is especially useful when you're identifying irregular sections of text that don't follow a regular pattern. This approach can be very useful for document segmentation. Spancat can categorize sections of a text, such as the introduction, conclusion, references, and footnotes. This is useful if you'd like to focus on a particular type of text in the document. Similarly, you may want to capture descriptive context. We can easily find references to "her." But spancat can also capture, "the woman from Paris," "the heiress and her entourage," and other gendered terms and their context. Proper names by contrast typically appear in a consistent format, "Mr. Brown" or "Charles Brown," and can be identified with pattern matching or named entity recognition (detailed in the next section).  
 
 At the DH2023 conference in Graz, we hosted a workshop on spancat with one of spaCy's core developers. You can find Adriane Boyd's materials for the workshop [here](https://github.com/adrianeboyd/workshop-dh2023/). These materials contain an example project using archival materials from the Dutch East India Company. Using spancat and ner, we are able to identify references to unnamed persons in the wills of VOC sailors. These references often refer to family members, enslaved people and indigenous people. The ability to identify references to unnamed people offers a compelling way to add them and their experiences to the historical record. Details on the original paper about the VOC can be found in the paper "Unsilencing Colonial Archives via Automated Entity Recognition" ([arxiv](https://arxiv.org/abs/2210.02194)). 
 
 Further reading on span categorization with spaCy:
+
 - https://explosion.ai/blog/spancat
 - https://github.com/explosion/projects/tree/v3/experimental/ner_spancat
 
@@ -404,6 +414,7 @@ doc = nlp('Ukraine has many rivers.')
 for ent in doc.ents:
     print(ent.text, ent.label_)
 ```
+
 ```
 Ukraine GPE  #Geopolitical entity i.e. a country
 ```
@@ -413,9 +424,8 @@ Keep in mind that the named entity recognition component in spaCy does not allow
 > DH Example: [Lauren Tilton, Taylor Arnold and Courtney Rivard, "Locating Place Names at Scale: Using Natural Language Processing to Identify Geographical Information in Text" (DH 2018)](https://dh-abstracts.library.virginia.edu/works/6409) 
 > [Susan Grunewald and Andrew Janco, "Finding Places in Text with the World Historical Gazetteer" Programming Historian](https://programminghistorian.org/en/lessons/finding-places-world-historical-gazetteer)
 
+## Entity linking
 
-## Entity linking 
- 
 In humanities research, we often need more information than just "this is a person." We need to know exactly which person appears in a text. An entity linker will connect a person entity (for example) with a unique record in a knowledge base such as dbpedia. Using a library called spaCy dbpedia spotlight you can match an entity to a record in dbpedia. To install this library, enter `pip install spacy-dbpedia-spotlight` in the command line. You can then add dbpedia spotlight as a component using `nlp.add_pipe('dbpedia_spotlight')`.  Your entities will now have a `kb_id_` attribute with the address of a matched dbpedia entry.
 
 ```python
@@ -438,6 +448,3 @@ Caribbean literature http://dbpedia.org/resource/Caribbean_literature 1.0
 ```
 
 The library above searches for the most similar dbpedia entry name. spaCy is also able to use the context of a statement to predict which person is being referred to.  For example, if you're working with texts about 20th century American comedy, we can tell the model that a reference to "Marx" is more likely the Marx Brothers than Karl Marx. Further information on training an entity linker can be found in this [presentation by Sophie Van Landeghem](https://spacy.io/universe/project/video-spacy-irl-entity-linking/) or this [notebook](https://github.com/apjanco/spaCy_workshops/blob/master/iSchool/named-entity-linking.ipynb).
-
-
-
