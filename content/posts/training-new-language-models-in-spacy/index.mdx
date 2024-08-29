@@ -1,0 +1,116 @@
+---
+title: Training New Language Models in spaCy
+lang: en
+date: 2024-08-29T15:07:24.350Z
+version: 1.0.0
+authors:
+  - janco-andrew
+  - budak-nick
+tags:
+  - natural-language-processing
+  - machine-learning
+abstract: This course covers practices and workflows for training new NLP models
+  using spaCy, from project setup to model evaluation and packaging.
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: ""
+licence: ccby-4.0
+toc: true
+draft: false
+uuid: 9-gzjZZAPoyVZkCVbDDIB
+categories:
+  - dariah
+---
+This course covers practices and workflows for training new NLP models using spaCy, from project setup to model evaluation and packaging.
+
+## Learning outcomes
+
+Upon completion of this course, students will be able to:
+
+- set up a spaCy project tailored to their research question
+- automate common tasks like data pre-processing and model training with workflows
+- evaluate the performance of their new NLP model
+- package their NLP model for re-use by others and publish it as research output
+
+## Introduction
+
+[spaCy](https://spacy.io/) is a powerful NLP library that has become something of an industry standard since its release in 2015. In addition to being fast, accurate, and flexible, it is also designed to be used by researchers who are not experts in machine learning. This course builds on previous courses in the series and offers a hands-on approach to training and publishing new NLP models with spaCy, oriented primarily at researchers in the humanities.
+
+## Who is this for?
+
+- intro to spacy
+- machine learning for NLP
+- being OK with the terminal and with python
+- some familiarity with github
+- you have data for a new language object or are using a premade one
+- you have an idea of your a pipeline (see spacy architecture course)
+- you have training data for your pipeline
+
+## Prerequisites & our project
+
+- research question: who are the most common interlocutors of Confucius in classical chinese texts?
+- new language: classical chinese (lzh)
+- existing data: https://github.com/UniversalDependencies/UD_Classical_Chinese-Kyoto (a treebank) 
+
+- we know we're going to be looking for patterns that say things like "Confucius said..."
+- but we also know that there are a couple different verbs we could use for "to say", and we can't just look for those characters because they might be being used as nouns (e.g. "a question") or even part of a person's name instead
+- so we'll need a tokenizer (character-based is OK), a part-of-speech tagger, and ideally also a named entity recognizer to figure out what's a person name and what's not
+- this maps well to the "core" template; we can just turn off the dependency parser since we won't be using it for now.
+
+## Getting started
+
+- A spaCy project controls everything you need to go from zero to published research.
+- it can specify where your data comes from, how to set up and train your pipeline, and even how to interpret the results of running it on your corpus.
+- All projects are defined by a special file called `project.yml`, which contains all the information spaCy needs to manage your project.
+- When starting a new project, you can use [spaCy project templates](https://github.com/explosion/projects) that might be similar to your research question.
+
+clone the core_inception starter
+
+## Setting up the pipeline
+
+- Most NLP projects will involve a number of different assets, such as a training corpus or pretrained model weights.
+- spaCy lets you use assets stored locally on your computer or across the web on site like GitHub and Google Cloud.
+- You can use a special code called a checksum to verify that other people get the same version of an asset, so that your research is reproducible.
+- You can define your own scripts to pre-process data in asset files and store them with your project, so everything lives together.
+
+- add your language module
+- add your annotated data from inception
+- add your raw text for pretraining
+- change the config to use your language (lang variable)
+- change the config to set up your pipeline (disable any parts you don't want)
+- if you disabled things, update the scoring section too
+
+## Preprocessing your data
+
+- spaCy provides the helpful `spacy debug config` and `spacy debug data` commands to find issues with your project setup.
+- To speed up repetitive tasks, you can define your own _workflows_ in the `project.yml` file and [run them with simple commands](https://spacy.io/usage/projects#run-workfow).
+- spaCy is smart: it won't repeat work if the results of a workflow have already been generated once and the output hasn't changed.
+
+- if you get an error about "low number of examples", try adjusting the n_sents variable to make more documents
+- warning about "misaligned tokens"?
+- warning about "entity spans crossing sentence boundaries"?
+
+### Training Models with Inception Data video 
+
+Even even a small amount of annotated text data in inception, you can now turn to model training. During training, the model will make predictions about various token attributes and use machine learning to gradually improve its predictions. There are many variables that affect training, such as the amount of training data, the duration of training and a variety of hyperparameters (most of which will be managed by spaCy). It's also important to consider what you are asking the machine to predict and whether the information needed to make a good prediction are present in the text.
+
+- As you refine your research question and approach, you can change the configuration of your pipeline in the `config.cfg` file.
+
+
+### Documenting and sharing your research
+
+- You can use the `spacy project document` command to automatically create a nice README template for your project. This is a good space for a [model card](https://arxiv.org/pdf/1810.03993.pdf)!
+- If you use python notebooks (e.g. with [jupyter](https://jupyter.org/)), you can store them with all your project assets in a `notebooks/` directory.
+- You can automate publication to external repositories, like [zenodo](https://zenodo.org/), by creating a publication workflow in the `project.yml` file.
+
+## New Language Project file with HuggingFace Transformer Models
+
+## Packaging and publishing your trained model
+
+- You can use the `spacy package` command to generate an installable python package from your pipeline so others can set it up and use it easily.
+
+this is really for the case where you're publishing a general-purpose language model, which often you won't be, but there might be some cases where e.g. an NER-only model is still useful to others.
+
+you can package for yourself though so that you can use it in other projects without having to retrain it every time. just no need to publish it.
