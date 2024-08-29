@@ -1,0 +1,453 @@
+---
+title: spaCy Architecture for Humanists
+lang: en
+date: 2024-08-29T14:51:45.515Z
+version: 1.0.0
+authors:
+  - budak-nick
+tags:
+  - natural-language-processing
+  - machine-learning
+abstract: This course introduces the architecture of the spaCy NLP library and
+  its implications for humanists who want to use it in their research.
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: ""
+licence: ccby-4.0
+toc: true
+draft: false
+uuid: 0BCvZNGBxq6ImbD-JeZH1
+categories:
+  - dariah
+---
+This course introduces the architecture of the spaCy NLP library and its implications for humanists who want to use it in their research.
+
+## Learning outcomes
+
+Upon completion of this course, students will be able to:
+
+- recognize the key components of spaCy's architecture and their functions
+- understand the balance between rule-based and statistical methods in spaCy
+- design an NLP pipeline tailored to their research question using spaCy
+
+## Introduction
+
+[spaCy](https://spacy.io/) is a powerful NLP library that has become something of an industry standard since its release in 2015. In addition to being fast, accurate, and flexible, it is also designed to be used by researchers who are not experts in machine learning. This course will introduce the architecture of spaCy and its implications for humanists who want to use it in their research.
+
+## Prerequisites
+
+This course assumes that you have some familiarity with some basic concepts in NLP, such as tokenization, part-of-speech tagging, and named entity recognition. It builds on a series of DARIAH-Campus courses that introduce these concepts using spaCy, including "NLP for Humanists" and "Practical Introduction to spaCy for Humanists".
+
+The makers of spaCy also offer their own free ["Advanced NLP with spaCy" course](https://course.spacy.io/en/), which shares some of the same goals as this course but is more technical and less focused on the needs of humanists.
+
+Basic familiarity with python is also assumed, since spaCy is a python library, but you don't need to be an expert. If you're not familiar with python, you can still follow along with the course by reading the code examples and explanations.
+
+## Core workflow
+
+When using spaCy to extract information from a text, you will often follow a workflow that takes place in four steps:
+
+```python
+import spacy # 1
+nlp = spacy.load("en_core_web_sm") # 2
+doc = nlp("This is a sentence.") # 3
+print([(token.text, token.pos_) for token in doc]) # 4
+
+# output
+>>> [('This', 'PRON'), ('is', 'AUX'), ('a', 'DET'), ('sentence', 'NOUN'), ('.', 'PUNCT')]
+```
+
+<SideNote type="warning" title="Downloading models">
+If you try to run this code and get an error about the model not being found, you may need to download it first. You can do this by running `python -m spacy download en_core_web_sm` in your terminal.
+</SideNote>
+
+Let's break this down.
+
+1. First, we import the spaCy library. This makes all of the spaCy functions available to us in our code.
+2. Next, we load a spaCy `Language` object. This one object represents all of the data we need to process our text. By convention, we name the resulting `Language` object `nlp`, because it does the work of processing our input text.
+3. We pass the text we want to process to the `Language` object, and it returns a `Doc` object. This `Doc` is an important object: we can think of it as a kind of container that holds all of the labels and data that we need to answer our research question. Depending on how we're approaching our research, our `Doc`s might be very short – just a few words – or longer, like many pages of text.
+4. Finally, we can access the information in the `Doc` object. In this case, we're printing out the text and part-of-speech tag for each `Token` in the `Doc`. We can do this because our `Language` predicted the part-of-speech tag for each `Token` in the `Doc` in the previous step.
+
+From spaCy's point of view, "NLP" is basically what happens in step #3: taking some provided text and turning it into a `Doc`. It's up to us how to divide up our corpus into pieces that we can convert into `Doc`s, and what sort of information we want spaCy to add to each `Doc` for us. After we run all of our text through spaCy, the real work starts: we have to analyze the predictions spaCy made about each `Doc`. Before we get there, though, we first need to set up the `Language` object in step #2 so that it can do the work we need it to do.
+
+## Language data
+
+It's important to understand the difference between the linguistic concept of a language and spaCy's `Language` object. The latter can be much more specific than the former; "Russian" is a language, but we might create a `Language` to represent "the Russian of Dostoevsky's novels". That specificity is important for the question we're trying to answer as researchers: different `Language` objects could provide vastly different results, despite representing the same language.
+
+The developers of spaCy provide a variety of pre-created `Language` objects for you to use, which you can find on the [spaCy trained pipelines page](https://spacy.io/models). If our own research happens to focus on a modern language with lots of digitized text available on the web, we might be able to find a `Language` there that suits our needs. In the example in the "core workflow" section, we chose a pre-trained English model called `en_core_web_sm` that was trained on text from the web.
+
+It's more likely, though, that our corpus isn't very similar to the text drawn from news sites and forums that spaCy's pre-trained pipelines are often based on. If we're working in a historical or even dead language, pre-trained pipelines won't be a good fit. Fortunately, spaCy provides a way for us to create our own `Language` objects that are tailored to our research question.
+
+### Inside a language
+
+The spaCy `Language` object has three important parts, which together combine to let us process text in a particular language.
+
+- The `Defaults` object is a set of rules that apply to all texts that the `Language` will process, _regardless of context_. This includes things like which direction the language is written in, if the language uses alphabetic writing or not, and how to break the text up into words. This part of the `Language` is closest to the _linguistic_ concept of a language.
+- The pipeline object is a list of processing steps that the `Language` applies to the text. Each step adds some new information to the `Doc` object, like identified parts of speech or named entities. The components in the pipeline can be powered by machine learning, which lets them use context to make predictions. The pipeline corresponds to the _research question_ we're trying to answer.
+- The `Vocab` object is a container for all the data we process through our `Language`. It's a special kind of storage that keeps track of unique words and other data, and lets us look up information about them quickly. The `Vocab` is a kind of _memory_ for the `Language`, and it corresponds to the _corpus_ we're working with.
+
+Together, these two parts let us capture the nuance of the specific texts we're working with. If we're interested in finding named characters in Dostoevsky's novels, we could choose the existing `Defaults` for Russian. Then, we'd customize a pipeline that includes a named entity recognition component, so that we could identify named people.
+
+### Language defaults
+
+Under the hood, the `Defaults` are just a collection of data files. These files capture all of the information we know about the language that doesn't depend on context: rules we can apply _no matter what_, like "English is written using an alphabet with letters".
+
+The first thing the `Language` needs to do when processing your text is to break it up into individual `Token`s. SpaCy's `Tokenizer` does this by referring to rules defined in the `Defaults`. For example, the `Tokenizer` knows that English uses spaces to separate words, so it can split the text on spaces to create `Token`s. It also can use rules to handle special cases, like separating "don't" into "do" and "not".
+
+Earlier, we imported a pre-configured `Language` object called `en_core_web_sm`. The `en` part of that name is the [ISO 639 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) for English, which tells us what `Defaults` we're using. If we were looking for Spanish instead, we'd want something starting with `es`.
+
+Let's see what actually ended up in our `Language`. We can check what `Defaults` it's using by accessing the `Defaults` attribute of the `Language` object:
+
+```python
+>>> import spacy
+>>> nlp = spacy.load("en_core_web_sm")
+>>> nlp.Defaults
+<class 'spacy.lang.en.EnglishDefaults'>
+>>> nlp.Defaults.writing_system
+{'direction': 'ltr', 'has_case': True, 'has_letters': True}
+```
+
+As expected, this `Language` is using spaCy's `Defaults` for the English language. If we ask what spaCy knows about the writing system of English, we learn that it's written from left to right (`ltr`), and has an alphabetic writing system (`has_letters`) with upper- and lower-case letters (`has_case`). Notice that these assumptions hold true for virtually all texts we could encounter in English, regardless of context.
+
+These `Defaults` also include a list of common [stop words](https://en.wikipedia.org/wiki/Stop_word) in English:
+
+```python
+>>> nlp.Defaults.stop_words
+{'a',
+ 'about',
+ 'above',
+ 'across',
+ 'after',
+ 'afterwards',
+ 'again',
+ 'against',
+...
+```
+
+And they set us up with a `Tokenizer` that can handle common abbreviations and other special cases in English text, like separating the contraction "y’all" into "you" and "all":
+
+```python
+>>> nlp.tokenizer
+<spacy.tokenizer.Tokenizer object at 0x7f8b1c1b2b80>
+>>> nlp.tokenizer.rules['y’all']
+[{65: 'y’', 67: 'you'}, {65: 'all'}]
+```
+
+### Customizing defaults
+
+If we need to choose a set of `Defaults` for our own `Language`, we can start by looking at the ones spaCy already provides. These are stored in spaCy's `lang` module:
+
+```python
+>>> help(spacy.lang)
+Help on package spacy.lang in spacy:
+
+NAME
+    spacy.lang
+
+PACKAGE CONTENTS
+    af (package)
+    am (package)
+    ar (package)
+    az (package)
+    bg (package)
+    bn (package)
+    ca (package)
+...
+```
+
+This long list of packages represents all of the human languages that spaCy includes some pre-set data for. Notice that there are far more languages here than there are pre-trained models on the [trained pipelines page](https://spacy.io/models). Some languages may not have enough digitized text available to train a general-purpose pipeline, so they only consist of `Defaults` for now.
+
+We may find ourselves in a situation where we're working in a language that spaCy has some basic data for, but no pre-trained models – for example, Ancient Greek (`grc`). Using a pre-trained modern Greek pipeline like `el_core_news_sm` would be a bad idea, since the linguistic features of Ancient Greek are very different from those of modern Greek. In this case, we can use the `Defaults` for Ancient Greek to create our own `Language` object, and then later add our own pipeline to it.
+
+It's also possible that we're working with a language that spaCy knows nothing at all about, where there are no existing `Defaults` – for example, Yiddish (`yi`). In that case, we can create our own `Defaults` from scratch, and provide a few data files that specify things like the writing system and punctuation used in Yiddish. We'll cover creating new languages in detail in the course [Cadet - Preparing Data for New Language Models in spaCy]().
+
+Once we've chosen or created our `Defaults`, we're ready to design and configure a pipeline that will help us answer our research question.
+
+## Processing pipelines
+
+A pipeline is like an assembly line at a factory: we put our text onto the line at the beginning, and by the time it comes off the line at the other end, it's been processed into a `Doc` that is full of information and ready for us to use for research.
+
+Pipelines are composed of components, each of which has one job to do on the `Doc`. Every pipeline starts with the `Tokenizer`, which breaks the text up into `Token`s. After that, we can add as many components as we want, each of which adds some new information to the `Doc`.
+
+![Flowchart showing text going into a spaCy pipeline and emerging as a Doc](https://spacy.io/images/pipeline.svg)
+
+Data is passed through the pipeline in series: the `Tokenizer` creates a `Doc`, and then each following component adds information to it, one step at a time. Order matters: components that come later in the pipeline can use information added by earlier components, but not vice versa.
+
+<SideNote type="info" title="Components and pipes">
+spaCy uses the names "component" and "pipe" interchangeably, since each component is one "pipe" in the pipeline. You'll see both terms used in the documentation and in the code: components are subclasses of the `Pipe` or `TrainablePipe` class.
+</SideNote>
+
+Let's take a look at the pipeline that came with our pre-configured `Language` object:
+```python
+>>> nlp = spacy.load("en_core_web_sm")
+>>> nlp.pipe_names
+['tok2vec', 'tagger', 'parser', 'attribute_ruler', 'lemmatizer', 'ner']
+```
+
+This tells us that the pipeline includes six components (plus the `Tokenizer`). This pipeline is designed to be as broadly applicable as possible: it includes a large collection of components that can be used for a wide variety of tasks. We'll take a detailed look at some of these components in the next section.
+
+Sometimes this generic approach will work, but we'll often need to customize the pipeline to fit our research question. If we're only interested in identifying named characters in novels, we don't need to include a part-of-speech tagger or dependency parser or spend time creating training data for them. Our `Language` will run faster that way, too.
+
+### Pipeline components
+
+Unlike the `Defaults`, components can be powered by statistical models: machine learning algorithms that learn from examples. This means that the results of the components are not always deterministic: they can have a slight bit of randomness involved. If we run the same text through the same pipeline twice, we might get very slightly different results. The nature of ML models is covered in more detail in the previous course [Machine Learning in NLP]().
+
+Not all components have to be powered by ML, either. If you know that certain tokens or patterns will _always_ be used the same way in your text, you can describe them with rules. This is a good way to break down the tasks in your research question into smaller, more manageable pieces: you can use a rule-based approach for tasks that don't require training, and a statistical approach for tasks that are more context-dependent.
+
+spaCy provides a wide variety of preset components designed for different tasks, but you can [make your own custom components](https://spacy.io/usage/layers-architectures#components) too! At the end of the day, a component is just a bit of Python code that does something to a `Doc` before passing it on.
+
+The pipeline that came with our pre-configured `Language` included a `Tokenizer` and six components:
+
+- a token-to-vector embedding layer (`tok2vec`); more on this later
+- a trained part-of-speech tagger (`tagger`)
+- a trained dependency parser (`parser`)
+- a rule-based token attribute predictor (`attribute_ruler`)
+- a rule-based lemmatizer (`lemmatizer`)
+- a trained named entity recognizer (`ner`).
+
+We can see that there's a mix of trained and rule-based components working together to add data to our `Doc`s. Let's take a closer look at what some of these actually do by running the pipeline on an example sentence:
+```python
+>>> import spacy
+>>> nlp = spacy.load("en_core_web_sm")
+>>> doc = nlp("San Francisco considers banning sidewalk delivery robots")
+```
+
+Recall that the `Defaults` set up the `Tokenizer` automatically, which turns our sentence into a `Doc` with individual `Token`s we can access. The fourth token (token indices start at 0) in the example sentence is "banning".
+```python
+>>> doc[3]
+banning
+```
+
+Now that we have a `Doc` to work with, all of the following components in the pipeline can add information to it. Some of them might add information to the `Doc` as whole – for example, categorizing the sentiment of the `Doc` as positive or negative. Others will add labels directly to each `Token` in the `Doc`, which we can query in Python. Let's look at an example.
+
+#### Rule-based components
+
+One of our rule-based components in this pipeline is a lemmatizer (`lemmatizer`). This component doesn't need any training: it uses a set of rules to predict the lemma. The component will use these rules to assign a `lemma_` attribute to each `Token`, which we can query in Python. In our example, the word "banning" was given the lemma "ban".
+```python
+>>> doc[3].lemma_
+'ban'
+```
+
+How does this work? We can get some more information by asking the `Language` object about the component:
+
+```python
+>>> lemmatizer = nlp.get_pipe("lemmatizer")
+>>> lemmatizer
+<spacy.lang.en.lemmatizer.EnglishLemmatizer object at 0x12e231e80>
+>>> lemmatizer.lookups.tables
+['lemma_rules', 'lemma_exc', 'lemma_index']
+```
+
+The `Language` tells us that the lemmatizer is an `EnglishLemmatizer` object, and that it uses three data files to do its work, each of which contains some rules. The rules are broken down by part of speech, so that the lemmatizer knows to use different rules for verbs than for nouns. If we know that "banning" is a verb, we can ask for the lemma by looking it up in a table:
+```python
+>>> lemmatizer.lookups.get_table("lemma_exc")['verb']['banning']
+['ban']
+```
+
+You can see the actual data files powering this component by looking at [spaCy's `lookups-data` repository](https://github.com/explosion/spacy-lookups-data/blob/master/spacy_lookups_data/data/en_lemma_rules.json), where you'll find JSON files with the rules for English lemmas. They look something like this:
+```json
+"verb": [
+    ["s", ""],
+    ["ies", "y"],
+    ["es", "e"],
+    ["es", ""],
+    ["ed", "e"],
+    ["ed", ""],
+    ["ing", "e"],
+    ["ing", ""]
+],
+```
+
+You can see the basic structure of some of the rules: verbs ending in "s" have the "s" removed, verbs ending in "ies" have the "ies" replaced with "y", and so on. When the `Language` is loaded and the pipeline is being set up, spaCy will read this file and use it to build the lookup tables inside the lemmatizer component.
+
+Note that this approach won't work if we don't know the part of speech of the word we're trying to lemmatize! This is an example of how rule-based components can work in concert with trained components: we can first use a trained part-of-speech tagger to predict the part of speech, and later on in the pipeline the lemmatizer will use that information to look up the correct lemma.
+
+#### Trained components
+
+Our part-of-speech tagger (`tagger`) in the pipeline has been trained to predict the part of speech of each token. It adds a `tag_` attribute to each `Token`, which we can query in Python. In this example, the word "banning" gets the tag "VBG" – that's "verb, gerund or present participle" according to the [Penn treebank system](https://cs.nyu.edu/~grishman/jet/guide/PennPOS.html) for classifying parts of speech.
+```python
+>>> doc = nlp("San Francisco considers banning sidewalk delivery robots")
+>>> doc[3].tag_
+'VBG'
+```
+
+How does this work? Again, we can get more information by asking the `Language` object about the component:
+```python
+>>> tagger = nlp.get_pipe("tagger")
+>>> tagger
+<spacy.pipeline.tagger.Tagger object at 0x1329522c0>
+>>> tagger.labels
+('$', "''", ',', '-LRB-', '-RRB-', '.', ':', 'ADD', 'AFX', 'CC', 'CD', 'DT', 'EX', 'FW', 'HYPH', 'IN', 'JJ', 'JJR', 'JJS', 'LS', 'MD', 'NFP', 'NN', 'NNP', 'NNPS', 'NNS', 'PDT', 'POS', 'PRP', 'PRP$', 'RB', 'RBR', 'RBS', 'RP', 'SYM', 'TO', 'UH', 'VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'WDT', 'WP', 'WP$', 'WRB', 'XX', '_SP', '``')
+```
+
+The underlying tagger component keeps track of all the possible labels it could assign – in this case there are 50 different tag options. When the `Doc` is being passed through the pipeline, the component will choose one of these labels for each `Token` and add it to the `tag_` attribute. But how does it make the choice?
+
+Recall from the previous course [Machine Learning in NLP]() that machine learning algorithms learn from examples. The tagger component has been trained on a large collection of texts that have been annotated with part-of-speech tags. In spaCy, an `Example` is actually just a pair of `Doc`s: one that has already been annotated with some labels, and one that is waiting for the component to assign some. When the component is being trained, it adjusts the internal weights of its model until the second `Doc` is as close as possible to the first `Doc` in each `Example`.
+
+The model inside the tagger component is actually pretty simple: it takes in the `Doc` and uses it to predict the likelihood that a given tag will apply to a given token in that `Doc`. If we ask for more information about the model, we can find its output dimensions:
+```python
+>>> tagger.model.dim_names
+('nO',)
+>>> tagger.model.get_dim('nO')
+50
+```
+From this, we learn that the model has one dimension called "nO", which is short for "number of outputs". The size of that dimension is 50, which corresponds to the 50 possible tags that the tagger component can assign!
+
+When a `Doc` is fed into the model, it will calculate a list of 50 numbers for each `Token`. Each number in that list will be a probability score representing one tag: the likelihood that that tag applies to that `Token`. The model will apply a special function at the end so that the highest probability tag is chosen, and all the others are discarded. We can actually see this in action if we feed a `Doc` into the model:
+```python
+>>> doc = nlp("San Francisco considers banning sidewalk delivery robots")
+>>> tagger.model.predict([doc])[0][3]
+array([-4.442505  , -2.7603705 , -3.7364368 , -0.40386194, -4.015584  ,
+       -2.7629225 , -2.338903  , -2.2195594 , -1.502014  , -1.5427679 ,
+       -1.9774344 ,  0.09734873, -4.8319187 , -2.7327943 , -2.6410692 ,
+        1.7300855 ,  4.542016  ,  0.38155675, -1.2860059 , -1.8694544 ,
+       -1.1129041 ,  2.9641898 ,  3.8185344 , -1.1789918 , -4.8565164 ,
+       -2.1159232 , -0.94935954, -4.17573   , -5.5182047 , -0.97877485,
+       -2.6770368 , -3.4309864 , -3.5322578 , -2.2861085 , -1.5030885 ,
+       -7.030286  , -0.66023195,  1.1174966 ,  0.26306283, 12.395367  ,
+        1.138485  , -0.07174356, -0.62143594,  1.5763749 ,  1.3270818 ,
+       -1.6996535 , -2.4137466 ,  2.0632153 , -8.207566  , -3.3827646 ],
+      dtype=float32)
+```
+When we call `predict`, we wrap the `Doc` in an array, because the model is designed to work on batches of `Doc`s for efficiency. The first item in the model's output list will be the predictions for our `Doc`, and the fourth item in _that_ list will be the predictions for the `Token` "banning". We end up with a list of 50 items, each of which is a probability score for one of the possible tags. You can see a few places where the score is much higher than others; the highest score in the list corresponds to the tag "VBG", which is the one that the tagger component assigned to "banning".
+
+### Sharing data between components
+
+Let's now back up to the beginning of our pipeline and look at our `tok2vec` component. Recall from [Machine Learning in NLP]() that, in order to process natural language with a model, we first need to convert it into a numerical representation. The name `tok2vec` is short for "token to vector", which is exactly what this component does: it converts each `Token` into a vector (list) of numbers.
+
+After the tokenizer, the token-to-vector embedding layer processes the `Doc`. It will add an attribute called `tensor` to the entire `Doc`, which is a high-dimensional numerical representation of the `Doc`. Once we have a tensor, we can pull the numerical representation for each `Token` out of it by checking the `vector` attribute of the `Token`. This is a list of numbers that represents the `Token` in the context of the `Doc`.
+```python
+>>> doc = nlp("San Francisco considers banning sidewalk delivery robots")
+>>> doc.tensor.shape
+(7, 96)
+>>> doc.tensor[3]
+array([-0.11261188,  1.6747491 , -0.34129018, -0.12559597, -0.39770427,
+        0.62169206, -0.9710492 , -2.1583254 ,  0.13648799,  0.09970281,
+       -0.35478157, -1.0562328 , -0.6956838 , -0.01400304, -0.15921777,
+       -0.32238936, -1.5644736 , -0.35333198, -0.5436324 ,  1.1785073 ,
+        0.30158126,  2.436707  ,  0.08765167,  0.1414465 ,  1.0275415 ,
+        0.15382886,  2.025751  ,  1.8488523 ,  0.39186358, -0.492095  ,
+        0.4272425 , -0.74520725, -0.9096366 , -0.49840605, -0.02140205,
+       -0.40718216,  0.261753  ,  1.2179976 ,  0.14967453, -0.35131803,
+        0.28501964, -0.11583062, -0.03585911,  0.24992633,  0.11205432,
+       -0.36830616,  2.532109  , -0.7489507 ,  0.7326758 , -0.11239055,
+        0.29814884, -1.0886184 , -0.35901025, -0.92112994, -0.74600136,
+        1.021337  ,  0.6596105 ,  1.0622008 , -0.63577944,  0.14242485,
+       -1.1203637 ,  0.4298919 ,  0.08917391,  1.2071505 , -0.49562848,
+        0.09784457, -0.68225944, -0.17428884, -0.24601871,  0.42693335,
+       -0.68346906, -0.94897753,  0.5700236 ,  1.1879017 , -0.68703747,
+       -0.57128423,  0.06360011,  0.27166346,  0.5560705 , -2.103299  ,
+       -0.10621184,  1.4686357 , -0.79432684, -1.4984775 ,  2.0599823 ,
+        1.2025061 ,  0.14614385,  1.1803939 , -0.9530165 , -1.1475425 ,
+       -0.55350745,  0.86299443, -0.8520187 ,  0.2271452 , -1.7475852 ,
+       -0.2835556 ], dtype=float32)
+```
+The tensor for our `Doc` has a shape of (7, 96), which means that it has 7 rows and 96 columns. Each row corresponds to one `Token` in the `Doc`; our `Doc` has 7 `Token`s. Note that the number of columns doesn't correspond to anything in particular – a bigger and more complex model might use a vector with 1000 columns, or 10,000, or more. With more columns, the model can capture more detailed and nuanced information about each `Token`. We're using a small (`sm`) model optimized for speed and space, so it only has 96 columns.
+
+Armed with a numeric representation of each `Doc`, we can pass its tensor on to all of our trained components to use for predictions. But spaCy actually lets us do more with our tensor – we can share it amongst many components, and let each of them contribute information _back_ as they learn and improve. As the tagger and other components do their training, they can update the tensor to reflect what they've learned. This means that the tensor is a shared contextual understanding of meaning – almost like how a human reader would have a holistic approach to interpreting a text.
+
+![A complete spaCy pipeline flowchart, showing a shared token-to-vector layer followed by several components](https://spacy.io/images/pipeline-design.svg)
+
+The pretrained pipelines that spaCy provides use this approach to share information between several components. The `tok2vec` component creates the tensor for the `Doc`, and then the part-of-speech tagger (`tagger`) and dependency parser (`parser`) use the tensor to make their predictions. At the same time, they update the tensor to reflect what they've learned. Each component has a "listener", which lets it know when the tensor has been updated by a different component. In this way, the components "negotiate" a shared understanding of the `Doc` with each other.
+
+This approach is called [multi-task learning](https://en.wikipedia.org/wiki/Multi-task_learning), and it's a powerful way to train a model. It's especially useful when we have a lot of data for one task, but not much for another. For example, we might have a lot of data for part-of-speech tagging, but not much for dependency parsing. In that case, we can use the part-of-speech tagger to "help" train the dependency parser, because a word's part of speech and its dependency on other words are often related.
+
+After the trainable components run, the rule-based components can refer to their work when they make their predictions. The `attribute_ruler` component, for example, takes the fine-grained part-of-speech labels predicted by the `tagger` like "VBG" and turns them into more coarse-grained, human-friendly labels like "VERB". And the `lemmatizer`, as we already saw, uses part-of-speech data to know which of its tables to use when looking up the lemma for a `Token`.
+
+The named entity recognizer, at the very end of the pipeline, includes its _own_ token-to-vector representation. This means that it doesn't share in the contextual model developed by the other components. Presumably the spaCy developers made this choice because it resulted in greater accuracy, but we're free to decide something different: every component in the pipeline can have its own `tensor` if we want it to. It all comes down to how we design our pipeline.
+
+### Configuring a pipeline
+
+The pipeline is defined by a single file called `config.cfg`, which describes your `Language` along with all of the components and how to build (and train) them. This file is extremely important, and it's good to get comfortable editing it by hand. Let's take a look at a very simple, abridged example of a config file:
+
+```ini
+[nlp]
+lang = "en"
+pipeline = ["tok2vec", "tagger"]
+
+[nlp.tokenizer]
+@tokenizers = "spacy.Tokenizer.v1"
+
+[components.tok2vec]
+factory = "tok2vec"
+
+[components.tok2vec.model]
+@architectures = "spacy.Tok2Vec.v2"
+
+[components.tok2vec.model.encode]
+width = 96
+
+[components.tagger]
+factory = "tagger"
+
+[components.tagger.model]
+@architectures = "spacy.Tagger.v2"
+
+[components.tagger.model.tok2vec]
+@architectures = "spacy.Tok2VecListener.v1"
+width = ${components.tok2vec.model.encode:width}
+upstream = "tok2vec"
+```
+
+In the top-level section, we define some core attributes of our `Language`, including which `Defaults` it will use and what components we want in our pipeline. After that, we can use sections to define more about the pipeline. Section headings with a period indicate sub-values, which let us customize deeply nested properties of our components.
+
+Most components let us define a `factory`, which is a setup function that will be called to create the component when the pipeline is being initialized. This is where we choose which class to use for a component – for example, if we want a rule-based or trainable lemmatizer. We can further customize the internal model used by trainable components: for example, we can set the number of columns for each `Token`'s representation in the tensor assigned by the token-to-vector embedding layer.
+
+Lastly, we can reference values defined elsewhere in the config so that we don't accidentally let them get out of sync. In the tagger's model section, we need to set the number of columns per `Token` in the tensor, so that the tagger model knows the size of its input. This number will always be the same size as the number of columns we picked in the `tok2vec` component, so we can refer to that value using a special syntax: `${components.tok2vec.model.encode:width}`. This means "look up the value of the `width` property in the `tok2vec` component's `model.encode` section".
+
+Editing the `config.cfg` file by hand can be kind of intimidating, especially if you're starting from scratch. Fortunately, spaCy provides a few tools to assist with this process. The [`spacy init config` command](https://spacy.io/api/cli#init-config) will start you off with a template based on the kind of pipeline you're interested in building. After that, you can tweak some of the values yourself, and then finish off with the [`spacy init fill-config` command](https://spacy.io/api/cli#init-config), which will fill out the rest of the file with defaults so there's nothing missing. Finally, you can use the [`spacy debug config` command](https://spacy.io/api/cli#init-config) to verify that your config file is valid. We'll cover these commands in more detail in the course [Training New Language Models in spaCy]().
+
+## From text to Doc
+
+With a fully-configured pipeline ready to go, we're ready to start processing our texts. We know that we can feed our texts into the pipeline and get back a `Doc` object, but where does the data inside the `Doc` live? The answer lies in the `Vocab`, which is the third and final part of the `Language` object.
+
+### Keeping track of the Vocab
+
+All this time, whenever we've executed code like this, spaCy has been saving the text we pass into the pipeline to make a `Doc`:
+```python
+>>> doc = nlp("San Francisco considers banning sidewalk delivery robots")
+```
+
+Inside the `Language` object, the `Vocab` is storing every unique word it's  seen so far. The `Vocab` has a container called the `StringStore`, which turns each word into an object called a `Lexeme`. Each `Lexeme` gets assigned a unique number, called a hash, to represent it – computers are much better at storing numbers than strings, so this saves some memory. Plus, we only need to store each word once!
+
+When we make a `Doc`, we can see that each `Token` in it is actually a reference to the underlying `Lexeme` object. The hash values for "delivery" in each sentence, accessible using the `orth` attribute, are the same number:
+```python
+>>> doc1 = nlp("San Francisco considers banning sidewalk delivery robots")
+>>> doc2 = nlp("Special delivery!")
+>>> doc1[5].lex # delivery
+<spacy.lexeme.Lexeme object at 0x7f8b1c1b2b80>
+>>> doc1[5].lex.orth # delivery
+6661454958982098866
+>>> doc2[1].lex.orth # delivery
+6661454958982098866
+```
+
+The biggest difference between a `Lexeme` and a `Token` is that a `Lexeme` has no context: it doesn't belong to any particular `Doc`. We can still ask about some details, though: the `Defaults` for the language often include some rules that we can apply to `Lexeme`s. For example, we can ask if a `Lexeme` is punctuation for the language we're working in. This functionality is powered by a data file that lists all the punctuation characters for the language.
+```python
+>>> doc = nlp("Special delivery!")
+>>> doc[1].lex.is_punct # delivery
+False
+>>> doc[2].lex.is_punct # !
+True
+```
+
+We might also be working with a `Language` that stores word vectors in the `Vocab`. Some tools like [GloVe](https://nlp.stanford.edu/projects/glove/) and [word2vec](https://en.wikipedia.org/wiki/Word2vec) can create a numerical representation of a word that doesn't change based on context, unlike the `Doc` tensor we saw in earlier examples. In this case, each `Lexeme` might have its own `vector` attribute, which we could use to compare the similarity of two words outside of any given `Doc`.
+
+As you process your texts into `Doc`s, spaCy automatically populates the `Vocab`. Because each `Doc` and its `Token`s are references to `Lexeme`s, spaCy can save a lot of memory by only storing each word once. The easiest way to think about this is to remember that the actual _words_ in your corpus are all "owned" by the `Vocab`: the `Doc`s, `Token`s, and `Span`s (a sequence of `Token`s) are just "windows" that show a particular view or arrangement of those words. Without the `Vocab`, the `Doc`s would be empty; without the `Doc`s, the `Vocab` is just a "bag of words" with no context to them.
+
+### Putting everything together
+
+Congratulations: if you've read this far, you've learned every part of spaCy's architecture! Let's look at a diagram of the whole thing.
+
+![Architectural diagram showing the flow of data in spaCy; text comes in at the top and is processed by the language and its pipeline into Docs](https://spacy.io/images/architecture.svg)
+
+We start at the top, by providing the text in our corpus to our `Language` object, which stores the `Defaults` for the language and the pipeline we want to use.
+
+As we feed the texts in our corpus into the pipeline, we start with the tokenizer, which breaks them up into `Token`s. We store texts we've processed in the `Vocab`, which keeps track of all the unique `Lexeme`s we've seen so far.
+
+Then we bundle each collection of `Token`s into a `Doc` and pass it on down the pipeline, where our components can use their models or rules to add more data to the `Doc` and its `Token`s. If the component has a model, its weights were trained by using `Example`s, which included `Doc`s similar to the ones we're hoping to create.
+
+After we generate our `Doc`s, we can inspect them to see what labels were added by each of the components in the pipeline. We can ask for specific "windows" into the data in each `Doc` by picking out `Token`s and `Span`s, and checking to see what attributes our components assigned. This is the beginning of our research process!
+
+Now that we know how to configure a `Language` and pipeline to fit our specific needs, we can move on to the next step: getting our data ready to build our very own `Language`.
