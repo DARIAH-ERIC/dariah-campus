@@ -1,0 +1,130 @@
+---
+title: "Cadet: Preparing Data for New Language Models in spaCy"
+lang: en
+date: 2024-08-29T14:56:35.597Z
+version: 1.0.0
+authors:
+  - janco-andrew
+tags:
+  - natural-language-processing
+  - machine-learning
+  - data-management
+abstract: "MISSING GOALS OF THIS COURSE __ ONE SENTENCE:"
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: ""
+licence: ccby-4.0
+toc: true
+draft: false
+uuid: 8NPk4ApCvoNHOoJKAg-lx
+categories:
+  - dariah
+---
+MISSING GOALS OF THIS COURSE
+
+## Learning outcomes
+
+Upon completion of this course, students will be able to:
+
+- one
+- two
+- three
+
+## Linguistic Data
+
+The creation of linguistic data is one of the most labor intensive, but rewarding parts of extending spaCy to meet your research needs. If you have established that your research requires a statistical language model and that existing models are insufficient for your goals, then you'll need data to feed your new model.  A significant benefit of this approach is that you'll have a model trained for your specific goals and based on your materials.  To facilitate this work, we have created an application called Cadet. This section will introduce you to Cadet, which can be used to create a custom spaCy Language object for your language(s). It can also help to bulk annotate frequent terms in your corpus. This is most useful when you have a large corpus and you want to annotate all the instances of a term that is not ambiguous.   
+
+Cadet is available as a stand-alone web-application or as a Jupyter Notebook. 
+
+## Getting Started
+This section may or may not be right for you, so we'll begin with a few questions to help you decide.
+
+- Language Object. Cadet provides step-by-step process to create a custom spaCy Language object. If the language or languages of your research materials are not supported by spaCy ([check here](https://spacy.io/usage/models#languages)) or the multi-lingual ("xx") Language object, then you will likely want to create your own. You can test the multi-lingual Language object with `nlp = spacy.blank('xx')`. If the output is not correct or usable, then a custom language object is needed.
+- Tokenization. Cadet provides an interface to evaluate tokenization rules and lookups. Tokenization gives your computer an awareness of the words and word parts in your text. If you're seeing incorrect tokenization in your corpus, then you'll want to use Cadet to adjust the tokenization rules and lookups.  
+- Bulk Annotation. Cadet provides an interface to bulk annotate frequent terms in your corpus. This is most useful when you have a large corpus and you want to annotate all the instances of a term that very consistent meaning and usage. For example, in English, the word "fever" is common and has a stable meaning. The word "duck" however has at least four meanings depending on the context. Bulk annotation significantly reduces the time needed to annotate your corpus and is most useful when working with languages that have very little existing linguistic data. 
+- Notebook or web application. Cadet is available as a Jupyter Notebook or as a web application. The web application is easier to use, but the Notebook provides more flexibility. If you're comforable working in Python then you'll likely prefer the Notebook. If you're not comfortable working in Python, then the web application is the best choice.
+
+If you answered yes to any of these questions, then Cadet may be able to help you get started.
+
+
+## Getting Started 
+
+Cadet is a Python application build with FastAPI. You'll need at least Python version 3.10 installed. To install Cadet, enter:
+```python
+$ pip install spacy-cadet
+```
+To run the Cadet web application, enter:
+```python
+$ cadet run
+or 
+$ uvicorn spacy_cadet.main:app --reload
+```
+Then open localhost:8000 in your browser.
+
+To run the Cadet Notebook, enter:
+```python
+$ cadet notebook
+```
+Then open localhost:8888 in your browser.
+
+## Steps One to Three
+
+
+## The spaCy Language Object
+
+One of the most important things to learn about and understand in the process of adding a language to spaCy is the Language object.  
+
+While Cadet provides a convenience layer for creating a new language object, it is helpful to understand how the Language object works and how to create and configure it. 
+
+**__init__.py**
+You new language is defined in the module's init file. For example:
+
+```python 
+@spacy.registry.languages("yo")
+class Yoruba(Language):
+    lang = "yo"
+    Defaults = YorubaDefaults
+```
+
+Your Language is a Python object that inherits all the attributes from spaCy's base Language object: `class Yoruba(Language)`. The decorator [`@spacy.registry...`](https://nightly.spacy.io/api/top-level#registry) connects your new language to spaCy so that it knows that a new language has been added.  But what is YorubaDefaults?
+
+---
+
+### Language Defaults
+what these are and how to adjust them.
+
+## Steps Four to Six 
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RXEZ4YLFxs8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+---
+
+### How do you add new punctuation in spaCy? 
+
+So the idea is that there are different types of punctuations relevant for tokenization. It is described in the spacy documentation: https://spacy.io/usage/linguistic-features#tokenization
+
+There are Prefix, Suffix and Infix:
+Tokenizer exception: Special-case rule to split a string into several tokens or prevent a token from being split when punctuation rules are applied.
+Prefix: Character(s) at the beginning, e.g. $, (, ", ¿.
+Suffix: Character(s) at the end, e.g. km, ), ", !.
+Infix: Character(s) in between, e.g. -, --, /, ….
+In the punctuation file in cadet, you see something like this:
+```
+_prefixes = BASE_TOKENIZER_PREFIXES
+_suffixes = BASE_TOKENIZER_SUFFIXES
+_infixes = BASE_TOKENIZER_INFIXES
+TOKENIZER_PREFIXES = _prefixes
+TOKENIZER_SUFFIXES = _suffixes
+TOKENIZER_INFIXES = _infixes
+```
+
+and you can extend all the lists from the base_tokenizer_* with with additional characters. To see how this might look like, here is the english punctuations from the existing spacy model
+https://github.com/explosion/spaCy/blob/master/spacy/lang/en/punctuation.py
+there, you see that `LIST_ELLIPSES`  is added to the `_infixes`. And this is what LIST_ELLIPSES  looks like:
+`LIST_ELLIPSES = [r"\.\.+", "…"]`
+
+
