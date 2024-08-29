@@ -1,0 +1,142 @@
+---
+title: Machine Learning for NLP
+lang: en
+date: 2024-08-29T14:03:23.694Z
+version: 1.0.0
+authors:
+  - lassner-david
+tags:
+  - ai
+  - natural-language-processing
+  - machine-learning
+abstract: "This course provides a conceptual introduction to machine learning
+  and its role in Natural Language Processing. "
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: ""
+licence: ccby-4.0
+toc: true
+draft: false
+uuid: zpH5tLQfl50FNyL4XJZ2b
+categories:
+  - dariah
+---
+## Learning Outcomes
+
+At the end of this course, students will:
+
+- Have a basic conceptual understanding of neural networks and what it takes to use them (training and inference).
+- Understand how linguistic data is used to a train a spaCy statistical language model (features provide model with information to improve predictions)
+- Comprehend the capabilities and limitations of NLP 🦜 (predictive, machine errors, best to augment and scale existing research practices/not replace them)
+
+
+## Basic Concepts of Machine Learning
+
+In machine learning, "model" is a very commonly used term that typically refers to a specific instance that produces output for a given input. For machine learning models -- in contrast to rule-based models, for example -- there are no explicit rules put in place that specify the output for a given input. Instead, during training the model 'learns' from data by comparing its predicted output with the desired output and modifies its internal parameters ("memory") such that afterwards the predicted output is more similar to the desired output. The goal of this process is to yield a model that is able to produce sensible output for input that it has not seen during training ("generalization").
+
+### Stages of the model
+
+The most important difference between the model stages is whether the model's parameters are modifiable. We will discuss the four stages training, evaluation, testing and production. Typically, the model is only modified during training and is then fixed for all other stages. Usually, during training, evaluation and testing, the model not only gets the sequence as input but also the desired output (so-called 'labels' or 'ground truth').
+
+During training, the internal parameters of a model that may have initially been set randomly are iteratively updated such that the current output of the model ("prediction") resembles the desired output of the model (the "label").
+
+After training the model with a certain amount of data samples, the model is evaluated on held-out data, meaning data that has not been used for training the model. Again, the model predicts output based on the input sequence and with count statistics on how often the predicted output and the desired output match or mismatch we have an estimate on how well the model has 'learned'.
+
+The training and the evaluation stages are usually performed iteratively in turn to observe the training progress of the model.
+
+After finishing the training, the model is tested on yet another held-out data set. Methodologically, it is important that the model was never before exposed to the test data in order to have a more accurate estimate of the model's generalization performance. This estimate is very important in the context of DH projects. If, for example, you want to use NER to find persons in historical documents to identify social networks you want to know (and report) how likely it is that you miss a connection between two persons.
+
+Finally, the model is ready for being used on data where there is no desired output is available, the production stage. It can now be used on the part of your corpus that you have not annotated. 
+
+### Data sets
+
+\[TODO: Image visualization of the data splitting]
+
+We want to focus on how to split your data set into training, evaluation at test parts. Almost certainly you want to divide your data into disjoint sets for the different stages of the model. It is, however, hard to give a definitive answer on how large each part should be. Using a larger portion of the labeled data for training might improve the accuracy of the model but with less data available for evaluation/testing, the uncertainty of the estimate of the accuracy of the model increases.
+
+Another important point about data set splitting is to make sure how the labels are distributed over the different splits. If, for example, the data is split such that one label does not occur in the training data but it often occurs in the evaluation or test data, then the model will probably not learn to identify the label. This problem may occur when the corpus you annotated contains some labels that are very rare. In this case, we might want to investigate if this also holds for the production data. If you think that this label will be much more frequent in parts of the production data, we might want to use specific training strategies to make the model learn this label nonetheless, for example by oversampling.
+
+The problem that a label type is underrepresented in the training data can also happen by chance if the data split is done randomly. Luckily there are more advanced strategies to split the data set that retain the label distribution of the whole annotated data set for all data splits, that is called stratification. 
+
+### Training
+
+\[TODO: Image visualization of translating an image into numbers]
+
+A statistical model internally works with numbers. Therefore, in order to make it work on other data, such as images or text, the input and the output of the model has to be translated from image/text to numbers and back. For images, there is a trivial way to translate it into numbers space, because pixel images are usually already represented as a tensor of channels x width x height of the image where each value in the tensor represents the intensity. The main difference for text input is, that there are different approaches to the granular unit ('the pixel') that would be translated into a number. One could choose individual characters as units, groups of characters, tokens, sentences, larger chunks of text of even whole documents. And actually, for a certain setting, any of the above units might be the right choice.
+
+Some transformations that might sound familiar to you are Word Embeddings or Bag of Words. We will go into more detail later, but we think it is important for you to know that there is this challenge of numerical representation of input and output data that might make a big difference in which one you chose.
+
+There are many different machine learning methods but in this curriculum we mostly focus on neural networks. A neural network can be described as a graph composed of nodes and edges that are typically structured as layers in their most basic form. Inputs are forwarded through the network, layer by layer, in one direction making for a directed graph (DAG). There are different types of layers, for example, fully connected or convolutional, that characterize the connections between layers. Each connecting edge has a weight value that can be adjusted (what we've called the 'memory'). By deliberately improving these weights, the network can either emphasize or discard specific inputs. Additionally, before passing the weighted inputs forward to the next node, a non-linear activation function is applied.
+
+At the final layer of the network, the predicted output is compared with the desired output with a loss function. The loss can be defined in different ways but intuitively it is the difference between the predicted output and the desired output. 
+
+``with a neural network $f_\theta$ we can define the loss $\mathcal{L}_\theta = d(f_\theta, y)$ and try to minimize $\underset{\theta}{min}~\mathcal{L}_\theta$. This can be done with the gradient descent algorithm: $\theta_{t+1} \leftarrow \theta_t - \gamma\nabla \mathcal{L}_{\theta_t}$.`` 
+
+We've already discussed that the model performace will be monitored regularly during training. This is important to see if the model does learn at all and also to know when to actually stop training. There are different metrics to evaluate the model and with the `spacy train` command, the loss is printed, and also precision, recall and the f1 score. 
+
+### Evaluation
+
+The loss can be computed for the training data and for the evaluation data. Comparing how the two losses evolve usually can give you a good heuristic on whether the model has finished training. If the model trains at all, the training loss is expected to decrease. The evaluation loss is also expected to decrease but it should converge to a value higher than the training loss. We would like to avoid underfitting and overfitting.
+
+\[TODO: Image visualization of a few different loss curves]
+
+#### Underfitting
+
+- If the training loss is still decreasing, the training is usually not finished 
+- If the evaluation loss is lower than the training loss, the training is usually not finished
+
+#### Overfitting
+
+- If the training loss is small and the evaluation loss is large, the model has 'learned the training data by heart' and does not generalize to the evaluation data.
+- If the evaluation loss is increasing, while the training loss is still decreasing, the model is starting to overfit on the training data
+
+If you observe that the model starts to overfit (the latter setting) it is a common practice to revert the model weights to the point where the evaluation loss was lowest and use this model (early stopping). That is exactly the reason why `spacy train` outputs different models for each pass through the training data ('epoch') and also outputs a 'model_best' file which is the one that is expected to generalize best.
+
+#### Metrics
+
+Apart from the losses, there are precision, recall and f1 score that are reported by `spacy train`. These are metrics that were initially designed for binary classification. These metrics usually cause a lot of confusion as they focus on different aspects of the model performance. There are multiple steps involved to compute these metrics.
+
+1. For each class, create a 1-vs-rest binary classification setting
+2. Compute basic statistics of the binary classification. This point was harder to explain before the pandemic but now, many people have read about these statistics in the context of comparing for example PCR tests against Antigen tests. Number of items that are...
+
+    1. True Positives: desired label is part of this class and predicted label is part of this class
+
+    2. False Positives: desired label is not part of this class and predicted label is part of this class
+
+    3. True Negatives: desired label is not part of this class and predicted label is also not part of this class
+
+    4. False Negatives: desired label is part of this class and predicted label is not part of this class
+
+3. Precision is computed by the number of True Positives divided by (the number of True Positives plus the number of False Positives). Recall is computed by the number of True Positives divided by (the number of True Positives plus the number of False Negatives). Precision is reduced with an increasing number of False Positives. To optimize for precision, one might want to reduce the number of selected items. Recall is reduced with an increasing number of False Negatives. To optimize for recall, one might want to increase the number of selected items.
+4. As you can see, there is often a trade-off between precision and recall. Therefore, The F1 score combines precision and recall by computing the harmonic mean between both.
+
+- [https://github.com/workshop-dh-ml/talks/blob/main/04-tuesday-mathematical-concepts-of-ml/Slides_dhworkshop.pdf](https://github.com/workshop-dh-ml/talks/blob/main/04-tuesday-mathematical-concepts-of-ml/Slides_dhworkshop.pdf)
+- [https://en.wikipedia.org/wiki/Sensitivity_and_specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity)
+- [https://course.spacy.io/en/chapter4](https://course.spacy.io/en/chapter4)
+
+## Textual Representations for Machine Learning
+
+### Basic Concepts of Text Representations
+
+1. One-hot
+2. BoX
+3. WEs
+4. Contextual
+5. The pre-training pattern 
+
+### ~ for DH
+
+1. Algorithmic - vs. Statistical - vs. ML - Literary Criticism 
+2. Explorative and Confirmatory experiments
+
+## Ethical challenges of Machine Learning
+
+### Examples
+
+### Definitions
+
+### Debiasing methods
+
+### Role of DH
