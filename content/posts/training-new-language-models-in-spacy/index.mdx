@@ -18,7 +18,7 @@ remote:
   date: ""
 licence: ccby-4.0
 toc: true
-draft: false
+draft: true
 uuid: 9-gzjZZAPoyVZkCVbDDIB
 categories:
   - dariah
@@ -52,7 +52,7 @@ Upon completion of this course, students will be able to:
 
 - research question: who are the most common interlocutors of Confucius in classical chinese texts?
 - new language: classical chinese (lzh)
-- existing data: https://github.com/UniversalDependencies/UD_Classical_Chinese-Kyoto (a treebank) 
+- existing data: https://github.com/UniversalDependencies/UD_Classical_Chinese-Kyoto (a treebank)
 
 - we know we're going to be looking for patterns that say things like "Confucius said..."
 - but we also know that there are a couple different verbs we could use for "to say", and we can't just look for those characters because they might be being used as nouns (e.g. "a question") or even part of a person's name instead
@@ -92,7 +92,7 @@ clone the core_inception starter
 - warning about "misaligned tokens"?
 - warning about "entity spans crossing sentence boundaries"?
 
-### Training Models with Inception Data video 
+### Training Models with Inception Data video
 
 Even even a small amount of annotated text data in inception, you can now turn to model training. During training, the model will make predictions about various token attributes and use machine learning to gradually improve its predictions. There are many variables that affect training, such as the amount of training data, the duration of training and a variety of hyperparameters (most of which will be managed by spaCy). It's also important to consider what you are asking the machine to predict and whether the information needed to make a good prediction are present in the text.
 
