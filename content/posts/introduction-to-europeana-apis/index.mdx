@@ -146,3 +146,9 @@ The parameters that can be used to refine the query (query conditions) are prima
 ```http
 https://api.europeana.eu/record/v2/search.json?query=Hungarian+Revolution&type=image
 ```
+
+Using parameters supports query refinement by specifying conditions which must be met. This allows Costis to filter out results that are not relevant to his research interest, such as those referring to different historical periods. Logical or Boolean operators, like AND, OR, and NOT, can also be exploited to combine different conditions or filters. For instance, the previous query returns all the records containing either the string “Hungarian” or the string “Revolution” or both. Using the Boolean operator AND, Costis can refine the search to retrieve the records containing both strings, as follows:
+
+```
+https://api.europeana.eu/record/v2/search.json?query=Hungarian+AND+Revolution
+```
