@@ -158,3 +158,11 @@ A crucial aspect in exploiting Europeana APIs is understanding how to interpret 
 <SideNote type="note" title="Exercise 1">
 Refine the query of Costis to retrieve results only of type “Portrait”.
 </SideNote>
+
+While responses from the Search API are always structured in JSON format, other APIs can provide responses in [RDF/XML](https://www.w3.org/TR/rdf-syntax-grammar/) syntax as well. For instance, the Record API supports both JSON and RDF/XML. RDF/XML, a machine-understandable format that expresses an [RDF](https://www.w3.org/RDF/) graph as an [XML](https://www.w3.org/TR/xml/) document, is robust and can be processed by various applications, even if it is more challenging for humans to interpret compared to JSON. The selection of format depends largely on the software used by the recipient application that processes the responses. The query formulation specifies the desired response format, as illustrated in the following two queries. These queries have identical criteria but differ in the response format: the first generates a JSON response, while the second produces an RDF/XML response.
+
+```
+https://api.europeana.eu/record/v2/2024917/photography_ProvidedCHO_Arbejdermuseet___ABA_F20130519062.json
+https://api.europeana.eu/record/v2/2024917/photography_ProvidedCHO_Arbejdermuseet___ABA_F20130519062.rdf
+
+```
