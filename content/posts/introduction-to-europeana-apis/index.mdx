@@ -140,3 +140,9 @@ Failure to correctly configure the browser using his API key would result in an 
 <Figure src="images/yourkey.png">
 Fig. 2: JSON response of unsuccessful query due to invalid API key
 </Figure>
+
+The parameters that can be used to refine the query (query conditions) are primarily derived from EDM metadata fields. Thanks to his familiarity with EDM, Costis refines his query to retrieve results only of the type “image”:
+
+```http
+https://api.europeana.eu/record/v2/search.json?query=Hungarian+Revolution&type=image
+```
