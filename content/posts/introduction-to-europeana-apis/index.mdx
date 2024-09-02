@@ -118,3 +118,11 @@ Based on the guidance he has received so far from Prof. Lorena, Costis understan
 <SideNote type="note">
 According to the HTTP GET method, a user (client) sends a request (query) to a server (Europeana API), and the server (Europeana API) sends a response (query result) back to the client (user). The POST method works similarly, but instead of retrieving a response from the server, it aims to create or update a resource on the server’s side.
 </SideNote>
+
+These requests and updates are further specified using parameters. In the case of Europeana APIs, these parameters include specific keywords, subjects, dates, location, and other metadata types, along with the API key, which is also defined within the query as a parameter. 
+
+Queries are made to Europeana APIs by using a web browser and formulating the correct query in its address bar. Taking the [Europeana APIs documentation](https://europeana.atlassian.net/wiki/x/JIAzjg) as a reference point, Costis starts exploring the Search API under the guidance of Prof. Lorena. She highlights that every call to this API is structured by first entering the following **base URL**:
+
+```http
+https://api.europeana.eu/record/v2/search.json
+```
