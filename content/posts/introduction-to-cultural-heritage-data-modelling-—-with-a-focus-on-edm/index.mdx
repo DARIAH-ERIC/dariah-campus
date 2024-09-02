@@ -147,27 +147,20 @@ EDM contains several key components that facilitate the detailed description and
 Fig. 5: The EDM class hierarchy. Source: Definition of the  Europeana Data Model v5.2.8, https://pro.europeana.eu/files/Europeana_Professional/Share_your_data/Technical_requirements/EDM_Documentation//EDM_Definition_v5.2.8_102017.pdf
 </Figure>
 
-Below, we describe a subset of the main classes, which serve for the documentation of the most information regarding Cultural Heritage objects. The complete documentation about EDM can be found [here](https://pro.europeana.eu/page/edm-documentation), while the EDM mapping guidelines are available [here](https://europeana.atlassian.net/wiki/spaces/EF/pages/987758622/EDM+Core+classes).
+In Table 1 below, we provide a subset of the main classes of EDM along with their descriptions. This subset serves for the documentation of the most information regarding Cultural Heritage objects. The complete documentation about EDM can be found [here](https://pro.europeana.eu/page/edm-documentation), while the EDM mapping guidelines are available [here](https://europeana.atlassian.net/wiki/spaces/EF/pages/987758622/EDM+Core+classes).
 
-_edm:ProvidedCHO_ 
 
-This class represents the cultural heritage object (resource) itself, such as a historical document, an archive or a photograph. For Costis, this could be a document discovered through the Europeana portal detailing refugee movements after the end Hungarian Revolution.
 
-_edm:WebResource_ 
+| EDM class  | Description                      |
+| ---------- | ---------------------------------------- |
+| _edm:ProvidedCHO_ | Core class that represents the cultural heritage object (resource) itself, such as a historical document, an archive or a photograph. For Costis, this could be a document discovered through the Europeana portal detailing refugee movements after the end Hungarian Revolution.     |
+| _edm:WebResource_       | Core class used to denote the digital representation of the cultural heritage object, such as a digital scan of a handwritten document or of a photograph. Prof. Lorena suggests to Costis to exploit this class to link to digital versions of newspaper articles or archival photographs relevant to his research.   |
+| _ore:Aggregation_      | COre class that ensures that related resources stay connected, by forming an aggregated set and in this way providing a comprehensive view of the object.                |
+| _edm:Agent_       | Represents entities such as individuals or organisations that are related to the cultural heritage object. Examples of agents include, among others, creators, authors, photographers, publishers. Costis can use the class Agent to document information about the creators of the documents and the photographs he has collected.  |
+| _edm:Place, edm:TimeSpan,  skos:Concept_         | Contextual classes include contextual information of the Cultural Heritage object, related to its geographical location, its temporal coverage, and its thematic subjects respectively. For Costis, the class ‘Place’ can help identify locations of refugee camps, the time periods of migrations, and the subjects of the collected materials.        |
 
-This class is used to denote the digital representation of the cultural heritage object, such as a digital scan of a handwritten document or of a photograph. Prof. Lorena suggests to Costis to exploit this class to link to digital versions of newspaper articles or archival photographs relevant to his research.
+###### Table 1: Core and contextual classes of EDM
 
-_ore:Aggregation_ 
-
-Aggregation ensures that related resources stay connected, by forming an aggregated set and in this way providing a comprehensive view of the object. 
-
-_edm:Agent_ 
-
-This component represents entities such as individuals or organisations that are related to the cultural heritage object. Examples of agents include, among others, creators, authors, photographers, publishers. Costis can use the class Agent to document information about the creators of the documents and the photographs he has collected.
-
-_edm:Place, edm:TimeSpan,  skos:Concept_ 
-
-These contextual classes include contextual information of the Cultural Heritage object, related to its geographical location, its temporal coverage, and its thematic subjects respectively. For Costis, the class ‘Place’ can help identify locations of refugee camps, the time periods of migrations, and the subjects of the collected materials.
 
 Moving beyond classes, EDM relationships between these classes play a very important role in  the creation of a rich, interconnected network of Cultural Heritage data. These relationships define how the different entities, such as cultural heritage objects (ProvidedCHO), their digital representations (WebResource), agents, places, and concepts, are all linked together. A subset containing the most representative relationships organised in a hierarchical structure is illustrated in Fig. 6, where some relationships have been omitted to improve the readability of the image. As mentioned above, this hierarchical structure derives from [EDM Mapping Guidelines v2.4 (October 2017)](https://pro.europeana.eu/files/Europeana_Professional/Share_your_data/Technical_requirements/EDM_Documentation//EDM_Definition_v5.2.8_102017.pdf). However, some sections in that version may contain outdated sections as of February 2023. The most recent version of this documentation and the complete list of EDM relationships can be accessed through the relevant sections of the [Europeana Knowledge Base.](https://europeana.atlassian.net/wiki/spaces/EF/overview?homepageId=330367111)
 
