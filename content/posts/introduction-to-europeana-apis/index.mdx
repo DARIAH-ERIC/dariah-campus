@@ -22,14 +22,11 @@ abstract: >
   This course provides a comprehensive understanding of Europeana as a digital
   platform through a walkthrough of the Application Programming Interfaces
   (APIs) it offers. It provides the knowledge and skills to understand the
-  functionality of these APIs, the purpose they serve and the functionality they
-  have, in order to exploit them by formulating efficient queries for cultural
-  heritage information retrieval. Building on the use cases introduced in
-  “Introduction to Cultural Heritage Data” course and the data structure
-  introduced in “Introduction to Cultural Heritage Data Modelling - with a focus
-  on EDM” course, it delves into the APIs that are required to achieve such
-  goals, exploring their features and providing familiarisation with supported
-  data formats.
+  purpose they serve and the functionality they have, to exploit them by
+  formulating efficient queries for cultural heritage information retrieval.
+  Building on use cases, it delves into the APIs required to achieve the
+  corresponding research goals, exploring their features and providing
+  familiarisation with supported data formats.
 
 
   Learning outcomes
@@ -99,8 +96,6 @@ Costis takes note of the Europeana APis landing page (illustrated in Fig. 1) and
 Fig. 1: Screenshot of the Europeana APIs landing page (https://apis.europeana.eu/en)
 </Figure>
 
-
-
 # Europeana API Key
 
 An API key is a unique identifier that is used to offer software applications (or individual users) access to an API. In the context of Europeana, the API key is used to gather relevant statistics about the usage of the API, with the goal of further improving the APIs and facilitating customer support. When used in combination with the API key secret, it protects the API from unauthorised usage and limits access only to authorised users. 
@@ -126,8 +121,6 @@ Queries are made to Europeana APIs by using a web browser and formulating the co
 ```http
 https://api.europeana.eu/record/v2/search.json
 ```
-
-
 
 This URL must include the mandatory “query” parameter for the query formulation. and “wskey” for the API key. This parameters is inserted directly after the base URL, separated by a question mark (?) from the base URL, while additional parameters can be included, separated by an ampersand (&). Costis decides to query the Search API for the keyword “Hungarian revolution”, formulated as follows:
 
@@ -164,7 +157,6 @@ While responses from the Search API are always structured in JSON format, other 
 ```
 https://api.europeana.eu/record/v2/2024917/photography_ProvidedCHO_Arbejdermuseet___ABA_F20130519062.json
 https://api.europeana.eu/record/v2/2024917/photography_ProvidedCHO_Arbejdermuseet___ABA_F20130519062.rdf
-
 ```
 
 By continuing with his hands-on exercises, Costis gains valuable insights by exploring and understanding both RDF/XML and JSON formats. RDF/XML semantically represents complex datasets in an efficient way, whereas the simplicity of JSON facilitates Costis’ initial experiments with the APIs. His ultimate goal is to leverage both formats to effectively organise and analyse historical data, despite his limited experience with digital tools. This knowledge not only supports his current research but also prepares him for future academic and professional projects requiring digital literacy and data management skills.
@@ -188,8 +180,6 @@ Costis then decides to focus on historical figures related to the Hungarian Revo
 ```
 https://iiif.europeana.eu/presentation/1090/MNMMUSEUM1482693/manifest
 ```
-
-
 
 A IIIF manifest includes the basic metadata necessary for displaying a digital object, highlighting essential details about the Europeana item, such as [Béla Kun’s portrait](https://www.europeana.eu/en/item/1090/MNMMUSEUM1482693). Unlike previous APIs he has used, Costis notices that the IIIF API does not require an API key to successfully retrieve the result.
 
