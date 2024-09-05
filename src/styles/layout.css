@@ -24,6 +24,12 @@ in the component itself
 
 .choices {
 	margin-bottom: 1em;
+	list-style: none;
+	padding-left: 0;
+}
+
+.question p:last-of-type {
+	margin-bottom: 0;
 }
 
 /* temp hack for figure and image spacing */

@@ -1,8 +1,10 @@
+import { clsx as cn } from "clsx";
 import { type ReactNode } from "react";
 
 import { ResponsiveImage } from "@/common/ResponsiveImage";
 
 export interface FigureProps {
+	alignment?: "center" | "stretch"
 	src: string;
 	alt?: string;
 	children?: ReactNode;
@@ -13,10 +15,10 @@ export interface FigureProps {
 }
 
 export function Figure(props: FigureProps): JSX.Element {
-	const { src, alt = "", children: caption, width, height, blurDataURL, placeholder } = props;
+	const { alignment, src, alt = "", children: caption, width, height, blurDataURL, placeholder } = props;
 
 	return (
-		<figure className="flex flex-col">
+		<figure className={cn("flex flex-col", alignment === "center" ? "items-center":null)}>
 			{width == null || height == null ? (
 				/** CMS preview cannot provide width/height for images which have not been saved yet. */
 

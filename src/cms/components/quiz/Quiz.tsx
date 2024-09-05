@@ -1,11 +1,11 @@
-import { type ReactNode } from "react";
-import { createContext, useContext, useState } from "react";
+import { createContext, type ReactNode, useContext, useState } from "react";
 
 import { getChildElements } from "@/cms/components/quiz/getChildElements";
 import { MultipleChoice } from "@/cms/components/quiz/MultipleChoice";
 import { isQuizCard, QuizCard } from "@/cms/components/quiz/QuizCard";
 import { QuizMessage } from "@/cms/components/quiz/QuizMessage";
 import { QuizQuestion } from "@/cms/components/quiz/QuizQuestion";
+import { TextInput } from "@/cms/components/quiz/TextInput";
 import { XmlCodeEditor } from "@/cms/components/quiz/XmlCodeEditor";
 import { useI18n } from "@/i18n/useI18n";
 import { type Values } from "@/utils/ts/enum";
@@ -135,4 +135,5 @@ Quiz.Card = QuizCard;
 Quiz.Question = QuizQuestion;
 Quiz.Message = QuizMessage;
 Quiz.MultipleChoice = MultipleChoice;
+Quiz.TextInput = TextInput;
 Quiz.XmlCodeEditor = XmlCodeEditor;
