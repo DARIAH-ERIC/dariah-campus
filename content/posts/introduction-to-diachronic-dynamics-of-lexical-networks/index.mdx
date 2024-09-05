@@ -1,0 +1,577 @@
+---
+title: "DYLEN: Diachronic Dynamics of Lexical Networks"
+lang: en
+date: 2023-02-17
+version: 1.0.0
+authors:
+  - königshofer-elisabeth
+  - wünsche-katharina
+editors:
+  - zotou-elena
+tags:
+  - data-management
+categories:
+  - acdh-ch
+abstract: This post is a quick reference guide to the DYLEN tool, an interactive visualisation tool that the Diachronic Dynamics of Lexical Networks project team created to provide insights into the dynamic lexical changes of Austrian German during the 21st century. It helps lexicographers and linguists to analyse the development of Austrian German lexemes over the course of time. It is an open source tool that can be used free of charge..
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+licence: ccby-4.0
+toc: false
+draft: false
+
+---
+
+## Introduction
+
+[DYLEN](https://dylen-tool.acdh.oeaw.ac.at/) is the acronym of the **Diachronic Dynamics of Lexical Networks** (Baumann et al. 2019). It is an interactive visualisation tool (Yim et al. 2022) that the Diachronic Dynamics of Lexical Networks project team created to provide insights into the dynamic lexical changes of Austrian German during the 21st century. It helps lexicographers and linguists to analyse the development of Austrian German lexemes over the course of time. It is an open source tool that can be used free of charge.
+
+## Learning outcomes
+
+After completing this resource, you will
+
+* understand the purpose of DYLEN
+
+* be able to read a visualisation that was created in DYLEN
+
+* know how to undertake an ego network analysis with DYLEN
+
+* generate a general network analysis
+
+## Diachronic Dynamics of Lexical Networks
+
+[DYLEN](https://dylen-tool.acdh.oeaw.ac.at/) enables lexical network research on large-scale authentic language data that are taken from two Austrian Geman corpora, the [Austria Media Corpus (amc)](https://amc.acdh.oeaw.ac.at/), (Ransmayr et al. 2017) and [Corpus of Austrian Parliamentary Records (ParlAT)](https://www.oeaw.ac.at/acdh/tools/parlat).
+
+DYLEN provides three options:
+
+* Ego network,
+
+* General network (party),
+
+* General network (speaker),
+
+and 2 additional components:
+
+* Node metrics comparison,
+
+* Time series analysis.
+
+<Figure alignment="center" src="images/picture1.png">
+  Screenshot of the DYLEN user interface.
+</Figure>
+
+<SideNote type="note" title="amc and ParlAT">
+  Both corpora provide large-scale language data on Austrian German from the 21st century.
+
+  The amc is one of the largest German language corpora and reflects the Austrian media landscape almost in its entirety (newspapers, magazines, press releases and some news reel transcripts). It contains about 12 billion tokens and is updated every year. It reflects the Austrian media landscape. You can register for access for linguistic analysis [here](https://amc.acdh.oeaw.ac.at/) and learn more about it in this HowTo.
+
+  The [ParlAT corpus](https://www.oeaw.ac.at/acdh/tools/parlat) comprises the Austrian parliamentary records and contains around 75 million tokens (Wissik and Pirker 2018). This corpus is expanded over time, too. It is also part of the CLARIN [ParlaMINT project](https://www.clarin.eu/parlamint).
+</SideNote>
+
+The following [comic](https://comic.acdh-dev.oeaw.ac.at/howto/comic) provides a visual summary of this article and illustrates the key features of the DYLEN tool.
+
+## Networks
+
+Diachronic networks derive from the texts in amc and ParlAT with the help of word embeddings. In NLP, word embeddings are representations of words.
+
+The user interface is very intuitive but every search starts with deciding on either an **ego network** or a **general network** (**party** or **speaker**). In each network type, you can analyse various parameters of a single entity or compare two entities. The first step on your diachronic network journey is to select the network that you would like to generate.
+
+### Ego Network
+
+Connected words are **semantic neighbours** that share some aspects of the **target word**. Some can even substitute the target word in a particular context. The ego network visualises the **50** most closely related semantic neighbours of a target word. Note that it does not show the target word itself because it would render the visualisation impossible to read. The semantic neighbours are classified as parts of speech (POS), e.g. noun, proper nouns and verbs.
+
+<Figure alignment="center" src="images/egonetwork-interface.png" alt="A graph, two line graphs to show the semantic neighbours, node metrics and time series analysis for the word 'Geld' in the amc texts in 1996.">
+  Ego network of the word "Geld" (money), taken from the amc  texts in 1996.
+</Figure>
+
+#### Instructions:
+
+<Figure alignment="center" src="images/picture2.png">
+  Input field for ego network
+</Figure>
+
+On the input field on the left side bar, you can
+
+1. select a corpus (i.e., amc or PARLAT),
+
+2. select a subcorpus (e.g., a specific newspaper),
+
+3. type a target word (e.g., 'Geld'),
+
+4. and finally click *Visualise*.
+
+#### Understanding the Visualisation
+
+Once you clicked on visualise, DYLEN will generate your network. Let us stick with our "Geld" (money) example.
+
+<Figure alignment="center" src="images/egonetwork_geld_nodedetail.png" alt="The ego network for 'Geld': differently sized nodes connected by lines, a timeline on the top and parts of speech in different colours">
+  The ego network for "Geld" (money)
+</Figure>
+
+Above, you see the semantic neighbours represented by nodes that can be dragged further apart to get a better overview. Their size indicates their frequency. The bigger the node, the more commonly it is used in the corpus. You can click on each node to highlight the connections. The colours represent different parts of speech and you can change them to your preference.
+
+### Time Series Analysis
+
+The Time Series Analysis allows to compare two words over time; the comparison can be relative to the first year, last year or previous year.
+
+#### Metrics and Node Metric Comparison
+
+<Figure alignment="center" src="images/parallelcoordinatesoptions.png" alt="A bar with five sliders">
+  Parallel coordinates options: normalised frequency, degree centrality, betweenness centrality, pagerank, clustering coefficient.
+</Figure>
+
+In addition, you can select the metrics for the parallel coordinates with the sliders. These metrics are presented in the parallel coordinates plot. Every graph line represents one word and each vertical axis stands for the value in the respective metric. You can visualise all words or selected words in the node metrics comparison. When you click the lines, you can inspect the values for each metric.
+
+<Figure alignment="center" src="images/node-metric-comparison_geldstrafe.png" alt="Four lines cut by five axes for the words: verurteilen, Strafe, Haft and Gefängnis">
+  Lines and fives axes for the words "verurteilen", "Strafe", "Haft", "Gefängnis" when analysing an ego network for "Geldstrafe" in 1996.
+</Figure>
+
+<SideNote type="note" title="What do the metrics mean?">
+  #### Frequency
+
+  ...represents how often a word occurs.
+
+  #### Degree Centrality
+
+  ...represents how connected a word is. It shows the total number of edges linked to a node. In the example, "Haft" has a higher degree centrality than "Strafe", meaning that it is more strongly connected.
+
+  #### Betweenness Centrality
+
+  ...represents the number of shortest paths that pass through that node. It shows how frequently nodes tand between each other. Again, "Haft" shows more betweenness centrality than "Strafe", meaning that more shorter paths pass through "Haft".
+
+  #### Pagerank
+
+  ...represents the notion that a node is as important as the combined importance of its linked nodes.
+
+  #### Clustering Coefficient
+
+  ...measures the degree to which nodes in a graph tend to cluster together.
+
+  *The above explanations are taken from the* DYLEN *tool website and can be accessed and read in more detail via the information button in the node metric analysis visualisation.*
+</SideNote>
+
+### General Networks
+
+General networks reflect the speeches of a particular politician or a political party. Those networks are larger than ego networks and require more filters that make the visualisation more legible. Under general networks you can explore **frequent lexemes** used by particular political parties **(general network (party))** or individual politicians **(general network (speaker))** in the Austrian Parliament.
+
+#### Instructions:
+
+On the input field on the left side bar, you can
+
+1. select a party,
+
+2. select a speaker (only for general network (speaker)),
+
+3. (optional, but recommended) use the *Node filter* to
+
+   * select a metric (e.g. degree centrality)
+
+   * adjust the percentage of nodes to be displayed,
+
+4. and finally click *Visualise*.
+
+<Figure alignment="center" src="images/generalnetwork_party_comparison_spö-övp2000.png" alt="Four visualisations for general network (party)">
+  General network (party) comparison for SPÖ and ÖVP in 2000. The word "brauchen" (need) and its connections are highlighted in the first network visualisation.
+</Figure>
+
+### Node Metrics Comparison
+
+The general network analysis allows for node metric comparison too. You can choose between the same metrics as in the ego network. When you compare two parties or speakers, each component gets a different colour. Also, you can ask DYLEN to return a table for the node metrics with indicating colours (see below).
+
+<Figure alignment="center" src="images/generalnetwork_party_nodemetrics_spö_övp_2000.png" alt="Table with metric columns showing words in alphabetical order and the metric values.">
+  In the table, one can see a table of nodes and the values for the respective metrics.
+</Figure>
+
+### Time Series Analysis
+
+In the general network analysis, the development of speakers or parties can be traced, like the ego network traces individual words. You can visualise your results as a graph on a timeline, or as a table with selected metrics and values. All your options for analysis are explained in more detail on the [DYLEN website](https://dylen-tool.acdh.oeaw.ac.at/) in the technical details in the *Time Series Analysis* tab.
+
+### Knowledge Test
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+       What research does DYLEN support?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        insights into the development of Austrian German lexemes over the course of time
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        lexical changes from high modern German to modern German
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        statistic analysis of part of speech tagging
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Sorry! Have a look at the tool description again.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Which corpora feed into DYLEN?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Austria Media Corpus (amc)
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Corpus of Austrian Parliamentary Records (ParlAT)
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Projekt deutscher Wortschatz, Universität Leipzig
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Deutsches Spracharchiv am IDS Mannheim
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Korpus Südtirol
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Well done!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Sorry, the answer was incorrect or incomplete.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+       The data in DYLEN is primarily represented in...
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        network graphs
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        tables
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        infographics
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Sorry, the answer was incorrect.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+       What are semantic neighbours?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Connected words that share some aspects of the target word
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        neighbouring collocations
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        homonyms that share prepositions
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Sorry, the answer was incorrect.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+       An Ego Network visualises the...
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        50 most closely related semantic neighbours of a target word, but does not show the target word
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        target word and the two preceeding words across sentence boundaries
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+       lexeme variety of a politician in the Austrian parliament
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Sorry, the answer was incorrect.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+       In a visualisation, the nodes represented
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        semantic neighbours
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        noun phrases
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+       diachronic variation
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Sorry, the answer was incorrect.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+       The colours in the visualisation represent
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        different parts of speech
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        semantic neighbours
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+       different political parties
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+       different media outlets
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Sorry, the answer was incorrect.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+       To explore frequent lexemes used by a particular party or politician, you can visualise a
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        general network
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        ego network
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+       frequency list network
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Sorry, the answer was incorrect.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+       The so-called node metrics comparison is available for ego networks and general networks. How is the comparison visualised?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Each component gets a different colour and it's either a network or a table with indicating colours.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Each compenent is represent by the largest node in the graph on either side of the visualisation, the connections showing overlaps
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+       Each compenent's metric gets a different colour in a table representation
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Sorry, the answer was incorrect.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+       You can also analyse the ... development of speakers' or parties' language use in a general network
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        diachronic
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        frequency
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+       semantic change
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+       dialectal varietion
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Sorry, the answer was incorrect.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>Yay, you are done! Please move on to the tasks below.</Quiz.Question>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+## Practical Understanding and Exercises
+
+Please use our DYLEN tool integration or open the
+tool<a href="https://dylen-tool.acdh.oeaw.ac.at" target="_blank"> in a new tab</a> to complete the
+following tasks. If you are on a mobile device, use the hamburger menu in the top right corner to
+open the Dylen tool's navigation bar including links to "Ego Network" etc.
+
+<Embed
+	src="https://dylen-tool.acdh.oeaw.ac.at"
+  title="DYLEN"
+/>
+
+<Quiz>
+  <Quiz.Card validateButtonLabel="Submit">
+	  <Quiz.TextInput>
+      <Quiz.Question>
+			**Basic word search**
+
+       You are interested in the use of the word "AHS" in 2016 in the KRONE subcorpus. Please find out which other words are often used in this context and name three of them.
+      </Quiz.Question>
+    </Quiz.TextInput>
+  </Quiz.Card>
+
+  <Quiz.Card validateButtonLabel="Submit">
+	  <Quiz.TextInput>
+      <Quiz.Question>
+			**Visualisation**
+
+       Please select the three words you just named and visualize their metrics. Name the one with the highest Pagerank.
+      </Quiz.Question>
+    </Quiz.TextInput>
+  </Quiz.Card>
+
+  <Quiz.Card validateButtonLabel="Submit">
+	  <Quiz.TextInput>
+      <Quiz.Question>
+			**Graph Comparison**
+
+       We now want to inspect a second word in the same subcorpus and year: “AHS-Lehrer”.
+    		 Please visualize its network underneath the first one and select a word that has more than four connections to other words in the network.
+      </Quiz.Question>
+    </Quiz.TextInput>
+  </Quiz.Card>
+
+	<Quiz.Card validateButtonLabel="Submit">
+		<Quiz.TextInput>
+      <Quiz.Question>
+			**Table View Visualisation**
+
+    		Please switch to the table view and select all words that appear in both networks. Out of these selected words, find the one with the highest clustering coefficient value. Name the word.
+
+      </Quiz.Question>
+    </Quiz.TextInput>
+  </Quiz.Card>
+
+	<Quiz.Card>
+		<Quiz.MultipleChoice>
+			<Quiz.Question>Yay, you are done! You may now finish the experiment by clicking on the button below.</Quiz.Question>
+		</Quiz.MultipleChoice>
+	</Quiz.Card>
+</Quiz>
+
+## Links
+
+[About the DYLEN Project](https://dylen.acdh.oeaw.ac.at/about/)
+
+[DYLEN Tool](https://dylen-tool.acdh.oeaw.ac.at/)
+
+[DYLEN Comic](https://comic.acdh-dev.oeaw.ac.at/howto/comic)
+
+[HowTo use the amc and CQL](/resource/posts/corpus-query-language-im-austrian-media-corpus)
+
+## References
+
+* Baumann, Andreas, Julia Neidhardt, and Tanja Wissik. 2019. DYLEN: [Diachronic Dynamics of Lexical Networks](https://ceur-ws.org/Vol-2402/#paper5). In *Proceedings of the Poster Session of the 2nd Conference on Language, Data and Knowledge (LDK-PS 2019)*, ed. Thierry Declerck and John P. McCrae, 2402:24–28. CEUR Workshop Proceedings. Leipzig, Germany: CEUR.
+
+* Ransmayr, Jutta, Karlheinz Mörth and Matej Ďurčo (2017): AMC (Austrian Media Corpus) – Korpusbasierte Forschungen zum österreichischen Deutsch. In Digitale Methoden der Korpusforschung in Österreich (= Veröffentlichungen zur Linguistik und Kommunikationsforschung Nr. 30), Hrsg. C. Resch und W. U. Dressler, 27-38. Wien: Verlag der Österreichischen Akademie der Wissenschaften.
+
+* Wissik, Tanja, and Hannes Pirker. 2018. [ParlAT beta Corpus of Austrian Parliamentary Records](https://www.oeaw.ac.at/acdh/tools/parlat). In *LREC2018 Workshop ParlaCLARIN: Creating and Using Parliamentary Corpora In Proceedings of the Eleventh International Conference on Language Resources and Evaluation LREC2018*, ed. Darja Fišer, Maria Eskevich, and Franciska de Jong. Miyazaki: European Language Resources Association.
+
+* Yim, Seung-bin, Katharina Wünsche, Asil Cetin, Julia Neidhardt, Andreas Baumann, and Tanja Wissik. 2022. [Visualizing Parliamentary Speeches as Networks: the DYLEN Tool](https://aclanthology.org/2022.parlaclarin-1.9). In *Proceedings of the Workshop ParlaCLARIN III within the 13th Language Resources and Evaluation Conference*, ed. Darja Fišer, Maria Eskevich, Jakob Lenardič, and Franciska de Jong, 56–60. Marseille, France: European Language Resources Association.
