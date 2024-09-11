@@ -268,5 +268,17 @@ export const collection: CmsCollection = {
 			widget: "boolean",
 			default: false,
 		},
+		{
+			name: "translations",
+			label: "Translations",
+			hint: "",
+			required: false,
+			widget: "relation",
+			collection: "posts",
+			multiple: true,
+			value_field: "{{slug}}",
+			search_fields: ["title"],
+			display_fields: ["title"],
+		},
 	],
 };
