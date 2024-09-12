@@ -18,7 +18,7 @@ domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: training-module
 remote:
-  date: ""
+  date: 2024-09-12T11:28:04.728Z
 licence: ccby-4.0
 toc: true
 draft: false
@@ -26,7 +26,15 @@ uuid: MZew48ay3zmPjbtKYqR5q
 ---
 ## Introduction
 
-An entity is an object with its own characteristics, defined according to the specificities of a given field. Entities can represent concrete or abstract entities. For example, in a commercial context, we can identify customers, orders, and products. Each of them is an entity of the domain and each entity belongs to a class or type of entities. In this example, we could define three types of entities which will be called CUSTOMER, ORDER and PRODUCT.
+In the field of database management, the accurate and efficient structuring of data is critical to the success of any system. Whether we are organizing information for commercial enterprises, educational institutions, or complex research projects, the way we model data can directly affect how that data is stored, retrieved, and used. At the heart of any well-designed database is the concept of entities and their relationships, which form the foundation for representing real-world information in a structured, logical manner.
+
+To build and manage these relationships effectively, databases rely on several important concepts: attributes, identifiers, and cardinalities.
+
+- **Attributes** describe the characteristics or properties of an entity. They provide the specific data points that make each entity unique. For instance, a CUSTOMER entity might have attributes such as name, address, and email.
+- **Identifiers** are special attributes that uniquely identify each entity. In the case of a CUSTOMER, the identifier could be a customer number, ensuring that no two customers are confused or treated as the same.
+- **Cardinality** refers to the rules governing how many instances of one entity can be related to another. This is important when determining whether a relationship is one-to-one, one-to-many, or many-to-many.
+
+These core concepts—entities, associations, attributes, identifiers, and cardinality—are central to the design and functionality of relational databases. They help ensure that data is not only stored efficiently but also reflects the complex, interrelated nature of the real world. By using these principles, we can create databases that are highly structured, responsive to user needs, and capable of handling vast amounts of information in an organized and meaningful way.
 
 ## Learning outcomes
 
@@ -39,71 +47,131 @@ After completing this resource, learners should be able to:
 
 ## Association
 
+In database design, understanding the relationships between various entities is crucial to accurately representing real-world scenarios. An association defines the connection between two or more entities and dictates how they interact with one another. Without clearly defined associations, data may become fragmented, inefficient, or ambiguous, leading to inconsistent or incorrect outcomes.
+
+Associations allow for complex relationships to be modeled and understood within a database, ensuring data integrity and relevance. They help represent how different data entities are linked, such as a customer placing an order or a student enrolling in a course. Whether it's a one-to-one, one-to-many, or many-to-many relationship, associations establish the rules governing how entities coexist, ensuring that the database can accurately reflect real-world operations.
+
+In practice, associations are the glue that binds entities together. By specifying associations early in the design process, data architects can ensure that relationships between entities are clear, consistent, and enforceable throughout the system. This allows databases to respond flexibly to queries, making it easier to retrieve and manipulate data based on the real-world relationships between entities.
+
+The use of roles within associations further enriches how entities relate to one another, as entities can participate in associations in different capacities. The role an entity plays in a relationship shapes how data should be processed or queried. Each association is governed by cardinalities that define how many instances of an entity can relate to another, providing clear rules on how entities can connect within the system. By defining cardinalities, database architects ensure that relationships reflect the reality of the data and prevent redundancy or misrepresentation.
+
 An **association** between entities is a relationship linking two or more entities. An **order** is linked to the customer who placed it; there is therefore an association between this order and this customer. We will say that all associations of this nature belong to the type of association 'Place' between the two entities CUSTOMER and ORDER.
 
-When an entity participates in some type of association, it is said to be playing a role. We will use this term to designate one end of an association. One entity can play multiple roles in the same association.  Each entity participating in an association is characterized by a pair of min-max values called cardinalities.
+When an entity participates in some type of association, it is said to be playing a **role**. We will use this term to designate one end of an association. One entity can play multiple roles in the same association.  Each entity participating in an association is characterized by a pair of min-max values called cardinalities.
 
-Let E and F be two entities and an association A between E and F.
+### In Practice
 
-Cardinalities describe the maximum number of occurrences of entity F for each occurrence of entity E and vice versa. The main cases of cardinalities are the following:
+Let’s consider two entities, E and F, with an association A between them. Cardinalities help us describe how many occurrences (or instances) of entity F can be related to each occurrence of entity E, and vice versa. This relationship can take several forms, and the cardinalities define these relationships more precisely. Below are the main types of cardinalities you might encounter:
 
-\- type 1: 1 (or one-to-one) association if at one occurrence of entity E can correspond by association A to at most one occurrence of entity F and that, conversely to an occurrence of the entity F cannot correspond to more than one occurrence of entity E.
+#### 1. One-to-One (1:1) Association
 
-\- type 1: n association (or one-to-many): if at an occurrence of entity E can correspond by association to several occurrences of entity F but to one occurrence of entity at most one occurrence of entity E.
+In a one-to-one relationship, for each occurrence of entity E, there is at most one occurrence of entity F associated with it, and vice versa.
 
-\- n: n type association (or many-to-many): if at an occurrence of the entity E can correspond to several occurrences of the entity F and vice versa.
+Example: In a database of employees and desks, each employee can be assigned to only one desk, and each desk can be assigned to only one employee. So, an employee (E) corresponds to one desk (F), and a desk corresponds to only one employee.
 
-We can also have n-ary associations which are established between n entities (n>2).
+#### 2. One-to-Many (1) Association
+
+In a one-to-many relationship, for each occurrence of entity E, there can be several occurrences of entity F associated with it. However, for each occurrence of entity F, there can be only one associated occurrence of entity E.
+
+Example: In a database for customers and orders, a customer (E) can place many orders (F), but each order can be placed by only one customer. Thus, a single customer can have multiple orders, but each order is linked to only one customer.
+
+#### 3. Many-to-Many (N) Association
+
+In a many-to-many relationship, for each occurrence of entity E, there can be multiple occurrences of entity F associated with it, and for each occurrence of entity F, there can be multiple occurrences of entity E associated with it.
+
+Example: In a database of students and courses, a student (E) can enroll in multiple courses (F), and each course can have multiple students enrolled. So, each student is related to multiple courses, and each course is related to multiple students.
+
+#### 4. N-ary Associations (n > 2)
+
+In some cases, more than two entities may be involved in an association. This is called an n-ary association, where "n" represents the number of entities involved (n greater than 2). These associations are more complex and involve relationships between multiple entities simultaneously.
+
+Example: Consider an association between entities Doctor, Patient, and Appointment. Each appointment involves one doctor and one patient, but you could also track the availability of hospital Rooms (another entity) as part of the same association.
+
+Cardinalities are essential for defining the rules of these relationships in databases, ensuring that the data model reflects real-world scenarios accurately and helps maintain the integrity of the data. By carefully setting the cardinalities, database designers can enforce how many instances of one entity can be associated with another and avoid errors such as duplicate entries or incorrect relationships.
 
 ## Attributes
 
-An attribute or a property is an elementary data that we perceive on an entity or on an association between objects.
+An entity’s attributes are fundamental to understanding and defining the entity within a database system. Attributes provide the descriptive properties of an entity, giving it context, identity, and relevance. They serve as the building blocks that define the characteristics of an entity, such as a customer's name or a product's price.
 
-Each customer is characterized by a number, a name and an address. We will model these facts by providing the CUSTOMER entity with the attributes CustomerNum, Name and Address.
+In database management, attributes are what allow entities to be distinguished from one another and used meaningfully within queries, reports, and other operations. Attributes can vary greatly depending on the type of entity and the requirements of the data model. They can range from simple, like a numerical ID or a name, to more complex, like a date range or a structured address. The specificity and clarity of attributes are crucial, as they directly influence the usability and reliability of the database.
 
-We will specify the type of each attribute: numeric, character, date, etc. as well as his length.
+Without attributes, entities would be vague and indistinguishable, making the data unusable or meaningless. Properly defined attributes ensure that each entity is unique and well-defined, allowing the database to serve its purpose of accurately modeling real-world data. Attributes also play a key role in search and retrieval operations, as they allow for filtering, sorting, and organizing entities based on their characteristics.
 
-An attribute of an association is a property that depends on all the entities involved in the association.
+Moreover, attributes not only describe entities but also associations between entities. For example, in a registration system, an association between a student and a module might have an attribute like "enrollment year," which applies to the relationship itself rather than to the individual student or module entity. Thus, attributes enrich both the entities and the associations, making them indispensable in creating a comprehensive and functional database model.
 
-Example: The REGISTERED association defined between the STUDENT and MODULE entities has forattribute the year of the student's first enrollment in teaching. This year of registration is an attribute of the association and not of one of the entities, because it is necessary to know the student and the module to be able to determine it.
+When designing a database, it’s important to carefully consider each entity's attributes to ensure they provide all the necessary information. Attributes are also classified by their types (e.g., numeric, character, date), which influences how data is stored, retrieved, and validated within the system.
+
+
 
 ## Identifiers
 
-Typically, an entity has an attribute that uniquely identifies it among entities of that type. The entityCUSTOMER, for example, has a CustomerNum attribute such that at any time the occurrences of the CUSTOMER entity have separate CustomerNumvalues. In other words, given a any value of CustomerNum, we have the guarantee that there will be no more of an occurrence of the CUSTOMER entity with this value. We will say that CustomerNum is aCUSTOMER ID: it acts as an identifier for the CUSTOMER entity.
+Typically, each entity in a database has a specific attribute that uniquely identifies it among all other entities of the same type. This attribute is called an identifier. For example, in the case of a CUSTOMER entity in a retail system, an attribute called CustomerNum could serve as this identifier. The value of CustomerNum is unique for each customer, meaning no two customers can share the same CustomerNum value. This ensures that when we look up or refer to a customer by their CustomerNum, we can be certain we are referring to one specific customer and no one else.
 
-The identifier of an entity is, then, a particular attribute of the entity such as each value of the property matches one and only one occurrence of the entity.
+This unique attribute, like CustomerNum, is often referred to as the primary identifier or primary key. Its job is to make sure every occurrence (or instance) of an entity is distinct. It prevents confusion, data duplication, and errors, as no two customers can accidentally have the same identifier.
 
-In addition, it may happen that an entity has more than one identifier. In this case, one of them can be declared primary while all the others are secondary.
+### Multiple Identifiers
 
-The value of an attribute may not be known at the time the information on the entity are registered. If we admit that this attribute may not have a value for certain occurrences of the entity, it will be declared optional. Otherwise this attribute is mandatory.
+In some cases, an entity might have more than one attribute that could potentially serve as an identifier. For instance, in addition to a CustomerNum, the CUSTOMER entity might also have an Email attribute. Although email addresses are usually unique for each customer, the primary identifier will still be the CustomerNum to avoid potential issues (such as when a customer changes their email address). In this case, CustomerNum would be the primary identifier, while other attributes like Email could be treated as secondary identifiers. The primary identifier is the main way to distinguish an entity, while secondary identifiers are used as backups or for different purposes.
 
-In the E / A diagram, the identifiers are underlined.
+### Optional vs. Mandatory Attributes
 
-It is especially useful and important in some types of humanities data to ensure that unique numerical identifiers are used for entities, because of the specific problems that can be caused by confused or contested identification of entities. For example, categories like name which are commonly used as identifiers may be repeated in a data-set, whereas numerical identifiers will not be.
+When designing a database, some attributes may not always have a value at the time of data entry. For instance, when a new customer is added to the system, their address might not be available right away. In such cases, the attribute (like Address) is considered optional—meaning it’s okay for this field to be left blank until the information is provided. On the other hand, certain attributes are mandatory, meaning they must have a value for every occurrence of the entity. For instance, the CustomerNum would always be mandatory because every customer needs a unique identifier.
+
+### Visualizing Identifiers in Diagrams
+
+In Entity-Relationship (E/R) diagrams, identifiers are typically underlined to make them easy to spot. This visual cue helps database designers quickly identify the key attributes that uniquely distinguish entities from one another.
+
+### Importance of Unique Identifiers
+
+Using unique numerical identifiers, like CustomerNum, is especially important in many types of databases, particularly in fields like the humanities. Problems can arise when identifiers such as names are used because names can be shared by many people, causing confusion or errors. For instance, a data set may contain multiple people named "John Smith," but if each one has a unique CustomerNum (e.g., 001, 002), there is no risk of mistaking one John Smith for another. Numerical identifiers provide clarity and prevent conflicts in these cases, which is why they are preferred over potentially ambiguous identifiers like names.
+
+
 
 ## Cardinalities
 
-A cardinality is a measure of how many instances of one entity can be connected to another. The cardinality of a type of entity, in relation to any type of association it can participate in, is expressed by two numbers called minimum cardinality and maximum cardinality.
+Cardinality describes how many instances of one entity can be associated with another in a database. It is a crucial concept when designing the relationships between different entities, helping to specify the exact nature of these relationships. Cardinality is typically expressed using two numbers: the minimum cardinality and the maximum cardinality. These numbers define the range of possible associations for each entity.
 
-Cardinalities are mentioned to explicitly indicate details about the associations. More precisely, they allow to explicitly mention how many occurrences of the association are associated to a given occurrence of an entity.
+### Understanding Minimum and Maximum Cardinality
 
-This also has an impact on the way they will be transformed to a relational DB.
+- Minimum Cardinality refers to the least number of times an entity must be involved in an association.
+- Maximum Cardinality refers to the most number of times an entity can be involved in an association.
 
-The minimum cardinality (generally equal to 0 or 1) is the minimum number of times an occurrence of an entity participates in the occurrences of the association.
+Together, they provide a clear picture of how many instances of one entity are allowed or required to participate in a relationship with another entity.
 
-If the minimum cardinality is 0, it means that among all occurrences of the entity at least one occurrence is not participating in the occurrences of the association.
+#### How Minimum Cardinality Works
 
-If the minimum cardinality is equal to 1, this corresponds to the fact that each occurrence of the entity always participates in one occurrence of the association.
+The minimum cardinality tells us the minimum number of occurrences an entity must have in the relationship. It’s usually set to either 0 or 1, depending on whether it’s optional for an entity to participate in the association.
 
-We can also have a constant value as a min cardinality (2, 10, etc.)
+- Minimum Cardinality = 0: This means that some instances of the entity might not be involved in the relationship at all. For example, in a database tracking students and courses, some students might not be enrolled in any courses at the moment, so their minimum cardinality in the "enrollment" association would be 0.
+- Minimum Cardinality = 1: This means that each instance of the entity must be involved in the relationship at least once. For example, if a course must always have at least one instructor assigned, the minimum cardinality for the "instructor" entity in relation to the "course" entity would be 1.
 
-The maximum cardinality indicates the maximum number of times an occurrence of the entity participates in the occurrences of the relationship. It can be 1, or many (represented by N). It can also be a constant value (2, 10, etc.).
+In certain cases, the minimum cardinality might be a fixed number, such as 2 or 10, if the relationship requires that an entity must be connected to at least that many occurrences of another entity.
+
+#### How Maximum Cardinality Works
+
+The maximum cardinality defines the upper limit on the number of times an entity can participate in the association. It can be set to either a specific number or simply "N," which represents many.
+
+- Maximum Cardinality = 1: This means an entity can only be linked to one instance of another entity. For example, if each employee can only be assigned to one desk, the maximum cardinality for the "desk" entity in relation to the "employee" entity is 1.
+- Maximum Cardinality = N (many): This means an entity can be associated with multiple instances of the other entity. For instance, one customer can place many orders, so the maximum cardinality for the "order" entity in relation to the "customer" entity is N (many).
+
+Just like with minimum cardinality, the maximum cardinality could also be a fixed number, such as 2 or 10. For example, if a project must have no more than 5 team members, the maximum cardinality for the "team member" entity in relation to the "project" entity would be 5.
+
+### Why Cardinality Matters
+
+Cardinality is essential because it defines the rules governing how entities are allowed to interact in a database. By specifying both the minimum and maximum cardinalities, you clearly outline the relationship constraints between entities. This, in turn, helps maintain the accuracy and integrity of the data when the database is transformed into a relational database model.
+
+For instance, when converting an entity-relationship diagram (ER diagram) to a relational database, cardinality impacts how the relationships between tables (which represent entities) are structured. The rules defined by cardinality ensure that the database only allows valid associations and prevents incorrect or excessive connections between entities.
+
+#### Summary
+
+- Minimum Cardinality: The fewest number of times an entity must be involved in a relationship (usually 0 or 1, but could also be a fixed number).
+- Maximum Cardinality: The most number of times an entity can participate in a relationship (could be 1, N, or a fixed number).
+
+Cardinality is a fundamental tool for designing databases because it sets clear boundaries on how data is related, ensuring that real-world relationships are properly modeled and that the database behaves as intended.
 
 Given the illustration presented in figure 1, cardinalities are read differently in each side.
 
 ![Figure 1: ER Diagram with cardinalities In figure 2, Minimum cardinality is the minimum number of associated occurrences/instances of entity B  for a given occurrence of entity A. Whereas, Maximum cardinality is the maximum number of  occurrences/instances associated to a given occurrence of entity A. Figure 2: Cardinalities between Entity A and the association In figure 3, we can read that for a given occurrence of entity B, we define the minimum number of  associated occurrences/instances of entity A and the maximum number of occurrences/instances of entity  A.](images/screenshot-2024-05-30-6.53.11-pm.png)
-
-
 
 ## More examples
 
@@ -116,8 +184,6 @@ That is why maximum cardinality is N (many).
 On the other side, a child always has exactly two parents. That is why minimum cardinality and maximum cardinality are both equal to 2.
 
 ![Example 2: Football players and matches A football player may not participate to any match. That is why minimum cardinality is 0. But he may  participate in many matches. That is why maximum cardinality is N (many). On the other side, a match always involves 22 football players (11 players for each team).](images/screenshot-2024-05-30-6.55.30-pm.png)
-
-
 
 ## Conclusion
 
