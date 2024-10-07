@@ -4,10 +4,8 @@
 	"license": "MIT",
 	"type": "module",
 	"engines": {
-		"node": "18.x",
-		"pnpm": "8.x"
+		"node": "18.x"
 	},
-	"packageManager": "pnpm@8.15.4",
 	"scripts": {
 		"analyze": "BUNDLE_ANALYZER=\"enabled\" next build --no-lint",
 		"build": "run-s create:favicons cms:styles create:feed create:metadata-dump create:redirects build:app create:search-index create:sitemap",
