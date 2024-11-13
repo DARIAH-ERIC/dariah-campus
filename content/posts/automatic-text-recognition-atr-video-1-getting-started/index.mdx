@@ -13,8 +13,6 @@ tags:
   - editing-tools
   - machine-learning
   - automatic-text-recognition
-categories:
-  - dariah
 featuredImage: ""
 abstract: "Kick off your journey into Automatic Text Recognition (ATR) with our
   introductory tutorial video. This is the first video of a tutorial series
@@ -30,6 +28,8 @@ licence: ccby-4.0
 toc: false
 draft: false
 uuid: UkNwk2sC-4G9rXwUvdqHQ
+categories:
+  - dariah
 ---
 This session outlines the entire workflow of humanities research projects utilising ATR to extract full text from scanned images. We provide an overview of each step in the process and introduce subsequent tutorials that delve deeper into these steps. Additionally, a ‘How to get started with ATR’ road map linked in the source will guide you through important questions and give you basic orientation before starting an ATR project.
 
@@ -44,4 +44,38 @@ After completing this resource, learners will be able to:
 - Prepare their journey through the ATR pipeline by using our roadmap "How to get started in ATR?"
 - Prepare to integrate ATR technology into your research activities effectively.
 
-<ExternalResource title="Interested in learning more?" subtitle="Check out &quot;Automatic Text Recognition - Getting Started&quot;" url="https://harmoniseatr.hypotheses.org/274" />
+## How to prepare my corpus?
+
+The first step is to get images of the text you want to transcribe. 
+
+The second step is to optimise images. To find out more about the required image quality and preparation prior to uploading, please refer to the training module: “Image optimisation“.
+
+Once your images are optimised, you upload them onto a transcription platform. In this training module series, we use the French platform, [eScriptorium](https://escriptorium.inria.fr/). However, the process is the same when using other platforms such as [Transkribus](https://www.transkribus.org/) or [OCR-D](https://ocr-d.de/en/). Moreover, there is no difference between transcribing images of handwritten manuscripts and printed text.
+
+## Layout analysis
+
+The third step is the layout analysis. The software recognises zones of text on a page. In other words, it distinguishes between areas with text and areas with other non-textual content or no content at all. Segmentation is the process by which a digital image is divided into several zones corresponding to the layout of the document. Segmentation itself can be broken down into two different steps: recognition of text zones, and recognition of the lines of text within the zones. 
+
+The layout analysis step is essential for defining the layout of the text and locating the titles, subtitles, margins or annotations that accompany the main body of text. To go further refer to the training module: “Layout analysis”.
+
+## Text recognition and model training
+
+Once the areas and lines of text have been recognised, the next step is to predict the content of the text. It is important to understand that the machine does not actually read the text like the human eye does. It actually predicts the probability of a combination of letters or a specific word appearing. The time taken by this prediction process depends on several factors, such as the number of images or the performance of your computer.
+
+Model training is at the core of the ATR process. A model is a file that is created, improved and trained based on preexisting training data. This training data is also known as ground truth data. It consists of several pages of transcriptions aligned line by line with the images. These transcriptions are made and checked manually by a person. This correct transcription is considered as “the truth”, and the artificial intelligence uses it to learn to distinguish the correct sign.
+
+To train a model, they are two options: either create a new model from scratch or enhance an existing model by fine-tuning it for your own sources, essentially turning it into a fine-tuned model.
+
+	1	Building a model from scratch demands a substantial volume of training data, which can amount to over a hundred pages of manually- transcribed text– especially when your corpus is very heterogeneous. It involves a significant investment in terms of time, computing resources and technical expertise, as you will be responsible for all aspects of the training.
+
+	2	Fine-tuning a model involves incorporating your own data into a generic ATR model, customizing this generic model to suit your specific corpus. There are several reliable sites and repositories where you can find pretrained models as HTR-United and Zenodo.
+
+To know more about “Text recognition and model training” check out the dedicated video or article.
+
+
+
+
+
+
+
+<ExternalResource title="Interested in learning more?" />
