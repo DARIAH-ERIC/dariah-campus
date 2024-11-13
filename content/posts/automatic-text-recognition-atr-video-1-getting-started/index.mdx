@@ -61,15 +61,25 @@ The second step is to optimise images. To find out more about the required image
 
 Once your images are optimised, you upload them onto a transcription platform. In this training module series, we use the French platform, [eScriptorium](https://escriptorium.inria.fr/). However, the process is the same when using other platforms such as [Transkribus](https://www.transkribus.org/) or [OCR-D](https://ocr-d.de/en/). Moreover, there is no difference between transcribing images of handwritten manuscripts and printed text.
 
+<Figure src="images/escriptorium.png">
+Example of uploading an image to eScriptorium
+</Figure>
+
 ## Layout analysis
 
 The third step is the layout analysis. The software recognises zones of text on a page. In other words, it distinguishes between areas with text and areas with other non-textual content or no content at all. Segmentation is the process by which a digital image is divided into several zones corresponding to the layout of the document. Segmentation itself can be broken down into two different steps: recognition of text zones, and recognition of the lines of text within the zones. 
 
 The layout analysis step is essential for defining the layout of the text and locating the titles, subtitles, margins or annotations that accompany the main body of text. To go further refer to the training module: “Layout analysis”.
 
+<Figure src="images/zone_gallicorpora_htr_15_bpt6k1057726c-edited.png">
+Segmentation example from the Gallic(orpora) project with three different zones
+</Figure>
+
 ## Text recognition and model training
 
 Once the areas and lines of text have been recognised, the next step is to predict the content of the text. It is important to understand that the machine does not actually read the text like the human eye does. It actually predicts the probability of a combination of letters or a specific word appearing. The time taken by this prediction process depends on several factors, such as the number of images or the performance of your computer.
+
+
 
 Model training is at the core of the ATR process. A model is a file that is created, improved and trained based on preexisting training data. This training data is also known as ground truth data. It consists of several pages of transcriptions aligned line by line with the images. These transcriptions are made and checked manually by a person. This correct transcription is considered as “the truth”, and the artificial intelligence uses it to learn to distinguish the correct sign.
 
