@@ -419,6 +419,12 @@ function FullMetadata(props: FullMetadataProps) {
 					<dt>{t("common.published")}:</dt>
 					<dd>{formatDate(new Date(metadata.date))}</dd>
 				</div>
+				{metadata.remote?.date ? (
+					<div className="flex space-x-1.5">
+						<dt>{t("common.remotePublished")}:</dt>
+						<dd>{formatDate(new Date(metadata.remote.date))}</dd>
+					</div>
+				) : null}
 				<div className="flex space-x-1.5">
 					<dt>{t("common.contentType")}:</dt>
 					<dd>{metadata.type.name}</dd>

@@ -4,10 +4,8 @@
 	"license": "MIT",
 	"type": "module",
 	"engines": {
-		"node": "18.x",
-		"pnpm": "8.x"
+		"node": "18.x"
 	},
-	"packageManager": "pnpm@8.15.4",
 	"scripts": {
 		"analyze": "BUNDLE_ANALYZER=\"enabled\" next build --no-lint",
 		"build": "run-s create:favicons cms:styles create:feed create:metadata-dump create:redirects build:app create:search-index create:sitemap",
@@ -22,7 +20,7 @@
 		"create:sitemap": "tsx ./scripts/createSitemap.ts",
 		"debug": "NODE_OPTIONS=\"--inspect\" next dev",
 		"dev": "next dev",
-		"format:check": "prettier . !./content --cache --check --ignore-path .gitignore",
+		"format:check": "prettier . !./content --cache --check",
 		"format:fix": "pnpm run format:check --write",
 		"lint:check": "eslint . --cache --ignore-path .gitignore",
 		"lint:fix": "pnpm run lint:check --fix",
@@ -87,7 +85,7 @@
 		"@acdh-oeaw/eslint-config": "^1.0.0",
 		"@acdh-oeaw/eslint-config-next": "^1.0.1",
 		"@acdh-oeaw/eslint-config-react": "^1.0.0",
-		"@acdh-oeaw/prettier-config": "^1.0.0",
+		"@acdh-oeaw/prettier-config": "^2.0.0",
 		"@acdh-oeaw/tsconfig": "^1.0.1",
 		"@commitlint/cli": "^17.6.5",
 		"@mdx-js/loader": "^2.3.0",
@@ -121,7 +119,7 @@
 		"postcss-100vh-fix": "^1.0.2",
 		"postcss-cli": "^10.1.0",
 		"postcss-import": "^15.1.0",
-		"prettier": "^2.8.8",
+		"prettier": "^3.3.3",
 		"remark-cli": "^11.0.0",
 		"simple-git-hooks": "^2.8.1",
 		"tailwindcss": "^3.3.2",
