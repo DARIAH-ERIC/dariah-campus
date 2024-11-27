@@ -21,7 +21,7 @@ export interface ResourcePreviewCardProps {
 /**
  * Resource preview.
  */
-export function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element {
+export function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element | null {
 	const { resource } = props;
 	const { id, kind, title, authors, abstract, type, draft, lang } = resource;
 
@@ -30,6 +30,8 @@ export function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Elemen
 	const href = routes.resource({ kind, id });
 	const isHidden = isResourceHidden(draft);
 
+	if (isHidden) return null;
+
 	return (
 		<article
 			id={props.id}
@@ -37,24 +39,15 @@ export function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Elemen
 		>
 			<div className="flex flex-col px-10 py-10 space-y-5">
 				<h2 className="text-2xl font-semibold">
-					{isHidden ? (
-						<div>
-							<span className="inline-flex mr-2 text-primary-600">
-								<ContentTypeIcon type={type.id} className="flex-shrink-0 w-5 h-5" />
-							</span>
-							<span>{title}</span>
-						</div>
-					) : (
-						<Link
-							href={href}
-							className="block transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
-						>
-							<span className="inline-flex mr-2 text-primary-600">
-								<ContentTypeIcon type={type.id} className="flex-shrink-0 w-5 h-5" />
-							</span>
-							<span>{title}</span>
-						</Link>
-					)}
+					<Link
+						href={href}
+						className="block transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+					>
+						<span className="inline-flex mr-2 text-primary-600">
+							<ContentTypeIcon type={type.id} className="flex-shrink-0 w-5 h-5" />
+						</span>
+						<span>{title}</span>
+					</Link>
 				</h2>
 				<div className="flex">
 					<LanguageTag lang={lang} />
@@ -94,13 +87,9 @@ export function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Elemen
 						</div>
 					) : null}
 				</dl>
-				{isHidden ? (
-					<span className="text-neutral-500">{t("common.comingSoon")}</span>
-				) : (
-					<Link href={href} tabIndex={-1} className="transition hover:text-primary-600">
-						{t("common.readMore")} &rarr;
-					</Link>
-				)}
+				<Link href={href} tabIndex={-1} className="transition hover:text-primary-600">
+					{t("common.readMore")} &rarr;
+				</Link>
 			</footer>
 		</article>
 	);

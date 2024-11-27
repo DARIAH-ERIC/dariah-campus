@@ -31,6 +31,7 @@
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"workbench.editor.labelFormat": "medium",
 	"[markdown][mdx]": {
+		"editor.formatOnSave": false,
 		"editor.wordWrap": "on"
 	}
 }
