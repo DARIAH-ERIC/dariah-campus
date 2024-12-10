@@ -1,0 +1,190 @@
+---
+title: Introduction to Cultural Heritage Data Modelling — with a focus on
+  Europeana Data Model
+lang: en
+date: 2024-09-04T18:30:13.394Z
+version: 1.0.0
+authors:
+  - dritsou-vicky
+contributors:
+  - benardou-agiatis
+  - candela-gustavo
+  - chambers-sally
+  - irollo-alba
+  - tasovac-toma
+tags:
+  - data-modeling
+  - metadata
+  - ontologies
+  - cultural-heritage
+categories:
+  - dariah
+abstract: This course provides a comprehensive overview of cultural heritage
+  data modelling, focusing on structuring and documenting information within the
+  context of cultural heritage institutions. Participants will learn to
+  represent information using entities and relationships, applying relevant
+  metadata standards. The course emphasises the importance of understanding data
+  models for reusing both data and metadata, with a specific focus on the
+  Europeana Data Model (EDM) and its application in academic and research
+  settings.
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: ""
+licence: ccby-4.0
+toc: true
+draft: false
+uuid: PyefR39nTb1XnotXRuhKH
+---
+## Introduction
+
+This course provides a comprehensive understanding of how to structure and document information within the domain of cultural heritage institutions. It is designed to equip you with the essential skills to represent information using entities and relationships, while applying relevant metadata standards important for the reuse of data and metadata.
+
+Throughout the course and following Prof. Lorena—a persona created for its purposes—participants are introduced to the fundamental principles of data modeling, focusing on the importance of understanding data structures for effective metadata reuse. They can explore what metadata are, learn about the commonly used metadata standards in cultural heritage, and understand their critical role in data reuse.
+
+The last part of the course is dedicated to the Europeana Data Model, a key standard in the cultural heritage domain. Participants gain insight into the structure of this model, learning its classes and relationships, how they are structured, and how to apply the model in both academic and research settings for effective metadata management.
+
+## Learning Outcomes
+
+Upon completion of this course, participants will:
+
+- understand the basic principles of data modeling, and the importance of knowing the structure of data models, particularly for reusing metadata;
+- know what metadata are, including the metadata standards commonly used in cultural heritage institutions, and understand their significance in data reuse;
+- be able to represent knowledge about a domain using entities and relationships;
+- understand the structure of the Europeana Data Model and its role in effective metadata management, and be able to model/document information resources based on the Europeana Data Model structure.
+
+## The research goals of Prof. Lorena
+
+Fundamental in the process of collecting, structuring and documenting Cultural Heritage data is the way we formulate them. It is very important to follow methodologies and select common frameworks for their formulation that enable both humans and machines to understand the available information without ambiguities and support reasoning about this information. To illustrate this, we take the use case of Prof. Lorena, a Professor of Social History in the Department of History who specialises in the analysis of migration patterns, with a particular focus on treatment of refugees in Europe. With many years of experience, Prof. Lorena is well aware of the importance of information modelling. She consistently emphasises this in her lectures and when supervising her students. 
+
+In this course, we will follow Prof. Lorena as she guides Costis, a masters student, who has already acquired data from the [Europeana portal](https://www.europeana.eu/) and various cultural heritage institutions’ websites related to the Hungarian Revolution and migration patterns, as discussed in course "Introduction to Cultural Heritage Data". Additionally, Costis is also requested to integrate other data coming from Prof. Lorena’s previous research on the topic, to this dataset. He faces the challenge of formulating and integrating data that come from different sources and that use different structures. 
+
+To achieve this goal, Prof. Lorena introduces Costis to Cultural Heritage data modelling. Taking as an example the diverse results retrieved from the Europeana portal, illustrated in Fig. 1, which include different types of data or various documented information regarding them, she guides him through the basic principles of conceptual modelling. She explains the building blocks of conceptual models, the significance and role of metadata in modelling information, and the common models and metadata standards used in the domain of Cultural Heritage. Prof. Lorena specifically focuses on the [Europeana Data Model (EDM)](https://pro.europeana.eu/page/edm-documentation), highlighting its basic characteristics and using specific examples from the acquired data to illustrate these points.
+
+<Figure src="images/στιγμιότυπο-οθόνης-2024-08-29-3.15.34 μμ.png">
+Fig. 1: A screenshot of results retrieved from the Europeana portal using the search term “hungarian revolution”
+</Figure>
+
+## Basic Principles & Building Blocks
+
+Conceptual modelling refers to the process of formulating the knowledge we have for a specific domain in a way that can be understood by both humans and machines. Moreover, it is used to support reasoning and inference about objects of the domain: reasoning involves drawing conclusions from the knowledge captured in the conceptual model, while inference refers to the process of extracting new knowledge from the existing information. Conceptual models capture and describe the domain knowledge in a way similar to human cognition. 
+
+The basic mechanism to create a conceptual model is **abstraction**: the knowledge to be described is abstracted, omitting details that are not considered important under a selected point of view, and therefore resulting in more abstract (or general) categories. Next, both the abstraction layer—which describes the general knowledge we have about the domain using categories of objects—and the specific objects (also known as individuals or instances)—which are actual occurrences that belong to these categories—are described using appropriate languages, such as [RDF](https://www.w3.org/RDF/) and [XML](https://www.w3.org/XML/).
+
+<Figure src="images/kun.png">
+Fig. 2: Screenshot of the Europeana item with identifier F20130519062,  retrieved from https://www.europeana.eu/en/item/2024917/photography_ProvidedCHO_Arbejdermuseet___ABA_F20130519062
+</Figure>
+
+For instance, looking deeper into Costis’ dataset, Prof. Lorena selects two different objects from the Europeana results related to the same topic: an image provided by the [Workers Museum](https://www.arbejdermuseet.dk/en/) depicting Bela Kun (illustrated in Fig.2), one of the leaders of the Hungarian Revolution, and a text containing a speech by the same person (illustrated in Fig. 3). Using these two records, which are related to the same person, she explains to Costis the importance of documenting this information not by plain text, but by representing this person as an entity. By doing so, all records associated with that person can be related to this entity, resulting in a rich representation of all the available information about Bela Kun. 
+
+<Figure src="images/kun-s-speech.png">
+Fig. 3: Screenshot of the Europeana item with identifier http://hdl.handle.net/10891/osa:5a2c3b3f-5c07-4dfb-bfa5-8c8c04184620,  retrieved from https://www.europeana.eu/en/item/2022082/10891_osa_5a2c3b3f_5c07_4dfb_bfa5_8c8c04184620
+</Figure>
+
+Prof. Lorena proceeds to present the two building blocks of a conceptual model:
+
+1. **Entities**: These represent either an individual item (such as an object, a person, or time-span) or a concept representing all individuals that can be classified as of this type, thus forming a category of items. 
+2. **Relationships**: These represent the way in which entities are related to each other. Relationships describe connections, interactions, influences, dependencies and any other types of associations that may exist between different kinds of entities.
+
+Using these building blocks, a conceptual model forms a directed graph, typically composed of nodes and edges of a specific direction that connect pairs of nodes. In conceptual modelling nodes represent concepts (and individuals), while edges represent the relationships between those concepts. Using the example presented above in Fig.2, part of the information we can retrieve regarding this object from the Europeana portal is shown in Table 1. This information can be represented by structuring the following preposition in the form of a graph: the _object_ that is _identified by_ the _identifier F20130519062_ and that _has type photography_, was _created_ in the _decade of 1910_ in the _place Hungary_, and _depicts_ the _person Bela Kun_. 
+
+<Figure src="images/στιγμιότυπο-οθόνης-2024-08-29-3.28.29 μμ.png">
+Table 1: Selected information retrieved from the Europeana portal for item with ID F20130519062
+</Figure>
+
+Prof. Lorena continues tutoring Costis in creating a model to represent this information, hinting that the structure of sentences expressed in natural language reveals the model’s structure as well. The subject-verb-object structure translates into a node-edge-node structure, respectively. To illustrate this using the same example, Prof. Lorena provides the following statements: “_The object identified by the ID F2013519062 is a photograph provided by the Workers Museum. It depicts the person Bela Kun and was created in Hungary sometime during the 1910s._” Following the hint mentioned above and the two building blocks—entities (nodes) and relationships (edges)—she then creates the model presented in Fig. 4.  
+
+<Figure src="images/example_model2.jpg">
+Fig. 4: The conceptual model representing the information of Table 1
+</Figure>
+
+She explains that entities and relationships can exist in two different abstraction layers: one containing atomic entities (real-world instances) and their relationships, and another capturing information about sets of entities, called classes, which are the categories that atomic entities belong to. When constructing a conceptual model, the instance level graph follows the structure of the graph at the more abstract class level. This is evident in the current example, as shown in Fig. 4, where the information about the selected photograph appears at the lower level and follows the same structure as the graph in the upper layer. Edges coloured in light grey in the figure indicate the class that each instance belongs to.
+
+Prof. Lorena then focuses on the instance node labelled “_this_person_”. This instance, which is of type ‘_Person_’, represents Bela Kun, the person depicted in the photograph. Any additional information referring to the same person, such as the speech of Fig. 3, will be directly related to this instance. This approach interconnects the overall information we have about this person, even though it is in fact fragmented across different records.
+
+Conceptual models help build common understanding and eliminate ambiguities for both humans and machines, thus achieving interoperability among systems that share a common conceptualisation. Prof. Lorena assigns to Costis the following exercise for practice, suggesting he first follows an online [DARIAH Campus](https://campus.dariah.eu/) training module on [Conceptual Modelling](https://campus.dariah.eu/resource/posts/an-introduction-to-conceptual-modelling). Interested readers are encouraged to complete this exercise to gain practical experience in conceptual modelling.
+
+<SideNote type="note" title="Exercise 1">
+Create a conceptual model (including both class level and instance level) that captures all the information included in the following sentence: “River Rhine is 1230 km long, sources from Switzerland, flows through Germany, and ends in the North Sea”.
+</SideNote>
+
+## Metadata & Standards
+
+After completing the training module on Conceptual Modelling and the assigned exercise, Costis returns to Prof. Lorena with some questions a few days later. “How do we structure this modelling information? What is the most appropriate way to keep record of the classes and their instances? Is the naming of the classes important or not?” In response, Prof. Lorena introduces him to the concept of metadata.
+
+### Metadata Definition and Types
+
+Metadata are described as “data about data”. When dealing with resources (data), especially those from online sources but not exclusively, these resources are accompanied by a set of additional information, or a set of additional data called metadata, which provide explanations about the resources. A metadata set related to a resource gives context and meaning to this resource, helping us understand and efficiently organise it. Metadata also provide information about a resource’s location and usage, enhancing its usability and reusability. Adhering furthermore to the [FAIR principles](https://doi.org/10.1038/sdata.2016.18) (FIndable, Accessible, Interoperable and Reusable), the significance of metadata is further increased, making the resources more discoverable, accessible and usable across systems. For example, the information included in Table 1 above includes the metadata we have for this given resource. By exploiting these metadata in alignment with the FAIR principles, the resource becomes more easily searchable, categorised, indexed and retrieved, thereby optimising its usage and management.
+
+Metadata play a significant role in preserving the provenance and the history of the resources, which is crucial for Cultural Heritage data. For cultural heritage institutions, metadata facilitate interoperability between different systems and ensure that both digital and physical collections are discoverable by users. It is common practice for cultural heritage institutions not to make digital resources (or digital copies of physical resources) publicly available. Instead, they publish only the metadata in portals or aggregators, making the resources easier to discover. Additionally, effective metadata practices support the long-term preservation of Cultural Heritage data, allowing future generations to access and understand these valuable resources.
+
+Metadata can be categorised into different types, based on the purpose they serve, as outlined below. Understanding these types of metadata is essential for developing and implementing effective metadata strategies within cultural heritage institutions, and as well for researchers to understand how these institutions structure metadata.
+
+1. **Descriptive metadata**: provide information about the discovery and identification of the resources, outlining their contents, e.g. title, creator, subject.
+2. **Structural metadata**: describe how resources are organised into parts and provide details about how the different parts are composed and related. These fields carry important information especially for complex objects. Examples include the chapters and pages within books, tracks of CDs, etc.
+3. **Administrative metadata**: Include information related to resource management, i.e. preservation metadata, rights management, and technical details about the creation and format of the resource.
+
+### Metadata Standards
+
+Following best practices in the cultural heritage domain, to ensure that resources are consistently described, managed, and interpreted, facilitating interoperability and collaboration among different institutions, cultural heritage institutions should adhere to standards. A list of the main representatives of metadata standards for such institutions is provided in course "Introduction to Cultural Heritage Data", including the [Europeana Data Model (EDM)](https://pro.europeana.eu/page/edm-documentation), [Dublin Core](https://www.dublincore.org/), [CIDOC Conceptual Reference Model (CIDOC-CRM)](https://www.cidoc-crm.org/), [Encoded Archival Description (EAD)](https://www2.archivists.org/groups/technical-subcommittee-on-encoded-archival-standards-ts-eas/encoded-archival-description-ead) and [Machine-Readable Cataloging (MARC)](https://www.loc.gov/marc/umb/um01to06.html). Metadata standards provide a framework that supports resource descriptions in a commonly understood way. This common understanding or interoperability is essential for sharing and discovering information across diverse systems and institutions. By using standardised terms along with their definitions, metadata standards ensure that data resources are interpreted consistently, regardless of the context they belong to. In other words, semantic alignment is achieved, ensuring that semantically aligned systems understand and process the data in the same way. This is crucial for ensuring consistent data exchange between systems and promotes interoperability. To this end, standards usually offer guidelines for applying their metadata elements, reducing inconsistencies and ambiguities. 
+
+But how is all this achieved when using metadata standards? The answer lies in the clear specification of metadata elements and the properties—either mandatory or optional—that should be included in each metadata record. Standards also specify the exact structure or method for filling in the values of their elements, including formatting instructions, encoding schemes, controlled vocabularies as lists of values, and detailed syntax guidelines. 
+
+Metadata standards are essential for achieving interoperability among diverse systems and institutions. They provide a common language that enables different systems to understand and use shared data consistently and effectively. However, there is no single universal metadata standard that fits all systems. Each scientific domain, even among different cultural heritage institutions, may require different metadata elements, diverse levels of expressiveness, and different levels of complexity. Readers are encouraged to study the list of the main representatives of metadata standards for cultural heritage institutions as provided in course "Introduction to Cultural Heritage Data".
+
+## Europeana Data Model
+
+The Europeana Data Model (EDM) is an interoperable framework that allows the collection, connection and enrichment of Cultural Heritage metadata. It has been specifically created to support Europeana’s mission of making Europe’s rich cultural heritage accessible to all. This objective is achieved through the aggregation and integration of Cultural Heritage metadata from various European cultural institutions, which need to adhere to the EDM structure. Therefore, the model serves the purpose of fostering interoperability and enriching semantic information, thereby becoming an essential tool for ensuring the discoverability, usability and reusability of Cultural Heritage data across different systems and different sources.
+
+Following the introduction to conceptual modelling, Costis successfully structures the metadata of the acquired resources using a simple model he has created for this purpose, similar to the one shown in Fig.4. Prof. Lorena then tasks him with integrating a previous collection into his dataset that she created a few years ago, which is documented according to the EDM. This integration is crucial for their ongoing research on the effects of the Hungarian Revolution on migration patterns. Costis realises that in order to integrate and collectively analyse the two datasets, he must structure their metadata according to a common schema. He therefore decides to adopt the EDM, opting to first familiarise himself with its structure and the key components.
+
+### Europeana Data Model Classes & Relationships
+
+EDM contains several key components that facilitate the detailed description and interconnection of Cultural Heritage resources. In Fig. 5 the complete class hierarchy is illustrated, deriving from [EDM Mapping Guidelines v2.4 (October 2017)](https://pro.europeana.eu/files/Europeana_Professional/Share_your_data/Technical_requirements/EDM_Documentation//EDM_Definition_v5.2.8_102017.pdf). However, some sections in that version may contain outdated sections as of February 2023. The most recent version of this documentation can be accessed through the relevant sections of the [Europeana Knowledge Base](https://europeana.atlassian.net/wiki/spaces/EF/overview?homepageId=330367111).
+
+<Figure src="images/στιγμιότυπο-οθόνης-2024-08-29-3.55.36 μμ.png">
+Fig. 5: The EDM class hierarchy. Source: Definition of the  Europeana Data Model v5.2.8, https://pro.europeana.eu/files/Europeana_Professional/Share_your_data/Technical_requirements/EDM_Documentation//EDM_Definition_v5.2.8_102017.pdf
+</Figure>
+
+In Table 2 below, we provide a subset of the main classes of EDM along with their descriptions. This subset serves for the documentation of the most information regarding Cultural Heritage objects. The complete documentation about EDM can be found [here](https://pro.europeana.eu/page/edm-documentation), while the EDM mapping guidelines are available [here](https://europeana.atlassian.net/wiki/spaces/EF/pages/987758622/EDM+Core+classes).
+
+**Table 2: Europeana Data Model Core and Contextual Classes**
+
+| EDM class                                | Description                                                                                                                                                                                                                                                                                                                                               |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _edm:ProvidedCHO_                        | Core class that represents the cultural heritage object (resource) itself, such as a historical document, an archive or a photograph. For Costis, this could be a document discovered through the Europeana portal detailing refugee movements after the end Hungarian Revolution.                                                                        |
+| _edm:WebResource_                        | Core class used to denote the digital representation of the cultural heritage object, such as a digital scan of a handwritten document or of a photograph. Prof. Lorena suggests to Costis to exploit this class to link to digital versions of newspaper articles or archival photographs relevant to his research.                                      |
+| _ore:Aggregation_                        | Core class that ensures that related resources stay connected, by forming an aggregated set and in this way providing a comprehensive view of the object.                                                                                                                                                                                                 |
+| _edm:Agent_                              | Contextual class that represents entities such as individuals or organisations that are related to the cultural heritage object. Examples of agents include, among others, creators, authors, photographers, publishers. Costis can use the class Agent to document information about the creators of the documents and the photographs he has collected. |
+| _edm:Place, edm:TimeSpan,  skos:Concept_ | Contextual classes include contextual information of the Cultural Heritage object, related to its geographical location, its temporal coverage, and its thematic subjects respectively. For Costis, the class ‘Place’ can help identify locations of refugee camps, the time periods of migrations, and the subjects of the collected materials.          |
+
+Moving beyond classes, EDM relationships between these classes play a very important role in  the creation of a rich, interconnected network of Cultural Heritage data. These relationships define how the different entities, such as cultural heritage objects (ProvidedCHO), their digital representations (WebResource), agents, places, and concepts, are all linked together. A subset containing the most representative relationships organised in a hierarchical structure is illustrated in Fig. 6, where some relationships have been omitted to improve the readability of the image. As mentioned above, this hierarchical structure derives from [EDM Mapping Guidelines v2.4 (October 2017)](https://pro.europeana.eu/files/Europeana_Professional/Share_your_data/Technical_requirements/EDM_Documentation//EDM_Definition_v5.2.8_102017.pdf). However, some sections in that version may contain outdated sections as of February 2023. The most recent version of this documentation and the complete list of EDM relationships can be accessed through the relevant sections of the [Europeana Knowledge Base.](https://europeana.atlassian.net/wiki/spaces/EF/overview?homepageId=330367111)
+
+[](https://europeana.atlassian.net/wiki/spaces/EF/overview?homepageId=330367111)
+
+<Figure src="images/στιγμιότυπο-οθόνης-2024-08-29-3.59.52 μμ.png">
+Fig. 6: The EDM property hierarchy, excluding part of relationships borrowed for readability. Source: Definition of the  Europeana Data Model v5.2.8, https://pro.europeana.eu/files/Europeana_Professional/Share_your_data/Technical_requirements/EDM_Documentation//EDM_Definition_v5.2.8_102017.pdf
+</Figure>
+
+### Application of Europeana Data Model
+
+Having studied EDM and its structure, Costis asks for Prof. Lorena’s advice on the methodology he should follow to apply the structure of EDM to his existing collections, and she introduces him to the basic steps he should follow. 
+
+First, the selection of resources that he needs to catalogue should be performed. Costis selects a diverse collection of documents, photographs, and multimedia files. This step is crucial and involves carefully selecting records that hold significant cultural and/or historical value, ensuring a diverse and representative collection. Criteria for selection may include considering multiple types of objects—such as documents, images, newspapers, and multimedia—covering various time periods, including dates of key events, or selecting records that form parts of larger collections, thus contributing to an important narrative. Once the selection is complete, a _edm:ProvidedCHO_ must be created for each record in the collection. The goal now is to ensure that all selected objects are accurately and properly documented, enabling this way their future management,retrieval and reuse.
+
+Costis moves then to the creation of web resources (class _edm:WebResource_) and their connection to the corresponding _edm:ProvidedCHO_, linking the ProvidedCHOs to their digital representations. This step is crucial for retaining the integrity of the digital collection and for ensuring that users can access all available digital versions of the objects. He then uses the _ore:Aggregation_ class to relate all relevant metadata to the digital representations, which involves aggregating various metadata elements to provide a complete description of the Cultural Heritage object. By doing so, he can ensure that all related information is easily accessible and interconnected. This could mean aggregating information about a document’s creator, its digital scan, and related contextual metadata into a single, comprehensive record.
+
+Finally, Costis enriches his records with contextual information exploiting the _edm:Place_, _edm:TimeSpan_, and _skos:Concept_ classes. In this step he adds depth to the metadata by providing details about the geographical locations, temporal coverage, and thematic subjects related to his Cultural Heritage resources. For Costis, this might involve specifying the locations of refugee camps, the time periods of migration movements, and the subjects of his collected materials.
+
+<SideNote type="note" title="Exercise 2">
+Using the same method that Costis followed to structure his data according to the EDM, transform the data documenting [this photograph of Béla Kun](https://en.mandadb.hu/tetel/230056/Kun_Bela), provided by the [Hungarian National Digital Archive](https://en.mandadb.hu/), to adhere to the EDM schema. You can complete this exercise using just a paper and pencil—no specific software is required.
+
+_Hint: You can find the solution by examining the result on the Europeana portal provided [here](https://www.europeana.eu/en/item/2048128/230056)._
+</SideNote>
+
+## Conclusions
+
+The current course offers participants a basic foundation in cultural heritage data modelling, with a particular focus on the Europeana Data Model (EDM). By following the use cases of Prof. Lorena, participants gain a clear understanding of conceptual modelling principles and the importance of data structure and documentation within the area of cultural heritage institutions. The course introduces the key concepts such as entities, relationships, and metadata, providing the skills to effectively model and document cultural heritage data. Through practical examples, including those related to the Hungarian Revolution, the course illustrates how to apply EDM in real-world scenarios, ensuring efficient documentation, interoperability, and reusability of data.
+
+Participants are encouraged to explore additional metadata standards, such as the [Dublin Core](https://www.dublincore.org/) and [CIDOC-CRM](https://www.cidoc-crm.org/), to further broaden their skills. Practising with real-world examples and transforming data between different schemas would provide valuable expertise in conceptual modelling. Future steps include leveraging Europeana's vast collections through the [Europeana Application Programming Interfaces (APIs)](https://apis.europeana.eu/en), a topic covered in course "Introduction to Europeana APIs".
