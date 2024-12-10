@@ -118,45 +118,45 @@ const config = {
 			/**
 			 * Redirects for legacy resources from previous iteration of dariah-campus.
 			 */
-			...Object.entries(
-				JSON.parse(
-					await readFile(join(process.cwd(), "./redirects.legacy.resources.json"), {
-						encoding: "utf-8",
-					}),
-				),
-			).map(([legacyId, id]) => {
-				return {
-					source: `/resource/${legacyId}`,
-					destination: `/resource/posts/${id}`,
-					permanent: true,
-				};
-			}),
-			...Object.entries(
-				JSON.parse(
-					await readFile(join(process.cwd(), "./redirects.legacy.events.json"), {
-						encoding: "utf-8",
-					}),
-				),
-			).map(([legacyId, id]) => {
-				return {
-					source: `/resource/${legacyId}`,
-					destination: `/resource/events/${id}`,
-					permanent: true,
-				};
-			}),
-			...Object.entries(
-				JSON.parse(
-					await readFile(join(process.cwd(), "./redirects.legacy.persons.json"), {
-						encoding: "utf-8",
-					}),
-				),
-			).map(([legacyId, id]) => {
-				return {
-					source: `/author/${legacyId}`,
-					destination: `/author/${id}`,
-					permanent: true,
-				};
-			}),
+			// ...Object.entries(
+			// 	JSON.parse(
+			// 		await readFile(join(process.cwd(), "./redirects.legacy.resources.json"), {
+			// 			encoding: "utf-8",
+			// 		}),
+			// 	),
+			// ).map(([legacyId, id]) => {
+			// 	return {
+			// 		source: `/resource/${legacyId}`,
+			// 		destination: `/resource/posts/${id}`,
+			// 		permanent: true,
+			// 	};
+			// }),
+			// ...Object.entries(
+			// 	JSON.parse(
+			// 		await readFile(join(process.cwd(), "./redirects.legacy.events.json"), {
+			// 			encoding: "utf-8",
+			// 		}),
+			// 	),
+			// ).map(([legacyId, id]) => {
+			// 	return {
+			// 		source: `/resource/${legacyId}`,
+			// 		destination: `/resource/events/${id}`,
+			// 		permanent: true,
+			// 	};
+			// }),
+			// ...Object.entries(
+			// 	JSON.parse(
+			// 		await readFile(join(process.cwd(), "./redirects.legacy.persons.json"), {
+			// 			encoding: "utf-8",
+			// 		}),
+			// 	),
+			// ).map(([legacyId, id]) => {
+			// 	return {
+			// 		source: `/author/${legacyId}`,
+			// 		destination: `/author/${id}`,
+			// 		permanent: true,
+			// 	};
+			// }),
 		];
 	},
 	async rewrites() {

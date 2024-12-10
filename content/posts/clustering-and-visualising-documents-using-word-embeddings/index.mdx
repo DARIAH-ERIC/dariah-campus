@@ -1,0 +1,51 @@
+---
+title: Clustering and Visualising Documents Using Word Embeddings
+lang: en
+date: 2024-11-26T12:41:52.288Z
+version: 1.0.0
+authors:
+  - reades-jonathan
+  - williams-jennie
+editors:
+  - wermer-colan-alex
+tags:
+  - data-visualisation
+  - machine-learning
+  - python
+  - natural-language-processing
+categories:
+  - programming-historian
+featuredImage: images/clustering-visualizing-word-embeddings-original.png
+abstract: This lesson uses word embeddings and clustering algorithms in Python
+  to identify groups of similar documents in a corpus of approximately 9,000
+  academic abstracts. It will teach you the basics of dimensionality reduction
+  for extracting structure from a large corpus and how to evaluate your results.
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: 2023-08-09T12:46:00.000Z
+  url: https://doi.org/10.46430/phen0111
+  publisher: ProgHist Ltd
+licence: ccby-4.0
+toc: false
+draft: false
+uuid: 2HGNomCKsLnJeAet-GIoz
+---
+As corpora are increasingly ‘born digital’ on hard drives as well as web and email servers, we are moving from being able to select or group documents using keyword or manual searches to needing to be able to automate this task at scale. Moreover, large-ish, unlabelled corpora of thousands or tens-of-thousands of documents are not particularly well-suited to topic modelling or TF/IDF analysis either. Since we don’t have a sense of what kinds of groups might exist, what kinds of topics might be covered, or what level of distinctiveness in vocabulary might matter, we need different, more flexible ways to visualise and extract structure from texts.
+
+This lesson shows one way to achieve this: uncovering meaningful structure in a large corpus of about 9,000 documents through the use of two techniques — dimensionality reduction and hierarchical clustering — to find and group similar documents with minimal human guidance. Our approach to document classification is unsupervised: we do not use either keywords or human expertise — except to validate the results and provide a measure of ‘quality’ — relying instead on the information contained in the text itself.
+
+To do this we take advantage of word and document embeddings; these lie at the root of recent advances in text-mining and Natural Language Processing, and they provide us with a numerical representation of a text that extends what’s possible with counts or TF/IDF representations of text. We take these embeddings and then apply our selected techniques to extract a hierarchical structure of relationships from the corpus. In this lesson, we’ll explore why documents on similar topics tend be closer in the (numerical) ‘space’ of the word and document embeddings than those that are on very different topics.
+
+#### Reviewed by:
+- Quinn Dombrowski
+- Barbara McGillivray
+
+## Learning outcomes
+After completing this lesson, you will be able to:
+- Appreciate the ‘curse of dimensionality’ and understand why it is important to text mining
+- Use (nonlinear) dimensionality reduction to reveal structure in corpora
+- Use hierarchical clustering to group similar documents within a corpus
+
+<ExternalResource title="Interested in learning more?" subtitle="Check out this lesson on Programming Historian's website" url="https://doi.org/10.46430/phen0111" />
