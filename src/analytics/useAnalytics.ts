@@ -6,7 +6,7 @@ import { service } from "@/analytics/service";
 /**
  * Registers client side route transitions with an analytics service.
  */
-export function useGoogleAnalytics(): void {
+export function useAnalytics(): void {
 	const router = useRouter();
 
 	useEffect(() => {
