@@ -1,7 +1,7 @@
 ---
 title: Git Version Control via Command Line
 lang: en
-date: 2023-12-18
+date: 2024-12-18T13:43:36.660Z
 version: 1.0.0
 authors:
   - siam-omar
@@ -17,10 +17,12 @@ abstract: This article introduces the main concepts in Git and basic Git
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: training-module
+remote:
+  date: ""
 licence: ccby-4.0
 toc: false
 draft: false
-
+uuid: JOvz1UHen9JQY8lX8kznZ
 ---
 ## Introduction
 
@@ -29,21 +31,22 @@ This post introduces the main concepts in Git and basic Git commands that can be
 ## Learning Outcomes
 
 After completing this learning resource, you will:
-* be familiar with Git terminology
-* be familiar with the Git workflow
-* be able to install Git
-* understand essential Git commands
-* be able to use Git commands in the terminal / command line
+
+- be familiar with Git terminology
+- be familiar with the Git workflow
+- be able to install Git
+- understand essential Git commands
+- be able to use Git commands in the terminal / command line
 
 ## Version Control and Tracking Changes
 
-**Git**'s main purpose is to track changes in files and folders of a project, either for yourself or when working collaboratively in a team. It works best when used with **plaintext file formats** such as **source code, XML/TEI documents** or **Markdown content**. While Git will happily store *images*, *audio files*, or `.doc` and `.pdf` documents, it is not able to help you with changes in documents in so-called binary formats.
+**Git**'s main purpose is to track changes in files and folders of a project, either for yourself or when working collaboratively in a team. It works best when used with **plaintext file formats** such as **source code, XML/TEI documents** or **Markdown content**. While Git will happily store _images_, _audio files_, or `.doc` and `.pdf` documents, it is not able to help you with changes in documents in so-called binary formats.
 
 **Git**
 
-* solves the problem of keeping versions of text documents in sync among sometimes thousands of
+- solves the problem of keeping versions of text documents in sync among sometimes thousands of
   collaborators working on a software product
-* it helps integrate changes by multiple collaborators and also solves situations where two people
+- it helps integrate changes by multiple collaborators and also solves situations where two people
   edit the same part of a document
 
 Git can record which changes, to which documents, have been made when, and by whom. It allows to keep a detailed revision history of a project, because it can save snapshots of a project at specific points in time, allowing to review them any time in the future.
@@ -66,9 +69,9 @@ This diagram is a great summary of how content moves in Git, between the “work
   Git workflow
 </Figure>
 
-* **Working area:** This is where you manipulate your files. For example, you can make changes to the text in an MDX document. The working area usually resides on your local machine.
-* **Staging area:** This "holding zone" allows to **stage** changes in your documents, and **commit** those changes once you are comfortable, and **push** these changes to your repository.
-* **Repository:** A repository is a central location where the data, files and documents are stored and managed. You can be the sole user of a repository or you can be a collaborator in a team.
+- **Working area:** This is where you manipulate your files. For example, you can make changes to the text in an MDX document. The working area usually resides on your local machine.
+- **Staging area:** This "holding zone" allows to **stage** changes in your documents, and **commit** those changes once you are comfortable, and **push** these changes to your repository.
+- **Repository:** A repository is a central location where the data, files and documents are stored and managed. You can be the sole user of a repository or you can be a collaborator in a team.
 
 Let's look at how change tracking with Git works in practice, in a local project on your computer (no network connection required). We'll walk through how to work with Git in the terminal, because that is where Git was originally meant to be used, and because it helps to understand what is actually going on. This involves learning a handful of Git commands, and while that might seem intimidating at first, you'll see that it becomes second-nature with a bit of practice very quickly.
 
@@ -83,23 +86,23 @@ However, if you prefer to work with Git via a **graphical user interface (GUI)**
 <SideNote type="tip" title="Don't be afraid of the command line interface (CLI)">
   Many users, particularly Windows users, depend on using Graphical User Interfaces (GUI) in their daily lives and work schedules. GUIs have tabs, menus and windows that you can click on. GUIs are perceived as more user-friendly because they graphically represent the actions you take when you interact with the machine in front of you.
 
-  The command line interface (CLI) relies on text input. The user needs to know syntax and commands to use it. So instead of clicking on symbols, you type what you would like your machine to do. To open the command line, search for *terminal* or *command prompt*. When you open your CLI, it will look something like this:
+  The command line interface (CLI) relies on text input. The user needs to know syntax and commands to use it. So instead of clicking on symbols, you type what you would like your machine to do. To open the command line, search for _terminal_ or _command prompt_. When you open your CLI, it will look something like this:
 
-  ```bash
-  C:\Users\user_name>path_to_your_directory
-  ```
+```bash
+C:\Users\user_name>path_to_your_directory
+```
 
-  When using a Mac, you will see the **$** character instead of **>**.
+  When using a Mac, you will see the **$** character instead of **\>**.
 
   Here's an example for a basic command to use in your CLI: to navigate to a directory, type **cd** and the directory name. Now you can navigate down the directory hierarchy. To go back up, type **cd..**
 
-  ```bash
-  C:\Users\user_name>cd path_to_your_directory
-  C:\Users\user_name\path_to_your_directory> cd a_small_folder
-  C:\Users\user_name\path_to_your_directory\a_small_folder> cd ..
-  C:\Users\user_name\path_to_your directory> cd ..
-  C:\Users\user_name>
-  ```
+```bash
+C:\Users\user_name>cd path_to_your_directory
+C:\Users\user_name\path_to_your_directory> cd a_small_folder
+C:\Users\user_name\path_to_your_directory\a_small_folder> cd ..
+C:\Users\user_name\path_to_your directory> cd ..
+C:\Users\user_name>
+```
 
   There are multiple tutorials available that help you to familiarize yourself with the command line.
 </SideNote>
@@ -212,7 +215,7 @@ However, if you prefer to work with Git via a **graphical user interface (GUI)**
 
 ## Initialize a Git Project in Your Terminal
 
-First, we need to tell Git that it should start to manage a project directory and keep an eye on changes to documents there. On a **Windows** PC, run the program **git shell** **(Git Bash)**, on **Mac** or **Linux** use the terminal of your choice. Navigate to the folder which contains the data you want to version (usually done by typing `cd {folder-name}`, e.g. *cd Documents*), and afterwards type:
+First, we need to tell Git that it should start to manage a project directory and keep an eye on changes to documents there. On a **Windows** PC, run the program **git shell** **(Git Bash)**, on **Mac** or **Linux** use the terminal of your choice. Navigate to the folder which contains the data you want to version (usually done by typing `cd {folder-name}`, e.g. _cd Documents_), and afterwards type:
 
 ```bash
 git init
@@ -224,7 +227,7 @@ This will initially set up Git's internal bookkeeping metadata, which is stored 
   Initialize an empty Git repository on your local machine.
 </Figure>
 
-Let's also create some new content. In a real research project this would mean editing or adding an XML/TEI document or similar. To demonstrate the mechanics we'll keep it basic here and use the terminal to create a simple text file. When you want to create a text file via the command line: The text in "", following *echo*, is the content of the text file which you specify with "filename.txt", txt being a text file extension.
+Let's also create some new content. In a real research project this would mean editing or adding an XML/TEI document or similar. To demonstrate the mechanics we'll keep it basic here and use the terminal to create a simple text file. When you want to create a text file via the command line: The text in "", following _echo_, is the content of the text file which you specify with "filename.txt", txt being a text file extension.
 
 ```bash
 echo "This is my text document." > my-document.txt
@@ -255,15 +258,15 @@ git add my-document.txt
 <SideNote type="note" title="Adding multiple files">
   To add multiple files, it is possible to list them individually:
 
-  ```bash
-  git add first-document.txt second-document.txt
-  ```
+```bash
+git add first-document.txt second-document.txt
+```
 
-  Or, to include *all* changes to the project:
+  Or, to include _all_ changes to the project:
 
-  ```bash
-  git add -A
-  ```
+```bash
+git add -A
+```
 </SideNote>
 
 Note that `git add` does not automatically **commit** the changes, but places them in the **staging area**.
@@ -337,15 +340,15 @@ git diff 7f733ac ab9b27f
 <SideNote type="note" title="Diffing not-yet-committed work">
   To compare working directory to staging area:
 
-  ```bash
-  git diff
-  ```
+```bash
+git diff
+```
 
   To compare staging area to repository, i.e. last commit to next commit:
 
-  ```bash
-  git diff --staged
-  ```
+```bash
+git diff --staged
+```
 </SideNote>
 
 The format in which the changes are displayed can be a bit hard to read in the terminal, especially for larger changesets, so it's best to view them in a real text editor.
@@ -364,7 +367,7 @@ Once you're done looking around, don't forget to return to the present! The easi
 git checkout main
 ```
 
-The `main` identifier is just a shortcut way to refer to the default timeline (it's actually the default *branch* of the timeline, because there can be multiple parallel timelines 🤯. Branches were mentioned in the beginning and we'll have a look at these branches in the post about [keeping repositories in sync](/resource/posts/git-collaboration#keeping-repositories-in-sync-fetch-pull-push).
+The `main` identifier is just a shortcut way to refer to the default timeline (it's actually the default _branch_ of the timeline, because there can be multiple parallel timelines 🤯. Branches were mentioned in the beginning and we'll have a look at these branches in the post about [keeping repositories in sync](/resource/posts/git-collaboration#keeping-repositories-in-sync-fetch-pull-push).
 
 ### Undo Changes
 
@@ -376,7 +379,7 @@ There are three possible ways to do this.
 git revert ab9b27f
 ```
 
-Reverting a commit will keep that snapshot in the version history, and create a *new* snapshot with the changes removed. This is useful when you want to keep a record of the initial changes, and the fact that they have been reverted.
+Reverting a commit will keep that snapshot in the version history, and create a _new_ snapshot with the changes removed. This is useful when you want to keep a record of the initial changes, and the fact that they have been reverted.
 
 ```bash
 git reset 7f733ac
@@ -390,7 +393,7 @@ git reset --hard 7f733ac
 
 The most brute-force way to undo changes is with a "hard reset". Be aware that this will not only "rewind the clock" to a specific commit, but nuke any changes that have been made in the project since that point in time. Those changes will be lost.
 
-Lastly, if you only want to quickly change the *message* of the last commit, for example because you made a typo, you can:
+Lastly, if you only want to quickly change the _message_ of the last commit, for example because you made a typo, you can:
 
 ```bash
 git commit --amend
@@ -400,7 +403,7 @@ git commit --amend
 
 <Quiz>
   <Quiz.Card>
-    <Quiz.MultipleChoice variant="multiple">
+    <Quiz.MultipleChoice>
       <Quiz.Question>
         Which commands move changes to the "waiting area"?
       </Quiz.Question>
@@ -428,7 +431,7 @@ git commit --amend
   </Quiz.Card>
 
   <Quiz.Card>
-    <Quiz.MultipleChoice variant="multiple">
+    <Quiz.MultipleChoice>
       <Quiz.Question>
         Select all correct statements.
       </Quiz.Question>
@@ -455,6 +458,7 @@ git commit --amend
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
+
 
 ## Training Task
 
@@ -498,6 +502,7 @@ Run `git log` to see the identifier and the commit message.
 Git is an essential tool for version control, enabling efficient collaboration and tracking changes in projects, especially those involving text-based files. By mastering basic Git commands, you can manage project versions, track revisions, and synchronise work among multiple contributors. Understanding these foundational concepts and workflows will not only help in maintaining a clean project history but also improve team collaboration, whether you're working from the command line, GitHub, or a desktop interface. Embracing Git as part of your workflow helps you to manage projects confidently, restore previous versions, and merge contributions seamlessly.
 
 ## End note
+
 This resource was originally published to the ACDH-CH 'HowTo' internal training platform on 5th November 2023.  The publication date of this present resource reflects the date it was migrated to DARIAH-Campus.
 
 ## Links
