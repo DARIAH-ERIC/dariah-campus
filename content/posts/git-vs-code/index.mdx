@@ -1,7 +1,7 @@
 ---
 title: "Git: VS Code"
 lang: en
-date: 2023-12-18
+date: 2024-12-18T13:41:48.361Z
 version: 1.0.0
 authors:
   - siam-omar
@@ -10,14 +10,19 @@ tags:
   - git
 categories:
   - acdh-ch
-abstract: Getting access to the data on GitLab is different on all three operating systems. This post shows how to use the code editor VS Code with its graphical user interface for working collaboratively in Git with Windows, Mac and Linux.
+abstract: Getting access to the data on GitLab is different on all three
+  operating systems. This post shows how to use the code editor VS Code with its
+  graphical user interface for working collaboratively in Git with Windows, Mac
+  and Linux.
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
 type: training-module
+remote:
+  date: ""
 licence: ccby-4.0
 toc: false
 draft: false
-
+uuid: IVnt3FpaIk4ZRLzORxFwU
 ---
 ## Introduction
 
@@ -26,9 +31,10 @@ Getting access to the data on GitLab is different on all three operating systems
 ## Learning Outcomes
 
 After completing this learning resource, you will be able to:
-* use code editor VS Code for working collaboratively in Git with Windows, Mac and Linux
-* track changes in VS Code
-* clone and push a remote repository from the code editor
+
+- use code editor VS Code for working collaboratively in Git with Windows, Mac and Linux
+- track changes in VS Code
+- clone and push a remote repository from the code editor
 
 <SideNote type="note">
   Before you can start using a code editor to work with Git repositories, please make sure that you install the following prerequisites:
@@ -43,11 +49,11 @@ VS Code is an example for code editors. Using the command line or terminal inste
 
 <Tabs>
   <Tab title="Windows">
-    ![](images/vscode_first_start_windows.png)
+    !\\[](images/vscode_first_start_windows.png)
   </Tab>
 
   <Tab title="MacOS">
-    ![](images/vscode-first-start-macos.png)
+    !\\[](images/vscode-first-start-macos.png)
   </Tab>
 
   <Tab title="Linux">
@@ -59,7 +65,7 @@ VS Code is an example for code editors. Using the command line or terminal inste
 
 #### Cloning a Repository and Getting Data
 
-For example we want to clone `teapot` from [https://github.com/acdh-oeaw/howto\_trainingmaterials](https://github.com/acdh-oeaw/howto_trainingmaterials). The data at this location, in this repository, is marked as public. So you do not need to log into the Oeaw GitHub, but you need to be logged into your GitHub account that you set up to see the contents.
+For example we want to clone `teapot` from [https://github.com/acdh-oeaw/howto_trainingmaterials](https://github.com/acdh-oeaw/howto_trainingmaterials). The data at this location, in this repository, is marked as public. So you do not need to log into the Oeaw GitHub, but you need to be logged into your GitHub account that you set up to see the contents.
 
 On the top right there is a `Clone` button which, when clicked, gives you two options `HTTPS` and `GitHub CLI`. We need the HTTPS option. On the right there is a copy to the clipboard button we can use.
 
@@ -161,7 +167,7 @@ Git can record which changes, to which documents, have been made when, and by wh
 
 Version control allows to save versions of content, restore previous versions, and compare different versions. This is especially beneficial when working with multiple documents, and when working in teams of more than one (potentially working on the same document).
 
-Before uploading any changes, you want to track them locally. After cloning the howto\_trainingmaterials, let's open the `teapot.txt` in Visual Studio Code. This is done while the uppermost icon on the left is selected (the two sheets, files).
+Before uploading any changes, you want to track them locally. After cloning the howto_trainingmaterials, let's open the `teapot.txt` in Visual Studio Code. This is done while the uppermost icon on the left is selected (the two sheets, files).
 
 We want to change something so we replace every `I` with `you` in the lyrics and add the line `You drink tea every day` at the end. Save this file version.
 
@@ -194,7 +200,7 @@ See our Git version control via command line guide to learn more about [adding f
 Including content changes in Git's version history involves a two-step process. First, related changes are added to create semantically meaningful units of changes. These changes wait in the staging area but it needs an extra step to propagate these changes and feed them into the documents.
 Keep that in mind.
 
-When all related changes have been added to the "staging area", we can save them together as a current snapshot of our data, a **commit**, with a **commit message** that briefly describes *why* changes were made. This makes it easier to understand them later when viewing the version history. **Committing** means permanently recording a snapshot of contents at a specific point in time. In VS Code you use the `commit` button.
+When all related changes have been added to the "staging area", we can save them together as a current snapshot of our data, a **commit**, with a **commit message** that briefly describes _why_ changes were made. This makes it easier to understand them later when viewing the version history. **Committing** means permanently recording a snapshot of contents at a specific point in time. In VS Code you use the `commit` button.
 
 ![](images/commit_message_and_commit_button.png)
 
@@ -208,11 +214,11 @@ If you are on a new machine and/or just installed Git you will get an error. Her
 
 <Tabs>
   <Tab title="Windows">
-    ![First-commit error - windows](images/first-commit-error-windows.png)
+    !\\[First-commit error - windows](images/first-commit-error-windows.png)
   </Tab>
 
   <Tab title="MacOS">
-    ![First-commit error MacOS](images/first-commit-error-macos.png)
+    !\\[First-commit error MacOS](images/first-commit-error-macos.png)
   </Tab>
 
   <Tab title="Linux">
@@ -227,17 +233,16 @@ Whether you use `Learn More` or `Open Git log`, you will eventually see that Git
 
   Text for copying:
 
-  ```text
-  *** Please tell me who you are.
+```text
+*** Please tell me who you are.
 
-  Run
+Run
 
-    git config --global user.email "you@example.com"
-    git config --global user.name "Your Name"
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
 
-  to set your account's default identity.
-
-  ```
+to set your account's default identity.
+```
 </SideNote>
 
 There is no graphical interface for this one time configuration. You need to copy the two suggested `git config` commands and fill in your own details and execute them in a terminal. Create a new text file with `File`->`New text file`, copy the above lines starting with `git config` and fill in your information. Use the Visual Studio Code tab `Terminal` at the bottom. Alternatively you can select "Terminal" and "New Terminal" from the menu bar.
@@ -354,7 +359,7 @@ And after resolving **all** the conflicts we do a `merge commit` (the text is th
 
 ### Training Task
 
-Open your code editor. Clone the repository [https://github.com/acdh-oeaw/howto\_trainingmaterials](https://github.com/acdh-oeaw/howto_trainingmaterials) to your local work station. We used it in the **Git collaboration** - resource too.
+Open your code editor. Clone the repository [https://github.com/acdh-oeaw/howto_trainingmaterials](https://github.com/acdh-oeaw/howto_trainingmaterials) to your local work station. We used it in the **Git collaboration** - resource too.
 
 Inspect the repository by checking its status, and **pull** all changes that have been created in the meantime. If you do this exercise on your own, there might be no changes - still, it's best practice to pull regularly.
 
@@ -367,4 +372,5 @@ Perform `git push`.
 VS Code provides a user-friendly interface for collaborating with Git across Windows, Mac, and Linux. By using this code editor, you can easily track changes, clone repositories, and push updates, streamlining the workflow for cross-platform collaboration. This makes managing version control accessible and efficient, enhancing teamwork and productivity in any development environment.
 
 ## End note
+
 This resource was originally published to the ACDH-CH 'HowTo' internal training platform on 5th November 2023. The publication date of this present resource reflects the date it was migrated to DARIAH-Campus.
