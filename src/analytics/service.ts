@@ -12,6 +12,14 @@ export const service: AnalyticsService = {
 		window.gtag?.("event", "page_view", {
 			page_path: url,
 		});
+
+		const matomo = window._paq;
+		if (matomo != null) {
+			matomo.push(["setCustomUrl", window.location.href]);
+			matomo.push(["setDocumentTitle", document.title]);
+			matomo.push(["trackPageView"]);
+			matomo.push(["enableLinkTracking"]);
+		}
 	},
 	optIn() {
 		/* @ts-expect-error All good. */
@@ -30,3 +38,10 @@ export const service: AnalyticsService = {
 		});
 	},
 };
+
+declare global {
+	interface Window {
+		gtag?: () => void;
+		_paq?: Array<unknown>;
+	}
+}

@@ -2,12 +2,15 @@ import "tailwindcss/tailwind.css";
 import "@/styles/index.css";
 
 import { ErrorBoundary } from "@stefanprobst/next-error-boundary";
-import { type AppProps as NextAppProps } from "next/app";
+import type { AppProps as NextAppProps } from "next/app";
 import Head from "next/head";
 import { type ComponentType, Fragment } from "react";
 
+import { ConsentBanner } from "@/analytics/ConsentBanner";
 import { GoogleAnalytics } from "@/analytics/GoogleAnalytics";
-import { useGoogleAnalytics } from "@/analytics/useGoogleAnalytics";
+import { MatomoAnalytics } from "@/analytics/MatomoAnalytics";
+import { useAnalytics } from "@/analytics/useAnalytics";
+import { useConsent } from "@/analytics/useConsent";
 import { Favicons } from "@/assets/Favicons";
 import { WebManifest } from "@/assets/WebManifest";
 import { PageLayout } from "@/common/PageLayout";
@@ -28,7 +31,9 @@ export default function App(props: AppProps): JSX.Element {
 
 	const Layout = Component.Layout ?? PageLayout;
 
-	useGoogleAnalytics();
+	const [status, { accept, reject }] = useConsent();
+	useAnalytics();
+
 	usePageLoadProgressIndicator();
 
 	return (
@@ -44,6 +49,8 @@ export default function App(props: AppProps): JSX.Element {
 					<Layout>
 						<Component {...pageProps} />
 					</Layout>
+					{status === "unknown" ? <ConsentBanner onAccept={accept} onReject={reject} /> : null}
+					<MatomoAnalytics />
 					<GoogleAnalytics />
 				</Providers>
 			</ErrorBoundary>
