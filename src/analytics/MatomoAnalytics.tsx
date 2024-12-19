@@ -5,6 +5,7 @@ import { appId, baseUrl } from "@/analytics/analytics.config";
 
 export function MatomoAnalytics(): ReactNode {
 	if (baseUrl == null || appId == null || process.env.NODE_ENV !== "production") {
+		console.log("Matomo not found", { baseUrl, appId });
 		return null;
 	}
 
