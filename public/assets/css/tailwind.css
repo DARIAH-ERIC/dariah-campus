@@ -1411,6 +1411,10 @@ video {
 	margin-bottom: 1rem;
 }
 
+.mb-6 {
+	margin-bottom: 1.5rem;
+}
+
 .mb-\[1em\] {
 	margin-bottom: 1em;
 }
@@ -1433,6 +1437,10 @@ video {
 
 .mt-12 {
 	margin-top: 3rem;
+}
+
+.mt-4 {
+	margin-top: 1rem;
 }
 
 .mt-\[var\(--page-header-height\)\] {
@@ -1481,6 +1489,10 @@ video {
 
 .hidden {
 	display: none;
+}
+
+.aspect-square {
+	aspect-ratio: 1 / 1;
 }
 
 .aspect-video {
@@ -1715,6 +1727,10 @@ video {
 	flex-shrink: 0;
 }
 
+.shrink-0 {
+	flex-shrink: 0;
+}
+
 .-translate-y-full {
 	--tw-translate-y: -100%;
 	transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
@@ -1813,6 +1829,14 @@ video {
 
 .gap-8 {
 	gap: 2rem;
+}
+
+.gap-x-2 {
+	column-gap: 0.5rem;
+}
+
+.gap-x-4 {
+	column-gap: 1rem;
 }
 
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
@@ -1983,6 +2007,10 @@ video {
 	border-bottom-width: 1px;
 }
 
+.border-b-2 {
+	border-bottom-width: 2px;
+}
+
 .border-l-2 {
 	border-left-width: 2px;
 }
@@ -2038,6 +2066,10 @@ video {
 .border-red-600 {
 	--tw-border-opacity: 1;
 	border-color: rgb(220 38 38 / var(--tw-border-opacity));
+}
+
+.border-transparent {
+	border-color: transparent;
 }
 
 .border-yellow-500 {
@@ -3171,6 +3203,11 @@ video {
 	background-color: rgb(254 202 202 / var(--tw-bg-opacity));
 }
 
+.hover\:text-\[\#069\]:hover {
+	--tw-text-opacity: 1;
+	color: rgb(0 102 153 / var(--tw-text-opacity));
+}
+
 .hover\:text-event-orange:hover {
 	--tw-text-opacity: 1;
 	color: rgb(237 111 89 / var(--tw-text-opacity));
@@ -3179,6 +3216,11 @@ video {
 .hover\:text-event-violet2:hover {
 	--tw-text-opacity: 1;
 	color: rgb(8 112 172 / var(--tw-text-opacity));
+}
+
+.hover\:text-neutral-950:hover {
+	--tw-text-opacity: 1;
+	color: rgb(10 10 10 / var(--tw-text-opacity));
 }
 
 .hover\:text-primary-600:hover {
@@ -3340,6 +3382,14 @@ video {
 
 .data-\[placement\=top\]\:mb-2[data-placement="top"] {
 	margin-bottom: 0.5rem;
+}
+
+.data-\[selected\]\:border-current[data-selected] {
+	border-color: currentColor;
+}
+
+.data-\[selected\]\:font-medium[data-selected] {
+	font-weight: 500;
 }
 
 .group[data-placement="bottom"] .group-data-\[placement\=bottom\]\:rotate-180 {

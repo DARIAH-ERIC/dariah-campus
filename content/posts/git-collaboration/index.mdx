@@ -1,0 +1,277 @@
+---
+title: Git Collaboration
+lang: en
+date: 2024-12-18
+version: 1.0.0
+authors:
+  - siam-omar
+tags:
+  - data-management
+  - git
+categories:
+  - acdh-ch
+abstract: This short course will help learners understand how to work with Git in a
+  collaborative setting such as teamwork or group projects, and how to make use of platforms like GitHub or GitLab to complete that work.
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+licence: ccby-4.0
+toc: true
+draft: false
+uuid: ec55af19-7a59-4596-bdf8-bb441e923359
+
+---
+## Introduction
+
+This short course will help you understand how to work with Git in an open and collaborative setting; including the use of platforms like GitHub or GitLab. Using Git for version control to work on the same project in small teams is a good way to share and co-edit content and to keep track of all the changes.
+
+## Learning Outcomes
+
+After completing this learning resource, you will be able to:
+* work collaboratively with Git
+* create, clone and change a remote repository
+* understand the commands git fetch, git push and git pull
+* create a personal access token to use in a code editor
+
+## Using Git for Collaborative Team Work
+
+In this section we'll look at using Git to manage files in a project that is being worked on by more than one person as this is the most likely reason why you might be asked to use Git.
+
+This involves synchronizing changes across computer networks, and resolving conflicts between document versions that can arise when two people have changed the same document in different ways.
+
+Many **"drive" services in the cloud** like [https://www.dropbox.com](https://www.dropbox.com), [https://onedrive.live.com/](https://onedrive.live.com/) or [https://drive.google.com](https://drive.google.com)" provide such mechanisms in their Web interface as well. Git however offers more fine grained tracking of changes, as well as more control over the handling of changes, versions and conflicts.
+
+It is also easier for applications to interact with Git services than with "drive" services. That's why software developers often ask you to use Git instead of any "drive" service.
+
+If you get into the Git workflow you may want to use it also locally for any kind of documents (remember Git is best at text documents, but not limited to them).
+
+Most importantly however, everything we have learned in the first part is still valid: in Git everybody always works on a local copy of a project, and Git helps to keep local project copies in sync. This is why Git is sometimes called a distributed version control system.
+
+## Remote Repositories
+
+Remote repositories are versions of your project that are hosted "elsewhere", usually somewhere on the internet. There can be multiple such remote versions. Remote repositories are the principle mechanism that allow to synchronize changes between collaborators in a team. While it would be in principle possible to set up the local repository of a colleague as a remote repository and synchronize directly between individual colleagues, this would become complicated very quickly with teams of more than two members. Therefore almost invariably a dedicated Git hosting provider like GitHub or GitLab is used to store a primary copy of our project, with which all team members can synchronize their local project copies.
+
+In the following, we will learn a few new Git commands needed to work with remote repositories.
+
+### Creating a Remote Repository
+
+If no remote repository for a project has been established yet, you need to create a new one.
+
+<SideNote type="note" title="Git hosting providers">
+  There are various Git hosting providers out there, some of the most prominent ones being GitHub and GitLab.
+
+  We are going to use **GitHub** in this section, but other services like GitLab work very similarly. Although **GitHub** has a nice **browser-based graphical user interface at [https://github.com](https://github.com)**, and also provides a **Desktop client** for all operating systems, we are going to keep using the terminal to communicate with GitHub first.
+
+  If you want to follow along, please download and install the GitHub CLI and **create a GitHub user** account if you don't have one already.
+</SideNote>
+
+First, let's create a new empty remote repository called my-test-project on GitHub's servers:
+
+```bash
+gh repo create my-test-project
+```
+
+To connect a local Git project with the newly created remote repository, type:
+
+```bash
+git remote add origin https://github.com/my-git-username/my-test-project
+```
+
+By convention, the remote repository which holds the primary copy of a project is called “origin”.
+
+### Cloning a Remote Repository
+
+In a collaborative setup, there is a good chance that a remote repository has already been set up and we just need to "connect" to it, that is, create a local copy, or **clone** a remote repository, which will take care of initializing the project locally, connecting it with the remote, and synchronizing the local project with the current state of the remote.
+
+To **clone** a local repository from a remote repository, we just need to specify its URL and create a local copy on our machine in a directory of our choosing, using the command `git clone <url>`.
+
+```bash
+git clone https://github.com/my-git-username/my-test-project
+```
+
+The above will create a local directory for the Git repository that has the same name as the remote repo, "my-test-project". You are free to choose the local directory's name to your liking:
+
+```bash
+git clone https://github.com/my-git-username/my-test-project the_new_project
+```
+
+Now, our local Git repo sits in a directory called `the_new_project`.
+
+Alternatively to the `https://` protocol, you can also use the SSH transfer protocol. Check the [Git documentation](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) for further information.
+
+### Keeping Repositories In Sync: Fetch, Pull, Push
+
+Working collaboratively also means keeping in sync with changes that have been created as well as bringing your own work back into the remote repository.
+
+These three commands are essential to keep your local version in sync with the remote repository:
+
+```bash
+git fetch
+```
+
+`Git fetch` fetches any changes that have been made to the remote repository while you were working on your own local repository. The command will show changes that are not in your local version yet. They need to be integrated before you can push your version back into the remote repository. You can specify which branch you want to fetch by adding its name. Using `git log` in the terminal will give you further information on the changes. Use `git commit` and `git merge` to integrate the changes.
+
+```bash
+git pull
+```
+
+`Git pull` is similar to `git fetch`. However, when you use this command, the change in the remote repository or remote branch are merged into your local copy straight away. While `git fetch` gives you more control, `git pull` is faster when you want to perform multiple actions.
+
+```bash
+git push
+```
+
+`Git push` is the opposite action of `git fetch` and `git pull`. You *push back* your local branch or repository into the remote repository. If you have already an upstream remote for your local branch, `git push` can push to that branch as a default. In case you don't want to use the default branch, you can specify the branch every time you push: `git push <remote> <branch-name>`.
+
+<SideNote type="tip" title="Good practice when collaborating">
+  When you collaborate with others, it is considered good practice to `git pull` before you `git push` to the remote. This way, you can resolve conflicts locally and avoid conflicts in the remote. These so-called *merge conflicts* are sometimes difficult to entangle, so take your time when pushing your work. Code editors clearly visualize conflicts and help you with a clean work flow.
+</SideNote>
+
+## Working Collaboratively in Code Editors
+
+Alternatively to working on the command line, some hosting providers like GitHub offer a desktop client or a browser based interface. In addition, there are various code editors available that provide a graphical user interface that support working with your team fast, diligently and easily.
+Some of the more well-known ones are [VS Codium](https://vscodium.com/), [Visual Studio Code](https://code.visualstudio.com/), and [Git Kraken](https://www.gitkraken.com/).
+
+In order to work with your team but use a code editor, you need to link the code editor and your respective GitHub, GitLab, Bitbucket etc account. This way, the code editor can access the remote repository and you can set up your local version and/or bring locally created files into the remote repo. Follow the installation instructions for your favourite code editor and come back for information on linking the editor with your hosting provider.
+
+<SideNote type="note" title="Working with VS Code and GitLab">
+  In the Git: VS Code resource, you can find more details on how to use a code editor, for example VS Code and VSCodium. In that resource, the hosting service is GitLab.
+</SideNote>
+
+### Getting a Throw Away Password for Git: Creating an Access Token
+
+Security experts will tell you that you should never save a password on a computer. Write it down on a peace of paper and put it into a locked drawer maybe but never save it to a computer in a readable way. This of course can mean that you need to type a password again and again and again when working with some data and that is tiresome.
+
+So the solution are throw away passwords no one needs to remember and that have a scope, that is they can only be used to do certain things with a service.
+
+Besides gitlab.oeaw\.ac.at allows you to use a number of other services (like Google, GitHub, etc) you already might have an account for to log into gitlab.oeaw\.ac.at. If you use that, and that is in general a good idea, gitlab.oeaw\.ac.at has no idea what your password is. It just trusts the other services to check your password and tell it that you are who you claim to be.
+
+So to get our data from gitlab.oeaw\.ac.at we need to create a password for exactly that purpose. This is called an "access token".
+
+Go to [gitlab.oeaw.ac.at and sign in](https://gitlab.oeaw.ac.at/users/sign_in).
+
+In the top right corner you see your user settings menu. Open it and choose **preferences**.
+
+<Figure src="images/gitlab_com_preferences.png">
+  gitlab.oeaw\.ac.at user preference
+</Figure>
+
+On the left side select "**Access Tokens**"
+
+<Figure src="images/gitlab_com_access_tokens.png">
+  gitlab.oeaw\.ac.at preferences Access Tokens
+</Figure>
+
+We will create a new access token that has all available rights or scopes so Git and Visual Studio Code can interact with gitlab.oeaw\.ac.at. We enter a descriptive `Token Name` like `Visual Studio Code` or `Git` and add a name for the computer we will use this on. This is a hint for us for later.
+
+<Figure src="images/gitlab_com_all_access_token.png">
+  gitlab.oeaw\.ac.at create all access token
+</Figure>
+
+We could only grant a particular set of rights here, limit the scopes the token is valid for. We can also set an expiration date if we know we won't use the token for very long, for example when trying some new software.
+
+After we click on `Create personal access token!` we see this new generated password in our browser. As the text clearly states we won't be able to see it again. If we need access for another tool we just create a new access token.
+
+<Figure src="images/gitlab_com_access_token_generated.png">
+  gitlab.oeaw\.ac.at access token created
+</Figure>
+
+For the purpose of this workshop we should leave the browser tab open or copy the access token we just created somewhere. We might need it later for enabling an add-on.
+
+If we ever forget what the purpose of a token was or if we don't use it anymore we find the token by name and `Revoke` it, we delete it.
+
+Similar to GitLab, an access token can be created in GitHub too:
+
+[Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+
+### Quiz
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        What are GitHub, GitLab and Bitbucket?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        Version control systems
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        hosting providers
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        code editors
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Try again
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        What is the difference between `git fetch` and `git pull`?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        They are the same.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        `Git fetch` allows to integrate all the changes that have been made to the remote repository into your local repo at the same time.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        `Git pull` allows to integrate all the changes that have been made to the remote repository into your local repo at the same time.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Try again
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+### Training Task
+
+Open your terminal / command line / git shell. Clone the repository "[https://github.com/acdh-oeaw/howto\_trainingmaterials](https://github.com/acdh-oeaw/howto_trainingmaterials)" to your local work station.
+
+Inspect the repository by checking its status.
+
+Create another file named `abc.txt` with the following text:
+
+```text
+A, B, C,
+Granny caught a flea
+She salted it and peppered it
+And put it in her tea
+The flea died and Granny cried.
+A, B, C.
+```
+
+Add the file to the repo, and commit the file with commit message.
+
+Then, check the local repo's status.
+
+Before you push your repo, perfom `git fetch` (if you think others are working in the same remote repo), or `git pull` (if you think you are the only person working on it).
+
+Perform `git push`.
+
+## Conclusion
+
+Git is an essential tool for collaborative team work, allowing multiple contributors to work on the same project while keeping track of all changes. By understanding how to use Git commands like `git fetch`, `git push`, and `git pull`, and learning to manage remote repositories, you can effectively synchronize work across team members. Platforms like GitHub and GitLab further enhance this collaboration, offering robust tools for handling version control, resolving conflicts, and maintaining detailed project histories. Embracing Git in your workflow ensures efficient collaboration and streamlined project management, whether working locally or in a distributed setting.
+
+## End note
+This resource was originally published to the ACDH-CH 'HowTo' internal training platform on 5th November 2023.  The publication date of this present resource reflects the date it was migrated to DARIAH-Campus.

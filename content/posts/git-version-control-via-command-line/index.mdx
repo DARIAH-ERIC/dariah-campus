@@ -1,0 +1,514 @@
+---
+title: Git Version Control via Command Line
+lang: en
+date: 2024-12-18T13:43:36.660Z
+version: 1.0.0
+authors:
+  - siam-omar
+tags:
+  - data-management
+  - git
+categories:
+  - acdh-ch
+abstract: This article introduces the main concepts in Git and basic Git
+  commands that can be used from the command line. Understanding these commands
+  will help you with using Git in a code editor, the Git desktop and other
+  options, like GitHub online.
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: ""
+licence: ccby-4.0
+toc: false
+draft: false
+uuid: JOvz1UHen9JQY8lX8kznZ
+---
+## Introduction
+
+This post introduces the main concepts in Git and basic Git commands that can be used from the command line. Understanding these commands will help you with using Git in a code editor, the Git desktop and other options, like GitHub online.
+
+## Learning Outcomes
+
+After completing this learning resource, you will:
+
+- be familiar with Git terminology
+- be familiar with the Git workflow
+- be able to install Git
+- understand essential Git commands
+- be able to use Git commands in the terminal / command line
+
+## Version Control and Tracking Changes
+
+**Git**'s main purpose is to track changes in files and folders of a project, either for yourself or when working collaboratively in a team. It works best when used with **plaintext file formats** such as **source code, XML/TEI documents** or **Markdown content**. While Git will happily store _images_, _audio files_, or `.doc` and `.pdf` documents, it is not able to help you with changes in documents in so-called binary formats.
+
+**Git**
+
+- solves the problem of keeping versions of text documents in sync among sometimes thousands of
+  collaborators working on a software product
+- it helps integrate changes by multiple collaborators and also solves situations where two people
+  edit the same part of a document
+
+Git can record which changes, to which documents, have been made when, and by whom. It allows to keep a detailed revision history of a project, because it can save snapshots of a project at specific points in time, allowing to review them any time in the future.
+
+Version control allows to save different versions of content, restores previous versions, and compares different versions. This is especially beneficial when working with multiple documents, and when working in teams (potentially working on the same document).
+
+<Figure src="images/branches.png">
+  Git's version control works with branches.
+</Figure>
+
+Git allows to create separate branches for changes to any document. For example, in the image above, the document is represented by the **main branch**. When a change should be created, a copy, the branch "feature A" is **pulled** from the main branch. Once the change is made, the feature branch is ready to transfer back into the main branch. Similarly, we can **fetch** a branch "feature B" and create another change. When changes have been **committed**, it can be **pushed** back into the main branch, too. Git version control features allow to trace those changes and consider them before they are **merged** into the main branch.
+
+The paragraph above features **terminology** (in bold) that will become essential commands that enable us to work with Git.
+
+### Official Terminology: Working Area, Staging Area, Repository
+
+This diagram is a great summary of how content moves in Git, between the “working area”, which is simply the files and folders in a project as they exist on your computer, the “staging area”, which we can call a “holding zone”, and the “repository”, which are the permanently recorded commit snapshots.
+
+<Figure src="images/git_terminology.png">
+  Git workflow
+</Figure>
+
+- **Working area:** This is where you manipulate your files. For example, you can make changes to the text in an MDX document. The working area usually resides on your local machine.
+- **Staging area:** This "holding zone" allows to **stage** changes in your documents, and **commit** those changes once you are comfortable, and **push** these changes to your repository.
+- **Repository:** A repository is a central location where the data, files and documents are stored and managed. You can be the sole user of a repository or you can be a collaborator in a team.
+
+Let's look at how change tracking with Git works in practice, in a local project on your computer (no network connection required). We'll walk through how to work with Git in the terminal, because that is where Git was originally meant to be used, and because it helps to understand what is actually going on. This involves learning a handful of Git commands, and while that might seem intimidating at first, you'll see that it becomes second-nature with a bit of practice very quickly.
+
+However, if you prefer to work with Git via a **graphical user interface (GUI)**, take a look at the bonus section at the end of this introduction, which lists some popular editor or operating system integrations.
+
+<SideNote type="note">
+  The commands you learn for working in a local project also apply for working collaboratively. Working in the terminal helps to understand what is going on behind the scenes.
+</SideNote>
+
+## Installing Git
+
+<SideNote type="tip" title="Don't be afraid of the command line interface (CLI)">
+  Many users, particularly Windows users, depend on using Graphical User Interfaces (GUI) in their daily lives and work schedules. GUIs have tabs, menus and windows that you can click on. GUIs are perceived as more user-friendly because they graphically represent the actions you take when you interact with the machine in front of you.
+
+  The command line interface (CLI) relies on text input. The user needs to know syntax and commands to use it. So instead of clicking on symbols, you type what you would like your machine to do. To open the command line, search for _terminal_ or _command prompt_. When you open your CLI, it will look something like this:
+
+```bash
+C:\Users\user_name>path_to_your_directory
+```
+
+  When using a Mac, you will see the **$** character instead of **\>**.
+
+  Here's an example for a basic command to use in your CLI: to navigate to a directory, type **cd** and the directory name. Now you can navigate down the directory hierarchy. To go back up, type **cd..**
+
+```bash
+C:\Users\user_name>cd path_to_your_directory
+C:\Users\user_name\path_to_your_directory> cd a_small_folder
+C:\Users\user_name\path_to_your_directory\a_small_folder> cd ..
+C:\Users\user_name\path_to_your directory> cd ..
+C:\Users\user_name>
+```
+
+  There are multiple tutorials available that help you to familiarize yourself with the command line.
+</SideNote>
+
+<SideNote type="note" title="Git for Windows, Mac, Linux">
+  <Tabs>
+    <Tab title="Windows">
+      If you haven't yet installed Git on your Windows computer, follow the instructions on [https://git-scm.com/downloads](https://git-scm.com/downloads), or [https://gitforwindows.org/](https://gitforwindows.org/).
+
+      You should also provide some initial configuration. The setup program runs as administrator as well as normal user. In general hit next and don't change anything as most options are only relevant for advanced usage.
+
+      [One exception might be the editor](https://git-intro-wboe.acdh-dev.oeaw.ac.at/simple_windows_editors). But if you follow this howto, its use is not essential.
+
+      ### Editors with Git-Support
+
+      In order to have an editor that supports us when working with Git version control, we would suggest you to use [Visual Studio Code.](https://code.visualstudio.com/) Just download the suggested stable build and install it.
+
+      We would suggest you to let the setup program add an icon on your desktop. You can of course just search the start menu for (Visual Studio)Code.
+
+      Note that other specialized editors also support managing Git repositories themselves. One notable example would be OxygenXML.
+    </Tab>
+
+    <Tab title="Mac">
+      There are several ways to install Git on MacOS. Depending on your needs and your familiarity with the command line we suggest one of the following two ways:
+
+      ### 1. Using the Git Bundled with XCode Command Line Tools
+
+      Apple ships an older version of Git with some add on tools for their MacOS. To get this Git version you only have to
+
+      * open a "terminal" (type "terminal" in Spotlight search, start the respective app)
+      * type `git` and press enter and try to run Git
+
+      Doing this will tell MacOS to get a few more programs from the internet. The bundle is called "Xcode Command Line Tools". So if this already happened for some reason you are ready. If not, you have to go through a few dialogs and after about 10 minutes everything is installed.
+
+      ### 2. Using an Installation Package
+
+      The easiest way to install Git on a Mac is to use an installer-package provided by Tim Harper.
+      However
+
+      * it will not give you the latest version of Git
+      * it will be harder to update
+      * it will complain that the software might be risky (which is highly unlikely)
+
+      If these three downsides do not matter to your workflow, here is a step by step guide:
+
+      1. Download the installer package at [https://sourceforge.net/projects/git-osx-installer/](https://sourceforge.net/projects/git-osx-installer/).
+      2. Open the downloaded *.dmg file and run the file with the ending* .pkg.
+         ![](images/macos_installerpackage.jpg)
+      3. MacOS is likely to give you a warning, because it does not initially trust sourceforge.com as a
+         source, as it is not a "verified developer".
+         ![](images/macos-warning.png)
+         If this happens, please press ok and go to your "System Settings" - Security - General.
+         ![](images/macos-securitysettings.jpg)
+         There you will see at the bottom of the window a button that should prompt "open anyways" to be able to open and run the \*.pkg. Also prompt "open" at the following warning and the installer-package will start.
+      4. Please follow the instructions in the standard installation dialogue to install Git.
+
+      ![](images/macos_installationdialogue.png)
+
+      ### 3. Using Homebrew
+
+      If you are not afraid of the command line, you can use the package manager "Homebrew" to install the latest version of Git.
+
+      #### Installing Homebrew
+
+      If you do not have Homebrew installed yet, please paste the following line into your MacOS Terminal:
+      `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)".`
+
+      By pressing enter and starting the script the installation procedure will run in the terminal. At each step the installer will pause and let you confirm, before it continues.
+
+      #### Installing Git Using Homebrew
+
+      After having installed Homebrew, please paste the following into your MacOS terminal: `$ brew install git`. This prompt will run the Git-installation.
+
+      ### Editors with Git-Support
+
+      To have an editor that supports us when working with Git version control, we would suggest you to use
+      [Visual Studio Code](https://code.visualstudio.com/). Just download the suggested stable build and install it.
+
+      Note that other specialized editors also support managing Git repositories themselves. One notable
+      example would be OxygenXML.
+    </Tab>
+
+    <Tab title="Linux">
+      If you haven't yet installed Git on your computer, follow the instructions on [https://git-scm.com/ Download for Linux and Unix](https://git-scm.com/download/linux).
+
+      Git is part of every Linux Distribution nowadays and you install it using the usual package management tools (like `apt`, `dnf`, `pacman`, `yum`, `zypper` etc.).
+
+      ### Editors with Git-Support
+
+      To have an editor that supports us when working with Git version control we would suggest you to use
+      [Visual Studio Code](https://code.visualstudio.com/). Just download the suggested stable build and install it.
+
+      Note that other specialized editors also support managing Git repositories themselves. One notable
+      example would be OxygenXML.
+
+      ## Save your Username and Password, so Type It Only Once
+
+      You also should make sure the `git-credential-libsecret` package is installed. This package exists
+      on fedora based distributions. On Ubuntu and debian you need to execute these commands in a terminal:
+
+      ```bash
+      sudo apt-get install build-essential libsecret-1-0 libsecret-1-dev
+      cd /usr/share/doc/git/contrib/credential/libsecret
+      sudo make
+      sudo git config --system credential.helper /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+      ```
+    </Tab>
+  </Tabs>
+</SideNote>
+
+## Initialize a Git Project in Your Terminal
+
+First, we need to tell Git that it should start to manage a project directory and keep an eye on changes to documents there. On a **Windows** PC, run the program **git shell** **(Git Bash)**, on **Mac** or **Linux** use the terminal of your choice. Navigate to the folder which contains the data you want to version (usually done by typing `cd {folder-name}`, e.g. _cd Documents_), and afterwards type:
+
+```bash
+git init
+```
+
+This will initially set up Git's internal bookkeeping metadata, which is stored in a hidden .Git folder. Git will respond with:
+
+<Figure src="images/git_initialise_empty_gitrepo.png">
+  Initialize an empty Git repository on your local machine.
+</Figure>
+
+Let's also create some new content. In a real research project this would mean editing or adding an XML/TEI document or similar. To demonstrate the mechanics we'll keep it basic here and use the terminal to create a simple text file. When you want to create a text file via the command line: The text in "", following _echo_, is the content of the text file which you specify with "filename.txt", txt being a text file extension.
+
+```bash
+echo "This is my text document." > my-document.txt
+```
+
+### Check Status
+
+We can always check what Git knows about the state of our project with:
+
+```bash
+git status
+```
+
+Note that Git informs us that changes have been made to a file called `my-document.txt`, but that file is currently "untracked", which means it is not currently managed by Git's versioning. Git also tells us that, in order to tell it to keep track of changes to that file, we should "use `git add` to track". Generally, if you find yourself in situations where you're unsure how to proceed, `git status` will most of the time show helpful hints. It's probably the Git command you'll be using most often.
+
+<Figure src="images/add_file_status.png">
+  In the image you can see that a text file was created and that the status was checked. There are no commits yet, but some changes are already staged, others yet untracked.
+</Figure>
+
+## Mark Content Changes to be Included in the Version History
+
+Let's follow the advice and use `git add` to tell Git to keep an eye on changes to the newly created document `my-document.txt`:
+
+```bash
+git add my-document.txt
+```
+
+<SideNote type="note" title="Adding multiple files">
+  To add multiple files, it is possible to list them individually:
+
+```bash
+git add first-document.txt second-document.txt
+```
+
+  Or, to include _all_ changes to the project:
+
+```bash
+git add -A
+```
+</SideNote>
+
+Note that `git add` does not automatically **commit** the changes, but places them in the **staging area**.
+
+### Bundle Changes into Meaningful Chunks
+
+Including content changes in Git's version history involves a two-step process. First, we put changes in the “holding zone” or **“staging area”**. We can continue adding related changes to other documents, or additional newly created documents. This allows **creating semantically meaningful units of changes**.
+
+When all related changes have been added to the “holding area”, we can save them together as a version history snapshot, with a message that briefly describes the changes so it is easy to find them later when viewing the version history.
+
+These units are called **“commits”**, and **“committing”** means permanently recording a snapshot of contents at a specific point in time, with a message describing the change:
+
+```bash
+git commit -m "Add test document"
+```
+
+Every project snapshot we commit to history should include a semantically meaningful set of changes, and this may involve edits to different documents. `git add` allows to granularly choose which changes to which files should be part of the next snapshot, while `git commit` will label that set of changes, and actually save a new snapshot.
+
+<SideNote type="note" title="Commit messages">
+  Commit messages are usually written in imperative language. For example it is customary to say “Change document title”, not “Changed document title”. Nevertheless, it's perfectly fine to agree on different project-specific conventions, just try to be consistent.
+
+  When in a hurry, it's tempting to write non-descriptive commit messages like “Added changes”. Try to come up with something that describes the change, you'll thank yourself later!
+</SideNote>
+
+### View history of changes
+
+Getting into the habit of assigning descriptive commit messages is especially helpful when viewing the history of changes. Git will print a changelog with:
+
+```bash
+git log --oneline
+```
+
+Note that we have one entry in our version history, and that Git has assigned the commit message we have provided, as well as an **internal identifier** to that entry. That identifier consists of 40 alphanumeric characters, but usually the first few characters are enough to uniquely address a commit in a project.
+
+Below, you see a sample information message that your terminal returns. It includes the identifier, shows where the changes happened and the commit message:
+
+```bash
+7f733ac (HEAD -> main) Add test document
+```
+
+If you type `git log` instead, more detailed information will be displayed, including the individual add that are bundled in your commit (if you have any) and the longer internal identifier.
+
+### View Individual Snapshot
+
+Git will display the exact changes which were made in a commit snapshot with:
+
+```bash
+git show 7f733ac
+```
+
+That last bit is the unique identifier which is assigned to every commit in Git's version history. We've seen above how we can figure out these ids from inspecting the changelog displayed with `git log`. Note that when you have followed the steps in this introduction on your own computer, the unique identifier you see will be different from the one above. This is because identifiers are calculated from filename and content, author, commit message, and commit date.
+
+### Compare Two Snapshots
+
+It is also possible to show changes between two specific commit snapshots. Let's first add another change, so there are actually two separate entries in our commit history (again, how creating and editing a document on the terminal works is unimportant here, but the two-step process of creating a snapshot with `git add` and `git commit` should already be familiar):
+
+```bash
+echo "This is another document." > another-document.txt # creates a new document
+sed -i s/text/test/ my-document.txt # changes "text" to "test" in `my-document.txt`
+git add -A
+git commit -m "Add new document and change initial document"
+```
+
+To list the difference between two commit snapshots, we'll first find out their respective unique identifiers, and then tell Git to compare those:
+
+```bash
+git log --oneline
+git diff 7f733ac ab9b27f
+```
+
+<SideNote type="note" title="Diffing not-yet-committed work">
+  To compare working directory to staging area:
+
+```bash
+git diff
+```
+
+  To compare staging area to repository, i.e. last commit to next commit:
+
+```bash
+git diff --staged
+```
+</SideNote>
+
+The format in which the changes are displayed can be a bit hard to read in the terminal, especially for larger changesets, so it's best to view them in a real text editor.
+
+### Time Travel
+
+Alternatively, Git allows to "time travel" to a specific point in a project's history. You can inspect how each document looked like at that point in time, without losing any subsequent changes:
+
+```bash
+git checkout 7f733ac
+```
+
+Once you're done looking around, don't forget to return to the present! The easiest way is with:
+
+```bash
+git checkout main
+```
+
+The `main` identifier is just a shortcut way to refer to the default timeline (it's actually the default _branch_ of the timeline, because there can be multiple parallel timelines 🤯. Branches were mentioned in the beginning and we'll have a look at these branches in the post about [keeping repositories in sync](/resource/posts/git-collaboration#keeping-repositories-in-sync-fetch-pull-push).
+
+### Undo Changes
+
+Finally, Git also allows to undo changes. Even though Git forces us to be very intentional about which changes end up in the changelog (we needed to go through the two-step `git add` and `git commit` process after all), sometimes you'll still want to discard some of them.
+
+There are three possible ways to do this.
+
+```bash
+git revert ab9b27f
+```
+
+Reverting a commit will keep that snapshot in the version history, and create a _new_ snapshot with the changes removed. This is useful when you want to keep a record of the initial changes, and the fact that they have been reverted.
+
+```bash
+git reset 7f733ac
+```
+
+Resetting history allows to "rewind the clock" to a specific point im time (addressed via unique identifier), without losing the changes that have been made to documents in subsequent changes. It's mostly useful as a way to "rewrite" history.
+
+```bash
+git reset --hard 7f733ac
+```
+
+The most brute-force way to undo changes is with a "hard reset". Be aware that this will not only "rewind the clock" to a specific commit, but nuke any changes that have been made in the project since that point in time. Those changes will be lost.
+
+Lastly, if you only want to quickly change the _message_ of the last commit, for example because you made a typo, you can:
+
+```bash
+git commit --amend
+```
+
+## Quiz
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Which commands move changes to the "waiting area"?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        `git stage`
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        `git add`
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        `git commit`
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Try again. Officially, the "waiting area" is called "staging area".
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Select all correct statements.
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Git commits are snapshots of the status of document or file at a specific point in time.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        `git reset --hard "commit id"` will remove all changes that have been created in a project after the commit which you pass to the command.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        You can add various changes and then bundle them into one meaningful commit.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Exactly, all of the above are correct.
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Try again
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+
+## Training Task
+
+First, install `git` if you need to do so on your machine.
+
+Second, create a new directory in your home directory (often the C://) called "Howto-Git".
+
+Use the terminal or the Git shell and navigate to this directory on the command line.
+
+Run the `git init` command.
+
+Create a new document called `teapot.txt` with this text (you could also do this outside the command
+line):
+
+```text
+- I'm a little teapot Short and stout Here is my handle Here is my spout.
+```
+
+Save the document and check its status.
+
+Add the `teapot.txt` document.
+
+Create a second document called `teapot2.txt` with this text (you could also create the document outside the command line):
+
+```text
+- When I get all steamed up Hear me shout 'Tip me over and pour me out!'.
+```
+
+(Note that you used single quotation marks because the double ones are already used in the command to create the document, if you do it from the command line.)
+
+Add the `teapot.txt` document.
+
+Commit both documents with the following commit-message: "add teapot lyrics".
+
+Run `git status` to check if your commit has worked.
+
+Run `git log` to see the identifier and the commit message.
+
+## Conclusion
+
+Git is an essential tool for version control, enabling efficient collaboration and tracking changes in projects, especially those involving text-based files. By mastering basic Git commands, you can manage project versions, track revisions, and synchronise work among multiple contributors. Understanding these foundational concepts and workflows will not only help in maintaining a clean project history but also improve team collaboration, whether you're working from the command line, GitHub, or a desktop interface. Embracing Git as part of your workflow helps you to manage projects confidently, restore previous versions, and merge contributions seamlessly.
+
+## End note
+
+This resource was originally published to the ACDH-CH 'HowTo' internal training platform on 5th November 2023.  The publication date of this present resource reflects the date it was migrated to DARIAH-Campus.
+
+## Links
+
+### Cheatsheets
+
+Git commands Github: [https://education.github.com/git-cheat-sheet-education.pdf](https://education.github.com/git-cheat-sheet-education.pdf)
+
+Git commands Gitlab: [https://about.gitlab.com/images/press/git-cheat-sheet.pdf](https://about.gitlab.com/images/press/git-cheat-sheet.pdf)
