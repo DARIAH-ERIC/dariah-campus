@@ -18,7 +18,7 @@ _paq.push(['setSecureCookie', true])
 _paq.push(['enableHeartBeatTimer'])
 ;(function() {
   var u = "${baseUrl}"
-  _paq.push(['setTrackerUrl', u + 'matomo.php'])
+  _paq.push(['setTrackerUrl', u + '/matomo.php'])
   _paq.push(['setSiteId', ${appId}])
   var d = document,
     g = d.createElement('script'),
@@ -26,6 +26,6 @@ _paq.push(['enableHeartBeatTimer'])
   g.type = 'text/javascript'
   g.async = true
   g.defer = true
-  g.src = u + 'matomo.js'
+  g.src = u + '/matomo.js'
   s.parentNode.insertBefore(g, s)
 })()`;
