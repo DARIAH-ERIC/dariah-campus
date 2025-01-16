@@ -49,6 +49,14 @@ export const collection: CmsCollection = {
 					label: "English",
 					value: "en",
 				},
+				{
+					label: "German",
+					value: "de",
+				},
+				{
+					label: "Swedish",
+					value: "sv",
+				},
 			],
 			default: "en",
 		},
