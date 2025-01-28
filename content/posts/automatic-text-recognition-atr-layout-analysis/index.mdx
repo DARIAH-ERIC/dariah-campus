@@ -48,11 +48,7 @@ After completing this resource, learners will be able to:
 
 \- choose between a manual and an automatic annotation process
 
-
-
 <Video provider="youtube" id="KQMy6uiXE-8" />
-
-
 
 ### 1. What is layout analysis?
 
@@ -64,8 +60,6 @@ Layout analysis is a computer vision task wherein we generate a series of x and 
 
 Layout analysis can also include the computation of the reading order of the lines. For example, if you have a page with two columns of text, you may want to read the first column from top to bottom, followed by the second one from top to bottom. A bad reading order would move from the first line of the first column to the first line of the second column, then going back to the second line of the first column, etc.
 
-
-
 ### 2. How does region segmentation work?
 
 Let us see first how region segmentation works. The components to identify in segmentation can include text blocks, images, tables, columns, headings, footers, etc. The goal is to segment the document into meaningful regions that can be further processed or analysed.
@@ -76,13 +70,60 @@ Detected bounding boxes are usually rectangular (i.e. [YOLO models](https://gith
 
 ![Layout annotation with eScriptorium.](images/image-2.png "Layout annotation with eScriptorium.")
 
-
-
 ### 3. What is a text line?
 
 To understand how text line recognition works, we need to explain what is a text line in the context of Layout Anaysis. Inside segmented zones, there are lines of text. In most cases, when you segment a text line, two elements are extracted at once:
 
--   A baseline or a topline (red), which defines a virtual line, passing through at least two points, on which the text is written or from which it is hanging;
--   A mask (purple), which is a polygon (sometimes a rectangle), defined by at least three points, and which delimits the area of pixels containing the text of the line. The mask is usually automatically calculated by the automatic text recognition (ATR)automatic text recognition (ATR) system based on the baseline or topline coordinates.
+- A **baseline or a topline** (red), which defines a virtual line, passing through at least two points, on which the text is written or from which it is hanging;
+- A **mask** (purple), which is a polygon (sometimes a rectangle), defined by at least three points, and which delimits the area of pixels containing the text of the line. The mask is usually automatically calculated by the automatic text recognition (ATR)automatic text recognition (ATR) system based on the baseline or topline coordinates.
 
 ![A text line corresponding to the poem’s title, its baseline (red), and mask (purple).](images/baseline.png "A text line corresponding to the poem’s title, its baseline (red), and mask (purple).")
+
+### 4. How does line segmentation work?
+
+When we perform line segmentation, we want to precisely detect text in an image, which is crucial as most of the current state of the art ATR machine learning models rely on correctly extracting text lines before transcribing them.
+
+There are two approaches: 
+
+- A baseline (or topline) is drawn either manually or automatically before the software calculates the corresponding polygon. 
+- Or, a bounding box is drawn either manually or automatically around the line of text, meaning we only have a rectangular mask, without necessarily having a baseline.
+
+### 5. What must be annotated and what must not?
+
+How you decide to segment your images depends on your editorial and scientific goals. 
+
+If we return to our example,we could have decided to segment all the verses in Apollinaire’s poem inside the different stanzas. We also voluntarily omitted elements that could have been segmented and labeled, namely the printed folio numbers, and the number written by hand in red. For the purposes of this tutorial, we have chosen to remain at the macrostructural level. 
+
+### 6. Do you have to choose between region and line segmentation?
+
+These two processes are not mutually exclusive, nor do they need to be performed simultaneously. Many segmentation models can do both at once, some are trained to do only one. In fact, if you want to simply perform automatic text recognition, identifying the regions on the document is completely optional while detecting text lines is mandatory for most transcription software. Therefore, segmenting the text document –before transcribing it– is the usual workflow performed by most ATR systems. However, keep in mind that this is a field that is evolving  quickly and segmentation-free systems, for instance, already exist, see Coquenet, Chatelain, and Paquet (2023).
+
+### 7. Are there controlled vocabularies to label regions and lines?
+
+An ontology can be envisioned as a predetermined list of standardized terms or phrases used to describe and categorize data. Every segmented zone can be annotated using a controlled vocabulary. It ensures that your data is:
+
+- Consistent: everyone working on a document use the same terms to describe text zones,
+- Searchable: searching and retrieving specific information is made easier with annotated documents,
+- Interoperable: as the annotation is standardized, data sharing is facilitated,
+- Reusable: ontology enables you to mutualise annotated data.
+
+We recommend using the SegmOnto ontology, which is a controlled vocabulary to “describe the content of books or manuscripts pages, in order to homogenize the data required by layout analyser.” See: [https://segmonto.github.io/ ](<https://segmonto.github.io/ >)
+
+Using the vocabulary offered by the SegmOnto ontology, you can standardize your labels when annotating the layout of your documents.
+
+
+
+### 8. Why do we need Layout Analysis?
+
+To understand why we need Layout Analysis, we need to distinguish between two things:
+
+- the necessity of Layout Analysis for text recognition in particular, and 
+- its usefulness to process the results of text recognition.
+
+Indeed, ATR only generates the transcription, while the Layout Analysis provides us with more information to understand the structure of the resulting text. It can be very useful in reconstructing paragraphs, identifying the titles, etc.
+
+### 9. Why do we need Layout Analysis for ATR in particular?
+
+First and foremost, as we said earlier, text line segmentation is mandatory in most ATR systems. Without a good text line segmentation, transcription performances won’t be sufficient because lines will be missed, read in the wrong order or broken down into several lines.
+
+Remember however, that recent advances in ATR have led to the creation of segmentation-free text recognition as well as text recognition performed at greater levels than lines, such as paragraphs or even whole pages.
