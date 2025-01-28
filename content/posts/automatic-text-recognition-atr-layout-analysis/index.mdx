@@ -193,50 +193,41 @@ Step 3: Your corpus is small and can be annotated manually.
 
 Step 4, option 1: You don’t need to annotate the text regions
 
-- You annotate the text lines
-- Decide on the ontology you will use to label text regions
-- Label your text lines
-- You transcribe the text lines
-- And you can then export you data in ALTO XML or PAGE XML
+1. You annotate the text lines
+2. Decide on the ontology you will use to label text regions
+3. Label your text lines
+4. You transcribe the text lines
+5. And you can then export you data in ALTO XML or PAGE XML
 
 Step 4, option 2: You want to annotate the text regions
 
-- You annotate the text regions and the text lines
-- Decide on the ontology you will use to label text regions
-- Label your text lines and your text regions
-- You transcribe the text lines
-- And you can then export your data in ALTO XML or PAGE XML
+1. You annotate the text regions and the text lines
+2. Decide on the ontology you will use to label text regions
+3. Label your text lines and your text regions
+4. You transcribe the text lines
+5. And you can then export your data in ALTO XML or PAGE XML
 
 #### Automatic annotation
 
-You have a corpus you need to segment before transcribing.
+Step 1: You have a corpus you need to segment before transcribing.
 
-You import your corpus into an ATR software.
+Step 2: You import your corpus into an ATR software.
 
-Your corpus is too voluminous, you can use a model to annotate it
+Step 3: Your corpus is too voluminous, you can use a model to annotate it
 
-You don’t need to annotate the text regions
+Step 4, option 1: You don’t need to annotate the text regions
 
-You can use a segmentation model to segment the text lines
+1. You can use a segmentation model to segment the text lines
+2. Decide on the ontology you will use to label text regions
+3. If the segmented text lines are not good enough, you can correct them and re-train a new model with them as training data
+4. Label your text lines and retrain a model with labeling examples so that the model learn to classify the text lines and the text regions
+5. Then, you can transcribe the segmented text lines
+6. And you can export them in ALTO XML or PAGE XML
 
-Decide on the ontology you will use to label text regions
+Step 4, option 2: You want to annotate the text regions:
 
-If the segmented text lines are not good enough, you can correct them and re-train a new model with them as training data
-
-Label your text lines and retrain a model with labeling examples so that the model learn to classify the text lines and the text regions
-
-Then, you can transcribe the segmented text lines
-
-And you can export them in ALTO XML or PAGE XML
-
-OR you want to annotate the text regions:
-
-\    You can use a segmentation model to segment the text lines and the text regions
-
-\    If the segmented text lines and/or text regions are not good enough, you can correct the data and train a new model with it
-
-\    Label your text lines and retrain a model with labeling examples so that the model learn to classify the text lines and the text regions
-
-\    Then, you can transcribe the segmented text lines
-
-\    And you can export them in ALTO XML or PAGE XML
+1. You can use a segmentation model to segment the text lines and the text regions
+2. If the segmented text lines and/or text regions are not good enough, you can correct the data and train a new model with it
+3. Label your text lines and retrain a model with labeling examples so that the model learn to classify the text lines and the text regions
+4. Then, you can transcribe the segmented text lines
+5. And you can export them in ALTO XML or PAGE XML
