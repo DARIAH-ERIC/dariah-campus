@@ -64,7 +64,7 @@ Layout analysis can also include the computation of the reading order of the lin
 
 Let us see first how region segmentation works. The components to identify in segmentation can include text blocks, images, tables, columns, headings, footers, etc. The goal is to segment the document into meaningful regions that can be further processed or analysed.
 
-Let us take an example: we have below a poem called “Le Pont Mirabeau,” written by Guillaume Apollinaire at the beginning of the 20th century, whose manuscript, whose manuscript is kept at the French National Library1. We segmented and labeled all of the zones that feature semantic components with the help of an annotation software. The layout is relatively simple and we have drawn bounding boxes around the page numbers (in blue), the title (purple), and the stanzas (green). All of these elements are now annotated as text regions and have a label that corresponds to their function. 
+Let us take an example: we have below a poem called “Le Pont Mirabeau,” written by Guillaume Apollinaire at the beginning of the 20th century, whose manuscript is kept at the French National Library. We segmented and labeled all of the zones that feature semantic components with the help of an annotation software. The layout is relatively simple and we have drawn bounding boxes around the page numbers (in blue), the title (purple), and the stanzas (green). All of these elements are now annotated as text regions and have a label that corresponds to their function. 
 
 Detected bounding boxes are usually rectangular (i.e. [YOLO models](https://github.com/ultralytics/ultralytics)) or polygonal (i.e. [Kraken](https://github.com/mittagessen/kraken) segmentation models).
 
@@ -231,3 +231,23 @@ Step 4, option 2: You want to annotate the text regions:
 3. Label your text lines and retrain a model with labeling examples so that the model learn to classify the text lines and the text regions
 4. Then, you can transcribe the segmented text lines
 5. And you can export them in ALTO XML or PAGE XML
+
+### Conclusion
+
+Layout analysis includes a series of steps which can be conducted either manually or automatically. Other decisions to be made in the process include the choice of a work environment and output format. This resource provides guidance in all these regards, facilitating the implementation of advanced Automatic Text Recognition features.
+
+
+
+### Cited References
+
+Coquenet, Denis, Clément Chatelain, and Thierry Paquet. 2023. “DAN: A Segmentation-Free Document Attention Network for Handwritten Document Recognition.” IEEE Transactions on Pattern Analysis and Machine Intelligence 1–17. doi: 10.1109/TPAMI.2023.3235826.
+
+Pletschacher, Stefan, and Apostolos Antonacopoulos. 2010. “The PAGE (Page Analysis and Ground-Truth Elements) Format Framework.” Pp. 257–60 in 2010 20th International Conference on Pattern Recognition. Istanbul, Turkey: IEEE.
+
+Scheithauer, Hugo, Alix Chagué, and Laurent Romary. 2022. “Which TEI Representation for the Output of Automatic Transcriptions and Their Metadata? An Illustrated Proposition.
+
+
+
+### Image reference
+
+Guillaume Apollinaire, Le Pont Mirabeau, ca. 1912, Bibliothèque nationale de France (BnF). [https://gallica.bnf.fr/ark:/12148/btv1b525056707/f33/](https://gallica.bnf.fr/ark:/12148/btv1b525056707/f33/)
