@@ -30,19 +30,11 @@ categories:
 ---
 This session presents all the steps need for layout analysis, especially region or line segmentation, use of controlled vocabularies and choice of an output format. It also provides guidance in the choice of a specific solution depending on the project's shape and purpose.
 
-
-
 This is the English version of this training module. The video is available with English, French and German subtitles.
-
-
 
 Si vous souhaitez accéder à la version française du module, rendez-vous [ici](https://harmoniseatr.hypotheses.org/3487).
 
-
-
 Die deutsche Version der u.s. Lerneinheit ist [hier](https://harmoniseatr.hypotheses.org/2450) verfügbar
-
-
 
 ### Learning Outcomes
 
@@ -55,3 +47,42 @@ After completing this resource, learners will be able to:
 \- evaluate the usefulness of layout analysis for their ATR project
 
 \- choose between a manual and an automatic annotation process
+
+
+
+<Video provider="youtube" id="KQMy6uiXE-8" />
+
+
+
+### 1. What is layout analysis?
+
+Layout analysis refers to two processes: identifying the structure of a document, and localizing the lines of text. You can also find it referred to under the expressions segmentation, zoning, document analysis, or optical layout analysis. 
+
+Layout analysis is a computer vision task wherein we generate a series of x and y coordinates corresponding to regions or lines drawn on the image. Sometimes, they are associated with a specific “label”, demonstrating a distinction between different types of regions or lines. 
+
+![he x and y coordinates locate a point on an image. Together, these points define lines and polygons corresponding to zones on the image where some information needs to be extracted. ](images/image.png "The x and y coordinates locate a point on an image. Together, these points define lines and polygons corresponding to zones on the image where some information needs to be extracted.")
+
+Layout analysis can also include the computation of the reading order of the lines. For example, if you have a page with two columns of text, you may want to read the first column from top to bottom, followed by the second one from top to bottom. A bad reading order would move from the first line of the first column to the first line of the second column, then going back to the second line of the first column, etc.
+
+
+
+### 2. How does region segmentation work?
+
+Let us see first how region segmentation works. The components to identify in segmentation can include text blocks, images, tables, columns, headings, footers, etc. The goal is to segment the document into meaningful regions that can be further processed or analysed.
+
+Let us take an example: we have below a poem called “Le Pont Mirabeau,” written by Guillaume Apollinaire at the beginning of the 20th century, whose manuscript, whose manuscript is kept at the French National Library1. We segmented and labeled all of the zones that feature semantic components with the help of an annotation software. The layout is relatively simple and we have drawn bounding boxes around the page numbers (in blue), the title (purple), and the stanzas (green). All of these elements are now annotated as text regions and have a label that corresponds to their function. 
+
+Detected bounding boxes are usually rectangular (i.e. [YOLO models](https://github.com/ultralytics/ultralytics)) or polygonal (i.e. [Kraken](https://github.com/mittagessen/kraken) segmentation models).
+
+![Layout annotation with eScriptorium.](images/image-2.png "Layout annotation with eScriptorium.")
+
+
+
+### 3. What is a text line?
+
+To understand how text line recognition works, we need to explain what is a text line in the context of Layout Anaysis. Inside segmented zones, there are lines of text. In most cases, when you segment a text line, two elements are extracted at once:
+
+-   A baseline or a topline (red), which defines a virtual line, passing through at least two points, on which the text is written or from which it is hanging;
+-   A mask (purple), which is a polygon (sometimes a rectangle), defined by at least three points, and which delimits the area of pixels containing the text of the line. The mask is usually automatically calculated by the automatic text recognition (ATR)automatic text recognition (ATR) system based on the baseline or topline coordinates.
+
+![A text line corresponding to the poem’s title, its baseline (red), and mask (purple).](images/baseline.png "A text line corresponding to the poem’s title, its baseline (red), and mask (purple).")
