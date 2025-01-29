@@ -1,7 +1,7 @@
 ---
 title: Automatic Text Recognition (ATR) - Layout Analysis
 lang: en
-date: 2025-01-28T10:12:05.279Z
+date: 2025-01-29T10:12:05.279Z
 version: 1.0.0
 authors:
   - chagué-alix
@@ -36,7 +36,7 @@ Si vous souhaitez accéder à la version française du module, rendez-vous [ici]
 
 Die deutsche Version der u.s. Lerneinheit ist [hier](https://harmoniseatr.hypotheses.org/2450) verfügbar
 
-### Learning Outcomes
+## Learning Outcomes
 
 After completing this resource, learners will be able to:
 
@@ -50,7 +50,7 @@ After completing this resource, learners will be able to:
 
 <Video provider="youtube" id="KQMy6uiXE-8" />
 
-### 1. What is layout analysis?
+## 1. What is layout analysis?
 
 Layout analysis refers to two processes: identifying the structure of a document, and localizing the lines of text. You can also find it referred to under the expressions segmentation, zoning, document analysis, or optical layout analysis. 
 
@@ -60,7 +60,7 @@ Layout analysis is a computer vision task wherein we generate a series of x and 
 
 Layout analysis can also include the computation of the reading order of the lines. For example, if you have a page with two columns of text, you may want to read the first column from top to bottom, followed by the second one from top to bottom. A bad reading order would move from the first line of the first column to the first line of the second column, then going back to the second line of the first column, etc.
 
-### 2. How does region segmentation work?
+## 2. How does region segmentation work?
 
 Let us see first how region segmentation works. The components to identify in segmentation can include text blocks, images, tables, columns, headings, footers, etc. The goal is to segment the document into meaningful regions that can be further processed or analysed.
 
@@ -70,7 +70,7 @@ Detected bounding boxes are usually rectangular (i.e. [YOLO models](https://gith
 
 ![Layout annotation with eScriptorium.](images/image-2.png "Layout annotation with eScriptorium.")
 
-### 3. What is a text line?
+## 3. What is a text line?
 
 To understand how text line recognition works, we need to explain what is a text line in the context of Layout Anaysis. Inside segmented zones, there are lines of text. In most cases, when you segment a text line, two elements are extracted at once:
 
@@ -79,7 +79,7 @@ To understand how text line recognition works, we need to explain what is a text
 
 ![A text line corresponding to the poem’s title, its baseline (red), and mask (purple).](images/baseline.png "A text line corresponding to the poem’s title, its baseline (red), and mask (purple).")
 
-### 4. How does line segmentation work?
+## 4. How does line segmentation work?
 
 When we perform line segmentation, we want to precisely detect text in an image, which is crucial as most of the current state of the art ATR machine learning models rely on correctly extracting text lines before transcribing them.
 
@@ -88,17 +88,17 @@ There are two approaches:
 - A baseline (or topline) is drawn either manually or automatically before the software calculates the corresponding polygon. 
 - Or, a bounding box is drawn either manually or automatically around the line of text, meaning we only have a rectangular mask, without necessarily having a baseline.
 
-### 5. What must be annotated and what must not?
+## 5. What must be annotated and what must not?
 
 How you decide to segment your images depends on your editorial and scientific goals. 
 
 If we return to our example,we could have decided to segment all the verses in Apollinaire’s poem inside the different stanzas. We also voluntarily omitted elements that could have been segmented and labeled, namely the printed folio numbers, and the number written by hand in red. For the purposes of this tutorial, we have chosen to remain at the macrostructural level. 
 
-### 6. Do you have to choose between region and line segmentation?
+## 6. Do you have to choose between region and line segmentation?
 
 These two processes are not mutually exclusive, nor do they need to be performed simultaneously. Many segmentation models can do both at once, some are trained to do only one. In fact, if you want to simply perform automatic text recognition, identifying the regions on the document is completely optional while detecting text lines is mandatory for most transcription software. Therefore, segmenting the text document –before transcribing it– is the usual workflow performed by most ATR systems. However, keep in mind that this is a field that is evolving  quickly and segmentation-free systems, for instance, already exist, see Coquenet, Chatelain, and Paquet (2023).
 
-### 7. Are there controlled vocabularies to label regions and lines?
+## 7. Are there controlled vocabularies to label regions and lines?
 
 An ontology can be envisioned as a predetermined list of standardized terms or phrases used to describe and categorize data. Every segmented zone can be annotated using a controlled vocabulary. It ensures that your data is:
 
@@ -111,7 +111,7 @@ We recommend using the SegmOnto ontology, which is a controlled vocabulary to �
 
 Using the vocabulary offered by the SegmOnto ontology, you can standardize your labels when annotating the layout of your documents.
 
-### 8. Why do we need Layout Analysis?
+## 8. Why do we need Layout Analysis?
 
 To understand why we need Layout Analysis, we need to distinguish between two things:
 
@@ -120,13 +120,13 @@ To understand why we need Layout Analysis, we need to distinguish between two th
 
 Indeed, ATR only generates the transcription, while the Layout Analysis provides us with more information to understand the structure of the resulting text. It can be very useful in reconstructing paragraphs, identifying the titles, etc.
 
-### 9. Why do we need Layout Analysis for ATR in particular?
+## 9. Why do we need Layout Analysis for ATR in particular?
 
 First and foremost, as we said earlier, text line segmentation is mandatory in most ATR systems. Without a good text line segmentation, transcription performances won’t be sufficient because lines will be missed, read in the wrong order or broken down into several lines.
 
 Remember however, that recent advances in ATR have led to the creation of segmentation-free text recognition as well as text recognition performed at greater levels than lines, such as paragraphs or even whole pages.
 
-10. How is it useful for downstream tasks?
+## 10. How is it useful for downstream tasks?
 
 Text region annotations are useful in the context of digitization and creating digital editions. It allows information extraction and document understanding. 
 
@@ -140,13 +140,13 @@ Layout Analysis is mandatory to get to the text level, but also to the page leve
 - plugging different tools to process these regions depending on the content of the regions (i.e. applying information extraction tool in target zones), or 
 - simply to represent the logical structure of a document.
 
-### 11. What software has been designed for performing Layout Analysis?
+## 11. What software has been designed for performing Layout Analysis?
 
 Layout Analysis is often included in expert ATR software like [eScriptorium](https://escriptorium.inria.fr/) or [Transkribus](https://www.transkribus.org/en). But there are also tools designed only for Layout Analysis, such as [dhsegment](https://github.com/dhlab-epfl/dhSegment) and [LAREX](https://github.com/OCR4all/LAREX). Additionally, there are environments designed for any type of image annotation, including layout analysis, such as [Label Studio](https://labelstud.io/) or [Roboflow](https://roboflow.com/). 
 
 Annotation analysis can be done manually by drawing bounding boxes and text lines, or by using machine learning models trained to do that task.
 
-### 12. What are the technologies used by Layout Analysis software?
+## 12. What are the technologies used by Layout Analysis software?
 
 A segmentation model can learn how to segment text lines and regions, and how to label them according to an ontology of line types and region types, while manually annotating the training data.
 
@@ -157,7 +157,7 @@ There are usually four methods with which you can perform automatic layout analy
 - with object detection models,
 - with heuristics or rule-based methods.
 
-### 13. How do we save the results of Layout Analysis?
+## 13. How do we save the results of Layout Analysis?
 
 Annotations are stored using specific XML standards such as PAGE XML and ALTO XML (the Analyzed Layout and Text Object (ALTO) 4.2 schema specifications is accessible at [https://www.loc.gov/standards/alto/news.html#4-2-released](https://www.loc.gov/standards/alto/news.html#4-2-released)) and PAGE XML ([Pletschacher and Antonacopoulos 2010](https://www.zotero.org/google-docs/?1RptgO)). These two XML formats have their own schemas that intend to store the details of the layout of segmented documents in combination with the text resulting from automatic recognition. They work at the image level. Annotation files are automatically generated by ATR software.
 
@@ -181,9 +181,9 @@ Here, a **<TextRegion>** element stores the text region label and an ID. Then, t
 
 It is up to you to choose the format you prefer working with, but beware that ALTO XML is more widely used compared to PAGE XML. These two formats follow the rule of the XML language (elements tree, tags, attributes). Even TEI can be used to store layout information ([Scheithauer, Chagué, and Romary 2022](https://www.zotero.org/google-docs/?oxGLd6)), so choose the format that is best suited to your end goals (creating datasets, digital editions, etc.).
 
-### 14. Let’s summarize that in a flowchart!
+## 14. Let’s summarize that in a flowchart!
 
-#### Manual annotation
+### Manual annotation
 
 Step 1: You have a corpus you need to segment before transcribing.
 
@@ -207,7 +207,7 @@ Step 4, option 2: You want to annotate the text regions
 4. You transcribe the text lines
 5. And you can then export your data in ALTO XML or PAGE XML
 
-#### Automatic annotation
+### Automatic annotation
 
 Step 1: You have a corpus you need to segment before transcribing.
 
@@ -232,13 +232,13 @@ Step 4, option 2: You want to annotate the text regions:
 4. Then, you can transcribe the segmented text lines
 5. And you can export them in ALTO XML or PAGE XML
 
-### Conclusion
+## Conclusion
 
 Layout analysis includes a series of steps which can be conducted either manually or automatically. Other decisions to be made in the process include the choice of a work environment and output format. This resource provides guidance in all these regards, facilitating the implementation of advanced Automatic Text Recognition features.
 
 
 
-### Cited References
+## Cited References
 
 Coquenet, Denis, Clément Chatelain, and Thierry Paquet. 2023. “DAN: A Segmentation-Free Document Attention Network for Handwritten Document Recognition.” IEEE Transactions on Pattern Analysis and Machine Intelligence 1–17. doi: 10.1109/TPAMI.2023.3235826.
 
@@ -248,6 +248,6 @@ Scheithauer, Hugo, Alix Chagué, and Laurent Romary. 2022. “Which TEI Represen
 
 
 
-### Image reference
+## Image reference
 
 Guillaume Apollinaire, Le Pont Mirabeau, ca. 1912, Bibliothèque nationale de France (BnF). [https://gallica.bnf.fr/ark:/12148/btv1b525056707/f33/](https://gallica.bnf.fr/ark:/12148/btv1b525056707/f33/)
