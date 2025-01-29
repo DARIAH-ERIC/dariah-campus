@@ -1,0 +1,119 @@
+---
+title: "Data and Databases: From Source to Data"
+lang: en
+date: 2025-01-29T13:47:21.239Z
+version: 1.0.0
+authors:
+  - genatowski-emily
+  - baille-james
+tags:
+  - data-management
+categories:
+  - dariah
+abstract: Humanities and social scientific data is fundamentally different in
+  type to a great deal of data available in the sciences. This resource will
+  help you to understand your data, and therefore how to handle it. This
+  resource looks at humanities data and its reliability, as well as different
+  types of data you may encounter.
+domain: Social Sciences and Humanities
+targetGroup: Domain researchers
+type: training-module
+remote:
+  date: ""
+licence: ccby-4.0
+toc: true
+draft: false
+uuid: asB4OMwd7wEhiyBmrKObn
+---
+## Introduction
+
+Humanities and social scientific data is fundamentally different in type to a great deal of data available in the sciences. Understanding your data, and therefore the basis upon which you can handle it, is fundamental to the process of database creation. 
+
+In this resource, we will look at some generic issues around humanities data and its reliability, and then some examples of the sorts of data you may be dealing with. This is not intended to be an absolute guide to all possible issues –many of those will come from the specifics of your project –but this resource will provide some general starting points for you to consider when looking at your data and how you could use it in a database.
+
+## Learning outcomes
+
+After completing this resource, learners should be able to:
+
+- Understand the difference between humanities data and other forms of data
+- Comprehend the process of how data is captured
+- Identify source materials of datasets in the humanities
+- Describe the importance of metadata
+
+## Humanities Data – The Basics
+
+The humanities and social sciences are in part defined by their field of study: that is, in the areas of thought, culture, meaning, and human action and society. Data capture from these areas has a number of issues not shared with the experimental sciences. Humanities data can often be:
+
+- Non-experimental: HSS information is frequently not produced experimentally, and is rarely produced in conditions that allow easy replication. This weakens our ability to verify and mathematically analyse our data sets.
+- Source-based: HSS information is often relayed to us through other materials. This means that data we capture from those materials is based on our reading of them – which can often produce a wide array of analyses and layers of meaning.
+- Describing high complexity systems: The systems HSS work tends to cover are often whole societies and real human networks, or highly abstract systems of thought and concept. Unlike some physical sciences where we have the capacity to quite precisely model example systems, the humanities are often concerned with dynamics that are much harder to describe in simple, mathematical terms and for which it is rarely possible to account for all inputs to the system.
+- Limited in quantity and consistency: In the humanities, we may be limited in what data are available. In historical, literary or archaeological studies this may be because the information no longer exists: in other areas this may be because survey data lacks consistency or there are practical problems in accessing parts of the information under consideration.
+
+Not all HSS information incorporates all of these issues: these are a very wide set of disciplines to which highly varied methodologies may be applied. Some social scientists such as psephologists or human geographers for example may have very large data-sets frommodern public survey data, as might historians and archaeologists whose work can incorporate large quantities of data capture from archaeological sites, experimental analysis of artefacts, or climate data. However, the above issues are where we will focusin this session, because they create a set of specific problems that have important consequences for how we capture and store data.
+
+## Capturing Data
+
+Data are sometimes wrongly thought of as ‘raw’ information, a neutral store of factual matter that can then be analysed. In fact, the process of capturing and recording data, especially in the humanities, can be highly dependent on subjective decisions, especially as it often involves removing the original context of the data point. Understanding the process of data capture for your data is vital, whether you’re using data that you yourself have created or a database that someone else has put together.
+
+Turning information into data is first and foremost a process of classification –of turning irregular, amorphous reality into a set of concrete measurements and categories that can be tabulated, analysed and compared. This is why data are never “raw”: classifying things meaningfully involves creating a specific reading of them, and presenting them in a new order and context which changes how they will be read and seen in turn. You should consider the classifications used in others’ data and your own: are they justified? Do you think the way the categories are sorted makes sense for your research questions?
+
+- Consider how the sample of objects discussed in your data, or surveyed, differs from being a complete snapshot of the total possible set. As just a few examples, surveys, government data may miss out temporary residents, or. You may need to account for gaps like this when considering how to handle and analyse the data, and also when combining data: for example, public opinion surveys of all adults and surveys of likely voters reliably get differing results in many countries, because some demographics are more likely (or more able) to vote than others.
+- Where mechanical processes have been involved in data capture, consider the biases in these as well. For example, 
+
+  - This is even true for non-textual data. A set of photographs are ‘true’ in the sense that they represent what is in front of the camera, but different types of photography can show very different variations in colour and focus, and choices of angle and positioning of camera and subject can hugely change our perceptions or analyses. The same is true with AI, too algorithms can easily pick up and replicate biases in their source data sets (for example, there have been notable cases where AIs for facial recognition were given a training dataset of white Americans or Europeans and subsequently struggled to pick out people of other phenotypes).
+-  Consider how data may have been manipulated between their capture and their analysis or publication. Often analyses require practices that remove ‘erroneous’ records and outliers, or frame for example, and we’ll look at some of those techniques during this course –but these techniques, again, require particular definitions of which records are likely to be erroneous, and that can be an interpretative decision as much as a neutral data-processing one. 
+- Think about enrichment of data – that is, cross-referencing additional information from other sources to add to the usefulness of the core data. Consider whether this is part of your project or data-set and whether this could add any difficulties. For example, modern GIS systems often have automated features for geographical tagging from name lists available, allowing people to easily produce. These can however produce outliers very easily, and for areas where placenames have changed a great deal can end up having little utility or being highly inaccurate. Similarly, automated enrichment of other datasets can suffer when names are shared or not given.
+
+Fundamentally, data need to be stored and analysed based on what the data can actually mean and tell us – and that problem can be considerably more complex than is obvious on the surface.Data gain much of their explanatory power when combined, enriched, and cross-referenced effectively. An understanding of that, just as much as any technical capacity, is key to using humanities and social science databases.
+
+## Understanding your sources
+
+Another thing that is important in working with subjective assessments is that they frequently require field-specific contextual information. A scientist working on bird migrations can read someone else’s field report and have a fairly consistent assumption of what is meant by a capture record for Troglodytes troglodytes, the wren, and a chemist can give a consistent and exact definition of what boron or lithium are: the terminology is specifically designed to be universal and unambiguous (advances in the scientific understanding of speciation and molecular chemistry notwithstanding). A historian, conversely, cannotread a source referring to “King Constantine” and know who is being referred to without surrounding information –there were eleven rulers of Byzantium alone named Constantine. Indeed, a humanities scholar may be able to provide multiple layers of meaning: this reference may not in fact be to a Constantine at all, but to someone who is being referred to by analogy to Constantine the Great.
+
+Similar problems arise in other SHS fields: what does it mean for a political or social scientist when someone refers to themselves as a “liberal”? Someone from Australia, where liberal generally refers to a conservative political tradition sceptical of immigration and state support, and someone from Britain where liberals are strongly internationalist and in favour of redistributive spending policies like a universal basic income, may both use the term self-referentially whilst having values almost wholly opposed to one another. In business, this may come into play when considering assessments of products and feedback from different markets: where cultural norms and word usages differ, so too will the outputs given.
+
+This sort of source understanding is critical to structuring and using our data correctly in the humanities and social sciences where taking into account cultural specificities is a core part of our collective methodological background. It frequently requires different ways to handle information, because we may need to flag up where datasets might be compatible or not and we may need data structures that account for competing and varied perspectives on a topic.
+
+## The Importance of Metadata
+
+One key issue you will come across when assembling humanities data is the importance of metadata: that is, data that serves to provide context and provenance to your core information. This is especially important in the humanities because far more of our data are produced by subjective assessments either on the part of the scholar or on the part of their research subjects, or both. As a result of this, it is important to know who made that assessment, both to help other database users assess that contribution and to provide appropriate credit for it.
+
+Metadata are also important for assessing existing databases and data sets and whether they may be appropriate for your research. Much data that we use in the humanities comes to us having already been filtered through processes of collection and curation. Books go through revisions, museum curators choose particular pieces of art or archaeology to keep, not all legal cases are ruled in order such that they ever get a judgement, some business proposals will be simply scrapped and binned rather than ever getting onto a file, and so on. To be sure of what we’re looking at and how it may or may not reflect its original context, we need to think about the context of its intermediate steps and what therefore might be missing from our total. This context is provided by the metadata.
+
+Deciding what sort of metadata you need when constructing a dataset, and how best to store that within your database, should be an important part of your design process from an early stage: adding metadata later, especially if for example it involves looking at times and what order things were processed into the database, can be extremely difficult, so it is ideal to put it in alongside the relevant data. Metadata may need to be attached to individual records, or might be attachable to much larger groups of data or the dataset as a whole depending on your needs: if for example you have a team of people making judgements on particular records and inputting them, or combining data from different surveys by different companies, you will probably need to keep authorial metadata for each record, whereas if you only have one person compiling a data set then the metadata may be held at that level rather than placed by each record individually.
+
+Some examples of metadata types you may want to include are:
+
+- Authorship: this could be who did an interview, who analysed a text or object, who input the data, who made certain decisions about the data. You may indeed need multiple of these if information has had multiple stages of processing.
+- Time stamps: Knowing when, and consequently in what order, particular decisions and entry inputs were made for a database is vital. In particular, this is important if you need to change your input process or identify process errors, in order to easily be able to identify records affected.
+- Sources and provenance: where information comes from another organisation or a source comes via a collection or curated body of material, it is helpful to ensure this is properly referenced.
+
+How much metadata your database needs may vary: if compiling data from other sources, it can be valid to simply point at their existing storage of metadata, for example. In any case, these decisions are important to be considering from the very early stages of compiling source information into your data set.
+
+## The Data Claim
+
+What does an object being in your dataset mean about that object?
+
+This is an apparently simple question with immense implications for how we structure data. We tend to think of data as implicitly true, factual information. This, however, is greatly complicated in many humanities contexts, where we either do not know what is true, or where the concept in question is socially or psychologically constructed, or where things can be circumstantially true.
+
+For example, imagine a database where we input a set of people from a text we’ve read, with their names, ages, places of birth, and so on. The claim here, however, is not immediately clear. We might mean, by putting these in the database, to say that these people really physically existed with the attributes described. But we also might mean a less strong claim, the claim that the text we read claimed this set of people existed with the attributes described. These two different layers, of reading a text and modelling a reality, can make immense differences to how we model and manipulate our data.
+
+If what we are producing, for example, is a database of claims- whether those are about the correct way to adjudicate on a legal matter or the efficacy of a business product or which year in the early thirteenth century a particular queen from the Caucasus died -then there is no problem in having competing claims in the database: it is entirely normal that in a group of people or texts, there will be different perspectives and disagreements about what is true. We can have data structures that account for this and are designed to present all these claims on an even footing, allowing you to see and compare how the same object, person, or event is seen and presented from different perspectives, and importantly also to easily find all the source material connected to a particular object for further analysis. Databases that index your source material are often comparatively fast to produce even if done quite manually, and are useful across humanities fields.
+
+What you cannot do, though, is then treat that data as if it were a database of facts, or we can end up with incoherent results: someone dying multiple times, or being in multiple places at once, for example. To look at whether there are changing behaviour patterns in a particular population, or other questions that involve analysing action and events, you need a dataset that is internally consistent as to how the sample population being observed actually behaved. This means finding a single, best possible reading of the available information that you believe best represents what actually happened.
+
+These approaches are not entirely exclusive: there may for example be cases where one can use a primarily texts-driven database to identify real interactions between people because they co￾authored documents or co-signed contracts. There are also possibilities for using data structures that allow you to model multiple competing claims about objects and events, and then at a later stage select single readings to look at or analysing competing claims: this could be a very powerful approach but would also risk being a very labour intensive one.
+
+## From Data to Database
+
+These specific features common to much, though not all, SHS data will affect the way we need to use databases in a number of ways.
+
+1. We need data structures that are good at carrying metadata.
+2. We may need to provide multiple alternative pieces of information about the same object,or represent competing information (or we need ways to resolve those differences).
+3. We may need flexible ways to categorise information. For example, it may make more sense to store information in tagged systems rather than as simple assigned values to allow an object to hold multiple overlapping categories.
+4. We may need data structures that can carry and present the reasoning for how they have been put together and the decisions made in that process.
+5. We need to be clear about what the data represent and the claim that they are making about the objects included.
+
+## Conclusion
+
+By now, you have looked at some generic issues around humanities data and its reliability. This resource provided general starting points for you to consider when looking at your data and how you could use it in a database. You should now understand the nuances of capturing data, how to better understand your sources and the importance of metadata.
