@@ -13,6 +13,8 @@ tags:
   - automatic-text-recognition
   - machine-learning
   - editing-tools
+categories:
+  - dariah
 abstract: Dive into the fine-tuning of Automatic Text Recognition outputs!
 domain: Social Sciences and Humanities
 targetGroup: Domain researchers
@@ -23,8 +25,6 @@ licence: ccby-4.0
 toc: true
 draft: false
 uuid: dLcjnA5pFkaeNtnDtjwnD
-categories:
-  - dariah
 ---
 This resource recaps Automatic Text Recognition (ATR) process and concentrates on how to correct output from ATR pipelines. The last part is dedicated to open-source tools available for post-ATR correction.
 
@@ -34,7 +34,7 @@ Si vous souhaitez accéder à la version française du module, rendez-vous [ici]
 
 Die deutsche Version der u.s. Lerneinheit ist [hier](https://harmoniseatr.hypotheses.org/2145) verfügbar.
 
-### Learning outcomes
+## Learning outcomes
 
 After completing this resource, learners will be able to:
 
@@ -48,7 +48,7 @@ After completing this resource, learners will be able to:
 
 <Video provider="youtube" id="P5O8bPR9hXg" />
 
-### Automatic Text Recognition (ATR) in a nutshell
+## Automatic Text Recognition (ATR) in a nutshell
 
 In the beginning there was nothing. And humans said, ‘Let there be automatic text recognition’. And so humankind created the ability to convert analog text, be it handwritten or printed, into digital copies. Automatic text recognition describes the convergent usage of [optical character recognition (OCR)](https://harmoniseatr.hypotheses.org/glossary-atr#OCRID) and [handwritten text recognition (HTR)](https://harmoniseatr.hypotheses.org/glossary-atr#HTRID). However, this important development was not achieved as fast as lightning.
 
@@ -56,19 +56,19 @@ OCR is aimed at treating printed media, such as books. This technology has only 
 
 Evolving technologies have allowed for text recognition systems to now do both HTR and OCR simultaneously. Modern [models](https://harmoniseatr.hypotheses.org/glossary-atr#ModelID) can recognise printed as well as handwritten text and process segments in lines or entire paragraphs. Today, such systems are built into smartphones, allowing us to scan text from images. These technologies are especially appealing to historians, librarians, archival staff, and scholars in general who want to convert, analyse, store or maintain their documents in a novel way, adopting global digital trends.
 
-### Three important projects using ATR
+## Three important projects using ATR
 
 ![Three ATR projects: Gallica, ABO and Project Gutenberg](images/atr_projects.png "Three ATR projects: Gallica, ABO and Project Gutenberg")
 
 To begin with, let us explore three significant ATR projects that have made a lasting impact. These projects are [Gallica](https://gallica.bnf.fr/), [Austrian Books Online](https://www.onb.ac.at/digitale-angebote/austrian-books-online) (ABO), and [Project Gutenberg](https://www.gutenberg.org/). Gallica is the digital counterpart to the French national library (Bibliothèque nationale de France) founded in 1997. Austrian Books Online (ABO) is an ongoing mass-digitisation project started by the Austrian National Library, in which the Library’s historical book holdings are made available through a public-private partnership with Google. Project Gutenberg is a digital library that offers a diverse range of cultural texts in the form of eBooks. The archive includes more than 50,000 items, for example, Faust by Johann Wolfgang von Goethe or [Germinal](https://www.gutenberg.org/ebooks/5711) by Émile Zola, i.e. literature in the public domain, dating mostly from the 19th century and prior, depending on the copyright law of the country of origin of the work.
 
-### Text recognition
+## Text recognition
 
 What is text recognition, and how does it work? Depending on whether we look at OCR or HTR systems, the baseline functionalities of these systems differ. To recap, text recognition is the procedure of converting scanned images of text into a machine-readable text format. This can be done manually in a ‘double keying’ process, or it can be carried (semi-)automatically with the help of ATR systems and trained models.
 
 Such models require the [input](https://harmoniseatr.hypotheses.org/glossary-atr#InputID) of images of high quality in order to do so. A corresponding data pipeline for ATR, i.e. the classical workflow to follow when processing data, would include the [preprocessing](https://harmoniseatr.hypotheses.org/glossary-atr#PreProcessingID) of images, the [segmentation](https://harmoniseatr.hypotheses.org/glossary-atr#SegmentationID) phase, the actual text recognition process, and a post-correction step. Modern models recognise segmented lines with the help of deep learning algorithms, which allows them to build a textual representation of the image input. These algorithms learn visual characteristics from such input. Depending on the project’s goals and background, you can use either existing models or train a new model that will fit your specific case. The transcription process–be it through ATR or manual transcription–will produce machine-readable text as the [output](https://harmoniseatr.hypotheses.org/glossary-atr#OutputID).
 
-### Ground truth and model training
+## Ground truth and model training
 
 Various training data and models can already be found on platforms such as [HTR-United](https://htr-united.github.io/), [Zenodo](https://zenodo.org/), and [GitHub](https://github.com/). Therefore, before jumping to training a new model, it is better to ensure that it is, in fact, really necessary. By exploring existing training data you may be able to skip time-consuming steps involving the production of ground truth and the training of models.
 
@@ -84,7 +84,7 @@ As ground truth is used for model training, it is imperative that the proposed t
 
 Importantly, producing ground truth and training a model can be done gradually–it is always possible to add new ground truths until the model is sufficiently accurate. Finally, when producing ground truth, it is crucial to remain consistent in the choices made for the transcription, such as specific characters or glyphs. Documenting the choice made and then adhering to it throughout the entirety of text recognition is a good way to ensure that the model will not be confused and that the ground truth can be reused and understood more easily by the rest of the DH community.
 
-### Software for text recognition
+## Software for text recognition
 
 If the process and methods for text recognition are now certainly established, it should be noted we are not working in a field where one software dominates. Automatic text recognition can be used for various types of documents and languages and consequently, several ATR software have been created, each with their own capabilities. Therefore, recommending a single software to carry out text recognition would not be judicious or pragmatic. Instead, we are going to introduce some elements to consider in order to choose the most fitting software. It is essential to think carefully while choosing an ATR software because changing software mid-work is not always possible and even when it is, it can lead to issues.
 
@@ -96,7 +96,7 @@ In terms of image acquisition, you can retrieve your images in various kinds of 
 
 Lastly, in the case of several choices when picking the most fitting ATR software, the presence of graphical user interface could be worth considering. Even though it would usually have no impact on text recognition, an interface could be advantageous as per your own affinity with technical tools.
 
-### Post-ATR correction
+## Post-ATR correction
 
 The post-ATR correction is the step that proceeds the [prediction](https://harmoniseatr.hypotheses.org/glossary-atr#PredictionID) made by the model, which has been applied to a corpus of images. The goal of this step is to fix the mistakes of the prediction in order for it to match perfectly with the images transcribed, making it a ground truth. Software programs, model training, and the quantity of resources in ATR have greatly improved in the last few years, enabling the production of more accurate and efficient recognition models. However, the probability of an automatic prediction producing a flawless result is rarely 100% and in almost every case it will be necessary to correct the prediction after applying the model.
 
@@ -106,23 +106,23 @@ Errors in prediction can be the result of many factors related to the scanned im
 
 There are two possible ways to do post-ATR correction: [semi-automatic correction](https://harmoniseatr.hypotheses.org/glossary-atr#SemiAutomatedCorrectionID) and full manual correction. In both cases, if a perfect transcription is desired, manual correction must be performed. Choosing to do one or the other will really depend on the amount of errors in the prediction, as semi-automatic correction can be time-saving when errors happen over every few lines but will turn into a waste of time if there are only occasional errors. Moreover, techniques and tools for semi-automatic correction vary, and its utility depends on the user’s affinity with digital tools. Therefore, we advise using semi-automatic correction only if you estimate that there will be a true, significant opportunity to save time. If not, then we advise doing a full manual correction, i.e. checking the transcription for errors and doing the modification by hand.
 
-### Tools for semi-automatic correction
+## Tools for semi-automatic correction
 
-##### Python scripts and regex
+### Python scripts and regex
 
 - Script: [https://github.com/DiScholEd/pipeline-digital-scholarly-editions/tree/master/post_ocr_correction/scripts](https://github.com/DiScholEd/pipeline-digital-scholarly-editions/tree/master/post_ocr_correction/scripts)
 - Documentation: [https://github.com/DiScholEd/pipeline-digital-scholarly-editions/blob/master/post_ocr_correction/post-ocr_correction_for_text_files.md](https://github.com/DiScholEd/pipeline-digital-scholarly-editions/blob/master/post_ocr_correction/post-ocr_correction_for_text_files.md) 
 
-##### Python scripts, regex, and context
+### Python scripts, regex, and context
 
 - Scripts: [https://github.com/sbiay/CdS-edition/blob/main/htr/py/spellcheckTexts.py and https://github.com/sbiay/CdS-edition/blob/main/htr/py/textCorrection.py](<https://github.com/sbiay/CdS-edition/blob/main/htr/py/spellcheckTexts.py and https://github.com/sbiay/CdS-edition/blob/main/htr/py/textCorrection.py>)
 - Documentation: [https://github.com/sbiay/CdS-edition/blob/main/htr/Corriger_une_prediction.ipynb](https://github.com/sbiay/CdS-edition/blob/main/htr/Corriger_une_prediction.ipynb)  
 
-##### Neural approach to correction
+### Neural approach to correction
 
 - Project: [https://github.com/GarfieldLyu/OCR_POST_DE](https://github.com/GarfieldLyu/OCR_POST_DE) 
 - Article: [Neural OCR Post-Hoc Correction of Historical Corpora](https://arxiv.org/abs/2102.00583)
 
-### Conclusion
+## Conclusion
 
 Post-ATR correction is a key element of the Automatic Text Recognition pipeline. Decisions on whether to automatise it or part of it are integral to the exploration and research process. Semi-automatic methods are usually a balanced choice, for which a series of open source tools are available.
