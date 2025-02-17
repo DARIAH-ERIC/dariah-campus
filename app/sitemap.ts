@@ -4,8 +4,10 @@ import { createUrl } from "@acdh-oeaw/lib";
 import { glob } from "fast-glob";
 import type { MetadataRoute } from "next";
 
+import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
 import { env } from "@/config/env.config";
-import { locales } from "@/config/i18n.config";
+import { defaultLocale, locales } from "@/config/i18n.config";
+import { createClient } from "@/lib/content/create-client";
 
 const baseUrl = env.NEXT_PUBLIC_APP_BASE_URL;
 
@@ -39,6 +41,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		}
 
 		routes.push(segments.join("/"));
+	});
+
+	const client = await createClient(defaultLocale);
+
+	const resources = await client.resources.all();
+	const curricula = await client.curricula.all();
+	const sources = await client.sources.all();
+	const docs = await client.documentation.all();
+
+	resources.forEach((resource) => {
+		routes.push(createResourceUrl(resource));
+	});
+	curricula.forEach((curriculum) => {
+		routes.push(`/curricula/${curriculum.id}`);
+	});
+	sources.forEach((source) => {
+		routes.push(`/sources/${source.id}`);
+	});
+	docs.forEach((page) => {
+		routes.push(`/documentation/${page.id}`);
 	});
 
 	const entries = locales.flatMap(() => {
