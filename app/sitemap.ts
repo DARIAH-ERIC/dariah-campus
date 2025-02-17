@@ -1,15 +1,15 @@
 import { join } from "node:path";
 
-import { createUrl } from "@acdh-oeaw/lib";
 import { glob } from "fast-glob";
 import type { MetadataRoute } from "next";
 
 import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
 import { env } from "@/config/env.config";
-import { defaultLocale, locales } from "@/config/i18n.config";
+import { defaultLocale } from "@/config/i18n.config";
 import { createClient } from "@/lib/content/create-client";
+import { createFullUrl } from "@/lib/create-full-url";
 
-const baseUrl = env.NEXT_PUBLIC_APP_BASE_URL;
+const locale = defaultLocale;
 
 /**
  * Google supports up to 50.000 entries per sitemap file. Apps which need more that that can use
@@ -43,7 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		routes.push(segments.join("/"));
 	});
 
-	const client = await createClient(defaultLocale);
+	const client = await createClient(locale);
 
 	const resources = await client.resources.all();
 	const curricula = await client.curricula.all();
@@ -63,17 +63,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		routes.push(`/documentation/${page.id}`);
 	});
 
-	const entries = locales.flatMap(() => {
-		return routes.map((pathname) => {
-			return {
-				url: String(createUrl({ baseUrl, pathname })),
-				/**
-				 * Only add `lastmod` when the publication date is actually known.
-				 * Don't use the build date instead.
-				 */
-				// lastModified: new Date(),
-			};
-		});
+	const entries = routes.map((pathname) => {
+		return {
+			url: String(createFullUrl({ pathname })),
+			/**
+			 * Only add `lastmod` when the publication date is actually known.
+			 * Don't use the build date instead.
+			 */
+			// lastModified: new Date(),
+		};
 	});
 
 	return entries;
