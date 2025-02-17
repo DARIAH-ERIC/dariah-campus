@@ -241,7 +241,7 @@ interface QuizChoicePreviewProps {
 }
 
 export function QuizChoicePreview(props: Readonly<QuizChoicePreviewProps>): ReactNode {
-	const { buttonLabel, children, variant } = props;
+	const { children } = props;
 
 	return children;
 }
@@ -395,7 +395,7 @@ export function VideoCardPreview(props: Readonly<VideoCardPreviewProps>): ReactN
 	const { id, image, provider, startTime, subtitle, title } = props;
 
 	const href = isNonEmptyString(id) ? String(createVideoUrl(provider, id, startTime)) : null;
-	const src = useObjectUrl(image);
+	const _src = useObjectUrl(image);
 
 	return (
 		<figure className="grid gap-y-2">

@@ -4,7 +4,6 @@ import { glob } from "fast-glob";
 import type { MetadataRoute } from "next";
 
 import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
-import { env } from "@/config/env.config";
 import { defaultLocale } from "@/config/i18n.config";
 import { createClient } from "@/lib/content/create-client";
 import { createFullUrl } from "@/lib/create-full-url";
