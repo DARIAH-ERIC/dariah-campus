@@ -1,19 +1,24 @@
 import { PlayCircleIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
-import { Video } from "@/app/(app)/(index)/_components/video";
 import { LightBox, LightBoxOverlay, LightboxTrigger } from "@/components/content/lightbox";
 import { ServerImage as Image } from "@/components/server-image";
+import type { VideoProvider } from "@/lib/content/options";
+import { createVideoUrl } from "@/lib/keystatic/create-video-url";
 
 interface VideoCardProps {
 	description: string;
 	id: string;
 	image: string;
+	provider?: VideoProvider;
+	startTime?: number;
 	title: string;
 }
 
 export function VideoCard(props: VideoCardProps): ReactNode {
-	const { description, id, image, title } = props;
+	const { description, id, image, provider = "youtube", startTime, title } = props;
+
+	const url = createVideoUrl(provider, id, startTime);
 
 	return (
 		<LightBoxOverlay>
@@ -22,7 +27,7 @@ export function VideoCard(props: VideoCardProps): ReactNode {
 					<Image
 						alt=""
 						className="absolute inset-0 size-full object-cover"
-						sizes="(max-width: 640px) 544px, (max-width: 814px) 718px, 256px"
+						sizes="800px"
 						src={image}
 					/>
 				</div>
@@ -39,7 +44,14 @@ export function VideoCard(props: VideoCardProps): ReactNode {
 			</figure>
 
 			<LightBox>
-				<Video caption={[title, description].join(" - ")} id={id} />
+				<iframe
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowFullScreen={true}
+					className="absolute inset-0 size-full object-cover"
+					loading="lazy"
+					src={String(url)}
+					title={title}
+				/>
 			</LightBox>
 		</LightBoxOverlay>
 	);

@@ -2,9 +2,9 @@ import { PlayCircleIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { LightBox, LightBoxOverlay, LightboxTrigger } from "@/components/content/lightbox";
-import { Video } from "@/components/content/video";
 import { ServerImage as Image } from "@/components/server-image";
 import type { VideoProvider } from "@/lib/content/options";
+import { createVideoUrl } from "@/lib/keystatic/create-video-url";
 
 interface VideoCardProps {
 	id: string;
@@ -18,6 +18,8 @@ interface VideoCardProps {
 export function VideoCard(props: VideoCardProps): ReactNode {
 	const { id, image, provider, startTime, subtitle, title } = props;
 
+	const url = createVideoUrl(provider, id, startTime);
+
 	return (
 		<LightBoxOverlay>
 			<figure className="relative flex size-full flex-col items-center space-y-4 rounded-xl bg-white p-6 text-neutral-800 shadow-md transition focus-within:ring focus-within:ring-primary-600 hover:shadow-lg">
@@ -25,7 +27,7 @@ export function VideoCard(props: VideoCardProps): ReactNode {
 					<Image
 						alt=""
 						className="not-prose absolute inset-0 m-0 size-full object-cover"
-						sizes="(max-width: 640px) 544px, (max-width: 814px) 718px, 256px"
+						sizes="800px"
 						src={image}
 					/>
 				</div>
@@ -41,12 +43,14 @@ export function VideoCard(props: VideoCardProps): ReactNode {
 				</figcaption>
 			</figure>
 
-			<LightBox>
-				<Video
-					caption={[title, subtitle].join(" - ")}
-					id={id}
-					provider={provider}
-					startTime={startTime}
+			<LightBox caption={[title, subtitle].join(" - ")}>
+				<iframe
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowFullScreen={true}
+					className="absolute inset-0 size-full object-cover"
+					loading="lazy"
+					src={String(url)}
+					title={title}
 				/>
 			</LightBox>
 		</LightBoxOverlay>
