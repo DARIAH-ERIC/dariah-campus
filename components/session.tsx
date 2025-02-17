@@ -1,3 +1,4 @@
+import { DownloadIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { FC, ReactNode } from "react";
 
@@ -43,7 +44,7 @@ export function Session(props: SessionProps): ReactNode {
 	const t = useTranslations("Session");
 
 	return (
-		<article className="my-16 grid content-start gap-y-8">
+		<article className="grid content-start gap-y-8 py-8">
 			<div className="prose">
 				<h2>
 					<span className="mr-2">{index}.</span>
@@ -52,6 +53,90 @@ export function Session(props: SessionProps): ReactNode {
 			</div>
 
 			{children}
+
+			{speakers.length > 0 || attachments.length > 0 || links.length > 0 ? (
+				<footer className="my-8 rounded-lg border border-neutral-200 bg-neutral-100 p-8">
+					<dl className="grid content-start gap-y-8">
+						{speakers.length > 0 ? (
+							<div className="grid content-start gap-y-6">
+								<dt className="border-b border-neutral-200 pb-2 text-xl font-bold">
+									{t("speakers", { count: speakers.length })}
+								</dt>
+								<dd>
+									<ul className="grid list-none content-start gap-y-12" role="list">
+										{speakers.map((speaker, index) => {
+											const { name, image, SpeakerDescription } = speaker;
+
+											return (
+												<li key={index}>
+													<div className="grid content-start gap-y-4">
+														<Image
+															alt=""
+															className="aspect-square size-20 rounded-full border border-neutral-200 object-cover"
+															height={128}
+															sizes="256px"
+															src={image}
+															width={128}
+														/>
+														<strong className="text-lg font-bold">{name}</strong>
+														<div className="prose prose-sm">
+															<SpeakerDescription />
+														</div>
+													</div>
+												</li>
+											);
+										})}
+									</ul>
+								</dd>
+							</div>
+						) : null}
+
+						{attachments.length > 0 ? (
+							<div className="grid content-start gap-y-6">
+								<dt className="border-b border-neutral-200 pb-2 text-xl font-bold">
+									{t("attachments", { count: attachments.length })}
+								</dt>
+								<dd>
+									{attachments.map((attachment, index) => {
+										return (
+											<a
+												key={index}
+												className="inline-flex items-center gap-x-2 text-primary-600 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+												download={true}
+												href={attachment.file}
+											>
+												<DownloadIcon aria-hidden={true} className="size-4 shrink-0" />
+												{attachment.label}
+											</a>
+										);
+									})}
+								</dd>
+							</div>
+						) : null}
+
+						{links.length > 0 ? (
+							<div className="grid content-start gap-y-6">
+								<dt className="border-b border-neutral-200 pb-2 text-xl font-bold">
+									{t("links", { count: links.length })}
+								</dt>
+								<dd>
+									{links.map((link, index) => {
+										return (
+											<a
+												key={index}
+												className="inline-flex items-center gap-x-2 text-primary-600 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+												href={link.href}
+											>
+												{link.label}
+											</a>
+										);
+									})}
+								</dd>
+							</div>
+						) : null}
+					</dl>
+				</footer>
+			) : null}
 
 			{presentations.length > 0 ? (
 				<ol>
@@ -74,165 +159,109 @@ export function Session(props: SessionProps): ReactNode {
 
 						return (
 							<li key={presentationIndex}>
-								<article className="my-16 grid content-start gap-y-8">
+								<article className="grid content-start gap-y-8 py-8">
 									<div className="prose">
 										<h2>
-											<span className="mr-2">{presentationIndex}.</span>
+											<span className="mr-2">
+												{index}.{presentationIndex + 1}.
+											</span>
 											{title}
 										</h2>
 									</div>
 
-									<PresentationContent />
+									<div className="prose">
+										<PresentationContent />
+									</div>
 
-									<footer className="my-8 rounded-lg border border-neutral-200 bg-neutral-100 p-8">
-										<dl>
-											{speakers.length > 0 ? (
-												<div className="grid content-start gap-y-6">
-													<dt className="border-b border-neutral-200 pb-2 text-2xl font-bold">
-														{t("speakers", { count: speakers.length })}
-													</dt>
-													<dd>
-														<ul className="grid list-none content-start gap-y-12" role="list">
-															{speakers.map((speaker, index) => {
-																const { name, image, SpeakerDescription } = speaker;
+									{speakers.length > 0 || attachments.length > 0 || links.length > 0 ? (
+										<footer className="my-8 rounded-lg border border-neutral-200 bg-neutral-100 p-8">
+											<dl className="grid content-start gap-y-8">
+												{speakers.length > 0 ? (
+													<div className="grid content-start gap-y-6">
+														<dt className="border-b border-neutral-200 pb-2 text-xl font-bold">
+															{t("speakers", { count: speakers.length })}
+														</dt>
+														<dd>
+															<ul className="grid list-none content-start gap-y-12" role="list">
+																{speakers.map((speaker, index) => {
+																	const { name, image, SpeakerDescription } = speaker;
 
-																return (
-																	<li key={index}>
-																		<div className="grid content-start gap-y-4">
-																			<Image
-																				alt=""
-																				className="aspect-square size-24 rounded-full border border-neutral-200 object-cover"
-																				height={200}
-																				sizes="200px"
-																				src={image}
-																				width={200}
-																			/>
-																			<strong className="text-lg font-bold">{name}</strong>
-																			<div className="prose">
-																				<SpeakerDescription />
+																	return (
+																		<li key={index}>
+																			<div className="grid content-start gap-y-4">
+																				<Image
+																					alt=""
+																					className="aspect-square size-20 rounded-full border border-neutral-200 object-cover"
+																					height={128}
+																					sizes="256px"
+																					src={image}
+																					width={128}
+																				/>
+																				<strong className="text-lg font-bold">{name}</strong>
+																				<div className="prose prose-sm">
+																					<SpeakerDescription />
+																				</div>
 																			</div>
-																		</div>
-																	</li>
+																		</li>
+																	);
+																})}
+															</ul>
+														</dd>
+													</div>
+												) : null}
+
+												{attachments.length > 0 ? (
+													<div className="grid content-start gap-y-6">
+														<dt className="border-b border-neutral-200 pb-2 text-xl font-bold">
+															{t("attachments", { count: attachments.length })}
+														</dt>
+														<dd>
+															{attachments.map((attachment, index) => {
+																return (
+																	<a
+																		key={index}
+																		className="inline-flex items-center gap-x-2 text-primary-600 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+																		download={true}
+																		href={attachment.file}
+																	>
+																		<DownloadIcon aria-hidden={true} className="size-4 shrink-0" />
+																		{attachment.label}
+																	</a>
 																);
 															})}
-														</ul>
-													</dd>
-												</div>
-											) : null}
+														</dd>
+													</div>
+												) : null}
 
-											{attachments.length > 0 ? (
-												<div className="grid content-start gap-y-4">
-													<dt className="font-bold uppercase tracking-wider text-neutral-600">
-														{t("attachments", { count: attachments.length })}
-													</dt>
-													<dd>
-														{attachments.map((attachment, index) => {
-															return (
-																<a key={index} download={true} href={attachment.file}>
-																	{attachment.label}
-																</a>
-															);
-														})}
-													</dd>
-												</div>
-											) : null}
-
-											{links.length > 0 ? (
-												<div className="grid content-start gap-y-4">
-													<dt className="font-bold uppercase tracking-wider text-neutral-600">
-														{t("links", { count: links.length })}
-													</dt>
-													<dd>
-														{links.map((link, index) => {
-															return (
-																<a key={index} href={link.href}>
-																	{link.label}
-																</a>
-															);
-														})}
-													</dd>
-												</div>
-											) : null}
-										</dl>
-									</footer>
+												{links.length > 0 ? (
+													<div className="grid content-start gap-y-6">
+														<dt className="border-b border-neutral-200 pb-2 text-xl font-bold">
+															{t("links", { count: links.length })}
+														</dt>
+														<dd>
+															{links.map((link, index) => {
+																return (
+																	<a
+																		key={index}
+																		className="inline-flex items-center gap-x-2 text-primary-600 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+																		href={link.href}
+																	>
+																		{link.label}
+																	</a>
+																);
+															})}
+														</dd>
+													</div>
+												) : null}
+											</dl>
+										</footer>
+									) : null}
 								</article>
 							</li>
 						);
 					})}
 				</ol>
 			) : null}
-
-			<footer className="my-8 rounded-lg border border-neutral-200 bg-neutral-100 p-8">
-				<dl>
-					{speakers.length > 0 ? (
-						<div className="grid content-start gap-y-6">
-							<dt className="border-b border-neutral-200 pb-2 text-2xl font-bold">
-								{t("speakers", { count: speakers.length })}
-							</dt>
-							<dd>
-								<ul className="grid list-none content-start gap-y-12" role="list">
-									{speakers.map((speaker, index) => {
-										const { name, image, SpeakerDescription } = speaker;
-
-										return (
-											<li key={index}>
-												<div className="grid content-start gap-y-4">
-													<Image
-														alt=""
-														className="aspect-square size-24 rounded-full border border-neutral-200 object-cover"
-														height={200}
-														sizes="200px"
-														src={image}
-														width={200}
-													/>
-													<strong className="text-lg font-bold">{name}</strong>
-													<div className="prose">
-														<SpeakerDescription />
-													</div>
-												</div>
-											</li>
-										);
-									})}
-								</ul>
-							</dd>
-						</div>
-					) : null}
-
-					{attachments.length > 0 ? (
-						<div className="grid content-start gap-y-4">
-							<dt className="font-bold uppercase tracking-wider text-neutral-600">
-								{t("attachments", { count: attachments.length })}
-							</dt>
-							<dd>
-								{attachments.map((attachment, index) => {
-									return (
-										<a key={index} download={true} href={attachment.file}>
-											{attachment.label}
-										</a>
-									);
-								})}
-							</dd>
-						</div>
-					) : null}
-
-					{links.length > 0 ? (
-						<div className="grid content-start gap-y-4">
-							<dt className="font-bold uppercase tracking-wider text-neutral-600">
-								{t("links", { count: links.length })}
-							</dt>
-							<dd>
-								{links.map((link, index) => {
-									return (
-										<a key={index} href={link.href}>
-											{link.label}
-										</a>
-									);
-								})}
-							</dd>
-						</div>
-					) : null}
-				</dl>
-			</footer>
 		</article>
 	);
 }

@@ -4,11 +4,14 @@ import type { ReactNode } from "react";
 import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
 import { Attachments } from "@/components/attachments";
 import { Links } from "@/components/links";
+import { Organisations } from "@/components/organisations";
 import { PageTitle } from "@/components/page-title";
 import { People } from "@/components/people";
 import { ServerImage as Image } from "@/components/server-image";
+import { SocialMedia } from "@/components/social-media";
 import { SocialMediaShareLinks } from "@/components/social-media-share-links";
 import { Tags } from "@/components/tags";
+import type { SocialMediaKind } from "@/lib/content/options";
 import { createFullUrl } from "@/lib/create-full-url";
 
 interface ResourceProps {
@@ -23,6 +26,8 @@ interface ResourceProps {
 	// lastUpdatedAt: Date;
 	links?: Array<{ label: string; href: string }>;
 	location?: string;
+	organisations?: ReadonlyArray<{ name: string; url: string; logo: string }>;
+	social?: ReadonlyArray<{ discriminant: SocialMediaKind; value: string }>;
 	startDate?: Date;
 	tags: Array<{ id: string; name: string }>;
 	title: string;
@@ -39,6 +44,8 @@ export function Resource(props: ResourceProps): ReactNode {
 		id,
 		links = [],
 		location,
+		organisations = [],
+		social = [],
 		startDate,
 		tags,
 		title,
@@ -69,13 +76,15 @@ export function Resource(props: ResourceProps): ReactNode {
 							</div>
 							<div>
 								{endDate
-									? format.dateTimeRange(startDate, endDate, { dateStyle: "medium" })
-									: format.dateTime(startDate, { dateStyle: "medium" })}
+									? format.dateTimeRange(startDate, endDate, { dateStyle: "long" })
+									: format.dateTime(startDate, { dateStyle: "long" })}
 							</div>
 						</div>
 					) : null}
 					<People label={t("authors")} people={authors} />
 					<Tags label={t("tags")} tags={tags} />
+					<SocialMedia label={t("social-media")} social={social} />
+					<Organisations label={t("organized-by")} organisations={organisations} />
 					<Attachments attachments={attachments} label={t("attachments")} />
 					<Links label={t("links")} links={links} />
 				</div>

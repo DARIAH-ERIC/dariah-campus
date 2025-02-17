@@ -11,12 +11,14 @@ import { CurriculaList } from "@/components/curricula-list";
 import { FloatingTableOfContents } from "@/components/floating-table-of-contents";
 import { LinksList } from "@/components/links-list";
 import { MainContent } from "@/components/main-content";
+import { OrganisationsList } from "@/components/organisations-list";
 import { PeopleList } from "@/components/people-list";
 import { ReUseConditions } from "@/components/re-use-conditions";
 import { RelatedResourcesList } from "@/components/related-resources-list";
 import { Resource } from "@/components/resource";
 import { ResourceMetadata } from "@/components/resource-metadata";
 import { Session } from "@/components/session";
+import { SocialMediaList } from "@/components/social-media-list";
 import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
 import { createClient } from "@/lib/content/create-client";
@@ -199,7 +201,9 @@ export default async function EventResourcePage(
 							{t("date")}
 						</div>
 						<div>
-							{endDate ? format.dateTimeRange(startDate, endDate) : format.dateTime(startDate)}
+							{endDate
+								? format.dateTimeRange(startDate, endDate, { dateStyle: "long" })
+								: format.dateTime(startDate, { dateStyle: "long" })}
 						</div>
 					</div>
 					<PeopleList
@@ -216,6 +220,8 @@ export default async function EventResourcePage(
 					/>
 					<AttachmentsList attachments={attachments} label={t("attachments")} />
 					<LinksList label={t("links")} links={links} />
+					<SocialMediaList label={t("social-media")} social={social} />
+					<OrganisationsList label={t("organized-by")} organisations={organisations} />
 					<CurriculaList
 						curricula={resource.curricula.map((curriculum) => {
 							return { id: curriculum.id, title: curriculum.data.title };
@@ -245,6 +251,8 @@ export default async function EventResourcePage(
 						featuredImage={featuredImage}
 						id={resource.id}
 						location={location}
+						organisations={organisations}
+						social={social}
 						startDate={startDate}
 						// FIXME:
 						// lastUpdatedAt={lastUpdatedAt}

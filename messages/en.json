@@ -81,7 +81,9 @@
 		"tags": "Topics"
 	},
 	"CurriculumPage": {
+		"attachments": "Attachments",
 		"editors": "Editors",
+		"links": "Links",
 		"overview": "Overview",
 		"tags": "Topics"
 	},
@@ -100,9 +102,11 @@
 		"authors": "Authors",
 		"close": "Close",
 		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
+		"date": "Date",
 		"links": "Links",
 		"location": "Location",
-		"date": "Date",
+		"organized-by": "Organized by",
+		"social-media": "Social media",
 		"table-of-contents": "Table of contents",
 		"tags": "Topics",
 		"toggle-table-of-contents": "Toggle table of contents"
@@ -212,6 +216,8 @@
 		"last-updated-at": "Last updated at",
 		"links": "Links",
 		"location": "Location",
+		"organized-by": "Organized by",
+		"social-media": "Social media",
 		"suggest-changes-to-resource": "Suggest changes to resource",
 		"tags": "Topics"
 	},

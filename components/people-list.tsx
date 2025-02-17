@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
 
-import { Image } from "@/components/image";
 import { Link } from "@/components/link";
+import { ServerImage as Image } from "@/components/server-image";
 import { createSearchUrl } from "@/lib/create-search-url";
+
+const max = 4;
 
 interface PeopleListProps {
 	label: ReactNode;
@@ -17,7 +19,7 @@ export function PeopleList(props: PeopleListProps): ReactNode {
 	return (
 		<div className="grid gap-y-1 text-sm text-neutral-500">
 			<ul className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</ul>
-			{people.map((person) => {
+			{people.slice(0, max).map((person) => {
 				const { id, image, name } = person;
 
 				return (
@@ -28,7 +30,7 @@ export function PeopleList(props: PeopleListProps): ReactNode {
 						>
 							<Image
 								alt=""
-								className="size-8 rounded-full object-cover"
+								className="size-8 rounded-full border border-neutral-200 object-cover"
 								height={32}
 								src={image}
 								width={32}
@@ -38,6 +40,8 @@ export function PeopleList(props: PeopleListProps): ReactNode {
 					</li>
 				);
 			})}
+			{/* eslint-disable-next-line react/jsx-no-literals */}
+			{people.length > 4 ? <li className="list-none">and {people.length - 4} more</li> : null}
 		</div>
 	);
 }

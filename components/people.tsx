@@ -34,7 +34,7 @@ export function People(props: PeopleProps): ReactNode {
 								>
 									<Image
 										alt=""
-										className="size-8 rounded-full object-cover"
+										className="size-8 rounded-full border border-neutral-200 object-cover"
 										height={32}
 										src={image}
 										width={32}
