@@ -6,14 +6,20 @@ node_modules/
 *.log
 
 # non-public environment variables
-.env
+.env.keys
 .env.local
 .env.*.local
 
 # caches
 .eslintcache
+.prettiercache
 .stylelintcache
 *.tsbuildinfo
+
+# performance profiles
+*.cpuprofile
+*.heapprofile
+*.heapsnapshot
 
 # vercel
 .vercel
@@ -27,20 +33,14 @@ node_modules/
 next-env.d.ts
 out/
 
-# auto-generated favicons
-public/**/android-chrome-192x192.png
-public/**/android-chrome-512x512.png
-public/**/apple-touch-icon.png
-public/**/favicon-16x16.png
-public/**/favicon-32x32.png
-public/**/favicon.ico
-public/**/site.webmanifest
-public/**/open-graph.webp
+# test
+/coverage/
 
-# auto-generated files
-public/feed.xml
-public/robots.txt
-public/sitemap.xml
+# playwright
+/blob-report/
+/playwright/.cache/
+/playwright-report/
+/test-results/
 
-# metadata dump
-public/metadata/*.json
+# i18n
+/messages/*.d.json.ts

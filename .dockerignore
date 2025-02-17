@@ -1,0 +1,74 @@
+## .gitignore ##
+
+# dependencies
+node_modules/
+.pnpm-store/
+
+# logs
+*.log
+
+# non-public environment variables
+.env.keys
+.env.local
+.env.*.local
+
+# caches
+.eslintcache
+.prettiercache
+.stylelintcache
+*.tsbuildinfo
+
+# performance profiles
+*.cpuprofile
+*.heapprofile
+*.heapsnapshot
+
+# vercel
+.vercel
+
+# misc
+.DS_Store
+.idea/
+
+# next.js
+.next/
+next-env.d.ts
+out/
+
+# test
+/coverage/
+
+# playwright
+/blob-report/
+/playwright/.cache/
+/playwright-report/
+/test-results/
+
+# i18n
+/messages/*.d.json.ts
+
+
+## .dockerignore ##
+
+# git
+.git/
+.gitattributes
+.gitignore
+
+# github
+.github/
+
+# vscode settings
+.vscode/
+
+# environment variables
+.env
+.env.*
+
+# tests
+playwright.config.ts
+/e2e/
+/test/
+
+# misc
+.editorconfig

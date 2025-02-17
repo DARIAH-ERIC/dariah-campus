@@ -1,0 +1,17 @@
+/* stylelint-disable selector-class-pattern */
+
+body {
+	/**
+	 * FIXME: workaround for unavailable italics font style.
+	 *
+	 * @see https://github.com/Thinkmill/keystatic/issues/1292
+	 */
+	font-synthesis: style;
+}
+
+/**
+ * Workaround for .svg images without width and height attributes not being visible.
+ */
+.kui\:reset > img[src^="blob:"] {
+	min-height: 48px;
+}
