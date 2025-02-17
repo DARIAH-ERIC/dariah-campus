@@ -5,9 +5,11 @@ import { Fragment, type ReactNode } from "react";
 import { jsonLdScriptProps } from "react-schemaorg";
 
 import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
+import { AttachmentsList } from "@/components/attachments-list";
 import { Citation } from "@/components/citation";
 import { CurriculaList } from "@/components/curricula-list";
 import { FloatingTableOfContents } from "@/components/floating-table-of-contents";
+import { LinksList } from "@/components/links-list";
 import { MainContent } from "@/components/main-content";
 import { PeopleList } from "@/components/people-list";
 import { ReUseConditions } from "@/components/re-use-conditions";
@@ -130,8 +132,15 @@ export default async function EventResourcePage(
 		location,
 		organisations,
 	} = resource.data;
-	const { default: Content, tableOfContents } = await resource.compile(content);
+	const { default: Content } = await resource.compile(content);
 	const related = pickRandom(Array.from(resource.related), 4);
+	const tableOfContents = sessions.map((session, index) => {
+		return {
+			value: session.title,
+			depth: 0,
+			id: `session-${String(index + 1)}`,
+		};
+	});
 
 	const people = await client.people.all();
 	const peopleById = keyByToMap(people, (person) => {
@@ -205,6 +214,8 @@ export default async function EventResourcePage(
 							return { id: tag.id, name: tag.data.name };
 						})}
 					/>
+					<AttachmentsList attachments={attachments} label={t("attachments")} />
+					<LinksList label={t("links")} links={links} />
 					<CurriculaList
 						curricula={resource.curricula.map((curriculum) => {
 							return { id: curriculum.id, title: curriculum.data.title };
@@ -337,7 +348,7 @@ export default async function EventResourcePage(
 					/>
 				</div>
 
-				{resource.data["table-of-contents"] && tableOfContents.length > 0 ? (
+				{tableOfContents.length > 0 ? (
 					<Fragment>
 						<aside
 							className="sticky top-24 hidden max-h-screen w-full max-w-xs overflow-y-auto p-8 text-sm text-neutral-500 2xl:flex 2xl:flex-col"

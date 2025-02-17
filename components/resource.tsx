@@ -2,6 +2,8 @@ import { useFormatter, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
 import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
+import { Attachments } from "@/components/attachments";
+import { Links } from "@/components/links";
 import { PageTitle } from "@/components/page-title";
 import { People } from "@/components/people";
 import { ServerImage as Image } from "@/components/server-image";
@@ -10,6 +12,7 @@ import { Tags } from "@/components/tags";
 import { createFullUrl } from "@/lib/create-full-url";
 
 interface ResourceProps {
+	attachments?: Array<{ label: string; file: string }>;
 	authors: Array<{ id: string; image: string; name: string }>;
 	children: ReactNode;
 	collection: string;
@@ -18,6 +21,7 @@ interface ResourceProps {
 	featuredImage?: string | null;
 	id: string;
 	// lastUpdatedAt: Date;
+	links?: Array<{ label: string; href: string }>;
 	location?: string;
 	startDate?: Date;
 	tags: Array<{ id: string; name: string }>;
@@ -26,12 +30,14 @@ interface ResourceProps {
 
 export function Resource(props: ResourceProps): ReactNode {
 	const {
+		attachments = [],
 		authors,
 		children,
 		collection,
 		endDate,
 		featuredImage,
 		id,
+		links = [],
 		location,
 		startDate,
 		tags,
@@ -70,6 +76,8 @@ export function Resource(props: ResourceProps): ReactNode {
 					) : null}
 					<People label={t("authors")} people={authors} />
 					<Tags label={t("tags")} tags={tags} />
+					<Attachments attachments={attachments} label={t("attachments")} />
+					<Links label={t("links")} links={links} />
 				</div>
 			</header>
 			<div>

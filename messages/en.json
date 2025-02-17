@@ -96,9 +96,11 @@
 		"try-again": "Try again"
 	},
 	"EventResourcePage": {
+		"attachments": "Attachments",
 		"authors": "Authors",
 		"close": "Close",
 		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
+		"links": "Links",
 		"location": "Location",
 		"date": "Date",
 		"table-of-contents": "Table of contents",
@@ -204,9 +206,11 @@
 		"label": "Related resources"
 	},
 	"Resource": {
+		"attachments": "Attachments",
 		"authors": "Authors",
 		"date": "Date",
 		"last-updated-at": "Last updated at",
+		"links": "Links",
 		"location": "Location",
 		"suggest-changes-to-resource": "Suggest changes to resource",
 		"tags": "Topics"
