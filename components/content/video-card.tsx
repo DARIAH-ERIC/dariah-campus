@@ -1,12 +1,8 @@
 import { PlayCircleIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
-import {
-	LightBox,
-	LightBoxOverlay,
-	LightboxTrigger,
-} from "@/app/(app)/(index)/_components/lightbox";
-import { Video } from "@/app/(app)/(index)/_components/video";
+import { LightBox, LightBoxOverlay, LightboxTrigger } from "@/components/content/lightbox";
+import { Video } from "@/components/content/video";
 import { ServerImage as Image } from "@/components/server-image";
 import type { VideoProvider } from "@/lib/content/options";
 

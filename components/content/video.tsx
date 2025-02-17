@@ -23,7 +23,7 @@ export function Video(props: Readonly<VideoProps>): ReactNode {
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				allowFullScreen={true}
 				className="aspect-video w-full overflow-hidden rounded-lg border border-neutral-200"
-				referrerPolicy="strict-origin-when-cross-origin"
+				loading="lazy"
 				src={src}
 				title={title}
 			/>
