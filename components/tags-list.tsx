@@ -24,7 +24,7 @@ export function TagsList(props: TagsListProps): ReactNode {
 						return (
 							<li key={id} className="inline list-none">
 								<Link
-									className="transition hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+									className="transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 									href={createSearchUrl({ tags: [id] })}
 								>
 									{name}

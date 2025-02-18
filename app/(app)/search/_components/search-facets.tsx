@@ -38,7 +38,7 @@ export function SearchFacets(props: SearchFacetsProps): ReactNode {
 				<label>
 					<span className="sr-only">{filterLabel}</span>
 					<input
-						className="mb-1 w-full rounded-md border border-neutral-300 px-3 py-1 focus-visible:ring focus-visible:ring-primary-600"
+						className="mb-1 w-full rounded-md border border-neutral-300 px-3 py-1 focus-visible:ring focus-visible:ring-brand-700"
 						onChange={(event) => {
 							facets.searchForItems(event.currentTarget.value);
 						}}
@@ -49,7 +49,7 @@ export function SearchFacets(props: SearchFacetsProps): ReactNode {
 
 			{facets.items.length > 0 ? (
 				<Fragment>
-					<ul className="grid gap-y-1 accent-primary-600" role="list">
+					<ul className="grid gap-y-1 accent-brand-700" role="list">
 						{facets.items.map((item) => {
 							function onChange() {
 								facets.refine(item.value);
@@ -76,7 +76,7 @@ export function SearchFacets(props: SearchFacetsProps): ReactNode {
 
 					{facets.canToggleShowMore ? (
 						<Button
-							className="rounded-md py-1 text-sm text-neutral-600	transition hover:text-primary-600 focus-visible:ring focus-visible:ring-primary-600"
+							className="rounded-md py-1 text-sm text-neutral-600	transition hover:text-brand-700 focus-visible:ring focus-visible:ring-brand-700"
 							onPress={() => {
 								facets.toggleShowMore();
 							}}

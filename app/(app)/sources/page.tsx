@@ -69,7 +69,7 @@ export default async function SourcesPage(_props: Readonly<SourcesPageProps>): P
 								<CardContent>
 									<CardTitle>
 										<Link
-											className="rounded transition after:absolute after:inset-0 hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+											className="rounded transition after:absolute after:inset-0 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 											href={href}
 										>
 											{name}

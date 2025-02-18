@@ -23,7 +23,7 @@ export function Organisations(props: OrganisationsProps): ReactNode {
 						return (
 							<li key={index} className="list-none">
 								<a
-									className="transition hover:to-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+									className="transition hover:to-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 									href={url}
 								>
 									<div className="overflow-hidden rounded-md">

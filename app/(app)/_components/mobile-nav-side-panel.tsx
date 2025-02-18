@@ -19,7 +19,7 @@ export function MobileNavSidePanel(props: MobileNavSidePanelProps): ReactNode {
 
 	return (
 		<DialogTrigger>
-			<Button className="text-neutral-600 transition hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
+			<Button className="text-neutral-600 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700">
 				<span className="sr-only">{triggerLabel}</span>
 				<MenuIcon aria-hidden={true} className="size-6 shrink-0" />
 			</Button>
@@ -47,7 +47,7 @@ export function MobileNavSidePanel(props: MobileNavSidePanelProps): ReactNode {
 							return (
 								<Fragment>
 									<Button
-										className="justify-self-end text-neutral-600 transition hover:text-primary-600 focus-visible:ring focus-visible:ring-primary-600"
+										className="justify-self-end text-neutral-600 transition hover:text-brand-700 focus-visible:ring focus-visible:ring-brand-700"
 										slot="close"
 									>
 										<span className="sr-only">{closeLabel}</span>
@@ -59,7 +59,7 @@ export function MobileNavSidePanel(props: MobileNavSidePanelProps): ReactNode {
 											return (
 												<li key={key}>
 													<Link
-														className="flex rounded hover:text-primary-600 focus-visible:ring focus-visible:ring-primary-600"
+														className="flex rounded hover:text-brand-700 focus-visible:ring focus-visible:ring-brand-700"
 														href={link.href}
 														onPress={() => {
 															requestAnimationFrame(() => {

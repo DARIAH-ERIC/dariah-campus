@@ -23,7 +23,7 @@ export function SearchField(props: SearchFieldProps): ReactNode {
 		>
 			<Label className="sr-only">{label}</Label>
 			<Input
-				className="w-full rounded-full border border-neutral-300 px-10 py-5 focus:border-primary-600 focus:outline-none focus-visible:border-primary-600 focus-visible:ring focus-visible:ring-primary-600"
+				className="w-full rounded-full border border-neutral-300 px-10 py-5 focus:border-brand-700 focus:outline-none focus-visible:border-brand-700 focus-visible:ring focus-visible:ring-brand-700"
 				placeholder={`${label}...`}
 			/>
 		</AriaSearchField>

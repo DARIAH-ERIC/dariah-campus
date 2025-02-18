@@ -31,7 +31,7 @@ export default function InternalError(props: Readonly<InternalErrorProps>): Reac
 		<MainContent className="grid min-h-[calc(100dvh-100px)] place-content-center place-items-center gap-y-6">
 			<PageTitle>{t("something-went-wrong")}</PageTitle>
 			<Button
-				className="inline-flex rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
+				className="inline-flex rounded-lg bg-brand-700 px-4 py-2 text-sm font-medium text-white hover:bg-brand-900"
 				isPending={isPending}
 				onPress={() => {
 					startTransition(() => {

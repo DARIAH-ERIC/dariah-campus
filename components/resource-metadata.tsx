@@ -36,7 +36,7 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 	const format = useFormatter();
 
 	return (
-		<div className="mx-auto mt-12 w-full max-w-80ch space-y-3 border-t border-neutral-200 py-12">
+		<div className="mx-auto mt-12 w-full max-w-content space-y-3 border-t border-neutral-200 py-12">
 			<h2 className="text-xs font-bold uppercase tracking-wide text-neutral-600">{t("label")}</h2>
 			<dl className="flex flex-col space-y-1.5 text-sm text-neutral-500">
 				<div className="flex space-x-1.5">

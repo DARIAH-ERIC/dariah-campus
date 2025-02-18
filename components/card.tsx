@@ -8,7 +8,7 @@ export function Card(props: CardProps): ReactNode {
 	const { children } = props;
 
 	return (
-		<article className="relative flex flex-col overflow-hidden rounded-xl border border-neutral-150 bg-white shadow-sm hover:shadow-md">
+		<article className="relative flex flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm hover:shadow-md">
 			{children}
 		</article>
 	);

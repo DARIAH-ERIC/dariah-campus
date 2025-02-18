@@ -27,7 +27,7 @@ export function RelatedResourcesList(props: RelatedResourcesListProps): ReactNod
 	return (
 		<nav
 			aria-labelledby={id}
-			className="mx-auto mb-12 w-full max-w-80ch space-y-3 border-t border-neutral-200 py-12"
+			className="mx-auto mb-12 w-full max-w-content space-y-3 border-t border-neutral-200 py-12"
 		>
 			<h2 className="text-xs font-bold uppercase tracking-wide text-neutral-600" id={id}>
 				{t("label")}
@@ -41,10 +41,10 @@ export function RelatedResourcesList(props: RelatedResourcesListProps): ReactNod
 					return (
 						<li key={resource.id}>
 							<Link
-								className="flex items-center space-x-1.5 transition hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+								className="flex items-center space-x-1.5 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 								href={href}
 							>
-								<ContentTypeIcon className="size-3 shrink-0 text-primary-600" kind={contentType} />
+								<ContentTypeIcon className="size-3 shrink-0 text-brand-700" kind={contentType} />
 								<span>{title}</span>
 							</Link>
 						</li>

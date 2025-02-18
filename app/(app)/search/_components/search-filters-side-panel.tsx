@@ -16,7 +16,7 @@ export function SearchFiltersSidePanel(props: SearchFiltersSidePanelProps): Reac
 
 	return (
 		<DialogTrigger>
-			<Button className="fixed bottom-6 right-6 z-10 flex size-12 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg md:hidden">
+			<Button className="fixed bottom-6 right-6 z-10 flex size-12 items-center justify-center rounded-full bg-brand-700 text-white shadow-lg md:hidden">
 				<span className="sr-only">{label}</span>
 				<FilterIcon className="size-10 p-2" />
 			</Button>
@@ -40,7 +40,7 @@ export function SearchFiltersSidePanel(props: SearchFiltersSidePanelProps): Reac
 						className="relative grid h-full max-h-[inherit] content-start gap-y-8 overflow-auto p-8 outline-none"
 					>
 						<Button
-							className="justify-self-end text-neutral-600 transition hover:text-primary-600"
+							className="justify-self-end text-neutral-600 transition hover:text-brand-700"
 							slot="close"
 						>
 							<span className="sr-only">{closeLabel}</span>

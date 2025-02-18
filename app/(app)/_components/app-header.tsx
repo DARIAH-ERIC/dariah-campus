@@ -49,7 +49,7 @@ export function AppHeader(): ReactNode {
 	return (
 		<StickyHeader>
 			<Link
-				className="shrink-0 rounded transition hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+				className="shrink-0 rounded transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 				href={navigation.home.href}
 			>
 				<Image
@@ -68,7 +68,7 @@ export function AppHeader(): ReactNode {
 						return (
 							<li key={key}>
 								<Link
-									className="rounded transition hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+									className="rounded transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 									href={link.href}
 								>
 									{link.label}

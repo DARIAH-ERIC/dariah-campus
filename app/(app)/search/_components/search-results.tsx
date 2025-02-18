@@ -61,10 +61,10 @@ export function SearchResults(props: SearchResultsProps): ReactNode {
 							<CardContent>
 								<CardTitle>
 									<Link
-										className="rounded transition after:absolute after:inset-0 hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+										className="rounded transition after:absolute after:inset-0 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 										href={href}
 									>
-										<span className="mr-2 inline-flex text-primary-600">
+										<span className="mr-2 inline-flex text-brand-700">
 											<ContentTypeIcon className="size-5 shrink-0" kind={contentType} />
 										</span>
 										<span>{summaryTitle || title}</span>

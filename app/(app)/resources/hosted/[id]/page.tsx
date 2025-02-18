@@ -182,7 +182,7 @@ export default async function HostedResourcePage(
 							<Content />
 						</div>
 					</Resource>
-					<div className="mx-auto mt-12 flex w-full max-w-80ch flex-col space-y-12 border-t border-neutral-200 pt-12 text-sm text-neutral-500 2xl:hidden">
+					<div className="mx-auto mt-12 flex w-full max-w-content flex-col space-y-12 border-t border-neutral-200 pt-12 text-sm text-neutral-500 2xl:hidden">
 						<Citation
 							authors={authors.map((person) => {
 								return { id: person.id, name: person.data.name };

@@ -21,7 +21,7 @@ export function SocialMediaShareLinks(props: SocialMediaShareLinksProps): ReactN
 	return (
 		<div className="my-8 flex items-center justify-center space-x-4 text-neutral-500">
 			<Link
-				className="block rounded-full transition hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+				className="block rounded-full transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 				href={String(
 					createUrl({
 						baseUrl: "https://www.twitter.com",
@@ -44,7 +44,7 @@ export function SocialMediaShareLinks(props: SocialMediaShareLinksProps): ReactN
 				<span className="sr-only">{t("share-link", { platform: "Twitter" })}</span>
 			</Link>
 			<Link
-				className="block rounded-full transition hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+				className="block rounded-full transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 				href={String(
 					createUrl({
 						baseUrl: "https://www.facebook.com",

@@ -57,7 +57,7 @@ export function Resource(props: ResourceProps): ReactNode {
 	const href = String(createFullUrl({ pathname: createResourceUrl({ id, collection }) }));
 
 	return (
-		<article className="mx-auto w-full max-w-80ch space-y-10">
+		<article className="mx-auto w-full max-w-content space-y-10">
 			<header className="space-y-10">
 				<PageTitle>{title}</PageTitle>
 				<div className="space-y-6 border-y py-10 2xl:hidden">

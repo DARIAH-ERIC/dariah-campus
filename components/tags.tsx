@@ -26,7 +26,7 @@ export function Tags(props: TagsProps): ReactNode {
 						return (
 							<li key={id} className="inline leading-none">
 								<Link
-									className="transition hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+									className="transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 									href={createSearchUrl({ tags: [id] })}
 								>
 									{name}

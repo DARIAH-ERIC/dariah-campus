@@ -218,7 +218,7 @@ export function LinkButtonPreview(props: Readonly<LinkButtonPreviewProps>): Reac
 	const { children, link: _link } = props;
 
 	return (
-		<div className="inline-flex min-h-12 items-center rounded-lg border border-primary-600 bg-primary-600 px-6 py-2.5 text-sm font-bold text-white">
+		<div className="inline-flex min-h-12 items-center rounded-lg border border-brand-700 bg-brand-700 px-6 py-2.5 text-sm font-bold text-white">
 			{children}
 		</div>
 	);

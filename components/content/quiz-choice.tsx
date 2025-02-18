@@ -61,7 +61,7 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 			<header>{questions}</header>
 
 			<input name="variant" type="hidden" value={variant} />
-			<ul className="list-none pl-0 accent-primary-600" role="list">
+			<ul className="list-none pl-0 accent-brand-700" role="list">
 				{answers.map((answer, index) => {
 					return (
 						<li key={index}>

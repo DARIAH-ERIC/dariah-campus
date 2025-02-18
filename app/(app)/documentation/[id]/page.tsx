@@ -94,7 +94,7 @@ export default async function DocumentationPage(
 									<li key={doc.id}>
 										<Link
 											aria-current={doc.id === id ? "page" : undefined}
-											className="relative flex items-center gap-x-1.5 rounded text-sm transition aria-[current]:font-bold hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+											className="relative flex items-center gap-x-1.5 rounded text-sm transition aria-[current]:font-bold hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 											href={href}
 										>
 											<span>{doc.data.title}</span>
@@ -127,7 +127,7 @@ export default async function DocumentationPage(
 									<li key={doc.id}>
 										<Link
 											aria-current={doc.id === id ? "page" : undefined}
-											className="relative flex items-center gap-x-1.5 rounded text-sm transition aria-[current]:font-bold hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+											className="relative flex items-center gap-x-1.5 rounded text-sm transition aria-[current]:font-bold hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 											href={href}
 										>
 											<span>{doc.data.title}</span>
@@ -138,7 +138,7 @@ export default async function DocumentationPage(
 						</ul>
 					</nav>
 
-					<div className="prose max-w-80ch">
+					<div className="prose max-w-content">
 						<Content />
 					</div>
 				</div>

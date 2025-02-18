@@ -22,7 +22,7 @@ export function VideoCard(props: VideoCardProps): ReactNode {
 
 	return (
 		<LightBoxOverlay>
-			<figure className="relative flex size-full flex-col items-center space-y-4 rounded-xl bg-white p-6 text-neutral-800 shadow-md transition focus-within:ring focus-within:ring-primary-600 hover:shadow-lg">
+			<figure className="relative flex size-full flex-col items-center space-y-4 rounded-xl bg-white p-6 text-neutral-800 shadow-md transition focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
 				<div className="relative aspect-video size-full overflow-hidden rounded-lg border border-neutral-200">
 					<Image
 						alt=""
@@ -35,7 +35,7 @@ export function VideoCard(props: VideoCardProps): ReactNode {
 					<LightboxTrigger className="grid justify-center justify-items-center gap-y-1 after:absolute after:inset-0 focus:outline-none">
 						<PlayCircleIcon
 							aria-hidden={true}
-							className="mx-auto size-12 shrink-0 text-primary-600"
+							className="mx-auto size-12 shrink-0 text-brand-700"
 						/>
 						<strong className="text-xl font-bold">{title}</strong>
 						<div className="text-neutral-500">{subtitle}</div>

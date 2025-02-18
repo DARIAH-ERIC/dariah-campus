@@ -37,7 +37,7 @@ export function CurriculumResourcesList(props: CurriculumResourcesListProps) {
 						<li key={id}>
 							<Link
 								className={cn(
-									"relative flex items-center space-x-1.5 rounded text-sm transition hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600",
+									"relative flex items-center space-x-1.5 rounded text-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700",
 									isCurrent && "font-bold",
 								)}
 								href={createHref({ hash })}

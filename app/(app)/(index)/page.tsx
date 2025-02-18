@@ -63,7 +63,7 @@ async function HeroSection(): Promise<ReactNode> {
 	return (
 		<section className="flex flex-col items-center space-y-4 text-center">
 			{/* eslint-disable-next-line @next/next/no-img-element */}
-			<img alt="" className="mx-auto h-48 text-primary-600 lg:h-60" src={image} />
+			<img alt="" className="mx-auto h-48 text-brand-700 lg:h-60" src={image} />
 			<h1 className="text-5xl font-bold lg:text-6xl">{title}</h1>
 			<p className="text-xl text-neutral-500 lg:text-2xl">{lead}</p>
 		</section>
@@ -82,7 +82,7 @@ async function SearchSection(): Promise<ReactNode> {
 					<span className="sr-only">{t("search")}</span>
 					<div className="relative mx-auto w-full max-w-2xl">
 						<input
-							className="flex w-full items-center rounded-full border border-neutral-150 py-5 pl-14 pr-6 text-lg shadow-xl transition placeholder:text-neutral-500 hover:border-primary-600 focus:outline-none focus-visible:border-primary-600 focus-visible:ring focus-visible:ring-primary-600"
+							className="flex w-full items-center rounded-full border border-neutral-200 py-5 pl-14 pr-6 text-lg shadow-xl transition placeholder:text-neutral-500 hover:border-brand-700 focus:outline-none focus-visible:border-brand-700 focus-visible:ring focus-visible:ring-brand-700"
 							name="dariah-campus[query]" // FIXME: change when removing instantsearch
 							placeholder={`${t("search")}...`}
 							type="search"
@@ -112,9 +112,9 @@ async function BrowseSection(): Promise<ReactNode> {
 				{links.map((link, index) => {
 					return (
 						<li key={index}>
-							<article className="relative flex h-full flex-col items-center space-y-2 rounded-xl border border-neutral-100 bg-white p-12 text-center shadow-md transition focus-within:ring focus-within:ring-primary-600 hover:shadow-lg">
+							<article className="relative flex h-full flex-col items-center space-y-2 rounded-xl border border-neutral-100 bg-white p-12 text-center shadow-md transition focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
 								{/* eslint-disable-next-line @next/next/no-img-element */}
-								<img alt="" className="size-20 text-primary-600" src={link.image} />
+								<img alt="" className="size-20 text-brand-700" src={link.image} />
 								<h3 className="text-xl font-semibold">
 									<Link
 										className="after:absolute after:inset-0 focus:outline-none"
@@ -183,7 +183,7 @@ async function FaqSection(): Promise<ReactNode> {
 						<Disclosure key={index} className="group flex flex-col">
 							<Heading className="flex flex-1 bg-white">
 								<Button
-									className="flex flex-1 items-center justify-between rounded-xl border border-neutral-100 p-6 text-primary-600 shadow-md transition hover:shadow-lg focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+									className="flex flex-1 items-center justify-between rounded-xl border border-neutral-100 p-6 text-brand-700 shadow-md transition hover:shadow-lg focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 									slot="trigger"
 								>
 									<span className="text-left">{title}</span>
@@ -201,7 +201,7 @@ async function FaqSection(): Promise<ReactNode> {
 											return (
 												<a
 													{...props}
-													className="rounded p-0.5 text-primary-600 underline transition hover:no-underline focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+													className="rounded p-0.5 text-brand-700 underline transition hover:no-underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 												>
 													{props.children}
 												</a>

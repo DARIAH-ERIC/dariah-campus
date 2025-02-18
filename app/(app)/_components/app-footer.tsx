@@ -85,7 +85,7 @@ export async function AppFooter(): Promise<ReactNode> {
 	const { social } = metadata.data;
 
 	return (
-		<footer className="flex flex-col space-y-6 bg-secondary-800 px-4 py-16 text-sm font-medium text-neutral-400 xs:px-8">
+		<footer className="flex flex-col space-y-6 bg-brand-950 px-4 py-16 text-sm font-medium text-neutral-400 xs:px-8">
 			<nav aria-label={t("navigation-secondary")}>
 				<ul
 					className="flex flex-col items-center justify-center space-y-3 md:flex-row md:space-x-6 md:space-y-0"

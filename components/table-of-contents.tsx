@@ -68,7 +68,7 @@ function TableOfContentsLevel(props: TableOfContentsLevelProps): ReactNode {
 						{heading.id !== undefined ? (
 							<Link
 								className={cn(
-									"relative flex rounded transition hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600",
+									"relative flex rounded transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700",
 									isHighlighted ? "pointer-events-none font-bold" : undefined,
 								)}
 								href={createHref({ hash: heading.id })}

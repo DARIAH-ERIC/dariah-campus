@@ -101,7 +101,7 @@ export function Session(props: SessionProps): ReactNode {
 										return (
 											<a
 												key={index}
-												className="inline-flex items-center gap-x-2 text-primary-600 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+												className="inline-flex items-center gap-x-2 text-brand-700 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 												download={true}
 												href={attachment.file}
 											>
@@ -124,7 +124,7 @@ export function Session(props: SessionProps): ReactNode {
 										return (
 											<a
 												key={index}
-												className="inline-flex items-center gap-x-2 text-primary-600 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+												className="inline-flex items-center gap-x-2 text-brand-700 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 												href={link.href}
 											>
 												{link.label}
@@ -220,7 +220,7 @@ export function Session(props: SessionProps): ReactNode {
 																return (
 																	<a
 																		key={index}
-																		className="inline-flex items-center gap-x-2 text-primary-600 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+																		className="inline-flex items-center gap-x-2 text-brand-700 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 																		download={true}
 																		href={attachment.file}
 																	>
@@ -243,7 +243,7 @@ export function Session(props: SessionProps): ReactNode {
 																return (
 																	<a
 																		key={index}
-																		className="inline-flex items-center gap-x-2 text-primary-600 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+																		className="inline-flex items-center gap-x-2 text-brand-700 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 																		href={link.href}
 																	>
 																		{link.label}

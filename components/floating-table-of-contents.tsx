@@ -21,7 +21,7 @@ export function FloatingTableOfContents(props: FloatingTableOfContentsProps): Re
 	return (
 		<nav aria-label={label}>
 			<DialogTrigger>
-				<Button className="fixed bottom-6 right-6 z-10 flex size-12 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg">
+				<Button className="fixed bottom-6 right-6 z-10 flex size-12 items-center justify-center rounded-full bg-brand-700 text-white shadow-lg">
 					<span className="sr-only">{toggleLabel}</span>
 					<TableOfContentsIcon className="size-10 p-2" />
 				</Button>
@@ -48,7 +48,7 @@ export function FloatingTableOfContents(props: FloatingTableOfContentsProps): Re
 								return (
 									<Fragment>
 										<Button
-											className="justify-self-end text-neutral-600 transition hover:text-primary-600"
+											className="justify-self-end text-neutral-600 transition hover:text-brand-700"
 											slot="close"
 										>
 											<span className="sr-only">{closeLabel}</span>

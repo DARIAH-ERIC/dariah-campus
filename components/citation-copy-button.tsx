@@ -13,7 +13,7 @@ export function CitationCopyButton(props: CitationCopyButtonProps): ReactNode {
 
 	return (
 		<Button
-			className="rounded-full border border-primary-600 px-3 py-1 text-xs font-medium text-primary-600 transition hover:bg-primary-600 hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+			className="rounded-full border border-brand-700 px-3 py-1 text-xs font-medium text-brand-700 transition hover:bg-brand-700 hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 			onPress={() => {
 				void navigator.clipboard.writeText(citation);
 			}}

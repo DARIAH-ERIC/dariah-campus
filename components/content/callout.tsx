@@ -24,11 +24,11 @@ const calloutStyles = styles({
 	base: "my-12 grid gap-y-3 rounded-md border border-l-4 p-6 shadow [&_*::marker]:text-inherit [&_*]:text-inherit",
 	variants: {
 		kind: {
-			caution: "border-red-200 border-l-red-600 bg-red-50 text-red-800",
-			important: "border-blue-200 border-l-blue-600 bg-blue-50 text-blue-800",
+			caution: "border-error-200 border-l-error-600 bg-error-50 text-error-800",
+			important: "border-important-200 border-l-important-600 bg-important-50 text-important-800",
 			note: "border-neutral-200 border-l-neutral-600 bg-neutral-100 text-neutral-800",
-			tip: "border-green-200 border-l-green-600 bg-green-50 text-green-800",
-			warning: "border-yellow-200 border-l-yellow-500 bg-yellow-50 text-yellow-800",
+			tip: "border-success-200 border-l-success-600 bg-success-50 text-success-800",
+			warning: "border-warning-200 border-l-warning-500 bg-warning-50 text-warning-800",
 		},
 	},
 	defaults: {

@@ -4,10 +4,6 @@ import colors from "tailwindcss/colors";
 import animatePlugin from "tailwindcss-animate";
 import reactAriaComponentsPlugin from "tailwindcss-react-aria-components";
 
-function px(pixel: number): string {
-	return `${String(pixel / 16)}rem`;
-}
-
 const config = {
 	content: [
 		"./app/**/*.@(ts|tsx)",
@@ -30,53 +26,34 @@ const config = {
 			colors: {
 				error: colors.red,
 				success: colors.green,
-				warning: colors.orange,
-				important: colors.sky,
-				neutral: {
-					...colors.neutral,
-					150: "#ebecee",
-				},
-				primary: {
-					600: "#006699",
-					700: "#005580",
-				},
-				secondary: {
-					800: "#2c3547",
-				},
-				event: {
-					violet1: "#1e396c",
-					violet2: "#0870ac",
-					orange: "#ed6f59",
-					pink1: "#d5d8dc",
-					pink2: "#eaecee",
-					gray: "#f8f9f9",
-					darkgray: "#2c3547",
-					red: "#de1f4e",
+				warning: colors.yellow,
+				important: colors.blue,
+				neutral: colors.neutral,
+				brand: {
+					"50": "#f0f9ff",
+					"100": "#dff3ff",
+					"200": "#b9e7fe",
+					"300": "#7bd7fe",
+					"400": "#34c2fc",
+					"500": "#0aaced",
+					"600": "#0089cb",
+					"700": "#006699" /** Logo color. */,
+					"800": "#055d87",
+					"900": "#0a4c70",
+					"950": "#07304a",
 				},
 			},
 			fontFamily: {
 				body: ["var(--font-body)", "system-ui", "sans-serif"],
 			},
-			fontSize: {
-				"4.5xl": [px(40), { lineHeight: "1" }],
-			},
 			gridTemplateColumns: {
 				"content-layout": "1fr 720px 1fr",
-				"cards-layout": "repeat(auto-fill, minmax(320px, 1fr))",
-				content: "1fr 80ch 1fr",
 			},
 			maxWidth: {
-				/** Character units `ch` change with font size, we just want a fixed width container. */
-				"80ch": "720px",
-			},
-			padding: {
-				"10vmin": "10vmin",
+				content: "720px",
 			},
 			ringOffsetWidth: {
 				DEFAULT: "2px",
-			},
-			strokeWidth: {
-				3: "3",
 			},
 			typography(theme: (key: string) => string) {
 				return {
@@ -152,8 +129,6 @@ const config = {
 			lg: "1048px",
 			xl: "1280px",
 			"2xl": "1440px",
-			// "event-md": "55.125em",
-			// "event-lg": "63.25em",
 		},
 	},
 } satisfies Config;

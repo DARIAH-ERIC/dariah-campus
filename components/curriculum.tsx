@@ -38,7 +38,7 @@ export function Curriculum(props: CurriculumProps): ReactNode {
 	const _format = useFormatter();
 
 	return (
-		<article className="mx-auto w-full max-w-80ch space-y-10">
+		<article className="mx-auto w-full max-w-content space-y-10">
 			<header className="space-y-10">
 				<PageTitle>{title}</PageTitle>
 				<div className="space-y-6 border-y py-10 2xl:hidden">
@@ -72,17 +72,17 @@ export function Curriculum(props: CurriculumProps): ReactNode {
 									<CardContent>
 										<CardTitle>
 											<Link
-												className="rounded transition after:absolute after:inset-0 hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+												className="rounded transition after:absolute after:inset-0 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 												href={href}
 											>
-												<span className="mr-2 inline-flex text-primary-600">
+												<span className="mr-2 inline-flex text-brand-700">
 													<ContentTypeIcon className="size-5 shrink-0" kind={contentType} />
 												</span>
 												<span>{summary.title || title}</span>
 											</Link>
 										</CardTitle>
 										<div className="flex">
-											<div className="rounded bg-primary-600 px-2 py-1 text-xs font-medium text-white">
+											<div className="rounded bg-brand-700 px-2 py-1 text-xs font-medium text-white">
 												{locale.toUpperCase()}
 											</div>
 										</div>
