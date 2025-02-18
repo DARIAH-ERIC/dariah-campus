@@ -22,7 +22,7 @@ export function VideoCard(props: VideoCardProps): ReactNode {
 
 	return (
 		<LightBoxOverlay>
-			<figure className="relative flex size-full flex-col items-center gap-y-4 rounded-xl bg-white p-6 text-neutral-800 shadow-md transition focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
+			<figure className="relative flex size-full flex-col items-center gap-y-4 rounded-xl border border-neutral-200 bg-white p-6 text-neutral-800 shadow-md transition focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
 				<div className="not-prose relative aspect-video size-full overflow-hidden rounded-lg border border-neutral-200">
 					<Image
 						alt=""

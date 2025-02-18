@@ -112,7 +112,7 @@ async function BrowseSection(): Promise<ReactNode> {
 				{links.map((link, index) => {
 					return (
 						<li key={index}>
-							<article className="relative flex h-full flex-col items-center gap-y-2 rounded-xl border border-neutral-100 bg-white p-12 text-center shadow-md transition focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
+							<article className="relative flex h-full flex-col items-center gap-y-2 rounded-xl border border-neutral-200 bg-white p-12 text-center shadow-md transition focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
 								{/* eslint-disable-next-line @next/next/no-img-element */}
 								<img alt="" className="size-20 text-brand-700" src={link.image} />
 								<h3 className="text-xl font-semibold">
@@ -183,7 +183,7 @@ async function FaqSection(): Promise<ReactNode> {
 						<Disclosure key={index} className="group flex flex-col">
 							<Heading className="flex flex-1 bg-white">
 								<Button
-									className="flex flex-1 items-center justify-between rounded-xl border border-neutral-100 p-6 text-brand-700 shadow-md transition hover:shadow-lg focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+									className="flex flex-1 items-center justify-between rounded-xl border border-neutral-200 p-6 text-brand-700 shadow-md transition hover:shadow-lg focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 									slot="trigger"
 								>
 									<span className="text-left">{title}</span>
@@ -270,7 +270,7 @@ async function TeamSection(): Promise<ReactNode> {
 							<article className="flex flex-col items-center">
 								<Image
 									alt=""
-									className="mb-2 size-24 rounded-full object-cover"
+									className="mb-2 size-24 rounded-full border border-neutral-200 object-cover"
 									height={96}
 									src={image}
 									width={96}
