@@ -11,6 +11,7 @@ import { ServerImage as Image } from "@/components/server-image";
 import { SocialMedia } from "@/components/social-media";
 import { SocialMediaShareLinks } from "@/components/social-media-share-links";
 import { Tags } from "@/components/tags";
+import { Translations } from "@/components/translations";
 import type { SocialMediaKind } from "@/lib/content/options";
 import { createFullUrl } from "@/lib/create-full-url";
 
@@ -31,6 +32,7 @@ interface ResourceProps {
 	startDate?: Date;
 	tags: Array<{ id: string; name: string }>;
 	title: string;
+	translations: Array<{ id: string; collection: string; title: string; locale: string }>;
 }
 
 export function Resource(props: ResourceProps): ReactNode {
@@ -49,6 +51,7 @@ export function Resource(props: ResourceProps): ReactNode {
 		startDate,
 		tags,
 		title,
+		translations,
 	} = props;
 
 	const t = useTranslations("Resource");
@@ -83,6 +86,7 @@ export function Resource(props: ResourceProps): ReactNode {
 					) : null}
 					<People label={t("authors")} people={authors} />
 					<Tags label={t("tags")} tags={tags} />
+					<Translations label={t("translations")} translations={translations} />
 					<SocialMedia label={t("social-media")} social={social} />
 					<Organisations label={t("organized-by")} organisations={organisations} />
 					<Attachments attachments={attachments} label={t("attachments")} />

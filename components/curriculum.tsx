@@ -10,6 +10,7 @@ import { PageTitle } from "@/components/page-title";
 import { People } from "@/components/people";
 import { ServerImage as Image } from "@/components/server-image";
 import { Tags } from "@/components/tags";
+import { Translations } from "@/components/translations";
 import type { ContentType } from "@/lib/content/options";
 
 interface CurriculumProps {
@@ -29,10 +30,11 @@ interface CurriculumProps {
 	}>;
 	tags: Array<{ id: string; name: string }>;
 	title: string;
+	translations: Array<{ id: string; collection: string; title: string; locale: string }>;
 }
 
 export function Curriculum(props: CurriculumProps): ReactNode {
-	const { children, editors, featuredImage, resources, tags, title } = props;
+	const { children, editors, featuredImage, resources, tags, title, translations } = props;
 
 	const t = useTranslations("Curriculum");
 	const _format = useFormatter();
@@ -44,6 +46,7 @@ export function Curriculum(props: CurriculumProps): ReactNode {
 				<div className="space-y-6 border-y py-10 2xl:hidden">
 					<People label={t("editors")} people={editors} />
 					<Tags label={t("tags")} tags={tags} />
+					<Translations label={t("translations")} translations={translations} />
 				</div>
 			</header>
 			<div>

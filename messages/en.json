@@ -78,14 +78,16 @@
 		"authors": "Authors",
 		"editors": "Editors",
 		"resources": "Resources",
-		"tags": "Topics"
+		"tags": "Topics",
+		"translations": "Translations"
 	},
 	"CurriculumPage": {
 		"attachments": "Attachments",
 		"editors": "Editors",
 		"links": "Links",
 		"overview": "Overview",
-		"tags": "Topics"
+		"tags": "Topics",
+		"translations": "Translations"
 	},
 	"DocumentationPage": {
 		"close": "Close",
@@ -109,7 +111,8 @@
 		"social-media": "Social media",
 		"table-of-contents": "Table of contents",
 		"tags": "Topics",
-		"toggle-table-of-contents": "Toggle table of contents"
+		"toggle-table-of-contents": "Toggle table of contents",
+		"translations": "Translations"
 	},
 	"EventResourcesPage": {
 		"authors": "Authors",
@@ -127,7 +130,8 @@
 		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
 		"table-of-contents": "Table of contents",
 		"tags": "Topics",
-		"toggle-table-of-contents": "Toggle table of contents"
+		"toggle-table-of-contents": "Toggle table of contents",
+		"translations": "Translations"
 	},
 	"FullMetadata": {
 		"authors": "Authors",
@@ -160,7 +164,8 @@
 		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
 		"table-of-contents": "Table of contents",
 		"tags": "Topics",
-		"toggle-table-of-contents": "Toggle table of contents"
+		"toggle-table-of-contents": "Toggle table of contents",
+		"translations": "Translations"
 	},
 	"ImprintPage": {
 		"meta": {
@@ -190,7 +195,8 @@
 		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
 		"table-of-contents": "Table of contents",
 		"tags": "Topics",
-		"toggle-table-of-contents": "Toggle table of contents"
+		"toggle-table-of-contents": "Toggle table of contents",
+		"translations": "Translations"
 	},
 	"PathfinderResourcesPage": {
 		"authors": "Authors",
@@ -219,7 +225,8 @@
 		"organized-by": "Organized by",
 		"social-media": "Social media",
 		"suggest-changes-to-resource": "Suggest changes to resource",
-		"tags": "Topics"
+		"tags": "Topics",
+		"translations": "Translations"
 	},
 	"ResourcesPage": {
 		"authors": "Authors",

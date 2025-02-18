@@ -56,7 +56,7 @@ export function SocialMedia(props: SocialMediaProps): ReactNode {
 						return (
 							<li key={index} className="list-none">
 								<a
-									className="transition hover:to-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+									className="transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 									href={value}
 								>
 									<Logo aria-hidden={true} className="inline size-5 text-neutral-500" />

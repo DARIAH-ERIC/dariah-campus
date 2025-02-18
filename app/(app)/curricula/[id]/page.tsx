@@ -9,6 +9,7 @@ import { MainContent } from "@/components/main-content";
 import { PeopleList } from "@/components/people-list";
 import { RelatedCurriculaList } from "@/components/related-curricula-list";
 import { TagsList } from "@/components/tags-list";
+import { TranslationsList } from "@/components/translations-list";
 import { createClient } from "@/lib/content/create-client";
 import { pickRandom } from "@/lib/pick-random";
 
@@ -70,6 +71,14 @@ export default async function CurriculumPage(
 
 	const client = await createClient(locale);
 	const curriculum = await client.curricula.get(id);
+	const {
+		editors,
+		"featured-image": featuredImage,
+		resources,
+		tags,
+		title,
+		translations: _translations,
+	} = curriculum.data;
 	const { default: Content } = await curriculum.compile(curriculum.data.content);
 	const related = pickRandom(Array.from(curriculum.related), 4);
 
@@ -77,6 +86,18 @@ export default async function CurriculumPage(
 	const peopleById = keyByToMap(people, (person) => {
 		return person.id;
 	});
+
+	const translations = await Promise.all(
+		_translations.map(async (id) => {
+			const curriculum = await client.curricula.get(id);
+			return {
+				id,
+				collection: curriculum.collection,
+				title: curriculum.data.title,
+				locale: curriculum.data.locale,
+			};
+		}),
+	);
 
 	return (
 		<MainContent>
@@ -87,19 +108,21 @@ export default async function CurriculumPage(
 				>
 					<PeopleList
 						label={t("editors")}
-						people={curriculum.data.editors.map((person) => {
+						people={editors.map((person) => {
 							return { id: person.id, image: person.data.image, name: person.data.name };
 						})}
 					/>
 					<TagsList
 						label={t("tags")}
-						tags={curriculum.data.tags.map((tag) => {
+						tags={tags.map((tag) => {
 							return { id: tag.id, name: tag.data.name };
 						})}
 					/>
+					<TranslationsList label={t("translations")} translations={translations} />
+
 					<CurriculumResourcesList
 						label={t("overview")}
-						resources={curriculum.data.resources.map((resource) => {
+						resources={resources.map((resource) => {
 							return {
 								id: resource.id,
 								summary: resource.data.summary,
@@ -111,13 +134,13 @@ export default async function CurriculumPage(
 
 				<div className="min-w-0">
 					<Curriculum
-						editors={curriculum.data.editors.map((person) => {
+						editors={editors.map((person) => {
 							return { id: person.id, image: person.data.image, name: person.data.name };
 						})}
-						featuredImage={curriculum.data["featured-image"]}
+						featuredImage={featuredImage}
 						// FIXME:
 						// lastUpdatedAt={lastUpdatedAt}
-						resources={curriculum.data.resources.map((resource) => {
+						resources={resources.map((resource) => {
 							const contentType =
 								resource.collection === "resources-events"
 									? "event"
@@ -138,10 +161,11 @@ export default async function CurriculumPage(
 								title: resource.data.title,
 							};
 						})}
-						tags={curriculum.data.tags.map((tag) => {
+						tags={tags.map((tag) => {
 							return { id: tag.id, name: tag.data.name };
 						})}
-						title={curriculum.data.title}
+						title={title}
+						translations={translations}
 					>
 						<div className="prose">
 							<Content />

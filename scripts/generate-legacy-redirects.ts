@@ -91,4 +91,5 @@ generate()
 	})
 	.catch((error: unknown) => {
 		log.error("Failed to create redirects for legacy resources.\n", String(error));
+		process.exitCode = 1;
 	});

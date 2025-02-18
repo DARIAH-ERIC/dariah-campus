@@ -169,6 +169,11 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 					...createVideoCard(paths, locale),
 				},
 			}),
+			translations: fields.multiRelationship({
+				label: "Translations",
+				validation: { length: { min: 0 } },
+				collection: withI18nPrefix("curricula", locale),
+			}),
 			doi: _fields.identifier({
 				label: "DOI (readonly)",
 			}),
@@ -698,6 +703,11 @@ export const createEvents = createCollection("/resources/events/", (paths, local
 					},
 				},
 			),
+			translations: fields.multiRelationship({
+				label: "Translations",
+				validation: { length: { min: 0 } },
+				collection: withI18nPrefix("resources-events", locale),
+			}),
 			doi: _fields.identifier({
 				label: "DOI (readonly)",
 			}),
@@ -943,6 +953,11 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 					...createVideoCard(paths, locale),
 				},
 			}),
+			translations: fields.multiRelationship({
+				label: "Translations",
+				validation: { length: { min: 0 } },
+				collection: withI18nPrefix("resources-external", locale),
+			}),
 			doi: _fields.identifier({
 				label: "DOI (readonly)",
 			}),
@@ -1067,6 +1082,11 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 					...createVideoCard(paths, locale),
 				},
 			}),
+			translations: fields.multiRelationship({
+				label: "Translations",
+				validation: { length: { min: 0 } },
+				collection: withI18nPrefix("resources-hosted", locale),
+			}),
 			doi: _fields.identifier({
 				label: "DOI (readonly)",
 			}),
@@ -1187,6 +1207,11 @@ export const createResourcesPathfinders = createCollection(
 						...createVideo(paths, locale),
 						// ...createVideoCard(paths, locale),
 					},
+				}),
+				translations: fields.multiRelationship({
+					label: "Translations",
+					validation: { length: { min: 0 } },
+					collection: withI18nPrefix("resources-pathfinders", locale),
 				}),
 				doi: _fields.identifier({
 					label: "DOI (readonly)",

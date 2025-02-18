@@ -14,6 +14,7 @@ import { Resource } from "@/components/resource";
 import { ResourceMetadata } from "@/components/resource-metadata";
 import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
+import { TranslationsList } from "@/components/translations-list";
 import { createClient } from "@/lib/content/create-client";
 import { createResourceMetadata } from "@/lib/content/create-resource-metadata";
 import { createFullUrl } from "@/lib/create-full-url";
@@ -115,10 +116,23 @@ export default async function ExternalResourcePage(
 		sources,
 		tags,
 		title,
+		translations: _translations,
 		version,
 	} = resource.data;
 	const { default: Content, tableOfContents } = await resource.compile(content);
 	const related = pickRandom(Array.from(resource.related), 4);
+
+	const translations = await Promise.all(
+		_translations.map(async (id) => {
+			const resource = await client.resources.get(id);
+			return {
+				id,
+				collection: resource.collection,
+				title: resource.data.title,
+				locale: resource.data.locale,
+			};
+		}),
+	);
 
 	return (
 		<MainContent>
@@ -139,6 +153,7 @@ export default async function ExternalResourcePage(
 							return { id: tag.id, name: tag.data.name };
 						})}
 					/>
+					<TranslationsList label={t("translations")} translations={translations} />
 					<CurriculaList
 						curricula={resource.curricula.map((curriculum) => {
 							return { id: curriculum.id, title: curriculum.data.title };
@@ -179,6 +194,7 @@ export default async function ExternalResourcePage(
 							return { id: tag.id, name: tag.data.name };
 						})}
 						title={title}
+						translations={translations}
 					>
 						<div className="prose">
 							<Content />

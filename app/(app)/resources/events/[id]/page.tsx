@@ -21,6 +21,7 @@ import { Session } from "@/components/session";
 import { SocialMediaList } from "@/components/social-media-list";
 import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
+import { TranslationsList } from "@/components/translations-list";
 import { createClient } from "@/lib/content/create-client";
 import { createResourceMetadata } from "@/lib/content/create-resource-metadata";
 import { createFullUrl } from "@/lib/create-full-url";
@@ -133,6 +134,7 @@ export default async function EventResourcePage(
 		"start-date": startDate,
 		location,
 		organisations,
+		translations: _translations,
 	} = resource.data;
 	const { default: Content } = await resource.compile(content);
 	const related = pickRandom(Array.from(resource.related), 4);
@@ -148,6 +150,18 @@ export default async function EventResourcePage(
 	const peopleById = keyByToMap(people, (person) => {
 		return person.id;
 	});
+
+	const translations = await Promise.all(
+		_translations.map(async (id) => {
+			const resource = await client.resources.get(id);
+			return {
+				id,
+				collection: resource.collection,
+				title: resource.data.title,
+				locale: resource.data.locale,
+			};
+		}),
+	);
 
 	return (
 		<MainContent>
@@ -218,6 +232,7 @@ export default async function EventResourcePage(
 							return { id: tag.id, name: tag.data.name };
 						})}
 					/>
+					<TranslationsList label={t("translations")} translations={translations} />
 					<AttachmentsList attachments={attachments} label={t("attachments")} />
 					<LinksList label={t("links")} links={links} />
 					<SocialMediaList label={t("social-media")} social={social} />
@@ -260,6 +275,7 @@ export default async function EventResourcePage(
 							return { id: tag.id, name: tag.data.name };
 						})}
 						title={title}
+						translations={translations}
 					>
 						<div className="prose">
 							<Content />
