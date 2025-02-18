@@ -33,7 +33,7 @@ export default async function ImprintPage(_props: Readonly<ImprintPageProps>): P
 	const html = await getImprintHtml(locale);
 
 	return (
-		<MainContent className="mx-auto grid w-full max-w-screen-lg content-start space-y-24 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
+		<MainContent className="mx-auto grid w-full max-w-screen-lg content-start gap-y-24 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
 			<div className="grid gap-y-4">
 				<PageTitle>{t("title")}</PageTitle>
 			</div>

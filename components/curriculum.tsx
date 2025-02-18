@@ -58,7 +58,7 @@ export function Curriculum(props: CurriculumProps): ReactNode {
 				) : null}
 				{children}
 			</div>
-			<div className="flex flex-col space-y-4">
+			<div className="flex flex-col gap-y-4">
 				<h2 className="text-2xl font-bold">{t("resources")}</h2>
 				<ol className="grid content-start gap-6">
 					{resources.map((resource, index) => {
@@ -105,7 +105,7 @@ export function Curriculum(props: CurriculumProps): ReactNode {
 				{/* <EditLink
 					collection="courses"
 					id={curriculum.id}
-					className="text-sm flex justify-end items-center space-x-1.5 text-neutral-500"
+					className="text-sm flex justify-end items-center gap-x-1.5 text-neutral-500"
 				>
 					<span className="text-right">{t("suggest-changes-to-curriculum")}</span>
 				</EditLink> */}

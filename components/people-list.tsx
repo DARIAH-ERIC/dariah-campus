@@ -25,7 +25,7 @@ export function PeopleList(props: PeopleListProps): ReactNode {
 				return (
 					<li key={person.id} className="list-none">
 						<Link
-							className="inline-flex items-center space-x-2 leading-none transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+							className="inline-flex items-center gap-x-2 leading-none transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 							href={createSearchUrl({ people: [id] })}
 						>
 							<Image

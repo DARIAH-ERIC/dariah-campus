@@ -16,7 +16,7 @@ export function AvatarsList(props: AvatarsListProps): ReactNode {
 			<div>
 				<dt className="sr-only">{label}</dt>
 				<dd>
-					<ul className="flex items-center space-x-1">
+					<ul className="flex items-center gap-x-1">
 						{avatars.slice(0, maxAvatars).map((avatar) => {
 							return (
 								<li key={avatar.id} className="flex">

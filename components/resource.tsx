@@ -110,7 +110,7 @@ export function Resource(props: ResourceProps): ReactNode {
 					</time>
 				</p> */}
 				{/* <EditLink
-					className="text-sm flex justify-end items-center space-x-1.5 text-neutral-500"
+					className="text-sm flex justify-end items-center gap-x-1.5 text-neutral-500"
 					href={editUrl}
 				>
 					<span className="text-right">{t("suggest-changes-to-resource")}</span>

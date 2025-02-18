@@ -13,7 +13,7 @@ export function ExternalResource(props: ExternalResourceProps): ReactNode {
 	const t = useTranslations("ExternalResource");
 
 	return (
-		<aside className="not-prose my-12 flex flex-col items-center space-y-4 text-center text-neutral-800">
+		<aside className="not-prose my-12 flex flex-col items-center gap-y-4 text-center text-neutral-800">
 			<strong className="text-2xl font-bold">{title}</strong>
 			<p className="text-neutral-500">{subtitle}</p>
 			<a

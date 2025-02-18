@@ -29,7 +29,7 @@ export function People(props: PeopleProps): ReactNode {
 						return (
 							<li key={id}>
 								<Link
-									className="inline-flex items-center space-x-2 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+									className="inline-flex items-center gap-x-2 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 									href={createSearchUrl({ people: [id] })}
 								>
 									<Image

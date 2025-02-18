@@ -15,7 +15,7 @@ export function OrganisationsList(props: OrganisationsListProps): ReactNode {
 	}
 
 	return (
-		<div className="flex flex-col space-y-1.5 text-sm text-neutral-500">
+		<div className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
 			<div className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</div>
 			<div>
 				<ul className="grid gap-y-1 text-xs font-medium">

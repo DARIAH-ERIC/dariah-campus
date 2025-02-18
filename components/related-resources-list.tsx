@@ -32,7 +32,7 @@ export function RelatedResourcesList(props: RelatedResourcesListProps): ReactNod
 			<h2 className="text-xs font-bold uppercase tracking-wide text-neutral-600" id={id}>
 				{t("label")}
 			</h2>
-			<ul className="flex flex-col space-y-1.5 text-sm text-neutral-500">
+			<ul className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
 				{resources.map((resource) => {
 					const { collection, contentType, id, title } = resource;
 
@@ -41,7 +41,7 @@ export function RelatedResourcesList(props: RelatedResourcesListProps): ReactNod
 					return (
 						<li key={resource.id}>
 							<Link
-								className="flex items-center space-x-1.5 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+								className="flex items-center gap-x-1.5 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 								href={href}
 							>
 								<ContentTypeIcon className="size-3 shrink-0 text-brand-700" kind={contentType} />

@@ -85,10 +85,10 @@ export async function AppFooter(): Promise<ReactNode> {
 	const { social } = metadata.data;
 
 	return (
-		<footer className="flex flex-col space-y-6 bg-brand-950 px-4 py-16 text-sm font-medium text-neutral-400 xs:px-8">
+		<footer className="flex flex-col gap-y-6 bg-brand-950 px-4 py-16 text-sm font-medium text-neutral-400 xs:px-8">
 			<nav aria-label={t("navigation-secondary")}>
 				<ul
-					className="flex flex-col items-center justify-center space-y-3 md:flex-row md:space-x-6 md:space-y-0"
+					className="flex flex-col items-center justify-center gap-y-3 md:flex-row md:gap-x-6 md:gap-y-0"
 					role="list"
 				>
 					{Object.entries(navigation).map(([key, link]) => {
@@ -106,7 +106,7 @@ export async function AppFooter(): Promise<ReactNode> {
 				</ul>
 			</nav>
 			<nav aria-label={t("navigation-social-media")} className="flex flex-col items-center">
-				<ul className="flex items-center justify-center space-x-2 md:space-x-6" role="list">
+				<ul className="flex items-center justify-center gap-x-2 md:gap-x-6" role="list">
 					{social.map((link, index) => {
 						const Icon = socialMediaIcons[link.kind];
 
@@ -124,12 +124,12 @@ export async function AppFooter(): Promise<ReactNode> {
 					})}
 				</ul>
 			</nav>
-			<div className="mx-auto flex max-w-screen-lg flex-col items-center justify-between space-y-8 text-xs font-normal xs:flex-row xs:space-x-8 xs:space-y-0">
-				<div className="flex items-center space-x-4">
+			<div className="mx-auto flex max-w-screen-lg flex-col items-center justify-between gap-y-8 text-xs font-normal xs:flex-row xs:gap-x-8 xs:gap-y-0">
+				<div className="flex items-center gap-x-4">
 					<Image alt="" className="h-6 w-9 shrink-0" src={eu as StaticImageData} />
 					<span>{t("funding")}</span>
 				</div>
-				<div className="flex items-center justify-end space-x-4">
+				<div className="flex items-center justify-end gap-x-4">
 					<span className="text-right">
 						{t.rich("license", {
 							// eslint-disable-next-line react/no-unstable-nested-components

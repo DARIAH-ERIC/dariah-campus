@@ -13,7 +13,7 @@ export function LinksList(props: LinksListProps): ReactNode {
 	}
 
 	return (
-		<div className="flex flex-col space-y-1.5 text-sm text-neutral-500">
+		<div className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
 			<div className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</div>
 			<div className="inline">
 				<ul className="inline text-xs uppercase tracking-wide">

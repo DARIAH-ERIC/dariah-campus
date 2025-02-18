@@ -74,7 +74,7 @@ export default async function SearchPage(_props: Readonly<SearchPageProps>): Pro
 
 	return (
 		<Providers>
-			<MainContent className="mx-auto grid min-h-[calc(100dvh-100px)] w-full max-w-screen-xl content-start space-y-12 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
+			<MainContent className="mx-auto grid min-h-[calc(100dvh-100px)] w-full max-w-screen-xl content-start gap-y-12 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
 				<div className="grid gap-y-4">
 					<PageTitle>{t("title")}</PageTitle>
 				</div>

@@ -61,7 +61,7 @@ async function HeroSection(): Promise<ReactNode> {
 	const { image, lead, title } = page.data;
 
 	return (
-		<section className="flex flex-col items-center space-y-4 text-center">
+		<section className="flex flex-col items-center gap-y-4 text-center">
 			{/* eslint-disable-next-line @next/next/no-img-element */}
 			<img alt="" className="mx-auto h-48 text-brand-700 lg:h-60" src={image} />
 			<h1 className="text-5xl font-bold lg:text-6xl">{title}</h1>
@@ -112,7 +112,7 @@ async function BrowseSection(): Promise<ReactNode> {
 				{links.map((link, index) => {
 					return (
 						<li key={index}>
-							<article className="relative flex h-full flex-col items-center space-y-2 rounded-xl border border-neutral-100 bg-white p-12 text-center shadow-md transition focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
+							<article className="relative flex h-full flex-col items-center gap-y-2 rounded-xl border border-neutral-100 bg-white p-12 text-center shadow-md transition focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
 								{/* eslint-disable-next-line @next/next/no-img-element */}
 								<img alt="" className="size-20 text-brand-700" src={link.image} />
 								<h3 className="text-xl font-semibold">
@@ -173,7 +173,7 @@ async function FaqSection(): Promise<ReactNode> {
 		<Section>
 			<SectionTitle>{title}</SectionTitle>
 			<SectionLead>{lead}</SectionLead>
-			<DisclosureGroup className="mx-auto flex w-full max-w-screen-md flex-col space-y-6 py-6 text-lg">
+			<DisclosureGroup className="mx-auto flex w-full max-w-screen-md flex-col gap-y-6 py-6 text-lg">
 				{faq.map(async (item, index) => {
 					const { content, title } = item;
 
@@ -293,7 +293,7 @@ interface SectionProps {
 function Section(props: SectionProps): ReactNode {
 	const { children } = props;
 
-	return <section className="flex flex-col space-y-2 text-center">{children}</section>;
+	return <section className="flex flex-col gap-y-2 text-center">{children}</section>;
 }
 
 interface SectionTitleProps {

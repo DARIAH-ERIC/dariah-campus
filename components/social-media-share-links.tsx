@@ -19,7 +19,7 @@ export function SocialMediaShareLinks(props: SocialMediaShareLinksProps): ReactN
 	const twitter = meta("twitter.site");
 
 	return (
-		<div className="my-8 flex items-center justify-center space-x-4 text-neutral-500">
+		<div className="my-8 flex items-center justify-center gap-x-4 text-neutral-500">
 			<Link
 				className="block rounded-full transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 				href={String(

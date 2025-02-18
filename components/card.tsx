@@ -21,7 +21,7 @@ interface CardContentProps {
 export function CardContent(props: CardContentProps): ReactNode {
 	const { children } = props;
 
-	return <div className="flex flex-col space-y-5 p-10">{children}</div>;
+	return <div className="flex flex-col gap-y-5 p-10">{children}</div>;
 }
 
 interface CardTitleProps {

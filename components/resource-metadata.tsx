@@ -38,12 +38,12 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 	return (
 		<div className="mx-auto mt-12 w-full max-w-content space-y-3 border-t border-neutral-200 py-12">
 			<h2 className="text-xs font-bold uppercase tracking-wide text-neutral-600">{t("label")}</h2>
-			<dl className="flex flex-col space-y-1.5 text-sm text-neutral-500">
-				<div className="flex space-x-1.5">
+			<dl className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
+				<div className="flex gap-x-1.5">
 					<dt>{t("title")}:</dt>
 					<dd>{title}</dd>
 				</div>
-				<div className="flex space-x-1.5">
+				<div className="flex gap-x-1.5">
 					<dt>{t("authors")}:</dt>
 					<dd>
 						{authors
@@ -53,33 +53,33 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 							.join(", ")}
 					</dd>
 				</div>
-				<div className="flex space-x-1.5">
+				<div className="flex gap-x-1.5">
 					<dt>{t("domain")}:</dt>
 					<dd>{domain}</dd>
 				</div>
-				<div className="flex space-x-1.5">
+				<div className="flex gap-x-1.5">
 					<dt>{t("language")}:</dt>
 					<dd>{locale}</dd>
 				</div>
-				<div className="flex space-x-1.5">
+				<div className="flex gap-x-1.5">
 					<dt>{t("publication-date")}:</dt>
 					<dd>{format.dateTime(publicationDate)}</dd>
 				</div>
 				{remotePublicationDate ? (
-					<div className="flex space-x-1.5">
+					<div className="flex gap-x-1.5">
 						<dt>{t("remote-publication-date")}:</dt>
 						<dd>{format.dateTime(remotePublicationDate)}</dd>
 					</div>
 				) : null}
-				<div className="flex space-x-1.5">
+				<div className="flex gap-x-1.5">
 					<dt>{t("content-type")}:</dt>
 					<dd>{t(`content-types.${contentType}`)}</dd>
 				</div>
-				<div className="flex space-x-1.5">
+				<div className="flex gap-x-1.5">
 					<dt>{t("license")}:</dt>
 					<dd>{license.label}</dd>
 				</div>
-				<div className="flex space-x-1.5">
+				<div className="flex gap-x-1.5">
 					<dt>{t("sources")}:</dt>
 					<dd>
 						{sources
@@ -89,7 +89,7 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 							.join(", ")}
 					</dd>
 				</div>
-				<div className="flex space-x-1.5">
+				<div className="flex gap-x-1.5">
 					<dt>{t("tags")}:</dt>
 					<dd>
 						{tags
@@ -99,7 +99,7 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 							.join(", ")}
 					</dd>
 				</div>
-				<div className="flex space-x-1.5">
+				<div className="flex gap-x-1.5">
 					<dt>{t("version")}:</dt>
 					<dd>{version}</dd>
 				</div>

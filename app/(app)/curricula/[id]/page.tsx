@@ -80,9 +80,9 @@ export default async function CurriculumPage(
 
 	return (
 		<MainContent>
-			<div className="mx-auto grid w-full max-w-screen-lg space-y-10 px-4 py-8 xs:px-8 xs:py-16 2xl:max-w-none 2xl:grid-cols-content-layout 2xl:gap-x-10 2xl:space-y-0">
+			<div className="mx-auto grid w-full max-w-screen-lg gap-y-10 px-4 py-8 xs:px-8 xs:py-16 2xl:max-w-none 2xl:grid-cols-content-layout 2xl:gap-x-10 2xl:gap-y-0">
 				<aside
-					className="sticky top-24 hidden max-h-screen w-full max-w-xs space-y-8 justify-self-end overflow-y-auto p-8 text-sm text-neutral-500 2xl:flex 2xl:flex-col"
+					className="sticky top-24 hidden max-h-screen w-full max-w-xs gap-y-8 justify-self-end overflow-y-auto p-8 text-sm text-neutral-500 2xl:flex 2xl:flex-col"
 					style={{ maxHeight: "calc(100dvh - 12px - var(--page-header-height))" }}
 				>
 					<PeopleList
