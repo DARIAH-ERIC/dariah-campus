@@ -10,8 +10,9 @@
 	"packageManager": "pnpm@10.4.0",
 	"scripts": {
 		"analyze": "BUNDLE_ANALYZER=\"enabled\" next build --no-lint",
-		"build": "next build",
-		"content:migrate": "tsx ./scripts/migrate-content.ts",
+		"build": "run-s build:app build:search-index",
+		"build:app": "next build",
+		"build:search-index": "dotenv -c production -- tsx --tsconfig ./scripts/typesense/tsconfig.json ./scripts/typesense/create-search-index.ts",
 		"dev": "next dev",
 		"dev:typesense:down": "docker compose --env-file=./.env.local down --volumes",
 		"dev:typesense:up": "docker compose --env-file=./.env.local up --detach",
