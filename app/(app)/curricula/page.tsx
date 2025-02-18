@@ -8,6 +8,7 @@ import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
 import { ContentTypeIcon } from "@/components/content-type-icon";
 import { Link } from "@/components/link";
 import { MainContent } from "@/components/main-content";
+import { MasonryLayoutList } from "@/components/masonry-layout-list";
 import { PageTitle } from "@/components/page-title";
 import { createClient } from "@/lib/content/create-client";
 
@@ -48,10 +49,7 @@ export default async function CurriculaPage(
 			<div className="grid gap-y-4">
 				<PageTitle>{t("title")}</PageTitle>
 			</div>
-			<ul
-				className="grid grid-cols-[repeat(auto-fill,minmax(min(24rem,100%),1fr))] gap-6"
-				role="list"
-			>
+			<MasonryLayoutList>
 				{curricula.map((curriculum) => {
 					const { editors, locale, summary, title } = curriculum.data;
 
@@ -93,7 +91,7 @@ export default async function CurriculaPage(
 						</li>
 					);
 				})}
-			</ul>
+			</MasonryLayoutList>
 		</MainContent>
 	);
 }

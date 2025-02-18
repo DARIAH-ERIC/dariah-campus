@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 
 import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
 import { MainContent } from "@/components/main-content";
+import { MasonryLayoutList } from "@/components/masonry-layout-list";
 import { PageTitle } from "@/components/page-title";
 import { ResourcePreviewCard } from "@/components/resource-preview-card";
 import { createClient } from "@/lib/content/create-client";
@@ -45,10 +46,7 @@ export default async function EventResourcesPage(
 			<div className="grid gap-y-4">
 				<PageTitle>{t("title")}</PageTitle>
 			</div>
-			<ul
-				className="grid grid-cols-[repeat(auto-fill,minmax(min(24rem,100%),1fr))] gap-6"
-				role="list"
-			>
+			<MasonryLayoutList>
 				{resources.map((resource) => {
 					const { authors, locale, summary, title } = resource.data;
 
@@ -75,7 +73,7 @@ export default async function EventResourcesPage(
 						</li>
 					);
 				})}
-			</ul>
+			</MasonryLayoutList>
 		</MainContent>
 	);
 }

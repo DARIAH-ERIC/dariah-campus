@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
 import { Link } from "@/components/link";
 import { MainContent } from "@/components/main-content";
+import { MasonryLayoutList } from "@/components/masonry-layout-list";
 import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
 import { ServerImage as Image } from "@/components/server-image";
@@ -46,10 +47,7 @@ export default async function SourcesPage(_props: Readonly<SourcesPageProps>): P
 				<PageTitle>{t("title")}</PageTitle>
 				<PageLead>{t("lead")}</PageLead>
 			</div>
-			<ul
-				className="grid grid-cols-[repeat(auto-fill,minmax(min(24rem,100%),1fr))] gap-6"
-				role="list"
-			>
+			<MasonryLayoutList>
 				{sources.map((source) => {
 					const { content, image, name } = source.data;
 
@@ -86,7 +84,7 @@ export default async function SourcesPage(_props: Readonly<SourcesPageProps>): P
 						</li>
 					);
 				})}
-			</ul>
+			</MasonryLayoutList>
 		</MainContent>
 	);
 }

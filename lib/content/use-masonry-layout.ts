@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { Children, type ReactNode, useEffect, useMemo, useState } from "react";
 
-export function useMasonryLayout<T>(items: Array<T>): Array<Array<T>> | null {
+export function useMasonryLayout(children: ReactNode, variant: "default" | "search" = "default") {
 	const [columnCount, setColumnCount] = useState<number | null>(null);
 
 	useEffect(() => {
@@ -8,12 +8,28 @@ export function useMasonryLayout<T>(items: Array<T>): Array<Array<T>> | null {
 
 		function onWindowResize() {
 			requestAnimationFrame(() => {
-				if (window.innerWidth >= 1280) {
-					setColumnCount(3);
-				} else if (window.innerWidth >= 768) {
-					setColumnCount(2);
-				} else {
-					setColumnCount(1);
+				switch (variant) {
+					case "default": {
+						if (window.innerWidth >= 1280) {
+							setColumnCount(3);
+						} else if (window.innerWidth >= 768) {
+							setColumnCount(2);
+						} else {
+							setColumnCount(1);
+						}
+
+						break;
+					}
+
+					case "search": {
+						if (window.innerWidth >= 1140) {
+							setColumnCount(2);
+						} else {
+							setColumnCount(1);
+						}
+
+						break;
+					}
 				}
 			});
 		}
@@ -25,18 +41,23 @@ export function useMasonryLayout<T>(items: Array<T>): Array<Array<T>> | null {
 		return () => {
 			controller.abort();
 		};
-	}, []);
+	}, [variant]);
 
-	return useMemo(() => {
-		if (columnCount == null) return null;
+	const columns = useMemo(() => {
+		if (columnCount === null) return null;
 
-		const columns = Array(columnCount).fill([]) as Array<Array<T>>;
+		const items = Children.toArray(children);
+		const columns = Array.from({ length: columnCount }, () => {
+			return [] as Array<ReactNode>;
+		});
 
 		items.forEach((item, index) => {
-			const column = columns[index % columnCount]!;
-			column.push(item);
+			const column = index % columnCount;
+			columns[column]!.push(item);
 		});
 
 		return columns;
-	}, [columnCount, items]);
+	}, [children, columnCount]);
+
+	return columns;
 }

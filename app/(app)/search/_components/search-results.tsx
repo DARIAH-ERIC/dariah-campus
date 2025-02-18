@@ -8,6 +8,7 @@ import { AvatarsList } from "@/components/avatars-list";
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
 import { ContentTypeIcon } from "@/components/content-type-icon";
 import { Link } from "@/components/link";
+import { MasonryLayoutList } from "@/components/masonry-layout-list";
 import type { ContentType } from "@/lib/content/options";
 
 interface Hit {
@@ -40,10 +41,7 @@ export function SearchResults(props: SearchResultsProps): ReactNode {
 	const hits = useHits<Hit>();
 
 	return (
-		<ul
-			className="grid grid-cols-[repeat(auto-fill,minmax(min(24rem,100%),1fr))] gap-6"
-			role="list"
-		>
+		<MasonryLayoutList variant="search">
 			{hits.items.map((hit) => {
 				const {
 					collection,
@@ -86,6 +84,6 @@ export function SearchResults(props: SearchResultsProps): ReactNode {
 					</li>
 				);
 			})}
-		</ul>
+		</MasonryLayoutList>
 	);
 }
