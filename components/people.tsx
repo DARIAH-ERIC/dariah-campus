@@ -22,7 +22,7 @@ export function People(props: PeopleProps): ReactNode {
 		<dl className="grid gap-y-1 text-sm text-neutral-500">
 			<dt className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</dt>
 			<dd>
-				<ul className="space-y-0.5">
+				<ul>
 					{people.slice(0, max).map((author) => {
 						const { id, image, name } = author;
 
@@ -44,9 +44,37 @@ export function People(props: PeopleProps): ReactNode {
 							</li>
 						);
 					})}
-					{/* eslint-disable-next-line react/jsx-no-literals */}
-					{people.length > 4 ? <li>and {people.length - 4} more</li> : null}
 				</ul>
+				{people.length > max ? (
+					<details>
+						<summary className="cursor-pointer transition hover:text-brand-900">
+							{`and ${String(people.length - max)} more`}
+						</summary>
+						<ul className="pt-2">
+							{people.slice(max).map((author) => {
+								const { id, image, name } = author;
+
+								return (
+									<li key={id}>
+										<Link
+											className="inline-flex items-center gap-x-2 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+											href={createSearchUrl({ people: [id] })}
+										>
+											<Image
+												alt=""
+												className="size-8 rounded-full border border-neutral-200 object-cover"
+												height={32}
+												src={image}
+												width={32}
+											/>
+											<span>{name}</span>
+										</Link>
+									</li>
+								);
+							})}
+						</ul>
+					</details>
+				) : null}
 			</dd>
 		</dl>
 	);
