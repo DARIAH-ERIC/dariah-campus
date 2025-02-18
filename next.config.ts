@@ -4,6 +4,7 @@ import type { NextConfig } from "next";
 import createI18nPlugin from "next-intl/plugin";
 
 import { env } from "@/config/env.config";
+import _redirects from "@/public/redirects.json";
 
 const config: NextConfig = {
 	/** Compression should be handled by nginx reverse proxy. */
@@ -57,6 +58,7 @@ const config: NextConfig = {
 				destination: "/api/v1/metadata/:path*",
 				permanent: false,
 			},
+			..._redirects.redirects,
 		];
 
 		return Promise.resolve(redirects);

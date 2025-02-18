@@ -165,6 +165,9 @@ importers:
       '@react-types/shared':
         specifier: ^3.27.0
         version: 3.27.0(react@19.0.0)
+      '@sindresorhus/slugify':
+        specifier: ^2.2.1
+        version: 2.2.1
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@3.4.17)
@@ -2678,8 +2681,8 @@ packages:
     peerDependencies:
       eslint: '>=8.40.0'
 
-  eslint-plugin-react-compiler@19.0.0-beta-30d8a17-20250209:
-    resolution: {integrity: sha512-D2wohyvsW27KSQV8IhyjL9UhYKs4f7Y8WPIuNOeiYylOaredvb2vW/AAE2m36BWLsn3Q9xRYz1UZj2AXR15w/g==}
+  eslint-plugin-react-compiler@19.0.0-beta-21e868a-20250216:
+    resolution: {integrity: sha512-LstAv6tKgZylMmJniWxQL9TOY9kwRddLnvBsoTbRsgUDROL5bsg0k5XHMaNJLyX8cxh4iafQ/WxAw5shNUf3GQ==}
     engines: {node: ^14.17.0 || ^16.0.0 || >= 18.0.0}
     peerDependencies:
       eslint: '>=7'
@@ -5021,7 +5024,7 @@ snapshots:
       eslint-config-prettier: 9.1.0(eslint@9.20.1(jiti@2.4.2))
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.20.1(jiti@2.4.2))
       eslint-plugin-react: 7.37.4(eslint@9.20.1(jiti@2.4.2))
-      eslint-plugin-react-compiler: 19.0.0-beta-30d8a17-20250209(eslint@9.20.1(jiti@2.4.2))
+      eslint-plugin-react-compiler: 19.0.0-beta-21e868a-20250216(eslint@9.20.1(jiti@2.4.2))
       eslint-plugin-react-hooks: 5.1.0(eslint@9.20.1(jiti@2.4.2))
     transitivePeerDependencies:
       - eslint
@@ -8323,7 +8326,7 @@ snapshots:
       eslint: 9.20.1(jiti@2.4.2)
       globals: 13.24.0
 
-  eslint-plugin-react-compiler@19.0.0-beta-30d8a17-20250209(eslint@9.20.1(jiti@2.4.2)):
+  eslint-plugin-react-compiler@19.0.0-beta-21e868a-20250216(eslint@9.20.1(jiti@2.4.2)):
     dependencies:
       '@babel/core': 7.26.8
       '@babel/parser': 7.26.8

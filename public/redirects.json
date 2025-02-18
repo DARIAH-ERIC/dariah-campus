@@ -1,0 +1,1329 @@
+{
+	"redirects": [
+		{
+			"source": "/curriculum/automatic-text-recognition-made-easy",
+			"destination": "/curricula/automatic-text-recognition-made-easy",
+			"permanent": true
+		},
+		{
+			"source": "/curriculum/introduction-to-git",
+			"destination": "/curricula/introduction-to-git",
+			"permanent": true
+		},
+		{
+			"source": "/curriculum/datenmanagement",
+			"destination": "/curricula/datenmanagement",
+			"permanent": true
+		},
+		{
+			"source": "/curriculum/the-elexis-curriculum",
+			"destination": "/curricula/the-elexis-curriculum",
+			"permanent": true
+		},
+		{
+			"source": "/curriculum/the-parthenos-complete-guide-to-research-infrastructures",
+			"destination": "/curricula/the-parthenos-complete-guide-to-research-infrastructures",
+			"permanent": true
+		},
+		{
+			"source": "/resource/events/the-6th-digital-history-in-sweden-conference-unboxing-digital-methods-practices-and-public-engagement",
+			"destination": "/resources/events/the-6th-digital-history-in-sweden-conference-unboxing-digital-methods-practices-and-public-engagement",
+			"permanent": true
+		},
+		{
+			"source": "/resource/events/digging-for-gold-knowledge-extraction-from-text",
+			"destination": "/resources/events/digging-for-gold-knowledge-extraction-from-text",
+			"permanent": true
+		},
+		{
+			"source": "/resource/events/performing-arts-transitioning-to-the-digital-age",
+			"destination": "/resources/events/performing-arts-transitioning-to-the-digital-age",
+			"permanent": true
+		},
+		{
+			"source": "/resource/events/use-of-vocabularies-for-metadata-curation-and-quality-assessment-in-social-sciences-and-humanities",
+			"destination": "/resources/events/use-of-vocabularies-for-metadata-curation-and-quality-assessment-in-social-sciences-and-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/events/building-and-linking-humanities-digital-spatial-infrastructures-for-research-in-the-nordic-countries",
+			"destination": "/resources/events/building-and-linking-humanities-digital-spatial-infrastructures-for-research-in-the-nordic-countries",
+			"permanent": true
+		},
+		{
+			"source": "/resource/events/cls-infra-training-school-on-data-and-annotation",
+			"destination": "/resources/events/cls-infra-training-school-on-data-and-annotation",
+			"permanent": true
+		},
+		{
+			"source": "/resource/events/use-of-ict-for-community-building-actions-towards-the-reactivation-of-urban-heritagescapes-in-south-european-cities",
+			"destination": "/resources/events/use-of-ict-for-community-building-actions-towards-the-reactivation-of-urban-heritagescapes-in-south-european-cities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/events/sharing-the-experience-workflows-for-the-digital-humanities",
+			"destination": "/resources/events/sharing-the-experience-workflows-for-the-digital-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/events/madih-research-software-engineering-training",
+			"destination": "/resources/events/madih-research-software-engineering-training",
+			"permanent": true
+		},
+		{
+			"source": "/resource/events/shaping-new-approaches-to-data-management-in-arts-and-humanities",
+			"destination": "/resources/events/shaping-new-approaches-to-data-management-in-arts-and-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/events/open-data-citation-for-social-science-and-humanities",
+			"destination": "/resources/events/open-data-citation-for-social-science-and-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/gold-green-diamond-what-you-should-know-about-open-access-publishing-models",
+			"destination": "/resources/hosted/gold-green-diamond-what-you-should-know-about-open-access-publishing-models",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/analyzing-multilingual-french-and-russian-text-using-nltk-spacy-and-stanza",
+			"destination": "/resources/external/analyzing-multilingual-french-and-russian-text-using-nltk-spacy-and-stanza",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/text-mining-youtube-comment-data-with-wordfish-in-r",
+			"destination": "/resources/external/text-mining-youtube-comment-data-with-wordfish-in-r",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/facial-recognition-in-historical-photographs-with-artificial-intelligence-in-python",
+			"destination": "/resources/external/facial-recognition-in-historical-photographs-with-artificial-intelligence-in-python",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/automatic-text-recognition-atr-video-2-where-and-how-to-get-images",
+			"destination": "/resources/external/automatic-text-recognition-atr-video-2-where-and-how-to-get-images",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/data-and-databases-from-source-to-data",
+			"destination": "/resources/hosted/data-and-databases-from-source-to-data",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/working-with-named-places-how-and-why-to-build-a-gazetteer",
+			"destination": "/resources/external/working-with-named-places-how-and-why-to-build-a-gazetteer",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/designing-a-deck-of-timeline-cards-for-tabletops-and-tabletop-simulator",
+			"destination": "/resources/external/designing-a-deck-of-timeline-cards-for-tabletops-and-tabletop-simulator",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/automatic-text-recognition-atr-layout-analysis",
+			"destination": "/resources/hosted/automatic-text-recognition-atr-layout-analysis",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/automatic-text-recognition-atr-end-formats-and-reusability",
+			"destination": "/resources/hosted/automatic-text-recognition-atr-end-formats-and-reusability",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/automatic-text-recognitiotn-atr-text-recognition-and-post-atr-correction",
+			"destination": "/resources/hosted/automatic-text-recognition-atr-text-recognition-and-post-atr-correction",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/automatic-text-recognition-atr-pre-processing-and-image-optimisation",
+			"destination": "/resources/hosted/automatic-text-recognition-atr-pre-processing-and-image-optimisation",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/xr-in-thingvellir-and-hofsstaðir",
+			"destination": "/resources/hosted/xr-in-thingvellir-and-hofsstadir",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/understanding-and-creating-word-embeddings",
+			"destination": "/resources/external/understanding-and-creating-word-embeddings",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/cultural-heritage-in-a-virtual-fantasy-world",
+			"destination": "/resources/hosted/cultural-heritage-in-a-virtual-fantasy-world",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/data-and-databases-scoping-a-database",
+			"destination": "/resources/hosted/data-and-databases-scoping-a-database",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digital-statues-a-collaborative-project",
+			"destination": "/resources/hosted/digital-statues-a-collaborative-project",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digitization-workflow-talk-with-sorin-marti",
+			"destination": "/resources/external/digitization-workflow-talk-with-sorin-marti",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digitization-workflow-talk-with-joana-meier",
+			"destination": "/resources/external/digitization-workflow-talk-with-joana-meier",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digitization-workflow-talk-with-esaù-dozio",
+			"destination": "/resources/external/digitization-workflow-talk-with-esau-dozio",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/innovations-for-a-unified-digital-collection-the-sloane-lab-journey",
+			"destination": "/resources/hosted/innovations-for-a-unified-digital-collection-the-sloane-lab-journey",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/data-and-databases-data-management-and-storage",
+			"destination": "/resources/hosted/data-and-databases-data-management-and-storage",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/git-version-control-via-command-line",
+			"destination": "/resources/hosted/git-version-control-via-command-line",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/git-vs-code",
+			"destination": "/resources/hosted/git-vs-code",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/evaluation-of-digital-heritage-experiences",
+			"destination": "/resources/external/evaluation-of-digital-heritage-experiences",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/creating-interactive-visualizations-with-plotly",
+			"destination": "/resources/external/creating-interactive-visualizations-with-plotly",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/git-collaboration",
+			"destination": "/resources/hosted/git-collaboration",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/transcribing-handwritten-text-with-python-and-microsoft-azure-computer-vision",
+			"destination": "/resources/external/transcribing-handwritten-text-with-python-and-microsoft-azure-computer-vision",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/copyright-of-3d-data",
+			"destination": "/resources/external/copyright-of-3d-data",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/automatic-text-recognition-atr-video-1-getting-started",
+			"destination": "/resources/external/automatic-text-recognition-atr-video-1-getting-started",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/wikipedia-as-a-source-of-historical-knowledge-applying-digital-source-criticism",
+			"destination": "/resources/external/wikipedia-as-a-source-of-historical-knowledge-applying-digital-source-criticism",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/data-and-databases-an-introduction",
+			"destination": "/resources/hosted/data-and-databases-an-introduction",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/clustering-and-visualising-documents-using-word-embeddings",
+			"destination": "/resources/external/clustering-and-visualising-documents-using-word-embeddings",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/langzeitarchivierung",
+			"destination": "/resources/hosted/langzeitarchivierung",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/corpus-analysis-with-spacy",
+			"destination": "/resources/external/corpus-analysis-with-spacy",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/photogrammetry-3d-digitisation",
+			"destination": "/resources/external/photogrammetry-3d-digitisation",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/sentiment-analysis-with-syuzhet-using-r",
+			"destination": "/resources/external/sentiment-analysis-with-syuzhet-using-r",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/encode-course-digital-tools-for-the-research-and-study-of-ancient-writing-cultures",
+			"destination": "/resources/external/encode-course-digital-tools-for-the-research-and-study-of-ancient-writing-cultures",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/fair-multidimensional-data",
+			"destination": "/resources/external/fair-multidimensional-data",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/ocr-with-google-vision-api-and-tesseract",
+			"destination": "/resources/external/ocr-with-google-vision-api-and-tesseract",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/einfuehrung-metadaten",
+			"destination": "/resources/hosted/einfuehrung-metadaten",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/an-introduction-to-prosopography",
+			"destination": "/resources/hosted/an-introduction-to-prosopography",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/grundlagen-datenmanagement",
+			"destination": "/resources/hosted/grundlagen-datenmanagement",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-diachronic-dynamics-of-lexical-networks",
+			"destination": "/resources/hosted/introduction-to-diachronic-dynamics-of-lexical-networks",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digitisation-with-360-degrees-photography",
+			"destination": "/resources/external/digitisation-with-360-degrees-photography",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/creating-deep-convolutional-neural-networks-for-image-classification",
+			"destination": "/resources/external/creating-deep-convolutional-neural-networks-for-image-classification",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/creating-guis-in-python-for-digital-humanities-projects",
+			"destination": "/resources/external/creating-guis-in-python-for-digital-humanities-projects",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-ai",
+			"destination": "/resources/hosted/introduction-to-ai",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/corpus-query-language-im-austrian-media-corpus",
+			"destination": "/resources/hosted/corpus-query-language-im-austrian-media-corpus",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/why-space-is-special-an-intro-to-gis-and-geospatial-history",
+			"destination": "/resources/pathfinders/why-space-is-special-an-intro-to-gis-and-geospatial-history",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/data-and-databases-entities-and-relationships",
+			"destination": "/resources/hosted/data-and-databases-entities-and-relationships",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-cultural-heritage-data-modelling-—-with-a-focus-on-edm",
+			"destination": "/resources/hosted/introduction-to-cultural-heritage-data-modelling-with-a-focus-on-edm",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-europeana-apis",
+			"destination": "/resources/hosted/introduction-to-europeana-apis",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/data-ethics-in-cultural-heritage",
+			"destination": "/resources/external/data-ethics-in-cultural-heritage",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digital-exhibition-design",
+			"destination": "/resources/external/digital-exhibition-design",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-cultural-heritage-data",
+			"destination": "/resources/hosted/introduction-to-cultural-heritage-data",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-collections-as-data",
+			"destination": "/resources/hosted/introduction-to-collections-as-data",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digitisation-methods-for-material-culture",
+			"destination": "/resources/external/digitisation-methods-for-material-culture",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/creating-stories-with-3d-data-on-the-web",
+			"destination": "/resources/external/creating-stories-with-3d-data-on-the-web",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/linking-digital-heritage-games-and-virtual-tourism",
+			"destination": "/resources/hosted/linking-digital-heritage-games-and-virtual-tourism",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/historical-farm-and-people-registry-in-iceland-–-turning-static-list-entries-into-network-nodes",
+			"destination": "/resources/hosted/historical-farm-and-people-registry-in-iceland-turning-static-list-entries-into-network-nodes",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/making-an-interactive-web-application-with-r-and-shiny",
+			"destination": "/resources/external/making-an-interactive-web-application-with-r-and-shiny",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/chroma-key-tutorial",
+			"destination": "/resources/external/chroma-key-tutorial",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/scalable-reading-of-structured-data",
+			"destination": "/resources/external/scalable-reading-of-structured-data",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-map-warper",
+			"destination": "/resources/external/introduction-to-map-warper",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/diamond-publication-and-open-science-at-uliège",
+			"destination": "/resources/hosted/diamond-publication-and-open-science-at-uliege",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/interrogating-a-national-narrative-with-gpt-2",
+			"destination": "/resources/external/interrogating-a-national-narrative-with-gpt-2",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/the-cls-infra-survey-of-methods-in-computational-literary-studies",
+			"destination": "/resources/external/the-cls-infra-survey-of-methods-in-computational-literary-studies",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/photogrammetry-tutorial",
+			"destination": "/resources/external/photogrammetry-tutorial",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/computer-vision-for-the-humanities-an-introduction-to-deep-learning-for-image-classification-part-1",
+			"destination": "/resources/external/computer-vision-for-the-humanities-an-introduction-to-deep-learning-for-image-classification-part-1",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/computer-vision-for-the-humanities-an-introduction-to-deep-learning-for-image-classification-part-2",
+			"destination": "/resources/external/computer-vision-for-the-humanities-an-introduction-to-deep-learning-for-image-classification-part-2",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/regression-analysis-with-scikit-learn-part-2-logistic",
+			"destination": "/resources/external/regression-analysis-with-scikit-learn-part-2-logistic",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/bridging-the-sensory-gaps-innovations-for-inclusivity",
+			"destination": "/resources/hosted/bridging-the-sensory-gaps-innovations-for-inclusivity",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/regression-analysis-with-scikit-learn-part-1-linear",
+			"destination": "/resources/external/regression-analysis-with-scikit-learn-part-1-linear",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/displaying-a-georeferenced-map-in-knightlab-storymap-js",
+			"destination": "/resources/external/displaying-a-georeferenced-map-in-knightlab-storymap-js",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/new-readers-for-old-texts-sharing-the-workflow-of-a-digitally-enriched-children-literature-edition",
+			"destination": "/resources/hosted/new-readers-for-old-texts-sharing-the-workflow-of-a-digitally-enriched-children-literature-edition",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/finding-places-in-text-with-the-world-historical-gazetteer",
+			"destination": "/resources/external/finding-places-in-text-with-the-world-historical-gazetteer",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/from-the-shelf-to-the-web-exploring-historical-newspapers-in-the-digital-age",
+			"destination": "/resources/external/from-the-shelf-to-the-web-exploring-historical-newspapers-in-the-digital-age",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-knowledge-organization-systems",
+			"destination": "/resources/external/introduction-to-knowledge-organization-systems",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/design-development-and-deployment-of-augmented-reality-applications",
+			"destination": "/resources/external/design-development-and-deployment-of-augmented-reality-applications",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/curating-the-digital-storytelling-exhibition-at-the-british-library",
+			"destination": "/resources/hosted/curating-the-digital-storytelling-exhibition-at-the-british-library",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/netnography",
+			"destination": "/resources/external/netnography",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digitalisation-and-sustainability",
+			"destination": "/resources/hosted/digitalisation-and-sustainability",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-the-e-spectator-digital-tool-for-analysis-of-performing-arts",
+			"destination": "/resources/external/introduction-to-the-e-spectator-digital-tool-for-analysis-of-performing-arts",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/text-analysis-linguistics-meets-data-science",
+			"destination": "/resources/external/text-analysis-linguistics-meets-data-science",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digital-historical-research-on-european-historical-newspaper-with-newseye-platform",
+			"destination": "/resources/external/digital-historical-research-on-european-historical-newspaper-with-newseye-platform",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/ethical-societal-and-legal-complexities-of-ai",
+			"destination": "/resources/hosted/ethical-societal-and-legal-complexities-of-ai",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/data-analysis-with-python",
+			"destination": "/resources/external/data-analysis-with-python",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-programming-for-nlp-with-python",
+			"destination": "/resources/external/introduction-to-programming-for-nlp-with-python",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/word-embeddings",
+			"destination": "/resources/hosted/word-embeddings",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/the-learning-curve-in-sharing-data-with-the-ehri-project-the-example-of-a-memorial-site-kazerne-dossin-mechelen",
+			"destination": "/resources/external/the-learning-curve-in-sharing-data-with-the-ehri-project-the-example-of-a-memorial-site-kazerne-dossin-mechelen",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/from-digital-culture-to-digital-heritage",
+			"destination": "/resources/hosted/from-digital-culture-to-digital-heritage",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/using-spatial-data-in-tableau",
+			"destination": "/resources/external/using-spatial-data-in-tableau",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/entity-matching",
+			"destination": "/resources/external/entity-matching",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/data-journalism-and-ai-new-frontiers-in-investigation-and-storytelling",
+			"destination": "/resources/hosted/data-journalism-and-ai-new-frontiers-in-investigation-and-storytelling",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/what-can-i-do-with-this-messy-spreadsheet-converting-from-excel-sheets-to-fully-compliant-ead-xml-files",
+			"destination": "/resources/external/what-can-i-do-with-this-messy-spreadsheet-converting-from-excel-sheets-to-fully-compliant-ead-xml-files",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/more-watching-less-searching-repurposing-fortunoff-archive-metadata-for-visual-searching",
+			"destination": "/resources/external/more-watching-less-searching-repurposing-fortunoff-archive-metadata-for-visual-searching",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/how-to-learn-and-love-digital-text-in-four-easy-steps",
+			"destination": "/resources/hosted/how-to-learn-and-love-digital-text-in-four-easy-steps",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/using-named-entity-recognition-to-enhance-access-to-a-museum-catalog",
+			"destination": "/resources/external/using-named-entity-recognition-to-enhance-access-to-a-museum-catalog",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/spatial-queries-and-the-first-deportations-from-slovakia",
+			"destination": "/resources/external/spatial-queries-and-the-first-deportations-from-slovakia",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/geographical-text-analysis",
+			"destination": "/resources/hosted/geographical-text-analysis",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/windows-subsystem-for-linux-wsl-a-convenient-way-to-run-linux-tools-on-a-windows-10-system",
+			"destination": "/resources/external/windows-subsystem-for-linux-wsl-a-convenient-way-to-run-linux-tools-on-a-windows-10-system",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/extracting-csv-data-from-the-ehri-search-api",
+			"destination": "/resources/external/extracting-csv-data-from-the-ehri-search-api",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/queens-of-humanities",
+			"destination": "/resources/hosted/queens-of-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/importing-tables-from-websites-into-spreadsheets",
+			"destination": "/resources/external/importing-tables-from-websites-into-spreadsheets",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/using-opencv-for-face-detection",
+			"destination": "/resources/external/using-opencv-for-face-detection",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/quod-a-tool-for-querying-and-organising-digitised-historical-documents",
+			"destination": "/resources/external/quod-a-tool-for-querying-and-organising-digitised-historical-documents",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/exploratory-topic-modelling-in-python",
+			"destination": "/resources/external/exploratory-topic-modelling-in-python",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/mapping-science-in-immersive-architectures",
+			"destination": "/resources/hosted/mapping-science-in-immersive-architectures",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/how-to-capture-and-reference-a-webpage-in-your-research-using-zotero",
+			"destination": "/resources/external/how-to-capture-and-reference-a-webpage-in-your-research-using-zotero",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/tutorial-for-voice-3-0",
+			"destination": "/resources/hosted/tutorial-for-voice-3-0",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/ehri-in-teitok",
+			"destination": "/resources/external/ehri-in-teitok",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/has-anyone-cited-a-woman",
+			"destination": "/resources/hosted/has-anyone-cited-a-woman",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/copyright-and-academia-in-the-digital-era",
+			"destination": "/resources/hosted/copyright-and-academia-in-the-digital-era",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/dariah-de-publikator-video-tutorial",
+			"destination": "/resources/hosted/dariah-de-publikator-video-tutorial",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/automating-the-process-of-dictionary-creation",
+			"destination": "/resources/hosted/automating-the-process-of-dictionary-creation",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/eosc-for-arts-and-humanities-scholars",
+			"destination": "/resources/hosted/eosc-for-arts-and-humanities-scholars",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/knowledge-design_",
+			"destination": "/resources/external/knowledge-design",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/polifonia-making-sense-of-musical-heritage-on-the-web",
+			"destination": "/resources/hosted/polifonia-making-sense-of-musical-heritage-on-the-web",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/what-300-dimensional-fridges-can-tell-us-about-language",
+			"destination": "/resources/external/what-300-dimensional-fridges-can-tell-us-about-language",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/archiving-activism-archiving-reproductive-health",
+			"destination": "/resources/hosted/archiving-activism-archiving-reproductive-health",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/the-gotriple-pundit-annotation-tool-training",
+			"destination": "/resources/hosted/the-gotriple-pundit-annotation-tool-training",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/multilingual-vocabularies-for-ssh-training",
+			"destination": "/resources/hosted/multilingual-vocabularies-for-ssh-training",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/things-that-poems-taught-me-about-visualization",
+			"destination": "/resources/external/things-that-poems-taught-me-about-visualization",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/dublin-in-the-archives-digital-collections-exploring-the-city-and-county",
+			"destination": "/resources/external/dublin-in-the-archives-digital-collections-exploring-the-city-and-county",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/how-to-publish-your-dictionary-data-with-publex",
+			"destination": "/resources/hosted/how-to-publish-your-dictionary-data-with-publex",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/performing-promoting-and-preserving-ireland’s-intangible-cultural-heritage",
+			"destination": "/resources/external/performing-promoting-and-preserving-ireland-s-intangible-cultural-heritage",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/the-gotriple-trust-building-system-training",
+			"destination": "/resources/hosted/the-gotriple-trust-building-system-training",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/visual-analytics-enabling-images-to-speak-for-themselves",
+			"destination": "/resources/external/visual-analytics-enabling-images-to-speak-for-themselves",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/how-to-share-your-research-using-social-media",
+			"destination": "/resources/hosted/how-to-share-your-research-using-social-media",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/shaping-the-unseen-behind-the-scenes-of-data-visualization",
+			"destination": "/resources/external/shaping-the-unseen-behind-the-scenes-of-data-visualization",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/the-importance-of-user-centred-design-for-open-science",
+			"destination": "/resources/hosted/the-importance-of-user-centred-design-for-open-science",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/looking-for-revolution-in-the-data-pool-some-observations-from-cesta-at-stanford",
+			"destination": "/resources/external/looking-for-revolution-in-the-data-pool-some-observations-from-cesta-at-stanford",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-persistent-identifiers",
+			"destination": "/resources/hosted/introduction-to-persistent-identifiers",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/you-never-build-just-one-interface-you-dont-even-own-it",
+			"destination": "/resources/hosted/you-never-build-just-one-interface-you-dont-even-own-it",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/computational-museology-experimental-interfaces-to-cultural-big-data",
+			"destination": "/resources/hosted/computational-museology-experimental-interfaces-to-cultural-big-data",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/greek-latin-classics-and-the-need-for-a-global-philology",
+			"destination": "/resources/external/greek-latin-classics-and-the-need-for-a-global-philology",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/eosc-architecture",
+			"destination": "/resources/hosted/eosc-architecture",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digitality-and-music-editions-thinking-about-the-roles-of-editors",
+			"destination": "/resources/external/digitality-and-music-editions-thinking-about-the-roles-of-editors",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/visual-data-discovery-for-the-social-sciences-and-humanities-context",
+			"destination": "/resources/hosted/visual-data-discovery-for-the-social-sciences-and-humanities-context",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/eosc-state-of-the-art-and-perspectives",
+			"destination": "/resources/hosted/eosc-state-of-the-art-and-perspectives",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/fair-data-in-social-sciences-and-humanities",
+			"destination": "/resources/hosted/fair-data-in-social-sciences-and-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/virtual-reality-and-the-museum-library-sector-the-case-of-the-university-museum-and-library-of-trondheim",
+			"destination": "/resources/external/virtual-reality-and-the-museum-library-sector-the-case-of-the-university-museum-and-library-of-trondheim",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/train-the-trainer-research-data-management-bootcamp",
+			"destination": "/resources/external/train-the-trainer-research-data-management-bootcamp",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/data-protection-in-research-practice-–-a-tutorial",
+			"destination": "/resources/hosted/data-protection-in-research-practice-a-tutorial",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/elexis-pathfinder-to-computional-lexicography-for-developers-and-computational-linguists",
+			"destination": "/resources/pathfinders/elexis-pathfinder-to-computional-lexicography-for-developers-and-computational-linguists",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/transforming-lexical-data-xslt-for-dictionary-nerds",
+			"destination": "/resources/hosted/transforming-lexical-data-xslt-for-dictionary-nerds",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/mastering-oxygen-xml-editor-for-dictionary-nerds",
+			"destination": "/resources/hosted/mastering-oxygen-xml-editor-for-dictionary-nerds",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/mastering-lex1-the-dictionary-matrix",
+			"destination": "/resources/hosted/mastering-lex1-the-dictionary-matrix",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/lexicography-in-the-age-of-open-data",
+			"destination": "/resources/hosted/lexicography-in-the-age-of-open-data",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/modeling-dictionaries-in-ontolex-lemon",
+			"destination": "/resources/hosted/modeling-dictionaries-in-ontolex-lemon",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/modeling-dictionaries-in-tei-lex-0",
+			"destination": "/resources/hosted/modeling-dictionaries-in-tei-lex-0",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/standards-for-representing-lexicographic-data-an-overview",
+			"destination": "/resources/hosted/standards-for-representing-lexicographic-data-an-overview",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/clarin-tools-and-resources-for-lexicographic-work",
+			"destination": "/resources/hosted/clarin-tools-and-resources-for-lexicographic-work",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/lexonomy-mastering-the-elexis-dictionary-writing-system",
+			"destination": "/resources/hosted/lexonomy-mastering-the-elexis-dictionary-writing-system",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/lex2-mastering-elexis-corpus-tools-for-lexicographic-purposes",
+			"destination": "/resources/hosted/lex2-mastering-elexis-corpus-tools-for-lexicographic-purposes",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/capturing-modeling-and-transforming-lexical-data-an-introduction",
+			"destination": "/resources/hosted/capturing-modeling-and-transforming-lexical-data-an-introduction",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-corpus-based-lexicographic-practice",
+			"destination": "/resources/hosted/introduction-to-corpus-based-lexicographic-practice",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-dictionary-users",
+			"destination": "/resources/hosted/introduction-to-dictionary-users",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/lex3-transforming-legacy-dictionaries-using-elexifier",
+			"destination": "/resources/hosted/lex3-transforming-legacy-dictionaries-using-elexifier",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-dictionaries",
+			"destination": "/resources/hosted/introduction-to-dictionaries",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/thinking-about-the-care-principles-in-the-digital-humanities",
+			"destination": "/resources/hosted/thinking-about-the-care-principles-in-the-digital-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/eosc-onboarding",
+			"destination": "/resources/hosted/eosc-onboarding",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/crowdsourcing-methods-with-cultural-heritage-and-academic-datasets",
+			"destination": "/resources/external/crowdsourcing-methods-with-cultural-heritage-and-academic-datasets",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/cultural-heritage-some-observations-on-collecting-and-curating-in-the-digital-age",
+			"destination": "/resources/external/cultural-heritage-some-observations-on-collecting-and-curating-in-the-digital-age",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/the-open-access-publishing-platform-open-research-europe-ore",
+			"destination": "/resources/hosted/the-open-access-publishing-platform-open-research-europe-ore",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-apis",
+			"destination": "/resources/hosted/introduction-to-apis",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/engaging-communities-with-archives-video-as-a-tool-for-activism-advocacy-and-archival-work",
+			"destination": "/resources/external/engaging-communities-with-archives-video-as-a-tool-for-activism-advocacy-and-archival-work",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/unwaged-labor-work-life-balance-and-information-management-during-covid-19",
+			"destination": "/resources/hosted/unwaged-labor-work-life-balance-and-information-management-during-covid-19",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/dariah-de-collection-registry-tutorial",
+			"destination": "/resources/external/dariah-de-collection-registry-tutorial",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/transformation-how-the-digital-creates-new-realities",
+			"destination": "/resources/external/transformation-how-the-digital-creates-new-realities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/using-digital-archives-for-geographical-and-archaeological-research",
+			"destination": "/resources/external/using-digital-archives-for-geographical-and-archaeological-research",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/using-digital-archives-for-historical-research",
+			"destination": "/resources/external/using-digital-archives-for-historical-research",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/using-digital-archives-for-social-sciences-research",
+			"destination": "/resources/external/using-digital-archives-for-social-sciences-research",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/scholarly-primitives-20-years-later",
+			"destination": "/resources/hosted/scholarly-primitives-20-years-later",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/david-boder-from-wire-recordings-to-website",
+			"destination": "/resources/external/david-boder-from-wire-recordings-to-website",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/flipped-classrooms",
+			"destination": "/resources/hosted/flipped-classrooms",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/from-the-archival-to-the-digital-turn-a-lesson-on-source-criticism",
+			"destination": "/resources/external/from-the-archival-to-the-digital-turn-a-lesson-on-source-criticism",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/the-time-machine-project",
+			"destination": "/resources/hosted/the-time-machine-project",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/the-tei-guidelines-born-to-be-open",
+			"destination": "/resources/external/the-tei-guidelines-born-to-be-open",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/an-editorial-and-technical-journey-into-post-publication-peer-review-pppr",
+			"destination": "/resources/external/an-editorial-and-technical-journey-into-post-publication-peer-review-pppr",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/game-play-design-in-the-arts-and-humanities",
+			"destination": "/resources/external/game-play-design-in-the-arts-and-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/practicing-design-thinking-and-making",
+			"destination": "/resources/external/practicing-design-thinking-and-making",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/storytelling-for-digital-narratives-and-blended-spaces",
+			"destination": "/resources/external/storytelling-for-digital-narratives-and-blended-spaces",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/remaking-material-culture-in-3d",
+			"destination": "/resources/external/remaking-material-culture-in-3d",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-design-thinking-and-maker-culture",
+			"destination": "/resources/external/introduction-to-design-thinking-and-maker-culture",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/cultural-innovation",
+			"destination": "/resources/hosted/cultural-innovation",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/dariah-de-publikator-tutorial",
+			"destination": "/resources/external/dariah-de-publikator-tutorial",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/controlled-vocabularies-and-skos",
+			"destination": "/resources/hosted/controlled-vocabularies-and-skos",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/xpath-for-dictionary-nerds",
+			"destination": "/resources/hosted/xpath-for-dictionary-nerds",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/dariahs-role-in-connecting-with-arts-and-humanities-researchers",
+			"destination": "/resources/hosted/dariahs-role-in-connecting-with-arts-and-humanities-researchers",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/design-based-research-in-educational-contexts",
+			"destination": "/resources/hosted/design-based-research-in-educational-contexts",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/what-skills-knowledge-and-workforces-are-needed-into-the-future",
+			"destination": "/resources/hosted/what-skills-knowledge-and-workforces-are-needed-into-the-future",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/how-do-we-design-infrastructure-that-connects",
+			"destination": "/resources/hosted/how-do-we-design-infrastructure-that-connects",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/transformations-what-are-the-big-challenges-and-opportunities-for-data-intensive-research",
+			"destination": "/resources/hosted/transformations-what-are-the-big-challenges-and-opportunities-for-data-intensive-research",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/cowboys-and-consortia-thoughts-on-dh-infrastructure",
+			"destination": "/resources/hosted/cowboys-and-consortia-thoughts-on-dh-infrastructure",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/humanities-augmented-ecologies-of-digital-research-practices",
+			"destination": "/resources/hosted/humanities-augmented-ecologies-of-digital-research-practices",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/the-dariah-big-idea-pathways-to-building-sustainable-infrastructure-over-time",
+			"destination": "/resources/hosted/the-dariah-big-idea-pathways-to-building-sustainable-infrastructure-over-time",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/what-are-we-talking-about-when-we-talk-about-data-in-the-humanities",
+			"destination": "/resources/hosted/what-are-we-talking-about-when-we-talk-about-data-in-the-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/what-does-data-want",
+			"destination": "/resources/hosted/what-does-data-want",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/from-paper-to-digits-challenges-and-opportunities-of-digital-research",
+			"destination": "/resources/hosted/from-paper-to-digits-challenges-and-opportunities-of-digital-research",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/intellectual-property-rights-in-ethically-open-science",
+			"destination": "/resources/hosted/intellectual-property-rights-in-ethically-open-science",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/open-science-is-just-good-science",
+			"destination": "/resources/hosted/open-science-is-just-good-science",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/applying-modern-data-analytics-to-classical-questions-in-the-humanities",
+			"destination": "/resources/hosted/applying-modern-data-analytics-to-classical-questions-in-the-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/cultural-big-data-building-a-european-internet-of-cultural-things",
+			"destination": "/resources/hosted/cultural-big-data-building-a-european-internet-of-cultural-things",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/dariah-winter-school-2016-open-data-citation",
+			"destination": "/resources/hosted/dariah-winter-school-2016-open-data-citation",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/citizen-science-in-the-digital-arts-and-humanities",
+			"destination": "/resources/external/citizen-science-in-the-digital-arts-and-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/create-impact-with-your-e-humanities-and-e-heritage-research",
+			"destination": "/resources/external/create-impact-with-your-e-humanities-and-e-heritage-research",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/dariah-pathfinder-to-data-management-best-practices-in-the-humanities",
+			"destination": "/resources/pathfinders/dariah-pathfinder-to-data-management-best-practices-in-the-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/how-to-work-together-successfully-with-e-humanities-and-e-heritage-research-infrastructures",
+			"destination": "/resources/external/how-to-work-together-successfully-with-e-humanities-and-e-heritage-research-infrastructures",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/boost-your-ehumanities-and-eheritage-research-with-research-infrastructures",
+			"destination": "/resources/external/boost-your-ehumanities-and-eheritage-research-with-research-infrastructures",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/e-humanities-and-e-heritage-research-infrastructures-beyond-tools",
+			"destination": "/resources/external/e-humanities-and-e-heritage-research-infrastructures-beyond-tools",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/make-it-happen-carrying-out-research-and-analysing-data",
+			"destination": "/resources/external/make-it-happen-carrying-out-research-and-analysing-data",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/editing-jane-austen",
+			"destination": "/resources/external/editing-jane-austen",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/text-encoding-and-the-text-encoding-initiative",
+			"destination": "/resources/external/text-encoding-and-the-text-encoding-initiative",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/a-digital-scholarly-edition-of-intellectual-berlin-around-1800",
+			"destination": "/resources/external/a-digital-scholarly-edition-of-intellectual-berlin-around-1800",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/retrieving-text-from-spoken-data",
+			"destination": "/resources/external/retrieving-text-from-spoken-data",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/the-transformation-of-the-scholarly-edition-from-print-to-screen",
+			"destination": "/resources/external/the-transformation-of-the-scholarly-edition-from-print-to-screen",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/dariah-can-help-researchers-to-use-digital-methods-at-every-stage-of-their-research",
+			"destination": "/resources/hosted/dariah-can-help-researchers-to-use-digital-methods-at-every-stage-of-their-research",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digital-scholarly-editions-manuscripts-texts-and-tei-encoding",
+			"destination": "/resources/external/digital-scholarly-editions-manuscripts-texts-and-tei-encoding",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/from-literary-history-to-digital-research-infrastructure-pushing-beyond-boundaries",
+			"destination": "/resources/hosted/from-literary-history-to-digital-research-infrastructure-pushing-beyond-boundaries",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/gender-and-stylistics",
+			"destination": "/resources/hosted/gender-and-stylistics",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/one-phrase-that-appears-again-and-again-is-continuous-training",
+			"destination": "/resources/hosted/one-phrase-that-appears-again-and-again-is-continuous-training",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/research-infrastructures-are-vital-in-providing-hands-on-training",
+			"destination": "/resources/hosted/research-infrastructures-are-vital-in-providing-hands-on-training",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/research-infrastructures-should-inspire-theoretically-and-practically",
+			"destination": "/resources/hosted/research-infrastructures-should-inspire-theoretically-and-practically",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/spatial-image-analytics",
+			"destination": "/resources/external/spatial-image-analytics",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/text-versions-and-the-editorial-impulse",
+			"destination": "/resources/external/text-versions-and-the-editorial-impulse",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/textual-scholarship",
+			"destination": "/resources/external/textual-scholarship",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/we-are-a-people-infrastructure-and-training-is-crucial-to-that",
+			"destination": "/resources/hosted/we-are-a-people-infrastructure-and-training-is-crucial-to-that",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/we-should-think-more-about-learning-environments",
+			"destination": "/resources/hosted/we-should-think-more-about-learning-environments",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/you-dont-have-to-be-a-programmer-but-being-technically-equipped-is-important-in-the-digital-humanities",
+			"destination": "/resources/hosted/you-dont-have-to-be-a-programmer-but-being-technically-equipped-is-important-in-the-digital-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/researchers-have-to-talk-a-lot-exchange-ideas-to-try-to-understand-each-other",
+			"destination": "/resources/hosted/researchers-have-to-talk-a-lot-exchange-ideas-to-try-to-understand-each-other",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/an-introduction-to-conceptual-modelling",
+			"destination": "/resources/external/an-introduction-to-conceptual-modelling",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digital-humanities-research-questions-and-methods",
+			"destination": "/resources/external/digital-humanities-research-questions-and-methods",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/digitising-dictionaries",
+			"destination": "/resources/external/digitising-dictionaries",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/open-education-and-moocs",
+			"destination": "/resources/external/open-education-and-moocs",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/sound-studies",
+			"destination": "/resources/external/sound-studies",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/spatial-humanities-social-justice",
+			"destination": "/resources/external/spatial-humanities-social-justice",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-digital-humanities",
+			"destination": "/resources/external/introduction-to-digital-humanities",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/manage-improve-and-open-up-your-research-data",
+			"destination": "/resources/external/manage-improve-and-open-up-your-research-data",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/management-challenges-in-research-infrastructures",
+			"destination": "/resources/external/management-challenges-in-research-infrastructures",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/mixed-reality-and-social-engagement",
+			"destination": "/resources/external/mixed-reality-and-social-engagement",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/multimodal-literacies",
+			"destination": "/resources/external/multimodal-literacies",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/my-digital-humanities-a-feminist-reading",
+			"destination": "/resources/external/my-digital-humanities-a-feminist-reading",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/my-digital-humanities-visualising-text",
+			"destination": "/resources/external/my-digital-humanities-visualising-text",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/what-is-the-role-of-training-and-education-in-research-infrastructures",
+			"destination": "/resources/hosted/what-is-the-role-of-training-and-education-in-research-infrastructures",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-research-infrastructures",
+			"destination": "/resources/external/introduction-to-research-infrastructures",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/introduction-to-collaborations-in-research-infrastructures",
+			"destination": "/resources/external/introduction-to-collaborations-in-research-infrastructures",
+			"permanent": true
+		},
+		{
+			"source": "/resource/posts/formal-ontologies-a-complete-novices-guide",
+			"destination": "/resources/external/formal-ontologies-a-complete-novices-guide",
+			"permanent": true
+		}
+	]
+}
