@@ -65,7 +65,7 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 			}),
 			editors: fields.multiRelationship({
 				label: "Editors",
-				validation: { length: { min: 0 } },
+				validation: { length: { min: 1 } },
 				collection: withI18nPrefix("people", locale),
 			}),
 			tags: fields.multiRelationship({
@@ -849,7 +849,7 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 			}),
 			authors: fields.multiRelationship({
 				label: "Authors",
-				// validation: { length: { min: 1 } }, // FIXME:
+				validation: { length: { min: 1 } },
 				collection: withI18nPrefix("people", locale),
 			}),
 			editors: fields.multiRelationship({
@@ -997,7 +997,7 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 			}),
 			authors: fields.multiRelationship({
 				label: "Authors",
-				// validation: { length: { min: 1 } }, // FIXME:
+				validation: { length: { min: 1 } },
 				collection: withI18nPrefix("people", locale),
 			}),
 			editors: fields.multiRelationship({
