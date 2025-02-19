@@ -3,6 +3,7 @@
 # Needs to be set in the "Ignored Build Step" project setting in the vercel dashboard
 # with `bash ./scripts/ignore-build.sh`.
 #
+# @see https://vercel.com/dariah/dariah-campus/settings/git#ignored-build-step
 # @see https://vercel.com/docs/projects/project-configuration/git-settings#ignored-build-step
 
 if [[ "$VERCEL_GIT_COMMIT_MESSAGE" != *"[skip ci]"* ]]; then

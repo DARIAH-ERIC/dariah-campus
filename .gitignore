@@ -23,6 +23,7 @@ node_modules/
 
 # vercel
 .vercel
+vercel.json
 
 # misc
 .DS_Store

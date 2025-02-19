@@ -10,8 +10,9 @@
 	"packageManager": "pnpm@10.4.1",
 	"scripts": {
 		"analyze": "BUNDLE_ANALYZER=\"enabled\" next build --no-lint",
-		"build": "run-s build:app build:search-index",
+		"build": "run-s build:handle build:app build:search-index",
 		"build:app": "next build",
+		"build:handle": "dotenv -c production -- tsx ./scripts/create-handle.ts",
 		"build:search-index": "dotenv -c production -- tsx --tsconfig ./scripts/typesense/tsconfig.json ./scripts/typesense/create-search-index.ts",
 		"dev": "next dev",
 		"dev:typesense:down": "docker compose --env-file=./.env.local down --volumes",
@@ -74,11 +75,14 @@
 		"server-only": "^0.0.1",
 		"sharp": "^0.33.5",
 		"shiki": "^2.4.1",
+		"to-vfile": "^8.0.0",
 		"typesense": "^1.8.2",
 		"typesense-instantsearch-adapter": "^2.8.0",
 		"valibot": "^1.0.0-rc.0",
+		"vfile-matter": "^5.0.0",
 		"xast-util-feed": "^2.0.0",
-		"xast-util-to-xml": "^4.0.0"
+		"xast-util-to-xml": "^4.0.0",
+		"yaml": "^2.7.0"
 	},
 	"devDependencies": {
 		"@acdh-oeaw/eslint-config": "^2.0.6",
