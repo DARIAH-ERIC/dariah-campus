@@ -1,0 +1,165 @@
+---
+title: A Basic Introduction to Geographic Information Systems (GIS)
+locale: en
+publication-date: 2024-09-10
+version: 1.0.0
+authors:
+  - genatowski-emily
+  - downs-tepper-liam
+editors: []
+contributors: []
+tags:
+  - data-visualisation
+  - spatial-humanities
+sources:
+  - dariah
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  title: A Basic Introduction to Geographic Information Systems (GIS)
+  content: This pathfinder provides an introduction to Geographic Information
+    Systems (GIS), covering analysis and visualization. It explains various
+    spatial methods and each method is explained with a definition, practical
+    examples and links to free resources online for further reading and
+    exploration.
+---
+## Introduction
+
+Spatial work in Geographic Information Systems (GIS) can be broadly categorized into two main types: analysis and visualization. Analysis involves computational techniques that help computers process and interpret spatial data, while visualization focuses on making this data comprehensible to people. Most GIS projects incorporate a mix of these two aspects to leverage the strengths of both. This guide aims to provide a comprehensive understanding of these concepts, making it accessible even to those new to GIS.
+
+For a detailed and visually supported introduction to GIS, you can explore [this comprehensive guide by Esri.  ](https://www.esri.com/en-us/what-is-gis/overview)On the same site, you can find a clear [timeline of the history of GIS](https://www.esri.com/en-us/what-is-gis/history-of-gis).
+
+## Learning Outcomes:
+
+After completing this resource, learners will be able to:
+
+* Understand a variety of spatial methods: Learners will gain familiarity with different techniques used in GIS, their purposes, and their applications.
+* Apply spatial methods in their research and analysis: Learners will be equipped to use these methods effectively in their projects to gain insights and solve spatial problems.
+
+### Spatial Methods
+
+#### Geocoding
+
+Geocoding is the process of converting addresses or place names into geographic coordinates. Think of it as the difference between being given a street address and seeing that address on a map. For example, converting "1600 Pennsylvania Ave NW, Washington, DC" to its exact latitude and longitude coordinates. This process is crucial for mapping and spatial analysis as it allows the integration of non-spatial data into a spatial framework.
+
+Example: Researchers can use geocoding to map the locations of historical landmarks in a city, allowing them to visualize their distribution and analyze spatial patterns.
+
+[For more on geocoding, read this article on secure geocoding on geographyrealm.com](https://www.geographyrealm.com/secure-geocoding/)
+
+#### Georeferencing
+
+Georeferencing involves aligning a printed map with geographic coordinates. It's akin to pinning a paper map to a globe, ensuring that the digital representation matches the real world. This technique is often used in historical research to align old maps with modern geographic data. Georeferencing enables the comparison of historical and contemporary maps, revealing changes over time.
+
+Example: Aligning a 19th-century map of a city with modern GIS data helps researchers study urban development over time.
+
+[Learn more about georeferencing from this resource by ArcGIS.](https://pro.arcgis.com/en/pro-app/latest/help/data/imagery/overview-of-georeferencing.htm)
+
+#### Flow Analysis
+
+Flow Analysis examines how water moves over a landscape. This method is useful for urban planning, predicting flood zones, and archaeological research to identify areas affected by historical water flow. Flow analysis helps in understanding hydrological patterns, which is essential for managing water resources and mitigating flood risks.
+
+Example: Urban planners use flow analysis to predict flood-prone areas, aiding in effective flood management strategies.
+
+[Explore flow analysis further through this article by GIS Geography.](https://gisgeography.com/flow-direction/)
+
+#### Cluster Analysis
+
+Cluster Analysis groups spatial data to reveal patterns or relationships. For instance, it can show where fans of a particular music artist live or how different dog breeds are distributed across a city. This method helps identify significant concentrations or dispersions within the data, making it easier to understand social and environmental patterns.
+
+Example: Cluster analysis can reveal areas with high concentrations of specific bird species, aiding in conservation efforts.
+
+[For more on cluster analysis, see this overview of the Mapping CLusters Toolset by ArcGIS Pro.](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/an-overview-of-the-mapping-clusters-toolset.htm)
+
+#### Visibility Analysis
+
+Visibility Analysis encompasses various methods that determine what can be seen from a specific location. This is intuitive as it relates to our natural understanding of sight lines and obstructions.
+
+Example: Planners can use visibility analysis to determine the best locations for new surveillance cameras in a city by assessing visibility from various points. This ensures that the cameras provide maximum coverage and enhance security in urban areas.
+
+[For more on visibility analysis, visit this overview by Esri.](https://pro.arcgis.com/en/pro-app/latest/help/analysis/visibility-analysis/visibility-analysis-intro.htm)
+
+[](https://pro.arcgis.com/en/pro-app/latest/help/analysis/visibility-analysis/visibility-analysis-intro.htm)
+
+#### Viewshed Analysis
+
+Viewshed Analysis calculates the visible area from a specific point. It considers obstacles like buildings or hills that block the line of sight. This method is useful for planning watchtower locations or understanding historical sightlines. Viewshed analysis can also be used in urban planning to optimize the placement of surveillance cameras, ensuring maximum coverage.
+
+Example: Viewshed analysis helps determine the best locations for new surveillance cameras in a city by assessing visibility from various points.
+
+[Learn more about viewshed analysis from this GIS Geography resource on Line of Sight vs Viewshed: Visibility Analysis.](https://gisgeography.com/line-of-sight-viewshed-visibility-analysis/)
+
+#### Intervisibility Analysis
+
+Intervisibility Analysis assesses whether two or more locations can see each other. Imagine a series of beacons on hilltops that need to be visible to each other to signal across a distance. This method is crucial for communication systems, both historical and modern, ensuring that signals can be transmitted effectively over long distances.
+
+Example: Intervisibility analysis is used in historical research to understand communication networks in medieval times, such as the signaling systems using beacons.
+
+[For a deeper understanding of intervisibility analysis, check this guide by Esri.](https://pro.arcgis.com/en/pro-app/latest/tool-reference/3d-analyst/intervisibility.htm)
+
+#### Least Cost Path Analysis
+
+Least Cost Path Analysis identifies the easiest route between two points, considering various factors like terrain and obstacles. For example, it can determine the most efficient hiking trail that avoids steep climbs and ensures access to water sources. This method is used in various fields, including archaeology, wildlife management, and urban planning, to optimize routes and reduce travel costs.
+
+Example: Hikers can use least cost path analysis to find the safest and most efficient trails in a mountainous region, considering elevation and water sources.
+
+[Discover least cost path analysis techniques with this resource by Geography Realm.](https://www.geographyrealm.com/overview-least-cost-path-analysis/)
+
+## Intuitive Concepts
+
+#### Time and Space
+
+We interact with space actively, while our interaction with time is passive. For instance, a location 500 kilometers away feels much farther than one that is 250 kilometers away, unlike the perceived equal distance of years in the past. Time and space are intertwined; for example, recommending a place only to find it closed due to the passage of time shows this interaction.
+
+Example: The perceived distance and impact of a historical event can change based on how recent or remote it is in time and space.
+
+#### Spaces vs. Places
+
+A space becomes a place when it gains meaning. For instance, a city's park where you spent your childhood has more significance to you than a park you have never visited. This distinction is crucial in GIS, as it helps in understanding how people assign meaning to different locations.
+
+Example: A historical battlefield may hold significant cultural importance, transforming it from a mere geographic location (space) to a place of historical memory.
+
+#### Practical Applications of Intuitive Concepts
+
+Understanding the difference between space and place can help in various GIS applications. For instance, urban planners can design cities that cater to the emotional and cultural needs of residents by creating places that hold meaning, rather than just functional spaces. This approach can improve the quality of life and foster a sense of community.
+
+#### Examples of the Practical Application of the above Techniques
+
+##### Geocoding
+
+* To visualize the distribution of historical landmarks in a city, geocoding can convert their addresses into coordinates, plotting them on a digital map. This allows researchers to see spatial patterns and correlations that might not be evident from text descriptions alone.
+
+##### Georeferencing
+
+* Aligning a 19th-century map of a city with modern GIS data helps researchers study urban development over time. By comparing the old map with current geographic information, researchers can identify areas that have changed significantly and investigate the reasons behind these changes.
+
+##### Flow Analysis
+
+* Using flow analysis, urban planners can predict flood-prone areas in a city, aiding in effective flood management strategies. This method can also be used in archaeological research to locate ancient riverbeds and understand how water flow influenced historical settlements.
+
+##### Cluster Analysis
+
+* Cluster analysis can reveal areas with high concentrations of specific bird species, aiding in conservation efforts. By identifying these clusters, conservationists can focus their efforts on protecting key habitats and understanding the factors that contribute to species clustering.
+
+##### Visibility Analysis
+
+* Viewshed analysis helps determine the best locations for new surveillance cameras in a city by assessing visibility from various points. This ensures that the cameras provide maximum coverage and enhance security in urban areas.
+
+##### Least Cost Path Analysis
+
+* Hikers can use least cost path analysis to find the safest and most efficient trails in a mountainous region, considering elevation and water sources. This method can also be applied in urban planning to design efficient transportation networks and minimize travel costs.
+
+#### Further Reading
+
+For further learning and tutorials on GIS methods, you can explore these free recommended resources:
+
+[GIS Geography](https://gisgeography.com/)
+
+[Geography Realm](https://www.geographyrealm.com/what-is-gis/)
+
+[Esri: ArcGIS Pro](https://www.esri.com/en-us/arcgis/products/arcgis-pro/resources)
+
+[](https://www.esri.com/en-us/arcgis/products/arcgis-pro/resources)
+
+### Conclusion
+
+Whether the goal of a researcher's spatial work is analysis or visualization, there are various methods to complete GIS-related tasks. Researchers must determine the most appropriate methods based on their specific needs and objectives. Feel free to return to this resource as a reference when deciding on your own methodology. Spatial approaches are valuable tools for reexamining humanities topics, opening new avenues for investigation and research.

@@ -1,0 +1,85 @@
+---
+title: Automatic Text Recognition (ATR) - End Formats and Reusability
+locale: en
+publication-date: 2025-01-29
+version: 1.0.0
+authors:
+  - chiffoleau-floriane
+  - ondraszek-sarah
+editors:
+  - baillot-anne
+  - koenig-mareike
+contributors: []
+tags:
+  - automatic-text-recognition
+  - editing-tools
+  - machine-learning
+sources:
+  - dariah
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: Increase the visibility of your ATR output while fostering Open Science.
+content-type: training-module
+---
+This session is dedicated to the reusability of the output of an ATR pipeline. It synthesises the output formats and draws on them for a presentation of reuse options in the spirit of Open Science.
+
+This is the English version of this training module. The video is available with English, French and German subtitles.
+
+Si vous souhaitez accéder à la version française du module, rendez-vous [ici](https://harmoniseatr.hypotheses.org/2996).
+
+Die deutsche Version der u.s. Lerneinheit ist [hier](https://harmoniseatr.hypotheses.org/2600) verfügbar.
+
+<Video provider="youtube" id="500dhVkBSx0" />
+
+As a last step of your [ATR](https://harmoniseatr.hypotheses.org/glossary-atr#ATRID) journey, once your transcriptions are done, you probably want to keep working with what you have obtained. To do so, you will have to export your transcriptions. Beforehand, you need to choose an [end format](https://harmoniseatr.hypotheses.org/glossary-atr#EndFormatsID). Here, your choice relies on the kind of information you would like to keep and export.
+
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-end-formats-and-reusability/b16cfe76-2711-48a8-a1ec-8e0df87125f7.jpg">
+  Picture of a cat typing on a personal computer. Image generated using the Midjourney AI image generator.
+</Figure>
+
+### Why should I export my transcriptions?
+
+We might ask: *Why* do we export the transcription? There are various reasons for this. However, export is not necessary for all transcriptions. The most common reason behind an export is to create backups of the data because digital tools and servers are not a hundred percent reliable. Export can be done even with unfinished transcriptions when your project is still considered work in progress.
+
+It is necessary to consider all software options before picking one as it is not always possible to change mid-work. In the cases where it is indeed possible to change, you will want to move your data from the current software to the one you want to migrate to. Similarly, by exporting the transcription, you can feed the data to another tool, which can be one of the reuse options.
+
+Exporting can also be done to publish finished transcriptions, whether it is the whole corpus or simply a sample. Finally, if you want to transform your transcribed corpus, an export will be necessary. Although some kinds of exports already propose a transformation, it is essential to correctly choose your output.
+
+### What are the output choices?
+
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-end-formats-and-reusability/capture-2025-01-21-111843.png">
+  Image of a robot presented with many output options, generated using the Midjourney AI image generator.
+</Figure>
+
+Depending on which software you choose for automatic text recognition, the appropriate option of output can vary. The two main types of export, plain text and layout, are usually met in every one of them, as one or multiple formats. Plain text represents the simplest export of a transcription, as it only provides the text that was manually transcribed, or predicted–and typically corrected. There are two formats for plain text, which are simple text files (.txt) or the DOCX version. The other type of export, the layout, is one that preserves all the information gathered during the whole process of automatic recognition, whether it is metadata, regions, lines, or masks from the segmentation and the text, as well as some additional annotations when the tool allows. The layout export provides an encoded version of the transcription, but depending on the format, the markup language is not the same. There are two kinds, a layout encoded in [HTML](https://harmoniseatr.hypotheses.org/glossary-atr#HTMLID), called [hOCR](https://harmoniseatr.hypotheses.org/glossary-atr#hOCR), and layouts encoded in XML, with specific vocabularies, called [PAGE](https://harmoniseatr.hypotheses.org/glossary-atr#PAGEID) XML and [ALTO](https://harmoniseatr.hypotheses.org/glossary-atr#ALTOID) XML. A third type of export can also be found sometimes, which is a PDF format, representing plain text but with layers, meaning the image is now available in [PDF](https://harmoniseatr.hypotheses.org/glossary-atr#PDFID) format and the segmentation or text recognition is available as layers embedded directly in the PDF.
+
+There are myriads of export formats for different types of usage, and it can happen that you realise at a later stage that the choice you made initially was not the right one, and you discover that you don't have the possibility to find your transcription again on the software you used. In such situations, some members of the community have created a helpful repository, which lists all the tools that exist to convert one end format to another–you can find the link for this repository [here](https://github.com/cneud/ocr-conversion).
+
+### Openness and reuse
+
+As we said earlier, transcriptions are often made for being reused. You might want to work on it privately, without prying eyes. However, it is more likely that you are working on your transcription as part of a (collaborative) project, destined to be made available in one way or another. In that case, you will have to know about how to guarantee the openness of your project, also being aware of open source tools that can be exploited to reuse your data.
+
+#### How to guarantee openness of your project?
+
+Once you have the output of your data, you will need some additional information to guarantee their openness. To do so, it is essential to follow the [FAIR principles](https://www.go-fair.org/fair-principles/). [FAIR](https://harmoniseatr.hypotheses.org/glossary-atr#FAIRID) stands for Findable, Accessible, Interoperable and Reusable. Simply providing documents with layout information will not be enough, because those would still be missing some content crucial for FAIRness.
+
+Firstly, there should be some metadata, as in the key information of the corpus, such as title, authors, sources, etc. That way, the corpus is not a lost piece, and the people who will consult it will have an easier time understanding it.
+
+Secondly, and this might be one of the most important steps for being able to say that your data is open, you need to provide documentation about the methods and tools that you used for your transcription. Above all, for the data to be interoperable, you need to mention the software used to create the transcription, as each has its particularities. Moreover, the documentation should also outline the transcription rules that you decide to use, especially in cases where irregularities appeared.
+
+It is important to document all choices made so that the people reusing the data will know what to do. Lastly, to make sure that your project is open and reusable, it should be in an open source format. Attention: Some end formats mentioned above, like DOCX, are not open source and should not be used in order to be published.
+
+### How to reuse your data?
+
+With your newly open data, many reuse options emerge. This is not an exhaustive list and other methods are also possible. One reuse option is to archive and/or share your work. Doing that ensures you to have a separate, often online backup. It is also a way to share your data, as it could be useful to someone else from the community. Here, you could use the repository [Zenodo](https://zenodo.org/) or the platform for software sharing [GitHub](https://github.com/), and in a “sharing” more than “archiving” type of way, the catalogue for sharing ATR-ground truth [HTR-United](https://htr-united.github.io/) could also be an interesting option.
+
+Another reuse option is analysis. ATR-ised large corpora can be explored by lexical analysis, text analysis, statistics, etc. To do so, there are open source tools that can be easily downloaded and used, such as TXM or R. With your data, you might also want to obtain a more enriched format than the one you obtained previously. There are various markup languages that you could use, such as the [Text Encoding Initiative (TEI)](https://tei-c.org/) to have your corpus follow the standard for the representation of texts in digital form, or an HTML transformation, to have them directly ready for a publication.
+
+Finally, you might want to publish your data in plain text format or in the format you selected for your transformation. There are several open-source tools to do this, such as [Omeka](https://omeka.org/), or [TEI Publisher](https://teipublisher.com/).
+
+You see, with great transcriptions comes great (re-)usability.
+
+### Conclusion
+
+The reuse of ATR outputs encompasses both a strategy for the creator of the resources to take advantage of their full potential, and a contribution to the community at large by providing resources that comply with the FAIR principles. Choices in formats, repositories, publication platforms are integral to the research process and are greatly facilitated by community-based, open services like those presented in this resource.

@@ -1,0 +1,19 @@
+{
+	"name": "Next.js",
+	"image": "ghcr.io/acdh-oeaw/devcontainer-frontend:22",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"bradlc.vscode-tailwindcss",
+				"dbaeumer.vscode-eslint",
+				"editorconfig.editorconfig",
+				"esbenp.prettier-vscode",
+				"lokalise.i18n-ally",
+				"mikestead.dotenv",
+				"ms-playwright.playwright",
+				"stylelint.vscode-stylelint",
+				"unifiedjs.vscode-mdx"
+			]
+		}
+	}
+}
