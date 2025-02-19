@@ -9,10 +9,8 @@ import { schema } from "@/lib/typesense/schema";
 const collection = schema.name;
 
 export async function create() {
-	// eslint-disable-next-line no-restricted-syntax
-	const isProductionEnvironment = process.env.VERCEL_ENV === "production";
-	// eslint-disable-next-line no-restricted-syntax
-	const isMainBranch = process.env.VERCEL_GIT_COMMIT_REF === "main";
+	const isProductionEnvironment = env.VERCEL_ENV === "production";
+	const isMainBranch = env.VERCEL_GIT_COMMIT_REF === "main";
 
 	if (!isProductionEnvironment || !isMainBranch) {
 		return false;

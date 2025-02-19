@@ -104,6 +104,9 @@ importers:
       shiki:
         specifier: ^2.4.1
         version: 2.4.1
+      to-vfile:
+        specifier: ^8.0.0
+        version: 8.0.0
       typesense:
         specifier: ^1.8.2
         version: 1.8.2(@babel/runtime@7.26.7)
@@ -113,12 +116,18 @@ importers:
       valibot:
         specifier: ^1.0.0-rc.0
         version: 1.0.0-rc.0(typescript@5.7.3)
+      vfile-matter:
+        specifier: ^5.0.0
+        version: 5.0.0
       xast-util-feed:
         specifier: ^2.0.0
         version: 2.0.0
       xast-util-to-xml:
         specifier: ^4.0.0
         version: 4.0.0
+      yaml:
+        specifier: ^2.7.0
+        version: 2.7.0
     devDependencies:
       '@acdh-oeaw/eslint-config':
         specifier: ^2.0.6
@@ -4680,6 +4689,9 @@ packages:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
 
+  to-vfile@8.0.0:
+    resolution: {integrity: sha512-IcmH1xB5576MJc9qcfEC/m/nQCFt3fzMHz45sSlgJyTWjRbKW1HAkJpuf3DgE57YzIlZcwcBZA5ENQbBo4aLkg==}
+
   toml@3.0.0:
     resolution: {integrity: sha512-y/mWCZinnvxjTKYhJ+pYxwD0mRLVvOtdS2Awbgxln6iEnt4rk0yBxeSBHkGJcPucRiG0e55mwWp+g/05rsrd6w==}
 
@@ -4842,6 +4854,9 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  vfile-matter@5.0.0:
+    resolution: {integrity: sha512-jhPSqlj8hTSkTXOqyxbUeZAFFVq/iwu/jukcApEqc/7DOidaAth6rDc0Zgg0vWpzUnWkwFP7aK28l6nBmxMqdQ==}
 
   vfile-message@4.0.2:
     resolution: {integrity: sha512-jRDZ1IMLttGj41KcZvlrYAaI3CfqpLpfpf+Mfig13viT6NKvRzWZ+lXz0Y5D60w6uJIBAOGq9mSHf0gktF0duw==}
@@ -11081,6 +11096,10 @@ snapshots:
     dependencies:
       is-number: 7.0.0
 
+  to-vfile@8.0.0:
+    dependencies:
+      vfile: 6.0.3
+
   toml@3.0.0: {}
 
   totalist@3.0.1: {}
@@ -11273,6 +11292,11 @@ snapshots:
   valibot@1.0.0-rc.0(typescript@5.7.3):
     optionalDependencies:
       typescript: 5.7.3
+
+  vfile-matter@5.0.0:
+    dependencies:
+      vfile: 6.0.3
+      yaml: 2.7.0
 
   vfile-message@4.0.2:
     dependencies:
