@@ -1,7 +1,17 @@
 import { useObjectUrl, type UseObjectUrlParams } from "@acdh-oeaw/keystatic-lib/preview";
-import { isNonEmptyString } from "@acdh-oeaw/lib";
+import { capitalize, isNonEmptyString } from "@acdh-oeaw/lib";
 import { cn, styles } from "@acdh-oeaw/style-variants";
 import { NotEditable, type ParsedValueForComponentSchema } from "@keystatic/core";
+import {
+	AlertTriangleIcon,
+	BoltIcon,
+	ChevronDownIcon,
+	InfoIcon,
+	LightbulbIcon,
+	type LucideIcon,
+	PencilIcon,
+	PlayCircleIcon,
+} from "lucide-react";
 import type { ReactNode } from "react";
 
 import type {
@@ -16,15 +26,23 @@ import { createVideoUrl } from "@/lib/keystatic/create-video-url";
 
 type LinkSchema = ParsedValueForComponentSchema<ReturnType<typeof createLinkSchema>>;
 
-const calloutKindStyles = styles({
-	base: "inline-flex min-h-6 rounded-full px-2 text-sm",
+const calloutIcons: Record<CalloutKind, LucideIcon> = {
+	caution: BoltIcon,
+	important: InfoIcon,
+	note: PencilIcon,
+	tip: LightbulbIcon,
+	warning: AlertTriangleIcon,
+};
+
+const calloutStyles = styles({
+	base: "grid gap-y-3 rounded-md border border-l-4 p-6 shadow [&_*::marker]:text-inherit [&_*]:text-inherit",
 	variants: {
 		kind: {
-			caution: "border border-error-200 bg-error-100 text-error-700",
-			important: "border border-important-200 bg-important-100 text-important-700",
-			note: "border border-neutral-200 bg-neutral-100 text-neutral-700",
-			tip: "border border-success-200 bg-success-100 text-success-700",
-			warning: "border border-warning-200 bg-warning-100 text-warning-700",
+			caution: "border-error-200 border-l-error-600 bg-error-50 text-error-800",
+			important: "border-important-200 border-l-important-600 bg-important-50 text-important-800",
+			note: "border-neutral-200 border-l-neutral-600 bg-neutral-100 text-neutral-800",
+			tip: "border-success-200 border-l-success-600 bg-success-50 text-success-800",
+			warning: "border-warning-200 border-l-warning-500 bg-warning-50 text-warning-800",
 		},
 	},
 	defaults: {
@@ -42,13 +60,18 @@ interface CalloutPreviewProps {
 export function CalloutPreview(props: Readonly<CalloutPreviewProps>): ReactNode {
 	const { children, kind = "note", title } = props;
 
+	const Icon = calloutIcons[kind];
+
 	return (
-		<aside className="rounded-lg p-4 text-sm leading-relaxed">
-			<NotEditable className="mb-4 flex items-center justify-between gap-x-8">
-				<strong className="font-bold">{isNonEmptyString(title) ? title : "(No title)"}</strong>
-				<span className={calloutKindStyles({ kind })}>{kind}</span>
+		<aside className={calloutStyles({ kind })}>
+			<NotEditable>
+				<strong className="flex items-center gap-x-2 font-bold">
+					<Icon aria-hidden={true} className="size-5 shrink-0" />
+					{/* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing */}
+					<span>{title || capitalize(kind)}</span>
+				</strong>
 			</NotEditable>
-			{children}
+			<div className="[&_a:hover]:no-underline [&_a]:underline">{children}</div>
 		</aside>
 	);
 }
@@ -62,12 +85,20 @@ export function DisclosurePreview(props: Readonly<DisclosurePreviewProps>): Reac
 	const { children, title } = props;
 
 	return (
-		<aside className="rounded-lg p-4 text-sm leading-relaxed">
-			<NotEditable className="mb-4 flex items-center justify-between gap-x-8">
-				<strong className="font-bold">{isNonEmptyString(title) ? title : "(No title)"}</strong>
-			</NotEditable>
-			{children}
-		</aside>
+		<details className="group my-4 grid border-y open:pb-4" open={true}>
+			<summary className="my-3 inline-flex cursor-pointer list-none py-1 font-bold group-open:pb-0 hover:underline focus:outline-none">
+				<NotEditable className="inline-flex flex-1 items-center justify-between gap-x-4">
+					<span>{title || "(Disclosure title)"}</span>
+					<ChevronDownIcon
+						aria-hidden={true}
+						className="size-5 shrink-0 text-neutral-500 transition group-open:rotate-180"
+					/>
+				</NotEditable>
+			</summary>
+			<div className="[&_:first-child]:mt-0 [&_:last-child]:mb-0 [&_a:hover]:no-underline [&_a]:underline">
+				{children}
+			</div>
+		</details>
 	);
 }
 
@@ -85,13 +116,15 @@ export function EmbedPreview(props: Readonly<EmbedPreviewProps>): ReactNode {
 				{src != null ? (
 					// eslint-disable-next-line jsx-a11y/iframe-has-title
 					<iframe
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						allowFullScreen={true}
-						className="aspect-video w-full overflow-hidden rounded-lg border border-neutral-200"
+						className="aspect-square w-full overflow-hidden rounded-lg border border-neutral-200 bg-white"
+						loading="lazy"
 						src={src}
 					/>
 				) : null}
 			</NotEditable>
-			<figcaption>{children}</figcaption>
+			<figcaption className="text-sm">{children}</figcaption>
 		</figure>
 	);
 }
@@ -105,12 +138,15 @@ export function ExternalResourcePreview(props: Readonly<ExternalResourcePreviewP
 	const { subtitle, title } = props;
 
 	return (
-		<aside className="grid gap-y-2">
-			<div>{title}</div>
-			<div>{subtitle}</div>
-			{/* eslint-disable-next-line react/jsx-no-literals */}
-			<div>Go to resource</div>
-		</aside>
+		<NotEditable>
+			<aside className="my-4 grid place-items-center justify-center gap-y-2 text-center text-neutral-800">
+				<strong className="text-2xl font-bold">{title}</strong>
+				<div className="text-neutral-500">{subtitle}</div>
+				<div className="mt-2 inline-flex select-none rounded-full bg-brand-700 px-4 py-2 font-medium leading-7 text-white no-underline transition hover:bg-brand-900 focus:outline-none focus-visible:ring focus-visible:ring-brand-700">
+					{"Go to this resource"}
+				</div>
+			</aside>
+		</NotEditable>
 	);
 }
 
@@ -134,7 +170,7 @@ export function FigurePreview(props: Readonly<FigurePreviewProps>): ReactNode {
 					// eslint-disable-next-line @next/next/no-img-element
 					<img
 						alt={alt}
-						className="w-full overflow-hidden rounded-lg border border-neutral-200"
+						className="w-full overflow-hidden rounded-lg border border-neutral-200 bg-white"
 						src={url}
 					/>
 				) : null}
@@ -218,7 +254,7 @@ export function LinkButtonPreview(props: Readonly<LinkButtonPreviewProps>): Reac
 	const { children, link: _link } = props;
 
 	return (
-		<div className="inline-flex min-h-12 items-center rounded-lg border border-brand-700 bg-brand-700 px-6 py-2.5 text-sm font-bold text-white">
+		<div className="inline-flex select-none rounded-full bg-brand-700 px-4 py-2 text-sm font-medium text-white">
 			{children}
 		</div>
 	);
@@ -372,12 +408,12 @@ export function VideoPreview(props: Readonly<VideoPreviewProps>): ReactNode {
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						allowFullScreen={true}
 						className="aspect-video w-full overflow-hidden rounded-lg border border-neutral-200"
-						referrerPolicy="strict-origin-when-cross-origin"
+						loading="lazy"
 						src={href}
 					/>
 				) : null}
 			</NotEditable>
-			<figcaption>{children}</figcaption>
+			<figcaption className="text-sm">{children}</figcaption>
 		</figure>
 	);
 }
@@ -398,21 +434,22 @@ export function VideoCardPreview(props: Readonly<VideoCardPreviewProps>): ReactN
 	const _src = useObjectUrl(image);
 
 	return (
-		<figure className="grid gap-y-2">
-			<NotEditable>
+		<figure className="rounded-xl border border-neutral-200 bg-white text-neutral-800 shadow-md">
+			<NotEditable className="grid gap-y-6 p-6">
 				{href != null ? (
 					// eslint-disable-next-line jsx-a11y/iframe-has-title
 					<iframe
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						allowFullScreen={true}
 						className="aspect-video w-full overflow-hidden rounded-lg border border-neutral-200"
-						referrerPolicy="strict-origin-when-cross-origin"
+						loading="lazy"
 						src={href}
 					/>
 				) : null}
-				<figcaption>
-					<div>{title}</div>
-					<div>{subtitle}</div>
+				<figcaption className="grid justify-center justify-items-center gap-y-1">
+					<PlayCircleIcon aria-hidden={true} className="mx-auto size-12 shrink-0 text-brand-700" />
+					<strong className="text-xl font-bold">{title}</strong>
+					<div className="text-sm text-neutral-500">{subtitle}</div>
 				</figcaption>
 			</NotEditable>
 		</figure>

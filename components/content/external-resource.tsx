@@ -13,11 +13,11 @@ export function ExternalResource(props: ExternalResourceProps): ReactNode {
 	const t = useTranslations("ExternalResource");
 
 	return (
-		<aside className="not-prose my-12 flex flex-col items-center gap-y-4 text-center text-neutral-800">
+		<aside className="my-12 grid justify-center justify-items-center gap-y-2 text-center text-neutral-800">
 			<strong className="text-2xl font-bold">{title}</strong>
-			<p className="text-neutral-500">{subtitle}</p>
+			<div className="text-neutral-500">{subtitle}</div>
 			<a
-				className="select-none rounded-full bg-brand-700 px-4 py-2 font-medium text-white no-underline transition hover:bg-brand-900 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+				className="mt-2 inline-flex select-none rounded-full bg-brand-700 px-4 py-2 font-medium text-white no-underline transition hover:bg-brand-900 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 				href={url}
 				target="_blank"
 			>

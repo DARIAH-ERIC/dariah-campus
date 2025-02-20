@@ -14,7 +14,8 @@ export function Embed(props: Readonly<EmbedProps>): ReactNode {
 		<figure className="grid gap-y-2">
 			<iframe
 				allowFullScreen={true}
-				className="aspect-video overflow-hidden rounded-lg border border-neutral-200 bg-white"
+				className="aspect-square w-full overflow-hidden rounded-lg border border-neutral-200 bg-white"
+				loading="lazy"
 				referrerPolicy="strict-origin-when-cross-origin"
 				src={src}
 				title={title}

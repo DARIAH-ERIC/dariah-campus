@@ -51,10 +51,12 @@ export function Callout(props: Readonly<CalloutProps>): ReactNode {
 	return (
 		<aside className={calloutStyles({ kind })}>
 			<strong className="flex items-center gap-x-2 font-bold">
-				<Icon className="size-5 shrink-0" />
+				<Icon aria-hidden={true} className="size-5 shrink-0" />
 				<span>{title ?? capitalize(kind)}</span>
 			</strong>
-			<div className="[&_a:hover]:no-underline [&_a]:underline">{children}</div>
+			<div className="[&_:first-child]:mt-0 [&_:last-child]:mb-0 [&_a:hover]:no-underline [&_a]:underline">
+				{children}
+			</div>
 		</aside>
 	);
 }

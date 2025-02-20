@@ -17,7 +17,7 @@ export function LinkButton(props: Readonly<LinkButtonProps>): ReactNode {
 		<Link
 			{...rest}
 			className={cn(
-				"rounded-md bg-brand-700 px-4 py-2 text-sm font-bold text-white transition hover:bg-brand-900 focus-visible:ring focus-visible:ring-brand-700",
+				"inline-flex select-none rounded-full bg-brand-700 px-4 py-2 text-sm font-medium text-white no-underline transition hover:bg-brand-900 focus-visible:ring focus-visible:ring-brand-700",
 				className,
 			)}
 		>

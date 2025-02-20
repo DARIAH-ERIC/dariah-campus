@@ -125,7 +125,7 @@ export const createEmbed = createComponent((_paths, _locale) => {
 export const createExternalResource = createComponent((_paths, _locale) => {
 	return {
 		ExternalResource: block({
-			label: "ExternalResource",
+			label: "External resource",
 			description: "Insert an link to an external resource.",
 			icon: <BookIcon />,
 			schema: {
