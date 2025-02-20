@@ -107,7 +107,9 @@ Examples of off-the-shelf commercial systems are products such as Sketch Engine.
 
 Features offered by corpus tools vary significantly, but all the tools offer at least the concordance, which is the main basic feature of corpus tools and represents the essence of corpus interrogation for lexicographers. As defined by Kosem (2016), "the concordance is a listing of the occurrences of a searched item, with each occurrence shown with a surrounding context."
 
-![](/assets/content/assets/en/resources/pathfinders/elexis-pathfinder-to-computional-lexicography-for-developers-and-computational-linguists/xei-cl-nch-iop-jp-gq0-vne-5-zh-ox-b-bxlpm9-ze8-pw4-iy-ff-qmkq-rp2-urw5y-ad-gwsz3-if-ip-ia-zxisbn-pg-fv4-v7-k-bw39-i-vw-iw-z2-t476-b-ebg-a2-x-yt-rmucbrnh-6j-gefk-sv-b9-p-su-gsy-be-csl-zsfs-dg-dv-eynwo3-m0.png "Figure 1: concordances for the query 'word' in the ukWac corpus in the Kontext CQS.")
+<Figure src="/assets/content/assets/en/resources/pathfinders/elexis-pathfinder-to-computional-lexicography-for-developers-and-computational-linguists/ad.png">
+  Figure 1: concordances for the query 'word' in the ukWac corpus in the Kontext CQS.
+</Figure>
 
 Concordance lines can be displayed in two ways, as sentences, or in the KWIC (Key Word in Context) format, with the lines centred according to the searched item. In the above example the concordances are displayed in KWIC format.
 
@@ -119,7 +121,9 @@ Other features offered by corpus tools involve some type of statistical calculat
 
 A lexical profile is a kind of statistical summary which reveals the salient facts about the way a word most typically combines with other words. It provides a compact and revealing snapshot of a word's behaviour and uses. The word sketches in Sketch Engine are a type of lexical profile, providing collocate lists per grammatical relation.
 
-![](/assets/content/assets/en/resources/pathfinders/elexis-pathfinder-to-computional-lexicography-for-developers-and-computational-linguists/6fm-a3-x-jyt3-kypu-4vzkg-bw-cdy6n-zc-98s-nsw-7f-nc-t5fdp-v-gr-f9-p-he-owjf-o-zp-fur-ucy7g6-oi-o-ccq4-g2-mw-ebrp-0-ghz-782-yuh-tqf9-z3-v-km-pm-hd-ocm-sv-di-gau-dyb3-kp1-es5mxs-es-qs-1-t-pze-gy-laq-kf-qh-64.png "Figure 2. Part of the Word Sketch for the noun apple.")
+<Figure src="/assets/content/assets/en/resources/pathfinders/elexis-pathfinder-to-computional-lexicography-for-developers-and-computational-linguists/ae.png">
+  Figure 2. Part of the Word Sketch for the noun apple.
+</Figure>
 
 Word sketches are based on a Sketch Grammar which consists of a series of rules written in CQL that search for collocations in a text corpus and categorise them according to their grammatical relations, e.g. objects, subjects, modifiers etc. For more information on how to write such a Sketch Grammar, see: [https://www.sketchengine.eu/documentation/writing-sketch-grammar/](https://www.sketchengine.eu/documentation/writing-sketch-grammar/)
 
@@ -129,9 +133,13 @@ Word sketches together with the concordances provide the lexicographers generall
 
 Another useful feature for lexicographers is the automatic identification of good example sentences. GDEX in Sketch Engine is such a function. It automatically sorts the sentences in a concordance according to their usability as an example sentence in the dictionary based on a set of quantifiable heuristics, such as sentence length, frequency of words and blacklists of vulgar words. This way, the best example sentences will appear at the top of the concordance list, and they're the ones lexicographers see first. The difference of the concordance display with and without GDEX is illustrated below for apple.
 
-![](/assets/content/assets/en/resources/pathfinders/elexis-pathfinder-to-computional-lexicography-for-developers-and-computational-linguists/pjlz-y1e5snacu-fp-23p-vm-5sj-8ohljz-i-ut-b9-j8l-ysd-8ew-yztjg-wyd5-g-ph3-gr-ez-mb-y3-qa-9hn-i93uqm-cd41t-m6-su-i7-kv-76r-lc6-oa-sd-1-yl-yc-xhd-r-ylk-mak-4r6na2uh03-nb-o-lf-wg-of-u8n-ao-2-d-ef4-9c.png "Figure 3. Concordances for apple (sentence view) in the British National Corpus before GDEX sorting")
+<Figure src="/assets/content/assets/en/resources/pathfinders/elexis-pathfinder-to-computional-lexicography-for-developers-and-computational-linguists/ac.png">
+  Figure 3. Concordances for apple (sentence view) in the British National Corpus before GDEX sorting
+</Figure>
 
-![](/assets/content/assets/en/resources/pathfinders/elexis-pathfinder-to-computional-lexicography-for-developers-and-computational-linguists/gr-pc-p-zwl-ao-4-iw-7oo5-yk-q6wgal-yn8-gihwtki-jb-ljns-u-pds8v-j5fiu-o-zx9-s-nb7-d3-a-qf5jp6-v3-cn3n1ki-k3-ql2-ep-sc-jx0-q6p2-td-i-vt7z5-sv-f5nwz-er8jxe-n-eiuf3-q-ckg-e0-z-mw-lr-i97-y-pobqbav1y-jik.png "Figure 4. Concordances for apple (sentence view) in the British National Corpus after GDEX sorting")
+<Figure src="/assets/content/assets/en/resources/pathfinders/elexis-pathfinder-to-computional-lexicography-for-developers-and-computational-linguists/ab.png">
+  Figure 4. Concordances for apple (sentence view) in the British National Corpus after GDEX sorting
+</Figure>
 
 Users of Sketch Engine can use the default configuration, or they can set their own configuration. For more information on how to set a GDEX configuration file in Sketch Engine, see: [https://www.sketchengine.eu/syntax-of-gdex-configuration-files/](https://www.sketchengine.eu/syntax-of-gdex-configuration-files/)
 
@@ -139,7 +147,9 @@ Users of Sketch Engine can use the default configuration, or they can set their 
 
 TickBox Lexicography (TBL) is a specific feature implemented in Sketch Engine to enable lexicographers a more streamlined way of exporting example sentences related to collocations in the word sketch directly into the DWS. See Kilgarriff et al. (2010) and  [https://www.sketchengine.eu/user-guide/tickbox-lexicography/](https://www.sketchengine.eu/user-guide/tickbox-lexicography/)
 
-![](/assets/content/assets/en/resources/pathfinders/elexis-pathfinder-to-computional-lexicography-for-developers-and-computational-linguists/v1-fx-l-ik-pu-q-wbc6v4-sb-im-j5-tss-no-sml-yt-l-jx0-q4-vf-xdvm-r18-z9a-wg-yya-hg-g-lqvw38-n-zx-xifjo-wpzc-uib-i-afj-j-ter-dnvv-xg4-zl-0-b-ot-rjrgqj-a7dl0-m4is-qe-k-ko-ik-bp-jn-t2u-m6y-yc-k-ho8d-au-3-xc.png "Figure 6. TBL in Sketch Engine")
+<Figure src="/assets/content/assets/en/resources/pathfinders/elexis-pathfinder-to-computional-lexicography-for-developers-and-computational-linguists/aa.png">
+  Figure 6. TBL in Sketch Engine
+</Figure>
 
 TBL can be customised so that for instance, not only the concordance line is copied, but also the complete sentence together with metadata, is transferred to the clipboard for pasting into the DWS. Being able to quickly copy and paste different types of information from the CQS into the DWS is an essential feature for lexicographers.
 
