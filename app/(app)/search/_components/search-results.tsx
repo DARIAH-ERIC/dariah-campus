@@ -47,6 +47,7 @@ export function SearchResults(props: SearchResultsProps): ReactNode {
 					collection,
 					id,
 					"content-type": contentType,
+					locale,
 					people,
 					summary,
 					"summary-title": summaryTitle,
@@ -70,6 +71,11 @@ export function SearchResults(props: SearchResultsProps): ReactNode {
 										<span>{summaryTitle || title}</span>
 									</Link>
 								</CardTitle>
+								<div className="flex">
+									<div className="rounded bg-brand-700 px-2 py-1 text-xs font-medium text-white">
+										{locale.toUpperCase()}
+									</div>
+								</div>
 								<div className="leading-7 text-neutral-500">{summary}</div>
 							</CardContent>
 							<CardFooter>
