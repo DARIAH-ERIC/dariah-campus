@@ -12,7 +12,7 @@
 		"analyze": "BUNDLE_ANALYZER=\"enabled\" next build --no-lint",
 		"build": "run-s build:handle build:app build:search-index",
 		"build:app": "next build",
-		"build:handle": "dotenv -c production -- tsx ./scripts/create-handle.ts",
+		"build:handle": "dotenv -c production -- tsx ./scripts/handle/create-handle.ts",
 		"build:search-index": "dotenv -c production -- tsx --tsconfig ./scripts/typesense/tsconfig.json ./scripts/typesense/create-search-index.ts",
 		"dev": "next dev",
 		"dev:typesense:down": "docker compose --env-file=./.env.local down --volumes",
