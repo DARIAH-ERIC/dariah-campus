@@ -24,6 +24,10 @@ export async function createDocuments(locale: Locale) {
 
 		documents.push(
 			items.map((item) => {
+				const authors = "authors" in item.entry ? item.entry.authors : [];
+				const editors = "editors" in item.entry ? item.entry.editors : [];
+				const contributors = "contributors" in item.entry ? item.entry.contributors : [];
+
 				return {
 					id: item.slug,
 					collection: name,
@@ -42,7 +46,10 @@ export async function createDocuments(locale: Locale) {
 					summary: item.entry.summary.content,
 					"summary-title": item.entry.summary.title,
 					tags: item.entry.tags,
-					people: "authors" in item.entry ? item.entry.authors : item.entry.editors,
+					people: [...authors, ...editors, ...contributors],
+					authors,
+					editors,
+					contributors,
 					sources: "sources" in item.entry ? item.entry.sources : [],
 				};
 			}),

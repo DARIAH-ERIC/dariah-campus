@@ -61,6 +61,9 @@ export interface CollectionDocument {
 	"publication-timestamp": number;
 	"publication-date": string;
 	people: Array<string>;
+	authors: Array<string>;
+	editors: Array<string>;
+	contributors: Array<string>;
 	sources: Array<string>;
 	tags: Array<string>;
 	summary: string;
