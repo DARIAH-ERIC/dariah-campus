@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ ${VERCEL_ENV} != "production" || ${VERCEL_GIT_COMMIT_REF} != "main" ]]; then
+  echo "Skipping handle generation."
+	exit 0
+fi
+
 files=$(git diff --diff-filter=AMR --name-only ${VERCEL_GIT_PREVIOUS_SHA} ${VERCEL_GIT_COMMIT_SHA} -- content/**/*.mdx | xargs)
 
 for file in $files; do
