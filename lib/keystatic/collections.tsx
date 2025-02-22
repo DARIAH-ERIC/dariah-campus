@@ -29,7 +29,7 @@ import {
 	createVideo,
 	createVideoCard,
 } from "@/lib/keystatic/components";
-import { createPreviewUrl } from "@/lib/keystatic/create-preview-url";
+// import { createPreviewUrl } from "@/lib/keystatic/create-preview-url";
 import * as _fields from "@/lib/keystatic/fields";
 import * as validation from "@/lib/keystatic/validation";
 
@@ -41,7 +41,7 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 		slugField: "title",
 		columns: ["title"],
 		entryLayout: "content",
-		previewUrl: createPreviewUrl("/curricula/{slug}"),
+		// previewUrl: createPreviewUrl("/curricula/{slug}"),
 		schema: {
 			title: fields.slug({
 				name: {
@@ -189,7 +189,7 @@ export const createDocumentation = createCollection("/documentation/", (paths, l
 		slugField: "title",
 		columns: ["title"],
 		entryLayout: "content",
-		previewUrl: createPreviewUrl("/documentation/{slug}"),
+		// previewUrl: createPreviewUrl("/documentation/{slug}"),
 		schema: {
 			title: fields.slug({
 				name: {
@@ -251,7 +251,7 @@ export const createEvents = createCollection("/resources/events/", (paths, local
 		slugField: "title",
 		columns: ["title"],
 		entryLayout: "form",
-		previewUrl: createPreviewUrl("/resources/events/{slug}"),
+		// previewUrl: createPreviewUrl("/resources/events/{slug}"),
 		schema: {
 			title: fields.slug({
 				name: {
@@ -825,7 +825,7 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 		slugField: "title",
 		columns: ["title"],
 		entryLayout: "content",
-		previewUrl: createPreviewUrl("/resources/external/{slug}"),
+		// previewUrl: createPreviewUrl("/resources/external/{slug}"),
 		schema: {
 			title: fields.slug({
 				name: {
@@ -973,7 +973,7 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 		slugField: "title",
 		columns: ["title"],
 		entryLayout: "content",
-		previewUrl: createPreviewUrl("/resources/hosted/{slug}"),
+		// previewUrl: createPreviewUrl("/resources/hosted/{slug}"),
 		schema: {
 			title: fields.slug({
 				name: {
@@ -1104,7 +1104,7 @@ export const createResourcesPathfinders = createCollection(
 			slugField: "title",
 			columns: ["title"],
 			entryLayout: "content",
-			previewUrl: createPreviewUrl("/resources/pathfinders/{slug}"),
+			// previewUrl: createPreviewUrl("/resources/pathfinders/{slug}"),
 			schema: {
 				title: fields.slug({
 					name: {
@@ -1229,7 +1229,7 @@ export const createSources = createCollection("/sources/", (paths, _locale) => {
 		slugField: "name",
 		columns: ["name"],
 		entryLayout: "form",
-		previewUrl: createPreviewUrl("/sources/{slug}"),
+		// previewUrl: createPreviewUrl("/sources/{slug}"),
 		schema: {
 			name: fields.slug({
 				name: {
