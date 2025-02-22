@@ -7,7 +7,7 @@ test.describe("index page", () => {
 			const { i18n, indexPage } = await createIndexPage(locale);
 			await indexPage.goto();
 
-			await expect(indexPage.page).toHaveTitle(i18n.t("metadata.title"));
+			await expect(indexPage.page).toHaveTitle(i18n.messages.metadata.title);
 		}
 	});
 

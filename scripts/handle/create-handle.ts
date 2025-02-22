@@ -1,10 +1,10 @@
-import { randomUUID } from "node:crypto";
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
 
 import { assert, createUrl, log } from "@acdh-oeaw/lib";
 import { read } from "to-vfile";
+import { v7 as uuid } from "uuid";
 import * as v from "valibot";
 import { matter } from "vfile-matter";
 import * as YAML from "yaml";
@@ -85,7 +85,7 @@ async function create() {
 
 	// const handle = createUrl({ baseUrl: resolver, pathname: response["epic-pid"] });
 
-	const handle = `${randomUUID()}-${String(url)}`;
+	const handle = `${uuid()}-${String(url)}`;
 
 	await writeFile(
 		absoluteFilePath,

@@ -67,12 +67,13 @@ test.describe("app", () => {
 		const body = await response.body();
 
 		const i18n = await createI18n(defaultLocale);
+		const metadata = i18n.messages.metadata;
 
 		expect(body.toString()).toEqual(
 			JSON.stringify({
-				name: i18n.t("metadata.manifest.name"),
-				short_name: i18n.t("metadata.manifest.short-name"),
-				description: i18n.t("metadata.manifest.description"),
+				name: metadata.manifest.name,
+				short_name: metadata.manifest["short-name"],
+				description: metadata.manifest.description,
 				start_url: "/",
 				display: "standalone",
 				background_color: "#fff",

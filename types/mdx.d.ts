@@ -1,10 +1,10 @@
 import type * as runtime from "react/jsx-runtime";
 
-import type { Locale } from "@/config/i18n.config";
+import type { Language } from "@/config/i18n.config";
 
 declare module "@acdh-oeaw/mdx-lib" {
 	export interface MdxConfig {
-		locales: Locale;
+		locales: Language;
 	}
 }
 

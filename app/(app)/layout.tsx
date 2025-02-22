@@ -80,7 +80,7 @@ export default async function LocaleLayout(props: Readonly<LocaleLayoutProps>): 
 	const t = await getTranslations("LocaleLayout");
 	const meta = await getMetadata();
 	const messages = await getMessages();
-	const errorPageMessages = pick(messages, ["Error"]);
+	const clientMessages = pick(messages, ["Error"]);
 
 	// TODO:
 	const _toastMessage = await getToastMessage();
@@ -110,7 +110,7 @@ export default async function LocaleLayout(props: Readonly<LocaleLayoutProps>): 
 				 */}
 				<Translations locale={locale} />
 
-				<Providers locale={locale} messages={errorPageMessages}>
+				<Providers locale={locale} messages={clientMessages}>
 					<AnalyticsScript
 						baseUrl={env.NEXT_PUBLIC_MATOMO_BASE_URL}
 						id={env.NEXT_PUBLIC_MATOMO_ID}

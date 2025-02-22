@@ -4,7 +4,7 @@ import { createReaders } from "@acdh-oeaw/keystatic-lib/reader";
 import { assert, groupByToMap, keyByToMap, promise } from "@acdh-oeaw/lib";
 import { cache } from "react";
 
-import type { Locale } from "@/config/i18n.config";
+import { defaultLocale } from "@/config/i18n.config";
 import config from "@/keystatic.config";
 import { compileMdx } from "@/lib/content/compile-mdx";
 import {
@@ -12,6 +12,7 @@ import {
 	contentLicenses as contentLicenseOptions,
 	contentTypes as contentTypeOptions,
 } from "@/lib/content/options";
+import { getLanguage } from "@/lib/i18n/get-language";
 
 // TODO: add shared metadata
 //bTODO: use ContentTypes etc.
@@ -73,16 +74,18 @@ const createCollectionResource = cache(_createCollectionResource);
 const createSingletonResource = cache(_createSingletonResource);
 
 // eslint-disable-next-line @typescript-eslint/require-await
-export const createClient = cache(async function createClient(locale: Locale) {
+export const createClient = cache(async function createClient(locale = defaultLocale) {
+	const language = getLanguage(locale);
+
 	const curricula = {
 		async ids() {
-			const ids = await createCollectionResource("curricula", locale).list();
+			const ids = await createCollectionResource("curricula", language).list();
 
 			return ids;
 		},
 
 		async all() {
-			const curricula = await createCollectionResource("curricula", locale).all();
+			const curricula = await createCollectionResource("curricula", language).all();
 
 			curricula.sort(compareByPublicationDate);
 
@@ -90,20 +93,22 @@ export const createClient = cache(async function createClient(locale: Locale) {
 		},
 
 		async get(id: string) {
-			const curriculum = await createCollectionResource("curricula", locale).read(id);
+			const curriculum = await createCollectionResource("curricula", language).read(id);
 
 			const curriculaByTagId = groupByTagId(
-				await createCollectionResource("curricula", locale).all(),
+				await createCollectionResource("curricula", language).all(),
 			);
 			const licensesById = keyByValue(contentLicenseOptions);
-			const peopleById = keyById(await createCollectionResource("people", locale).all());
-			const tagsById = keyById(await createCollectionResource("tags", locale).all());
+			const peopleById = keyById(await createCollectionResource("people", language).all());
+			const tagsById = keyById(await createCollectionResource("tags", language).all());
 
 			const resourcesById = {
-				events: keyById(await createCollectionResource("resources-events", locale).all()),
-				external: keyById(await createCollectionResource("resources-external", locale).all()),
-				hosted: keyById(await createCollectionResource("resources-hosted", locale).all()),
-				pathfinders: keyById(await createCollectionResource("resources-pathfinders", locale).all()),
+				events: keyById(await createCollectionResource("resources-events", language).all()),
+				external: keyById(await createCollectionResource("resources-external", language).all()),
+				hosted: keyById(await createCollectionResource("resources-hosted", language).all()),
+				pathfinders: keyById(
+					await createCollectionResource("resources-pathfinders", language).all(),
+				),
 			};
 
 			const contentType = { value: "curriculum" as const };
@@ -166,13 +171,13 @@ export const createClient = cache(async function createClient(locale: Locale) {
 
 	const documentation = {
 		async ids() {
-			const ids = await createCollectionResource("documentation", locale).list();
+			const ids = await createCollectionResource("documentation", language).list();
 
 			return ids;
 		},
 
 		async all() {
-			const documentationPages = await createCollectionResource("documentation", locale).all();
+			const documentationPages = await createCollectionResource("documentation", language).all();
 
 			documentationPages.sort(compareByTitle);
 
@@ -180,7 +185,7 @@ export const createClient = cache(async function createClient(locale: Locale) {
 		},
 
 		async get(id: string) {
-			const documentationPage = await createCollectionResource("documentation", locale).read(id);
+			const documentationPage = await createCollectionResource("documentation", language).read(id);
 
 			return documentationPage;
 		},
@@ -188,13 +193,13 @@ export const createClient = cache(async function createClient(locale: Locale) {
 
 	const people = {
 		async ids() {
-			const ids = await createCollectionResource("people", locale).list();
+			const ids = await createCollectionResource("people", language).list();
 
 			return ids;
 		},
 
 		async all() {
-			const people = await createCollectionResource("people", locale).all();
+			const people = await createCollectionResource("people", language).all();
 
 			people.sort(compareByName);
 
@@ -202,7 +207,7 @@ export const createClient = cache(async function createClient(locale: Locale) {
 		},
 
 		async get(id: string) {
-			const person = await createCollectionResource("people", locale).read(id);
+			const person = await createCollectionResource("people", language).read(id);
 
 			return person;
 		},
@@ -211,13 +216,13 @@ export const createClient = cache(async function createClient(locale: Locale) {
 	const resources = {
 		events: {
 			async ids() {
-				const ids = await createCollectionResource("resources-events", locale).list();
+				const ids = await createCollectionResource("resources-events", language).list();
 
 				return ids;
 			},
 
 			async all() {
-				const resources = await createCollectionResource("resources-events", locale).all();
+				const resources = await createCollectionResource("resources-events", language).all();
 
 				resources.sort(compareByPublicationDate);
 
@@ -225,25 +230,25 @@ export const createClient = cache(async function createClient(locale: Locale) {
 			},
 
 			async get(id: string) {
-				const resource = await createCollectionResource("resources-events", locale).read(id);
+				const resource = await createCollectionResource("resources-events", language).read(id);
 
 				const curriculaByResourceId = groupByResourceId(
-					await createCollectionResource("curricula", locale).all(),
+					await createCollectionResource("curricula", language).all(),
 				);
 				const licensesById = keyByValue(contentLicenseOptions);
-				const peopleById = keyById(await createCollectionResource("people", locale).all());
+				const peopleById = keyById(await createCollectionResource("people", language).all());
 				const resourcesByTagId = groupByTagId(
 					(
 						await Promise.all([
-							createCollectionResource("resources-events", locale).all(),
-							createCollectionResource("resources-external", locale).all(),
-							createCollectionResource("resources-hosted", locale).all(),
-							createCollectionResource("resources-pathfinders", locale).all(),
+							createCollectionResource("resources-events", language).all(),
+							createCollectionResource("resources-external", language).all(),
+							createCollectionResource("resources-hosted", language).all(),
+							createCollectionResource("resources-pathfinders", language).all(),
 						])
 					).flat(),
 				);
-				const sourcesById = keyById(await createCollectionResource("sources", locale).all());
-				const tagsById = keyById(await createCollectionResource("tags", locale).all());
+				const sourcesById = keyById(await createCollectionResource("sources", language).all());
+				const tagsById = keyById(await createCollectionResource("tags", language).all());
 
 				const authors = resource.data.authors.map((id) => {
 					return peopleById.get(id)!;
@@ -297,13 +302,13 @@ export const createClient = cache(async function createClient(locale: Locale) {
 
 		external: {
 			async ids() {
-				const ids = await createCollectionResource("resources-external", locale).list();
+				const ids = await createCollectionResource("resources-external", language).list();
 
 				return ids;
 			},
 
 			async all() {
-				const resources = await createCollectionResource("resources-external", locale).all();
+				const resources = await createCollectionResource("resources-external", language).all();
 
 				resources.sort(compareByPublicationDate);
 
@@ -311,26 +316,26 @@ export const createClient = cache(async function createClient(locale: Locale) {
 			},
 
 			async get(id: string) {
-				const resource = await createCollectionResource("resources-external", locale).read(id);
+				const resource = await createCollectionResource("resources-external", language).read(id);
 
 				const contentTypesById = keyByValue(contentTypeOptions);
 				const curriculaByResourceId = groupByResourceId(
-					await createCollectionResource("curricula", locale).all(),
+					await createCollectionResource("curricula", language).all(),
 				);
 				const licensesById = keyByValue(contentLicenseOptions);
-				const peopleById = keyById(await createCollectionResource("people", locale).all());
+				const peopleById = keyById(await createCollectionResource("people", language).all());
 				const resourcesByTagId = groupByTagId(
 					(
 						await Promise.all([
-							createCollectionResource("resources-events", locale).all(),
-							createCollectionResource("resources-external", locale).all(),
-							createCollectionResource("resources-hosted", locale).all(),
-							createCollectionResource("resources-pathfinders", locale).all(),
+							createCollectionResource("resources-events", language).all(),
+							createCollectionResource("resources-external", language).all(),
+							createCollectionResource("resources-hosted", language).all(),
+							createCollectionResource("resources-pathfinders", language).all(),
 						])
 					).flat(),
 				);
-				const sourcesById = keyById(await createCollectionResource("sources", locale).all());
-				const tagsById = keyById(await createCollectionResource("tags", locale).all());
+				const sourcesById = keyById(await createCollectionResource("sources", language).all());
+				const tagsById = keyById(await createCollectionResource("tags", language).all());
 
 				const authors = resource.data.authors.map((id) => {
 					return peopleById.get(id)!;
@@ -392,13 +397,13 @@ export const createClient = cache(async function createClient(locale: Locale) {
 
 		hosted: {
 			async ids() {
-				const ids = await createCollectionResource("resources-hosted", locale).list();
+				const ids = await createCollectionResource("resources-hosted", language).list();
 
 				return ids;
 			},
 
 			async all() {
-				const resources = await createCollectionResource("resources-hosted", locale).all();
+				const resources = await createCollectionResource("resources-hosted", language).all();
 
 				resources.sort(compareByPublicationDate);
 
@@ -406,26 +411,26 @@ export const createClient = cache(async function createClient(locale: Locale) {
 			},
 
 			async get(id: string) {
-				const resource = await createCollectionResource("resources-hosted", locale).read(id);
+				const resource = await createCollectionResource("resources-hosted", language).read(id);
 
 				const contentTypesById = keyByValue(contentTypeOptions);
 				const curriculaByResourceId = groupByResourceId(
-					await createCollectionResource("curricula", locale).all(),
+					await createCollectionResource("curricula", language).all(),
 				);
 				const licensesById = keyByValue(contentLicenseOptions);
-				const peopleById = keyById(await createCollectionResource("people", locale).all());
+				const peopleById = keyById(await createCollectionResource("people", language).all());
 				const resourcesByTagId = groupByTagId(
 					(
 						await Promise.all([
-							createCollectionResource("resources-events", locale).all(),
-							createCollectionResource("resources-external", locale).all(),
-							createCollectionResource("resources-hosted", locale).all(),
-							createCollectionResource("resources-pathfinders", locale).all(),
+							createCollectionResource("resources-events", language).all(),
+							createCollectionResource("resources-external", language).all(),
+							createCollectionResource("resources-hosted", language).all(),
+							createCollectionResource("resources-pathfinders", language).all(),
 						])
 					).flat(),
 				);
-				const sourcesById = keyById(await createCollectionResource("sources", locale).all());
-				const tagsById = keyById(await createCollectionResource("tags", locale).all());
+				const sourcesById = keyById(await createCollectionResource("sources", language).all());
+				const tagsById = keyById(await createCollectionResource("tags", language).all());
 
 				const authors = resource.data.authors.map((id) => {
 					return peopleById.get(id)!;
@@ -482,13 +487,13 @@ export const createClient = cache(async function createClient(locale: Locale) {
 
 		pathfinders: {
 			async ids() {
-				const ids = await createCollectionResource("resources-pathfinders", locale).list();
+				const ids = await createCollectionResource("resources-pathfinders", language).list();
 
 				return ids;
 			},
 
 			async all() {
-				const resources = await createCollectionResource("resources-pathfinders", locale).all();
+				const resources = await createCollectionResource("resources-pathfinders", language).all();
 
 				resources.sort(compareByPublicationDate);
 
@@ -496,25 +501,25 @@ export const createClient = cache(async function createClient(locale: Locale) {
 			},
 
 			async get(id: string) {
-				const resource = await createCollectionResource("resources-pathfinders", locale).read(id);
+				const resource = await createCollectionResource("resources-pathfinders", language).read(id);
 
 				const curriculaByResourceId = groupByResourceId(
-					await createCollectionResource("curricula", locale).all(),
+					await createCollectionResource("curricula", language).all(),
 				);
 				const licensesById = keyByValue(contentLicenseOptions);
-				const peopleById = keyById(await createCollectionResource("people", locale).all());
+				const peopleById = keyById(await createCollectionResource("people", language).all());
 				const resourcesByTagId = groupByTagId(
 					(
 						await Promise.all([
-							createCollectionResource("resources-events", locale).all(),
-							createCollectionResource("resources-external", locale).all(),
-							createCollectionResource("resources-hosted", locale).all(),
-							createCollectionResource("resources-pathfinders", locale).all(),
+							createCollectionResource("resources-events", language).all(),
+							createCollectionResource("resources-external", language).all(),
+							createCollectionResource("resources-hosted", language).all(),
+							createCollectionResource("resources-pathfinders", language).all(),
 						])
 					).flat(),
 				);
-				const sourcesById = keyById(await createCollectionResource("sources", locale).all());
-				const tagsById = keyById(await createCollectionResource("tags", locale).all());
+				const sourcesById = keyById(await createCollectionResource("sources", language).all());
+				const tagsById = keyById(await createCollectionResource("tags", language).all());
 
 				const authors = resource.data.authors.map((id) => {
 					return peopleById.get(id)!;
@@ -571,10 +576,10 @@ export const createClient = cache(async function createClient(locale: Locale) {
 
 		async ids() {
 			const resources = await Promise.all([
-				createCollectionResource("resources-events", locale).list(),
-				createCollectionResource("resources-external", locale).list(),
-				createCollectionResource("resources-hosted", locale).list(),
-				createCollectionResource("resources-pathfinders", locale).list(),
+				createCollectionResource("resources-events", language).list(),
+				createCollectionResource("resources-external", language).list(),
+				createCollectionResource("resources-hosted", language).list(),
+				createCollectionResource("resources-pathfinders", language).list(),
 			]);
 
 			return resources;
@@ -583,10 +588,10 @@ export const createClient = cache(async function createClient(locale: Locale) {
 		async all() {
 			const resources = (
 				await Promise.all([
-					createCollectionResource("resources-events", locale).all(),
-					createCollectionResource("resources-external", locale).all(),
-					createCollectionResource("resources-hosted", locale).all(),
-					createCollectionResource("resources-pathfinders", locale).all(),
+					createCollectionResource("resources-events", language).all(),
+					createCollectionResource("resources-external", language).all(),
+					createCollectionResource("resources-hosted", language).all(),
+					createCollectionResource("resources-pathfinders", language).all(),
 				])
 			).flat();
 
@@ -598,22 +603,22 @@ export const createClient = cache(async function createClient(locale: Locale) {
 		async get(id: string) {
 			async function read(id: string) {
 				const event = await promise(() => {
-					return createCollectionResource("resources-events", locale).read(id);
+					return createCollectionResource("resources-events", language).read(id);
 				});
 				if (event.data) return event.data;
 
 				const external = await promise(() => {
-					return createCollectionResource("resources-external", locale).read(id);
+					return createCollectionResource("resources-external", language).read(id);
 				});
 				if (external.data) return external.data;
 
 				const hosted = await promise(() => {
-					return createCollectionResource("resources-hosted", locale).read(id);
+					return createCollectionResource("resources-hosted", language).read(id);
 				});
 				if (hosted.data) return hosted.data;
 
 				const pathfinder = await promise(() => {
-					return createCollectionResource("resources-pathfinders", locale).read(id);
+					return createCollectionResource("resources-pathfinders", language).read(id);
 				});
 				if (pathfinder.data) return pathfinder.data;
 
@@ -624,22 +629,22 @@ export const createClient = cache(async function createClient(locale: Locale) {
 
 			const contentTypesById = keyByValue(contentTypeOptions);
 			const curriculaByResourceId = groupByResourceId(
-				await createCollectionResource("curricula", locale).all(),
+				await createCollectionResource("curricula", language).all(),
 			);
 			const licensesById = keyByValue(contentLicenseOptions);
-			const peopleById = keyById(await createCollectionResource("people", locale).all());
+			const peopleById = keyById(await createCollectionResource("people", language).all());
 			const resourcesByTagId = groupByTagId(
 				(
 					await Promise.all([
-						createCollectionResource("resources-events", locale).all(),
-						createCollectionResource("resources-external", locale).all(),
-						createCollectionResource("resources-hosted", locale).all(),
-						createCollectionResource("resources-pathfinders", locale).all(),
+						createCollectionResource("resources-events", language).all(),
+						createCollectionResource("resources-external", language).all(),
+						createCollectionResource("resources-hosted", language).all(),
+						createCollectionResource("resources-pathfinders", language).all(),
 					])
 				).flat(),
 			);
-			const sourcesById = keyById(await createCollectionResource("sources", locale).all());
-			const tagsById = keyById(await createCollectionResource("tags", locale).all());
+			const sourcesById = keyById(await createCollectionResource("sources", language).all());
+			const tagsById = keyById(await createCollectionResource("tags", language).all());
 
 			const authors = resource.data.authors.map((id) => {
 				return peopleById.get(id)!;
@@ -784,13 +789,13 @@ export const createClient = cache(async function createClient(locale: Locale) {
 
 	const sources = {
 		async ids() {
-			const ids = await createCollectionResource("sources", locale).list();
+			const ids = await createCollectionResource("sources", language).list();
 
 			return ids;
 		},
 
 		async all() {
-			const sources = await createCollectionResource("sources", locale).all();
+			const sources = await createCollectionResource("sources", language).all();
 
 			sources.sort(compareByName);
 
@@ -798,15 +803,15 @@ export const createClient = cache(async function createClient(locale: Locale) {
 		},
 
 		async get(id: string) {
-			const source = await createCollectionResource("sources", locale).read(id);
+			const source = await createCollectionResource("sources", language).read(id);
 
 			const resourcesBySourceId = groupBySourceId(
 				(
 					await Promise.all([
-						createCollectionResource("resources-events", locale).all(),
-						createCollectionResource("resources-external", locale).all(),
-						createCollectionResource("resources-hosted", locale).all(),
-						createCollectionResource("resources-pathfinders", locale).all(),
+						createCollectionResource("resources-events", language).all(),
+						createCollectionResource("resources-external", language).all(),
+						createCollectionResource("resources-hosted", language).all(),
+						createCollectionResource("resources-pathfinders", language).all(),
 					])
 				).flat(),
 			);
@@ -822,13 +827,13 @@ export const createClient = cache(async function createClient(locale: Locale) {
 
 	const tags = {
 		async ids() {
-			const ids = await createCollectionResource("tags", locale).list();
+			const ids = await createCollectionResource("tags", language).list();
 
 			return ids;
 		},
 
 		async all() {
-			const tags = await createCollectionResource("tags", locale).all();
+			const tags = await createCollectionResource("tags", language).all();
 
 			tags.sort(compareByName);
 
@@ -836,15 +841,15 @@ export const createClient = cache(async function createClient(locale: Locale) {
 		},
 
 		async get(id: string) {
-			const tag = await createCollectionResource("tags", locale).read(id);
+			const tag = await createCollectionResource("tags", language).read(id);
 
 			const resourcesByTagId = groupByTagId(
 				(
 					await Promise.all([
-						createCollectionResource("resources-events", locale).all(),
-						createCollectionResource("resources-external", locale).all(),
-						createCollectionResource("resources-hosted", locale).all(),
-						createCollectionResource("resources-pathfinders", locale).all(),
+						createCollectionResource("resources-events", language).all(),
+						createCollectionResource("resources-external", language).all(),
+						createCollectionResource("resources-hosted", language).all(),
+						createCollectionResource("resources-pathfinders", language).all(),
 					])
 				).flat(),
 			);
@@ -860,7 +865,7 @@ export const createClient = cache(async function createClient(locale: Locale) {
 
 	const indexPage = {
 		async get() {
-			const indexPage = await createSingletonResource("index-page", locale).read();
+			const indexPage = await createSingletonResource("index-page", language).read();
 
 			return indexPage;
 		},
@@ -868,7 +873,7 @@ export const createClient = cache(async function createClient(locale: Locale) {
 
 	const metadata = {
 		async get() {
-			const metadata = await createSingletonResource("metadata", locale).read();
+			const metadata = await createSingletonResource("metadata", language).read();
 
 			return metadata;
 		},
@@ -876,7 +881,7 @@ export const createClient = cache(async function createClient(locale: Locale) {
 
 	const navigation = {
 		async get() {
-			const navigation = await createSingletonResource("navigation", locale).read();
+			const navigation = await createSingletonResource("navigation", language).read();
 
 			return navigation;
 		},

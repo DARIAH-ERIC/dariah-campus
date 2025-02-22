@@ -20,9 +20,11 @@ test("should set a canonical url", async ({ createIndexPage }) => {
 
 /** FIXME: @see https://github.com/vercel/next.js/issues/45620 */
 test.fixme("should set document title on not-found page", async ({ createI18n, page }) => {
-	const { t } = await createI18n(defaultLocale);
+	const i18n = await createI18n(defaultLocale);
 	await page.goto("/unknown");
-	await expect(page).toHaveTitle([t("NotFoundPage.meta.title"), t("metadata.title")].join(" | "));
+	await expect(page).toHaveTitle(
+		[i18n.t("NotFoundPage.meta.title"), i18n.messages.metadata.title].join(" | "),
+	);
 });
 
 /** FIXME: @see https://github.com/vercel/next.js/issues/45620 */
@@ -41,13 +43,10 @@ test("should set page metadata", async ({ createIndexPage }) => {
 		await indexPage.goto();
 		const { page } = indexPage;
 
-		const title = i18n.t("metadata.title");
-		const description = i18n.t("metadata.description");
-		const twitter =
-			// eslint-disable-next-line playwright/no-conditional-in-test
-			i18n.messages.metadata.social.find(({ kind }) => {
-				return kind === "twitter";
-			})?.href ?? "";
+		const metadata = i18n.messages.metadata;
+		const title = metadata.title;
+		const description = metadata.description;
+		const twitter = i18n.messages.metadata.social.twitter;
 
 		expect(title).toBeTruthy();
 		expect(description).toBeTruthy();
@@ -94,17 +93,17 @@ test("should add json+ld metadata", async ({ createIndexPage }) => {
 		const { indexPage, i18n } = await createIndexPage(locale);
 		await indexPage.goto();
 
-		const metadata = await indexPage.page
-			.locator('script[type="application/ld+json"]')
-			.textContent();
+		const metadata = i18n.messages.metadata;
+
+		const json = await indexPage.page.locator('script[type="application/ld+json"]').textContent();
 
 		// eslint-disable-next-line playwright/prefer-web-first-assertions
-		expect(metadata).toBe(
+		expect(json).toBe(
 			jsonLdScriptProps({
 				"@context": "https://schema.org",
 				"@type": "WebSite",
-				name: i18n.t("metadata.title"),
-				description: i18n.t("metadata.description"),
+				name: metadata.title,
+				description: metadata.description,
 			}).dangerouslySetInnerHTML?.__html,
 		);
 	}

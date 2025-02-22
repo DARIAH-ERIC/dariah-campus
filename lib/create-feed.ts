@@ -1,5 +1,5 @@
 import { assert, createUrl, keyByToMap } from "@acdh-oeaw/lib";
-import { getFormatter, getTranslations } from "next-intl/server";
+import { getFormatter } from "next-intl/server";
 import { type Entry, rss } from "xast-util-feed";
 import { toXml } from "xast-util-to-xml";
 
@@ -8,16 +8,17 @@ import { env } from "@/config/env.config";
 import { defaultLocale } from "@/config/i18n.config";
 import { createClient } from "@/lib/content/create-client";
 import { createFullUrl } from "@/lib/create-full-url";
+import { getMetadata } from "@/lib/i18n/get-metadata";
 
 const baseUrl = env.NEXT_PUBLIC_APP_BASE_URL;
 const locale = defaultLocale;
 
 export async function createFeed() {
-	const meta = await getTranslations({ locale, namespace: "metadata" });
+	const meta = await getMetadata(locale);
 	const format = await getFormatter({ locale });
 
 	const channel = {
-		title: meta("title"),
+		title: meta.title,
 		url: baseUrl,
 		feedUrl: String(createUrl({ baseUrl, pathname: "/rss.xml" })),
 		lang: locale,

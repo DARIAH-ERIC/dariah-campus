@@ -26,8 +26,6 @@ export async function generateStaticParams(): Promise<
 	});
 }
 
-// export const alt = ''
-
 export const size = {
 	width: 1200,
 	height: 630,

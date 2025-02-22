@@ -4,6 +4,7 @@ import { config } from "@keystatic/core";
 import { Logo } from "@/components/logo";
 import { env } from "@/config/env.config";
 import { defaultLocale } from "@/config/i18n.config";
+import { getLanguage } from "@/lib/i18n/get-language";
 import {
 	createCurricula,
 	createDocumentation,
@@ -17,23 +18,26 @@ import {
 } from "@/lib/keystatic/collections";
 import { createIndexPage, createMetadata, createNavigation } from "@/lib/keystatic/singletons";
 
+const defaultLanguage = getLanguage(defaultLocale);
+
 export default config({
 	collections: {
-		[withI18nPrefix("curricula", defaultLocale)]: createCurricula(defaultLocale),
-		[withI18nPrefix("documentation", defaultLocale)]: createDocumentation(defaultLocale),
-		[withI18nPrefix("resources-events", defaultLocale)]: createEvents(defaultLocale),
-		[withI18nPrefix("people", defaultLocale)]: createPeople(defaultLocale),
-		[withI18nPrefix("resources-external", defaultLocale)]: createResourcesExternal(defaultLocale),
-		[withI18nPrefix("resources-hosted", defaultLocale)]: createResourcesHosted(defaultLocale),
-		[withI18nPrefix("resources-pathfinders", defaultLocale)]:
-			createResourcesPathfinders(defaultLocale),
-		[withI18nPrefix("sources", defaultLocale)]: createSources(defaultLocale),
-		[withI18nPrefix("tags", defaultLocale)]: createTags(defaultLocale),
+		[withI18nPrefix("curricula", defaultLanguage)]: createCurricula(defaultLanguage),
+		[withI18nPrefix("documentation", defaultLanguage)]: createDocumentation(defaultLanguage),
+		[withI18nPrefix("resources-events", defaultLanguage)]: createEvents(defaultLanguage),
+		[withI18nPrefix("people", defaultLanguage)]: createPeople(defaultLanguage),
+		[withI18nPrefix("resources-external", defaultLanguage)]:
+			createResourcesExternal(defaultLanguage),
+		[withI18nPrefix("resources-hosted", defaultLanguage)]: createResourcesHosted(defaultLanguage),
+		[withI18nPrefix("resources-pathfinders", defaultLanguage)]:
+			createResourcesPathfinders(defaultLanguage),
+		[withI18nPrefix("sources", defaultLanguage)]: createSources(defaultLanguage),
+		[withI18nPrefix("tags", defaultLanguage)]: createTags(defaultLanguage),
 	},
 	singletons: {
-		[withI18nPrefix("index-page", defaultLocale)]: createIndexPage(defaultLocale),
-		[withI18nPrefix("metadata", defaultLocale)]: createMetadata(defaultLocale),
-		[withI18nPrefix("navigation", defaultLocale)]: createNavigation(defaultLocale),
+		[withI18nPrefix("index-page", defaultLanguage)]: createIndexPage(defaultLanguage),
+		[withI18nPrefix("metadata", defaultLanguage)]: createMetadata(defaultLanguage),
+		[withI18nPrefix("navigation", defaultLanguage)]: createNavigation(defaultLanguage),
 	},
 	storage:
 		env.NEXT_PUBLIC_KEYSTATIC_MODE === "github" &&
@@ -59,24 +63,24 @@ export default config({
 		},
 		navigation: {
 			Content: [
-				withI18nPrefix("resources-hosted", defaultLocale),
-				withI18nPrefix("resources-external", defaultLocale),
-				withI18nPrefix("resources-pathfinders", defaultLocale),
-				withI18nPrefix("resources-events", defaultLocale),
-				withI18nPrefix("curricula", defaultLocale),
+				withI18nPrefix("resources-hosted", defaultLanguage),
+				withI18nPrefix("resources-external", defaultLanguage),
+				withI18nPrefix("resources-pathfinders", defaultLanguage),
+				withI18nPrefix("resources-events", defaultLanguage),
+				withI18nPrefix("curricula", defaultLanguage),
 			],
 			Data: [
-				withI18nPrefix("people", defaultLocale),
-				withI18nPrefix("sources", defaultLocale),
-				withI18nPrefix("tags", defaultLocale),
+				withI18nPrefix("people", defaultLanguage),
+				withI18nPrefix("sources", defaultLanguage),
+				withI18nPrefix("tags", defaultLanguage),
 			],
 			Pages: [
-				withI18nPrefix("index-page", defaultLocale),
-				withI18nPrefix("documentation", defaultLocale),
+				withI18nPrefix("index-page", defaultLanguage),
+				withI18nPrefix("documentation", defaultLanguage),
 			],
 			Metadata: [
-				withI18nPrefix("navigation", defaultLocale),
-				withI18nPrefix("metadata", defaultLocale),
+				withI18nPrefix("navigation", defaultLanguage),
+				withI18nPrefix("metadata", defaultLanguage),
 			],
 		},
 	},

@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 
 import { FacebookIcon, TwitterIcon } from "@/app/(app)/_components/social-media-icons";
 import { Link } from "@/components/link";
+import { useMetadata } from "@/lib/i18n/use-messages";
 
 interface SocialMediaShareLinksProps {
 	href: string;
@@ -14,9 +15,9 @@ export function SocialMediaShareLinks(props: SocialMediaShareLinksProps): ReactN
 	const { href: url, title } = props;
 
 	const t = useTranslations("SocialMediaShareLinks");
-	const meta = useTranslations("metadata");
+	const meta = useMetadata();
 
-	const twitter = meta("twitter.site");
+	const twitter = meta.social.twitter;
 
 	return (
 		<div className="my-8 flex items-center justify-center gap-x-4 text-neutral-500">

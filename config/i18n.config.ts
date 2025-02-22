@@ -1,19 +1,16 @@
 import type { Formats } from "next-intl";
 
-import type metadataEn from "@/content/en/metadata/index.json";
-import type en from "@/messages/en.json";
+import type { I18nMessages } from "@/lib/i18n/get-messages";
 
-export const locales = ["en"] as const;
+export type IntlMessages = I18nMessages;
+
+export const locales = ["en-GB"] as const;
 
 export type Locale = (typeof locales)[number];
 
-export const defaultLocale: Locale = "en";
+export type Language = Locale extends `${infer L}-${string}` ? L : Locale;
 
-export type IntlMessages = typeof en & { metadata: typeof metadataEn };
-
-export interface IntlTranslations extends Record<Locale, IntlMessages> {
-	en: typeof en & { metadata: typeof metadataEn };
-}
+export const defaultLocale: Locale = "en-GB";
 
 export const formats = {
 	dateTime: {

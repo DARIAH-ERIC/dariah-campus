@@ -1,7 +1,7 @@
-import type { Locale } from "@/config/i18n.config";
+import type { Language } from "@/config/i18n.config";
 
 declare module "@acdh-oeaw/keystatic-lib" {
 	export interface KeystaticConfig {
-		locales: Locale;
+		locales: Language;
 	}
 }

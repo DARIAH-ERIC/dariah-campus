@@ -6,8 +6,6 @@ import { getMetadata } from "@/lib/i18n/get-metadata";
 
 export const dynamic = "force-static";
 
-// export const alt = ''
-
 export const size = {
 	width: 1200,
 	height: 630,
