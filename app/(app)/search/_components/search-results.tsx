@@ -1,14 +1,11 @@
 "use client";
 
+import { assert } from "@acdh-oeaw/lib";
 import type { ReactNode } from "react";
 import { useHits } from "react-instantsearch-core";
 
 import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
-import { AvatarsList } from "@/components/avatars-list";
-import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
-import { ContentTypeIcon } from "@/components/content-type-icon";
-import { Link } from "@/components/link";
-import { MasonryLayoutList } from "@/components/masonry-layout-list";
+import { ResourcesGrid } from "@/components/resources-grid";
 import type { ContentType } from "@/lib/content/options";
 
 interface Hit {
@@ -30,66 +27,46 @@ interface Hit {
 }
 
 interface SearchResultsProps {
-	authorsLabel: string;
+	peopleLabel: string;
 	peopleById: Map<string, { id: string; name: string; image: string }>;
 	tagsById: Map<string, { id: string; name: string }>;
 }
 
 export function SearchResults(props: SearchResultsProps): ReactNode {
-	const { authorsLabel, peopleById } = props;
+	const { peopleLabel, peopleById } = props;
 
 	const hits = useHits<Hit>();
 
-	return (
-		<MasonryLayoutList variant="search">
-			{hits.items.map((hit) => {
-				const {
-					collection,
-					id,
-					"content-type": contentType,
-					locale,
-					people,
-					summary,
-					"summary-title": summaryTitle,
-					title,
-				} = hit;
+	const items = hits.items.map((hit) => {
+		const {
+			collection,
+			id,
+			"content-type": contentType,
+			locale,
+			people: peopleIds,
+			summary,
+			"summary-title": summaryTitle,
+			title,
+		} = hit;
 
-				const href = collection === "curricula" ? `/curricula/${id}` : createResourceUrl(hit);
+		const href = collection === "curricula" ? `/curricula/${id}` : createResourceUrl(hit);
 
-				return (
-					<li key={id}>
-						<Card>
-							<CardContent>
-								<CardTitle>
-									<Link
-										className="rounded transition after:absolute after:inset-0 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-										href={href}
-									>
-										<span className="mr-2 inline-flex text-brand-700">
-											<ContentTypeIcon className="size-5 shrink-0" kind={contentType} />
-										</span>
-										<span>{summaryTitle || title}</span>
-									</Link>
-								</CardTitle>
-								<div className="flex">
-									<div className="rounded bg-brand-700 px-2 py-1 text-xs font-medium text-white">
-										{locale.toUpperCase()}
-									</div>
-								</div>
-								<div className="leading-7 text-neutral-500">{summary}</div>
-							</CardContent>
-							<CardFooter>
-								<AvatarsList
-									avatars={people.map((id) => {
-										return peopleById.get(id)!;
-									})}
-									label={authorsLabel}
-								/>
-							</CardFooter>
-						</Card>
-					</li>
-				);
-			})}
-		</MasonryLayoutList>
-	);
+		const people = peopleIds.map((id) => {
+			const person = peopleById.get(id);
+			assert(person, `Unknown person "${id}".`);
+			return person;
+		});
+
+		return {
+			id,
+			title,
+			summary: { content: summary, title: summaryTitle },
+			people,
+			locale,
+			href,
+			contentType,
+		};
+	});
+
+	return <ResourcesGrid peopleLabel={peopleLabel} resources={items} variant="search" />;
 }

@@ -241,6 +241,7 @@
 	},
 	"SearchPage": {
 		"authors": "Authors",
+		"authors-editors-contributors": "Authors, editors, and contributors",
 		"close": "Close",
 		"content-types": "Content types",
 		"filter-label": "Filter {attribute} values",

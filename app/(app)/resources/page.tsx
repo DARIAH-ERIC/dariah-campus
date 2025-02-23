@@ -5,9 +5,8 @@ import type { ReactNode } from "react";
 
 import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
 import { MainContent } from "@/components/main-content";
-import { MasonryLayoutList } from "@/components/masonry-layout-list";
 import { PageTitle } from "@/components/page-title";
-import { ResourcePreviewCard } from "@/components/resource-preview-card";
+import { ResourcesGrid } from "@/components/resources-grid";
 import { createClient } from "@/lib/content/create-client";
 
 interface ResourcesPageProps extends EmptyObject {}
@@ -41,44 +40,40 @@ export default async function ResourcesPage(
 		return person.id;
 	});
 
+	const items = resources.map((resource) => {
+		const { authors, locale, summary, title } = resource.data;
+
+		const people = authors.map((id) => {
+			const person = peopleById.get(id)!;
+			return { id, name: person.data.name, image: person.data.image };
+		});
+
+		const href = createResourceUrl(resource);
+
+		const contentType =
+			resource.collection === "resources-events"
+				? "event"
+				: resource.collection === "resources-pathfinders"
+					? "pathfinder"
+					: resource.data["content-type"];
+
+		return {
+			id: resource.id,
+			title,
+			summary,
+			people,
+			href,
+			locale,
+			contentType,
+		} as const;
+	});
+
 	return (
 		<MainContent className="mx-auto grid w-full max-w-screen-xl content-start gap-y-12 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
 			<div className="grid gap-y-4">
 				<PageTitle>{t("title")}</PageTitle>
 			</div>
-			<MasonryLayoutList>
-				{resources.map((resource) => {
-					const { authors, locale, summary, title } = resource.data;
-
-					const people = authors.map((id) => {
-						const person = peopleById.get(id)!;
-						return { id, name: person.data.name, image: person.data.image };
-					});
-
-					const href = createResourceUrl(resource);
-
-					const contentType =
-						resource.collection === "resources-events"
-							? "event"
-							: resource.collection === "resources-pathfinders"
-								? "pathfinder"
-								: resource.data["content-type"];
-
-					return (
-						<li key={resource.id}>
-							<ResourcePreviewCard
-								contentType={contentType}
-								href={href}
-								locale={locale}
-								people={people}
-								peopleLabel={t("authors")}
-								summary={summary}
-								title={title}
-							/>
-						</li>
-					);
-				})}
-			</MasonryLayoutList>
+			<ResourcesGrid peopleLabel={t("authors")} resources={items} />
 		</MainContent>
 	);
 }

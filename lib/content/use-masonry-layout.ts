@@ -1,6 +1,6 @@
-import { Children, type ReactNode, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-export function useMasonryLayout(children: ReactNode, variant: "default" | "search" = "default") {
+export function useMasonryLayout<T>(items: Array<T>, variant: "default" | "search" = "default") {
 	const [columnCount, setColumnCount] = useState<number | null>(null);
 
 	useEffect(() => {
@@ -12,7 +12,7 @@ export function useMasonryLayout(children: ReactNode, variant: "default" | "sear
 					case "default": {
 						if (window.innerWidth >= 1280) {
 							setColumnCount(3);
-						} else if (window.innerWidth >= 768) {
+						} else if (window.innerWidth >= 840) {
 							setColumnCount(2);
 						} else {
 							setColumnCount(1);
@@ -44,11 +44,10 @@ export function useMasonryLayout(children: ReactNode, variant: "default" | "sear
 	}, [variant]);
 
 	const columns = useMemo(() => {
-		if (columnCount === null) return null;
+		if (columnCount == null) return null;
 
-		const items = Children.toArray(children);
 		const columns = Array.from({ length: columnCount }, () => {
-			return [] as Array<ReactNode>;
+			return [] as Array<T>;
 		});
 
 		items.forEach((item, index) => {
@@ -57,7 +56,7 @@ export function useMasonryLayout(children: ReactNode, variant: "default" | "sear
 		});
 
 		return columns;
-	}, [children, columnCount]);
+	}, [items, columnCount]);
 
 	return columns;
 }

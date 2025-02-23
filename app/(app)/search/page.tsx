@@ -138,8 +138,8 @@ export default async function SearchPage(_props: Readonly<SearchPageProps>): Pro
 
 					<section>
 						<SearchResults
-							authorsLabel={t("authors")}
 							peopleById={peopleById}
+							peopleLabel={t("authors-editors-contributors")}
 							tagsById={tagsById}
 						/>
 					</section>
