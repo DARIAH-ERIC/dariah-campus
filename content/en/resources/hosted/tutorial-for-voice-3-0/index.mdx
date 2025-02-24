@@ -93,6 +93,22 @@ The following clip offers an introductory tour of the VOICE 3.0 Online interface
       For a research paper, you are looking for interactions between ELF speakers of English in academic contexts. Which of the five domains available in VOICE 3.0 Online might contain such speech events? Tick the correct answer.
     </QuizChoiceQuestion>
 
+		<QuizChoiceAnswer kind="incorrect">
+			PB
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			PR and LE
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			PR and ED
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			ED and LE
+		</QuizChoiceAnswer>
+
     <QuizSuccessMessage>
       Correct! In order to find appropriate events, look into the two domains PR (professional and research/science) and ED (educational). Tip: Hovering over the domain abbreviation with your mouse reveals a short definition of the domain.
     </QuizSuccessMessage>
@@ -181,6 +197,22 @@ Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.
       How many instances of the word *English* does a simple search in VOICE 3.0 Online yield?
     </QuizChoiceQuestion>
 
+		<QuizChoiceAnswer kind="incorrect">
+			14
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			1329
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			5031
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			406
+		</QuizChoiceAnswer>
+
     <QuizSuccessMessage>
       Well done! If you got 1329 results, then you have correctly entered the token English in lowercase letters.
     </QuizSuccessMessage>
@@ -194,6 +226,22 @@ Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.
     <QuizChoiceQuestion>
       Humour and laughter are important topics in ELF research. VOICE 3.0 Online allows you to search for laughter in VOICE data in various forms. Which of these queries gives you stretches of laughingly spoken sequences?
     </QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`_@+`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			`<@/>`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`_@`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`Q`
+		</QuizChoiceAnswer>
 
     <QuizSuccessMessage>
       Well done! By using pointed brackets, you can search for stretches of conversational mark-up, such as laughter. Laughter is represented by the symbol @ in VOICE.
@@ -209,6 +257,22 @@ Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.
       You want to find out if word coinages are frequently uttered softly or whispered. Which of the options below will **not** yield meaning results for this search? Tip: consult the POS tagging and search manual!
     </QuizChoiceQuestion>
 
+		<QuizChoiceAnswer kind="incorrect">
+			PVC within `<soft/>`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			PVC `<soft/>`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`<soft/>` containing PVC
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			PVC within `<whispering/>`
+		</QuizChoiceAnswer>
+
     <QuizSuccessMessage>
       Correct. This query searches for a string of PVC (pronunciation variation and coinage) followed by a softly spoken sequence.
     </QuizSuccessMessage>
@@ -222,6 +286,22 @@ Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.
     <QuizChoiceQuestion>
       You are interested in the use of code-switches into French, which is not the L1 of a speaker. How do you search for this?
     </QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`<LQ/>`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`<L/>`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`<L1fre/>`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`<LNfre/>`
+		</QuizChoiceAnswer>
 
     <QuizSuccessMessage>
       Correct!
@@ -239,18 +319,18 @@ Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.
 
 In order to adjust the search results to the needs of your research question, the following **placeholders** might be useful:
 
-* **. Full stop:** matches any single character. You can perceive this as a kind of universal joker. Example: Searching for *hi.* results in: *him, his, hit*, etc.
-* **\[...]** **Character class:** matches any character contained in the brackets, e.g. *h\[ai]t* – *hat, hit*
-* **\[^...] Inverted character class:** matches any character not contained in the bracket, e.g. *h\[^ai] – hot, hut*
-* **? Question mark:** the preceding element can appear 0 or 1 times, i.e. it is optional. Example: *houses?* – *house, houses*
-* **+ Plus:** the preceding element must appear 1 or more times, i.e. it is not optional and might be repeated. Example: *house.+* results in *houses, household, housewives*, i.e. all words that start with house plus at least one more character.
-* **\* Asterisk:** particularly useful, since the preceding element can appear 0 or more times, i.e. it is optional and might be repeated.
-* **(...) Brackets:** these can be used to group characters (and even regular expressions) to form new elements. In addition, we can combine them with the quantifiers ?, +, and \* and let them operate on specified groups. Example: *(wo)?man - man, woman*
+* **`.` Full stop:** matches any single character. You can perceive this as a kind of universal joker. Example: Searching for `hi.` results in: *him, his, hit*, etc.
+* **`[...]`** **Character class:** matches any character contained in the brackets, e.g. `h\[ai]t` – *hat, hit*
+* **`[^...]` Inverted character class:** matches any character not contained in the bracket, e.g. `h\[^ai]` – *hot, hut*
+* **`?` Question mark:** the preceding element can appear 0 or 1 times, i.e. it is optional. Example: *houses?* – *house, houses*
+* **`+` Plus:** the preceding element must appear 1 or more times, i.e. it is not optional and might be repeated. Example: `house.+` results in *houses, household, housewives*, i.e. all words that start with house plus at least one more character.
+* **`*` Asterisk:** particularly useful, since the preceding element can appear 0 or more times, i.e. it is optional and might be repeated.
+* **`(...)` Brackets:** these can be used to group characters (and even regular expressions) to form new elements. In addition, we can combine them with the quantifiers `?`, `+`, and `*` and let them operate on specified groups. Example: `*(wo)?man` - *man, woman*
 
 <Callout kind="note" title="Info:">
-  You might be familiar with the usage of wildcards, i.e. plain ?, +, or \* from other tools. In wildcard syntax, the asterisk, for example denotes "zero or more characters". **VOICE 3.0 Online**, however, **uses regex** (regular expressions). Here, the symbols work as quantifiers which operate on the preceding element. In regex, the use of the asterisk in *hous\** will only quantify the final "e" and thus will only match *hous, house, housee, houseeee*, etc.
+  You might be familiar with the usage of wildcards, i.e. plain `?`, `+`, or `*` from other tools. In wildcard syntax, the asterisk, for example denotes "zero or more characters". **VOICE 3.0 Online**, however, **uses regex** (regular expressions). Here, the symbols work as quantifiers which operate on the preceding element. In regex, the use of the asterisk in `hous*` will only quantify the final "e" and thus will only match *hous, house, housee, houseeee*, etc.
 
-  If you want to use the **symbols as wildcards**, you have to place the **placeholder character** "." (full stop) in front of them. Thus, searching for *house.+* will result in *house, houses, household, housewives*, etc., or *.+ize* in *organize, apologize, harmonize,* etc.
+  If you want to use the **symbols as wildcards**, you have to place the **placeholder character** "." (full stop) in front of them. Thus, searching for `house.+` will result in *house, houses, household, housewives*, etc., or `.+ize` in *organize, apologize, harmonize,* etc.c
 </Callout>
 
 To gain even more precise control over the number of allowed and necessary character repetitions, you can use curly brackets with *min,max*. Leaving the max empty means there is no upper limit (see section 3.2 of the [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf)).
@@ -278,6 +358,22 @@ In the following video clip, VOICE project member Ruth Osimk-Teasdale demonstrat
       You are interested in vague expressions and looking for the classifier *some sort of* followed by a singular noun with an **asterisk wildcard** (to include also plural noun tags). Which domain yields **no** instances of this construction? Tip: Consult the POS tagset in the Corpus information if necessary.
     </QuizChoiceQuestion>
 
+		 <QuizChoiceAnswer kind="incorrect">
+			LE
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			ED
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			PB
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			PO
+		</QuizChoiceAnswer>
+
     <QuizSuccessMessage>
       Correct!
     </QuizSuccessMessage>
@@ -291,6 +387,22 @@ In the following video clip, VOICE project member Ruth Osimk-Teasdale demonstrat
     <QuizChoiceQuestion>
       You want to find out how state verbs are used in VOICE. Search for all verb forms of *taste*. What does your query look like?
     </QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="incorrect">
+			tast.\*,VVP
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			taste,VV
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			tast.\*,V.\*
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			taste
+		</QuizChoiceAnswer>
 
     <QuizSuccessMessage>
       Correct - this yields 24 hits in 23 utterances
@@ -356,6 +468,22 @@ After you have carried out a search, the download button (i.e. arrow) can be fou
       Let's start with an easy task: You are looking for transcripts from dyadic interactions between unacquainted speakers. How many of these can you find in VOICE 3.0 Online?
     </QuizChoiceQuestion>
 
+		<QuizChoiceAnswer kind="incorrect">
+			14
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			12
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			10
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			8
+		</QuizChoiceAnswer>
+
     <QuizSuccessMessage>
       Correct!
     </QuizSuccessMessage>
@@ -370,6 +498,22 @@ After you have carried out a search, the download button (i.e. arrow) can be fou
       Due to the limited scope of research projects in university courses, you would like to identify the shortest speech event for which an audio file is available in the corpus. Which one is the correct speech event?
     </QuizChoiceQuestion>
 
+		<QuizChoiceAnswer kind="correct">
+			PRqas409
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			EDsve422
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			PBqas411
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			LEcon420
+		</QuizChoiceAnswer>
+
     <QuizSuccessMessage>
       Correct, the file's duration is 10 minutes, 53 seconds.
     </QuizSuccessMessage>
@@ -383,6 +527,22 @@ After you have carried out a search, the download button (i.e. arrow) can be fou
     <QuizChoiceQuestion>
       You bookmark an utterance from PRqas409 indicating the category and including a comment for later. Then export your bookmark(s). Which information is NOT provided in the file?
     </QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Number of bookmarks
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Date and time of export
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Utterance ID
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Speaker information
+		</QuizChoiceAnswer>
 
     <QuizSuccessMessage>
       Correct!
@@ -410,6 +570,22 @@ Tip: Before you start the quiz, it might be helpful to download the search manua
       To resources from which language do the speakers in the two business meetings including L1 speakers of Serbian refer that is neither English nor any of the speakers' L1?
     </QuizChoiceQuestion>
 
+		<QuizChoiceAnswer kind="incorrect">
+			Spanish
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Italian
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			French
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Croatian
+		</QuizChoiceAnswer>
+
     <QuizSuccessMessage>
       Correct!
     </QuizSuccessMessage>
@@ -424,6 +600,22 @@ Tip: Before you start the quiz, it might be helpful to download the search manua
       How many of the speech events in your subcorpus of transcripts from working group discussions in an educational setting feature non-English tokens?
     </QuizChoiceQuestion>
 
+		<QuizChoiceAnswer kind="incorrect">
+			1
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			2
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			4
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			5
+		</QuizChoiceAnswer>
+
     <QuizSuccessMessage>
       Correct - select ED in domain, select wdg, type FW in search field, navigate to the tree and check which events are highlighted in bold.
     </QuizSuccessMessage>
@@ -437,6 +629,22 @@ Tip: Before you start the quiz, it might be helpful to download the search manua
     <QuizChoiceQuestion>
       How many response particles are produced by speakers while someone else is speaking in leisure conversations in VOICE?
     </QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="incorrect">
+			20652
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			2080
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			2179
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			1808
+		</QuizChoiceAnswer>
 
     <QuizSuccessMessage>
       Correct!

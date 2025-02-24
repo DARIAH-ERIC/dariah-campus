@@ -12,10 +12,10 @@ export interface QuizFormState {
 
 interface QuizFormProps {
 	children: ReactNode;
-	errorMessages: Array<ReactNode>;
+	errorMessages: ReactNode;
 	nextButtonLabel: string;
 	previousButtonLabel: string;
-	successMessages: Array<ReactNode>;
+	successMessages: ReactNode;
 	validate: (formState: QuizFormState | undefined, formData: FormData) => Promise<QuizFormState>;
 	validateButtonLabel: string;
 }
@@ -71,11 +71,11 @@ export function QuizForm(props: Readonly<QuizFormProps>): ReactNode {
 						}
 					>
 						{formState?.status === "correct" ? (
-							<div className="flex items-center gap-x-2">
+							<div className="mt-2 flex items-center gap-x-2">
 								<CheckIcon aria-hidden={true} className="size-4 shrink-0" /> {successMessages}
 							</div>
 						) : formState?.status === "incorrect" ? (
-							<div className="flex items-center gap-x-2">
+							<div className="mt-2 flex items-center gap-x-2">
 								<AlertCircleIcon aria-hidden={true} className="size-4 shrink-0" />
 								{errorMessages}
 							</div>

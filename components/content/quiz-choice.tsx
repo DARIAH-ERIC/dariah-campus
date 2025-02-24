@@ -34,7 +34,8 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 			| { variant: "single"; checked: string }
 		);
 
-		const checks = data.checks;
+		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+		const checks = data.checks ?? [];
 		const checked = new Set(data.variant === "single" ? [data.checked] : data.checked);
 
 		if (
@@ -51,10 +52,10 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 
 	return (
 		<QuizForm
-			errorMessages={errorMessages}
+			errorMessages={errorMessages.length > 0 ? errorMessages : t("incorrect")}
 			nextButtonLabel={t("next-question")}
 			previousButtonLabel={t("previous-question")}
-			successMessages={successMessages}
+			successMessages={successMessages.length > 0 ? successMessages : t("correct")}
 			validate={validate}
 			validateButtonLabel={buttonLabel ?? t("validate")}
 		>

@@ -54,12 +54,12 @@ export function MobileNavSidePanel(props: MobileNavSidePanelProps): ReactNode {
 										<XIcon aria-hidden={true} className="size-6" />
 									</Button>
 
-									<ul className="grid content-start gap-y-3" role="list">
+									<ul className="grid content-start gap-y-4" role="list">
 										{Object.entries(navigation).map(([key, link]) => {
 											return (
 												<li key={key}>
 													<Link
-														className="flex rounded hover:text-brand-700 focus-visible:ring focus-visible:ring-brand-700"
+														className="flex rounded hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 														href={link.href}
 														onPress={() => {
 															requestAnimationFrame(() => {

@@ -1,6 +1,8 @@
 {
 	"content": {
 		"QuizControls": {
+			"correct": "Correct!",
+			"incorrect": "Incorrect!",
 			"next-question": "Next question",
 			"previous-question": "Previous question",
 			"validate": "Check answer"

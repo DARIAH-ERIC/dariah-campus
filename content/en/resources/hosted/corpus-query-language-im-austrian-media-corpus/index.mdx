@@ -597,6 +597,22 @@ Die bisherigen Beispiele lassen sich wie gezeigt auch mit der Verwendung von Gru
       Wie nennt man den Operator, mit dem eine Minimal und/ oder Maximalanzahl an Wiederholungen eines Ausdrucks festgelegt werden kann? Welche Zeichen werden genutzt?
     </QuizChoiceQuestion>
 
+		<QuizChoiceAnswer kind="incorrect">
+			strange Operator, `{ }`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			length Operator, `[ ]`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			ranges Operator, `{ }`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			distance Operator, `[ ]`
+		</QuizChoiceAnswer>
+
     <QuizSuccessMessage>
       Genau, der ranges Operator ist gesucht. In den Klammern stehen die Minimal-, und Maximalwerte.
     </QuizSuccessMessage>
@@ -610,6 +626,18 @@ Die bisherigen Beispiele lassen sich wie gezeigt auch mit der Verwendung von Gru
     <QuizChoiceQuestion>
       Die folgende Suche `[word="klima.{2,}" & posTT!="NN"]` liefert als Ergebnisse "klimatechnische", "klimatisierte", "klimabegünstigt", "klimabedingt", und "klimatisch". "Klimaschutz", "Klimagerät", "Klimawandelleugner" werden aber nicht gefunden. Warum?
     </QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Die Worte "Klimaschutz", "Klimagerät", "Klimawandelleugner" überschreiten die Maximalanzahl an Wiederholungen nach dem Ausdruck "klima."
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Aufgrund des logischen UND müssen zwei Kriterien erfüllt sein:  der Ausdruck "klima." muss vorkommen, UND es darf durch TreeTagger nicht als Nomen markiert worden sein.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Aufgrund des logischen ODER können nur Treffer gefunden werden, die entweder das Wort "klima" beinhalten ODER aber Nomen sind. Bei zwei ausschließenden Kriterien wird immer nur das erste Kriterium unbedingt erfüllt.
+		</QuizChoiceAnswer>
 
     <QuizSuccessMessage>
       Ganz genau! Beide Kriterien müssen vom Suchergebnis erfüllt werden.
