@@ -60,6 +60,7 @@ export async function generateMetadata(
 	const {
 		authors,
 		license,
+		locale: contentLocale,
 		"publication-date": publicationDate,
 		summary,
 		tags,
@@ -75,7 +76,7 @@ export async function generateMetadata(
 				return author.data.name;
 			}),
 			license: license.label,
-			locale: locale,
+			locale: contentLocale,
 			publicationDate: publicationDate.toISOString(),
 			siteTitle: meta.title,
 			summary: summary.content,
@@ -111,6 +112,7 @@ export default async function HostedResourcePage(
 		editors,
 		"featured-image": featuredImage,
 		license,
+		locale: contentLocale,
 		"publication-date": publicationDate,
 		sources,
 		tags,
@@ -143,6 +145,18 @@ export default async function HostedResourcePage(
 					<PeopleList
 						label={t("authors")}
 						people={authors.map((person) => {
+							return { id: person.id, image: person.data.image, name: person.data.name };
+						})}
+					/>
+					<PeopleList
+						label={t("contributors")}
+						people={contributors.map((person) => {
+							return { id: person.id, image: person.data.image, name: person.data.name };
+						})}
+					/>
+					<PeopleList
+						label={t("editors")}
+						people={editors.map((person) => {
 							return { id: person.id, image: person.data.image, name: person.data.name };
 						})}
 					/>
@@ -223,7 +237,7 @@ export default async function HostedResourcePage(
 						})}
 						contentType={resource.data["content-type"].value}
 						license={license}
-						locale={locale}
+						locale={contentLocale}
 						publicationDate={publicationDate}
 						sources={sources.map((source) => {
 							return { id: source.id, name: source.data.name };

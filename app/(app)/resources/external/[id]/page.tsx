@@ -61,6 +61,7 @@ export async function generateMetadata(
 		authors,
 		license,
 		"publication-date": publicationDate,
+		locale: contentLocale,
 		summary,
 		tags,
 		title,
@@ -75,7 +76,7 @@ export async function generateMetadata(
 				return author.data.name;
 			}),
 			license: license.label,
-			locale: locale,
+			locale: contentLocale,
 			publicationDate: publicationDate.toISOString(),
 			siteTitle: meta.title,
 			summary: summary.content,
@@ -111,6 +112,7 @@ export default async function ExternalResourcePage(
 		editors,
 		"featured-image": featuredImage,
 		license,
+		locale: contentLocale,
 		"publication-date": publicationDate,
 		remote,
 		sources,
@@ -144,6 +146,18 @@ export default async function ExternalResourcePage(
 					<PeopleList
 						label={t("authors")}
 						people={authors.map((person) => {
+							return { id: person.id, image: person.data.image, name: person.data.name };
+						})}
+					/>
+					<PeopleList
+						label={t("contributors")}
+						people={contributors.map((person) => {
+							return { id: person.id, image: person.data.image, name: person.data.name };
+						})}
+					/>
+					<PeopleList
+						label={t("editors")}
+						people={editors.map((person) => {
 							return { id: person.id, image: person.data.image, name: person.data.name };
 						})}
 					/>
@@ -226,7 +240,7 @@ export default async function ExternalResourcePage(
 						})}
 						contentType={resource.data["content-type"].value}
 						license={license}
-						locale={locale}
+						locale={contentLocale}
 						publicationDate={publicationDate}
 						remotePublicationDate={remote["publication-date"]}
 						sources={sources.map((source) => {

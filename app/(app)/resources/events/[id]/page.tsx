@@ -67,6 +67,7 @@ export async function generateMetadata(
 	const {
 		authors,
 		license,
+		locale: contentLocale,
 		"publication-date": publicationDate,
 		summary,
 		tags,
@@ -82,7 +83,7 @@ export async function generateMetadata(
 				return author.data.name;
 			}),
 			license: license.label,
-			locale: locale,
+			locale: contentLocale,
 			publicationDate: publicationDate.toISOString(),
 			siteTitle: meta.title,
 			summary: summary.content,
