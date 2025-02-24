@@ -7,7 +7,7 @@ import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-ur
 import { MainContent } from "@/components/main-content";
 import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
-import { ResourcesList } from "@/components/resources-list";
+import { ResourcesGrid } from "@/components/resources-grid";
 import { createClient } from "@/lib/content/create-client";
 
 interface SourcePageProps {
@@ -75,6 +75,34 @@ export default async function SourcePage(props: Readonly<SourcePageProps>): Prom
 		return person.id;
 	});
 
+	const items = source.resources.map((resource) => {
+		const { authors, locale, summary, title } = resource.data;
+
+		const people = authors.map((id) => {
+			const person = peopleById.get(id)!;
+			return { id, name: person.data.name, image: person.data.image };
+		});
+
+		const href = createResourceUrl(resource);
+
+		const contentType =
+			resource.collection === "resources-events"
+				? "event"
+				: resource.collection === "resources-pathfinders"
+					? "pathfinder"
+					: resource.data["content-type"];
+
+		return {
+			contentType,
+			href,
+			id: resource.id,
+			locale,
+			people,
+			summary,
+			title,
+		} as const;
+	});
+
 	return (
 		<MainContent className="mx-auto grid w-full max-w-screen-xl content-start gap-y-12 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
 			<div className="grid gap-y-4">
@@ -85,36 +113,7 @@ export default async function SourcePage(props: Readonly<SourcePageProps>): Prom
 			</div>
 			<section className="space-y-5">
 				<h2 className="sr-only">{t("resources")}</h2>
-				<ResourcesList
-					resources={source.resources.map((resource) => {
-						const { authors, locale, summary, title } = resource.data;
-
-						const people = authors.map((id) => {
-							const person = peopleById.get(id)!;
-							return { id, name: person.data.name, image: person.data.image };
-						});
-
-						const href = createResourceUrl(resource);
-
-						const contentType =
-							resource.collection === "resources-events"
-								? "event"
-								: resource.collection === "resources-pathfinders"
-									? "pathfinder"
-									: resource.data["content-type"];
-
-						return {
-							contentType,
-							href,
-							id: resource.id,
-							locale,
-							people,
-							peopleLabel: t("authors"),
-							summary,
-							title,
-						};
-					})}
-				/>
+				<ResourcesGrid peopleLabel={t("authors")} resources={items} />
 			</section>
 		</MainContent>
 	);
