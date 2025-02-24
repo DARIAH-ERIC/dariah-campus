@@ -1,14 +1,21 @@
+import { cn } from "@acdh-oeaw/style-variants";
 import type { ReactNode } from "react";
 
 interface CardProps {
 	children: ReactNode;
+	isDisabled?: boolean;
 }
 
 export function Card(props: CardProps): ReactNode {
-	const { children } = props;
+	const { children, isDisabled } = props;
 
 	return (
-		<article className="relative flex flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm hover:shadow-md">
+		<article
+			className={cn(
+				"relative flex flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm hover:shadow-md",
+				isDisabled && "pointer-events-none opacity-50",
+			)}
+		>
 			{children}
 		</article>
 	);

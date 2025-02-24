@@ -48,7 +48,9 @@ export default async function ResourcesPage(
 			return { id, name: person.data.name, image: person.data.image };
 		});
 
-		const href = createResourceUrl(resource);
+		const isDraft = "draft" in resource.data && resource.data.draft === true;
+
+		const href = isDraft ? null : createResourceUrl(resource);
 
 		const contentType =
 			resource.collection === "resources-events"

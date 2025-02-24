@@ -11,7 +11,7 @@ interface ResourcesGridProps {
 	resources: Array<{
 		id: string;
 		title: string;
-		href: string;
+		href: string | null;
 		locale: string;
 		people: Array<{ id: string; name: string; image: string }>;
 		contentType: ContentType | "curriculum" | "event" | "pathfinder";
