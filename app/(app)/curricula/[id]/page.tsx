@@ -159,6 +159,7 @@ export default async function CurriculumPage(
 								locale: resource.data.locale,
 								summary: resource.data.summary,
 								title: resource.data.title,
+								draft: resource.data.draft,
 							};
 						})}
 						tags={tags.map((tag) => {

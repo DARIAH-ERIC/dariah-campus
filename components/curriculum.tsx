@@ -67,16 +67,18 @@ export function Curriculum(props: CurriculumProps): ReactNode {
 					{resources.map((resource, index) => {
 						const { authors, collection, contentType, id, locale, summary, title } = resource;
 
-						const href = createResourceUrl({ id, collection });
+						const isDraft = "draft" in resource && resource.draft === true;
+
+						const href = isDraft ? null : createResourceUrl({ id, collection });
 
 						return (
 							<li key={id} id={`resource-${String(index + 1)}`}>
-								<Card>
+								<Card isDisabled={href == null}>
 									<CardContent>
 										<CardTitle>
 											<Link
 												className="rounded transition after:absolute after:inset-0 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-												href={href}
+												href={href ?? undefined}
 											>
 												<span className="mr-2 inline-flex text-brand-700">
 													<ContentTypeIcon className="size-5 shrink-0" kind={contentType} />

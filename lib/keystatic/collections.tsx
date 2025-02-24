@@ -711,6 +711,7 @@ export const createEvents = createCollection("/resources/events/", (paths, local
 			doi: _fields.identifier({
 				label: "DOI (readonly)",
 			}),
+			draft: fields.ignored(),
 		},
 	});
 });
@@ -961,6 +962,7 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 			doi: _fields.identifier({
 				label: "DOI (readonly)",
 			}),
+			draft: fields.ignored(),
 		},
 	});
 });
@@ -1090,6 +1092,7 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 			doi: _fields.identifier({
 				label: "DOI (readonly)",
 			}),
+			draft: fields.ignored(),
 		},
 	});
 });
@@ -1216,6 +1219,7 @@ export const createResourcesPathfinders = createCollection(
 				doi: _fields.identifier({
 					label: "DOI (readonly)",
 				}),
+				draft: fields.ignored(),
 			},
 		});
 	},
