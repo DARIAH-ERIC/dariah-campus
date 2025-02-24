@@ -38,7 +38,9 @@ NOTE: we'll do this as a step-by-step course, taking a fairly complex dictionary
 
 Now that you've learned the basics of XML, we have some good news and some bad news for you. The good news is that you are ready to start marking up your dictionaries. The bad news is that XML on its own is not enough if you want to make sure that your dictionary follows the best practices established in the retrodigitization community.
 
-![Good news for people who love bad news](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/5-w4-fyo-0.jpg "CC BY-ND Olivia Mew")
+<Figure src="/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/ac.jpg">
+  Good news for people who love bad news. CC BY-ND Olivia Mew
+</Figure>
 
 If you are not fundamentally opposed to the art of stretching a metaphor, you could think of XML as a language without words. XML comes with a basic set of grammatical rules on what words should or shouldn't look like, and how you could combine them, but it is up to you to invent the words themselves.
 
@@ -86,67 +88,67 @@ This is just to give you a taste of all those wonderful things to come and to gi
 
 7. Click on the downward pointing arrow next to `<teiHeader>` to fold the contents of the teiHeader.
 
-   ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/4s-chb-kf.png)
+   ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/ab.png)
 
 8. Go back to your previously saved XML file and copy everything starting with `<entry>` and ending with `</grammar>`; in your current TEI file, delete `<p></p>` inside `<body></body>` and then paste the copied contents from the old file instead.
 
-   ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/f-uh-nsam.png)
+   ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/ae.png)
 
 9. if you hover with your mouse over the elements `<lemma>` and `<grammar>` you will learn that they are "not allowed anywhere". That means that TEI doesn't know elements with such names. We'll fix them in due course. But there is another error in this document that you should be able to fix without any knowledge of TEI. Can you think what it is?
 
 10. Hover with your mouse over the underlined end tag `</body>` to see what error oXygen will report there.
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/oavd-vs-i.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/be.png)
 
 11. When we asked you to copy and paste from your old file, we asked you to copy a fragment of xml which itself was not well-formed: `<entry><lemma normalized='lexicographer'>Lexico'grapher</lemma>. <grammar>n.s.</grammar>` is not well-formed because each starting tag in XML must be matched by its end tag. That's why you need to enter `</entry>`in the empty row above `</body>`.
 
 12. Now, double-click the element name in `<lemma>`.
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/m-f7-z2e-g.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/bc.png)
 
 13. Change the element name to `<form>`.
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/2qr-kj-u9.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/aa.png)
 
 14. Select `@normalized` and its value, then delete both.
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/l-fx-ou-uv.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/bb.png)
 
 15. Add attribute `@type` to `<form>` and check out what options are suggested for values.
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/mkja90a.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/bd.png)
 
 16. Select attribute value lemma for `@type`.
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/mkja90a.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/bd.png)
 
 17. Select the text value of `<form>`.
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/rx-dpq2-b.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/cb.png)
 
 18. Control-click or right-click the selected word to bring up a contextual menu, then select Refactoring › Surround with Tags.
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/szn-ob-nh.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/cc.png)
 
 19. Select orth from the dropdown by scrolling to it, or for a more efficient solution, start typing `o` in the field "Specify the tag".
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/omnl-atz.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/bf.png)
 
 20. Add `@norm` to `<orth>`.
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/g0-wxz-jt.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/ba.png)
 
 21. Type in 'lexicographer' as value of `@norm`.
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/qv-lc-dwe.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/ca.png)
 
 22. Remember the "Fromat and Indent" icon that we introduced in the last unit? Find it and click on it.
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/u8ji-qxe.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/cd.png)
 
 23. Finally, replace `<grammar>n.s.</grammar>` with `<gramGrp><pos>n.s.</pos></gramGrp>`.
 
-    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/arl-t3-fd.png)
+    ![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/ad.png)
 
 24. Make sure you have saved this file on your computer so that you can get back to it later on.
 
@@ -196,7 +198,7 @@ As you go through this unit, you should also make sure you read through the Chap
 
 Sometimes, however, it will be more useful for you to look up the declarations and examples of particular TEI elements, such as `<entry>`, `<sense>` or `<def>`. In those situations, instead of going through the dictionary chapter, it will be easier for you to consult the *[Appendix C](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/REF-ELEMENTS.html)* of *The Guidelines*, which contains an alphabetic list of all the TEI Elements.
 
-![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/feuy9g-d.png)
+![](/assets/content/assets/en/resources/hosted/modeling-dictionaries-in-tei-lex-0/af.png)
 
 **Tips**
 

@@ -196,9 +196,9 @@ Typischerweise finden sich in den Attributen des `<doc>`-Elements die Metadaten 
       Ein Token ist ein orthographisches Wort.
     </QuizChoiceAnswer>
 
-    <QuizErrorMessage>
+    <QuizSuccessMessage>
       Richtig! Meistens sind orthographische Worte auch Token, aber auch Satzzeichen und Abkürzungen werden zu Token.
-    </QuizErrorMessage>
+    </QuizSuccessMessage>
   </QuizChoice>
 
   <QuizChoice variant="multiple">
@@ -226,9 +226,9 @@ Typischerweise finden sich in den Attributen des `<doc>`-Elements die Metadaten 
       Token-Attribute beschreiben einzelne Token näher, nicht den gesamten Text, in dem die Token vorkommen.
     </QuizErrorMessage>
 
-    <QuizErrorMessage>
+    <QuizSuccessMessage>
       Richtig!
-    </QuizErrorMessage>
+    </QuizSuccessMessage>
   </QuizChoice>
 
   <QuizChoice variant="multiple">
@@ -396,9 +396,9 @@ verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche er
       `[word="*anze"]`
     </QuizChoiceAnswer>
 
-    <QuizErrorMessage>
+    <QuizSuccessMessage>
       Sehr gut!
-    </QuizErrorMessage>
+    </QuizSuccessMessage>
 
     <QuizErrorMessage>
       Achtung! Es sollen auch flektierte Formen gefunden werden. Nur das erste Zeichen des Ausdrucks ändert sich.
@@ -422,9 +422,9 @@ verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche er
       Mit `[word=".anze"]` können nur klein geschriebene Worte in den Texten gefunden werden.
     </QuizChoiceAnswer>
 
-    <QuizErrorMessage>
+    <QuizSuccessMessage>
       Richtig!
-    </QuizErrorMessage>
+    </QuizSuccessMessage>
 
     <QuizErrorMessage>
       Wenn Sie z.B. die Begriffe "Schanze" und "Pflanze" suchen, müssen Sie den Ausdruck "." für jedes zu findende Zeichen eingeben.
@@ -444,9 +444,9 @@ verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche er
       `[word="Katze."]`
     </QuizChoiceAnswer>
 
-    <QuizErrorMessage>
+    <QuizSuccessMessage>
       Richtig!
-    </QuizErrorMessage>
+    </QuizSuccessMessage>
 
     <QuizErrorMessage>
       Achtung, Sie möchten wissen, in welchen Ausdrücken das Token "Katze", "Katz" oder sogar "Katzee" vorkommt, aber nicht "Katzel", "Katzen", o.ä.
@@ -474,9 +474,9 @@ verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche er
       "." findet ein beliebiges Zeichen
     </QuizChoiceAnswer>
 
-    <QuizErrorMessage>
+    <QuizSuccessMessage>
       Richtig!
-    </QuizErrorMessage>
+    </QuizSuccessMessage>
 
     <QuizErrorMessage>
       Stellen Sie sicher,dass sie alle richtigen Antworten ausgewählt haben.
@@ -597,9 +597,9 @@ Die bisherigen Beispiele lassen sich wie gezeigt auch mit der Verwendung von Gru
       Wie nennt man den Operator, mit dem eine Minimal und/ oder Maximalanzahl an Wiederholungen eines Ausdrucks festgelegt werden kann? Welche Zeichen werden genutzt?
     </QuizChoiceQuestion>
 
-    <QuizErrorMessage>
+    <QuizSuccessMessage>
       Genau, der ranges Operator ist gesucht. In den Klammern stehen die Minimal-, und Maximalwerte.
-    </QuizErrorMessage>
+    </QuizSuccessMessage>
 
     <QuizErrorMessage>
       Überlegen Sie noch einmal!
@@ -611,9 +611,9 @@ Die bisherigen Beispiele lassen sich wie gezeigt auch mit der Verwendung von Gru
       Die folgende Suche `[word="klima.{2,}" & posTT!="NN"]` liefert als Ergebnisse "klimatechnische", "klimatisierte", "klimabegünstigt", "klimabedingt", und "klimatisch". "Klimaschutz", "Klimagerät", "Klimawandelleugner" werden aber nicht gefunden. Warum?
     </QuizChoiceQuestion>
 
-    <QuizErrorMessage>
+    <QuizSuccessMessage>
       Ganz genau! Beide Kriterien müssen vom Suchergebnis erfüllt werden.
-    </QuizErrorMessage>
+    </QuizSuccessMessage>
 
     <QuizErrorMessage>
       Überlegen Sie nochmal!
@@ -685,9 +685,9 @@ z.B.: Suche nach dem Lemma "Hund" in dessen linker oder rechter Umgebung im maxi
       `([lemma="schützen"] [lemma="Klima|Kanzler"] -2 2)`
     </QuizChoiceAnswer>
 
-    <QuizErrorMessage>
+    <QuizSuccessMessage>
       Sehr gut!
-    </QuizErrorMessage>
+    </QuizSuccessMessage>
 
     <QuizErrorMessage>
       Überprüfen Sie , ob der Suchausdruck vollständig ist!
@@ -711,9 +711,9 @@ z.B.: Suche nach dem Lemma "Hund" in dessen linker oder rechter Umgebung im maxi
       Durch das Nutzen von RegEx können auch Suchen auf der Bedeutungsebene im AMC durchgeführt werden.
     </QuizChoiceAnswer>
 
-    <QuizErrorMessage>
+    <QuizSuccessMessage>
       Richtig, bei RegEx sind keine semantischen Tags hinterlegt.
-    </QuizErrorMessage>
+    </QuizSuccessMessage>
 
     <QuizErrorMessage>
       Doch, das ist korrekt.
