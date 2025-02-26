@@ -56,12 +56,6 @@ async function create() {
 		return null;
 	}
 
-	// eslint-disable-next-line no-restricted-syntax
-	if (process.env.HANDLE_SERVICE !== "enabled") {
-		log.info("Handle service disabled.");
-		return null;
-	}
-
 	const args = parseArgs({ options: { resource: { type: "string", short: "r" } } });
 	const { resource: path } = v.parse(ArgsInputSchema, args.values);
 
