@@ -5,7 +5,7 @@ if [[ ${VERCEL_ENV} != "production" || ${VERCEL_GIT_COMMIT_REF} != "main" ]]; th
 	exit 0
 fi
 
-files=$(git diff --diff-filter=AMR --name-only ${VERCEL_GIT_PREVIOUS_SHA} ${VERCEL_GIT_COMMIT_SHA} -- content/**/*.mdx | xargs)
+files=$(git diff --diff-filter=AMR --name-only ${VERCEL_GIT_PREVIOUS_SHA} ${VERCEL_GIT_COMMIT_SHA} -- 'content/*/curricula/**/*.mdx' 'content/*/resources/**/*.mdx' | xargs)
 
 for file in $files; do
   echo "Processing ${file}..."
