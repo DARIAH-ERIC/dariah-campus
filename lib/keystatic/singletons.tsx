@@ -432,6 +432,18 @@ export const createNavigation = createSingleton("/navigation/", (paths, locale) 
 					validation: { length: { min: 1 } },
 				},
 			),
+			documentation: fields.object(
+				{
+					links: fields.multiRelationship({
+						label: "Page",
+						collection: withI18nPrefix("documentation", locale),
+						validation: { length: { min: 1 } },
+					}),
+				},
+				{
+					label: "Documentation pages",
+				},
+			),
 		},
 	});
 });

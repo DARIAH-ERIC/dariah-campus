@@ -27,10 +27,6 @@ function compareByPublicationDate<T extends { data: { "publication-date": string
 	return z.data["publication-date"].localeCompare(a.data["publication-date"]);
 }
 
-function compareByTitle<T extends { data: { title: string } }>(a: T, z: T) {
-	return a.data.title.localeCompare(z.data.title);
-}
-
 function groupByResourceId<T extends { data: { resources: ReadonlyArray<{ value: string }> } }>(
 	values: ReadonlyArray<T>,
 ) {
@@ -179,9 +175,14 @@ export const createClient = cache(async function createClient(locale = defaultLo
 		async all() {
 			const documentationPages = await createCollectionResource("documentation", language).all();
 
-			documentationPages.sort(compareByTitle);
+			const navigation = await createSingletonResource("navigation", language).read();
+			const ids = navigation.data.documentation.links;
 
-			return documentationPages;
+			return ids.map((id) => {
+				return documentationPages.find((page) => {
+					return page.id === id;
+				})!;
+			});
 		},
 
 		async get(id: string) {

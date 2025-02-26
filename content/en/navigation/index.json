@@ -70,5 +70,13 @@
         }
       }
     }
-  ]
+  ],
+  "documentation": {
+    "links": [
+      "about",
+      "proposing-a-contribution",
+      "types-of-resources",
+      "reuse-charter"
+    ]
+  }
 }
