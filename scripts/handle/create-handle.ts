@@ -56,10 +56,16 @@ async function create() {
 		return null;
 	}
 
+	// eslint-disable-next-line no-restricted-syntax
+	if (process.env.HANDLE_SERVICE !== "enabled") {
+		log.info("Handle service disabled.");
+		return null;
+	}
+
 	const args = parseArgs({ options: { resource: { type: "string", short: "r" } } });
 	const { resource: path } = v.parse(ArgsInputSchema, args.values);
 
-	const url = createResourceUrl(path);
+	const _url = createResourceUrl(path);
 
 	const absoluteFilePath = join(process.cwd(), path);
 	const vfile = await read(absoluteFilePath, { encoding: "utf-8" });
@@ -85,7 +91,7 @@ async function create() {
 
 	// const handle = createUrl({ baseUrl: resolver, pathname: response["epic-pid"] });
 
-	const handle = `${uuid()}-${String(url)}`;
+	const handle = uuid();
 
 	await writeFile(
 		absoluteFilePath,
