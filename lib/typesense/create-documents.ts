@@ -1,4 +1,5 @@
 import { withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
+import { unique } from "@acdh-oeaw/lib";
 import { createReader } from "@keystatic/core/reader";
 
 import type { Locale } from "@/config/i18n.config";
@@ -49,7 +50,7 @@ export async function createDocuments(locale: Locale) {
 				summary: item.entry.summary.content,
 				"summary-title": item.entry.summary.title,
 				tags: item.entry.tags,
-				people: [...authors, ...editors, ...contributors],
+				people: unique([...authors, ...editors, ...contributors]),
 				authors,
 				editors,
 				contributors,
