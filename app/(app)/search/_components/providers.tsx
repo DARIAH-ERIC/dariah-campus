@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { InstantSearch as InstantSearchProvider } from "react-instantsearch-core";
+import { InstantSearchNext as InstantSearchProvider } from "react-instantsearch-nextjs";
 
 import { createSearchClient } from "@/app/(app)/search/_lib/typesense";
 import { env } from "@/config/env.config";
