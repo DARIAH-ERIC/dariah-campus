@@ -68,9 +68,9 @@ should instead be co-located with that route in a `_components` or `_lib` folder
 .
 └── app/
     └── (app)/
-		    └── search/
-				    ├── _components/    # Components for search UI
-				    └── _lib/           # Utilities for search
+        └── search/
+            ├── _components/    # Components for search UI
+            └── _lib/           # Utilities for search
 ```
 
 ## Naming conventions
