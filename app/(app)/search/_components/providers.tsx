@@ -17,7 +17,45 @@ export function Providers(props: ProvidersProps): ReactNode {
 	const { children } = props;
 
 	return (
-		<InstantSearchProvider indexName={indexName} routing={true} searchClient={searchClient}>
+		<InstantSearchProvider
+			future={{ preserveSharedStateOnUnmount: true }}
+			indexName={indexName}
+			routing={{
+				router: {
+					cleanUrlOnDispose: false,
+				},
+				stateMapping: {
+					stateToRoute(uiState) {
+						const indexUiState = uiState[indexName]!;
+						return {
+							q: indexUiState.query,
+							"content-type": indexUiState.refinementList?.["content-type"],
+							locale: indexUiState.refinementList?.locale,
+							people: indexUiState.refinementList?.people,
+							sources: indexUiState.refinementList?.sources,
+							tags: indexUiState.refinementList?.tags,
+							page: indexUiState.page,
+						};
+					},
+					routeToState(routeState) {
+						return {
+							[indexName]: {
+								query: routeState.q,
+								refinementList: {
+									"content-type": routeState["content-type"] ?? [],
+									locale: routeState.locale ?? [],
+									people: routeState.people ?? [],
+									sources: routeState.sources ?? [],
+									tags: routeState.tags ?? [],
+								},
+								page: routeState.page,
+							},
+						};
+					},
+				},
+			}}
+			searchClient={searchClient}
+		>
 			{children}
 		</InstantSearchProvider>
 	);
