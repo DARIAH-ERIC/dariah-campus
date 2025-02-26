@@ -132,6 +132,8 @@
 		"authors": "Authors",
 		"close": "Close",
 		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
+		"contributors": "Contributors",
+		"editors": "Editors",
 		"table-of-contents": "Table of contents",
 		"tags": "Topics",
 		"toggle-table-of-contents": "Toggle table of contents",
