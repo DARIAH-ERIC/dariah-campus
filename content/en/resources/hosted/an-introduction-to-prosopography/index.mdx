@@ -1,0 +1,306 @@
+---
+title: An Introduction to Prosopography
+locale: en
+publication-date: 2024-09-16
+version: 1.0.0
+authors:
+  - baille-james
+editors:
+  - genatowski-emily
+contributors: []
+tags:
+  - digital-archives
+sources:
+  - dariah
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  title: An Introduction to Prosopography
+  content: This resource helps students tackle key prosopography challenges, such
+    as disambiguating individuals with the same name, handling anonymous
+    entries, and recognizing fictional people, known as the Rusudan Problem.
+    Additionally, this resource focuses on the theory of identity, where roles,
+    titles, and historical presence may be disputed but still carry an assumed
+    "correct" interpretation. Fluid identities—such as ethnicity, gender, and
+    religion—are more complex and require careful modeling in databases. The
+    course also covers how to scope projects effectively by defining clear
+    research questions and boundaries.
+content-type: training-module
+---
+## Introduction
+
+Prosopography is the study of groups of people through the collective examination of their lives, often using historical records, literary sources, and artifacts. Rather than focusing on a single individual, prosopography analyzes patterns in a group, such as shared roles, relationships, or social status, to better understand historical societies and social structures. This method is especially useful when detailed information about individuals is scarce, as it allows researchers to draw insights from broader trends and connections between people. By assembling these collective biographies, prosopography helps reconstruct historical contexts and offers a richer understanding of past societies.
+
+This resource introduces the concept of the prosopon, an invaluable tool in historical and literary studies that represents a collected literary depiction of a person. It encompasses all forms of information about an individual, gathered from texts, records, and artifacts. Often, our understanding of past people comes from these constructions, whether through others' representations or physical records, which can be fragmented or biased. Despite these limitations, prosopons help us piece together comprehensive portraits of individuals, revealing their societal roles, personal relationships, and historical significance. The resource also explores the Theory of Identity, examining aspects like roles, titles, ethnicity, gender, and religion to understand the multi-dimensional identities of historical figures. Finally, it emphasizes the importance of scoping prosopography projects, guiding learners to define manageable research boundaries, focus on relevant data, and apply their skills effectively to produce meaningful results.
+
+## Learning Outcomes
+
+After completing this training resource, learners should be able to:
+
+* Understand the fundamentals of prosopography, a method used to investigate the common characteristics of historical individuals through collective study.
+* Define a prosopon within the context of prosopography and its practice
+* Know how to handle main issues with prosopography including: multiple people with the same name, anonymous entries and fictional people.
+* Determine the importance and organizational impact of different characteristics of identities as well as their fluidity over time.
+* Set effective boundaries on prosopography projects
+
+## What is a Prosopon?
+
+In this section, our key concept is the prosopon. A prosopon is an invaluable tool in historical and literary studies, representing a collected literary depiction of a person. A prosopon is a collected literary representation of a person. This means that it includes all forms of information about an individual, gathered from various sources such as texts, records, and artifacts. In some ways, it's true that all we can ever get to about past people is their construction in source, whether through other people's (and in a few cases their own) literary representations of them, or record documents, or artifacts. By studying prosopons, we can piece together comprehensive portraits of individuals from the past, even if these portraits are sometimes fragmented or biased by the perspectives of their creators. Prosopons help us understand the societal roles, personal relationships, and historical significance of individuals, giving us a richer context of the past.
+
+### Terminology
+
+The term prosopon is therefore important for distinguishing our collection of what people said and thought about a person – the image of that person we are able to construct today – from the person themselves, who this may or may not be an accurate depiction of. Prosopons allow us to separate the subjective interpretations and portrayals of individuals from their actual historical existence, which may remain partially or wholly unknown. This distinction is crucial in maintaining the objectivity and reliability of historical research.
+
+##### *What is the difference between person-prosopon and factoid?*
+
+In a person-prosopon database, a prosopon is meant to represent an actual, real, living person: they're treated as being the same thing, and it's the job of the database's author to get them as close as possible, resolving any contradictions in the source material. This method strives for historical accuracy and coherence, ensuring that the information aligns with known facts and reliable sources. The goal is to create a detailed and accurate representation of an individual's life and context.
+
+In a factoid database, this isn't the case, and the prosopon can be internally contradictory: it's just a collection of things people said about this constructed person. Factoid databases accept and reflect the inherent uncertainties and contradictions in historical records, presenting a multifaceted view of the individual. This approach acknowledges that historical records often contain conflicting information, and aims to preserve the diversity of perspectives and sources.
+
+### Disambiguation: the Rusudan Problem
+
+There are many names for this problem within the practice of prosopography: it's always named after whichever name the academic has the most common problems disambiguating. In many cases for historians of medieval Georgia, that's references to "Rusudan", the most popular women's name among the 12th century Georgian ruling family. This means that there can often be two or three Rusudans at court at the same time, without many clear ways to tell them apart. Such ambiguities are not unique to medieval Georgia and can be found in many historical contexts, requiring careful analysis and cross-referencing of available data. This is a problem in all eras of prosopography: even in the nineteenth century when the widespread use of surnames (not always a given) makes people more identifiable. For example, common names in any era can lead to similar confusion, necessitating detailed contextual analysis to distinguish between individuals.
+
+For example, a private letter from a letter collection won't necessarily identify which acquaintance of a particular given name is being mentioned e.g. "We went to William's for dinner" when the person might well know at two or three Williams as close acquaintances given it's common status as a name.
+
+##### *How do you disambiguate – and when do you do so?*
+
+A lot of disambiguation work is based on context and happens on a case by case basis. There is no perfect rule and no right answer. One result of this is that some databases try to avoid disambiguation as much as possible. In these cases, if someone cannot be fairly definitively identified as being a specific person, they get a separate record entry. This approach helps maintain the integrity of the data, avoiding incorrect assumptions and potential misidentifications.
+
+One can link record entries together, by having a table or edge type called "IsSameAs" or "ProbablySameAs", to store those links. This can be important when you want the option to suggest that two people might be the same, without absolute certainty. Such links provide a flexible framework for users to explore possible connections and interpretations.
+
+Key advice would be to avoid probabilistic disambiguation: that is, resist the urge to try to attach numbers like "I think there's a 25% chance that this person is this person." Such numerical indicators can give both you and future users a false sense of scientism and accuracy.
+
+Where you do disambiguate, always ensure that there is some storage of your reasoning for doing so. Not only future users, but also you in a year or two's time, might well want to know on what basis you made a decision of this kind. Documenting your reasoning ensures transparency and allows for future reassessment or verification of the decisions made.
+
+Sometimes disambiguation is impossible – you have two (or more) options of equal probability. This is where having a system for probable similarity can help, as you can make multiple of those connections. Or you can pick one, and just note that the other is possible. This flexibility is crucial in maintaining the usability and reliability of the database. It allows future researchers to understand the nuances and complexities involved in your decision-making process.
+
+## Anonymi
+
+One of the biggest problems is how to deal with anonymous individuals (anonymi – it's a Latin plural). Imagine you find an inscription saying "The Emperor was murdered here." How many people are mentioned here? This question highlights the challenges of interpreting historical records where key details are missing or ambiguous.
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      "The Emperor was murdered here."
+
+      How many people are identified here?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      0
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      1
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      2
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      4
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      It depends on the context of how we are interpreting it.
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
+
+At the fewest, zero – there's nobody definitively named, and you might not be sure which Emperor is mentioned, so it would be methodologically valid to scrap this as evidence altogether. Most methodologies would probably input to one person record from this – the Emperor is clearly discussed, and even if you're not sure now which Emperor it was, the surrounding information is enough that someone in the future might make the link. However, it's essential to consider the potential for multiple interpretations and the context in which the information was recorded.
+
+You can have even more people though. By definition, murder requires a murderer, otherwise it's just a death, so there's an implied anonymous murderer involved. It would be valid to put in a record for that person, in case you can track down details about them from identifying the event later. This approach ensures that all relevant actors are accounted for, even if they are not explicitly named.
+
+And that's not all – Emperors rarely come from nowhere, so you might well be able to assume some details about the Emperor's parents. Everyone in history thus far has at least two biological parents, after all. So you could generate four people from this simple sentence. This highlights the complexity and interconnectedness of historical records, where even a single statement can imply multiple individuals.
+
+We've seen several sorts of anonymi here that you may or may not want to account for:
+
+* People with very specific job or noble titles without names. If the title is rare enough, these may be some of the easier people to identify.
+* People mentioned with some other key individualising feature e.g. "Sir William's Wife". This is quite a specific identifier.
+* People discussed in detail without title (so for example "and then a man with red hair and a lion on his shield rode out at the head of the army" or "and then the cunning herald of the Emperor came to see the rebels". These are hypothetically identifiable people, but the probabilities will be more or less good depending on the depth of source material available. The identification of such individuals often requires a deep dive into contextual evidence and may remain speculative.
+
+## Potentially Fictional People
+
+How do you handle people who may be literary devices? This is a challenging aspect of prosopography, as distinguishing between historical fact and literary fiction can be difficult.
+
+This is more difficult. For example, a chronicler might create a vignette where an unnamed peasant talks to the Emperor about the hardships of the common people. It's possible that such an event existed, but it's also possible that the words are given to the peasant as a literary device. Understanding the intent and context of the source material is crucial in such cases.
+
+Parents. You'll often know more about the parents of someone, even if they're never explicitly mentioned, than you do about, especially in cultures where a lot of aspects of status are heritable. However, of course extrapolating ancestors could be a potentially infinite process – my instinct is to generally not do this unless you have good methodological cause. Carefully considering the implications of including hypothetical or inferred individuals can help maintain the accuracy and relevance oftheir accuracy and relevance. One good reason to do it, as an example, is if you want to simplify family relationships to being parent-child only, which may make processing them easier. In this case, if you had a sibling relationship in the text but the parents were unmentioned, you'd need to include them to represent the sibling relationship properly.
+
+Implied actors, such as the murderer in the above example, who are only identified by the fact that someone must have done the action. In general I suspect most methodologies will exclude these, but you might have a good reason for including them – for example in trade studies, if you have information that some goods went from point A to point B then the implied merchants who must have carried them may well be of prosopographical interest to you.
+
+You don't have to include anonymi at all – that's a valid methodological choice – but it's likely you'll want to include some of them, and you should develop a clear idea of which ones you want to include, based on a) the chance of identifying them later and b) which ones are likely to be appropriate for the kinds of questions you want to answer.
+
+### Fictional persons: or, the Alexander the Great Problem
+
+A prosopon isn't necessarily a "real" person. This seems like it shouldn't be much of an issue – surely people are either real or not real? Unfortunately, there isn't actually any clear boundary between a "real" person and a "fictional" one in much of our source material. This may seem counter-intuitive – after all, someone either existed or they didn't – but let's consider Alexander the Great as an example.
+
+We're pretty sure Alexander existed, and he's probably one of the people most mentioned in ancient and medieval historical sources from a huge range of countries. But stories about Alexander in historical materials cover a complete range of plausibility: we're all fairly confident that Alexander was king of Macedon, and was at battles like Gaugamela, but how confident should we be of the stories about him visiting oracles, or the various tales (which conflict) about him solving the Gordian Knot?
+
+What about Alexander as he appears in the founding myths of other countries, where he's used as a legitimising device? Or in some medieval texts, which basically go all the way up to full￾fledged fantasy romances? To what extent are these meaningfully the same Alexander? And where should we draw the "plausibility line"?
+
+This poses problems for all types of database. In a factoid database, the problem is where your definition of the person ends: if your collection of sources includes some obviously fantastical and some plausible information about the same person, do you treat that as being one person or two? Because of the factoid model's agnosticism about whether information has any truth values, there can therefore be a cluttering problem for some individuals as information at very differing plausibility levels is mixed. In a person-prosopon model, your issue meanwhile is to actually decide what you think is true and where the boundary lies, and therefore what should be included. This is likely to be a case by case process.
+
+By now you understand the key concept of the prosopon. You should know that a prosopon is a collected literary representation of a person and how to use terminology surrounding the nuance of prosopons, as well as issues surrounding anonymi and fictional peoples. Mastering these concepts allows you to effectively navigate the complexities of historical and literary records, ensuring a more accurate and nuanced understanding of the past.
+
+## The Theory of Identity
+
+This section covers the Theory of Identity within Prosopography. It looks into characteristics like roles, titles, ages, and presence at events. This resource will cover ethnicity, sexuality, gender, religion and beyond. These aspects are critical in understanding the multi-dimensional identities of historical individuals and how these identities were perceived and recorded.
+
+### Data Collection Problems:
+
+#### Identity
+
+Theory of Identity is one of the most complex areas for prosopographers to deal with in their work. Characteristics like roles, titles, ages, and presence at events may be disputed between texts, but ultimately can be assumed to have a "correct" answer, even if we will never know what it is. It's essential to approach these characteristics with a critical eye, understanding that historical records may contain biases and inaccuracies. It's uncontroversial to model the idea that people were only born once, could only be in one place at any given time, or that they either had or did not have a particular titled job. Identities as a category are very different: they are fluid, multi-layered, subject to interpretation and fluctuations over time. This fluidity makes it challenging to create a definitive model of identity, requiring a nuanced and flexible approach. It's important therefore to know what you're handling and how your database's model of identity works.
+
+Types of identity can include:
+
+**Ethnicity** – Possibly the most obviously complex form of identity, constructed of a wide range of linguistic, cultural, that are heavily subject to change over time. Ethnicity can encompass language, cultural practices, and self-identification, all of which may evolve across generations.
+
+**Nationality** – In modern contexts, with defined legal ideas of citizenship to a particular state, this can sometimes be treated as clear, but in most historical contexts formal definitions of this kind did not necessarily exist, and nationality does not necessarily go with legal status neatly: for example, it would be common to refer to people made stateless by withdrawal of citizenship by their original nationality. This also blurs heavily into ethnicity. Historical notions of nationality were often fluid and could change based on political and social circumstances.
+
+**Gender** – More complex than it often looks. The mostly binary system of understanding gender used often in Europe is frequently inadequate due to the wide actual range of social roles and phenotypic variations on which it is based and contains numerous caveats and additional groups (for example eunuchs in Byzantium were referred to by male pronouns but it has been argued that they culturally effectively formed a third gender grouping). A binary understanding is not the norm everywhere in the world either, and many culture have traditions of other gender identities existing. Understanding gender in historical contexts requires recognizing these diverse roles and identities.
+
+**Sexuality** – like gender, understood in very different ways at different times by different peoples. Whilst modern western societies' language tends to take categories according to gender (homosexual, bisexual, heterosexual), other and past societies could take categorisations according to sexual dominance/respective roles (as occurs in Ancient Greek understandings of what we might think of as homosexual behaviour), or simply according to a normative/non-normative distinction. The interpretation of sexuality can vary widely, influenced by cultural, social, and religious norms.
+
+**Religion** – it may seem like someone's religious affiliation should be comparatively straightforward. However, that can depend in what depth you want to model it, and even then it's not always clear – for example, consider various early Christian heresies, which the established church would consider to not be Christian but considered themselves to be the only correct way of doing Christianity. Or someone who just mixed up liturgical practices from multiple faith traditions in an idiosyncratic way. The boundaries aren't as clear as they seem. Religious identity can be layered and complex, often intersecting with other aspects of identity.
+
+Remember that whether and what typology you adopt is up to you and depends what's important for your material. For example, in my medieval dataset I don't make an "Ethnic" and "National" distinction – it doesn't really make sense for the time period, nor would I be able to differentiate from the sources which category a given term should go in.
+
+#### Identity is fluid
+
+It changes over time, and its constituent parts can also change. When a medieval Byzantine text refers to "Romaioi" – Romans – they generally mean mostly Greekspeaking Byzantines under the rule of the Byzantine Emperor. This would be rather surprising to a Republican-era ancient Roman, especially if you told them that the medieval "Romaioi" did not have Rome as their capital and indeed did not even control the city. This is a very large shift, but smaller ones are possible too: a dress code that identifies a certain cultural group in one decade might not do so twenty years later. In Georgia, one of the classic pieces of national dress is the Chokha coat – but the modern look of it is probably seventeenth century at the earliest, as the chest decorations developed from an inbuilt bandolier putting them after the widespread use of firearms.
+
+What we think of as the distinctive signs of an identity are very subject to change over time.  Identity can appear from different perspectives. If a commander of the Georgian armies in the medieval period was of Armenian extraction, the Georgian material might well refer to him as an Armenian. Arabic or Persian histories, on the other hand, wouldn't likely care as much about the differentiation between Christian groups and would refer to him as a Georgian. Neither identification is wrong: it's just a matter of what the notable aspect is to any given onlooker.
+
+Identity is situational. Much of identity is performed – which bits of who you are go on show, and how people react to them depends on your situation.
+
+#### Layered Identities
+
+People can have regional, national, and international identities, multiple national identities, can follow parts of multiple religions at once, and so on. Identity can never just be a "select one from the dropdown menu" question, because such distinctions break down fast. We can illustrate the situationality of identity with me as an example. A bunch of my identities are that I am from Norfolk, from East Anglia, from England, from Britain, and from Europe. When I'm in Vienna, the fact that I self-consciously have a European identity is fairly irrelevant – most people here do. What's noteworthy about me in this situation is that I'm British/English, and that affects how I interact with people and which of my identities I'm most conscious of. Conversely, if I'm in the UK, the fact I'm British becomes the assumed norm that nobody will feel the need to comment on... but the fact I think of myself as European is a charged, contentious, politicised identity that shapes my interactions there.
+
+#### Dealing with Identity in Prosopography
+
+There are some key things to learn from the above about how we deal with identity in prosopography. The most important is that you need to be able to assign multiple identities in a particular category: there is no category of identity that is consistently simple enough that a dropdown menu will suffice. Some sort of tagging system tends to be ideal, such that you can add as many identity tags to a person as necessary. In a factoid database, dealing with identities is simpler than in a person-prosopon database – because all you need to put in is what the text says, and if it doesn't say it, it isn't there. You will still however need to think about how to categorise: for example, if someone mentions going to church in a letter, does that definitively flag them as Christian? This is one of the reasons why one can't have a "neutral" prosopography dataset. Categorisation, which is necessary to make prosopography useful, is inherently subjective.
+
+In a person-prosopon database, more thought needs to go into whether an assignation of identity is valid or not. For most purposes, most textual evidence of identity can be treated as valid but there may be exceptions. You may decide for example that you only want identity evidence gathered from some perspectives, for example leaving out identities that are attested by people from further afield who may not have understood the cultural context of what they were looking at, or identities you think are attested as a proxy for political attacks rather than as something people actually thought at the time. If you are going to pass over evidence in this way, it's important to note that the evidence exists and explain why it's not been included.
+
+Should we ever, and can we validly, attach identities to people in our database that aren't textually assigned/that we don't have explicit evidence for? The answer for a factoid/indexing database is no – this isn't what a factoid model is meant to do – but for a person-prosopon/secondary database the answer is yes, if you have reason to believe that they're implicit in your sources and valid according to your model. A key example would be that if, say, you were reading a collection of letters by some seventeenth century Austrians, it would be very likely that none of them would ever explicitly state that they or their correspondents were Austrian. It just doesn't make sense to do so. So in these cases, we should have a way. Often, finding a way of tagging an assumed identity, and flagging it as such separately from an attested identity as mentioned in the text, is useful here.
+
+Often, finding a way of tagging an assumed identity, and flagging it as such separately from an attested identity as mentioned in the text, is useful here. There are some things that are very hard, if not impossible, to model effectively about identity in a prosopographical database. The situational aspects of it fall into this area – the inputs and context that lead someone to present or be seen as a particular part of their identity over another are usually too complex for us to meaningfully incorporate in these sorts of analyses, we don't have enough data to do so. The best we can do is to represent attested possibilities, plus (in the case of person-prosopon databases) any that we think should be there but aren't mentioned.
+
+#### Modelling Change Over Time
+
+A second difficulty is modelling change over time, for example if someone converted from one faith to another – this one could find a way of modelling, but it would be comparatively structurally complex, as you'd need to be able to make the link between the person and identity contain additional information – for example, in the case mentioned, the ID code of an event before or after which a certain identity was treated as valid or invalid. Graph database software like neo4j allows for edge properties: when producing tabulated data, this may require making any links that need this sort of information a separate table in their own right. Also note that identity transitions in reality are not neat, singular events, which makes the above way of modelling it very rudimentary at best – but it's something to consider if your topic suggests it might be useful.
+
+In this section, you should have learned how to handle identity in prosopography, including ethnicity, nationality, gender, sexuality, and religion. You should also now understand the unique nuances of more complex forms of identities. Identities as a category are very different: they are fluid, multi-layered, subject to interpretation and fluctuations over time. These nuances all require an understanding of how we are using information about one's identity in our research and require attention to the goals of the prosopographic data collection. With these insights, you can approach historical research with a more nuanced perspective, recognizing the complex and dynamic nature of identity.
+
+## Scoping Projects
+
+In this section, you will begin to understand the importance of scoping prosopography projects. This resource will help in learners to form scope based on their research questions, and other key factors. This resource will help researchers ensure their scale and scope is manageable and appropriate when applying their prosopography skills to new projects. By clearly defining the scope, researchers can streamline their efforts, focus on relevant data, and produce meaningful and impactful results.
+
+### How Do I Scope a Project?
+
+The scope of a project, as we're defining it for this resource, is basically the answer to the question "who gets into your club"? In other words, it defines the criteria for inclusion and exclusion within your prosopography database. As a prosopographer, you have a range of people and characters available in your source material, but you need to set some sort of boundaries to your project. These boundaries help maintain focus and ensure the project remains feasible and aligned with your research goals.
+
+There are three main reasons for setting out a formal scope:
+
+1. It tells other people what they can find in your database.
+
+This is extremely important for making databases other people can subsequently use – they need to know on what basis people get into your database, so they know how much the filter of people for their project overlaps with that. Clear scope definitions enhance the utility and accessibility of your database for other researchers.
+
+2. It makes your project manageable in scale and planning.
+
+Without any kinds of limits or boundaries, a prosopography can extend almost infinitely – you need to be able to plan the work you can feasibly do, or at least plan a set of meaningful units of work. Defining the scope ensures that the project is achievable within available resources and timeframes.
+
+3. It interacts with your research questions.
+
+You make databases of people, in general, for a reason: you want to use them. But how you can best use them is highly dependent on what they actually do and don't contain. The most important question here is whether you're aiming to model a period or space of history, or index or discuss a particular source or set of sources. The scope should align with and support your specific research objectives, ensuring relevance and depth in your findings.
+
+### Scoping Questions
+
+Aiming to model history via prosopography, for example, might include questions like:
+
+* "How able were widows among the late medieval merchant class in Frankfurt to control their estates after their husbands' death?"
+* "Were factions in the Carthaginian state bound together by shared commercial interests?"
+* "To what extent were non-Chinese generals or officials able to rise to high social rank under the T'ang dynasty?"
+
+In these questions, the aim of the prosopography is to use a collection of person data to examine the actions of historical actors. This in turn means that producing the most complete view possible of a person is important – the database needs to be as accurate a description of what the scholar thinks actually happened as possible. Comprehensive and accurate data collection is essential for meaningful analysis and conclusions.
+
+### Prosopographical Indexing
+
+Prosopographical indexes of bodies of source material serve different functions to databases that act as historical models, despite potentially looking nominally similar. In these cases, the aim is to index a particular document, and cleave more closely to the original text.
+
+Prosopographical Indexes are useful for general purpose databases, for the following reasons:
+
+**Documentation that attempts to include all relevant material, or at least enough to produce a full model of what was happening, is more labour intensive to produce by far.**
+
+* Documentation that attempts to include all relevant material, or at least enough to produce a full model of what was happening, is more labor-intensive to produce by far.
+* Indexing just requires a scholar to say "I have no idea what the answer to these questions is or if source material exists for them!" and make the usually less controversial statement of "this text says thing X and is referring to object Y" without the extra jump of "and I think X is/is not what actually happened".
+* It allows sources with different language requirements to be handled in a more separate – and thus more effectively specialized – manner. This specialization can improve the quality and accuracy of the work.
+* It may allow the data to be closer to the source with less historical analysis added in. This will make it more useful for scholars who want an index of people in a given text, or want to be able to look at the material without another prior scholar's conceptions.
+* It makes it easier to look at how the author of a specific text presented people. This will mean it is thereby more useful for work on narratives and historical textual work.
+
+In practice, the division between index and model is not as neat as has been presented here. Many projects have a limited source range but can still be used for modelling projects. For example, the People of Medieval Scotland database does not use the major narrative sources, but in allowing access to a wide range of tagged legal documents can provide a basis for meaningful analyses of action via looking at connections and signatories.
+
+The above division will nonetheless be useful to be getting on with, and we'll return to it later in much more detail. This division of research questions helps inform what parameters you use to define your scope. These can broadly be split into two categories, which tend towards, whilst not necessarily mapping neatly onto, the above division of database type and research question. Firstly there are scope boundaries that are created by textual features, and secondly there are those that are created by historical features.
+
+##### Examples
+
+The former category, textual scoping, defines "entry to the club" by questions about texts and sources – does the person appear in a particular source or type of source, or do they appear in a certain language group's body of sources?  This type of scoping focuses on the nature and characteristics of the source material itself.
+
+Here are two examples of criteria:
+
+**Source**
+
+* Whilst any database will need a list of sources consulted,some databases are primarily attempts to work with a certain source or type of source. For example some may be prosopographical databases of epigraphy (that is, inscriptions) or legal texts like charters, or will focus on a particular author's works.
+
+**Language**
+
+* Many areas of history have source material from a number of different language groups available. For indexing, division by language can be sensible to allow specialists on different language areas an angle to work on their material.
+
+The latter category, historical scoping, defines "entry to the club" by questions about the people under discussion – where they were, when they were, and who they were. This is more necessary for modelling questions where the scholar is more keen to test questions about a specific group of people and the society and world they lived in.
+
+A non-exhaustive list of categories for scoping is as follows:
+
+**Chronology**
+
+* Relatively self explanatory, setting dated bounds for the project.
+
+**Space**
+
+* Setting a spatial bound. This and the chronology bound may apply within records as well as to entire people. For example, a prosopography of C13 China might include Marco Polo, but might not want to include in detail notes on his travels around Italy and western Asia which fall well beyond the scope of the project.
+
+**Role**
+
+* For example, only people with particular offices are included, or people in a particular faction or grouping. Beard's analysis of the members of the US constitutional convention is an example here.
+
+**Identity**
+
+* For example, only people with a certain ethnicity, gender, race, sexuality, etc, are included. This functions somewhat similarly to the role category in some ways, excepting that identity is often written about in more oblique ways.
+
+**Connection**
+
+* If one particular figure is at the core of the study, the category could be people with known connections to that person. The difficulty of this sort of category is that it requires more circular working – one may for example need to produce the data and then refine it after doing analyses of the networks involved.
+
+Of course all of these categories may have edge cases, and one of the difficulties is working out where to draw the line and making oneself rules for where to do so, as you may find out during data productions. One notable feature of historical scoping is that it often requires more historical judgement, as for example ethnic terminology is not usually applied consistently in historical sources, and may well be left out especially for common cases (so a medieval Irish text for example won't repeatedly tell you that every character is Irish as they're introduced, that's just an assumed normal).
+
+### Combining Scoping Features
+
+These scoping features, including both textual and historical categories, can and usually are combined, and the neat distinction drawn here will break down to a noticeable extent. There are some areas where it is rare for scholars to actually be able to consult all the extant material, so even if the scope is not nominally textual, clarity on which sources were incorporated into the project is a necessity. Meanwhile in textual-scope databases there are often still some limitations on inclusion – many medieval chronicles have starting sections that give a brief summary of events from the creation to the main point of the chronicle, or insert analogies and stories about classical heroes, which means a chronology requirement can be useful to avoid Adam and Eve needing to be detailed in every database.
+
+### The Richard the Lionheart Problem
+
+One way of summarizing a lot of these rules and how to think about them practically is the Richard the Lionheart Problem. Richard I of England had a varied career that involved stretches in England, France, Cyprus, Outremer, and Austria, among others. His extensive travels and varied engagements present a unique challenge in defining the scope of a prosopography project.
+
+So, if someone made a prosopography of medieval Cyprus, how much about Richard should they include? Should they focus solely on his activities in Cyprus, or should they also consider his broader influence and interactions across Europe and the Middle East? How meaningful, on the other hand, would it be to produce a source-based prosopography that tried to follow Richard through a narrative of his life, with his movements connecting people from the court in London to Saladin's military camps in the Holy Land? There's no "right answer" to these questions; they're dependent on what you're trying to do with the data.
+
+Throughout this section, readers should have learned how to form effective boundaries for their prosopography projects using scoping questions and prosopography indexing. By clearly defining the scope, researchers can create focused, manageable, and meaningful prosopography projects that align with their research goals.
+
+Scoping a project is essential in ensuring that the research remains feasible and relevant, allowing scholars to produce high-quality, impactful work. With a well-defined scope, researchers can better navigate the complexities of their source material, make informed decisions about inclusion and exclusion, and ultimately contribute valuable insights to the field of prosopography.
+
+## Conclusion
+
+This resource has provided a comprehensive overview of key concepts and methodologies in prosopography, with a focus on prosopons, the theory of identity, disambiguation challenges, and scoping projects effectively. Learners have read how prosopons, or collected literary representations of individuals, offer a useful tool for reconstructing historical contexts, even when sources are fragmented or biased. The theory of identity has been explored in depth, highlighting the fluid, multi-dimensional nature of characteristics like ethnicity, gender, and religion. Additionally, this resource has addressed the complexities of disambiguation, such as dealing with multiple individuals of the same name or anonymous and fictional people. Finally, we have emphasized the importance of defining a clear scope for your prosopography projects to keep your research manageable, focused, and aligned with your goals. Equipped with these skills, you are prepared to engage in meaningful prosopographical research that contributes to a deeper understanding of past societies and historical individuals.

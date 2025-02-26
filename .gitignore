@@ -6,17 +6,24 @@ node_modules/
 *.log
 
 # non-public environment variables
-.env
+.env.keys
 .env.local
 .env.*.local
 
 # caches
 .eslintcache
+.prettiercache
 .stylelintcache
 *.tsbuildinfo
 
+# performance profiles
+*.cpuprofile
+*.heapprofile
+*.heapsnapshot
+
 # vercel
 .vercel
+vercel.json
 
 # misc
 .DS_Store
@@ -27,20 +34,17 @@ node_modules/
 next-env.d.ts
 out/
 
-# auto-generated favicons
-public/**/android-chrome-192x192.png
-public/**/android-chrome-512x512.png
-public/**/apple-touch-icon.png
-public/**/favicon-16x16.png
-public/**/favicon-32x32.png
-public/**/favicon.ico
-public/**/site.webmanifest
-public/**/open-graph.webp
+# i18n
+# temporarily added to get correct types in ci/cd before application startup
+# @see https://github.com/amannn/next-intl/discussions/1737
+# /content/**/*.d.json.ts
+/messages/**/*.d.json.ts
 
-# auto-generated files
-public/feed.xml
-public/robots.txt
-public/sitemap.xml
+# test
+/coverage/
 
-# metadata dump
-public/metadata/*.json
+# playwright
+/blob-report/
+/playwright/.cache/
+/playwright-report/
+/test-results/
