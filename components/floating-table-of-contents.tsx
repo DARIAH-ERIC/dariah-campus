@@ -48,7 +48,7 @@ export function FloatingTableOfContents(props: FloatingTableOfContentsProps): Re
 								return (
 									<Fragment>
 										<Button
-											className="justify-self-end text-neutral-600 transition hover:text-brand-700"
+											className="justify-self-end py-2.5 text-neutral-600 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 											slot="close"
 										>
 											<span className="sr-only">{closeLabel}</span>
