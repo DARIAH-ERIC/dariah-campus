@@ -107,12 +107,12 @@ export default async function DocumentationPage(
 				</aside>
 
 				<div className="grid min-w-0 content-start gap-y-12">
-					<div className="grid gap-y-4">
+					<div className="grid max-w-content gap-y-4">
 						<PageTitle>{title}</PageTitle>
 						<PageLead>{lead}</PageLead>
 					</div>
 
-					<nav aria-labelledby="docs-nav" className="grid w-full content-start gap-y-2 md:hidden">
+					<nav aria-labelledby="docs-nav" className="grid w-full content-start gap-y-2 2xl:hidden">
 						<h2
 							className="text-xs font-bold uppercase tracking-wide text-neutral-600"
 							id="docs-nav"
