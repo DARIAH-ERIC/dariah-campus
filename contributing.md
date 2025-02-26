@@ -200,7 +200,7 @@ pnpm run typesense:collection:create
 pnpm run typesense:collection:seed
 ```
 
-## Development Workflow
+## Development workflow
 
 1. Install dependencies:
 
@@ -234,3 +234,13 @@ Auto-fixable formatting and lint errors can be fixed with:
 pnpm run format:fix
 pnpm run lint:fix
 ```
+
+## Production deployment
+
+The production app is hosted on Vercel. Every push to GitHub triggers a fresh deployment. Preview
+deployments from pull-request branches can be viewed publicly by pressing the "View deployment"
+button in the pull request comments.
+
+The Vercel Dashboard, where environment variables and secrets can be set, is available at
+[https://vercel.com/dariah/dariah-campus](https://vercel.com/dariah/dariah-campus) (invitation
+required).
