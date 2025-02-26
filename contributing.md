@@ -9,6 +9,7 @@ guide will help you understand the project architecture and how to contribute.
 
 - **Next.js 15**: The main framework for building the application
 - **TypeScript 5**: For type-safety
+- **Tailwind CSS 3**: For styles with utility classes
 - **Node.js 22**: Required runtime environment
 - **pnpm 10**: Package manager
 
@@ -150,6 +151,16 @@ Custom components, which can be used as rich-text editor widgets, are defined in
 [lib/keystatic/collections.ts](./lib/keystatic/components.ts). To correctly render these custom
 components in the app, a React component must also be provided to the component mapping in
 [mdx-components.tsx](./mdx-components.tsx).
+
+MDX content is transformed to React components with the processing pipeline defined in
+[config/mdx.config.ts](./config/mdx.config.ts), which adds plugins to:
+
+- add support for GitHub flavored markdown (strikethrough, tables, etc.)
+- add support for footnotes
+- transform regular quotes and dashes into their typographic variants
+- add `id` attributes to headings, so they can be targeted by url-fragment links
+- extracts a table of contents
+- adds support for syntax-highlighting in code blocks
 
 In production, GitHub
 [branch protection rules](https://github.com/DARIAH-ERIC/dariah-campus/settings/branches) enforce,
