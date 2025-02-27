@@ -4,7 +4,7 @@ import type { VideoProvider } from "@/lib/content/options";
 import { createVideoUrl } from "@/lib/navigation/create-video-url";
 
 interface VideoProps {
-	children: ReactNode;
+	children?: ReactNode;
 	id: string;
 	provider: VideoProvider;
 	startTime?: number | null;
@@ -27,7 +27,7 @@ export function Video(props: Readonly<VideoProps>): ReactNode {
 				src={src}
 				title={title}
 			/>
-			<figcaption>{children}</figcaption>
+			{children ? <figcaption>{children}</figcaption> : null}
 		</figure>
 	);
 }
