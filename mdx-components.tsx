@@ -80,11 +80,12 @@ const components = {
 		moduleId: string;
 		files: Array<{ file: string }>;
 	}) {
-		const { files, title } = props;
+		const { files } = props;
 
 		return (
 			<aside>
-				<h2>{title}</h2>
+				{/* FIXME: currently titles are duplicated in markdown  */}
+				{/* <h2>{title}</h2> */}
 				<ul role="list">
 					{files.map(({ file }, index) => {
 						return (
