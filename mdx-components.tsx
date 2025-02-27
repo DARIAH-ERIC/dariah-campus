@@ -53,11 +53,14 @@ const components = {
 
 		return children;
 	},
-	PageTitle(props: { children: ReactNode }) {
-		const { children } = props;
+	PageTitle(_props: { children: ReactNode }) {
+		// const { children } = props;
 
 		// TODO: Avoid multiple h1 elements.
-		return <h1>{children}</h1>;
+		// return <h1>{children}</h1>;
+
+		// FIXME: currently titles are duplicated in markdown
+		return null;
 	},
 	PageIntro(props: { children: ReactNode }) {
 		const { children } = props;
@@ -112,10 +115,13 @@ const components = {
 
 		return children;
 	},
-	AssignTitle(props: { children: ReactNode }) {
-		const { children } = props;
+	AssignTitle(_props: { children: ReactNode }) {
+		// const { children } = props;
 
-		return <h2>{children}</h2>;
+		// return <h2>{children}</h2>;
+
+		// FIXME: currently titles are duplicated in markdown
+		return null;
 	},
 	AssignIntro(props: { children: ReactNode }) {
 		const { children } = props;
@@ -127,10 +133,13 @@ const components = {
 
 		return children;
 	},
-	LessonTitle(props: { children: ReactNode }) {
-		const { children } = props;
+	LessonTitle(_props: { children: ReactNode }) {
+		// const { children } = props;
 
-		return <h2>{children}</h2>;
+		// return <h2>{children}</h2>;
+
+		// FIXME: currently titles are duplicated in markdown
+		return null;
 	},
 	LessonIntro(props: { children: ReactNode }) {
 		const { children } = props;
@@ -142,10 +151,13 @@ const components = {
 
 		return children;
 	},
-	LessonPageTitle(props: { children: ReactNode }) {
-		const { children } = props;
+	LessonPageTitle(_props: { children: ReactNode }) {
+		// const { children } = props;
 
-		return <h3>{children}</h3>;
+		// return <h3>{children}</h3>;
+
+		// FIXME: currently titles are duplicated in markdown
+		return null;
 	},
 	LessonPageIntro(props: { children: ReactNode }) {
 		const { children } = props;
