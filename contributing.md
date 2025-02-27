@@ -200,6 +200,19 @@ pnpm run typesense:collection:create
 pnpm run typesense:collection:seed
 ```
 
+## Metadata API
+
+Metadata for the "resources" ("events", "external", "hosted", "pathfinders") and "curricula"
+collections is also available via API.
+
+There are legacy API endpoints available at
+[`/api/metadata/:(curricula|events|resources)`](</app/(app)/api/v1/metadata>), which simply serves a
+dump of legacy content (in the previous metadata format). New content is currently not added.
+
+New API endpoints serving fresh metadata (in the updated metadata schema) are available at
+[/api/v2/metadata/curricula](<./app/(app)/api/v2/metadata/curricula>) and
+[/api/v2/metadata/resources](<./app/(app)/api/v2/metadata/resources>).
+
 ## Development workflow
 
 1. Install dependencies:
