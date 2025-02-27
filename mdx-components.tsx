@@ -116,8 +116,7 @@ const components = {
 	AssignIntro(props: { children: ReactNode }) {
 		const { children } = props;
 
-		// eslint-disable-next-line tailwindcss/no-custom-classname
-		return <div className="lead">{children}</div>;
+		return <div>{children}</div>;
 	},
 	Lesson(props: { children: ReactNode }) {
 		const { children } = props;
@@ -132,8 +131,7 @@ const components = {
 	LessonIntro(props: { children: ReactNode }) {
 		const { children } = props;
 
-		// eslint-disable-next-line tailwindcss/no-custom-classname
-		return <div className="lead">{children}</div>;
+		return <div>{children}</div>;
 	},
 	LessonPage(props: { children: ReactNode; id: string; prev_id: string; next_id: string }) {
 		const { children } = props;
@@ -148,8 +146,7 @@ const components = {
 	LessonPageIntro(props: { children: ReactNode }) {
 		const { children } = props;
 
-		// eslint-disable-next-line tailwindcss/no-custom-classname
-		return <div className="lead">{children}</div>;
+		return <div>{children}</div>;
 	},
 	LessonPageContent(props: { children: ReactNode }) {
 		const { children } = props;
