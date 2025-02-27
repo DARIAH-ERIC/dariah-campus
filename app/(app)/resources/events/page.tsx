@@ -56,6 +56,7 @@ export default async function EventResourcesPage(
 
 		return {
 			id: resource.id,
+			collection: resource.collection,
 			title,
 			summary,
 			people,

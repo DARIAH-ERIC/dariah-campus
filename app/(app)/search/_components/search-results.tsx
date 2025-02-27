@@ -59,6 +59,7 @@ export function SearchResults(props: SearchResultsProps): ReactNode {
 
 		return {
 			id,
+			collection,
 			title,
 			summary: { content: summary, title: summaryTitle },
 			people,

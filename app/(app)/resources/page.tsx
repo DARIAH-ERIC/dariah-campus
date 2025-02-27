@@ -61,6 +61,7 @@ export default async function ResourcesPage(
 
 		return {
 			id: resource.id,
+			collection: resource.collection,
 			title,
 			summary,
 			people,

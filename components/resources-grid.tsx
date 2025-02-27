@@ -10,6 +10,7 @@ interface ResourcesGridProps {
 	peopleLabel: string;
 	resources: Array<{
 		id: string;
+		collection?: string;
 		title: string;
 		href: string | null;
 		locale: string;
@@ -34,7 +35,14 @@ export function ResourcesGrid(props: ResourcesGridProps): ReactNode {
 							{resources.map((resource) => {
 								return (
 									// eslint-disable-next-line jsx-a11y/no-redundant-roles
-									<li key={resource.id} role="listitem">
+									<li
+										key={
+											resource.collection
+												? [resource.collection, resource.id].join(":")
+												: resource.id
+										}
+										role="listitem"
+									>
 										<ResourcePreviewCard peopleLabel={peopleLabel} {...resource} />
 									</li>
 								);
@@ -50,7 +58,9 @@ export function ResourcesGrid(props: ResourcesGridProps): ReactNode {
 		<ul className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 			{resources.map((resource) => {
 				return (
-					<li key={resource.id}>
+					<li
+						key={resource.collection ? [resource.collection, resource.id].join(":") : resource.id}
+					>
 						<ResourcePreviewCard peopleLabel={peopleLabel} {...resource} />
 					</li>
 				);

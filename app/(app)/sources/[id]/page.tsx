@@ -93,9 +93,10 @@ export default async function SourcePage(props: Readonly<SourcePageProps>): Prom
 					: resource.data["content-type"];
 
 		return {
+			id: resource.id,
+			collection: resource.id,
 			contentType,
 			href,
-			id: resource.id,
 			locale,
 			people,
 			summary,
