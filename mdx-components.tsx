@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import { Callout } from "@/components/content/callout";
 import { Disclosure } from "@/components/content/disclosure";
 import { Embed } from "@/components/content/embed";
@@ -40,6 +42,116 @@ const components = {
 	Tabs,
 	Video,
 	VideoCard,
+
+	/**
+	 * DARIAH-teach components.
+	 *
+	 * Most of these should be dropped in another transform step for the actual content migration.
+	 */
+	Page(props: { children: ReactNode; id: string; moduleId: string }) {
+		const { children } = props;
+
+		return children;
+	},
+	PageTitle(props: { children: ReactNode }) {
+		const { children } = props;
+
+		// TODO: Avoid multiple h1 elements.
+		return <h1>{children}</h1>;
+	},
+	PageIntro(props: { children: ReactNode }) {
+		const { children } = props;
+
+		// eslint-disable-next-line tailwindcss/no-custom-classname
+		return <div className="lead">{children}</div>;
+	},
+	PageContent(props: { children: ReactNode }) {
+		const { children } = props;
+
+		return children;
+	},
+	Resource(props: {
+		children: ReactNode;
+		title: string;
+		id: string;
+		moduleId: string;
+		files: Array<{ file: string }>;
+	}) {
+		const { files, title } = props;
+
+		return (
+			<aside>
+				<h2>{title}</h2>
+				<ul role="list">
+					{files.map(({ file }, index) => {
+						return (
+							<li key={index}>
+								<a href={file}>{file}</a>
+							</li>
+						);
+					})}
+				</ul>
+			</aside>
+		);
+	},
+	IframeElement(props: { w: number; h: number; alt: string; src: string }) {
+		const { src } = props;
+
+		return <Embed src={src} />;
+	},
+	Assign(props: { children: ReactNode; id: string; moduleId: string }) {
+		const { children } = props;
+
+		return children;
+	},
+	AssignTitle(props: { children: ReactNode }) {
+		const { children } = props;
+
+		return <h2>{children}</h2>;
+	},
+	AssignIntro(props: { children: ReactNode }) {
+		const { children } = props;
+
+		// eslint-disable-next-line tailwindcss/no-custom-classname
+		return <div className="lead">{children}</div>;
+	},
+	Lesson(props: { children: ReactNode }) {
+		const { children } = props;
+
+		return children;
+	},
+	LessonTitle(props: { children: ReactNode }) {
+		const { children } = props;
+
+		return <h2>{children}</h2>;
+	},
+	LessonIntro(props: { children: ReactNode }) {
+		const { children } = props;
+
+		// eslint-disable-next-line tailwindcss/no-custom-classname
+		return <div className="lead">{children}</div>;
+	},
+	LessonPage(props: { children: ReactNode; id: string; prev_id: string; next_id: string }) {
+		const { children } = props;
+
+		return children;
+	},
+	LessonPageTitle(props: { children: ReactNode }) {
+		const { children } = props;
+
+		return <h3>{children}</h3>;
+	},
+	LessonPageIntro(props: { children: ReactNode }) {
+		const { children } = props;
+
+		// eslint-disable-next-line tailwindcss/no-custom-classname
+		return <div className="lead">{children}</div>;
+	},
+	LessonPageContent(props: { children: ReactNode }) {
+		const { children } = props;
+
+		return children;
+	},
 };
 
 declare global {
