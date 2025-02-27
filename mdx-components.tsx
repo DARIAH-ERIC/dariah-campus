@@ -101,6 +101,14 @@ const components = {
 	IframeElement(props: { w: number; h: number; alt: string; src: string }) {
 		const { src } = props;
 
+		if (src.startsWith("https://www.youtube.com/embed/")) {
+			const id = new URL(src).pathname.split("/").pop();
+
+			if (id) {
+				return <Video id={id} provider="youtube" />;
+			}
+		}
+
 		return <Embed src={src} />;
 	},
 	Assign(props: { children: ReactNode; id: string; moduleId: string }) {
