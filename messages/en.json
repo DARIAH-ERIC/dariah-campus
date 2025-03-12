@@ -1,0 +1,293 @@
+{
+	"content": {
+		"QuizControls": {
+			"correct": "Correct!",
+			"incorrect": "Incorrect!",
+			"next-question": "Next question",
+			"previous-question": "Previous question",
+			"validate": "Check answer"
+		},
+		"QuizTextInput": {
+			"label": "Answer"
+		}
+	},
+	"mdx": {
+		"footnote-back-label": "Back to reference {reference}",
+		"footnotes": "Footnotes",
+		"table-of-contents": "Table of contents"
+	},
+	"AppFooter": {
+		"funding": "Co-funded by the Horizon 2020 innovation and research programme of the European Union under grants no. 731081 and 823782.",
+		"license": "Except where otherwise noted, content on this site is licensed under a <link>Creative Commons Attribution 4.0 International</link> license.",
+		"links": {
+			"contact": "Contact",
+			"course-registry": "Course registry",
+			"curricula": "Curricula",
+			"documentation": "Documentation",
+			"home": "Home",
+			"imprint": "Legal notice",
+			"resources": "Resources",
+			"search": "Search",
+			"sources": "Sources"
+		},
+		"navigation-secondary": "Secondary",
+		"navigation-social-media": "Social media"
+	},
+	"AppHeader": {
+		"links": {
+			"course-registry": "Course registry",
+			"curricula": "Curricula",
+			"documentation": "Documentation",
+			"home": "Home",
+			"resources": "Resources",
+			"search": "Search",
+			"sources": "Sources"
+		},
+		"navigation-menu": "Navigation menu",
+		"navigation-menu-close": "Close navigation menu",
+		"navigation-menu-open": "Open navigation menu",
+		"navigation-primary": "Primary"
+	},
+	"Citation": {
+		"cite-as": "Cite as",
+		"copy-citation": "Copy citation",
+		"content-types": {
+			"audio": "Audio",
+			"curriculum": "Curriculum",
+			"event": "Event",
+			"pathfinder": "Pathfinder",
+			"slides": "Slides",
+			"training-module": "Training module",
+			"video": "Video",
+			"webinar-recording": "Webinar recording",
+			"website": "Website"
+		}
+	},
+	"CourseRegistryPage": {
+		"meta": {
+			"title": "Course registry"
+		},
+		"title": "Course registry"
+	},
+	"CurriculaPage": {
+		"editors": "Editors",
+		"meta": {
+			"title": "Curricula"
+		},
+		"title": "Curricula"
+	},
+	"Curriculum": {
+		"authors": "Authors",
+		"editors": "Editors",
+		"resources": "Resources",
+		"tags": "Topics",
+		"translations": "Translations"
+	},
+	"CurriculumPage": {
+		"attachments": "Attachments",
+		"editors": "Editors",
+		"links": "Links",
+		"overview": "Overview",
+		"tags": "Topics",
+		"translations": "Translations"
+	},
+	"DocumentationPage": {
+		"close": "Close",
+		"navigation": "Documentation pages",
+		"table-of-contents": "Table of contents",
+		"toggle-table-of-contents": "Toggle table of contents"
+	},
+	"Error": {
+		"something-went-wrong": "Something went wrong!",
+		"try-again": "Try again"
+	},
+	"EventResourcePage": {
+		"attachments": "Attachments",
+		"authors": "Authors",
+		"close": "Close",
+		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
+		"contributors": "Contributors",
+		"date": "Date",
+		"editors": "Editors",
+		"links": "Links",
+		"location": "Location",
+		"organized-by": "Organized by",
+		"social-media": "Social media",
+		"table-of-contents": "Table of contents",
+		"tags": "Topics",
+		"toggle-table-of-contents": "Toggle table of contents",
+		"translations": "Translations"
+	},
+	"EventResourcesPage": {
+		"authors": "Authors",
+		"meta": {
+			"title": "Events"
+		},
+		"title": "Events"
+	},
+	"ExternalResource": {
+		"go-to-resource": "Go to this resource"
+	},
+	"ExternalResourcePage": {
+		"authors": "Authors",
+		"close": "Close",
+		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
+		"contributors": "Contributors",
+		"editors": "Editors",
+		"table-of-contents": "Table of contents",
+		"tags": "Topics",
+		"toggle-table-of-contents": "Toggle table of contents",
+		"translations": "Translations"
+	},
+	"FullMetadata": {
+		"authors": "Authors",
+		"content-type": "Content type",
+		"content-types": {
+			"audio": "Audio",
+			"curriculum": "Curriculum",
+			"event": "Event",
+			"pathfinder": "Pathfinder",
+			"slides": "Slides",
+			"training-module": "Training module",
+			"video": "Video",
+			"webinar-recording": "Webinar recording",
+			"website": "Website"
+		},
+		"domain": "Domain",
+		"label": "Full metadata",
+		"license": "License",
+		"language": "Language",
+		"publication-date": "Published to DARIAH-Campus",
+		"remote-publication-date": "Originally published",
+		"sources": "Sources",
+		"tags": "Topics",
+		"title": "Title",
+		"version": "Version"
+	},
+	"HostedResourcePage": {
+		"authors": "Authors",
+		"close": "Close",
+		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
+		"contributors": "Contributors",
+		"editors": "Editors",
+		"table-of-contents": "Table of contents",
+		"tags": "Topics",
+		"toggle-table-of-contents": "Toggle table of contents",
+		"translations": "Translations"
+	},
+	"ImprintPage": {
+		"meta": {
+			"title": "Imprint"
+		},
+		"title": "Imprint"
+	},
+	"IndexPage": {
+		"search": "Search"
+	},
+	"Loading": {
+		"loading": "Loading"
+	},
+	"LocaleLayout": {
+		"rss-feed": "RSS Feed",
+		"skip-to-main-content": "Skip to main content"
+	},
+	"NotFoundPage": {
+		"meta": {
+			"title": "Page not found"
+		},
+		"title": "Page not found"
+	},
+	"PathfinderResourcePage": {
+		"authors": "Authors",
+		"close": "Close",
+		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
+		"contributors": "Contributors",
+		"editors": "Editors",
+		"table-of-contents": "Table of contents",
+		"tags": "Topics",
+		"toggle-table-of-contents": "Toggle table of contents",
+		"translations": "Translations"
+	},
+	"PathfinderResourcesPage": {
+		"authors": "Authors",
+		"meta": {
+			"title": "Pathfinders"
+		},
+		"title": "Pathfinders"
+	},
+	"PreviewCard": {
+		"authors": "Authors",
+		"read-more": "Read more"
+	},
+	"RelatedCurriculaList": {
+		"label": "Related curricula"
+	},
+	"RelatedResourcesList": {
+		"label": "Related resources"
+	},
+	"Resource": {
+		"attachments": "Attachments",
+		"authors": "Authors",
+		"date": "Date",
+		"last-updated-at": "Last updated at",
+		"links": "Links",
+		"location": "Location",
+		"organized-by": "Organized by",
+		"social-media": "Social media",
+		"suggest-changes-to-resource": "Suggest changes to resource",
+		"tags": "Topics",
+		"translations": "Translations"
+	},
+	"ResourcesPage": {
+		"authors": "Authors",
+		"meta": {
+			"title": "Resources"
+		},
+		"title": "Resources"
+	},
+	"ReUseConditions": {
+		"label": "Reuse conditions",
+		"reuse-conditions": "Resources hosted on DARIAH-Campus are subjects to the <link>DARIAH-Campus Training Materials Reuse Charter</link>."
+	},
+	"SearchPage": {
+		"authors": "Authors",
+		"authors-editors-contributors": "Authors, editors, and contributors",
+		"close": "Close",
+		"content-types": "Content types",
+		"filter-label": "Filter {attribute} values",
+		"filter-placeholder": "Filter...",
+		"locale": "Languages",
+		"meta": {
+			"title": "Search"
+		},
+		"nothing-found": "Nothing found",
+		"people": "People",
+		"search": "Search",
+		"search-filter": "Filter",
+		"show-less-label": "Show less",
+		"show-more-label": "Show more",
+		"sources": "Sources",
+		"tags": "Topics",
+		"title": "Search"
+	},
+	"Session": {
+		"attachments": "{count, plural, =1 {Download} other {Downloads}}",
+		"links": "{count, plural, =1 {Link} other {Link}}",
+		"speakers": "{count, plural, =1 {Speaker} other {Speakers}}"
+	},
+	"SocialMediaShareLinks": {
+		"share-link": "Share link on {platform}"
+	},
+	"SourcePage": {
+		"authors": "Authors",
+		"resources": "Resources"
+	},
+	"SourcesPage": {
+		"lead": "DARIAH learning resources don't all live in one place. Here you can explore our materials based on the context in which they were produced.",
+		"meta": {
+			"title": "Sources"
+		},
+		"resources": "{count, plural, =0 {no resources} =1 {one resource} other {# resources}}",
+		"title": "Sources"
+	}
+}

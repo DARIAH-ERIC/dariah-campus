@@ -1,0 +1,666 @@
+---
+title: Tutorial for VOICE 3.0
+locale: en
+publication-date: 2022-11-17
+version: 2.0.0
+authors:
+  - pitzl-marie-luise
+  - riegler-stefanie
+  - osimk-teasdale-ruth
+editors: []
+contributors: []
+tags:
+  - lexicography
+  - scholarly-publishing
+sources:
+  - dariah
+  - acdh-ch
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >-
+    This tutorial explains how to navigate in and use the new VOICE 3.0 Online
+    interface for the Vienna-Oxford International Corpus of English, developed
+    by the VOICE CLARIAH project team and released in September 2021. The
+    tutorial introduces the web interface, explains how to run search queries,
+    apply filters for the creation of sub-corpora and set bookmarks. In
+    addition, it provides short quizzes and links to short videos explaining the
+    design and functions of the VOICE 3.0 interface.
+content-type: training-module
+translations: []
+---
+In September 2021, the VOICE CLARIAH project team developed the new VOICE 3.0 Online interface for the Vienna-Oxford International Corpus of Enlgish, VOICE. VOICE is a computerized open-access corpus of naturally-occurring,spoken English as a lingua franca (ELF) interactions, based on audio-recordings.
+You can access VOICE 3.0 through the web interface at [https://voice3.acdh.oeaw.ac.at](https://voice3.acdh.oeaw.ac.at/), and can bookmark and download your search results.
+The tutorial introduces the web interface, explains how to run search queries, apply filters for the creation of sub-corpora and set bookmarks. In addition, it provides short quizzes and links to short videos explaining the design and functions of the VOICE 3.0 interface.
+The new VOICE 3.0 is also explained in the recordings of the ACDH-CH Tool Gallery 8.1 on "[Spoken corpora and open access: Usability and Technology of VOICE 3.0 Online](https://www.youtube.com/playlist?list=PLN0wiGwlUlbem5euvpMLxpnkDljOZ6k_2)" from April 2022.
+
+## Learning Outcomes
+
+Upon completion of this course, students will be able to
+
+* recall the history and content of VOICE
+* navigate the new VOICE 3.0 web interface
+* run simple search queries in VOICE
+* use placeholders and Boolean operators to finetune search queries
+* create their own sub-corpus in VOICE
+
+## Introduction
+
+## What is VOICE 3.0 Online?
+
+**VOICE** (**V**ienna-**O**xford **I**nternational **C**orpus of **E**nglish) is a computerized open-access corpus capturing more than one million words of naturally-occurring, spoken English as a lingua franca (ELF) interactions. It is based on 151 audio-recordings involving 753 identified individuals from 49 different first language backgrounds using English as a common means of communication.
+
+The VOICE corpus was created between 2005 and 2013 at the University of Vienna with funding from the Austrian Science Fund (FWF) to provide a source for linguistic research that does not concentrate on English as spoken and written by speakers of English as first language, but instead focuses on the use of ELF, the most-wide spread contemporary use of English throughout the world. Since its first release in 2009, VOICE texts are stored in TEI-based XML format and rendered accessible online through an online user interface. Between spring 2020 and autumn 2021, a new TEI-XML version of VOICE (VOICE 3.0 XML [available in ARCHE](https://arche.acdh.oeaw.ac.at/browser/oeaw_detail/171762)) was created and a new open-access user interface, [VOICE 3.0 Online](https://voice3.acdh.oeaw.ac.at), was developed with funding from CLARIAH-AT. This interface, released in autumn 2021 at the Austrian Centre for Digital Humanities and Cultural Heritage (ACDH-CH), offers search facilities, expanded filter and style options, an improved bookmarking tool and new download functions that will be explained in this chapter.
+
+More detailed information on the compilation and history of the corpus can be found on the [VOICE homepage](https://voice.acdh.oeaw.ac.at/aboutvoice) or in the VOICE Corpus Header in [VOICE 3.0 Online](https://voice3.acdh.oeaw.ac.at/#/tool) (click "Corpus Information" and select "VOICE Header").
+
+In addition, you can check out the recordings of the ACDH-CH Tool Gallery 8.1 on "[Spoken corpora and open access: Usability and Technology of VOICE 3.0 Online](https://www.youtube.com/playlist?list=PLN0wiGwlUlbem5euvpMLxpnkDljOZ6k_2)" from April 2022. These provide further information on the compilation of the VOICE corpus, the pros and cons of open access corpora and detailed information on the Open Access technologies, like the local NoSketch Engine set up to run queries, its technology stacks and software packages.
+
+<Video provider="youtube" id="k5VG79YNiyM">
+  Tool Gallery, Input 1: The case of VOICE
+</Video>
+
+## Accessing VOICE 3.0
+
+To access VOICE 3.0 Online, go to [https://voice3.acdh.oeaw.ac.at](https://voice3.acdh.oeaw.ac.at/). If this is your first visit with a particular PC or particular internet browser, you will first be asked to accept – or decline – the use of tracking and cookies. In VOICE 3.0, cookies are used in an anonymous fashion only, without collecting data that can be tracked back to an individual. You can also opt out and use VOICE without cookies. Both settings can also be changed later on in the frontend as well.
+
+Once you have selected your preferences for cookies, the content in the blue area of the **landing page** **changes**. It now gives you the option to explore VOICE, either by **typing in a search query** or by simply clicking "**Browse**" - this takes you to the actual VOICE 3.0 Online interface.
+
+<Figure src="/assets/content/assets/en/resources/hosted/tutorial-for-voice-3-0/voice3-0-startwebinterface.png" alignment="stretch">
+  VOICE 3.0 Web Interface
+</Figure>
+
+The standard design of the VOICE 3.0 web interface is made up of three main areas:
+
+* The area on the **left-hand side** contains the **corpus tree**. The first order of organization is domain. By activating the **SPET** (**SP**eech **E**vent **T**ype) shifter above the corpus tree, the second layer of organization according to speech event types is made available. By clicking on the small arrow next to a domain, a list with the speech events in this domain appears and displays the unique ID of each speech event. An audio symbol next to an ID indicates that a sound file is available for this event. When you click on a particular speech event, it will be opened on the right-hand side.
+* The **middle area** contains the **search field** and will display the **search results** once a query has been run.
+* On the **right-hand side**, users are initially greeted by a **welcome text**. As soon as you have started using the corpus, the **entire transcripts** or corpus information on the speech events you have selected, as well as **metadata** from TEI headers will be displayed here. Once a particular speech event has been opened, you **can switch between different styles** (VOICE, PLAIN, POS and XML). If a sound file is available, you can use the **audio player at the bottom**. Several speech events can be opened next to each other and can be navigated via separate tabs.
+
+The **buttons above the right-hand area** are especially useful: the big button "**Corpus information**" gives you access to more extensive PDF manuals, like the search manual and the VOICE transcription conventions. The **two symbols** next to "Corpus information" allow you to **adjust the display settings**: with the left icon, you can **merge colons**, the right icon allows to adjust the display to a **narrow screen** (e.g. for a mobile phone). Clicking on the same icon again brings you back to the default view.
+The new VOICE 3.0 Online interface provides many integrated tool tips, pop-ups and links to more extensive PDFs with corpus documentation. The goal has been to design an interface that is easy and intuitive to navigate and immediately provides short explanations to the user, while also offering links to more extensive guidelines where useful or necessary.
+
+The following clip offers an introductory tour of the VOICE 3.0 Online interface and explains its main areas and buttons.
+
+<Video provider="youtube" id="yams7cMjnkk">
+  Introduction to VOICE 3.0 Online Interface
+</Video>
+
+#### Quiz: It's your turn!
+
+**Test your knowledge of the VOICE 3.0 Interface**
+
+<Quiz>
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      For a research paper, you are looking for interactions between ELF speakers of English in academic contexts. Which of the five domains available in VOICE 3.0 Online might contain such speech events? Tick the correct answer.
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      PB
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      PR and LE
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      PR and ED
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      ED and LE
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct! In order to find appropriate events, look into the two domains PR (professional and research/science) and ED (educational). Tip: Hovering over the domain abbreviation with your mouse reveals a short definition of the domain.
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry! Have a look at the domain descriptions again, either by hovering over the domains with your mouse in the corpus tree on the left or by going to Corpus information and VOICE Header.
+    </QuizErrorMessage>
+  </QuizChoice>
+
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      You are really satisfied with your search results and you want to cite the VOICE corpus in your research paper. Where can you find the biographical information in the VOICE 3.0 Online interface? Tick ALL options that lead to the desired result.
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="correct">
+      I go to "Corpus information" and click on "How to cite VOICE".
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      At the bottom of the website, in the middle, I can immediately find the short citation for VOICE 3.0 Online. The long version appears when hovering over the small "i" icon.
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      I go to the VOICE project homepage at voice.acdh.oeaw\.ac.at and look for the necessary information there.
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Well done! All answers are correct. In fact, there are various options to find the information for your bibliography.
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Your chosen option was definitely correct, but what about the other options stated?
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+## Searches in VOICE 3.0
+
+Searches can be easily carried out with the help of the **search field** at the top left corner of the middle area. Once a search has been run, all search results will be displayed in this area. You can then adjust the display of your results by switching between the different **styles** offered (i.e. **VOICE, PLAIN, POS,** and **XML**). For VOICE, PLAIN and POS, you can additionally choose to display results in **KWIC** (KeyWord In Context) view. When you choose VOICE or POS style, further modifications are possible by using the options offered at the bottom. These allow you to selectively display - or hide - different mark-up categories according to your research needs or to change the representation of POS (part-of-speech) tags.
+
+### Simple Searches
+
+#### Token search (word form)
+
+In order to search for a word or word form (i.e. token queries), enter the word using lower-case characters, e.g. *speak*. Please note that all queries are case-sensitive and tokens are searched for with lower case characters, e.g. *i speak french,* as this is how they are represented in VOICE transcripts. You can, of course, search for phrases (i.e. token token) as well.
+
+If you want to search for contracted forms, like *wanna, gonna, don't,* etc., you need to insert a space before the contracted part in your query in VOICE 3.0 Online, i.e.: *wan na, gon na, do n't, it 's*.
+
+#### Lemma search
+
+A lemma is the basic form of a word, which represents all declensions and inflected forms of a word, e.g. *walk* is the lemma of *walk, walks, walking*. To search for all tokens of a lemma, use the form "l:lemma", e.g. *l:walk*.
+
+#### POS search
+
+POS, or **P**art-**o**f **S**peech annotations, allow searching for the morphosyntactic categories of tokens. Each token in VOICE has been annotated with an individual POS tag for morphological form, and, in parentheses, for syntactic function. Often, these are identical, as in *professional\_JJ(JJ)*, but they may also diverge.
+
+If a POS tag is searched for without further specification in VOICE 3.0 Online, both positions (i.e. form and function) are searched. If you want to search them separately, use *p:POS* for form position or *f:POS* for function position.
+
+For POS searches, enter the POS tag in capital letters. For further details, please go to the [POS tagging manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/POS-tagging-and-lemmatization-manual.pdf) and consult the [VOICE Tagset](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/Short-POS-tagset.pdf).
+
+#### Mark-up search
+
+As an entirely novel feature of VOICE 3.0 Online, conversational mark-up can now be searched for and retrieved in different ways in the new interface. Users can:
+
+* search for **tokenized mark-up**, such as **pauses** (e.g.: *1, \_2, etc.) or **laughter** (e.g.:* @, @@). The numbers 1, 2, etc. or number of symbols indicate the length of pauses or laughter represented in the transcripts.
+* or search for **POS tags** **indicating mark-up**, such as **PVC** (pronunciation variations & coinages), **ONO** (onomatopoeic noises), etc.
+* In addition, VOICE 3.0 Online offers the **possibility to search for** words, POS and lemmas that occur within and between **stretches of conversational mark-up** in the corpus, such as stretches of s**peaking modes, non-English speech,** or **overlapping speech**, by using pointed brackets, e.g. `<soft/>, <L1ita/>, or <ol/>.`
+* Furthermore, to search within mark-up, the search-words "within" or "containing" can be used to search for tokens, POS or lemma. For example, the search phrase *really within `<ol/>`* gives you all results of the word really within overlapping speech.
+
+Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.0 Online [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf).
+The VOICE tagging scheme has been said to be especially strong in displaying features typical of spoken language. This is possible because already during the early stages of the corpus compilation, it was decided to add additional tags to the [PENN Treebank tagset](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html) to represent spoken features in the corpus. The following illustration shows some examples of spoken features that have been tagged and thus allow powerful searches in VOICE:
+
+<Figure src="/assets/content/assets/en/resources/hosted/tutorial-for-voice-3-0/voice-pos-tagging-spoken-features.png" alignment="stretch">
+  VOICE POS tagging - spoken features
+</Figure>
+
+Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.0 Online [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf).
+
+#### Quiz - It's your turn!
+
+**Simple Searches in VOICE 3.0 Online**
+
+<Quiz>
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      How many instances of the word *English* does a simple search in VOICE 3.0 Online yield?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      14
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      1329
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      5031
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      406
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Well done! If you got 1329 results, then you have correctly entered the token English in lowercase letters.
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry! Try again and check how you need to search for a token in VOICE 3.0 Online.
+    </QuizErrorMessage>
+  </QuizChoice>
+
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      Humour and laughter are important topics in ELF research. VOICE 3.0 Online allows you to search for laughter in VOICE data in various forms. Which of these queries gives you stretches of laughingly spoken sequences?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      `_@+`
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      `<@/>`
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      `_@`
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      `Q`
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Well done! By using pointed brackets, you can search for stretches of conversational mark-up, such as laughter. Laughter is represented by the symbol @ in VOICE.
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      The first answer option searches for strings of tokenized laughter of any lenght, while with the third answer option you search for a particular number of tokenized laughter. The fourth and final answer option is no valid search.
+    </QuizErrorMessage>
+  </QuizChoice>
+
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      You want to find out if word coinages are frequently uttered softly or whispered. Which of the options below will **not** yield meaning results for this search? Tip: consult the POS tagging and search manual!
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      PVC within `<soft/>`
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      PVC `<soft/>`
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      `<soft/>` containing PVC
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      PVC within `<whispering/>`
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct. This query searches for a string of PVC (pronunciation variation and coinage) followed by a softly spoken sequence.
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Check your results and try out the other stated options in the VOICE 3.0 Online interface – which of them provides the correct answer to your search for softly or whispered word coinages?
+    </QuizErrorMessage>
+  </QuizChoice>
+
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      You are interested in the use of code-switches into French, which is not the L1 of a speaker. How do you search for this?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      `<LQ/>`
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      `<L/>`
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      `<L1fre/>`
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      `<LNfre/>`
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Have a look at the search manual in the Corpus Information and check your search query.
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+### Fine-tuning your searches:
+
+#### Placeholders
+
+In order to adjust the search results to the needs of your research question, the following **placeholders** might be useful:
+
+* **`.` Full stop:** matches any single character. You can perceive this as a kind of universal joker. Example: Searching for `hi.` results in: *him, his, hit*, etc.
+* **`[...]`** **Character class:** matches any character contained in the brackets, e.g. `h\[ai]t` – *hat, hit*
+* **`[^...]` Inverted character class:** matches any character not contained in the bracket, e.g. `h\[^ai]` – *hot, hut*
+* **`?` Question mark:** the preceding element can appear 0 or 1 times, i.e. it is optional. Example: *houses?* – *house, houses*
+* **`+` Plus:** the preceding element must appear 1 or more times, i.e. it is not optional and might be repeated. Example: `house.+` results in *houses, household, housewives*, i.e. all words that start with house plus at least one more character.
+* **`*` Asterisk:** particularly useful, since the preceding element can appear 0 or more times, i.e. it is optional and might be repeated.
+* **`(...)` Brackets:** these can be used to group characters (and even regular expressions) to form new elements. In addition, we can combine them with the quantifiers `?`, `+`, and `*` and let them operate on specified groups. Example: `*(wo)?man` - *man, woman*
+
+<Callout kind="note" title="Info:">
+  You might be familiar with the usage of wildcards, i.e. plain `?`, `+`, or `*` from other tools. In wildcard syntax, the asterisk, for example denotes "zero or more characters". **VOICE 3.0 Online**, however, **uses regex** (regular expressions). Here, the symbols work as quantifiers which operate on the preceding element. In regex, the use of the asterisk in `hous*` will only quantify the final "e" and thus will only match *hous, house, housee, houseeee*, etc.
+
+  If you want to use the **symbols as wildcards**, you have to place the **placeholder character** "." (full stop) in front of them. Thus, searching for `house.+` will result in *house, houses, household, housewives*, etc., or `.+ize` in *organize, apologize, harmonize,* etc.c
+</Callout>
+
+To gain even more precise control over the number of allowed and necessary character repetitions, you can use curly brackets with *min,max*. Leaving the max empty means there is no upper limit (see section 3.2 of the [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf)).
+
+#### Boolean Operators in VOICE 3.0
+
+* **AND** is represented by a **comma**. Note that there is no space between the conditions. Thus, entering condition1,condition2 will yield results which matches both conditions. Any sequence of items before and after the comma is possible, e.g.: *walk,NN* - finds tokens of *walk* tagged as noun, as in "a five minute walk".
+* **OR** is represented by a **vertical line |**. It finds any options to the left or the right of the vertical line. It can be used for any sequence of tokens, lemmas or POS tags before and after the line, and more than two options can be specified. For example: *mean | say* that - finds: *mean that, say that*.
+
+More details on searches with wildcards and placeholders can be found in the [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf).
+
+In the following video clip, VOICE project member Ruth Osimk-Teasdale demonstrates the combinations of tokens, lemma, and POS tags in a number of searches, and shows how to display your search results in the different style options (VOICE, plain, POS, XML, and KWIC) available in VOICE 3.0.
+
+<Video provider="youtube" id="CBtvJQxYxiw">
+  VOICE 3.0 Online -Searches
+</Video>
+
+#### **Quiz - It's your turn!**
+
+**Searches with placeholders in VOICE**
+
+<Quiz>
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      You are interested in vague expressions and looking for the classifier *some sort of* followed by a singular noun with an **asterisk wildcard** (to include also plural noun tags). Which domain yields **no** instances of this construction? Tip: Consult the POS tagset in the Corpus information if necessary.
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      LE
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      ED
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      PB
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      PO
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      For this query, you should type in "some sort of NN\*". With the tag NN plus the asterisk, you search for single nouns and plural nouns.
+    </QuizErrorMessage>
+  </QuizChoice>
+
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      You want to find out how state verbs are used in VOICE. Search for all verb forms of *taste*. What does your query look like?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      tast.\*,VVP
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      taste,VV
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      tast.\*,V.\*
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      taste
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct - this yields 24 hits in 23 utterances
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Consult the POS tagset in the Corpus information and check!
+      (Explanation: VVP searches for present tense verb taste, the second answer option searches for taste as base form and the fourth option searches for the token "taste", including taste as noun, but not the verb forms tasting, tasted, etc.)
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+### Bookmarks and Filters: Creating your own subcorpus in VOICE 3.0
+
+In VOICE 3.0 Online, users have the possibility to create their own sub-corpora by applying filters. In addition, they can bookmark their search results, which they can subsequently export and import.
+
+In the following short clip, you will learn how to apply filters and bookmarks.
+
+<Video provider="youtube" id="C5dkaQtgH2A">
+  VOICE 3.0 Online - Filters and Bookmarks
+</Video>
+
+In order to create your own corpus, first of all navigate to the tab "**Filter**" in the left-hand area and turn on the filter options. You can then narrow down the corpus by applying criteria such as number of speakers or interactants, power relations, duration of speech events, or L1 language. After you have set your desired filters, navigate back to the corpus tree. It will now highlight in **bold** those speech events to which your filters apply. If you like, you can hide all other speech events by using the respective toggle above the tree.
+
+Once you have set your filters, you can use the search field in the middle area and search your subcorpus. All speech events from your corpus which yield results for your search will then be highlighted in **bold** in the corpus tree. In addition, events which would also yield results for your query but are not part of your subcorpus will be marked in **grey and bold**, as can be seen in the following illustration:
+
+<Figure src="/assets/content/assets/en/resources/hosted/tutorial-for-voice-3-0/voice3-0-filter-grey-highlighted.png" alignment="stretch">
+  Search results for corpus and subcorpus, with opened transcripts on the
+  right-hand side
+</Figure>
+
+If you would like to add particular speech events to your subcorpus, tick the box next to the speech event. **Please note** that in order to do so, the function "**Manual selection**", which can be found in the "**Filter**" tab, has to be turned on.
+
+<Callout kind="tip" title="Tip: Manual Selection">
+  The function "**Manual selection**" in the filter area gives you the option to manually choose speech events for your subcorpus. In order to do so, you must turn on the function and go to the corpus tree. Speech events can be added by ticking the respective box. This function can be used before you run a search or after you have run a search.
+
+  <Figure src="/assets/content/assets/en/resources/hosted/tutorial-for-voice-3-0/voice3-0-filters-manually.png" alignment="stretch">
+    Activating manual selection
+  </Figure>
+</Callout>
+
+#### Setting bookmarks
+
+Bookmarks can be easily set with the help of the third tab in the left-hand area. First of all, activate icons and local storage. Once you have done so, small icons appear next to the search results in the middle area. You now have the possibility to select a search result (i.e. a particular utterance) and create a bookmark for it. You can add a short description, and then save the bookmark (as URL, .txt or .xlsx). Saved bookmarks will appear on the left if you click on the tab "**Bookmarks**".
+
+<Figure src="/assets/content/assets/en/resources/hosted/tutorial-for-voice-3-0/voice3-0-bookmark-export.png" alignment="stretch">
+  Working with bookmarks
+</Figure>
+
+#### Download Function
+
+A new and very handy feature of VOICE 3.0 Online is the download function, because it gives users the possibility to store their online searches locally and further modify their results, e.g. for further statistical analyses or a more detailed coding of the results.
+
+After you have carried out a search, the download button (i.e. arrow) can be found in the middle area on the right-hand side, next to different style options. Before you start the download, select the style you need, because the downloaded file mirrors what you see in the online interface. Thus, if you have chosen VOICE style, the downloaded file will display the results in this style. When you click on the download arrow, you can select between five different file format and choose the one that most suits your future needs.
+
+#### Quiz - It's your turn!
+
+**Filters and bookmark function in VOICE 3.0 Online**
+
+<Quiz>
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      Let's start with an easy task: You are looking for transcripts from dyadic interactions between unacquainted speakers. How many of these can you find in VOICE 3.0 Online?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      14
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      12
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      10
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      8
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      If your answer was not 12 but 14, then you used the filter for interactants instead of speakers. The difference might be small, but important: Interactants also include researchers or persons not involved in the conversation, like for example a waiter who brings coffee to a table of speakers. The small "i" icon next to the filters provides more information on the filter categories when hovering over it. 10 and 8 are wrong.
+    </QuizErrorMessage>
+  </QuizChoice>
+
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      Due to the limited scope of research projects in university courses, you would like to identify the shortest speech event for which an audio file is available in the corpus. Which one is the correct speech event?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="correct">
+      PRqas409
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      EDsve422
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      PBqas411
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      LEcon420
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct, the file's duration is 10 minutes, 53 seconds.
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Turn on the filter for audio files so that only speech events with an audio file are shown; furthermore, there are two filter categories which will help you narrow down the events, namely "duration of speech event" and "number of words". They can either be used on their own or in combination.
+    </QuizErrorMessage>
+  </QuizChoice>
+
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      You bookmark an utterance from PRqas409 indicating the category and including a comment for later. Then export your bookmark(s). Which information is NOT provided in the file?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      Number of bookmarks
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      Date and time of export
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      Utterance ID
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      Speaker information
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Use the explanation above to set a bookmark and then download it as .xlsx file. Then download it and check!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+### Conclusion - Advanced Searches
+
+Due to its new filters and search functions, VOICE 3.0 Online allows for very powerful searches. As conclusion to this tutorial, we invite you to try out our advanced search quiz.
+
+Tip: Before you start the quiz, it might be helpful to download the search manual and/or the POS tagging manual so that you can quickly look up any POS tag you might need to solve the quiz.
+
+#### Advanced Quiz
+
+**Combing filters and searches**
+
+<Quiz>
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      To resources from which language do the speakers in the two business meetings including L1 speakers of Serbian refer that is neither English nor any of the speakers' L1?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      Spanish
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      Italian
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      French
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      Croatian
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Have a close look at the question and your filters: first of all, select the correct domain PB, then narrow down your search to mtg = meeting. Select *Serbian* as L1. Now, you need to type in the correct search query: \<LN/>. Finally, compare \<LN/> tags with **Speaker Information** in text header.
+    </QuizErrorMessage>
+  </QuizChoice>
+
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      How many of the speech events in your subcorpus of transcripts from working group discussions in an educational setting feature non-English tokens?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      1
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      2
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      4
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      5
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct - select ED in domain, select wdg, type FW in search field, navigate to the tree and check which events are highlighted in bold.
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Check your filters. You should have selected ED in domain and wdg for SPET. Then type FW in the search field and navigate to the tree. Check the events highlighted in bold. Alternatively, you can search for \<LN/>.
+    </QuizErrorMessage>
+  </QuizChoice>
+
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      How many response particles are produced by speakers while someone else is speaking in leisure conversations in VOICE?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      20652
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      2080
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      2179
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      1808
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      If your results was 20562, you searched without setting filters; if you had 2179, then you have only set the filter for leisure, but not for conversation. If you got 1808 results, then you searched for \<ol/> containing, which counts the number of overlaps but not the number of response particles.
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+### Links:
+
+* Osimk-Teasdale, Ruth; Pirker, Hannes; Pitzl, Marie-Luise. 2021. [Search manual for VOICE 3.0 Online. https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf>). (14 March 2022).
+* Pitzl, Marie-Luise. [VOICE: Vienna-Oxford-International Corpus of English](https://voice.acdh.oeaw.ac.at/). Homepage. [https:/voice.acdh.oeaw.ac.at](https://voice.acdh.oeaw.ac.at/). (14 March 2022).
+* [VOICE](https://voice3.acdh.oeaw.ac.at/). 2021. The Vienna-Oxford International Corpus of English (version VOICE 3.0 Online). Founding director: Barbara Seidlhofer; Principal investigators VOICE 3.0: Marie-Luise Pitzl, Daniel Schopper; Researchers: Angelika Breiteneder, Hans-Christian Breuer, Nora Dorn, Theresa Klimpfinger, Stefan Majewski, Ruth Osimk-Teasdale, Hannes Pirker, Marie-Luise Pitzl, Michael Radeka, Stefanie Riegler, Barbara Seidlhofer, Omar Siam, Daniel Stoxreiter. [https://voice3.acdh.oeaw.ac.at](https://voice3.acdh.oeaw.ac.at) (14 March 2022).
+* Pitzl, Marie-Luise, Ruth Osimk-Teasdale, Stefanie Riegler, Hannes Pirker, Omar Siam. *ACDH-CH Tool Gallery 8.1.: Spoken Corpus Linguistics and Open Access: Usability and Technology of VOICE 3.0 Online*. Youtube. April 2022. [https://www.youtube.com/playlist?list=PLN0wiGwlUlbem5euvpMLxpnkDljOZ6k\_2](https://www.youtube.com/playlist?list=PLN0wiGwlUlbem5euvpMLxpnkDljOZ6k_2).

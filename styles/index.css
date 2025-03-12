@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+:root {
+	--page-header-height: 100px;
+
+	block-size: 100%;
+	-webkit-tap-highlight-color: transparent;
+	text-size-adjust: none;
+}
+
+body {
+	block-size: 100%;
+}
+
+[id] {
+	scroll-margin-block-start: 125px;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+input[type="search"]::-webkit-search-decoration {
+	display: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+	display: none;
+}
+
+input[type="search"]::-webkit-search-results-button {
+	display: none;
+}
+
+input[type="search"]::-webkit-search-results-decoration {
+	display: none;
+}

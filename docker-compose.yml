@@ -1,0 +1,25 @@
+services:
+  typesense:
+    image: typesense/typesense:27.1
+    container_name: typesense
+    restart: unless-stopped
+    environment:
+      - TYPESENSE_API_KEY=${TYPESENSE_ADMIN_API_KEY}
+      - TYPESENSE_DATA_DIR=/data
+      - TYPESENSE_ENABLE_CORS=true
+    ports:
+      - 8108:8108
+    volumes:
+      - typesense-data:/data
+
+  typesense-dashboard:
+    image: ghcr.io/bfritscher/typesense-dashboard:latest
+    container_name: typesense-dashboard
+    restart: unless-stopped
+    depends_on:
+      - typesense
+    ports:
+      - 5050:80
+
+volumes:
+  typesense-data:
