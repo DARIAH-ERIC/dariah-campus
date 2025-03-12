@@ -83,7 +83,7 @@ async function SearchSection(): Promise<ReactNode> {
 					<div className="relative mx-auto w-full max-w-2xl">
 						<input
 							className="flex w-full items-center rounded-full border border-neutral-200 py-5 pl-14 pr-6 text-lg shadow-xl transition placeholder:text-neutral-500 hover:border-brand-700 focus:outline-none focus-visible:border-brand-700 focus-visible:ring focus-visible:ring-brand-700"
-							name="dariah-campus[query]" // FIXME: change when removing instantsearch
+							name="q" // FIXME: change when removing instantsearch
 							placeholder={`${t("search")}...`}
 							type="search"
 						/>
