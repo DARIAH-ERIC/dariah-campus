@@ -95,15 +95,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam interdum placerat n
 
 ### More Widgets for you to Use
 
-At this point i the resource we are not going to add any more text unless it is required to demonstrate a widget.
+At this point in the resource we are not going to add any more text unless it is required to demonstrate a widget.
 
 #### Link button
+
+You can use this to add a link button out to an external website.
 
 <LinkButton link={{"discriminant":"external","value":"https://www.dariah.eu"}}>
   Go to main DARIAH website
 </LinkButton>
 
 #### Quiz
+
+There are a couple of quiz options ('multiple choice' or 'text input' options) available to you if you want to add short self-evaluation exercises into your learning resource.  You can do this mid-way through the resource to allow learners to check their learning as they go, or you can add quizzes at the end for a final test.
 
 <Quiz>
   <QuizChoice variant="multiple">
@@ -139,21 +143,25 @@ At this point i the resource we are not going to add any more text unless it is 
 
 #### Tabs
 
+If you want to add a lot of related information but want to show it in a different format, tabs can offer a way to do that. &#x20;
+
+
+
 <Tabs>
-  <Tab title="North">
-
-  </Tab>
-
   <Tab title="South">
-
+    Add some text here
   </Tab>
 
   <Tab title="East">
-
+    More text here
   </Tab>
 
   <Tab title="West">
+    Even more text here
+  </Tab>
 
+  <Tab>
+    Fed up with seeing text?  Too bad, here's some more!
   </Tab>
 </Tabs>
 
