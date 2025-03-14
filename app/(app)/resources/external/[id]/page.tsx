@@ -239,6 +239,7 @@ export default async function ExternalResourcePage(
 							return { id: person.id, name: person.data.name };
 						})}
 						contentType={resource.data["content-type"].value}
+						doi={doi}
 						license={license}
 						locale={contentLocale}
 						publicationDate={publicationDate}

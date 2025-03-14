@@ -7,6 +7,7 @@ import type { ContentLanguage, ContentType } from "@/lib/content/options";
 interface ResourceMetadataProps {
 	authors: Array<{ id: string; name: string }>;
 	contentType: ContentType | "curriculum" | "event" | "pathfinder";
+	doi?: string;
 	license: { value: string; label: string };
 	locale: ContentLanguage;
 	publicationDate: Date;
@@ -21,6 +22,7 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 	const {
 		authors,
 		contentType,
+		doi,
 		publicationDate,
 		license,
 		locale,
@@ -32,7 +34,7 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 	} = props;
 	const { domain } = sharedMetadata;
 
-	const t = useTranslations("FullMetadata");
+	const t = useTranslations("ResourceMetadata");
 	const format = useFormatter();
 
 	return (
@@ -59,7 +61,7 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 				</div>
 				<div className="flex gap-x-1.5">
 					<dt>{t("language")}:</dt>
-					<dd>{locale}</dd>
+					<dd>{new Intl.DisplayNames(locale, { type: "language" }).of(locale)}</dd>
 				</div>
 				<div className="flex gap-x-1.5">
 					<dt>{t("publication-date")}:</dt>
@@ -103,6 +105,16 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 					<dt>{t("version")}:</dt>
 					<dd>{version}</dd>
 				</div>
+				{doi ? (
+					<div className="flex gap-x-1.5">
+						<dt>{t("pid")}:</dt>
+						<dd>
+							<a className="underline hover:no-underline" href={doi}>
+								{doi}
+							</a>
+						</dd>
+					</div>
+				) : null}
 			</dl>
 		</div>
 	);

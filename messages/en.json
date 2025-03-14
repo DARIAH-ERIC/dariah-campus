@@ -139,31 +139,6 @@
 		"toggle-table-of-contents": "Toggle table of contents",
 		"translations": "Translations"
 	},
-	"FullMetadata": {
-		"authors": "Authors",
-		"content-type": "Content type",
-		"content-types": {
-			"audio": "Audio",
-			"curriculum": "Curriculum",
-			"event": "Event",
-			"pathfinder": "Pathfinder",
-			"slides": "Slides",
-			"training-module": "Training module",
-			"video": "Video",
-			"webinar-recording": "Webinar recording",
-			"website": "Website"
-		},
-		"domain": "Domain",
-		"label": "Full metadata",
-		"license": "License",
-		"language": "Language",
-		"publication-date": "Published to DARIAH-Campus",
-		"remote-publication-date": "Originally published",
-		"sources": "Sources",
-		"tags": "Topics",
-		"title": "Title",
-		"version": "Version"
-	},
 	"HostedResourcePage": {
 		"authors": "Authors",
 		"close": "Close",
@@ -237,6 +212,32 @@
 		"suggest-changes-to-resource": "Suggest changes to resource",
 		"tags": "Topics",
 		"translations": "Translations"
+	},
+	"ResourceMetadata": {
+		"authors": "Authors",
+		"content-type": "Content type",
+		"content-types": {
+			"audio": "Audio",
+			"curriculum": "Curriculum",
+			"event": "Event",
+			"pathfinder": "Pathfinder",
+			"slides": "Slides",
+			"training-module": "Training module",
+			"video": "Video",
+			"webinar-recording": "Webinar recording",
+			"website": "Website"
+		},
+		"domain": "Domain",
+		"label": "Full metadata",
+		"license": "License",
+		"language": "Language",
+		"pid": "PID",
+		"publication-date": "Published to DARIAH-Campus",
+		"remote-publication-date": "Originally published",
+		"sources": "Sources",
+		"tags": "Topics",
+		"title": "Title",
+		"version": "Version"
 	},
 	"ResourcesPage": {
 		"authors": "Authors",
