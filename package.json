@@ -79,6 +79,7 @@
 		"to-vfile": "^8.0.0",
 		"typesense": "^2.0.2",
 		"typesense-instantsearch-adapter": "^2.8.0",
+		"undici": "^7.5.0",
 		"uuid": "^11.1.0",
 		"valibot": "^1.0.0-rc.1",
 		"vfile-matter": "^5.0.0",
