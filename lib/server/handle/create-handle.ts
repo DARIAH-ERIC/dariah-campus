@@ -42,7 +42,7 @@ export async function createHandle(resource: URL, suffix = uuid()): Promise<URL>
 
 	const data = [
 		{
-			index: 1, // FIXME:
+			index: 1,
 			type: "URL",
 			data: {
 				format: "string",
