@@ -80,16 +80,20 @@ async function SearchSection(): Promise<ReactNode> {
 			<SearchForm action="/search">
 				<label>
 					<span className="sr-only">{t("search")}</span>
-					<div className="relative mx-auto w-full max-w-2xl">
+					<div className="group relative mx-auto flex w-full max-w-2xl overflow-hidden rounded-full bg-white bg-clip-padding text-lg shadow-xl transition focus-within:ring focus-within:ring-brand-800">
 						<input
-							className="flex w-full items-center rounded-full border border-neutral-200 py-5 pl-14 pr-6 text-lg shadow-xl transition placeholder:text-neutral-500 hover:border-brand-700 focus:outline-none focus-visible:border-brand-700 focus-visible:ring focus-visible:ring-brand-700"
+							className="flex-1 rounded-l-full border border-neutral-200 bg-none px-6 py-5 transition placeholder:text-neutral-400 group-focus-within:border-brand-800 group-hover:border-brand-800 focus:outline-none"
 							name="q" // FIXME: change when removing instantsearch
-							placeholder={`${t("search")}...`}
+							placeholder={`${t("find-learning-resources")}...`}
 							type="search"
 						/>
-						<div className="absolute inset-y-0 left-6 inline-grid place-content-center">
-							<SearchIcon aria-hidden={true} className="size-6 stroke-2 text-neutral-400" />
-						</div>
+						<button
+							className="inline-flex items-center gap-x-2 rounded-r-full border border-l-transparent bg-neutral-50 pl-6 pr-10 text-brand-800 transition group-focus-within:border-brand-800 group-focus-within:border-l-transparent hover:bg-brand-800 hover:text-white group-hover:border-brand-800 group-hover:border-l-transparent focus:bg-brand-700 focus:text-white focus:outline-none"
+							type="submit"
+						>
+							<SearchIcon aria-hidden={true} className="size-5 stroke-2" />
+							<span className="text-base font-medium">{t("search")}</span>
+						</button>
 					</div>
 				</label>
 			</SearchForm>
