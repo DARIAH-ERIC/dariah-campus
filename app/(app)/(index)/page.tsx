@@ -84,15 +84,15 @@ async function SearchSection(): Promise<ReactNode> {
 						<input
 							className="flex-1 rounded-l-full border border-neutral-200 bg-none px-6 py-5 transition placeholder:text-neutral-400 group-focus-within:border-brand-800 group-hover:border-brand-800 focus:outline-none"
 							name="q" // FIXME: change when removing instantsearch
-							placeholder={`${t("find-learning-resources")}...`}
+							placeholder={`${t("search")}...`}
 							type="search"
 						/>
 						<button
-							className="inline-flex items-center gap-x-2 rounded-r-full border border-l-transparent bg-neutral-50 pl-6 pr-10 text-brand-800 transition group-focus-within:border-brand-800 group-focus-within:border-l-transparent hover:bg-brand-800 hover:text-white group-hover:border-brand-800 group-hover:border-l-transparent focus:bg-brand-700 focus:text-white focus:outline-none"
+							className="inline-flex items-center gap-x-2 rounded-r-full border border-l-transparent bg-neutral-50 pl-6 pr-10 text-neutral-600 transition group-focus-within:border-brand-800 group-focus-within:border-l-transparent hover:bg-brand-800 hover:text-white group-hover:border-brand-800 group-hover:border-l-transparent focus:bg-brand-700 focus:text-white focus:outline-none"
 							type="submit"
 						>
 							<SearchIcon aria-hidden={true} className="size-5 stroke-2" />
-							<span className="text-base font-medium">{t("search")}</span>
+							<span className="text-base font-medium">{t("submit-search-form")}</span>
 						</button>
 					</div>
 				</label>
