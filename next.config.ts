@@ -59,6 +59,12 @@ const config: NextConfig = {
 				permanent: false,
 			},
 			..._redirects.redirects,
+			..._redirects.redirects.map((redirect) => {
+				return {
+					...redirect,
+					source: `/en${redirect.source}`,
+				};
+			}),
 		];
 
 		return Promise.resolve(redirects);
