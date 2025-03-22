@@ -157,7 +157,9 @@
 		"title": "Imprint"
 	},
 	"IndexPage": {
-		"search": "Search"
+		"find-learning-resources": "Find learning resources",
+		"search": "Search",
+		"submit-search-form": "Submit"
 	},
 	"Loading": {
 		"loading": "Loading"
