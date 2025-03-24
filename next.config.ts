@@ -5,6 +5,7 @@ import createI18nPlugin from "next-intl/plugin";
 
 import { env } from "@/config/env.config";
 import _redirects from "@/public/redirects.json";
+import _redirectsIds from "@/public/redirects-ids.json";
 
 const config: NextConfig = {
 	/** Compression should be handled by nginx reverse proxy. */
@@ -65,6 +66,7 @@ const config: NextConfig = {
 					source: `/en${redirect.source}`,
 				};
 			}),
+			..._redirectsIds.redirects,
 		];
 
 		return Promise.resolve(redirects);
