@@ -12,6 +12,7 @@ interface ResourceMetadataProps {
 	locale: ContentLanguage;
 	publicationDate: Date;
 	remotePublicationDate?: Date;
+	remoteUrl?: string;
 	sources: Array<{ id: string; name: string }>;
 	tags: Array<{ id: string; name: string }>;
 	title: string;
@@ -27,6 +28,7 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 		license,
 		locale,
 		remotePublicationDate,
+		remoteUrl,
 		sources,
 		tags,
 		title,
@@ -71,6 +73,16 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 					<div className="flex gap-x-1.5">
 						<dt>{t("remote-publication-date")}:</dt>
 						<dd>{format.dateTime(remotePublicationDate)}</dd>
+					</div>
+				) : null}
+				{remoteUrl ? (
+					<div className="flex gap-x-1.5">
+						<dt>{t("remote-url")}:</dt>
+						<dd>
+							<a className="underline hover:no-underline" href={remoteUrl}>
+								{remoteUrl}
+							</a>
+						</dd>
 					</div>
 				) : null}
 				<div className="flex gap-x-1.5">

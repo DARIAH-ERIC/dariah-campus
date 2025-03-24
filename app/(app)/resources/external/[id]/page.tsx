@@ -244,6 +244,7 @@ export default async function ExternalResourcePage(
 						locale={contentLocale}
 						publicationDate={publicationDate}
 						remotePublicationDate={remote["publication-date"]}
+						remoteUrl={remote.url}
 						sources={sources.map((source) => {
 							return { id: source.id, name: source.data.name };
 						})}
