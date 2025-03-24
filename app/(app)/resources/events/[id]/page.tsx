@@ -249,10 +249,9 @@ export default async function EventResourcePage(
 							return { id: person.id, name: person.data.name };
 						})}
 						contentType={resource.data["content-type"].value}
-						doi={doi}
 						publicationDate={publicationDate}
 						title={title}
-						url={String(createFullUrl({ pathname: createResourceUrl(resource) }))}
+						url={doi || String(createFullUrl({ pathname: createResourceUrl(resource) }))}
 						version={version}
 					/>
 					<ReUseConditions />
@@ -331,10 +330,9 @@ export default async function EventResourcePage(
 								return { id: person.id, name: person.data.name };
 							})}
 							contentType={resource.data["content-type"].value}
-							doi={doi}
 							publicationDate={publicationDate}
 							title={title}
-							url={String(createFullUrl({ pathname: createResourceUrl(resource) }))}
+							url={doi || String(createFullUrl({ pathname: createResourceUrl(resource) }))}
 							version={version}
 						/>
 						<ReUseConditions />
