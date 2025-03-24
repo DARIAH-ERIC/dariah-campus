@@ -235,6 +235,7 @@
 		"pid": "PID",
 		"publication-date": "Published to DARIAH-Campus",
 		"remote-publication-date": "Originally published",
+		"remote-url": "URL",
 		"sources": "Sources",
 		"tags": "Topics",
 		"title": "Title",

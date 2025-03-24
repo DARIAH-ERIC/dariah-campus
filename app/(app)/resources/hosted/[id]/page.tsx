@@ -181,13 +181,12 @@ export default async function HostedResourcePage(
 						contributors={contributors.map((person) => {
 							return { id: person.id, name: person.data.name };
 						})}
-						doi={doi}
 						editors={editors.map((person) => {
 							return { id: person.id, name: person.data.name };
 						})}
 						publicationDate={publicationDate}
 						title={title}
-						url={String(createFullUrl({ pathname: createResourceUrl(resource) }))}
+						url={doi || String(createFullUrl({ pathname: createResourceUrl(resource) }))}
 						version={version}
 					/>
 					<ReUseConditions />
@@ -222,13 +221,12 @@ export default async function HostedResourcePage(
 							contributors={contributors.map((person) => {
 								return { id: person.id, name: person.data.name };
 							})}
-							doi={doi}
 							editors={editors.map((person) => {
 								return { id: person.id, name: person.data.name };
 							})}
 							publicationDate={publicationDate}
 							title={title}
-							url={String(createFullUrl({ pathname: createResourceUrl(resource) }))}
+							url={doi || String(createFullUrl({ pathname: createResourceUrl(resource) }))}
 							version={version}
 						/>
 						<ReUseConditions />
