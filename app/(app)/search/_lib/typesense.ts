@@ -11,7 +11,7 @@ export function createSearchClient(): SearchClient {
 
 	const adapter = new Adapter({
 		additionalSearchParameters: {
-			query_by: ["title", "summary"].join(","),
+			query_by: ["title", "summary", "tags"].join(","),
 			limit,
 		},
 		server: {
