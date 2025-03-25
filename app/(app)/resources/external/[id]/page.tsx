@@ -182,7 +182,6 @@ export default async function ExternalResourcePage(
 						contributors={contributors.map((person) => {
 							return { id: person.id, name: person.data.name };
 						})}
-						doi={doi}
 						editors={editors.map((person) => {
 							return { id: person.id, name: person.data.name };
 						})}
@@ -224,7 +223,6 @@ export default async function ExternalResourcePage(
 							contributors={contributors.map((person) => {
 								return { id: person.id, name: person.data.name };
 							})}
-							doi={doi}
 							editors={editors.map((person) => {
 								return { id: person.id, name: person.data.name };
 							})}
@@ -246,6 +244,7 @@ export default async function ExternalResourcePage(
 						locale={contentLocale}
 						publicationDate={publicationDate}
 						remotePublicationDate={remote["publication-date"]}
+						remoteUrl={remote.url}
 						sources={sources.map((source) => {
 							return { id: source.id, name: source.data.name };
 						})}

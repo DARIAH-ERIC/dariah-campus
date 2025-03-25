@@ -9,7 +9,6 @@ interface CitationProps {
 	authors: Array<{ id: string; name: string }>;
 	contentType: ContentType | "curriculum" | "event" | "pathfinder";
 	contributors?: Array<{ id: string; name: string }>;
-	doi: string;
 	editors?: Array<{ id: string; name: string }>;
 	publicationDate: Date;
 	publisher?: string;
@@ -23,7 +22,6 @@ export function Citation(props: CitationProps): ReactNode {
 		authors,
 		contentType,
 		contributors,
-		doi,
 		editors,
 		publicationDate,
 		publisher = "DARIAH Campus",
@@ -53,7 +51,7 @@ export function Citation(props: CitationProps): ReactNode {
 			: "",
 		publisher,
 		` [${t(`content-types.${contentType}`)}]. `,
-		doi || url,
+		url,
 	].join("");
 
 	return (
