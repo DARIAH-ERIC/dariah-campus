@@ -1,0 +1,2189 @@
+---
+title: 'Text Encoding and the TEI'
+locale: en
+publication-date: '2016-01-27'
+version: 1.0.0
+authors:
+    - dariah-teach
+contributors:
+    - dariah-teach
+tags:
+    - dh
+sources:
+    - dariah-teach
+license: cc-by-4.0
+table-of-contents: true
+summary:
+    content: 'This course introduces the theory and practice of text encoding using the Guidelines of the Text Encoding Initiative.'
+content-type: training-module
+
+---
+
+# Text encoding and the Text Encoding Initiative
+
+## Introduction
+
+<Page id='33' moduleid='197'>
+
+<PageTitle>
+Introduction
+</PageTitle>
+
+<PageContent>
+
+### What this Course is About
+
+This course is an introduction to the theories, practices, and methods that are used in the humanities for the encoding of texts for research, for preservation, and for online distribution. It focuses on a particular method, that of text encoding, using eXtensible Markup Language (XML), and a specialised schema common to humanities research, The Text Encoding Language (TEI).
+
+While there are other equally valid ways to store, preserve, and distribute textual data (such as using a relational structure), this course will not cover those methods. Rather, this course focuses on text encoding, its history and uses. There are also practical hands-on exercises which allow students to practice the theory learned.
+
+This course is divided into three main units, with each lesson further subdivided into lessons:
+
+- Unit I is an introduction to textual scholarship, modelling, and markup languages: what they are, their history, and some of their uses and characteristics. This unit focuses on XML, how it was developed, its structure and form, and the standard used in the rest of the course, the Text Encoding Initiative (TEI);
+- Unit II delves into XML in more detail: discussing the building blocks of XML and an overview of its rules and structures. This unit also introduces schema and DTDs, with exercises on how to model XML via a DTD;
+- Unit III provides opportunities to apply what you have learned in the previous units. This begins with a brief overview of the TEI Guidelines, along with two exercises applying principles you have learned.
+
+### Who Created This Course
+
+**Susan Schreibman** is Professor of Digital Humanities and the Director of An Foras Feasa, the Humanities Institute at Maynooth University. She is the Coordinator of the #dariahTeach consortium. Professor Schreibman has been involved with the TEI community for many years, serving on both the Consortium's Board and Technical Council. Professor Schreibman is the originator and editor of [The Versioning Machine](http://v-machine.org), a tool to compare and display multiple versions of text encoded according to one of the methods described in the TEI's Apparatus chapter.
+
+**Roman Bleier** holds a PhD in Digital Arts and Humanities and Medieval History from Trinity College Dublin where he worked on a digital edition of St Patrick's epistles based on diplomatic transcriptions encoded in TEI. His dissertation in Trinity College was inspired by previous work he did at the Royal Irish Academy where he was part of the 'St Patrick’s Confessio HyperStack Project' team. Roman is currently a DixIT Postdoctoral Fellow at the University of Graz and his research topic is 'Canonical reference and sustainability of digital editions'. He is also the Technical Editor of The Versioning Machine and member of the Institute for Documentology and Scholarly Editing (IDE).
+
+### Acknowledgements
+
+The authors of this course gratefully acknowledge the assistance of Conor Ryan who helped to improve the course through his practicum in the MA in Digital Humanities at Maynooth University; Shane McGarry, a PhD candidate in the Digital Arts and Humanities at Maynooth University, who ran an early focus group on the course, providing invaluable feedback for improvement, as well as co-supervised Conor Ryan's practicum.
+
+We also acknowledge the valuable input of Seamus Callagy, Mei Dong, Michelle Doran, and Mariana Sylivrili in early testing of the course.
+</PageContent>
+
+</Page>
+
+## Announcements
+
+# Unit I: Markup languages: their history and uses
+
+## Markup Languages and text modelling
+
+<Lesson title='Markup Languages and text modelling'>
+
+
+<LessonPage  id='1' prev_id='0' next_id=' 106' >
+
+<LessonPageTitle>
+Textual Scholarship, Markup and Modelling
+</LessonPageTitle>
+
+<LessonPageContent>
+
+Modelling has always been a core activity of textual scholarship as the human record has been migrated from oral traditions to written ones, from handwriting on any number of surfaces, from parchment to stone, in caves, on tombstones, sacred and profane, to print, and more recently to electronic forms of composition, storage, and distribution.
+
+For centuries textual scholars have made choices in disambiguating marks on page, in deciding how to format text as it migrates from one form to another, to show changes in a work over time, be they authorial (i.e. created by the author of the work) or by other agents (editors, relations, friends, or unknown scribes).
+
+In the eighteenth and nineteenth centuries as print became the de facto medium in which to transmit en masse the textual record, be it for pleasure (the rise of the novel), for religious purposes (the reproduction of sacred texts and commentary), for or political purposes (as a way of defining the new nation states and their peoples by their literary inheritance), so too the need arose for individuals to adjudicate on the version of the text to be published, what introductory material might be included, or which texts should be group ![](/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei/e24d3b6500c680bda715ff2d4876f202b94967db.jpg)together and published as collections.
+
+
+As publishing became an industry in its own right, a text might pass through many hands before it was published. Long before the invention of computers, markup was used to annotate a text to instruct a compositor or typist how a particular passage should be printed or laid out.
+
+Examples, familiar to proofreaders and others, include a caret to add in extra text, special symbols for passages to be omitted or printed in a particular font, and so forth. Even today, although texts are now, by and large set through soft type on a computer (as opposed to hard type which was done manually with slugs for each character) when publishers return proofs to authors or editors, it is still the norm to print out the proofs and use these same symbols to indicate what changes need to be made to the text.
+
+With the rise of computers to generate text (either for print or electronic publication) the term markup was extended to cover all sorts of special codes to govern formatting, processing and analysis. Textual scholarship has adapted to suit this relatively new medium. To make the textual record suitable for digital re-presentation, metadata in the form of specialised markup languages are used. This will be explained in much greater detail in the next section.
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='106' prev_id='1' next_id=' 107' >
+
+<LessonPageTitle>
+Characteristics of Markup Languages and Types of Markup
+</LessonPageTitle>
+
+<LessonPageContent>
+
+As mentioned in the previous section, markup languages are used to add meta information to data. Data can be anything, it could be the settings of a computer programme, it could be entries in a telephone book or a library catalogue, it could be prose texts or poetry. Markup languages provide a way to describe this data. Markup languages should be distinguished from programming languages. Markup does not, in itself, process or style text. It must be used in conjunction with either a programming or scripting language, such as XSLT or CSS.
+
+In the case of HTML, for example, HTML tags are used to structure the text (paragraphs, titles, footnotes, etc), to add in other media, such as images, audio, or video files, and to add elements that allow scripting to be embedded into the HTML page. Browsers can interpret these HTML elements to process the text so that it not only appears on your monitor, but links via hyperlinks to other pages, displays images in the appropriate place and the appropriate size, etc.
+
+HTML and LaTeX are examples of **presentational or procedural markup languages**. They are used primarily to indicate how text and data is supposed to be processed by a software. For instance, HTML developers are primarily concerned with how something looks in the web browser. However, in recent years with the development of HTML5, HTML has becomes more similar to **descriptive or semantic markup**. This kind of markup language describes the data that is encoded, eg a text an address, a pizza menu, or a stanza of a poem. The benefit of this kind of markup is that it can be understood by software such as search engines. A typical example of a descriptive markup language is the Text Encoding Initiative (TEI). Markup is typically not visible to the reader of electronic text. Rather, it serves as instructions for software to process text.
+
+| <IframeElement w={560} h={315} alt='' src='https://www.youtube.com/embed/E7-g17oL7w0' /> |
+|---|
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='107' prev_id='106' next_id=' 0' >
+
+<LessonPageTitle>
+Markup Languages vs Plain Text
+</LessonPageTitle>
+
+<LessonPageContent>
+
+As mentioned previously, markup languages both inherit characteristics from earlier print-based markup practices, while extending and augmenting those practices for electronic reading, analysis, and distribution. Markup can be expressed, as we saw previously, via handwritten characters or symbols. For computer-based processing, the markup or annotation vocabulary must be itself expressed in machine readable form in a standardised manner.
+
+But why, you might ask, do we even need markup? Why not simply use plain text? Plain electronic texts, such as txt-files downloaded from online archives such as Project Gutenberg, do usually not contain any markup. For a human reader this tends not to be a problem as long as she knows the language, writing system, and genre conventions. For example, most readers of Indo-European languages will recognise the form of the following genre types, without needing to read the content:
+
+| ![](/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei/12e535814338e541c9ee62c66827b2f87676456e.png) | ![](/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei/fb98bcd1f127a69d7f4190ef21f77ddd9e553bfb.png) |
+|---|---|
+
+
+
+We learn how to read texts, how to distinguish individual words, and how to interpret words in the context of their linguistic structure. Even if texts are written without spaces between the words or without punctuation in scriptura continua, a human reader, used to this writing system, can identify words and sentences and hence discern their meaning.
+
+Similarly, Cross-Hatch writing, a common convention in the Eighteenth Century to save money on post, in which the author of the letter would write horizontally across the page, and then when she reached the bottom of the page, would turn it vertically and write across the previous writing. Ancient manuscripts written in scriptura continua and Eighteenth Century cross-hatch letters proof that humans can adapt to writing conventions that lack white space and/or punctuation. For computers, however, plain text is more difficult to format, and can be more difficult to process, particularly when features of individuals words (such as parts of speech), grammatical constructs, or structures of meaning within a text need to be taken into account.
+
+| ![](/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei/c17de6f9b1c9ca01635503424751dd493b9b595d.png) |
+|---|
+| ![](/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei/81088c251e7743b7204ea63d6121c98db7b803f0.jpg) |
+
+
+
+Hence markup is an important enhancement that expands the potential of electronic texts. Markup languages tend to be human readable (i.e. they do not need to be compiled like programming languages) as well as descriptive for example, this fragment of HTML indicates that there are two headings, and the first is more major:
+
+```
+<<a href="http://december.com/html/4/element/h1.html">h1</a>>Markup Languages and Text Modelling</<a href="http://december.com/html/4/element/h1.html">h1</a>>
+<<a href="http://december.com/html/4/element/h2.html">h2</a>>Markup Languages vs Plain Text</<a href="http://december.com/html/4/element/h2.html">h2</a>>
+```
+
+
+
+
+
+
+
+
+This type of machine-readable inline annotation is also referred to as meta-information or metadata as it enhances the primary text for computers to process further, as opposed to earlier processing instructions, such as format-17 to indicate a title of a work.
+
+Early forms of electronic markup languages were used in the 1960s. In a humanities context the software COCOA used a form of markup language that was very influential. COCOA was used for the analysis of texts and to generate indexes of words and concordances of texts. These texts had to be prepared and enriched with markup for annotation and meta information (for further information, see Hockey 27-30). The following fragment shows a short example from a dramatic text. Author of a work, the Title of the work, the Act, and Scene, etc. could be encoded and processed with COCOA:
+
+```
+<W SHAKESPEARE> <T HAMLET> <A 1> <S 1><C HAMLET>
+
+```
+
+
+
+
+
+
+
+
+Another example of a markup language is LaTeX. LaTeX is a language that is used to describe documents for typesetting. LaTex is being developed since the 1970s and one of the most frequently used languages for typesetting in the print industry. For instance, the above HTML example could be written LaTeX in the following way:
+
+```
+\begin{document}
+\chapter{Markup Languages and Text Modelling}
+\section{Markup Languages vs Plain Text}
+\end{document}
+```
+
+
+
+
+
+
+
+
+Markup languages are used to enrich plain text with information which is readable by both humans or machines. The previously mentioned HTML and XML, the language we will learn in this course, both derive from SGML (Standard Generalised Markup Language). SGML became an international standard tin 1986 and is based on an earlier language called GML (Generalised Markup Language). SGML is not an encoding scheme per say, 'but a syntax or a framework within which encoding tags can be defined' (Hockey 33). SGML, and hence XML, provides a syntax in which communities of practice can describe tags, and hence the concepts, that are important to capture in their view of texts and textuality. All these languages follow the same convention, specifically angle brackets to distinguish the annotation, known as tags and elements, from the primary text. It is the same in HTML and XML. Recall the above HTML example:
+
+```
+<<a href="http://december.com/html/4/element/h1.html">h1</a>>Markup Languages and Text Modelling</<a href="http://december.com/html/4/element/h1.html">h1</a>>
+<<a href="http://december.com/html/4/element/h2.html">h2</a>>Markup Languages vs Plain Text</<a href="http://december.com/html/4/element/h2.html">h2</a>>
+```
+
+
+
+
+
+
+
+
+There is always an opening tag (e.g. &lt;h1&gt;) and a closing tag (e.g. &lt;/h1&gt;) indicating the start and the end of a heading. These tags designate a semantic function of the text. TEI, the encoding standard of the Text Encoding Initiative, is an XML-language and the same convention applies and angle brackets are used to distinguish tags from data. TEI, however, has a much larger and richer vocabulary of elements to capture many more features across a wide range of text types, from tombstones to manuscripts to the born digital.
+
+**Further Reading**
+SGML Users' Group. 'A Brief History of the Development of SGML'. 1990. Online.
+Hockey, Susan M. *Electronic Texts in the Humanities: Principles and Practice*. Oxford ; New York: Oxford University Press, 2000.
+
+</LessonPageContent>
+
+</LessonPage>
+
+</Lesson>
+
+
+## What is text really?
+
+<Lesson title='What is text really?'>
+
+
+<LessonPage  id='27' prev_id='0' next_id=' 196' >
+
+<LessonPageTitle>
+The OHCO (Ordiered Hierarcy of Content Objects) model
+</LessonPageTitle>
+
+<LessonPageContent>
+
+One of these theories comes directly out of the inherent structure of a markup language such as SGML (discussed in the Markup Languages and Text Modelling section), and its derivative languages, including HTML and XML. SGML structures data hierarchically. In other words, elements must be nested within one another like a series of Russian dolls. Moreover, there are rules languages (Schema and DTDs, discussed in the Modelling with XML section that follows) that govern for example, where, how frequently, and if elements can be used one or more times within another element.
+
+Consequently a meta-language like XML or SGML enforces a particular way of thinking about texts. In the late 1980s and into the 1990s a group of scholars including Allen Renear, Elli Mylonas, and David Durand developed a theory for the practice of text encoding specifically, and text more generally. It was called an ‘Ordered Hierarchy of Content Objects’ (OHCO). They proposed that although different kinds of texts may be organised differently, they still have a hierarchical organisation. In their first iteration of the OCHO model, they asserted
+
+> Within the lowest level subsections are objects like paragraphs, sentences, prose quotations, verse quotations, equations, proofs, theorems, and so on. Many of these objects can be decomposed further. This structure is hierarchical because these objects “nest” inside one another like Chinese boxes. It is ordered because there is a linear relationship to objects – for any two objects within a book one object comes before the other. (Renear)
+
+These nesting objects are more familiar, in books, for example, chapters, sections, paragraphs, lists, and so forth. Like the Russian doll example, these content objects fit neatly into one another, from the smallest (a letter or a word) to the largest (a book or monograph), with a myriad of other nested units in between (sentences, paragraphs, chapters, sections, etc).
+
+While this theory was instrumental in the development of the TEI, it never fully accounted for the problem of overlapping hierarchies. Overlapping hierarchies breaks the neatly nesting pattern described above. For example, a metaphor in a poem may cut across two or more lines (marked by the tag &lt;l&gt;). It might seem like a purely technical issue that a language like XML requires one element to close before another opens, as in the following:
+
+
+- &lt;l&gt;text text text&lt;/l&gt;
+- &lt;l&gt;text text &lt;metaphor&gt; text text&lt;/metaphor&gt;&lt;/l&gt;
+
+as opposed to the following:
+
+
+- &lt;l&gt;text text &lt;metaphor&gt; text text&lt;/l&gt;
+- &lt;l&gt;text text &lt;/metaphor&gt;&lt;/l&gt;.
+
+The creators of the OHCO theory concede that this may be more than a technical issue and that it may point to some of the thorniest issues surrounding text encoding as an intellectual endeavor. Textual editors such as Jerome McGann, D.F. McKenzie and Peter Schillingsburg had been developing different understandings of text. They found the OHCO model was too simplistic a model to represent complex works, particularly literary. Essentially they argued that texts can have multiple structures and diverse meanings, some outside the text itself. These vying approaches to textual editing cumulated in ‘mock confrontation’ between Renear and McGann at the Digital Humanities conference at the University of Virginia in 1999. McGann argued for the complex and overlapping structures of texts using poetry as an example:
+
+> poetry is not organized in a determinate hierarchy. TEI and SGML markup, therefore, while reasonably adequate vehicles for expository and informational texts, fails to render those features of poetic text that are most salient for its makers and users. Poetical texts are recursive structures built out of complex networks of repetition and variation. No poem can exist without systems of ‘overlapping structures (Hockey)
+
+For example, metaphors may span many lines or stanzas of verse. Narrative events may span many paragraphs and indeed may overlap. Verse drama contains dialogue lines (speeches), metrical lines, and sentences. But these sentences and metrical lines overlap in the case of enjambment or when a character begins talking and another interrupts (Renear). All these hierarchies have equal claim to representation.
+
+
+Thus the theory of text that SGML (and hence XML and TEI)most eloquently expresses is what one might term the editorial or bibliographic; that is, representing the text in terms of sentences, paragraphs, chapters, front and back matter, and so on. This is not surprising given SGML’s roots as a language written to publish documentary texts in electronic form. From this point of view, one might deduce that the documentary view of text can be read as its *only* structure.
+
+While Renear and his colleagues argued for the OHCO model through the the mid-2000s in a series of articles that further refined and developed their original OCHO proposition, within the TEI community, most academics favour McGann’s view (while necessarily having to conform to an OCHO model as that is what the language most natively facilitates) in which texts encoding is approached from the perspective of complex text structures that do not necessarily all fit into a rigid hierarchy.
+**Further Reading**
+
+Hockey, Susan, Alan Renear, Jerome McGann. '[Panel: What is text? A Debate on the Philosophical and Epistemological Nature of Text in the Light of Humanities Computing Research.](http://<http//www2.iath.virginia.edu/ach-allc.99/proceedings/hockey-renear2.html>) Web. 29 August 2016.
+
+McGann, Jerome. *Radiant Textuality: Literature After the World Wide Web.* London: Palgrave, 2001.
+
+Renear, Allen, Elli Mylonas, and David Durand. [“Refining Our Notion of What Text Really Is: The Problem of Overlapping Hierarchies](http://<http//www.stg.brown.edu/resources/stg/monographs/ohco.html>.).” N.p., 6 Jan. 1993. Web. 17 Sept. 2012.
+
+Scholen, David and Sandra Scholen. '[Beyond Gutenberg: Transcending the Document Paradigm in Digital Humanities](http://www.digitalhumanities.org/dhq/vol/8/4/000196/000196.html)'. Digital Humanities Quarterly. Vol. 8 No. 4. 2014.
+
+Shillingsburg, Peter L. *Scholarly Editing in the Computer Age: Theory and Practice.* Ann Arbor: University of Michigan Press, 1996.
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='196' prev_id='27' next_id=' 0' >
+
+<LessonPageTitle>
+So what is text?
+</LessonPageTitle>
+
+<LessonPageContent>
+
+Until recently, most textual editors worked in disciplines that recorded the written record -- not only in manuscript and print form -- but in any text bearing object, including stone, metal, and wood. In the 1980s, D.F. McKenzie, in *Bibliography and the Sociology of Texts* argued for a more embracive conception of text, to include any form of transmission, not simply of the written word, but of ideas, whatever form they may take. He thus defines text as any 'verbal, visual, oral, and numeric data in the form of maps, prints, and music, of archives of recorded sound, of films, videos, and any computer-stored information, everything in fact from epigraphy to the latest forms of discography.' (13) McKenzie was prescient in including the born digital: texts that originate on a computer which include not only machine readable text, but multimedia and code.
+
+Thus textual editing in the 21st century includes not simply the forensics traditionally associated with textual editing of tracing a text over time back to the original version or sifting through an author's manuscripts to recreate the writing process, but uncovering the trail of correction and revision by examining the drives and discs of an author (see Matthew G. Kirschenbaum's *Mechanisms).*
+
+After the Second World War, textual editors began to move to computers to model text, originally for text types such as concordances and indexes. But increasingly, particularly after the advent of the World Wide Web, it is a medium that is surpassing print as a way to make available scholarly editions. The ways in which the text of these editions is marked or tagged underpins underlying theoretical perspectives embedded in the markup itself.
+
+**Further Reading**
+
+Kirschenbaum, Matthew G. *Mechanisms: New Media and the Forensic Imagination. Cambridge Mass*: MIT Press, 2007.
+
+D.F. McKenzie. *bibliography and the Sociology of Texts*. Cambridge: Cambridge University Press, 1999. First published 1985.
+
+</LessonPageContent>
+
+</LessonPage>
+
+</Lesson>
+
+
+## Modelling with XML
+
+<Lesson title='Modelling with XML'>
+
+
+<LessonPage  id='34' prev_id='0' next_id=' 35' >
+
+<LessonPageTitle>
+XML modeling languages
+</LessonPageTitle>
+
+<LessonPageContent>
+
+XML, like SGML before it, allows you to create your own element names. In the example used earlier we could have used the element &lt;pers&gt; instead of &lt;personName&gt; and &lt;townName&gt; instead of &lt;town&gt;:
+
+| ``` 1 2 3 4 5 ``` | ``` <personName>Robert Smith</personName>  <street>Castle street</street>  <houseNr>123</houseNr> <town>Dublin</town> <telephoneNr>0891232245</telephoneNr> ``` |
+|---|---|
+
+
+
+
+
+Therefore, the above example could also look like this:
+
+| ``` 1 2 3 4 5 ``` | ``` <pers>Robert Smith</pers>  <streetName>Castle street</streetName>  <house>123</house> <townName>Dublin</townName> <telephone>0891232245</telephone> ``` |
+|---|---|
+
+
+
+
+
+
+
+The XML encoding still successfully describes the encoded data and there are probably many tens of ways of naming these elements. For humans using similar element names may not make a difference because we realise that &lt;pers&gt; or &lt;personName&gt; or &lt;persName&gt; refers to a person's name. However computers typically work on string matching, thus the elements &lt;pers&gt;, &lt;personName&gt; and &lt;persName&gt; represent three different things, as unrelated as &lt;pers&gt; &lt;dog&gt; &lt;fish&gt;.
+
+To help enforce uniformity in element naming and syntax, SGML used a language called Document Type Definition (DTD). DTDs can also be used with XML. DTDs are a set of rules that specify what elements are used in an SGML/XML document, how frequently they can be used, and what attributes they can contain.
+
+DTDs represent an abstract model of the structure of an XML document, while providing a mechanism for a an individual or community to develop a vocabulary of element names that suits the data they are encoding. In due course, the W3C, the organisation that monitors and develops HTML and XML standards, developed a rules-based language specifically for XML documents written in XML syntax. While DTDs can still be used with XML, the more powerful and flexible XML Schema and RNG are more commonly used. Later in this course we will introduce you to DTD syntax as it is easier to learn and use than schema languages, while the general principles of modelling are similar.
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='35' prev_id='34' next_id=' 197' >
+
+<LessonPageTitle>
+Why would you model a text with XML?
+</LessonPageTitle>
+
+<LessonPageContent>
+
+XML is the acronym for eXtensible Markup Language (XML). XML was developed in the 1990s and is based on Standard Generalised Markup Language (SGML). The original function of SGML was to provide a software-independent language for the formatting of text. SGML, as is its derivative XML, more properly a metalanguage whose syntax and structure can be used to describe vocbularies for specific domain use. Hypertext Markup Language (HTML), the language that powers the World Wide Web, is probably the most well-known SGML vocabulary. Because SGML was developed in a pre-internet environment, in the late 1990s XML was developed to overcome some shortcomings of SGML and to provide a lightweight and easy-to-learn markup language for data exchange. Today XML is a central language for data exchange and many other languages such as XHTML, SVG or RDF are based on XML syntax.
+
+| <IframeElement w={560} h={315} alt='' src='https://www.youtube.com/embed/vkGsjOin0KA' /> |
+|---|
+
+XML is a descriptive or semantic markup language. With XML all kinds of data can be encoded in a way so they can be understood not only by humans, but also computers. As humans we can understand an address information such as:
+
+```
+Robert Smith Castle street 123 Dublin 0891232245
+```
+
+
+However, even for humans it might not be clear that the last 10 digits are a telephone number. Both SGML and XML allow you to describe plain text in a semantically-rich way. For example, you could tag the person name, street, town and telephone number separately with XML elements that indicate what each part of this text is:
+
+| ``` 1 2 3 4 5 ``` | ``` <personName>Robert Smith</personName>  <street>Castle street</street>  <houseNr>123</houseNr> <town>Dublin</town> <telephoneNr>0891232245</telephoneNr> ``` |
+|---|---|
+
+
+
+
+
+Now it is much clearer what each element of the text represents with the added benefit that the XML elements can be processed by a computer programme. If you had hundred address entires all encoded in the same way, software can easily generate a list of telephone number or search only through the person names to check if a 'Robert Smith' is among your list of addresses.
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='197' prev_id='35' next_id=' 246' >
+
+<LessonPageTitle>
+Overlapping hierarchies
+</LessonPageTitle>
+
+<LessonPageContent>
+
+One of drawbacks of modelling with XML is that XML does not allow for overlapping hierarchies. The issue was already mentioned in the context of the discussion of OHCO (in the 'What is Text Really Section'). Essentially, the issue is that XML requires a hierarchical data model and all elements need to be nested within other elements. This means that an XML element cannot be opened inside of one element and closed in another. The correct nesting of elements was this example used previously:
+
+| ``` 1 2 ``` | ``` <l>text text text</l> <l>text text <metaphor> text text</metaphor></l> ``` |
+|---|---|
+
+
+
+
+
+
+In the above example, the first &lt;l&gt; element opens and closes, then the second &lt;l&gt; element opens, and within it the &lt;metaphor&gt; tag is opened and closed, and only then is the &lt;l&gt; element closed. On the other hand the next example is incorrect because the metaphor tag breaks the nesting by starting within one &lt;l&gt; element and ending in the next:
+
+| ``` 1 2 ``` | ```  <l>text text <metaphor> text text</l>  <l>text text </metaphor></l>. ``` |
+|---|---|
+
+
+
+
+
+Yet, the second representation may more accurately represent the content. A metaphor in a poem may cut across two or more lines (marked by the tag &lt;l&gt;). It might seem like a purely technical issue that a language like XML requires one element to close before another opens, as in the following: The creators of the OHCO theory concede that this may be more than a technical issue and that it may point to some of the thorniest issues surrounding text encoding as an intellectual endeavor. Text encoding, like any other area of textual scholarship, is not theory-free. It is subjective, theoretical, and interpretative. Texts, particularly literary texts, have competing hierarchies, all of which may have equal claim to being represented as they express different views of the text. For example, the hierarchy that SGML and hence XML most eloquently expresses is what one might term the editorial or bibliographic; that is, representing the text in terms of sentences, paragraphs, chapters, front and back matter, and so on. This is not surprising given SGML’s roots as a language written to publish documentary texts in electronic form. From this point of view, one might deduce that the documentary view of text can be read as its *only* structure.
+
+Yet there are many textual features that do not conform to this hierarchy. As mentioned previously, metaphors may span many lines or stanzas of verse. Narrative events may span many paragraphs and indeed may overlap. Verse drama contains dialogue lines (speeches), metrical lines, and sentences. But these sentences and metrical lines overlap in the case of enjambment or when a character begins talking and another interrupts (Renear 119–21). All these hierarchies have equal claim to representation. There are possiblities to get around this problem by using empty elements and they will be discussed in a later section.
+
+Further Reading
+
+Text Encoding Initiative, Non-hierarchical Structures, &lt;[http://www.tei-c.org/release/doc/tei-p5-doc/en/html/NH.html&gt;](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/NH.html)
+
+Renear, Allen, Text Encoding, A Companion to Digital Humanities, ed. Susan Schreibman, Ray Siemens, John Unsworth. Oxford: Blackwell, 2004, &lt;[http://www.digitalhumanities.org/companion/](http://www.digitalhumanities.org/companion/)&gt;
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='246' prev_id='197' next_id=' 247' >
+
+<LessonPageTitle>
+XML and its advantages
+</LessonPageTitle>
+
+<LessonPageContent>
+
+The Extensible Markup Language (or XML) is a specification of the World Wide Web Consortium (W3C). As discussed in the last unit, XML is a metalanguage and can be used to describe custom markup languages that conform to the basic rules of XML. The entire XML specification can be found on the W3C website at https://www.w3.org/XML/
+
+Today XML is used in the world of technology and in particular on the Internet. For instance, XML-based markup languages such as XHTML, an XML version of HTML, SVG, a standard to describe graphics, and RDF, a standard that is central to the semantic web, are central to the Internet today. Since 2004 also TEI, the encoding recommendations of the Text Encoding Initiative, uses XML. XML was originally developed as a standard for data exchange over the web and its main advantages are that it is a device independent standard, that it is machine and human readable, and that XML promotes a clear separation between data and presentation.
+
+#### XML is device independent
+
+One of the main advantages of XML is its high degree of interoperability. XML data can be used by different programmes on different platforms. XML files are simple text files and are not platform or software dependent. Consequently, an XML document can be written on a Mac, stored on a Linux server and downloaded to a Windows PC. All these operating systems are able to read an XML file. At the same time, XML can be used to exchange data between different programmes. For instance, since Microsoft Word introduced its xml-based document format, Word documents can be viewed and edited by other software such as LibreOffice.
+
+#### XML is machine and human readable
+
+Another advantage of XML is that it can be written, read and altered by humans as well as computers. No special software is required to access the data in XML documents. A simple text editor such as Notepad, Vi or TextEdit can be used to open and edit XML documents.
+
+For instance, before Microsoft Word used XML it was very difficult to rescue your data from a corrupted Word document. Now, XML content of a Microsoft document can easily be extracted and viewed with a simple text editor. The following video will show you how you can open a Microsoft Word document and read its XML content. Try to follow it on your own computer and stop the video if necessary. Instead of a Microsoft Word document, you could also try the exercise with a LibreOffice document.
+
+| <IframeElement w={425} h={350} alt='' src='https://www.youtube.com/embed/Gp1MOemMh9k' /> |
+|---|
+
+#### XML promotes a clear separation of data and presentation
+
+
+The third major advantage of XML documents is that XML promotes a clear separation of data and presentation. This enables the possiblity that XML encoded data can be exchanged without presentational information attached. On the one hand this reduces file size overhead and is an advantage for the exchange of huge amounts of data over networks, on the other hand it allows for the presentation of the same data in different formats. Using an XML parser, a software developed to access and manipulate XML documents, the same underlying data can be used in multiple and very different presentation scenarios and the same XML document can be convert to a PDF, a Microsoft Word document and a web page as per the image below.
+
+| ![](/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei/b28abb73c0ea8f07ef02ec04a0c3df7b56a581de.png) |
+|---|
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='247' prev_id='246' next_id=' 0' >
+
+<LessonPageTitle>
+Examples of XML languages
+</LessonPageTitle>
+
+<LessonPageContent>
+
+As XML is a metalanguage. It has no predefined tags. Rather, it provides a syntax for the development of vocabularies, including XHTML and SVG. These are two standards that have become important in web development and they highlight two different XML use cases: for the description of web pages and for the description of graphics.
+
+#### XHTML
+
+One of the best known XML standards is probably XHTML. XHTML is an XML vocabulary for the description of web pages. The basic structure of an XHTML document consists of an &lt;html&gt; root element and two nested child elements, &lt;head&gt; and &lt;body&gt;. The head section may contain metadata and links to external files (e.g. CSS and JavaScript files), while the body section contains the page content that is displayed by the web browser. The page content in the body section can be further structured using elements to identify divisions, &lt;div&gt;, headings, e.g. &lt;h1&gt;, &lt;h2&gt; and &lt;h3&gt;, paragraphs, &lt;p&gt;. Furthermore images and other media can be included with XML elements.
+
+| ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ``` | ```  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">   <<a href="http://december.com/html/4/element/html.html">html</a> xmlns="http://www.w3.org/1999/xhtml">   <<a href="http://december.com/html/4/element/head.html">head</a>>   <<a href="http://december.com/html/4/element/title.html">title</a>>Title of the XHTML document</<a href="http://december.com/html/4/element/title.html">title</a>>   <<a href="http://december.com/html/4/element/meta.html">meta</a> property="dc:creator">Roman Bleier</<a href="http://december.com/html/4/element/meta.html">meta</a>> </<a href="http://december.com/html/4/element/head.html">head</a>> <<a href="http://december.com/html/4/element/body.html">body</a>>    <<a href="http://december.com/html/4/element/h1.html">h1</a>>The main heading</<a href="http://december.com/html/4/element/h1.html">h1</a>>    <<a href="http://december.com/html/4/element/p.html">p</a>>a paragraph</<a href="http://december.com/html/4/element/p.html">p</a>> </<a href="http://december.com/html/4/element/body.html">body</a>>   </<a href="http://december.com/html/4/element/html.html">html</a>> ``` |
+|---|---|
+
+
+
+
+
+
+A crucial difference between XHTML and HTML is that because HTML is not an XML language it does not need to follow the XML rules (although it does follow SGML rules). For instance, in HTML5 not all elements need to be closed with a closing tag, while XHTML requires that every opening tag has a corresponding closing tag. For more information on XHTML and the differences between HTML and XHTML we recommend online tuturials such as the one provided by [W3schools](http://www.w3schools.com/html/html_xhtml.asp).
+
+#### SVG
+
+SVG is a standard developed by the W3C to describe vector graphics. SVG is an XML based language that uses the same basic syntax as other XML languages. Like all XML languages also SVG files can be opened with a simple XML editor and it contains human-readable data that is interpreted by an SVG processor as a graphic. For instance, the following statement describes a black circle with a radius r of 50:
+
+```
+<circle  r="50" stroke="black" stroke-width="1"/>
+```
+
+
+
+
+
+
+
+SVG documents are essentially a series of XML statements that describe graphic elements. These statements can easily be changed and rewritten with a programming language such as JavaScript. Therefore, SVG images are becoming increasingly popular in interactive web development and online gaming. W3Cschools has a gaming tutorial that uses SVG ([http://www.w3schools.com/games/](http://www.w3schools.com/games/)). However, SVG is also used in the print publishing industry for high-quality images for posters.
+
+If you are interested to learn more about SVG the [tutorial of W3school](http://www.w3schools.com/svg/) or the [Introduction to SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Introduction) by the Mozilla Developement Network are good places to start.
+
+</LessonPageContent>
+
+</LessonPage>
+
+</Lesson>
+
+
+## Modelling with TEI
+
+<Lesson title='Modelling with TEI'>
+
+
+<LessonPage  id='198' prev_id='0' next_id=' 199' >
+
+<LessonPageTitle>
+The TEI schema
+</LessonPageTitle>
+
+<LessonPageContent>
+
+You have heard already about schemas and DTDs in the Modeling with XML section. Like every XML language TEI requires a schema that explains how elements and attributes are used in a TEI document. The TEI community provides a general schema that defines all TEI modules and attribute classes. This schema is called **tei\_all** and all TEI documents have to conform to this schema. The tei\_all schema exists in several different forms, for instance as a RELAX NG schema, a schema language developed for XML documents, or as DTD. The two schema versions can be found under the following URLs:
+
+```
+<a href="https://www.tei-c.org/release/xml/tei/custom/schema/dtd/tei_all.dtd"><code data-lang="text">https://www.tei-c.org/release/xml/tei/custom/schema/dtd/tei_all.dtd</code></a>
+```
+
+```
+<a href="https://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"><code data-lang="text">https://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng</code></a>
+```
+
+The TEI community also provides subsets of tei\_all, because it can be very confusing and time consuming to choose from 500 TEI elements especially if most of them are not required for the encoding of your text. If you are encoding poetry you will probably not need the elements and attributes that are needed to encode dictionaries. Therefore, the TEI subsets are selections of modules and attribute classes that you might most likely need in your encoding project. TEI Lite customisation was developed to suit about 90% of TEI-based projects and it is used very often used as a starting point for further customisation. Additionally, schemas exist for Manuscript Description, Drama, etc. A list of custom schemas and description can be found on the following website:
+
+```
+<a href="http://www.tei-c.org/Guidelines/Customization/">http://www.tei-c.org/Guidelines/Customization/</a><br></br>
+```
+
+
+DTDs and schemas are used as a technical specification of an TEI/XML model. TEI has also its own modeling language called ODD (One Document Does it all). An ODD contains schema fragments as well as prose descriptions of element and attribute usage and examples from the TEI guidelines. An ODD can be used to generate a schema to document the XML model and a prose documentation in HTML or PDF. ODD is an holistic way to document a TEI customisation and it is a requirement for every TEI project to provide a detailed ODD model. You will learn more about ODD in a later session.
+
+Further reading:
+
+Elena Pierazzo, Modelling (Digital) Texts, in Digital Scholarly Editing: Theories, Models and Methods, 2015, &lt;[http://hal.univ-grenoble-alpes.fr/hal-01182162](http://hal.univ-grenoble-alpes.fr/hal-01182162)&gt;
+
+Text Encoding Initiative, The TEI Infrastructure, &lt;[http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html)&gt;
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='199' prev_id='198' next_id=' 249' >
+
+<LessonPageTitle>
+Why use TEI?
+</LessonPageTitle>
+
+<LessonPageContent>
+
+In the previous unit we have learned how one can model data using XML to represent and describe a specific type of data. We could thus create a model in XML for a poem as below:
+
+| ``` 1 2 3 4 5 6 ``` | ``` <verse>   <line>Mary had a little lamb,</line>   <line>Its fleece was white as snow,</line>   <line>And everywhere that Mary went</line>   <line>The lamb was sure to go.</line> <verse> ``` |
+|---|---|
+
+
+
+
+
+In our model above the entire poem is represented using the &lt;verse&gt; element and individual lines of the poem using the &lt;line&gt; element. If we all use our own custom markup languages this can get confusing and makes interchangeability virtually impossible. Somebody else might use &lt;poem&gt; and &lt;LN&gt; to encode poems and somebody in Germany might use &lt;Gedicht&gt; for poem and &lt;Zeile&gt; for line. This need for a common vocabulary is not new. By the mid-1980s there was a clear need for a common format. Academics, librarians and archivists from North America and Europe met and developed what was to become the Text Encoding Initiative, which has become the de-facto standard for encoding texts in the humanities.The acronym TEI stands both for an encoding standard for electronic texts, Text Encoding for Interchange, and for the consortium that releases and continuously develops this standard, the Text Encoding Initiative. The TEI consortium was established in 1987 as an international research project to develop a standard to ‘facilitate the creation, exchange, and integration of textual data in machine-readable form’. The goal was to create a standard that would support the encoding of ‘all kinds of texts, in every human language, from every historical or social context’. A challenging goal!
+
+The main characteristics and benefits of the TEI markup language are that TEI was designed to encode meaning (descriptive markup language), to be software independent, and to be community-driven. The TEI recommendations are continuously updated and occasionally major releases are published. These major releases are numbered incrementally starting with TEI P1 (in 1990) to the latest release TEI P5 (in 2007). Since, 2011 TEI is also registered as its own media type (RFC 6129).
+
+Since the first draft of the TEI guidelines was released in the 1990s, TEI has developed into one of the most important encoding standards within the humanities. The first TEI guidelines P1 to P3 are based on SGML, while the more recent standards – TEI P4 ( June 2002) and TEI P5 ( November 2007) – use XML.
+
+Further reading:
+
+Lou Burnard, The Evolution of the Text Encoding Initiative: From Research Project to Research Infrastructure, in Journal of the Text Encoding Initiative, 2013, [http://jtei.revues.org/811](http://jtei.revues.org/811)
+
+Lou Burnard, What is the Text Encoding Initiative, 2014, [http://books.openedition.org/oep/426?lang=en
+  ](http://books.openedition.org/oep/426?lang=en)Nancy M. Ide and C. M. Sperberg-McQueen, The Text Encoding Initiative: Its History, Goals, and Future Development:[http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf  ](http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf)
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='249' prev_id='199' next_id=' 0' >
+
+<LessonPageTitle>
+TEI Guidelines
+</LessonPageTitle>
+
+<LessonPageContent>
+
+The TEI Guidelines define and document the standard for electronic Text Encoding for Interchange (TEI). The Guidelines describe what TEI/XML elements and attributes are allowed and how they should be used. The Guidelines contain a declaration and description of each TEI element, code examples and several thematic chapters that explain how TEI elements and attributes should be used.
+TEI is a language that was developed for modelling of various texts in the humanities. Therefore, TEI does not promote one model of a text, but is flexible enough to allow for a researcher to chose or create a model that suits her or his research needs. TEI has over 500 predefined elements organised in modules. Each module and the associated elements are described in the Guidelines. A TEI module groups together associated TEI elements such as the TEI elements recommended for the encoding of drama or dictionaries. There are also more general TEI modules which contain 'core' and 'header' elements, basic elements most likely to be used in all TEI documents. A full list of modules from the TEI guidelines:
+
+| module name | description |
+|---|---|
+| analysis | Simple analytic mechanisms |
+| certainty | Certainty and uncertainty |
+| core | Elements common to all TEI documents |
+| corpus | Header extensions for corpus texts |
+| declarefs | Feature system declarations |
+| dictionaries | Dictionaries and other lexical resources |
+| drama | Performance texts |
+| figures | Tables, formulae, and figures |
+| gaiji | Character and glyph documentation |
+| header | The TEI Header |
+| iso-fs | Feature structures |
+| linking | Linking, segmentation and alignment |
+| msdescription | Manuscript Description |
+| namesdates | Names and dates |
+| nets | Graphs, networks and trees |
+| spoken | Transcribed Speech |
+| tagdocs | Documentation of TEI modules |
+| tei | Declarations for datatypes, classes, and macros available to all TEI modules |
+| textcrit | Text criticism |
+| textstructure | Default text structure |
+| transcr | Transcription of primary sources |
+| verse | Verse structures |
+
+
+
+
+
+
+
+Besides modules, the TEI elements and attributes are also organised in model classes and attribute classes. The model classes group elements together based on the location they are appearing. For instance, the model 'nameLike' groups elements that can be used to tag various names such as person name, place name, organisation name. A full list of model classes can be found as [Appendix A](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/REF-CLASSES-MODEL.html) of the Guidelines. Another important building block of TEI/XML documents are attributes. Attributes are used to store additional information about an element and its content. In the TEI attributes are grouped together in attribute classes. One of the most important attribute classes is the 'global' class. It groups together TEI attributes that can be used on all TEI elements such as the attribute @xml:id (used for an identifier) or @n (used for a number or label). Some classes have also subclasses. For instance, the 'global' class has a subclass 'global.rendition'. This subclass contains attributes that describe rendition and styling of an encoded textual feature. The attribute classes are listed and documented in the TEI guidelines in [Appendix B](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/REF-CLASSES-ATTS.html).
+
+Knowledge about TEI modules, model classes and attribute classes is essential for customisations. Customisations may be necessary in order to create a TEI model that is a close representation of a project-specific understanding of text.
+
+</LessonPageContent>
+
+</LessonPage>
+
+</Lesson>
+
+
+# Unit II: Modelling with XML and DTDs
+
+## Basic XML rules: well-formed and valid XML
+
+<Lesson title='Basic XML rules: well-formed and valid XML'>
+
+
+<LessonPage  id='36' prev_id='0' next_id=' 41' >
+
+<LessonPageTitle>
+Well-formed vs valid XML
+</LessonPageTitle>
+
+<LessonPageContent>
+
+XML documents are essentially text documents containing data and markup. Data can be text or numeric. Markup is the tags used to add structure and semantic information. XML processing software expects basic rules to be followed that distinguishes data from markup. If you are familiar with HTML, XML will seem quite familiar as it uses a similar markup system.
+
+All XML documents have to conform to a set of rules that were developed by the World Wide Web Consortium (W3C) a community of organisations that develop web standards for core languages of the WWW (including HTML, CSS and XML). The rules for XML documents are described in the XML specification (https://www.w3.org/XML/). XML processing software expects XML documents to be structured following these rules, and any divergence causes what is known as a parsing or syntax error.
+
+[W3Schools ](http://www.w3schools.com/xml/xml_validator.asp)identifies five key rules for XML syntax. Documents that conform to these rules are called *Well-Formed*:
+
+
+1. XML documents must have a root element
+2. XML elements must have a closing tag
+3. XML tags are case sensitive
+4. XML elements must be properly nested
+5. XML attribute values must be quoted
+
+*Valid* XML, on the other hand, is a document that has additional constraints. In addition to being Well Formed, a Valid XML document adheres to the a set of rules as defined by a Document Type Definition (DTD) or a Schema. A Parsing Editor, software that understands XML syntax, will check your documents for conformity in terms of the rules of Well-Formedness, and if your document calls a DTD or Schema, the parsing editor will also check that your document abides by additional constraints, which include element and attribute names, where in the document elements and attributes can be used, and how frequently elements can be used.
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='41' prev_id='36' next_id=' 43' >
+
+<LessonPageTitle>
+Quiz: XML names
+</LessonPageTitle>
+
+<LessonPageContent>
+
+Each element in the quiz below is not well-formed XML, but for different reasons. Choose the correct reason for its being invalid XML.
+<Quiz>
+<QuizChoice variant='single'>
+<QuizSuccessMessage>
+Right answer!
+</QuizSuccessMessage>
+
+<QuizErrorMessage>
+Wrong answer!
+</QuizErrorMessage>
+
+<QuizChoiceQuestion>
+&lt;newElement&gt; &lt;/Newelement&gt;
+</QuizChoiceQuestion>
+
+<QuizChoiceAnswer kind='correct'>
+XML elements are case sensitive
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+XML names may contain characters, digits, underscore and dots, but cannot contain ampersands.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+An XML element name cannot start with the string 'xml' or 'XML'.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+An XML name cannot contain whitespace
+</QuizChoiceAnswer>
+
+</QuizChoice>
+
+<QuizChoice variant='single'>
+<QuizSuccessMessage>
+Right answer!
+</QuizSuccessMessage>
+
+<QuizErrorMessage>
+Wrong answer!
+</QuizErrorMessage>
+
+<QuizChoiceQuestion>
+&lt;my.new_Element&amp;attribute&gt;&lt;/my.new_Element&amp; attribute&gt;
+</QuizChoiceQuestion>
+
+<QuizChoiceAnswer kind='correct'>
+XML names may contain characters, digits, underscore and dots, but cannot contain ampersands.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+XML elements are case sensitive
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+An XML element name cannot start with the string 'xml' or 'XML'.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+An XML name cannot contain whitespace
+</QuizChoiceAnswer>
+
+</QuizChoice>
+
+<QuizChoice variant='single'>
+<QuizSuccessMessage>
+Right answer!
+</QuizSuccessMessage>
+
+<QuizErrorMessage>
+Wrong answer!
+</QuizErrorMessage>
+
+<QuizChoiceQuestion>
+&lt;xmlElement&gt;&lt;/xmlElement&gt;
+</QuizChoiceQuestion>
+
+<QuizChoiceAnswer kind='correct'>
+An XML element name cannot start with the string 'xml' or 'XML'.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+XML elements are case sensitive
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+XML names may contain characters, digits, underscore and dots, but cannot contain ampersands.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+An XML name cannot contain whitespace
+</QuizChoiceAnswer>
+
+</QuizChoice>
+
+<QuizChoice variant='single'>
+<QuizSuccessMessage>
+Right answer!
+</QuizSuccessMessage>
+
+<QuizErrorMessage>
+Wrong answer!
+</QuizErrorMessage>
+
+<QuizChoiceQuestion>
+&lt;new Element&gt; &lt;/new Element&gt;
+</QuizChoiceQuestion>
+
+<QuizChoiceAnswer kind='correct'>
+An XML name cannot contain whitespace
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+XML elements are case sensitive
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+XML names may contain characters, digits, underscore and dots, but cannot contain ampersands.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+An XML element name cannot start with the string 'xml' or 'XML'.
+</QuizChoiceAnswer>
+
+</QuizChoice>
+
+</Quiz>
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='43' prev_id='41' next_id=' 57' >
+
+<LessonPageTitle>
+Building-blocks of XML documents
+</LessonPageTitle>
+
+<LessonPageContent>
+
+#### Elements
+
+Within an XML document data is contained within elements. Elements have a start-tag and an end-tag. Start- and end-tags consist of an **element name,** which is a string of text such as ‘PersonName’, and a delimiter indicating the beginning and end of a tag. XML tags are delimited from the stored data by use of angle brackets (or inequality signs). The bracket &lt; is used to indicate the beginning of an XML start-tag and &gt; is used to indicate the end of a start-tag.
+
+The end-tag starts with the delimiter &lt;/ and ends with the angle bracket &gt;. The following would be an example of an XML element describing a person name. The content of the element, or in XML parlance, PCDATA (Parsed Character Data) 'Clark Kent' appears between the start- and end-tags:
+
+| ``` 1 ``` | ``` <PersonName>Clark Kent</PersonName> ``` |
+|---|---|
+
+
+
+
+
+
+A special case are so-called **empty elements**. Empty elements do not contain PCDATA, and one tag functions as both the start and end tag. Empty elements are typically used as milestones. The XHTML &lt;br /&gt; which indicates line breaks would be typical of this. This structure is frequently necessary to indicate where breaks occur in a source text (e.g. a page or section break in a book or an article).
+
+In the example of our element &lt;PersonName&gt; the element name is a string of characters. The rules for XML element names are that names must start with a letter or underscore, they can contain letters, digits, hyphens, underscores, and periods and they are case-sensitive. The following table shows a examples of valid XML names:
+
+| **Correct XML element names** |
+|---|
+| &lt;\_newElement&gt; &lt;/newElement&gt; | Element names must start with a letter or underscore |
+| &lt;newElement&gt; &lt;/newElement&gt; | Element names are case-sensitive, start and end tag have to match |
+| &lt;my.new\_Element-1&gt;&lt;/my.new\_Element-1&gt; | Element names can contain letters, digits, hyphens, underscores, and periods |
+
+Incorrect construction of element names leads to XML data that is not Well Formed. An XML processor will not process the data, but instead indicate an error message. The following table shows examples of illegal XML element names:
+
+| **Illegal XML element names** |
+|---|
+| &lt;1Element&gt; &lt;/1Element&gt; | Element names cannot start with a digit, hyphen or period |
+| &lt; Element /&gt; &lt;/ Element&gt; | Element names cannot start with an initial space |
+| &lt;newElement&gt; &lt;/Newelement&gt; | Element names are case-sensitive and start and end tag must match |
+| &lt;xmlElement&gt;&lt;/xmlElement&gt; | Element names cannot start with the string xml, XML, Xml, etc |
+| &lt;new Element&gt; &lt;/new Element&gt; | Element names cannot contain whitespace |
+
+#### Attributes
+
+Another building block of XML documents are attributes. Attributes are a way to add additional information in the form of name-value pairs to an XML element. Attributes modify, refine, or further delineate elements. If elements are thought of as nouns, attributes can be likened to adjectives. Attributes have to be placed after the element name of the start tag and they are separated by a whitespace from the element name. In the following example the attributes @first-name and @last-name with values are added to the XML element person:
+
+```
+<person first-name=”Henry” last-name=”James” />
+```
+
+
+
+
+
+
+
+
+Attributes can also be used to store data and sometimes it is difficult to decide if data should be stored as an attribute value or within an element. A clear benefit for storing information within an element is that data can be structured further by nesting other XML elements or with attributes. This cannot be done with an attribute value. The benefit of attributes is that they can be useful to describe an element and its content further and with schemas ,the data that is stored as attribute values can be restricted to specific data types and values.
+
+For attributes, there are similar naming rules to elements. Names must start with a letter or underscore, they can contain letters, digits, hyphens, underscores, and periods, but cannot contain whitespace. Attribute values have to be quoted, they can contain alphanumeric characters, whitespace and various other characters such as period, hyphen, underscore, comma, etc. However, you have to be careful using single and double quotes. If single quotes are used as attribute value delimiter, they are not allowed in the value string. If double quotes are used as attribute value delimiter, they are not allowed in the value string. The following table contains examples of valid use of attributes.
+
+| **Valid use of attributes in XML** |
+|---|
+| &lt;newElement attribute1=”attribute value: 1” /&gt; | Attribute name may contain digits, but cannot start with a digit. Attribute values may contain whitespaces, punctuation and alphanumeric characters in any order. |
+| &lt;person name=Rob Miller’ /&gt;  &lt;person name=”Rob Miller” /&gt; | Single quotes or double quotes can be used as delimiter of attribute values. |
+| &lt;address owner=”Mary’s address” /&gt; | Single quotes can be used within a value string, but only if they are not deliminators. |
+| &lt;sentence spoken=’He said: “go”!’ /&gt; | Double quotes can be used within a value string, but only if they are not deliminators. |
+
+
+Incorrect attribute syntax leads to XML data that is not Well-Formed. An XML processor will not process the data, but instead indicate that there is an error. The following table shows examples of illegal attribute names and values:
+
+| **Illegal use of attribute names and values in XML** |
+|---|
+| &lt;person name=Robert /&gt; | Attribute values must be quoted. |
+| &lt;person name=”Robert’ /&gt; | No mismatch between the quote delimiters. |
+| &lt;sentence spoken=”He said: “go”!” /&gt; | If double quotes are used as deliminators of a value string, they cannot be used in the value string itself. |
+| &lt;address owner=’Mary‘s address’ /&gt; | If single quotes are used as deliminators of a value string, they cannot be used in the value string itself. |
+| &lt;person first name=”Frank” /&gt; | An attribute name cannot contain whitespace characters. |
+| &lt;person 1stname=”Robert” /&gt; | Attribute names must start with a letter or underscore |
+| &lt;person name=”Robert” name=”James” /&gt; | An element cannot have multiple attributes with the same name. |
+
+
+Elements and attributes are the main building blocks of XML and they are essential for structuring and modelling data. Other important components that are present in most XML documents are *Processing instructions* and XML and Unicode entities.
+
+#####
+Processing instructions
+
+Processing instructions contain instructions for an XML processor specifying what version of XML is used, what character encoding and/or what schema should be used to validate the XML document. Processing instructions can be easily recognised because they are written in the first lines of an XML document. Processing instruction do not have a start- and end-tags. However, they do have attributes to store information. For instance, the following processing instruction is the XML declaration and should be at the beginning of every XML document. It declares that this document is encoded according the XML standard using XML version 1.0 and the character encoding UTF-8:
+
+| ``` 1 ``` | ``` <?xml version="1.0" encoding="UTF-8"?> ``` |
+|---|---|
+
+
+
+
+
+##### Unicode entities
+
+The text stored in an XML element is usually PCDATA (Parsed Character Data). This is a data definition used in XML documents and specifies that the five characters that are used to distinguish mark-up from data, such as angle brackets (for elements), single and double quotes (for attributes) and ampersand (for named entities), have to be *escaped* using Entity references. Entity references begin with &amp; and end with a semicolon. The following list shows what Entities have to be used instead of the five illegal characters:
+
+| Character | XML entity |
+|---|---|
+| &lt; | &amp;lt; |
+| &gt; | &amp;gt; |
+| &amp; | &amp;amp; |
+| ' | &amp;apos; |
+| " | &amp;quote; |
+
+Another form of Entity references are *Character* references for characters or symbols not contained in the ASCII character set. For instance, Unicode character references can be used within an XML document. Such character references start with &amp;# and end with a semicolon and are directly embedded into an XML document. For instance, the Greek Capital Letter Pi has the character reference: &amp;#x03A0;
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='57' prev_id='43' next_id=' 58' >
+
+<LessonPageTitle>
+Nesting elements
+</LessonPageTitle>
+
+<LessonPageContent>
+
+The XML specifications require that within an XML document all elements have to be nested within a root element. If you take the simple example of an address book, the root element could be &lt;addressBook&gt;. Nested within the root element you may have several &lt;entry&gt; elements containing address information. . A very basic structure might look something like this:
+
+| ``` 1 2 3 4 5 6 7 8 ``` | ``` <addressBook>     <entry>         This is the first entry!     </entry>     <entry>         This is the second entry!     </entry> </addressBook> ``` |
+|---|---|
+
+
+
+
+
+To explain basic principle of nesting in XML, the Russian ‘Matryoshka doll’ might make a good analogy. The root element is the largest container. All other elements have to be entirely nested within the root element or another element. In a similar way smaller Matryoshka dolls’are nested within bigger ones.
+
+
+![](/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei/15cf90b368ddf75e0e850b1b5e1eceb7cdf44bfb.jpg)In the address book example, all &lt;entry&gt; elements are completely nested within the start and end root element. Furthermore, each address entry can other have elements nested in it. For instance, an entry may have &lt;name&gt; as follows:
+
+| ``` 1 2 3 4 5 ``` | ``` <addressBook>     <entry>         <name></name>     </entry> </addressBook> ``` |
+|---|---|
+
+
+
+
+
+
+Each entry could have additional elements nested inside it, including house number, street name, town, telephone number, etc. Nesting elements provides additional structure which makes it easier for searching . For instance, consider the following address:
+
+> Clark Kent 344 Clinton Street Metropolis 55 50145
+
+As humans we can read each part of the entry and understand what part is the name, the address and the telephone number. A computer does not understand text in the same way as humans do, hence adding more structure provides for this specificity:
+
+| ``` 1 2 3 4 5 ``` | ``` <entry>     <name>Clark Kent</name>     <address>344 Clinton Street Metropolis</address>     <phoneNr>55 50145</phoneNr> </entry> ``` |
+|---|---|
+
+
+
+
+
+
+
+ With more elements, even more data can be specified as follows:
+
+| ``` 1 2 3 4 5 6 7 8 9 10 11 12 ``` | ``` <entry>     <name>         <forename>Clark</forename>  	<surname>Kent</surname>     </name>     <address>        <houseNr>344</houseNr>         <street>Clinton Street</street>         <town>Metropolis</town>     </address>     <phoneNr>55 50145</phoneNr> </entry> ``` |
+|---|---|
+
+
+
+
+
+That this data is nested provides important information to the computer. For example, since the &lt;address&gt; element encloses &lt;houseNr&gt;, &lt;street&gt; and &lt;town&gt;, it can be inferred that they belong to the same address.
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='58' prev_id='57' next_id=' 255' >
+
+<LessonPageTitle>
+Element relationships within an XML document
+</LessonPageTitle>
+
+<LessonPageContent>
+
+Conceptually, the structure of an XML document is a tree structure. The *root element*, forms the basis of the XML tree and all other element nodes, attribute nodes and text nodes reach out like braches and leaves. Visually this could be represented as a tree graph as in the following figure of the address book in the previous section:
+
+| ![](/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei/f7fad3bcd13b476edb7bf474b6623f5448753a38.png) |
+|---|
+
+Moreover, various relationships between elements exist. In the **child-parent relationship** one element (the child) is nested in another element (the parent). In the following example the element &lt;name&gt; is nested in the element &lt;entry&gt; and consequently &lt;name&gt; is the child of &lt;entry&gt; and &lt;entry&gt; the parent of &lt;child&gt;.
+
+| ``` 1 2 3 ``` | ```  <entry>         <name>Clark Kent</name> </entry> ``` |
+|---|---|
+
+
+
+
+
+
+A **sibling relationship** means that elements (the siblings) have the same parent element. For instance, in our address example the elements &lt;name&gt;, &lt;address&gt; and &lt;phoneNr&gt; have the same parent &lt;entry&gt; and are hence siblings to each other:
+
+| ``` 1 2 3 4 5 ``` | ``` <entry>      <name>Clark Kent</name>      <address>344 Clinton Street Metropolis</address>      <phoneNr>55 50145</phoneNr> </entry> ``` |
+|---|---|
+
+
+
+
+
+These relationships provide powerful structure for other software, as well as other XML-standards, such as XPath and XQuery to navigate the tree structure for formatting, for searching, and for extracting information from the XML document instance.
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='255' prev_id='58' next_id=' 256' >
+
+<LessonPageTitle>
+Quiz: Attributes
+</LessonPageTitle>
+
+<LessonPageContent>
+
+Why would you use attributes?
+<Quiz>
+<QuizChoice variant='single'>
+<QuizChoiceQuestion>
+Why would you use attributes?
+</QuizChoiceQuestion>
+
+<QuizChoiceAnswer kind='correct'>
+To provide additional descriptive information about the element content.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+To add a comment to your XML documents.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+To explain to the XML processor how an element should be processed and how its content should be displayed.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+To provide store information that has nothing to do with the content of the element the attribute belongs to.
+</QuizChoiceAnswer>
+
+<QuizSuccessMessage>
+correct
+</QuizSuccessMessage>
+
+<QuizErrorMessage>
+incorrect
+</QuizErrorMessage>
+
+</QuizChoice>
+
+</Quiz>
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='256' prev_id='255' next_id=' 257' >
+
+<LessonPageTitle>
+Quiz: Root element
+</LessonPageTitle>
+
+<LessonPageContent>
+
+Which one of the following statements is correct?
+<Quiz>
+<QuizChoice variant='single'>
+<QuizChoiceQuestion>
+Which one of the following statements is correct?
+</QuizChoiceQuestion>
+
+<QuizChoiceAnswer kind='incorrect'>
+A root element does not require a closing end tag.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='correct'>
+A root element encloses the entire XML of an XML document.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+A root element has to be written in capital letters.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+You can't place any attributes on a root element.
+</QuizChoiceAnswer>
+
+<QuizSuccessMessage>
+correct
+</QuizSuccessMessage>
+
+<QuizErrorMessage>
+incorrect
+</QuizErrorMessage>
+
+</QuizChoice>
+
+</Quiz>
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='257' prev_id='256' next_id=' 258' >
+
+<LessonPageTitle>
+Quiz: XML structure
+</LessonPageTitle>
+
+<LessonPageContent>
+
+How is the structure of an XML document often represented?
+<Quiz>
+<QuizChoice variant='single'>
+<QuizChoiceQuestion>
+How is the structure of an XML document often represented?
+</QuizChoiceQuestion>
+
+<QuizChoiceAnswer kind='correct'>
+As a tree structure.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+As a list structure.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+As a circle structure.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+As a flower structure.
+</QuizChoiceAnswer>
+
+<QuizSuccessMessage>
+correct
+</QuizSuccessMessage>
+
+<QuizErrorMessage>
+incorrect
+</QuizErrorMessage>
+
+</QuizChoice>
+
+</Quiz>
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='258' prev_id='257' next_id=' 0' >
+
+<LessonPageTitle>
+Quiz: Valid XML
+</LessonPageTitle>
+
+<LessonPageContent>
+
+What are the requirements for valid XML? Which one of the following statements is NOT correct?
+<Quiz>
+<QuizChoice variant='single'>
+<QuizChoiceQuestion>
+What are the requirements for valid XML? Which one of the following statements is NOT correct?
+</QuizChoiceQuestion>
+
+<QuizChoiceAnswer kind='correct'>
+A valid XML document is also a well-formed XML document.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+A valid XML does not need to conform to the XML syntax.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+A valid XML should not have a DTD or schema.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+A well-formed XML document is also a valid XML document.
+</QuizChoiceAnswer>
+
+<QuizSuccessMessage>
+correct
+</QuizSuccessMessage>
+
+<QuizErrorMessage>
+incorrect
+</QuizErrorMessage>
+
+</QuizChoice>
+
+</Quiz>
+
+</LessonPageContent>
+
+</LessonPage>
+
+</Lesson>
+
+
+## Introduction to DTDs
+
+<Lesson title='Introduction to DTDs'>
+
+
+<LessonPage  id='16' prev_id='0' next_id=' 17' >
+
+<LessonPageTitle>
+Introduction to DTDs
+</LessonPageTitle>
+
+<LessonPageContent>
+
+As discussed in the previous section, to be a well-formed XML document a set of rules must be adhered to. Many documents also conform to another set of rules that constrain what, how, and the frequency of elements and attributes. An XML document that is well-formed and conforms to a schema or DTD is called a *Valid* XML document.
+
+This unit will teach the basic principles of one of these rule sets: Document Type Definition (DTD). DTDs were originally developed to work with SGML and do not use SGML or XML syntax. Every SGML document instance was required to have a DTD. XML is more flexible and does not require documents to conform to a DTD or schema (i.e. they are well formed but not valid). Schema languages include XML Schema, RNG Schema or Schematon. However, the underlying modelling principles are very similar and we teach DTDs here because it is a simpler syntax to learn. The TEI P4 guidelines had its own chapter on the use of DTDs \[[TEI P4 Documentation, Chapter. 3](http://www.tei-c.org/Vault/P5/1.0.1/doc/tei-p4-doc/html/ST.html)\].
+
+A DTD is a series of statements that can be written either at the beginning of an XML document (an internal DTD right after the XML declaration, or in a separate file from the XML document (an external DTD). The main advantage of an external DTD is that the rules defined in an external DTDs can be applied to many XML documents (called, in this case, document instances). This facilitates consistency of encoding and maintenance of the DTD. For the following examples and exercise we will use internal DTDs, because we are only working with one XML document. However, the same DTD statements would also apply to external DTDs.
+
+| <IframeElement w={560} h={315} alt='' src='https://www.youtube.com/embed/xp2hbHaBZwI' /> |
+|---|
+
+#### Further reading
+
+W3schools, DTD Tutorial, [http://www.w3schools.com/xml/xml\_dtd\_intro.asp](http://www.w3schools.com/xml/xml_dtd_intro.asp)
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='17' prev_id='16' next_id=' 50' >
+
+<LessonPageTitle>
+Quiz: Why schemas or DTD?
+</LessonPageTitle>
+
+<LessonPageContent>
+
+Why use schemas or DTDs?
+<Quiz>
+<QuizChoice variant='single'>
+<QuizChoiceQuestion>
+Why use schemas or DTDs?
+</QuizChoiceQuestion>
+
+<QuizChoiceAnswer kind='incorrect'>
+DTD and schema statements allow you to style your content (e.g. font-size, color, etc.).
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='correct'>
+DTDs and schemas are used to define syntax and structure of XML languages.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+DTDs and schemas are only used to add comments to your XML document.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+DTDs and schemas are required for XML documents.
+</QuizChoiceAnswer>
+
+<QuizSuccessMessage>
+correct
+</QuizSuccessMessage>
+
+<QuizErrorMessage>
+incorrect
+</QuizErrorMessage>
+
+</QuizChoice>
+
+</Quiz>
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='50' prev_id='17' next_id=' 53' >
+
+<LessonPageTitle>
+Creating Elements
+</LessonPageTitle>
+
+<LessonPageContent>
+
+In this unit you will learn to develop a DTD for a simple address book. An address book usually contains several entries and each entry will contain information about a person including a name, address, and telephone number such as in the following table:
+
+| Name | Address | Telephone number |
+|---|---|---|
+| Clark Kent | 344 Clinton Street Metropolis | 55 50145 |
+| Bruce Wayne | 1007 Mountain Drive Gotham | 53 59333 |
+|  |  |  |
+
+As was mentioned previously, every XML document must have exactly one root element which encloses all other elements. The root element, like every other element, must be declared in the DTD. Root elements should be descriptive of the content. So, in our case, we will use the root element &lt;addressBook&gt;. The following statement declares that &lt;addressBook&gt; is the root element:
+
+```
+
+	<!ELEMENT addressBook (#PCDATA)>
+]>
+```
+
+
+
+
+
+
+
+
+
+Between the square brackets (in blue) is the declaration of the root element. The DTD element declaration starts always with &lt;! and ends with the ‘greater than symbol’, &gt;.The definition within the round brackets means that the content of the element &lt;addressBook&gt; can only be of type "#PCDATA". PCDATA, or Parsed Character Data, is a data definition used in XML documents and basically means plain text with a few constraints. For instance, an important restriction of PCDATA is that characters such as ampersand angle brackets (&lt; or &gt;) and single and double quotes have to be escaped because these characters are used to distinguish mark-up from data.
+
+The following video shows how a DTD should be placed at the beginning of an XML document and how a text editor such as oXygen can be used to evaluate if an XML is well-formed and valid.
+
+| <IframeElement w={560} h={315} alt='' src='https://www.youtube.com/embed/kEprJ0U0FiE' /> |
+|---|
+
+The above DTD statement specifies an addressBook element that can only store character data such as:
+
+| ``` 1 ``` | ``` <addressBook> Clark Kent 344 Clinton Street Metropolis 55 50145 Bruce Wayne 1007 Mountain Drive Gotham 53 59333</addressBook> ``` |
+|---|---|
+
+
+
+
+
+
+Within the &lt;addressBook&gt; element currently only text is allowed. If more than one address entry, it would soon become confusing and difficult to see where one entry ends and the next one starts. Therefore, another element is needed to separate individual entries. Building on our previous example, we will add an &lt;entry&gt; element so that individual addresses can be separated:
+
+```
+
+	<!ELEMENT addressBook (entry*)>
+	<!ELEMENT entry (#PCDATA)>
+]>
+```
+
+
+
+
+
+
+
+
+Not only did we declare a second element, we added in additional constraints to the &lt;addressBook&gt; element. In the first example, &lt;addressBook&gt; coud only contain PCDATA (i.e. plain text). But now it cannot contain PCDATA but must only contain the element &lt;entry&gt;. Moreover, the asterix \* after the element name specifies that ‘zero or more’ &lt;entry&gt; elements are contained within &lt;addressBook&gt;. Now each address entry can be encoded as an individual &lt;entry&gt; element as below:
+
+| ``` 1 2 3 4 ``` | ``` <addressBook>      <entry>Clark Kent 344 Clinton Street Metropolis 55 50145</entry>      <entry>Bruce Wayne 1007 Mountain Drive Gotham 53 59333</entry> </addressBook> ``` |
+|---|---|
+
+
+
+
+
+
+
+#### Nesting Elements
+
+
+
+```
+
+	<!ELEMENT addressBook (#PCDATA)>
+]>
+```
+
+
+
+
+
+
+
+
+The above DTD statement specifies an addressBook element that can only store character data such as text and numbers:
+
+| ``` 1 ``` | ``` <addressBook> Clark Kent 344 Clinton Street Metropolis 55 50145 Bruce Wayne 1007 Mountain Drive Gotham 53 59333</addressBook> ``` |
+|---|---|
+
+
+
+
+
+
+Within the &lt;addressBook&gt; element currently only text is allowed. An address book has usually more address entries. In order to tell the computer where one address starts and another ends an element is needed to separate individual entries. Building on our previous example, we will add an &lt;entry&gt; element so that individual addresses can be separated:
+
+```
+
+	<!ELEMENT addressBook (entry*)>
+	<!ELEMENT entry (#PCDATA)>
+]>
+```
+
+
+
+
+
+
+
+
+Not only did we declare a second element, we added additional constraints to the &lt;addressBook&gt; element. The &lt;addressBook&gt; element cannot contain PCDATA (text and numbers) anymore. Now it can only contain the element &lt;entry&gt;. Moreover, the asterix \* after the element name specifies that ‘zero or more’ &lt;entry&gt; elements are contained within &lt;addressBook&gt;. Now each address entry can be encoded as an individual &lt;entry&gt; element as below:
+
+| ``` 1 2 3 4 ``` | ``` <addressBook>      <entry>Clark Kent 344 Clinton Street Metropolis 55 50145</entry>      <entry>Bruce Wayne 1007 Mountain Drive Gotham 53 59333</entry> </addressBook> ``` |
+|---|---|
+
+
+
+
+
+
+Within entry further elements could be nested such as elements for name or street or telephone number. How would you define the elements &lt;name&gt;, &lt;street&gt; and &lt;phoneNr&gt; with DTD? They should all be children of &lt;entry&gt; and contain only PCDATA content.
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='53' prev_id='50' next_id=' 54' >
+
+<LessonPageTitle>
+DTD Exercise I
+</LessonPageTitle>
+
+<LessonPageContent>
+
+In the first part of this exercise, we will create a simple DTD for poetry. In the first part of the exercise, only use the elements below:
+
+- poem (which will be the root element)
+- verse
+- line
+- title
+- note
+- author
+
+To help you with the DTD syntax, we’ve created a [DTD Cheat Sheet](/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei/bd6f7e8302f0f16e8890f2d18ceda3a7b0aef5b3.jpg). Open up the PDF and keep it handy when you are creating the DTD. Create the DTD in a parsing editor such as oXygen. oXygen understands DTD syntax, and once you begin creating the document instance, it will give error messages if you do something wrong. However, until the XML code is in place, you will get parsing errors.
+
+Start by opening oXygen, and then choose the top left icon, the new document icon, and then choose 'XML Document'. Begin by creating the root element right below the XML declaration.
+
+| ``` 1 2 3 ``` | ``` <?xml version="1.0"?>  ]> ``` |
+|---|---|
+
+
+
+
+
+Save your file. Create your DTD using the elements above using the syntax provided in this section. Remember, the element declarations go in between the square \[\] brackets. After you create your DTD, see if the DTD will model your poem the way you expect. To do this, create a document instance right below the DTD. Once everything works correctly, go back and add occurrence indicators to further define the behavior of the elements.
+
+You can try to create the DTD on your own, or follow along with this video
+
+<IframeElement w={560} h={315} alt='' src='https://www.youtube.com/embed/CKC3_kAbWPg?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL' />
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='54' prev_id='53' next_id=' 248' >
+
+<LessonPageTitle>
+Defining different types of elements
+</LessonPageTitle>
+
+<LessonPageContent>
+
+DTD’s allow for the definition of different types of Elements. It can be specified that an element should contain **text content, element content, mixed content or no content**. Earlier we have already seen how **text content** is defined using the string ‘#PCDATA’ and how elements can be added to our &lt;addressBook&gt;. By replacing the string ‘#PCDATA’ with the name of the element &lt;entry&gt;. This specifies that the element &lt;addressBook&gt; can only contain ‘entry’ elements’ (**element content**).
+
+Next, we structure our entries even further by providing a more descriptive model for address entries:
+
+```
+<br></br>  <!ELEMENT addressBook (entry*)><br></br>  <!ELEMENT entry (name, address, phoneNr)><br></br>  <!ELEMENT name (#PCDATA)><br></br>  <!ELEMENT address (#PCDATA)><br></br>  <!ELEMENT phoneNr (#PCDATA)> ]>
+```
+
+The above DTD extends the previous DTD. The content model of &lt;entry&gt; was changed from #PCDATA to allow &lt;name&gt;, &lt;address&gt; and &lt;phoneNr&gt;. The new DTD requires that each entry element has exactly one &lt;name&gt; element, one &lt;address&gt; element and one &lt;phoneNr&gt; element.
+
+| ``` 1 2 3 4 5 6 7 8 9 10 11 12 ``` | ``` <addressBook>    <entry>       <name>Clark Kent</name>       <address>344 Clinton Street Metropolis</address>       <phoneNr>55 50145</phoneNr>    </entry>    <entry>       <name>Bruce Wayne</name>       <address>1007 Mountain Drive Gotham</address>       <phoneNr>53 59333</phoneNr>    </entry> </addressBook> ``` |
+|---|---|
+
+
+
+
+
+**Mixed element content** is a combination of text and element content. For instance, within the element &lt;phoneNr&gt; it might be necessary to tag the country calling code with an element &lt;countryCode&gt;, but leave the rest of the telephone number as text. Such mixed element content can be defined in the following way:
+
+```
+<!ELEMENT phoneNr (#PCDATA | countryCode)*>
+```
+
+```
+<!ELEMENT countryCode (#PCDATA)>
+```
+
+
+The above DTD will allow us to identify the country code in the following way:
+
+| ``` 1 2 3 4 ``` | ``` <phoneNr>     <countryCode>53</countryCode>     59333 </phoneNr> ``` |
+|---|---|
+
+
+
+
+
+
+Another form of element content are **empty elements**, elements that contain no content. In HTML the &lt;br /&gt; element indicating a line break and &lt;hr /&gt; element indicating a horizontal row. These are examples of empty elements. The characteristic of empty elements is that they do not contain data, text or child elements and the element is closed immediately. With DTD empty elements can be defined with the keyword ‘EMPTY’. For instance, the following statement defines an empty element named &lt;relationship&gt;:
+
+```
+<!ELEMENT relationship EMPTY>
+```
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='248' prev_id='54' next_id=' 259' >
+
+<LessonPageTitle>
+Creating Attributes
+</LessonPageTitle>
+
+<LessonPageContent>
+
+In the previous unit we learned the basic syntax of the DTD language to define a set of rules for our XML documents. We saw how rules for element names and element content can be defined. Now we will have a look at how attributes and attribute values can be defined in DTDs.
+
+In the last unit we built a DTD for the following address book XML:
+
+| ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 14 ``` | ``` <addressBook>     <entry>          <name>Clark Kent</name>          <address>344 Clinton Street Metropolis</address>          <phoneNr>55 50145</phoneNr>                 <relationship/>   </entry>   <entry>           <name>Bruce Wayne</name>           <address>1007 Mountain Drive Gotham</address>           <phoneNr>53 59333</phoneNr>             <relationship/>    </entry> </addressBook> ``` |
+|---|---|
+
+
+
+
+
+
+The element ‘relationship’ is an empty element containing no data and is therefore not meaningful yet. We will learn now how to add a ‘type’ attribute that contains information about the type of relationship. The DTD code that defines the above XML is the following:
+
+
+
+
+| ``` 1 2 3 4 5 6 7 ``` | ``` <!DOCTYPE addressBook [             <!ELEMENT addressBook (entry*)>             <!ELEMENT entry (name, address, phoneNr, relationship)>             <!ELEMENT name (#PCDATA)>             <!ELEMENT address (#PCDATA)>             <!ELEMENT phoneNr (#PCDATA)>             <!ELEMENT relationship EMPTY> ]> ``` |
+|---|---|
+
+
+
+
+
+The following DTD statement defines an attribute named ‘type’ for the element ‘relationship’.
+
+| ``` 1 ``` | ``` <!ATTLIST relationship type CDATA #REQUIRED> ``` |
+|---|---|
+
+
+
+
+
+The components of this statement are:
+
+| **&lt;!** | Start of attribute definition |
+|---|---|
+| **ATTLIST** | declares an attribute list |
+| **relationship** | declares the element to which the attribute belongs |
+| **type** | declares the attribute name |
+| **CDATA** | defines the content type of the attribute, CDATA stands for ‘character data’ |
+| **\#REQUIRED** | declares that this attribute is mandatory on every ‘relationship’ element |
+| **&gt;** | End of attribute definition |
+
+DTDs allow to specify different content types for attributes. Besides character data (CDATA) the values … are possible.
+
+For some attributes it is useful to specify predefined values. This can be done by adding the predefined values in round brackets after the attribute name instead of the CDATA in the example above:
+
+| ``` 1 ``` | ``` <!ATTLIST relationship type (private\|work) #REQUIRED> ``` |
+|---|---|
+
+
+
+
+
+One attribute list can contain several attributes of an element. For instance, the following statements declares the attributes ‘first’, ‘second’ and ‘title’ on the name element:
+
+| ``` 1 2 ``` | ``` <!ATTLIST name first CDATA #REQUIRED second CDATA #REQUIRED title CDATA #REQUIRED> ``` |
+|---|---|
+
+
+
+
+
+ All attributes that we defined here are mandatory as indicated by the #REQUIRED statement. In order to make an attribute optional #REQUIRED has to be replaced with #IMPLIED. As in the example of the ‘title’ attribute here:
+
+|  | ``` <!ATTLIST name first CDATA #REQUIRED second CDATA #REQUIRED <br></br>title CDATA #IMPLIED> ``` |
+|---|---|
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='259' prev_id='248' next_id=' 271' >
+
+<LessonPageTitle>
+Quiz: Placing DTD
+</LessonPageTitle>
+
+<LessonPageContent>
+
+Where would you place a DTD?
+<Quiz>
+<QuizChoice variant='single'>
+<QuizChoiceQuestion>
+Where would you place a DTD?
+</QuizChoiceQuestion>
+
+<QuizChoiceAnswer kind='correct'>
+A DTD should be placed at the beginning of an XML document or in an external file.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+At the end of an XML document.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+Right after the root element.
+</QuizChoiceAnswer>
+
+<QuizChoiceAnswer kind='incorrect'>
+It is not allowed to place DTDs in an XML document.
+</QuizChoiceAnswer>
+
+<QuizSuccessMessage>
+correct
+</QuizSuccessMessage>
+
+<QuizErrorMessage>
+incorrect
+</QuizErrorMessage>
+
+</QuizChoice>
+
+</Quiz>
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='271' prev_id='259' next_id=' 0' >
+
+<LessonPageTitle>
+DTD Exercise II: Adding Attributes
+</LessonPageTitle>
+
+<LessonPageContent>
+
+Now we will use the DTD created earlier for poems, and add two attribute values.
+
+1\) add the attribute n (for number) on the line and verse elements
+
+2\) add the attribute type on the note element
+
+This is the syntax you can use for the number attribute
+
+```
+<!ATTLIST line n CDATA #IMPLIED>
+```
+
+Be sure to create the statement directly after the line element statement. You can add the attributes on your own, or do it while watching the video below.
+
+<IframeElement w={560} h={315} alt='' src='https://www.youtube.com/embed/2L9XBuCsQUw?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL' />
+
+</LessonPageContent>
+
+</LessonPage>
+
+</Lesson>
+
+
+## Advanced DTD exercise
+
+<Lesson title='Advanced DTD exercise'>
+
+
+<LessonPage  id='23' prev_id='0' next_id=' 264' >
+
+<LessonPageTitle>
+Advanced DTD exercise
+</LessonPageTitle>
+
+<LessonPageContent>
+
+#### Recipe exercise
+
+
+On the internet you can find a great number of cooking websites with recipes. Most cooking recipes have a similar content types and a similar structure. For this exercise look up online recipes websites and try to find a model to express recipes.
+
+- Identify at least five things that you would like to tag in recipes and think about suitable element and/or attribute names
+- Open up your XML editor and create a new XML document called recipe.xml
+- Copy and paste the text from one of the recipes that you found online into recipe.xml
+- Try to tag the different parts of the recipe with your element and attributes.
+- Make sure that the XML document is well-formed by checking well-formedness
+- Write a DTD model for your recipe and validate it against your XML
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='264' prev_id='23' next_id=' 0' >
+
+<LessonPageTitle>
+Challenge exercise
+</LessonPageTitle>
+
+<LessonPageContent>
+
+#### Cookbook exercise
+
+Based on the previous exercise you should create an online cookbook now. Starting from the recipe model, what elements and attributes do you need to create a model of a cookbook?
+
+- In your XML editor create a new XML document: cookbook.xml
+- Copy and paste the DTD and XML from your recipe.xml
+- Copy and paste the content for two other recipes into your new cookbook.xml
+- Extend your DTD model to include additional elements that you think are required for a cookbook
+- Add these additional elements to your cookbook XML and validate your XML document
+
+</LessonPageContent>
+
+</LessonPage>
+
+</Lesson>
+
+
+# Unit III: How to encode with the TEI
+
+## TEI in practice
+
+<Lesson title='TEI in practice'>
+
+
+<LessonPage  id='99' prev_id='0' next_id=' 235' >
+
+<LessonPageTitle>
+The TEI header
+</LessonPageTitle>
+
+<LessonPageContent>
+
+### TEI Basics
+
+A TEI document consists of two main sections: the &lt;teiHeader&gt; and &lt;text&gt;. These two sections are child elements of the &lt;TEI&gt; root element. While the &lt;text&gt; element contains the document text (the encoded poem, letter or other textual object), the &lt;teiHeader&gt; provides for an extensive metadata record of the object, both the original analogue object (if appropriate) as well as the encoded version. A schematic of the basic structure is below in figure 1.
+
+| ``` 1 2 3 4 5 6 7 8 ``` | ``` <TEI xmlns="http://www.tei-c.org/ns/1.0">      <teiHeader>             <!-- metadata -->      </teiHeader>      <text>              <!-- transcription -->      </text> </TEI> ``` |
+|---|---|
+
+
+
+
+
+Figure 1: a schematic of the basic structure of the TEI.
+
+### Structure of the TEI Header
+
+The main function of the &lt;teiHeader&gt; is to provide bibliographic record about the electronic document. It includes four main sections (or child elements), not all of which are required for conformant TEI:
+
+- &lt;fileDesc&gt;; a bibliographic record of the electronic text as well as the source from which the electronic text is derived;
+- &lt;encodingDesc&gt;: documentation of the encoding and editorial principles used in tagging the electronic text;
+- &lt;profileDesc&gt;: terms for indexing, searching and retrieval;
+- &lt;revisionDesc&gt;: a record of changes made to the electronic document.
+
+Figure 2. shows the order of these elements, if they are all used. Although the only required child element is &lt;fileDesc&gt;.
+
+| ``` 1 2 3 4 5 6 ``` | ``` <teiHeader>     <fileDesc></fileDesc>     <encodingDesc></encodingDesc>     <profileDesc></profileDesc>     <revisionDesc></revisionDesc> </teiHeader> ``` |
+|---|---|
+
+
+
+
+
+Figure 2. The child elements of &lt;teiHeader&gt; and their required order.
+
+### &lt;fileDesc&gt; in more detail
+
+&lt;fileDesc&gt; is the only child element of the &lt;teiHeader&gt; that is mandatory in all TEI documents. &lt;fileDesc&gt;, in turn, must include three child elements to be conformant: &lt;titleStmt&gt;, &lt;publicationStmt&gt; and &lt;sourceDesc&gt;.
+
+- &lt;titleStmt&gt; contains child elements that provides basic metadata about the document, including title of the resource, author and/or editor names, as well as the names and roles of other people who contributed to the creation of the electronic document;
+- &lt;publicationStmt&gt; contains basic child elements regarding publication information of the electronic text, including publlisher name and address, copyright information, and publication date;
+- &lt;sourceDesc&gt; contains child elements that describe the original source from which the electronic text was created. For instance, it may contain a detailed description of a manuscript or book.
+
+Figure 3. shows a basic TEI header structure with all mandatory elements:
+
+| ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 ``` | ``` <teiHeader>     <fileDesc>         <titleStmt>              <title>Title</title>         </titleStmt>         <publicationStmt>              <p>Publication Information</p>         </publicationStmt>         <sourceDesc>             <p>Information about the source</p>         </sourceDesc>     </fileDesc> </teiHeader> ``` |
+|---|---|
+
+
+
+
+
+Figure 3: Mandatory TEI elements.
+
+Besides the three mandatory child elements of &lt;fileDesc&gt; described above, there are also four optional elements, the order of which are mandated by the Guidelines:
+
+- &lt;editionStmt&gt;: groups information relating to one edition of a text;
+- &lt;extent&gt;: describes the approximate size of a text stored on some carrier medium or of some other object, digital or non-digital, specified in any convenient units;
+- &lt;seriesStmt&gt;: groups information about the series, if any, to which a publication belongs;
+- &lt;noteStmt&gt;: collects together any notes providing information about a text additional to that recorded in other parts of the bibliographic description.
+
+
+### Options for encoding TEI header elements
+
+As described above, many of the elements contained in the &lt;teiHeader&gt; contain child elements that provide further structuring of the content. With many of these elements an editor can choose between a simple prose description or a more detailed structuring of the content using additional child elements. &lt;encodingDesc&gt; is a case in point. One option is to use a simple &lt;p&gt; tag for a prose description as in figure 4:
+
+| ``` 1 2 3 ``` | ``` <encodingDesc>     <p>Original spelling and typography is retained, except that long s and ligatured forms are not encoded.</p> </encodingDesc> ``` |
+|---|---|
+
+
+
+
+
+Figure 4. A simple prose description of &lt;encodingDesc&gt; However, the &lt;encodingDesc&gt; could encoding to provide much more structure via child elements such as figure 5:
+
+| ``` 1 2 3 4 5 6 ``` | ``` <encodingDesc>    <projectDesc>describes the overall project purpose and process</projectDesc>    <samplingDecl>documents rational for text sampling or selection in case of parts of the text or corpus have been omitted</samplingDecl>    <editorialDecl>explains editorial principles of encoding or transcribing texts</editorialDecl>    <charDecl>provides information about nonstandard characters and glyphs</charDecl> </encodingDesc> ``` |
+|---|---|
+
+
+
+
+
+Figure 5. A detailed encoding of &lt;encodingDesc&gt;. Both types of encoding are absolutely correct. The decision as to which one to use will depend on the goals of the project the the purpose of the encoded texts. For example, if it is important for users to be able to search on how nonstandard characters were handled in the encoding, then the second example would be more suitable as the use of the &lt;charDecl&gt; would allow that element to be isolated for search purposes.
+
+Chapter Two of the TEI Guidelines explains the &lt;teiHeader&gt; and all the child elements that can be used. The exercises in this unit also go into the Header in more detail.
+
+###
+Further reading
+
+The TEI header. The TEI Guidelines. &lt;[http://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html)&gt;
+
+Module 2: The TEI header, TEI by Example. &lt;[http://teibyexample.org/modules/TBED02v00.htm](http://teibyexample.org/modules/TBED02v00.htm)&gt;
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='235' prev_id='99' next_id=' 266' >
+
+<LessonPageTitle>
+The TEI text
+</LessonPageTitle>
+
+<LessonPageContent>
+
+### Introduction
+
+While the &lt;teiHeader&gt; is the container element for metadata, &lt;text&gt; is the container element for the content. &lt;text&gt; contains three major subdivisions or child elements:
+
+1. &lt;front&gt;: (front matter) contains any prefatory matter (headers, abstracts, title page, prefaces, dedications, etc.) found at the start of a document, before the main body
+2. &lt;body&gt;: (text body) contains the whole body of a single unitary text, excluding any front or back matter
+3. &lt;back&gt;: (back matter) contains any appendixes, etc. following the main part of a text.
+
+### Front
+
+Front matter that is typical in published texts, particularly on the title page, or *preliminaries* of older printed books, is encoded within the &lt;front&gt; element as in figure 1:
+
+| ``` 1 2 3 4 5 6 7 8 9 10 ``` | ``` <front>     <docTitle>         <titlePart>             The Hobbit or There and Back Again                              </titlePart>      </docTitle>      <byline>by <docAuthor>J. R. R. Talkien</docAuthor>       illustrations by the author</byline>      <docImprint>Boston and New York <title>Houghton Mifflin Company</title> 1938</docImprint> </front> ``` |
+|---|---|
+
+
+
+
+
+Figure 1: Example of front matter
+
+Encoding of front matter is described in section [4.6 Title Pages ](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DS.html#DSTITL "Title Pages")of the TEI Guidelines. &lt;front&gt; contains a number of child elements including
+
+- [titlePage](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-titlePage.html) (title page) contains the title page of a text, appearing within the front or back matter.
+- [docTitle](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-docTitle.html) (document title) contains the title of a document, including all its constituents, as given on a title page.
+- [titlePart](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-titlePart.html) contains a subsection or division of the title of a work, as indicated on a title page.
+- [argument](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-argument.html) contains a formal list or prose description of the topics addressed by a subdivision of a text.
+- [byline](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-byline.html) contains the primary statement of responsibility given for a work on its title page or at the head or end of the work.
+- [docAuthor](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-docAuthor.html) (document author) contains the name of the author of the document, as given on the title page (often but not always contained in a byline).
+- [epigraph](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-epigraph.html) contains a quotation, anonymous or attributed, appearing at the start or end of a section or on a title page.
+- [imprimatur](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-imprimatur.html) contains a formal statement authorizing the publication of a work, sometimes required to appear on a title page or its verso.
+- [docEdition](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-docEdition.html) (document edition) contains an edition statement as presented on a title page of a document.
+- [docImprint](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-docImprint.html) (document imprint) contains the imprint statement (place and date of publication, publisher name), as given (usually) at the foot of a title page.
+- [docDate](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-docDate.html) (document date) contains the date of a document, as given on a title page or in a dateline.
+- [graphic](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-graphic.html) indicates the location of a graphic or illustration, either forming part of a text, or providing an image of it.
+
+
+### Body
+
+The &lt;body&gt; element, with its myriad of child elements, contains the text proper: be it a novel, a collection of poems, a play, a letter, etc, as described in chapter [4 Default Text Structure ](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DS.html "7")of the Guidelines. Not only can the structure of these texts be encoded, but other textual information or features can be included, for example, notes, the position of illustrations, additions and deletions in manuscripts, or the presence of multiple hands in the creation of a manuscript.
+
+The TEI tends to favour less descriptive tags which can serve a variety of situations which semantically, represent similar structures. For example, you will not find a tag for poetry called verse, stanza, couplet, or octave. Rather, the TEI provides the &lt;lg&gt; or line group element which acts as a less semantically specific container for all these types of divisions within a poem. If a particular project would like to specify further the nature of the &lt;lg&gt;, this can be done via the 'type' attribute: e.g. &lt;lg type="couplet"&gt;
+
+The same principle holds true for encoding books. A book may be structured into several chapters. In TEI this chapter structure can be expressed with the &lt;div&gt; (division) element. Any arbitrary division can be encoded using this element. Again, by using the @type attribute more granularity in the exact nature of division can indicated, as in the following example:
+
+| ``` 1 2 3 4 5 6 7 8 ``` | ``` <<a href="http://december.com/html/4/element/body.html">body</a>>     <<a href="http://december.com/html/4/element/div.html">div</a> n="1" type="chapter">                 <!-- The first chapter of The Hobbit goes here --></<a href="http://december.com/html/4/element/div.html">div</a>>      <<a href="http://december.com/html/4/element/div.html">div</a> n="2" type="chapter">                 <!-- The second chapter of The Hobbit goes here --></<a href="http://december.com/html/4/element/div.html">div</a>>      <<a href="http://december.com/html/4/element/div.html">div</a> n="3" type="chapter">                 <!-- The third chapter of The Hobbit goes here --></<a href="http://december.com/html/4/element/div.html">div</a>> </<a href="http://december.com/html/4/element/body.html">body</a>> ``` |
+|---|---|
+
+
+
+
+
+Figure 2: An example of encoding chapters using the &lt;div&gt; element.
+
+### Back matter
+
+The third section and last section of &lt;text&gt; is the &lt;back&gt; element in which back matter is encoded. Back matter is typical of published texts, and appendixes, indexes, etc. following the main part of a text. Further details about this section can be found in chapter [4.7 Back Matter ](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DS.html#DSBACK "Back Matter")of the Guidelines.
+
+Child elements of &lt;back&gt; are:
+
+- **appendix**: an ancillary self-contained section of a work, often providing additional but in some sense extra-canonical text.
+- **glossary**: a list of terms associated with definition texts (‘glosses’): this should be encoded as a &lt;list type="gloss"&gt; (see section 3.7 Lists).
+- notes: a section in which textual or other kinds of notes are gathered together.
+- **bibliogr**: a list of bibliographic citations: this should be encoded as a listBibl
+- **index**: any form of index to the work.
+- **colophon**: a statement appearing at the end of a book describing the conditions of its physical production.
+
+Figure 3 is an example of how to encode back matter:
+
+| ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 ``` | ``` <back>      <<a href="http://december.com/html/4/element/div.html">div</a>>         <<a href="http://december.com/html/4/element/head.html">head</a>>Appendix</<a href="http://december.com/html/4/element/head.html">head</a>>             <<a href="http://december.com/html/4/element/p.html">p</a>>Here goes the text of the appendix text...</<a href="http://december.com/html/4/element/p.html">p</a>>      </<a href="http://december.com/html/4/element/div.html">div</a>>      <<a href="http://december.com/html/4/element/div.html">div</a>>        <<a href="http://december.com/html/4/element/head.html">head</a>>Index</<a href="http://december.com/html/4/element/head.html">head</a>>        <list type="index">            <item>First Index Entry</item>            <item>Second Index Entry</item>        </list>     </<a href="http://december.com/html/4/element/div.html">div</a>> </back> ``` |
+|---|---|
+
+
+
+
+
+Fig 3: Encoding of back matter. ### Core Elements
+
+There is a set of elements that can be useful for the encoding of different types of texts and are therefore useful for multiple TEI modules. These are called TEI Core Elements and are described in a separate chapter of the TEI Guidelines ([3 Elements Available in All TEI Documents](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/CO.html)). These elements have various functions. Some are structural elements such as &lt;p&gt; (used to encode paragraphs). Others are used to encode highlighted (&lt;hi&gt;) or quoted (&lt;q&gt;) parts of a text. Others indicate editorial changes (the &lt;reg&gt; and &lt;abbr&gt; elements) or notes or annotations (&lt;note&gt;). An example of this is in figure 4:
+
+| ``` 1 2 3 4 5 6 7 ``` | ``` <<a href="http://december.com/html/4/element/body.html">body</a>>      <<a href="http://december.com/html/4/element/head.html">head</a>>The Hobbit</<a href="http://december.com/html/4/element/head.html">head</a>>      <<a href="http://december.com/html/4/element/p.html">p</a>>In a hole in the ground<note>This is an editorial note.</note>          there lived a hobbit. Not a nasty, dirty, wet hole,          filled with the ends of worms and an oozy smell, nor yet a dry, bare, ...      </<a href="http://december.com/html/4/element/p.html">p</a>> </<a href="http://december.com/html/4/element/body.html">body</a>> ``` |
+|---|---|
+
+
+
+
+
+Figure 4: TEI core elements ### Further reading
+
+Module 3: Prose. TEI by Example. &lt;[http://teibyexample.org/modules/TBED03v00.htm](http://teibyexample.org/modules/TBED03v00.htm)&gt;
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='266' prev_id='235' next_id=' 273' >
+
+<LessonPageTitle>
+Customising the TEI
+</LessonPageTitle>
+
+<LessonPageContent>
+
+TEI has over 500 elements for the encoding of many types of data. No single text encoding project will use all these elements, hence the TEI Consortium has created a number of subsets (modules) of the full TEI schema for certain data types. For instance, the [TEI Lite](http://www.tei-c.org/Guidelines/Customization/Lite/) schema is a good starting point for many TEI projects as it contains the most frequently used TEI elements. Other modules include specialised tags for dictionaries, manuscript description, verse, and performance texts.
+
+While these modules cover a wide variety textual types, projects may still need to customise the TEI to better meet their needs. For instance a schema needs to be more restricted in order to ensure consistent encoding or the TEI needs to be extended so that elements from other XML standards or custom elements are added. The TEI encourages this type of customisation, with two caveats:
+
+- three modules are mandatory for all TEI customisations: core, header and textstructure;
+- all changes to the TEI schema are documented through a mechanism called ODD One Document Does it all).
+
+ODD is the XML vocabulary which the TEI system uses to describe itself. This includes creating appropriate documentation as well as the schema specifications about the elements and attributes used. Therefore, ODD is used to generate both technical documentation in form of a DTD or RELAX NG and written documentation of the elements and attributes.
+
+The preferred way to create a TEI cusomisation is via an online tool that provides an interface that makes it easier to create and edit project-specific customisations called [Roma](http://www.tei-c.org/Roma/). Roma allows one to chose elements and attributes and add custom elements and attributes. With Roma you can also validate your custom schema to make sure it still conforms to the TEI rules, you may save your customisation as well as export a DTD schema and HTML documentation.
+
+| <IframeElement w={560} h={315} alt='' src='https://www.youtube.com/embed/Idpg572uf0A' /> |
+|---|
+
+### Further reading:
+
+Getting Started with ODDs. &lt;[http://www.tei-c.org/Guidelines/Customization/odds.xml](http://www.tei-c.org/Guidelines/Customization/odds.xml)&gt;
+
+TEI: Using Roma. &lt;[http://www.tei-c.org/Roma/](http://www.tei-c.org/Roma/)&gt;
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='273' prev_id='266' next_id=' 274' >
+
+<LessonPageTitle>
+Simple TEI Exercise
+</LessonPageTitle>
+
+<LessonPageContent>
+
+### Exercise:
+
+1. Copy and paste the following code into a new XML file
+
+    | ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 ``` | ``` <?xml version="1.0" encoding="UTF-8"?> <TEI version="5.0" xmlns="http://www.tei-c.org/ns/1.0">     <teiHeader>         <fileDesc>             <titleStmt>                 <title><!-- title of the electronic text --></title>                 <author><!-- author's name --></author>                 <principal><!-- principal researcher responsible for the TEI document, add your own name --></principal>             </titleStmt>             <publicationStmt>                 <distributor><!-- name of the repository responsible for the distribution of the TEI document --></distributor>                 <availability>                     <p><!-- copyright statement --></p>                 </availability>                 <date><!-- date of the publication of the TEI document --></date>             </publicationStmt>             <sourceDesc>                 <bibl>                     <author><!-- author of the book --></author>,                     <title level="m"><!-- title of the book  --></title>,                     <publisher><!-- publisher of the book --></publisher>                     <pubPlace><!-- place of publication --></pubPlace>,                     <date><!-- date of publication --></date>. </bibl>             </sourceDesc>         </fileDesc>     </teiHeader>     <text>         <body>             <div><!-- This is not the teiHeader anymore. Here the electronic text of The Hobbit could be added --></div>         </body>     </text> </TEI> ``` |
+    |---|---|
+2. Replace the comments in the &lt;teiHeader&gt; section with the following metadata:
+
+- Title: There and back again: an electronic edition
+- Author: J.R.R. Tolkien
+- Copyright: The copyright owner of the English translation is Tolkien, 1937
+- Repository: Digital Repository of my University
+- The source: J.R.R. Tolkien. The Hobbit. Ballantine Books, New York. 1937.
+
+4. Validate the TEI document and make sure it is well-formed and valid!
+
+</LessonPageContent>
+
+</LessonPage>
+
+
+<LessonPage  id='274' prev_id='273' next_id=' 0' >
+
+<LessonPageTitle>
+The TEI Consortium
+</LessonPageTitle>
+
+<LessonPageContent>
+
+The TEI Consortium is a not-for-profit membership organisation that has existed since 2000, although the TEI as a tagset and Guidelines has existed since 1987. The Guidelines have become the de facto standard for encoding textual material in the humanities and in cultural heritage. Its extensive, yet customisable tagset (several hundred elements) provides for the most basic of encoding (for example, the structure of a text in paragraphs, chapters, etc) to extremely nuanced and interpretative encoding of texts from dictionaries, to versions of poetry, to drama. The TEI, as expressed first in SGML and currently in XML can be used across such a wide variety of textual types and in a wide variety of publishing environments because of its being hardware and software independent. It also benefits from being community-driven. It is designed and developed by and for the scholarly research community (Burnard, 2015), and as such, is responsive to community needs.
+
+One of the main roles of The TEI Consortium is to develop and maintain guidelines for encoding of humanities data. These Guidelines were first developed for the encoding of text, but they have been extended to include other types of data. For example, the TEI Header can be used to describe multimedia objects. The TEI Guidelines provide detailed information on all TEI elements, as well as providing recommendations and examples on how they should be used. The Guidelines provides the single most comprehensive source about using the TEI and can be accessed [online](http://www.tei-c.org/Guidelines/P5/ "TEI Guidelines P5").
+
+TEI elements are organised in modules. The 'core' module contains elements essential to most encoding projects (including paragraphs, quotations, lines and stanzas of poetry, simple links, etc) and are described in [Chapter Three](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/CO.html "Chapter 3 TEI Guidelines") of the Guidelines. Additionally, there are modules for the encoding of specialised text types, such as prose, poetry, manuscripts, dictionaries. In this unit we will cover basic TEI rules and some of the more common/important TEI tags described in the Guidelines. An alphabetical list of all [TEI Elements](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/REF-ELEMENTS.html "TEI List of Elements") and how they are used is probably the easiest way to understand how a particular element is used.
+
+The following video by Lou Burnard, one of the founding editors of the TEI, is an excellent induction to the TEI and its history.
+
+<IframeElement w={560} h={315} alt='' src='https://www.youtube.com/embed/YEE-JlS8oZI' />
+
+### Further reading
+
+Lou Burnard. What is the Text Encoding Initiative? How to add intelligent markup to digital resources. Marseille. 2014. &lt;[http://books.openedition.org/oep/426](http://books.openedition.org/oep/426)&gt;.
+
+‘TEI: P5 Guidelines’, *Text Encoding Initiative* &lt;[http://www.tei-c.org/Guidelines/P5/](http://www.tei-c.org/Guidelines/P5/)&gt;
+
+</LessonPageContent>
+
+</LessonPage>
+
+</Lesson>
+
+
+## Yeats exercise: encoding poetry with TEI
+
+<Assign id='2' moduleid='112'>
+
+<AssignTitle>
+Yeats exercise: encoding poetry with TEI
+</AssignTitle>
+
+<AssignIntro>
+In this exercise you will encode a poem and its associated bibliographic information in the &lt;teiHeader&gt;. This exercise is designed to be completed within the oXygen editor as much of the instructions indicate how to encode and validate your XML document using this software.
+
+All the files you need for this exercise are included in the zip file below. Save the zip file to your desktop. When you unzip the file, you will find four subfolders:
+
+- documents
+- extras
+- schemas
+- stylesheets
+
+The **documents** folder contains one file: 'yeats\_template.xml. We have pre-populated much of the encoding needed for this poem. You will need to complete the rest of the encoding. Instructions on how to complete the poem are included in the **extras** folder (Instructions on encoding the Yeats poem.pdf). Also in the extras folder are
+
+- the text for the poem
+- a challenge exercise (instructions for which are in section F of the instructions PDF)
+
+The **schemas** folder contains the teilite schema, which the poem will be validated against. The **stylesheets** folder similarly contains the stylesheet (yeats.css) that is used for this exercise.
+
+Before you begin the exercise, watch the following video which provides you with information that should help you from making common mistakes and will explain further the file structure.
+
+<IframeElement w={560} h={315} alt='' src='https://www.youtube.com/embed/WfvbkJqP3iA?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL' />
+</AssignIntro>
+
+</Assign>
+
+
+## Franklin exercise: encode prose with TEI
+
+<Assign id='3' moduleid='114'>
+
+<AssignTitle>
+Franklin exercise: encode prose with TEI
+</AssignTitle>
+
+<AssignIntro>
+Download the following zip file containing the exercise documents. You will find the instructions in the folder 'handouts'.
+</AssignIntro>
+
+</Assign>
+
+
+## Specialist encoding
+
+<Lesson title='Specialist encoding'>
+
+
+<LessonPage  id='275' prev_id='0' next_id=' 0' >
+
+<LessonPageTitle>
+Encoding of correspondence with the TEI
+</LessonPageTitle>
+
+<LessonPageContent>
+
+Over the last decade a great number of letter and correspondence encoding projects have been using TEI. For instance, the DALF: Digital Archive of Letters in Flanders ([http://ctb.kantl.be/project/dalf/](http://ctb.kantl.be/project/dalf/)), The Van Gogh Letters ([http://vangoghletters.org/vg/](http://vangoghletters.org/vg/)) and others. The Text Encoding Initiative has its own Special Interest Group that develops standards and best-practice guidelines for the encoding of correspondence with TEI ([http://wiki.tei-c.org/index.php/SIG:Correspondence](http://wiki.tei-c.org/index.php/SIG:Correspondence)).
+
+When we designed this course, we also worked on a correspondence: The Letters of 1916 project ([http://letters1916.maynoothuniversity.ie/](http://letters1916.maynoothuniversity.ie/)) and therefore we wanted to include a section on the encoding example of this genre into this course.
+
+### Correspondence specific header elements
+
+For the encoding of correspondence metadata you use essentially the same TEI header as for other texts. However, in addition to the already mentioned elements that can be used in the TEI header, the TEI provides a set of other elements that were specifically designed for the description of correspondence. These are the &lt;correspDesc&gt; element and its child elements.
+
+The &lt;correspDesc&gt; element was introduced to provide further description about the correspondence such as who sent a letter to whom, from where was it sent.
+
+The &lt;correspDesc&gt; element has two child elements, &lt;correspAction&gt; and &lt;correspContext&gt;. The first is used to store a structured description of the place a letter is from, the name of the person that sent a letter and the date it was send or any other action related to the correspondence. The &lt;correspContext&gt; element on the other hand provides references to letters or other correspondence that was sent prior or afterwards and is somehow related to the letter.
+
+| ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 ``` | ``` <profileDesc>          <correspDesc>             <correspAction type="sent">                <persName>Major E. Reade</persName>                <placeName>Dartmoor Prison</placeName>                <date when="1916-07-05">05 July 1916</date>             </correspAction>             <correspAction type="received">                <persName>Mabel FitzGerald</persName>                <placeName>Bray, Co. Wicklow, Ireland</placeName>                <date>unknown</date>             </correspAction>             <correspContext>                <ref type="prev"                   target="http://letters1916.maynoothuniversity.ie/explore/letters/942">                   Previous letter from <persName>Major E. Reade</persName>                   to <persName>Mabel FitzGerald</persName>: <date>20 June 1916</date>                </ref>                <ref type="next"                   target="http://letters1916.maynoothuniversity.ie/explore/letters/945">                   Next letter of <persName>Major E. Reade</persName>                   to <persName>Mabel FitzGerald</persName>: <date>10 July 1916</date>                </ref>             </correspContext>          </correspDesc>       </profileDesc> ``` |
+|---|---|
+
+
+
+
+
+For the transcription of the letter a number of additional elements can be used that are genre specific for the tagging of correspondence features. As we have learned earlier in this course the transcribed text is within the &lt;text&gt; and &lt;body&gt; section of the TEI document. There are specific TEI elements for the encoding of opener, closer and postscripts and they can be nested in the following way:
+
+| ``` 1 2 3 4 5 6 7 8 9 10 ``` | ``` <text>       <body>          <opener>The opener of the letter goes here</opener>          <p>The transcription of the letter goes here</p>          <closer>The closer of the letter goes here</closer>          <postscript>             <p> Postscripts (P.S.) goes here</p>          </postscript>       </body> </text> ``` |
+|---|---|
+
+
+
+
+
+
+Within the &lt;opener&gt; address information, the date and the salutation can be encoded using suitable elements such as &lt;address&gt;, &lt;dateline&gt; and &lt;salute&gt;:
+
+| ``` 1 2 3 4 5 6 7 8 ``` | ``` <opener>     <address>        <addrLine>H.M.Prison,</addrLine>        <addrLine>Dartmoor</addrLine>     </address>     <dateline>5 July 1916.</dateline>     <salute>Madam T.D.Fitzgerald</salute> </opener> ``` |
+|---|---|
+
+
+
+
+
+Similarly, the &lt;closer&gt; can nest elements for further structure, such as salute, signed, dateline, etc.:
+
+| ``` 1 2 3 4 5 ``` | ``` <closer>        <salute>I am, Madam, Your obedient Servant,</salute>        <signed>E. Reade</signed>        <dateline>Dartmoor, 5 July</dateline>  </closer> ``` |
+|---|---|
+
+
+
+
+
+
+Between the opener and the closer is the actual message of a letter and this message can be encoded using &lt;p&gt; tag which indicate paragraphs. Further information on how to use the opener, the closer and other relevant tags can be found together with detailed examples in the TEI guidelines. To familiarise yourself with the TEI guidelines, please have a look at the following two sections now:
+
+2.4.6 Correspondence Description. TEI P5 Guidelines. &lt;[http://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html#HD44CD](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html#HD44CD)&gt;
+
+4.2.2 Openers and Closers. TEI P5 Guidelines. &lt;[http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DS.html#DSOC](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DS.html#DSOC)&gt;
+
+### Further reading
+
+Peter Stadler, Marcel Illetschko, and Sabine Seifert. Towards a Model for Encoding Correspondence in the TEI: Developing and Implementing &lt;correspDesc&gt;. Journal of the Text Encoding Initiative. Issue 9. 2016. &lt;[http://jtei.revues.org/1433](http://jtei.revues.org/1433)&gt;
+
+</LessonPageContent>
+
+</LessonPage>
+
+</Lesson>
+
