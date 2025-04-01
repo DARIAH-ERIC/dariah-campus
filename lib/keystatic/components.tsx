@@ -250,7 +250,7 @@ export const createGrid = createComponent((_paths, _locale) => {
 export const createHeadingId = createComponent((_paths, _locale) => {
 	return {
 		HeadingId: inline({
-			label: "HeadingId",
+			label: "Heading identifier",
 			description: "Add a custom link target to a heading.",
 			icon: <HashIcon />,
 			schema: {
