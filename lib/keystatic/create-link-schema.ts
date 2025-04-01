@@ -1,12 +1,13 @@
 import { createAssetOptions, type Paths, withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 
-import type { Locale } from "@/config/i18n.config";
+import type { Language } from "@/config/i18n.config";
 import { linkKinds } from "@/lib/content/options";
+import * as validation from "@/lib/keystatic/validation";
 
 export function createLinkSchema<TPath extends `/${string}/`>(
 	downloadPath: Paths<TPath>["downloadPath"],
-	locale: Locale,
+	locale: Language,
 ) {
 	return fields.conditional(
 		fields.select({
@@ -28,6 +29,10 @@ export function createLinkSchema<TPath extends `/${string}/`>(
 			external: fields.url({
 				label: "URL",
 				validation: { isRequired: true },
+			}),
+			"url-fragment-id": fields.text({
+				label: "Heading identifier",
+				validation: { isRequired: true, pattern: validation.urlFragment },
 			}),
 			curricula: fields.relationship({
 				label: "Curriculum",
