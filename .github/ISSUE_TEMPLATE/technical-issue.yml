@@ -4,6 +4,7 @@ assignees:
   - babslgam
 labels:
   - needs-review
+type: bug
 body:
   - type: markdown
     attributes:
