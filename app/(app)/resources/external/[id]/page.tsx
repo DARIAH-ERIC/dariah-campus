@@ -239,10 +239,12 @@ export default async function ExternalResourcePage(
 							return { id: person.id, name: person.data.name };
 						})}
 						contentType={resource.data["content-type"].value}
+						doi={doi}
 						license={license}
 						locale={contentLocale}
 						publicationDate={publicationDate}
 						remotePublicationDate={remote["publication-date"]}
+						remoteUrl={remote.url}
 						sources={sources.map((source) => {
 							return { id: source.id, name: source.data.name };
 						})}

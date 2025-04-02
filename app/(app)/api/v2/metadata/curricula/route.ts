@@ -38,7 +38,17 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
 		const { limit, offset } = filters;
 		const total = items.length;
-		const page = items.slice(offset, offset + limit);
+		const page = items.slice(offset, offset + limit).map((item) => {
+			const { doi, ...data } = item.data;
+
+			return {
+				...item,
+				pid: doi,
+				data: {
+					...data,
+				},
+			};
+		});
 
 		return NextResponse.json({ total, limit, offset, items: page });
 	} catch (error) {

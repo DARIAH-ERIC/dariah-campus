@@ -1,9 +1,10 @@
 name: Technical issue
 description: Report a technical issue with DARIAH-Campus
 assignees:
-  - stefanprobst
+  - babslgam
 labels:
   - needs-review
+type: bug
 body:
   - type: markdown
     attributes:

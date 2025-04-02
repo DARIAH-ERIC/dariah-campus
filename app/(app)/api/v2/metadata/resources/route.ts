@@ -84,10 +84,13 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 		const total = items.length;
 
 		const page = items.slice(offset, offset + limit).map((item) => {
+			const { doi, ...data } = item.data;
+
 			return {
 				...item,
+				pid: doi,
 				data: {
-					...item.data,
+					...data,
 					authors: item.data.authors.map((id) => {
 						return peopleById.get(id);
 					}),

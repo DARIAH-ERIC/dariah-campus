@@ -18,6 +18,10 @@ export function getLinkProps(params: LinkSchema) {
 			return { href: params.value };
 		}
 
+		case "url-fragment-id": {
+			return { href: `#${params.value}` };
+		}
+
 		case "curricula": {
 			return { href: `/curricula/${params.value}` };
 		}
