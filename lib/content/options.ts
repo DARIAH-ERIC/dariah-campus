@@ -4,6 +4,7 @@ export const calloutKinds = [
 	{ label: "Note", value: "note" },
 	{ label: "Tip", value: "tip" },
 	{ label: "Warning", value: "warning" },
+	{ label: "Plain", value: "none" },
 ] as const;
 
 export type CalloutKind = (typeof calloutKinds)[number]["value"];
