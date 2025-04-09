@@ -26,7 +26,7 @@ import { createVideoUrl } from "@/lib/keystatic/create-video-url";
 
 type LinkSchema = ParsedValueForComponentSchema<ReturnType<typeof createLinkSchema>>;
 
-const calloutIcons: Record<CalloutKind, LucideIcon> = {
+const calloutIcons: Record<Exclude<CalloutKind, "none">, LucideIcon> = {
 	caution: BoltIcon,
 	important: InfoIcon,
 	note: PencilIcon,
@@ -35,14 +35,16 @@ const calloutIcons: Record<CalloutKind, LucideIcon> = {
 };
 
 const calloutStyles = styles({
-	base: "grid gap-y-3 rounded-md border border-l-4 p-6 shadow [&_*::marker]:text-inherit [&_*]:text-inherit",
+	base: "grid gap-y-3 rounded-md border p-6 shadow [&_*::marker]:text-inherit [&_*]:text-inherit",
 	variants: {
 		kind: {
-			caution: "border-error-200 border-l-error-600 bg-error-50 text-error-800",
-			important: "border-important-200 border-l-important-600 bg-important-50 text-important-800",
-			note: "border-neutral-200 border-l-neutral-600 bg-neutral-100 text-neutral-800",
-			tip: "border-success-200 border-l-success-600 bg-success-50 text-success-800",
-			warning: "border-warning-200 border-l-warning-500 bg-warning-50 text-warning-800",
+			caution: "border-l-4 border-error-200 border-l-error-600 bg-error-50 text-error-800",
+			important:
+				"border-l-4 border-important-200 border-l-important-600 bg-important-50 text-important-800",
+			note: "border-l-4 border-neutral-200 border-l-neutral-600 bg-neutral-100 text-neutral-800",
+			tip: "border-l-4 border-success-200 border-l-success-600 bg-success-50 text-success-800",
+			warning: "border-l-4 border-warning-200 border-l-warning-500 bg-warning-50 text-warning-800",
+			none: "border-neutral-200 bg-neutral-100 text-neutral-800",
 		},
 	},
 	defaults: {
@@ -60,20 +62,42 @@ interface CalloutPreviewProps {
 export function CalloutPreview(props: Readonly<CalloutPreviewProps>): ReactNode {
 	const { children, kind = "note", title } = props;
 
-	const Icon = calloutIcons[kind];
-
 	return (
 		<aside className={calloutStyles({ kind })}>
 			<NotEditable>
-				<strong className="flex items-center gap-x-2 font-bold">
-					<Icon aria-hidden={true} className="size-5 shrink-0" />
-					{/* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing */}
-					<span>{title || capitalize(kind)}</span>
-				</strong>
+				<CalloutPreviewHeader kind={kind} title={title} />
 			</NotEditable>
 			<div className="[&_a:hover]:no-underline [&_a]:underline">{children}</div>
 		</aside>
 	);
+}
+
+interface CalloutPreviewHeaderProps {
+	kind: CalloutKind;
+	title?: string;
+}
+
+function CalloutPreviewHeader(props: CalloutPreviewHeaderProps): ReactNode {
+	const { kind, title } = props;
+
+	const hasTitle = isNonEmptyString(title);
+
+	if (kind !== "none") {
+		const Icon = calloutIcons[kind];
+
+		return (
+			<strong className="flex items-center gap-x-2 font-bold">
+				<Icon aria-hidden={true} className="size-5 shrink-0" />
+				<span>{hasTitle ? title : capitalize(kind)}</span>
+			</strong>
+		);
+	}
+
+	if (hasTitle) {
+		return <strong className="font-bold">{title}</strong>;
+	}
+
+	return null;
 }
 
 interface DisclosurePreviewProps {

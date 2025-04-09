@@ -5,6 +5,7 @@ import {
 	withI18nPrefix,
 } from "@acdh-oeaw/keystatic-lib";
 import { collection, fields } from "@keystatic/core";
+import slugify from "@sindresorhus/slugify";
 
 import {
 	contentLanguages,
@@ -730,6 +731,13 @@ export const createPeople = createCollection("/people/", (paths, _locale) => {
 				name: {
 					label: "Name",
 					validation: { isRequired: true },
+				},
+				slug: {
+					generate(name) {
+						const segments = name.trim().split(" ");
+						const lastName = segments.pop();
+						return slugify([lastName, ...segments].join(" "));
+					},
 				},
 			}),
 			image: fields.image({

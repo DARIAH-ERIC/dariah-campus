@@ -120,7 +120,7 @@ export function Resource(props: ResourceProps): ReactNode {
 				<div className="flex justify-end text-right">
 					<a
 						className="inline-flex items-center gap-x-1.5 text-right text-sm text-brand-700 transition hover:text-brand-800 hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-800"
-						href={`/keystatic/collection/${withI18nPrefix(collection, getLanguage(locale))}/item/${id}`}
+						href={`/keystatic/branch/main/collection/${encodeURIComponent(withI18nPrefix(collection, getLanguage(locale)))}/item/${encodeURIComponent(id)}`}
 						target="_blank"
 					>
 						<PencilIcon className="size-4 shrink-0" />
