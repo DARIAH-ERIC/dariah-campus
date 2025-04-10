@@ -10,7 +10,7 @@
 	"packageManager": "pnpm@10.4.1",
 	"scripts": {
 		"analyze": "BUNDLE_ANALYZER=\"enabled\" next build --no-lint",
-		"build": "run-s build:app build:search-index",
+		"build": "run-s build:handle build:app build:search-index",
 		"build:app": "next build",
 		"build:handle": "bash ./scripts/handle/create-handle.sh",
 		"build:search-index": "dotenv -c production -- tsx --tsconfig ./scripts/typesense/tsconfig.json ./scripts/typesense/create-search-index.ts",
