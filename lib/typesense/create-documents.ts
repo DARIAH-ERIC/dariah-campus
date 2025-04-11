@@ -8,6 +8,7 @@ import { getLanguage } from "@/lib/i18n/get-language";
 
 export async function createDocuments(locale: Locale) {
 	const reader = createReader(process.cwd(), config);
+	const language = getLanguage(locale);
 
 	const collections = [
 		"resources-events",
@@ -20,7 +21,7 @@ export async function createDocuments(locale: Locale) {
 	const documents: Array<object> = [];
 
 	for (const name of collections) {
-		const items = await reader.collections[withI18nPrefix(name, getLanguage(locale))].all();
+		const items = await reader.collections[withI18nPrefix(name, language)].all();
 
 		if (items.length === 0) continue;
 

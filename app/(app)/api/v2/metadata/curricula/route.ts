@@ -1,8 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import * as v from "valibot";
 
-import { defaultLocale as locale } from "@/config/i18n.config";
-import { createClient } from "@/lib/content/create-client";
+import curricula from "@/public/metadata/curricula.json";
 
 const SearchFiltersSchema = v.object({
 	limit: v.nullish(
@@ -32,23 +31,9 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 			kind: searchParams.getAll("kind"),
 		});
 
-		const client = await createClient(locale);
-
-		const items = await client.curricula.all();
-
 		const { limit, offset } = filters;
-		const total = items.length;
-		const page = items.slice(offset, offset + limit).map((item) => {
-			const { doi, ...data } = item.data;
-
-			return {
-				...item,
-				pid: doi,
-				data: {
-					...data,
-				},
-			};
-		});
+		const total = curricula.length;
+		const page = curricula.slice(offset, offset + limit);
 
 		return NextResponse.json({ total, limit, offset, items: page });
 	} catch (error) {
