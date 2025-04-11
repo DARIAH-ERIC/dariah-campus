@@ -17,6 +17,9 @@ import {
 	SuperscriptIcon,
 	VideoIcon,
 } from "lucide-react";
+/** Required by `scripts/metadata/dump.ts`. */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import * as React from "react";
 
 import {
 	calloutKinds,
