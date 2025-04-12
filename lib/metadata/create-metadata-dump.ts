@@ -33,6 +33,25 @@ export async function createMetadata(locale: Locale) {
 	const curricula: Array<object> = [];
 	const resources: Array<object> = [];
 
+	function createPerson(id: string) {
+		const person = peopleById.get(id)!;
+		const orcid =
+			person.entry.social.find((s) => {
+				return s.discriminant === "orcid";
+			})?.value ?? null;
+		return { id, name: person.entry.name, orcid };
+	}
+
+	function createSource(id: string) {
+		const source = sourcesById.get(id)!;
+		return { id, name: source.entry.name };
+	}
+
+	function createTag(id: string) {
+		const tag = tagsById.get(id)!;
+		return { id, name: tag.entry.name };
+	}
+
 	for (const name of collections.curricula) {
 		const items = await reader.collections[withI18nPrefix(name, language)].all();
 
@@ -65,17 +84,8 @@ export async function createMetadata(locale: Locale) {
 				translations,
 				"publication-date": item.entry["publication-date"],
 				"content-type": "curriculum",
-				tags: item.entry.tags.map((id) => {
-					const tag = tagsById.get(id)!;
-					return { id, name: tag.entry.name };
-				}),
-				editors:
-					"editors" in item.entry
-						? item.entry.editors.map((id) => {
-								const person = peopleById.get(id)!;
-								return { id, name: person.entry.name };
-							})
-						: [],
+				tags: item.entry.tags.map(createTag),
+				editors: "editors" in item.entry ? item.entry.editors.map(createPerson) : [],
 				resources: resources.map((resource) => {
 					return { id: resource.value, collection: resource.discriminant };
 				}),
@@ -111,35 +121,11 @@ export async function createMetadata(locale: Locale) {
 						: name === "resources-events"
 							? "event"
 							: "pathfinder",
-				tags: item.entry.tags.map((id) => {
-					const tag = tagsById.get(id)!;
-					return { id, name: tag.entry.name };
-				}),
-				authors: item.entry.authors.map((id) => {
-					const person = peopleById.get(id)!;
-					return { id, name: person.entry.name };
-				}),
-				editors:
-					"editors" in item.entry
-						? item.entry.editors.map((id) => {
-								const person = peopleById.get(id)!;
-								return { id, name: person.entry.name };
-							})
-						: [],
-				contributors:
-					"contributors" in item.entry
-						? item.entry.contributors.map((id) => {
-								const person = peopleById.get(id)!;
-								return { id, name: person.entry.name };
-							})
-						: [],
-				sources:
-					"sources" in item.entry
-						? item.entry.sources.map((id) => {
-								const source = sourcesById.get(id)!;
-								return { id, name: source.entry.name };
-							})
-						: [],
+				tags: item.entry.tags.map(createTag),
+				authors: item.entry.authors.map(createPerson),
+				editors: "editors" in item.entry ? item.entry.editors.map(createPerson) : [],
+				contributors: "contributors" in item.entry ? item.entry.contributors.map(createPerson) : [],
+				sources: "sources" in item.entry ? item.entry.sources.map(createSource) : [],
 			});
 		});
 	}
