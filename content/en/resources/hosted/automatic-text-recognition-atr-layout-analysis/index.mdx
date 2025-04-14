@@ -20,9 +20,11 @@ license: cc-by-4.0
 table-of-contents: false
 summary:
   title: Automatic Text Recognition (ATR) - Layout Analysis
-  content: Discover the subtleties of region and line segmentation and learn about
-    the purpose of layout analysis for Automatic Text Recognition!
+  content: >-
+    Discover the subtleties of region and line segmentation and learn about the
+    purpose of layout analysis for Automatic Text Recognition!
 content-type: training-module
+translations: []
 doi: https://hdl.handle.net/21.11159/019595c5-1062-769a-aa81-caaa9ae837b7
 ---
 This session presents all the steps need for layout analysis, especially region or line segmentation, use of controlled vocabularies and choice of an output format. It also provides guidance in the choice of a specific solution depending on the project's shape and purpose.
@@ -42,7 +44,9 @@ After completing this resource, learners will be able to:
 * evaluate the usefulness of layout analysis for their ATR project
 * choose between a manual and an automatic annotation process
 
-<Video provider="youtube" id="KQMy6uiXE-8" />
+<Video provider="youtube" id="KQMy6uiXE-8">
+
+</Video>
 
 ## 1. What is layout analysis?
 
@@ -50,7 +54,7 @@ Layout analysis refers to two processes: identifying the structure of a document
 
 Layout analysis is a computer vision task wherein we generate a series of x and y coordinates corresponding to regions or lines drawn on the image. Sometimes, they are associated with a specific "label", demonstrating a distinction between different types of regions or lines.
 
-<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-layout-analysis/image.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-layout-analysis/image.png" alignment="stretch">
   The x and y coordinates locate a point on an image. Together, these points define lines and polygons corresponding to zones on the image where some information needs to be extracted.
 </Figure>
 
@@ -64,7 +68,7 @@ Let us take an example: we have below a poem called "Le Pont Mirabeau," written 
 
 Detected bounding boxes are usually rectangular (i.e. [YOLO models](https://github.com/ultralytics/ultralytics)) or polygonal (i.e. [Kraken](https://github.com/mittagessen/kraken) segmentation models).
 
-<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-layout-analysis/image-2.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-layout-analysis/image-2.png" alignment="stretch">
   Layout annotation with eScriptorium.
 </Figure>
 
@@ -75,7 +79,7 @@ To understand how text line recognition works, we need to explain what is a text
 * A **baseline or a topline** (red), which defines a virtual line, passing through at least two points, on which the text is written or from which it is hanging;
 * A **mask** (purple), which is a polygon (sometimes a rectangle), defined by at least three points, and which delimits the area of pixels containing the text of the line. The mask is usually automatically calculated by the automatic text recognition (ATR)automatic text recognition (ATR) system based on the baseline or topline coordinates.
 
-<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-layout-analysis/baseline.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-layout-analysis/baseline.png" alignment="stretch">
   A text line corresponding to the poem's title, its baseline (red), and mask (purple).
 </Figure>
 
@@ -165,13 +169,13 @@ Let's take a closer look at the ALTO XML format with the annotations we made ear
 
 Here, we have a whole text zone represented in the ALTO format: the title of the poem. First, we have the **`<textBlock>`** element, with various attributes. The first three ones are indications on its position in the image. It also has an ID attribute, and a TAGREFS attribute. The latter is important because it is where its label is stored. Labels are indicated in the **`<Tags>`** element:
 
-<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-layout-analysis/pasted-image-0.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-layout-analysis/pasted-image-0.png" alignment="stretch">
   ALTO: Labels are indicated in the `<Tags>` element
 </Figure>
 
 The TitlePageZone label has the ID BT5041. The value of the TAGREFS attribute has the same ID, which means that the **`<textBlock>`** is indeed, the title page zone.
 
-<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-layout-analysis/alto-2.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-layout-analysis/alto-2.png" alignment="stretch">
   ALTO-tagging title page zone
 </Figure>
 
@@ -179,7 +183,7 @@ Then, we have the **`<Shape>`** element corresponding to the annotated text zone
 
 Let's now take a closer look at the PAGE XML format:
 
-<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-layout-analysis/alto-3.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-layout-analysis/alto-3.png" alignment="stretch">
   PAGE XML: tagging regions
 </Figure>
 
@@ -241,6 +245,10 @@ Step 4, option 2: You want to annotate the text regions:
 ## Conclusion
 
 Layout analysis includes a series of steps which can be conducted either manually or automatically. Other decisions to be made in the process include the choice of a work environment and output format. This resource provides guidance in all these regards, facilitating the implementation of advanced Automatic Text Recognition features.
+
+### The "Automatic Text Recognition Made Easy" curriculum
+
+This module is part of a wider '[Automatic Text Recognition Made Easy' Curriculum](https://campus.dariah.eu/curricula/automatic-text-recognition-made-easy).  You may also wish to visit the next module in this curriculum, "[Automatic Text Recognition (ATR) - Text Recognition and Post-ATR Correction](https://campus.dariah.eu/resources/hosted/automatic-text-recognition-atr-text-recognition-and-post-atr-correction)".
 
 ## Cited References
 
