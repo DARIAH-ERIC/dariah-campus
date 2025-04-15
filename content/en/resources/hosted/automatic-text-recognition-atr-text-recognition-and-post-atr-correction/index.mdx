@@ -21,6 +21,7 @@ table-of-contents: true
 summary:
   content: Dive into the fine-tuning of Automatic Text Recognition outputs!
 content-type: training-module
+translations: []
 doi: https://hdl.handle.net/21.11159/019595c5-10bc-76da-97f2-08c40c70432e
 ---
 This resource recaps Automatic Text Recognition (ATR) process and concentrates on how to correct output from ATR pipelines. The last part is dedicated to open-source tools available for post-ATR correction.
@@ -40,7 +41,9 @@ After completing this resource, learners will be able to:
 * define the post-ATR correction method they want to use
 * choose the relevant tool to that end.
 
-<Video provider="youtube" id="P5O8bPR9hXg" />
+<Video provider="youtube" id="P5O8bPR9hXg">
+
+</Video>
 
 ## Automatic Text Recognition (ATR) in a nutshell
 
@@ -52,7 +55,7 @@ Evolving technologies have allowed for text recognition systems to now do both H
 
 ## Three important projects using ATR
 
-<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-text-recognition-and-post-atr-correction/atr-projects.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-text-recognition-and-post-atr-correction/atr-projects.png" alignment="stretch">
   Three ATR projects: Gallica, ABO and Project Gutenberg
 </Figure>
 
@@ -68,7 +71,7 @@ Such models require the [input](https://harmoniseatr.hypotheses.org/glossary-atr
 
 Various training data and models can already be found on platforms such as [HTR-United](https://htr-united.github.io/), [Zenodo](https://zenodo.org/), and [GitHub](https://github.com/). Therefore, before jumping to training a new model, it is better to ensure that it is, in fact, really necessary. By exploring existing training data you may be able to skip time-consuming steps involving the production of ground truth and the training of models.
 
-<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-text-recognition-and-post-atr-correction/resources-atr.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-text-recognition-and-post-atr-correction/resources-atr.png" alignment="stretch">
   Some platforms for ground truth and models: HTR-United, GitHub and Zenodo
 </Figure>
 
@@ -76,7 +79,7 @@ Before delving into ATR techniques, it is essential to define some keywords. Fir
 
 Model training is a task that consists of several steps. First, it requires an input, i.e. the data from which the software will learn to produce an output. For text recognition, this input includes, a set of images and their corresponding transcription (the ground truth). Once it is obtained, the input will be fed into the model training software, a topic we will delve into later. During the model training, the software will train on the data and learn from it, develop some patterns' recognition, test and validate the results of this training, and then repeat until it comes up with a satisfactory model, which is what constitutes the output.
 
-<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-text-recognition-and-post-atr-correction/training.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-text-recognition-and-post-atr-correction/training.png" alignment="stretch">
   Schema of a model training
 </Figure>
 
@@ -100,7 +103,7 @@ Lastly, in the case of several choices when picking the most fitting ATR softwar
 
 The post-ATR correction is the step that proceeds the [prediction](https://harmoniseatr.hypotheses.org/glossary-atr#PredictionID) made by the model, which has been applied to a corpus of images. The goal of this step is to fix the mistakes of the prediction in order for it to match perfectly with the images transcribed, making it a ground truth. Software programs, model training, and the quantity of resources in ATR have greatly improved in the last few years, enabling the production of more accurate and efficient recognition models. However, the probability of an automatic prediction producing a flawless result is rarely 100% and in almost every case it will be necessary to correct the prediction after applying the model.
 
-<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-text-recognition-and-post-atr-correction/post-atr-correction.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-text-recognition-and-post-atr-correction/post-atr-correction.png" alignment="stretch">
   Example of a post-ATR correction.
 </Figure>
 
@@ -128,3 +131,7 @@ There are two possible ways to do post-ATR correction: [semi-automatic correctio
 ## Conclusion
 
 Post-ATR correction is a key element of the Automatic Text Recognition pipeline. Decisions on whether to automatise it or part of it are integral to the exploration and research process. Semi-automatic methods are usually a balanced choice, for which a series of open source tools are available.
+
+### The "Automatic Text Recognition Made Easy" curriculum
+
+This module is part of a wider '[Automatic Text Recognition Made Easy' Curriculum](https://campus.dariah.eu/curricula/automatic-text-recognition-made-easy).  You may also wish to visit the next module in this curriculum, "[Automatic Text Recognition (ATR) - End Formats and Reusability](https://campus.dariah.eu/resources/hosted/automatic-text-recognition-atr-end-formats-and-reusability)".
