@@ -251,7 +251,7 @@ export default async function EventResourcePage(
 						contentType={resource.data["content-type"].value}
 						publicationDate={publicationDate}
 						title={title}
-						url={String(createFullUrl({ pathname: createResourceUrl(resource) }))}
+						url={doi || String(createFullUrl({ pathname: createResourceUrl(resource) }))}
 						version={version}
 					/>
 					<ReUseConditions />
@@ -332,7 +332,7 @@ export default async function EventResourcePage(
 							contentType={resource.data["content-type"].value}
 							publicationDate={publicationDate}
 							title={title}
-							url={String(createFullUrl({ pathname: createResourceUrl(resource) }))}
+							url={doi || String(createFullUrl({ pathname: createResourceUrl(resource) }))}
 							version={version}
 						/>
 						<ReUseConditions />
@@ -342,8 +342,9 @@ export default async function EventResourcePage(
 							return { id: person.id, name: person.data.name };
 						})}
 						contentType={resource.data["content-type"].value}
+						doi={doi}
 						license={license}
-						locale={locale}
+						locale={contentLocale}
 						publicationDate={publicationDate}
 						sources={sources.map((source) => {
 							return { id: source.id, name: source.data.name };

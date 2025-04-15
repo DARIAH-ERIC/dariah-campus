@@ -1,11 +1,11 @@
 name: Propose a resource
 description: Provide metadata for a resource to be included in DARIAH-Campus
-title: "[new resource]: "
 assignees:
   - ttasovac
-  - VickyGarnett
+  - vickygarnett
 labels:
   - new resource
+type: content
 body:
   - type: markdown
     attributes:
@@ -41,7 +41,7 @@ body:
       label: Topics (keywords)
       description:
         Comma-separated list of topics. Please have a look at the [list of existing
-        topics](https://campus.dariah.eu/tags).
+        topics](https://campus.dariah.eu/search).
   - type: textarea
     id: learning-outcomes
     attributes:

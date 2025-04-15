@@ -48,3 +48,6 @@ out/
 /playwright/.cache/
 /playwright-report/
 /test-results/
+
+# generated content
+/public/metadata/*.json

@@ -1,4 +1,6 @@
-import { useFormatter, useTranslations } from "next-intl";
+import { withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
+import { PencilIcon } from "lucide-react";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
 import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
@@ -14,6 +16,7 @@ import { Tags } from "@/components/tags";
 import { Translations } from "@/components/translations";
 import type { SocialMediaKind } from "@/lib/content/options";
 import { createFullUrl } from "@/lib/create-full-url";
+import { getLanguage } from "@/lib/i18n/get-language";
 
 interface ResourceProps {
 	attachments?: Array<{ label: string; file: string }>;
@@ -54,6 +57,7 @@ export function Resource(props: ResourceProps): ReactNode {
 		translations,
 	} = props;
 
+	const locale = useLocale();
 	const t = useTranslations("Resource");
 	const format = useFormatter();
 
@@ -113,12 +117,16 @@ export function Resource(props: ResourceProps): ReactNode {
 						{format.dateTime(lastUpdatedAt)}
 					</time>
 				</p> */}
-				{/* <EditLink
-					className="text-sm flex justify-end items-center gap-x-1.5 text-neutral-500"
-					href={editUrl}
-				>
-					<span className="text-right">{t("suggest-changes-to-resource")}</span>
-				</EditLink> */}
+				<div className="flex justify-end text-right">
+					<a
+						className="inline-flex items-center gap-x-1.5 text-right text-sm text-brand-700 transition hover:text-brand-800 hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-800"
+						href={`/keystatic/branch/main/collection/${encodeURIComponent(withI18nPrefix(collection, getLanguage(locale)))}/item/${encodeURIComponent(id)}`}
+						target="_blank"
+					>
+						<PencilIcon className="size-4 shrink-0" />
+						<span className="text-right">{t("suggest-changes-to-resource")}</span>
+					</a>
+				</div>
 			</footer>
 		</article>
 	);

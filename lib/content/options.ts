@@ -4,6 +4,7 @@ export const calloutKinds = [
 	{ label: "Note", value: "note" },
 	{ label: "Tip", value: "tip" },
 	{ label: "Warning", value: "warning" },
+	{ label: "Plain", value: "none" },
 ] as const;
 
 export type CalloutKind = (typeof calloutKinds)[number]["value"];
@@ -60,6 +61,7 @@ export const linkKinds = [
 	{ label: "Direct URL", value: "external" },
 	{ label: "Documentation", value: "documentation" },
 	{ label: "Download", value: "download" },
+	{ label: "Heading identifier", value: "url-fragment-id" },
 	{ label: "Curricula", value: "curricula" },
 	{ label: "Events", value: "resources-events" },
 	{ label: "External resources", value: "resources-external" },

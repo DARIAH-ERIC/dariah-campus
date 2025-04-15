@@ -20,14 +20,13 @@ license: cc-by-4.0
 table-of-contents: true
 summary:
   title: Automatic Text Recognition (ATR) - Getting Started
-  content: Kick off your journey into Automatic Text Recognition (ATR) with our
+  content: >-
+    Kick off your journey into Automatic Text Recognition (ATR) with our
     introductory tutorial video. This is the first video of a tutorial series
     dedicated to extracting full text from scanned images.
 content-type: training-module
-remote:
-  publication-date: 2024-04-15
-  url: https://harmoniseatr.hypotheses.org/274
-  publisher: Deutsches Historisches Institut Paris
+translations: []
+doi: https://hdl.handle.net/21.11159/019595c4-2c08-710d-b6f0-819a6f6c5de5
 ---
 This session outlines the entire workflow of humanities research projects utilising ATR to extract full text from scanned images. We provide an overview of each step in the process and introduce subsequent tutorials that delve deeper into these steps. Additionally, a workflow on 'How to get started with ATR' road map linked in the conclusion will guide you through important questions and give you basic orientation before starting an ATR project.
 
@@ -46,7 +45,7 @@ After completing this resource, learners will be able to:
 * Prepare their journey through the ATR pipeline by using our roadmap "How to get started in ATR?"
 * Prepare to integrate ATR technology into your research activities effectively.
 
-<Video provider="youtube" id="Arxi4iHFQlM" />
+<Video provider="youtube" id="Arxi4iHFQlM"/>
 
 ## How to prepare my corpus?
 
@@ -56,7 +55,7 @@ The second step is to optimise images. To find out more about the required image
 
 Once your images are optimised, you upload them onto a transcription platform. In this training module series, we use the French platform, [eScriptorium](https://escriptorium.inria.fr/). However, the process is the same when using other platforms such as [Transkribus](https://www.transkribus.org/) or [OCR-D](https://ocr-d.de/en/). Moreover, there is no difference between transcribing images of handwritten manuscripts and printed text.
 
-<Figure src="/assets/content/assets/en/resources/external/automatic-text-recognition-atr-video-1-getting-started/escriptorium.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-video-1-getting-started/escriptorium.png" alignment="stretch">
   Example of uploading an image to eScriptorium
 </Figure>
 
@@ -66,7 +65,7 @@ The third step is the layout analysis. The software recognises zones of text on 
 
 The layout analysis step is essential for defining the layout of the text and locating the titles, subtitles, margins or annotations that accompany the main body of text. To go further refer to the training module: "Layout analysis".
 
-<Figure src="/assets/content/assets/en/resources/external/automatic-text-recognition-atr-video-1-getting-started/zone-gallicorpora-htr-15-bpt6k1057726c-edited.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-video-1-getting-started/zone-gallicorpora-htr-15-bpt6k1057726c-edited.png" alignment="stretch">
   Segmentation example from the Gallic(orpora) project with three different zones
 </Figure>
 
@@ -74,13 +73,13 @@ The layout analysis step is essential for defining the layout of the text and lo
 
 Once the areas and lines of text have been recognised, the next step is to predict the content of the text. It is important to understand that the machine does not actually read the text like the human eye does. It actually predicts the probability of a combination of letters or a specific word appearing. The time taken by this prediction process depends on several factors, such as the number of images or the performance of your computer.
 
-<Figure src="/assets/content/assets/en/resources/external/automatic-text-recognition-atr-video-1-getting-started/atrprediction.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-video-1-getting-started/atrprediction.png" alignment="stretch">
   Example of Text Recognition
 </Figure>
 
 Model training is at the core of the ATR process. A model is a file that is created, improved and trained based on preexisting training data. This training data is also known as ground truth data. It consists of several pages of transcriptions aligned line by line with the images. These transcriptions are made and checked manually by a person. This correct transcription is considered as "the truth", and the artificial intelligence uses it to learn to distinguish the correct sign.
 
-<Figure src="/assets/content/assets/en/resources/external/automatic-text-recognition-atr-video-1-getting-started/htrtraining.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-video-1-getting-started/htrtraining.png" alignment="stretch">
   ATR Training Cycle
 </Figure>
 
@@ -93,7 +92,7 @@ To train a model, there are two options: either create a new model from scratch 
 
 Once the model has produced the transcription, you will have to check its performance. This is the fifth step: quality assurance and metrics. In the ATR transcription, several types of errors can occur, such as the addition of a sign that does not exist in the original text, the deletion of a sign, the replacement of one sign by another, etc.
 
-<Figure src="/assets/content/assets/en/resources/external/automatic-text-recognition-atr-video-1-getting-started/atrerrortypes.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-video-1-getting-started/atrerrortypes.png" alignment="stretch">
   Types of Transcription Errors
 </Figure>
 
@@ -101,7 +100,7 @@ The performance of a model in predicting a text is evaluated types of score. The
 
 The accuracy rate is a good indicator of the performance of the model used, but the score to be achieved depends on the desired goal.
 
-<Figure src="/assets/content/assets/en/resources/external/automatic-text-recognition-atr-video-1-getting-started/accuracylevel.png">
+<Figure src="/assets/content/assets/en/resources/hosted/automatic-text-recognition-atr-video-1-getting-started/accuracylevel.png" alignment="stretch">
   Use according to accuracy rate in per cent
 </Figure>
 
@@ -118,3 +117,7 @@ Once the transcription has been predicted by the machine and corrected by a huma
 Automatic text recognition offers a wide range of possibilities. However, you need to develop a real strategy beforehand to determine whether this technique is suited for your needs. We designed a road map to help you identify and answer key questions about your research design, your available financial and technical means, as well as your infrastructure. It will also guide you in selecting a suitable existing model. This guide will help you adopt good scientific practices in data sharing, in line with the FAIR principles.
 
 Interesting in learning more? Why not continue with the [ATR roadmap workflow on the SSH-Open Marketplace](https://marketplace.sshopencloud.eu/workflow/o8ilLU)?
+
+### The "Automatic Text Recognition Made Easy" curriculum
+
+This module is part of a wider '[Automatic Text Recognition Made Easy' Curriculum](https://campus.dariah.eu/curricula/automatic-text-recognition-made-easy).  You may also wish to visit the next module in this curriculum, "[Automatic Text Recognition (ATR) - Where and How to Get Images](https://campus.dariah.eu/resources/external/automatic-text-recognition-atr-video-2-where-and-how-to-get-images)".

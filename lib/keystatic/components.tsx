@@ -17,6 +17,9 @@ import {
 	SuperscriptIcon,
 	VideoIcon,
 } from "lucide-react";
+/** Required by `scripts/metadata/dump.ts`. */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import * as React from "react";
 
 import {
 	calloutKinds,
@@ -250,7 +253,7 @@ export const createGrid = createComponent((_paths, _locale) => {
 export const createHeadingId = createComponent((_paths, _locale) => {
 	return {
 		HeadingId: inline({
-			label: "HeadingId",
+			label: "Heading identifier",
 			description: "Add a custom link target to a heading.",
 			icon: <HashIcon />,
 			schema: {
