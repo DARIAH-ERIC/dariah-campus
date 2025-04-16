@@ -10,11 +10,11 @@ export function createSearchUrl({
 	const searchParams = new URLSearchParams();
 
 	people.forEach((person, index) => {
-		searchParams.set(`dariah-campus[refinementList][people][${String(index)}]`, person);
+		searchParams.set(`people[${String(index)}]`, person);
 	});
 
 	tags.forEach((tag, index) => {
-		searchParams.set(`dariah-campus[refinementList][tags][${String(index)}]`, tag);
+		searchParams.set(`tags[${String(index)}]`, tag);
 	});
 
 	return createHref({ pathname: "/search", searchParams });
