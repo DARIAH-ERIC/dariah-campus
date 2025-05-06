@@ -7,6 +7,7 @@ import { Embed } from "@/components/content/embed";
 import { ExternalResource } from "@/components/content/external-resource";
 import { Figure } from "@/components/content/figure";
 import { Grid, GridItem } from "@/components/content/grid";
+import { H5PWrapper } from "@/components/content/h5p-wrapper";
 import { Link as ContentLink } from "@/components/content/link";
 import { LinkButton } from "@/components/content/link-button";
 import { MermaidDiagram } from "@/components/content/mermaid-diagram";
@@ -32,6 +33,7 @@ export const components = {
 	Figure,
 	Grid,
 	GridItem,
+	H5PWrapper,
 	img: Image,
 	Link: ContentLink,
 	LinkButton,
