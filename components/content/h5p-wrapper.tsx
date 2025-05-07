@@ -1,6 +1,11 @@
 "use client";
 
-import { type ReactNode, useEffect, useRef } from "react";
+import Script from "next/script";
+import { type ReactNode, useEffect, useRef, useState } from "react";
+
+interface H5PWrapperProps {
+	path: string;
+}
 
 type H5PConstructor = new (
 	container: HTMLElement,
@@ -18,21 +23,22 @@ interface H5PModule {
 	H5P: H5PConstructor;
 }
 
-interface H5PWrapperProps {
-	path: string;
+declare global {
+	interface Window {
+		H5PStandalone: H5PModule;
+	}
 }
 
 export function H5PWrapper(props: H5PWrapperProps): ReactNode {
 	const { path } = props;
+	const [h5pReady, setH5pReady] = useState(false);
 	const ref = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
 		const container = ref.current;
 
-		if (container == null) return;
+		if (!h5pReady || !container) return;
 		const loadH5P = async () => {
-			const mod = (await import("h5p-standalone")) as H5PModule;
-			const H5P = mod.H5P;
 			const options = {
 				h5pJsonPath: `/vendor/h5p-content/${path}`,
 				librariesPath: "/vendor/h5p-shared-libraries",
@@ -40,7 +46,7 @@ export function H5PWrapper(props: H5PWrapperProps): ReactNode {
 				frameCss: "/vendor/h5p-standalone/styles/h5p.css",
 			};
 			try {
-				await new H5P(container, options);
+				await new window.H5PStandalone.H5P(container, options);
 			} catch (error: unknown) {
 				console.error("Error loading H5P content", error);
 			}
@@ -49,7 +55,18 @@ export function H5PWrapper(props: H5PWrapperProps): ReactNode {
 		return () => {
 			container.innerHTML = "";
 		};
-	}, [path]);
-
-	return <div ref={ref} />;
+	}, [path, h5pReady]);
+	return (
+		<>
+			<div ref={ref} />
+			<Script
+				id="h5p-script"
+				onLoad={() => {
+					setH5pReady(true);
+				}}
+				src="/vendor/h5p-standalone/main.bundle.js"
+				strategy="lazyOnload"
+			></Script>
+		</>
+	);
 }
