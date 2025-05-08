@@ -459,22 +459,17 @@ export const createEvents = createCollection("/resources/events/", (paths, local
 					},
 				},
 			),
-			summary: fields.object(
-				{
-					title: fields.text({
-						label: "Summary title",
-						validation: { isRequired: false },
-					}),
-					content: fields.text({
-						label: "Summary",
-						validation: { isRequired: true },
-						multiline: true,
-					}),
-				},
-				{
+			summary: fields.object({
+				title: fields.text({
+					label: "Summary title",
+					validation: { isRequired: false },
+				}),
+				content: fields.text({
 					label: "Summary",
-				},
-			),
+					validation: { isRequired: true },
+					multiline: true,
+				}),
+			}),
 			content: fields.mdx({
 				label: "Content",
 				options: {
