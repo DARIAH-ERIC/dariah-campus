@@ -59,13 +59,14 @@ export type GridLayout = (typeof gridLayouts)[number]["value"];
 
 export const linkKinds = [
 	{ label: "Direct URL", value: "external" },
-	{ label: "Heading identifier", value: "url-fragment-id" },
+	{ label: "Heading identifier", value: "hash" },
 	{ label: "Download", value: "download" },
 	{ label: "Events", value: "resources-events" },
 	{ label: "External resources", value: "resources-external" },
 	{ label: "Hosted resources", value: "resources-hosted" },
 	{ label: "Pathfinders", value: "resources-pathfinders" },
 	{ label: "Curricula", value: "curricula" },
+	{ label: "Search", value: "search" },
 	{ label: "Documentation", value: "documentation" },
 ] as const;
 
