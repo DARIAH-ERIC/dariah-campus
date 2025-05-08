@@ -16,16 +16,6 @@ export function createLinkSchema<TPath extends `/${string}/`>(
 			defaultValue: "external",
 		}),
 		{
-			documentation: fields.relationship({
-				label: "Documentation",
-				validation: { isRequired: true },
-				collection: withI18nPrefix("documentation", locale),
-			}),
-			download: fields.file({
-				label: "Download",
-				validation: { isRequired: true },
-				...createAssetOptions(downloadPath),
-			}),
 			external: fields.url({
 				label: "URL",
 				validation: { isRequired: true },
@@ -34,10 +24,10 @@ export function createLinkSchema<TPath extends `/${string}/`>(
 				label: "Heading identifier",
 				validation: { isRequired: true, pattern: validation.urlFragment },
 			}),
-			curricula: fields.relationship({
-				label: "Curriculum",
+			download: fields.file({
+				label: "Download",
 				validation: { isRequired: true },
-				collection: withI18nPrefix("curricula", locale),
+				...createAssetOptions(downloadPath),
 			}),
 			"resources-events": fields.relationship({
 				label: "Event",
@@ -58,6 +48,16 @@ export function createLinkSchema<TPath extends `/${string}/`>(
 				label: "Pathfinder",
 				validation: { isRequired: true },
 				collection: withI18nPrefix("resources-pathfinders", locale),
+			}),
+			curricula: fields.relationship({
+				label: "Curriculum",
+				validation: { isRequired: true },
+				collection: withI18nPrefix("curricula", locale),
+			}),
+			documentation: fields.relationship({
+				label: "Documentation",
+				validation: { isRequired: true },
+				collection: withI18nPrefix("documentation", locale),
 			}),
 		},
 	);

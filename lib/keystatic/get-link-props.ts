@@ -6,6 +6,10 @@ export type LinkSchema = ValueForReading<ReturnType<typeof createLinkSchema>>;
 
 export function getLinkProps(params: LinkSchema) {
 	switch (params.discriminant) {
+		case "curricula": {
+			return { href: `/curricula/${params.value}` };
+		}
+
 		case "documentation": {
 			return { href: `/documentation/${params.value}` };
 		}
@@ -16,14 +20,6 @@ export function getLinkProps(params: LinkSchema) {
 
 		case "external": {
 			return { href: params.value };
-		}
-
-		case "url-fragment-id": {
-			return { href: `#${params.value}` };
-		}
-
-		case "curricula": {
-			return { href: `/curricula/${params.value}` };
 		}
 
 		case "resources-events": {
@@ -40,6 +36,10 @@ export function getLinkProps(params: LinkSchema) {
 
 		case "resources-pathfinders": {
 			return { href: `/resources/pathfinders/${params.value}` };
+		}
+
+		case "url-fragment-id": {
+			return { href: `#${params.value}` };
 		}
 	}
 }
