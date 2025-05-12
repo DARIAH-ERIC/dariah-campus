@@ -16,48 +16,103 @@ export function createLinkSchema<TPath extends `/${string}/`>(
 			defaultValue: "external",
 		}),
 		{
-			documentation: fields.relationship({
-				label: "Documentation",
+			external: fields.url({
+				label: "URL",
 				validation: { isRequired: true },
-				collection: withI18nPrefix("documentation", locale),
+			}),
+			hash: fields.text({
+				label: "Heading identifier",
+				description: "For example `#first-heading`.",
+				validation: { isRequired: true, pattern: validation.urlFragment },
 			}),
 			download: fields.file({
 				label: "Download",
 				validation: { isRequired: true },
 				...createAssetOptions(downloadPath),
 			}),
-			external: fields.url({
-				label: "URL",
-				validation: { isRequired: true },
+			"resources-events": fields.object({
+				id: fields.relationship({
+					label: "Event",
+					validation: { isRequired: true },
+					collection: withI18nPrefix("resources-events", locale),
+				}),
+				hash: fields.text({
+					label: "URL fragment",
+					description: "For example `#first-heading`.",
+					validation: { isRequired: false, pattern: validation.urlFragmentOptional },
+				}),
 			}),
-			"url-fragment-id": fields.text({
-				label: "Heading identifier",
-				validation: { isRequired: true, pattern: validation.urlFragment },
+			"resources-external": fields.object({
+				id: fields.relationship({
+					label: "External resource",
+					validation: { isRequired: true },
+					collection: withI18nPrefix("resources-external", locale),
+				}),
+				hash: fields.text({
+					label: "URL fragment",
+					description: "For example `#first-heading`.",
+					validation: { isRequired: false, pattern: validation.urlFragmentOptional },
+				}),
 			}),
-			curricula: fields.relationship({
-				label: "Curriculum",
-				validation: { isRequired: true },
-				collection: withI18nPrefix("curricula", locale),
+			"resources-hosted": fields.object({
+				id: fields.relationship({
+					label: "Hosted resource",
+					validation: { isRequired: true },
+					collection: withI18nPrefix("resources-hosted", locale),
+				}),
+				hash: fields.text({
+					label: "URL fragment",
+					description: "For example `#first-heading`.",
+					validation: { isRequired: false, pattern: validation.urlFragmentOptional },
+				}),
 			}),
-			"resources-events": fields.relationship({
-				label: "Event",
-				validation: { isRequired: true },
-				collection: withI18nPrefix("resources-events", locale),
+			"resources-pathfinders": fields.object({
+				id: fields.relationship({
+					label: "Pathfinder",
+					validation: { isRequired: true },
+					collection: withI18nPrefix("resources-pathfinders", locale),
+				}),
+				hash: fields.text({
+					label: "URL fragment",
+					description: "For example `#first-heading`.",
+					validation: { isRequired: false, pattern: validation.urlFragmentOptional },
+				}),
 			}),
-			"resources-external": fields.relationship({
-				label: "External resource",
-				validation: { isRequired: true },
-				collection: withI18nPrefix("resources-external", locale),
+			curricula: fields.object({
+				id: fields.relationship({
+					label: "Curriculum",
+					validation: { isRequired: true },
+					collection: withI18nPrefix("curricula", locale),
+				}),
+				hash: fields.text({
+					label: "URL fragment",
+					description: "For example `#first-heading`.",
+					validation: { isRequired: false, pattern: validation.urlFragmentOptional },
+				}),
 			}),
-			"resources-hosted": fields.relationship({
-				label: "Hosted resource",
-				validation: { isRequired: true },
-				collection: withI18nPrefix("resources-hosted", locale),
+			search: fields.object({
+				search: fields.text({
+					label: "Search params",
+					description: "For example `?q=dariah`.",
+					validation: { isRequired: false, pattern: validation.urlSearchParamsOptional },
+				}),
+				hash: fields.text({
+					label: "URL fragment",
+					description: "For example `#first-heading`.",
+					validation: { isRequired: false, pattern: validation.urlFragmentOptional },
+				}),
 			}),
-			"resources-pathfinders": fields.relationship({
-				label: "Pathfinder",
-				validation: { isRequired: true },
-				collection: withI18nPrefix("resources-pathfinders", locale),
+			documentation: fields.object({
+				id: fields.relationship({
+					label: "Documentation",
+					validation: { isRequired: true },
+					collection: withI18nPrefix("documentation", locale),
+				}),
+				hash: fields.text({
+					label: "URL fragment",
+					description: "For example `#first-heading`.",
+					validation: { isRequired: false, pattern: validation.urlFragmentOptional },
+				}),
 			}),
 		},
 	);
