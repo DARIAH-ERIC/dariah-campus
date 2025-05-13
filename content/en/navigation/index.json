@@ -74,8 +74,10 @@
   "documentation": {
     "links": [
       "about",
-      "proposing-a-contribution",
       "types-of-resources",
+      "proposing-a-contribution",
+      "introduction-to-the-dariah-campus-content-management-system",
+      "creating-and-editing-new-people-in-the-cms",
       "reuse-charter"
     ]
   }
