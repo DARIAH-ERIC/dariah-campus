@@ -5,14 +5,14 @@ import type { FC, ReactNode } from "react";
 import { ServerImage as Image } from "@/components/server-image";
 import type { MdxContent } from "@/lib/content/compile-mdx";
 
-interface SessionProps {
+export interface SessionProps {
 	attachments: ReadonlyArray<{ label: string; file: string }>;
 	children: ReactNode;
 	compile: (code: string) => Promise<MdxContent<Record<string, unknown>>>;
 	index: number;
 	links: ReadonlyArray<{ label: string; href: string }>;
 	peopleById: Map<string, { data: { name: string; image: string; content: string } }>;
-	presentations: ReadonlyArray<{
+	presentations?: ReadonlyArray<{
 		attachments: ReadonlyArray<{ label: string; file: string }>;
 		content: string;
 		links: ReadonlyArray<{ label: string; href: string }>;
@@ -138,7 +138,7 @@ export function Session(props: SessionProps): ReactNode {
 				</footer>
 			) : null}
 
-			{presentations.length > 0 ? (
+			{presentations && presentations.length > 0 ? (
 				<ol>
 					{presentations.map(async (presentation, presentationIndex) => {
 						const { title, links, attachments, content } = presentation;
