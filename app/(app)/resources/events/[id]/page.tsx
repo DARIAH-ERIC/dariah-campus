@@ -17,7 +17,7 @@ import { ReUseConditions } from "@/components/re-use-conditions";
 import { RelatedResourcesList } from "@/components/related-resources-list";
 import { Resource } from "@/components/resource";
 import { ResourceMetadata } from "@/components/resource-metadata";
-import { Session } from "@/components/session";
+import { Session, type SessionProps } from "@/components/session";
 import { SocialMediaList } from "@/components/social-media-list";
 import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
@@ -311,7 +311,7 @@ export default async function EventResourcePage(
 											index={index + 1}
 											links={session.links}
 											peopleById={peopleById}
-											presentations={session.presentations}
+											presentations={session.presentations as SessionProps["presentations"]}
 											speakers={speakers}
 											title={session.title}
 										>
