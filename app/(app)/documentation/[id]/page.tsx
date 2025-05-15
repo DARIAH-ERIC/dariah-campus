@@ -139,7 +139,9 @@ export default async function DocumentationPage(
 					</nav>
 
 					<div className="prose max-w-content">
-						<Content />
+						<article>
+							<Content />
+						</article>
 					</div>
 				</div>
 
