@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 export function useTableOfContentsHighlight(): string | undefined {
 	const [firstHeadingInViewport, setFirstHeadingInViewport] = useState<string | undefined>();
 
-	const topOffset = 0;
+	// tmp fix: should be queried instead of hardcoded
+	const topOffset = 96;
 
 	useEffect(() => {
 		const controller = new AbortController();
