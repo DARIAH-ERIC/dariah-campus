@@ -8,7 +8,7 @@ interface FigureProps {
 	/** @default "stretch" */
 	alignment?: FigureAlignment;
 	alt?: string;
-	children: ReactNode;
+	children?: ReactNode;
 	/** Maybe added by `with-image-sizes` mdx plugin. */
 	height?: number;
 	src: string;
@@ -22,7 +22,7 @@ export function Figure(props: Readonly<FigureProps>): ReactNode {
 	return (
 		<figure className={cn("grid gap-y-2", alignment === "center" ? "justify-center" : undefined)}>
 			<Image alt={alt} height={height} src={src} width={width} />
-			<figcaption>{children}</figcaption>
+			{children ? <figcaption>{children}</figcaption> : null}
 		</figure>
 	);
 }

@@ -16,7 +16,7 @@
 		"./**/*.tsx",
 		".next/types/**/*.ts"
 	],
-	"exclude": ["node_modules", "out"],
+	"exclude": ["node_modules", "out", "public/vendor"],
 	"mdx": {
 		"checkMdx": false,
 		"plugins": ["remark-frontmatter", "remark-gfm"]
