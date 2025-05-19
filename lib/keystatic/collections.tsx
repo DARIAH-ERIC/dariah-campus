@@ -176,7 +176,8 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 				collection: withI18nPrefix("curricula", locale),
 			}),
 			doi: _fields.identifier({
-				label: "DOI (readonly)",
+				label: "PID (readonly)",
+				description: "Automatically assigned Handle PID.",
 			}),
 		},
 	});
@@ -459,22 +460,17 @@ export const createEvents = createCollection("/resources/events/", (paths, local
 					},
 				},
 			),
-			summary: fields.object(
-				{
-					title: fields.text({
-						label: "Summary title",
-						validation: { isRequired: false },
-					}),
-					content: fields.text({
-						label: "Summary",
-						validation: { isRequired: true },
-						multiline: true,
-					}),
-				},
-				{
+			summary: fields.object({
+				title: fields.text({
+					label: "Summary title",
+					validation: { isRequired: false },
+				}),
+				content: fields.text({
 					label: "Summary",
-				},
-			),
+					validation: { isRequired: true },
+					multiline: true,
+				}),
+			}),
 			content: fields.mdx({
 				label: "Content",
 				options: {
@@ -710,7 +706,8 @@ export const createEvents = createCollection("/resources/events/", (paths, local
 				collection: withI18nPrefix("resources-events", locale),
 			}),
 			doi: _fields.identifier({
-				label: "DOI (readonly)",
+				label: "PID (readonly)",
+				description: "Automatically assigned Handle PID.",
 			}),
 			draft: fields.ignored(),
 		},
@@ -968,7 +965,8 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 				collection: withI18nPrefix("resources-external", locale),
 			}),
 			doi: _fields.identifier({
-				label: "DOI (readonly)",
+				label: "PID (readonly)",
+				description: "Automatically assigned Handle PID.",
 			}),
 			draft: fields.ignored(),
 		},
@@ -1098,7 +1096,8 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 				collection: withI18nPrefix("resources-hosted", locale),
 			}),
 			doi: _fields.identifier({
-				label: "DOI (readonly)",
+				label: "PID (readonly)",
+				description: "Automatically assigned Handle PID.",
 			}),
 			draft: fields.ignored(),
 		},
@@ -1225,7 +1224,8 @@ export const createResourcesPathfinders = createCollection(
 					collection: withI18nPrefix("resources-pathfinders", locale),
 				}),
 				doi: _fields.identifier({
-					label: "DOI (readonly)",
+					label: "PID (readonly)",
+					description: "Automatically assigned Handle PID.",
 				}),
 				draft: fields.ignored(),
 			},

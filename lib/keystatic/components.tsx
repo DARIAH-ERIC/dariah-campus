@@ -168,6 +168,7 @@ export const createFigure = createComponent((paths, _locale) => {
 				}),
 				alt: fields.text({
 					label: "Image description for assistive technology",
+					description: "Leave empty if the image is only decorative or already explained in the text",
 					validation: { isRequired: false },
 				}),
 				alignment: fields.select({
