@@ -106,6 +106,7 @@ const config: Config = [
 			...config,
 		};
 	}),
+	{ ignores: ["public/vendor/**/*"] },
 ];
 
 export default config;

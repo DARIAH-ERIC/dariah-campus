@@ -25,7 +25,7 @@
 		"lint:fix": "run-p --continue-on-error \"lint:*:fix\"",
 		"lint:code:check": "eslint . --cache",
 		"lint:code:fix": "pnpm run lint:code:check --fix",
-		"lint:styles:check": "stylelint \"./**/*.css\" --cache --ignore-path ./.gitignore",
+		"lint:styles:check": "stylelint \"./**/*.css\" --cache",
 		"lint:styles:fix": "pnpm run lint:styles:check --fix",
 		"preinstall": "npx only-allow pnpm",
 		"prepare": "run-s setup",
