@@ -33,6 +33,8 @@ import {
 import { createLinkSchema } from "@/lib/keystatic/create-link-schema";
 import {
 	CalloutPreview,
+	DiagramCaptionPreview,
+	DiagramCodeBlockPreview,
 	DiagramPreview,
 	DisclosurePreview,
 	EmbedPreview,
@@ -92,13 +94,7 @@ export const createDiagram = createComponent((_paths, _locale) => {
 			label: "Diagram",
 			description: "Insert a diagram with caption.",
 			icon: <ChartBarStackedIcon />,
-			schema: {
-				diagram: fields.text({
-					label: "Diagram",
-					validation: { isRequired: true },
-					multiline: true,
-				}),
-			},
+			schema: {},
 			children: ["DiagramCaption", "DiagramCodeBlock"],
 			validation: { children: { min: 1, max: 2 } },
 			ContentView(props) {
@@ -116,7 +112,7 @@ export const createDiagram = createComponent((_paths, _locale) => {
 			ContentView(props) {
 				const { children } = props;
 
-				return <figcaption className="text-sm">{children}</figcaption>;
+				return <DiagramCaptionPreview>{children}</DiagramCaptionPreview>;
 			},
 		}),
 		DiagramCodeBlock: wrapper({
@@ -125,6 +121,11 @@ export const createDiagram = createComponent((_paths, _locale) => {
 			icon: <ChartBarStackedIcon />,
 			schema: {},
 			forSpecificLocations: true,
+			ContentView(props) {
+				const { children } = props;
+
+				return <DiagramCodeBlockPreview>{children}</DiagramCodeBlockPreview>;
+			},
 		}),
 	};
 });

@@ -130,11 +130,11 @@ export function DiagramCodeBlockPreview(props: Readonly<DiagramCodeBlockPreviewP
 	const { children } = props;
 
 	return (
-		<div>
-			<div>
-				See{" "}
+		<div className="flex flex-col gap-y-1">
+			<div className="text-sm italic">
+				See the{" "}
 				<a href="https://mermaid.js.org/config/accessibility.html" target="_blank">
-					the Mermaid documentation
+					Mermaid documentation
 				</a>{" "}
 				to learn how to describe the diagram for assistive technology.
 			</div>
