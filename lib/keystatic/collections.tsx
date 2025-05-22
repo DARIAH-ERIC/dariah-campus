@@ -105,10 +105,10 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 					fields.select({
 						label: "Collection",
 						options: [
-							{ label: "Events", value: "resources-events" },
-							{ label: "External resources", value: "resources-external" },
 							{ label: "Hosted resources", value: "resources-hosted" },
-							{ label: "Hosted resources", value: "resources-pathfinders" },
+							{ label: "Captured events", value: "resources-events" },
+							{ label: "Pathfinder resources", value: "resources-pathfinders" },
+							{ label: "External resources", value: "resources-external" },
 						],
 						defaultValue: "resources-hosted",
 					}),
