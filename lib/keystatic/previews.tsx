@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-literals */
+
 import { useObjectUrl, type UseObjectUrlParams } from "@acdh-oeaw/keystatic-lib/preview";
 import { capitalize, isNonEmptyString } from "@acdh-oeaw/lib";
 import { cn, styles } from "@acdh-oeaw/style-variants";
@@ -127,7 +129,18 @@ interface DiagramCodeBlockPreviewProps {
 export function DiagramCodeBlockPreview(props: Readonly<DiagramCodeBlockPreviewProps>): ReactNode {
 	const { children } = props;
 
-	return <div>{children}</div>;
+	return (
+		<div>
+			<div>
+				See{" "}
+				<a href="https://mermaid.js.org/config/accessibility.html" target="_blank">
+					the Mermaid documentation
+				</a>{" "}
+				to learn how to describe the diagram for assistive technology.
+			</div>
+			{children}
+		</div>
+	);
 }
 
 interface DisclosurePreviewProps {
@@ -347,7 +360,7 @@ export function QuizChoiceAnswerPreview(props: Readonly<QuizChoiceAnswerPreviewP
 	return (
 		<div>
 			<NotEditable>
-				{/* eslint-disable-next-line react/jsx-no-literals */}
+				{}
 				{kind === "correct" ? "Correct" : "Incorrect"} answer:
 			</NotEditable>
 			{children}
@@ -409,7 +422,7 @@ export function TableOfContentsPreview(props: Readonly<TableOfContentsPreviewPro
 	return (
 		<div className="grid gap-y-2">
 			<strong className="font-bold">{title}</strong>
-			{/* eslint-disable-next-line react/jsx-no-literals */}
+			{}
 			<div>Will be generated at build time.</div>
 		</div>
 	);
