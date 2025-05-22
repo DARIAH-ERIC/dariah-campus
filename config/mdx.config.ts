@@ -13,6 +13,7 @@ import {
 import withSyntaxHighlighter from "@shikijs/rehype";
 import type { ElementContent } from "hast";
 import { getTranslations } from "next-intl/server";
+import withMermaidDiagrams from "rehype-mermaid";
 import withHeadingIds from "rehype-slug";
 import withFrontmatter from "remark-frontmatter";
 import withGfm from "remark-gfm";
@@ -66,6 +67,13 @@ export async function createConfig(locale: Language): Promise<MdxProcessorOption
 			withHeadingIds,
 			[withIframeTitles, { components: ["Embed", "Video"] }],
 			[withImageSizes, { components: ["Figure"] }],
+			[
+				withMermaidDiagrams,
+				{
+					mermaidConfig: { fontFamily: '"Roboto Flex", system-ui, sans-serif' },
+					strategy: "inline-svg",
+				},
+			],
 			[withSyntaxHighlighter, syntaxHighlighterConfig],
 			withTableOfContents,
 			[withUnwrappedMdxFlowContent, { components: ["LinkButton"] }],

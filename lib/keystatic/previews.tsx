@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-literals */
+
 import { useObjectUrl, type UseObjectUrlParams } from "@acdh-oeaw/keystatic-lib/preview";
 import { capitalize, isNonEmptyString } from "@acdh-oeaw/lib";
 import { cn, styles } from "@acdh-oeaw/style-variants";
@@ -98,6 +100,47 @@ function CalloutPreviewHeader(props: CalloutPreviewHeaderProps): ReactNode {
 	}
 
 	return null;
+}
+
+interface DiagramPreviewProps {
+	children: ReactNode;
+}
+
+export function DiagramPreview(props: Readonly<DiagramPreviewProps>): ReactNode {
+	const { children } = props;
+
+	return <figure>{children}</figure>;
+}
+
+interface DiagramCaptionPreviewProps {
+	children: ReactNode;
+}
+
+export function DiagramCaptionPreview(props: Readonly<DiagramCaptionPreviewProps>): ReactNode {
+	const { children } = props;
+
+	return <figcaption className="text-sm">{children}</figcaption>;
+}
+
+interface DiagramCodeBlockPreviewProps {
+	children: ReactNode;
+}
+
+export function DiagramCodeBlockPreview(props: Readonly<DiagramCodeBlockPreviewProps>): ReactNode {
+	const { children } = props;
+
+	return (
+		<div className="flex flex-col gap-y-1">
+			<div className="text-sm italic">
+				See the{" "}
+				<a href="https://mermaid.js.org/config/accessibility.html" target="_blank">
+					Mermaid documentation
+				</a>{" "}
+				to learn how to describe the diagram for assistive technology.
+			</div>
+			{children}
+		</div>
+	);
 }
 
 interface DisclosurePreviewProps {
@@ -317,7 +360,7 @@ export function QuizChoiceAnswerPreview(props: Readonly<QuizChoiceAnswerPreviewP
 	return (
 		<div>
 			<NotEditable>
-				{/* eslint-disable-next-line react/jsx-no-literals */}
+				{}
 				{kind === "correct" ? "Correct" : "Incorrect"} answer:
 			</NotEditable>
 			{children}
@@ -379,7 +422,7 @@ export function TableOfContentsPreview(props: Readonly<TableOfContentsPreviewPro
 	return (
 		<div className="grid gap-y-2">
 			<strong className="font-bold">{title}</strong>
-			{/* eslint-disable-next-line react/jsx-no-literals */}
+			{}
 			<div>Will be generated at build time.</div>
 		</div>
 	);

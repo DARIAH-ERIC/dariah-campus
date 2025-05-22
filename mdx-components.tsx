@@ -1,4 +1,5 @@
 import { Callout } from "@/components/content/callout";
+import { Diagram, DiagramCaption, DiagramCodeBlock } from "@/components/content/diagram";
 import { Disclosure } from "@/components/content/disclosure";
 import { Embed } from "@/components/content/embed";
 import { ExternalResource } from "@/components/content/external-resource";
@@ -19,6 +20,9 @@ import { Link } from "@/components/link";
 const components = {
 	a: Link,
 	Callout,
+	Diagram,
+	DiagramCaption,
+	DiagramCodeBlock,
 	Disclosure,
 	Embed,
 	ExternalResource,

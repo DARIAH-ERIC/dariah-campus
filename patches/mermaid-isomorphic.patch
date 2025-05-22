@@ -1,0 +1,47 @@
+diff --git a/dist/mermaid-isomorphic.js b/dist/mermaid-isomorphic.js
+index aa5dc09a5dfb58a98d3f12cd2fc473caddd97b0d..b6bf50469132bf6b8dc01ffa88ee77fa24d79677 100644
+--- a/dist/mermaid-isomorphic.js
++++ b/dist/mermaid-isomorphic.js
+@@ -1,11 +1,13 @@
++import { dirname, join } from 'node:path';
++import { fileURLToPath, pathToFileURL } from 'node:url';
+ import { chromium } from 'playwright';
+-const html = import.meta.resolve('../index.html');
++const html = pathToFileURL(join(dirname(fileURLToPath(import.meta.url)), '../index.html')).href;
+ const mermaidScript = {
+-    url: import.meta.resolve('mermaid/dist/mermaid.js')
++    url: require.resolve('mermaid/dist/mermaid.js')
+ };
+ const faStyle = {
+     // We use url, not path. If we use path, the fonts can’t be resolved.
+-    url: import.meta.resolve('@fortawesome/fontawesome-free/css/all.css')
++    url: require.resolve('@fortawesome/fontawesome-free/css/all.css')
+ };
+ /* c8 ignore start */
+ /**
+diff --git a/src/mermaid-isomorphic.ts b/src/mermaid-isomorphic.ts
+index 6e5720399c7e994855ca58adb29d73639e241172..9dcfe3f0c58f26d6af10b491c6780b3bda0635af 100644
+--- a/src/mermaid-isomorphic.ts
++++ b/src/mermaid-isomorphic.ts
+@@ -1,15 +1,18 @@
++import { join, dirname } from 'node:path'
++import { fileURLToPath, pathToFileURL } from 'node:url'
++
+ import { type Mermaid, type MermaidConfig } from 'mermaid'
+ import { type BrowserType, chromium, type LaunchOptions, type Page } from 'playwright'
+ 
+ declare const mermaid: Mermaid
+ 
+-const html = import.meta.resolve('../index.html')
++const html = pathToFileURL(join(dirname(fileURLToPath(import.meta.url)), '../index.html')).href
+ const mermaidScript = {
+-  url: import.meta.resolve('mermaid/dist/mermaid.js')
++  url: require.resolve('mermaid/dist/mermaid.js')
+ }
+ const faStyle = {
+   // We use url, not path. If we use path, the fonts can’t be resolved.
+-  url: import.meta.resolve('@fortawesome/fontawesome-free/css/all.css')
++  url: require.resolve('@fortawesome/fontawesome-free/css/all.css')
+ }
+ 
+ export interface CreateMermaidRendererOptions {

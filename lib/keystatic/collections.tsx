@@ -15,6 +15,7 @@ import {
 } from "@/lib/content/options";
 import {
 	createCallout,
+	createDiagram,
 	createDisclosure,
 	createEmbed,
 	createExternalResource,
@@ -156,6 +157,7 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 				components: {
 					...createCallout(paths, locale),
 					...createDisclosure(paths, locale),
+					...createDiagram(paths, locale),
 					...createEmbed(paths, locale),
 					// ...createExternalResource(paths, locale),
 					...createFigure(paths, locale),
@@ -226,6 +228,7 @@ export const createDocumentation = createCollection("/documentation/", (paths, l
 				},
 				components: {
 					...createCallout(paths, locale),
+					...createDiagram(paths, locale),
 					...createDisclosure(paths, locale),
 					...createEmbed(paths, locale),
 					// ...createExternalResource(paths, locale),
@@ -483,6 +486,7 @@ export const createEvents = createCollection("/resources/events/", (paths, local
 				},
 				components: {
 					...createCallout(paths, locale),
+					...createDiagram(paths, locale),
 					...createDisclosure(paths, locale),
 					...createEmbed(paths, locale),
 					// ...createExternalResource(paths, locale),
@@ -571,6 +575,7 @@ export const createEvents = createCollection("/resources/events/", (paths, local
 							},
 							components: {
 								...createCallout(paths, locale),
+								...createDiagram(paths, locale),
 								...createDisclosure(paths, locale),
 								...createEmbed(paths, locale),
 								// ...createExternalResource(paths, locale),
@@ -659,6 +664,7 @@ export const createEvents = createCollection("/resources/events/", (paths, local
 										},
 										components: {
 											...createCallout(paths, locale),
+											...createDiagram(paths, locale),
 											...createDisclosure(paths, locale),
 											...createEmbed(paths, locale),
 											// ...createExternalResource(paths, locale),
@@ -944,6 +950,7 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 				},
 				components: {
 					...createCallout(paths, locale),
+					// ...createDiagram(paths, locale),
 					// ...createDisclosure(paths, locale),
 					// ...createEmbed(paths, locale),
 					...createExternalResource(paths, locale),
@@ -1075,6 +1082,7 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 				},
 				components: {
 					...createCallout(paths, locale),
+					...createDiagram(paths, locale),
 					...createDisclosure(paths, locale),
 					...createEmbed(paths, locale),
 					// ...createExternalResource(paths, locale),
@@ -1203,6 +1211,7 @@ export const createResourcesPathfinders = createCollection(
 					},
 					components: {
 						...createCallout(paths, locale),
+						...createDiagram(paths, locale),
 						...createDisclosure(paths, locale),
 						...createEmbed(paths, locale),
 						// ...createExternalResource(paths, locale),
