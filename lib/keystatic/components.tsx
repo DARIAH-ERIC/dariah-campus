@@ -5,6 +5,7 @@ import {
 	AppWindowIcon,
 	BookIcon,
 	CaptionsIcon,
+	ChartBarStackedIcon,
 	ChevronDownSquareIcon,
 	GridIcon,
 	HashIcon,
@@ -15,6 +16,7 @@ import {
 	MessageCircleQuestionIcon,
 	SquareIcon,
 	SuperscriptIcon,
+	TextIcon,
 	VideoIcon,
 } from "lucide-react";
 /** Required by `scripts/metadata/dump.ts`. */
@@ -31,6 +33,7 @@ import {
 import { createLinkSchema } from "@/lib/keystatic/create-link-schema";
 import {
 	CalloutPreview,
+	DiagramPreview,
 	DisclosurePreview,
 	EmbedPreview,
 	ExternalResourcePreview,
@@ -79,6 +82,49 @@ export const createCallout = createComponent((_paths, _locale) => {
 					</CalloutPreview>
 				);
 			},
+		}),
+	};
+});
+
+export const createDiagram = createComponent((_paths, _locale) => {
+	return {
+		Diagram: repeating({
+			label: "Diagram",
+			description: "Insert a diagram with caption.",
+			icon: <ChartBarStackedIcon />,
+			schema: {
+				diagram: fields.text({
+					label: "Diagram",
+					validation: { isRequired: true },
+					multiline: true,
+				}),
+			},
+			children: ["DiagramCaption", "DiagramCodeBlock"],
+			validation: { children: { min: 1, max: 2 } },
+			ContentView(props) {
+				const { children } = props;
+
+				return <DiagramPreview>{children}</DiagramPreview>;
+			},
+		}),
+		DiagramCaption: wrapper({
+			label: "Caption",
+			description: "Insert a diagram caption.",
+			icon: <TextIcon />,
+			schema: {},
+			forSpecificLocations: true,
+			ContentView(props) {
+				const { children } = props;
+
+				return <figcaption className="text-sm">{children}</figcaption>;
+			},
+		}),
+		DiagramCodeBlock: wrapper({
+			label: "Code block",
+			description: "Insert a diagram definition.",
+			icon: <ChartBarStackedIcon />,
+			schema: {},
+			forSpecificLocations: true,
 		}),
 	};
 });
@@ -168,7 +214,8 @@ export const createFigure = createComponent((paths, _locale) => {
 				}),
 				alt: fields.text({
 					label: "Image description for assistive technology",
-					description: "Leave empty if the image is only decorative or already explained in the text",
+					description:
+						"Leave empty if the image is only decorative or already explained in the text",
 					validation: { isRequired: false },
 				}),
 				alignment: fields.select({

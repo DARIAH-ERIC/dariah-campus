@@ -11,7 +11,7 @@ export function Embed(props: Readonly<EmbedProps>): ReactNode {
 	const { children, src, title } = props;
 
 	return (
-		<figure className="grid gap-y-2">
+		<figure className="flex flex-col">
 			<iframe
 				allowFullScreen={true}
 				className="aspect-square w-full overflow-hidden rounded-lg border border-neutral-200 bg-white"
