@@ -116,6 +116,11 @@ const config = {
 								marginTop: "0.5em",
 								marginBottom: "0.5em",
 							},
+							/** Mermaid diagrams. */
+							"svg[role~=graphics-document]": {
+								marginBlock: "1.5rem",
+								marginInline: "auto",
+							},
 						},
 					},
 				};
