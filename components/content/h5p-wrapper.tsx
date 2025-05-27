@@ -28,7 +28,9 @@ interface H5PModule {
 
 declare global {
 	interface Window {
+		H5PPlayer?: H5PConstructor;
 		H5PStandalone?: H5PModule;
+		H5P?: unknown;
 	}
 }
 
@@ -39,8 +41,14 @@ export function H5PWrapper(props: H5PWrapperProps): ReactNode {
 	useEffect(() => {
 		const container = ref.current;
 
-		if (!window.H5PStandalone?.H5P || !container) return;
-		const { H5P } = window.H5PStandalone;
+		if (!((window.H5PStandalone?.H5P || window.H5PPlayer) && container)) return;
+
+		if (window.H5PStandalone?.H5P) {
+			window.H5PPlayer = window.H5PStandalone.H5P;
+		}
+
+		const { H5PPlayer } = window;
+
 		const loadH5P = () => {
 			const options = {
 				h5pJsonPath: `/vendor/h5p-content/${path}`,
@@ -49,7 +57,9 @@ export function H5PWrapper(props: H5PWrapperProps): ReactNode {
 				frameCss: "/vendor/h5p-standalone/styles/h5p.css",
 			};
 			try {
-				new H5P(container, options);
+				if (H5PPlayer) {
+					new H5PPlayer(container, options);
+				}
 			} catch (error: unknown) {
 				console.error("Error loading H5P content", error);
 			}
