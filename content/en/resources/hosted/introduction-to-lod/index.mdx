@@ -47,7 +47,9 @@ The main principles of LOD include:
 
 LOD allows for the creation of a web of interlinked data that facilitates new ways of browsing, querying, and discovering information. The result can be visualized and explored at [https://lod-cloud.net/](https://lod-cloud.net/):
 
-!\[LOD CLoud]\([https://lod-cloud.net/clouds/lod-cloud.svg](https://lod-cloud.net/clouds/lod-cloud.svg))
+<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-lod/lod-cloud.svg" alt="Image of the larges nodes in the linked open data cloud" alignment="center">
+  For an interactive version of the cloud, you can visit [https://lod-cloud.net/clouds/lod-cloud.svg](https://lod-cloud.net/clouds/lod-cloud.svg).
+</Figure>
 
 ## Resource Description Framework (RDF)
 
@@ -60,7 +62,7 @@ For instance, a simple triple could be:
 ```mermaid
 graph LR;
   accTitle: Most basic triple
-  accDescr: Mini graph showing that Shakespeare is the author of Hamlet.
+  accDescr: A diagram showing that Shakespeare is the author of Hamlet.
   Shakespeare-->|is author of| Hamlet;
 ```
 
@@ -74,6 +76,8 @@ Muliple triples can be used to form a **knowledge graph** and extend our knowled
 
 ```mermaid
 graph LR;
+  accTitle: Multiple triples forming a graph
+  accDescr: A diagram displaying multiple connected nodes as a knowledge graph.
   Shakespeare-->|is author of| Hamlet;
   Shakespeare-->|is author of| Macbeth;
   Hamlet-->|is set in| Denmark;
