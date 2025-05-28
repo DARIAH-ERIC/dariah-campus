@@ -78,7 +78,7 @@ export default config({
 				withI18nPrefix("index-page", defaultLanguage),
 				withI18nPrefix("documentation", defaultLanguage),
 			],
-			Metadata: [
+			Settings: [
 				withI18nPrefix("navigation", defaultLanguage),
 				withI18nPrefix("metadata", defaultLanguage),
 			],
