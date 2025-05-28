@@ -57,28 +57,12 @@ For instance, a simple triple could be:
 
 > William Shakespeare (subject) is the author of (predicate) Hamlet (object).
 
-<Diagram>
-  <DiagramCaption>
-    A very basic triple: Shakespeare is the author of Hamlet.
-  </DiagramCaption>
-
-  <DiagramCodeBlock>
-    graph LR;&#x20;
-
-    accTitle: Most basic triple&#x20;
-
-    accDescr: Mini graph showing that Shakespeare is the author of Hamlet.&#x20;
-
-    Shakespeare-->|is author of| Hamlet;
-  </DiagramCodeBlock>
-</Diagram>
-
-````mermaid
 ```mermaid
+accTitle: Most basic triple
+accDescr: Mini graph showing that Shakespeare is the author of Hamlet.
 graph LR;
   Shakespeare-->|is author of| Hamlet;
 ```
-````
 
 Following the principles of the semantic web, the entities within a triple are identified using URIs. In a more formal syntax, namely the Terse RDF Triple Language (**TTL** or **Turtle** 🐢), the above triple could then look as follows:
 
