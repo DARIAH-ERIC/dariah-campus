@@ -25,6 +25,15 @@ translations: []
 
 This article gives a very short introduction to the basic concepts of the Semantic Web and Linked Open Data (LOD), including a crash course in SPARQL, a query language for LOD. This will be followed by a hands-on part applying SPARQL on the data in the CLSCor Catalogue.
 
+<Callout kind="important" title="Learning Outcomes">
+  After finishing this module, you will be able to:
+
+  * Define the principles of Linked Open Data
+  * Explain the terms *RDF*, *SPARQL* and *Ontology*
+  * Write your own simple SPARQL queries and query the CLSCor Catalogue
+  * Explain advanced SPARQL functions and federated queries
+</Callout>
+
 ## Linked Open Data
 
 Linked Open Data (LOD) refers to a method of ”publishing structured data on the Web” [\[1\]](https://www.w3.org/wiki/LinkedData) so that it can be interlinked and become more useful. The concept builds on the principles of the Semantic Web, where data is given meaningful links that allow it to be connected across different domains and platforms. LOD consists of open datasets that are published in a machine-readable format, allowing computers to easily discover and process the data.
@@ -38,7 +47,7 @@ The main principles of LOD include:
 
 LOD allows for the creation of a web of interlinked data that facilitates new ways of browsing, querying, and discovering information. The result can be visualized and explored at [https://lod-cloud.net/](https://lod-cloud.net/):
 
-!\[LOD CLoud]\(https\://lod-cloud.net/clouds/lod-cloud.svg)
+!\[LOD CLoud]\([https://lod-cloud.net/clouds/lod-cloud.svg](https://lod-cloud.net/clouds/lod-cloud.svg))
 
 ## Resource Description Framework (RDF)
 
@@ -48,10 +57,27 @@ For instance, a simple triple could be:
 
 > William Shakespeare (subject) is the author of (predicate) Hamlet (object).
 
+<Diagram>
+  <DiagramCaption>
+    A very basic triple: Shakespeare is the author of Hamlet.
+  </DiagramCaption>
+
+  <DiagramCodeBlock>
+    ```mermaid
+    graph LR;
+      accTitle: Most basic triple
+      accDescr: Mini graph showing that Shakespeare is the author of Hamlet.
+      Shakespeare-->|is author of| Hamlet;
+    ```
+  </DiagramCodeBlock>
+</Diagram>
+
+````mermaid
 ```mermaid
 graph LR;
   Shakespeare-->|is author of| Hamlet;
 ```
+````
 
 Following the principles of the semantic web, the entities within a triple are identified using URIs. In a more formal syntax, namely the Terse RDF Triple Language (**TTL** or **Turtle** 🐢), the above triple could then look as follows:
 
@@ -844,4 +870,4 @@ The query targeting the local CLSCor instance is nested, which means that the CL
 Video resources:
 
 * ["Knowledge Engineering with Semantic Web Technologies by Dr. Harald Sack"](https://www.youtube.com/playlist?list=PLoOmvuyo5UAcBXlhTti7kzetSsi1PpJGR)
-* [OpenHPI Tutorials. 1.0 Overview, 2019](https://www.youtube.com/watch?v=eJ9H1SakPoA) "RDF 1.1 Turtle". https\://www\.w3.org/TR/turtle/.
+* [OpenHPI Tutorials. 1.0 Overview, 2019](https://www.youtube.com/watch?v=eJ9H1SakPoA) "RDF 1.1 Turtle". [https://www.w3.org/TR/turtle/](https://www.w3.org/TR/turtle/).
