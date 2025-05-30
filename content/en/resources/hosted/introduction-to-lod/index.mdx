@@ -91,7 +91,7 @@ In the above graph, some entities appear in a similar context. "Shakespeare" and
 
 Ontologies provide the structured framework that allows us to define the relationships between different concepts in a domain. In the context of the Semantic Web, an ontology is a formal specification of the **classes** (types of things), **properties** (relationships), and **constraints** that describe the data within a specific knowledge domain. Simply put, the ontology describes, what kind of things are in our world (classes), how these things relate to one another (properties) and what kinds of relations are (or are not) possible (constraints).
 
-By defining these elements, ontologies enable consistency, interoperability, and shared understanding of data across different systems. For example, in our Shakespeare example, an ontology might specify that an author (class) writes (property) a book (class), helping systems understand how these entities are related. Ontologies also allow us to reason over data and infer new knowledge, making them a powerful tool for organizing and connecting complex information in the semantic web.
+By defining these elements, ontologies enable consistency, interoperability, and shared understanding of data across different systems. In our Shakespeare example, an ontology might specify that an author (class) writes (property) a book (class), helping systems understand how these entities are related. Ontologies also allow us to reason over data and infer new knowledge, making them a powerful tool for organizing and connecting complex information in the semantic web.
 
 ## SPARQL (SPARQL Protocol and RDF Query Language)
 
@@ -114,6 +114,18 @@ WHERE {
 ```
 
 `?work` is a variable that stands for the the results we want to retrieve. The name can be chosen freely and has to start with a question mark.
+
+<Callout kind="tip" title="Would you like to code along?">
+  You can try out the following SPARQL queries yourself using the <Link link={{"discriminant":"external","value":"https://atomgraph.github.io/SPARQL-Playground/"}}>SPARQL Playground</Link>. Just paste the following Turtle representation of our demo data into the upper left textbox ("RDF input") and enter your SPARQL queries in the textbox in the upper right corner.
+
+  <Disclosure title="RDF input for our first queries">
+    ```RDF
+    <http://example.org/William_Shakespeare> <http://example.org/author> <http://example.org/Hamlet> .
+    <http://example.org/William_Shakespeare> <http://example.org/author> <http://example.org/Macbeth> .
+    <http://example.org/Hamlet> <http://example.org/location> <http://example.org/Denmark> .
+    ```
+  </Disclosure>
+</Callout>
 
 Remember that RDF encourages us to use URIs to identify the entities in our dataset. In order for our query to succeed, we hence have to use the exact same URIs that we used to define our graph:
 
@@ -156,7 +168,9 @@ There are more clauses that can be used within our queries. The complete list, i
 5. `FILTER` clause: Adds conditions to filter results based on criteria.
 6. `ORDER BY, GROUP BY, LIMIT, OFFSET, ...`: These clauses can be used to modify and specify your query further (e.g. group results by a particular variable, limit query, etc.)
 
-!\[The anatomy of a SPARQL query]\(images/sparql\_anatomy.jpg)
+<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-lod/anatomy-of-a-query.svg" alt="Anatomy of a SPARQL query" alignment="stretch">
+
+</Figure>
 
 As we learned earlier, SPARQL can not only be used to retrieve (`SELECT`) data, but also to update and describe it. There are four types of SPARQL queries:
 
@@ -164,8 +178,6 @@ As we learned earlier, SPARQL can not only be used to retrieve (`SELECT`) data, 
 * **CONSTRUCT** : creates a new graph consisting of new triples
 * **ASK** : returns a yes/no answer, e.g. do any entities with given property exist
 * **DESCRIBE** : provides information about a resource, without explicitly stating the query pattern. The query processor determines the result set.
-
-!\[Four types of SPARQL queries]\(images/sparql\_four\_types.jpg)
 
 ### SPARQL Endpoints
 
