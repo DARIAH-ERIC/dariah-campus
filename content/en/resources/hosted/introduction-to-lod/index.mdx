@@ -185,19 +185,19 @@ All our freshly acquired SPARQL knowledge only becomes useful when we can apply 
 
 A SPARQL endpoint is a web service that allows users to query an RDF dataset via the SPARQL query language. These endpoints are crucial for querying large and complex datasets, such as those hosted by organizations like [Wikidata](https://query.wikidata.org/) or [DBpedia](https://dbpedia.org/sparql).
 
-Of course, our CLSCor catalogue also offers an endpoint to query the dataset: [https://clscor.acdh-dev.oeaw.ac.at/sparql](https://clscor.acdh-dev.oeaw.ac.at/sparql). We will use this endpoint in the upcoming hands-on section.
+Of course, our CLSCor catalogue also offers an endpoint to query the dataset: [https://clscor.io/sparql](https://clscor.acdh.oeaw.ac.at/sparql). We will use this endpoint in the upcoming hands-on section.
 
 ## Hands-on: Let's SPARQL the CLSCor Catalogue
 
 ### Details about CLSCor
 
-RDF data is usually stored in databases that are specialized for triples, so-called **triple stores**. The data in the CLSCor catalogue is stored in a triple store called [Blazegraph](https://blazegraph.com/). The store is connected to the semantic knowledge platform [Researchspace](https://researchspace.org/) that is used to provide a frontend application for our data at [https://clscor.acdh-dev.oeaw.ac.at/](https://clscor.acdh-dev.oeaw.ac.at/).
+RDF data is usually stored in databases that are specialized for triples, so-called **triple stores**. The data in the CLSCor catalogue is stored in a triple store called [Blazegraph](https://blazegraph.com/). The store is connected to the semantic knowledge platform [Researchspace](https://researchspace.org/) that is used to provide a frontend application for our data at [https://clscor.io](https://clscor.io).
 
-We will not cover all the details about the ontologies used in the CLSCor catalogue (they can be viewed [here](https://clscor.acdh-dev.oeaw.ac.at/resource/?uri=http%3A%2F%2Fwww.researchspace.org%2Fresource%2Fassets%2FOntologies\&semanticSearch=N4IgZiBcDaC6A0IBOBTAzgVwDYBcrAF9EATAQx1LRRzSjkVKwEsBzAOwFsU29JQAVKCAAi5UgDoAsqQCeAIxQhEANXwEiIFklIAHABYBlAMYB7HSgMpSSI3vwhBkEWKmyFSkKr7qCQA)), but only look into single classes that are relevant for now:
+We will not cover all the details about the ontologies used in the CLSCor catalogue (they can be viewed [here](https://clscor.acdh.oeaw.ac.at/resource/?uri=http%3A%2F%2Fwww.researchspace.org%2Fresource%2Fassets%2FOntologies\&semanticSearch=N4IgZiBcDaC6A0IBOBTAzgVwDYBcrAF9EATAQx1LRRzSjkVKwEsBzAOwFsU29JQAVKCAAi5UgDoAsqQCeAIxQhEANXwEiIFklIAHABYBlAMYB7HSgMpSSI3vwhBkEWKmyFSkKr7qCQA)), but only look into single classes that are relevant for now:
 
-* crmcls:X1\_Corpus: a corpus within our dataset, e.g. [ELTEC](https://clscor.acdh-dev.oeaw.ac.at/resource/?uri=https%3A%2F%2Fclscor.io%2Fentity%2F135083e3e8)
-* crmcls:X2\_Corpus\_Document: a document within a corpus, the expression of some literary work, e.g. [The Time Machine](https://clscor.acdh-dev.oeaw.ac.at/resource/?uri=https%3A%2F%2Fclscor.io%2Fentity%2F07d8623fb0)
-* crm:E39\_Actor: human actors, mostly [authors](https://clscor.acdh-dev.oeaw.ac.at/resource/?uri=app%3AAuthors) of corpus documents
+* crmcls:X1\_Corpus: a corpus within our dataset, e.g. [ELTEC](https://clscor.acdh.oeaw.ac.at/resource/?uri=https%3A%2F%2Fclscor.io%2Fentity%2F135083e3e8)
+* crmcls:X2\_Corpus\_Document: a document within a corpus, the expression of some literary work, e.g. [The Time Machine](https://clscor.acdh.oeaw.ac.at/resource/?uri=https%3A%2F%2Fclscor.io%2Fentity%2F07d8623fb0)
+* crm:E39\_Actor: human actors, mostly [authors](https://clscor.acdh.oeaw.ac.at/resource/?uri=app%3AAuthors) of corpus documents
 
 The triples stating that "The Time Machine" is a corpus document within the ELTEC corpus would then look as follows:
 
@@ -206,12 +206,16 @@ The triples stating that "The Time Machine" is a corpus document within the ELTE
 <https://clscor.io/entity/07d8623fb0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://clscor.io/ontologies/CRMcls/X2_Corpus_Document>.
 
 # [ELTEC] [has part] [The Time Machine]
-<https://clscor.io/entity/135083e3e8> <http://iflastandards.info/ns/lrm/lrmoo/R71_has_part> <https://clscor.io/entity/07d8623fb0>.
+<https://clscor.io/entity/135083e3e8> <http://www.cidoc-crm.org/cidoc-crm/P148_has_component> <https://clscor.io/entity/07d8623fb0>.
 ```
 
-All *"incoming and outgoing"* triples for every entity  are listed in the \[Source] tab in detail views of the catalogue, see for example [Theodor Fontane](https://clscor.acdh-dev.oeaw.ac.at/resource/?uri=https%3A%2F%2Fclscor.io%2Fentity%2F62b7c18a8f).
+All *"incoming and outgoing"* triples for every entity  are listed in the \[Source] tab in detail views of the catalogue, see for example [Theodor Fontane](https://clscor.acdh.oeaw.ac.at/resource/?uri=https%3A%2F%2Fclscor.io%2Fentity%2F62b7c18a8f).
 
 ### [Querying the CLSCor Catalogue](https://clscor.acdh-dev.oeaw.ac.at/sparql)
+
+<Callout kind="tip" title="Try it out">
+  You can code along and try out all queries in this section using the SPARQL interface at [https://](https://)[clscor.io](https://clscor.acdh.oeaw.ac.at/sparql).
+</Callout>
 
 Let's send our first SPARQL queries to the CLSCor catalogue. We start with a list of all corpora:
 
@@ -243,7 +247,7 @@ SELECT ?corpus ?document WHERE {
 }
 ```
 
-This returns a long list of results, one row for each document along with the corresponding corpus. If we are just interested in the number of documents, we can use the aggregate function `COUNT` instead. Note that this also requires us to add a `GROUP BY` clause to the end of the query, telling the triple store that we are interestend in the number of documents *per corpus*.
+This returns a long list of results, one row for each document along with the corresponding corpus. If we are just interested in the number of documents, we can use the aggregate function `COUNT` instead. Note that this also requires us to add a `GROUP BY` clause to the end of the query, telling the triple store that we are interested in the number of documents *per corpus*.
 
 ```sparql
 PREFIX crmcls: <https://clscor.io/ontologies/CRMcls/>
@@ -274,6 +278,26 @@ ORDER BY ?count
 
 Congratulations! You just completed your first SPARQL queries in the wild. This might be a good time to pause reading for a moment and play around with your queries a little more before we continue with some advanced functions.
 
+<Callout kind="note" title="SPARQL exercise">
+  ```mermaid
+  graph LR;
+    accTitle: Simplified version of the CLSCor ontology
+    accDescr: A diagram displaying the property paths from X1_Corpus to E39_Actor.
+    crmcls:X1_Corpus-->|crm:P148_has_component| crmcls:X2_Corpus_Document;
+    crmcls:X2_Corpus_Document--> |crm:P148i_is_component_of| crmcls:X1_Corpus
+    crm:E39_Actor-->|crm:P14i_performed| lrm:F28_Expression_Creation;
+    lrm:F28_Expression_Creation-->|crm:P14_carried_out_by| crm:E39_Actor;
+    lrm:F28_Expression_Creation-->|lrm:R17_created| lrm:F2_Expression;
+    lrm:F2_Expression-->|lrm:R17i_was_created_by| lrm:F28_Expression_Creation;
+    lrm:F2_Expression-->|lrm:R4i_is_embodied_in| crmcls:X2_Corpus_Document;
+    crmcls:X2_Corpus_Document-->|lrm:R4_embodies| lrm:F2_Expression;
+  ```
+
+  If you are interested in a little SPARQL exercise, try to retrieve the authors for every corpus document. The diagram above will help you with the required properties and classes.
+
+  We will use a similar query in the next chapter on advanced SPARQL functions.
+</Callout>
+
 ## Advanced SPARQL functions (BIND, FILTER, REPLACE and REGEX)
 
 Let's take a look at all the authors in our dataset. They are modeled as E39\_Actors. We can hence retrieve them using the following query:
@@ -293,7 +317,7 @@ SELECT ?author ?authorName WHERE {
 }
 ```
 
-Not all actors in the dataset are actually authors of corpus documents. You might also find some staff members of our institute in there, since they are mentioned in the metadata of the corpus table. To exclude them, we extend the query to inclue only actors who created an F2\_Expression.
+Not all actors in the dataset are actually authors of corpus documents. You might also find some staff members of our institute in there, since they are mentioned in the metadata of the corpus table. To exclude them, we extend the query to include only actors who created an F2\_Expression.
 
 ```sparql
 SELECT ?author ?authorName WHERE {
