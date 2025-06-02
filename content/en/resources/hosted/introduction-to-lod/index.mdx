@@ -34,6 +34,12 @@ This article gives a very short introduction to the basic concepts of the Semant
   * Explain advanced SPARQL functions and federated queries
 </Callout>
 
+<Disclosure title="About this material">
+  This training material was originally produced for the CLS INFRA Training School in Vienna in June 2024. You can find more information about the project and the training school as well as recordings of the individual sessions [here](https://campus.dariah.eu/resources/events/explore-cor-using-programmable-corpora-in-computational-literary-studies).
+
+  The CLSCor Catalogue is one outcome of the EU-funded CLS INFRA project, namely an exploration platform gathering information about literary corpora and applicable tools. The metadata on both corpora and tools was harmonised and mapped to a specifically designed data model which will be addressed later in this article and serves as the base for our upcoming LOD exercises.
+</Disclosure>
+
 ## Linked Open Data
 
 Linked Open Data (LOD) refers to a method of ”publishing structured data on the Web” [\[1\]](https://www.w3.org/wiki/LinkedData) so that it can be interlinked and become more useful. The concept builds on the principles of the Semantic Web, where data is given meaningful links that allow it to be connected across different domains and platforms. LOD consists of open datasets that are published in a machine-readable format, allowing computers to easily discover and process the data.
@@ -214,7 +220,7 @@ All *"incoming and outgoing"* triples for every entity  are listed in the \[Sour
 ### [Querying the CLSCor Catalogue](https://clscor.acdh-dev.oeaw.ac.at/sparql)
 
 <Callout kind="tip" title="Try it out">
-  You can code along and try out all queries in this section using the SPARQL interface at [https://](https://)[clscor.io](https://clscor.acdh.oeaw.ac.at/sparql).
+  You can code along and try out all queries in this section using the SPARQL interface at [https://clscor.io](https://clscor.acdh.oeaw.ac.at/sparql).
 </Callout>
 
 Let's send our first SPARQL queries to the CLSCor catalogue. We start with a list of all corpora:
@@ -298,7 +304,9 @@ Congratulations! You just completed your first SPARQL queries in the wild. This 
   We will use a similar query in the next chapter on advanced SPARQL functions.
 </Callout>
 
-## Advanced SPARQL functions (BIND, FILTER, REPLACE and REGEX)
+## Advanced SPARQL functions
+
+Now that we know the basic concepts of SPARQL and have formulated our first successful queries, we are ready for some more advanced functions. We will start with some commonly used functions, e.g. `BIND` and `FILTER`, followed by concepts that you are less likely to encounter in the wild: query federation and nested queries.
 
 Let's take a look at all the authors in our dataset. They are modeled as E39\_Actors. We can hence retrieve them using the following query:
 
@@ -408,7 +416,9 @@ If you have ever worked with semantic web technologies, [Wikidata](https://www.w
 
 Luckily, Wikidata also has a [SPARQL endpoint](https://query.wikidata.org/). Let's see if we can find one of our authors there: William Shakespeare.
 
-**Important note:** The following queries will be executed in the Wikidata Query Interface (not the CLSCor interface) unless mentioned otherwise.
+<Callout kind="important" title="Important note">
+  The following queries will be executed in the [Wikidata Query Interface](https://query.wikidata.org/) (not the CLSCor interface) unless mentioned otherwise. Wikidata has its own data model, including properties and classes that differ from those in CLSCor. This also affects our SPARQL queries, e.g. when querying for *persons*, we will now use `wd:Q5` instead of `crm:E39_Actor`.
+</Callout>
 
 A naive first approach leads to no results:
 
@@ -597,39 +607,88 @@ SELECT * WHERE {
 }
 ```
 
-**Attention:** The above query will timeout when you execute it. No worries, this is an expected behaviour. The reason for this is that internally, the `SERVICE` query is executed *before* anything else. `?transformedNameWithLanguage` is not set at this point which means that Wikidata is retrieving all authors in their database - which is a lot and leads to an internal timeout.
+<Callout kind="caution">
+  The above query will timeout when you execute it. No worries, this is an expected behaviour. The reason for this is that internally, the `SERVICE` query is executed *before* anything else. `?transformedNameWithLanguage` is not bound at this point which means that Wikidata is retrieving all authors in their database - which is a lot and leads to an internal timeout.
+</Callout>
 
-Fortunately, there is a useful little helper that tells the triplestore to execute the `SERVICE` query *after* everything else. We can add a so-called **query hint** to our SPARQL, immediately after the `SERVICE` block:
+Fortunately, there is a useful little helper that lets us specify which part of the query to execute first: query nesting.
 
-```turtle
-hint:Prior hint:runLast true.
-```
+##### Nested Queries
 
-Our final query, including an adapted list of prefixes, now looks like this:
+SPARQL allows us to wrap queries, i.e. `SELECT … WHERE { … }`, inside of other queries. These nested queries (also called "subqueries") allow to modularize complex queries into more manageable parts and also provide a means of controlling query execution order. Unification happens from inner to outer query level which means that the innermost query is executed first.
+
+Let's take a look at an example. The following simple toy query features two variables, `?x` and `?y`:
 
 ```sparql
-PREFIX wd: <http://www.wikidata.org/entity/>
-PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-PREFIX p: <http://www.wikidata.org/prop/>
-PREFIX ps: <http://www.wikidata.org/prop/statement/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX wikibase: <http://wikiba.se/ontology#>
-PREFIX bd: <http://www.bigdata.com/rdf#>
-PREFIX schema: <http://schema.org/>
-PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-PREFIX lrm: <http://iflastandards.info/ns/lrm/lrmoo/>
-PREFIX hint: <http://www.bigdata.com/queryHints#>
+SELECT ?x ?y WHERE {
 
-SELECT DISTINCT ?author ?transformedName ?description WHERE {
-  ?author a crm:E39_Actor;
-          rdfs:label ?authorName;
-          crm:P14i_performed/lrm:R17_created ?expression.
-  ?expression a lrm:F2_Expression.
+  VALUES ?x {1 2 3}
 
-  BIND(REPLACE(?authorName, " \\[.*?\\]", "") AS ?nameWithoutClass)
-  BIND(REPLACE(?nameWithoutClass, " ?\\(.*?\\) ?", "") AS ?nameWithoutParentheses)
-  BIND(REPLACE(?nameWithoutParentheses, "^(.*?), (.*?)$", "$2 $1") AS ?transformedName)
-  BIND(STRLANG(STR(?transformedName), "en") AS ?transformedNameWithLanguage)
+  #nested query:
+  { 
+    SELECT ?y WHERE {
+      VALUES ?y {"a" "b" "c"}
+    }
+  }
+}
+
+```
+
+To keep the example short, we directly assign values to these variables using the keyword `VALUES` instead of matching a pattern of classes and properties like we did in our previous queries. `VALUES` provides a mechanism to add data to a query, in this case it assigns "a", "b" and "c" to the variable `?y` and 1, 2 and 3 to the variable `?x`. Feel free to try the query in a SPARQL interface of your choice.
+
+<Disclosure title="Side note: A practical use case for VALUES">
+  A cool practical use case for `VALUES` is to limit unification for a binding:
+
+  ```sparql
+  SELECT *
+  WHERE {
+    VALUES ?author {
+      <https://clscor.io/entity/b131343253>
+      <https://clscor.io/entity/3049ca6ae0>
+    }
+    ?author rdfs:label ?label
+  }
+  ```
+
+  This statically unifies `?author` for the given URIs.
+
+  The above behavior could also be achieved with membership testing.
+
+  ```sparql
+  SELECT *
+  WHERE {
+   ?author rdfs:label ?label
+   FILTER (?author IN (
+       <https://clscor.io/entity/b131343253>,
+       <https://clscor.io/entity/3049ca6ae0>
+     )
+   )
+  }
+  ```
+
+  The containment check version is radically less efficient though, since the processor has to check *every* label in the entire graph and compare it to the entities specified in the filter clause. Reducing the result set quickly is a key technique for writing efficient queries and `VALUES` can be a great tool for that.
+</Disclosure>
+
+The important part in this example query is the fact that the inner query will be executed first and hence `?y` will be bound before `?x`. This is exactly what we want to achieve for our federated query!
+
+Wrapping the upper half of our original query in a subquery allows us to execute this part first and hence binding the variable `?transformedNameWithLanguage` before it is forwarded to Wikidata:
+
+```SPARQL
+SELECT DISTINCT ?authorName ?transformedName ?description WHERE {
+  # This part is now nested and hence executed first:
+  {
+    SELECT * WHERE {
+      ?author a crm:E39_Actor;
+              rdfs:label ?authorName;
+              crm:P14i_performed/lrm:R17_created ?expression.
+      ?expression a lrm:F2_Expression.
+
+      BIND(REPLACE(?authorName, " \\[.*?\\]", "") AS ?nameWithoutClass)
+      BIND(REPLACE(?nameWithoutClass, " ?\\(.*?\\) ?", "") AS ?nameWithoutParentheses)
+      BIND(REPLACE(?nameWithoutParentheses, "^(.*?), (.*?)$", "$2 $1") AS ?transformedName)
+      BIND(STRLANG(STR(?transformedName), "en") AS ?transformedNameWithLanguage)
+    }
+  }
 
   SERVICE <https://query.wikidata.org/sparql> {
    SELECT * WHERE {
@@ -643,256 +702,26 @@ SELECT DISTINCT ?author ?transformedName ?description WHERE {
       }
     }
   }
-  hint:Prior hint:runLast true.
 }
 ```
 
-As a result, you should see a list of authors in our dataset, their transformed names and the description that was fetched from Wikidata.
+The query targeting the local CLSCor instance is nested, which means that the CLSCor result set is generated first and its bindings are then projected to the federated query. As a result, you should see a list of authors in our dataset, their transformed names and the description that was fetched from Wikidata.
 
-### Nested Queries
+## Conclusion and recommended reading
 
-Nested queries allow to modularize complex queries into more manageable parts and also provide a means of controlling query execution order.
+Congratulations, you have completed this module on Linked Open Data. You know the principles of LOD, are familiar with RDF and the basic concepts of ontologies and you are able to write your own SPARQL queries - even with query federation to other triple stores!
 
-Let's take a look at an example. The following simple toy query features two subqueries:
+If you are interested in further reading regarding knowledge graphs and the semantic web, we recommend the following books, articles and videos:
 
-```sparql
-SELECT *
-WHERE {
-  {
-    SELECT ?x 
-    WHERE {
-      VALUES ?x {1 2 3}
-    }
-  }
-  {
-    SELECT ?y 
-    WHERE {
-      VALUES ?y {"a" "b" "c"}
-    }
-  }
-}
-```
-
-Here the subqueries run *simultaneously*, the result sets of both queries are combined into a [Cartesian Product](https://en.wikipedia.org/wiki/Cartesian_product).
-
-> \[!NOTE]  Try to add `order by ?x` to the above query. This 'mirrors' the Cartesian Product along its axis.
-
----
-
-#### Digression: VALUES
-
-VALUES provides a mechanism to add data to a query; data in a VALUES construct is "combined with the results of query evaluation by a join operation." ([SPARQL Docs](https://www.w3.org/TR/sparql11-query/#inline-data))
-
-Simple example:
-
-```sparql
-SELECT *
-WHERE {
-VALUES (?a ?b) {
-    ("a" 1)
-    ("b" UNDEF)
-  }
-}
-```
-
-VALUES also featues a special syntax for specifying just one variable.
-Instead of
-
-```sparql
-SELECT *
-WHERE {
-  VALUES (?x) {
-    (1) (2) (3)
-  }
-}
-```
-
-also the following is permissible:
-
-```sparql
-SELECT *
-WHERE {
-  VALUES ?x {
-    1 2 3
-  }
-}
-```
-
-A cool practical use case for VALUES is to limit unification for a binding:
-
-```sparql
-SELECT *
-WHERE {
-  VALUES ?author {
-    <https://clscor.io/entity/b131343253>
-    <https://clscor.io/entity/3049ca6ae0>
-  }
-  ?author rdfs:label ?label
-}
-```
-
-This statically unifies ?author for the given URIs.
-
-> \[!NOTE]Note: The above behavior could also be achieved with membership testing.
->
-> ```sparql
-> SELECT *
-> WHERE {
->  ?author rdfs:label ?label
->  FILTER (?author IN (
->      <https://clscor.io/entity/b131343253>,
->      <https://clscor.io/entity/3049ca6ae0>
->    )
->  )
-> }
-> ```
->
-> The containment check version is radically less efficient though, since the processor has to check *every* label in the entire graph and compare it to the entities specified in the filter clause.
-> Reducing the result set quickly is a key technique for writing efficient queries and VALUES can be a great tool for that.
-
----
-
-Back to nested queries!
-
-For nested queries, unification happens from inner to outer query level.
-
-E.g. the result set produced by the following query is equivalent to that of the above query, but the subquery execution time is different;
-the result set of the inner query is generated first and then gets projected into the enclosing scope.
-
-```sparql
-SELECT ?x ?y
-WHERE {
-  VALUES ?x {1 2 3}
-  {
-  SELECT ?y
-    WHERE {
-      VALUES ?y {1 2 3}
-    }
-  }
-}
-```
-
-A slight varition.
-Note that since the result set of the outer query has a cardinality of 1, the final result set has only a single value along one axis.
-
-```sparql
-SELECT ?x ?y
-WHERE {
-  VALUES ?x {1}
-  {
-  SELECT ?y
-    WHERE {
-      VALUES ?y {1 2 3}
-    }
-  }
-}
-```
-
-#### Query Federation revisited
-
-Remember the query hint from the above federated query example: `hint:Prior hint:runLast true`.\
-Basically this is a Blazegraph kludge to introduce a means to control query execution order.
-
-```sparql
-PREFIX wd: <http://www.wikidata.org/entity/>
-PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-PREFIX p: <http://www.wikidata.org/prop/>
-PREFIX ps: <http://www.wikidata.org/prop/statement/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX wikibase: <http://wikiba.se/ontology#>
-PREFIX bd: <http://www.bigdata.com/rdf#>
-PREFIX schema: <http://schema.org/>
-PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-PREFIX lrm: <http://iflastandards.info/ns/lrm/lrmoo/>
-PREFIX hint: <http://www.bigdata.com/queryHints#>
-
-SELECT DISTINCT ?author ?transformedName ?description WHERE {
-  ?author a crm:E39_Actor;
-          rdfs:label ?authorName;
-          crm:P14i_performed/lrm:R17_created ?expression.
-  ?expression a lrm:F2_Expression.
-
-  BIND(REPLACE(?authorName, " \\[.*?\\]", "") AS ?nameWithoutClass)
-  BIND(REPLACE(?nameWithoutClass, " ?\\(.*?\\) ?", "") AS ?nameWithoutParentheses)
-  BIND(REPLACE(?nameWithoutParentheses, "^(.*?), (.*?)$", "$2 $1") AS ?transformedName)
-  BIND(STRLANG(STR(?transformedName), "en") AS ?transformedNameWithLanguage)
-
-  SERVICE <https://query.wikidata.org/sparql> {
-    ?subj rdfs:label ?transformedNameWithLanguage;
-          wdt:P31 wd:Q5;
-          p:P106/ps:P106 wd:Q36180.
-
-    SERVICE wikibase:label {
-      bd:serviceParam wikibase:language "en".
-      ?subj schema:description ?description.
-    }
-  }
-  hint:Prior hint:runLast true.
-}
-```
-
-Without hinting the above query times out.
-
-As just mentioned, another way to achieve the intended result is query nesting.
-The following query is roughly equivalent to the above federated query:
-
-```sparql
-PREFIX wd: <http://www.wikidata.org/entity/>
-PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-PREFIX lrm: <http://iflastandards.info/ns/lrm/lrmoo/>
-
-SELECT DISTINCT ?wikidataID ?full_name
-WHERE {
-  SERVICE <https://query.wikidata.org/sparql> {
-
-    ?wikidataID wdt:P31 wd:Q5 ;
-    rdfs:label | skos:altLabel ?full_name ;
-    wdt:P106 ?occupation .
-    FILTER (
-            ?occupation = wd:Q36180 || 
-            ?occupation = wd:Q49757 ||
-            ?occupation = wd:Q482980
-            )
-  }
-
-  # inner query:
-  {
-    SELECT DISTINCT
-    (COALESCE(
-              STRBEFORE(?actor_name, " ("), 
-              STRBEFORE(?actor_name, " [")) 
-     AS ?_name)
-    (STRAFTER(?_name, ", ") AS ?_forename)
-    (STRBEFORE(?_name, ",") AS ?_surname)
-    (STRLANG(CONCAT(?_forename, " ", ?_surname), "en") AS ?full_name)
-    WHERE {
-      ?actor a crm:E39_Actor ;
-      crm:P14i_performed/lrm:R17_created [a lrm:F2_Expression] ;
-      rdfs:label ?actor_name .
-    }
-  }
-}
-```
-
-The query targeting the local CLSCor instance is nested, which means that the CLSCor result set is generated first and its bindings are then projected to the federated query.
-
-# References, recommended reading
-
-* [Addlesee, Angus. "Creating Linked Data". Medium, 23. April 2019.](https://medium.com/wallscope/creating-linked-data-31c7dd479a9e)
-* ["Tackling Big Data Challenges with Linked Data". Medium, 29. Dezember 2018.](https://medium.com/wallscope/tackling-big-data-challenges-with-linked-data-278b0761a6de)
-* [DuCharme, Bob. Learning SPARQL](http://www.learningsparql.com)
-* Glimm, Birte. "Semantic Web Grundlagen - Einführung in RDF", 2011, 20.
 * [Haslhofer, Bernhard, Antoine Isaac, und Rainer Simon. "Knowledge Graphs in the Libraries and Digital Humanities Domain". ArXiv:1803.03198 \[Cs\], 2018, 1–8.](https://doi.org/10.1007/978-3-319-63962-8_291-1)
 * [Hitzler, Pascal. "A review of the semantic web field". Communications of the ACM 64, Nr. 2 (25. Januar 2021): 76–83.](https://doi.org/10.1145/3397512)
-* ["Introducing SPARQL: Querying the Semantic Web"](https://www.xml.com/pub/a/2005/11/16/introducing-sparql-querying-semantic-web-tutorial.html)
-* [Schreiber, Guus, Raimond, Yves. "RDF 1.1 Primer"](https://www.w3.org/TR/rdf11-primer/)
-* ["SPARQL 1.1 Overview"](https://www.w3.org/TR/sparql11-overview/)
 * Studer, R., Benjamins, V. R., & Fensel, D. (1998). Knowledge engineering: Principles and methods. Data & knowledge engineering, 25(1-2), 161-197.
-
-Video resources:
-
 * ["Knowledge Engineering with Semantic Web Technologies by Dr. Harald Sack"](https://www.youtube.com/playlist?list=PLoOmvuyo5UAcBXlhTti7kzetSsi1PpJGR)
-* [OpenHPI Tutorials. 1.0 Overview, 2019](https://www.youtube.com/watch?v=eJ9H1SakPoA) "RDF 1.1 Turtle". [https://www.w3.org/TR/turtle/](https://www.w3.org/TR/turtle/).
+
+For additional information regarding SPARQL and its functionalities, we recommend:
+
+* ["SPARQL 1.1 Overview"](https://www.w3.org/TR/sparql11-overview/)
+* [DuCharme, Bob. Learning SPARQL](http://www.learningsparql.com)
+* ["Introducing SPARQL: Querying the Semantic Web"](https://www.xml.com/pub/a/2005/11/16/introducing-sparql-querying-semantic-web-tutorial.html)
+
+####
