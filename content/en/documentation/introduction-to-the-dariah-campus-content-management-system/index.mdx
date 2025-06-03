@@ -45,8 +45,6 @@ Next to the branch selector, at the top of the navigation panel, is (2), the ‘
 
 <Callout kind="tip">
   Do note that you cannot edit the ‘Main Branch’ directly, as this is where the published resources exist.  Instead you always have to make edits using a new branch.
-
-
 </Callout>
 
 ### **The Dashboard Button**
@@ -82,13 +80,9 @@ On the main window, you will see the branch you are currently on indicated in th
 
 </Figure>
 
-
-
 <Callout kind="tip">
   Make sure you put a hyphen between words in a branch title, not a space.
 </Callout>
-
-
 
 Once you have hit the ‘create’ button, you will notice that there is now a new button underneath the ‘current branch’ window on the dashboard, as shown in (1) on the image below.
 
@@ -487,3 +481,103 @@ This will bring you to the GitHub site, where you can create the Pull Request by
 The screen will now change to show you the actual pull request that your draft is filed in on GitHub.  After a short while, a ‘Vercel bot’ will post an automatic message to the Pull Request which includes a table showing a summary of the latest updates.  In this table you will see a link to ‘Visit Preview’.  This link will always bring you to the latest successfully built preview of your resource.  You can click on this to see how your resource looks on the DARIAH-Campus website.  **Do note, this is only a preview link, and should not be shared in any official capacity.**
 
 You can continue to edit your hosted resource in the CMS to refine it, or as required by the Editorial Team.  Once everyone is happy, the Editorial Team will publish this to DARIAH-Campus for you.
+
+## Creating/ Editing an Event (main page title)
+
+## Creating a New Branch for your Captured Event
+
+As with all changes, edits and additions you make to DARIAH-Campus, the first thing you need to do is to create a new branch for your new event.  
+
+## Adding and Updating Event Authors in the CMS
+
+With the ‘Events’ format, **we strongly recommend adding any new people you want to include in the ‘Authors’ field before you begin drafting up the event content itself**.  This is because there are a lot of mandatory fields in the Events template, and the system will not allow you to ‘save’ the content without all these fields populated.  You will need to save the content before you move to a different part of the dashboard in order to retain the content.  By adding any new authors first, you can avoid the annoyance of losing content you’ve already filled in.
+
+To add new people, you can follow the same steps as set out in ‘[Creating and Editing New People in the CMS](https://docs.google.com/document/d/1mIuAacwxyswAmt1gmiUN6ub6GPP_-CFuVBaIC3WCiaU/edit?tab=t.0#bookmark=id.cifywdlc5hez)’, but remember you don’t need to send those people files off to be published, as they will be included in the new branch you have created to draft up your event.
+
+For captured events, it is particularly important to make sure that your authors have not only an image, but also a ‘Description’.  This is because ‘Speakers’ for individual sessions are given their own highlighted call-out boxes in the layout of a Captured Event, and this includes a brief biography.
+
+To double-check or add a brief biography for each speaker, you can check their profile in the CMS.
+
+As you may recall from the mock-up person file created as part of this documentation for ‘Joe Bloggs’, this description field was filled in.  It is this description that will be used in the call-out field for session speakers.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/2.6.-new-image-with-description.png" alignment="center">
+
+</Figure>
+
+You should ensure that this field is filled in for all the speakers and authors of sessions in your event in particular.  Ideally, you will have created all the people that you want to add as either authors, organisers and/or speakers for your event.  If not, it IS possible to add people to your ‘event branch’ and make sure that they are ‘saved’ on that branch.  They should then appear as options when you go to add authors to your event resource.
+
+<Callout kind="note">
+  When adding a description or biography to your ‘person’ file, make sure that it is **NOT** specific to the event, rather that it is a more general use biography.  If they are part of a future event, that same biography will be used there as well.
+</Callout>
+
+### Who can be listed as an ‘Author’ for an event?
+
+It is important to note that ‘Authors’ in an event can include, but are not limited to the following roles:
+
+* Speakers (including keynotes)
+* Non-presenting authors
+* Event organising team (local level, project level)
+* Tutors (in the case of workshops where additional in-class support was required)
+* Any event support staff 
+* Technical support
+
+Who you add as an ‘Author’ in this section is open to interpretation, however we do encourage consideration of the different roles and contributions that are made in order to run a successful event, and that you give credit in an appropriate manner.  
+
+
+
+## The Event Working Space
+
+When you first go to create a new Captured Event resource (from here on just called ‘event resource’), you will notice that the layout of the workspace is different to other resource types, assuming you are already familiar with producing those.  In the case of the event resource there is a much more rigid structure that organises the information in a specific way on the website.  For this reason, the bulk of information that is to be entered is divided into sections.
+
+### ***IMAGE HERE OF BLANK EVENT WORKING SPACE***
+
+<Callout kind="tip">
+  The ‘Event’ resource can be quite involved, and may take some time to complete if you don’t have all the information immediately to hand, and it is always advised that you save as you go.  However, the CMS will not allow you to ‘create’ or ‘save’ any resource that does not have all the mandatory fields filled in. &#x20;
+
+  To save yourself time, it might be useful to go through the event template and add in ‘filler’ content to the mandatory fields that can be corrected and edited before submitting the work in a Pull Request for review.
+</Callout>
+
+
+
+## Event Metadata
+
+The first field is the **title of the resource**.  This in turn generates the ‘slug’ for the url of the resource, based on the title.
+
+You can then select the **language of the resource**.  This is through a dropdown menu.  At the time of writing this documentation (March 2025) the number of languages we support is limited, but we hope this will change to allow you to add resources in other languages. 
+
+You are then asked to give the **Publication Date**.  This publication date refers to the date that this ‘event’ resource is published to DARIAH-Campus.  For that reason it defaults to whatever today’s date is.  You should leave it at this, but you might be asked to update this when the resource is ready to be published following review from the Editorial Team.  The date is then shown in DD/MM/YYYY format.
+
+The **Start Date** field refers to the start date of the event itself, as does the **End Date**.  This is selected using the calendar option on the right of the field.  Note, the ‘Start Date’ field is mandatory, but the ‘End Date’ field is not.
+
+The **Location** field refers to where the event took place.  If this was an online event, you can indicate this as well.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.2-entering-info-into-template-event.png" alt="the first part of the Event Resource working space in the CMS, showing the metadata fields outlined above." alignment="center">
+
+</Figure>
+
+Below this is the ‘**Version’ number**.  By default this is set to 1.0.0.  However, if you are making substantial changes to an event (e.g. major content updates, not just typos), this will need to be amended to reflect that change, e.g. ‘Version 1.0.1’, or if there are very substantial changes, it might be Version 2.0.0.  Otherwise, if this is a new resource, or the changes are minor you can leave this at the default setting.
+
+Next you will need to add the **Authors** of your Event.  There are two main ways you can add people as authors.  The simplest way is to use the people already published on the system.   This field is both a search box and a drop down menu, but the quickest way to find someone is to start typing one or two letters of their name into the search field, and the drop down menu will filter down to only the named people with those letters in that order in their name.  From there you can select which person you want to include.  For resources with multiple authors you can repeat this step.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.3a.-adding-authors.jpg" alignment="center">
+
+</Figure>
+
+
+
+If you need to add additional people to the repository, you need to make sure you do this before you begin drafting your event.  For information on how to add authors, go to ***Creating and Editing New People in the CMS***. 
+
+Do note, if you want to leave this authors’ field to just speakers, non-presenting authors and the organising team, there is also the option of adding acknowledgements and full event credits in the ‘Content’ field which will be expanded on further down this documentation.
+
+Once you have selected an author or authors, it will appear in a box below the drop down menu.  For each person there is the option to change the order of authors listing, indicated by an icon featuring six dots, or the option to select that author, indicated by a checkbox, so that you can remove them from the list if required.
+
+
+
+
+
+
+
+
+
+
+
