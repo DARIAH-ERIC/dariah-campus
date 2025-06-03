@@ -2,6 +2,8 @@
 title: Using the DARIAH-Campus Content Management System
 lead: Introducing the basic features of the DARIAH-Campus Content Management System
 ---
+
+
 ## Getting to Know the DARIAH-Campus Dashboard
 
 The content management system (version launched in March 2025) allows users to create new resources and make changes to people profiles using the same basic workflow as creating, pushing and pulling commits on GitHub, but through a more user-friendly interface that does not require any experience or knowledge of coding practices.  No changes are published to DARIAH-Campus without the approval of the Editorial Board, and any changes you do make remain in a ‘branch’ that is separate from the main DARIAH-Campus website until it is ‘merged’ (published).  This means that you can work on your resource without worrying too much about making any catastrophic changes that break the DARIAH-Campus website, as the editorial team won’t let it get that far!
@@ -116,8 +118,6 @@ From here, you can now create a new person by clicking on the 'add' (‘ + ‘) 
 
 </Figure>
 
-
-
 You can fill in all the details for your new person, making sure that you fill in all the fields with an asterisk as these are required information.
 
 Note, though, that the ‘slug’ field is automatically generated based on the name of the person.  You need to check that this fits the ‘**lastname-firstname**’ format that is used in DARIAH-Campus.  If it does not, you will need to change this manually.  Do not hit the ‘Regenerate’ button as this will reset the slug back to the incorrect form.
@@ -142,15 +142,11 @@ To create a Pull request, there are two options.  You can either click on the �
 
 </Figure>
 
-
-
 You can scroll down, as the gif below shows, to see all these changes.  You will also see a green button that says ‘Create Pull Request’.  Assuming you are happy that all the information in this commit is correct, you can hit that button, and a new pull request will be generated.
 
 <Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/2.11.-gif-of-pull-request-creation-person.gif" alt="a 'commit' showing all the information added to the new 'Person' file, and a cursor then clicks on the 'Create Pull Request' button and the generated Pull Request is briefly shown.  Gif on a loop." alignment="center">
 
 </Figure>
-
-
 
 This will now enable the editorial team to look at the new Person file you have created, and publish it.  They may also come back to you with questions or suggestions for changes within the ‘conversation’ page of this new pull request.  Once the editorial team has published your new Person file, the branch that you used to create it will be deleted from the CMS.
 
@@ -165,13 +161,9 @@ Sometimes you might need to update a profile for a person.  This might be to cha
    <Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/2.12.-creating-branch-to-edit-person-file.png" alignment="center">
 
    </Figure>
-
-
 2. Find the person you want to update using the method outlined in \<Link link=\{\{"discriminant":"url-fragment-id","value":"Entering Information in the 'People' Template"}}>Entering Information in the 'People' Template\</Link> above. Click on their profile, and you will be taken to the same editing page to work on.
 3. Make the changes you need to.
 4. Make sure that you click on the ‘Save’ button at the top, and then follow the same procedure as given above to create a new pull request (see \<Link link=\{\{"discriminant":"url-fragment-id","value":"Sending Your New ‘Person’ for Publication"}}>Sending Your New ‘Person’ for Publication)\</Link>
-
-
 
 ## Creating/ Editing a Hosted Resource (Main page title)
 
@@ -185,11 +177,35 @@ The first field is the **title of the resource**.  This in turn generates the �
 
 You can then select the **language of the resource**.  This is through a dropdown menu.  At the time of writing this documentation (March 2025) we only support two languages, but we hope this will change to allow you to add resources in other languages. 
 
-You are then asked to give the **Publication Date**.  This publication date refers to the date that this resource is published to DARIAH-Campus.  For that reason it defaults to whatever today’s date is.  You should leave it at this, but you might be asked to update this when the resource is ready to be published following review from the Editorial Team.\
-
+You are then asked to give the **Publication Date**.  This publication date refers to the date that this resource is published to DARIAH-Campus.  For that reason it defaults to whatever today’s date is.  You should leave it at this, but you might be asked to update this when the resource is ready to be published following review from the Editorial Team.\\
 
 Below this is the ‘**Version’ number**.  By default this is set to 1.0.0.  However, if you are making substantial changes to a resource (e.g. major content updates, not just typos), this will need to be changed to indicate that this is a new version.  For now, though, as you are creating a new resource, you can leave this at the default setting.
 
-
-
 Next you will need to add the **Authors** of your resource.  This is done using the people already published on the system.   This field is both a search box and a drop down menu, but the quickest way to find someone is to start typing one or two letters of their name into the search field, and the drop down menu will filter down to only the named people with those letters in that order in their name.  From there you can select which person you want to include.  For resources with multiple authors you can repeat this step.
+
+Once you have selected an author or authors, it will appear in a box below the drop down menu.  For each person there is the option to change the order of authors listing, indicated by an icon featuring six dots, or the option to select that author, indicated by a checkbox, so that you can remove them from the list if required.
+
+**Tags** are selected in the same way as authors.  You can use the search field next to the drop down button to start typing a topic, and select an appropriate tag from or tags from there.  You can also re-order these by clicking on the 6 dots and dragging the tag up or down the list.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.2.-hosted-resource-metadata-fields-1.jpg" alignment="center">
+
+</Figure>
+
+**Sources** are also selected in the same way.  The ‘Source’ is used to assign a ‘channel’.  In most cases, the source is ‘DARIAH’, unless you already have a dedicated ‘channel’ in place as agreed with the DARIAH-Campus Editorial Board.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.3.-selecting-source.jpg" alignment="center">
+
+</Figure>
+
+You can also choose to add a ‘**Featured Image**’.  Click on the ‘Choose File’ button.  This will open the appropriate file management window for your operating system (e.g. Finder for Mac, File Explorer for Windows) to allow you to select an image from your own computer.  One selected and confirmed, the featured image will be displayed as a thumbnail in this metadata field.  You will also now have the option to remove this file if you choose.
+
+
+
+
+
+
+
+
+
+
+
