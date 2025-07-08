@@ -164,14 +164,82 @@ glimpse(books)
 > $ sampled.TTR              <dbl> 0.2529, 0.3023, 0.2775, 0.2527, 0.2602, 0.3041, 0.2461, 0.3012, 0…
 > ```
 
-
-
 ```R
 {r summarise a table }
 
 #summary is a base R function, so you don't need special packages for this one
 summary(books)
+
+
 ```
+
+> ```R
+>                           short.title                    author                title    
+>  Abdolah_Koning                 :  1   Hollander, Loes den  : 13    De affaire    :  3  
+>  Abdolah_Kraai                  :  1   Baldacci, David      : 11    1 Fifth Avenue:  1  
+>  Adler-Olsen_Bedrijfsterrorist  :  1   Läckberg, Camilla    :  9   13 uur        :  1  
+>  Adler-Olsen_Dossier64          :  1   Vermeer, Suzanne     :  9    1953          :  1  
+>  Adler-Olsen_Fazantenmoordenaars:  1   Slaughter, Karin     :  7    1q84          :  1  
+>  Adler-Olsen_NoodkreetInFles    :  1   Vlugt, Simone van der:  7    22/11/63      :  1  
+>  (Other)                        :395   (Other)              :345    (Other)       :393  
+>                  title.english      genre        book.id   
+>  *The Neighbour         :  2   Fiction :147   Min.   :  1  
+>  The Affair             :  2   Other   : 27   1st Qu.:101  
+>  *1953                  :  1   Romantic: 41   Median :201  
+>  *A Breeze              :  1   Suspense:186   Mean   :201  
+>  *A Carpet of Shards    :  1                  3rd Qu.:301  
+>  *A Corpse in the Closet:  1                  Max.   :401  
+>  (Other)                :393                               
+>                               riddle.code 
+>  301-302 (VERTAALDE) LITERAIRE ROMAN:150  
+>  305 LITERAIRE THRILLER             :111  
+>  332 THRILLER                       : 55  
+>  Humoristisch-Romantisch*           : 23  
+>  Andere*                            : 20  
+>  Romantisch*                        : 17  
+>  (Other)                            : 25  
+>                                          riddle.code.english translated          gender.author
+>  301 Literary novel / 302 translated literary novel:150      no :152    female          :196  
+>  305 Literary thriller                             :111      yes:249    male            :192  
+>  332 Thriller                                      : 55                 unknown/multiple: 13  
+>  Humoristic-romantic                               : 23                                       
+>  Other                                             : 20                                       
+>  Romantic                                          : 17                                       
+>  (Other)                                           : 25                                       
+>  origin.author original.language         inclusion.criterion publication.date      first.print  
+>  NL     :150   EN     :180       bestseller        :364      Min.   :2007-06-04   Min.   :1983  
+>  US     :104   NL     :152       boekenweekgeschenk:  4      1st Qu.:2010-03-01   1st Qu.:2009  
+>  UK     : 67   SE     : 27       library           : 19      Median :2010-09-27   Median :2010  
+>  SE     : 27   IT     :  7       literair_juweeltje: 14      Mean   :2010-09-25   Mean   :2010  
+>  FR     :  7   SP     :  7                                   3rd Qu.:2011-06-27   3rd Qu.:2011  
+>  IT     :  7   DK     :  6                                   Max.   :2013-03-18   Max.   :2013  
+>  (Other): 39   (Other): 22                                                                      
+>                                     publisher     word.count       type.count   
+>  Bruna Uitgevers B.V., A.W.              : 55   Min.   :  6362   Min.   : 1319  
+>  Bezige Bij b.v., Uitgeverij De          : 48   1st Qu.: 72588   1st Qu.: 5811  
+>  Ambo/Anthos B.V.                        : 44   Median :107790   Median : 7353  
+>  Samenw. uitgeverijen Meulenhoff Boekerij: 28   Mean   :109052   Mean   : 7542  
+>  House of Books B.V., The                : 27   3rd Qu.:138471   3rd Qu.: 9169  
+>  Luitingh-Sijthoff B.V., Uitgeverij      : 25   Max.   :354628   Max.   :17243  
+>  (Other)                                 :174                                   
+>  sentence.length.mean sentence.length.variance paragraph.count sentence.count 
+>  Min.   : 6.668       Min.   : 3.672           Min.   :   75   Min.   :  511  
+>  1st Qu.: 9.636       1st Qu.: 6.951           1st Qu.: 1967   1st Qu.: 6737  
+>  Median :10.853       Median : 7.949           Median : 2946   Median : 9683  
+>  Mean   :11.198       Mean   : 8.297           Mean   : 3254   Mean   : 9919  
+>  3rd Qu.:12.273       3rd Qu.: 9.111           3rd Qu.: 4279   3rd Qu.:12708  
+>  Max.   :20.890       Max.   :18.273           Max.   :11933   Max.   :34436  
+>                                                                               
+>  paragraph.length.mean    raw.TTR         sampled.TTR    
+>  Min.   :  7.07        Min.   :0.02960   Min.   :0.1838  
+>  1st Qu.: 28.73        1st Qu.:0.06050   1st Qu.:0.2365  
+>  Median : 34.61        Median :0.07010   Median :0.2525  
+>  Mean   : 38.03        Mean   :0.08162   Mean   :0.2548  
+>  3rd Qu.: 43.22        3rd Qu.:0.08740   3rd Qu.:0.2724  
+>  Max.   :228.25        Max.   :0.26200   Max.   :0.3704  
+> ```
+
+
 
 For less than super-tidy data, the summary would tell you how many NA's (missing values) there were, as well as if your columns are of the right data type (integer (whole number), double (number like 3.5) characters, time/date). You can also use it to check if the values are as would be expected.
 
