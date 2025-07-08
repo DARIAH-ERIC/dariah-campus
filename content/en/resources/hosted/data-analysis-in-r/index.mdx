@@ -239,8 +239,6 @@ summary(books)
 >  Max.   :228.25        Max.   :0.26200   Max.   :0.3704  
 > ```
 
-
-
 For less than super-tidy data, the summary would tell you how many NA's (missing values) there were, as well as if your columns are of the right data type (integer (whole number), double (number like 3.5) characters, time/date). You can also use it to check if the values are as would be expected.
 
 The general concept of a 'tidy' table is that each row is a unique observation, and each column is a variable. This is also the case for the three tables in the Riddle package.
@@ -251,12 +249,39 @@ The general concept of a 'tidy' table is that each row is a unique observation, 
 head(books)
 ```
 
+> Description:df \[6 × 25]
+>
+> |   | short.title               | author             | title                    | title.english                   |   |
+> | - | ------------------------- | ------------------ | ------------------------ | ------------------------------- | - |
+> | 1 | Rosnay\_HaarNaamWas       | Rosnay, Tatiana de | Haar naam was Sarah      | Sarah's Key                     |   |
+> | 2 | Zwagerman\_Duel           | Zwagerman, Joost   | Duel                     | \*Duel                          |   |
+> | 3 | Blum\_Familieportret      | Blum, Jenna        | Het Familieportret       | Those Who Save Us               |   |
+> | 4 | Abdolah\_Kraai            | Abdolah, Kader     | De kraai                 | \*The Crow                      |   |
+> | 5 | Larsson\_MannenDieVrouwen | Larsson, Stieg     | Mannen die vrouwen haten | The Girl with the Dragon Tattoo |   |
+> | 6 | Lanoye\_HeldereHemel      | Lanoye, Tom        | Heldere hemel            | \*Clear Sky                     |   |
+>
+> 6 rows | 1-5 of 25 columns
+
 If you have forgotten the variable names, the code below is very convenient.
 
 ```R
 {r column names}
 names(books)
 ```
+
+> ```R
+>  [1] "short.title"              "author"                   "title"                   
+>  [4] "title.english"            "genre"                    "book.id"                 
+>  [7] "riddle.code"              "riddle.code.english"      "translated"              
+> [10] "gender.author"            "origin.author"            "original.language"       
+> [13] "inclusion.criterion"      "publication.date"         "first.print"             
+> [16] "publisher"                "word.count"               "type.count"              
+> [19] "sentence.length.mean"     "sentence.length.variance" "paragraph.count"         
+> [22] "sentence.count"           "paragraph.length.mean"    "raw.TTR"                 
+> [25] "sampled.TTR"             
+> ```
+
+
 
 Apart from 'books', the tables 'respondents' and 'reviews' are also present. Pick one and activate it, then check the contents using one of the methods above - by writing your code in this next code block.&#x20;
 
