@@ -23,9 +23,11 @@ summary:
 content-type: training-module
 translations: []
 ---
+
+
 ## Introduction
 
-This tutorial introduces the basic steps of quantitative data analysis in the programming language R. We will also introduce Rstudio, a free programme (IDE) in which you can create and run R scripts. The dataset we will explore comes from the Dutch National Readers' Survey, in which readers' judgements on 401 novels were captured. This dataset is wrapped in an R package called [LitRiddle](https://www.rdocumentation.org/packages/litRiddle/versions/1.0.0 "package documentation").
+This tutorial introduces the basic steps of quantitative data analysis in the programming language R. We will also introduce Rstudio, a free programme (IDE) in which you can create and run R scripts. The dataset we will explore comes from the Dutch National Readers' Survey, in which readers' judgements on 401 novels were captured. This dataset is wrapped in an R package called [LitRiddle](https://www.rdocumentation.org/packages/litRiddle/versions/1.0.0).
 
 To make the most of this tutorial, I encourage you to first download R and Rstudio, and then open this file (rmd) \{add link} in Rstudio. That way, you can try out the code for yourself, do the exercises and modify the code when you take the next step of applying your new knowledge to your own data.
 
@@ -38,3 +40,38 @@ After working through this course, students:
 * Can perform the basic steps of quantitative data analysis in Rstudio, making use of the Tidyverse syntax. By adjusting the code supplied, they can work on their own materials. They can import datasets, inspect their data, create a basic plot, select information, add new columns to a table, and group and summarise their data.
 * Are familiar with the LitRiddle dataset, which contains Dutch readers' assessments of the (literary) quality of 400 popular Dutch and international novels.
 
+## Tools and resources
+
+You can download and install R and Rstudio (in that order!) from:
+
+[https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
+
+You can download the tutorial file from: xxx  and open it with Rstudio.&#x20;
+
+## Getting started with Rstudio & R markdown
+
+Tutorial on Rstudio: [https://docs.posit.co/ide/user/](https://docs.posit.co/ide/user/)
+
+Overview of the four base elements of the User Interface: [https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html](https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html)
+
+Executing code: [https://docs.posit.co/ide/user/ide/guide/code/execution.html](https://docs.posit.co/ide/user/ide/guide/code/execution.html)
+
+### R Markdown files
+
+Many different types of files can be created in Rstudio, even *gasp* Python files. The handy filetype we will work with is .Rmd, an R Markdown file. Markdown files combine text and code, allowing you to integrate the code output, such as a graph or a table, with your report. The advantage here is that others can see both your analyses and the computational steps you took to create your output. Markdown files can be exported into various formats (pdf, Word, html), for easy sharing with others. Before exporting, you can also customize which parts of the document to show or keep hidden.
+
+Let's check out some functions of a Markdown file. When you have this file open in Rstudio, you will notice at the left top the options 'Source' and 'Visual' mode. The source mode reveals the code used for text layout. The visual mode is easier to use for now.&#x20;
+
+Then, at the right-hand side of the document, you see a menu item called 'Outline'- it is handy to keep that one active, to better navigate the file.
+
+Under the 'Knit' menu, you will find the export options.&#x20;
+
+You can add code blocks through the shortcut Ctrl-Alt-I or through the green square with the C.&#x20;
+
+In this tutorial, you will find several exercises, where you are asked to adjust and write your own code. Correct answers to these exercises are to be found near the end of this document. (There are many ways to correctly solve the exercises though.)
+
+## The Riddle project - exploring literary quality
+
+It is time to run our first code. In the code block below, you see green lines with # in front of them as well as black text. The # 'comments' a line; basically treating it like text instead of code. You can easily comment and uncomment lines through placement of the hashtags. You can run a code block through pressing the green 'play' button on the top right, or through placing your cursor somewhere in the block and pressing Ctrl-Enter. The output of your code will show up directly underneath the code block.&#x20;
+
+&#x20;
