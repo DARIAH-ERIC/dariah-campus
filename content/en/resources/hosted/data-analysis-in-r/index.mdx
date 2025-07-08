@@ -72,8 +72,19 @@ In this tutorial, you will find several exercises, where you are asked to adjust
 
 It is time to run our first code. In the code block below, you see green lines with # in front of them as well as black text. The # 'comments' a line; basically treating it like text instead of code. You can easily comment and uncomment lines through placement of the hashtags. You can run a code block through pressing the green 'play' button on the top right, or through placing your cursor somewhere in the block and pressing Ctrl-Enter. The output of your code will show up directly underneath the code block.&#x20;
 
-```{r installing
+```R
+{r installing the packages}
 
+# these top two lines only need to be run once, you can put a # in front of the line to 
+# deactivate the code 
+ # install.packages('litRiddle')
+# install.packages("tidyverse")
+
+# here the packages are loaded into your workspace. These lines need to be run every time you're
+# working with these packages.
+
+library(litRiddle)
+library(tidyverse)
 
 ```
 
