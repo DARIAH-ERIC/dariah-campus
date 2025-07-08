@@ -215,3 +215,23 @@ Italian <- books%>%
 
 Italian
 ```
+
+### Mutate
+
+We can add columns to the table based on certain conditions that are taken from other columns. For example, let's say we want to create two new groups of books; one with a word count of 50.000 or less, which we want to call 'novella' and one for the rest, which we want to call 'novel'.
+
+```R
+{r mutate}
+#creating a second table - so we are not overwriting the original
+books2 <- books%>%
+  # novella_novel = the new column's name
+  # the ifelse has this structure(test, yes, no)
+  mutate(novella_novel = ifelse(word.count < 50001, 'novella', 'novel'))
+
+#view opens the table in a new tab - you can sort the column 'novella_novel' by 
+# clicking the little arrow next to the header
+view(books2)
+
+# how many novella's are there?
+summary(books2$novella_novel)
+```
