@@ -23,6 +23,8 @@ summary:
 content-type: training-module
 translations: []
 ---
+
+
 ## Introduction
 
 This tutorial introduces the basic steps of quantitative data analysis in the programming language R. We will also introduce Rstudio, a free programme (IDE) in which you can create and run R scripts. The dataset we will explore comes from the Dutch National Readers' Survey, in which readers' judgements on 401 novels were captured. This dataset is wrapped in an R package called [LitRiddle](https://www.rdocumentation.org/packages/litRiddle/versions/1.0.0).
@@ -301,3 +303,18 @@ Once you can do this, you are a programmer ;)
 
 In order to answer this question, we need to employ two useful tricks: grouping our data by one variable (the genre), and then summarising another variable (mean sentence length) for each of the genres separately. This means we are creating a new table based on the original one.
 
+```R
+{r grouping and summarising data}
+
+
+#create a new table
+# the <- assigns the right part to the left part
+genre_length <- books%>%
+  #this is grouping by genre
+   group_by(genre)%>%
+  # summarise makes the new table
+   summarise(mean(sentence.length.mean))
+
+#just writing the name of the table prints it  
+genre_length
+```
