@@ -360,3 +360,16 @@ In this particular case, an independent samples t-test was selected because our 
 t.test(books$sampled.TTR~books$translated) 
 # where y is numeric and x is a binary factor
 ```
+
+> ```R
+> Welch Two Sample t-test
+>
+> data:  books$sampled.TTR by books$translated
+> t = 2.7949, df = 253.45, p-value = 0.005589
+> alternative hypothesis: true difference in means between group no and group yes is not equal to 0
+> 95 percent confidence interval:
+>  0.002654899 0.015322511
+> sample estimates:
+>  mean in group no mean in group yes 
+>         0.2603875         0.2513988 
+> ```
