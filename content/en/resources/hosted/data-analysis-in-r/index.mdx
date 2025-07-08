@@ -177,3 +177,10 @@ ggplot(books)+
   # the structure is (aes(variable X, variable Y, other properties))
   geom_bar(aes(original.language))
 ```
+
+```R
+{r bar plot for original language with riddle codes}
+ggplot(books)+
+  # 'fill' is the colour of the bars - you can take another variable and add it here
+  geom_bar(aes(original.language, fill = riddle.code.english))
+```
