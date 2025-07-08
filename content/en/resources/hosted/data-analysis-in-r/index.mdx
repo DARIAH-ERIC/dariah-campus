@@ -184,3 +184,34 @@ ggplot(books)+
   # 'fill' is the colour of the bars - you can take another variable and add it here
   geom_bar(aes(original.language, fill = riddle.code.english))
 ```
+
+If you're curious to see more visualisations of this dataset, visit [https://karinavdo.github.io/RiddleOfLiteraryQuality/](https://karinavdo.github.io/RiddleOfLiteraryQuality/) for interactive versions of the plots used in the book *The Riddle of Literary Quality: A Computational Approach*. (Van Dalen-Oskam, 2023)
+
+## Transforming data
+
+### Filter and select
+
+Which of these books were translated from Italian (IT) into Dutch? We could open the big table and scroll around or sort a column to find out, but if we want to calculate something only for the Italian books, it is more efficient to filter and make a new table with the selection. In the Tidyverse:&#x20;
+
+* Filter = selecting rows (in this case, books)
+* Select = selecting columns.
+
+```R
+{r excercise 3: using filter and select}
+# the %>% symbol is called a pipe - it passes on the output of one thing as the input
+# of the next thing. see https://r4ds.hadley.nz/workflow-style.html#sec-pipes
+# you can write the same instructions without pipes, but that is less readable and a bit more work
+
+# change the 'IT' below to another language and rerun the code
+
+Italian <- books%>%
+   # 'is equal to' is ==
+  filter(original.language == 'IT')%>%
+  # Let's only check out titles and author 
+  select(title, author)
+ 
+# create a new selection by adding the column with the author's gender 
+# how many books are there in your selection?
+
+Italian
+```
