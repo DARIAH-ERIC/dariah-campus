@@ -416,3 +416,57 @@ TukeyHSD(anova)
 > Suspense-Romantic  0.1297689 -0.833164  1.0927018 0.9855475
 >
 > ```
+
+## Exporting a markdown file
+
+To end our exploration of R and the Riddle corpus, you can try to 'Knit' this markdown file by selecting your preferred output from the dropdown menu next to the ball of yarn in the menu bar above. Knitting only works when all code works; if you have not completed the exercises, there will be some code fragments that hinder the knitting.&#x20;
+
+## Conclusion
+
+After reading and working through this resource, you have hopefully gained an understanding of the quantitative data analysis workflow in R, from inspecting your raw data, to selecting and transforming it, to answering your research questions. Learning how to code for data analysis is best done through doing, and therefore I encourage you to start your own project and apply what you have learned here to your own work.&#x20;
+
+## Answers to the excercises
+
+```R
+{r excercise 1}
+
+data(respondents)
+glimpse(respondents)
+# or:
+names(respondents)
+# or:
+summary(respondents)
+# or:
+head(respondents)
+
+{r excercise 2}
+ggplot(books)+
+    geom_bar(aes(riddle.code))+
+  coord_flip()
+
+{r excercise 3}
+swedish <- books%>%
+  # change the 'IT' below to another language and rerun the code
+  filter(original.language == 'SE')%>%
+  # Let's only check out titles and author 
+  # select(title, author)
+  # now also add the column with the author's gender 
+  select(title, author, gender.author)
+swedish
+
+{r exercise 4}
+# add a new column with two labels: 'non-fiction' for books whose riddle.code is one of three categories: 
+
+ books3 <- books2%>%
+  mutate(fictionality = ifelse(riddle.code.english == 'Non-fiction [and more than one essay, KvDO]' | 
+riddle.code.english == 'Non-fiction [and too old, and collection of essays, KvDO]'  | 
+riddle.code.english == 'Non-fiction', 'non-fiction', 'fiction'))
+#view(books3)
+
+{r exercise 5}
+trans_ttr <- books%>%
+    group_by(translated)%>%
+    summarise(mean(sampled.TTR))
+trans_ttr
+
+```
