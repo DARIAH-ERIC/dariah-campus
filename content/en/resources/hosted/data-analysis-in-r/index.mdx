@@ -392,3 +392,10 @@ summary(anova)
 > books$genre   3  260.9   86.96   18.58 2.68e-11 ***
 > Residuals   397 1857.9    4.68    
 > ```
+
+The one way ANOVA tells us that there is a significant difference between the genres for the mean sentence length, however, it does not yet tell us which of the four genres differ significantly from eachother. For this we perform a Tukey test. Looking at the 'p adj' column in the output below, can you see which genres differ from each other in a significant way? (significant = the value here should be \< 0.05)
+
+```R
+{r}
+TukeyHSD(anova)
+```
