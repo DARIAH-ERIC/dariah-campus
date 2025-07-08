@@ -132,11 +132,19 @@ data(books)
 glimpse(books)
 ```
 
-
-
 ```R
 {r summarise a table }
 
 #summary is a base R function, so you don't need special packages for this one
 summary(books)
+```
+
+For less than super-tidy data, the summary would tell you how many NA's (missing values) there were, as well as if your columns are of the right data type (integer (whole number), double (number like 3.5) characters, time/date). You can also use it to check if the values are as would be expected.
+
+The general concept of a 'tidy' table is that each row is a unique observation, and each column is a variable. This is also the case for the three tables in the Riddle package.
+
+```R
+{r tableviewing}
+#head shows the first rows
+head(books)
 ```
