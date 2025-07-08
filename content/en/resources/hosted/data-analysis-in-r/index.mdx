@@ -121,4 +121,18 @@ Usually, the first step would be loading your data in the working directory, so 
 
 ## Data inspection
 
+```R
+{r using summary and glimpse}
+data(books)
+# data loads the table in the working environment
+
+# glimpse is a way to quickly see the structure of the table, it's showing column names vertically at the left side. (It transposes the data for the sake of easier reading.) 
+# especially for large files, either head() or glimpse is faster than view() as the latter will open the entire table.  
+
+glimpse(books)
+```
+
+
+
+
 
