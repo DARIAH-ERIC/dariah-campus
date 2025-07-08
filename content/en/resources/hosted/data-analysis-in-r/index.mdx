@@ -373,3 +373,16 @@ t.test(books$sampled.TTR~books$translated)
 >  mean in group no mean in group yes 
 >         0.2603875         0.2513988 
 > ```
+
+The not-translated books (called 'group no' in the output) have a significantly (p \< 0.01) higher mean TTR (0.26) than the translated books (0.25).&#x20;
+
+Just for fun, let's have a look at the sentence length & genre question too. Instead of a t-test we can use a one way ANOVA. T-tests are suitable when there are two groups, and here there are 4 different groups (genres).
+
+```R
+{r running a one way anova test on sentence length & genre}
+# Compute the analysis of variance
+anova <- aov(books$sentence.length.mean ~ books$genre)
+# Summary of the analysis
+summary(anova)
+
+```
