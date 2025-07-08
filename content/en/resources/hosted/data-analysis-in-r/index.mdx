@@ -330,3 +330,18 @@ A boxplot visualisation offers a bit more information; not just the mean, but al
 ggplot(books)+geom_boxplot(aes(genre, sentence.length.mean))
 ```
 
+![](/assets/content/assets/en/resources/hosted/data-analysis-in-r/image.png)
+
+*Are translated books less lexically rich than Dutch books?*
+
+For this question, we need to look at the sampled TTR = the type-token ratio. A type = unique word, token = a word's occurrence.
+
+Although this is a different question, you can use exactly the same steps to answer it, namely grouping and summarising the data.
+
+Can you try and write your own code?
+
+the columns you need are called 'translated' and 'sampled.TTR'
+
+```R
+{r excercise 5: translation and TTR}
+```
