@@ -70,7 +70,7 @@ In this tutorial, you will find several exercises, where you are asked to adjust
 
 ## The Riddle project - exploring literary quality
 
-It is time to run our first code. In the code block below, you see green lines with # in front of them as well as black text. The # 'comments' a line; basically treating it like text instead of code. You can easily comment and uncomment lines through placement of the hashtags. You can run a code block through pressing the green 'play' button on the top right, or through placing your cursor somewhere in the block and pressing Ctrl-Enter. The output of your code will show up directly underneath the code block.&#x20;
+It is time to run our first code. In the code block below, you see lines with # in front of them as well as black text. The # 'comments' a line; basically treating it like text instead of code. You can easily comment and uncomment lines through placement of the hashtags. In the .rmd file, you can run a code block through pressing the green 'play' button on the top right, or through placing your cursor somewhere in the block and pressing Ctrl-Enter. The output of your code will show up directly underneath the code block.&#x20;
 
 ```R
 {r installing the packages}
@@ -88,4 +88,23 @@ library(tidyverse)
 
 ```
 
-&#x20;
+Now we have access to the dataset of the [Riddle of Literary Quality](https://literaryquality.huygens.knaw.nl/) project. This project investigated the question of literariness by examining both readerly assessments of general quality and literary quality, as well as textual characteristics, for a corpus of 401 books: both original Dutch and translated works, in several genres of fiction (romance, suspense, literary fiction and other). 13.541 respondents have shared their opinions. Together, they provided 448.055 book reviews. Allthough, due to copyright concerns, the full texts of the novels are not available, the dataset does include word frequencies for the 5000 most frequent words, for each book, unlocking stylometric analyses for this corpus.&#x20;
+
+**A selection of publications from the Riddle-project**
+
+Van Dalen-Oskam, K. (2023). *The Riddle of Literary Quality: A Computational Approach*. Amsterdam University Press. [https://library.oapen.org/handle/20.500.12657/63705](https://library.oapen.org/handle/20.500.12657/63705)
+
+Corina Koolen, Karina van Dalen-Oskam, Andreas van Cranenburgh, Erica Nagelhout (2020). Literary quality in the eye of the Dutch reader: The National Reader Survey. *Poetics* 79: 101439, [https://doi.org/10.1016/j.poetic.2020.101439](https://doi.org/10.1016/j.poetic.2020.101439).
+
+Corina Koolen (2018). *Reading beyond the female. The relationship between perception of author gender and literary quality*. [PhD thesis](http://hdl.handle.net/11245.1/cb936704-8215-4f47-9013-0d43d37f1ce7) University of Amsterdam
+
+Andreas van Cranenburgh (2016). *Rich statistical parsing and literary language*. [PhD thesis](http://hdl.handle.net/11245/1.543163) University of Amsterdam ([revised version](http://andreasvc.github.io/phdthesis_v1.1.pdf); [errata](http://andreasvc.github.io/phderrata.txt)).
+
+## The litRiddle package
+
+You can read about the data of the Riddle-package by running the code block below. The introduction to the package will then open to your right side, in the 'Help' tab. Here you can find out about the three combinable tables of reader survey data, as well as some helpful code snippets to get you started with exploring this dataset. You are free to use this dataset for your own research, but please include a reference to the package. The vignette includes citation information.&#x20;
+
+```R
+ {r accessing the readme of litriddle }
+vignette('litRiddle')
+```
