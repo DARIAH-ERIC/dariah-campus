@@ -275,9 +275,10 @@ The summary counts the number of rows in each group:
 >     349      52 
 > ```
 
+For the next exercise, we will add a new column with two labels: non-fiction' for books whose riddle.code.english is one of three categories.
+
 ```R
 {r exercise 4: mutate}
-# Add a new column with two labels: 'non-fiction' for books whose riddle.code.english is one of three categories: 
 
 riddle.code == 'Non-fiction [and more than one essay, KvDO]' | 
 riddle.code == 'Non-fiction [and too old, and collection of essays, KvDO]'  | 
@@ -289,6 +290,5 @@ riddle.code == 'Non-fiction'
 # and make the column say 'fiction' for all other riddle.codes
 # use the structure of the code in the block 'mutate', so with the ifelse(test, yes, no)
 
-# once you can do this, you are a programmer :)
 
 ```
