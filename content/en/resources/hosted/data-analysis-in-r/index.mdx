@@ -399,3 +399,20 @@ The one way ANOVA tells us that there is a significant difference between the ge
 {r}
 TukeyHSD(anova)
 ```
+
+> ```R
+>  Tukey multiple comparisons of means
+>     95% family-wise confidence level
+>
+> Fit: aov(formula = books$sentence.length.mean ~ books$genre)
+>
+> $`books$genre`
+>                         diff       lwr        upr     p adj
+> Other-Fiction     -0.7566841 -1.925283  0.4119150 0.3406922
+> Romantic-Fiction  -1.8081351 -2.793869 -0.8224009 0.0000183
+> Suspense-Fiction  -1.6783662 -2.294306 -1.0624261 0.0000000
+> Romantic-Other    -1.0514509 -2.434737  0.3318356 0.2046489
+> Suspense-Other    -0.9216821 -2.071113  0.2277490 0.1652009
+> Suspense-Romantic  0.1297689 -0.833164  1.0927018 0.9855475
+>
+> ```
