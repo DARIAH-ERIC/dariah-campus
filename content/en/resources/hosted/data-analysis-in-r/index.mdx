@@ -236,6 +236,13 @@ view(books2)
 summary(books2$novella_novel)
 ```
 
+This gives us the following output:&#x20;
+
+> ```
+> Length     Class      Mode 
+>       401 character character 
+> ```
+
 This is not yet informative.  The problem was that the new column was read as data type 'character' (you may also know that as 'string' or 'text' data). We need to factorise this column, that is, telling R to instead read it as a set of labels (called 'levels').&#x20;
 
 ```R
@@ -248,6 +255,12 @@ books2$novella_novel <- as.factor(books2$novella_novel)
 #this line gives us the names of the levels in this column
 levels(books2$novella_novel)
 ```
+
+Now we get:&#x20;
+
+> ```
+> [1] "novel"   "novella"
+> ```
 
 ```R
 {r summary count novellas}
