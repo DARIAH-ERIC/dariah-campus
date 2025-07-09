@@ -276,7 +276,8 @@ ggplot(books)+
 ```R
 {r bar plot for original language with riddle codes}
 ggplot(books)+
-  # 'fill' is the colour of the bars - you can take another variable and add it here
+  # 'fill' is the colour of the bars - you can take another variable and add it here.
+  #  riddle.code.english is a column from our table 'books'.
   geom_bar(aes(original.language, fill = riddle.code.english))
 ```
 
@@ -285,6 +286,17 @@ ggplot(books)+
 > </Figure>
 
 We see that the Scandi thriller trend is present; Norwegian (NO), Danish (DK), Swedish (SE) and Icelandic (IS) books are predominantly Literary Thrillers.&#x20;
+
+For the next exercise, create a new barplot of the riddle.code.english, to see how many books have gotten each genre labelling.&#x20;
+
+> ```
+> {r excercise 2: creating a ggplot}
+>  
+> # add this bit to the end of your code to flip the x and y axes 
+> # else the labels on the x-axis are unreadable
+> # in a ggplot, the + symbol should be on the same line as the preceding code. 
+> +coord_flip()
+> ```
 
 If you're curious to see more visualisations of this dataset, visit [https://karinavdo.github.io/RiddleOfLiteraryQuality/](https://karinavdo.github.io/RiddleOfLiteraryQuality/) for interactive versions of the plots used in the book *The Riddle of Literary Quality: A Computational Approach*. (Van Dalen-Oskam, 2023)
 
@@ -297,29 +309,27 @@ Which of these books were translated from Italian (IT) into Dutch? We could open
 * Filter = selecting rows (in this case, books)
 * Select = selecting columns.
 
+For the next exercise, change the 'IT' below to another language and rerun the code. Create a new selection by adding the column with the author's gender.  How many books are there in your selection?
+
 ```R
-{r excercise 3: using filter and select}
-# the %>% symbol is called a pipe - it passes on the output of one thing as the input
-# of the next thing. see https://r4ds.hadley.nz/workflow-style.html#sec-pipes
-# you can write the same instructions without pipes, but that is less readable and a bit more work
+{r exercise 3: using filter and select}
+# The %>% symbol is called a pipe - it passes on the output of one thing as the input
+# of the next thing. See https://r4ds.hadley.nz/workflow-style.html#sec-pipes
 
-# change the 'IT' below to another language and rerun the code
-
+# We copy books and give it the new name Italian.
 Italian <- books%>%
    # 'is equal to' is ==
   filter(original.language == 'IT')%>%
   # Let's only check out titles and author 
   select(title, author)
- 
-# create a new selection by adding the column with the author's gender 
-# how many books are there in your selection?
 
+# Typing the name of a table will print it. 
 Italian
 ```
 
 ### Mutate
 
-We can add columns to the table based on certain conditions that are taken from other columns. For example, let's say we want to create two new groups of books; one with a word count of 50.000 or less, which we want to call 'novella' and one for the rest, which we want to call 'novel'.
+We can add columns to the table based on certain conditions that are taken from other columns, using the function 'mutate'. For example, let's say we want to create two new groups of books; one with a word count of 50.000 or less, which we want to call 'novella' and one for the rest, which we want to call 'novel'.
 
 ```R
 {r mutate}
@@ -334,6 +344,8 @@ books2 <- books%>%
 view(books2)
 
 # how many novella's are there?
+# note that now we are only summarising one column from the whole table, 
+# using the structure table$column 
 summary(books2$novella_novel)
 ```
 
@@ -366,7 +378,7 @@ Now we get:&#x20;
 ```R
 {r summary count novellas}
 summary(books2$novella_novel)
-#you can use summary on a table, but also on a single column
+
 ```
 
 The summary counts the number of rows in each group:
@@ -376,7 +388,7 @@ The summary counts the number of rows in each group:
 >     349      52 
 > ```
 
-For the next exercise, we will add a new column with two labels: 'non-fiction' for books whose riddle.code.english is one of three categories, and 'fiction' for all other books.
+For the next exercise, we will add a new column with two labels: 'non-fiction' for books whose riddle.code.english is one of three categories, and 'fiction' for all other books. Use the structure of the code in the block 'mutate', so with the ifelse(test, yes, no).&#x20;
 
 ```R
 {r exercise 4: mutate}
@@ -387,10 +399,6 @@ riddle.code == 'Non-fiction'
 
 # you can copy the code above 
 # the '|' means 'OR'
-
-# and make the column say 'fiction' for all other riddle.codes
-# use the structure of the code in the block 'mutate', so with the ifelse(test, yes, no)
-
 
 ```
 
