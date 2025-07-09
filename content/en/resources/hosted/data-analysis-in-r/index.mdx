@@ -25,18 +25,18 @@ translations: []
 ---
 ## Introduction
 
-This tutorial introduces the basic steps of quantitative data analysis in the programming language R. We will also introduce Rstudio, a free programme (IDE) in which you can create and run R scripts. The dataset we will explore comes from the Dutch National Readers' Survey, in which readers' judgements on 401 novels were captured. This dataset is wrapped in an R package called [LitRiddle](https://www.rdocumentation.org/packages/litRiddle/versions/1.0.0).
+This tutorial demonstrates the building blocks of quantitative data analysis in the programming language R. We will introduce Rstudio, a free programme (IDE) in which you can create and run R scripts. The dataset we will explore comes from the Dutch National Readers' Survey, in which readers' judgements on 401 novels were captured. This dataset is wrapped in an R package called [LitRiddle](https://www.rdocumentation.org/packages/litRiddle/versions/1.0.0).
 
-To make the most of this tutorial, I encourage you to first download R and Rstudio, and then open this file **(rmd) \{add link} in Rstu**dio. That way, you can try out the code for yourself, do the exercises and modify the code when you take the next step of applying your new knowledge to your own data.
+To make the most of this tutorial, I encourage you to first download R and Rstudio, and then open this file **(rmd) \{add link} in Rstu**dio. That way, you can try out the code for yourself, work through the exercises and modify the code when you take the next step of applying your new knowledge to your own data and your own research questions.
 
 ## Learning outcomes
 
 After working through this course, students:
 
-* Can find their way around the base functionalities of Rstudio, including the pane layout.
+* Can find their way around the main functionalities of Rstudio.
 * Are able to create R markdown files, understand their components, and export them.
-* Can perform the basic steps of quantitative data analysis in Rstudio, making use of the Tidyverse syntax. By adjusting the code supplied, they can work on their own materials. They can import datasets, inspect their data, create a basic plot, select information, add new columns to a table, and group and summarise their data.
-* Are familiar with the LitRiddle dataset, which contains Dutch readers' assessments of the (literary) quality of 400 popular Dutch and international novels.
+* Can perform the basic steps of quantitative data analysis in Rstudio, making use of the Tidyverse syntax. By adjusting the code supplied, they can work on their own materials. They can import datasets, inspect their data, create a plot, select information, add new columns to a table, understand ifelse statements, and group and summarise their data.
+* Are familiar with the LitRiddle dataset, which contains Dutch readers' assessments of the (literary) quality of 401 popular Dutch and international novels.
 
   ---
 
@@ -60,7 +60,7 @@ You can download the tutorial file f**rom: xxx  a**nd open it with Rstudio. The 
 
 ### R Markdown files
 
-Many different types of files can be created in Rstudio, even *gasp* Python files. The handy filetype we will work with is .Rmd, an R Markdown file. Markdown files combine text and code, allowing you to integrate the code output, such as a graph or a table, with your report. The advantage here is that others can see both your analyses and the computational steps you took to create your output. Markdown files can be exported into various formats (pdf, Word, html), for easy sharing with others. Before exporting, you can also customize which parts of the document to show or keep hidden.
+Many different types of files can be created in Rstudio, even *gasp* Python files. The handy filetype we will work with is .Rmd, an R Markdown file. Markdown files combine text and code, allowing you to integrate the code output, such as a graph or a table, with your report. The advantage here is that others can see both your analyses and the computational steps you took to create your output. Markdown files can be exported into various formats (pdf, Word, html), for easy sharing with others. Before exporting, you can also customize which parts of the document to show or keep hidden. For example, you can hide your code blocks, but keep their output.&#x20;
 
 Let's check out some functions of a Markdown file. When you have this file open in Rstudio, you will notice at the left top the options 'Source' and 'Visual' mode. The source mode reveals the code used for text layout. The visual mode is easier to use for now.&#x20;
 
@@ -81,18 +81,17 @@ It is time to run our first code. In the code block below, you see lines with # 
 
 # these top two lines only need to be run once, you can put a # in front of the line to 
 # deactivate the code 
- # install.packages('litRiddle')
-# install.packages("tidyverse")
+install.packages('litRiddle')
+install.packages("tidyverse")
 
-# here the packages are loaded into your workspace. These lines need to be run every time you're
-# working with these packages.
+# here the packages are loaded into your workspace. These lines need to be run every time you're working with these packages.
 
 library(litRiddle)
 library(tidyverse)
 
 ```
 
-Now we have access to the dataset of the [Riddle of Literary Quality](https://literaryquality.huygens.knaw.nl/) project. This project investigated the question of literariness by examining both readerly assessments of general quality and literary quality, as well as textual characteristics, for a corpus of 401 books: both original Dutch and translated works, in several genres of fiction (romance, suspense, literary fiction and other). 13.541 respondents have shared their opinions. Together, they provided 448.055 book reviews. Allthough, due to copyright concerns, the full texts of the novels are not available, the dataset does include word frequencies for the 5000 most frequent words, for each book, unlocking stylometric analyses for this corpus.&#x20;
+Now we have access to the dataset of the [Riddle of Literary Quality](https://literaryquality.huygens.knaw.nl/) project. This project investigated literariness by examining both readerly assessments of general and literary quality, as well as textual characteristics, for a corpus of 401 books: both original Dutch and translated works, in several genres of fiction (romance, suspense, literary fiction and other). 13.541 respondents have shared their opinions. Together, they provided 448.055 book reviews. Allthough, due to copyright concerns, the full texts of the novels are not available, the dataset does include word frequencies for the 5000 most frequent words, for each book, unlocking stylometric analyses for this corpus.&#x20;
 
 **A selection of publications from the Riddle-project**
 
@@ -106,7 +105,7 @@ Andreas van Cranenburgh (2016). *Rich statistical parsing and literary language*
 
 ## The litRiddle package
 
-You can read about the data of the Riddle-package by running the code block below. The introduction to the package will then open to your right side, in the 'Help' tab. Here you can find out about the three combinable tables of reader survey data, as well as some helpful code snippets to get you started with exploring this dataset. You are free to use this dataset for your own research, but please include a reference to the package. The vignette includes citation information.&#x20;
+You can read about the data of the litRiddle-package by running the code block below. In Rstudio, the introduction to the package will then open to your right side, in the 'Help' tab. Here you can find out about the three combinable tables of reader survey data, as well as some helpful code snippets to get you started with exploring this dataset. You are free to use this dataset for your own research, but please include a reference to the package. The vignette includes citation information.&#x20;
 
 ```R
  {r accessing the readme of litriddle }
@@ -115,13 +114,13 @@ vignette('litRiddle')
 
 ## The wonderful world of Tidyverse
 
-The other package that is loaded is called 'Tidyverse'. It can help with all steps of data analysis, from loading and cleaning your data to visualising it in graphs and charts. If you would like to learn more about tidyverse, and the data philosophy behind it, this is the manual:
+The other package that is loaded is called Tidyverse. It can help with all steps of data analysis, from loading and cleaning your data to visualising it in graphs and charts. If you would like to learn more about tidyverse, and the data philosophy behind it, this is the manual:
 
 [https://r4ds.hadley.nz/](https://r4ds.hadley.nz/)
 
 'Base' R can do lots of the things the Tidyverse can do too, but the Tidyverse functions are more intuitive and user-friendly.
 
-Usually, the first step would be loading your data in the working directory, so that Rstudio can access it. Now, as we will work with the data from the litRiddle package, we can do this through the code below - it works a bit differently when you have your own tables to work with. The second step would be inspection and cleaning - as this data is already in mint condition, we will also skip the cleaning. So let's check out the data!
+Usually, the first step would be loading your data in the working directory, so that Rstudio can access it. Now, as we will work with the data from the litRiddle package, we can do this through the code below - it works a bit differently when you have your own files to work with. The second step would be inspection and cleaning - as this data is already in mint condition, we will also skip the cleaning. So let's check out the data!
 
 ## Data inspection
 
@@ -253,14 +252,14 @@ head(books)
 
 > Description:df \[6 × 25]
 >
-> |   | short.title               | author             | title                    | title.english                   |   |
-> | - | ------------------------- | ------------------ | ------------------------ | ------------------------------- | - |
-> | 1 | Rosnay\_HaarNaamWas       | Rosnay, Tatiana de | Haar naam was Sarah      | Sarah's Key                     |   |
-> | 2 | Zwagerman\_Duel           | Zwagerman, Joost   | Duel                     | \*Duel                          |   |
-> | 3 | Blum\_Familieportret      | Blum, Jenna        | Het Familieportret       | Those Who Save Us               |   |
-> | 4 | Abdolah\_Kraai            | Abdolah, Kader     | De kraai                 | \*The Crow                      |   |
-> | 5 | Larsson\_MannenDieVrouwen | Larsson, Stieg     | Mannen die vrouwen haten | The Girl with the Dragon Tattoo |   |
-> | 6 | Lanoye\_HeldereHemel      | Lanoye, Tom        | Heldere hemel            | \*Clear Sky                     |   |
+> |   | short.title               | author             | title                    | title.english                   |
+> | - | ------------------------- | ------------------ | ------------------------ | ------------------------------- |
+> | 1 | Rosnay\_HaarNaamWas       | Rosnay, Tatiana de | Haar naam was Sarah      | Sarah's Key                     |
+> | 2 | Zwagerman\_Duel           | Zwagerman, Joost   | Duel                     | \*Duel                          |
+> | 3 | Blum\_Familieportret      | Blum, Jenna        | Het Familieportret       | Those Who Save Us               |
+> | 4 | Abdolah\_Kraai            | Abdolah, Kader     | De kraai                 | \*The Crow                      |
+> | 5 | Larsson\_MannenDieVrouwen | Larsson, Stieg     | Mannen die vrouwen haten | The Girl with the Dragon Tattoo |
+> | 6 | Lanoye\_HeldereHemel      | Lanoye, Tom        | Heldere hemel            | \*Clear Sky                     |
 >
 > 6 rows | 1-5 of 25 columns
 
