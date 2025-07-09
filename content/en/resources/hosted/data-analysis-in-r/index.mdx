@@ -124,7 +124,7 @@ Usually, the first step would be loading your data in the working directory, so 
 
 ## Data inspection
 
-In the code block below, you see part of the base syntax of R. The first line, between \{ } is the title of the code block. The two lines of code both have the format function(object).
+In the code block below, you see part of the syntax of R. The first line, between \{ } is the title of the code block. The two lines of code both have the format function(object). Our object in this case is the table 'books'.&#x20;
 
 ```R
 {r using data and head}
@@ -149,6 +149,8 @@ head(books)
 > 6 rows | 1-3 of 25 columns
 
 The general concept of a 'tidy' table is that each row is a unique observation, and each column is a variable. This is also the case for the three tables in the Riddle package.
+
+For less than super-tidy data, the summary would tell you how many NA's (missing values) there were, as well as if your columns are of the right data type (integer (whole number), double (number like 3.5) characters, time/date). You can also use it to check if the values are as would be expected. The summary gives you descriptive statistics for each column of the table. In the case of labels, such as the author names, this will be a count of the rows. So we can tell that Hollander, Loes den, is represented with 13 books in this table. For the column 'publication date', we can see that the oldest book in the corpus is from 2007, and the newest book is from 2013. If we look at the column word.count, we see that the mean length of the novels in this corpus is 109.052 words.
 
 ```R
 {r summarise a table }
@@ -225,7 +227,7 @@ summary(books)
 >  Max.   :228.25        Max.   :0.26200   Max.   :0.3704  
 > ```
 
-For less than super-tidy data, the summary would tell you how many NA's (missing values) there were, as well as if your columns are of the right data type (integer (whole number), double (number like 3.5) characters, time/date). You can also use it to check if the values are as would be expected.
+
 
 If you have forgotten the variable names, the code below is very convenient.
 
@@ -445,9 +447,7 @@ ggplot(books)+geom_boxplot(aes(genre, sentence.length.mean))
 
 *Are translated books less lexically rich than Dutch books?*
 
-For this question, we need to look at the sampled TTR = the type-token ratio. A type = unique word, token = a word's occurrence.
-
-Although this is a different question, you can use exactly the same steps to answer it, namely grouping and summarising the data.
+For this question, we need to look at the sampled TTR = the type-token ratio. A type = unique word, token = a word's occurrence. Although this is a different question, you can use exactly the same steps to answer it, namely grouping and summarising the data.&#x20;
 
 Can you try and write your own code? The columns you need are called 'translated' and 'sampled.TTR'
 
