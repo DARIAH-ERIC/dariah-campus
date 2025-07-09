@@ -462,7 +462,7 @@ A boxplot visualisation offers a bit more information; not just the mean, but al
 ggplot(books)+geom_boxplot(aes(genre, sentence.length.mean))
 ```
 
-> ![](/assets/content/assets/en/resources/hosted/data-analysis-in-r/image.png)
+> ![A Boxplot with the genres on the X-axis, and the mean sentence length on the Y. ](/assets/content/assets/en/resources/hosted/data-analysis-in-r/image.png)
 
 *Are translated books less lexically rich than Dutch books?*
 
@@ -470,9 +470,7 @@ For this question, we need to look at the sampled TTR = the type-token ratio. A 
 
 Although this is a different question, you can use exactly the same steps to answer it, namely grouping and summarising the data.
 
-Can you try and write your own code?
-
-the columns you need are called 'translated' and 'sampled.TTR'
+Can you try and write your own code? The columns you need are called 'translated' and 'sampled.TTR'
 
 ```R
 {r excercise 5: translation and TTR}
@@ -482,9 +480,9 @@ the columns you need are called 'translated' and 'sampled.TTR'
 
 A next step for both of these questions would be to run a statistical test to see if these differences in mean are significant or not. Let's find this out for the translation-lexical richness table by running an independent samples t-test. Many tests are available in base R, and others can be used through packages. The examples below are all a part of base R.
 
-Selecting the rights test for your research question requires some knowledge of statistics - if you are new to that, [Seeing theory](https://seeing-theory.brown.edu/#firstPage) is a resource is aimed at beginners.&#x20;
+Selecting the rights test for your research question requires some knowledge of statistics - if you are new to that, [Seeing theory](https://seeing-theory.brown.edu/#firstPage) is a resource aimed at beginners.&#x20;
 
-In this particular case, an independent samples t-test was selected because our independent variable is a grouping variable with two groups (translated versus non-translated books). Each measurement only belongs to one of the two groups. Our dependent variable is numerical (the mean type-token ratio).&#x20;
+In this particular case, an independent samples t-test was selected because our independent variable is a grouping variable with two groups (translated versus non-translated books). Each measurement only belongs to one of the two groups, hence 'independent samples'. Our dependent variable is numerical (the mean type-token ratio).&#x20;
 
 ```R
 {r running a statistical test}
