@@ -304,7 +304,7 @@ ggplot(books)+
   geom_bar(aes(original.language))
 ```
 
-> ![](/assets/content/assets/en/resources/hosted/data-analysis-in-r/image.png)
+> ![A bar plot with the original language on the X, and the count of books on the Y. Dutch and English are the dominant two languages.](/assets/content/assets/en/resources/hosted/data-analysis-in-r/image.png)
 
 ```R
 {r bar plot for original language with riddle codes}
@@ -313,7 +313,9 @@ ggplot(books)+
   geom_bar(aes(original.language, fill = riddle.code.english))
 ```
 
-> ![](/assets/content/assets/en/resources/hosted/data-analysis-in-r/image.png)
+> ![The same bar plot as the previous one, but now with colours indicating which genre the books are. ](/assets/content/assets/en/resources/hosted/data-analysis-in-r/image.png)
+
+We see that the Scandi thriller trend is present; Norwegian (NO), Danish (DK), Swedish (SE) and Icelandic (IS) books are predominantly Literary Thrillers.&#x20;
 
 If you're curious to see more visualisations of this dataset, visit [https://karinavdo.github.io/RiddleOfLiteraryQuality/](https://karinavdo.github.io/RiddleOfLiteraryQuality/) for interactive versions of the plots used in the book *The Riddle of Literary Quality: A Computational Approach*. (Van Dalen-Oskam, 2023)
 
