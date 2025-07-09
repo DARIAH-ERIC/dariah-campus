@@ -127,13 +127,28 @@ Usually, the first step would be loading your data in the working directory, so 
 In the code block below, you see part of the base syntax of R. The first line, between \{ } is the title of the code block. The two lines of code both have the format function(object).
 
 ```R
-{r using summary and glimpse}
+{r using data and head}
 data(books)
 # data loads the table in the working environment
 
 # head displays the first five rows of a table
 head(books)
 ```
+
+> Description:df \[6 × 25]
+>
+> |   | short.title               | author             |
+> | - | ------------------------- | ------------------ |
+> | 1 | Rosnay\_HaarNaamWas       | Rosnay, Tatiana de |
+> | 2 | Zwagerman\_Duel           | Zwagerman, Joost   |
+> | 3 | Blum\_Familieportret      | Blum, Jenna        |
+> | 4 | Abdolah\_Kraai            | Abdolah, Kader     |
+> | 5 | Larsson\_MannenDieVrouwen | Larsson, Stieg     |
+> | 6 | Lanoye\_HeldereHemel      | Lanoye, Tom        |
+>
+> 6 rows | 1-3 of 25 columns
+
+The general concept of a 'tidy' table is that each row is a unique observation, and each column is a variable. This is also the case for the three tables in the Riddle package.
 
 ```R
 {r summarise a table }
@@ -212,21 +227,6 @@ summary(books)
 
 For less than super-tidy data, the summary would tell you how many NA's (missing values) there were, as well as if your columns are of the right data type (integer (whole number), double (number like 3.5) characters, time/date). You can also use it to check if the values are as would be expected.
 
-The general concept of a 'tidy' table is that each row is a unique observation, and each column is a variable. This is also the case for the three tables in the Riddle package.
-
-> Description:df \[6 × 25]
->
-> |   | short.title               | author             | title                    | title.english                   |
-> | - | ------------------------- | ------------------ | ------------------------ | ------------------------------- |
-> | 1 | Rosnay\_HaarNaamWas       | Rosnay, Tatiana de | Haar naam was Sarah      | Sarah's Key                     |
-> | 2 | Zwagerman\_Duel           | Zwagerman, Joost   | Duel                     | \*Duel                          |
-> | 3 | Blum\_Familieportret      | Blum, Jenna        | Het Familieportret       | Those Who Save Us               |
-> | 4 | Abdolah\_Kraai            | Abdolah, Kader     | De kraai                 | \*The Crow                      |
-> | 5 | Larsson\_MannenDieVrouwen | Larsson, Stieg     | Mannen die vrouwen haten | The Girl with the Dragon Tattoo |
-> | 6 | Lanoye\_HeldereHemel      | Lanoye, Tom        | Heldere hemel            | \*Clear Sky                     |
->
-> 6 rows | 1-5 of 25 columns
-
 If you have forgotten the variable names, the code below is very convenient.
 
 ```R
@@ -251,8 +251,7 @@ Apart from 'books', the tables 'respondents' and 'reviews' are also present. Pic
 ```R
 {r excercise 1: data loading and inspecting}
 
-data(reviews)
-head(reviews)
+
 ```
 
 ## Exploring through plots
@@ -262,10 +261,12 @@ There are translated and Dutch books in the corpus, and there is also a column i
 ```R
 {r bar plot for original language}
 
+# ggplot syntax starts off with the function(object) structure again, and then uses '+' symbols to connect various ingredients. In this case a bar plot function is added, called 'geom_bar'. A bar_plot counts the number of occurences, so rows, which in our case are books.
+
 ggplot(books)+
-  # a bar_plot counts the number of occurences
-  # the structure is (aes(variable X, variable Y, other properties))
+   # the structure is (aes(variable X, variable Y, other properties))
   geom_bar(aes(original.language))
+# original.language is the name of one of the columns in 'books'. 
 ```
 
 > <Figure src="/assets/content/assets/en/resources/hosted/data-analysis-in-r/barplotwithlanguage.png" alt="A bar plot with the original language on the X, and the count of books on the Y. Dutch and English are the dominant two languages." alignment="stretch">
