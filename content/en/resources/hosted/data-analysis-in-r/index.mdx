@@ -304,7 +304,9 @@ ggplot(books)+
   geom_bar(aes(original.language))
 ```
 
-> ![A bar plot with the original language on the X, and the count of books on the Y. Dutch and English are the dominant two languages.](/assets/content/assets/en/resources/hosted/data-analysis-in-r/image.png)
+> <Figure src="/assets/content/assets/en/resources/hosted/data-analysis-in-r/barplotwithlanguage.png" alt="A bar plot with the original language on the X, and the count of books on the Y. Dutch and English are the dominant two languages." alignment="stretch">
+>
+> </Figure>
 
 ```R
 {r bar plot for original language with riddle codes}
@@ -313,7 +315,9 @@ ggplot(books)+
   geom_bar(aes(original.language, fill = riddle.code.english))
 ```
 
-> ![The same bar plot as the previous one, but now with colours indicating which genre the books are. ](/assets/content/assets/en/resources/hosted/data-analysis-in-r/image.png)
+> <Figure src="/assets/content/assets/en/resources/hosted/data-analysis-in-r/barplotwithfillforgenre.png" alt="The same bar plot as the previous one, but now with colours indicating which genre the books are. " alignment="stretch">
+>
+> </Figure>
 
 We see that the Scandi thriller trend is present; Norwegian (NO), Danish (DK), Swedish (SE) and Icelandic (IS) books are predominantly Literary Thrillers.&#x20;
 
@@ -462,7 +466,9 @@ A boxplot visualisation offers a bit more information; not just the mean, but al
 ggplot(books)+geom_boxplot(aes(genre, sentence.length.mean))
 ```
 
-> ![A Boxplot with the genres on the X-axis, and the mean sentence length on the Y. ](/assets/content/assets/en/resources/hosted/data-analysis-in-r/image.png)
+> <Figure src="/assets/content/assets/en/resources/hosted/data-analysis-in-r/boxplotgenresentencelengths.png" alt="A boxplot with the genres on the X-axis, and the mean sentence length on the Y. " alignment="stretch">
+>
+> </Figure>
 
 *Are translated books less lexically rich than Dutch books?*
 
@@ -523,7 +529,9 @@ summary(anova)
 > Residuals   397 1857.9    4.68    
 > ```
 
-The one way ANOVA tells us that there is a significant difference between the genres for the mean sentence length, however, it does not yet tell us which of the four genres differ significantly from eachother. For this we perform a Tukey test. Looking at the 'p adj' column in the output below, can you see which genres differ from each other in a significant way? (significant = the value here should be \< 0.05)
+The one way ANOVA tells us that there is a significant difference between the genres for the mean sentence length. The Pr (>F) value, notated as 2.68e-11 \*\*\* in the output, (0.0000000000268 in regular numbers) is smaller than 0.05.&#x20;
+
+However, the ANOVA does not yet tell us which of the four genres differ significantly from eachother. For this we perform a Tukey test. Looking at the 'p adj' column in the output below, can you see which genres differ from each other in a significant way? (significant = the value here should be \< 0.05)
 
 ```R
 {r}
@@ -549,7 +557,7 @@ TukeyHSD(anova)
 
 ## Exporting a markdown file
 
-To end our exploration of R and the Riddle corpus, you can try to 'Knit' this markdown file by selecting your preferred output from the dropdown menu next to the ball of yarn in the menu bar above. Knitting only works when all code works; if you have not completed the exercises, there will be some code fragments that hinder the knitting.&#x20;
+To end our exploration of R and the Riddle corpus, you can try to 'Knit' the markdown file by selecting your preferred output from the dropdown menu next to the ball of yarn in the menu bar. Knitting only works when all code works; if you have not completed the exercises, there will be some code fragments that hinder the knitting.&#x20;
 
 ## Conclusion
 
@@ -557,10 +565,10 @@ After reading and working through this resource, you have hopefully gained an un
 
 ---
 
-## Answers to the excercises
+## Answers to the exercises
 
 ```R
-{r excercise 1}
+{r exercise 1}
 
 data(respondents)
 glimpse(respondents)
@@ -571,12 +579,12 @@ summary(respondents)
 # or:
 head(respondents)
 
-{r excercise 2}
+{r exercise 2}
 ggplot(books)+
     geom_bar(aes(riddle.code))+
   coord_flip()
 
-{r excercise 3}
+{r exercise 3}
 swedish <- books%>%
   # change the 'IT' below to another language and rerun the code
   filter(original.language == 'SE')%>%
