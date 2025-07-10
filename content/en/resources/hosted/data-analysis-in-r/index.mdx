@@ -152,7 +152,7 @@ The general concept of a 'tidy' table is that each row is a unique observation, 
 
 For less than super-tidy data, the summary would tell you how many NA's (missing values) there were, as well as if your columns are of the right data type (integer (whole number), double (number like 3.5) characters, time/date). You can also use it to check if the values are as would be expected. The summary gives you descriptive statistics for each column of the table. In the case of labels, such as the author names, this will be a count of the rows. So we can tell that Hollander, Loes den, is represented with 13 books in this table. For the column 'publication date', we can see that the oldest book in the corpus is from 2007, and the newest book is from 2013. If we look at the column word.count, we see that the mean length of the novels in this corpus is 109.052 words.
 
-```R
+```r
 {r summarise a table }
 
 #summary is a base R function, so you don't need special packages for this one
