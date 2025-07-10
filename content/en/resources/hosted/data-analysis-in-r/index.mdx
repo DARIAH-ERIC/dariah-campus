@@ -251,14 +251,13 @@ Apart from 'books', the tables 'respondents' and 'reviews' are also present. Pic
 ```r
 {r excercise 1: data loading and inspecting}
 
-
 ```
 
 ## Exploring through plots
 
 There are translated and Dutch books in the corpus, and there is also a column indicating the original language. Let's create a plot that shows us how many books are written in each of these languages. The plot is built using 'ggplot', which is part of the tidyverse. It is highly adaptable, but we will keep it simple for now. Here is a cheatsheet with most of the plotting options: [https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf](https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf)
 
-```R
+```r
 {r bar plot for original language}
 
 # ggplot syntax starts off with the function(object) structure again, and then uses '+' symbols to connect various ingredients. In this case a bar plot function is added, called 'geom_bar'. A bar_plot counts the number of occurences, so rows, which in our case are books.
