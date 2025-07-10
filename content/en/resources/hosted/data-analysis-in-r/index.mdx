@@ -484,7 +484,7 @@ The not-translated books (called 'group no' in the output) have a significantly 
 
 Just for fun, let's have a look at the sentence length & genre question too. Instead of a t-test we can use a one way ANOVA. T-tests are suitable when there are two groups, and here there are 4 different groups (genres).
 
-```R
+```r
 {r running a one way anova test on sentence length & genre}
 # Compute the analysis of variance
 anova <- aov(books$sentence.length.mean ~ books$genre)
