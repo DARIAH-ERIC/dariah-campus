@@ -135,20 +135,9 @@ data(books)
 head(books)
 ```
 
-> Description:df \[6 × 25]
 >
-> |   | short.title               | author             |
-> | - | ------------------------- | ------------------ |
-> | 1 | Rosnay\_HaarNaamWas       | Rosnay, Tatiana de |
-> | 2 | Zwagerman\_Duel           | Zwagerman, Joost   |
-> | 3 | Blum\_Familieportret      | Blum, Jenna        |
-> | 4 | Abdolah\_Kraai            | Abdolah, Kader     |
-> | 5 | Larsson\_MannenDieVrouwen | Larsson, Stieg     |
-> | 6 | Lanoye\_HeldereHemel      | Lanoye, Tom        |
 >
-> 6 rows | 1-3 of 25 columns
-
-The general concept of a 'tidy' table is that each row is a unique observation, and each column is a variable. This is also the case for the three tables in the Riddle package.
+> The general concept of a 'tidy' table is that each row is a unique observation, and each column is a variable. This is also the case for the three tables in the Riddle package.
 
 For less than super-tidy data, the summary would tell you how many NA's (missing values) there were, as well as if your columns are of the right data type (integer (whole number), double (number like 3.5) characters, time/date). You can also use it to check if the values are as would be expected. The summary gives you descriptive statistics for each column of the table. In the case of labels, such as the author names, this will be a count of the rows. So we can tell that Hollander, Loes den, is represented with 13 books in this table. For the column 'publication date', we can see that the oldest book in the corpus is from 2007, and the newest book is from 2013. If we look at the column word.count, we see that the mean length of the novels in this corpus is 109.052 words.
 
@@ -423,13 +412,6 @@ genre_length <- books%>%
 #just writing the name of the table prints it  
 genre_length
 ```
-
-| genre    | mean(sentence.length.mean) |
-| -------- | -------------------------- |
-| Fiction  | 12.21186                   |
-| Other    | 11.45518                   |
-| Romantic | 10.40373                   |
-| Suspense | 10.53350                   |
 
 A boxplot visualisation offers a bit more information; not just the mean, but also the distribution of all values.&#x20;
 
