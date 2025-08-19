@@ -27,6 +27,8 @@
 		"lint:code:fix": "pnpm run lint:code:check --fix",
 		"lint:styles:check": "stylelint \"./**/*.css\" --cache --ignore-path ./.gitignore",
 		"lint:styles:fix": "pnpm run lint:styles:check --fix",
+		"migrate:dariah-teach-tags": "dotenv -c -- tsx ./scripts/dariah-teach-migration/migrate-tags.ts",
+		"update:dariah-teach-tags": "dotenv -c -- tsx ./scripts/dariah-teach-migration/update-tags-in-mdx.ts",
 		"preinstall": "npx only-allow pnpm",
 		"prepare": "run-s setup",
 		"setup": "is-ci || simple-git-hooks",
