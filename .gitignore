@@ -51,3 +51,7 @@ out/
 
 # generated content
 /public/metadata/*.json
+
+# dariah teach migration content
+/dariah-teach-migration
+dariah-teach-assets
