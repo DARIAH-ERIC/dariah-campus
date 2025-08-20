@@ -40,13 +40,13 @@ After working through this course, students:
 
   ---
 
-## Preparatory notes&#x20;
+## Preparatory notes
 
 You can download and install R and Rstudio (in that order!) from:
 
 [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
 
-You can download the tutorial file f**rom: xxx  a**nd open it with Rstudio. The text is identical to this webpage. You can also read through the steps below, **but the code samples are not executable.**&#x20;
+You can download the tutorial file f**rom: xxx  a**nd open it with Rstudio. The text is identical to this webpage. You can also read through the steps below, **but the code samples are not executable.**
 
 > The code output is given below the code blocks, though, marked like this, with a black bar in front.
 
@@ -54,27 +54,27 @@ You can download the tutorial file f**rom: xxx  a**nd open it with Rstudio. The 
 
 [Tutorial on Rstudio]([https://docs.posit.co/ide/user/]\(https://docs.posit.co/ide/user/\))
 
-[Overview]([https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html]\(https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html\)) of the four base elements of the User Interface.&#x20;
+[Overview]([https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html]\(https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html\)) of the four base elements of the User Interface.
 
 [Executing code]([https://docs.posit.co/ide/user/ide/guide/code/execution.html]\(https://docs.posit.co/ide/user/ide/guide/code/execution.html\))
 
 ### R Markdown files
 
-Many different types of files can be created in Rstudio, even *gasp* Python files. The handy filetype we will work with is .Rmd, an R Markdown file. Markdown files combine text and code, allowing you to integrate the code output, such as a graph or a table, with your report. The advantage here is that others can see both your analyses and the computational steps you took to create your output. Markdown files can be exported into various formats (pdf, Word, html), for easy sharing with others. Before exporting, you can also customize which parts of the document to show or keep hidden. For example, you can hide your code blocks, but keep their output.&#x20;
+Many different types of files can be created in Rstudio, even *gasp* Python files. The handy filetype we will work with is .Rmd, an R Markdown file. Markdown files combine text and code, allowing you to integrate the code output, such as a graph or a table, with your report. The advantage here is that others can see both your analyses and the computational steps you took to create your output. Markdown files can be exported into various formats (pdf, Word, html), for easy sharing with others. Before exporting, you can also customize which parts of the document to show or keep hidden. For example, you can hide your code blocks, but keep their output.
 
-Let's check out some functions of a Markdown file. When you have this file open in Rstudio, you will notice at the left top the options 'Source' and 'Visual' mode. The source mode reveals the code used for text layout. The visual mode is easier to use for now.&#x20;
+Let's check out some functions of a Markdown file. When you have this file open in Rstudio, you will notice at the left top the options 'Source' and 'Visual' mode. The source mode reveals the code used for text layout. The visual mode is easier to use for now.
 
 Then, at the right-hand side of the document, you see a menu item called 'Outline'- it is handy to keep that one active, to better navigate the file.
 
-Under the 'Knit' menu, you will find the export options.&#x20;
+Under the 'Knit' menu, you will find the export options.
 
-You can add code blocks through the shortcut Ctrl-Alt-I or through the green square with the C.&#x20;
+You can add code blocks through the shortcut Ctrl-Alt-I or through the green square with the C.
 
 In this tutorial, you will find several exercises, where you are asked to adjust and write your own code. Correct answers to these exercises are to be found near the end of this document. (There are many ways to correctly solve the exercises though.)
 
 ## The Riddle project - exploring literary quality
 
-It is time to run our first code. In the code block below, you see lines with # in front of them as well as black text. The # 'comments' a line; basically treating it like text instead of code. You can easily comment and uncomment lines through placement of the hashtags. In the .rmd file, you can run a code block through pressing the green 'play' button on the top right, or through placing your cursor somewhere in the block and pressing Ctrl-Enter. The output of your code will show up directly underneath the code block.&#x20;
+It is time to run our first code. In the code block below, you see lines with # in front of them as well as black text. The # 'comments' a line; basically treating it like text instead of code. You can easily comment and uncomment lines through placement of the hashtags. In the .rmd file, you can run a code block through pressing the green 'play' button on the top right, or through placing your cursor somewhere in the block and pressing Ctrl-Enter. The output of your code will show up directly underneath the code block.
 
 ```r
 {r installing the packages}
@@ -91,7 +91,7 @@ library(tidyverse)
 
 ```
 
-Now we have access to the dataset of the [Riddle of Literary Quality](https://literaryquality.huygens.knaw.nl/) project. This project investigated literariness by examining both readerly assessments of general and literary quality, as well as textual characteristics, for a corpus of 401 books: both original Dutch and translated works, in several genres of fiction (romance, suspense, literary fiction and other). 13.541 respondents have shared their opinions. Together, they provided 448.055 book reviews. Allthough, due to copyright concerns, the full texts of the novels are not available, the dataset does include word frequencies for the 5000 most frequent words, for each book, unlocking stylometric analyses for this corpus.&#x20;
+Now we have access to the dataset of the [Riddle of Literary Quality](https://literaryquality.huygens.knaw.nl/) project. This project investigated literariness by examining both readerly assessments of general and literary quality, as well as textual characteristics, for a corpus of 401 books: both original Dutch and translated works, in several genres of fiction (romance, suspense, literary fiction and other). 13.541 respondents have shared their opinions. Together, they provided 448.055 book reviews. Allthough, due to copyright concerns, the full texts of the novels are not available, the dataset does include word frequencies for the 5000 most frequent words, for each book, unlocking stylometric analyses for this corpus.
 
 **A selection of publications from the Riddle-project**
 
@@ -105,7 +105,7 @@ Andreas van Cranenburgh (2016). *Rich statistical parsing and literary language*
 
 ## The litRiddle package
 
-In Rstudio, running the code below will open the introduction to the package, in the 'Help' tab. Here you can find out about the three combinable tables of reader survey data, as well as some helpful code snippets to get you started with exploring this dataset. You are free to use this dataset for your own research, but please include a reference to the package. The vignette includes citation information.&#x20;
+In Rstudio, running the code below will open the introduction to the package, in the 'Help' tab. Here you can find out about the three combinable tables of reader survey data, as well as some helpful code snippets to get you started with exploring this dataset. You are free to use this dataset for your own research, but please include a reference to the package. The vignette includes citation information.
 
 ```r
  {r accessing the readme of litriddle }
@@ -124,7 +124,7 @@ Usually, the first step would be loading your data in the working directory, so 
 
 ## Data inspection
 
-In the code block below, you see part of the syntax of R. The first line, between \{ } is the title of the code block. The two lines of code both have the format function(object). Our object in this case is the table 'books'.&#x20;
+In the code block below, you see part of the syntax of R. The first line, between \{ } is the title of the code block. The two lines of code both have the format function(object). Our object in this case is the table 'books'.
 
 ```r
 {r using data and head}
@@ -274,12 +274,12 @@ ggplot(books)+
 ```
 
 > <Figure src="/assets/content/assets/en/resources/hosted/data-analysis-in-r/barplotwithfillforgenre.png" alt="The same bar plot as the previous one, but now with colours indicating which genre the books are. " alignment="stretch">
->   A barplot showing the count of books from different languages. Their genre codes are shown through the colouring of the bars.&#x20;
+>   A barplot showing the count of books from different languages. Their genre codes are shown through the colouring of the bars.
 > </Figure>
 
 We see that the Scandi thriller trend is present; Norwegian (NO), Danish (DK), Swedish (SE) and Icelandic (IS) books are predominantly Literary Thrillers.&#x20;
 
-For the next exercise, create a new barplot of the riddle.code.english, to see how many books have gotten each genre labelling.&#x20;
+For the next exercise, create a new barplot of the riddle.code.english, to see how many books have gotten each genre labelling.
 
 > ```r
 > {r excercise 2: creating a ggplot}
@@ -296,7 +296,7 @@ If you're curious to see more visualisations of this dataset, visit [https://kar
 
 ### Filter and select
 
-Which of these books were translated from Italian (IT) into Dutch? We could open the big table and scroll around or sort a column to find out, but if we want to calculate something only for the Italian books, it is more efficient to filter and make a new table with the selection. In the Tidyverse:&#x20;
+Which of these books were translated from Italian (IT) into Dutch? We could open the big table and scroll around or sort a column to find out, but if we want to calculate something only for the Italian books, it is more efficient to filter and make a new table with the selection. In the Tidyverse:
 
 * Filter = selecting rows (in this case, books)
 * Select = selecting columns.
@@ -341,14 +341,14 @@ view(books2)
 summary(books2$novella_novel)
 ```
 
-This gives us the following output:&#x20;
+This gives us the following output:
 
 > ```r
 > Length     Class      Mode 
 >       401 character character 
 > ```
 
-This is not yet informative.  The problem was that the new column was read as data type 'character' (you may also know that as 'string' or 'text' data). We need to factorise this column, that is, telling R to instead read it as a set of labels (called 'levels').&#x20;
+This is not yet informative.  The problem was that the new column was read as data type 'character' (you may also know that as 'string' or 'text' data). We need to factorise this column, that is, telling R to instead read it as a set of labels (called 'levels').
 
 ```r
 {r factorising a column}
@@ -361,7 +361,7 @@ books2$novella_novel <- as.factor(books2$novella_novel)
 levels(books2$novella_novel)
 ```
 
-Now we get:&#x20;
+Now we get:
 
 > ```r
 > [1] "novel"   "novella"
@@ -380,7 +380,7 @@ The summary counts the number of rows in each group:
 >     349      52 
 > ```
 
-For the next exercise, we will add a new column with two labels: 'non-fiction' for books whose riddle.code.english is one of three categories, and 'fiction' for all other books. Use the structure of the code in the block 'mutate', so with the ifelse(test, yes, no).&#x20;
+For the next exercise, we will add a new column with two labels: 'non-fiction' for books whose riddle.code.english is one of three categories, and 'fiction' for all other books. Use the structure of the code in the block 'mutate', so with the ifelse(test, yes, no).
 
 ```r
 {r exercise 4: mutate}
@@ -417,7 +417,7 @@ genre_length <- books%>%
 genre_length
 ```
 
-A boxplot visualisation offers a bit more information; not just the mean, but also the distribution of all values.&#x20;
+A boxplot visualisation offers a bit more information; not just the mean, but also the distribution of all values.
 
 ```r
 {r boxplot for distribution}
@@ -425,12 +425,12 @@ ggplot(books)+geom_boxplot(aes(genre, sentence.length.mean))
 ```
 
 > <Figure src="/assets/content/assets/en/resources/hosted/data-analysis-in-r/boxplotgenresentencelengths.png" alt="A boxplot with the genres on the X-axis, and the mean sentence length on the Y. " alignment="stretch">
->   A boxplot showing the distribution of the mean sentence length for books in the litRiddle corpus.&#x20;
+>   A boxplot showing the distribution of the mean sentence length for books in the litRiddle corpus.
 > </Figure>
 
 *Are translated books less lexically rich than Dutch books?*
 
-For this question, we need to look at the sampled TTR = the type-token ratio. A type = unique word, token = a word's occurrence. Although this is a different question, you can use exactly the same steps to answer it, namely grouping and summarising the data.&#x20;
+For this question, we need to look at the sampled TTR = the type-token ratio. A type = unique word, token = a word's occurrence. Although this is a different question, you can use exactly the same steps to answer it, namely grouping and summarising the data.
 
 Can you try and write your own code? The columns you need are called 'translated' and 'sampled.TTR'
 
@@ -442,9 +442,9 @@ Can you try and write your own code? The columns you need are called 'translated
 
 A next step for both of these questions would be to run a statistical test to see if these differences in mean are significant or not. Let's find this out for the translation-lexical richness table by running an independent samples t-test. Many tests are available in base R, and others can be used through packages. The examples below are all a part of base R.
 
-Selecting the rights test for your research question requires some knowledge of statistics - if you are new to that, [Seeing theory](https://seeing-theory.brown.edu/#firstPage) is a resource aimed at beginners.&#x20;
+Selecting the rights test for your research question requires some knowledge of statistics - if you are new to that, [Seeing theory](https://seeing-theory.brown.edu/#firstPage) is a resource aimed at beginners.
 
-In this particular case, an independent samples t-test was selected because our independent variable is a grouping variable with two groups (translated versus non-translated books). Each measurement only belongs to one of the two groups, hence 'independent samples'. Our dependent variable is numerical (the mean type-token ratio).&#x20;
+In this particular case, an independent samples t-test was selected because our independent variable is a grouping variable with two groups (translated versus non-translated books). Each measurement only belongs to one of the two groups, hence 'independent samples'. Our dependent variable is numerical (the mean type-token ratio).
 
 ```r
 {r running a statistical test}
@@ -466,7 +466,7 @@ t.test(books$sampled.TTR~books$translated)
 >         0.2603875         0.2513988 
 > ```
 
-The not-translated books (called 'group no' in the output) have a significantly (p \< 0.01) higher mean TTR (0.26) than the translated books (0.25).&#x20;
+The not-translated books (called 'group no' in the output) have a significantly (p \< 0.01) higher mean TTR (0.26) than the translated books (0.25).
 
 Just for fun, let's have a look at the sentence length & genre question too. Instead of a t-test we can use a one way ANOVA. T-tests are suitable when there are two groups, and here there are 4 different groups (genres).
 
@@ -485,7 +485,7 @@ summary(anova)
 > Residuals   397 1857.9    4.68    
 > ```
 
-The one way ANOVA tells us that there is a significant difference between the genres for the mean sentence length. The Pr (>F) value, notated as 2.68e-11 \*\*\* in the output, (0.0000000000268 in regular numbers) is smaller than 0.05.&#x20;
+The one way ANOVA tells us that there is a significant difference between the genres for the mean sentence length. The Pr (>F) value, notated as 2.68e-11 \*\*\* in the output, (0.0000000000268 in regular numbers) is smaller than 0.05.
 
 However, the ANOVA does not yet tell us which of the four genres differ significantly from eachother. For this we perform a Tukey test. Looking at the 'p adj' column in the output below, can you see which genres differ from each other in a significant way? (significant = the value here should be \< 0.05)
 
@@ -513,13 +513,13 @@ TukeyHSD(anova)
 
 ## Exporting a markdown file
 
-To end our exploration of R and the Riddle corpus, you can try to 'Knit' the markdown file by selecting your preferred output from the dropdown menu next to the ball of yarn in the menu bar. Knitting only works when all code works; if you have not completed the exercises, there will be some code fragments that hinder the knitting. You can work around this by either 'commenting' these lines through placing a # in front of them, or by preventing the whole code block from running. This can be done by clicking on the gear icon in the right top hand of a code block, and under 'Output' select 'Show nothing (don't run code)'.&#x20;
+To end our exploration of R and the Riddle corpus, you can try to 'Knit' the markdown file by selecting your preferred output from the dropdown menu next to the ball of yarn in the menu bar. Knitting only works when all code works; if you have not completed the exercises, there will be some code fragments that hinder the knitting. You can work around this by either 'commenting' these lines through placing a # in front of them, or by preventing the whole code block from running. This can be done by clicking on the gear icon in the right top hand of a code block, and under 'Output' select 'Show nothing (don't run code)'.
 
-Once you have succesfully knitted an output file, it will show up under the tab Files at the right-hand side of the Rstudio screen.&#x20;
+Once you have succesfully knitted an output file, it will show up under the tab Files at the right-hand side of the Rstudio screen.
 
 ## Conclusion
 
-After reading and working through this resource, you have hopefully gained an understanding of the quantitative data analysis workflow in R, from inspecting your raw data, to selecting and transforming it, to answering your research questions. Learning how to code for data analysis is best done through doing, and therefore I encourage you to start your own project and apply what you have learned here to your own work.&#x20;
+After reading and working through this resource, you have hopefully gained an understanding of the quantitative data analysis workflow in R, from inspecting your raw data, to selecting and transforming it, to answering your research questions. Learning how to code for data analysis is best done through doing, and therefore I encourage you to start your own project and apply what you have learned here to your own work.
 
 ---
 
@@ -575,6 +575,6 @@ When you start working with your own material in Rstudio, it is highly recommend
 
 Then, you will need to import your data. The same resource will show you how to do that: [https://intro2r.com/importing-data.html](https://intro2r.com/importing-data.html)
 
-If you get stuck coding, at [Stackoverflow](https://stackoverflow.com/questions) you will probably find the answer to your question, as provided by humans. You can also use Chat-GPT or other AI support, but make sure you understand and can test the solutions it offers you - as it occasionally does hallucinate and can provide working code that solves a different problem from the one you have prompted it with.&#x20;
+If you get stuck coding, at [Stackoverflow](https://stackoverflow.com/questions) you will probably find the answer to your question, as provided by humans. You can also use Chat-GPT or other AI support, but make sure you understand and can test the solutions it offers you - as it occasionally does hallucinate and can provide working code that solves a different problem from the one you have prompted it with.
 
 If you are working with textual rather than numeric data, this is the parallel approach to the Tidyverse: Tidytext ([https://www.tidytextmining.com/](https://www.tidytextmining.com/) )
