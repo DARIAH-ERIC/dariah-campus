@@ -441,7 +441,9 @@ Can you try and write your own code? The columns you need are called 'translated
 
 ## Running a statistical test
 
-A next step for both of these questions would be to run a statistical test to see if these differences in mean are significant or not. Let's find this out for the translation-lexical richness table by running an independent samples t-test. Many tests are available in base R, and others can be used through packages. The examples below are all a part of base R.
+A next step for both of these questions would be to run a statistical test. Statistical testing helps us figure out if a result we see in data is likely real or just due to random chance. We compare one or more independent variables (something we change, like through an intervention, or different groups of things, like book genre) to a dependent variable (the outcome we measure, like sentence length or reader ratings). If the relationship looks strong enough, the test checks whether it’s statistically significant, meaning unlikely to have happened by accident. If the results are not significant, this does not mean there is definitely no relationships at all, but it does mean better and/or larger studies are needed to discover those.&#x20;
+
+Let's test the relationship between translation and lexical richness, by running an independent samples t-test. Many tests are available in base R, and others can be used through packages. The examples below are all a part of base R.
 
 Selecting the rights test for your research question requires some knowledge of statistics - if you are new to that, [Seeing theory](https://seeing-theory.brown.edu/#firstPage) is a resource aimed at beginners.
 
@@ -467,9 +469,9 @@ t.test(books$sampled.TTR~books$translated)
 >         0.2603875         0.2513988 
 > ```
 
-The not-translated books (called 'group no' in the output) have a significantly (p \< 0.01) higher mean TTR (0.26) than the translated books (0.25).
+The p-value is the number the test produces to show how much evidence we have against pure chance—the smaller it is, the stronger the evidence. We decide on a p-value cut-off point in advance of running the test. For humanities research, it is usually set at 0.05. The not-translated books (called 'group no' in the output) have a significantly (p \< 0.01) higher mean TTR (0.26) than the translated books (0.25).&#x20;
 
-Just for fun, let's have a look at the sentence length & genre question too. Instead of a t-test we can use a one way ANOVA. T-tests are suitable when there are two groups, and here there are 4 different groups (genres).
+Let's have a look at the sentence length & genre question too. Instead of a t-test we can use a one way ANOVA. T-tests are suitable when there are two groups, and here there are 4 different groups (genres).
 
 ```r
 {r running a one way anova test on sentence length & genre}
