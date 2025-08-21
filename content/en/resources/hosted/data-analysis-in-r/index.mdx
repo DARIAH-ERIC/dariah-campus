@@ -418,7 +418,7 @@ genre_length <- books%>%
 genre_length
 ```
 
-A boxplot visualisation offers a bit more information; not just the mean, but also the distribution of all values.
+A boxplot visualisation offers a bit more information; not just the median (the middle value), but also the distribution of all datapoints. Within the 'box' are the middle 50% of datapoints, (in this case: the middle 200 books) and the line cutting through the box is the median value. The vertical lines above the boxes indicate the range of observed values that are within (1.5 \* the range of values in the box) higher than the highest value still within the box. The lines underneath the boxes represent the values found that are within (1.5 \* the range of values in the box) lower than the lowest value within the box. The occasional dots indicate outliers. For example, the dot at the top of the Romantic boxplot is a novel with a mean sentence length of 15.10 words. This is a bigger value than 11.34 (the highest value still within the box) + (1.5 x 2.20) = 14,64.&#x20;
 
 ```r
 {r boxplot for distribution}
