@@ -35,7 +35,7 @@ After working through this course, students:
 
 * Can find their way around the main functionalities of Rstudio.
 * Are able to create R markdown files, understand their components, and export them.
-* Can perform the basic steps of quantitative data analysis in Rstudio, making use of the Tidyverse syntax. By adjusting the code supplied, they can work on their own materials. They can import datasets, inspect their data, create a plot, select information, add new columns to a table, understand ifelse statements, and group and summarise their data.
+* Can perform the basic steps of quantitative data analysis in Rstudio, making use of the tidyverse syntax. By adjusting the code supplied, they can work on their own materials. They can import datasets, inspect their data, create a plot, select information, add new columns to a table, understand ifelse statements, and group and summarise their data.
 * Are familiar with the LitRiddle dataset, which contains Dutch readers' assessments of the (literary) quality of 401 popular Dutch and international novels.
 
   ---
@@ -60,7 +60,7 @@ You can download the tutorial file f**rom: xxx  a**nd open it with Rstudio. The 
 
 ### R Markdown files
 
-Many different types of files can be created in Rstudio, even *gasp* Python files. The handy filetype we will work with is .Rmd, an R Markdown file. Markdown files combine text and code, allowing you to integrate the code output, such as a graph or a table, with your report. The advantage here is that others can see both your analyses and the computational steps you took to create your output. Markdown files can be exported into various formats (pdf, Word, html), for easy sharing with others. Before exporting, you can also customize which parts of the document to show or keep hidden. For example, you can hide your code blocks, but keep their output.
+Many different types of files can be created in Rstudio, including Python files. The handy filetype we will work with is .Rmd, an R Markdown file. Markdown files combine text and code, allowing you to integrate the code output, such as a graph or a table, with your report. The advantage here is that others can see both your analyses and the computational steps you took to create your output. Markdown files can be exported into various formats (pdf, Word, html), for easy sharing with others. Before exporting, you can also customize which parts of the document to show or keep hidden. For example, you can hide your code blocks, but keep their output.
 
 Let's check out some functions of a Markdown file. When you have this file open in Rstudio, you will notice at the left top the options 'Source' and 'Visual' mode. The source mode reveals the code used for text layout. The visual mode is easier to use for now.
 
@@ -112,13 +112,13 @@ In Rstudio, running the code below will open the introduction to the package, in
 vignette('litRiddle')
 ```
 
-## The wonderful world of Tidyverse
+## The wonderful world of tidyverse
 
-The other package that is loaded is called Tidyverse. It can help with all steps of data analysis, from loading and cleaning your data to visualising it in graphs and charts. If you would like to learn more about tidyverse, and the data philosophy behind it, this is the manual:
+The other package that is loaded is called tidyverse. It can help with all steps of data analysis, from loading and cleaning your data to visualising it in graphs and charts. If you would like to learn more about tidyverse, and the data philosophy behind it, this is the manual:
 
 [https://r4ds.hadley.nz/](https://r4ds.hadley.nz/)
 
-'Base' R can do lots of the things the Tidyverse can do too, but the Tidyverse functions are more intuitive and user-friendly.
+'Base' R can do lots of the things the tidyverse can do too, but the tidyverse functions are more intuitive and user-friendly.
 
 Usually, the first step would be loading your data in the working directory, so that Rstudio can access it. Now, as we will work with the data from the litRiddle package, we can do this through the code below - it works a bit differently when you have your own files to work with. The second step would be inspection and cleaning - as this data is already in mint condition, we will also skip the cleaning. So let's check out the data!
 
@@ -141,7 +141,7 @@ head(books)
 > | 2 | Zwagerman\_Duel     | Zwagerman, Joost   | Duel              |
 > | 3 | Abdolah\_Kraai      | Abdolah, Kader     | The Crow          |
 
-The general concept of a 'tidy' table is that each row is a unique observation, and each column is a variable. This is also the case for the three tables in the Riddle package.
+The general concept of a 'tidy' table is that each row is a unique observation, and each column is a variable. This is also the case for the three tables in the litRiddle package.
 
 For less than super-tidy data, the summary would tell you how many NA's (missing values) there were, as well as if your columns are of the right data type (integer (whole number), double (number like 3.5) characters, time/date). You can also use it to check if the values are as would be expected. The summary gives you descriptive statistics for each column of the table. In the case of labels, such as the author names, this will be a count of the rows. So we can tell that Hollander, Loes den, is represented with 13 books in this table. For the column 'publication date', we can see that the oldest book in the corpus is from 2007, and the newest book is from 2013. If we look at the column word.count, we see that the mean length of the novels in this corpus is 109.052 words.
 
@@ -513,7 +513,7 @@ TukeyHSD(anova)
 
 ## Exporting a markdown file
 
-To end our exploration of R and the Riddle corpus, you can try to 'Knit' the markdown file by selecting your preferred output from the dropdown menu next to the ball of yarn in the menu bar. Knitting only works when all code works; if you have not completed the exercises, there will be some code fragments that hinder the knitting. You can work around this by either 'commenting' these lines through placing a # in front of them, or by preventing the whole code block from running. This can be done by clicking on the gear icon in the right top hand of a code block, and under 'Output' select 'Show nothing (don't run code)'.
+To end our exploration of R and the litRiddle corpus, you can try to 'Knit' the markdown file by selecting your preferred output from the dropdown menu next to the ball of yarn in the menu bar. Knitting only works when all code works; if you have not completed the exercises, there will be some code fragments that hinder the knitting. You can work around this by either 'commenting' these lines through placing a # in front of them, or by preventing the whole code block from running. This can be done by clicking on the gear icon in the right top hand of a code block, and under 'Output' select 'Show nothing (don't run code)'.
 
 Once you have succesfully knitted an output file, it will show up under the tab Files at the right-hand side of the Rstudio screen.
 
