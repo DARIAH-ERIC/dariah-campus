@@ -336,7 +336,7 @@ SELECT ?author ?authorName WHERE {
 }
 ```
 
-You might notice the **property path** `crm:P14i_performed/lrm:R17_created` in the query above. If you take a look at the [knowledge graph](https://clscor.acdh-dev.oeaw.ac.at/resource/?uri=https%3A%2F%2Fclscor.io%2Fentity%2F593f8e88-a) from Actor to Expression, you will see that there is actually an F28\_Expression\_Creation inbetween. Since we don't need this at the moment, we can skip the node and chain the two properties leading to/from the Expression\_Creation.
+You might notice the **property path** `crm:P14i_performed/lrm:R17_created` in the query above. If you take a look at the [knowledge graph](https://clscor.acdh-dev.oeaw.ac.at/resource/?uri=https%3A%2F%2Fclscor.io%2Fentity%2F593f8e88-a) from Actor to Expression, you will see that there is actually an F28\_Expression\_Creation in between. Since we don't need this at the moment, we can skip the node and chain the two properties leading to/from the Expression\_Creation.
 
 If we take a look at the results of our query, you will see that we actually retrieve more than just the authors' names. Their labels include their lifespan and class: `Shakespeare, William (1564-1616) [Actor]`. To extract the first and last name from this label, we can use the `REPLACE` function in SPARQL and `BIND` its result to a new variable:
 
@@ -613,7 +613,7 @@ SELECT * WHERE {
 
 Fortunately, there is a useful little helper that lets us specify which part of the query to execute first: query nesting.
 
-##### Nested Queries
+#### Nested Queries
 
 SPARQL allows us to wrap queries, i.e. `SELECT … WHERE { … }`, inside of other queries. These nested queries (also called "subqueries") allow to modularize complex queries into more manageable parts and also provide a means of controlling query execution order. Unification happens from inner to outer query level which means that the innermost query is executed first.
 
