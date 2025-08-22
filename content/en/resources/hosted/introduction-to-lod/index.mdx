@@ -23,7 +23,7 @@ translations: []
 ---
 # Introduction to Linked Open Data
 
-This article gives a very short introduction to the basic concepts of the Semantic Web and Linked Open Data (LOD), including a crash course in SPARQL, a query language for LOD. This will be followed by a hands-on part applying SPARQL on the data in the CLSCor Catalogue.
+This article gives a very short introduction to the basic concepts of the **Semantic Web** and **Linked Open Data (LOD)**, including a crash course in **SPARQL**, a query language for LOD. This will be followed by a hands-on part applying SPARQL on the data in the CLSCor Catalogue.
 
 <Callout kind="important" title="Learning Outcomes">
   After finishing this module, you will be able to:
@@ -54,7 +54,7 @@ The main principles of LOD include:
 LOD allows for the creation of a web of interlinked data that facilitates new ways of browsing, querying, and discovering information. The result can be visualized and explored at [https://lod-cloud.net/](https://lod-cloud.net/):
 
 <Figure src="/assets/content/assets/en/resources/hosted/introduction-to-lod/lod-cloud.svg" alt="Image of the larges nodes in the linked open data cloud" alignment="center">
-  For an interactive version of the cloud, you can visit [https://lod-cloud.net/clouds/lod-cloud.svg](https://lod-cloud.net/clouds/lod-cloud.svg).
+  This figure represents LOD on the internet, colour-coding different domains and showing their connections. For an interactive version of the cloud, you can visit [https://lod-cloud.net/clouds/lod-cloud.svg](https://lod-cloud.net/clouds/lod-cloud.svg).
 </Figure>
 
 ## Resource Description Framework (RDF)
@@ -78,7 +78,7 @@ Following the principles of the semantic web, the entities within a triple are i
 <http://example.org/William_Shakespeare> <http://example.org/author> <http://example.org/Hamlet> .
 ```
 
-Muliple triples can be used to form a **knowledge graph** and extend our knowledge base even further, e.g.:
+Multiple triples can be used to form a **knowledge graph** and extend our knowledge base even further, e.g.:
 
 ```mermaid
 graph LR;
@@ -119,7 +119,7 @@ WHERE {
 }
 ```
 
-`?work` is a variable that stands for the the results we want to retrieve. The name can be chosen freely and has to start with a question mark.
+`?work` is a variable that stands for the the results we want to retrieve. The name can be chosen freely and has to start with a question mark. The variable needs to sit in the position where you would expect the result to be within the RDF graph.
 
 <Callout kind="tip" title="Would you like to code along?">
   You can try out the following SPARQL queries yourself using the <Link link={{"discriminant":"external","value":"https://atomgraph.github.io/SPARQL-Playground/"}}>SPARQL Playground</Link>. Just paste the following Turtle representation of our demo data into the upper left textbox ("RDF input") and enter your SPARQL queries in the textbox in the upper right corner.
@@ -187,7 +187,7 @@ As we learned earlier, SPARQL can not only be used to retrieve (`SELECT`) data, 
 
 ### SPARQL Endpoints
 
-All our freshly acquired SPARQL knowledge only becomes useful when we can apply it to real data. This is where SPARQL endpoints come into play.
+All our freshly acquired SPARQL knowledge only becomes useful when we can apply it to real data. This is where **SPARQL endpoints** come into play.
 
 A SPARQL endpoint is a web service that allows users to query an RDF dataset via the SPARQL query language. These endpoints are crucial for querying large and complex datasets, such as those hosted by organizations like [Wikidata](https://query.wikidata.org/) or [DBpedia](https://dbpedia.org/sparql).
 
