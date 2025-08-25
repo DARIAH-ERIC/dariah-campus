@@ -418,7 +418,7 @@ genre_length <- books%>%
 genre_length
 ```
 
-A boxplot visualisation offers a bit more information; not just the median (the middle value), but also the distribution of all datapoints. Within the 'box' are the middle 50% of datapoints, (in this case: the middle 200 books) and the line cutting through the box is the median value. The vertical lines above the boxes indicate the range of observed values that are within (1.5 \* the range of values in the box) higher than the highest value still within the box. The lines underneath the boxes represent the values found that are within (1.5 \* the range of values in the box) lower than the lowest value within the box. The occasional dots indicate outliers. For example, the dot at the top of the Romantic boxplot is a novel with a mean sentence length of 15.10 words. This is a bigger value than 11.34 (the highest value still within the box) + (1.5 x 2.20) = 14,64.&#x20;
+A boxplot visualisation offers a bit more information; not just the median (the middle value), but also the distribution of all datapoints. Within the 'box' are the middle 50% of datapoints, (in this case: the middle 200 books) and the line cutting through the box is the median value. The vertical lines above the boxes indicate the range of observed values that are within (1.5 \* the range of values in the box) higher than the highest value still within the box. The lines underneath the boxes represent the values found that are within (1.5 \* the range of values in the box) lower than the lowest value within the box. The occasional dots indicate outliers. For example, the dot at the top of the Romantic boxplot is a novel with a mean sentence length of 15.10 words. This is a bigger value than 11.34 (the highest value still within the box) + (1.5 x 2.20) = 14.64.&#x20;
 
 ```r
 {r boxplot for distribution}
@@ -441,7 +441,7 @@ Can you try and write your own code? The columns you need are called 'translated
 
 ## Running a statistical test
 
-A next step for both of these questions would be to run a statistical test. Statistical testing helps us figure out if a result we see in data is likely real or just due to random chance. We compare one or more independent variables (something we change, like through an intervention, or different groups of things, like book genre) to a dependent variable (the outcome we measure, like sentence length or reader ratings). If the relationship looks strong enough, the test checks whether it’s statistically significant, meaning unlikely to have happened by accident. If the results are not significant, this does not mean there is definitely no relationships at all, but it does mean better and/or larger studies are needed to discover those.&#x20;
+A next step for both of these questions would be to run a statistical test. Statistical testing helps us figure out if a result we see in data is likely real or just due to random chance. We compare one or more independent variables (something we change, like through an intervention, or different groups of things, like book genre) to a dependent variable (the outcome we measure, like sentence length or reader ratings). If the relationship looks strong enough, the test checks whether it’s statistically significant, meaning unlikely to have happened by accident. If the results are not significant, this does not mean there is definitely no relationship at all, but it does mean more study is needed to discover those.&#x20;
 
 Let's test the relationship between translation and lexical richness, by running an independent samples t-test. Many tests are available in base R, and others can be used through packages. The examples below are all a part of base R.
 
@@ -469,7 +469,7 @@ t.test(books$sampled.TTR~books$translated)
 >         0.2603875         0.2513988 
 > ```
 
-The p-value is the number the test produces to show how much evidence we have against pure chance—the smaller it is, the stronger the evidence. We decide on a p-value cut-off point in advance of running the test. For humanities research, it is usually set at 0.05. The not-translated books (called 'group no' in the output) have a significantly (p \< 0.01) higher mean TTR (0.26) than the translated books (0.25).&#x20;
+The p-value is the number the test produces to show how much evidence we have against pure chance: the smaller it is, the stronger the evidence. We decide on a p-value cut-off point in advance of running the test. For humanities research, it is usually set at 0.05. The not-translated books (called 'group no' in the output) have a significantly (p \< 0.01) higher mean TTR (0.26) than the translated books (0.25).&#x20;
 
 Let's have a look at the sentence length & genre question too. Instead of a t-test we can use a one way ANOVA. T-tests are suitable when there are two groups, and here there are 4 different groups (genres).
 
@@ -490,7 +490,7 @@ summary(anova)
 
 The one way ANOVA tells us that there is a significant difference between the genres for the mean sentence length. The Pr (>F) value, notated as 2.68e-11 \*\*\* in the output, (0.0000000000268 in regular numbers) is smaller than 0.05.
 
-However, the ANOVA does not yet tell us which of the four genres differ significantly from eachother. For this we perform a Tukey test. Looking at the 'p adj' column in the output below, can you see which genres differ from each other in a significant way? (significant = the value here should be \< 0.05)
+However, the ANOVA does not yet tell us which of the four genres differ significantly from each other. For this we perform a Tukey test. Looking at the 'p adj' column in the output below, can you see which genres differ from each other in a significant way? (significant = the value here should be \< 0.05)
 
 ```r
 {r}
@@ -518,7 +518,7 @@ TukeyHSD(anova)
 
 To end our exploration of R and the litRiddle corpus, you can try to 'Knit' the markdown file by selecting your preferred output from the dropdown menu next to the ball of yarn in the menu bar. Knitting only works when all code works; if you have not completed the exercises, there will be some code fragments that hinder the knitting. You can work around this by either 'commenting' these lines through placing a # in front of them, or by preventing the whole code block from running. This can be done by clicking on the gear icon in the right top hand of a code block, and under 'Output' select 'Show nothing (don't run code)'.
 
-Once you have succesfully knitted an output file, it will show up under the tab Files at the right-hand side of the Rstudio screen.
+Once you have successfully knitted an output file, it will show up under the tab Files at the right-hand side of the Rstudio screen.
 
 ## Conclusion
 
