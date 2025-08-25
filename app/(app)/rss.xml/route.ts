@@ -1,8 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-import { createFeed } from "@/lib/create-feed";
-
-export const dynamic = "force-static";
+import { createFeed } from "@/lib/rss/create-feed";
 
 export async function GET(_request: NextRequest): Promise<NextResponse> {
 	const feed = await createFeed();

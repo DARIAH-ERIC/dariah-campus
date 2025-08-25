@@ -1,0 +1,18 @@
+diff --git a/image-types/global.d.ts b/image-types/global.d.ts
+index 661c316e89b3c1aa5913b8afebdbf3e6299eccd7..3a749f8e1d0b1b6f454d1f8695b3ae8dbd1934ac 100644
+--- a/image-types/global.d.ts
++++ b/image-types/global.d.ts
+@@ -8,12 +8,7 @@ declare module '*.png' {
+ }
+ 
+ declare module '*.svg' {
+-  /**
+-   * Use `any` to avoid conflicts with
+-   * `@svgr/webpack` plugin or
+-   * `babel-plugin-inline-react-svg` plugin.
+-   */
+-  const content: any
++  const content: import('../dist/shared/lib/image-external').StaticImageData
+ 
+   export default content
+ }

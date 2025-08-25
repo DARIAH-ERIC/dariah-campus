@@ -1,13 +1,13 @@
 import type { ReactNode } from "react";
 
-import { ServerImage as Image } from "@/components/server-image";
+import { Image } from "@/components/image";
 
 interface OrganisationsListProps {
 	label: ReactNode;
 	organisations: ReadonlyArray<{ name: string; url: string; logo: string }>;
 }
 
-export function OrganisationsList(props: OrganisationsListProps): ReactNode {
+export function OrganisationsList(props: Readonly<OrganisationsListProps>): ReactNode {
 	const { label, organisations } = props;
 
 	if (organisations.length === 0) {
@@ -16,7 +16,7 @@ export function OrganisationsList(props: OrganisationsListProps): ReactNode {
 
 	return (
 		<div className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
-			<div className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</div>
+			<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{label}</div>
 			<div>
 				<ul className="grid gap-y-1 text-xs font-medium">
 					{organisations.map((tag, index) => {

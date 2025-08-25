@@ -1,40 +1,243 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind variants;
+/* stylelint-disable color-no-hex */
+/* stylelint-disable custom-property-empty-line-before */
 
-:root {
-	--page-header-height: 100px;
+@import "tailwindcss";
+@import "tw-animate-css";
 
-	block-size: 100%;
-	-webkit-tap-highlight-color: transparent;
-	text-size-adjust: none;
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-react-aria-components";
+
+@theme {
+	--breakpoint-2xs: 22.5rem;
+	--breakpoint-xs: 30rem;
+	--breakpoint-sm: 40rem;
+	--breakpoint-md: 52.5rem;
+	--breakpoint-lg: 65.5rem;
+	--breakpoint-xl: 80rem;
+	--breakpoint-2xl: 90rem;
 }
 
-body {
-	block-size: 100%;
+@theme {
+	--color-brand-50: #f0f9ff;
+	--color-brand-100: #dff3ff;
+	--color-brand-200: #b9e7fe;
+	--color-brand-300: #7bd7fe;
+	--color-brand-400: #34c2fc;
+	--color-brand-500: #0aaced;
+	--color-brand-600: #0089cb;
+	--color-brand-700: #069; /** Logo color. */
+	--color-brand-800: #055d87;
+	--color-brand-900: #0a4c70;
+	--color-brand-950: #07304a;
 }
 
-[id] {
-	scroll-margin-block-start: 125px;
+@theme inline {
+	--color-success-50: var(--color-green-50);
+	--color-success-100: var(--color-green-100);
+	--color-success-200: var(--color-green-200);
+	--color-success-300: var(--color-green-300);
+	--color-success-400: var(--color-green-400);
+	--color-success-500: var(--color-green-500);
+	--color-success-600: var(--color-green-600);
+	--color-success-700: var(--color-green-700);
+	--color-success-800: var(--color-green-800);
+	--color-success-900: var(--color-green-900);
+	--color-success-950: var(--color-green-950);
+
+	--color-error-50: var(--color-red-50);
+	--color-error-100: var(--color-red-100);
+	--color-error-200: var(--color-red-200);
+	--color-error-300: var(--color-red-300);
+	--color-error-400: var(--color-red-400);
+	--color-error-500: var(--color-red-500);
+	--color-error-600: var(--color-red-600);
+	--color-error-700: var(--color-red-700);
+	--color-error-800: var(--color-red-800);
+	--color-error-900: var(--color-red-900);
+	--color-error-950: var(--color-red-950);
+
+	--color-warning-50: var(--color-yellow-50);
+	--color-warning-100: var(--color-yellow-100);
+	--color-warning-200: var(--color-yellow-200);
+	--color-warning-300: var(--color-yellow-300);
+	--color-warning-400: var(--color-yellow-400);
+	--color-warning-500: var(--color-yellow-500);
+	--color-warning-600: var(--color-yellow-600);
+	--color-warning-700: var(--color-yellow-700);
+	--color-warning-800: var(--color-yellow-800);
+	--color-warning-900: var(--color-yellow-900);
+	--color-warning-950: var(--color-yellow-950);
+
+	--color-important-50: var(--color-blue-50);
+	--color-important-100: var(--color-blue-100);
+	--color-important-200: var(--color-blue-200);
+	--color-important-300: var(--color-blue-300);
+	--color-important-400: var(--color-blue-400);
+	--color-important-500: var(--color-blue-500);
+	--color-important-600: var(--color-blue-600);
+	--color-important-700: var(--color-blue-700);
+	--color-important-800: var(--color-blue-800);
+	--color-important-900: var(--color-blue-900);
+	--color-important-950: var(--color-blue-950);
 }
 
-[hidden] {
-	display: none !important;
+@layer base {
+	:root {
+		--page-header-height: 100px;
+		--size-content: 720px;
+		--content-layout: 1fr 720px 1fr;
+	}
 }
 
-input[type="search"]::-webkit-search-decoration {
-	display: none;
+@theme {
+	--shadow-sm: rgb(0 0 0 / 8%) 0px 2px 8px 0px;
+	--shadow-md: rgb(0 0 0 / 8%) 0px 5px 15px 0px;
+	--shadow-lg: rgb(0 0 0 / 12%) 0px 10px 35px 0px;
 }
 
-input[type="search"]::-webkit-search-cancel-button {
-	display: none;
+@theme inline {
+	--font-body: var(--_font-body, var(--default-font-family));
+	--font-code: var(--_font-code, var(--default-mono-font-family));
 }
 
-input[type="search"]::-webkit-search-results-button {
-	display: none;
+@layer utilities {
+	.prose {
+		max-width: none;
+		overflow-wrap: break-word;
+
+		/** Don't add backticks around inline `code`. */
+		code {
+			&::before {
+				content: unset;
+			}
+
+			&::after {
+				content: unset;
+			}
+		}
+
+		/** Don't add quotes around `blockquote`. */
+		& blockquote {
+			& p:first-of-type::before {
+				content: unset;
+			}
+
+			& p:last-of-type::after {
+				content: unset;
+			}
+		}
+
+		& a:focus {
+			outline: none;
+		}
+
+		& a:focus-visible {
+			border-radius: var(--rounded-sm);
+			color: var(--color-brand-600);
+			box-shadow:
+				#fff 0 0 0 2px,
+				var(--color-brand-600) 0 0 0 5px;
+		}
+
+		& figcaption {
+			& > p:first-child {
+				margin-top: 0;
+			}
+
+			& > p:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		& pre {
+			/** Match `poimandres` theme. */
+			background-color: #1b1e28;
+		}
+
+		& strong {
+			color: inherit;
+		}
+
+		& h2 {
+			font-weight: var(--font-weight-bold);
+			font-size: var(--text-2xl);
+		}
+
+		& h3 {
+			font-weight: var(--font-weight-bold);
+			font-size: var(--text-xl);
+		}
+
+		& h4 {
+			font-weight: var(--font-weight-bold);
+			font-size: var(--text-lg);
+		}
+
+		& h5 {
+			font-weight: var(--font-weight-bold);
+			font-size: var(--text-base);
+		}
+
+		& h6 {
+			font-style: italic;
+			font-size: var(--text-base);
+		}
+
+		& .no-list {
+			padding-left: 0;
+			list-style: none;
+
+			/* stylelint-disable-next-line no-descending-specificity */
+			& p {
+				margin-top: 0.5em;
+				margin-bottom: 0.5em;
+			}
+		}
+
+		/** Mermaid diagrams. */
+		& svg[role~="graphics-document"] {
+			margin-inline: auto;
+			margin-block: 1.5rem;
+		}
+	}
 }
 
-input[type="search"]::-webkit-search-results-decoration {
-	display: none;
+@layer base {
+	:root {
+		background-color: var(--color-background-base);
+		color: var(--color-text-strong);
+		font-family: var(--font-body);
+		text-rendering: optimizeLegibility;
+		-webkit-tap-highlight-color: transparent;
+		text-size-adjust: none;
+	}
+
+	:root,
+	body {
+		block-size: 100%;
+	}
+
+	[id] {
+		scroll-margin-block-start: 125px;
+	}
+
+	[hidden] {
+		display: none !important;
+	}
+
+	input[type="search"]::-webkit-search-decoration {
+		display: none;
+	}
+
+	input[type="search"]::-webkit-search-cancel-button {
+		display: none;
+	}
+
+	input[type="search"]::-webkit-search-results-button {
+		display: none;
+	}
+
+	input[type="search"]::-webkit-search-results-decoration {
+		display: none;
+	}
 }

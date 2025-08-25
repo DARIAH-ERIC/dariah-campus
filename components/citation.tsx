@@ -17,7 +17,7 @@ interface CitationProps {
 	version: string;
 }
 
-export function Citation(props: CitationProps): ReactNode {
+export function Citation(props: Readonly<CitationProps>): ReactNode {
 	const {
 		authors,
 		contentType,
@@ -56,7 +56,7 @@ export function Citation(props: CitationProps): ReactNode {
 
 	return (
 		<div className="space-y-1.5">
-			<h2 className="text-xs font-bold uppercase tracking-wide text-neutral-600">{t("cite-as")}</h2>
+			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("cite-as")}</h2>
 			<p>{citation}</p>
 			<CitationCopyButton citation={citation}>{t("copy-citation")}</CitationCopyButton>
 		</div>

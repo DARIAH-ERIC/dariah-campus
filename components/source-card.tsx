@@ -5,14 +5,14 @@ import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 
 interface SearchCardProps {
-	content: string;
 	count: string;
 	href: string;
-	image: { src: string; width: number; height: number };
+	image: { src: string; height: number; width: number };
 	name: string;
+	content: ReactNode;
 }
 
-export function SourceCard(props: SearchCardProps): ReactNode {
+export function SourceCard(props: Readonly<SearchCardProps>): ReactNode {
 	const { content, count, href, image, name } = props;
 
 	return (

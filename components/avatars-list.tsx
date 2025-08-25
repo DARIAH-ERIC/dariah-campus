@@ -1,14 +1,19 @@
 import type { ReactNode } from "react";
 
 import { Image } from "@/components/image";
-import { maxAvatars } from "@/config/content.config";
+
+const maxAvatars = 3;
 
 interface AvatarsListProps {
-	avatars: Array<{ id: string; name: string; image: string }>;
+	avatars: Array<{
+		id: string;
+		name: string;
+		image: { src: string; height: number; width: number };
+	}>;
 	label: string;
 }
 
-export function AvatarsList(props: AvatarsListProps): ReactNode {
+export function AvatarsList(props: Readonly<AvatarsListProps>): ReactNode {
 	const { avatars, label } = props;
 
 	return (

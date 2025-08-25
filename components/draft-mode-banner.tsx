@@ -1,0 +1,29 @@
+import { draftMode } from "next/headers";
+import { getTranslations } from "next-intl/server";
+import type { ReactNode } from "react";
+
+import { Link } from "@/components/link";
+
+export async function DraftModeBanner(): Promise<ReactNode> {
+	const t = await getTranslations("DraftModeBanner");
+
+	const draft = await draftMode();
+	const isDraftModeEnabled = draft.isEnabled;
+
+	if (!isDraftModeEnabled) {
+		return null;
+	}
+
+	return (
+		<aside className="fixed inset-x-0 bottom-0 z-10 flex justify-between bg-amber-700 px-4 py-2 font-medium text-white">
+			{t("enabled")}
+			<Link
+				className="underline underline-offset-4 hover:no-underline"
+				href="/api/preview/disable"
+				prefetch={false}
+			>
+				{t("disable")}
+			</Link>
+		</aside>
+	);
+}

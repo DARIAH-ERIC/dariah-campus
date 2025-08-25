@@ -1,54 +1,36 @@
-import createBundleAnalyzer from "@next/bundle-analyzer";
 import localesPlugin from "@react-aria/optimize-locales-plugin";
-import type { NextConfig } from "next";
-import createI18nPlugin from "next-intl/plugin";
+import type { NextConfig as Config } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
-import { env } from "@/config/env.config";
 import _redirects from "@/public/redirects.json";
 import _redirectsIds from "@/public/redirects-ids.json";
 
-const config: NextConfig = {
-	/** Compression should be handled by nginx reverse proxy. */
+import { env } from "./config/env.config";
+
+const config: Config = {
+	allowedDevOrigins: ["127.0.0.1"],
+	/** Compression should be handled by the `nginx` reverse proxy. */
 	compress: false,
 	eslint: {
-		dirs: [process.cwd()],
 		ignoreDuringBuilds: true,
 	},
-	// experimental: {
-	// 	dynamicIO: true,
-	// 	ppr: true,
-	// },
+	experimental: {
+		browserDebugInfoInTerminal: true,
+		globalNotFound: true,
+		optimizeRouterScrolling: true,
+		reactCompiler: true,
+	},
 	headers() {
-		const headers: Awaited<ReturnType<NonNullable<NextConfig["headers"]>>> = [
-			/** @see https://nextjs.org/docs/app/building-your-application/deploying#streaming-and-suspense */
-			{
-				source: "/:path*{/}?",
-				headers: [
-					{
-						key: "X-Accel-Buffering",
-						value: "no",
-					},
-				],
-			},
+		const headers: Awaited<ReturnType<NonNullable<Config["headers"]>>> = [
+			/** @see https://nextjs.org/docs/app/guides/self-hosting#streaming-and-suspense */
+			{ source: "/:path*{/}?", headers: [{ key: "x-accel-buffering", value: "no" }] },
 		];
 
 		return Promise.resolve(headers);
 	},
-	logging: {
-		fetches: {
-			fullUrl: true,
-		},
-	},
 	output: env.BUILD_MODE,
-	outputFileTracingExcludes: {
-		"**/*": [
-			"./content/**/*",
-			"./public/assets/content/**/*",
-			"./node_modules/.pnpm/@shikijs+langs/**/*",
-		],
-	},
 	redirects() {
-		const redirects: Awaited<ReturnType<NonNullable<NextConfig["redirects"]>>> = [
+		const redirects: Awaited<ReturnType<NonNullable<Config["redirects"]>>> = [
 			{
 				source: "/admin",
 				destination: "/keystatic",
@@ -72,7 +54,7 @@ const config: NextConfig = {
 		return Promise.resolve(redirects);
 	},
 	rewrites() {
-		const rewrites: Awaited<ReturnType<NonNullable<NextConfig["rewrites"]>>> = [
+		const rewrites: Awaited<ReturnType<NonNullable<Config["rewrites"]>>> = [
 			{
 				source: "/documentation",
 				destination: "/documentation/about",
@@ -81,26 +63,16 @@ const config: NextConfig = {
 
 		return Promise.resolve(rewrites);
 	},
+	typedRoutes: true,
 	typescript: {
 		ignoreBuildErrors: true,
 	},
 	webpack(config, { isServer }) {
-		/**
-		 * @see https://react-spectrum.adobe.com/react-aria/ssr.html#nextjs-app-router
-		 */
+		// TODO: This does not work with turbopack yet.
+		/** @see https://react-spectrum.adobe.com/react-aria/ssr.html#nextjs-app-router */
 		if (!isServer) {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
 			config.plugins.push(localesPlugin.webpack({ locales: [] }));
-		}
-
-		/**
-		 * Avoid bundling `playwright`, which is needed by `rehype-mermaid`.
-		 *
-		 * @see https://github.com/microsoft/playwright/issues/33031
-		 */
-		if (isServer) {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-			config.externals.push("playwright-core");
 		}
 
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-return
@@ -108,14 +80,13 @@ const config: NextConfig = {
 	},
 };
 
-const plugins: Array<(config: NextConfig) => NextConfig> = [
-	createBundleAnalyzer({ enabled: env.BUNDLE_ANALYZER === "enabled" }),
-	createI18nPlugin({
+const plugins: Array<(config: Config) => Config> = [
+	createNextIntlPlugin({
 		experimental: {
-			/** @see https://v4.next-intl.dev/docs/workflows/typescript#messages-arguments */
+			/** @see https://next-intl.dev/docs/workflows/typescript#messages-arguments */
 			createMessagesDeclaration: ["./content/en/metadata/index.json", "./messages/en.json"],
 		},
-		requestConfig: "./lib/i18n/get-request-config.ts",
+		requestConfig: "./lib/i18n/request.ts",
 	}),
 ];
 

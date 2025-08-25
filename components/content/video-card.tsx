@@ -2,9 +2,9 @@ import { PlayCircleIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { LightBox, LightBoxOverlay, LightboxTrigger } from "@/components/content/lightbox";
-import { ServerImage as Image } from "@/components/server-image";
+import { Image } from "@/components/image";
 import type { VideoProvider } from "@/lib/content/options";
-import { createVideoUrl } from "@/lib/keystatic/create-video-url";
+import { createVideoUrl } from "@/lib/navigation/create-video-url";
 
 interface VideoCardProps {
 	id: string;
@@ -15,7 +15,7 @@ interface VideoCardProps {
 	title: string;
 }
 
-export function VideoCard(props: VideoCardProps): ReactNode {
+export function VideoCard(props: Readonly<VideoCardProps>): ReactNode {
 	const { id, image, provider, startTime, subtitle, title } = props;
 
 	const url = createVideoUrl(provider, id, startTime);

@@ -4,6 +4,7 @@
 declare const messages: {
 	"title": "DARIAH-Campus",
 	"description": "Discovery layer and hosting platform for DARIAH learning resources.",
+	"creator": "DARIAH-EU",
 	"twitter": {
 		"creator": "@dariaheu",
 		"site": "@dariaheu"

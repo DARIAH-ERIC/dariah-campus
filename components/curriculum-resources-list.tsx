@@ -4,15 +4,15 @@ import { cn } from "@acdh-oeaw/style-variants";
 import type { ReactNode } from "react";
 
 import { Link } from "@/components/link";
-import { useTableOfContentsHighlight } from "@/lib/content/use-table-of-contents-highlight";
-import { createHref } from "@/lib/create-href";
+import { useTableOfContentsHighlight } from "@/lib/hooks/use-table-of-contents-highlight";
+import { createHref } from "@/lib/navigation/create-href";
 
 interface CurriculumResourcesListProps {
 	label: ReactNode;
 	resources: Array<{ id: string; summary: { title: string }; title: string }>;
 }
 
-export function CurriculumResourcesList(props: CurriculumResourcesListProps) {
+export function CurriculumResourcesList(props: Readonly<CurriculumResourcesListProps>): ReactNode {
 	const { label, resources } = props;
 
 	const highlightId = useTableOfContentsHighlight();
@@ -23,7 +23,7 @@ export function CurriculumResourcesList(props: CurriculumResourcesListProps) {
 
 	return (
 		<nav aria-labelledby="curriculum-list" className="w-full space-y-2">
-			<h2 className="text-xs font-bold uppercase tracking-wide text-neutral-600" id={id}>
+			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id={id}>
 				{label}
 			</h2>
 			<ol className="space-y-2">

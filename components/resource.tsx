@@ -3,31 +3,33 @@ import { PencilIcon } from "lucide-react";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
 import { Attachments } from "@/components/attachments";
+import { Image } from "@/components/image";
 import { Links } from "@/components/links";
 import { Organisations } from "@/components/organisations";
 import { PageTitle } from "@/components/page-title";
 import { People } from "@/components/people";
-import { ServerImage as Image } from "@/components/server-image";
 import { SocialMedia } from "@/components/social-media";
 import { SocialMediaShareLinks } from "@/components/social-media-share-links";
 import { Tags } from "@/components/tags";
 import { Translations } from "@/components/translations";
 import type { SocialMediaKind } from "@/lib/content/options";
-import { createFullUrl } from "@/lib/create-full-url";
-import { getLanguage } from "@/lib/i18n/get-language";
+import { getIntlLanguage } from "@/lib/i18n/locales";
+import { createFullUrl } from "@/lib/navigation/create-full-url";
 
 interface ResourceProps {
 	attachments?: Array<{ label: string; file: string }>;
-	authors: Array<{ id: string; image: string; name: string }>;
+	authors: Array<{
+		id: string;
+		image: { src: string; height: number; width: number };
+		name: string;
+	}>;
 	children: ReactNode;
 	collection: string;
-	// editUrl: string;
+	href: string;
 	endDate?: Date;
-	featuredImage?: string | null;
+	featuredImage?: { src: string; height: number; width: number } | null;
 	id: string;
-	// lastUpdatedAt: Date;
 	links?: Array<{ label: string; href: string }>;
 	location?: string;
 	organisations?: ReadonlyArray<{ name: string; url: string; logo: string }>;
@@ -35,15 +37,16 @@ interface ResourceProps {
 	startDate?: Date;
 	tags: Array<{ id: string; name: string }>;
 	title: string;
-	translations: Array<{ id: string; collection: string; title: string; locale: string }>;
+	translations: Array<{ id: string; href: string; title: string; locale: string }>;
 }
 
-export function Resource(props: ResourceProps): ReactNode {
+export function Resource(props: Readonly<ResourceProps>): ReactNode {
 	const {
 		attachments = [],
 		authors,
 		children,
 		collection,
+		href: _href,
 		endDate,
 		featuredImage,
 		id,
@@ -61,16 +64,16 @@ export function Resource(props: ResourceProps): ReactNode {
 	const t = useTranslations("Resource");
 	const format = useFormatter();
 
-	const href = String(createFullUrl({ pathname: createResourceUrl({ id, collection }) }));
+	const href = String(createFullUrl({ pathname: _href }));
 
 	return (
-		<article className="mx-auto w-full max-w-content space-y-10">
+		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
 			<header className="space-y-10">
 				<PageTitle>{title}</PageTitle>
 				<div className="space-y-6 border-y py-10 2xl:hidden">
-					{location ? (
+					{location != null ? (
 						<div className="flex flex-col gap-y-2 text-sm text-neutral-500">
-							<div className="text-xs font-bold uppercase tracking-wide text-neutral-600">
+							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">
 								{t("location")}
 							</div>
 							<div>{location}</div>
@@ -78,7 +81,7 @@ export function Resource(props: ResourceProps): ReactNode {
 					) : null}
 					{startDate ? (
 						<div className="flex flex-col gap-y-2 text-sm text-neutral-500">
-							<div className="text-xs font-bold uppercase tracking-wide text-neutral-600">
+							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">
 								{t("date")}
 							</div>
 							<div>
@@ -111,16 +114,10 @@ export function Resource(props: ResourceProps): ReactNode {
 			</div>
 			<footer className="pt-2">
 				<SocialMediaShareLinks href={href} title={title} />
-				{/* <p className="text-sm text-right text-neutral-500">
-					<span>{t("last-updated-at")}: </span>
-					<time dateTime={lastUpdatedAt}>
-						{format.dateTime(lastUpdatedAt)}
-					</time>
-				</p> */}
 				<div className="flex justify-end text-right">
 					<a
 						className="inline-flex items-center gap-x-1.5 text-right text-sm text-brand-700 transition hover:text-brand-800 hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-800"
-						href={`/keystatic/branch/main/collection/${encodeURIComponent(withI18nPrefix(collection, getLanguage(locale)))}/item/${encodeURIComponent(id)}`}
+						href={`/keystatic/branch/main/collection/${encodeURIComponent(withI18nPrefix(collection, getIntlLanguage(locale)))}/item/${encodeURIComponent(id)}`}
 						target="_blank"
 					>
 						<PencilIcon className="size-4 shrink-0" />
