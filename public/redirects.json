@@ -1324,6 +1324,11 @@
 			"source": "/resource/posts/formal-ontologies-a-complete-novices-guide",
 			"destination": "/resources/external/formal-ontologies-a-complete-novices-guide",
 			"permanent": true
+		},
+		{
+			"source": "/sources/acdh-ch",
+			"destination": "/sources/acdh",
+			"permanent": false
 		}
 	]
 }
