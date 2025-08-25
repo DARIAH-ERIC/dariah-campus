@@ -77,7 +77,7 @@ export function SearchFilters(props: SearchFiltersProps): ReactNode {
 					filterLabel={tagsFilterLabel}
 					filterPlaceholder={filterPlaceholder}
 					getLabel={(id: string) => {
-						return tagsById.get(id)!.name;
+						return tagsById.get(id)?.name ?? "Unknown";
 					}}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}
@@ -111,7 +111,7 @@ export function SearchFilters(props: SearchFiltersProps): ReactNode {
 					filterLabel={peopleFilterLabel}
 					filterPlaceholder={filterPlaceholder}
 					getLabel={(id: string) => {
-						return peopleById.get(id)!.name;
+						return peopleById.get(id)?.name ?? "Unknown";
 					}}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}
@@ -128,7 +128,7 @@ export function SearchFilters(props: SearchFiltersProps): ReactNode {
 					filterLabel={sourcesFilterLabel}
 					filterPlaceholder={filterPlaceholder}
 					getLabel={(id: string) => {
-						return sourcesById.get(id)!.name;
+						return sourcesById.get(id)?.name ?? "Unknown";
 					}}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}
