@@ -27,8 +27,8 @@ export default function SearchPage(): ReactNode {
 	const t = useTranslations("SearchPage");
 
 	/**
-	 * Ensure `content` fields are omitted, which are function component and cannot be passed through
-	 * the server-client serialization boundary.
+	 * Ensure `content` fields, which are function components and cannot be passed through
+	 * the server-client serialization boundary, are omitted.
 	 */
 	const peopleById = keyByToMap(
 		client.collections.people.all().map((person) => {
