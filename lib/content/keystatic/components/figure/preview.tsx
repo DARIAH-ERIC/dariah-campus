@@ -1,6 +1,6 @@
 import { useObjectUrl, type UseObjectUrlParams } from "@acdh-oeaw/keystatic-lib/preview";
-import { cn } from "@acdh-oeaw/style-variants";
 import { NotEditable } from "@keystatic/core";
+import cn from "clsx/lite";
 import type { ReactNode } from "react";
 
 import type { FigureAlignment } from "@/lib/content/options";

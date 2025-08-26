@@ -2,7 +2,7 @@
 
 import { isNonEmptyArray } from "@acdh-oeaw/lib";
 import type { TableOfContents as TableOfContentsTree } from "@acdh-oeaw/mdx-lib";
-import { cn } from "@acdh-oeaw/style-variants";
+import cn from "clsx/lite";
 import { ChevronRightIcon } from "lucide-react";
 import type { ReactNode } from "react";
 

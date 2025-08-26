@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@acdh-oeaw/style-variants";
+import cn from "clsx/lite";
 import { FilterIcon, XIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { Button, Dialog, DialogTrigger, Modal, ModalOverlay } from "react-aria-components";

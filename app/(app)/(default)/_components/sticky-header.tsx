@@ -7,7 +7,7 @@
  * @see https://ryanmulligan.dev/blog/sticky-header-scroll-shadow/
  */
 
-import { cn } from "@acdh-oeaw/style-variants";
+import cn from "clsx/lite";
 import { Fragment, type ReactNode, useEffect, useRef, useState } from "react";
 
 interface StickyHeaderProps {

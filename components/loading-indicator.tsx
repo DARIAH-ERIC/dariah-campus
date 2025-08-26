@@ -1,5 +1,5 @@
-import { cn } from "@acdh-oeaw/style-variants";
 import type { AriaLabelingProps, DOMProps } from "@react-types/shared";
+import cn from "clsx/lite";
 import { Loader2Icon } from "lucide-react";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 

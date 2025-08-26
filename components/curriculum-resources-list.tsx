@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@acdh-oeaw/style-variants";
+import cn from "clsx/lite";
 import type { ReactNode } from "react";
 
 import { Link } from "@/components/link";
