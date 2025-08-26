@@ -302,14 +302,12 @@ export default async function PathfinderResourcePage(
 						resources={related.map((id) => {
 							const resource = client.collections.resources.get(id);
 							assert(resource, `Missing resource "${id}".`);
-							const contentType = resource.metadata["content-type"];
 
 							return {
-								collection: `resources-${resource.kind}`,
 								href: resource.href,
-								contentType,
+								contentType: resource.metadata["content-type"],
 								id: resource.id,
-								title,
+								title: resource.metadata.title,
 							};
 						})}
 					/>

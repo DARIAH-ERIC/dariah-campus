@@ -43,9 +43,7 @@
 	"scss.validate": false,
 	"search.exclude": {
 		".content/**": true,
-		".next/**": true,
-		"content/**": true,
-		"public/**": true
+		".next/**": true
 	},
 	"stylelint.enable": true,
 	"stylelint.snippet": ["css", "postcss", "tailwindcss"],

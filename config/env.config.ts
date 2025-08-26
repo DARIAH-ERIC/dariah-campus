@@ -57,9 +57,11 @@ const result = createEnv({
 			const schema = v.object({
 				NEXT_PUBLIC_APP_BASE_URL: v.optional(
 					v.pipe(v.string(), v.url()),
-					process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL != null
-						? `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
-						: undefined,
+					`https://${String(process.env.NEXT_PUBLIC_VERCEL_URL)}`,
+				),
+				NEXT_PUBLIC_APP_PRODUCTION_BASE_URL: v.optional(
+					v.pipe(v.string(), v.url()),
+					`https://${String(process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL)}`,
 				),
 				NEXT_PUBLIC_BOTS: v.optional(v.picklist(["disabled", "enabled"]), "disabled"),
 				NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: v.optional(v.pipe(v.string(), v.nonEmpty())),
@@ -116,6 +118,7 @@ const result = createEnv({
 		KEYSTATIC_GITHUB_CLIENT_SECRET: process.env.KEYSTATIC_GITHUB_CLIENT_SECRET,
 		KEYSTATIC_SECRET: process.env.KEYSTATIC_SECRET,
 		NEXT_PUBLIC_APP_BASE_URL: process.env.NEXT_PUBLIC_APP_BASE_URL,
+		NEXT_PUBLIC_APP_PRODUCTION_BASE_URL: process.env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
 		NEXT_PUBLIC_BOTS: process.env.NEXT_PUBLIC_BOTS,
 		NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
 		NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG,

@@ -1,4 +1,5 @@
 import { withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
+import { createUrl } from "@acdh-oeaw/lib";
 import { PencilIcon } from "lucide-react";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
@@ -13,6 +14,7 @@ import { SocialMedia } from "@/components/social-media";
 import { SocialMediaShareLinks } from "@/components/social-media-share-links";
 import { Tags } from "@/components/tags";
 import { Translations } from "@/components/translations";
+import { env } from "@/config/env.config";
 import type { SocialMediaKind } from "@/lib/content/options";
 import { getIntlLanguage } from "@/lib/i18n/locales";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
@@ -117,7 +119,12 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 				<div className="flex justify-end text-right">
 					<a
 						className="inline-flex items-center gap-x-1.5 text-right text-sm text-brand-700 transition hover:text-brand-800 hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-800"
-						href={`/keystatic/branch/main/collection/${encodeURIComponent(withI18nPrefix(collection, getIntlLanguage(locale)))}/item/${encodeURIComponent(id)}`}
+						href={String(
+							createUrl({
+								baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+								pathname: `/keystatic/branch/main/collection/${encodeURIComponent(withI18nPrefix(collection, getIntlLanguage(locale)))}/item/${encodeURIComponent(id)}`,
+							}),
+						)}
 						target="_blank"
 					>
 						<PencilIcon className="size-4 shrink-0" />
