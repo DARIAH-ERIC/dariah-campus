@@ -156,6 +156,11 @@
 
 		& strong {
 			color: inherit;
+
+			/* stylelint-disable-next-line no-descending-specificity */
+			& a {
+				font-weight: inherit;
+			}
 		}
 
 		& h2 {
@@ -189,6 +194,20 @@
 
 			/* stylelint-disable-next-line no-descending-specificity */
 			& p {
+				margin-top: 0.5em;
+				margin-bottom: 0.5em;
+			}
+		}
+
+		& form :is(ul, ol) {
+			/* stylelint-disable-next-line no-descending-specificity */
+			& p {
+				margin-top: 0.5em;
+				margin-bottom: 0.5em;
+			}
+
+			& input {
+				height: 1lh;
 				margin-top: 0.5em;
 				margin-bottom: 0.5em;
 			}
