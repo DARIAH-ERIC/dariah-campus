@@ -1,7 +1,7 @@
 import { createAssetOptions, createCollection } from "@acdh-oeaw/keystatic-lib";
 import { collection, fields } from "@keystatic/core";
 
-import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
+// import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
 
 export const createSources = createCollection("/sources/", (paths, _locale) => {
 	return collection({
@@ -11,7 +11,7 @@ export const createSources = createCollection("/sources/", (paths, _locale) => {
 		slugField: "name",
 		columns: ["name"],
 		entryLayout: "form",
-		previewUrl: createPreviewUrl("/sources/{slug}"),
+		// previewUrl: createPreviewUrl("/sources/{slug}"),
 		schema: {
 			name: fields.slug({
 				name: {

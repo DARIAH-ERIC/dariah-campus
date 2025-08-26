@@ -17,7 +17,7 @@ import { createQuiz } from "@/lib/content/keystatic/components/quiz";
 import { createVideo } from "@/lib/content/keystatic/components/video";
 import { createVideoCard } from "@/lib/content/keystatic/components/video-card";
 import { readonly } from "@/lib/content/keystatic/fields/read-only";
-import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
+// import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
 import { contentLanguages, contentLicenses, contentTypes } from "@/lib/content/options";
 
 export const createResourcesExternal = createCollection("/resources/external/", (paths, locale) => {
@@ -28,7 +28,7 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 		slugField: "title",
 		columns: ["title"],
 		entryLayout: "content",
-		previewUrl: createPreviewUrl("/resources/external/{slug}"),
+		// previewUrl: createPreviewUrl("/resources/external/{slug}"),
 		schema: {
 			title: fields.slug({
 				name: {

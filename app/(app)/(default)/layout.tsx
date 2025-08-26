@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { Fragment, type ReactNode } from "react";
+import { Fragment, type ReactNode, Suspense } from "react";
 
 import { DefaultFooter } from "@/app/(app)/(default)/_components/default-footer";
 import { DefaultHeader } from "@/app/(app)/(default)/_components/default-header";
@@ -20,7 +20,9 @@ export default function DefaultLayout(props: Readonly<DefaultLayoutProps>): Reac
 		<Fragment>
 			<SkipLink href={`#${mainContentId}`}>{t("skip-link")}</SkipLink>
 
-			<DraftModeBanner />
+			<Suspense>
+				<DraftModeBanner />
+			</Suspense>
 
 			<div className="relative isolate grid min-h-full grid-rows-[auto_1fr_auto]">
 				<DefaultHeader />

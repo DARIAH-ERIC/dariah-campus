@@ -19,7 +19,7 @@ import { createLinkButton } from "@/lib/content/keystatic/components/link-button
 import { createTabs } from "@/lib/content/keystatic/components/tabs";
 import { createVideo } from "@/lib/content/keystatic/components/video";
 import { readonly } from "@/lib/content/keystatic/fields/read-only";
-import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
+// import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
 import * as validation from "@/lib/content/keystatic/validation";
 import { contentLanguages, contentLicenses, socialMediaKinds } from "@/lib/content/options";
 
@@ -31,7 +31,7 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 		slugField: "title",
 		columns: ["title"],
 		entryLayout: "form",
-		previewUrl: createPreviewUrl("/resources/events/{slug}"),
+		// previewUrl: createPreviewUrl("/resources/events/{slug}"),
 		schema: {
 			title: fields.slug({
 				name: {

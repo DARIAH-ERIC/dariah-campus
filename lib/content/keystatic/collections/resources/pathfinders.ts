@@ -19,7 +19,7 @@ import { createLinkButton } from "@/lib/content/keystatic/components/link-button
 import { createTabs } from "@/lib/content/keystatic/components/tabs";
 import { createVideo } from "@/lib/content/keystatic/components/video";
 import { readonly } from "@/lib/content/keystatic/fields/read-only";
-import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
+// import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
 import { contentLanguages, contentLicenses } from "@/lib/content/options";
 
 export const createResourcesPathfinders = createCollection(
@@ -32,7 +32,7 @@ export const createResourcesPathfinders = createCollection(
 			slugField: "title",
 			columns: ["title"],
 			entryLayout: "content",
-			previewUrl: createPreviewUrl("/resources/pathfinders/{slug}"),
+			// previewUrl: createPreviewUrl("/resources/pathfinders/{slug}"),
 			schema: {
 				title: fields.slug({
 					name: {
