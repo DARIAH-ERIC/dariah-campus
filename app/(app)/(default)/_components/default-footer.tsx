@@ -169,7 +169,7 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 				<Suspense>
 					<CopyrightNotice />
 				</Suspense>
-				&bull;
+				<span> &bull; </span>
 				<Link
 					className="rounded transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
 					href={createHref({ pathname: "/imprint" })}
