@@ -61,7 +61,7 @@ You can download the tutorial file f**rom: xxx  a**nd open it with Rstudio. The 
 
 ### R Markdown files
 
-Many different types of files can be created in Rstudio, including Python files. The filetype we will work with is .Rmd, an R Markdown file. Markdown files combine text and code, allowing you to integrate the code output, such as a graph or a table, with your report. The advantage here is that others can see both your analyses and the computational steps you took to create your output. Markdown files can be exported into various formats (pdf, Word, html), for easy sharing with others. Before exporting, you can also customize which parts of the document to show or keep hidden. For example, you can hide your code blocks, but keep their output.
+Many different types of files can be created in Rstudio, including Python files. The filetype we will work with is .Rmd, an R Markdown file. Markdown files combine text and code, allowing you to integrate the code output, such as a graph or a table, with your report. The advantage here is that others can see both your analyses and the computational steps you took to create your output. Markdown files can be exported into various formats (pdf, Word, html), for easy sharing with others. Before exporting, you can also customise which parts of the document to show or keep hidden. For example, you can hide your code blocks, but keep their output.
 
 Let's check out some functions of a Markdown file. When you have this file open in Rstudio, you will notice at the left top the options 'Source' and 'Visual' mode. The source mode reveals the code used for text layout. The visual mode is easier to use for now.
 
@@ -75,7 +75,7 @@ In this tutorial, you will find several exercises, where you are asked to adjust
 
 ## The Riddle project - exploring literary quality
 
-It is time to run our first code. In the code block below, you see lines with # in front of them as well as black text. The # 'comments' a line; treating it like text instead of code. You can easily comment and uncomment lines through placement of the hashtags. In the .rmd file, you can run a code block through pressing the green 'play' button on the top right, or through placing your cursor somewhere in the block and pressing Ctrl-Enter. The output of your code will show up directly underneath the code block.
+It is time to run our first code. In the code block below, you see lines with # in front of them as well as black text. The # 'comments' a line; treating it like text instead of code. You can easily comment and uncomment lines through placement of the hashtags. In the .rmd file, you can run a code block through pressing the green 'play' button on the top right, or through placing your cursor somewhere in the block and pressing Ctrl-Enter. The output of your code will show up directly underneath the code block. You will see some 'tidyverse\_conflicts' in that output, which we can savely ignore.
 
 ```r
 {r installing the packages}
@@ -280,7 +280,7 @@ ggplot(books)+
 
 We see that the Scandi thriller trend is present; Norwegian (NO), Danish (DK), Swedish (SE) and Icelandic (IS) books are predominantly Literary Thrillers.&#x20;
 
-For the next exercise, create a new barplot of the riddle.code.english, to see how many books have gotten each genre labelling.
+For the next exercise, create a new barplot of the riddle.code.english, to see how many books have got each genre labelling.
 
 > ```r
 > {r excercise 2: creating a ggplot}
@@ -381,7 +381,7 @@ The summary counts the number of rows in each group:
 >     349      52 
 > ```
 
-For the next exercise, we will add a new column with two labels: 'non-fiction' for books whose riddle.code.english is one of three categories, and 'fiction' for all other books. Use the structure of the code in the block 'mutate', so with the ifelse(test, yes, no).
+For the next exercise, we will add a new column with two labels: 'non-fiction' for books whose riddle.code.english is one of three categories, and 'fiction' for all other books. Use the structure of the code in the codeblock 'mutate', so with the ifelse(test, yes, no), as your blueprint for your own code.&#x20;
 
 ```r
 {r exercise 4: mutate}
@@ -390,7 +390,7 @@ riddle.code == 'Non-fiction [and more than one essay, KvDO]' |
 riddle.code == 'Non-fiction [and too old, and collection of essays, KvDO]'  | 
 riddle.code == 'Non-fiction'
 
-# you can copy the code above 
+# you can incorporate these lines into the ifelse statement of your new code 
 # the '|' means 'OR'
 
 ```
@@ -516,7 +516,9 @@ TukeyHSD(anova)
 
 ## Exporting a markdown file
 
-To end our exploration of R and the litRiddle corpus, you can try to 'Knit' the markdown file by selecting your preferred output from the dropdown menu next to the ball of yarn in the menu bar. Knitting only works when all code works; if you have not completed the exercises, there will be some code fragments that hinder the knitting. You can work around this by either 'commenting' these lines through placing a # in front of them, or by preventing the whole code block from running. This can be done by clicking on the gear icon in the right top hand of a code block, and under 'Output' select 'Show nothing (don't run code)'.
+To end our exploration of R and the litRiddle corpus, you can try to 'Knit' the markdown file by selecting your preferred output from the dropdown menu next to the ball of yarn in the menu bar. Knitting is useful when you want to share the output of your work with others, for example when you want to submit your work to a journal. You can export your file as Word, pdf, or html - and other options are available through packages, and you can tweak what to show for each code block. For example, you could preserve certain output but not show any code in your knitted document.&#x20;
+
+Knitting only works when all code works; if you have not completed the exercises, there will be some code fragments that hinder the knitting. You can work around this by either 'commenting' these lines through placing a # in front of them, or by preventing the whole code block from running. This can be done by clicking on the gear icon in the right top hand of a code block, and under 'Output' select 'Show nothing (don't run code)'.
 
 Once you have successfully knitted an output file, it will show up under the tab Files at the right-hand side of the Rstudio screen.
 
