@@ -1,11 +1,13 @@
-import { connection } from "next/server";
+// import { connection } from "next/server";
 import type { ReactNode } from "react";
 
 import { getMetadata } from "@/lib/i18n/metadata";
 
 export async function CopyrightNotice(): Promise<ReactNode> {
 	/** Ensure `new Date()` is computed at request time. */
-	await connection();
+	// TODO: Enable once we enable PPR (`cacheComponents`).
+	// Otherwise this forces every page to be dynamic.
+	// await connection();
 
 	const meta = await getMetadata();
 
