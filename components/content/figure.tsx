@@ -1,7 +1,7 @@
 import { cn } from "@acdh-oeaw/style-variants";
 import type { ReactNode } from "react";
 
-import { ServerImage as Image } from "@/components/content/server-image";
+import { Image } from "@/components/image";
 import type { FigureAlignment } from "@/lib/content/options";
 
 interface FigureProps {

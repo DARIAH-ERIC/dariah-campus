@@ -3,10 +3,10 @@ import { join } from "node:path";
 
 import { ImageResponse } from "next/og";
 
-import type { Locale } from "@/config/i18n.config";
+import type { IntlLocale } from "@/lib/i18n/locales";
 
 interface MetadataImageProps {
-	locale: Locale;
+	locale: IntlLocale;
 	size: { width: number; height: number };
 	title: string;
 }
@@ -14,17 +14,8 @@ interface MetadataImageProps {
 export async function MetadataImage(props: Readonly<MetadataImageProps>): Promise<ImageResponse> {
 	const { locale, size, title } = props;
 
-	/**
-	 * FIXME: Variable fonts are currently not supported by `satori`.
-	 *
-	 * @see https://github.com/vercel/satori/issues/162
-	 */
-	const fontPath = join(process.cwd(), "public", "assets", "fonts", "inter-semibold.ttf");
+	const fontPath = join(process.cwd(), "public", "assets", "fonts", "roboto-semibold.ttf");
 	const font = await readFile(fontPath);
-
-	// const featuredImagePath = join(process.cwd(), image);
-	// const featuredImageData = await readFile(featuredImagePath);
-	// const featuredImageSrc = Uint8Array.from(featuredImageData).buffer;
 
 	return new ImageResponse(
 		(
@@ -63,7 +54,7 @@ export async function MetadataImage(props: Readonly<MetadataImageProps>): Promis
 			fonts: [
 				{
 					data: font,
-					name: "Inter",
+					name: "Roboto",
 					style: "normal",
 					weight: 600,
 				},

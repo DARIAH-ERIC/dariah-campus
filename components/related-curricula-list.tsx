@@ -5,10 +5,10 @@ import { ContentTypeIcon } from "@/components/content-type-icon";
 import { Link } from "@/components/link";
 
 interface RelatedCurriculaListProps {
-	curricula: Array<{ id: string; title: string }>;
+	curricula: Array<{ id: string; title: string; href: string }>;
 }
 
-export function RelatedCurriculaList(props: RelatedCurriculaListProps): ReactNode {
+export function RelatedCurriculaList(props: Readonly<RelatedCurriculaListProps>): ReactNode {
 	const { curricula } = props;
 
 	const t = useTranslations("RelatedCurriculaList");
@@ -20,16 +20,14 @@ export function RelatedCurriculaList(props: RelatedCurriculaListProps): ReactNod
 	return (
 		<nav
 			aria-labelledby={id}
-			className="mx-auto mb-12 w-full max-w-content space-y-3 border-t border-neutral-200 py-12"
+			className="mx-auto mb-12 w-full max-w-(--size-content) space-y-3 border-t border-neutral-200 py-12"
 		>
 			<h2 className="text-2xl font-bold" id={id}>
 				{t("label")}
 			</h2>
 			<ul className="flex flex-col gap-y-4">
 				{curricula.map((curriculum) => {
-					const { id, title } = curriculum;
-
-					const href = `/curricula/${id}`;
+					const { id, title, href } = curriculum;
 
 					return (
 						<li key={id}>

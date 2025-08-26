@@ -1,17 +1,21 @@
 import type { ReactNode } from "react";
 
+import { Image } from "@/components/image";
 import { Link } from "@/components/link";
-import { ServerImage as Image } from "@/components/server-image";
-import { createSearchUrl } from "@/lib/create-search-url";
+import { createSearchUrl } from "@/lib/navigation/create-search-url";
 
 const max = 4;
 
 interface PeopleProps {
-	people: Array<{ id: string; image: string; name: string }>;
+	people: Array<{
+		id: string;
+		image: { src: string; height: number; width: number };
+		name: string;
+	}>;
 	label: ReactNode;
 }
 
-export function People(props: PeopleProps): ReactNode {
+export function People(props: Readonly<PeopleProps>): ReactNode {
 	const { people, label } = props;
 
 	if (people.length === 0) {
@@ -20,7 +24,7 @@ export function People(props: PeopleProps): ReactNode {
 
 	return (
 		<dl className="grid gap-y-1 text-sm text-neutral-500">
-			<dt className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</dt>
+			<dt className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{label}</dt>
 			<dd>
 				<ul>
 					{people.slice(0, max).map((author) => {
