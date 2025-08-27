@@ -87,6 +87,8 @@ export default async function CurriculumPage(
 		};
 	});
 
+	const lastModified = curriculum.lastModified;
+
 	return (
 		<div>
 			<div className="mx-auto grid w-full max-w-screen-lg gap-y-10 px-4 py-8 xs:px-8 xs:py-16 2xl:max-w-none 2xl:grid-cols-(--content-layout) 2xl:gap-x-10 2xl:gap-y-0">
@@ -137,6 +139,7 @@ export default async function CurriculumPage(
 							return { id, image, name };
 						})}
 						featuredImage={featuredImage}
+						lastModified={lastModified}
 						resources={resources.map(({ value: id, discriminant: type }) => {
 							const resource = client.collections.resources.get(id);
 							assert(resource, `Missing resource "${id}".`);

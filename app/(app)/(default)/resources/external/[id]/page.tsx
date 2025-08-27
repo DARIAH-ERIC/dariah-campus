@@ -138,6 +138,8 @@ export default async function ExternalResourcePage(
 		};
 	});
 
+	const lastModified = resource.lastModified;
+
 	return (
 		<div>
 			<div className="mx-auto grid w-full max-w-screen-lg gap-y-10 px-4 py-8 xs:px-8 xs:py-16 2xl:max-w-none 2xl:grid-cols-(--content-layout) 2xl:gap-x-10 2xl:gap-y-0">
@@ -232,6 +234,7 @@ export default async function ExternalResourcePage(
 						featuredImage={featuredImage}
 						href={resource.href}
 						id={resource.id}
+						lastModified={lastModified}
 						tags={tags.map((id) => {
 							const tag = client.collections.tags.get(id);
 							assert(tag, `Missing tag "${id}".`);
