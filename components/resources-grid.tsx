@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 
 import { ResourcePreviewCard } from "@/components/resource-preview-card";
-import type { ContentType } from "@/lib/content/options";
+import type { ContentType } from "@/lib/content";
 import { useMasonryLayout } from "@/lib/hooks/use-masonry-layout";
 
 interface ResourcesGridProps {

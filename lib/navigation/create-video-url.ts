@@ -1,6 +1,6 @@
 import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 
-import type { VideoProvider } from "@/lib/content/options";
+import type { VideoProvider } from "@/lib/content";
 
 export function createVideoUrl(
 	provider: VideoProvider,

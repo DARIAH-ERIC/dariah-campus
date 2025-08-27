@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 import { ContentTypeIcon } from "@/components/content-type-icon";
 import { Link } from "@/components/link";
-import type { ContentType } from "@/lib/content/options";
+import type { ContentType } from "@/lib/content";
 
 interface RelatedResourcesListProps {
 	resources: Array<{

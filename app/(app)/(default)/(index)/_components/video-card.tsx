@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 import { LightBox, LightBoxOverlay, LightboxTrigger } from "@/components/content/lightbox";
 import { Image } from "@/components/image";
-import type { VideoProvider } from "@/lib/content/options";
+import type { VideoProvider } from "@/lib/content";
 import { createVideoUrl } from "@/lib/navigation/create-video-url";
 
 interface VideoCardProps {

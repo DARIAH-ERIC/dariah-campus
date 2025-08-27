@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import { useHits } from "react-instantsearch-core";
 
 import { ResourcesGrid } from "@/components/resources-grid";
-import type { ContentType } from "@/lib/content/options";
+import type { ContentType } from "@/lib/content";
 
 interface Hit {
 	collection:

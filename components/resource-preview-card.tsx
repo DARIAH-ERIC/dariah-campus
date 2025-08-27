@@ -4,7 +4,7 @@ import { AvatarsList } from "@/components/avatars-list";
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
 import { ContentTypeIcon } from "@/components/content-type-icon";
 import { Link } from "@/components/link";
-import type { ContentType } from "@/lib/content/options";
+import type { ContentType } from "@/lib/content";
 
 interface ResourcePreviewCardProps {
 	contentType: ContentType | "curriculum" | "event" | "pathfinder";

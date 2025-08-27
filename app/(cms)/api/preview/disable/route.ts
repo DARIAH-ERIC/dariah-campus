@@ -1,7 +1,7 @@
 import { cookies, draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { rewriteUrl } from "@/lib/content/keystatic/utils/rewrite-url";
+import { rewriteUrl } from "@/lib/content";
 
 export async function GET(_request: Request): Promise<Response> {
 	const request = rewriteUrl(_request);

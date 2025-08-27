@@ -19,7 +19,7 @@ const byId = keyByToMap(all, (item) => {
 	return item.id;
 });
 
-type Resource = EventResource | ExternalResource | HostedResource | PathfinderResource;
+export type Resource = EventResource | ExternalResource | HostedResource | PathfinderResource;
 
 export const client: CollectionClient<Resource> = {
 	ids() {

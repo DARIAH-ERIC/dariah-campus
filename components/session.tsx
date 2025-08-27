@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
 import { Image } from "@/components/image";
-import { client } from "@/lib/content/client";
+import { client } from "@/lib/content";
 
 interface SessionProps {
 	attachments: ReadonlyArray<{ label: string; file: string }>;

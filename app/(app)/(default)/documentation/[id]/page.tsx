@@ -8,7 +8,7 @@ import { Link } from "@/components/link";
 import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
 import { TableOfContents } from "@/components/table-of-contents";
-import { client } from "@/lib/content/client";
+import { client } from "@/lib/content";
 
 export const dynamicParams = false;
 

@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 
-import type { ContentType } from "@/lib/content/options";
+import type { ContentType } from "@/lib/content";
 
 const icons = {
 	audio: MicIcon,

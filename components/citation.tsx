@@ -3,7 +3,7 @@ import { useFormatter, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
 import { CitationCopyButton } from "@/components/citation-copy-button";
-import type { ContentType } from "@/lib/content/options";
+import type { ContentType } from "@/lib/content";
 
 interface CitationProps {
 	authors: Array<{ id: string; name: string }>;

@@ -15,8 +15,7 @@ import { VideoCard } from "@/app/(app)/(default)/(index)/_components/video-card"
 import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 import { SearchForm } from "@/components/search-form";
-import { client } from "@/lib/content/client";
-import type { IndexPage as IndexPageContent } from "@/lib/content/client/index-page";
+import { client, type IndexPage as IndexPageContent } from "@/lib/content";
 
 export function generateMetadata(): Metadata {
 	const metadata: Metadata = {

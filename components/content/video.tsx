@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import type { VideoProvider } from "@/lib/content/options";
+import type { VideoProvider } from "@/lib/content";
 import { createVideoUrl } from "@/lib/navigation/create-video-url";
 
 interface VideoProps {

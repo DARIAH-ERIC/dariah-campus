@@ -4,7 +4,7 @@ import { type Entry, rss } from "xast-util-feed";
 import { toXml } from "xast-util-to-xml";
 
 import { env } from "@/config/env.config";
-import { client } from "@/lib/content/client";
+import { client } from "@/lib/content";
 import { defaultLocale } from "@/lib/i18n/locales";
 import { getMetadata } from "@/lib/i18n/metadata";
 import { createFullUrl } from "@/lib/navigation/create-full-url";

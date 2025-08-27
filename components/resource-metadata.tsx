@@ -1,8 +1,7 @@
 import { useFormatter, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import type { ContentLanguage, ContentType } from "@/lib/content/options";
-import { resources as sharedMetadata } from "@/lib/content/shared-metadata.config";
+import { type ContentLanguage, type ContentType, sharedMetadata } from "@/lib/content";
 
 interface ResourceMetadataProps {
 	authors: Array<{ id: string; name: string }>;

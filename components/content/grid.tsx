@@ -1,7 +1,7 @@
 import { styles } from "@acdh-oeaw/style-variants";
 import type { ReactNode } from "react";
 
-import type { GridAlignment, GridLayout } from "@/lib/content/options";
+import type { GridAlignment, GridLayout } from "@/lib/content";
 
 const gridStyles = styles({
 	base: "grid content-start gap-x-8",

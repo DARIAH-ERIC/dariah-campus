@@ -3,7 +3,7 @@ import type { ImageResponse } from "next/og";
 import { getLocale } from "next-intl/server";
 
 import { MetadataImage } from "@/components/metadata-image";
-import { client } from "@/lib/content/client";
+import { client } from "@/lib/content";
 
 interface OpenGraphImageProps extends PageProps<"/resources/events/[id]"> {}
 

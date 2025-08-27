@@ -11,7 +11,7 @@ import { SearchFiltersSidePanel } from "@/app/(app)/(default)/search/_components
 import { SearchResults } from "@/app/(app)/(default)/search/_components/search-results";
 import { SearchStats } from "@/app/(app)/(default)/search/_components/search-stats";
 import { PageTitle } from "@/components/page-title";
-import { client } from "@/lib/content/client";
+import { client } from "@/lib/content";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("SearchPage");

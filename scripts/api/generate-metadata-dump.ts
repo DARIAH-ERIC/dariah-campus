@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 import { log } from "@acdh-oeaw/lib";
 
-import { client } from "@/lib/content/client";
+import { client } from "@/lib/content";
 import type { CurriculumMetadata } from "@/public/metadata/curricula.json";
 import type { ResourceMetadata } from "@/public/metadata/resources.json";
 

@@ -10,7 +10,7 @@ import { PageTitle } from "@/components/page-title";
 import { People } from "@/components/people";
 import { Tags } from "@/components/tags";
 import { Translations } from "@/components/translations";
-import type { ContentType } from "@/lib/content/options";
+import type { ContentType } from "@/lib/content";
 
 interface CurriculumProps {
 	children: ReactNode;

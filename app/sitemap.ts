@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 import type { MetadataRoute } from "next";
 
-import { client } from "@/lib/content/client";
+import { client } from "@/lib/content";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
 
 /**

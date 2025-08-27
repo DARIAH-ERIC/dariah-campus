@@ -19,7 +19,7 @@ import {
 	WebsiteIcon,
 	YouTubeIcon,
 } from "@/components/social-media-icons";
-import type { SocialMediaKind } from "@/lib/content/options";
+import type { SocialMediaKind } from "@/lib/content";
 import { useMetadata } from "@/lib/i18n/metadata";
 import { createHref } from "@/lib/navigation/create-href";
 import type { NavigationItem } from "@/lib/navigation/navigation";

@@ -111,4 +111,21 @@ export default createConfig(
 		files: ["db/**/*.ts", "lib/server/**/*.ts", "**/_lib/actions/**/*.ts", "scripts/**/*.ts"],
 		extends: [nodeConfig],
 	},
+	{
+		ignores: ["lib/content/**"],
+		rules: {
+			"no-restricted-imports": [
+				"error",
+				{
+					paths: restrictedImports.paths,
+					patterns: [
+						{
+							group: ["@/lib/content/**"],
+							message: "Please use `@/lib/content`.",
+						},
+					],
+				},
+			],
+		},
+	},
 );

@@ -10,7 +10,7 @@ import { PeopleList } from "@/components/people-list";
 import { RelatedCurriculaList } from "@/components/related-curricula-list";
 import { TagsList } from "@/components/tags-list";
 import { TranslationsList } from "@/components/translations-list";
-import { client } from "@/lib/content/client";
+import { client } from "@/lib/content";
 import { pickRandom } from "@/lib/utils/pick-random";
 
 export const dynamicParams = false;

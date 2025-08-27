@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 
-import type { CalloutKind } from "@/lib/content/options";
+import type { CalloutKind } from "@/lib/content";
 
 const icons: Record<Exclude<CalloutKind, "none">, LucideIcon> = {
 	caution: BoltIcon,

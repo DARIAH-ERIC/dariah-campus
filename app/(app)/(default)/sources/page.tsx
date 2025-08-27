@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
 import { SourcesGrid } from "@/components/sources-grid";
-import { client } from "@/lib/content/client";
+import { client } from "@/lib/content";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("SourcesPage");

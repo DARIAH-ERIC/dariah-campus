@@ -15,7 +15,7 @@ import { SocialMediaShareLinks } from "@/components/social-media-share-links";
 import { Tags } from "@/components/tags";
 import { Translations } from "@/components/translations";
 import { env } from "@/config/env.config";
-import type { SocialMediaKind } from "@/lib/content/options";
+import type { SocialMediaKind } from "@/lib/content";
 import { getIntlLanguage } from "@/lib/i18n/locales";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
 
