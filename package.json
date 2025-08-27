@@ -18,7 +18,7 @@
 		"app:build": "next build",
 		"app:dev": "next dev --turbopack",
 		"build": "run-s content:build generate:handle generate:metadata-dump app:build typesense:build",
-		"content:build": "dotenv -c -- tsx --tsconfig ./scripts/tsconfig.json ./scripts/content/generate-content.ts build",
+		"content:build": "NODE_ENV=\"production\" dotenv -c -- tsx --tsconfig ./scripts/tsconfig.json ./scripts/content/generate-content.ts build",
 		"content:dev": "dotenv -c -- tsx --tsconfig ./scripts/tsconfig.json ./scripts/content/generate-content.ts watch",
 		"dev": "concurrently --kill-others --names \"content,app\" --prefix-colors \"auto\" \"pnpm:content:dev\" \"pnpm:app:dev\"",
 		"dev:typesense:down": "docker compose --env-file=./.env.local down --volumes",
