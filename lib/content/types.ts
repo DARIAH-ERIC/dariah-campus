@@ -1,6 +1,6 @@
 import type * as runtime from "react/jsx-runtime";
 
-import type { components } from "@/lib/content/mdx-components";
+import type { components } from "@/lib/content/mdx/components";
 import type { IntlLanguage } from "@/lib/i18n/locales";
 
 declare global {

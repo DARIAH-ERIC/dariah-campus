@@ -93,6 +93,7 @@
 		"typesense": "^2.1.0",
 		"typesense-instantsearch-adapter": "^2.9.0",
 		"undici": "^7.15.0",
+		"unified": "^11.0.5",
 		"uuid": "^11.1.0",
 		"valibot": "^1.1.0",
 		"vfile": "^6.0.3",
