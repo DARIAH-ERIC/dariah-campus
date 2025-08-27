@@ -1,5 +1,6 @@
 import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
@@ -8,6 +9,7 @@ import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
 import { ResourcesGrid } from "@/components/resources-grid";
 import { client } from "@/lib/content/client";
+import { createGitHubClient } from "@/lib/content/github-client";
 
 export const dynamicParams = false;
 
@@ -27,7 +29,11 @@ export async function generateMetadata(props: Readonly<SourcePageProps>): Promis
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const source = client.collections.sources.get(id);
+	const draft = await draftMode();
+
+	const source = draft.isEnabled
+		? await (await createGitHubClient()).collections.sources.get(id)
+		: client.collections.sources.get(id);
 
 	if (source == null) {
 		notFound();
@@ -50,7 +56,11 @@ export default async function SourcePage(props: Readonly<SourcePageProps>): Prom
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const source = client.collections.sources.get(id);
+	const draft = await draftMode();
+
+	const source = draft.isEnabled
+		? await (await createGitHubClient()).collections.sources.get(id)
+		: client.collections.sources.get(id);
 
 	if (source == null) {
 		notFound();

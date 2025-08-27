@@ -1,6 +1,7 @@
 import { assert } from "@acdh-oeaw/lib";
 import { DownloadIcon } from "lucide-react";
 import type { MDXContent } from "mdx/types";
+import type { StaticImageData } from "next/image";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -22,7 +23,7 @@ interface SessionProps {
 	speakers: ReadonlyArray<{
 		id: string;
 		name: string;
-		image: { src: string; height: number; width: number };
+		image: StaticImageData | string;
 		SpeakerDescription: MDXContent;
 	}>;
 	title: string;

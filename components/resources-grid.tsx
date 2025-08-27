@@ -1,5 +1,6 @@
 "use client";
 
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { ResourcePreviewCard } from "@/components/resource-preview-card";
@@ -17,7 +18,7 @@ interface ResourcesGridProps {
 		people: Array<{
 			id: string;
 			name: string;
-			image: { src: string; height: number; width: number };
+			image: StaticImageData | string;
 		}>;
 		contentType: ContentType | "curriculum" | "event" | "pathfinder";
 		summary: { content: string; title: string };

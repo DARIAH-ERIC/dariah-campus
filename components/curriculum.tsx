@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -16,16 +17,16 @@ interface CurriculumProps {
 	children: ReactNode;
 	editors: Array<{
 		id: string;
-		image: { src: string; height: number; width: number };
+		image: StaticImageData | string;
 		name: string;
 	}>;
 	// editUrl: string;
-	featuredImage?: { src: string; height: number; width: number } | null;
+	featuredImage?: StaticImageData | string | null;
 	// lastUpdatedAt: Date;
 	resources: Array<{
 		authors: Array<{
 			id: string;
-			image: { src: string; height: number; width: number };
+			image: StaticImageData | string;
 			name: string;
 		}>;
 		kind: string;

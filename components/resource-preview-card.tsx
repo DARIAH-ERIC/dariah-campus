@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { AvatarsList } from "@/components/avatars-list";
@@ -12,7 +13,7 @@ interface ResourcePreviewCardProps {
 	locale: string;
 	people: Array<{
 		id: string;
-		image: { src: string; height: number; width: number };
+		image: StaticImageData | string;
 		name: string;
 	}>;
 	peopleLabel: string;

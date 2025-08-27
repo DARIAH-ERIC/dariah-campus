@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { Image } from "@/components/image";
@@ -8,7 +9,7 @@ interface AvatarsListProps {
 	avatars: Array<{
 		id: string;
 		name: string;
-		image: { src: string; height: number; width: number };
+		image: StaticImageData | string;
 	}>;
 	label: string;
 }

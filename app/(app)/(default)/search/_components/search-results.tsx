@@ -1,6 +1,7 @@
 "use client";
 
 import { assert } from "@acdh-oeaw/lib";
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 import { useHits } from "react-instantsearch-core";
 
@@ -29,7 +30,7 @@ interface Hit {
 
 interface SearchResultsProps {
 	peopleLabel: string;
-	peopleById: Map<string, { name: string; image: { src: string; height: number; width: number } }>;
+	peopleById: Map<string, { name: string; image: StaticImageData | string }>;
 	tagsById: Map<string, { name: string }>;
 }
 

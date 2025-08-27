@@ -1,6 +1,7 @@
 import { withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { createUrl } from "@acdh-oeaw/lib";
 import { PencilIcon } from "lucide-react";
+import type { StaticImageData } from "next/image";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -23,14 +24,14 @@ interface ResourceProps {
 	attachments?: Array<{ label: string; file: string }>;
 	authors: Array<{
 		id: string;
-		image: { src: string; height: number; width: number };
+		image: StaticImageData | string;
 		name: string;
 	}>;
 	children: ReactNode;
 	collection: string;
 	href: string;
 	endDate?: Date;
-	featuredImage?: { src: string; height: number; width: number } | null;
+	featuredImage?: StaticImageData | string | null;
 	id: string;
 	links?: Array<{ label: string; href: string }>;
 	location?: string;

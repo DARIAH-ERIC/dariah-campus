@@ -16,8 +16,8 @@ const publicFolder = join(process.cwd(), "public");
  */
 export async function getImageDimensions(
 	src: string,
-): Promise<{ height: number; width: number; src: string }> {
-	assert(src.startsWith("/"), "Images with relative paths are not supported.");
+): Promise<{ src: string; height: number; width: number } | string> {
+	assert(src.startsWith("/"), "Only images in the public folder are supported.");
 
 	const absoluteFilePath = join(publicFolder, src);
 	const dimensions = await imageSizeFromFile(absoluteFilePath);
