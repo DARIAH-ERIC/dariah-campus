@@ -5,14 +5,14 @@ import type { Root } from "hast";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
-export interface WithDraftImageUrlsOptions {
+export interface WithRemoteImageUrlsOptions {
 	baseUrl: string;
 	/** @default ["Figure"] */
 	components?: Array<string>;
 }
 
-export const withDraftImageUrls: Plugin<[WithDraftImageUrlsOptions], Root> =
-	function withDraftImageUrls(options) {
+export const withRemoteImageUrls: Plugin<[WithRemoteImageUrlsOptions], Root> =
+	function withRemoteImageUrls(options) {
 		const baseUrl = removeTrailingSlash(options.baseUrl);
 		const { components = ["Figure"] } = options;
 

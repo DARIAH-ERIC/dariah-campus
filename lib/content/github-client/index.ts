@@ -21,9 +21,9 @@ import { config } from "@/lib/content/keystatic/config";
 import { evaluate, type EvaluateOptions } from "@/lib/content/mdx/evaluate";
 import {
 	createCustomHeadingIdsPlugin,
-	createDraftImageUrlsPlugin,
 	createHeadingIdsPlugin,
 	createIframeTitlesPlugin,
+	createRemoteImageUrlsPlugin,
 	createSyntaxHighlighterPlugin,
 	createTableOfContentsPlugin,
 	createUnwrappedMdxFlowContentPlugin,
@@ -38,18 +38,19 @@ import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
 
 const locale = defaultLocale;
 
-const createEvaluateOptions = (baseUrl: string) => {
+// TODO: some resources only need a basic config
+const _createEvaluateOptions = (baseUrl: string) => {
 	return {
 		remarkPlugins: [
 			createGitHubMarkdownPlugin(),
 			createTypographicQuotesPlugin(getIntlLanguage(locale)),
 		],
 		remarkRehypeOptions: createRemarkRehypeOptions(locale),
-		rehypePlugins: [createDraftImageUrlsPlugin(baseUrl)],
+		rehypePlugins: [createRemoteImageUrlsPlugin(baseUrl)],
 	} satisfies EvaluateOptions;
 };
 
-const _createEvaluateOptions = (baseUrl: string) => {
+const createEvaluateOptions = (baseUrl: string) => {
 	return {
 		remarkPlugins: [
 			createGitHubMarkdownPlugin(),
@@ -64,7 +65,7 @@ const _createEvaluateOptions = (baseUrl: string) => {
 			createSyntaxHighlighterPlugin(),
 			createTableOfContentsPlugin(),
 			createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
-			createDraftImageUrlsPlugin(baseUrl, ["Figure"]),
+			createRemoteImageUrlsPlugin(baseUrl, ["Figure"]),
 		],
 	} satisfies EvaluateOptions;
 };
