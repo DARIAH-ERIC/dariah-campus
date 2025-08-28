@@ -203,6 +203,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 				},
 				related,
 				tableOfContents,
+				lastModified: null,
 			};
 		},
 	};
@@ -228,6 +229,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 				href,
 				metadata,
 				tableOfContents,
+				lastModified: null,
 			};
 		},
 	};
@@ -314,6 +316,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 				curricula,
 				related,
 				tableOfContents,
+				lastModified: null,
 			};
 		},
 	};
@@ -353,6 +356,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 				curricula,
 				related,
 				tableOfContents,
+				lastModified: null,
 			};
 		},
 	};
@@ -392,6 +396,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 				curricula,
 				related,
 				tableOfContents,
+				lastModified: null,
 			};
 		},
 	};
@@ -432,6 +437,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 				curricula,
 				related,
 				tableOfContents,
+				lastModified: null,
 			};
 		},
 	};
