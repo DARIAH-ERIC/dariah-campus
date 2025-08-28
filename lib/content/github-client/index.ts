@@ -21,6 +21,7 @@ import { config } from "@/lib/content/keystatic/config";
 import { evaluate, type EvaluateOptions } from "@/lib/content/mdx/evaluate";
 import {
 	createCustomHeadingIdsPlugin,
+	createDraftImageUrlsPlugin,
 	createHeadingIdsPlugin,
 	createIframeTitlesPlugin,
 	createSyntaxHighlighterPlugin,
@@ -37,31 +38,35 @@ import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
 
 const locale = defaultLocale;
 
-const evaluateOptions: EvaluateOptions = {
-	remarkPlugins: [
-		createGitHubMarkdownPlugin(),
-		createTypographicQuotesPlugin(getIntlLanguage(locale)),
-	],
-	remarkRehypeOptions: createRemarkRehypeOptions(locale),
-	rehypePlugins: [],
+const createEvaluateOptions = (baseUrl: string) => {
+	return {
+		remarkPlugins: [
+			createGitHubMarkdownPlugin(),
+			createTypographicQuotesPlugin(getIntlLanguage(locale)),
+		],
+		remarkRehypeOptions: createRemarkRehypeOptions(locale),
+		rehypePlugins: [createDraftImageUrlsPlugin(baseUrl)],
+	} satisfies EvaluateOptions;
 };
 
-const _evaluateOptions: EvaluateOptions = {
-	remarkPlugins: [
-		createGitHubMarkdownPlugin(),
-		createFootnotesPlugin(),
-		createTypographicQuotesPlugin(getIntlLanguage(locale)),
-	],
-	remarkRehypeOptions: createRemarkRehypeOptions(locale),
-	rehypePlugins: [
-		createCustomHeadingIdsPlugin(),
-		createHeadingIdsPlugin(),
-		createIframeTitlesPlugin(["Embed", "Video"]),
-		// createImageSizesPlugin(["Figure"]),
-		createSyntaxHighlighterPlugin(),
-		createTableOfContentsPlugin(),
-		createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
-	],
+const _createEvaluateOptions = (baseUrl: string) => {
+	return {
+		remarkPlugins: [
+			createGitHubMarkdownPlugin(),
+			createFootnotesPlugin(),
+			createTypographicQuotesPlugin(getIntlLanguage(locale)),
+		],
+		remarkRehypeOptions: createRemarkRehypeOptions(locale),
+		rehypePlugins: [
+			createCustomHeadingIdsPlugin(),
+			createHeadingIdsPlugin(),
+			createIframeTitlesPlugin(["Embed", "Video"]),
+			createSyntaxHighlighterPlugin(),
+			createTableOfContentsPlugin(),
+			createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
+			createDraftImageUrlsPlugin(baseUrl, ["Figure"]),
+		],
+	} satisfies EvaluateOptions;
 };
 
 export const createGitHubClient = cache(async function createGitHubClient() {
@@ -84,16 +89,18 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 		token,
 	});
 
+	const baseUrl = "https://raw.githubusercontent.com";
+	const basePath = `/${owner}/${repo}/refs/heads/${branch}`;
+
 	const createGitHubUrl = function createGitHubUrl(src: string) {
 		assert(src.startsWith("/"), "Only images in the public folder are supported.");
 
-		return String(
-			createUrl({
-				baseUrl: "https://raw.githubusercontent.com",
-				pathname: `/${owner}/${repo}/refs/heads/${branch}/public${src}`,
-			}),
-		);
+		const filePath = `/public${src}`;
+
+		return String(createUrl({ baseUrl, pathname: basePath + filePath }));
 	};
+
+	const evaluateOptions = createEvaluateOptions(String(createUrl({ baseUrl, pathname: basePath })));
 
 	const indexPage = {
 		async get(): Promise<IndexPage> {

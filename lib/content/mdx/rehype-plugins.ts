@@ -12,6 +12,8 @@ import withMermaidDiagrams from "rehype-mermaid";
 import withHeadingIds from "rehype-slug";
 import type { Pluggable } from "unified";
 
+import { withDraftImageUrls } from "@/lib/content/mdx/with-draft-image-urls";
+
 const syntaxHighlighterConfig: RehypeShikiOptions = {
 	defaultColor: "light",
 	defaultLanguage: "text",
@@ -31,12 +33,16 @@ export function createHeadingIdsPlugin() {
 	return withHeadingIds satisfies Pluggable;
 }
 
-export function createIframeTitlesPlugin(components: Array<string>) {
+export function createIframeTitlesPlugin(components?: Array<string>) {
 	return [withIframeTitles, { components }] satisfies Pluggable;
 }
 
-export function createImageSizesPlugin(components: Array<string>) {
+export function createImageSizesPlugin(components?: Array<string>) {
 	return [withImageSizes, { components }] satisfies Pluggable;
+}
+
+export function createDraftImageUrlsPlugin(baseUrl: string, components?: Array<string>) {
+	return [withDraftImageUrls, { baseUrl, components }] satisfies Pluggable;
 }
 
 // FIXME: patch `rehype-mermaid` because of missing `import.meta.resolve` in next.js
@@ -58,6 +64,6 @@ export function createTableOfContentsPlugin() {
 	return withTableOfContents satisfies Pluggable;
 }
 
-export function createUnwrappedMdxFlowContentPlugin(components: Array<string>) {
+export function createUnwrappedMdxFlowContentPlugin(components?: Array<string>) {
 	return [withUnwrappedMdxFlowContent, { components }] satisfies Pluggable;
 }
