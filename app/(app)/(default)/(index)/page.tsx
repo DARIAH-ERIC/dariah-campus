@@ -1,6 +1,7 @@
 import { assert } from "@acdh-oeaw/lib";
 import { ChevronDownIcon, SearchIcon } from "lucide-react";
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -17,6 +18,7 @@ import { Link } from "@/components/link";
 import { SearchForm } from "@/components/search-form";
 import { client } from "@/lib/content/client";
 import type { IndexPage as IndexPageContent } from "@/lib/content/client/index-page";
+import { createGitHubClient } from "@/lib/content/github-client";
 
 export function generateMetadata(): Metadata {
 	const metadata: Metadata = {
@@ -31,8 +33,12 @@ export function generateMetadata(): Metadata {
 	return metadata;
 }
 
-export default function IndexPage(): ReactNode {
-	const page = client.singletons.indexPage.get();
+export default async function IndexPage(): Promise<ReactNode> {
+	const draft = await draftMode();
+
+	const page = draft.isEnabled
+		? await (await createGitHubClient()).singletons.indexPage.get()
+		: client.singletons.indexPage.get();
 
 	return (
 		<div className="mx-auto w-full max-w-screen-lg space-y-24 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
