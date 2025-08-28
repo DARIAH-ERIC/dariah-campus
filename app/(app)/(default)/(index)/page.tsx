@@ -1,6 +1,7 @@
 import { assert } from "@acdh-oeaw/lib";
 import { ChevronDownIcon, SearchIcon } from "lucide-react";
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -17,6 +18,7 @@ import { Link } from "@/components/link";
 import { SearchForm } from "@/components/search-form";
 import { client } from "@/lib/content/client";
 import type { IndexPage as IndexPageContent } from "@/lib/content/client/index-page";
+import { createGitHubClient } from "@/lib/content/github-client";
 
 export function generateMetadata(): Metadata {
 	const metadata: Metadata = {
@@ -31,8 +33,12 @@ export function generateMetadata(): Metadata {
 	return metadata;
 }
 
-export default function IndexPage(): ReactNode {
-	const page = client.singletons.indexPage.get();
+export default async function IndexPage(): Promise<ReactNode> {
+	const draft = await draftMode();
+
+	const page = draft.isEnabled
+		? await (await createGitHubClient()).singletons.indexPage.get()
+		: client.singletons.indexPage.get();
 
 	return (
 		<div className="mx-auto w-full max-w-screen-lg space-y-24 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
@@ -58,14 +64,7 @@ function HeroSection(props: Readonly<HeroSectionProps>): ReactNode {
 
 	return (
 		<section className="flex flex-col items-center gap-y-4 text-center">
-			{/* eslint-disable-next-line @next/next/no-img-element */}
-			<img
-				alt=""
-				className="mx-auto h-48 text-brand-700 lg:h-60"
-				height={image.height}
-				src={image.src}
-				width={image.width}
-			/>
+			<Image alt="" className="mx-auto h-48 text-brand-700 lg:h-60" src={image} />
 			<h1 className="text-5xl font-bold lg:text-6xl">{title}</h1>
 			<p className="text-xl text-neutral-500 lg:text-2xl">{lead}</p>
 		</section>
@@ -122,14 +121,7 @@ function BrowseSection(props: Readonly<BrowseSectionProps>): ReactNode {
 					return (
 						<li key={index}>
 							<article className="relative flex h-full flex-col items-center gap-y-2 rounded-xl border border-neutral-200 bg-white p-12 text-center shadow-md transition focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
-								{/* eslint-disable-next-line @next/next/no-img-element */}
-								<img
-									alt=""
-									className="size-20 text-brand-700"
-									height={image.height}
-									src={image.src}
-									width={image.width}
-								/>
+								<Image alt="" className="size-20 text-brand-700" src={image} />
 								<h3 className="text-xl font-semibold">
 									<Link className="after:absolute after:inset-0 focus:outline-none" href={href}>
 										{title}

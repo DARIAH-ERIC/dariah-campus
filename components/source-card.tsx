@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
@@ -7,7 +8,7 @@ import { Link } from "@/components/link";
 interface SearchCardProps {
 	count: string;
 	href: string;
-	image: { src: string; height: number; width: number };
+	image: StaticImageData | string;
 	name: string;
 	content: ReactNode;
 }

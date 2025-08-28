@@ -1,5 +1,6 @@
 "use client";
 
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { SourceCard } from "@/components/source-card";
@@ -11,7 +12,7 @@ interface SourcesGridProps {
 		name: string;
 		count: string;
 		href: string;
-		image: { src: string; height: number; width: number };
+		image: StaticImageData | string;
 		content: ReactNode;
 	}>;
 }

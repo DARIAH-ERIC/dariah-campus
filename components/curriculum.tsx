@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -17,16 +18,16 @@ interface CurriculumProps {
 	children: ReactNode;
 	editors: Array<{
 		id: string;
-		image: { src: string; height: number; width: number };
+		image: StaticImageData | string;
 		name: string;
 	}>;
 	// editUrl: string;
-	featuredImage?: { src: string; height: number; width: number } | null;
+	featuredImage?: StaticImageData | string | null;
 	// lastUpdatedAt: Date;
 	resources: Array<{
 		authors: Array<{
 			id: string;
-			image: { src: string; height: number; width: number };
+			image: StaticImageData | string;
 			name: string;
 		}>;
 		kind: string;
@@ -54,7 +55,7 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
 			<header className="space-y-10">
 				<PageTitle>{title}</PageTitle>
-				<div className="space-y-6 border-y py-10 2xl:hidden">
+				<div className="space-y-6 border-y border-neutral-200 py-10 2xl:hidden">
 					<People label={t("editors")} people={editors} />
 					<Tags label={t("tags")} tags={tags} />
 					<Translations label={t("translations")} translations={translations} />

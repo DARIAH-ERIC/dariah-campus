@@ -54,7 +54,7 @@
 	"dependencies": {
 		"@acdh-oeaw/keystatic-lib": "^0.6.1",
 		"@acdh-oeaw/lib": "^0.3.5",
-		"@acdh-oeaw/mdx-lib": "^0.1.3",
+		"@acdh-oeaw/mdx-lib": "^0.1.4",
 		"@acdh-oeaw/style-variants": "^0.1.0",
 		"@acdh-oeaw/validate-env": "^0.1.1",
 		"@keystar/ui": "^0.7.19",
@@ -93,6 +93,8 @@
 		"typesense": "^2.1.0",
 		"typesense-instantsearch-adapter": "^2.9.0",
 		"undici": "^7.15.0",
+		"unified": "^11.0.5",
+		"unist-util-visit": "^5.0.0",
 		"uuid": "^11.1.0",
 		"valibot": "^1.1.0",
 		"vfile": "^6.0.3",

@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { Image } from "@/components/image";
@@ -9,7 +10,7 @@ const max = 4;
 interface PeopleProps {
 	people: Array<{
 		id: string;
-		image: { src: string; height: number; width: number };
+		image: StaticImageData | string;
 		name: string;
 	}>;
 	label: ReactNode;

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Fragment, type ReactNode } from "react";
@@ -10,6 +11,7 @@ import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
 import { TableOfContents } from "@/components/table-of-contents";
 import { client } from "@/lib/content/client";
+import { createGitHubClient } from "@/lib/content/github-client";
 
 export const dynamicParams = false;
 
@@ -31,7 +33,11 @@ export async function generateMetadata(props: Readonly<DocumentationPageProps>):
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const page = client.collections.documentation.get(id);
+	const draft = await draftMode();
+
+	const page = draft.isEnabled
+		? await (await createGitHubClient()).collections.documentation.get(id)
+		: client.collections.documentation.get(id);
 
 	if (page == null) {
 		notFound();
@@ -56,7 +62,11 @@ export default async function DocumentationPage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const page = client.collections.documentation.get(id);
+	const draft = await draftMode();
+
+	const page = draft.isEnabled
+		? await (await createGitHubClient()).collections.documentation.get(id)
+		: client.collections.documentation.get(id);
 
 	if (page == null) {
 		notFound();
@@ -103,7 +113,7 @@ export default async function DocumentationPage(
 				</aside>
 
 				<div className="grid min-w-0 content-start gap-y-12">
-					<div className="grid max-w-(--size-content) gap-y-4">
+					<div className="mx-auto grid max-w-(--size-content) gap-y-4">
 						<PageTitle>{title}</PageTitle>
 						<PageLead>{lead}</PageLead>
 					</div>

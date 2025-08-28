@@ -1,6 +1,7 @@
 import { withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { createUrl } from "@acdh-oeaw/lib";
 import { PencilIcon } from "lucide-react";
+import type { StaticImageData } from "next/image";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -24,14 +25,14 @@ interface ResourceProps {
 	attachments?: Array<{ label: string; file: string }>;
 	authors: Array<{
 		id: string;
-		image: { src: string; height: number; width: number };
+		image: StaticImageData | string;
 		name: string;
 	}>;
 	children: ReactNode;
 	collection: string;
 	href: string;
 	endDate?: Date;
-	featuredImage?: { src: string; height: number; width: number } | null;
+	featuredImage?: StaticImageData | string | null;
 	id: string;
 	links?: Array<{ label: string; href: string }>;
 	location?: string;
@@ -75,7 +76,7 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
 			<header className="space-y-10">
 				<PageTitle>{title}</PageTitle>
-				<div className="space-y-6 border-y py-10 2xl:hidden">
+				<div className="space-y-6 border-y border-neutral-200 py-10 2xl:hidden">
 					{location != null ? (
 						<div className="flex flex-col gap-y-2 text-sm text-neutral-500">
 							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">
