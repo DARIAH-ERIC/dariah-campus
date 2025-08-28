@@ -102,7 +102,7 @@ export default async function DocumentationPage(
 				</aside>
 
 				<div className="grid min-w-0 content-start gap-y-12">
-					<div className="grid max-w-(--size-content) gap-y-4">
+					<div className="mx-auto grid max-w-(--size-content) gap-y-4">
 						<PageTitle>{title}</PageTitle>
 						<PageLead>{lead}</PageLead>
 					</div>
