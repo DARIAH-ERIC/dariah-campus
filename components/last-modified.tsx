@@ -12,7 +12,7 @@ export function LastModified(props: Readonly<LastModifiedProps>): ReactNode {
 	const format = useFormatter();
 
 	return (
-		<span>
+		<span className="text-neutral-500">
 			{t("last-modified", {
 				date: format.dateTime(timestamp ?? Date.now(), { dateStyle: "long" }),
 			})}
