@@ -4,12 +4,25 @@ import { createCollection } from "@acdh-oeaw/content-lib";
 import type { MDXContent } from "mdx/types";
 import { VFile } from "vfile";
 
-import { compile, createBaseConfig } from "@/lib/content/mdx-compiler";
-import { defaultLocale } from "@/lib/i18n/locales";
-
 // import { reader } from "@/lib/content/keystatic/reader";
+import { compile, type CompileOptions } from "@/lib/content/mdx/compile";
+import {
+	createGitHubMarkdownPlugin,
+	createTypographicQuotesPlugin,
+} from "@/lib/content/mdx/remark-plugins";
+import { createRemarkRehypeOptions } from "@/lib/content/mdx/remark-rehype-options";
+import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
 
-const mdxConfig = createBaseConfig(defaultLocale);
+const locale = defaultLocale;
+
+const compileOptions: CompileOptions = {
+	remarkPlugins: [
+		createGitHubMarkdownPlugin(),
+		createTypographicQuotesPlugin(getIntlLanguage(locale)),
+	],
+	remarkRehypeOptions: createRemarkRehypeOptions(locale),
+	rehypePlugins: [],
+};
 
 export const legalNotice = createCollection({
 	name: "legal-notice",
@@ -22,7 +35,7 @@ export const legalNotice = createCollection({
 	},
 	async transform(content, item, context) {
 		const input = new VFile({ path: item.absoluteFilePath, value: content });
-		const output = await compile(input, mdxConfig);
+		const output = await compile(input, compileOptions);
 		const module = context.createJavaScriptImport<MDXContent>(String(output));
 
 		return {

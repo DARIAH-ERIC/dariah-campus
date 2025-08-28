@@ -136,6 +136,9 @@ importers:
       undici:
         specifier: ^7.15.0
         version: 7.15.0
+      unified:
+        specifier: ^11.0.5
+        version: 11.0.5
       uuid:
         specifier: ^11.1.0
         version: 11.1.0
