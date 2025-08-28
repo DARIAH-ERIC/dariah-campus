@@ -72,7 +72,7 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
 			<header className="space-y-10">
 				<PageTitle>{title}</PageTitle>
-				<div className="space-y-6 border-y py-10 2xl:hidden">
+				<div className="space-y-6 border-y border-neutral-200 py-10 2xl:hidden">
 					{location != null ? (
 						<div className="flex flex-col gap-y-2 text-sm text-neutral-500">
 							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">
