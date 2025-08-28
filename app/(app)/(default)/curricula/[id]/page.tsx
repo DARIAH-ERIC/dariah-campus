@@ -1,5 +1,6 @@
 import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
@@ -11,6 +12,7 @@ import { RelatedCurriculaList } from "@/components/related-curricula-list";
 import { TagsList } from "@/components/tags-list";
 import { TranslationsList } from "@/components/translations-list";
 import { client } from "@/lib/content/client";
+import { createGitHubClient } from "@/lib/content/github-client";
 import { pickRandom } from "@/lib/utils/pick-random";
 
 export const dynamicParams = false;
@@ -31,7 +33,11 @@ export async function generateMetadata(props: Readonly<CurriculumPageProps>): Pr
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const curriculum = client.collections.curricula.get(id);
+	const draft = await draftMode();
+
+	const curriculum = draft.isEnabled
+		? await (await createGitHubClient()).collections.curricula.get(id)
+		: client.collections.curricula.get(id);
 
 	if (curriculum == null) {
 		notFound();
@@ -57,7 +63,11 @@ export default async function CurriculumPage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const curriculum = client.collections.curricula.get(id);
+	const draft = await draftMode();
+
+	const curriculum = draft.isEnabled
+		? await (await createGitHubClient()).collections.curricula.get(id)
+		: client.collections.curricula.get(id);
 
 	if (curriculum == null) {
 		notFound();

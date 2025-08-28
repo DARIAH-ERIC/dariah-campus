@@ -14,7 +14,7 @@ import { createLinkButton } from "@/lib/content/keystatic/components/link-button
 import { createQuiz } from "@/lib/content/keystatic/components/quiz";
 import { createTabs } from "@/lib/content/keystatic/components/tabs";
 import { createVideo } from "@/lib/content/keystatic/components/video";
-// import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
+import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
 
 export const createDocumentation = createCollection("/documentation/", (paths, locale) => {
 	return collection({
@@ -24,7 +24,7 @@ export const createDocumentation = createCollection("/documentation/", (paths, l
 		slugField: "title",
 		columns: ["title"],
 		entryLayout: "content",
-		// previewUrl: createPreviewUrl("/documentation/{slug}"),
+		previewUrl: createPreviewUrl("/documentation/{slug}"),
 		schema: {
 			title: fields.slug({
 				name: {

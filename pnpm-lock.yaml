@@ -20,8 +20,8 @@ importers:
         specifier: ^0.3.5
         version: 0.3.5
       '@acdh-oeaw/mdx-lib':
-        specifier: ^0.1.3
-        version: 0.1.3(acorn@8.15.0)
+        specifier: ^0.1.4
+        version: 0.1.4(acorn@8.15.0)
       '@acdh-oeaw/style-variants':
         specifier: ^0.1.0
         version: 0.1.0
@@ -139,6 +139,9 @@ importers:
       unified:
         specifier: ^11.0.5
         version: 11.0.5
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
       uuid:
         specifier: ^11.1.0
         version: 11.1.0
@@ -378,8 +381,8 @@ packages:
     resolution: {integrity: sha512-4IwV5uMlO3skseYjlY12jx3OFL8IqEm5XzlYkcf2o74PXrKLWbT046YlK4uw3fmS0ZDWmuWrXuCYKnPlY+vvMQ==}
     engines: {node: '>=22', pnpm: 10.x}
 
-  '@acdh-oeaw/mdx-lib@0.1.3':
-    resolution: {integrity: sha512-82j8sAHybD97gUFmxv1XMdpTkW1UpuT+xxxNXBVXFxl33VakgB619Epj3TXHL4pf7z1as5kYumYMIy+7bFBygA==}
+  '@acdh-oeaw/mdx-lib@0.1.4':
+    resolution: {integrity: sha512-pEkDuErxA0/dk3eKO+pUTnCSoybxDiru53YtHs3Y/isksOAc4F2WRcZ9uo2oqeNzmvKxoD6hcYo4S6R+PJProg==}
     engines: {node: '>=22', pnpm: 9.x}
 
   '@acdh-oeaw/prettier-config@2.0.1':
@@ -6926,7 +6929,7 @@ snapshots:
 
   '@acdh-oeaw/lib@0.3.5': {}
 
-  '@acdh-oeaw/mdx-lib@0.1.3(acorn@8.15.0)':
+  '@acdh-oeaw/mdx-lib@0.1.4(acorn@8.15.0)':
     dependencies:
       '@acdh-oeaw/lib': 0.1.12
       '@mdx-js/mdx': 3.1.0(acorn@8.15.0)

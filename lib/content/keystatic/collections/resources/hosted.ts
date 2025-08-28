@@ -21,7 +21,7 @@ import { createTabs } from "@/lib/content/keystatic/components/tabs";
 import { createVideo } from "@/lib/content/keystatic/components/video";
 import { createVideoCard } from "@/lib/content/keystatic/components/video-card";
 import { readonly } from "@/lib/content/keystatic/fields/read-only";
-// import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
+import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
 import { contentLanguages, contentLicenses, contentTypes } from "@/lib/content/options";
 
 export const createResourcesHosted = createCollection("/resources/hosted/", (paths, locale) => {
@@ -32,7 +32,7 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 		slugField: "title",
 		columns: ["title"],
 		entryLayout: "content",
-		// previewUrl: createPreviewUrl("/resources/hosted/{slug}"),
+		previewUrl: createPreviewUrl("/resources/hosted/{slug}"),
 		schema: {
 			title: fields.slug({
 				name: {

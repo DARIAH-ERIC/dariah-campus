@@ -1,12 +1,15 @@
 import { createAssetOptions, createSingleton, withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { fields, singleton } from "@keystatic/core";
 
+import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
+
 export const createIndexPage = createSingleton("/index-page/", (paths, locale) => {
 	return singleton({
 		label: "Home page",
 		path: paths.contentPath,
 		format: { data: "json" },
 		entryLayout: "form",
+		previewUrl: createPreviewUrl("/"),
 		schema: {
 			title: fields.text({
 				label: "Title",

@@ -1,4 +1,5 @@
 import { PlayCircleIcon } from "lucide-react";
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { LightBox, LightBoxOverlay, LightboxTrigger } from "@/components/content/lightbox";
@@ -8,7 +9,7 @@ import { createVideoUrl } from "@/lib/navigation/create-video-url";
 
 interface VideoCardProps {
 	id: string;
-	image: string;
+	image: StaticImageData | string;
 	provider: VideoProvider;
 	startTime?: number;
 	subtitle?: string;

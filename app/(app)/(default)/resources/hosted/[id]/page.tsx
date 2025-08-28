@@ -1,5 +1,6 @@
 import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Fragment, type ReactNode } from "react";
@@ -16,6 +17,7 @@ import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
 import { TranslationsList } from "@/components/translations-list";
 import { client } from "@/lib/content/client";
+import { createGitHubClient } from "@/lib/content/github-client";
 import { createResourceMetadata } from "@/lib/content/utils/create-resource-metadata";
 import { getMetadata } from "@/lib/i18n/metadata";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
@@ -45,7 +47,11 @@ export async function generateMetadata(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const resource = client.collections.resourcesHosted.get(id);
+	const draft = await draftMode();
+
+	const resource = draft.isEnabled
+		? await (await createGitHubClient()).collections.resourcesHosted.get(id)
+		: client.collections.resourcesHosted.get(id);
 
 	if (resource == null) {
 		notFound();
@@ -101,7 +107,11 @@ export default async function HostedResourcePage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const resource = client.collections.resourcesHosted.get(id);
+	const draft = await draftMode();
+
+	const resource = draft.isEnabled
+		? await (await createGitHubClient()).collections.resourcesHosted.get(id)
+		: client.collections.resourcesHosted.get(id);
 
 	if (resource == null) {
 		notFound();
