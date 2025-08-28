@@ -190,7 +190,8 @@ export default async function EventResourcePage(
 					}),
 					version,
 					license: client.collections.contentLicenses.get(license)?.label ?? "Unknown",
-					image: featuredImage?.src ?? undefined,
+					image:
+						typeof featuredImage === "string" ? featuredImage : (featuredImage?.src ?? undefined),
 					publisher: {
 						"@type": "Organization",
 						name: meta.title,

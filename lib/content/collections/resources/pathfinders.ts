@@ -34,7 +34,7 @@ const compileOptions: CompileOptions = {
 	rehypePlugins: [
 		createCustomHeadingIdsPlugin(),
 		createHeadingIdsPlugin(),
-		createIframeTitlesPlugin(["Embed"]),
+		createIframeTitlesPlugin(["Embed", "Video"]),
 		createImageSizesPlugin(["Figure"]),
 		createSyntaxHighlighterPlugin(),
 		createTableOfContentsPlugin(),

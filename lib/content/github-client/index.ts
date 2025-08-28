@@ -1,12 +1,9 @@
-import "server-nodejs-only";
+import "server-only";
 
 import { assert, createUrl } from "@acdh-oeaw/lib";
 import { createGitHubReader } from "@keystatic/core/reader/github";
-import { evaluate, type ProcessorOptions } from "@mdx-js/mdx";
-import type { MDXContent } from "mdx/types";
 import { cookies } from "next/headers";
 import { cache } from "react";
-import * as runtime from "react/jsx-runtime";
 
 import { env } from "@/config/env.config";
 import { client } from "@/lib/content/client";
@@ -21,39 +18,51 @@ import type { PathfinderResource } from "@/lib/content/client/resources/pathfind
 import type { Source } from "@/lib/content/client/sources";
 import type { Tag } from "@/lib/content/client/tags";
 import { config } from "@/lib/content/keystatic/config";
-import { createBaseConfig, createFullConfig } from "@/lib/content/mdx-compiler";
-import { useMDXComponents } from "@/lib/content/mdx-components";
-import { defaultLocale } from "@/lib/i18n/locales";
+import { evaluate, type EvaluateOptions } from "@/lib/content/mdx/evaluate";
+import {
+	createCustomHeadingIdsPlugin,
+	createHeadingIdsPlugin,
+	createIframeTitlesPlugin,
+	createSyntaxHighlighterPlugin,
+	createTableOfContentsPlugin,
+	createUnwrappedMdxFlowContentPlugin,
+} from "@/lib/content/mdx/rehype-plugins";
+import {
+	createFootnotesPlugin,
+	createGitHubMarkdownPlugin,
+	createTypographicQuotesPlugin,
+} from "@/lib/content/mdx/remark-plugins";
+import { createRemarkRehypeOptions } from "@/lib/content/mdx/remark-rehype-options";
+import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
 
 const locale = defaultLocale;
-const baseConfig = createBaseConfig(locale);
-const _fullConfig = createFullConfig(locale);
 
-type CompileOptions = Pick<
-	ProcessorOptions,
-	"baseUrl" | "recmaPlugins" | "rehypePlugins" | "remarkPlugins" | "remarkRehypeOptions"
->;
-
-type MDXModule<TNamedExports = never> = TNamedExports & {
-	default: MDXContent;
+const evaluateOptions: EvaluateOptions = {
+	remarkPlugins: [
+		createGitHubMarkdownPlugin(),
+		createTypographicQuotesPlugin(getIntlLanguage(locale)),
+	],
+	remarkRehypeOptions: createRemarkRehypeOptions(locale),
+	rehypePlugins: [],
 };
 
-function compile<TNamedExports = never>(
-	value: string,
-	config: CompileOptions,
-): Promise<MDXModule<TNamedExports>> {
-	return evaluate(
-		{ value },
-		{
-			...config,
-			...runtime,
-			// baseUrl,
-			format: "mdx",
-			// @ts-expect-error FIXME: type error probably because of ReactNode return type
-			useMDXComponents,
-		},
-	) as Promise<MDXModule<TNamedExports>>;
-}
+const _evaluateOptions: EvaluateOptions = {
+	remarkPlugins: [
+		createGitHubMarkdownPlugin(),
+		createFootnotesPlugin(),
+		createTypographicQuotesPlugin(getIntlLanguage(locale)),
+	],
+	remarkRehypeOptions: createRemarkRehypeOptions(locale),
+	rehypePlugins: [
+		createCustomHeadingIdsPlugin(),
+		createHeadingIdsPlugin(),
+		createIframeTitlesPlugin(["Embed", "Video"]),
+		// createImageSizesPlugin(["Figure"]),
+		createSyntaxHighlighterPlugin(),
+		createTableOfContentsPlugin(),
+		createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
+	],
+};
 
 export const createGitHubClient = cache(async function createGitHubClient() {
 	const owner = env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_OWNER;
@@ -97,7 +106,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 
 			// TODO: p-limit for concurrency
 			for (const faq of faqSection.faq) {
-				const { default: component } = await compile(faq.content, baseConfig);
+				const { default: component } = await evaluate(faq.content, evaluateOptions);
 
 				faqs.push({ ...faq, content: component });
 			}
@@ -168,7 +177,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 			const { content, ...metadata } = data;
 
 			const href = `/curricula/${id}`;
-			const { default: component, tableOfContents } = await compile(content, baseConfig);
+			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
 			const featuredImage =
 				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
@@ -203,7 +212,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 			const { content, ...metadata } = data;
 
 			const href = `/documentation/${id}`;
-			const { default: component, tableOfContents } = await compile(content, baseConfig);
+			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
 
 			return {
 				id,
@@ -227,7 +236,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 
 			const { content, ...metadata } = data;
 
-			const { default: component } = await compile(content, baseConfig);
+			const { default: component } = await evaluate(content, evaluateOptions);
 			const image = createGitHubUrl(metadata.image);
 
 			return {
@@ -254,19 +263,19 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 			const { content, ...metadata } = data;
 
 			const href = `/resources/events/${id}`;
-			const { default: component, tableOfContents } = await compile(content, baseConfig);
+			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
 
 			const sessions = [];
 
 			// TODO: p-limit for concurrency
 			for (const session of metadata.sessions) {
-				const { default: component } = await compile(session.content, baseConfig);
+				const { default: component } = await evaluate(session.content, evaluateOptions);
 
 				const presentations = [];
 
 				// TODO: p-limit for concurrency
 				for (const presentation of session.presentations) {
-					const { default: component } = await compile(presentation.content, baseConfig);
+					const { default: component } = await evaluate(presentation.content, evaluateOptions);
 
 					presentations.push({ ...presentation, content: component });
 				}
@@ -314,7 +323,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 			const { content, ...metadata } = data;
 
 			const href = `/resources/external/${id}`;
-			const { default: component, tableOfContents } = await compile(content, baseConfig);
+			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
 			const featuredImage =
 				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
@@ -353,7 +362,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 			const { content, ...metadata } = data;
 
 			const href = `/resources/hosted/${id}`;
-			const { default: component, tableOfContents } = await compile(content, baseConfig);
+			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
 			const featuredImage =
 				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
@@ -392,7 +401,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 			const { content, ...metadata } = data;
 
 			const href = `/resources/pathfinders/${id}`;
-			const { default: component, tableOfContents } = await compile(content, baseConfig);
+			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
 			const featuredImage =
 				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
@@ -430,7 +439,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 			const { content, ...metadata } = data;
 
 			const href = `/sources/${id}`;
-			const { default: component } = await compile(content, baseConfig);
+			const { default: component } = await evaluate(content, evaluateOptions);
 			const image = createGitHubUrl(metadata.image);
 
 			// TODO: read from prebuilt client?
@@ -461,7 +470,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 
 			const { content, ...metadata } = data;
 
-			const { default: component } = await compile(content, baseConfig);
+			const { default: component } = await evaluate(content, evaluateOptions);
 
 			return {
 				id,

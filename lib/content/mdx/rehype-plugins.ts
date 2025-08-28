@@ -8,6 +8,7 @@ import {
 	withUnwrappedMdxFlowContent,
 } from "@acdh-oeaw/mdx-lib";
 import withSyntaxHighlighter, { type RehypeShikiOptions } from "@shikijs/rehype";
+import withMermaidDiagrams from "rehype-mermaid";
 import withHeadingIds from "rehype-slug";
 import type { Pluggable } from "unified";
 
@@ -36,6 +37,17 @@ export function createIframeTitlesPlugin(components: Array<string>) {
 
 export function createImageSizesPlugin(components: Array<string>) {
 	return [withImageSizes, { components }] satisfies Pluggable;
+}
+
+// FIXME: patch `rehype-mermaid` because of missing `import.meta.resolve` in next.js
+export function createMermaidDiagramsPlugin() {
+	return [
+		withMermaidDiagrams,
+		{
+			mermaidConfig: { fontFamily: '"Roboto", system-ui, sans-serif' },
+			strategy: "inline-svg",
+		},
+	] satisfies Pluggable;
 }
 
 export function createSyntaxHighlighterPlugin() {
