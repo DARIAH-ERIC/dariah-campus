@@ -306,7 +306,7 @@ export default async function EventResourcePage(
 							<Content />
 						</div>
 
-						<hr className="my-12 bg-neutral-200" />
+						<hr className="my-12 border-t border-neutral-200" />
 
 						<ol className="list-none divide-y divide-neutral-200">
 							{sessions.map((session, index) => {
