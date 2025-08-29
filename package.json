@@ -142,6 +142,7 @@
 		"lint-staged": "^16.1.5",
 		"node": "^22.18.0",
 		"npm-run-all2": "^8.0.4",
+		"playwright": "^1.55.0",
 		"prettier": "^3.6.2",
 		"schema-dts": "^1.1.5",
 		"simple-git-hooks": "^2.13.1",

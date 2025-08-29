@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
+  mermaid-isomorphic:
+    hash: ced0415bb3240ad8bfac2917519f0afc0b4ecc1b82b5f51341a677f1a05282ac
+    path: patches/mermaid-isomorphic.patch
   next:
     hash: de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624
     path: patches/next.patch
@@ -278,6 +281,9 @@ importers:
       npm-run-all2:
         specifier: ^8.0.4
         version: 8.0.4
+      playwright:
+        specifier: ^1.55.0
+        version: 1.55.0
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -13415,7 +13421,7 @@ snapshots:
 
   merge2@1.4.1: {}
 
-  mermaid-isomorphic@3.0.4(playwright@1.55.0):
+  mermaid-isomorphic@3.0.4(patch_hash=ced0415bb3240ad8bfac2917519f0afc0b4ecc1b82b5f51341a677f1a05282ac)(playwright@1.55.0):
     dependencies:
       '@fortawesome/fontawesome-free': 6.7.2
       mermaid: 11.10.1
@@ -14431,7 +14437,7 @@ snapshots:
       '@types/hast': 3.0.4
       hast-util-from-html-isomorphic: 2.0.0
       hast-util-to-text: 4.0.2
-      mermaid-isomorphic: 3.0.4(playwright@1.55.0)
+      mermaid-isomorphic: 3.0.4(patch_hash=ced0415bb3240ad8bfac2917519f0afc0b4ecc1b82b5f51341a677f1a05282ac)(playwright@1.55.0)
       mini-svg-data-uri: 1.4.4
       space-separated-tokens: 2.0.2
       unified: 11.0.5

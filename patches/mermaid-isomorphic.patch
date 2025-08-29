@@ -1,0 +1,47 @@
+diff --git a/dist/mermaid-isomorphic.js b/dist/mermaid-isomorphic.js
+index aa5dc09a5dfb58a98d3f12cd2fc473caddd97b0d..2f02621de00d4cccc6ef0dfa034ca9ffab901901 100644
+--- a/dist/mermaid-isomorphic.js
++++ b/dist/mermaid-isomorphic.js
+@@ -1,11 +1,13 @@
++import { createRequire } from 'node:module';
+ import { chromium } from 'playwright';
+-const html = import.meta.resolve('../index.html');
++const require = createRequire(import.meta.url);
++const html = require.resolve('../index.html');
+ const mermaidScript = {
+-    url: import.meta.resolve('mermaid/dist/mermaid.js')
++    url: require.resolve('mermaid/dist/mermaid.js')
+ };
+ const faStyle = {
+     // We use url, not path. If we use path, the fonts can’t be resolved.
+-    url: import.meta.resolve('@fortawesome/fontawesome-free/css/all.css')
++    url: require.resolve('@fortawesome/fontawesome-free/css/all.css')
+ };
+ /* c8 ignore start */
+ /**
+diff --git a/src/mermaid-isomorphic.ts b/src/mermaid-isomorphic.ts
+index 6e5720399c7e994855ca58adb29d73639e241172..0e845213a32b5501de3781c4c3fc6428c6a173d5 100644
+--- a/src/mermaid-isomorphic.ts
++++ b/src/mermaid-isomorphic.ts
+@@ -1,15 +1,18 @@
++import { createRequire } from 'node:module'
+ import { type Mermaid, type MermaidConfig } from 'mermaid'
+ import { type BrowserType, chromium, type LaunchOptions, type Page } from 'playwright'
+ 
++const require = createRequire(import.meta.url)
++
+ declare const mermaid: Mermaid
+ 
+-const html = import.meta.resolve('../index.html')
++const html = require.resolve('../index.html')
+ const mermaidScript = {
+-  url: import.meta.resolve('mermaid/dist/mermaid.js')
++  url: require.resolve('mermaid/dist/mermaid.js')
+ }
+ const faStyle = {
+   // We use url, not path. If we use path, the fonts can’t be resolved.
+-  url: import.meta.resolve('@fortawesome/fontawesome-free/css/all.css')
++  url: require.resolve('@fortawesome/fontawesome-free/css/all.css')
+ }
+ 
+ export interface CreateMermaidRendererOptions {
