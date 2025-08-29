@@ -19,6 +19,7 @@ import {
 	createTypographicQuotesPlugin,
 } from "@/lib/content/mdx/remark-plugins";
 import { createRemarkRehypeOptions } from "@/lib/content/mdx/remark-rehype-options";
+import { getLastModifiedTimestamp } from "@/lib/content/utils/get-last-modified-timestamp";
 import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
 
 const locale = defaultLocale;
@@ -58,11 +59,18 @@ export const documentation = createCollection({
 		const module = context.createJavaScriptImport<MDXContent>(String(output));
 		const tableOfContents = output.data.tableOfContents;
 
+		const lastModified =
+			// eslint-disable-next-line no-restricted-syntax
+			process.env.NODE_ENV === "production"
+				? await getLastModifiedTimestamp(item.absoluteFilePath)
+				: null;
+
 		return {
 			id: item.id,
 			content: module,
 			metadata,
 			tableOfContents,
+			lastModified,
 		};
 	},
 });

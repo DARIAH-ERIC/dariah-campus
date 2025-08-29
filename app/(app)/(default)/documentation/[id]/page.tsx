@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { Fragment, type ReactNode } from "react";
 
 import { FloatingTableOfContents } from "@/components/floating-table-of-contents";
+import { LastModified } from "@/components/last-modified";
 import { Link } from "@/components/link";
 import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
@@ -148,6 +149,12 @@ export default async function DocumentationPage(
 							<Content />
 						</article>
 					</div>
+
+					<footer>
+						<small>
+							<LastModified timestamp={page.lastModified} />
+						</small>
+					</footer>
 				</div>
 
 				{tableOfContents.length > 0 ? (

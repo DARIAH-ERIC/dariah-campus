@@ -6,6 +6,7 @@ import { AvatarsList } from "@/components/avatars-list";
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
 import { ContentTypeIcon } from "@/components/content-type-icon";
 import { Image } from "@/components/image";
+import { LastModified } from "@/components/last-modified";
 import { Link } from "@/components/link";
 import { PageTitle } from "@/components/page-title";
 import { People } from "@/components/people";
@@ -40,10 +41,12 @@ interface CurriculumProps {
 	tags: Array<{ id: string; name: string }>;
 	title: string;
 	translations: Array<{ id: string; href: string; title: string; locale: string }>;
+	lastModified: number | null;
 }
 
 export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
-	const { children, editors, featuredImage, resources, tags, title, translations } = props;
+	const { children, editors, featuredImage, lastModified, resources, tags, title, translations } =
+		props;
 
 	const t = useTranslations("Curriculum");
 	const _format = useFormatter();
@@ -111,7 +114,11 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 					})}
 				</ol>
 			</div>
-			<footer className="pt-2"></footer>
+			<footer className="pt-2">
+				<small>
+					<LastModified timestamp={lastModified} />
+				</small>
+			</footer>
 		</article>
 	);
 }

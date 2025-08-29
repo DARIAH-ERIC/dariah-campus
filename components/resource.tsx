@@ -7,6 +7,7 @@ import type { ReactNode } from "react";
 
 import { Attachments } from "@/components/attachments";
 import { Image } from "@/components/image";
+import { LastModified } from "@/components/last-modified";
 import { Links } from "@/components/links";
 import { Organisations } from "@/components/organisations";
 import { PageTitle } from "@/components/page-title";
@@ -41,6 +42,7 @@ interface ResourceProps {
 	tags: Array<{ id: string; name: string }>;
 	title: string;
 	translations: Array<{ id: string; href: string; title: string; locale: string }>;
+	lastModified: number | null;
 }
 
 export function Resource(props: Readonly<ResourceProps>): ReactNode {
@@ -53,6 +55,7 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 		endDate,
 		featuredImage,
 		id,
+		lastModified,
 		links = [],
 		location,
 		organisations = [],
@@ -132,6 +135,9 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 						<span className="text-right">{t("suggest-changes-to-resource")}</span>
 					</a>
 				</div>
+				<small>
+					<LastModified timestamp={lastModified} />
+				</small>
 			</footer>
 		</article>
 	);

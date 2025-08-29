@@ -20,6 +20,7 @@ import {
 } from "@/lib/content/mdx/remark-plugins";
 import { createRemarkRehypeOptions } from "@/lib/content/mdx/remark-rehype-options";
 import { getImageDimensions } from "@/lib/content/utils/get-image-dimensions";
+import { getLastModifiedTimestamp } from "@/lib/content/utils/get-last-modified-timestamp";
 import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
 
 const locale = defaultLocale;
@@ -61,6 +62,12 @@ export const curricula = createCollection({
 				? await getImageDimensions(metadata["featured-image"])
 				: null;
 
+		const lastModified =
+			// eslint-disable-next-line no-restricted-syntax
+			process.env.NODE_ENV === "production"
+				? await getLastModifiedTimestamp(item.absoluteFilePath)
+				: null;
+
 		return {
 			id: item.id,
 			content: module,
@@ -70,6 +77,7 @@ export const curricula = createCollection({
 				"featured-image": featuredImage,
 			},
 			tableOfContents,
+			lastModified,
 		};
 	},
 });
