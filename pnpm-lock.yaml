@@ -14,8 +14,8 @@ importers:
   .:
     dependencies:
       '@acdh-oeaw/keystatic-lib':
-        specifier: ^0.6.1
-        version: 0.6.1(@keystatic/core@0.5.48(next@15.5.1-canary.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
+        specifier: ^0.7.1
+        version: 0.7.1(@keystar/ui@0.7.19(next@15.5.1-canary.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@keystatic/core@0.5.48(next@15.5.1-canary.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react@19.1.1)
       '@acdh-oeaw/lib':
         specifier: ^0.3.5
         version: 0.3.5
@@ -363,11 +363,13 @@ packages:
       globals: 16.x
       typescript: 5.x
 
-  '@acdh-oeaw/keystatic-lib@0.6.1':
-    resolution: {integrity: sha512-UeyOF2uub9b284AW4IC3v9QLNjg9+nWmOIEAX7wtvhiYFj2FFj8pCcXJbUFjRIOS5K9lD0Nf6oVxvw6uqBApJw==}
-    engines: {node: '>=22', pnpm: 9.x}
+  '@acdh-oeaw/keystatic-lib@0.7.1':
+    resolution: {integrity: sha512-MYDNm2lGLZLs1DHxORhDzqKGWNTNOTliNE6acf/SSSMS67P1NIh4Zn56Hr/CXxKqCeRTpT2iDU6CYnqCpxz2tA==}
+    engines: {node: 22.x || 24.x}
     peerDependencies:
+      '@keystar/ui': 0.x
       '@keystatic/core': 0.x
+      react: 19.x
 
   '@acdh-oeaw/lib@0.1.12':
     resolution: {integrity: sha512-yNAjUxcoqvEXX+YsqWqOqCOJeFg6oYL2Q+bVdhu6LEQU1MGpcMbo7haSTX12X8UYZjIU6oWpHrZfdKZZxRH23Q==}
@@ -6917,11 +6919,13 @@ snapshots:
       - eslint-plugin-import
       - supports-color
 
-  '@acdh-oeaw/keystatic-lib@0.6.1(@keystatic/core@0.5.48(next@15.5.1-canary.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1))':
+  '@acdh-oeaw/keystatic-lib@0.7.1(@keystar/ui@0.7.19(next@15.5.1-canary.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(@keystatic/core@0.5.48(next@15.5.1-canary.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react@19.1.1)':
     dependencies:
+      '@keystar/ui': 0.7.19(next@15.5.1-canary.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@keystatic/core': 0.5.48(next@15.5.1-canary.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@sindresorhus/slugify': 2.2.1
       '@types/mdx': 2.0.13
+      react: 19.1.1
 
   '@acdh-oeaw/lib@0.1.12': {}
 
