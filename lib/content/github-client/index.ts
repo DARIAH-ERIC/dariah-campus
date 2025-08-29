@@ -291,6 +291,15 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 				sessions.push({ ...session, content: component, presentations });
 			}
 
+			const organisations = [];
+
+			// TODO: p-limit for concurrency
+			for (const organisation of metadata.organisations) {
+				const logo = createGitHubUrl(organisation.logo);
+
+				organisations.push({ ...organisation, logo });
+			}
+
 			const featuredImage =
 				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
@@ -309,6 +318,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 					...metadata,
 					"content-type": "event" as const,
 					"featured-image": featuredImage,
+					organisations,
 					sessions,
 				},
 				curricula,
