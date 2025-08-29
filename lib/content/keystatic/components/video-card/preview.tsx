@@ -9,18 +9,18 @@ import { createVideoUrl } from "@/lib/navigation/create-video-url";
 
 interface VideoCardPreviewProps {
 	id: string;
-	image: UseObjectUrlParams | null;
 	provider: VideoProvider;
+	src: UseObjectUrlParams | null;
 	startTime?: number | null;
 	subtitle?: string;
 	title: string;
 }
 
 export function VideoCardPreview(props: Readonly<VideoCardPreviewProps>): ReactNode {
-	const { id, image, provider, startTime, subtitle, title } = props;
+	const { id, provider, src, startTime, subtitle, title } = props;
 
 	const href = isNonEmptyString(id) ? String(createVideoUrl(provider, id, startTime)) : null;
-	const _src = useObjectUrl(image);
+	const _src = useObjectUrl(src);
 
 	return (
 		<figure className="rounded-xl border border-neutral-200 bg-white text-neutral-800 shadow-md">

@@ -48,9 +48,9 @@ export const indexPage = createCollection({
 
 		// TODO: p-limit for concurrency
 		for (const video of aboutSection.videos) {
-			const image = await getImageDimensions(video.image);
+			const src = await getImageDimensions(video.src);
 
-			aboutSectionVideos.push({ ...video, image });
+			aboutSectionVideos.push({ ...video, src });
 		}
 
 		const browseSection = data["browse-section"];
@@ -68,9 +68,9 @@ export const indexPage = createCollection({
 
 		// TODO: p-limit for concurrency
 		for (const video of testimonialSection.videos) {
-			const image = await getImageDimensions(video.image);
+			const src = await getImageDimensions(video.src);
 
-			testimonialSectionVideos.push({ ...video, image });
+			testimonialSectionVideos.push({ ...video, src });
 		}
 
 		const image = await getImageDimensions(data.image);

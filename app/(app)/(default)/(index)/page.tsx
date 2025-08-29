@@ -157,7 +157,7 @@ function AboutSection(props: Readonly<AboutSectionProps>): ReactNode {
 							<VideoCard
 								description={video.description}
 								id={video.id}
-								image={video.image}
+								src={video.src}
 								title={video.title}
 							/>
 						</li>
@@ -244,7 +244,7 @@ function TestimonialSection(props: Readonly<TestimonialSectionProps>): ReactNode
 							<VideoCard
 								description={video.description}
 								id={video.id}
-								image={video.image}
+								src={video.src}
 								title={video.title}
 							/>
 						</li>

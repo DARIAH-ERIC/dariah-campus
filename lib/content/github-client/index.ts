@@ -124,9 +124,9 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 
 			// TODO: p-limit for concurrency
 			for (const video of aboutSection.videos) {
-				const image = createGitHubUrl(video.image);
+				const src = createGitHubUrl(video.src);
 
-				aboutSectionVideos.push({ ...video, image });
+				aboutSectionVideos.push({ ...video, src });
 			}
 
 			const browseSection = data["browse-section"];
@@ -144,9 +144,9 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 
 			// TODO: p-limit for concurrency
 			for (const video of testimonialSection.videos) {
-				const image = createGitHubUrl(video.image);
+				const src = createGitHubUrl(video.src);
 
-				testimonialSectionVideos.push({ ...video, image });
+				testimonialSectionVideos.push({ ...video, src });
 			}
 
 			const image = createGitHubUrl(data.image);

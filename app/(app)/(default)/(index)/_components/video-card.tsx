@@ -10,14 +10,14 @@ import { createVideoUrl } from "@/lib/navigation/create-video-url";
 interface VideoCardProps {
 	description: string;
 	id: string;
-	image: StaticImageData | string;
 	provider?: VideoProvider;
+	src: StaticImageData | string;
 	startTime?: number;
 	title: string;
 }
 
 export function VideoCard(props: Readonly<VideoCardProps>): ReactNode {
-	const { description, id, image, provider = "youtube", startTime, title } = props;
+	const { description, id, provider = "youtube", src, startTime, title } = props;
 
 	const url = createVideoUrl(provider, id, startTime);
 
@@ -29,7 +29,7 @@ export function VideoCard(props: Readonly<VideoCardProps>): ReactNode {
 						alt=""
 						className="absolute inset-0 size-full object-cover"
 						sizes="800px"
-						src={image}
+						src={src}
 					/>
 				</div>
 				<figcaption>
