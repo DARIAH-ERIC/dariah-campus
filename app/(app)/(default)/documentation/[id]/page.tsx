@@ -10,7 +10,6 @@ import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
 import { TableOfContents } from "@/components/table-of-contents";
 import { client } from "@/lib/content/client";
-import { createGitHubClient } from "@/lib/content/github-client";
 
 export const dynamicParams = false;
 
@@ -35,7 +34,9 @@ export async function generateMetadata(props: Readonly<DocumentationPageProps>):
 	const draft = await draftMode();
 
 	const page = draft.isEnabled
-		? await (await createGitHubClient()).collections.documentation.get(id)
+		? await (
+				await (await import("@/lib/content/github-client")).createGitHubClient()
+			).collections.documentation.get(id)
 		: client.collections.documentation.get(id);
 
 	if (page == null) {
@@ -64,7 +65,9 @@ export default async function DocumentationPage(
 	const draft = await draftMode();
 
 	const page = draft.isEnabled
-		? await (await createGitHubClient()).collections.documentation.get(id)
+		? await (
+				await (await import("@/lib/content/github-client")).createGitHubClient()
+			).collections.documentation.get(id)
 		: client.collections.documentation.get(id);
 
 	if (page == null) {
