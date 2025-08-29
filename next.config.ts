@@ -29,6 +29,9 @@ const config: Config = {
 		return Promise.resolve(headers);
 	},
 	output: env.BUILD_MODE,
+	outputFileTracingIncludes: {
+		"**/*": ["./public/assets/fonts/*.ttf"],
+	},
 	redirects() {
 		const redirects: Awaited<ReturnType<NonNullable<Config["redirects"]>>> = [
 			{
