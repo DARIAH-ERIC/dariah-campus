@@ -61,7 +61,7 @@ const all = Array.from(collection.values())
 		};
 	})
 	.sort((a, z) => {
-		return a.metadata["publication-date"].localeCompare(z.metadata["publication-date"]);
+		return z.metadata["publication-date"].localeCompare(a.metadata["publication-date"]);
 	});
 
 const byId = keyByToMap(all, (item) => {
