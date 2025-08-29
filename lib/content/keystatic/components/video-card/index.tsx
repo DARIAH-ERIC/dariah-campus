@@ -36,7 +36,7 @@ export const createVideoCard = createComponent((paths, _locale) => {
 					label: "Subtitle",
 					validation: { isRequired: false },
 				}),
-				image: fields.image({
+				src: fields.image({
 					label: "Image",
 					validation: { isRequired: true },
 					...createAssetOptions(paths.assetPath),
@@ -48,8 +48,8 @@ export const createVideoCard = createComponent((paths, _locale) => {
 				return (
 					<VideoCardPreview
 						id={value.id}
-						image={value.image}
 						provider={value.provider}
+						src={value.src}
 						startTime={value.startTime}
 						subtitle={value.subtitle}
 						title={value.title}

@@ -102,7 +102,7 @@ export const createIndexPage = createSingleton("/index-page/", (paths, locale) =
 									validation: { isRequired: true },
 									multiline: true,
 								}),
-								image: fields.image({
+								src: fields.image({
 									label: "Image",
 									validation: { isRequired: true },
 									...createAssetOptions(paths.assetPath),
@@ -199,7 +199,7 @@ export const createIndexPage = createSingleton("/index-page/", (paths, locale) =
 									validation: { isRequired: true },
 									multiline: true,
 								}),
-								image: fields.image({
+								src: fields.image({
 									label: "Image",
 									validation: { isRequired: true },
 									...createAssetOptions(paths.assetPath),

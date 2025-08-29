@@ -35,7 +35,7 @@ const compileOptions: CompileOptions = {
 		createCustomHeadingIdsPlugin(),
 		createHeadingIdsPlugin(),
 		createIframeTitlesPlugin(["Embed", "Video"]),
-		createImageSizesPlugin(["Figure"]),
+		createImageSizesPlugin(["Figure", "VideoCard"]),
 		createSyntaxHighlighterPlugin(),
 		createTableOfContentsPlugin(),
 		createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
