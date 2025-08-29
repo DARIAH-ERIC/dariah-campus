@@ -11,8 +11,6 @@ import { ResourcesGrid } from "@/components/resources-grid";
 import { client } from "@/lib/content/client";
 import { createGitHubClient } from "@/lib/content/github-client";
 
-export const dynamicParams = false;
-
 interface SourcePageProps extends PageProps<"/sources/[id]"> {}
 
 export function generateStaticParams(): Array<Pick<Awaited<SourcePageProps["params"]>, "id">> {

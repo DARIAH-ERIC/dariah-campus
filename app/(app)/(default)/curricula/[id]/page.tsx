@@ -15,8 +15,6 @@ import { client } from "@/lib/content/client";
 import { createGitHubClient } from "@/lib/content/github-client";
 import { pickRandom } from "@/lib/utils/pick-random";
 
-export const dynamicParams = false;
-
 interface CurriculumPageProps extends PageProps<"/curricula/[id]"> {}
 
 export function generateStaticParams(): Array<Pick<Awaited<CurriculumPageProps["params"]>, "id">> {
