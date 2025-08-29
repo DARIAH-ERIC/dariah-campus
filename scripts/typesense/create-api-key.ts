@@ -40,9 +40,6 @@ seed()
 		);
 	})
 	.catch((error: unknown) => {
-		log.error(
-			`Failed to create typesense search api key for collection "${collection}".\n`,
-			String(error),
-		);
+		log.error(`Failed to create typesense search api key for collection "${collection}".\n`, error);
 		process.exitCode = 1;
 	});

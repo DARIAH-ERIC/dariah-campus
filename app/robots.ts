@@ -20,6 +20,6 @@ export default function robots(): MetadataRoute.Robots {
 			allow: "/",
 			userAgent: "*",
 		},
-		sitemap: String(createUrl({ baseUrl: env.NEXT_PUBLIC_APP_BASE_URL, pathname: "sitemap.xml" })),
+		sitemap: String(createUrl({ baseUrl: env.NEXT_PUBLIC_APP_BASE_URL, pathname: "/sitemap.xml" })),
 	};
 }

@@ -18,7 +18,7 @@ export function Disclosure(props: Readonly<DisclosureProps>): ReactNode {
 					className="size-5 shrink-0 text-neutral-500 group-open:rotate-180"
 				/>
 			</summary>
-			<div className="[&_:first-child]:mt-0 [&_:last-child]:mb-0 [&_a:hover]:no-underline [&_a]:underline">
+			<div className="[&_:first-child]:mt-0 [&_:last-child]:mb-0 [&_a]:underline [&_a:hover]:no-underline">
 				{children}
 			</div>
 		</details>

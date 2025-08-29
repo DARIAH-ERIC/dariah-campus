@@ -8,7 +8,7 @@ export function useQuizChildren(children: ReactNode) {
 		return child.type;
 	});
 
-	return function get<P extends object>(component: FC<P>) {
+	return function get<P extends object>(component: FC<P>): Array<ReactElement<P>> {
 		return (map.get(component) ?? []) as Array<ReactElement<P>>;
 	};
 }
