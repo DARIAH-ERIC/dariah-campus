@@ -1,10 +1,11 @@
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { Image } from "@/components/image";
 
 interface OrganisationsProps {
 	label: string;
-	organisations: ReadonlyArray<{ name: string; url: string; logo: string }>;
+	organisations: ReadonlyArray<{ name: string; url: string; logo: StaticImageData | string }>;
 }
 
 export function Organisations(props: Readonly<OrganisationsProps>): ReactNode {
@@ -29,7 +30,7 @@ export function Organisations(props: Readonly<OrganisationsProps>): ReactNode {
 									<div className="overflow-hidden rounded-md">
 										<Image
 											alt=""
-											/** Inverting the logo because they are all white. */
+											/** FIXME: Inverting the logo because they are all white. */
 											className="h-10 w-auto object-contain p-2 opacity-50 invert"
 											src={logo}
 										/>

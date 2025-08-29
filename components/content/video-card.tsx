@@ -28,6 +28,7 @@ export function VideoCard(props: Readonly<VideoCardProps>): ReactNode {
 					<Image
 						alt=""
 						className="not-prose absolute inset-0 m-0 size-full object-cover"
+						fill={true}
 						sizes="800px"
 						src={image}
 					/>
