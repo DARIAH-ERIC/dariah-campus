@@ -12,7 +12,6 @@ import { RelatedCurriculaList } from "@/components/related-curricula-list";
 import { TagsList } from "@/components/tags-list";
 import { TranslationsList } from "@/components/translations-list";
 import { client } from "@/lib/content/client";
-import { createGitHubClient } from "@/lib/content/github-client";
 import { pickRandom } from "@/lib/utils/pick-random";
 
 export const dynamicParams = false;
@@ -36,7 +35,9 @@ export async function generateMetadata(props: Readonly<CurriculumPageProps>): Pr
 	const draft = await draftMode();
 
 	const curriculum = draft.isEnabled
-		? await (await createGitHubClient()).collections.curricula.get(id)
+		? await (
+				await (await import("@/lib/content/github-client")).createGitHubClient()
+			).collections.curricula.get(id)
 		: client.collections.curricula.get(id);
 
 	if (curriculum == null) {
@@ -66,7 +67,9 @@ export default async function CurriculumPage(
 	const draft = await draftMode();
 
 	const curriculum = draft.isEnabled
-		? await (await createGitHubClient()).collections.curricula.get(id)
+		? await (
+				await (await import("@/lib/content/github-client")).createGitHubClient()
+			).collections.curricula.get(id)
 		: client.collections.curricula.get(id);
 
 	if (curriculum == null) {

@@ -9,7 +9,6 @@ import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
 import { ResourcesGrid } from "@/components/resources-grid";
 import { client } from "@/lib/content/client";
-import { createGitHubClient } from "@/lib/content/github-client";
 
 export const dynamicParams = false;
 
@@ -32,7 +31,9 @@ export async function generateMetadata(props: Readonly<SourcePageProps>): Promis
 	const draft = await draftMode();
 
 	const source = draft.isEnabled
-		? await (await createGitHubClient()).collections.sources.get(id)
+		? await (
+				await (await import("@/lib/content/github-client")).createGitHubClient()
+			).collections.sources.get(id)
 		: client.collections.sources.get(id);
 
 	if (source == null) {
@@ -59,7 +60,9 @@ export default async function SourcePage(props: Readonly<SourcePageProps>): Prom
 	const draft = await draftMode();
 
 	const source = draft.isEnabled
-		? await (await createGitHubClient()).collections.sources.get(id)
+		? await (
+				await (await import("@/lib/content/github-client")).createGitHubClient()
+			).collections.sources.get(id)
 		: client.collections.sources.get(id);
 
 	if (source == null) {

@@ -18,7 +18,6 @@ import { Link } from "@/components/link";
 import { SearchForm } from "@/components/search-form";
 import { client } from "@/lib/content/client";
 import type { IndexPage as IndexPageContent } from "@/lib/content/client/index-page";
-import { createGitHubClient } from "@/lib/content/github-client";
 
 export function generateMetadata(): Metadata {
 	const metadata: Metadata = {
@@ -37,7 +36,9 @@ export default async function IndexPage(): Promise<ReactNode> {
 	const draft = await draftMode();
 
 	const page = draft.isEnabled
-		? await (await createGitHubClient()).singletons.indexPage.get()
+		? await (
+				await (await import("@/lib/content/github-client")).createGitHubClient()
+			).singletons.indexPage.get()
 		: client.singletons.indexPage.get();
 
 	return (

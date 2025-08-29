@@ -17,7 +17,6 @@ import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
 import { TranslationsList } from "@/components/translations-list";
 import { client } from "@/lib/content/client";
-import { createGitHubClient } from "@/lib/content/github-client";
 import { createResourceMetadata } from "@/lib/content/utils/create-resource-metadata";
 import { getMetadata } from "@/lib/i18n/metadata";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
@@ -50,7 +49,9 @@ export async function generateMetadata(
 	const draft = await draftMode();
 
 	const resource = draft.isEnabled
-		? await (await createGitHubClient()).collections.resourcesHosted.get(id)
+		? await (
+				await (await import("@/lib/content/github-client")).createGitHubClient()
+			).collections.resourcesHosted.get(id)
 		: client.collections.resourcesHosted.get(id);
 
 	if (resource == null) {
@@ -110,7 +111,9 @@ export default async function HostedResourcePage(
 	const draft = await draftMode();
 
 	const resource = draft.isEnabled
-		? await (await createGitHubClient()).collections.resourcesHosted.get(id)
+		? await (
+				await (await import("@/lib/content/github-client")).createGitHubClient()
+			).collections.resourcesHosted.get(id)
 		: client.collections.resourcesHosted.get(id);
 
 	if (resource == null) {
