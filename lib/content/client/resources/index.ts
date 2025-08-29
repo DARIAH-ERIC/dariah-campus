@@ -11,7 +11,7 @@ const ids = [...events.ids(), ...external.ids(), ...hosted.ids(), ...pathfinders
 
 const all = [...events.all(), ...external.all(), ...hosted.all(), ...pathfinders.all()].sort(
 	(a, z) => {
-		return a.metadata["publication-date"].localeCompare(z.metadata["publication-date"]);
+		return z.metadata["publication-date"].localeCompare(a.metadata["publication-date"]);
 	},
 );
 
