@@ -414,6 +414,7 @@ export default async function EventResourcePage(
 								tableOfContents={tableOfContents}
 								title={
 									<h2
+										key="table-of-contents"
 										className="text-xs font-bold tracking-wide text-neutral-600 uppercase"
 										id="table-of-contents"
 									>
