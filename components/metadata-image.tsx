@@ -1,8 +1,7 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
-
+import { createUrl } from "@acdh-oeaw/lib";
 import { ImageResponse } from "next/og";
 
+import { env } from "@/config/env.config";
 import type { IntlLocale } from "@/lib/i18n/locales";
 
 interface MetadataImageProps {
@@ -14,8 +13,14 @@ interface MetadataImageProps {
 export async function MetadataImage(props: Readonly<MetadataImageProps>): Promise<ImageResponse> {
 	const { locale, size, title } = props;
 
-	const fontPath = join(process.cwd(), "public", "assets", "fonts", "roboto-semibold.ttf");
-	const font = await readFile(fontPath);
+	const font = await fetch(
+		createUrl({
+			baseUrl: env.NEXT_PUBLIC_APP_BASE_URL,
+			pathname: "/assets/fonts/roboto-semibold.ttf",
+		}),
+	).then((response) => {
+		return response.arrayBuffer();
+	});
 
 	return new ImageResponse(
 		(

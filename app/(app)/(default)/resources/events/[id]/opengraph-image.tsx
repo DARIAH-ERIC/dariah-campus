@@ -5,6 +5,8 @@ import { getLocale } from "next-intl/server";
 import { MetadataImage } from "@/components/metadata-image";
 import { client } from "@/lib/content/client";
 
+export const runtime = "edge";
+
 interface OpenGraphImageProps extends PageProps<"/resources/events/[id]"> {}
 
 export const size = {
