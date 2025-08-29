@@ -22,3 +22,8 @@ export const urlSearchParamsOptional = {
 	regex: /^$|^\?.+/,
 	message: "Must include the leading '?' character.",
 };
+
+export const videoId = {
+	regex: /^[\w-]+$/,
+	message: "Must only include the 'id', not the full URL.",
+};
