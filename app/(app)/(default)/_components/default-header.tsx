@@ -35,7 +35,7 @@ export function DefaultHeader(props: Readonly<DefaultHeaderProps>): ReactNode {
 				className="shrink-0 rounded transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 				href={navigation.home.href}
 			>
-				<Image alt="" className="w-36 xl:w-48" height="40" src={logo} width="195" />
+				<Image alt="" className="h-auto w-36 xl:w-48" height="40" src={logo} width="195" />
 				<span className="sr-only">{navigation.home.label}</span>
 			</Link>
 
