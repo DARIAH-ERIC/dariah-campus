@@ -1,0 +1,656 @@
+---
+title: "R you ready? An introduction to data analysis in Rstudio"
+author: "Floor Buschenhenke"
+date: "2025-31-03"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This tutorial introduces the basic steps of quantitative data analysis
+in the programming language R. We will also introduce Rstudio, a free
+programme (IDE) in which you can create and run R scripts. The dataset
+we will explore comes from the Dutch National Readers' Survey, in which
+readers' judgements on 401 novels were captured. This dataset is wrapped
+in an R package called
+[litRiddle](https://www.rdocumentation.org/packages/litRiddle/versions/1.0.0 "package documentation").
+
+In this tutorial, you can try out the code for yourself, do the
+exercises and modify the code when you take the next step of applying
+your new knowledge to your own data. You can also follow along the steps
+on the webpage (xxx), where the code is not executable, but the output
+from the code is provided.
+
+## Learning outcomes
+
+After completing this module, learners will be able to:
+
+-   use the main functionalities of Rstudio.
+
+-   create R markdown files, understand their components, and export
+    them.
+
+-   perform the basic steps of quantitative data analysis in Rstudio,
+    making use of the tidyverse syntax.
+
+-   import datasets, inspect their data, create a plot, select
+    information, add new columns to a table, understand ifelse
+    statements, and group and summarise their data.
+
+-   find their way around the litRiddle dataset, which contains Dutch
+    readers' assessments of the (literary) quality of 401 popular Dutch
+    and international novels.
+
+## Getting started with Rstudio & R markdown
+
+Rstudio offers many functionalities, only some of which we will use in
+this tutorial. If you want to get a full lay of the land, visit
+<https://docs.posit.co/ide/user/> for a tour.
+
+You will have noticed that there are four main panes. This file is shown
+top left, below which is the Console output. This shows the results of
+code that you run through a script. As Markdown files also provide the
+output, you don't have to check the Console today. Then, to the right,
+the top pane shows the Environment; this tells you which 'objects' are
+in Rstudio's working memory. These can be datatables or functions, for
+example. The right bottom pane usually shows the files, but you can also
+access the Help from here. You can customise all aspects of the layout,
+see <https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html>
+
+There are different ways of getting your code to run. In this tutorial
+two ways will be explained. For a full overview, you can visit
+<https://docs.posit.co/ide/user/ide/guide/code/execution.html>
+
+### R Markdown files
+
+Many different types of files can be created in Rstudio, including
+Python files. If you click on 'File' in the top left of the menu, and
+then 'New File', you can see the full range. The filetype we will work
+with is .Rmd, an R Markdown file. Markdown files combine text and code,
+allowing you to integrate the code output, such as a graph or a table,
+with your report. The advantage here is that others can see both your
+analyses and the computational steps you took to create your output.
+Markdown files can be exported into various formats (pdf, Word, html),
+for easy sharing with others. Before exporting, you can also customise
+which parts of the document to show or keep hidden.
+
+Let's check out some functions of a Markdown file. You will notice at
+the left top the options 'Source' and 'Visual' mode. The source mode
+reveals the code used for text layout. The visual mode is easier to use
+for now.
+
+Then, at the right-hand side of the document, you see a menu item called
+'Outline'- it is handy to keep that one active, to better navigate the
+file.
+
+![](images/clipboard-3615984508.png)
+
+Under the 'Knit' menu, you will find the export options.
+
+![](images/clipboard-496319591.png)
+
+You can add code blocks through the shortcut Ctrl-Alt-I or through the
+green square pictured above.
+
+In this tutorial, you will find several exercises, where you are asked
+to adjust and write your own code. Correct answers to these exercises
+are to be found near the end of this document. (There are many ways to
+correctly solve the exercises though.)
+
+## The Riddle project - exploring literary quality
+
+It is time to run our first code. In the code block below, you see green
+lines with \# in front of them as well as black text. The \# 'comments'
+a line; treating it like text instead of code. You can easily comment
+and uncomment lines through placement of the hashtags.
+
+You can run a code block through pressing the green 'play' button in the
+top right corner of the block, or through placing your cursor somewhere
+in the block and pressing Ctrl-Enter. The output of your code will show
+up directly underneath the code block. You will see some
+'tidyverse_conflicts' in that output, which we can savely ignore.
+
+```{r installing the packages}
+
+# these top two lines only need to be run once, please put a # in front of the line to 
+# deactivate the code 
+install.packages('litRiddle')
+install.packages("tidyverse")
+
+# here the packages are loaded into your workspace. These lines need to be run every time you're
+# working with these packages.
+
+library(litRiddle)
+library(tidyverse)
+```
+
+Now we have access to the dataset of the [Riddle of Literary
+Quality](https://literaryquality.huygens.knaw.nl/) project. This project
+investigated the question of literariness by examining both readerly
+assessments of general quality and literary quality, as well as textual
+characteristics, for a corpus of 401 books: both original Dutch and
+translated works, in several genres of fiction (romance, suspense,
+literary fiction and other). 13.541 respondents have shared their
+opinions. Together, they provided 448.055 book reviews. Allthough, due
+to copyright concerns, the full texts of the novels are not available,
+the dataset does include word frequencies for the 5000 most frequent
+words, for each book, unlocking stylometric analyses for this corpus.
+
+**A selection of publications from the Riddle-project**
+
+Van Dalen-Oskam, K. (2023). *The Riddle of Literary Quality: A
+Computational Approach*. Amsterdam University Press.
+<https://library.oapen.org/handle/20.500.12657/63705>
+
+Corina Koolen, Karina van Dalen-Oskam, Andreas van Cranenburgh, Erica
+Nagelhout (2020). Literary quality in the eye of the Dutch reader: The
+National Reader Survey. *Poetics* 79:
+101439, <https://doi.org/10.1016/j.poetic.2020.101439>.
+
+Corina Koolen (2018). *Reading beyond the female. The relationship
+between perception of author gender and literary quality*. [PhD
+thesis](http://hdl.handle.net/11245.1/cb936704-8215-4f47-9013-0d43d37f1ce7) University
+of Amsterdam
+
+Andreas van Cranenburgh (2016). *Rich statistical parsing and literary
+language*. [PhD thesis](http://hdl.handle.net/11245/1.543163) University
+of Amsterdam ([revised
+version](http://andreasvc.github.io/phdthesis_v1.1.pdf); [errata](http://andreasvc.github.io/phderrata.txt)).
+
+## The litRiddle package
+
+You can read about the data of the litRiddle package by running the code
+block below. The introduction to the package will then open to your
+right side, in the 'Help' tab. Here you can find out about the three
+combinable tables of reader survey data, as well as some helpful code
+snippets to get you started with exploring this dataset. You are free to
+use this dataset for your own research, but please include a reference
+to the package. The vignette includes citation information.
+
+```{r accessing the readme of litriddle }
+vignette('litRiddle')
+```
+
+## The wonderful world of the tidyverse
+
+The other package that is loaded is called 'tidyverse'. It can help with
+all steps of data analysis, from loading and cleaning your data to
+visualising it in graphs and charts. If you would like to learn more
+about tidyverse, and the data philosophy behind it, this is the manual:
+
+<https://r4ds.hadley.nz/>
+
+'Base' R can do lots of the things the tidyverse can do too, but the
+tidyverse functions are more intuitive and user-friendly.
+
+Usually, the first step would be loading your data in the working
+directory, so that Rstudio can access it. Now, as we will work with the
+data from the litRiddle package, we can do this through the code below -
+it works a bit differently when you have your own tables to work with.
+The second step would be inspection and cleaning - as this data is
+already in mint condition, we will also skip the cleaning. So let's
+check out the data!
+
+## Data inspection
+
+In the code block below, you see part of the base syntax of R. The first
+line, between { } is the title of the code block. The two lines of code
+both have the format 'function(object)'. Our object in this case is the
+table 'books'.
+
+```{r using summary and glimpse}
+data(books)
+# data loads the table, called 'books', in the working environment
+
+# head displays the first five rows of a table
+head(books)
+```
+
+The general concept of a 'tidy' table is that each row is a unique
+observation, and each column is a variable. This is also the case for
+the three tables in the litRiddle package. Using view() will open a new
+tab with the entire table.
+
+For less than super-tidy data, the summary would tell you how many NA's
+(missing values) there were, as well as if your columns are of the right
+data type (integer (whole number), double (number like 3.5) characters,
+time/date). You can also use it to check if the values are as would be
+expected. The summary gives you descriptive statistics for each column
+of the table. In the case of labels, such as the author names, this will
+be a count of the rows. So we can tell that Hollander, Loes den, is
+represented with 13 books in this table. For the column 'publication
+date', we can see that the oldest book in the corpus is from 2007, and
+the newest book is from 2013. If we look at the column word.count, we
+see that the mean length of the novels in this corpus is 109.052 words.
+
+```{r summarise a table }
+
+#summary is a base R function, so you don't need special packages for this one
+summary(books)
+```
+
+If you have forgotten the variable names, the code below is very
+convenient.
+
+```{r column names}
+names(books)
+```
+
+Apart from 'books', the tables 'respondents' and 'reviews' are also
+present. Pick one and activate it, then check the contents using one of
+the methods above - by writing your code in this next code block.
+
+```{r excercise 1: data loading and inspecting}
+
+
+```
+
+## Exploring through plots
+
+There are translated and Dutch books in the corpus, and there is also a
+column indicating the original language. Let's create a plot that shows
+us how many books are written in each of these languages. The plot is
+built using 'ggplot', which is part of the tidyverse. It is highly
+adaptable, but we will keep it simple for now. Here is a cheatsheet with
+most of the plotting options:
+<https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf>
+
+```{r bar plot for original language}
+
+
+# ggplot syntax starts off with the function(object) structure again, and then uses '+' symbols to connect various ingredients. In this case a bar plot function is added, called 'geom_bar'. A bar_plot counts the number of occurences, so rows, which in our case are books.
+
+ggplot(books)+
+  # the structure is (aes(variable X, variable Y, other properties))
+  geom_bar(aes(original.language))
+# original.language is the name of one of the columns in 'books'. 
+```
+
+```{r bar plot for original language with riddle codes}
+ggplot(books)+
+  # 'fill' is the colour of the bars - you can take another variable and add it here
+  # riddle.code.english is a column from our table 'books'.
+  # coord_flip() swaps the X and Y axis.
+  
+  geom_bar(aes(original.language, fill = riddle.code.english))+
+  coord_flip()
+
+
+
+
+```
+
+For the next exercise, create a new barplot of the riddle.code.english,
+to see how many books have got each genre labelling.
+
+```{r excercise 2: creating a ggplot}
+ 
+# add this bit to the end of your code to flip the x and y axes 
+# else the labels on the x-axis are unreadable
+# in a ggplot, the + symbol should be on the same line as the preceding code. 
++coord_flip()
+
+```
+
+We see that the Scandi thriller trend is present; Norwegian, Danish,
+Swedish and Icelandic books are predominantly Literary Thrillers.
+
+If you're curious to see more visualisations of this dataset, visit
+<https://karinavdo.github.io/RiddleOfLiteraryQuality/> for interactive
+versions of the plots used in the book *The Riddle of Literary Quality:
+A Computational Approach*. (Van Dalen-Oskam, 2023)
+
+## Transforming data
+
+### Filter and select
+
+Which of these books were translated from Italian (IT) into Dutch? We
+could open the big table and scroll around or sort a column to find out,
+but if we want to calculate something only for the Italian books, it is
+more efficient to filter and make a new table with the selection. In the
+tidyverse:
+
+-   Filter = selecting rows (in this case, books)
+
+-   Select = selecting columns.
+
+For the next exercise, change the 'IT' below to another language and
+rerun the code. Create a new selection by adding the column with the
+author's gender. How many books are there in your selection?
+
+```{r exercise 3: using filter and select}
+
+
+# we copy books and give it the new name Italian
+Italian <- books%>%
+     # 'is equal to' is ==
+  filter(original.language == 'IT')%>%
+  # Let's only check out titles and author 
+  select(title, author)
+ 
+# the %>% symbol is called a pipe - it passes on the output of one thing as the input
+# of the next thing. see https://r4ds.hadley.nz/workflow-style.html#sec-pipes
+
+
+Italian
+```
+
+### Mutate
+
+We can add columns to the table based on certain conditions that are
+taken from other columns, using the function 'mutate'. For example,
+let's say we want to create two new groups of books; one with a word
+count of 50,000 or less, which we want to call 'novella' and one for the
+rest, which we want to call 'novel'.
+
+```{r mutate}
+#creating a second table - so we are not overwriting the original
+books2 <- books%>%
+  # novella_novel = the new column's name
+  # the ifelse has this structure(test, yes, no)
+  mutate(novella_novel = ifelse(word.count < 50001, 'novella', 'novel'))
+
+#view opens the table in a new tab - you can sort the column 'novella_novel' by 
+# clicking the little arrow next to the header
+view(books2)
+
+# how many novella's are there?
+# note that now we are only summarising one column from the whole table, 
+# using the structure table$column 
+summary(books2$novella_novel)
+
+
+```
+
+This is not yet informative. The problem was that the new column was
+read as data type 'character' (you may also know that as 'string' or
+'text' data). We need to factorise this column, that is, telling R to
+instead read it as a set of labels (called 'levels').
+
+```{r factorising a column}
+
+# both 'novel' and 'novella' are now turned into levels of a factor
+
+books2$novella_novel <- as.factor(books2$novella_novel)
+
+#this line gives us the names of the levels in this column
+levels(books2$novella_novel)
+
+
+```
+
+```{r summary count novellas}
+summary(books2$novella_novel)
+#you can use summary on a table, but also on a single column
+```
+
+The summary counts the rows in each level.
+
+For the next exercise, we will add a new column with two labels:
+'non-fiction' for books whose riddle.code.english is one of three
+categories, and 'fiction' for all other books. Use the structure of the
+code in the codeblock 'mutate', so with the ifelse(test, yes, no), as
+your blueprint for your own code.
+
+```{r exercise 4: mutate}
+# Add a new column with two labels: 'non-fiction' for books whose riddle.code.english is one of three categories: 
+
+riddle.code == 'Non-fiction [and more than one essay, KvDO]' | 
+riddle.code == 'Non-fiction [and too old, and collection of essays, KvDO]'  | 
+riddle.code == 'Non-fiction'
+# you can incorporate these lines into the ifelse statement of your new code
+# the '|' means 'OR'
+
+# Once you can do this, you are a programmer :)
+```
+
+### Grouping and summarising
+
+*What is the mean sentence length for different genres of books? Maybe
+literary books have longer sentences?*
+
+In order to answer this question, we need to employ two useful tricks:
+grouping our data by one variable (the genre), and then summarising
+another variable (mean sentence length) for each of the genres
+separately. This means we are creating a new table based on the original
+one.
+
+```{r grouping and summarising data}
+
+
+#create a new table
+# the <- assigns the right part to the left part
+genre_length <- books%>%
+  #this is grouping by genre
+   group_by(genre)%>%
+  # summarise makes the new table
+   summarise(mean(sentence.length.mean))
+
+#just writing the name of the table prints it  
+genre_length
+```
+
+A boxplot visualisation offers a bit more information; not just the
+median (the middle value), but also the distribution of all datapoints.
+Within the 'box' are the middle 50% of datapoints, (in this case: the
+middle 200 books) and the line cutting through the box is the median
+value. The vertical lines above the boxes indicate the range of observed
+values that are within (1.5 \* the range of values in the box) higher
+than the highest value still within the box. The lines underneath the
+boxes represent the values found that are within (1.5 \* the range of
+values in the box) lower than the lowest value within the box. The
+occasional dots indicate outliers. For example, the dot at the top of
+the Romantic boxplot is a novel with a mean sentence length of 15.10
+words. This is a bigger value than 11.34 (the highest value still within
+the box) + (1.5 x 2.20) = 14,64.
+
+```{r boxplot for distribution}
+ggplot(books)+geom_boxplot(aes(genre, sentence.length.mean))
+```
+
+*Are translated books less lexically rich than Dutch books?*
+
+For this question, we need to look at the sampled TTR = the type-token
+ratio. A type = unique word, token = a word's occurrence. Although this
+is a different question, you can use exactly the same steps to answer
+it, namely grouping and summarising the data.
+
+Can you try and write your own code below? The columns you need are
+called 'translated' and 'sampled.TTR'
+
+```{r excercise 5: translation and TTR}
+
+
+
+
+
+```
+
+## Running a statistical test
+
+A next step for both of these questions would be to run a statistical
+test. Statistical testing helps us figure out if a result we see in data
+is likely real or just due to random chance. We compare one or more
+independent variables (something we change, like through an
+intervention, or different groups of things, like book genre) to a
+dependent variable (the outcome we measure, like sentence length or
+reader ratings). If the relationship looks strong enough, the test
+checks whether it’s statistically significant, meaning unlikely to have
+happened by accident. If the results are not significant, this does not
+mean there is definitely no relationships at all, but it does mean
+better and/or larger studies are needed to discover those.
+
+Let's test the relationship between translation and lexical richness, by
+running an independent samples t-test. Many tests are available in base
+R, and others can be used through packages. The examples below are all a
+part of base R.
+
+Selecting the rights test for your research question requires some
+knowledge of statistics - if you are new to that, [Seeing
+theory](https://seeing-theory.brown.edu/#firstPage) is a resource is
+aimed at beginners.
+
+In this particular case, an independent samples t-test was selected
+because our independent variable is a grouping variable with two groups
+(translated versus non-translated books). Each measurement only belongs
+to one of the two groups. Our dependent variable is numerical (the mean
+type-token ratio).
+
+```{r running a statistical test}
+# independent 2-group t-test
+t.test(books$sampled.TTR~books$translated) 
+# where y is numeric and x is a binary factor
+```
+
+The p-value is the number the test produces to show how much evidence we
+have against pure chance—the smaller it is, the stronger the evidence.
+We decide on a p-value cut-off point in advance of running the test. For
+humanities research, it is usually set at 0.05. The not-translated books
+(called 'group no' in the output) have a significantly (p \< 0.01)
+higher mean TTR (0.26) than the translated books (0.25).
+
+Let's have a look at the sentence length & genre question too. Instead
+of a t-test we can use a one way ANOVA. T-tests are suitable when there
+are two groups, and here there are 4 different groups (genres).
+
+```{r running a one way anova test on sentence length & genre}
+# Compute the analysis of variance
+anova <- aov(books$sentence.length.mean ~ books$genre)
+# Summary of the analysis
+summary(anova)
+
+
+```
+
+The one way ANOVA tells us that there is a significant difference
+between the genres for the mean sentence length. The Pr (\>F) value,
+notated as 2.68e-11 \*\*\* in the output, (0.0000000000268 in regular
+numbers) is smaller than 0.05. However, this output does not yet tell us
+which of the four genres differ significantly from eachother. For this
+we perform a Tukey test. Looking at the 'p adj' column in the output
+below, can you see which genres differ from each other in a significant
+way? (significant = the value here should be \< 0.05)
+
+```{r}
+TukeyHSD(anova)
+```
+
+## Exporting a markdown file
+
+To end our exploration of R and the Riddle corpus, you can try to 'Knit'
+this markdown file by selecting your preferred output from the dropdown
+menu next to the ball of yarn in the menu bar above. Knitting is useful
+when you want to share the output of your work with others, for example
+when you want to submit your work to a journal. You can export your file
+as Word, pdf, or html - and other options are available through
+packages, and you can tweak what to show for each code block. For
+example, you could preserve certain output but not show any code in your
+knitted document.
+
+Knitting only works when all code works; if you have not completed the
+exercises, there will be some code fragments that hinder the knitting.
+You can work around this by either 'commenting' these lines through
+placing a \# in front of them, or by preventing the whole code block
+from running. This can be done by clicking on the gear icon in the right
+top hand of a code block, and under 'Output' select 'Show nothing (don't
+run code)'.
+
+Once you have succesfully knitted an output file, it will show up under
+the tab Files at the right-hand side of the Rstudio screen.
+
+## Conclusion
+
+After reading and working through this resource, you have hopefully
+gained an understanding of the quantitative data analysis workflow in R,
+from inspecting your raw data, to selecting and transforming it, to
+answering your research questions. Learning how to code for data
+analysis is best done through doing, and therefore I encourage you to
+start your own project and apply what you have learned here to your own
+work.
+
+## Answers to the exercises
+
+```{r exercise 1}
+
+data(respondents)
+glimpse(respondents)
+# or:
+#names(respondents)
+# or:
+#summary(respondents)
+# or:
+#head(respondents)
+
+
+```
+
+```{r exercise 2}
+ggplot(books)+
+    geom_bar(aes(riddle.code))+
+  coord_flip()
+
+```
+
+```{r exercise 3}
+swedish <- books%>%
+  # change the 'IT' below to another language and rerun the code
+  filter(original.language == 'SE')%>%
+  # Let's only check out titles and author 
+  # select(title, author)
+  # now also add the column with the author's gender 
+  select(title, author, gender.author)
+swedish
+```
+
+```{r exercise 4}
+# add a new column with two labels: 'non-fiction' for books whose riddle.code is one of three categories: 
+
+ books3 <- books2%>%
+  mutate(fictionality = ifelse(riddle.code.english == 'Non-fiction [and more than one essay, KvDO]' | 
+riddle.code.english == 'Non-fiction [and too old, and collection of essays, KvDO]'  | 
+riddle.code.english == 'Non-fiction', 'non-fiction', 'fiction'))
+
+
+#view(books3)
+
+
+
+```
+
+```{r exercise 5}
+trans_ttr <- books%>%
+    group_by(translated)%>%
+    summarise(mean(sampled.TTR))
+trans_ttr
+
+```
+
+## Taking the next step
+
+When you start working with your own material in Rstudio, it is highly
+recommended to create 'Projects'; basically a working directory that
+keeps your data, scripts and plots all in one place. See this excellent
+resource for setting up projects (and working with Rstudio in general):
+<https://intro2r.com/rsprojs.html>
+
+Then, you will need to import your data. The same resource will show you
+how to do that: <https://intro2r.com/importing-data.html>
+
+If you get stuck coding, at
+[Stackoverflow](https://stackoverflow.com/questions) you will probably
+find the answer to your question, as provided by humans. You can also
+use Chat-GPT or other AI support, but make sure you understand and can
+test the solutions it offers you - as it occasionally does hallucinate
+and can provide working code that solves a different problem from the
+one you have prompted it with.
+
+If you are working with textual rather than numeric data, this is the
+parallel approach to the Tidyverse: Tidytext
+(<https://www.tidytextmining.com/> )
