@@ -1,6 +1,6 @@
 onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@tailwindcss/oxide'
+  - "@parcel/watcher"
+  - "@tailwindcss/oxide"
   - esbuild
   - node
   - sharp
@@ -9,5 +9,4 @@ onlyBuiltDependencies:
   - unrs-resolver
 
 patchedDependencies:
-  mermaid-isomorphic: patches/mermaid-isomorphic.patch
   next: patches/next.patch
