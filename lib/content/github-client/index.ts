@@ -2,10 +2,8 @@ import "server-only";
 
 import { assert, createUrl } from "@acdh-oeaw/lib";
 import { createGitHubReader } from "@keystatic/core/reader/github";
-import { cookies } from "next/headers";
 import { cache } from "react";
 
-import { env } from "@/config/env.config";
 import { client } from "@/lib/content/client";
 import type { Curriculum } from "@/lib/content/client/curricula";
 import type { Documentation } from "@/lib/content/client/documentation";
@@ -72,20 +70,17 @@ const createEvaluateOptions = (baseUrl: string) => {
 	} satisfies EvaluateOptions;
 };
 
-export const createGitHubClient = cache(async function createGitHubClient() {
-	const owner = env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_OWNER;
-	const repo = env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_NAME;
-
-	assert(owner != null && repo != null, "Missing github repository config.");
-
-	const cookieStore = await cookies();
-
-	const branch = cookieStore.get("ks-branch")?.value;
-	const token = cookieStore.get("keystatic-gh-access-token")?.value;
-
-	assert(branch, "Missing github branch.");
-	assert(token, "Missing github access token.");
-
+export const createGitHubClient = cache(function createGitHubClient({
+	owner,
+	repo,
+	branch,
+	token,
+}: {
+	owner: string;
+	repo: string;
+	branch: string;
+	token: string;
+}) {
 	const reader = createGitHubReader(config, {
 		repo: `${owner}/${repo}`,
 		ref: branch,

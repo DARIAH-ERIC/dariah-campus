@@ -3,8 +3,8 @@ import { Fragment, type ReactNode, Suspense } from "react";
 
 import { DefaultFooter } from "@/app/(app)/(default)/_components/default-footer";
 import { DefaultHeader } from "@/app/(app)/(default)/_components/default-header";
-import { DraftModeBanner } from "@/components/draft-mode-banner";
 import { Main } from "@/components/main";
+import { PreviewModeBanner } from "@/components/preview-mode-banner";
 import { SkipLink } from "@/components/skip-link";
 
 const mainContentId = "main-content";
@@ -21,7 +21,7 @@ export default function DefaultLayout(props: Readonly<DefaultLayoutProps>): Reac
 			<SkipLink href={`#${mainContentId}`}>{t("skip-link")}</SkipLink>
 
 			<Suspense>
-				<DraftModeBanner />
+				<PreviewModeBanner />
 			</Suspense>
 
 			<div className="relative isolate grid min-h-full grid-rows-[auto_1fr_auto]">

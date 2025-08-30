@@ -1,6 +1,5 @@
 import { assert, createUrl } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { Fragment, type ReactNode } from "react";
@@ -24,6 +23,7 @@ import { TagsList } from "@/components/tags-list";
 import { TranslationsList } from "@/components/translations-list";
 import { client } from "@/lib/content/client";
 import { createGitHubClient } from "@/lib/content/github-client";
+import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
 import { createResourceMetadata } from "@/lib/content/utils/create-resource-metadata";
 import { getMetadata } from "@/lib/i18n/metadata";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
@@ -51,11 +51,12 @@ export async function generateMetadata(props: Readonly<EventResourcePageProps>):
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const resource = draft.isEnabled
-		? await (await createGitHubClient()).collections.resourcesEvents.get(id)
-		: client.collections.resourcesEvents.get(id);
+	const resource =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).collections.resourcesEvents.get(id)
+			: client.collections.resourcesEvents.get(id);
 
 	if (resource == null) {
 		notFound();
@@ -113,11 +114,12 @@ export default async function EventResourcePage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const resource = draft.isEnabled
-		? await (await createGitHubClient()).collections.resourcesEvents.get(id)
-		: client.collections.resourcesEvents.get(id);
+	const resource =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).collections.resourcesEvents.get(id)
+			: client.collections.resourcesEvents.get(id);
 
 	if (resource == null) {
 		notFound();
