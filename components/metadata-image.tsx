@@ -14,8 +14,9 @@ interface MetadataImageProps {
 export async function MetadataImage(props: Readonly<MetadataImageProps>): Promise<ImageResponse> {
 	const { locale, size, title } = props;
 
-	const fontPath = join(process.cwd(), "public", "assets", "fonts", "roboto-semibold.ttf");
-	const font = await readFile(fontPath);
+	const font = await readFile(
+		join(process.cwd(), "public", "assets", "fonts", "roboto-semibold.ttf"),
+	);
 
 	return new ImageResponse(
 		(
@@ -43,6 +44,8 @@ export async function MetadataImage(props: Readonly<MetadataImageProps>): Promis
 						fontSize: 48,
 						textAlign: "center",
 						textWrap: "balance",
+						/** @see https://github.com/vercel/satori/issues/498 */
+						wordBreak: "break-word",
 					}}
 				>
 					{title}
