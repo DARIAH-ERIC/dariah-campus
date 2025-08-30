@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Fragment, type ReactNode } from "react";
@@ -11,6 +10,7 @@ import { PageTitle } from "@/components/page-title";
 import { TableOfContents } from "@/components/table-of-contents";
 import { client } from "@/lib/content/client";
 import { createGitHubClient } from "@/lib/content/github-client";
+import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
 
 interface DocumentationPageProps extends PageProps<"/documentation/[id]"> {}
 
@@ -30,11 +30,12 @@ export async function generateMetadata(props: Readonly<DocumentationPageProps>):
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const page = draft.isEnabled
-		? await (await createGitHubClient()).collections.documentation.get(id)
-		: client.collections.documentation.get(id);
+	const page =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).collections.documentation.get(id)
+			: client.collections.documentation.get(id);
 
 	if (page == null) {
 		notFound();
@@ -59,11 +60,12 @@ export default async function DocumentationPage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const page = draft.isEnabled
-		? await (await createGitHubClient()).collections.documentation.get(id)
-		: client.collections.documentation.get(id);
+	const page =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).collections.documentation.get(id)
+			: client.collections.documentation.get(id);
 
 	if (page == null) {
 		notFound();
