@@ -8,7 +8,7 @@ import { readonly } from "@acdh-oeaw/keystatic-lib/fields/readonly";
 import { collection, fields } from "@keystatic/core";
 
 import { createCallout } from "@/lib/content/keystatic/components/callout";
-import { createDiagram } from "@/lib/content/keystatic/components/diagram";
+// import { createDiagram } from "@/lib/content/keystatic/components/diagram";
 import { createDisclosure } from "@/lib/content/keystatic/components/disclosure";
 import { createEmbed } from "@/lib/content/keystatic/components/embed";
 import { createFigure } from "@/lib/content/keystatic/components/figure";
@@ -146,7 +146,7 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 				components: {
 					...createCallout(paths, locale),
 					...createDisclosure(paths, locale),
-					...createDiagram(paths, locale),
+					// ...createDiagram(paths, locale),
 					...createEmbed(paths, locale),
 					// ...createExternalResource(paths, locale),
 					...createFigure(paths, locale),
