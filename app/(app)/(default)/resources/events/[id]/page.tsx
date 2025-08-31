@@ -21,6 +21,7 @@ import { SocialMediaList } from "@/components/social-media-list";
 import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
 import { TranslationsList } from "@/components/translations-list";
+import { env } from "@/config/env.config";
 import { client } from "@/lib/content/client";
 import { createGitHubClient } from "@/lib/content/github-client";
 import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
@@ -93,7 +94,12 @@ export async function generateMetadata(props: Readonly<EventResourcePageProps>):
 				return name;
 			}),
 			title,
-			url: String(createFullUrl({ pathname: resource.href })),
+			url: String(
+				createFullUrl({
+					baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+					pathname: resource.href,
+				}),
+			),
 		}),
 	};
 
@@ -173,7 +179,12 @@ export default async function EventResourcePage(
 				{...jsonLdScriptProps({
 					"@context": "https://schema.org",
 					"@type": "LearningResource",
-					url: String(createFullUrl({ pathname: resource.href })),
+					url: String(
+						createFullUrl({
+							baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+							pathname: resource.href,
+						}),
+					),
 					headline: title,
 					name: title,
 					datePublished: new Date(publicationDate).toISOString(),
@@ -197,7 +208,12 @@ export default async function EventResourcePage(
 						name: meta.title,
 						description: meta.description,
 						url: meta.social.website,
-						logo: String(createFullUrl({ pathname: `/logo.svg` })),
+						logo: String(
+							createFullUrl({
+								baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+								pathname: `/logo.svg`,
+							}),
+						),
 						sameAs: String(
 							createUrl({ baseUrl: "https://twitter.com", pathname: meta.social.twitter }),
 						),
@@ -270,7 +286,15 @@ export default async function EventResourcePage(
 						contentType={resource.metadata["content-type"]}
 						publicationDate={new Date(publicationDate)}
 						title={title}
-						url={doi || String(createFullUrl({ pathname: resource.href }))}
+						url={
+							doi ||
+							String(
+								createFullUrl({
+									baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+									pathname: resource.href,
+								}),
+							)
+						}
 						version={version}
 					/>
 					<ReUseConditions />
@@ -353,7 +377,15 @@ export default async function EventResourcePage(
 							contentType={resource.metadata["content-type"]}
 							publicationDate={new Date(publicationDate)}
 							title={title}
-							url={doi || String(createFullUrl({ pathname: resource.href }))}
+							url={
+								doi ||
+								String(
+									createFullUrl({
+										baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+										pathname: resource.href,
+									}),
+								)
+							}
 							version={version}
 						/>
 						<ReUseConditions />
