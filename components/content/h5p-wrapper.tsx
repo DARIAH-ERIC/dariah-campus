@@ -1,7 +1,7 @@
 "use client";
 
 import Script from "next/script";
-import { type ReactNode, useEffect, useRef } from "react";
+import { Fragment, type ReactNode, useEffect, useRef } from "react";
 
 interface H5PWrapperProps {
 	path: string;
@@ -34,8 +34,9 @@ declare global {
 	}
 }
 
-export function H5PWrapper(props: H5PWrapperProps): ReactNode {
+export function H5PWrapper(props: Readonly<H5PWrapperProps>): ReactNode {
 	const { path } = props;
+
 	const ref = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
@@ -56,6 +57,7 @@ export function H5PWrapper(props: H5PWrapperProps): ReactNode {
 				frameJs: "/vendor/h5p-standalone/frame.bundle.js",
 				frameCss: "/vendor/h5p-standalone/styles/h5p.css",
 			};
+
 			try {
 				if (H5PPlayer) {
 					new H5PPlayer(container, options);
@@ -64,19 +66,22 @@ export function H5PWrapper(props: H5PWrapperProps): ReactNode {
 				console.error("Error loading H5P content", error);
 			}
 		};
+
 		loadH5P();
+
 		return () => {
 			container.innerHTML = "";
 		};
 	}, [path]);
+
 	return (
-		<>
+		<Fragment>
 			<div ref={ref} />
 			<Script
 				id="h5p-script"
 				src="/vendor/h5p-standalone/main.bundle.js"
 				strategy="beforeInteractive"
-			></Script>
-		</>
+			/>
+		</Fragment>
 	);
 }
