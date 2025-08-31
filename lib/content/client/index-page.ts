@@ -8,6 +8,6 @@ export type IndexPage = typeof item;
 
 export const client: SingletonClient<IndexPage> = {
 	get() {
-		return item;
+		return Promise.resolve(item);
 	},
 };
