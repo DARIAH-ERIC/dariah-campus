@@ -5,7 +5,7 @@ interface AttachmentsListProps {
 	label: string;
 }
 
-export function AttachmentsList(props: AttachmentsListProps): ReactNode {
+export function AttachmentsList(props: Readonly<AttachmentsListProps>): ReactNode {
 	const { attachments, label } = props;
 
 	if (attachments.length === 0) {
@@ -14,9 +14,9 @@ export function AttachmentsList(props: AttachmentsListProps): ReactNode {
 
 	return (
 		<div className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
-			<div className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</div>
+			<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{label}</div>
 			<div className="inline">
-				<ul className="inline text-xs uppercase tracking-wide">
+				<ul className="inline text-xs tracking-wide uppercase">
 					{attachments.map((attachment, index) => {
 						const { label, file } = attachment;
 

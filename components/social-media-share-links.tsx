@@ -2,16 +2,16 @@ import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import { FacebookIcon, TwitterIcon } from "@/app/(app)/_components/social-media-icons";
 import { Link } from "@/components/link";
-import { useMetadata } from "@/lib/i18n/use-messages";
+import { FacebookIcon, TwitterIcon } from "@/components/social-media-icons";
+import { useMetadata } from "@/lib/i18n/metadata";
 
 interface SocialMediaShareLinksProps {
 	href: string;
 	title: string;
 }
 
-export function SocialMediaShareLinks(props: SocialMediaShareLinksProps): ReactNode {
+export function SocialMediaShareLinks(props: Readonly<SocialMediaShareLinksProps>): ReactNode {
 	const { href: url, title } = props;
 
 	const t = useTranslations("SocialMediaShareLinks");
