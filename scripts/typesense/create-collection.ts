@@ -38,6 +38,6 @@ create()
 		log.success(`Successfully created typesense collection "${collection}".`);
 	})
 	.catch((error: unknown) => {
-		log.error(`Failed to create typesense collection "${collection}".\n`, String(error));
+		log.error(`Failed to create typesense collection "${collection}".\n`, error);
 		process.exitCode = 1;
 	});

@@ -8,7 +8,7 @@ interface CitationCopyButtonProps {
 	citation: string;
 }
 
-export function CitationCopyButton(props: CitationCopyButtonProps): ReactNode {
+export function CitationCopyButton(props: Readonly<CitationCopyButtonProps>): ReactNode {
 	const { children, citation } = props;
 
 	return (

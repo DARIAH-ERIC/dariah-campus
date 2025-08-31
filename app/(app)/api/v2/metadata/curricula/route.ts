@@ -1,10 +1,9 @@
 import { type NextRequest, NextResponse } from "next/server";
 import * as v from "valibot";
 
-import { defaultLocale as locale } from "@/config/i18n.config";
-import { createClient } from "@/lib/content/create-client";
+import curricula from "@/public/metadata/curricula.json";
 
-const SearchFiltersSchema = v.object({
+const searchFiltersSchema = v.object({
 	limit: v.nullish(
 		v.pipe(
 			v.string(),
@@ -26,19 +25,15 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 	const searchParams = new URL(request.url).searchParams;
 
 	try {
-		const filters = await v.parseAsync(SearchFiltersSchema, {
+		const filters = await v.parseAsync(searchFiltersSchema, {
 			limit: searchParams.get("limit"),
 			offset: searchParams.get("offset"),
 			kind: searchParams.getAll("kind"),
 		});
 
-		const client = await createClient(locale);
-
-		const items = await client.curricula.all();
-
 		const { limit, offset } = filters;
-		const total = items.length;
-		const page = items.slice(offset, offset + limit);
+		const total = curricula.length;
+		const page = curricula.slice(offset, offset + limit);
 
 		return NextResponse.json({ total, limit, offset, items: page });
 	} catch (error) {
