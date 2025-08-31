@@ -1,7 +1,7 @@
 "use client";
 
 import Script from "next/script";
-import { type ReactNode, useEffect, useRef } from "react";
+import { Fragment, type ReactNode, useEffect, useRef } from "react";
 
 interface H5PWrapperProps {
 	path: string;
@@ -28,19 +28,28 @@ interface H5PModule {
 
 declare global {
 	interface Window {
+		H5PPlayer?: H5PConstructor;
 		H5PStandalone?: H5PModule;
+		H5P?: unknown;
 	}
 }
 
-export function H5PWrapper(props: H5PWrapperProps): ReactNode {
+export function H5PWrapper(props: Readonly<H5PWrapperProps>): ReactNode {
 	const { path } = props;
+
 	const ref = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
 		const container = ref.current;
 
-		if (!window.H5PStandalone?.H5P || !container) return;
-		const { H5P } = window.H5PStandalone;
+		if (!((window.H5PStandalone?.H5P || window.H5PPlayer) && container)) return;
+
+		if (window.H5PStandalone?.H5P) {
+			window.H5PPlayer = window.H5PStandalone.H5P;
+		}
+
+		const { H5PPlayer } = window;
+
 		const loadH5P = () => {
 			const options = {
 				h5pJsonPath: `/vendor/h5p-content/${path}`,
@@ -48,25 +57,31 @@ export function H5PWrapper(props: H5PWrapperProps): ReactNode {
 				frameJs: "/vendor/h5p-standalone/frame.bundle.js",
 				frameCss: "/vendor/h5p-standalone/styles/h5p.css",
 			};
+
 			try {
-				new H5P(container, options);
+				if (H5PPlayer) {
+					new H5PPlayer(container, options);
+				}
 			} catch (error: unknown) {
 				console.error("Error loading H5P content", error);
 			}
 		};
+
 		loadH5P();
+
 		return () => {
 			container.innerHTML = "";
 		};
 	}, [path]);
+
 	return (
-		<>
+		<Fragment>
 			<div ref={ref} />
 			<Script
 				id="h5p-script"
 				src="/vendor/h5p-standalone/main.bundle.js"
 				strategy="beforeInteractive"
-			></Script>
-		</>
+			/>
+		</Fragment>
 	);
 }
