@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
@@ -5,14 +6,14 @@ import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 
 interface SearchCardProps {
-	content: string;
 	count: string;
 	href: string;
-	image: { src: string; width: number; height: number };
+	image: StaticImageData | string;
 	name: string;
+	content: ReactNode;
 }
 
-export function SourceCard(props: SearchCardProps): ReactNode {
+export function SourceCard(props: Readonly<SearchCardProps>): ReactNode {
 	const { content, count, href, image, name } = props;
 
 	return (

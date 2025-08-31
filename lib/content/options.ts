@@ -78,6 +78,7 @@ export const socialMediaKinds = [
 	{ label: "Facebook", value: "facebook" },
 	{ label: "Flickr", value: "flickr" },
 	{ label: "GitHub", value: "github" },
+	{ label: "Instagram", value: "instagram" },
 	{ label: "LinkedIn", value: "linkedin" },
 	{ label: "Mastodon", value: "mastodon" },
 	{ label: "ORCID", value: "orcid" },

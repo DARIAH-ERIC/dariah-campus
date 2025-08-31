@@ -12,7 +12,7 @@ interface QuizControlsProps {
 	validateButtonLabel: string;
 }
 
-export function QuizControls(props: QuizControlsProps): ReactNode {
+export function QuizControls(props: Readonly<QuizControlsProps>): ReactNode {
 	const { nextButtonLabel, previousButtonLabel, validateButtonLabel } = props;
 
 	const { navigation } = useQuizContext();
@@ -40,13 +40,13 @@ interface ButtonProps extends AriaButtonProps {
 	children: ReactNode;
 }
 
-function Button(props: ButtonProps): ReactNode {
+function Button(props: Readonly<ButtonProps>): ReactNode {
 	const { children } = props;
 
 	return (
 		<AriaButton
 			{...props}
-			className="inline-flex cursor-default items-center justify-center gap-x-2 whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium leading-normal transition hover:bg-neutral-100 pressed:bg-neutral-200 disabled:opacity-50"
+			className="inline-flex cursor-default items-center justify-center gap-x-2 rounded-md px-3 py-1.5 text-sm leading-normal font-medium whitespace-nowrap transition hover:bg-neutral-100 disabled:opacity-50 pressed:bg-neutral-200"
 		>
 			{children}
 		</AriaButton>
