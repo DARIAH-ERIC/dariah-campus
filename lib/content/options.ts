@@ -4,6 +4,7 @@ export const calloutKinds = [
 	{ label: "Note", value: "note" },
 	{ label: "Tip", value: "tip" },
 	{ label: "Warning", value: "warning" },
+	{ label: "Plain", value: "none" },
 ] as const;
 
 export type CalloutKind = (typeof calloutKinds)[number]["value"];
@@ -58,13 +59,15 @@ export type GridLayout = (typeof gridLayouts)[number]["value"];
 
 export const linkKinds = [
 	{ label: "Direct URL", value: "external" },
-	{ label: "Documentation", value: "documentation" },
+	{ label: "Heading identifier", value: "hash" },
 	{ label: "Download", value: "download" },
-	{ label: "Curricula", value: "curricula" },
 	{ label: "Events", value: "resources-events" },
 	{ label: "External resources", value: "resources-external" },
 	{ label: "Hosted resources", value: "resources-hosted" },
 	{ label: "Pathfinders", value: "resources-pathfinders" },
+	{ label: "Curricula", value: "curricula" },
+	{ label: "Search", value: "search" },
+	{ label: "Documentation", value: "documentation" },
 ] as const;
 
 export type LinkKind = (typeof linkKinds)[number]["value"];
@@ -75,6 +78,7 @@ export const socialMediaKinds = [
 	{ label: "Facebook", value: "facebook" },
 	{ label: "Flickr", value: "flickr" },
 	{ label: "GitHub", value: "github" },
+	{ label: "Instagram", value: "instagram" },
 	{ label: "LinkedIn", value: "linkedin" },
 	{ label: "Mastodon", value: "mastodon" },
 	{ label: "ORCID", value: "orcid" },

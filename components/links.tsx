@@ -5,7 +5,7 @@ interface LinksProps {
 	links: Array<{ label: string; href: string }>;
 }
 
-export function Links(props: LinksProps): ReactNode {
+export function Links(props: Readonly<LinksProps>): ReactNode {
 	const { label, links } = props;
 
 	if (links.length === 0) {
@@ -14,9 +14,9 @@ export function Links(props: LinksProps): ReactNode {
 
 	return (
 		<dl className="grid gap-y-0.5 text-sm text-neutral-500">
-			<dt className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</dt>
+			<dt className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{label}</dt>
 			<dd>
-				<ul className="inline text-xs font-medium uppercase tracking-wide">
+				<ul className="inline text-xs font-medium tracking-wide uppercase">
 					{links.map((link, index) => {
 						const { label, href } = link;
 

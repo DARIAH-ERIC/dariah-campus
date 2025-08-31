@@ -1,30 +1,34 @@
 import { useFormatter, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import { resources as sharedMetadata } from "@/config/shared-metadata.config";
 import type { ContentLanguage, ContentType } from "@/lib/content/options";
+import { resources as sharedMetadata } from "@/lib/content/shared-metadata.config";
 
 interface ResourceMetadataProps {
 	authors: Array<{ id: string; name: string }>;
 	contentType: ContentType | "curriculum" | "event" | "pathfinder";
-	license: { value: string; label: string };
+	doi?: string;
+	license: { label: string };
 	locale: ContentLanguage;
 	publicationDate: Date;
 	remotePublicationDate?: Date;
+	remoteUrl?: string;
 	sources: Array<{ id: string; name: string }>;
 	tags: Array<{ id: string; name: string }>;
 	title: string;
 	version: string;
 }
 
-export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
+export function ResourceMetadata(props: Readonly<ResourceMetadataProps>): ReactNode {
 	const {
 		authors,
 		contentType,
+		doi,
 		publicationDate,
 		license,
 		locale,
 		remotePublicationDate,
+		remoteUrl,
 		sources,
 		tags,
 		title,
@@ -32,12 +36,12 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 	} = props;
 	const { domain } = sharedMetadata;
 
-	const t = useTranslations("FullMetadata");
+	const t = useTranslations("ResourceMetadata");
 	const format = useFormatter();
 
 	return (
-		<div className="mx-auto mt-12 w-full max-w-content space-y-3 border-t border-neutral-200 py-12">
-			<h2 className="text-xs font-bold uppercase tracking-wide text-neutral-600">{t("label")}</h2>
+		<div className="mx-auto mt-12 w-full max-w-(--size-content) space-y-3 border-t border-neutral-200 py-12">
+			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("label")}</h2>
 			<dl className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
 				<div className="flex gap-x-1.5">
 					<dt>{t("title")}:</dt>
@@ -59,7 +63,7 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 				</div>
 				<div className="flex gap-x-1.5">
 					<dt>{t("language")}:</dt>
-					<dd>{locale}</dd>
+					<dd>{new Intl.DisplayNames(locale, { type: "language" }).of(locale)}</dd>
 				</div>
 				<div className="flex gap-x-1.5">
 					<dt>{t("publication-date")}:</dt>
@@ -69,6 +73,16 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 					<div className="flex gap-x-1.5">
 						<dt>{t("remote-publication-date")}:</dt>
 						<dd>{format.dateTime(remotePublicationDate)}</dd>
+					</div>
+				) : null}
+				{remoteUrl != null ? (
+					<div className="flex gap-x-1.5">
+						<dt>{t("remote-url")}:</dt>
+						<dd>
+							<a className="underline hover:no-underline" href={remoteUrl}>
+								{remoteUrl}
+							</a>
+						</dd>
 					</div>
 				) : null}
 				<div className="flex gap-x-1.5">
@@ -103,6 +117,16 @@ export function ResourceMetadata(props: ResourceMetadataProps): ReactNode {
 					<dt>{t("version")}:</dt>
 					<dd>{version}</dd>
 				</div>
+				{doi != null ? (
+					<div className="flex gap-x-1.5">
+						<dt>{t("pid")}:</dt>
+						<dd>
+							<a className="underline hover:no-underline" href={doi}>
+								{doi}
+							</a>
+						</dd>
+					</div>
+				) : null}
 			</dl>
 		</div>
 	);

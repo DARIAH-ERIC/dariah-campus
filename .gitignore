@@ -23,10 +23,10 @@ node_modules/
 
 # vercel
 .vercel
-vercel.json
 
 # misc
 .DS_Store
+*.pem
 .idea/
 
 # next.js
@@ -34,10 +34,11 @@ vercel.json
 next-env.d.ts
 out/
 
+# self-signed certificates
+certificates
+
 # i18n
-# temporarily added to get correct types in ci/cd before application startup
-# @see https://github.com/amannn/next-intl/discussions/1737
-# /content/**/*.d.json.ts
+/content/**/*.d.json.ts
 /messages/**/*.d.json.ts
 
 # test
@@ -48,3 +49,9 @@ out/
 /playwright/.cache/
 /playwright-report/
 /test-results/
+
+# generated content
+.content/
+
+# generated metadata dump
+/public/metadata/*.json

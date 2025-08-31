@@ -1,31 +1,53 @@
+import { resolve } from "node:path";
+
 import baseConfig from "@acdh-oeaw/eslint-config";
 import nextConfig from "@acdh-oeaw/eslint-config-next";
 import nodeConfig from "@acdh-oeaw/eslint-config-node";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
 import reactConfig from "@acdh-oeaw/eslint-config-react";
-import tailwindcssConfig from "@acdh-oeaw/eslint-config-tailwindcss";
+import tailwindConfig from "@acdh-oeaw/eslint-config-tailwindcss";
 import gitignore from "eslint-config-flat-gitignore";
-// @ts-expect-error Missing type declaration.
 import checkFilePlugin from "eslint-plugin-check-file";
-import type { Config } from "typescript-eslint";
+import { config as createConfig } from "typescript-eslint";
 
-const config: Config = [
+const restrictedImports = {
+	paths: [
+		{
+			name: "next/image",
+			allowImportNames: ["StaticImageData"],
+			message: "Please use `@/components/image` instead.",
+		},
+		{
+			name: "next/router",
+			message: "Please use `next/navigation` instead.",
+		},
+	],
+};
+
+export default createConfig(
 	gitignore({ strict: false }),
-	...baseConfig,
-	...reactConfig,
-	...nextConfig,
-	...tailwindcssConfig,
-	...playwrightConfig,
+	{ ignores: ["content/**", "public/**"] },
+	baseConfig,
+	reactConfig,
+	nextConfig,
+	tailwindConfig,
+	{
+		settings: {
+			tailwindcss: {
+				config: resolve("./styles/index.css"),
+			},
+		},
+	},
+	playwrightConfig,
 	{
 		plugins: {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			"check-file": checkFilePlugin,
 		},
 		rules: {
 			"check-file/filename-naming-convention": [
 				"error",
 				{
-					"**/*": "KEBAB_CASE",
+					"**/*": "?(_)+([a-z])*([a-z0-9])*(-+([a-z0-9]))",
 				},
 				{ ignoreMiddleExtensions: true },
 			],
@@ -40,26 +62,7 @@ const config: Config = [
 	{
 		rules: {
 			"arrow-body-style": ["error", "always"],
-			"no-restricted-imports": [
-				"error",
-				{
-					name: "next/image",
-					message: "Please use `@/components/image` or `@/components/server-image` instead.",
-				},
-				{
-					name: "next/link",
-					message: "Please use `@/components/link` instead.",
-				},
-				{
-					name: "next/navigation",
-					importNames: ["redirect", "permanentRedirect", "useRouter", "usePathname"],
-					message: "Please use `@/lib/i18n/navigation` instead.",
-				},
-				{
-					name: "next/router",
-					message: "Please use `@/lib/i18n/navigation` instead.",
-				},
-			],
+			"no-restricted-imports": ["error", restrictedImports],
 			"no-restricted-syntax": [
 				"error",
 				{
@@ -67,7 +70,7 @@ const config: Config = [
 					message: "Please use `@/config/env.config` instead.",
 				},
 			],
-			// "@typescript-eslint/explicit-module-boundary-types": "error",
+			"@typescript-eslint/explicit-module-boundary-types": "error",
 			"@typescript-eslint/require-array-sort-compare": "error",
 			/** Avoid hardcoded, non-translated strings. */
 			"react/jsx-no-literals": [
@@ -76,6 +79,7 @@ const config: Config = [
 					allowedStrings: [
 						"&amp;",
 						"&apos;",
+						"&bull;",
 						"&copy;",
 						"&gt;",
 						"&lt;",
@@ -93,19 +97,18 @@ const config: Config = [
 						"-",
 						"(",
 						")",
+						"|",
+						"/",
 					],
 				},
 			],
-			// "@typescript-eslint/strict-boolean-expressions": "error",
+			"@typescript-eslint/strict-boolean-expressions": "error",
 			"react/jsx-sort-props": ["error", { reservedFirst: true }],
+			"react-x/prefer-read-only-props": "error",
 		},
 	},
-	...nodeConfig.map((config) => {
-		return {
-			files: ["db/**/*.ts", "lib/server/**/*.ts", "**/_actions/**/*.ts"],
-			...config,
-		};
-	}),
-];
-
-export default config;
+	{
+		files: ["db/**/*.ts", "lib/server/**/*.ts", "**/_lib/actions/**/*.ts", "scripts/**/*.ts"],
+		extends: [nodeConfig],
+	},
+);

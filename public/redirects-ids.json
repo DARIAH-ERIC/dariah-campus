@@ -1,0 +1,1329 @@
+{
+	"redirects": [
+		{
+			"source": "/id/KVricBPDLYR4xqdHfIMIz",
+			"destination": "https://hdl.handle.net/21.11159/019595ab-cdf4-73fb-9639-6c21624fa8cc",
+			"permanent": true
+		},
+		{
+			"source": "/id/cf50ad56-ca11-456b-832c-b89d31bab7a6",
+			"destination": "https://hdl.handle.net/21.11159/019595ab-ef75-749e-b684-8e138b9f9d90",
+			"permanent": true
+		},
+		{
+			"source": "/id/ac23e0ef-ecba-45f7-bc86-1cd43c4fd335",
+			"destination": "https://hdl.handle.net/21.11159/019595ab-f088-7171-8c32-6eb768caf230",
+			"permanent": true
+		},
+		{
+			"source": "/id/ZSsy5WC_-7fb3MzztrFx7",
+			"destination": "https://hdl.handle.net/21.11159/019595ab-f0c0-77e1-81c0-bf88c3a8af33",
+			"permanent": true
+		},
+		{
+			"source": "/id/38fWcV5NRk0nDebze6jyQ",
+			"destination": "https://hdl.handle.net/21.11159/019595ab-f0f7-72ed-823d-68f688e1b2a4",
+			"permanent": true
+		},
+		{
+			"source": "/id/CvFz2h8DMeC0cnaFzIY54",
+			"destination": "https://hdl.handle.net/21.11159/019595c3-4c32-7238-87ec-797b4fbfb49d",
+			"permanent": true
+		},
+		{
+			"source": "/id/B1uS7B_j-RQTcXpmVqZzh",
+			"destination": "https://hdl.handle.net/21.11159/019595c3-4db1-71f4-9d79-54b4c470a5bc",
+			"permanent": true
+		},
+		{
+			"source": "/id/I4_lTVMwwnwrgykI-dbUF",
+			"destination": "https://hdl.handle.net/21.11159/019595c3-4def-768c-9c30-ba2aaebe69c1",
+			"permanent": true
+		},
+		{
+			"source": "/id/Lg-N80I4p8pM7bMt3b4mq",
+			"destination": "https://hdl.handle.net/21.11159/019595c3-4e2c-7523-857a-33e8ba78ce42",
+			"permanent": true
+		},
+		{
+			"source": "/id/iguJbOaYchukSstaQzjYz",
+			"destination": "https://hdl.handle.net/21.11159/019595c3-4e84-7011-908e-79c668ae60f5",
+			"permanent": true
+		},
+		{
+			"source": "/id/3LWI-AKBI2z6duyLjHQHu",
+			"destination": "https://hdl.handle.net/21.11159/019595c3-4ece-73ea-a9a1-3b1f1a2c356c",
+			"permanent": true
+		},
+		{
+			"source": "/id/ksTAT3GTI13I3GgGBNi55",
+			"destination": "https://hdl.handle.net/21.11159/019595c3-4f00-766e-8b2b-01646278da44",
+			"permanent": true
+		},
+		{
+			"source": "/id/BCjEyO1hR5ZoFHqEnGoi5",
+			"destination": "https://hdl.handle.net/21.11159/019595c3-4f3d-705a-9521-3f5b6818ee47",
+			"permanent": true
+		},
+		{
+			"source": "/id/tG0zSLmiUiS_eNA82o3iv",
+			"destination": "https://hdl.handle.net/21.11159/019595c3-4f7d-71cb-8b40-2dabbdd7e39b",
+			"permanent": true
+		},
+		{
+			"source": "/id/SIrsBt8ClHETrGqpEsvFj",
+			"destination": "https://hdl.handle.net/21.11159/019595c3-4fc3-757b-9a15-ab591c500e56",
+			"permanent": true
+		},
+		{
+			"source": "/id/OPoN1bz_icorEPq4MfSe8",
+			"destination": "https://hdl.handle.net/21.11159/019595c3-501a-713f-b689-7de221fe9020",
+			"permanent": true
+		},
+		{
+			"source": "/id/nG9tnoatXHB4S_iu8kfL0",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2a13-7753-afd4-6fbbede9f1f2",
+			"permanent": true
+		},
+		{
+			"source": "/id/rpKYExM0_nzYeaFVix7mF",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2b6f-718a-9f33-64b3df6c6c74",
+			"permanent": true
+		},
+		{
+			"source": "/id/u8bdfvTjXd2s5WM-CZXdv",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2b9e-7726-819a-2b8ae9df4243",
+			"permanent": true
+		},
+		{
+			"source": "/id/csoYDQEUTC80B--xdDKAE",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2bd8-748d-8cea-4cd9d770b7b6",
+			"permanent": true
+		},
+		{
+			"source": "/id/UkNwk2sC-4G9rXwUvdqHQ",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2c08-710d-b6f0-819a6f6c5de5",
+			"permanent": true
+		},
+		{
+			"source": "/id/hSttkfubRZUXeMc8UFp1B",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2c37-7079-8d74-3463a9b31b3b",
+			"permanent": true
+		},
+		{
+			"source": "/id/JnZjojPXrmQTTEvC1Ufo0",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2c68-707a-9541-b4287665bfa2",
+			"permanent": true
+		},
+		{
+			"source": "/id/5wX2onB5pglO8nuHMHZUC",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2ca3-743f-81aa-c08284b9e3b6",
+			"permanent": true
+		},
+		{
+			"source": "/id/5v_UQ7nfCmW8Zjz7ibTUB",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2cdc-761f-8f1c-81358c928c93",
+			"permanent": true
+		},
+		{
+			"source": "/id/2HGNomCKsLnJeAet-GIoz",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2d11-7399-a5f6-32bd649d2d36",
+			"permanent": true
+		},
+		{
+			"source": "/id/MLJE_N_IbYAvHceXrHYAV",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2d4a-74d9-8c78-08852b58fd9a",
+			"permanent": true
+		},
+		{
+			"source": "/id/_prj5eNH91pvpYlSod2f4",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2d87-76ff-85d3-6660953c7978",
+			"permanent": true
+		},
+		{
+			"source": "/id/eUoQmboe-67VK5L4mhwkL",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2db6-744c-9afb-c42466beee39",
+			"permanent": true
+		},
+		{
+			"source": "/id/E7Hh84XHeikiofOoQpNW2",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2de2-70e8-8265-d9f6f1857f0f",
+			"permanent": true
+		},
+		{
+			"source": "/id/CfAyflchDaNl5KRQU5uRE",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2e0e-72af-a450-3f1c3dbea557",
+			"permanent": true
+		},
+		{
+			"source": "/id/8993KMqnJLE87T8W_Tg2Y",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2e4b-729c-a63d-2152db547a68",
+			"permanent": true
+		},
+		{
+			"source": "/id/73wWaTDMOfPvyf67sSMaD",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2e80-73fc-81cb-2a5f86c093b5",
+			"permanent": true
+		},
+		{
+			"source": "/id/DQTFV45kyiTGa5mCVvr3H",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2eb7-750b-91d7-52dbf3acf96d",
+			"permanent": true
+		},
+		{
+			"source": "/id/Kg1XIZQwESSj_j5KXI72V",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2eee-772b-b2cd-03f085808907",
+			"permanent": true
+		},
+		{
+			"source": "/id/oI2kkoU_u0sgP9NVrrAs4",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2f24-73be-8658-5c9cd274b6bb",
+			"permanent": true
+		},
+		{
+			"source": "/id/Bt0dH7ZSe5gVFGCT62EF6",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2f5b-7165-bbf8-32c3373a5efd",
+			"permanent": true
+		},
+		{
+			"source": "/id/S9eZzEjhtGfPjYQ_V9Vze",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2f92-77d9-9f09-f908629bee72",
+			"permanent": true
+		},
+		{
+			"source": "/id/WOStpmVhAE5TDbau-jJ6g",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2fca-725f-8a15-65f5ede87e64",
+			"permanent": true
+		},
+		{
+			"source": "/id/6_ox8NRKQYATVNRhZvvC5",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-2fff-75bf-ba28-cdd6ad5afd7e",
+			"permanent": true
+		},
+		{
+			"source": "/id/HtoXSg4azl9EeEl38VkrA",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3031-7320-b493-d3b8e5de89ed",
+			"permanent": true
+		},
+		{
+			"source": "/id/N5o42gvgTehJkef9As0Dj",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3061-761b-a634-c2062d3faa1f",
+			"permanent": true
+		},
+		{
+			"source": "/id/HNICjjRaUsywffGDPM0xl",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3095-76e1-9193-c977fc3261a1",
+			"permanent": true
+		},
+		{
+			"source": "/id/bB_a35GCgvpq-kg7rtT-u",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-30cd-737e-ab5c-4325c5d383e9",
+			"permanent": true
+		},
+		{
+			"source": "/id/T1yw9djjK9smCQjTqzWiy",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3106-734f-aea5-5be9e29bcb2a",
+			"permanent": true
+		},
+		{
+			"source": "/id/iPBb-zngqFQunmWOCSWYK",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-313c-7205-bfc5-c1223df0f6e1",
+			"permanent": true
+		},
+		{
+			"source": "/id/fvbBqyX1xemlwiHRXagF_",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3176-759a-a9f7-d25d2a427499",
+			"permanent": true
+		},
+		{
+			"source": "/id/jIIxub21kwHDr92HXG9zM",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-31ac-728f-9549-3f382f2e0541",
+			"permanent": true
+		},
+		{
+			"source": "/id/ulExjbgrNwDiYddpz4rzf",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-31e4-765c-8aea-5aafa679f421",
+			"permanent": true
+		},
+		{
+			"source": "/id/wxtEElJDqkQZ7tOc5Cs3j",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-321d-76ac-bebe-cd209ad7ddb3",
+			"permanent": true
+		},
+		{
+			"source": "/id/DaeLxsJlWUkrWz2ZDn2Yl",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3254-71b9-9dae-1a387e75decb",
+			"permanent": true
+		},
+		{
+			"source": "/id/CknN1nZHxwrQlhHhbdouG",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-328c-76fc-bca3-2e4678766093",
+			"permanent": true
+		},
+		{
+			"source": "/id/-2GgO2DK7PkQVA0Xv6x6-",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-32fb-71c9-9e1a-30ae7ec1877f",
+			"permanent": true
+		},
+		{
+			"source": "/id/5Gz_Exg7uU6FoRFnWxQO8",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3331-740a-85e0-12f25ecc6379",
+			"permanent": true
+		},
+		{
+			"source": "/id/wH4pbJNpj5FkXQSMn0Hlm",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3369-75e9-91ff-4dc32a8826a3",
+			"permanent": true
+		},
+		{
+			"source": "/id/TvQH7Piu5z5naBR6pTMrw",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-33a0-77ff-839c-279da42296e9",
+			"permanent": true
+		},
+		{
+			"source": "/id/-qUZMpCSJqxIK9I9c-ICK",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-33d4-751f-b2d9-883ad62ff0fd",
+			"permanent": true
+		},
+		{
+			"source": "/id/p9Jv0mdn6kGdoptR_zBJY",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3407-7789-b725-cb0e6d06f0a3",
+			"permanent": true
+		},
+		{
+			"source": "/id/qrC5H0q4rTMOlKCH_NUaE",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-343a-764b-bdf5-80e6f0aa7461",
+			"permanent": true
+		},
+		{
+			"source": "/id/xIaTzyeg1lX0JTDH5Mn2z",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3470-7735-9698-100bd9059df5",
+			"permanent": true
+		},
+		{
+			"source": "/id/f7C5PByPgDGIoNQqTxXJa",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-34a5-7229-ac73-67dc83e60746",
+			"permanent": true
+		},
+		{
+			"source": "/id/fNT1f_IwjyIdoQoA0ZIWL",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-34da-70a0-96a9-ca39cb667bf3",
+			"permanent": true
+		},
+		{
+			"source": "/id/VXySWzwRaGpDqZ63wSEjE",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-350d-74ef-b362-b7d9eff872fa",
+			"permanent": true
+		},
+		{
+			"source": "/id/NKGY7zuGCf9JL_d7ifwfx",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3540-76f6-904e-be32dc56c736",
+			"permanent": true
+		},
+		{
+			"source": "/id/eTJxkgSa0yFCxZzwGdInz",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3575-7632-a9cc-38e844cc9923",
+			"permanent": true
+		},
+		{
+			"source": "/id/eFnqYcKuWThxjAb99JYPr",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-35a8-77a3-9e80-0f9865c9b391",
+			"permanent": true
+		},
+		{
+			"source": "/id/EicEMbhGM-svdC1yrOC76",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-35e3-7020-8230-280d7403b698",
+			"permanent": true
+		},
+		{
+			"source": "/id/hpHpeRyGVyrOppTmJK7Ai",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-361b-71fc-b935-5409f4a20826",
+			"permanent": true
+		},
+		{
+			"source": "/id/pF0b5Ru3HoOPd_rQLU3VP",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-364e-704e-bff0-ad089d03a0c7",
+			"permanent": true
+		},
+		{
+			"source": "/id/ymmToQ6QkPAc0zx7l7ej2",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3681-749e-8816-44fdd5ea31b7",
+			"permanent": true
+		},
+		{
+			"source": "/id/ZeITrRk0xmxSIAXrrRkTa",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-36b3-754d-bf19-2bd001f22e8d",
+			"permanent": true
+		},
+		{
+			"source": "/id/z4x_TaBT2R6adJ66kmEim",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-36e7-73bb-8539-a3f037e42ea8",
+			"permanent": true
+		},
+		{
+			"source": "/id/fXMIDhr8R1W0gR9t48k_4",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-371d-7418-b5e4-7acef3c2db52",
+			"permanent": true
+		},
+		{
+			"source": "/id/r-sEbcciHfXE0ufZfmmPm",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3750-77ce-97cc-c91e774ff205",
+			"permanent": true
+		},
+		{
+			"source": "/id/cdlK8pixWmOzRotGk0tIR",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3784-72c9-bdc7-a43a008b4dc9",
+			"permanent": true
+		},
+		{
+			"source": "/id/SWDdSvThHDCBz1N0sHBI5",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-37ba-71d5-b64b-f0aba14442ab",
+			"permanent": true
+		},
+		{
+			"source": "/id/hrF50bzHhZmhIFiVHXFuS",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3800-724b-95cb-6d7dcf391971",
+			"permanent": true
+		},
+		{
+			"source": "/id/q22sktAxJFE5rIhHjA7OC",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-384e-71b7-95d4-6b34cedd2338",
+			"permanent": true
+		},
+		{
+			"source": "/id/zKeRT4BPI-ka_YLk-LVnj",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-38a7-73ff-b9e1-4b9ff8903b3e",
+			"permanent": true
+		},
+		{
+			"source": "/id/stDgDr-S1iunCGKWKbh48",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-38e1-77eb-a0d7-8347712a1307",
+			"permanent": true
+		},
+		{
+			"source": "/id/g9OaVjNq8nIP-ajG3d6v2",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3916-70c0-adec-0beae5850874",
+			"permanent": true
+		},
+		{
+			"source": "/id/zPjRGxXja1eF7e67uuy4_",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-394e-72f7-aacb-8c706185d0f4",
+			"permanent": true
+		},
+		{
+			"source": "/id/Vuao8_rXXvPH3E7Q3o1op",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-397a-746b-a8f2-59d9faf6a351",
+			"permanent": true
+		},
+		{
+			"source": "/id/VWHwHJ44oFZKRissb7viG",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-39a6-77da-b1b9-a9686694770c",
+			"permanent": true
+		},
+		{
+			"source": "/id/w4d-ieqpmlnoIwiZ_kWMX",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-39d4-753f-bb41-2168c4f8b188",
+			"permanent": true
+		},
+		{
+			"source": "/id/K_RGoWjAfJEoX2xW-iMJs",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3a2b-724e-939d-28931f6321ec",
+			"permanent": true
+		},
+		{
+			"source": "/id/t6R_wQmBNtqMsQlSMw-sa",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3a62-7381-b3e6-6aa7b81512c2",
+			"permanent": true
+		},
+		{
+			"source": "/id/W_k-Hmttm06B5XaWPRyvF",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3aa3-768f-b310-111a1fbcac40",
+			"permanent": true
+		},
+		{
+			"source": "/id/ZRBB3EftS8KckhUlWDiOV",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3ad6-7719-b78b-235a4e433a00",
+			"permanent": true
+		},
+		{
+			"source": "/id/nvw4uI3pE8A4ia4OdkIx2",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3b02-74fc-8cd1-81e180f41ca4",
+			"permanent": true
+		},
+		{
+			"source": "/id/14HMk2ch2xBvRb4ntojw5",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3b2f-7254-803b-ad8739c004d8",
+			"permanent": true
+		},
+		{
+			"source": "/id/be5aUc62TBkd9ijpj0rFD",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3b62-773c-9348-8d504131e619",
+			"permanent": true
+		},
+		{
+			"source": "/id/QDGufDQ3-6PDZwRKXzOvH",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3b91-7402-b195-974dceb42338",
+			"permanent": true
+		},
+		{
+			"source": "/id/WACdz3FQZCkbk74AZfosu",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3bbf-752a-9e3c-fe0dafef36aa",
+			"permanent": true
+		},
+		{
+			"source": "/id/fYC9N1K37HFFYiRhYsUGR",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3bf0-75ab-a6ea-c153c6673404",
+			"permanent": true
+		},
+		{
+			"source": "/id/hMKG-2H-7t7LAerLV63tj",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3c1b-7703-934c-f0bf46960cc2",
+			"permanent": true
+		},
+		{
+			"source": "/id/lQ73jg2AEtNlimbbXir3s",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3c46-726c-a2ef-c9322ae9fc21",
+			"permanent": true
+		},
+		{
+			"source": "/id/y75J_XvilCow97fT9x3nW",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3c78-739a-a928-776880f8b34c",
+			"permanent": true
+		},
+		{
+			"source": "/id/chwpJttvdJuNp3uhHpSRU",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3ccd-717e-911a-1c2bacc75038",
+			"permanent": true
+		},
+		{
+			"source": "/id/vKpWpHlLS_H_0T4XRVaO8",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3d00-702e-a65f-b62cfeacab23",
+			"permanent": true
+		},
+		{
+			"source": "/id/4pvDPHLFD52zdga_dY3ur",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3d33-754c-b57f-1b4e7b13cb06",
+			"permanent": true
+		},
+		{
+			"source": "/id/STkX7KbfvIW6sj8j1yhqy",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3d65-7030-8069-ff407aa3f0b8",
+			"permanent": true
+		},
+		{
+			"source": "/id/SZYM7-VrzZ59ffA1eRMxP",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3d97-713d-b8f1-6bc0f64aeb5a",
+			"permanent": true
+		},
+		{
+			"source": "/id/M8F8jhlNI2WdXS_A-mCUu",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3dc8-74dc-aa9f-717219290943",
+			"permanent": true
+		},
+		{
+			"source": "/id/mu9DduTS-kyikDGceaPfW",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3e01-72ba-810d-824e17cb95da",
+			"permanent": true
+		},
+		{
+			"source": "/id/bnCH376DT5uU1uql2lYFT",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3e34-7366-ae18-4b933594898e",
+			"permanent": true
+		},
+		{
+			"source": "/id/YJAldPQsX9krfU_vmAaeK",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3e67-736f-943c-9d928bd7794c",
+			"permanent": true
+		},
+		{
+			"source": "/id/tFAYASsI0_IxyxFHv9RZC",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3e9c-7595-b018-742c88715f2e",
+			"permanent": true
+		},
+		{
+			"source": "/id/hG3ljCfgTpCOGuVSyVJ1S",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3ecf-7709-8f94-0554cc836240",
+			"permanent": true
+		},
+		{
+			"source": "/id/RfLCnD05m5iPr3UpwXGNH",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3f02-778a-ba8d-d8243f3b70c7",
+			"permanent": true
+		},
+		{
+			"source": "/id/22peDeBZy2RDEwba55fJi",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3f34-7043-abfe-0adfed3f3b55",
+			"permanent": true
+		},
+		{
+			"source": "/id/wp4ifeuLx1qo4UvAxnxwh",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3f66-75fa-9400-91646a312d2a",
+			"permanent": true
+		},
+		{
+			"source": "/id/hH4GpAnb9AoX5wDFz1mje",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3f9c-7202-a107-f6b5a342bf3a",
+			"permanent": true
+		},
+		{
+			"source": "/id/MxuWI1j1VFT9ZVA_3o1dY",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3fcf-71be-8fb4-461f4093303f",
+			"permanent": true
+		},
+		{
+			"source": "/id/IXDGIy9OCN6C0pH0Eknxo",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3ffb-739e-8c5c-f892730e84c9",
+			"permanent": true
+		},
+		{
+			"source": "/id/yhqACg5zgq70Cg1cdErTw",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-4026-7119-bb9d-cf7f06149778",
+			"permanent": true
+		},
+		{
+			"source": "/id/68pWvHXZvWaMXL3MQrvuc",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-4053-764e-9b7c-de72ef884758",
+			"permanent": true
+		},
+		{
+			"source": "/id/WAIEkxLKyfTdgKm--l0B-",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-4083-7427-8854-45fc475c08f7",
+			"permanent": true
+		},
+		{
+			"source": "/id/D50YxXRPpCU7nScZgQGUq",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-40b3-73b1-89ab-52ecfbe062b4",
+			"permanent": true
+		},
+		{
+			"source": "/id/iKG3DkiGL8rNHQcF15axl",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-40de-76be-a528-4bec7ac33349",
+			"permanent": true
+		},
+		{
+			"source": "/id/l8bGw5SLZP4C-oN0Ik-ei",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-410b-764f-b758-e4e9cdf7060f",
+			"permanent": true
+		},
+		{
+			"source": "/id/XQ2ReKDINlmcgzNLUrjry",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-4137-7132-a4a1-318c735350e4",
+			"permanent": true
+		},
+		{
+			"source": "/id/61kFzzhKun7qPG1OUrbeG",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-416b-72dc-808c-4781abb1fed0",
+			"permanent": true
+		},
+		{
+			"source": "/id/sZzy5hRZqsxmmRB3N7jV8",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-419e-75b7-bcea-06d614bb5575",
+			"permanent": true
+		},
+		{
+			"source": "/id/w8QpPoIeNO2rrBFs6vtr0",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-41cf-70a7-b61a-ce2d047ec455",
+			"permanent": true
+		},
+		{
+			"source": "/id/7evYzPt2uUoDhwr8TvEcT",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-4206-751c-bfa4-25826d482db9",
+			"permanent": true
+		},
+		{
+			"source": "/id/iOKHwTPWMd8dPIHFEvT_9",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-4238-75fb-8887-b535b611fd52",
+			"permanent": true
+		},
+		{
+			"source": "/id/IxgyGD8XOw1090mXD9-ra",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-426c-70a4-a7b3-d3629c1d6d90",
+			"permanent": true
+		},
+		{
+			"source": "/id/H0ucIPCorqOlAPrrcVZBQ",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-429e-752b-8898-bc15a34c3a12",
+			"permanent": true
+		},
+		{
+			"source": "/id/51icTQq8rTI9uu24nHgDL",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-42d0-72b8-b9ca-68d96f7549f2",
+			"permanent": true
+		},
+		{
+			"source": "/id/djD_8l7fIe1MQzvFkDlM3",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-4303-76af-a514-a779ae40ad29",
+			"permanent": true
+		},
+		{
+			"source": "/id/TacwJlm4BQC8KxJ3M2La-",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-4330-754b-b6c2-4836e7960c32",
+			"permanent": true
+		},
+		{
+			"source": "/id/zaldZYHOtWNj4etrMrop_",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-435b-720c-80b5-f53096236fa2",
+			"permanent": true
+		},
+		{
+			"source": "/id/RrDQj5o3_DVg6_-Atuaf3",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-4389-76da-8bed-67ea77335677",
+			"permanent": true
+		},
+		{
+			"source": "/id/UKDhQXf2FXEpJG8E9oN8_",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-43bd-76ed-af45-31ef8cd63035",
+			"permanent": true
+		},
+		{
+			"source": "/id/-He1Fad0Y4srDyWwMsTkm",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-43f0-7659-b01f-130158025218",
+			"permanent": true
+		},
+		{
+			"source": "/id/wUXBuRWMcT4BICdX9vii_",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-4426-761c-a7df-bc85b016feec",
+			"permanent": true
+		},
+		{
+			"source": "/id/y9swff6JvZALxwbjwJagO",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-445a-74a3-84a5-ce40f636818d",
+			"permanent": true
+		},
+		{
+			"source": "/id/CcnEZ6SbRsU0Gs5Dw3w6E",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-448b-7719-ab2e-7bafcb30d9b0",
+			"permanent": true
+		},
+		{
+			"source": "/id/qas96ouVDNzFnru2yKXkl",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-44c2-704b-87cc-0186e2d0ddb8",
+			"permanent": true
+		},
+		{
+			"source": "/id/OYELQ2Qt0I5EbO7gRUyrY",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-44ee-77e0-82c2-deff5495e0bb",
+			"permanent": true
+		},
+		{
+			"source": "/id/MLqdwI_5MntAl7iVHUPUn",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-32c6-71bb-b36c-56251382b7cd",
+			"permanent": true
+		},
+		{
+			"source": "/id/F59nRJ5sR1s5HQvtrW7f0",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-39ff-76fd-990d-21685bf50fa5",
+			"permanent": true
+		},
+		{
+			"source": "/id/ZnJzPVVXnNptF1Y2QJnDj",
+			"destination": "https://hdl.handle.net/21.11159/019595c4-3ca2-7686-a899-26130625ddb7",
+			"permanent": true
+		},
+		{
+			"source": "/id/zGC8YxQVWeqKN51aGjkYq",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-0e40-74ce-b9a8-1226d939b770",
+			"permanent": true
+		},
+		{
+			"source": "/id/z1N_A0GqqeSFYGzVVa7g-",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-0fd2-705b-ad5e-3edda9c0ec4b",
+			"permanent": true
+		},
+		{
+			"source": "/id/33us6O2oX3ELy9idEWK-w",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1004-73ed-b0c0-e8fd8c90d174",
+			"permanent": true
+		},
+		{
+			"source": "/id/8YgSOR51gzlLoVQsgc2TX",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1034-7337-8bb9-5543466e882b",
+			"permanent": true
+		},
+		{
+			"source": "/id/OdIIC7Er9JAF7KE2dp9-q",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1062-769a-aa81-caaa9ae837b7",
+			"permanent": true
+		},
+		{
+			"source": "/id/8OojfOvLDKrZLwqdp9Ck3",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1090-773b-aef5-c08ee0e529f4",
+			"permanent": true
+		},
+		{
+			"source": "/id/ICij_0Jcoz2uHR1u2uRhW",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-10e9-74db-8a1d-cdfb6e52c541",
+			"permanent": true
+		},
+		{
+			"source": "/id/rxGGI0pAycU0sAh4JL0rX",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-111f-714b-a99f-ddaf17f8a742",
+			"permanent": true
+		},
+		{
+			"source": "/id/3yV0rXgfTgBFa3jXHm1HX",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1153-70e8-b193-41abab39ad1a",
+			"permanent": true
+		},
+		{
+			"source": "/id/UnwYPq70Dewbn7XDEjsMM",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1190-762d-9ec8-13ebbf77c908",
+			"permanent": true
+		},
+		{
+			"source": "/id/8U2A7MehCI2KIVtilOFo7",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-11c8-7195-bd57-3ae607c680b7",
+			"permanent": true
+		},
+		{
+			"source": "/id/D8d6OrLdpLlGRqBSQDVN0",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-11fa-7123-835a-783727ceee5a",
+			"permanent": true
+		},
+		{
+			"source": "/id/F3Dt1k3poo1NjWp4ZmjrE",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1226-72c8-8355-1e4c412d8c8f",
+			"permanent": true
+		},
+		{
+			"source": "/id/tlawrlz8X8tsO5Nn5oX7E",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1253-733f-bcb4-2796713de09f",
+			"permanent": true
+		},
+		{
+			"source": "/id/j-BtyWNgsqs8i23Zlzac0",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-127f-7461-bf11-b567d278be58",
+			"permanent": true
+		},
+		{
+			"source": "/id/2udsxpvbnpovuXtaj2AY-",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-12b9-769c-a879-45569bdfae80",
+			"permanent": true
+		},
+		{
+			"source": "/id/BURJ7EiJUDRjrpWEEnP6x",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-12f5-70f6-82a5-1f475ef0ec53",
+			"permanent": true
+		},
+		{
+			"source": "/id/8Nlfj0hdQZKZdwid5E2ZW",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1322-754d-9d9f-8366034bb521",
+			"permanent": true
+		},
+		{
+			"source": "/id/lEyHeOf7IwZKcMhTiSz7B",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-134d-707c-9dae-912ace95a536",
+			"permanent": true
+		},
+		{
+			"source": "/id/jggXZ2QWoDmB80zqpYa35",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1379-73dc-a63b-f1445b33df60",
+			"permanent": true
+		},
+		{
+			"source": "/id/FfN_ePkN8VeDRJwAXAG8K",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-13a5-7789-9038-c971a20f1772",
+			"permanent": true
+		},
+		{
+			"source": "/id/v3NdCcSyB--q9OzWeluGl",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-13d2-77ad-b27f-cddba434a730",
+			"permanent": true
+		},
+		{
+			"source": "/id/ZeqVvWRu2oWpsmRpbrVDN",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-13ff-745d-8ff2-c2418c4af302",
+			"permanent": true
+		},
+		{
+			"source": "/id/j1VWNvzTF5efkpMusexo9",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-142c-70d5-9f86-081edcbac4b0",
+			"permanent": true
+		},
+		{
+			"source": "/id/MaIjuQO8pL7BgStbsWHrK",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-145b-70bf-bb07-bc71500403ad",
+			"permanent": true
+		},
+		{
+			"source": "/id/MZew48ay3zmPjbtKYqR5q",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-148b-7010-a3eb-70d31a97d784",
+			"permanent": true
+		},
+		{
+			"source": "/id/asB4OMwd7wEhiyBmrKObn",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-14b7-750b-833b-cc9b9d1a8987",
+			"permanent": true
+		},
+		{
+			"source": "/id/dzJVphcKXpWfU6xv0sN14",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-14eb-74be-9d2d-5cfb249a2472",
+			"permanent": true
+		},
+		{
+			"source": "/id/wyY73XjF_vXTyjq8bn9ZH",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1516-755e-ad26-659c0e1cad01",
+			"permanent": true
+		},
+		{
+			"source": "/id/Ytu-sGuO-7Nv8u83HwOhl",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-156f-72fa-8e97-94a941da04cd",
+			"permanent": true
+		},
+		{
+			"source": "/id/lBoaO6QMLCb6wRenzEPtP",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-15c6-70ab-8475-9fba24a80fec",
+			"permanent": true
+		},
+		{
+			"source": "/id/6Nkhi69Pl19qeGTT_3YBw",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-15f2-77e0-b24c-2aca9cf1fb17",
+			"permanent": true
+		},
+		{
+			"source": "/id/KRU-tbocK0EyBdvkZqtu-",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1622-7338-8810-efc5a39dfc6e",
+			"permanent": true
+		},
+		{
+			"source": "/id/up7WiP6nfHgyO8neLFYaZ",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-164d-7354-9c69-7f34ea2a58c0",
+			"permanent": true
+		},
+		{
+			"source": "/id/CPYMApjwpsznV4segGfAL",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-167f-7576-a597-26d49f28c729",
+			"permanent": true
+		},
+		{
+			"source": "/id/aVEeGHod0nTQCHgEkaQ_J",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-16ab-71ec-9cb0-e65e386c83f3",
+			"permanent": true
+		},
+		{
+			"source": "/id/-n3hPqva1cD9PM_w0OVjc",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-16d9-74d8-b690-9add3daa1df5",
+			"permanent": true
+		},
+		{
+			"source": "/id/2nNuetnSFxZtEc4urU2XF",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1704-71dd-8533-6c3f43e0fcba",
+			"permanent": true
+		},
+		{
+			"source": "/id/3fOvyNYHb2Hhq4sQCbtsT",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1730-734e-8933-3ce9c8bf4da2",
+			"permanent": true
+		},
+		{
+			"source": "/id/TrVWJw8VwLszzAHvmUhnv",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-175b-748a-af4a-ff262fa6e643",
+			"permanent": true
+		},
+		{
+			"source": "/id/09Jj6Fdy91WzQZCQ24amc",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-178c-7383-9a86-c8f9169364f7",
+			"permanent": true
+		},
+		{
+			"source": "/id/7wBtls8jvXHHNO3mxWVC3",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-17be-76c8-a152-57c601fee76c",
+			"permanent": true
+		},
+		{
+			"source": "/id/tDm3mzXxEiSW8ePDJCNdm",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-17f2-73bb-90a5-3106b8c5e03d",
+			"permanent": true
+		},
+		{
+			"source": "/id/NH7PM-MIkIghJD7FyKWxY",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1822-752a-9f4e-f5e13d86a7d7",
+			"permanent": true
+		},
+		{
+			"source": "/id/n6QGzjFXm03e0vWt9xDup",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1855-7668-b1ff-69f4b698262f",
+			"permanent": true
+		},
+		{
+			"source": "/id/ec55af19-7a59-4596-bdf8-bb441e923359",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1886-727e-9761-8feda0af6da0",
+			"permanent": true
+		},
+		{
+			"source": "/id/JOvz1UHen9JQY8lX8kznZ",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-18bb-7102-95cc-48b2ae375f7c",
+			"permanent": true
+		},
+		{
+			"source": "/id/IVnt3FpaIk4ZRLzORxFwU",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-18ef-736f-b04a-eb541c2c7d38",
+			"permanent": true
+		},
+		{
+			"source": "/id/Sc1c6Qg87CWlFx-SjSoZR",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1922-733c-a95d-d3234d104345",
+			"permanent": true
+		},
+		{
+			"source": "/id/RGayGO1e_ui74HOWQFb60",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-195f-7084-8fe1-d2596ab385ce",
+			"permanent": true
+		},
+		{
+			"source": "/id/MD-Ey-8OtAqXCG96wZdnQ",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1992-701d-977b-570ab55e14c2",
+			"permanent": true
+		},
+		{
+			"source": "/id/EPm-avkkM8KcGXJcSpR_0",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-19f8-706b-9917-7a0b80ca70c3",
+			"permanent": true
+		},
+		{
+			"source": "/id/YTBv0PBPFxlBuLAbq9SYi",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1a2a-70af-8762-37b1a967a118",
+			"permanent": true
+		},
+		{
+			"source": "/id/IbZ4arshkA06y5Uem0UsT",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1a5d-7304-912a-399f502d1fcc",
+			"permanent": true
+		},
+		{
+			"source": "/id/ZO7O03HWFCTUp9XMTaBQH",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1a91-723e-8f3b-af33d48014b6",
+			"permanent": true
+		},
+		{
+			"source": "/id/JleqOm-N3yyFaWHwetdEE",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1ac6-7228-91b5-7b24314c889f",
+			"permanent": true
+		},
+		{
+			"source": "/id/eLJVYwIyWhY1z8lMnW_DW",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1afb-70a2-95f3-0bbe0098bbbf",
+			"permanent": true
+		},
+		{
+			"source": "/id/P089MgRgIKG3rOczZuQ5V",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1b36-7550-960c-b1f3478970f1",
+			"permanent": true
+		},
+		{
+			"source": "/id/YM4PK9ApgMcr4CXa9q05T",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1b62-7396-bb7f-221d7c36a363",
+			"permanent": true
+		},
+		{
+			"source": "/id/crdiXpmfT0_AkSLZcql6C",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1b94-77da-9f19-6a6b55507729",
+			"permanent": true
+		},
+		{
+			"source": "/id/R14zkSdkYRhSeS7NUdaPy",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1bc8-751c-8201-bcdb34955a96",
+			"permanent": true
+		},
+		{
+			"source": "/id/50Ga8xo5uDgdrz2eIIifW",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1bfc-72ae-a4bf-b9c8dcca0d01",
+			"permanent": true
+		},
+		{
+			"source": "/id/ners7aL24ytb3MfjymZSC",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1c30-7296-a43b-730c4eb50180",
+			"permanent": true
+		},
+		{
+			"source": "/id/uTbN0NGu8c1pnt1HH5Vz7",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1c98-71b8-886e-b7d294b7e44d",
+			"permanent": true
+		},
+		{
+			"source": "/id/q0P4oqySKxkbcLhtXz49J",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1ccc-740a-bb03-022da50bdcd6",
+			"permanent": true
+		},
+		{
+			"source": "/id/xvxB5cdlPUECtRmZ0o563",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1d00-773d-a614-a33ca667bfb4",
+			"permanent": true
+		},
+		{
+			"source": "/id/q3hWLUuq4rAxy9JrKgIBB",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1d3a-70b7-85ac-6b4b87e7f65f",
+			"permanent": true
+		},
+		{
+			"source": "/id/4uEjJqTVxczKYmJyc3w9n",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1d6d-729a-a8fb-8721c3fab6ea",
+			"permanent": true
+		},
+		{
+			"source": "/id/ms_B7HdWBhM9vdJiQQ0bo",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1d9f-711a-8c3b-326036aa778c",
+			"permanent": true
+		},
+		{
+			"source": "/id/vfyLBgtN4bMmxC4Me97gl",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1dd3-734c-8522-01cae744a13c",
+			"permanent": true
+		},
+		{
+			"source": "/id/ltlzUH-fnmgzR5O0bgqwu",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1e05-77a8-8bcf-4d49cb734864",
+			"permanent": true
+		},
+		{
+			"source": "/id/n7FC_lX46pwvJQN50Dtjs",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1e3e-716a-a1ab-f83ea12d4133",
+			"permanent": true
+		},
+		{
+			"source": "/id/Qm_2SzS_rGB-Py9YTCHYm",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1e71-73fb-822e-3a13cce530ed",
+			"permanent": true
+		},
+		{
+			"source": "/id/h704RG5-2rCx_52jFH49H",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1ea7-7756-952a-0022aed2a5e2",
+			"permanent": true
+		},
+		{
+			"source": "/id/2XaGK3UXkzxtGpDaPKbjx",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1edc-727b-ad4e-62f985ea08d2",
+			"permanent": true
+		},
+		{
+			"source": "/id/EwnzIOPkgATuEVHML_94G",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1f0d-710b-94fe-856fc4ed7851",
+			"permanent": true
+		},
+		{
+			"source": "/id/CPYfBfo_5Rz1d8tow9Gfu",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1f48-75b7-a3b7-18bbdcd1b179",
+			"permanent": true
+		},
+		{
+			"source": "/id/XUpXflNpQ08j3hdNp7pSi",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1f7c-753c-bfca-94a611a76caa",
+			"permanent": true
+		},
+		{
+			"source": "/id/en5qQnz7D4o0SHU33KqiS",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1fb5-734d-be4c-858d1c62688c",
+			"permanent": true
+		},
+		{
+			"source": "/id/HrlDTDFH7-7hUz9z64v40",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1fe8-71ff-b9d7-0be3ca22cacd",
+			"permanent": true
+		},
+		{
+			"source": "/id/SXeTbb-6MCAC79nH2W_St",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-2019-715f-b221-5e8c27530c5f",
+			"permanent": true
+		},
+		{
+			"source": "/id/5kVsvFs-ZoCWKs9iHxxZR",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-204b-7478-acc7-3ebfca16c3a5",
+			"permanent": true
+		},
+		{
+			"source": "/id/HNbf93F9UyK4HkLWVOwbo",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-2081-71b3-a983-b81d7e45709c",
+			"permanent": true
+		},
+		{
+			"source": "/id/oPe9gFztuJQhQYwGhOtJF",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-20b2-75f3-a92a-e764d0d6372b",
+			"permanent": true
+		},
+		{
+			"source": "/id/xAmVYs5qiza42O04JDj7E",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-20e3-7309-aa8c-12529a73c434",
+			"permanent": true
+		},
+		{
+			"source": "/id/HcMZYWanetONAMgg3JCOL",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-2114-7249-bc8c-d57cc242f986",
+			"permanent": true
+		},
+		{
+			"source": "/id/AQJuGqS6w5iPPtjOD_ZZs",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-2145-727c-a34a-3c20a5f76c35",
+			"permanent": true
+		},
+		{
+			"source": "/id/12hqy2TdXyB1RPnA4n9iP",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-217a-716b-a7e0-8eed565c1794",
+			"permanent": true
+		},
+		{
+			"source": "/id/TwftAFIMKBo3KH7iVpp5z",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-21ae-7493-8e89-80f6f4e951d0",
+			"permanent": true
+		},
+		{
+			"source": "/id/REhOykBU7pPs5zOAENdah",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-21dd-75ba-8f00-0447bc7b3d58",
+			"permanent": true
+		},
+		{
+			"source": "/id/dLcjnA5pFkaeNtnDtjwnD",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-10bc-76da-97f2-08c40c70432e",
+			"permanent": true
+		},
+		{
+			"source": "/id/_lTEvjUFgNXQ6aioMBbOk",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1543-778b-ac39-f66467a2d5b2",
+			"permanent": true
+		},
+		{
+			"source": "/id/omZXgMYV4Y4qXeaE19X0s",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-159b-7337-9575-7411dd09bbe1",
+			"permanent": true
+		},
+		{
+			"source": "/id/vxrHHJb9f2AkMbVvOqhkp",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-19c4-73b5-b98c-282b6dcc80aa",
+			"permanent": true
+		},
+		{
+			"source": "/id/PyefR39nTb1XnotXRuhKH",
+			"destination": "https://hdl.handle.net/21.11159/019595c5-1c63-725d-9f06-3f57952db0e0",
+			"permanent": true
+		},
+		{
+			"source": "/id/c5cgo2pJ960Ywut6iouF4",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-9ed6-7205-8a25-5e1f17bb416b",
+			"permanent": true
+		},
+		{
+			"source": "/id/b2dmiKL0Qk_LWg-FzNcgO",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a12d-727e-8976-6f9db7399947",
+			"permanent": true
+		},
+		{
+			"source": "/id/MDOm2UOFVOE-MPp9yZeWE",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a157-76aa-bf24-b9c0e33cb646",
+			"permanent": true
+		},
+		{
+			"source": "/id/vzJnnEVH_1pZWKFQvzvFI",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a17f-7104-b66b-255c9015ad81",
+			"permanent": true
+		},
+		{
+			"source": "/id/bCwy-3HWGaC4DXiocdUhY",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a1a7-734b-be1e-a9c93a42badf",
+			"permanent": true
+		},
+		{
+			"source": "/id/Io0b8LMwPox9MAkXsHoyZ",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a1d0-747e-9425-ae0e52da6248",
+			"permanent": true
+		},
+		{
+			"source": "/id/8o5O8uYTyIY3XX0o1PEGj",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a1f6-7599-b45d-d7a51265a534",
+			"permanent": true
+		},
+		{
+			"source": "/id/x_tefXULhsELmKZfyXFwu",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a21e-770f-b07f-f1280d25fe85",
+			"permanent": true
+		},
+		{
+			"source": "/id/DPF60ESE5Bf1jmjtPXzWI",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a24a-767b-adb8-ad88fb44e010",
+			"permanent": true
+		},
+		{
+			"source": "/id/sO20jWyuEtce-Q4H0TDi7",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a27b-72ea-9d5c-b38b4ba2a5a5",
+			"permanent": true
+		},
+		{
+			"source": "/id/WOr4hlhap_XSisProYuKu",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a2a6-737c-a640-10e178b2870d",
+			"permanent": true
+		},
+		{
+			"source": "/id/h8-F61Tx8UibkJU1R-CjY",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a2ce-70bd-b4da-9cced68260f8",
+			"permanent": true
+		},
+		{
+			"source": "/id/qWWgabf_95WCWVQ4TDCUz",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a2f6-75c4-9a12-e695e2d64c91",
+			"permanent": true
+		},
+		{
+			"source": "/id/_HhLzE0h5dcg7S-pORFGr",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a31e-7349-be1e-6e34092503ca",
+			"permanent": true
+		},
+		{
+			"source": "/id/KRz-UBAmHsZfHc8_tMpRH",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a347-77a9-a013-70ae3d40bc1e",
+			"permanent": true
+		},
+		{
+			"source": "/id/KifkFQh8PpTza_wd_ZlCX",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a36f-766d-a4da-2018e4305afe",
+			"permanent": true
+		},
+		{
+			"source": "/id/62eQAysrscfI8X-IIRpk8",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a395-71c9-8994-2b3e34e21e69",
+			"permanent": true
+		},
+		{
+			"source": "/id/X7GX7fro4gfRQTJUelv9s",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a3bc-73cd-85dd-783eae999417",
+			"permanent": true
+		},
+		{
+			"source": "/id/ci3YbALGCD1EEYw_jrzN2",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a3e3-74ec-9be1-20f1658bfc4f",
+			"permanent": true
+		},
+		{
+			"source": "/id/XUDsnt3PCB0WTEr-6EM7w",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a409-7249-a624-01b9505c244c",
+			"permanent": true
+		},
+		{
+			"source": "/id/qTwl982BJGHn2YeUphbs6",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a430-73df-b1cb-c65b1ddfc501",
+			"permanent": true
+		},
+		{
+			"source": "/id/NRqm-kS5x21TZvgom6bV0",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a455-77dd-862b-c50630e88e2b",
+			"permanent": true
+		},
+		{
+			"source": "/id/jryvjKlqV5EbGvhw4YKbZ",
+			"destination": "https://hdl.handle.net/21.11159/0195cc28-a47f-713f-b157-08326dbf2aa5",
+			"permanent": true
+		},
+		{
+			"source": "/id/yR8mHfs3eW-ibu58LerCt",
+			"destination": "https://hdl.handle.net/21.11159/019595b2-cca1-70ad-b1e3-d088b4409de5",
+			"permanent": true
+		},
+		{
+			"source": "/id/VL3saRXgj1b2la911h1yK",
+			"destination": "https://hdl.handle.net/21.11159/019595b2-ce30-75cd-902e-2c000a7db2c7",
+			"permanent": true
+		},
+		{
+			"source": "/id/Llw-7fkJP5YPpe0RNwdZw",
+			"destination": "https://hdl.handle.net/21.11159/019595b2-ce5f-7090-a284-00fa71249aeb",
+			"permanent": true
+		}
+	]
+}

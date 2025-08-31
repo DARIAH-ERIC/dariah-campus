@@ -20,6 +20,7 @@ summary:
     dictionaries to electronic format through image capture, text capture, data
     modeling and data enrichment.
 content-type: training-module
+doi: https://hdl.handle.net/21.11159/019595c5-1153-70e8-b193-41abab39ad1a
 ---
 This course will introduce the theories, practices, and methods of digitizing legacy dictionaries for research, preservation and online distribution by focusing on the process of converting paper-based dictionaries to electronic format through image capture, text capture, data modeling and data enrichment. In addition to explaining how various OCR and HCR tools can be used to extract text from images, the course will focus on analyzing, identifying and describing lexicographic data using markup languages such as XML in order to produce semantically structured datasets that can be easily queried, shared and transformed to different outputs. The course will be of interest not only to those who are converting legacy dictionaries, but also those who want to understand the principles and modes of representing structured lexicographic data, which will be a prerequisite for more advanced coursework on TEI Lex-0, OntoLex-Lemon, XPath and XSLT.
 
@@ -618,7 +619,7 @@ XML-encoded texts can offer a high degree of precise, fine-grained searchability
 
 In an XML-encoded dictionary, you can create separate searches through dictionary lemmas, definitions, examples etc. as long as you know the names of the tags used to mark up these particular structural elements of the dictionary.
 
-Once you've learned the basics of working with XML, you can explore XPath, a standard query language for selecting nodes from XML documents. [Extracting Lexical Data: XPath for Dictionary Nerds](/resources/hosted/xpath-for-dictionary-nerds) may be a good place to start.
+Once you've learned the basics of working with XML, you can explore XPath, a standard query language for selecting nodes from XML documents. <Link link={{"discriminant":"resources-hosted","value":{"id":"xpath-for-dictionary-nerds"}}}>Extracting Lexical Data: XPath for Dictionary Nerds</Link> may be a good place to start.
 
 ##### Transformability
 
@@ -626,7 +627,7 @@ Another advantage of XML-encoded documents is that they are trasnformable: using
 
 ![](/assets/content/assets/en/resources/hosted/capturing-modeling-and-transforming-lexical-data-an-introduction/s1ii-ww-e.png)
 
-As part of the ELEXIS Curriculum on DARIAH-Campus, we offer an introductory course on [Transforming Lexical Data: XSLT for Dictionary Nerds](/resources/hosted/transforming-lexical-data-xslt-for-dictionary-nerds).
+As part of the ELEXIS Curriculum on DARIAH-Campus, we offer an introductory course on <Link link={{"discriminant":"resources-hosted","value":{"id":"transforming-lexical-data-xslt-for-dictionary-nerds"}}}>Transforming Lexical Data: XSLT for Dictionary Nerds</Link>.
 
 ## XML: Building blocks and basic rules
 
@@ -849,19 +850,19 @@ oXygen is commercial software, so it does require a licence. If you're just star
 
 3. Select "XML Document". Doing this should open up a blank document with an XML declaration `<?xml version="1.0" encoding="UTF-8"?>` added. One thing you will notice, however, is a red marker in the right margin of your document, and an error message at the bottom reading "A well-formed document requires a root element."
 
-  ![](/assets/content/assets/en/resources/hosted/capturing-modeling-and-transforming-lexical-data-an-introduction/w-defn-sg.png)
+![](/assets/content/assets/en/resources/hosted/capturing-modeling-and-transforming-lexical-data-an-introduction/w-defn-sg.png)
 
-   This is something that you should know by now anyway, if you have been following this course. An empty XML document does not have a root element and is therefore not well-formed. So let's add some XML like this:
+This is something that you should know by now anyway, if you have been following this course. An empty XML document does not have a root element and is therefore not well-formed. So let's add some XML like this:
 
-   ```xml
-   <dictionary kind="my-first-ever">
-     <entry>
+```xml
+<dictionary kind="my-first-ever">
+  <entry>
 
-     </entry>
-   </dictionary>
-   ```
+  </entry>
+</dictionary>
+```
 
-   Once you do add the above, the error about your file being not well-formed will dissappear, the red marker in right margin will turn to green, and oXygen will purr with happiness. Ok, the last bit won't happen, but oXygen will keep track of your XML file all the time, letting you know when things go frong. ![](/assets/content/assets/en/resources/hosted/capturing-modeling-and-transforming-lexical-data-an-introduction/px-0z-b-gq.png)
+Once you do add the above, the error about your file being not well-formed will dissappear, the red marker in right margin will turn to green, and oXygen will purr with happiness. Ok, the last bit won't happen, but oXygen will keep track of your XML file all the time, letting you know when things go frong. ![](/assets/content/assets/en/resources/hosted/capturing-modeling-and-transforming-lexical-data-an-introduction/px-0z-b-gq.png)
 
 ### Formatting and indenting XML
 
@@ -934,7 +935,7 @@ oXygen includes *smart editing* features to help you edit XML documents in Text 
 
 **Exercise.** Test all of the above smart features and make sure you understand what they're about.
 
-Keep in mind, there is a lot more to learn about oXygen. If you're interested, make sure to check out the ELEXIS course [Mastering oXygen XML Editor for Dictionary Nerds](/resources/hosted/mastering-oxygen-xml-editor-for-dictionary-nerds) here on DARIAH-Campus.
+Keep in mind, there is a lot more to learn about oXygen. If you're interested, make sure to check out the ELEXIS course <Link link={{"discriminant":"resources-hosted","value":{"id":"mastering-oxygen-xml-editor-for-dictionary-nerds"}}}>Mastering oXygen XML Editor for Dictionary Nerds</Link> here on DARIAH-Campus.
 
 ## Publication
 
@@ -951,7 +952,7 @@ These are very different modes of publication. Software products allow consultat
 
 It is therefore recommended, whenever possible and whenever copyright laws allow it, to share the source of your digitized dictionary data either via your own institutional repository or a public one such as [GitHub](https://github.com).
 
-The creation of user interfaces and storage of digitized lexical datasets in databases is beyond the scope of this course. You may, however, be interested in the ELEXIS course [How to Publish Your Dictionary Data with Publex](/resources/hosted/mastering-oxygen-xml-editor-for-dictionary-nerds) here on DARIAH-Campus.
+The creation of user interfaces and storage of digitized lexical datasets in databases is beyond the scope of this course. You may, however, be interested in the ELEXIS course <Link link={{"discriminant":"resources-hosted","value":{"id":"how-to-publish-your-dictionary-data-with-publex"}}}>How to Publish Your Dictionary Data with Publex</Link>.
 
 ## Maintenance
 
