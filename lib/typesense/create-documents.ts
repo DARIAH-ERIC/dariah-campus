@@ -1,61 +1,42 @@
-import { withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { unique } from "@acdh-oeaw/lib";
-import { createReader } from "@keystatic/core/reader";
 
-import type { Locale } from "@/config/i18n.config";
-import config from "@/keystatic.config";
-import { getLanguage } from "@/lib/i18n/get-language";
+import { client } from "@/lib/content/client";
 
-export async function createDocuments(locale: Locale) {
-	const reader = createReader(process.cwd(), config);
-	const language = getLanguage(locale);
-
-	const collections = [
-		"resources-events",
-		"resources-external",
-		"resources-hosted",
-		"resources-pathfinders",
-		"curricula",
-	] as const;
-
+export function createDocuments(): Array<object> {
 	const documents: Array<object> = [];
 
-	for (const name of collections) {
-		const items = await reader.collections[withI18nPrefix(name, language)].all();
-
-		if (items.length === 0) continue;
-
-		items.forEach((item) => {
-			const isDraft = "draft" in item.entry && item.entry.draft === true;
+	for (const name of [
+		"resourcesEvents",
+		"resourcesExternal",
+		"resourcesHosted",
+		"resourcesPathfinders",
+		"curricula",
+	] as const) {
+		client.collections[name].all().forEach((item) => {
+			const isDraft = "draft" in item.metadata && item.metadata.draft === true;
 			if (isDraft) return;
 
-			const authors = "authors" in item.entry ? item.entry.authors : [];
-			const editors = "editors" in item.entry ? item.entry.editors : [];
-			const contributors = "contributors" in item.entry ? item.entry.contributors : [];
+			const authors = "authors" in item.metadata ? item.metadata.authors : [];
+			const editors = "editors" in item.metadata ? item.metadata.editors : [];
+			const contributors = "contributors" in item.metadata ? item.metadata.contributors : [];
 
 			documents.push({
-				id: item.slug,
+				id: item.id,
 				collection: name,
-				title: item.entry.summary.title || item.entry.title,
-				locale: item.entry.locale,
-				"publication-date": item.entry["publication-date"],
-				"publication-timestamp": new Date(item.entry["publication-date"]).getTime(),
-				"content-type":
-					"content-type" in item.entry
-						? item.entry["content-type"]
-						: name === "curricula"
-							? "curriculum"
-							: name === "resources-events"
-								? "event"
-								: "pathfinder",
-				summary: item.entry.summary.content,
-				"summary-title": item.entry.summary.title,
-				tags: item.entry.tags,
+				href: item.href,
+				title: item.metadata.summary.title || item.metadata.title,
+				locale: item.metadata.locale,
+				"publication-date": item.metadata["publication-date"],
+				"publication-timestamp": new Date(item.metadata["publication-date"]).getTime(),
+				"content-type": item.metadata["content-type"],
+				summary: item.metadata.summary.content,
+				"summary-title": item.metadata.summary.title,
+				tags: item.metadata.tags,
 				people: unique([...authors, ...editors, ...contributors]),
 				authors,
 				editors,
 				contributors,
-				sources: "sources" in item.entry ? item.entry.sources : [],
+				sources: "sources" in item.metadata ? item.metadata.sources : [],
 			});
 		});
 	}

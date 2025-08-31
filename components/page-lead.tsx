@@ -4,8 +4,8 @@ interface PageLeadProps {
 	children: ReactNode;
 }
 
-export function PageLead(props: PageLeadProps): ReactNode {
+export function PageLead(props: Readonly<PageLeadProps>): ReactNode {
 	const { children } = props;
 
-	return <div className="text-balance text-center text-lg text-neutral-500">{children}</div>;
+	return <div className="text-center text-lg text-balance text-neutral-500">{children}</div>;
 }

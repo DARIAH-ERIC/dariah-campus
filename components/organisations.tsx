@@ -1,20 +1,21 @@
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { ServerImage as Image } from "@/components/server-image";
+import { Image } from "@/components/image";
 
 interface OrganisationsProps {
 	label: string;
-	organisations: ReadonlyArray<{ name: string; url: string; logo: string }>;
+	organisations: ReadonlyArray<{ name: string; url: string; logo: StaticImageData | string }>;
 }
 
-export function Organisations(props: OrganisationsProps): ReactNode {
+export function Organisations(props: Readonly<OrganisationsProps>): ReactNode {
 	const { label, organisations } = props;
 
 	if (organisations.length === 0) return null;
 
 	return (
 		<div className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
-			<div className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</div>
+			<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{label}</div>
 			<div>
 				<ul className="flex flex-wrap gap-x-3 text-xs font-medium">
 					{organisations.map((tag, index) => {
@@ -29,7 +30,7 @@ export function Organisations(props: OrganisationsProps): ReactNode {
 									<div className="overflow-hidden rounded-md">
 										<Image
 											alt=""
-											/** Inverting the logo because they are all white. */
+											/** FIXME: Inverting the logo because they are all white. */
 											className="h-10 w-auto object-contain p-2 opacity-50 invert"
 											src={logo}
 										/>

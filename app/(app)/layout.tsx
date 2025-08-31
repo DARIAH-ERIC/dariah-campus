@@ -1,42 +1,23 @@
-import "@/styles/index.css";
-
-import { pick } from "@acdh-oeaw/lib";
-import { cn } from "@acdh-oeaw/style-variants";
-import type { Metadata, ResolvingMetadata, Viewport } from "next";
-import { getLocale, getMessages, getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
+import { getLocale, getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
-import { LocalizedStringProvider as Translations } from "react-aria-components/i18n";
 import { jsonLdScriptProps } from "react-schemaorg";
+import type { WebSite, WithContext } from "schema-dts";
 
-import { AppFooter } from "@/app/(app)/_components/app-footer";
-import { AppHeader } from "@/app/(app)/_components/app-header";
-import { AppLayout } from "@/app/(app)/_components/app-layout";
-import { Providers } from "@/app/(app)/_components/providers";
-import { TailwindIndicator } from "@/app/(app)/_components/tailwind-indicator";
-import { id } from "@/components/main-content";
-import { SkipLink } from "@/components/skip-link";
+import { DocumentBody } from "@/app/_components/document-body";
+import { HtmlDocument } from "@/app/_components/html-document";
+import { Providers } from "@/app/_components/providers";
 import { env } from "@/config/env.config";
-import { AnalyticsScript } from "@/lib/analytics-script";
-import * as fonts from "@/lib/fonts";
-import { getMetadata } from "@/lib/i18n/get-metadata";
-import { getToastMessage } from "@/lib/i18n/redirect-with-message";
+import { AnalyticsScript } from "@/lib/analytics/analytics-script";
+import { getMetadata } from "@/lib/i18n/metadata";
 
-interface LocaleLayoutProps {
-	children: ReactNode;
-}
+export { viewport } from "@/app/_lib/viewport.config";
 
-export const viewport: Viewport = {
-	colorScheme: "light",
-	initialScale: 1,
-	width: "device-width",
-};
+interface LocaleLayoutProps extends LayoutProps<"/"> {}
 
-export async function generateMetadata(
-	_props: Omit<Readonly<LocaleLayoutProps>, "children">,
-	_parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata(): Promise<Promise<Metadata>> {
 	const locale = await getLocale();
-	const t = await getTranslations({ locale, namespace: "LocaleLayout" });
+	const t = await getTranslations("LocaleLayout");
 	const meta = await getMetadata();
 
 	const metadata: Metadata = {
@@ -77,56 +58,38 @@ export default async function LocaleLayout(props: Readonly<LocaleLayoutProps>): 
 	const { children } = props;
 
 	const locale = await getLocale();
-	const t = await getTranslations("LocaleLayout");
 	const meta = await getMetadata();
-	const messages = await getMessages();
-	const clientMessages = pick(messages, ["Error"]);
 
-	// TODO:
-	const _toastMessage = await getToastMessage();
+	const schemaOrgMetadata: WithContext<WebSite> = {
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		name: meta.title,
+		description: meta.description,
+	};
 
 	return (
-		<html
-			className={cn(fonts.body.variable, "bg-neutral-50 font-body text-neutral-900 antialiased")}
-			lang={locale}
-		>
-			<body>
-				{/* @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata#json-ld */}
-				<script
-					{...jsonLdScriptProps({
-						"@context": "https://schema.org",
-						"@type": "WebSite",
-						name: meta.title,
-						description: meta.description,
-					})}
-				/>
+		<HtmlDocument locale={locale}>
+			<DocumentBody>
+				{/* @see https://nextjs.org/docs/app/guides/json-ld */}
+				<script {...jsonLdScriptProps(schemaOrgMetadata)} />
 
-				{/**
-				 * @see https://react-spectrum.adobe.com/react-aria/ssr.html#optimizing-bundle-size
-				 *
-				 * TODO: only include translations for components actually used
-				 *
-				 * @see https://react-spectrum.adobe.com/react-aria/ssr.html#advanced-optimization
-				 */}
-				<Translations locale={locale} />
+				<Providers
+					locale={locale}
+					/**
+					 * By default, all messages are made available client-side.
+					 * When explicitly passing messages, make sure to at least provide messages
+					 * for the error page.
+					 */
+					// messages={pick(await getMessages(), "ErrorPage")}
+				>
+					{children}
 
-				<Providers locale={locale} messages={clientMessages}>
 					<AnalyticsScript
 						baseUrl={env.NEXT_PUBLIC_MATOMO_BASE_URL}
 						id={env.NEXT_PUBLIC_MATOMO_ID}
 					/>
-
-					<SkipLink targetId={id}>{t("skip-to-main-content")}</SkipLink>
-
-					<AppLayout>
-						<AppHeader />
-						{children}
-						<AppFooter />
-					</AppLayout>
 				</Providers>
-
-				<TailwindIndicator />
-			</body>
-		</html>
+			</DocumentBody>
+		</HtmlDocument>
 	);
 }

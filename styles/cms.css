@@ -2,7 +2,7 @@
 
 body {
 	/**
-	 * FIXME: workaround for unavailable italics font style.
+	 * Workaround for unavailable italics font style.
 	 *
 	 * @see https://github.com/Thinkmill/keystatic/issues/1292
 	 */

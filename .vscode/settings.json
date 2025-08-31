@@ -5,6 +5,7 @@
 		"source.fixAll": "explicit"
 	},
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.detectIndentation": false,
 	"editor.formatOnSave": true,
 	"editor.inlayHints.enabled": "offUnlessPressed",
 	"editor.linkedEditing": true,
@@ -19,7 +20,17 @@
 		"*.css": "tailwindcss"
 	},
 	"files.eol": "\n",
+	"files.readonlyInclude": {
+		".next/**": true
+	},
+	"files.watcherExclude": {
+		".content/**": true,
+		".next/**": true,
+		"content/**": true,
+		"public/**": true
+	},
 	"i18n-ally.annotations": false,
+	"i18n-ally.enabledFrameworks": ["next-intl"],
 	"i18n-ally.keepFulfilled": true,
 	"i18n-ally.keystyle": "nested",
 	"i18n-ally.localesPaths": ["./messages"],
@@ -30,18 +41,20 @@
 	"mdx.server.enable": true,
 	"prettier.ignorePath": ".gitignore",
 	"scss.validate": false,
+	"search.exclude": {
+		".content/**": true,
+		".next/**": true
+	},
 	"stylelint.enable": true,
 	"stylelint.snippet": ["css", "postcss", "tailwindcss"],
 	"stylelint.validate": ["css", "postcss", "tailwindcss"],
-	"tailwindCSS.experimental.classRegex": [
-		["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
-		["styles\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
-	],
+	"tailwindCSS.classFunctions": ["cn", "styles"],
 	"tailwindCSS.validate": true,
 	"terminal.integrated.enablePersistentSessions": false,
 	"typescript.enablePromptUseWorkspaceTsdk": true,
 	"typescript.inlayHints.parameterNames.enabled": "all",
 	"typescript.preferences.autoImportFileExcludePatterns": [
+		"lucide-react",
 		"next/router.d.ts",
 		"next/dist/client/router.d.ts"
 	],
