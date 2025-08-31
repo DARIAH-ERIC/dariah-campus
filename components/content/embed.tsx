@@ -20,7 +20,7 @@ export function Embed(props: Readonly<EmbedProps>): ReactNode {
 				src={src}
 				title={title}
 			/>
-			{children ? <figcaption>{children}</figcaption> : null}
+			{children != null && children !== "" ? <figcaption>{children}</figcaption> : null}
 		</figure>
 	);
 }
