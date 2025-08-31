@@ -1,82 +1,74 @@
 {
-  "links": [
-    {
-      "discriminant": "link",
-      "value": {
-        "label": "Home",
-        "link": {
-          "discriminant": "external",
-          "value": "/"
-        }
-      }
-    },
-    {
-      "discriminant": "link",
-      "value": {
-        "label": "Resources",
-        "link": {
-          "discriminant": "external",
-          "value": "/resources"
-        }
-      }
-    },
-    {
-      "discriminant": "link",
-      "value": {
-        "label": "Curricula",
-        "link": {
-          "discriminant": "external",
-          "value": "/curricula"
-        }
-      }
-    },
-    {
-      "discriminant": "link",
-      "value": {
-        "label": "Search",
-        "link": {
-          "discriminant": "external",
-          "value": "/search"
-        }
-      }
-    },
-    {
-      "discriminant": "link",
-      "value": {
-        "label": "Sources",
-        "link": {
-          "discriminant": "external",
-          "value": "/sources"
-        }
-      }
-    },
-    {
-      "discriminant": "link",
-      "value": {
-        "label": "Course registry",
-        "link": {
-          "discriminant": "external",
-          "value": "/course-registry"
-        }
-      }
-    },
-    {
-      "discriminant": "link",
-      "value": {
-        "label": "Documentation",
-        "link": {
-          "discriminant": "external",
-          "value": "/documentation"
-        }
-      }
-    }
-  ],
-  "documentation": {
-    "links": [
-      "about",
-      "proposing-a-contribution",
-      "types-of-resources",
-      "reuse-charter"
-    ]
-  }
+	"links": [
+		{
+			"discriminant": "link",
+			"value": {
+				"label": "Resources",
+				"link": {
+					"discriminant": "external",
+					"value": "/resources"
+				}
+			}
+		},
+		{
+			"discriminant": "link",
+			"value": {
+				"label": "Curricula",
+				"link": {
+					"discriminant": "external",
+					"value": "/curricula"
+				}
+			}
+		},
+		{
+			"discriminant": "link",
+			"value": {
+				"label": "Search",
+				"link": {
+					"discriminant": "external",
+					"value": "/search"
+				}
+			}
+		},
+		{
+			"discriminant": "link",
+			"value": {
+				"label": "Sources",
+				"link": {
+					"discriminant": "external",
+					"value": "/sources"
+				}
+			}
+		},
+		{
+			"discriminant": "link",
+			"value": {
+				"label": "Course registry",
+				"link": {
+					"discriminant": "external",
+					"value": "/course-registry"
+				}
+			}
+		},
+		{
+			"discriminant": "link",
+			"value": {
+				"label": "Documentation",
+				"link": {
+					"discriminant": "external",
+					"value": "/documentation"
+				}
+			}
+		}
+	],
+	"documentation": {
+		"links": [
+			"about",
+			"proposing-a-contribution",
+			"types-of-resources",
+			"introduction-to-the-dariah-campus-content-management-system",
+			"dariah-campus-style-guide",
+			"reuse-charter"
+		]
+	}
 }

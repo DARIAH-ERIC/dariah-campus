@@ -1,9 +1,10 @@
 "use client";
 
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { SourceCard } from "@/components/source-card";
-import { useMasonryLayout } from "@/lib/content/use-masonry-layout";
+import { useMasonryLayout } from "@/lib/hooks/use-masonry-layout";
 
 interface SourcesGridProps {
 	sources: Array<{
@@ -11,12 +12,12 @@ interface SourcesGridProps {
 		name: string;
 		count: string;
 		href: string;
-		content: string;
-		image: { src: string; height: number; width: number };
+		image: StaticImageData | string;
+		content: ReactNode;
 	}>;
 }
 
-export function SourcesGrid(props: SourcesGridProps): ReactNode {
+export function SourcesGrid(props: Readonly<SourcesGridProps>): ReactNode {
 	const { sources } = props;
 
 	const columns = useMasonryLayout(sources);

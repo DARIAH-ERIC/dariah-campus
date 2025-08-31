@@ -5,7 +5,7 @@ interface AttachmentsProps {
 	attachments: Array<{ label: string; file: string }>;
 }
 
-export function Attachments(props: AttachmentsProps): ReactNode {
+export function Attachments(props: Readonly<AttachmentsProps>): ReactNode {
 	const { label, attachments } = props;
 
 	if (attachments.length === 0) {
@@ -14,9 +14,9 @@ export function Attachments(props: AttachmentsProps): ReactNode {
 
 	return (
 		<dl className="grid gap-y-0.5 text-sm text-neutral-500">
-			<dt className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</dt>
+			<dt className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{label}</dt>
 			<dd>
-				<ul className="inline text-xs font-medium uppercase tracking-wide">
+				<ul className="inline text-xs font-medium tracking-wide uppercase">
 					{attachments.map((attachment, index) => {
 						const { label, file } = attachment;
 

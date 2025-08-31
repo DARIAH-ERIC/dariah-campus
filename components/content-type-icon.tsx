@@ -30,7 +30,7 @@ interface ContentTypeIconProps {
 	kind: ContentType | "curriculum" | "event" | "pathfinder";
 }
 
-export function ContentTypeIcon(props: ContentTypeIconProps): ReactNode {
+export function ContentTypeIcon(props: Readonly<ContentTypeIconProps>): ReactNode {
 	const { className, kind } = props;
 
 	const Icon = icons[kind];

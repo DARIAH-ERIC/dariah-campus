@@ -5,7 +5,7 @@ interface LinksListProps {
 	links: ReadonlyArray<{ label: string; href: string }>;
 }
 
-export function LinksList(props: LinksListProps): ReactNode {
+export function LinksList(props: Readonly<LinksListProps>): ReactNode {
 	const { label, links } = props;
 
 	if (links.length === 0) {
@@ -14,9 +14,9 @@ export function LinksList(props: LinksListProps): ReactNode {
 
 	return (
 		<div className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
-			<div className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</div>
+			<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{label}</div>
 			<div className="inline">
-				<ul className="inline text-xs uppercase tracking-wide">
+				<ul className="inline text-xs tracking-wide uppercase">
 					{links.map((link, index) => {
 						const { label, href } = link;
 
