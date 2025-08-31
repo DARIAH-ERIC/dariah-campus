@@ -54,12 +54,12 @@ export const components = {
 	 *
 	 * Most of these should be dropped in another transform step for the actual content migration.
 	 */
-	Page(props: { children: ReactNode; id: string; moduleId: string }) {
+	Page(props: Readonly<{ children: ReactNode; id: string; moduleId: string }>): ReactNode {
 		const { children } = props;
 
 		return children;
 	},
-	PageTitle(_props: { children: ReactNode }) {
+	PageTitle(_props: Readonly<{ children: ReactNode }>): ReactNode {
 		// const { children } = props;
 
 		// TODO: Avoid multiple h1 elements.
@@ -68,24 +68,26 @@ export const components = {
 		// FIXME: currently titles are duplicated in markdown
 		return null;
 	},
-	PageIntro(props: { children: ReactNode }) {
+	PageIntro(props: Readonly<{ children: ReactNode }>): ReactNode {
 		const { children } = props;
 
 		// eslint-disable-next-line tailwindcss/no-custom-classname
 		return <div className="lead">{children}</div>;
 	},
-	PageContent(props: { children: ReactNode }) {
+	PageContent(props: Readonly<{ children: ReactNode }>): ReactNode {
 		const { children } = props;
 
 		return children;
 	},
-	Resource(props: {
-		children: ReactNode;
-		title: string;
-		id: string;
-		moduleId: string;
-		files: Array<{ file: string }>;
-	}) {
+	Resource(
+		props: Readonly<{
+			children: ReactNode;
+			title: string;
+			id: string;
+			moduleId: string;
+			files: Array<{ file: string }>;
+		}>,
+	): ReactNode {
 		const { files } = props;
 
 		return (
@@ -104,25 +106,25 @@ export const components = {
 			</aside>
 		);
 	},
-	IframeElement(props: { w: number; h: number; alt: string; src: string }) {
+	IframeElement(props: Readonly<{ w: number; h: number; alt: string; src: string }>): ReactNode {
 		const { src } = props;
 
 		if (src.startsWith("https://www.youtube.com/embed/")) {
 			const id = new URL(src).pathname.split("/").pop();
 
-			if (id) {
+			if (id != null && id !== "") {
 				return <Video id={id} provider="youtube" />;
 			}
 		}
 
 		return <Embed src={src} />;
 	},
-	Assign(props: { children: ReactNode; id: string; moduleId: string }) {
+	Assign(props: Readonly<{ children: ReactNode; id: string; moduleId: string }>): ReactNode {
 		const { children } = props;
 
 		return children;
 	},
-	AssignTitle(_props: { children: ReactNode }) {
+	AssignTitle(_props: Readonly<{ children: ReactNode }>): ReactNode {
 		// const { children } = props;
 
 		// return <h2>{children}</h2>;
@@ -130,17 +132,17 @@ export const components = {
 		// FIXME: currently titles are duplicated in markdown
 		return null;
 	},
-	AssignIntro(props: { children: ReactNode }) {
+	AssignIntro(props: Readonly<{ children: ReactNode }>): ReactNode {
 		const { children } = props;
 
 		return <div>{children}</div>;
 	},
-	Lesson(props: { children: ReactNode }) {
+	Lesson(props: Readonly<{ children: ReactNode }>): ReactNode {
 		const { children } = props;
 
 		return children;
 	},
-	LessonTitle(_props: { children: ReactNode }) {
+	LessonTitle(_props: Readonly<{ children: ReactNode }>): ReactNode {
 		// const { children } = props;
 
 		// return <h2>{children}</h2>;
@@ -148,17 +150,24 @@ export const components = {
 		// FIXME: currently titles are duplicated in markdown
 		return null;
 	},
-	LessonIntro(props: { children: ReactNode }) {
+	LessonIntro(props: Readonly<{ children: ReactNode }>): ReactNode {
 		const { children } = props;
 
 		return <div>{children}</div>;
 	},
-	LessonPage(props: { children: ReactNode; id: string; prev_id: string; next_id: string }) {
+	LessonPage(
+		props: Readonly<{
+			children: ReactNode;
+			id: string;
+			prev_id: string;
+			next_id: string;
+		}>,
+	): ReactNode {
 		const { children } = props;
 
 		return children;
 	},
-	LessonPageTitle(_props: { children: ReactNode }) {
+	LessonPageTitle(_props: Readonly<{ children: ReactNode }>): ReactNode {
 		// const { children } = props;
 
 		// return <h3>{children}</h3>;
@@ -166,12 +175,12 @@ export const components = {
 		// FIXME: currently titles are duplicated in markdown
 		return null;
 	},
-	LessonPageIntro(props: { children: ReactNode }) {
+	LessonPageIntro(props: Readonly<{ children: ReactNode }>): ReactNode {
 		const { children } = props;
 
 		return <div>{children}</div>;
 	},
-	LessonPageContent(props: { children: ReactNode }) {
+	LessonPageContent(props: Readonly<{ children: ReactNode }>): ReactNode {
 		const { children } = props;
 
 		return children;

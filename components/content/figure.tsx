@@ -22,7 +22,7 @@ export function Figure(props: Readonly<FigureProps>): ReactNode {
 	return (
 		<figure className={cn("flex flex-col", alignment === "center" ? "justify-center" : undefined)}>
 			<Image alt={alt} height={height} src={src} width={width} />
-			{children ? <figcaption>{children}</figcaption> : null}
+			{children != null && children !== "" ? <figcaption>{children}</figcaption> : null}
 		</figure>
 	);
 }
