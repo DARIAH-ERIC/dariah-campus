@@ -1,0 +1,12 @@
+onlyBuiltDependencies:
+  - "@parcel/watcher"
+  - "@tailwindcss/oxide"
+  - esbuild
+  - node
+  - sharp
+  - simple-git-hooks
+  - typesense-instantsearch-adapter
+  - unrs-resolver
+
+patchedDependencies:
+  next: patches/next.patch

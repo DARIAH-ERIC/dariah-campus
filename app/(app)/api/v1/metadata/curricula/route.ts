@@ -3,12 +3,9 @@ import * as v from "valibot";
 
 import _curricula from "@/public/metadata/legacy/curricula.json";
 
-export const dynamic = "force-static";
-
 const { curricula } = _curricula;
 
-v.optional(v.pipe(v.string(), v.transform(Number), v.integer()));
-const SearchParamsInputSchema = v.object({
+const searchParamsInputSchema = v.object({
 	limit: v.nullish(
 		v.pipe(
 			v.string(),
@@ -30,7 +27,7 @@ export function GET(request: NextRequest): NextResponse {
 	const url = new URL(request.url);
 
 	try {
-		const { limit, offset } = v.parse(SearchParamsInputSchema, {
+		const { limit, offset } = v.parse(searchParamsInputSchema, {
 			limit: url.searchParams.get("limit"),
 			offset: url.searchParams.get("offset"),
 		});
