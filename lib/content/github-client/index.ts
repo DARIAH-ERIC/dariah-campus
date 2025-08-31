@@ -53,7 +53,7 @@ const createEvaluateOptions = (baseUrl: string) => {
 			createSyntaxHighlighterPlugin(),
 			createTableOfContentsPlugin(),
 			createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
-			createRemoteImageUrlsPlugin(baseUrl, ["Figure"]),
+			createRemoteImageUrlsPlugin(baseUrl, ["Figure", "VideoCard"]),
 		],
 	} satisfies EvaluateOptions;
 };
