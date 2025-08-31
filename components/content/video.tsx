@@ -27,7 +27,7 @@ export function Video(props: Readonly<VideoProps>): ReactNode {
 				src={src}
 				title={title}
 			/>
-			{children ? <figcaption>{children}</figcaption> : null}
+			{children != null && children !== "" ? <figcaption>{children}</figcaption> : null}
 		</figure>
 	);
 }
