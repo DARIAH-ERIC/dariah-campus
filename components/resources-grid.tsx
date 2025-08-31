@@ -1,10 +1,11 @@
 "use client";
 
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { ResourcePreviewCard } from "@/components/resource-preview-card";
 import type { ContentType } from "@/lib/content/options";
-import { useMasonryLayout } from "@/lib/content/use-masonry-layout";
+import { useMasonryLayout } from "@/lib/hooks/use-masonry-layout";
 
 interface ResourcesGridProps {
 	peopleLabel: string;
@@ -14,14 +15,18 @@ interface ResourcesGridProps {
 		title: string;
 		href: string | null;
 		locale: string;
-		people: Array<{ id: string; name: string; image: string }>;
+		people: Array<{
+			id: string;
+			name: string;
+			image: StaticImageData | string;
+		}>;
 		contentType: ContentType | "curriculum" | "event" | "pathfinder";
 		summary: { content: string; title: string };
 	}>;
 	variant?: "default" | "search";
 }
 
-export function ResourcesGrid(props: ResourcesGridProps): ReactNode {
+export function ResourcesGrid(props: Readonly<ResourcesGridProps>): ReactNode {
 	const { peopleLabel, resources, variant } = props;
 
 	const columns = useMasonryLayout(resources, variant);
@@ -37,6 +42,7 @@ export function ResourcesGrid(props: ResourcesGridProps): ReactNode {
 									// eslint-disable-next-line jsx-a11y/no-redundant-roles
 									<li
 										key={
+											// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 											resource.collection
 												? [resource.collection, resource.id].join(":")
 												: resource.id
@@ -59,6 +65,7 @@ export function ResourcesGrid(props: ResourcesGridProps): ReactNode {
 			{resources.map((resource) => {
 				return (
 					<li
+						// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 						key={resource.collection ? [resource.collection, resource.id].join(":") : resource.id}
 					>
 						<ResourcePreviewCard peopleLabel={peopleLabel} {...resource} />

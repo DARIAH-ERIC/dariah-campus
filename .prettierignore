@@ -1,10 +1,13 @@
-# package manager lock file
+# package manager
 pnpm-lock.yaml
+pnpm-workspace.yaml
 
 # prettier does not support mdx v3
 # @see https://github.com/prettier/prettier/issues/12209
 *.mdx
 
-# content folder is managed by cms
+# content
 /content
-/public/assets/content
+
+# public assets
+/public

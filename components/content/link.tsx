@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 import { Link as Anchor } from "@/components/link";
-import { getLinkProps, type LinkSchema } from "@/lib/keystatic/get-link-props";
+import { getLinkProps, type LinkSchema } from "@/lib/content/utils/get-link-props";
 
 interface LinkProps {
 	children: ReactNode;
