@@ -1,14 +1,20 @@
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { Image } from "@/components/image";
-import { maxAvatars } from "@/config/content.config";
+
+const maxAvatars = 3;
 
 interface AvatarsListProps {
-	avatars: Array<{ id: string; name: string; image: string }>;
+	avatars: Array<{
+		id: string;
+		name: string;
+		image: StaticImageData | string;
+	}>;
 	label: string;
 }
 
-export function AvatarsList(props: AvatarsListProps): ReactNode {
+export function AvatarsList(props: Readonly<AvatarsListProps>): ReactNode {
 	const { avatars, label } = props;
 
 	return (

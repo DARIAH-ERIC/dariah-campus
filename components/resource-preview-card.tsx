@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { AvatarsList } from "@/components/avatars-list";
@@ -10,13 +11,17 @@ interface ResourcePreviewCardProps {
 	contentType: ContentType | "curriculum" | "event" | "pathfinder";
 	href: string | null;
 	locale: string;
-	people: Array<{ id: string; image: string; name: string }>;
+	people: Array<{
+		id: string;
+		image: StaticImageData | string;
+		name: string;
+	}>;
 	peopleLabel: string;
 	summary: { title: string; content: string };
 	title: string;
 }
 
-export function ResourcePreviewCard(props: ResourcePreviewCardProps): ReactNode {
+export function ResourcePreviewCard(props: Readonly<ResourcePreviewCardProps>): ReactNode {
 	const { contentType, href, locale, people, peopleLabel, summary, title } = props;
 
 	return (

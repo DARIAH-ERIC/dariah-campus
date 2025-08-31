@@ -6,6 +6,7 @@ import {
 	FacebookIcon,
 	FlickrIcon,
 	GitHubIcon,
+	InstagramIcon,
 	LinkedInIcon,
 	MastodonIcon,
 	OrcidIcon,
@@ -13,7 +14,7 @@ import {
 	TwitterIcon,
 	WebsiteIcon,
 	YouTubeIcon,
-} from "@/app/(app)/_components/social-media-icons";
+} from "@/components/social-media-icons";
 import type { SocialMediaKind } from "@/lib/content/options";
 
 const logos: Record<SocialMediaKind, FC<{ className?: string }>> = {
@@ -22,6 +23,7 @@ const logos: Record<SocialMediaKind, FC<{ className?: string }>> = {
 	facebook: FacebookIcon,
 	flickr: FlickrIcon,
 	github: GitHubIcon,
+	instagram: InstagramIcon,
 	linkedin: LinkedInIcon,
 	mastodon: MastodonIcon,
 	orcid: OrcidIcon,
@@ -36,7 +38,7 @@ interface SocialMediaProps {
 	social: ReadonlyArray<{ discriminant: SocialMediaKind; value: string }>;
 }
 
-export function SocialMedia(props: SocialMediaProps): ReactNode {
+export function SocialMedia(props: Readonly<SocialMediaProps>): ReactNode {
 	const { label, social } = props;
 
 	if (social.length === 0) {
@@ -45,7 +47,7 @@ export function SocialMedia(props: SocialMediaProps): ReactNode {
 
 	return (
 		<div className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
-			<div className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</div>
+			<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{label}</div>
 			<div>
 				<ul className="inline-flex gap-x-4">
 					{social.map((link, index) => {

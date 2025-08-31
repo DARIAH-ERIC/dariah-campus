@@ -59,14 +59,14 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 			validate={validate}
 			validateButtonLabel={buttonLabel ?? t("validate")}
 		>
-			<header>{questions}</header>
+			<header className="text-base">{questions}</header>
 
 			<input name="variant" type="hidden" value={variant} />
 			<ul className="list-none pl-0 accent-brand-700" role="list">
 				{answers.map((answer, index) => {
 					return (
 						<li key={index}>
-							<label className="grid grid-cols-[auto_1fr] items-center gap-x-2">
+							<label className="grid grid-cols-[auto_1fr] items-start gap-x-3">
 								<input name={`checks.${String(index)}`} type="hidden" value={answer.props.kind} />
 								<input
 									name={variant === "single" ? "checked" : `checked.${String(index)}`}

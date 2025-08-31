@@ -34,13 +34,13 @@
 				"id": "7tVuL0XX0GY",
 				"title": "For learners",
 				"description": "Providing trustworthy, reusable, open learning resources",
-				"image": "/assets/content/assets/en/index-page/about-section/videos/0/image.png"
+				"src": "/assets/content/assets/en/index-page/about-section/videos/0/image.png"
 			},
 			{
 				"id": "vWh6Wmn635w",
 				"title": "For trainers",
 				"description": "Ensuring the impact and sustainability of training resources",
-				"image": "/assets/content/assets/en/index-page/about-section/videos/1/image.png"
+				"src": "/assets/content/assets/en/index-page/about-section/videos/1/image.png"
 			}
 		]
 	},
@@ -78,19 +78,19 @@
 				"id": "OqYJNUmhJzw",
 				"title": "Laurent Romary",
 				"description": "Former DARIAH Director",
-				"image": "/assets/content/assets/en/index-page/testimonial-section/videos/0/image.jpg"
+				"src": "/assets/content/assets/en/index-page/testimonial-section/videos/0/image.jpg"
 			},
 			{
 				"id": "iwz0uhEhtg4",
 				"title": "Jennifer Edmond",
 				"description": "DARIAH Director",
-				"image": "/assets/content/assets/en/index-page/testimonial-section/videos/1/image.jpg"
+				"src": "/assets/content/assets/en/index-page/testimonial-section/videos/1/image.jpg"
 			},
 			{
 				"id": "soL0itkLYpk",
 				"title": "Frank Fischer",
 				"description": "Former DARIAH Director",
-				"image": "/assets/content/assets/en/index-page/testimonial-section/videos/2/image.jpg"
+				"src": "/assets/content/assets/en/index-page/testimonial-section/videos/2/image.jpg"
 			}
 		]
 	},

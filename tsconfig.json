@@ -3,20 +3,21 @@
 	"extends": "@acdh-oeaw/tsconfig",
 	"compilerOptions": {
 		"paths": {
-			"@/*": ["./*"]
+			"@/*": ["./*"],
+			"@content/*": ["./.content/generated/*"]
 		},
 		"plugins": [{ "name": "next" }]
 	},
 	"include": [
 		"./next-env.d.ts",
-		"./**/*.d.ts",
 		"./**/*.js",
 		// "./**/*.mdx",
 		"./**/*.ts",
 		"./**/*.tsx",
+		"./types/**/*.d.ts",
 		".next/types/**/*.ts"
 	],
-	"exclude": ["node_modules", "out"],
+	"exclude": [".content", ".next", "content", "node_modules", "out", "public"],
 	"mdx": {
 		"checkMdx": false,
 		"plugins": ["remark-frontmatter", "remark-gfm"]

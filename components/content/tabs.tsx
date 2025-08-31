@@ -45,7 +45,7 @@ export function Tabs(props: Readonly<TabsProps>): ReactNode {
 				const id = String(index);
 
 				return (
-					<AriaTabPanel key={id} className="grid" id={id}>
+					<AriaTabPanel key={id} id={id}>
 						{children}
 					</AriaTabPanel>
 				);
