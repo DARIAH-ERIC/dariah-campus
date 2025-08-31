@@ -32,6 +32,7 @@ async function create() {
 	matter(vfile, { strip: true });
 	const metadata = vfile.data.matter as { doi?: string };
 
+	// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 	if (metadata.doi) {
 		return null;
 	}
@@ -57,6 +58,6 @@ create()
 		}
 	})
 	.catch((error: unknown) => {
-		log.error("Failed to create handle.\n", String(error));
+		log.error("Failed to create handle.\n", error);
 		process.exitCode = 1;
 	});

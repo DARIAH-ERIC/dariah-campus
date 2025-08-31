@@ -1,20 +1,21 @@
+import { assert } from "@acdh-oeaw/lib";
 import { DownloadIcon } from "lucide-react";
+import type { MDXContent } from "mdx/types";
+import type { StaticImageData } from "next/image";
 import { useTranslations } from "next-intl";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
-import { ServerImage as Image } from "@/components/server-image";
-import type { MdxContent } from "@/lib/content/compile-mdx";
+import { Image } from "@/components/image";
+import { client } from "@/lib/content/client";
 
 interface SessionProps {
 	attachments: ReadonlyArray<{ label: string; file: string }>;
 	children: ReactNode;
-	compile: (code: string) => Promise<MdxContent<Record<string, unknown>>>;
 	index: number;
 	links: ReadonlyArray<{ label: string; href: string }>;
-	peopleById: Map<string, { data: { name: string; image: string; content: string } }>;
 	presentations: ReadonlyArray<{
 		attachments: ReadonlyArray<{ label: string; file: string }>;
-		content: string;
+		content: MDXContent;
 		links: ReadonlyArray<{ label: string; href: string }>;
 		speakers: ReadonlyArray<string>;
 		title: string;
@@ -22,24 +23,14 @@ interface SessionProps {
 	speakers: ReadonlyArray<{
 		id: string;
 		name: string;
-		image: string;
-		SpeakerDescription: FC;
+		image: StaticImageData | string;
+		SpeakerDescription: MDXContent;
 	}>;
 	title: string;
 }
 
-export function Session(props: SessionProps): ReactNode {
-	const {
-		attachments,
-		children,
-		compile,
-		index,
-		links,
-		peopleById,
-		presentations,
-		speakers,
-		title,
-	} = props;
+export function Session(props: Readonly<SessionProps>): ReactNode {
+	const { attachments, children, index, links, presentations, speakers, title } = props;
 
 	const t = useTranslations("Session");
 
@@ -140,22 +131,21 @@ export function Session(props: SessionProps): ReactNode {
 
 			{presentations.length > 0 ? (
 				<ol>
-					{presentations.map(async (presentation, presentationIndex) => {
+					{presentations.map((presentation, presentationIndex) => {
 						const { title, links, attachments, content } = presentation;
 
-						const { default: PresentationContent } = await compile(content);
+						const PresentationContent = content;
 
-						const speakers = await Promise.all(
-							presentation.speakers.map(async (id) => {
-								const person = peopleById.get(id)!;
-								const { default: SpeakerDescription } = await compile(person.data.content);
-								return {
-									id,
-									...person.data,
-									SpeakerDescription,
-								};
-							}),
-						);
+						const speakers = presentation.speakers.map((id) => {
+							const person = client.collections.people.get(id)!;
+							assert(person, `Missing person "${id}".`);
+							const SpeakerDescription = person.content;
+							return {
+								id,
+								...person.metadata,
+								SpeakerDescription,
+							};
+						});
 
 						return (
 							<li key={presentationIndex}>

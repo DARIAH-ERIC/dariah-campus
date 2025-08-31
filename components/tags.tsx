@@ -1,14 +1,14 @@
 import type { ReactNode } from "react";
 
 import { Link } from "@/components/link";
-import { createSearchUrl } from "@/lib/create-search-url";
+import { createSearchUrl } from "@/lib/navigation/create-search-url";
 
 interface TagsProps {
 	label: ReactNode;
 	tags: Array<{ id: string; name: string }>;
 }
 
-export function Tags(props: TagsProps): ReactNode {
+export function Tags(props: Readonly<TagsProps>): ReactNode {
 	const { label, tags } = props;
 
 	if (tags.length === 0) {
@@ -17,9 +17,9 @@ export function Tags(props: TagsProps): ReactNode {
 
 	return (
 		<dl className="grid gap-y-0.5 text-sm text-neutral-500">
-			<dt className="text-xs font-bold uppercase tracking-wide text-neutral-600">{label}</dt>
+			<dt className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{label}</dt>
 			<dd>
-				<ul className="inline text-xs font-medium uppercase tracking-wide">
+				<ul className="inline text-xs font-medium tracking-wide uppercase">
 					{tags.map((tag, index) => {
 						const { id, name } = tag;
 

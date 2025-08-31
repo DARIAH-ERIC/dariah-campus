@@ -6,7 +6,7 @@ associated with DARIAH-EU. As a discovery layer, D-C links to existing, external
 for developing and sharing web-based training materials, as well as capturing face-to-face events.
 
 D-C materials are hosted and version-controlled in this GitHub repository and will be delivered to
-the user as a Gatsby-based overlay website.
+the user as a Next.js-based overlay website.
 
 Authors and contributors will be provided with comprehensive author guidelines on how to port
 existing or create new content for D-C in Markdown, a lightweight markup language with plain text

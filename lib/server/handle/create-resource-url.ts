@@ -17,7 +17,7 @@ export function createResourceUrl(path: string): URL {
 
 	if (collection === "curricula") {
 		return createUrl({
-			baseUrl: env.NEXT_PUBLIC_APP_BASE_URL,
+			baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
 			pathname: `/curricula/${id}`,
 		});
 	}
@@ -27,7 +27,7 @@ export function createResourceUrl(path: string): URL {
 
 	if (kind === "resources") {
 		return createUrl({
-			baseUrl: env.NEXT_PUBLIC_APP_BASE_URL,
+			baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
 			pathname: `/resources/${collection}/${id}`,
 		});
 	}

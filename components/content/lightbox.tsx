@@ -9,7 +9,7 @@ interface LightBoxProps {
 	children: ReactNode;
 }
 
-export function LightBox(props: LightBoxProps): ReactNode {
+export function LightBox(props: Readonly<LightBoxProps>): ReactNode {
 	const { caption, children } = props;
 
 	const dialogLabel = "Media lightbox";
@@ -46,7 +46,7 @@ interface LightboxTriggerProps {
 	className?: string;
 }
 
-export function LightboxTrigger(props: LightboxTriggerProps): ReactNode {
+export function LightboxTrigger(props: Readonly<LightboxTriggerProps>): ReactNode {
 	const { children, className } = props;
 
 	return <Button className={className}>{children}</Button>;

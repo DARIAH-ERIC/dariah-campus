@@ -21,7 +21,7 @@ const icons: Record<Exclude<CalloutKind, "none">, LucideIcon> = {
 };
 
 const calloutStyles = styles({
-	base: "my-12 grid gap-y-3 rounded-md border p-6 shadow [&_*::marker]:text-inherit [&_*]:text-inherit",
+	base: "my-12 grid gap-y-3 rounded-md border p-6 shadow [&_*]:text-inherit [&_*::marker]:text-inherit",
 	variants: {
 		kind: {
 			caution: "border-l-4 border-error-200 border-l-error-600 bg-error-50 text-error-800",
@@ -51,7 +51,7 @@ export function Callout(props: Readonly<CalloutProps>): ReactNode {
 	return (
 		<aside className={calloutStyles({ kind })}>
 			<CalloutHeader kind={kind} title={title} />
-			<div className="[&_:first-child]:mt-0 [&_:last-child]:mb-0 [&_a:hover]:no-underline [&_a]:underline">
+			<div className="[&_:first-child]:mt-0 [&_:last-child]:mb-0 [&_a]:underline [&_a:hover]:no-underline">
 				{children}
 			</div>
 		</aside>
@@ -63,7 +63,7 @@ interface CalloutHeaderProps {
 	title?: string;
 }
 
-function CalloutHeader(props: CalloutHeaderProps): ReactNode {
+function CalloutHeader(props: Readonly<CalloutHeaderProps>): ReactNode {
 	const { kind, title } = props;
 
 	const hasTitle = isNonEmptyString(title);

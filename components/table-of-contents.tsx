@@ -2,14 +2,14 @@
 
 import { isNonEmptyArray } from "@acdh-oeaw/lib";
 import type { TableOfContents as TableOfContentsTree } from "@acdh-oeaw/mdx-lib";
-import { cn } from "@acdh-oeaw/style-variants";
+import cn from "clsx/lite";
 import { ChevronRightIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { Link } from "@/components/link";
-import { useTableOfContentsHighlight } from "@/lib/content/use-table-of-contents-highlight";
-import { createHref } from "@/lib/create-href";
-import { useLabels } from "@/lib/use-labels";
+import { useLabels } from "@/lib/hooks/use-labels";
+import { useTableOfContentsHighlight } from "@/lib/hooks/use-table-of-contents-highlight";
+import { createHref } from "@/lib/navigation/create-href";
 
 interface TableOfContentsProps {
 	"aria-labelledby"?: string;
@@ -21,7 +21,7 @@ interface TableOfContentsProps {
 	variant?: "default" | "panel";
 }
 
-export function TableOfContents(props: TableOfContentsProps): ReactNode {
+export function TableOfContents(props: Readonly<TableOfContentsProps>): ReactNode {
 	const { className, onChange, tableOfContents, title, variant } = props;
 
 	const labelProps = useLabels(props);
@@ -49,7 +49,7 @@ interface TableOfContentsLevelProps {
 	variant?: "default" | "panel";
 }
 
-function TableOfContentsLevel(props: TableOfContentsLevelProps): ReactNode {
+function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): ReactNode {
 	const { depth = 0, headings, onChange, variant } = props;
 
 	if (!isNonEmptyArray(headings)) {

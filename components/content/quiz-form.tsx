@@ -37,7 +37,7 @@ export function QuizForm(props: Readonly<QuizFormProps>): ReactNode {
 
 	return (
 		<section
-			className="my-4 grid gap-y-4 rounded-md border border-neutral-200 bg-neutral-50 px-4 py-6 text-sm leading-relaxed text-neutral-950 shadow"
+			className="my-4 grid gap-y-4 rounded-md border border-neutral-200  bg-white px-4 py-6 text-sm leading-relaxed text-neutral-950 shadow"
 			hidden={!isCurrent}
 		>
 			<form
