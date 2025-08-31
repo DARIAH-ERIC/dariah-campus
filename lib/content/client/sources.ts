@@ -50,15 +50,15 @@ export type Source = (typeof all)[number];
 
 export const client: CollectionClient<Source> = {
 	ids() {
-		return ids;
+		return Promise.resolve(ids);
 	},
 	all() {
-		return all;
+		return Promise.resolve(all);
 	},
 	byId() {
-		return byId;
+		return Promise.resolve(byId);
 	},
 	get(id: (typeof ids)[number]) {
-		return byId.get(id) ?? null;
+		return Promise.resolve(byId.get(id) ?? null);
 	},
 };

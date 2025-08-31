@@ -1,6 +1,5 @@
 import { keyByToMap } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
@@ -18,11 +17,11 @@ export async function generateMetadata(): Promise<Metadata> {
 	return metadata;
 }
 
-export default function ResourcesPage(): ReactNode {
-	const t = useTranslations("ResourcesPage");
+export default async function ResourcesPage(): Promise<ReactNode> {
+	const t = await getTranslations("ResourcesPage");
 
-	const resources = client.collections.resources.all();
-	const people = client.collections.people.all();
+	const resources = await client.collections.resources.all();
+	const people = await client.collections.people.all();
 
 	const peopleById = keyByToMap(people, (person) => {
 		return person.id;

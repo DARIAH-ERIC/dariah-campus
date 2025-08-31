@@ -15,7 +15,7 @@ export { viewport } from "@/app/_lib/viewport.config";
 
 interface LocaleLayoutProps extends LayoutProps<"/"> {}
 
-export async function generateMetadata(): Promise<Promise<Metadata>> {
+export async function generateMetadata(): Promise<Metadata> {
 	const locale = await getLocale();
 	const t = await getTranslations("LocaleLayout");
 	const meta = await getMetadata();

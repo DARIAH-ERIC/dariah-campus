@@ -14,10 +14,10 @@ import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
 
 interface DocumentationPageProps extends PageProps<"/documentation/[id]"> {}
 
-export function generateStaticParams(): Array<
-	Pick<Awaited<DocumentationPageProps["params"]>, "id">
+export async function generateStaticParams(): Promise<
+	Array<Pick<Awaited<DocumentationPageProps["params"]>, "id">>
 > {
-	const ids = client.collections.documentation.ids();
+	const ids = await client.collections.documentation.ids();
 
 	return ids.map((id) => {
 		return { id };
@@ -35,7 +35,7 @@ export async function generateMetadata(props: Readonly<DocumentationPageProps>):
 	const page =
 		preview.status === "enabled"
 			? await createGitHubClient(preview).collections.documentation.get(id)
-			: client.collections.documentation.get(id);
+			: await client.collections.documentation.get(id);
 
 	if (page == null) {
 		notFound();
@@ -65,7 +65,7 @@ export default async function DocumentationPage(
 	const page =
 		preview.status === "enabled"
 			? await createGitHubClient(preview).collections.documentation.get(id)
-			: client.collections.documentation.get(id);
+			: await client.collections.documentation.get(id);
 
 	if (page == null) {
 		notFound();
@@ -75,7 +75,7 @@ export default async function DocumentationPage(
 	const Content = page.content;
 	const tableOfContents = page.tableOfContents ?? [];
 
-	const docs = client.collections.documentation.all();
+	const docs = await client.collections.documentation.all();
 
 	return (
 		<div>

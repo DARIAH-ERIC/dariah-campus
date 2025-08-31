@@ -46,7 +46,7 @@ async function create() {
 
 	await client.collections().create(schema);
 
-	const documents = createDocuments();
+	const documents = await createDocuments();
 
 	await client.collections(collection).documents().import(documents);
 

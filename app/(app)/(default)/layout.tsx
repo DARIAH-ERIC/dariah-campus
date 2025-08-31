@@ -26,9 +26,11 @@ export default function DefaultLayout(props: Readonly<DefaultLayoutProps>): Reac
 
 			<div className="relative isolate grid min-h-full grid-rows-[auto_1fr_auto]">
 				<DefaultHeader />
+
 				<Main className="min-w-0 flex-1" id={mainContentId}>
 					{children}
 				</Main>
+
 				<DefaultFooter />
 			</div>
 		</Fragment>

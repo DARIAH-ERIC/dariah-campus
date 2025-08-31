@@ -78,6 +78,6 @@ export type Navigation = typeof navigation;
 
 export const client: SingletonClient<Navigation> = {
 	get() {
-		return navigation;
+		return Promise.resolve(navigation);
 	},
 };
