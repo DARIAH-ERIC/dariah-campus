@@ -13,7 +13,7 @@ contributors:
 tags:
   - linked-open-data
 sources:
-  - acdh-ch
+  - acdh
 license: cc-by-4.0
 table-of-contents: true
 summary:
@@ -74,7 +74,7 @@ graph LR;
 
 Following the principles of the semantic web, the entities within a triple are identified using URIs. In a more formal syntax, namely the Terse RDF Triple Language (**TTL** or **Turtle** 🐢), the above triple could then look as follows:
 
-```ttl
+```turtle
 <http://example.org/William_Shakespeare> <http://example.org/author> <http://example.org/Hamlet> .
 ```
 
@@ -125,7 +125,7 @@ WHERE {
   You can try out the following SPARQL queries yourself using the <Link link={{"discriminant":"external","value":"https://atomgraph.github.io/SPARQL-Playground/"}}>SPARQL Playground</Link>. Just paste the following Turtle representation of our demo data into the upper left textbox ("RDF input") and enter your SPARQL queries in the textbox in the upper right corner.
 
   <Disclosure title="RDF input for our first queries">
-    ```RDF
+    ```turtle
     <http://example.org/William_Shakespeare> <http://example.org/author> <http://example.org/Hamlet> .
     <http://example.org/William_Shakespeare> <http://example.org/author> <http://example.org/Macbeth> .
     <http://example.org/Hamlet> <http://example.org/location> <http://example.org/Denmark> .
@@ -625,7 +625,7 @@ SELECT ?x ?y WHERE {
   VALUES ?x {1 2 3}
 
   #nested query:
-  { 
+  {
     SELECT ?y WHERE {
       VALUES ?y {"a" "b" "c"}
     }
@@ -673,7 +673,7 @@ The important part in this example query is the fact that the inner query will b
 
 Wrapping the upper half of our original query in a subquery allows us to execute this part first and hence binding the variable `?transformedNameWithLanguage` before it is forwarded to Wikidata:
 
-```SPARQL
+```sparql
 SELECT DISTINCT ?authorName ?transformedName ?description WHERE {
   # This part is now nested and hence executed first:
   {
@@ -723,5 +723,3 @@ For additional information regarding SPARQL and its functionalities, we recommen
 * ["SPARQL 1.1 Overview"](https://www.w3.org/TR/sparql11-overview/)
 * [DuCharme, Bob. Learning SPARQL](http://www.learningsparql.com)
 * ["Introducing SPARQL: Querying the Semantic Web"](https://www.xml.com/pub/a/2005/11/16/introducing-sparql-querying-semantic-web-tutorial.html)
-
-####
