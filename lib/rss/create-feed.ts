@@ -49,7 +49,7 @@ export async function createFeed(): Promise<string> {
 			return tag.metadata.name;
 		});
 
-		const url = String(createFullUrl({ pathname: resource.href }));
+		const url = String(createFullUrl({ baseUrl, pathname: resource.href }));
 
 		entries.push({
 			title: resource.metadata.title,
@@ -74,7 +74,7 @@ export async function createFeed(): Promise<string> {
 			return tag.metadata.name;
 		});
 
-		const url = String(createFullUrl({ pathname: curriculum.href }));
+		const url = String(createFullUrl({ baseUrl, pathname: curriculum.href }));
 
 		entries.push({
 			title: curriculum.metadata.title,
