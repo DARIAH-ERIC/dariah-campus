@@ -123,12 +123,6 @@
 		"table-of-contents": "Table of contents",
 		"toggle-table-of-contents": "Toggle table of contents"
 	},
-	"DraftModeBanner": {
-		"branch": "Branch: {branch}",
-		"disable": "Disable",
-		"enabled": "Draft mode enabled",
-		"invalid-branch": "Branch invalid or missing"
-	},
 	"ErrorPage": {
 		"meta": {
 			"title": "Error"
@@ -234,6 +228,12 @@
 	"PreviewCard": {
 		"authors": "Authors",
 		"read-more": "Read more"
+	},
+	"PreviewModeBanner": {
+		"branch": "Branch: {branch}",
+		"disable": "Disable",
+		"enabled": "Preview mode enabled",
+		"invalid-branch": "Branch invalid or missing"
 	},
 	"RelatedCurriculaList": {
 		"label": "Related curricula"

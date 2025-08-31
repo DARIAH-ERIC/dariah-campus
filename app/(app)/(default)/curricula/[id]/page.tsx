@@ -1,6 +1,5 @@
 import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
@@ -13,9 +12,8 @@ import { TagsList } from "@/components/tags-list";
 import { TranslationsList } from "@/components/translations-list";
 import { client } from "@/lib/content/client";
 import { createGitHubClient } from "@/lib/content/github-client";
+import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
 import { pickRandom } from "@/lib/utils/pick-random";
-
-export const dynamicParams = false;
 
 interface CurriculumPageProps extends PageProps<"/curricula/[id]"> {}
 
@@ -33,11 +31,12 @@ export async function generateMetadata(props: Readonly<CurriculumPageProps>): Pr
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const curriculum = draft.isEnabled
-		? await (await createGitHubClient()).collections.curricula.get(id)
-		: client.collections.curricula.get(id);
+	const curriculum =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).collections.curricula.get(id)
+			: client.collections.curricula.get(id);
 
 	if (curriculum == null) {
 		notFound();
@@ -63,11 +62,12 @@ export default async function CurriculumPage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const curriculum = draft.isEnabled
-		? await (await createGitHubClient()).collections.curricula.get(id)
-		: client.collections.curricula.get(id);
+	const curriculum =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).collections.curricula.get(id)
+			: client.collections.curricula.get(id);
 
 	if (curriculum == null) {
 		notFound();

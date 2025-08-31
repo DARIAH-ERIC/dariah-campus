@@ -8,7 +8,7 @@ import { readonly } from "@acdh-oeaw/keystatic-lib/fields/readonly";
 import { collection, fields } from "@keystatic/core";
 
 import { createCallout } from "@/lib/content/keystatic/components/callout";
-import { createDiagram } from "@/lib/content/keystatic/components/diagram";
+// import { createDiagram } from "@/lib/content/keystatic/components/diagram";
 import { createDisclosure } from "@/lib/content/keystatic/components/disclosure";
 import { createEmbed } from "@/lib/content/keystatic/components/embed";
 import { createFigure } from "@/lib/content/keystatic/components/figure";
@@ -265,7 +265,7 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 				},
 				components: {
 					...createCallout(paths, locale),
-					...createDiagram(paths, locale),
+					// ...createDiagram(paths, locale),
 					...createDisclosure(paths, locale),
 					...createEmbed(paths, locale),
 					...createFigure(paths, locale),
@@ -351,7 +351,7 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 							},
 							components: {
 								...createCallout(paths, locale),
-								...createDiagram(paths, locale),
+								// ...createDiagram(paths, locale),
 								...createDisclosure(paths, locale),
 								...createEmbed(paths, locale),
 								...createFigure(paths, locale),
@@ -437,7 +437,7 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 										},
 										components: {
 											...createCallout(paths, locale),
-											...createDiagram(paths, locale),
+											// ...createDiagram(paths, locale),
 											...createDisclosure(paths, locale),
 											...createEmbed(paths, locale),
 											...createFigure(paths, locale),
