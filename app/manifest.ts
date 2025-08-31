@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
-import { defaultLocale } from "@/config/i18n.config";
-import { getMetadata } from "@/lib/i18n/get-metadata";
+import { defaultLocale } from "@/lib/i18n/locales";
+import { getMetadata } from "@/lib/i18n/metadata";
 
 export default async function manifest(): Promise<MetadataRoute.Manifest> {
 	const meta = await getMetadata(defaultLocale);

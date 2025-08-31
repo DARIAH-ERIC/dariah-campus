@@ -1,49 +1,58 @@
+import type { StaticImageData } from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
 import { AvatarsList } from "@/components/avatars-list";
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
 import { ContentTypeIcon } from "@/components/content-type-icon";
+import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 import { PageTitle } from "@/components/page-title";
 import { People } from "@/components/people";
-import { ServerImage as Image } from "@/components/server-image";
 import { Tags } from "@/components/tags";
 import { Translations } from "@/components/translations";
 import type { ContentType } from "@/lib/content/options";
 
 interface CurriculumProps {
 	children: ReactNode;
-	editors: Array<{ id: string; image: string; name: string }>;
+	editors: Array<{
+		id: string;
+		image: StaticImageData | string;
+		name: string;
+	}>;
 	// editUrl: string;
-	featuredImage?: string | null;
+	featuredImage?: StaticImageData | string | null;
 	// lastUpdatedAt: Date;
 	resources: Array<{
-		authors: Array<{ id: string; image: string; name: string }>;
-		collection: string;
+		authors: Array<{
+			id: string;
+			image: StaticImageData | string;
+			name: string;
+		}>;
+		kind: string;
 		contentType: ContentType | "curriculum" | "event" | "pathfinder";
 		id: string;
+		href: string;
 		locale: string;
 		summary: { title: string; content: string };
 		title: string;
 	}>;
 	tags: Array<{ id: string; name: string }>;
 	title: string;
-	translations: Array<{ id: string; collection: string; title: string; locale: string }>;
+	translations: Array<{ id: string; href: string; title: string; locale: string }>;
 }
 
-export function Curriculum(props: CurriculumProps): ReactNode {
+export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 	const { children, editors, featuredImage, resources, tags, title, translations } = props;
 
 	const t = useTranslations("Curriculum");
 	const _format = useFormatter();
 
 	return (
-		<article className="mx-auto w-full max-w-content space-y-10">
+		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
 			<header className="space-y-10">
 				<PageTitle>{title}</PageTitle>
-				<div className="space-y-6 border-y py-10 2xl:hidden">
+				<div className="space-y-6 border-y border-neutral-200 py-10 2xl:hidden">
 					<People label={t("editors")} people={editors} />
 					<Tags label={t("tags")} tags={tags} />
 					<Translations label={t("translations")} translations={translations} />
@@ -65,11 +74,11 @@ export function Curriculum(props: CurriculumProps): ReactNode {
 				<h2 className="text-2xl font-bold">{t("resources")}</h2>
 				<ol className="grid content-start gap-6">
 					{resources.map((resource, index) => {
-						const { authors, collection, contentType, id, locale, summary, title } = resource;
+						const { authors, contentType, id, locale, summary, title } = resource;
 
 						const isDraft = "draft" in resource && resource.draft === true;
 
-						const href = isDraft ? null : createResourceUrl({ id, collection });
+						const href = isDraft ? null : resource.href;
 
 						return (
 							<li key={id} id={`resource-${String(index + 1)}`}>
@@ -102,19 +111,7 @@ export function Curriculum(props: CurriculumProps): ReactNode {
 					})}
 				</ol>
 			</div>
-			<footer className="pt-2">
-				{/* <p className="text-sm text-right text-neutral-500">
-					<span>{t("last-updated-at")}: </span>
-					<time dateTime={lastUpdatedAt}>{format.dateTime(lastUpdatedAt)}</time>
-				</p> */}
-				{/* <EditLink
-					collection="courses"
-					id={curriculum.id}
-					className="text-sm flex justify-end items-center gap-x-1.5 text-neutral-500"
-				>
-					<span className="text-right">{t("suggest-changes-to-curriculum")}</span>
-				</EditLink> */}
-			</footer>
+			<footer className="pt-2"></footer>
 		</article>
 	);
 }
