@@ -37,18 +37,6 @@ import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
 
 const locale = defaultLocale;
 
-// TODO: some resources only need a basic config
-const _createEvaluateOptions = (baseUrl: string) => {
-	return {
-		remarkPlugins: [
-			createGitHubMarkdownPlugin(),
-			createTypographicQuotesPlugin(getIntlLanguage(locale)),
-		],
-		remarkRehypeOptions: createRemarkRehypeOptions(locale),
-		rehypePlugins: [createRemoteImageUrlsPlugin(baseUrl)],
-	} satisfies EvaluateOptions;
-};
-
 const createEvaluateOptions = (baseUrl: string) => {
 	return {
 		remarkPlugins: [
