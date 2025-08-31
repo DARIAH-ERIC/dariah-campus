@@ -1,6 +1,7 @@
 "use client";
 
 import { filterDOMProps, mergeRefs } from "@react-aria/utils";
+import NextLink, { type LinkProps as NextLinkProps } from "next/link";
 import {
 	type ComponentPropsWithoutRef,
 	type ElementType,
@@ -17,10 +18,7 @@ import {
 	useObjectRef,
 	usePress,
 } from "react-aria";
-import type { LinkProps as AriaLinkProps } from "react-aria-components";
-
-import { LocaleLink, type LocaleLinkProps } from "@/lib/i18n/navigation";
-import { useRenderProps } from "@/lib/use-render-props";
+import { type LinkProps as AriaLinkProps, useRenderProps } from "react-aria-components";
 
 /**
  * Not using `Link` from `react-aria-components` directly, because we want `next/link`'s built-in
@@ -33,21 +31,20 @@ import { useRenderProps } from "@/lib/use-render-props";
  */
 
 export interface LinkProps
-	extends Pick<LocaleLinkProps, "href" | "prefetch" | "replace" | "scroll" | "shallow">,
+	extends Pick<NextLinkProps, "prefetch" | "replace" | "scroll" | "shallow">,
 		Omit<AriaLinkProps, "elementType" | "href" | "routerOptions" | "slot">,
 		Pick<ComponentPropsWithoutRef<"a">, "aria-current" | "id"> {
+	href?: string | undefined;
 	ref?: Ref<HTMLAnchorElement | HTMLSpanElement> | undefined;
 }
 
 export function Link(props: Readonly<LinkProps>): ReactNode {
 	/** Ensure `className` is passed to `mergProps` only once to avoid duplication. */
-	const { className: _, ...interactionProps } = props;
+	const { className: _, ref: forwardedRef, ...interactionProps } = props;
 
-	const forwardedRef = props.ref;
 	const ref = useRef<HTMLAnchorElement | HTMLSpanElement>(null);
 	const linkRef = useObjectRef(
 		useMemo(() => {
-			// eslint-disable-next-line react-compiler/react-compiler
 			return mergeRefs(forwardedRef, ref);
 		}, [forwardedRef, ref]),
 	);
@@ -55,7 +52,7 @@ export function Link(props: Readonly<LinkProps>): ReactNode {
 	const isDisabled = props.isDisabled === true;
 	const isCurrent = Boolean(props["aria-current"]);
 	const isLinkElement = Boolean(props.href) && !isDisabled;
-	const ElementType: ElementType = isLinkElement ? LocaleLink : "span";
+	const ElementType: ElementType = isLinkElement ? NextLink : "span";
 
 	const { focusableProps } = useFocusable(interactionProps, linkRef);
 	const { pressProps, isPressed } = usePress({ ...interactionProps, ref: linkRef });

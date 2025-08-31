@@ -2,11 +2,11 @@ import "@/styles/index.css";
 import "@/styles/cms.css";
 
 import type { Metadata } from "next";
-import { type ReactNode, Suspense } from "react";
-import { LocalizedStringProvider as Translations } from "react-aria-components/i18n";
+import type { ReactNode } from "react";
+import { LocalizedStringProvider } from "react-aria-components/i18n";
 
 import KeystaticApp from "@/app/(cms)/keystatic/keystatic";
-import { getMetadata } from "@/lib/i18n/get-metadata";
+import { getMetadata } from "@/lib/i18n/metadata";
 
 const locale = "en";
 
@@ -23,14 +23,12 @@ export async function generateMetadata(): Promise<Metadata> {
 	return metadata;
 }
 
-export default function RootLayout(): ReactNode {
+export default function CmsLayout(): ReactNode {
 	return (
 		<html lang={locale}>
 			<body>
-				<Translations locale={locale} />
-				<Suspense>
-					<KeystaticApp />
-				</Suspense>
+				<LocalizedStringProvider locale={locale} />
+				<KeystaticApp />
 			</body>
 		</html>
 	);

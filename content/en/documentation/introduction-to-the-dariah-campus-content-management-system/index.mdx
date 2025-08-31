@@ -1,0 +1,1336 @@
+---
+title: Using the DARIAH-Campus Content Management System
+lead: Introducing the basic features of the DARIAH-Campus Content Management System
+---
+## Getting to Know the DARIAH-Campus Dashboard
+
+The content management system (version launched in March 2025) allows users to create new resources and make changes to people profiles using the same basic workflow as creating, pushing and pulling commits on GitHub, but through a more user-friendly interface that does not require any experience or knowledge of coding practices. No changes are published to DARIAH-Campus without the approval of the Editorial Board, and any changes you do make remain in a 'branch' that is separate from the main DARIAH-Campus website until it is 'merged' (published). This means that you can work on your resource without worrying too much about making any catastrophic changes that break the DARIAH-Campus website, as the editorial team won't let it get that far!
+
+However, it is worth spending a bit of time getting to know the 'Dashboard' of the content management system (CMS) and what each section does in terms of moving your draft resource into a place where it can be reviewed and ultimately published.
+
+Once your proposal has been submitted, and the basic information you need has been put into the repository, you can start to build up your resources.
+
+1. Go to [DARIAH-Campus CMS](https://campus.dariah.eu/admin) and log in using your GitHub account.
+2. If this is the first time you've used the CMS, you will see this page inviting you to log in using your GitHub account:
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/1.-cms-documentation-first-screen.png" alt="grey screen with grey central button, text 'Log in with GitHub'" alignment="stretch">
+
+</Figure>
+
+You will then be asked to allow the system access to your GitHub account. You will also be asked if you want to "Authorize DARIAH-Campus Keystatic CMS". You should select "Authorize DARIAH-Campus Keystatic CMS", as shown in this page.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/2.-cms-documentation-screen-2.png" alt="At the top is the text 'DARIAH-Campus Keystatic CMS by DARIAH-ERIC would like permission to: Verify your GitHub Identity (Username). Know which resources you can access. Act on your behalf (here this is also a link shown with an option to learn more)'. Underneath is the text 'learn more about DARIAH-Campus Keystatic CMS'. Underneath this are two buttons side by side. On the left the button is in pale grey with black text saying 'Cancel'. On the right is a green button with text in white saying 'Authorize DARIAH-Campus Keystatic CMS'. At the very bottom there is text saying 'Authorizing will redirect to https://campus.dariah.eu'." alignment="stretch">
+
+</Figure>
+
+You will then reach the homepage dashboard of the Content Management System, which looks like this:
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.-cms-dashboard-first-view.png" alt="The DARIAH-ERIC Keystatic CMS Dashboard.  The page is divided into two main sections.  On the left hand side, in a small column, are the main navigation options: Content, which includes 'Hosted Resources', 'External Resources', 'Pathfinders', 'Events', and 'Curricula'; Data, which includes 'people', 'sources', and 'tags'; and Pages, which includes 'Home Page' and 'Documentation'.  On the main window to the right of this menu at the top is a field indicating which 'branch' is currently in use.  Below that is the button to create a 'New Branch'.  Below this the main navigational options are presented once again, however they also give the option to make additions to the content." alignment="stretch">
+
+</Figure>
+
+On the left hand side are 4 key navigational elements.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3a.-cms-dashboard-first-view-with-annotations.png" alignment="stretch">
+
+</Figure>
+
+### **The Branch selector**
+
+At the top, (1) is a drop down menu which indicates the different branches. This is usually set to 'main'. You use this drop down menu to move to different branches that contain different changes. **Note** that if you change branch while you are creating a new resource, that resource will no longer be available for edit and you may see an error message.  The content has not been lost, it still lives in the branch in which it was created.  To remove the error message, go back to the dashboard.
+
+### **The Options button for branches**
+
+Next to the branch selector, at the top of the navigation panel, is (2), the 'Options' buttons for branches, depicted as a square with three dots lined horizontally. When you click on this button, different options for what to do with the branch will appear. The options can vary depending on if you are on the main branch, or on a branch with edits. This button will be explained further as we move through the steps for creating or editing a branch for edits to DARIAH-Campus.
+
+<Callout kind="tip">
+  Do note that you cannot edit the 'Main Branch' directly, as this is where the published resources exist. Instead you always have to make edits using a new branch.
+</Callout>
+
+### **The Dashboard Button**
+
+Below is the 'dashboard' button (3). Click on this to return to the Home dashboard screen when you are editing a resource in the main window.
+
+### **The Main Navigation**
+
+Below the dashboard button is the main menu showing you what exists within the repository. This is divided into 4 main groups:
+
+* Content, which includes 'Hosted Resources', 'External Resources', 'Pathfinders', 'Events', and 'Curricula';
+* Data, which includes 'people', 'sources', and 'tags';
+* Pages, which includes 'Home Page' and 'Documentation'
+* Settings, which includes 'Navigation' and 'Metadata'
+
+As a contributor, you will only ever need to focus on the 'Content' and 'Data' groups. Any edits made to the other two groups will be rejected by the editorial team.
+
+On the main window on the right hand side of the Dashboard are the same basic elements as in the navigation panel, but on this side they allow you to add new resources or people, or make edits to existing ones.
+
+At the top of this group is a box (5) indicating the **current** branch that you are on. Underneath this box is a button that allows you to create a 'New Branch' (6).
+
+Beneath this are the creative elements for content (7), data (8), pages (9) and metadata (10). Clicking on each element will bring you to a full list of the individual files, e.g. if you click on 'hosted resources' it will bring you to a full list of the hosted resources already published. However, each option also has an add ( '+' ) button within it. Clicking on this 'add' option will allow you to create a new resource or file within that category.
+
+The process for editing and creating a new branch and a new resource or data file will be outlined further in other sections of this documentation.
+
+## Creating a New Branch (main section title)
+
+In all cases when adding a new resource, or adding a new person, you want to create a new 'branch'. To do this, first go to the **dashboard**.
+
+On the main window, you will see the branch you are currently on indicated in the box above all the buttons for resource types. This is usually the 'main' branch. Check to make sure you are already on the 'main' branch first, and then click on the 'New Branch' button underneath. A pop-up window will appear. Fill this in with the name of the branch you want to work on.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/2.1.-naming-new-branch.png" alignment="center">
+
+</Figure>
+
+<Callout kind="tip">
+  Make sure you put a hyphen between words in a branch title, not a space.
+</Callout>
+
+Once you have hit the 'create' button, you will notice that there is now a new button underneath the 'current branch' window on the dashboard, as shown in (1) on the image below.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/2.2.-new-options-for-branch.png" alt="the main dashboard with a red outline around the 'Current Branch' field and a red number '1' to highlight the update to show the new branch name." alignment="center">
+
+</Figure>
+
+The branch you have created will then be accessible from the branch drop down menu on the left-hand navigation panel whenever you go into the CMS. You should make sure that you save any changes you make to this branch as you make edits. Once the edits you have made have been published onto the 'main' branch in DARIAH-Campus, your own branch will be deleted. If you want to make future changes to your resource after that, you will have to create a new branch using this same method.
+
+## Creating and Editing New People (Main page title)
+
+Now that you are familiar with what the different buttons on the Dashboard do, you can start to draft up and edit content. For the most part this will be creating new learning resources, but it is also possible that you will have to create or edit a 'person' profile. For reasons that will become apparent as we move through this guide, it is best to either make sure that all the people you want to list as authors, contributing authors and/or editors for your resource are already in the system, or to add them in your 'New Resource Branch' first before you make a start on the content of your resource. We therefore begin with this process.
+
+## Check for Existing 'People' Files
+
+Before you begin creating any new 'Person' profile, you need to first check that they aren't already in the system, in order to avoid duplications. You can do this in the CMS and also on the main DARIAH-Campus website. But, as we are discussing the CMS here, we will focus on that method.
+
+From the dashboard, select the 'People' option. This will bring you to the full list of data files of individual people. As there are over 600 people in the system, you will not see everyone on this screen, so you will have to go searching for them. The list is in alphabetical order by surname/family name, so you can check through the list this way. Alternatively (and more quickly!) you can use the search function above the list on the right hand side. Once you start typing, it will automatically whittle the list down to potential 'people'.
+
+<Callout kind="tip">
+  Do bear in mind that some non-English spellings may have been 'normalised' to make them more URL friendly, so letters such as 'ð', 'œ', 'ü' or 'æ' may have been re-cast as 'd', 'oe', 'ue' or 'a'. An example could be the name 'Wünsche' spelled 'Wuensche', or 'Sigurðarsson' becoming 'Sigurdarsson'
+</Callout>
+
+## Creating a New 'People' file
+
+If you have verified that the person you want to add definitely isn't already in the system, you can proceed to add them.
+
+#### Entering Information in the 'People' Template
+
+From here, you can now create a new person by clicking on the 'add' (' + ') symbol in the 'People' option. The main panel will now change to the edit page for creating and modifying people profiles.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/2.3.-new-person-form-page.png" alignment="center">
+
+</Figure>
+
+You can fill in all the details for your new person, making sure that you fill in all the fields with an asterisk as these are required information.
+
+Note, though, that the 'slug' field is automatically generated based on the name of the person. You need to check that this fits the '**lastname-firstname**' format that is used in DARIAH-Campus. If it does not, you will need to change this manually. Do not hit the 'Regenerate' button as this will reset the slug back to the incorrect form.
+
+You can continue to enter information, making sure to also include an image for the person you are creating in the system, as is required. We also encourage you to add a brief biography of the person in the 'Description' field. This is not required, but if you intend to use them in an event, then it is good to include their biography here.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/2.5.-adding-a-new-image.png" alignment="center">
+
+</Figure>
+
+Once you have filled in the required information, and any additional information you wish to, you can hit the 'Create' blue button in the top right-hand corner of the screen. This generates the file. This button will change to 'Save' once you have done this. From here you can now make additional changes to this file before you submit it for publication.
+
+### Sending Your New 'Person' for Publication
+
+When you have all the information required and you are happy with the profile, you can then move it through to the review stage for publication by creating a 'Pull Request'. However, if you are adding new people as part of a bigger contribution, such as creating a new learning resource or a 'Captured Event', you do not need to publish your new person just yet. This will be done as part of the overall Pull Request that you generate for this new resource.
+
+Navigate back to the 'Dashboard'. You will now see that there is a blue notice on the 'People' option to indicate that a change has been made in that directory.
+
+To create a Pull request, there are two options. You can either click on the 'Create Pull Request' button immediately below the 'Current Branch' field in the main panel. Alternatively you can also click on the three-dotted 'Branch Option' button at the top of the navigation panel to get a drop down menu, from where you can select 'Create Pull Request'.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/2.9.-button-for-new-pull-request.png" alignment="center">
+
+</Figure>
+
+You can scroll down, as the gif below shows, to see all these changes. You will also see a green button that says 'Create Pull Request'. Assuming you are happy that all the information in this commit is correct, you can hit that button, and a new pull request will be generated.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/2.11.-gif-of-pull-request-creation-person.gif" alt="a 'commit' showing all the information added to the new 'Person' file, and a cursor then clicks on the 'Create Pull Request' button and the generated Pull Request is briefly shown.  Gif on a loop." alignment="center">
+
+</Figure>
+
+This will now enable the editorial team to look at the new Person file you have created, and publish it. They may also come back to you with questions or suggestions for changes within the 'conversation' page of this new pull request. Once the editorial team has published your new Person file, the branch that you used to create it will be deleted from the CMS.
+
+But for now, your work creating a new person is done!
+
+## Editing an Existing Profile
+
+Sometimes you might need to update a profile for a person.  This might be to change the image associated with them, or to add a 'Description' if they are to be included as an author or speaker in a Captured Event resource.
+
+1. First make sure that the 'Current Branch' is set to 'Main', and create a new Branch, using the method outlined '***Creating a New Branch***'. Make sure to give your branch a meaningful name that makes sense for the changes you want to make:
+
+   <Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/2.12.-creating-branch-to-edit-person-file.png" alignment="center">
+
+   </Figure>
+2. Find the person you want to update using the method outlined in '***Entering Information in the 'People' Template***' above. Click on their profile, and you will be taken to the same editing page to work on.
+3. Make the changes you need to.
+4. Make sure that you click on the 'Save' button at the top, and then follow the same procedure as given above to create a new pull request (see '***Sending Your New 'Person' for Publication***').
+
+## Creating/ Editing a Hosted Resource (Main page title)
+
+First things first, you need to create a new branch for your new resource. You can do this by first making sure you are on the 'Main' Branch, and then clicking the 'Create New Branch' button. You will be presented with a pop-up window where you can add your branch name, remembering to replace spaces with hyphens.
+
+## Adding the Hosted Resource Metadata
+
+The metadata requirements for a hosted resource are less than for an external resource, but there are still some items to pay attention to.
+
+The first field is the **title of the resource**. This in turn generates the 'slug' for the url of the resource, based on the title.
+
+You can then select the **language of the resource**. This is through a dropdown menu. At the time of writing this documentation (May 2025) we only support two languages, but we hope this will change to allow you to add resources in other languages.
+
+You are then asked to give the **Publication Date**. This publication date refers to the date that this resource is published to DARIAH-Campus. For that reason it defaults to whatever today's date is. You should leave it at this, but you might be asked to update this when the resource is ready to be published following review from the Editorial Team.
+
+Below this is the '**Version' number**. By default this is set to 1.0.0. However, if you are making substantial changes to a resource (e.g. major content updates, not just typos), this will need to be changed to indicate that this is a new version. For now, though, as you are creating a new resource, you can leave this at the default setting.
+
+Next you will need to add the **Authors** of your resource. This is done using the people already published on the system.  This field is both a search box and a drop down menu, but the quickest way to find someone is to start typing one or two letters of their name into the search field, and the drop down menu will filter down to only the named people with those letters in that order in their name. From there you can select which person you want to include. For resources with multiple authors you can repeat this step.
+
+Once you have selected an author or authors, it will appear in a box below the drop down menu. For each person there is the option to change the order of authors listing, indicated by an icon featuring six dots, or the option to select that author, indicated by a checkbox, so that you can remove them from the list if required.
+
+**Tags** are selected in the same way as authors. You can use the search field next to the drop down button to start typing a topic, and select an appropriate tag from or tags from there. You can also re-order these by clicking on the 6 dots and dragging the tag up or down the list.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.2.-hosted-resource-metadata-fields-1.jpg" alignment="center">
+
+</Figure>
+
+**Sources** are also selected in the same way. The 'Source' is used to assign a 'channel'. In most cases, the source is 'DARIAH', unless you already have a dedicated 'channel' in place as agreed with the DARIAH-Campus Editorial Board.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.3.-selecting-source.jpg" alignment="center">
+
+</Figure>
+
+You can also choose to add a '**Featured Image**'. Click on the 'Choose File' button. This will open the appropriate file management window for your operating system (e.g. Finder for Mac, File Explorer for Windows) to allow you to select an image from your own computer. One selected and confirmed, the featured image will be displayed as a thumbnail in this metadata field. You will also now have the option to remove this file if you choose.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.4-metadata-hosted-featured-image-licence-and-to-c.jpg" alignment="center">
+
+</Figure>
+
+Underneath this featured image field is the **'Licence'** field which describes the licence for the whole resource. This is offered as a dropdown menu, but we only offer 'CC-BY 4.0' as an option, so you can leave this unchanged.
+
+There is also a checkbox for whether or not to show a **Table of Contents**. The Table of Contents is generated using the headings you have in your resource. This is useful for learners to navigate through your resource, especially if it is a particularly long resource. You will also have noticed that we have a table of contents for this documentation. The Table of Contents checkbox is ticked by default, and we recommend that you make sure this is the case for your resource as well.
+
+The **Summary** (formerly known as the 'Abstract') is the information that is displayed on the main 'Resources' page of DARIAH-Campus and offers a short preview into what the resource is about to entice the learner. The summary should be no longer than 80 words, and should describe what is covered in the resource.
+
+If the title of your resource is very long, you can also use the 'Summary Title' field to write a shorter, but still meaningful, title, and this will display on the Resources page.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.6.-metadata-summary.jpg" alignment="center">
+
+</Figure>
+
+Finally, **Sources** are selected in the same way as for Authors and Tags. The 'Source' is used to assign a 'channel'. In most cases, the source is 'DARIAH', unless you already have a dedicated 'channel' in place as agreed with the DARIAH-Campus Editorial Board.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.7.-metadata-hosted-resource-type.jpg" alignment="center">
+
+</Figure>
+
+This completes all the metadata fields for a hosted resource, and at this point you can now 'Create' your initial draft by clicking on the blue button in the top right-hand corner of the screen. This will save all the metadata. Once you have created the draft, the blue button will change to say 'Save'. We recommend that you save your work frequently to avoid any loss of content.
+
+## Writing the Content of Your Hosted Resource
+
+The large middle field in the CMS is your main content creation area. This is where you will write your hosted resource. There are a few things to keep in mind in relation to the house style, specifically around the types of headings used, and the order in which they appear. For that reason, as part of this step by step guide, an 'Example Hosted Resource' has been created for you to refer to when drafting up content. You can find the latest preview of the 'Example Hosted Resource' by clicking on the most recent 'View Deployment' on this Pull Request. You can view the House Style here.
+
+First things first, get to know the different functions along the top formatting bar.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.8.-the-formatting-and-widgets.png" alignment="center">
+
+</Figure>
+
+From left to right:
+
+**Paragraph style** - this drop down menu allows you to determine whether something is normal paragraph text, or a specific heading type.
+
+**Bold, Italic, Strikethrough** - these function the same as in other text editing software.
+
+**Inline Code** - There are two 'code' icons on this formatting bar. This one on the left, the '\<>' icon, allows you to format one or more words in your paragraph as code. Use it for short snippets of code, variable names, file paths, or short instructions.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/coding-1-image.jpeg" alignment="center">
+  ###
+</Figure>
+
+**Footnote (superscript)** - this icon allows you to write slightly above the base line in a smaller font. Use it to add a reference to a footnote.
+
+**Campus Link** - there are two 'link' icons. This first one to the left allows you to link to another resource or download within DARIAH-Campus. This is useful if you have related learning resources and want to guide users to them.
+
+**Clear Formatting** - as in most document formatting, this allows you to clear all the formatting in selected text.
+
+**Bulleted List, Numbered List** - allows you to add either a bulleted list or a numbered list to your text.
+
+**Divider** - draws a solid straight horizontal line. This is useful if you want to separate sections even more clearly. You might place this underneath the 'Learning Outcomes' for example, to separate this from the rest of the actual resource.
+
+**External Link** - This is the second of the two 'link' icons. For this link option it allows you to add any URL you want.
+
+**Quote** **Block**- If you want to pull out some text to make it more memorable, or if you want to add a quote, this icon allows you to do this.
+
+**Code Block** - This is the second of the two 'Code' icons. Use it for longer code examples or instructions that stand on their own like a paragraph. You can set the programming language in the pop-out window that appears in order to enable syntax highlighting. In the example below we set the programming language to 'C'. You then type the code you want to include directly into the 'Code Block' box.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/coding-2-image.jpeg" alt="demonstration of the code block option, showing the pop-up window that defines the coding language used (in this case 'C'), and the necessary code for printing the phrase 'hello, world' typed into the code block box." alignment="center">
+  ###
+</Figure>
+
+**Table** - Use this icon to add a table. It will show a 3 x 3 table by default, but you can edit this. Do note, though, that larger tables don't work as well on mobile devices.
+
+You can use all these options to draft up your content and make things a little more interesting for your learners. It also helps you to comply with the house style, including adding the correct heading types, and formatting for required elements such as the Introduction, Learning Outcomes, and Conclusion.
+
+You can make things even more interesting for your learners by making use of Widgets, which are detailed below.
+
+### Making use of the Widgets
+
+You will have noticed that the final button on the formatting bar was not mentioned above. This is the 'Widgets' drop down menu, and this contains other options you might want to include in your hosted resource. These are all explained below, in the order they appear on the drop down menu.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.9.-the-widgets-menu-and-adding-a-callout.png" alignment="center">
+
+</Figure>
+
+#### Call out / Sidenote
+
+If you want to highlight some information, or give a warning or a tip within your learning resource, a 'Callout' (otherwise called a 'Sidenote') can do this for you.
+
+When you first click on this option, a blank 'Note' box will appear where you had your cursor. At the same time, a 'pop-up' will appear allowing you to edit this. You can choose from different types of call out, and this will determine the colour of the box when it appears in the resource. You can also edit the title of the note, leaving it as its default, or changing it to something more specific to your content.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.10.-editing-a-callout.jpg" alignment="center">
+
+</Figure>
+
+Once your resource is published, your callout (sidenote) will look something like this:
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.10b.-published-call-out.jpg" alt="A call-out box with an edited title saying 'You can add a sidenote!' and content saying 'Use an info side note like this to highlight information that you want to stick in people's minds'.  This content is of course editable to make it anything you want it to be." alignment="center">
+
+</Figure>
+
+#### Disclosure
+
+A Disclosure allows you to insert text that is hidden behind an interactive 'toggle', allowing the learner to reveal further information or content. You could use this for self-assessment, posing a question and then revealing the answer on a click. Or you could use it for more in-depth content such as case studies, or a further reading list.
+
+Best practice for accessibility recommends putting items like disclosures, quotes or tabs into a call out box (see above), as this identifies the item as an 'asset' for screenreaders. You should add a 'plain' callout and then you can add the 'disclosure' widget inside the callout box by clicking to bring the cursor into the box in the same way you would start typing, and then selecting 'disclosure' (or indeed 'tab') from the widget menu.
+
+When you click on the 'Disclosure' widget option, an editable version will appear. Click on the 'edit' button to open a pop-up window that asks you to give it a title.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.11a.-editing-a-disclosure.png" alignment="center">
+
+</Figure>
+
+Once you have entered a title, you can then type directly into the text box below to add the additional information. Within the CMS you will be able to toggle the disclosure to open and close it, giving you an indication of how this will appear once it is published.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.11b.-adding-a-disclosure.gif" alt="GIF showing the 'Disclosure' widget toggling from closed to open and back to closed." alignment="center">
+
+</Figure>
+
+#### Embedding a Webpage
+
+Sometimes it is useful to be able to bring in elements from other websites, particularly if their interactive elements are not currently compatible with the DARIAH-Campus architecture. An example of this could be Jupyter Notebooks, which cannot currently be integrated into DARIAH-Campus resources. A work-around for this could be to embed the webpage the Jupyter Notebook is published on, and allow learners to interact through that.
+
+In this example we'll use the DARIAH.eu website to demonstrate this.
+
+Select the 'Embed' option from the widget dropdown menu. When you do this, a blank box with an 'Edit' button in the right hand corner will appear. Click on this, and a pop-up window will appear for you to type in the full URL (don't forget the `https://www` bit!) for the webpage you want to embed.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.13.-embedding-a-webpage.jpg" alignment="center">
+
+</Figure>
+
+The webpage will then be displayed in that embed box. Click 'Done', and that's it! If the webpage is quite long, a scroll bar will also appear on the right-hand side. When the resource is published, it will look almost identical to how it appears in the preview.
+
+#### Figure
+
+You may want to include images or infographics in your resource. This is also very straightforward. When you select the 'Figure' widget, a blank box appears on the page with an 'edit' button in the top-right hand corner. Click on this and it will open a pop-up window. You first click on the 'Choose file' button to open your computer's file manager to find an image to add. A thumbnail of the image will be displayed below.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.14a.-adding-a-figure.jpg" alignment="center">
+
+</Figure>
+
+From here you can then add 'Alt Text' in the field for 'image description for assistive technology'. While this field is currently not a required field, it is highly recommended that you add Alt Text to support screen reading technology. If the image is purely decorative, or is described and explained in the accompanying text in the resource, you can leave the field empty. For more notes and information on when Alt Text is required, you can visit the W3 Alt Text Decision Tree here: [https://www.w3.org/WAI/tutorials/images/decision-tree/](https://www.w3.org/WAI/tutorials/images/decision-tree/). For tips on writing useful Alt Text, we recommend taking a look at the AxessLab notes on writing Alt Text here: [https://axesslab.com/alt-texts/](https://axesslab.com/alt-texts/)
+
+Finally, you can decide whether you want the image to stretch across the page, or to be aligned centrally.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.14b.-adding-a-figure-with-caption.png" alt="the edited image is displayed on the page, and a caption is written underneath, in this case saying 'Fig. 1 This is where you can add a caption if you want to'." alignment="center">
+
+</Figure>
+
+Once you have edited the image box, the image then appears on the page. You are then encouraged to write in a caption directly in the box underneath the image.
+
+#### Adding a Grid Layout
+
+A grid layout offers an interesting way to present information, particularly if you want something similar to a table without having gridlines. Once you have selected the 'Grid' option, and clicked on the 'edit' button in the box, a pop-up window appears with two drop-down menus.
+
+The 'Layout' drop-down menu allows you to pick how many columns and rows you would like, along with how wide you would like each column to be. The 'Vertical Alignment' drop-down menu determines whether text fills the cell it is in, or sits centrally within it.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.15a.-adding-a-grid.jpg" alignment="center">
+
+</Figure>
+
+Once the layout has been fixed you can then 'insert' cells into your grid and then start writing in text directly to each new box. If you add to many cells, or grids within grids, you can click on the ones you want to delete to select them (turns blue), and tap your delete key.
+
+Once published, the text will appear in the layout you determined, without any gridlines or boxes.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.15b.-published-grid.jpg" alignment="center">
+
+</Figure>
+
+#### Heading ID
+
+Each heading has an automatic heading ID based on the text used in that heading. For example, if you have a heading that says 'Introduction' then that becomes its heading ID. These IDs can be used to link to the different sections in the document, such as in a Table of Contents, or if you are adding a bookmark or anchor manually. Sometimes, you might want to change the heading ID to fit a format, for example, if the heading is too long to be a memorable URL fragment and you want to keep it simple. Heading ids should follow the pattern of lower case text with hyphens between words, for example:
+
+**Heading title**: "Exploring AI in historical linguistics: The role of pattern recognition"
+
+**headingId**: ai-in-historical-linguistics-pattern-recognition
+
+Place your cursor next to the heading you want to alter, and click the 'Heading ID' option from the widget menu. A grey hashtag will appear. Click on the hashtag and select the edit icon (a pencil). This brings up a pop-up window where you can then type in the text you would like to appear in its URL. Once you have confirmed this by clicking 'done', the grey hashtag now shows the alternative title you have given this heading.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.16b.-adding-a-heading-id.jpg" alt="heading reads 'The First Chapter', and in grey font next to it is the heading ID '#chapter-one'." alignment="center">
+  ###
+</Figure>
+
+#### Link Button
+
+A link button is a visually appealing way of adding a hyperlink or download option to your resource. Once you have selected the link button option, the blank box appears on the page. Click the edit button to bring up the pop-up edit window. You will see a drop-down menu labelled 'Kind' that allows you to determine what kind of item you want to link to (a direct URL, a download of a document, for example). Once this has been selected, you can then enter the URL for the item.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.17a.-adding-a-link-button.jpg" alignment="center">
+
+</Figure>
+
+The link button now has a URL attached to it. You can then click in the link button itself to type in a title or a call to action such as 'Click here to visit such-and-such website'.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.17b.-link-button-success.jpg" alignment="center">
+
+</Figure>
+
+#### Quiz
+
+\
+The 'Quiz' option allows you to create a quiz or self-assessment either at the end of a section or the end of the entire resource. There are currently two options for quiz types: a 'Multiple Choice' quiz, or an open ended 'Text Input' where you can pose a question for more reflective learning.
+
+Once you have selected the 'Choice quiz', a box will appear within the quiz block with an 'Insert' button and an 'Edit' button. Click on the 'Insert' button to get four options: add a Question; give the Answer; write a 'quiz success message' for a correct answer; or write a 'quiz error message' for when the learner gets the question wrong.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.18a.-adding-a-quiz.jpg" alignment="center">
+
+</Figure>
+
+The 'Edit' button gives the option to specify what kind of quiz question this will be (multiple choice or inline text), and also to customise the 'check answer' button. In this case we are sticking with 'check answer', but you might want to add something else like 'submit', or 'click here to check your answer'.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.18b.-editing-quiz.jpg" alignment="center">
+
+</Figure>
+
+Once you have selected 'Question' from the Insert menu, you can then type your question directly into the box. You can then add as many 'Answers' from the 'insert' menu as you would like for your multiple choice quiz, typing the different answers into each individual 'answers' box. You can then use the edit button on each answer to identify which are incorrect answers, and which is the correct answer using the dropdown menu.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.18c.-quiz-elements-editing.jpg" alignment="center">
+
+</Figure>
+
+You can add a message to learners to indicate whether they have got the answer right or wrong. The published version of this will then show this message when the 'check answer' button (or whatever you've chosen to call it) is clicked.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.18d.-published-quiz.jpg" alt="Published quiz on DARIAH-Campus.  The question is 'What colour is the sky?', with four possible answers: red, blue, green and yellow.  'Red' has been selected, and underneath the 'Check Answer' button at the bottom is a notice in red text saying 'Sorry, that's not the right answer.  Try again!'.  Screengrab." alignment="center">
+
+</Figure>
+
+#### Tabs
+
+Tabs offer a different layout for text, particularly if that text is related in some way. They work in a similar way to the 'disclosure' option in that they can reveal text, but more than one tab can be added to a block.
+
+After you click on the 'Tabs' option, the box appears on the page. From here you can use the button on the right of the box to 'Insert' as many tabs as you would like. These all appear below as individual tab boxes. In each tab box, you can then click the 'Edit' button to give each tab a title. From there you can then enter the content you want to include in each tab by typing directly into the box underneath its title.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.19a.-adding-and-editing-tabs.jpg" alignment="center">
+
+</Figure>
+
+When this is published, the tabs all appear lined up horizontally, and are clickable to reveal the text.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.19b.-tabs-published.jpg" alignment="center">
+
+</Figure>
+
+#### Video Card
+
+There are two options for adding videos to your resources. The first shown here is the 'Video Card' option. This allows you to add some brief contextualising text and then links out to a video. When this is played, the video will expand to fill the screen.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.20a.-editing-a-video-card.jpg" alignment="center">
+
+</Figure>
+
+You can add videos from four specified video content providers: YouTube, Vimeo, Nakala, and the University of Helsinki, as shown in the dropdown menu when you click to 'Edit' the video card. In most cases, videos come from YouTube. Whichever video publishing platform you choose, you will need to find the video ID. This is usually shown as an alpha-numeric code at the end of the main url. Copy and paste **only this code** into the 'Video ID' field. You can also specify a start time in the video if there is a certain section you want to showcase.
+
+You are asked to provide the title of the video, and a subtitle. The 'Title' should be the same as the title of the video on its hosting video platform. The subtitle, though, can be a call to action, such as 'Click here to view'.
+
+You are also asked to add your own thumbnail image for this video card. You can do this by clicking 'choose file' and selecting an image from your computer. This image is then displayed as the main card for the video in the published version.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.20b.-video-card-published.jpg" alt="published version of a video card." alignment="center">
+
+</Figure>
+
+#### Video
+
+The 'Video' option is a bit different to the 'Video Card' option as it allows you to embed a video within the content of the resource you are writing. This is particularly useful if you are creating a new 'Hosted' resource directly on DARIAH-Campus, and want to embed a video to illustrate or demonstrate an issue or provocation.
+
+In the 'Edit' box of your video field, first select your video host (YouTube, Vimeo, Nakala or University of Helsinki). You will also be asked again for the video ID. The 'Video ID' can be found usually at the end of the URL for the video. In the case of YouTube, for example, this is typically around 11 or so characters in length, usually made up of alpha-numeric characters and symbols. If you have a specific start-time in the video that you want people to see, you can enter that in the 'Start time' field.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.21a.-embed-a-video.jpg" alignment="center">
+
+</Figure>
+
+Once you have entered all this and clicked 'Done', the video thumbnail will appear in the 'Video' box. You can type a caption for the video directly underneath to let users know what they are looking at.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.21b.-adding-a-video-with-caption.jpg" alignment="center">
+
+</Figure>
+
+Remember to save your work as you go along!
+
+## Saving your Hosted Resource draft
+
+After doing so much work, you may wish to 'Create' a pull request, and save your work. You can of course do this at any point in the editing process once the required metadata has been entered. Exactly when you choose to create the pull request and save your work is up to you, depending on your own practices, although we recommend saving frequently after a set of changes to ensure nothing is lost in the unlikely event of a website crash, or if you have to step away from your computer.
+
+To create a draft, click on the blue button in the top right-hand corner of the screen saying 'Create'. Once you do this, a green message will display momentarily at the bottom of the screen saying 'Entry Created'. The blue button will now change to say 'Save'.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/creating-pull-request.png" alignment="center">
+
+</Figure>
+
+Now you have saved your resource, and are happy that it has all the information you want to include in there, you can save the resource again, and then move to create a pull request.
+
+Click on the 'Branch Options' button (three horizontal dots, next to the Branch Dropdown menu), and select 'Create Pull Request'.
+
+This will bring you to the GitHub site, where you can create the Pull Request by clicking on the green button halfway down the page saying 'Create Pull Request' (depending on your screen size, you may have to scroll down to see this button).
+
+The screen will now change to show you the actual pull request that your draft is filed in on GitHub. After a short while, a 'Vercel bot' will post an automatic message to the Pull Request which includes a table showing a summary of the latest updates. In this table you will see a link to 'Visit Preview'. This link will always bring you to the latest successfully built preview of your resource. You can click on this to see how your resource looks on the DARIAH-Campus website. **Do note, this is only a preview link, and should not be shared in any official capacity.**
+
+You can continue to edit your hosted resource in the CMS to refine it, or as required by the Editorial Team. Once everyone is happy, the Editorial Team will publish this to DARIAH-Campus for you.
+
+## Creating/ Editing an Event (main page title)
+
+The 'Captured Event' format is designed to compile all the outputs from a live event, be it in person or online, and present them in an easy-to-access structured format.  An event can include videos of presentations, the slides that accompany them, handouts and preparatory notes to any new tool walk-throughs in the event, as well as the option to include photographs and speaker biographies.
+
+## Creating a New Branch for your Captured Event
+
+As with all changes, edits and additions you make to DARIAH-Campus, the first thing you need to do is to create a new branch for your new event.
+
+## Adding and Updating Event Authors in the CMS
+
+With the 'Events' format, **we strongly recommend adding any new people you want to include in the 'Authors' field before you begin drafting up the event content itself**. This is because there are a lot of mandatory fields in the Events template, and the system will not allow you to 'save' the content without all these fields populated. You will need to save the content before you move to a different part of the dashboard in order to retain the content. By adding any new authors first, you can avoid the annoyance of losing content you've already filled in.
+
+To add new people, you can follow the same steps as set out in '[Creating and Editing New People in the CMS](https://docs.google.com/document/d/1mIuAacwxyswAmt1gmiUN6ub6GPP_-CFuVBaIC3WCiaU/edit?tab=t.0#bookmark=id.cifywdlc5hez)', but remember you don't need to send those people files off to be published, as they will be included in the new branch you have created to draft up your event.
+
+For captured events, it is particularly important to make sure that your authors have not only an image, but also a 'Description'. This is because 'Speakers' for individual sessions are given their own highlighted call-out boxes in the layout of a Captured Event, and this includes a brief biography.
+
+To double-check or add a brief biography for each speaker, you can check their profile in the CMS.
+
+As you may recall from the mock-up person file created as part of this documentation for 'Joe Bloggs', this description field was filled in. It is this description that will be used in the call-out field for session speakers.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/2.6.-new-image-with-description.png" alignment="center">
+
+</Figure>
+
+You should ensure that this field is filled in for all the speakers and authors of sessions in your event in particular. Ideally, you will have created all the people that you want to add as either authors, organisers and/or speakers for your event. If not, it IS possible to add people to your 'event branch' and make sure that they are 'saved' on that branch. They should then appear as options when you go to add authors to your event resource.
+
+<Callout kind="note">
+  When adding a description or biography to your 'person' file, make sure that it is **NOT** specific to the event, rather that it is a more general use biography. If they are part of a future event, that same biography will be used there as well.
+</Callout>
+
+### Who can be listed as an 'Author' for an event?
+
+It is important to note that 'Authors' in an event can include, but are not limited to the following roles:
+
+* Speakers (including keynotes)
+* Non-presenting authors
+* Event organising team (local level, project level)
+* Tutors (in the case of workshops where additional in-class support was required)
+* Any event support staff
+* Technical support
+
+Who you add as an 'Author' in this section is open to interpretation, however we do encourage consideration of the different roles and contributions that are made in order to run a successful event, and that you give credit in an appropriate manner.
+
+## The Event Working Space
+
+When you first go to create a new Captured Event resource (from here on just called 'event resource'), you will notice that the layout of the workspace is different to other resource types, assuming you are already familiar with producing those. In the case of the event resource there is a much more rigid structure that organises the information in a specific way on the website. For this reason, the bulk of information that is to be entered is divided into sections.
+
+<Callout kind="tip">
+  The 'Event' resource can be quite involved, and may take some time to complete if you don't have all the information immediately to hand, and it is always advised that you save as you go. However, the CMS will not allow you to 'create' or 'save' any resource that does not have all the mandatory fields filled in.
+
+  To save yourself time, it might be useful to go through the event template and add in 'filler' content to the mandatory fields that can be corrected and edited before submitting the work in a Pull Request for review.
+</Callout>
+
+## Event Metadata
+
+The first field is the **title of the resource**. This in turn generates the 'slug' for the url of the resource, based on the title.
+
+You can then select the **language of the resource**. This is through a dropdown menu. At the time of writing this documentation (March 2025) the number of languages we support is limited, but we hope this will change to allow you to add resources in other languages.
+
+You are then asked to give the **Publication Date**. This publication date refers to the date that this 'event' resource is published to DARIAH-Campus. For that reason it defaults to whatever today's date is. You should leave it at this, but you might be asked to update this when the resource is ready to be published following review from the Editorial Team. The date is then shown in DD/MM/YYYY format.
+
+The **Start Date** field refers to the start date of the event itself, as does the **End Date**. This is selected using the calendar option on the right of the field. Note, the 'Start Date' field is mandatory, but the 'End Date' field is not.
+
+The **Location** field refers to where the event took place. If this was an online event, you can indicate this as well.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.2-entering-info-into-template-event.png" alt="the first part of the Event Resource working space in the CMS, showing the metadata fields outlined above." alignment="center">
+
+</Figure>
+
+Below this is the '**Version' number**. By default this is set to 1.0.0. However, if you are making substantial changes to an event (e.g. major content updates, not just typos), this will need to be amended to reflect that change, e.g. 'Version 1.0.1', or if there are very substantial changes, it might be Version 2.0.0. Otherwise, if this is a new resource, or the changes are minor you can leave this at the default setting.
+
+Next you will need to add the **Authors** of your Event. There are two main ways you can add people as authors. The simplest way is to use the people already published on the system.  This field is both a search box and a drop down menu, but the quickest way to find someone is to start typing one or two letters of their name into the search field, and the drop down menu will filter down to only the named people with those letters in that order in their name. From there you can select which person you want to include. For resources with multiple authors you can repeat this step.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.3a.-adding-authors.jpg" alignment="center">
+
+</Figure>
+
+If you need to add additional people to the repository, you need to make sure you do this before you begin drafting your event. For information on how to add authors, go to ***Creating and Editing New People in the CMS***.
+
+Do note, if you want to leave this authors' field to just speakers, non-presenting authors and the organising team, there is also the option of adding acknowledgements and full event credits in the 'Content' field which will be expanded on further down this documentation.
+
+Once you have selected an author or authors, it will appear in a box below the drop down menu. For each person there is the option to change the order of authors listing, indicated by an icon featuring six dots, or the option to select that author, indicated by a checkbox, so that you can remove them from the list if required.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.3b.-adding-authors.jpg" alignment="center">
+
+</Figure>
+
+The **Organisations** field allows you to add the project, partner institutions or even companies that were involved in putting together the event. Click on the 'Add' button to bring up a pop-up window. In this window you are required to enter the Name of the organisation, a 'URL' to the organisation or project's website, and a Logo for the project or organisation by using the 'Choose file' option where you can add an image file using your computer's file management system.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.4.-event-organisations.png" alignment="center">
+
+</Figure>
+
+Once you have entered these details, click 'Add' and you will see the 'Organisations' field is now populated. As with the Authors field, if you have more than one organisation in this field you can re-order them using the 'grab and move' icon, and you can delete an organisation by clicking on the 'delete' icon represented by a rubbish bin icon next to the organisation name.
+
+The **Tags** field is a mandatory field that allows you to add preset keywords to your event. This field is edited in the same way as the 'Authors' field. To add a tag, you can either click on the drop-down menu tab on the right hand side, or you can start typing to search for a tag and a filtered drop-down menu will appear below. Select the tag you want, and it will appear in the 'Tags' field (you might have to click out of the drop-down menu). If you want to add more tags, delete the test you typed in the search field and start typing the new tag. You can add as many tags as you like.
+
+If you want to add a tag that isn't there, we invite you to contact a member of the Editorial Team to discuss adding a new tag to the preset list.
+
+You can also change the order of the tags as they appear in your event's metadata, in the same way as you can for authors: click and hold on the 'grab and drag' six-dot icon and move the tag up or down the list to its new position.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.6.-tags-event.jpg" alignment="center">
+
+</Figure>
+
+**Sources** are also selected in the same way. The 'Source' is used to assign a 'channel'. In most cases, the source is 'DARIAH', unless you already have a dedicated 'channel' in place as agreed with the DARIAH-Campus Editorial Board.
+
+The **Featured Image** is a good way to include a distinctive image to the top of your event resource. You can add a featured image by clicking on the 'Choose file' button, and using your computer's file management system to select an image.
+
+<Callout kind="tip">
+  If you are including images with text over the top, make sure that the text is fully visible to make it more readable. An easy way to do this is to put the text into a neutral coloured text box that stands out from the image. Make sure any font colours are high-contrast compared to the background, and that the colours you use do not cause any issues for people with red/green or yellow/blue colour-blindness.
+</Callout>
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.7.-featured-image-licence-and-to-c.jpg" alignment="center">
+
+</Figure>
+
+Underneath this featured image field is the **'Licence'** field. This is offered as a dropdown menu, but we only offer 'CC-BY 4.0' as an option, so you can leave this unchanged.
+
+There is also a checkbox for whether or not to show a **Table of Contents**. The Table of Contents is generated using the headings used in the 'Content' field, and also using the names of the individual 'sessions' for your event. This is useful for learners to navigate through your resource, especially if it is a particularly long resource. You will also have noticed that we have a table of contents for this documentation. The 'Table of Contents' checkbox is ticked by default, and we recommend that you make sure this is the case for your event resource as well.
+
+Below this check box is the option to add any **Attachments** you would like to include for your event. This might include any handouts, detailed notes, instructions for downloading and installing required software used during the event, maps or other data that can be used alongside the specific sessions, for example. To add attachments, click on the 'Add' button to open the pop-up window that says 'Add Item'. In this pop-up window, you are asked to first give your attachment a specific label in a free-test field, and then you can add the attachment by clicking on 'Choose file' and using your computer's file management system to select the file you want.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.8.-attachments-event.jpg" alignment="center">
+
+</Figure>
+
+When you are happy with this, you can click on the blue 'Add' button in the bottom right hand corner of the pop-up window, and the attachment is then listed in the 'Attachments' field. As with other fields, you can add more than one attachment, and you can move the order that these appear in by clicking and holding on the 'grab and drag' six-dot icon. You can also remove any attachments you no longer want by clicking on the 'delete' option, depicted by a rubbish bin icon on the right hand of the attachment field.
+
+You can add any **links** to websites for the main organisation coordinating the event in the same way as in previous sections: click on the 'add' button, fill in the required information in the pop-up window, in this case the name of the organisation and the URL, click to add this information and it appears in the 'Links' field.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.9.-links-event.jpg" alignment="center">
+
+</Figure>
+
+Any **Social Media** profiles that are relevant to the event are added in a similar way as well. Click on the 'Add' button to make the editable pop-up window appear. You can select the 'Kind' of Social Media platform from the dropdown menu, and then enter the profile URL into the 'URL' field. Click 'Add', and this will be entered into the 'Social Media' field.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.10.-social-media-events.jpg" alignment="center">
+
+</Figure>
+
+This concludes the main metadata for the 'Event' resource.
+
+The **Summary** (formerly known as the 'Abstract') is the information that is displayed on the main 'Resources' page of DARIAH-Campus and offers a short preview into what the event is about to entice the learner. The summary should be no longer than around 80 words, and should describe what is covered in the event resource.
+
+If the title of your event is very long, you can also use the 'Summary Title' field to write a shorter, but still meaningful, title, and this will display on the Resources page.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.11.-event-summary.png" alignment="center">
+
+</Figure>
+
+## Event Content
+
+### 'Content' field
+
+This is the least structured part of the event, but we still recommend certain aspects are included here.
+
+#### About
+
+You can call this whatever you would like, but we recommend that you include at the beginning some information about the event itself, the topics it covered and how they are conveyed in this published version. You can elaborate on how the live event itself handled the delivery and if there are any key differences that you have had to make accommodations for in this 'captured' published version.
+
+We also recommend that you include some Learning Outcomes to help users understand what they should come away with knowing. You should make sure that your learning outcomes begin with the infinitive form of a verb. You can see our quick guide to writing learning Outcomes and the difference between these and learning objectives ***here***.
+
+You should also include any acknowledgements required for funding or institutional support. You can do this either in this introductory section, or you may wish to add a special section for this further down, whichever you feel most appropriate.
+
+#### Event Credits for the Organising Team
+
+It is always nice to acknowledge all members of the team that put together the event, not just the speakers. You can do this maybe as a sub-section for 'About'. Acknowledgement not only includes that for the event programme committee, but it could also include the volunteers who helped out on the day, the team members elsewhere in the project who provide necessary support such as the logistics, admin, communications and marketing, or post-event support in the form of collating content to get it published here on Campus.
+
+Depending on how many people you have to acknowledge, you can either do this as a simple bulleted list. Alternatively if you have a large number of people or people fulfilling multiple roles you might prefer to separate these roles out visually using some of the widgets we have. Here, for example, we have used 'Tabs' embedded in a 'Call out'.
+
+To do this, first select 'Call out' from the Widget dropdown menu in the top right hand of the format bar.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.12.-adding-callout-event.jpg" alignment="center">
+
+</Figure>
+
+A blank callout will appear. Click on 'Edit' to bring up the pop-up window. Because this callout is housing an asset, in this case tabs, we don't want to use the default callout types. Instead this needs to be blank. Click on the 'Kind' dropdown menu in the pop-up window and select 'plain'. Then add a title to reflect what is going into the call out. Click on 'Done', and the call out will have changed.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.12b.-adding-a-callout-with-tabs.jpg" alignment="center">
+
+</Figure>
+
+To add tabs within this call out, click the cursor inside the call out and once again go to the 'Widget' menu. This time, select 'Tabs'. An editable 'Tabs' box will appear inside the call out. To add a tab, click on 'Insert'. Do this for as many tabs as you want.
+
+Each new tab will have the option to 'Edit'. Click on this to bring up a pop-up window where you can add a tab title.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.12c.-editing-tabs-in-a-callout.jpg" alignment="center">
+
+</Figure>
+
+To then enter more information, simply click in the tab you want to add content to, and start typing.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.12d.-tabs-in-a-callout-events.png" alignment="center">
+
+</Figure>
+
+When published, the tabs will be interactive for users to click through, with a horizontal layout.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.12e.-tabs-in-an-event-descripton.gif" alignment="center">
+
+</Figure>
+
+To exit the tabs and the callout, click the 'Enter/Return' key on your laptop at least three times to bring the cursor out into the main content editing window. From here you can continue editing your event description.
+
+#### Other Information to include in the 'Content' field
+
+In addition to the information about the event itself, acknowledgements and credits, you may also wish to include the following:
+
+* Preparatory Notes, including information about any software that users might need to follow along the sessions, and how to install it
+* Information about 'missing' sessions (sessions that were not recorded or published from the live event)
+* Further Reading that learners may want to follow up with
+* References relevant to the event content
+* Funding acknowledgement(s) where applicable.
+
+### Event Sessions
+
+#### What is a Session?
+
+Sessions in an event can mean different things to different events. For some it relates specifically to a single presentation or panel. For other events a 'session' might include a grouping of shorter presentations all related to the same sub-topic. However you chose to organise or name sections in your in-person event, it's important to remember that **when we are talking about 'sessions' in a captured event on DARIAH-Campus, we typically mean a single presentation per session.**
+
+If a single presentation is over an hour long, we may suggest that this is broken down into shorter videos in order to make the content more easily digestible for the learner. Ideally, a typical 'session' video should be no longer than approx 30 minutes to allow users to maintain concentration throughout, although we recognise that sometimes a single presentation might take up to 50 minutes, depending on the topic.
+
+**Some sessions in your live in-person event might not be suitable for publication in an asynchronous format**. For example, some hands-on training sessions that involve a lot of discussion with the participants in the room do not work well for those people who are viewing the workshop 6 months later with no context. Sound can be an issue in these cases as often it is just the main session speaker or instructor who has access to a microphone. The biggest issue, though, is that of GDPR, as you should only publish an event where all those featured have given their informed consent to be published. Participants in the workshop may not have been given this opportunity.
+
+Where a session is not suitable for inclusion in the published event, you can either leave this out and make a note in the 'Content' field above that certain sessions were not recorded or published. An alternative is to turn that session into a separate hosted resource where the steps required to complete the exercise that was being explained are spelled out with more context. You can then make reference to this in the Captured Event resource and link out to it from there. If you would like to go down this route you can contact a member of the ***Editorial Team***.
+
+For the purposes of this documentation, we will assume that all sessions are being published and that they adhere to the 'one presentation per session' model.
+
+#### Adding Sessions
+
+To add your event sessions, click on 'Add'. This will generate a pop-up window into which you can add the session details.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.13a.-adding-sessions-events.jpg" alignment="center">
+
+</Figure>
+
+First add your **session title**. If you have had to break up a larger video into smaller sections, you might want to add 'Part 1' or whichever number is appropriate. Next, add your **speakers** by typing their name in the field and then selecting from the filtered menu that appears. If someone was involved in the authorship of the session but did not present, you can still add them here to give them credit.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.13b.-adding-sessions-events-title-and-speaker.jpg" alignment="center">
+
+</Figure>
+
+There is an '**Attachments**' field. While there is no strict limit on size, we do ask that you try to limit your individual attachments in this case to 50MB.
+
+Click on 'Add' and a second pop-up window appears. Give your attachment a label (required), and then you can select the attachment by clicking on 'Choose File' and navigating to the attachment using your computer's file management system. Confirm the attachment in your file management system, and click 'Add' in the pop-up window. The attachment is then listed in the 'Attachments' field.
+
+\
+The '**Links**' field allows you to add links to documents published elsewhere. We request that larger files such as presentation slides or handouts are published on a trusted sustainable repository website such as Zenodo, HAL, or an institutional repository such as a university library. If your publication has a persistent identifier then this is even better. **We prefer that you use the 'Links' method of adding presentation slides and PDFs of handouts** rather than the 'attachments' option.
+
+
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.15-links-in-content-events.png" alignment="center">
+
+</Figure>
+
+The '**Content**' field in this pop-up window is where most of the information is presented. You can use this field for many purposes, but the most typical is to give a brief description of the session that this covers, what the key take-away messages were, and how it fits in with the wider context of the overall event. You might want to use the 'abstract' that was provided in any literature you produced as part of the event programme. You can then add the video for the session after this text.
+
+You will find that there are many formatting options available in the formatting bar. You can use this to format the text in your description for this session how you wish. We do ask that you stick within the ***House Style***.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.16a.-content-sessions-events.jpg" alt="the 'content' field with the different elements of the formatting bar highlighted to show that they are for." alignment="center">
+
+</Figure>
+
+There are also widgets available by clicking on the 'Widget' drop-down menu, symbolised with a '+' sign. For now we will stick with adding a 'video' as this is most typical for event sessions.
+
+To add a video, click on the widget drop-down menu, and scroll down to select 'Video'. Another pop-up window will appear. First you will be asked to select the 'Provider' for the video. We currently only support videos from 4 providers: University of Helsinki, Nakala, Vimeo and YouTube. You will then be asked to provide the video ID. In the case of YouTube videos, this is the alphanumeric code in the video URL that is shown in a pop-up window when you select 'Share' on the YouTube video's page.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.16b.-content-sessions-events.jpg" alignment="center">
+
+</Figure>
+
+Click on 'Done' in the 'Edit Video' pop up window, and the video will now be embedded in the content field. You can also bring your cursor to just underneath the video thumbnail in the edit box to type in a caption for your video if you so wish.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.16c.-content-sessions-events-video.jpg" alignment="center">
+
+</Figure>
+
+Add this ID to the 'Video ID' field. You can also select at which point in the video you would like it to start playing from. If you want it to start from the beginning, leave this field blank.
+
+This is all that is typically required in an event 'session' on the CMS. However, if you are thinking of something slightly more creative or ambitious, we recommend you contact a member of the ***Editorial Team*** to discuss your idea further and walk through the options for editing.
+
+When you are happy with the content of your session, click 'Done'. The session will then be listed in the 'Sessions' field.
+
+Repeat these steps for as many sessions as you need. You can also re-order, edit or delete the individual sessions if required.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.17.-event-sessions-completed.jpg" alignment="center">
+
+</Figure>
+
+### Translations and DOIs
+
+If your event is in two or more languages, you can produce two different versions in those languages and then link them together using the '**Translations**' field. To do this, ideally all versions are already published to Campus separately. You can then click on the 'Translations' field and start typing the name of the resource in its respective language to filter down the resources. Click on the resource and it will be added to the 'Translations' field.
+
+The **DOI** field is not editable, this is automatically generated when the resource is published, so you do not need to add anything here.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.18.-translations-events.jpg" alignment="center">
+
+</Figure>
+
+Finally at the bottom there is a field that says '**PID (readonly)**'. You can ignore this field. This is an automatically generated field and has been designed so that it can't be edited.
+
+## Saving Your 'Event' for Publication
+
+After doing so much work, you may wish to 'Create' a pull request, and save your work. You can of course do this at any point in the editing process once the required event metadata has been entered. Exactly when you choose to create the pull request and save your work is up to you, depending on your own practices, although we recommend saving frequently after a set of changes to ensure nothing is lost in the unlikely event of a website crash, or if you have to step away from your computer.
+
+To create a draft, click on the blue button in the top right-hand corner of the screen saying 'Create'. Once you do this, a green message will display momentarily at the bottom of the screen saying 'Entry Created'. The blue button will now change to say 'Save'.
+
+Now you have saved your resource, and are happy that it has all the information you want to include in there, you can save the resource again, and then move to **create a pull request**.
+
+Click on the 'Branch Options' button (three horizontal dots, next to the Branch Dropdown menu), and select 'Create Pull Request'.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.19.-creating-pull-request-events.jpg" alignment="center">
+
+</Figure>
+
+This will bring you to the GitHub site, where you can create the Pull Request by clicking on the green button halfway down the page saying 'Create Pull Request' (depending on your screen size, you may have to scroll down to see this button).
+
+The screen will now change to show you the actual pull request that your draft is filed in on GitHub. After a short while, a 'Vercel bot' will post an automatic message to the Pull Request which includes a table showing a summary of the latest updates. In this table you will see a link to 'Visit Preview'. This link will always bring you to the latest successfully built preview of your resource. You can click on this to see how your resource looks on the DARIAH-Campus website. **Do note, this is only a preview link, and should not be shared in any official capacity.**
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/5.19b.-preview-in-pull-request-events.jpg" alignment="center">
+
+</Figure>
+
+You can continue to edit your event in the CMS to refine it, or as required by the Editorial Team. Once everyone is happy, the Editorial Team will publish this to DARIAH-Campus for you.
+
+## Creating / Editing a Pathfinder (main page title)
+
+The 'Pathfinder' resource on DARIAH-Campus offers a slightly different approach to sharing knowledge and training materials. They serve in many ways as a 'state of the art' / 'literature review' for a subject, but with a focus specifically on training materials. They are created in a very similar way to a 'Hosted Resource'.
+
+First things first, you need to start a new branch for your new resource. As has been shown in earlier sections, you can do this by first making sure you are on the 'Main' Branch, and then clicking the 'Create New Branch' button. You will be presented with a pop-up window where you can add your branch name, remembering to replace spaces with hyphens.
+
+## Adding the Pathfinder Resource Metadata
+
+The metadata requirements for a pathfinder resource are less than for an external resource, but there are still some items to pay attention to.
+
+The first field is the **title of the pathfinder**. This in turn generates the 'slug' for the url of the resource, based on the title.
+
+You can then select the **language of the pathfinder**. This is through a dropdown menu. At the time of writing this documentation (March 2025) we only support two languages, but we hope this will change to allow you to add resources in other languages.
+
+You are then asked to give the **Publication Date**. This publication date refers to the date that this resource is published to DARIAH-Campus. For that reason it defaults to whatever today's date is. You should leave it at this, but you might be asked to update this when the resource is ready to be published following review from the Editorial Team.
+
+Below this is the '**Version' number**. By default this is set to 1.0.0. However, if you are making substantial changes to a resource (e.g. major content updates, not just typos), this will need to be changed to indicate that this is a new version. For now, though, as you are creating a new resource, you can leave this at the default setting.
+
+Next you will need to add the **Authors** of your pathfinder resource. This is done using the people already published on the system.  This field is both a search box and a drop down menu, but the quickest way to find someone is to start typing one or two letters of their name into the search field, and the drop down menu will filter down to only the named people with those letters in that order in their name. From there you can select which person you want to include. For resources with multiple authors you can repeat this step.
+
+Once you have selected an author or authors, it will appear in a box below the drop down menu. For each person there is the option to change the order of authors listing, indicated by an icon featuring six dots, or the option to select that author, indicated by a checkbox, so that you can remove them from the list if required. **Editors** and **Contributors** are added in the same way.
+
+**Tags** are selected in the same way as authors. You can use the search field next to the drop down button to start typing a topic, and select an appropriate tag from or tags from there. You can also re-order these by clicking on the 6 dots and dragging the tag up or down the list.
+
+**Sources** are also selected in the same way. The 'Source' is used to assign a 'channel'. In most cases, the source is 'DARIAH', unless you already have a dedicated 'channel' in place as agreed with the DARIAH-Campus Editorial Board.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.3.-selecting-source.jpg" alignment="center">
+
+</Figure>
+
+You can also choose to add a '**Featured Image**'. Click on the 'Choose File' button. This will open the appropriate file management window for your operating system (e.g. Finder for Mac, File Explorer for Windows) to allow you to select an image from your own computer. One selected and confirmed, the featured image will be displayed as a thumbnail in this metadata field. You will also now have the option to remove this file if you choose.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.4-metadata-hosted-featured-image-licence-and-to-c.jpg" alignment="center">
+
+</Figure>
+
+Underneath this featured image field is the **'Licence'** field. This is offered as a dropdown menu, but we only offer 'CC-BY 4.0' as an option, so you can leave this unchanged.
+
+\\
+
+There is also a checkbox for whether or not to show a **Table of Contents**. The Table of Contents is generated using the headings you have in your pathfinder resource. This is useful for learners to navigate through your pathfinder, especially if it is a particularly long resource. You will also have noticed that we have a table of contents for this documentation. The Table of Contents checkbox is ticked by default, and we recommend that you make sure this is the case for your resource as well.
+
+\\
+
+The **Summary** (formerly known as the 'Abstract') is the information that is displayed on the main 'Resources' page of DARIAH-Campus and offers a short preview into what the resource is about to entice the learner. The summary should be no longer than around 80 words, and should describe what is covered in the resource.
+
+If the title of your resource is very long, you can also use the 'Summary Title' field to write a shorter, but still meaningful, title, and this will display on the Resources page.
+
+If your event is in two or more languages, you can produce two different versions in those languages and then link them together using the '**Translations**' field. To do this, ideally all versions are already published to Campus separately. You can then click on the 'Translations' field and start typing the name of the resource in its respective language to filter down the resources. Click on the resource and it will be added to the 'Translations' field.
+
+The **PID** field is not editable, this is automatically generated when the resource is published, so you do not need to add anything here.
+
+This completes all the metadata fields for a pathfinder resource, and at this point you can now 'Create' your initial draft by clicking on the blue button in the top right-hand corner of the screen. This will save all the metadata. Once you have created the draft, the blue button will change to say 'Save'. We recommend that you save your work frequently to avoid any loss of content.
+
+## Writing the Content of your Pathfinder Resource
+
+The large middle field in the CMS is your main content creation area. This is where you will write your pathfinder resource. There are a few things to keep in mind in relation to the house style, specifically around the types of headings used, and the order in which they appear. For that reason, as part of this step by step guide, an 'Example Pathfinder Resource' has been created for you to refer to when drafting up content. You can find the latest preview of the 'Example Pathfinder Resource' by clicking on the most recent 'View Deployment' on this Pull Request. You can view the ***House Style*** here.
+
+First things first, get to know the different functions along the top formatting bar.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.8.-the-formatting-and-widgets.png" alignment="center">
+
+</Figure>
+
+From left to right:
+
+**Paragraph Text style** - this drop down menu allows you to determine whether something is normal paragraph text, or a specific heading type.
+
+**Bold, Italic, Strikethrough** - these function the same as in other text editing software.
+
+**Inline Code** - There are two 'code' icons on this formatting bar. This one on the left allows you to format one or more words in your paragraph as code. Use it for short snippets of code, variable names or short instructions.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/coding-1-image.jpeg" alignment="center">
+  ###
+</Figure>
+
+**Footnote (superscript)** - this icon allows you to write slightly above the base line in a smaller font. Use it to add a reference to a footnote or for mathematical equations.
+
+**Campus Link** - there are two 'link' icons. This first one to the left allows you to link to another resource or download within DARIAH-Campus. This is useful if you have related learning resources and want to guide users to them.
+
+**Clear Formatting** - as in most document formatting, this allows you to clear all the formatting in selected text.
+
+**Bulleted List, Numbered List** - allows you to add either a bulleted list or a numbered list to your text.
+
+**Divider** - draws a solid straight horizontal line. This is useful if you want to separate sections even more clearly. You might place this underneath the 'Learning Outcomes' for example, to separate this from the rest of the actual resource.
+
+**External Link** - This is the second of the two 'link' icons. For this link option it allows you to add any URL you want.
+
+**Quote** **Block**- If you want to pull out some text to make it more memorable, or if you want to add a quote, this icon allows you to do this.
+
+**Code Block** - This is the second of the two 'Code' icons. Use it for longer code examples or instructions that stand on their own like a paragraph. You can set the programming language in the pop-out window that appears in order to enable syntax highlighting. In the example below we set the programming language to 'C'. You then type the code you want to include directly into the 'Code Block' box.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/coding-2-image.jpeg" alignment="center">
+
+</Figure>
+
+**Table** - Use this icon to add a table. It will show a 3 x 3 table by default, but you can edit this.
+
+You can use all these options to draft up your content and make things a little more interesting for your learners. It also helps you to comply with the house style, including adding the correct heading types, and formatting for required elements.
+
+You can make things even more interesting for your learners by making use of Widgets, which are detailed below.
+
+### Making use of the Widgets
+
+You will have noticed that the final button on the formatting bar was not mentioned above. This is the 'Widgets' drop down menu, and this contains other options you might want to include in your hosted resource. These are all explained below, in the order they appear on the drop down menu.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.1a-the-widget-dropdown-menu-pathfinder.jpg" alignment="center">
+
+</Figure>
+
+#### Call out / Sidenote
+
+If you want to highlight some information, or give a warning or a tip within your learning resource, a 'Callout' (otherwise called a 'Sidenote') can do this for you.
+
+When you first click on this option, a blank 'Note' box will appear where you had your cursor. At the same time, a 'pop-up' will appear allowing you to edit this. You can choose from different types of call out, and this will determine the colour of the box when it appears in the resource. You can also edit the title of the note, leaving it as its default, or changing it to something more specific to your content.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.3a.-editing-a-callout.jpg" alignment="center">
+
+</Figure>
+
+Once your resource is published, your callout (sidenote) will look something like this:
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.3b.-published-call-out.jpg" alt="A call-out box with an edited title saying 'You can add a sidenote!' and content saying 'Use an info side note like this to highlight information that you want to stick in people's minds'.  This content is of course editable to make it anything you want it to be." alignment="center">
+
+</Figure>
+
+#### Disclosure
+
+A 'Disclosure' allows you to insert text that is hidden behind an interactive 'toggle', allowing the learner to reveal further information or content. You could use this for self-assessment, posing a question and then revealing the answer on a click. Or you could use it for more in-depth content such as case studies, or a further reading list.
+
+Best practice for accessibility recommends putting items like disclosures, quotes or tabs into a call out box (see above), as this identifies the item as an 'asset' for screenreaders. You should add a 'plain' callout and then you can add the 'disclosure' widget inside the callout box by clicking to bring the cursor into the box in the same way you would start typing, and then selecting 'disclosure' (or indeed 'tab') from the widget menu.
+
+When you click on the disclosure widget option, an editable version will appear. Click on the 'edit' button to open a pop-up window that asks you to give it a title.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.4a.-editing-a-disclosure.png" alignment="center">
+
+</Figure>
+
+Once you have entered a title, you can then type directly into the text box below to add the additional information. Within the CMS you will be able to toggle the disclosure to open and close it, giving you an indication of how this will appear once it is published.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.4b.-adding-a-disclosure.gif" alt="GIF showing the 'Disclosure' widget toggling from closed to open and back to closed." alignment="center">
+
+</Figure>
+
+#### Embedding a Webpage
+
+Sometimes it is useful to be able to bring in elements from other websites, particularly if their interactive elements are not currently compatible with the DARIAH-Campus architecture. An example of this could be Jupyter Notebooks, which cannot currently be integrated into DARIAH-Campus resources. A work-around for this could be to embed the webpage the Jupyter Notebook is published on, and allow learners to interact through that.
+
+In this example we'll use the DARIAH.eu website to demonstrate this.
+
+Select the 'Embed' option from the widget dropdown menu. When you do this, a blank box with an 'Edit' button in the right hand corner will appear. Click on this, and a pop-up window will appear for you to type in the full URL (don't forget the '[https://www](https://www)' bit!) for the webpage you want to embed.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.5.-embedding-a-webpage.jpg" alignment="center">
+
+</Figure>
+
+The webpage will then be displayed in that embed box. Click 'Done', and that's it! If the webpage is quite long, a scroll bar will also appear on the right-hand side. When the resource is published, it will look almost identical to how it appears in the preview.
+
+#### Figure
+
+You may want to include images or infographics in your pathfinder resource. This is also very straightforward. When you select the 'Figure' widget, a blank box appears on the page with an 'edit' button in the top-right hand corner. Click on this and it will open a pop-up window. You first click on the 'Choose file' button to open your computer's file manager to find an image to add. A thumbnail of the image will be displayed below.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.6a.-adding-a-figure.jpg" alignment="center">
+
+</Figure>
+
+From here you can then add 'Alt Text' in the field for 'image description for assistive technology'. While this field is currently not a required field, it is highly recommended that you add Alt Text to support screen reading technology. If the image is purely decorative, or is described and explained in the accompanying text in the resource, you can type in either the empty alt attribute " ". For more notes and information on when Alt Text is required, you can visit the W3 Alt Text Decision Tree here: [https://www.w3.org/WAI/tutorials/images/decision-tree/](https://www.w3.org/WAI/tutorials/images/decision-tree/). For tips on writing useful Alt Text, we recommend taking a look at the AxessLab notes on writing Alt Text here: [https://axesslab.com/alt-texts/](https://axesslab.com/alt-texts/).
+
+Finally, you can decide whether you want the image to stretch across the page, or to be aligned centrally.
+
+Once you have edited the image box, the image then appears on the page. You are then encouraged to write in a caption directly in the box underneath the image.
+
+#### Adding a Grid Layout
+
+A grid layout offers an interesting way to present information, particularly if you want something similar to a table without having gridlines. Once you have selected the 'Grid' option, and clicked on the 'edit' button in the box, a pop-up window appears with two drop-down menus.
+
+The 'Layout' drop-down menu allows you to pick how many columns and rows you would like, along with how wide you would like each column to be. The 'Vertical Alignment' drop-down menu determines whether text fills the cell it's in, or sits centrally within it.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.7a.-adding-a-grid.jpg" alignment="center">
+
+</Figure>
+
+Once the layout has been fixed you can then 'insert' cells into your grid and then start writing in text directly to each new box. If you add to many cells, or grids within grids, you can click on the ones you want to delete to select them (turns blue), and tap your delete key.
+
+Once published, the text will appear in the layout you determined, without any gridlines or boxes.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.7b.-published-grid.jpg" alignment="center">
+
+</Figure>
+
+#### Heading ID
+
+Each heading has an automatic heading ID based on the text used in that heading. For example, if you have a heading that says 'Introduction' then that becomes its heading ID. These IDs can be used to link to the different sections in the document, such as in a Table of Contents, or if you are adding a bookmark or anchor manually. Sometimes, you might want to change the heading ID to fit a format, for example, if the heading is too long to be a memorable URL fragment and you want to keep it simple. Heading ids should follow the pattern of lower case text with hyphens between words, for example:
+
+**Heading title**: "Exploring AI in historical linguistics: The role of pattern recognition"
+
+**headingId**: ai-in-historical-linguistics-pattern-recognition
+
+Place your cursor next to the heading you want to alter, and click the 'Heading ID' option from the widget menu. A grey hashtag will appear. Click on the hashtag and select the edit icon (a pencil). This brings up a pop-up window where you can then type in the text you would like to appear in its URL. Once you have confirmed this by clicking 'done', the grey hashtag now shows the alternative title you have given this heading.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.16b.-adding-a-heading-id.jpg" alignment="center">
+
+</Figure>
+
+#### Link Button
+
+A link button is a visually appealing way of adding a hyperlink or download option to your resource. Once you have selected the link button option, the blank box appears on the page. Click the edit button to bring up the pop-up edit window. You will see a drop-down menu labelled 'Kind' that allows you to determine what kind of item you want to link to (a direct URL, a download of a document, for example). Once this has been selected, you can then enter the URL for the item.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.10a.-adding-a-link-button.jpg" alignment="center">
+
+</Figure>
+
+The link button now has a URL attached to it. You can then click in the link button itself to type in a title or a call to action such as 'Click here to visit such-and-such website'.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.10b.-link-button-success.jpg" alignment="center">
+
+</Figure>
+
+#### Tabs
+
+Tabs offer a different layout for text, particularly if that text is related in some way. They work in a similar way to the 'disclosure' option in that they can reveal text, but more than one tab can be added to a block.
+
+As for the 'disclosure' widget, it is good practice to place your tabs within a plain 'callout'.
+
+After you click on the 'Tabs' option, the box appears on the page. From here you can use the button on the right of the box to 'Insert' as many tabs as you would like. These all appear below as individual tab boxes. In each tab box, you can then click the 'Edit' button to give each tab a title. From there you can then enter the content you want to include in each tab by typing directly into the box underneath its title.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.11a.-adding-and-editing-tabs.jpg" alignment="center">
+
+</Figure>
+
+When this is published, the tabs all appear lined up horizontally, and are clickable to reveal the text.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.11b.-tabs-published.jpg" alignment="center">
+
+</Figure>
+
+#### Video
+
+The 'Video' option allows you to embed a video within the content of the pathfinder resource you are writing. This is particularly useful if you want to embed a video to illustrate or demonstrate an issue or provocation.
+
+In the 'Edit' box of your video field, first select your video host (YouTube, Vimeo, Nakala or University of Helsinki). You will also be asked again for the video ID. The 'Video ID' can be found usually at the end of the URL for the video. In the case of YouTube, for example, this is typically around 11 or so characters in length, usually made up of alpha-numeric characters and symbols. If you have a specific start-time in the video that you want people to see, you can enter that in the 'Start time' field.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.12a.-embed-a-video.jpg" alignment="center">
+
+</Figure>
+
+Once you have entered all this and clicked 'Done', the video thumbnail will appear in the 'Video' box. You can type a caption for the video directly underneath to let users know what they are looking at.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.12b.-adding-a-video-with-caption.jpg" alignment="center">
+
+</Figure>
+
+Remember to save your work as you go along!
+
+### Finishing touches
+
+Before you send off your pathfinder for review, take a moment to check that you have all the required metadata fields filled in, that you have an introduction, learning outcomes and a conclusion that summarises what has been covered in the pathfinder resource and how they relate to the learning outcomes.
+
+## Saving your Pathfinder Resource for Publication
+
+After doing so much work, you may wish to 'Create' a pull request, and save your work. You can of course do this at any point in the editing process once the required event metadata has been entered. Exactly when you choose to create the pull request and save your work is up to you, depending on your own practices, although we recommend saving frequently after a set of changes to ensure nothing is lost in the unlikely event of a website crash, or if you have to step away from your computer.
+
+To create a draft, click on the blue button in the top right-hand corner of the screen saying 'Create'. Once you do this, a green message will display momentarily at the bottom of the screen saying 'Entry Created'. The blue button will now change to say 'Save'.
+
+Now you have saved your resource, and are happy that it has all the information you want to include in there, you can save the resource again, and then move to **create a pull request**.
+
+Click on the 'Branch Options' button (three horizontal dots, next to the Branch Dropdown menu), and select 'Create Pull Request'.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.13.-create-pull-request.png" alignment="center">
+
+</Figure>
+
+This will bring you to the GitHub site, where you can create the Pull Request by clicking on the green button halfway down the page saying 'Create Pull Request' (depending on your screen size, you may have to scroll down to see this button).
+
+The screen will now change to show you the actual pull request that your draft is filed in on GitHub. After a short while, a 'Vercel bot' will post an automatic message to the Pull Request which includes a table showing a summary of the latest updates. In this table you will see a link to 'Visit Preview'.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/6.13.-create-pull-request-3.jpg" alignment="center">
+
+</Figure>
+
+This link will always bring you to the latest successfully built preview of your resource. You can click on this to see how your resource looks on the DARIAH-Campus website. **Do note, this is only a preview link, and should not be shared in any official capacity.**
+
+## Creating / Editing an External Resource (main page title)
+
+In the new content management system, all resource types have their own templates and different requirements in terms of information and metadata. Therefore it is important that you select the correct resource type template that you want to create. If you are looking to edit an existing external resource, you will find all the published external resources filed accordingly in the CMS, and listed alphabetically.
+
+As with all changes to DARIAH-Campus, you must first create a branch. Make sure that you are on the 'Main' branch when you create a new branch to make sure that you are working on the most up-to-date version.
+
+Once you have created your new branch, you can now click on the '+' symbol in the 'External resources' category button if you are creating a new resource. This will create a new working space in which to fill in the template for this resource type. If you want to edit an existing external resource, you can search for it in the list of external resources, and click into it from there. We will continue as if creating a new resource, but the principles for editing existing resources are the same.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.3.-creating-an-external-resource-hit-the-plus-sign.png" alignment="center">
+
+</Figure>
+
+The workspace for an external resource has two main parts. In the middle (1) is the workspace for the more free-hand creative part of the resource, where you will write the description and add the other 'External Resource' widgets. But for now the first part to complete is the metadata template (2) which indicates which fields are required with an asterisk.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.4.-external-resource-first-view.png" alignment="center">
+
+</Figure>
+
+## The Metadata Fields for an External Resource
+
+The first field is the **title of the resource**. This in turn generates the 'slug' for the url of the resource, based on the title.
+
+You can then select the **language of the resource**. This is through a dropdown menu. At the time of writing this documentation (March 2025) we only support two languages, but we hope this will change to allow you to add resources in other languages.
+
+You are then asked to give the **Publication Date**. To be clear, there are two 'Publication Date' fields in the External Resource metadata. This first publication date refers to the date that this resource is published to DARIAH-Campus. For that reason it defaults to whatever today's date is. You should leave it at this, but you might be asked to update this when the resource is ready to be published following review from the Editorial Team.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.5.-external-resource-metadata-1.jpg" alignment="center">
+
+</Figure>
+
+Below this is the '**Version' number**. By default this is set to 1.0.0. However, if you are making substantial changes to a resource (e.g. major content updates, not just typos), this will need to be changed to indicate that this is a new version. For now, though, as you are creating a new resource, you can leave this at the default setting.
+
+Next you will need to add the **Authors** of your resource. This is done using the people already published on the system.  This field is both a search box and a drop down menu, but the quickest way to find someone is to start typing one or two letters of their name into the search field, and the drop down menu will filter down to only the named people with those letters in that order in their name. From there you can select which person you want to include. For resources with multiple authors you can repeat this step.
+
+Once you have selected an author or authors, it will appear in a box below the drop down menu. For each person there is the option to change the order of authors listing, indicated by an icon featuring six dots, or the option to select that author, indicated by a checkbox, so that you can remove them from the list if required.
+
+You can fill in the 'Editors' and 'Contributing Authors' fields in the same way.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.6.-authors-external.jpg" alignment="center">
+
+</Figure>
+
+**Tags** are selected in the same way as authors. You can use the search field next to the drop down button to start typing a topic, and select an appropriate tag from or tags from there. You can also re-order these by clicking on the 6 dots and dragging the tag up or down the list.
+
+<Callout kind="important">
+  Tags should describe what is covered in the content itself, not what the resource is. For example, if your resource relates to the discussion of methodologies and practices in Digital Humanities (DH), or critiques of DH theory, the 'DH' tag is appropriate. However, if your resource is a step-by-step guide to making use of gazetteers for social history analysis, the 'DH' tag is not appropriate. Similarly, only use the 'Training and Education' tag if your resource specifically discusses pedagogical policy, theory or methods.
+</Callout>
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.7.-tags-external.jpg" alignment="center">
+
+</Figure>
+
+**Sources** are also selected in the same way. The 'Source' is used to assign a 'channel'. In most cases, the source is 'DARIAH', unless you already have a dedicated 'channel' in place as agreed with the DARIAH-Campus Editorial Board.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.8.-selecting-source.jpg" alignment="center">
+
+</Figure>
+
+The **Summary** (formerly known as the 'Abstract') is the information that is displayed on the main 'Resources' page of DARIAH-Campus and offers a short preview into what the resource is about to entice the learner. The summary should be no longer than 80 words, and should describe what is covered in the resource.
+
+If the title of your resource is very long, you can also use the 'Summary Title' field to write a shorter, but still meaningful, title, and this will display on the Resources page.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.9.-writing-the-summary.jpg" alignment="center">
+
+</Figure>
+
+In the last section of the metadata, we have the '**Remote Host' data**. This is what distinguishes an External Resource from a Hosted Resource, as this section of the metadata covers the information from the original publishing platform. All this information is used as part of the citation that is generated by DARIAH-Campus for your resource.
+
+This is also where you will find the **second 'publication date' field**. This time, this field refers to the date that the resource was *FIRST published*, and will be a date in the past.
+
+You will be asked to provide the **URL of the resource** so that it can be used in the automated citation that is generate&#x64;**,** and also the name of the **Publisher**. This could be the name of a project, research infrastructure, or academic institution, for example.
+
+Finally, you will be asked to select from the dropdown menu what type of resource it is, for example, is it a podcast, a website, or a webinar?
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.10.-remote-host-metadata.jpg" alignment="center">
+
+</Figure>
+
+That concludes the metadata for the resource. Now you can start writing the more descriptive information.
+
+\
+\\
+
+## Writing the Descriptive Content for an External Resource
+
+The large middle window of the screen is the field for writing the more descriptive content for your resource. You type directly into this field, and can use the formatting options available to you to ensure it matches the ***House Style***.
+
+You should begin with a paragraph or two (or three, if you like!) to describe the resource itself. This should be more elaborate than the summary, giving the prospective learner enough information for them to make their minds up if this resource is for their learning needs. You can add information such as the format of the learning resource, for example whether it's a webinar, a full multi-module course, or a short one-module course. You can describe what topics are covered in the resource, and what self-assessment tools (if there are any) they might use to check their learning.
+
+In addition, you are also required to provide **learning outcomes** that learners can reasonably expect to have once they have completed the resource. Learning Outcomes should sit beneath the description of the resource, and before the 'External Resource' widget is added.
+
+Do note, learning outcomes are different from learning objectives. If you need some help in writing learning outcomes, you can take a look at the guide we have provided here.
+
+You will also need to format the heading for 'Learning Outcomes' accordingly. Within our house style, 'Heading 2' is always applied to this. The individual learning outcomes are also put into a bulleted list. This list should be preceded by the unfinished sentence "After completing this resource, learners will be able to", allowing the bullet points to complete the sentence.
+
+Below the 'Learning Outcomes' you should now add the '**External Resource' widget.** All the widgets for resources can be found by clicking on the dropdown menu indicated with a plus sign on the end right of the formatting options. From this dropdown menu, select the 'External Resource' option.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.13.-adding-external-resource-button-2.png" alignment="center">
+
+</Figure>
+
+A placeholder box for an External Resource will appear in the workspace. Click on the 'Edit' button, and a pop-up window will appear asking you for additional required information. In the 'Title' field, you can enter the resource title. You can shorten this to the 'Summary title' you may have used in the metadata if the full title is really long.
+
+You are also asked to provide a subtitle. We prefer that you use 'Click here to visit the \[INSERT NAME OF PUBLISHER] website'.
+
+Finally, you need to once again add the URL of the resource. In this instance, the URL is used to create a hyperlink in the button graphic that is displayed on the page once it's published.
+
+Once you are happy with all the information, you can click on 'done', and it will take you back to the main editing page.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.14.-adding-metadata-to-the-external-resource-button.png" alignment="center">
+
+</Figure>
+
+You will now see the 'external resource' box with all this information entered into it.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.15.-external-resource-button-before-saving.png" alignment="center">
+
+</Figure>
+
+And that is the widget created!
+
+## Saving Your External Resource Draft
+
+\
+At this point, you may wish to 'Create' a pull request, and save your work. You can of course do this at any point in the editing process once the required metadata has been entered. In the case shown in the figure below, this was done before adding the 'External Resource' widget. When you choose to create the pull request and save your work is up to you, depending on your own practices, although we recommend saving frequently after a set of changes to ensure nothing is lost in the unlikely event of a website crash, or if you have to step away from your computer.
+
+To create a draft, click on the blue button in the top right-hand corner of the screen saying 'Create'.
+
+Once you do this, a green message will display momentarily at the bottom of the screen saying 'Entry Created'. The blue button will now change to say 'Save'.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.17.-successfully-created-resource-draft.png" alignment="center">
+
+</Figure>
+
+Now you have saved your resource, and are happy that it has all the information you want to include in there, you can save the resource again, and then move to create a pull request.
+
+This is the same process as shown before, but as a reminder…
+
+Click on the 'Branch Options' button (three horizontal dots, next to the Branch Dropdown menu), and select 'Create Pull Request'.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.19.-using-the-option-to-create-a-pull-request.png" alignment="center">
+
+</Figure>
+
+This will bring you to the GitHub site, where you can create the Pull Request by clicking on the green button halfway down the page saying 'Create Pull Request' (depending on your screen size, you may have to scroll down to see this button).
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/3.20.-creating-a-pull-request-on-git-hub.jpg" alignment="center">
+
+</Figure>
+
+The screen will now change to show you the actual pull request that your draft is filed in on GitHub. After a short while, a 'Vercel bot' will post an automatic message to the Pull Request which includes a table showing a summary of the latest updates. In this table you will see a link to 'Visit Preview'. This link will always bring you to the latest successfully built preview of your resource. You can click on this to see how your resource looks on the DARIAH-Campus website. **Do note, this is only a preview link, and should not be shared in any official capacity.**
+
+## Creating a Curriculum (main page title)
+
+It's possible that once you have a few items in DARIAH Campus that fit a theme, or were created as part of a wider training programme, you may want to create a curriculum. This allows you the opportunity to 'link' your items in DARIAH-Campus to show users how your resources fit together. This also enables users to find your materials more quickly.\\
+
+## Getting started
+
+As with all resource types, you will need to create a new branch to work on to develop your curriculum. From the home dashboard, make sure that first of all the branch you are currently on is 'Main'. Click on the 'New Branch' button and give your branch a name (remember to use hyphens between words rather than spaces). Click on 'Create'. You can go to the '***Creating a New Branch***' page to see how to do this in more detail if you need to.
+
+To create a curriculum, navigate to 'Curricula' on the home dashboard, and click on 'Add'.
+
+## Adding the Curriculum Metadata
+
+The first field is the **title of the curriculum**. This in turn generates the 'slug' for the url of the resource, based on the title.
+
+You can then select the **language of the curriculum** using the dropdown menu.
+
+You are then asked to give the **Publication Date**. This publication date refers to the date that this resource is published to DARIAH-Campus. For that reason it defaults to whatever today's date is. You should leave it at this, but you might be asked to update this when the resource is ready to be published following review from the Editorial Team.
+
+Below this is the '**Version' number**. By default this is set to 1.0.0. However, if you are making substantial changes to a resource (e.g. major content updates, not just typos), this will need to be changed to indicate that this is a new version. For now, though, as you are creating a new resource, you can leave this at the default setting.
+
+Unlike with the main resource types, you are not asked to give the names of authors, but instead are asked to give '**Editors**' of the curriculum. This is because the resources themselves already have authors, and compiling them is more of an editorial task. You can add your editors using the people already published on the system.  This field is both a search box and a drop down menu, but the quickest way to find someone is to start typing one or two letters of their name into the search field, and the drop down menu will filter down to only the named people with those letters in that order in their name. From there you can select which person you want to include. For resources with multiple editors you can repeat this step, and re-order them accordingly.
+
+**Tags** are selected in the same way as editors. You can use the search field next to the drop down button to start typing a topic, and select an appropriate tag from or tags from there. You can also re-order these by clicking on the 6 dots and dragging the tag up or down the list.
+
+You can also choose to add a '**Featured Image**'. Click on the 'Choose File' button. This will open the appropriate file management window for your operating system (e.g. Finder for Mac, File Explorer for Windows) to allow you to select an image from your own computer. One selected and confirmed, the featured image will be displayed as a thumbnail in this metadata field. You will also now have the option to remove this file if you choose.
+
+Underneath this featured image field is the **'Licence'** field. This is the licence for the entire curriculum. This is offered as a dropdown menu, but we only offer 'CC-BY 4.0' as an option, so you can leave this unchanged.
+
+The **Summary** (formerly known as the 'Abstract') is the information that is displayed on the 'Curricula' page of DARIAH-Campus and offers a short preview into what the resource is about to entice the learner. The summary should be no longer than around 80 words, and should describe what is covered in the resource.
+
+If the title of your resource is very long, you can also use the 'Summary Title' field to write a shorter, but still meaningful, title, and this will display on the Resources page.
+
+The '**Resources**' field is where you add all the previously published resources that exist on DARIAH-Campus that you want to include in your curriculum. Click on 'Add' to bring up the pop-up window.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/7.1a.-adding-resources.jpg" alignment="center">
+
+</Figure>
+
+Click on the 'Collections' dropdown menu to select what type of resource you want to add. Then in the box below, you can start typing the name of the resource you want to add, and it will filter the results from the resource type you selected. Click on the resource you want, and it will be added to the list in the metadata. You can repeat this as many times as you need to, and you can also add different resource types.
+
+You can also re-order the resources you have added by clicking on the 'move' icon, holding and dragging them up to the position you want them to sit in.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/7.1b.-adding-resources.jpg" alignment="center">
+
+</Figure>
+
+If your event is in two or more languages, you can produce two different versions in those languages and then link them together using the '**Translations**' field. To do this, ideally all versions are already published to Campus separately. You can then click on the 'Translations' field and start typing the name of the resource in its respective language to filter down the resources. Click on the resource and it will be added to the 'Translations' field.
+
+The **PID** (persistent identifier) field is not editable, this is automatically generated when the resource is published, so you do not need to add anything here.
+
+This completes all the metadata fields for a Curriculum, and at this point you can now 'Create' your initial draft by clicking on the blue button in the top right-hand corner of the screen. This will save all the metadata. Once you have created the draft, the blue button will change to say 'Save'. We recommend that you save your work frequently to avoid any loss of content.
+
+## Writing your Curriculum Description
+
+The content field where you can get creative writing your curriculum description will be familiar to you as you have already published resources on Campus.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/7.2.-where-to-write-curriculum-description.png" alignment="center">
+
+</Figure>
+
+For the most part, you won't need to add any of the widgets, as these are not required. This field is simply for you to present the overall curriculum, introduce the topic it broadly covers, and briefly describe how each resource contributes to the learner's understanding. You might also want to include acknowledgement of any funding you received to develop the curriculum here as well.
+
+You can use any of the formatting options available in the formatting bar to support this.
+
+## Saving Your 'Curriculum' for Publication
+
+\
+Once you are happy with your curriculum, you may wish to 'create' a pull request, and save your work. You can of course do this at any point in the editing process once the required event metadata has been entered. Exactly when you choose to create the pull request and save your work is up to you, depending on your own practices, although we recommend saving frequently after a set of changes.
+
+To create a draft, click on the blue button in the top right-hand corner of the screen saying 'Create'. Once you do this, a green message will display momentarily at the bottom of the screen saying 'Entry Created'. The blue button will now change to say 'Save'.
+
+Now you have saved your curriculum, and are happy that it has all the information you want to include in there, you can save the resource again, and then move to **create a pull request**.
+
+Click on the 'Branch Options' button (three horizontal dots, next to the Branch Dropdown menu), and select 'Create Pull Request'. This will bring you to the GitHub site, where you can create the Pull Request by clicking on the green button halfway down the page saying 'Create Pull Request' (depending on your screen size, you may have to scroll down to see this button).
+
+The screen will now change to show you the actual pull request that your draft is filed in on GitHub. After a short while, a 'Vercel bot' will post an automatic message to the Pull Request which includes a table showing a summary of the latest updates. In this table you will see a link to 'Visit Preview'. This link will always bring you to the latest successfully built preview of your curriculum. You can click on this to see how your curriculum looks on the DARIAH-Campus website. **Do note, this is only a preview link, and should not be shared in any official capacity.**
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/7.3.-preview-in-vercel-bot-comment.png" alignment="center">
+
+</Figure>
+
+Once everyone is in agreement, a member of the Editorial Team will publish (merge) your curriculum pull request onto the main DARIAH-Campus site.
