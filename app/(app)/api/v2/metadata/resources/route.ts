@@ -1,10 +1,10 @@
+import { ensureArray } from "@acdh-oeaw/lib";
 import { type NextRequest, NextResponse } from "next/server";
 import * as v from "valibot";
 
-import { ensureArray } from "@/lib/ensure-array";
 import resources from "@/public/metadata/resources.json";
 
-const SearchFiltersSchema = v.object({
+const searchFiltersSchema = v.object({
 	limit: v.nullish(
 		v.pipe(
 			v.string(),
@@ -34,21 +34,17 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 	const searchParams = new URL(request.url).searchParams;
 
 	try {
-		const filters = await v.parseAsync(SearchFiltersSchema, {
+		const filters = await v.parseAsync(searchFiltersSchema, {
 			limit: searchParams.get("limit"),
 			offset: searchParams.get("offset"),
 			kind: searchParams.getAll("kind"),
 		});
 
-		const collections = filters.kind.map((kind) => {
-			return `resources-${kind}`;
-		});
-
 		const items =
-			collections.length === 0
+			filters.kind.length === 0
 				? resources
-				: resources.filter((item) => {
-						return collections.includes(item.collection);
+				: resources.filter((resource) => {
+						return filters.kind.includes(resource.kind);
 					});
 
 		const { limit, offset } = filters;

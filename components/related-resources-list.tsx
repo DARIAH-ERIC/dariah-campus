@@ -1,21 +1,20 @@
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import { createResourceUrl } from "@/app/(app)/resources/_lib/create-resource-url";
 import { ContentTypeIcon } from "@/components/content-type-icon";
 import { Link } from "@/components/link";
 import type { ContentType } from "@/lib/content/options";
 
 interface RelatedResourcesListProps {
 	resources: Array<{
-		collection: string;
+		href: string;
 		id: string;
 		title: string;
 		contentType: ContentType | "curriculum" | "event" | "pathfinder";
 	}>;
 }
 
-export function RelatedResourcesList(props: RelatedResourcesListProps): ReactNode {
+export function RelatedResourcesList(props: Readonly<RelatedResourcesListProps>): ReactNode {
 	const { resources } = props;
 
 	const t = useTranslations("RelatedResourcesList");
@@ -27,16 +26,14 @@ export function RelatedResourcesList(props: RelatedResourcesListProps): ReactNod
 	return (
 		<nav
 			aria-labelledby={id}
-			className="mx-auto mb-12 w-full max-w-content space-y-3 border-t border-neutral-200 py-12"
+			className="mx-auto mb-12 w-full max-w-(--size-content) space-y-3 border-t border-neutral-200 py-12"
 		>
-			<h2 className="text-xs font-bold uppercase tracking-wide text-neutral-600" id={id}>
+			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id={id}>
 				{t("label")}
 			</h2>
 			<ul className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
 				{resources.map((resource) => {
-					const { collection, contentType, id, title } = resource;
-
-					const href = createResourceUrl({ id, collection });
+					const { href, contentType, title } = resource;
 
 					return (
 						<li key={resource.id}>
