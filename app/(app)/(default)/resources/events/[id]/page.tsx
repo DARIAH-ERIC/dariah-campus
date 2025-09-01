@@ -1,6 +1,5 @@
 import { assert, createUrl } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { Fragment, type ReactNode } from "react";
@@ -22,14 +21,14 @@ import { SocialMediaList } from "@/components/social-media-list";
 import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
 import { TranslationsList } from "@/components/translations-list";
+import { env } from "@/config/env.config";
 import { client } from "@/lib/content/client";
 import { createGitHubClient } from "@/lib/content/github-client";
+import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
 import { createResourceMetadata } from "@/lib/content/utils/create-resource-metadata";
 import { getMetadata } from "@/lib/i18n/metadata";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
 import { pickRandom } from "@/lib/utils/pick-random";
-
-export const dynamicParams = false;
 
 interface EventResourcePageProps extends PageProps<"/resources/events/[id]"> {}
 
@@ -51,11 +50,12 @@ export async function generateMetadata(props: Readonly<EventResourcePageProps>):
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const resource = draft.isEnabled
-		? await (await createGitHubClient()).collections.resourcesEvents.get(id)
-		: client.collections.resourcesEvents.get(id);
+	const resource =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).collections.resourcesEvents.get(id)
+			: client.collections.resourcesEvents.get(id);
 
 	if (resource == null) {
 		notFound();
@@ -94,7 +94,12 @@ export async function generateMetadata(props: Readonly<EventResourcePageProps>):
 				return name;
 			}),
 			title,
-			url: String(createFullUrl({ pathname: resource.href })),
+			url: String(
+				createFullUrl({
+					baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+					pathname: resource.href,
+				}),
+			),
 		}),
 	};
 
@@ -113,11 +118,12 @@ export default async function EventResourcePage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const resource = draft.isEnabled
-		? await (await createGitHubClient()).collections.resourcesEvents.get(id)
-		: client.collections.resourcesEvents.get(id);
+	const resource =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).collections.resourcesEvents.get(id)
+			: client.collections.resourcesEvents.get(id);
 
 	if (resource == null) {
 		notFound();
@@ -175,7 +181,12 @@ export default async function EventResourcePage(
 				{...jsonLdScriptProps({
 					"@context": "https://schema.org",
 					"@type": "LearningResource",
-					url: String(createFullUrl({ pathname: resource.href })),
+					url: String(
+						createFullUrl({
+							baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+							pathname: resource.href,
+						}),
+					),
 					headline: title,
 					name: title,
 					datePublished: new Date(publicationDate).toISOString(),
@@ -199,7 +210,12 @@ export default async function EventResourcePage(
 						name: meta.title,
 						description: meta.description,
 						url: meta.social.website,
-						logo: String(createFullUrl({ pathname: `/logo.svg` })),
+						logo: String(
+							createFullUrl({
+								baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+								pathname: `/logo.svg`,
+							}),
+						),
 						sameAs: String(
 							createUrl({ baseUrl: "https://twitter.com", pathname: meta.social.twitter }),
 						),
@@ -272,7 +288,15 @@ export default async function EventResourcePage(
 						contentType={resource.metadata["content-type"]}
 						publicationDate={new Date(publicationDate)}
 						title={title}
-						url={doi || String(createFullUrl({ pathname: resource.href }))}
+						url={
+							doi ||
+							String(
+								createFullUrl({
+									baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+									pathname: resource.href,
+								}),
+							)
+						}
 						version={version}
 					/>
 					<ReUseConditions />
@@ -309,7 +333,7 @@ export default async function EventResourcePage(
 							<Content />
 						</div>
 
-						<hr className="my-12 bg-neutral-200" />
+						<hr className="my-12 border-t border-neutral-200" />
 
 						<ol className="list-none divide-y divide-neutral-200">
 							{sessions.map((session, index) => {
@@ -356,7 +380,15 @@ export default async function EventResourcePage(
 							contentType={resource.metadata["content-type"]}
 							publicationDate={new Date(publicationDate)}
 							title={title}
-							url={doi || String(createFullUrl({ pathname: resource.href }))}
+							url={
+								doi ||
+								String(
+									createFullUrl({
+										baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+										pathname: resource.href,
+									}),
+								)
+							}
 							version={version}
 						/>
 						<ReUseConditions />
@@ -417,6 +449,7 @@ export default async function EventResourcePage(
 								tableOfContents={tableOfContents}
 								title={
 									<h2
+										key="table-of-contents"
 										className="text-xs font-bold tracking-wide text-neutral-600 uppercase"
 										id="table-of-contents"
 									>

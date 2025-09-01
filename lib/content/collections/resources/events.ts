@@ -9,6 +9,7 @@ import {
 	createHeadingIdsPlugin,
 	createIframeTitlesPlugin,
 	createImageSizesPlugin,
+	createMermaidDiagramsPlugin,
 	createSyntaxHighlighterPlugin,
 	createTableOfContentsPlugin,
 	createUnwrappedMdxFlowContentPlugin,
@@ -36,7 +37,8 @@ const compileOptions: CompileOptions = {
 		createCustomHeadingIdsPlugin(),
 		createHeadingIdsPlugin(),
 		createIframeTitlesPlugin(["Embed", "Video"]),
-		createImageSizesPlugin(["Figure"]),
+		createImageSizesPlugin(["Figure", "VideoCard"]),
+		createMermaidDiagramsPlugin(),
 		createSyntaxHighlighterPlugin(),
 		createTableOfContentsPlugin(),
 		createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
@@ -82,6 +84,15 @@ export const resourcesEvents = createCollection({
 			sessions.push({ ...session, content: module, presentations });
 		}
 
+		const organisations = [];
+
+		// TODO: p-limit for concurrency
+		for (const organisation of metadata.organisations) {
+			const logo = await getImageDimensions(organisation.logo);
+
+			organisations.push({ ...organisation, logo });
+		}
+
 		const featuredImage =
 			metadata["featured-image"] != null
 				? await getImageDimensions(metadata["featured-image"])
@@ -100,6 +111,7 @@ export const resourcesEvents = createCollection({
 				...metadata,
 				"content-type": "event" as const,
 				"featured-image": featuredImage,
+				organisations,
 				sessions,
 			},
 			tableOfContents,

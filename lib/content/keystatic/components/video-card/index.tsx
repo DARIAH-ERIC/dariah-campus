@@ -6,6 +6,7 @@ import { block } from "@keystatic/core/content-components";
 import { VideoIcon } from "lucide-react";
 
 import { VideoCardPreview } from "@/lib/content/keystatic/components/video-card/preview";
+import * as validation from "@/lib/content/keystatic/validation";
 import { videoProviders } from "@/lib/content/options";
 
 export const createVideoCard = createComponent((paths, _locale) => {
@@ -22,7 +23,7 @@ export const createVideoCard = createComponent((paths, _locale) => {
 				}),
 				id: fields.text({
 					label: "Video ID",
-					validation: { isRequired: true },
+					validation: { pattern: validation.videoId },
 				}),
 				startTime: fields.number({
 					label: "Start time",
@@ -36,7 +37,7 @@ export const createVideoCard = createComponent((paths, _locale) => {
 					label: "Subtitle",
 					validation: { isRequired: false },
 				}),
-				image: fields.image({
+				src: fields.image({
 					label: "Image",
 					validation: { isRequired: true },
 					...createAssetOptions(paths.assetPath),
@@ -48,8 +49,8 @@ export const createVideoCard = createComponent((paths, _locale) => {
 				return (
 					<VideoCardPreview
 						id={value.id}
-						image={value.image}
 						provider={value.provider}
+						src={value.src}
 						startTime={value.startTime}
 						subtitle={value.subtitle}
 						title={value.title}

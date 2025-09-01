@@ -4,10 +4,11 @@ import {
 	createContentFieldOptions,
 	withI18nPrefix,
 } from "@acdh-oeaw/keystatic-lib";
+import { readonly } from "@acdh-oeaw/keystatic-lib/fields/readonly";
 import { collection, fields } from "@keystatic/core";
 
 import { createCallout } from "@/lib/content/keystatic/components/callout";
-import { createDiagram } from "@/lib/content/keystatic/components/diagram";
+// import { createDiagram } from "@/lib/content/keystatic/components/diagram";
 import { createDisclosure } from "@/lib/content/keystatic/components/disclosure";
 import { createEmbed } from "@/lib/content/keystatic/components/embed";
 import { createFigure } from "@/lib/content/keystatic/components/figure";
@@ -20,7 +21,6 @@ import { createQuiz } from "@/lib/content/keystatic/components/quiz";
 import { createTabs } from "@/lib/content/keystatic/components/tabs";
 import { createVideo } from "@/lib/content/keystatic/components/video";
 import { createVideoCard } from "@/lib/content/keystatic/components/video-card";
-import { readonly } from "@/lib/content/keystatic/fields/read-only";
 import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
 import { contentLanguages, contentLicenses, contentTypes } from "@/lib/content/options";
 
@@ -126,7 +126,7 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 				},
 				components: {
 					...createCallout(paths, locale),
-					...createDiagram(paths, locale),
+					// ...createDiagram(paths, locale),
 					...createDisclosure(paths, locale),
 					...createEmbed(paths, locale),
 					...createFigure(paths, locale),

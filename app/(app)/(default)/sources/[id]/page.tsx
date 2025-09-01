@@ -1,6 +1,5 @@
 import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
@@ -10,8 +9,7 @@ import { PageTitle } from "@/components/page-title";
 import { ResourcesGrid } from "@/components/resources-grid";
 import { client } from "@/lib/content/client";
 import { createGitHubClient } from "@/lib/content/github-client";
-
-export const dynamicParams = false;
+import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
 
 interface SourcePageProps extends PageProps<"/sources/[id]"> {}
 
@@ -29,11 +27,12 @@ export async function generateMetadata(props: Readonly<SourcePageProps>): Promis
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const source = draft.isEnabled
-		? await (await createGitHubClient()).collections.sources.get(id)
-		: client.collections.sources.get(id);
+	const source =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).collections.sources.get(id)
+			: client.collections.sources.get(id);
 
 	if (source == null) {
 		notFound();
@@ -56,11 +55,12 @@ export default async function SourcePage(props: Readonly<SourcePageProps>): Prom
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const source = draft.isEnabled
-		? await (await createGitHubClient()).collections.sources.get(id)
-		: client.collections.sources.get(id);
+	const source =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).collections.sources.get(id)
+			: client.collections.sources.get(id);
 
 	if (source == null) {
 		notFound();

@@ -36,7 +36,7 @@ interface ResourceProps {
 	id: string;
 	links?: Array<{ label: string; href: string }>;
 	location?: string;
-	organisations?: ReadonlyArray<{ name: string; url: string; logo: string }>;
+	organisations?: ReadonlyArray<{ name: string; url: string; logo: StaticImageData | string }>;
 	social?: ReadonlyArray<{ discriminant: SocialMediaKind; value: string }>;
 	startDate?: Date;
 	tags: Array<{ id: string; name: string }>;

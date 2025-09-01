@@ -2,10 +2,8 @@ import "server-only";
 
 import { assert, createUrl } from "@acdh-oeaw/lib";
 import { createGitHubReader } from "@keystatic/core/reader/github";
-import { cookies } from "next/headers";
 import { cache } from "react";
 
-import { env } from "@/config/env.config";
 import { client } from "@/lib/content/client";
 import type { Curriculum } from "@/lib/content/client/curricula";
 import type { Documentation } from "@/lib/content/client/documentation";
@@ -23,6 +21,7 @@ import {
 	createCustomHeadingIdsPlugin,
 	createHeadingIdsPlugin,
 	createIframeTitlesPlugin,
+	createMermaidDiagramsPlugin,
 	createRemoteImageUrlsPlugin,
 	createSyntaxHighlighterPlugin,
 	createTableOfContentsPlugin,
@@ -38,18 +37,6 @@ import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
 
 const locale = defaultLocale;
 
-// TODO: some resources only need a basic config
-const _createEvaluateOptions = (baseUrl: string) => {
-	return {
-		remarkPlugins: [
-			createGitHubMarkdownPlugin(),
-			createTypographicQuotesPlugin(getIntlLanguage(locale)),
-		],
-		remarkRehypeOptions: createRemarkRehypeOptions(locale),
-		rehypePlugins: [createRemoteImageUrlsPlugin(baseUrl)],
-	} satisfies EvaluateOptions;
-};
-
 const createEvaluateOptions = (baseUrl: string) => {
 	return {
 		remarkPlugins: [
@@ -62,28 +49,26 @@ const createEvaluateOptions = (baseUrl: string) => {
 			createCustomHeadingIdsPlugin(),
 			createHeadingIdsPlugin(),
 			createIframeTitlesPlugin(["Embed", "Video"]),
+			createMermaidDiagramsPlugin(),
 			createSyntaxHighlighterPlugin(),
 			createTableOfContentsPlugin(),
 			createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
-			createRemoteImageUrlsPlugin(baseUrl, ["Figure"]),
+			createRemoteImageUrlsPlugin(baseUrl, ["Figure", "VideoCard"]),
 		],
 	} satisfies EvaluateOptions;
 };
 
-export const createGitHubClient = cache(async function createGitHubClient() {
-	const owner = env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_OWNER;
-	const repo = env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_NAME;
-
-	assert(owner != null && repo != null, "Missing github repository config.");
-
-	const cookieStore = await cookies();
-
-	const branch = cookieStore.get("ks-branch")?.value;
-	const token = cookieStore.get("keystatic-gh-access-token")?.value;
-
-	assert(branch, "Missing github branch.");
-	assert(token, "Missing github access token.");
-
+export const createGitHubClient = cache(function createGitHubClient({
+	owner,
+	repo,
+	branch,
+	token,
+}: {
+	owner: string;
+	repo: string;
+	branch: string;
+	token: string;
+}) {
 	const reader = createGitHubReader(config, {
 		repo: `${owner}/${repo}`,
 		ref: branch,
@@ -124,9 +109,9 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 
 			// TODO: p-limit for concurrency
 			for (const video of aboutSection.videos) {
-				const image = createGitHubUrl(video.image);
+				const src = createGitHubUrl(video.src);
 
-				aboutSectionVideos.push({ ...video, image });
+				aboutSectionVideos.push({ ...video, src });
 			}
 
 			const browseSection = data["browse-section"];
@@ -144,9 +129,9 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 
 			// TODO: p-limit for concurrency
 			for (const video of testimonialSection.videos) {
-				const image = createGitHubUrl(video.image);
+				const src = createGitHubUrl(video.src);
 
-				testimonialSectionVideos.push({ ...video, image });
+				testimonialSectionVideos.push({ ...video, src });
 			}
 
 			const image = createGitHubUrl(data.image);
@@ -293,6 +278,15 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 				sessions.push({ ...session, content: component, presentations });
 			}
 
+			const organisations = [];
+
+			// TODO: p-limit for concurrency
+			for (const organisation of metadata.organisations) {
+				const logo = createGitHubUrl(organisation.logo);
+
+				organisations.push({ ...organisation, logo });
+			}
+
 			const featuredImage =
 				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
@@ -311,6 +305,7 @@ export const createGitHubClient = cache(async function createGitHubClient() {
 					...metadata,
 					"content-type": "event" as const,
 					"featured-image": featuredImage,
+					organisations,
 					sessions,
 				},
 				curricula,

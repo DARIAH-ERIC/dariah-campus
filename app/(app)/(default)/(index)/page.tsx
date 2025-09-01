@@ -1,7 +1,6 @@
 import { assert } from "@acdh-oeaw/lib";
 import { ChevronDownIcon, SearchIcon } from "lucide-react";
 import type { Metadata } from "next";
-import { draftMode } from "next/headers";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -19,6 +18,7 @@ import { SearchForm } from "@/components/search-form";
 import { client } from "@/lib/content/client";
 import type { IndexPage as IndexPageContent } from "@/lib/content/client/index-page";
 import { createGitHubClient } from "@/lib/content/github-client";
+import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
 
 export function generateMetadata(): Metadata {
 	const metadata: Metadata = {
@@ -34,11 +34,12 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function IndexPage(): Promise<ReactNode> {
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const page = draft.isEnabled
-		? await (await createGitHubClient()).singletons.indexPage.get()
-		: client.singletons.indexPage.get();
+	const page =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).singletons.indexPage.get()
+			: client.singletons.indexPage.get();
 
 	return (
 		<div className="mx-auto w-full max-w-screen-lg space-y-24 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
@@ -64,7 +65,12 @@ function HeroSection(props: Readonly<HeroSectionProps>): ReactNode {
 
 	return (
 		<section className="flex flex-col items-center gap-y-4 text-center">
-			<Image alt="" className="mx-auto h-48 text-brand-700 lg:h-60" src={image} />
+			<Image
+				alt=""
+				className="mx-auto h-48 w-auto text-brand-700 lg:h-60"
+				priority={true}
+				src={image}
+			/>
 			<h1 className="text-5xl font-bold lg:text-6xl">{title}</h1>
 			<p className="text-xl text-neutral-500 lg:text-2xl">{lead}</p>
 		</section>
@@ -157,7 +163,7 @@ function AboutSection(props: Readonly<AboutSectionProps>): ReactNode {
 							<VideoCard
 								description={video.description}
 								id={video.id}
-								image={video.image}
+								src={video.src}
 								title={video.title}
 							/>
 						</li>
@@ -244,7 +250,7 @@ function TestimonialSection(props: Readonly<TestimonialSectionProps>): ReactNode
 							<VideoCard
 								description={video.description}
 								id={video.id}
-								image={video.image}
+								src={video.src}
 								title={video.title}
 							/>
 						</li>
