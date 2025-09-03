@@ -195,6 +195,9 @@
 		"search": "Search",
 		"submit-search-form": "Submit"
 	},
+	"LastModified": {
+		"last-modified": "Last modified: {date}"
+	},
 	"Loading": {
 		"loading": "Loading"
 	},

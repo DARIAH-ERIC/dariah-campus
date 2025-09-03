@@ -172,6 +172,8 @@ export default async function EventResourcePage(
 		};
 	});
 
+	const lastModified = resource.lastModified;
+
 	return (
 		<div>
 			{/* @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata#json-ld */}
@@ -313,6 +315,7 @@ export default async function EventResourcePage(
 						featuredImage={featuredImage}
 						href={resource.href}
 						id={resource.id}
+						lastModified={lastModified}
 						location={location}
 						organisations={organisations}
 						social={social}
