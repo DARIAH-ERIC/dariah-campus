@@ -19,7 +19,17 @@ export function FigurePreview(props: Readonly<FigurePreviewProps>): ReactNode {
 	const url = useObjectUrl(src);
 
 	return (
-		<figure className={cn("grid gap-y-2", alignment === "center" ? "justify-center" : undefined)}>
+		<figure
+			className={cn(
+				"grid gap-y-2",
+				alignment === "center" ? "justify-center" : undefined,
+				alignment === "left"
+					? "inline-block sm:float-left sm:my-0 sm:me-4"
+					: alignment === "right"
+						? "inline-block sm:float-right sm:my-0 sm:ms-4"
+						: undefined,
+			)}
+		>
 			<NotEditable>
 				{url != null ? (
 					// eslint-disable-next-line @next/next/no-img-element
@@ -30,7 +40,14 @@ export function FigurePreview(props: Readonly<FigurePreviewProps>): ReactNode {
 					/>
 				) : null}
 			</NotEditable>
-			<figcaption className="text-sm">{children}</figcaption>
+			<figcaption
+				className={cn(
+					"text-sm",
+					["left", "right"].includes(alignment) ? "sm:contain-inline-size" : undefined,
+				)}
+			>
+				{children}
+			</figcaption>
 		</figure>
 	);
 }
