@@ -20,15 +20,11 @@ const searchFiltersSchema = v.object({
 		v.pipe(v.string(), v.transform(Number), v.number(), v.integer(), v.minValue(0)),
 		"0",
 	),
-	kind: v.nullish(
-		v.pipe(
-			v.unknown(),
-			v.transform(ensureArray),
-			v.array(v.picklist(["event", "external", "hosted", "pathfinder"])),
-		),
-		[],
-	),
+	kind: v.nullish(v.pipe(v.array(v.picklist(["event", "external", "hosted", "pathfinder"]))), []),
 });
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type SearchFiltersSchema = v.InferInput<typeof searchFiltersSchema>;
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
 	const searchParams = new URL(request.url).searchParams;

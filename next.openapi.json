@@ -7,11 +7,15 @@
 	},
 	"servers": [
 		{
+			"url": "http://localhost:3000/api",
+			"description": "Local development server"
+		},
+		{
 			"url": "https://campus.dariah.eu/api",
 			"description": "Production deployment"
 		}
 	],
-	"apiDir": "./app/(app)/api/v2",
+	"apiDir": "./app/(api)/api/v2",
 	"schemaType": "typescript",
 	"outputFile": "openapi.json",
 	"outputDir": "./public",
