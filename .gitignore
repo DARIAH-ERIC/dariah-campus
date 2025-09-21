@@ -55,3 +55,6 @@ certificates
 
 # generated metadata dump
 /public/metadata/*.json
+
+# generated openapi docs
+/public/openapi.*

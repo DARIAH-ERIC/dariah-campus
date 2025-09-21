@@ -1,0 +1,20 @@
+{
+	"openapi": "3.1.0",
+	"info": {
+		"title": "DARIAH-Campus API Documentation",
+		"version": "1.0.0",
+		"description": "API for DARIAH-Campus resource metadata"
+	},
+	"servers": [
+		{
+			"url": "https://campus.dariah.eu/api",
+			"description": "Production deployment"
+		}
+	],
+	"apiDir": "./app/(app)/api/v2",
+	"schemaType": "typescript",
+	"outputFile": "openapi.json",
+	"outputDir": "./public",
+	"includeOpenApiRoutes": false,
+	"debug": false
+}
