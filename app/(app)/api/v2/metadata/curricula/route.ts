@@ -19,6 +19,9 @@ const searchFiltersSchema = v.object({
 		v.pipe(v.string(), v.transform(Number), v.number(), v.integer(), v.minValue(0)),
 		"0",
 	),
+	publicationYear: v.nullish(
+		v.pipe(v.string(), v.transform(Number), v.number(), v.integer(), v.minValue(0)),
+	),
 });
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
@@ -29,11 +32,21 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 			limit: searchParams.get("limit"),
 			offset: searchParams.get("offset"),
 			kind: searchParams.getAll("kind"),
+			publicationYear: searchParams.get("publication-year"),
 		});
 
+		const _items = curricula;
+
+		const items =
+			filters.publicationYear != null
+				? _items.filter((item) => {
+						return new Date(item["publication-date"]).getUTCFullYear() === filters.publicationYear;
+					})
+				: _items;
+
 		const { limit, offset } = filters;
-		const total = curricula.length;
-		const page = curricula.slice(offset, offset + limit);
+		const total = items.length;
+		const page = items.slice(offset, offset + limit);
 
 		return NextResponse.json({ total, limit, offset, items: page });
 	} catch (error) {
