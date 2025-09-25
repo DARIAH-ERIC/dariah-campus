@@ -20,9 +20,23 @@ export function Figure(props: Readonly<FigureProps>): ReactNode {
 	const { alignment = "stretch", alt = "", children, height, src, width } = props;
 
 	return (
-		<figure className={cn("flex flex-col", alignment === "center" ? "justify-center" : undefined)}>
+		<figure
+			className={cn(
+				"flex flex-col",
+				alignment === "center" ? "justify-center" : undefined,
+				alignment === "left"
+					? "inline-block sm:float-left sm:my-0 sm:me-4"
+					: alignment === "right"
+						? "inline-block sm:float-right sm:my-0 sm:ms-4"
+						: undefined,
+			)}
+		>
 			<Image alt={alt} height={height} src={src} width={width} />
-			<figcaption>{children}</figcaption>
+			<figcaption
+				className={cn(["left", "right"].includes(alignment) ? "sm:contain-inline-size" : undefined)}
+			>
+				{children}
+			</figcaption>
 		</figure>
 	);
 }
