@@ -54,3 +54,14 @@ body:
       description: Short description of the resource
     validations:
       required: true
+  - type: input
+    id: expected-date-of-completion
+    attributes:
+      label: Expected Date of Completion
+      description: Please provide a realistic date by which you expect to submit your
+        publication-ready resource for editorial review. This will allow the Editorial
+        Board to plan and coordinate the process effectively and ensure timely feedback
+        on your submission.
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
