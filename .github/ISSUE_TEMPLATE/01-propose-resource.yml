@@ -24,10 +24,10 @@ body:
     attributes:
       label: Resource type
       options:
-        - External Resource
-        - Hosted Resource
+        - External resource
+        - Hosted resource
         - Pathfinder
-        - Captured Event
+        - Captured event
   - type: input
     id: authors
     attributes:
@@ -52,5 +52,15 @@ body:
     attributes:
       label: Abstract
       description: Short description of the resource
+    validations:
+      required: true
+  - type: input
+    id: expected-date-of-completion
+    attributes:
+      label: Expected date of completion
+      description: |
+        Please provide a realistic date by which you expect to submit your publication-ready resource for editorial review.
+        This will allow the Editorial Board to plan and coordinate the process effectively and ensure timely feedback on your submission.
+      placeholder: DD-MM-YYYY
     validations:
       required: true
