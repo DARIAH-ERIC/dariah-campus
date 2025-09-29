@@ -61,6 +61,6 @@ body:
       description: |
         Please provide a realistic date by which you expect to submit your publication-ready resource for editorial review.
         This will allow the Editorial Board to plan and coordinate the process effectively and ensure timely feedback on your submission.
-      placeholder: YYYY-MM-DD
+      placeholder: DD-MM-YYYY
     validations:
       required: true
