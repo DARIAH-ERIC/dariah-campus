@@ -6,12 +6,13 @@ concurrency:
 
 on:
   pull_request:
-    branches-ignore:
+    branches:
       - main
 
 jobs:
   validate:
     name: Validate
+    if: ${{ !startsWith(github.head_ref, 'content/') }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 60
 
@@ -48,6 +49,12 @@ jobs:
 
       - name: Format
         run: pnpm run format:check
+
+      - name: Transform content
+        run: pnpm run content:build
+
+      - name: Generate metadata dump
+        run: pnpm run generate:metadata-dump
 
       - name: Lint
         run: pnpm run lint:check
@@ -88,9 +95,14 @@ jobs:
         run: |
           touch .env.local
           pnpm run dev:typesense:up
+          echo "Waiting for Typesense to be ready..."
+          until curl -s -o /dev/null -w "%{http_code}" -H "X-TYPESENSE-API-KEY: $TYPESENSE-API-KEY" http://localhost:8108/health | grep -q 200; do
+            echo -n "."
+            sleep 1
+          done
           pnpm run typesense:collection:create
           pnpm run typesense:collection:seed
-          NEXT_PUBLIC_TYPESENSE_SEARCH_API_KEY=$(pnpm run typesense:api-key:create | awk -F'"' '{print $2}') >> $GITHUB_ENV
+          echo NEXT_PUBLIC_TYPESENSE_SEARCH_API_KEY=$(pnpm run typesense:api-key:create | awk -F'"' '{print $2}') >> $GITHUB_ENV
 
       - name: Build app
         run: pnpm run build
