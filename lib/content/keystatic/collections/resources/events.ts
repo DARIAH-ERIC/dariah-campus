@@ -4,10 +4,11 @@ import {
 	createContentFieldOptions,
 	withI18nPrefix,
 } from "@acdh-oeaw/keystatic-lib";
+import { readonly } from "@acdh-oeaw/keystatic-lib/fields/readonly";
 import { collection, fields } from "@keystatic/core";
 
 import { createCallout } from "@/lib/content/keystatic/components/callout";
-import { createDiagram } from "@/lib/content/keystatic/components/diagram";
+// import { createDiagram } from "@/lib/content/keystatic/components/diagram";
 import { createDisclosure } from "@/lib/content/keystatic/components/disclosure";
 import { createEmbed } from "@/lib/content/keystatic/components/embed";
 import { createFigure } from "@/lib/content/keystatic/components/figure";
@@ -18,7 +19,6 @@ import { createLink } from "@/lib/content/keystatic/components/link";
 import { createLinkButton } from "@/lib/content/keystatic/components/link-button";
 import { createTabs } from "@/lib/content/keystatic/components/tabs";
 import { createVideo } from "@/lib/content/keystatic/components/video";
-import { readonly } from "@/lib/content/keystatic/fields/read-only";
 import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
 import * as validation from "@/lib/content/keystatic/validation";
 import { contentLanguages, contentLicenses, socialMediaKinds } from "@/lib/content/options";
@@ -265,7 +265,7 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 				},
 				components: {
 					...createCallout(paths, locale),
-					...createDiagram(paths, locale),
+					// ...createDiagram(paths, locale),
 					...createDisclosure(paths, locale),
 					...createEmbed(paths, locale),
 					...createFigure(paths, locale),
@@ -351,7 +351,7 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 							},
 							components: {
 								...createCallout(paths, locale),
-								...createDiagram(paths, locale),
+								// ...createDiagram(paths, locale),
 								...createDisclosure(paths, locale),
 								...createEmbed(paths, locale),
 								...createFigure(paths, locale),
@@ -437,7 +437,7 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 										},
 										components: {
 											...createCallout(paths, locale),
-											...createDiagram(paths, locale),
+											// ...createDiagram(paths, locale),
 											...createDisclosure(paths, locale),
 											...createEmbed(paths, locale),
 											...createFigure(paths, locale),

@@ -46,6 +46,7 @@
 	},
 	"Curriculum": {
 		"authors": "Authors",
+		"coming-soon": "Coming soon!",
 		"editors": "Editors",
 		"resources": "Resources",
 		"tags": "Topics",
@@ -122,12 +123,6 @@
 		"navigation": "Documentation pages",
 		"table-of-contents": "Table of contents",
 		"toggle-table-of-contents": "Toggle table of contents"
-	},
-	"DraftModeBanner": {
-		"branch": "Branch: {branch}",
-		"disable": "Disable",
-		"enabled": "Draft mode enabled",
-		"invalid-branch": "Branch invalid or missing"
 	},
 	"ErrorPage": {
 		"meta": {
@@ -235,6 +230,12 @@
 		"authors": "Authors",
 		"read-more": "Read more"
 	},
+	"PreviewModeBanner": {
+		"branch": "Branch: {branch}",
+		"disable": "Disable",
+		"enabled": "Preview mode enabled",
+		"invalid-branch": "Branch invalid or missing"
+	},
 	"RelatedCurriculaList": {
 		"label": "Related curricula"
 	},
@@ -280,6 +281,9 @@
 		"tags": "Topics",
 		"title": "Title",
 		"version": "Version"
+	},
+	"ResourcePreviewCard": {
+		"coming-soon": "Coming soon!"
 	},
 	"ResourcesPage": {
 		"authors": "Authors",

@@ -1,6 +1,5 @@
 import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Fragment, type ReactNode } from "react";
@@ -16,14 +15,14 @@ import { ResourceMetadata } from "@/components/resource-metadata";
 import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
 import { TranslationsList } from "@/components/translations-list";
+import { env } from "@/config/env.config";
 import { client } from "@/lib/content/client";
 import { createGitHubClient } from "@/lib/content/github-client";
+import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
 import { createResourceMetadata } from "@/lib/content/utils/create-resource-metadata";
 import { getMetadata } from "@/lib/i18n/metadata";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
 import { pickRandom } from "@/lib/utils/pick-random";
-
-export const dynamicParams = false;
 
 interface HostedResourcePageProps extends PageProps<"/resources/hosted/[id]"> {}
 
@@ -47,11 +46,12 @@ export async function generateMetadata(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const resource = draft.isEnabled
-		? await (await createGitHubClient()).collections.resourcesHosted.get(id)
-		: client.collections.resourcesHosted.get(id);
+	const resource =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).collections.resourcesHosted.get(id)
+			: client.collections.resourcesHosted.get(id);
 
 	if (resource == null) {
 		notFound();
@@ -90,7 +90,12 @@ export async function generateMetadata(
 				return name;
 			}),
 			title,
-			url: String(createFullUrl({ pathname: resource.href })),
+			url: String(
+				createFullUrl({
+					baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+					pathname: resource.href,
+				}),
+			),
 		}),
 	};
 
@@ -107,11 +112,12 @@ export default async function HostedResourcePage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const draft = await draftMode();
+	const preview = await getPreviewMode();
 
-	const resource = draft.isEnabled
-		? await (await createGitHubClient()).collections.resourcesHosted.get(id)
-		: client.collections.resourcesHosted.get(id);
+	const resource =
+		preview.status === "enabled"
+			? await createGitHubClient(preview).collections.resourcesHosted.get(id)
+			: client.collections.resourcesHosted.get(id);
 
 	if (resource == null) {
 		notFound();
@@ -222,7 +228,15 @@ export default async function HostedResourcePage(
 						})}
 						publicationDate={new Date(publicationDate)}
 						title={title}
-						url={doi || String(createFullUrl({ pathname: resource.href }))}
+						url={
+							doi ||
+							String(
+								createFullUrl({
+									baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+									pathname: resource.href,
+								}),
+							)
+						}
 						version={version}
 					/>
 					<ReUseConditions />
@@ -276,7 +290,15 @@ export default async function HostedResourcePage(
 							})}
 							publicationDate={new Date(publicationDate)}
 							title={title}
-							url={doi || String(createFullUrl({ pathname: resource.href }))}
+							url={
+								doi ||
+								String(
+									createFullUrl({
+										baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+										pathname: resource.href,
+									}),
+								)
+							}
 							version={version}
 						/>
 						<ReUseConditions />

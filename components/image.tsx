@@ -15,6 +15,15 @@ export function Image(props: Readonly<ImageProps>): ReactNode {
 		const repo = env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_NAME;
 
 		if (owner != null && repo != null) {
+			/**
+			 * Get image from repository in draft mode.
+			 *
+			 * Note that this will only work for public repositories.
+			 *
+			 * For private repositories we would need to fetch the image blob via api,
+			 * and provide an access token via authorization header. We can display the image
+			 * with `URL.createObjectURL` and `URL.revokeObjectURL`.
+			 */
 			const github = `https://raw.githubusercontent.com/${owner}/${repo}/refs/heads/`;
 
 			if (src.startsWith(github)) {

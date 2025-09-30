@@ -7,6 +7,7 @@ onlyBuiltDependencies:
   - simple-git-hooks
   - typesense-instantsearch-adapter
   - unrs-resolver
+  - vue-demi
 
 patchedDependencies:
   next: patches/next.patch
