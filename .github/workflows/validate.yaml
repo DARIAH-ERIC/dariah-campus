@@ -91,7 +91,7 @@ jobs:
           path: "${{ github.workspace }}/.next/cache"
           key: "${{ matrix.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}"
 
-      - name: Start typesense server
+      - name: Start typesense server and populate search index
         run: |
           touch .env.local
           pnpm run dev:typesense:up
@@ -110,7 +110,7 @@ jobs:
       - name: Run e2e tests
         run: pnpm run test:e2e
 
-      - name: Start typesense server
+      - name: Stop typesense server
         run: pnpm run dev:typesense:down
 
       - uses: actions/upload-artifact@v4
