@@ -2,6 +2,7 @@ name: Technical issue
 description: Report a technical issue with DARIAH-Campus
 assignees:
   - babslgam
+  - stefanprobst
 labels:
   - needs-review
 type: bug

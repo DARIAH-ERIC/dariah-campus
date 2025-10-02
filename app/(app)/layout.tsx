@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Promise<Metadata>> {
 	const meta = await getMetadata();
 
 	const metadata: Metadata = {
-		metadataBase: new URL(env.NEXT_PUBLIC_APP_BASE_URL),
+		metadataBase: new URL(env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL),
 		alternates: {
 			canonical: "./",
 			types: {

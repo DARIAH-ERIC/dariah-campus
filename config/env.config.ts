@@ -73,13 +73,6 @@ const result = createEnv({
 				NEXT_PUBLIC_MATOMO_ID: v.optional(
 					v.pipe(v.string(), v.transform(Number), v.number(), v.integer(), v.minValue(1)),
 				),
-				NEXT_PUBLIC_REDMINE_ID: v.pipe(
-					v.string(),
-					v.transform(Number),
-					v.number(),
-					v.integer(),
-					v.minValue(1),
-				),
 				NEXT_PUBLIC_TYPESENSE_COLLECTION: v.pipe(v.string(), v.nonEmpty()),
 				NEXT_PUBLIC_TYPESENSE_HOST: v.pipe(v.string(), v.nonEmpty()),
 				NEXT_PUBLIC_TYPESENSE_PORT: v.pipe(
@@ -127,7 +120,6 @@ const result = createEnv({
 		NEXT_PUBLIC_KEYSTATIC_MODE: process.env.NEXT_PUBLIC_KEYSTATIC_MODE,
 		NEXT_PUBLIC_MATOMO_BASE_URL: process.env.NEXT_PUBLIC_MATOMO_BASE_URL,
 		NEXT_PUBLIC_MATOMO_ID: process.env.NEXT_PUBLIC_MATOMO_ID,
-		NEXT_PUBLIC_REDMINE_ID: process.env.NEXT_PUBLIC_REDMINE_ID,
 		NEXT_PUBLIC_TYPESENSE_COLLECTION: process.env.NEXT_PUBLIC_TYPESENSE_COLLECTION,
 		NEXT_PUBLIC_TYPESENSE_HOST: process.env.NEXT_PUBLIC_TYPESENSE_HOST,
 		NEXT_PUBLIC_TYPESENSE_PORT: process.env.NEXT_PUBLIC_TYPESENSE_PORT,
