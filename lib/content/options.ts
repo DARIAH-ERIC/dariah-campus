@@ -34,6 +34,8 @@ export type ContentType = (typeof contentTypes)[number]["value"];
 
 export const figureAlignments = [
 	{ label: "Center", value: "center" },
+	{ label: "Left", value: "left" },
+	{ label: "Right", value: "right" },
 	{ label: "Stretch", value: "stretch" },
 ] as const;
 
