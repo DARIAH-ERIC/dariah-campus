@@ -46,6 +46,7 @@
 	},
 	"Curriculum": {
 		"authors": "Authors",
+		"coming-soon": "Coming soon!",
 		"editors": "Editors",
 		"resources": "Resources",
 		"tags": "Topics",
@@ -280,6 +281,9 @@
 		"tags": "Topics",
 		"title": "Title",
 		"version": "Version"
+	},
+	"ResourcePreviewCard": {
+		"coming-soon": "Coming soon!"
 	},
 	"ResourcesPage": {
 		"authors": "Authors",
