@@ -2,14 +2,61 @@ import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 import { log } from "@acdh-oeaw/lib";
+import * as v from "valibot";
 
 import { client } from "@/lib/content/client";
-import type { CurriculumMetadata } from "@/public/metadata/curricula.json";
-import type { ResourceMetadata } from "@/public/metadata/resources.json";
 
 const formatters = {
 	duration: new Intl.NumberFormat("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
 };
+
+export const curriculumMetadataSchema = v.object({
+	id: v.string(),
+	collection: v.literal("curriculum"),
+	version: v.string(),
+	pid: v.string(),
+	title: v.string(),
+	summary: v.object({ title: v.string(), content: v.string() }),
+	license: v.string(),
+	locale: v.string(),
+	translations: v.array(v.string()),
+	"publication-date": v.string(),
+	"content-type": v.literal("curriculum"),
+	tags: v.array(v.object({ id: v.string(), name: v.string() })),
+	editors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
+	resources: v.array(v.object({ id: v.string(), collection: v.string() })),
+});
+
+export type CurriculumMetadata = v.InferOutput<typeof curriculumMetadataSchema>;
+
+export const resourceMetadataSchema = v.object({
+	id: v.string(),
+	collection: v.picklist([
+		"resourcesEvents",
+		"resourcesExternal",
+		"resourcesHosted",
+		"resourcesPathfinders",
+	]),
+	kind: v.picklist(["event", "external", "hosted", "pathfinder"]),
+	version: v.string(),
+	pid: v.string(),
+	title: v.string(),
+	summary: v.object({ title: v.string(), content: v.string() }),
+	license: v.string(),
+	locale: v.string(),
+	translations: v.array(v.string()),
+	"publication-date": v.string(),
+	"content-type": v.string(),
+	tags: v.array(v.object({ id: v.string(), name: v.string() })),
+	authors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
+	editors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
+	contributors: v.array(
+		v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) }),
+	),
+	sources: v.array(v.object({ id: v.string(), name: v.string() })),
+});
+
+export type ResourceMetadata = v.InferOutput<typeof resourceMetadataSchema>;
 
 export function createMetadata(): {
 	curricula: Array<CurriculumMetadata>;
@@ -100,8 +147,8 @@ export function createMetadata(): {
 	}
 
 	return {
-		curricula,
-		resources,
+		curricula: v.parse(v.array(curriculumMetadataSchema), curricula),
+		resources: v.parse(v.array(resourceMetadataSchema), resources),
 	};
 }
 
