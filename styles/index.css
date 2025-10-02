@@ -165,26 +165,51 @@
 		& h2 {
 			font-weight: var(--font-weight-bold);
 			font-size: var(--text-2xl);
+
+			/* stylelint-disable-next-line no-descending-specificity */
+			& a {
+				font-weight: inherit;
+			}
 		}
 
 		& h3 {
 			font-weight: var(--font-weight-bold);
 			font-size: var(--text-xl);
+
+			/* stylelint-disable-next-line no-descending-specificity */
+			& a {
+				font-weight: inherit;
+			}
 		}
 
 		& h4 {
 			font-weight: var(--font-weight-bold);
 			font-size: var(--text-lg);
+
+			/* stylelint-disable-next-line no-descending-specificity */
+			& a {
+				font-weight: inherit;
+			}
 		}
 
 		& h5 {
 			font-weight: var(--font-weight-bold);
 			font-size: var(--text-base);
+
+			/* stylelint-disable-next-line no-descending-specificity */
+			& a {
+				font-weight: inherit;
+			}
 		}
 
 		& h6 {
 			font-style: italic;
 			font-size: var(--text-base);
+
+			/* stylelint-disable-next-line no-descending-specificity */
+			& a {
+				font-weight: inherit;
+			}
 		}
 
 		& .no-list {

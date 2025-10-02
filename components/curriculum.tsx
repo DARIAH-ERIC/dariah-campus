@@ -104,6 +104,9 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 									</CardContent>
 									<CardFooter>
 										<AvatarsList avatars={authors} label={t("authors")} />
+										{href == null ? (
+											<span className="text-sm text-neutral-500">{t("coming-soon")}</span>
+										) : null}
 									</CardFooter>
 								</Card>
 							</li>
