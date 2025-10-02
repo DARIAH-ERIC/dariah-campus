@@ -8,10 +8,10 @@ import {
 	withUnwrappedMdxFlowContent,
 } from "@acdh-oeaw/mdx-lib";
 import withSyntaxHighlighter, { type RehypeShikiOptions } from "@shikijs/rehype";
-// import withMermaidDiagrams from "rehype-mermaid";
 import withHeadingIds from "rehype-slug";
 import type { Pluggable } from "unified";
 
+import { withMermaidDiagrams } from "@/lib/content/mdx/with-mermaid-diagrams";
 import { withRemoteImageUrls } from "@/lib/content/mdx/with-remote-image-urls";
 
 const syntaxHighlighterConfig: RehypeShikiOptions = {
@@ -45,15 +45,9 @@ export function createRemoteImageUrlsPlugin(baseUrl: string, components?: Array<
 	return [withRemoteImageUrls, { baseUrl, components }] satisfies Pluggable;
 }
 
-// export function createMermaidDiagramsPlugin() {
-// 	return [
-// 		withMermaidDiagrams,
-// 		{
-// 			mermaidConfig: { fontFamily: '"Roboto", system-ui, sans-serif' },
-// 			strategy: "inline-svg",
-// 		},
-// 	] satisfies Pluggable;
-// }
+export function createMermaidDiagramsPlugin() {
+	return withMermaidDiagrams satisfies Pluggable;
+}
 
 export function createSyntaxHighlighterPlugin() {
 	return [withSyntaxHighlighter, syntaxHighlighterConfig] satisfies Pluggable;
