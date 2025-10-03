@@ -1,0 +1,480 @@
+---
+title: 'Unit III: How to encode with the TEI'
+locale: en
+publication-date: '2016-01-26'
+version: '1.0'
+authors:
+  - schreibman-susan
+  - bleier-roman
+contributors:
+  - schreibman-susan
+  - bleier-roman
+tags:
+  - markup-languages
+  - modelling
+  - tei
+  - dtd
+sources:
+  - dariah
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >
+    This unit is divided into two main lessons, with core practical components
+    for applying what you have learned in the course:
+
+
+    TEI in Practice covers the basics around using the TEI schema, including
+    information on the TEI header (biographic information on the text and
+    mandatory TEI elements), and the elements within &lt;text&gt;, which encodes
+    the textual content itself ( divided into &lt;front&gt;, &lt;body&gt; and
+    &lt;back&gt;. This section includes an overview of the core elements used
+    for encoding text, how to customise the TEI to encode specific textual
+    types. 
+
+    Two exercises follow to put what you have learned into practice. The Yeats
+    Exercise: Encoding poetry with the TEI and the Franklin Exercise: Encoding
+    prose with the TEI utilise the XML-aware editor oXygen (which can be
+    downloaded free for 30 days) to utilise a variety of elements in encoding a
+    complex document. 
+
+    The Specialist Encoding section covers the specific elements needed to
+    encode correspondence. 
+content-type: training-module
+
+---
+
+## TEI in practice
+
+### The TEI header
+
+#### TEI Basics
+
+A TEI document consists of two main sections: the \<teiHeader> and \<text>. These two sections are child elements of the \<TEI> root element. While the \<text> element contains the document text (the encoded poem, letter or other textual object), the \<teiHeader> provides for an extensive metadata record of the object, both the original analogue object (if appropriate) as well as the encoded version. A schematic of the basic structure is below in figure 1.
+
+```
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+     <teiHeader>
+            <!-- metadata -->
+     </teiHeader>
+     <text>
+             <!-- transcription -->
+     </text>
+</TEI>
+```
+
+Figure 1: a schematic of the basic structure of the TEI.
+
+#### Structure of the TEI Header
+
+The main function of the \<teiHeader> is to provide bibliographic record about the electronic document. It includes four main sections (or child elements), not all of which are required for conformant TEI:
+
+* \<fileDesc>; a bibliographic record of the electronic text as well as the source from which the electronic text is derived;
+* \<encodingDesc>: documentation of the encoding and editorial principles used in tagging the electronic text;
+* \<profileDesc>: terms for indexing, searching and retrieval;
+* \<revisionDesc>: a record of changes made to the electronic document.
+
+Figure 2. shows the order of these elements, if they are all used. Although the only required child element is \<fileDesc>.
+
+```
+<teiHeader>
+    <fileDesc></fileDesc>
+    <encodingDesc></encodingDesc>
+    <profileDesc></profileDesc>
+    <revisionDesc></revisionDesc>
+</teiHeader>
+```
+
+Figure 2. The child elements of \<teiHeader> and their required order.
+
+#### \<fileDesc> in more detail
+
+\<fileDesc> is the only child element of the \<teiHeader> that is mandatory in all TEI documents. \<fileDesc>, in turn, must include three child elements to be conformant: \<titleStmt>, \<publicationStmt> and \<sourceDesc>.
+
+* \<titleStmt> contains child elements that provides basic metadata about the document, including title of the resource, author and/or editor names, as well as the names and roles of other people who contributed to the creation of the electronic document;
+* \<publicationStmt> contains basic child elements regarding publication information of the electronic text, including publlisher name and address, copyright information, and publication date;
+* \<sourceDesc> contains child elements that describe the original source from which the electronic text was created. For instance, it may contain a detailed description of a manuscript or book.
+
+Figure 3. shows a basic TEI header structure with all mandatory elements:
+
+```
+<teiHeader>
+    <fileDesc>
+        <titleStmt>
+             <title>Title</title>
+        </titleStmt>
+        <publicationStmt>
+             <p>Publication Information</p>
+        </publicationStmt>
+        <sourceDesc>
+            <p>Information about the source</p>
+        </sourceDesc>
+    </fileDesc>
+</teiHeader>
+```
+
+Figure 3: Mandatory TEI elements.
+
+Besides the three mandatory child elements of \<fileDesc> described above, there are also four optional elements, the order of which are mandated by the Guidelines:
+
+* \<editionStmt>: groups information relating to one edition of a text;
+* \<extent>: describes the approximate size of a text stored on some carrier medium or of some other object, digital or non-digital, specified in any convenient units;
+* \<seriesStmt>: groups information about the series, if any, to which a publication belongs;
+* \<noteStmt>: collects together any notes providing information about a text additional to that recorded in other parts of the bibliographic description.
+
+#### Options for encoding TEI header elements
+
+As described above, many of the elements contained in the \<teiHeader> contain child elements that provide further structuring of the content. With many of these elements an editor can choose between a simple prose description or a more detailed structuring of the content using additional child elements. \<encodingDesc> is a case in point. One option is to use a simple \<p> tag for a prose description as in figure 4:
+
+```
+<encodingDesc>
+    <p>Original spelling and typography is retained, except that long s and ligatured forms are not encoded.</p>
+</encodingDesc>
+```
+
+Figure 4. A simple prose description of \<encodingDesc> However, the \<encodingDesc> could encoding to provide much more structure via child elements such as figure 5:
+
+```
+<encodingDesc>
+   <projectDesc>describes the overall project purpose and process</projectDesc>
+   <samplingDecl>documents rational for text sampling or selection in case of parts of the text or corpus have been omitted</samplingDecl>
+   <editorialDecl>explains editorial principles of encoding or transcribing texts</editorialDecl>
+   <charDecl>provides information about nonstandard characters and glyphs</charDecl>
+</encodingDesc>
+```
+
+Figure 5. A detailed encoding of \<encodingDesc>. Both types of encoding are absolutely correct. The decision as to which one to use will depend on the goals of the project the the purpose of the encoded texts. For example, if it is important for users to be able to search on how nonstandard characters were handled in the encoding, then the second example would be more suitable as the use of the \<charDecl> would allow that element to be isolated for search purposes.
+
+Chapter Two of the TEI Guidelines explains the \<teiHeader> and all the child elements that can be used. The exercises in this unit also go into the Header in more detail.
+
+####
+
+Further reading
+
+The TEI header. The TEI Guidelines. \<[http://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html)>
+
+Module 2: The TEI header, TEI by Example. \<[http://teibyexample.org/modules/TBED02v00.htm](http://teibyexample.org/modules/TBED02v00.htm)>
+
+### The TEI text
+
+#### Introduction
+
+While the \<teiHeader> is the container element for metadata, \<text> is the container element for the content. \<text> contains three major subdivisions or child elements:
+
+1. \<front>: (front matter) contains any prefatory matter (headers, abstracts, title page, prefaces, dedications, etc.) found at the start of a document, before the main body
+2. \<body>: (text body) contains the whole body of a single unitary text, excluding any front or back matter
+3. \<back>: (back matter) contains any appendixes, etc. following the main part of a text.
+
+#### Front
+
+Front matter that is typical in published texts, particularly on the title page, or *preliminaries* of older printed books, is encoded within the \<front> element as in figure 1:
+
+```
+<front>
+    <docTitle>
+        <titlePart>
+            The Hobbit or There and Back Again                    
+         </titlePart>
+     </docTitle>
+     <byline>by <docAuthor>J. R. R. Talkien</docAuthor>
+      illustrations by the author</byline>
+     <docImprint>Boston and New York <title>Houghton Mifflin Company</title> 1938</docImprint>
+</front>
+```
+
+Figure 1: Example of front matter
+
+Encoding of front matter is described in section 4.6 Title Pages of the TEI Guidelines. \<front> contains a number of child elements including
+
+* titlePage (title page) contains the title page of a text, appearing within the front or back matter.
+* docTitle (document title) contains the title of a document, including all its constituents, as given on a title page.
+* titlePart contains a subsection or division of the title of a work, as indicated on a title page.
+* argument contains a formal list or prose description of the topics addressed by a subdivision of a text.
+* byline contains the primary statement of responsibility given for a work on its title page or at the head or end of the work.
+* docAuthor (document author) contains the name of the author of the document, as given on the title page (often but not always contained in a byline).
+* epigraph contains a quotation, anonymous or attributed, appearing at the start or end of a section or on a title page.
+* imprimatur contains a formal statement authorizing the publication of a work, sometimes required to appear on a title page or its verso.
+* docEdition (document edition) contains an edition statement as presented on a title page of a document.
+* docImprint (document imprint) contains the imprint statement (place and date of publication, publisher name), as given (usually) at the foot of a title page.
+* docDate (document date) contains the date of a document, as given on a title page or in a dateline.
+* graphic indicates the location of a graphic or illustration, either forming part of a text, or providing an image of it.
+
+#### Body
+
+The \<body> element, with its myriad of child elements, contains the text proper: be it a novel, a collection of poems, a play, a letter, etc, as described in chapter 4 Default Text Structure of the Guidelines. Not only can the structure of these texts be encoded, but other textual information or features can be included, for example, notes, the position of illustrations, additions and deletions in manuscripts, or the presence of multiple hands in the creation of a manuscript.
+
+The TEI tends to favour less descriptive tags which can serve a variety of situations which semantically, represent similar structures. For example, you will not find a tag for poetry called verse, stanza, couplet, or octave. Rather, the TEI provides the \<lg> or line group element which acts as a less semantically specific container for all these types of divisions within a poem. If a particular project would like to specify further the nature of the \<lg>, this can be done via the 'type' attribute: e.g. \<lg type="couplet">
+
+The same principle holds true for encoding books. A book may be structured into several chapters. In TEI this chapter structure can be expressed with the \<div> (division) element. Any arbitrary division can be encoded using this element. Again, by using the @type attribute more granularity in the exact nature of division can indicated, as in the following example:
+
+```
+<<a href="http://december.com/html/4/element/body.html">body</a>>
+    <<a href="http://december.com/html/4/element/div.html">div</a> n="1" type="chapter">
+                <!-- The first chapter of The Hobbit goes here --></<a href="http://december.com/html/4/element/div.html">div</a>>
+     <<a href="http://december.com/html/4/element/div.html">div</a> n="2" type="chapter">
+                <!-- The second chapter of The Hobbit goes here --></<a href="http://december.com/html/4/element/div.html">div</a>>
+     <<a href="http://december.com/html/4/element/div.html">div</a> n="3" type="chapter">
+                <!-- The third chapter of The Hobbit goes here --></<a href="http://december.com/html/4/element/div.html">div</a>>
+</<a href="http://december.com/html/4/element/body.html">body</a>>
+```
+
+Figure 2: An example of encoding chapters using the \<div> element.
+
+#### Back matter
+
+The third section and last section of \<text> is the \<back> element in which back matter is encoded. Back matter is typical of published texts, and appendixes, indexes, etc. following the main part of a text. Further details about this section can be found in chapter 4.7 Back Matter of the Guidelines.
+
+Child elements of \<back> are:
+
+* **appendix**: an ancillary self-contained section of a work, often providing additional but in some sense extra-canonical text.
+* **glossary**: a list of terms associated with definition texts (‘glosses’): this should be encoded as a \<list type="gloss"> (see section 3.7 Lists).
+* notes: a section in which textual or other kinds of notes are gathered together.
+* **bibliogr**: a list of bibliographic citations: this should be encoded as a listBibl
+* **index**: any form of index to the work.
+* **colophon**: a statement appearing at the end of a book describing the conditions of its physical production.
+
+Figure 3 is an example of how to encode back matter:
+
+```
+<back>
+     <<a href="http://december.com/html/4/element/div.html">div</a>>
+        <<a href="http://december.com/html/4/element/head.html">head</a>>Appendix</<a href="http://december.com/html/4/element/head.html">head</a>>
+            <<a href="http://december.com/html/4/element/p.html">p</a>>Here goes the text of the appendix text...</<a href="http://december.com/html/4/element/p.html">p</a>>
+     </<a href="http://december.com/html/4/element/div.html">div</a>>
+     <<a href="http://december.com/html/4/element/div.html">div</a>>
+       <<a href="http://december.com/html/4/element/head.html">head</a>>Index</<a href="http://december.com/html/4/element/head.html">head</a>>
+       <list type="index">
+           <item>First Index Entry</item>
+           <item>Second Index Entry</item>
+       </list>
+    </<a href="http://december.com/html/4/element/div.html">div</a>>
+</back>
+```
+
+Fig 3: Encoding of back matter.
+
+#### Core Elements
+
+There is a set of elements that can be useful for the encoding of different types of texts and are therefore useful for multiple TEI modules. These are called TEI Core Elements and are described in a separate chapter of the TEI Guidelines (3 Elements Available in All TEI Documents). These elements have various functions. Some are structural elements such as \<p> (used to encode paragraphs). Others are used to encode highlighted (\<hi>) or quoted (\<q>) parts of a text. Others indicate editorial changes (the \<reg> and \<abbr> elements) or notes or annotations (\<note>). An example of this is in figure 4:
+
+```
+<<a href="http://december.com/html/4/element/body.html">body</a>>
+     <<a href="http://december.com/html/4/element/head.html">head</a>>The Hobbit</<a href="http://december.com/html/4/element/head.html">head</a>>
+     <<a href="http://december.com/html/4/element/p.html">p</a>>In a hole in the ground<note>This is an editorial note.</note> 
+        there lived a hobbit. Not a nasty, dirty, wet hole, 
+        filled with the ends of worms and an oozy smell, nor yet a dry, bare, ...
+     </<a href="http://december.com/html/4/element/p.html">p</a>>
+</<a href="http://december.com/html/4/element/body.html">body</a>>
+```
+
+Figure 4: TEI core elements
+
+#### Further reading
+
+Module 3: Prose. TEI by Example. \<[http://teibyexample.org/modules/TBED03v00.htm](http://teibyexample.org/modules/TBED03v00.htm)>
+
+### Customising the TEI
+
+TEI has over 500 elements for the encoding of many types of data. No single text encoding project will use all these elements, hence the TEI Consortium has created a number of subsets (modules) of the full TEI schema for certain data types. For instance, the TEI Lite schema is a good starting point for many TEI projects as it contains the most frequently used TEI elements. Other modules include specialised tags for dictionaries, manuscript description, verse, and performance texts.
+
+While these modules cover a wide variety textual types, projects may still need to customise the TEI to better meet their needs. For instance a schema needs to be more restricted in order to ensure consistent encoding or the TEI needs to be extended so that elements from other XML standards or custom elements are added. The TEI encourages this type of customisation, with two caveats:
+
+* three modules are mandatory for all TEI customisations: core, header and textstructure;
+* all changes to the TEI schema are documented through a mechanism called ODD One Document Does it all).
+
+ODD is the XML vocabulary which the TEI system uses to describe itself. This includes creating appropriate documentation as well as the schema specifications about the elements and attributes used. Therefore, ODD is used to generate both technical documentation in form of a DTD or RELAX NG and written documentation of the elements and attributes.
+
+The preferred way to create a TEI cusomisation is via an online tool that provides an interface that makes it easier to create and edit project-specific customisations called Roma. Roma allows one to chose elements and attributes and add custom elements and attributes. With Roma you can also validate your custom schema to make sure it still conforms to the TEI rules, you may save your customisation as well as export a DTD schema and HTML documentation.
+
+<IframeElement w={560} h={315} alt="" src="https://www.youtube.com/embed/Idpg572uf0A" />
+
+#### Further reading:
+
+Getting Started with ODDs. \<[http://www.tei-c.org/Guidelines/Customization/odds.xml](http://www.tei-c.org/Guidelines/Customization/odds.xml)>
+
+TEI: Using Roma. \<[http://www.tei-c.org/Roma/](http://www.tei-c.org/Roma/)>
+
+### Simple TEI Exercise
+
+#### Exercise:
+
+1. Copy and paste the following code into a new XML file
+
+   ```
+   <?xml version="1.0" encoding="UTF-8"?>
+   <TEI version="5.0" xmlns="http://www.tei-c.org/ns/1.0">
+       <teiHeader>
+           <fileDesc>
+               <titleStmt>
+                   <title><!-- title of the electronic text --></title>
+                   <author><!-- author's name --></author>
+                   <principal><!-- principal researcher responsible for the TEI document, add your own name --></principal>
+               </titleStmt>
+               <publicationStmt>
+                   <distributor><!-- name of the repository responsible for the distribution of the TEI document --></distributor>
+                   <availability>
+                       <p><!-- copyright statement --></p>
+                   </availability>
+                   <date><!-- date of the publication of the TEI document --></date>
+               </publicationStmt>
+               <sourceDesc>
+                   <bibl>
+                       <author><!-- author of the book --></author>,
+                       <title level="m"><!-- title of the book  --></title>,
+                       <publisher><!-- publisher of the book --></publisher>
+                       <pubPlace><!-- place of publication --></pubPlace>,
+                       <date><!-- date of publication --></date>. </bibl>
+               </sourceDesc>
+           </fileDesc>
+       </teiHeader>
+       <text>
+           <body>
+               <div><!-- This is not the teiHeader anymore. Here the electronic text of The Hobbit could be added --></div>
+           </body>
+       </text>
+   </TEI>
+   ```
+2. Replace the comments in the \<teiHeader> section with the following metadata:
+
+* Title: There and back again: an electronic edition
+* Author: J.R.R. Tolkien
+* Copyright: The copyright owner of the English translation is Tolkien, 1937
+* Repository: Digital Repository of my University
+* The source: J.R.R. Tolkien. The Hobbit. Ballantine Books, New York. 1937.
+
+4. Validate the TEI document and make sure it is well-formed and valid!
+
+### The TEI Consortium
+
+The TEI Consortium is a not-for-profit membership organisation that has existed since 2000, although the TEI as a tagset and Guidelines has existed since 1987. The Guidelines have become the de facto standard for encoding textual material in the humanities and in cultural heritage. Its extensive, yet customisable tagset (several hundred elements) provides for the most basic of encoding (for example, the structure of a text in paragraphs, chapters, etc) to extremely nuanced and interpretative encoding of texts from dictionaries, to versions of poetry, to drama. The TEI, as expressed first in SGML and currently in XML can be used across such a wide variety of textual types and in a wide variety of publishing environments because of its being hardware and software independent. It also benefits from being community-driven. It is designed and developed by and for the scholarly research community (Burnard, 2015), and as such, is responsive to community needs.
+
+One of the main roles of The TEI Consortium is to develop and maintain guidelines for encoding of humanities data. These Guidelines were first developed for the encoding of text, but they have been extended to include other types of data. For example, the TEI Header can be used to describe multimedia objects. The TEI Guidelines provide detailed information on all TEI elements, as well as providing recommendations and examples on how they should be used. The Guidelines provides the single most comprehensive source about using the TEI and can be accessed online.
+
+TEI elements are organised in modules. The 'core' module contains elements essential to most encoding projects (including paragraphs, quotations, lines and stanzas of poetry, simple links, etc) and are described in Chapter Three of the Guidelines. Additionally, there are modules for the encoding of specialised text types, such as prose, poetry, manuscripts, dictionaries. In this unit we will cover basic TEI rules and some of the more common/important TEI tags described in the Guidelines. An alphabetical list of all TEI Elements and how they are used is probably the easiest way to understand how a particular element is used.
+
+The following video by Lou Burnard, one of the founding editors of the TEI, is an excellent induction to the TEI and its history.
+
+<IframeElement w={560} h={315} alt="" src="https://www.youtube.com/embed/YEE-JlS8oZI" />
+
+#### Further reading
+
+Lou Burnard. What is the Text Encoding Initiative? How to add intelligent markup to digital resources. Marseille. 2014. \<[http://books.openedition.org/oep/426](http://books.openedition.org/oep/426)>.
+
+‘TEI: P5 Guidelines’, *Text Encoding Initiative* \<[http://www.tei-c.org/Guidelines/P5/](http://www.tei-c.org/Guidelines/P5/)>
+
+## Yeats exercise: encoding poetry with TEI
+
+In this exercise you will encode a poem and its associated bibliographic information in the \<teiHeader>. This exercise is designed to be completed within the oXygen editor as much of the instructions indicate how to encode and validate your XML document using this software.
+
+All the files you need for this exercise are included in the zip file below. Save the zip file to your desktop. When you unzip the file, you will find four subfolders:
+
+* documents
+* extras
+* schemas
+* stylesheets
+
+The **documents** folder contains one file: 'yeats\_template.xml. We have pre-populated much of the encoding needed for this poem. You will need to complete the rest of the encoding. Instructions on how to complete the poem are included in the **extras** folder (Instructions on encoding the Yeats poem.pdf). Also in the extras folder are
+
+* the text for the poem
+* a challenge exercise (instructions for which are in section F of the instructions PDF)
+
+The **schemas** folder contains the teilite schema, which the poem will be validated against. The **stylesheets** folder similarly contains the stylesheet (yeats.css) that is used for this exercise.
+
+Before you begin the exercise, watch the following video which provides you with information that should help you from making common mistakes and will explain further the file structure.
+
+<IframeElement w={560} h={315} alt="" src="https://www.youtube.com/embed/WfvbkJqP3iA?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL" />
+
+## Franklin exercise: encode prose with TEI
+
+Download the following zip file containing the exercise documents. You will find the instructions in the folder 'handouts'.# Specialist encoding
+
+### Encoding of correspondence with the TEI
+
+Over the last decade a great number of letter and correspondence encoding projects have been using TEI. For instance, the DALF: Digital Archive of Letters in Flanders ([http://ctb.kantl.be/project/dalf/](http://ctb.kantl.be/project/dalf/)), The Van Gogh Letters ([http://vangoghletters.org/vg/](http://vangoghletters.org/vg/)) and others. The Text Encoding Initiative has its own Special Interest Group that develops standards and best-practice guidelines for the encoding of correspondence with TEI ([http://wiki.tei-c.org/index.php/SIG:Correspondence](http://wiki.tei-c.org/index.php/SIG:Correspondence)).
+
+When we designed this course, we also worked on a correspondence: The Letters of 1916 project ([http://letters1916.maynoothuniversity.ie/](http://letters1916.maynoothuniversity.ie/)) and therefore we wanted to include a section on the encoding example of this genre into this course.
+
+#### Correspondence specific header elements
+
+For the encoding of correspondence metadata you use essentially the same TEI header as for other texts. However, in addition to the already mentioned elements that can be used in the TEI header, the TEI provides a set of other elements that were specifically designed for the description of correspondence. These are the \<correspDesc> element and its child elements.
+
+The \<correspDesc> element was introduced to provide further description about the correspondence such as who sent a letter to whom, from where was it sent.
+
+The \<correspDesc> element has two child elements, \<correspAction> and \<correspContext>. The first is used to store a structured description of the place a letter is from, the name of the person that sent a letter and the date it was send or any other action related to the correspondence. The \<correspContext> element on the other hand provides references to letters or other correspondence that was sent prior or afterwards and is somehow related to the letter.
+
+```
+<profileDesc>
+         <correspDesc>
+            <correspAction type="sent">
+               <persName>Major E. Reade</persName>
+               <placeName>Dartmoor Prison</placeName>
+               <date when="1916-07-05">05 July 1916</date>
+            </correspAction>
+            <correspAction type="received">
+               <persName>Mabel FitzGerald</persName>
+               <placeName>Bray, Co. Wicklow, Ireland</placeName>
+               <date>unknown</date>
+            </correspAction>
+            <correspContext>
+               <ref type="prev"
+                  target="http://letters1916.maynoothuniversity.ie/explore/letters/942"> 
+                 Previous letter from <persName>Major E. Reade</persName> 
+                 to <persName>Mabel FitzGerald</persName>: <date>20 June 1916</date>
+               </ref>
+               <ref type="next"
+                  target="http://letters1916.maynoothuniversity.ie/explore/letters/945"> 
+                 Next letter of <persName>Major E. Reade</persName> 
+                 to <persName>Mabel FitzGerald</persName>: <date>10 July 1916</date>
+               </ref>
+            </correspContext>
+         </correspDesc>
+      </profileDesc>
+```
+
+For the transcription of the letter a number of additional elements can be used that are genre specific for the tagging of correspondence features. As we have learned earlier in this course the transcribed text is within the \<text> and \<body> section of the TEI document. There are specific TEI elements for the encoding of opener, closer and postscripts and they can be nested in the following way:
+
+```
+<text>
+      <body>
+         <opener>The opener of the letter goes here</opener>
+         <p>The transcription of the letter goes here</p>
+         <closer>The closer of the letter goes here</closer>
+         <postscript>
+            <p> Postscripts (P.S.) goes here</p>
+         </postscript>
+      </body>
+</text>
+```
+
+Within the \<opener> address information, the date and the salutation can be encoded using suitable elements such as \<address>, \<dateline> and \<salute>:
+
+```
+<opener>
+    <address>
+       <addrLine>H.M.Prison,</addrLine>
+       <addrLine>Dartmoor</addrLine>
+    </address>
+    <dateline>5 July 1916.</dateline>
+    <salute>Madam T.D.Fitzgerald</salute>
+</opener>
+```
+
+Similarly, the \<closer> can nest elements for further structure, such as salute, signed, dateline, etc.:
+
+```
+<closer>
+       <salute>I am, Madam, Your obedient Servant,</salute>
+       <signed>E. Reade</signed>
+       <dateline>Dartmoor, 5 July</dateline>
+ </closer>
+```
+
+Between the opener and the closer is the actual message of a letter and this message can be encoded using \<p> tag which indicate paragraphs. Further information on how to use the opener, the closer and other relevant tags can be found together with detailed examples in the TEI guidelines. To familiarise yourself with the TEI guidelines, please have a look at the following two sections now:
+
+2.4.6 Correspondence Description. TEI P5 Guidelines. \<[http://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html#HD44CD](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html#HD44CD)>
+
+4.2.2 Openers and Closers. TEI P5 Guidelines. \<[http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DS.html#DSOC](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/DS.html#DSOC)>
+
+#### Further reading
+
+Peter Stadler, Marcel Illetschko, and Sabine Seifert. Towards a Model for Encoding Correspondence in the TEI: Developing and Implementing \<correspDesc>. Journal of the Text Encoding Initiative. Issue 9. 2016. \<[http://jtei.revues.org/1433](http://jtei.revues.org/1433)>
