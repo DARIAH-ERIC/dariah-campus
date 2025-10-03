@@ -9,6 +9,7 @@ import { CurriculumResourcesList } from "@/components/curriculum-resources-list"
 import { PeopleList } from "@/components/people-list";
 import { RelatedCurriculaList } from "@/components/related-curricula-list";
 import { TagsList } from "@/components/tags-list";
+import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
 import { client } from "@/lib/content/client";
 import { createGitHubClient } from "@/lib/content/github-client";
@@ -80,13 +81,14 @@ export default async function CurriculumPage(
 		tags,
 		title,
 		translations: _translations,
+		"is-translation-of": _isTranslationOf,
 	} = curriculum.metadata;
 
 	const Content = curriculum.content;
 
 	const related = pickRandom(Array.from(curriculum.related), 4);
 
-	const translations = _translations.map((id) => {
+	function getTranslationMetadata(id: string) {
 		const curriculum = client.collections.curricula.get(id);
 		assert(curriculum, `Missing curriculum "${id}".`);
 		return {
@@ -95,7 +97,11 @@ export default async function CurriculumPage(
 			title: curriculum.metadata.title,
 			locale: curriculum.metadata.locale,
 		};
-	});
+	}
+
+	const translations = _translations.map(getTranslationMetadata);
+	const isTranslationOf =
+		_isTranslationOf != null ? getTranslationMetadata(_isTranslationOf) : null;
 
 	return (
 		<div>
@@ -123,7 +129,7 @@ export default async function CurriculumPage(
 						})}
 					/>
 					<TranslationsList label={t("translations")} translations={translations} />
-
+					<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
 					<CurriculumResourcesList
 						label={t("overview")}
 						resources={resources.map(({ value: id }) => {
@@ -147,6 +153,7 @@ export default async function CurriculumPage(
 							return { id, image, name };
 						})}
 						featuredImage={featuredImage}
+						isTranslationOf={isTranslationOf}
 						resources={resources.map(({ value: id, discriminant: type }) => {
 							const resource = client.collections.resources.get(id);
 							assert(resource, `Missing resource "${id}".`);
