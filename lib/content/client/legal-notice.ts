@@ -8,6 +8,6 @@ export type LegalNotice = typeof item;
 
 export const client: SingletonClient<LegalNotice> = {
 	get() {
-		return item;
+		return Promise.resolve(item);
 	},
 };

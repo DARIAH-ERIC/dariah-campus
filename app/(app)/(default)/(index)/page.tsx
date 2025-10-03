@@ -39,7 +39,7 @@ export default async function IndexPage(): Promise<ReactNode> {
 	const page =
 		preview.status === "enabled"
 			? await createGitHubClient(preview).singletons.indexPage.get()
-			: client.singletons.indexPage.get();
+			: await client.singletons.indexPage.get();
 
 	return (
 		<div className="mx-auto w-full max-w-screen-lg space-y-24 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
@@ -265,7 +265,7 @@ interface TeamSectionProps {
 	section: IndexPageContent["team-section"];
 }
 
-function TeamSection(props: Readonly<TeamSectionProps>): ReactNode {
+async function TeamSection(props: Readonly<TeamSectionProps>): Promise<ReactNode> {
 	const { section } = props;
 
 	const { lead, team, title } = section;
@@ -275,29 +275,31 @@ function TeamSection(props: Readonly<TeamSectionProps>): ReactNode {
 			<SectionTitle>{title}</SectionTitle>
 			<SectionLead>{lead}</SectionLead>
 			<ul className="mx-auto grid grid-cols-2 gap-8 py-6 md:grid-cols-4" role="list">
-				{team.map((item, index) => {
-					const { person: id, role } = item;
+				{await Promise.all(
+					team.map(async (item, index) => {
+						const { person: id, role } = item;
 
-					const person = client.collections.people.get(id);
-					assert(person, `Missing person "${id}".`);
-					const { image, name } = person.metadata;
+						const person = await client.collections.people.get(id);
+						assert(person, `Missing person "${id}".`);
+						const { image, name } = person.metadata;
 
-					return (
-						<li key={index}>
-							<article className="flex flex-col items-center">
-								<Image
-									alt=""
-									className="mb-2 size-24 rounded-full border border-neutral-200 object-cover"
-									height={96}
-									src={image}
-									width={96}
-								/>
-								<h3 className="font-bold">{name}</h3>
-								<p className="text-sm text-neutral-500">{role}</p>
-							</article>
-						</li>
-					);
-				})}
+						return (
+							<li key={index}>
+								<article className="flex flex-col items-center">
+									<Image
+										alt=""
+										className="mb-2 size-24 rounded-full border border-neutral-200 object-cover"
+										height={96}
+										src={image}
+										width={96}
+									/>
+									<h3 className="font-bold">{name}</h3>
+									<p className="text-sm text-neutral-500">{role}</p>
+								</article>
+							</li>
+						);
+					}),
+				)}
 			</ul>
 		</Section>
 	);

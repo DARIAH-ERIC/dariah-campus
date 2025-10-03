@@ -22,7 +22,7 @@ export default async function OpenGraphImage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const resource = client.collections.resourcesHosted.get(id);
+	const resource = await client.collections.resourcesHosted.get(id);
 
 	if (resource == null) {
 		notFound();
