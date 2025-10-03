@@ -1,4 +1,5 @@
 import type { StaticImageData } from "next/image";
+import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
 import { AvatarsList } from "@/components/avatars-list";
@@ -24,6 +25,8 @@ interface ResourcePreviewCardProps {
 export function ResourcePreviewCard(props: Readonly<ResourcePreviewCardProps>): ReactNode {
 	const { contentType, href, locale, people, peopleLabel, summary, title } = props;
 
+	const t = useTranslations("ResourcePreviewCard");
+
 	return (
 		<Card isDisabled={href == null}>
 			<CardContent>
@@ -47,6 +50,7 @@ export function ResourcePreviewCard(props: Readonly<ResourcePreviewCardProps>): 
 			</CardContent>
 			<CardFooter>
 				<AvatarsList avatars={people} label={peopleLabel} />
+				{href == null ? <span className="text-sm text-neutral-500">{t("coming-soon")}</span> : null}
 			</CardFooter>
 		</Card>
 	);

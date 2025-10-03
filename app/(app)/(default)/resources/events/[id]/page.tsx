@@ -20,6 +20,7 @@ import { Session } from "@/components/session";
 import { SocialMediaList } from "@/components/social-media-list";
 import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
+import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
 import { env } from "@/config/env.config";
 import { client } from "@/lib/content/client";
@@ -154,6 +155,7 @@ export default async function EventResourcePage(
 		location,
 		organisations,
 		translations: _translations,
+		"is-translation-of": _isTranslationOf,
 	} = resource.metadata;
 	const Content = resource.content;
 	const related = pickRandom(Array.from(resource.related), 4);
@@ -165,18 +167,20 @@ export default async function EventResourcePage(
 		};
 	});
 
-	const translations = await Promise.all(
-		_translations.map(async (id) => {
-			const resource = await client.collections.resources.get(id);
-			assert(resource, `Missing resource "${id}".`);
-			return {
-				id,
-				href: resource.href,
-				title: resource.metadata.title,
-				locale: resource.metadata.locale,
-			};
-		}),
-	);
+	async function getTranslationMetadata(id: string) {
+		const resource = await client.collections.resources.get(id);
+		assert(resource, `Missing resource "${id}".`);
+		return {
+			id,
+			href: resource.href,
+			title: resource.metadata.title,
+			locale: resource.metadata.locale,
+		};
+	}
+
+	const translations = await Promise.all(_translations.map(getTranslationMetadata));
+	const isTranslationOf =
+		_isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
 
 	return (
 		<div>
@@ -275,6 +279,7 @@ export default async function EventResourcePage(
 						)}
 					/>
 					<TranslationsList label={t("translations")} translations={translations} />
+					<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
 					<AttachmentsList attachments={attachments} label={t("attachments")} />
 					<LinksList label={t("links")} links={links} />
 					<SocialMediaList label={t("social-media")} social={social} />
@@ -331,6 +336,7 @@ export default async function EventResourcePage(
 						featuredImage={featuredImage}
 						href={resource.href}
 						id={resource.id}
+						isTranslationOf={isTranslationOf}
 						location={location}
 						organisations={organisations}
 						social={social}
@@ -349,8 +355,6 @@ export default async function EventResourcePage(
 						<div className="prose">
 							<Content />
 						</div>
-
-						<hr className="my-12 border-t border-neutral-200" />
 
 						<ol className="list-none divide-y divide-neutral-200">
 							{await Promise.all(

@@ -14,6 +14,7 @@ import { Resource } from "@/components/resource";
 import { ResourceMetadata } from "@/components/resource-metadata";
 import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
+import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
 import { env } from "@/config/env.config";
 import { client } from "@/lib/content/client";
@@ -141,24 +142,27 @@ export default async function ExternalResourcePage(
 		tags,
 		title,
 		translations: _translations,
+		"is-translation-of": _isTranslationOf,
 		version,
 	} = resource.metadata;
 	const Content = resource.content;
 	const tableOfContents = resource.tableOfContents;
 	const related = pickRandom(Array.from(resource.related), 4);
 
-	const translations = await Promise.all(
-		_translations.map(async (id) => {
-			const resource = await client.collections.resources.get(id);
-			assert(resource, `Missing resource "${id}".`);
-			return {
-				id,
-				href: resource.href,
-				title: resource.metadata.title,
-				locale: resource.metadata.locale,
-			};
-		}),
-	);
+	async function getTranslationMetadata(id: string) {
+		const resource = await client.collections.resources.get(id);
+		assert(resource, `Missing resource "${id}".`);
+		return {
+			id,
+			href: resource.href,
+			title: resource.metadata.title,
+			locale: resource.metadata.locale,
+		};
+	}
+
+	const translations = await Promise.all(_translations.map(getTranslationMetadata));
+	const isTranslationOf =
+		_isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
 
 	return (
 		<div>
@@ -212,6 +216,7 @@ export default async function ExternalResourcePage(
 						)}
 					/>
 					<TranslationsList label={t("translations")} translations={translations} />
+					<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
 					<CurriculaList
 						curricula={await Promise.all(
 							resource.curricula.map(async (id) => {
@@ -272,6 +277,7 @@ export default async function ExternalResourcePage(
 						featuredImage={featuredImage}
 						href={resource.href}
 						id={resource.id}
+						isTranslationOf={isTranslationOf}
 						tags={await Promise.all(
 							tags.map(async (id) => {
 								const tag = await client.collections.tags.get(id);
