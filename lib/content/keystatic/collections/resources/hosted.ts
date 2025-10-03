@@ -146,6 +146,11 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 				validation: { length: { min: 0 } },
 				collection: withI18nPrefix("resources-hosted", locale),
 			}),
+			"is-translation-of": fields.relationship({
+				label: "Is translation of",
+				validation: { isRequired: false },
+				collection: withI18nPrefix("resources-hosted", locale),
+			}),
 			doi: readonly({
 				label: "PID (readonly)",
 				description: "Automatically assigned Handle PID.",
