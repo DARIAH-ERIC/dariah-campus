@@ -51,8 +51,9 @@ export function SocialMediaShareLinks(props: Readonly<SocialMediaShareLinksProps
 		linkedin: {
 			href: createUrl({
 				baseUrl: "https://www.linkedin.com",
-				pathname: "/sharing/share-offsite/",
+				pathname: "/shareArticle/",
 				searchParams: createUrlSearchParams({
+					mini: "true",
 					url,
 				}),
 			}),
