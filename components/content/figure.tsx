@@ -18,23 +18,27 @@ interface FigureProps {
 
 export function Figure(props: Readonly<FigureProps>): ReactNode {
 	const { alignment = "stretch", alt = "", children, height, src, width } = props;
+	const figureWidths = {
+		"right-one-fourth": "sm:w-1/4",
+		"right-one-third": "sm:w-1/3",
+		"right-one-half": "sm:w-1/2",
+		"right-two-thirds": "sm:w-2/3",
+		center: "",
+		stretch: "",
+	};
 
 	return (
 		<figure
 			className={cn(
 				"flex flex-col",
 				alignment === "center" ? "justify-center" : undefined,
-				alignment === "left"
-					? "inline-block sm:float-left sm:my-0 sm:me-4"
-					: alignment === "right"
-						? "inline-block sm:float-right sm:my-0 sm:ms-4"
-						: undefined,
+				alignment.includes("right")
+					? `inline-block sm:float-right sm:my-0 sm:ms-4 ${figureWidths[alignment]}`
+					: undefined,
 			)}
 		>
 			<Image alt={alt} height={height} src={src} width={width} />
-			<figcaption
-				className={cn(["left", "right"].includes(alignment) ? "sm:contain-inline-size" : undefined)}
-			>
+			<figcaption className={alignment.includes("right") ? "sm:contain-inline-size" : undefined}>
 				{children}
 			</figcaption>
 		</figure>
