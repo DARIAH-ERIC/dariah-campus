@@ -1,7 +1,7 @@
 "use client";
 
 import Script from "next/script";
-import { Fragment, type ReactNode, useEffect, useRef } from "react";
+import { Fragment, type ReactNode, useEffect, useRef, useState } from "react";
 
 interface H5PWrapperProps {
 	path: string;
@@ -38,49 +38,56 @@ export function H5PWrapper(props: Readonly<H5PWrapperProps>): ReactNode {
 	const { path } = props;
 
 	const ref = useRef<HTMLDivElement | null>(null);
+	const [scriptIsReady, setScriptIsReady] = useState(false);
 
 	useEffect(() => {
 		const container = ref.current;
 
-		if (!((window.H5PStandalone?.H5P || window.H5PPlayer) && container)) return;
+		if (scriptIsReady) {
+			if (!((window.H5PStandalone?.H5P || window.H5PPlayer) && container)) return;
 
-		if (window.H5PStandalone?.H5P) {
-			window.H5PPlayer = window.H5PStandalone.H5P;
-		}
+			if (window.H5PStandalone?.H5P) {
+				window.H5PPlayer = window.H5PStandalone.H5P;
+			}
 
-		const { H5PPlayer } = window;
+			const { H5PPlayer } = window;
 
-		const loadH5P = () => {
-			const options = {
-				h5pJsonPath: `/vendor/h5p-content/${path}`,
-				librariesPath: "/vendor/h5p-shared-libraries",
-				frameJs: "/vendor/h5p-standalone/frame.bundle.js",
-				frameCss: "/vendor/h5p-standalone/styles/h5p.css",
+			const loadH5P = () => {
+				const options = {
+					h5pJsonPath: `/vendor/h5p-content/${path}`,
+					librariesPath: "/vendor/h5p-shared-libraries",
+					frameJs: "/vendor/h5p-standalone/frame.bundle.js",
+					frameCss: "/vendor/h5p-standalone/styles/h5p.css",
+				};
+
+				try {
+					if (H5PPlayer) {
+						new H5PPlayer(container, options);
+					}
+				} catch (error: unknown) {
+					console.error("Error loading H5P content", error);
+				}
 			};
 
-			try {
-				if (H5PPlayer) {
-					new H5PPlayer(container, options);
-				}
-			} catch (error: unknown) {
-				console.error("Error loading H5P content", error);
+			loadH5P();
+		}
+		return () => {
+			if (container) {
+				container.innerHTML = "";
 			}
 		};
-
-		loadH5P();
-
-		return () => {
-			container.innerHTML = "";
-		};
-	}, [path]);
+	}, [path, scriptIsReady]);
 
 	return (
 		<Fragment>
 			<div ref={ref} />
 			<Script
 				id="h5p-script"
+				onReady={() => {
+					setScriptIsReady(true);
+				}}
 				src="/vendor/h5p-standalone/main.bundle.js"
-				strategy="beforeInteractive"
+				strategy="afterInteractive"
 			/>
 		</Fragment>
 	);
