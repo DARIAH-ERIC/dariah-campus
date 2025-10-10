@@ -30,16 +30,16 @@ summary:
     the textual content itself ( divided into &lt;front&gt;, &lt;body&gt; and
     &lt;back&gt;. This section includes an overview of the core elements used
     for encoding text, how to customise the TEI to encode specific textual
-    types. 
+    types.
 
     Two exercises follow to put what you have learned into practice. The Yeats
     Exercise: Encoding poetry with the TEI and the Franklin Exercise: Encoding
     prose with the TEI utilise the XML-aware editor oXygen (which can be
     downloaded free for 30 days) to utilise a variety of elements in encoding a
-    complex document. 
+    complex document.
 
     The Specialist Encoding section covers the specific elements needed to
-    encode correspondence. 
+    encode correspondence.
 content-type: training-module
 
 ---
@@ -173,7 +173,7 @@ Front matter that is typical in published texts, particularly on the title page,
 <front>
     <docTitle>
         <titlePart>
-            The Hobbit or There and Back Again                    
+            The Hobbit or There and Back Again
          </titlePart>
      </docTitle>
      <byline>by <docAuthor>J. R. R. Talkien</docAuthor>
@@ -260,8 +260,8 @@ There is a set of elements that can be useful for the encoding of different type
 ```
 <<a href="http://december.com/html/4/element/body.html">body</a>>
      <<a href="http://december.com/html/4/element/head.html">head</a>>The Hobbit</<a href="http://december.com/html/4/element/head.html">head</a>>
-     <<a href="http://december.com/html/4/element/p.html">p</a>>In a hole in the ground<note>This is an editorial note.</note> 
-        there lived a hobbit. Not a nasty, dirty, wet hole, 
+     <<a href="http://december.com/html/4/element/p.html">p</a>>In a hole in the ground<note>This is an editorial note.</note>
+        there lived a hobbit. Not a nasty, dirty, wet hole,
         filled with the ends of worms and an oozy smell, nor yet a dry, bare, ...
      </<a href="http://december.com/html/4/element/p.html">p</a>>
 </<a href="http://december.com/html/4/element/body.html">body</a>>
@@ -286,7 +286,7 @@ ODD is the XML vocabulary which the TEI system uses to describe itself. This inc
 
 The preferred way to create a TEI cusomisation is via an online tool that provides an interface that makes it easier to create and edit project-specific customisations called Roma. Roma allows one to chose elements and attributes and add custom elements and attributes. With Roma you can also validate your custom schema to make sure it still conforms to the TEI rules, you may save your customisation as well as export a DTD schema and HTML documentation.
 
-<IframeElement w={560} h={315} alt="" src="https://www.youtube.com/embed/Idpg572uf0A" />
+<Embed src="https://www.youtube.com/embed/Idpg572uf0A" />
 
 #### Further reading:
 
@@ -354,7 +354,7 @@ TEI elements are organised in modules. The 'core' module contains elements essen
 
 The following video by Lou Burnard, one of the founding editors of the TEI, is an excellent induction to the TEI and its history.
 
-<IframeElement w={560} h={315} alt="" src="https://www.youtube.com/embed/YEE-JlS8oZI" />
+<Embed src="https://www.youtube.com/embed/YEE-JlS8oZI" />
 
 #### Further reading
 
@@ -382,7 +382,7 @@ The **schemas** folder contains the teilite schema, which the poem will be valid
 
 Before you begin the exercise, watch the following video which provides you with information that should help you from making common mistakes and will explain further the file structure.
 
-<IframeElement w={560} h={315} alt="" src="https://www.youtube.com/embed/WfvbkJqP3iA?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL" />
+<Embed src="https://www.youtube.com/embed/WfvbkJqP3iA?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL" />
 
 ## Franklin exercise: encode prose with TEI
 
@@ -417,13 +417,13 @@ The \<correspDesc> element has two child elements, \<correspAction> and \<corres
             </correspAction>
             <correspContext>
                <ref type="prev"
-                  target="http://letters1916.maynoothuniversity.ie/explore/letters/942"> 
-                 Previous letter from <persName>Major E. Reade</persName> 
+                  target="http://letters1916.maynoothuniversity.ie/explore/letters/942">
+                 Previous letter from <persName>Major E. Reade</persName>
                  to <persName>Mabel FitzGerald</persName>: <date>20 June 1916</date>
                </ref>
                <ref type="next"
-                  target="http://letters1916.maynoothuniversity.ie/explore/letters/945"> 
-                 Next letter of <persName>Major E. Reade</persName> 
+                  target="http://letters1916.maynoothuniversity.ie/explore/letters/945">
+                 Next letter of <persName>Major E. Reade</persName>
                  to <persName>Mabel FitzGerald</persName>: <date>10 July 1916</date>
                </ref>
             </correspContext>
