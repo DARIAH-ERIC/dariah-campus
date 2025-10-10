@@ -5,6 +5,7 @@ import { Embed } from "@/components/content/embed";
 import { ExternalResource } from "@/components/content/external-resource";
 import { Figure } from "@/components/content/figure";
 import { Grid, GridItem } from "@/components/content/grid";
+import { ImageSlider } from "@/components/content/image-slider";
 import { Link as ContentLink } from "@/components/content/link";
 import { LinkButton } from "@/components/content/link-button";
 import { MermaidDiagram } from "@/components/content/mermaid-diagram";
@@ -31,6 +32,7 @@ export const components = {
 	Grid,
 	GridItem,
 	img: Image,
+	ImageSlider,
 	Link: ContentLink,
 	LinkButton,
 	MermaidDiagram,
