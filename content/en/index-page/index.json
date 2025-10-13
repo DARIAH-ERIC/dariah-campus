@@ -99,23 +99,23 @@
     "lead": "Our DARIAH-CAMPUS team is just an email away and ready to answer your questions",
     "team": [
       {
+        "person": "tasovac-toma",
+        "role": "Editor in Chief / Strategic Advisor to DARIAH Board of Directors"
+      },
+      {
         "person": "garnett-vicky",
         "role": "Managing Editor / DARIAH-EU Training & Education Officer"
+      },
+      {
+        "person": "mc-conville-amelia",
+        "role": "Community Editor / DARIAH-EU Community Engagement Officer"
       },
       {
         "person": "koenigshofer-elisabeth",
         "role": "Community Editor"
       },
       {
-        "person": "tasovac-toma",
-        "role": "Editor in Chief / Strategic Advisor to DARIAH Board of Directors"
-      },
-      {
         "person": "wiederaenders-maria",
-        "role": "Community Editor"
-      },
-      {
-        "person": "mc-conville-amelia",
         "role": "Community Editor"
       }
     ]
