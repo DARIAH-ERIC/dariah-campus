@@ -1,6 +1,5 @@
 import { keyByToMap } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
@@ -23,15 +22,15 @@ export async function generateMetadata(): Promise<Metadata> {
 	return metadata;
 }
 
-export default function SearchPage(): ReactNode {
-	const t = useTranslations("SearchPage");
+export default async function SearchPage(): Promise<ReactNode> {
+	const t = await getTranslations("SearchPage");
 
 	/**
 	 * Ensure `content` fields, which are function components and cannot be passed through
 	 * the server-client serialization boundary, are omitted.
 	 */
 	const peopleById = keyByToMap(
-		client.collections.people.all().map((person) => {
+		(await client.collections.people.all()).map((person) => {
 			const { image, name } = person.metadata;
 			return { id: person.id, image, name };
 		}),
@@ -40,7 +39,7 @@ export default function SearchPage(): ReactNode {
 		},
 	);
 	const sourcesById = keyByToMap(
-		client.collections.sources.all().map((source) => {
+		(await client.collections.sources.all()).map((source) => {
 			const { name } = source.metadata;
 			return { id: source.id, name };
 		}),
@@ -49,7 +48,7 @@ export default function SearchPage(): ReactNode {
 		},
 	);
 	const tagsById = keyByToMap(
-		client.collections.tags.all().map((tag) => {
+		(await client.collections.tags.all()).map((tag) => {
 			const { name } = tag.metadata;
 			return { id: tag.id, name };
 		}),
@@ -57,8 +56,8 @@ export default function SearchPage(): ReactNode {
 			return tag.id;
 		},
 	);
-	const contentLanguagesById = client.collections.contentLanguages.byId();
-	const contentTypesById = client.collections.contentTypes.byId();
+	const contentLanguagesById = await client.collections.contentLanguages.byId();
+	const contentTypesById = await client.collections.contentTypes.byId();
 
 	return (
 		<Providers>

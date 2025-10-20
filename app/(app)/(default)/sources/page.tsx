@@ -21,8 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function SourcesPage(): Promise<ReactNode> {
 	const t = await getTranslations("SourcesPage");
 
-	const sources = client.collections.sources.all();
-	const resources = client.collections.resources.all();
+	const sources = await client.collections.sources.all();
+	const resources = await client.collections.resources.all();
 
 	const resourcesBySourceId = groupByToMap(resources, (resource) => {
 		return resource.metadata.sources;
