@@ -1,4 +1,4 @@
-import { keyByToMap } from "@acdh-oeaw/lib";
+import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
@@ -21,38 +21,38 @@ export default async function ResourcesPage(): Promise<ReactNode> {
 	const t = await getTranslations("ResourcesPage");
 
 	const resources = await client.collections.resources.all();
-	const people = await client.collections.people.all();
 
-	const peopleById = keyByToMap(people, (person) => {
-		return person.id;
-	});
+	const items = await Promise.all(
+		resources.map(async (resource) => {
+			const { authors, locale, summary, title } = resource.metadata;
 
-	const items = resources.map((resource) => {
-		const { authors, locale, summary, title } = resource.metadata;
+			const people = await Promise.all(
+				authors.map(async (id) => {
+					const person = await client.collections.people.get(id);
+					assert(person, `Missing person "${id}".`);
+					const { image, name } = person.metadata;
+					return { id, name, image };
+				}),
+			);
 
-		const people = authors.map((id) => {
-			const person = peopleById.get(id)!;
-			const { image, name } = person.metadata;
-			return { id, name, image };
-		});
+			const isDraft = "draft" in resource.metadata && resource.metadata.draft === true;
 
-		const isDraft = "draft" in resource.metadata && resource.metadata.draft === true;
+			const href = isDraft ? null : resource.href;
 
-		const href = isDraft ? null : resource.href;
+			const contentType = resource.metadata["content-type"];
 
-		const contentType = resource.metadata["content-type"];
-
-		return {
-			id: resource.id,
-			collection: `resources-${resource.kind}`,
-			title,
-			summary,
-			people,
-			href,
-			locale,
-			contentType,
-		} as const;
-	});
+			return {
+				id: resource.id,
+				collection: `resources-${resource.kind}`,
+				title,
+				summary,
+				people,
+				href,
+				locale,
+				contentType,
+			} as const;
+		}),
+	);
 
 	return (
 		<div className="mx-auto grid w-full max-w-screen-xl content-start gap-y-12 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
