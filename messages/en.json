@@ -137,7 +137,7 @@
 		"attachments": "Attachments",
 		"authors": "Authors",
 		"close": "Close",
-		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
+		"contained-in-curricula": "Part of {count, plural, =1 {this curriculum} other {these curricula}}",
 		"contributors": "Contributors",
 		"date": "Date",
 		"editors": "Editors",
@@ -164,7 +164,7 @@
 	"ExternalResourcePage": {
 		"authors": "Authors",
 		"close": "Close",
-		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
+		"contained-in-curricula": "Part of {count, plural, =1 {this curriculum} other {these curricula}}",
 		"contributors": "Contributors",
 		"editors": "Editors",
 		"is-translation-of": "Is translation of",
@@ -182,7 +182,7 @@
 	"HostedResourcePage": {
 		"authors": "Authors",
 		"close": "Close",
-		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
+		"contained-in-curricula": "Part of {count, plural, =1 {this curriculum} other {these curricula}}",
 		"contributors": "Contributors",
 		"editors": "Editors",
 		"is-translation-of": "Is translation of",
@@ -216,7 +216,7 @@
 	"PathfinderResourcePage": {
 		"authors": "Authors",
 		"close": "Close",
-		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
+		"contained-in-curricula": "Part of {count, plural, =1 {this curriculum} other {these curricula}}",
 		"contributors": "Contributors",
 		"editors": "Editors",
 		"is-translation-of": "Is translation of",
