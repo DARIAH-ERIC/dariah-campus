@@ -7,6 +7,7 @@ import type { ReactNode } from "react";
 import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
 import { ResourcesGrid } from "@/components/resources-grid";
+import { client } from "@/lib/content/client";
 import { createClient } from "@/lib/content/create-client";
 
 interface SourcePageProps extends PageProps<"/sources/[id]"> {}
@@ -14,8 +15,6 @@ interface SourcePageProps extends PageProps<"/sources/[id]"> {}
 export async function generateStaticParams(): Promise<
 	Array<Pick<Awaited<SourcePageProps["params"]>, "id">>
 > {
-	const client = await createClient();
-
 	const ids = await client.collections.sources.ids();
 
 	return ids.map((id) => {

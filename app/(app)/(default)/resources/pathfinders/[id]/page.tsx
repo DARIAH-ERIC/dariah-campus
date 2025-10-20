@@ -17,6 +17,7 @@ import { TagsList } from "@/components/tags-list";
 import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
 import { env } from "@/config/env.config";
+import { client } from "@/lib/content/client";
 import { createClient } from "@/lib/content/create-client";
 import { createResourceMetadata } from "@/lib/content/utils/create-resource-metadata";
 import { getMetadata } from "@/lib/i18n/metadata";
@@ -28,8 +29,6 @@ interface PathfinderResourcePageProps extends PageProps<"/resources/pathfinders/
 export async function generateStaticParams(): Promise<
 	Array<Pick<Awaited<PathfinderResourcePageProps["params"]>, "id">>
 > {
-	const client = await createClient();
-
 	const ids = await client.collections.resourcesPathfinders.ids();
 
 	return ids.map((id) => {
