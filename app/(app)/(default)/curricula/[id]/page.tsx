@@ -12,8 +12,7 @@ import { TagsList } from "@/components/tags-list";
 import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
 import { client } from "@/lib/content/client";
-import { createGitHubClient } from "@/lib/content/github-client";
-import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
+import { createClient } from "@/lib/content/create-client";
 import { pickRandom } from "@/lib/utils/pick-random";
 
 interface CurriculumPageProps extends PageProps<"/curricula/[id]"> {}
@@ -34,12 +33,9 @@ export async function generateMetadata(props: Readonly<CurriculumPageProps>): Pr
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const preview = await getPreviewMode();
+	const client = await createClient();
 
-	const curriculum =
-		preview.status === "enabled"
-			? await createGitHubClient(preview).collections.curricula.get(id)
-			: await client.collections.curricula.get(id);
+	const curriculum = await client.collections.curricula.get(id);
 
 	if (curriculum == null) {
 		notFound();
@@ -65,12 +61,9 @@ export default async function CurriculumPage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const preview = await getPreviewMode();
+	const client = await createClient();
 
-	const curriculum =
-		preview.status === "enabled"
-			? await createGitHubClient(preview).collections.curricula.get(id)
-			: await client.collections.curricula.get(id);
+	const curriculum = await client.collections.curricula.get(id);
 
 	if (curriculum == null) {
 		notFound();

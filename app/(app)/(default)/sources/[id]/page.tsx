@@ -8,8 +8,7 @@ import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
 import { ResourcesGrid } from "@/components/resources-grid";
 import { client } from "@/lib/content/client";
-import { createGitHubClient } from "@/lib/content/github-client";
-import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
+import { createClient } from "@/lib/content/create-client";
 
 interface SourcePageProps extends PageProps<"/sources/[id]"> {}
 
@@ -29,12 +28,9 @@ export async function generateMetadata(props: Readonly<SourcePageProps>): Promis
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const preview = await getPreviewMode();
+	const client = await createClient();
 
-	const source =
-		preview.status === "enabled"
-			? await createGitHubClient(preview).collections.sources.get(id)
-			: await client.collections.sources.get(id);
+	const source = await client.collections.sources.get(id);
 
 	if (source == null) {
 		notFound();
@@ -57,12 +53,9 @@ export default async function SourcePage(props: Readonly<SourcePageProps>): Prom
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const preview = await getPreviewMode();
+	const client = await createClient();
 
-	const source =
-		preview.status === "enabled"
-			? await createGitHubClient(preview).collections.sources.get(id)
-			: await client.collections.sources.get(id);
+	const source = await client.collections.sources.get(id);
 
 	if (source == null) {
 		notFound();

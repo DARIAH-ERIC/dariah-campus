@@ -17,8 +17,7 @@ import { Link } from "@/components/link";
 import { SearchForm } from "@/components/search-form";
 import { client } from "@/lib/content/client";
 import type { IndexPage as IndexPageContent } from "@/lib/content/client/index-page";
-import { createGitHubClient } from "@/lib/content/github-client";
-import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
+import { createClient } from "@/lib/content/create-client";
 
 export function generateMetadata(): Metadata {
 	const metadata: Metadata = {
@@ -34,12 +33,9 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function IndexPage(): Promise<ReactNode> {
-	const preview = await getPreviewMode();
+	const client = await createClient();
 
-	const page =
-		preview.status === "enabled"
-			? await createGitHubClient(preview).singletons.indexPage.get()
-			: await client.singletons.indexPage.get();
+	const page = await client.singletons.indexPage.get();
 
 	return (
 		<div className="mx-auto w-full max-w-screen-lg space-y-24 px-4 py-8 xs:px-8 xs:py-16 md:py-24">

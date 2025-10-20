@@ -24,8 +24,7 @@ import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
 import { env } from "@/config/env.config";
 import { client } from "@/lib/content/client";
-import { createGitHubClient } from "@/lib/content/github-client";
-import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
+import { createClient } from "@/lib/content/create-client";
 import { createResourceMetadata } from "@/lib/content/utils/create-resource-metadata";
 import { getMetadata } from "@/lib/i18n/metadata";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
@@ -51,12 +50,9 @@ export async function generateMetadata(props: Readonly<EventResourcePageProps>):
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const preview = await getPreviewMode();
+	const client = await createClient();
 
-	const resource =
-		preview.status === "enabled"
-			? await createGitHubClient(preview).collections.resourcesEvents.get(id)
-			: await client.collections.resourcesEvents.get(id);
+	const resource = await client.collections.resourcesEvents.get(id);
 
 	if (resource == null) {
 		notFound();
@@ -123,12 +119,9 @@ export default async function EventResourcePage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const preview = await getPreviewMode();
+	const client = await createClient();
 
-	const resource =
-		preview.status === "enabled"
-			? await createGitHubClient(preview).collections.resourcesEvents.get(id)
-			: await client.collections.resourcesEvents.get(id);
+	const resource = await client.collections.resourcesEvents.get(id);
 
 	if (resource == null) {
 		notFound();
