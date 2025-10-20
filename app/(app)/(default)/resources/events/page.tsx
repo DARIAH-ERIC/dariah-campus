@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 
 import { PageTitle } from "@/components/page-title";
 import { ResourcesGrid } from "@/components/resources-grid";
-import { client } from "@/lib/content/client";
+import { createClient } from "@/lib/content/create-client";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("EventResourcesPage");
@@ -19,6 +19,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function EventResourcesPage(): Promise<ReactNode> {
 	const t = await getTranslations("EventResourcesPage");
+
+	const client = await createClient();
 
 	const resources = await client.collections.resourcesEvents.all();
 

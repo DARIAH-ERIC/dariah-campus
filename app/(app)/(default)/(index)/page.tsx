@@ -15,7 +15,6 @@ import { VideoCard } from "@/app/(app)/(default)/(index)/_components/video-card"
 import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 import { SearchForm } from "@/components/search-form";
-import { client } from "@/lib/content/client";
 import type { IndexPage as IndexPageContent } from "@/lib/content/client/index-page";
 import { createClient } from "@/lib/content/create-client";
 
@@ -120,6 +119,7 @@ function BrowseSection(props: Readonly<BrowseSectionProps>): ReactNode {
 			<ul className="grid gap-8 py-6 md:grid-cols-3" role="list">
 				{links.map((link, index) => {
 					const { title, href, image } = link;
+
 					return (
 						<li key={index}>
 							<article className="relative flex h-full flex-col items-center gap-y-2 rounded-xl border border-neutral-200 bg-white p-12 text-center shadow-md transition focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
@@ -265,6 +265,8 @@ async function TeamSection(props: Readonly<TeamSectionProps>): Promise<ReactNode
 	const { section } = props;
 
 	const { lead, team, title } = section;
+
+	const client = await createClient();
 
 	return (
 		<Section>

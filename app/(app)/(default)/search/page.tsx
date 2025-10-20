@@ -26,6 +26,12 @@ export default async function SearchPage(): Promise<ReactNode> {
 	const t = await getTranslations("SearchPage");
 
 	/**
+	 * Not using github reader, because results returned from `typesense` will only include content
+	 * from `main` branch.
+	 */
+	// const client = await createClient()
+
+	/**
 	 * Ensure `content` fields, which are function components and cannot be passed through
 	 * the server-client serialization boundary, are omitted.
 	 */

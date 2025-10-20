@@ -11,7 +11,6 @@ import { RelatedCurriculaList } from "@/components/related-curricula-list";
 import { TagsList } from "@/components/tags-list";
 import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
-import { client } from "@/lib/content/client";
 import { createClient } from "@/lib/content/create-client";
 import { pickRandom } from "@/lib/utils/pick-random";
 
@@ -20,6 +19,8 @@ interface CurriculumPageProps extends PageProps<"/curricula/[id]"> {}
 export async function generateStaticParams(): Promise<
 	Array<Pick<Awaited<CurriculumPageProps["params"]>, "id">>
 > {
+	const client = await createClient();
+
 	const ids = await client.collections.curricula.ids();
 
 	return ids.map((id) => {

@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { PageTitle } from "@/components/page-title";
-import { client } from "@/lib/content/client";
+import { createClient } from "@/lib/content/create-client";
 
 export const revalidate = 2592000; /** 30 days. */
 
@@ -19,6 +19,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ImprintPage(): Promise<ReactNode> {
 	const t = await getTranslations("ImprintPage");
+
+	const client = await createClient();
 
 	const Content = (await client.singletons.legalNotice.get()).content;
 

@@ -6,7 +6,7 @@ import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { Image } from "@/components/image";
-import { client } from "@/lib/content/client";
+import { createClient } from "@/lib/content/create-client";
 
 interface SessionProps {
 	attachments: ReadonlyArray<{ label: string; file: string }>;
@@ -33,6 +33,8 @@ export async function Session(props: Readonly<SessionProps>): Promise<ReactNode>
 	const { attachments, children, index, links, presentations, speakers, title } = props;
 
 	const t = await getTranslations("Session");
+
+	const client = await createClient();
 
 	return (
 		<article className="grid content-start gap-y-8 py-8">

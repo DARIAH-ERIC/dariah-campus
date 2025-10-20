@@ -8,7 +8,6 @@ import { Link } from "@/components/link";
 import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
 import { TableOfContents } from "@/components/table-of-contents";
-import { client } from "@/lib/content/client";
 import { createClient } from "@/lib/content/create-client";
 
 interface DocumentationPageProps extends PageProps<"/documentation/[id]"> {}
@@ -16,6 +15,8 @@ interface DocumentationPageProps extends PageProps<"/documentation/[id]"> {}
 export async function generateStaticParams(): Promise<
 	Array<Pick<Awaited<DocumentationPageProps["params"]>, "id">>
 > {
+	const client = await createClient();
+
 	const ids = await client.collections.documentation.ids();
 
 	return ids.map((id) => {
