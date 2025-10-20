@@ -166,6 +166,11 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 				validation: { length: { min: 0 } },
 				collection: withI18nPrefix("curricula", locale),
 			}),
+			"is-translation-of": fields.relationship({
+				label: "Is translation of",
+				validation: { isRequired: false },
+				collection: withI18nPrefix("curricula", locale),
+			}),
 			doi: readonly({
 				label: "PID (readonly)",
 				description: "Automatically assigned Handle PID.",

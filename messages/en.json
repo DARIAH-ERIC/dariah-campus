@@ -46,7 +46,9 @@
 	},
 	"Curriculum": {
 		"authors": "Authors",
+		"coming-soon": "Coming soon!",
 		"editors": "Editors",
+		"is-translation-of": "Is translation of",
 		"resources": "Resources",
 		"tags": "Topics",
 		"translations": "Translations"
@@ -54,6 +56,7 @@
 	"CurriculumPage": {
 		"attachments": "Attachments",
 		"editors": "Editors",
+		"is-translation-of": "Is translation of",
 		"links": "Links",
 		"overview": "Overview",
 		"tags": "Topics",
@@ -138,6 +141,7 @@
 		"contributors": "Contributors",
 		"date": "Date",
 		"editors": "Editors",
+		"is-translation-of": "Is translation of",
 		"links": "Links",
 		"location": "Location",
 		"organized-by": "Organized by",
@@ -163,6 +167,7 @@
 		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
 		"contributors": "Contributors",
 		"editors": "Editors",
+		"is-translation-of": "Is translation of",
 		"table-of-contents": "Table of contents",
 		"tags": "Topics",
 		"toggle-table-of-contents": "Toggle table of contents",
@@ -180,6 +185,7 @@
 		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
 		"contributors": "Contributors",
 		"editors": "Editors",
+		"is-translation-of": "Is translation of",
 		"table-of-contents": "Table of contents",
 		"tags": "Topics",
 		"toggle-table-of-contents": "Toggle table of contents",
@@ -213,6 +219,7 @@
 		"contained-in-curricula": "Contained in {count, plural, =1 {this curriculum} other {these curricula}}",
 		"contributors": "Contributors",
 		"editors": "Editors",
+		"is-translation-of": "Is translation of",
 		"table-of-contents": "Table of contents",
 		"tags": "Topics",
 		"toggle-table-of-contents": "Toggle table of contents",
@@ -245,6 +252,7 @@
 		"attachments": "Attachments",
 		"authors": "Authors",
 		"date": "Date",
+		"is-translation-of": "Is translation of",
 		"last-updated-at": "Last updated at",
 		"links": "Links",
 		"location": "Location",
@@ -280,6 +288,9 @@
 		"tags": "Topics",
 		"title": "Title",
 		"version": "Version"
+	},
+	"ResourcePreviewCard": {
+		"coming-soon": "Coming soon!"
 	},
 	"ResourcesPage": {
 		"authors": "Authors",

@@ -9,7 +9,7 @@ import { defaultLocale } from "@/lib/i18n/locales";
 import { getMetadata } from "@/lib/i18n/metadata";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
 
-const baseUrl = env.NEXT_PUBLIC_APP_BASE_URL;
+const baseUrl = env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL;
 const locale = defaultLocale;
 
 export async function createFeed(): Promise<string> {
@@ -25,10 +25,10 @@ export async function createFeed(): Promise<string> {
 
 	const entries: Array<Entry> = [];
 
-	const curricula = client.collections.curricula.all();
-	const resources = client.collections.resources.all();
-	const people = client.collections.people.all();
-	const tags = client.collections.tags.all();
+	const curricula = await client.collections.curricula.all();
+	const resources = await client.collections.resources.all();
+	const people = await client.collections.people.all();
+	const tags = await client.collections.tags.all();
 	const peopleById = keyByToMap(people, (person) => {
 		return person.id;
 	});
@@ -49,7 +49,7 @@ export async function createFeed(): Promise<string> {
 			return tag.metadata.name;
 		});
 
-		const url = String(createFullUrl({ pathname: resource.href }));
+		const url = String(createFullUrl({ baseUrl, pathname: resource.href }));
 
 		entries.push({
 			title: resource.metadata.title,
@@ -74,7 +74,7 @@ export async function createFeed(): Promise<string> {
 			return tag.metadata.name;
 		});
 
-		const url = String(createFullUrl({ pathname: curriculum.href }));
+		const url = String(createFullUrl({ baseUrl, pathname: curriculum.href }));
 
 		entries.push({
 			title: curriculum.metadata.title,

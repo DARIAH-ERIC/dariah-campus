@@ -1,4 +1,4 @@
-import { assert, groupByToMap } from "@acdh-oeaw/lib";
+import { groupByToMap } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
 import { SourcesGrid } from "@/components/sources-grid";
-import { client } from "@/lib/content/client";
+import { createClient } from "@/lib/content/create-client";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("SourcesPage");
@@ -21,8 +21,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function SourcesPage(): Promise<ReactNode> {
 	const t = await getTranslations("SourcesPage");
 
-	const sources = client.collections.sources.all();
-	const resources = client.collections.resources.all();
+	const client = await createClient();
+
+	const sources = await client.collections.sources.all();
+	const resources = await client.collections.resources.all();
 
 	const resourcesBySourceId = groupByToMap(resources, (resource) => {
 		return resource.metadata.sources;
@@ -35,8 +37,7 @@ export default async function SourcesPage(): Promise<ReactNode> {
 		const href = `/sources/${source.id}`;
 
 		const resources = resourcesBySourceId.get(source.id);
-		assert(resources, `Missing resources for source "${source.id}".`);
-		const count = resources.length;
+		const count = resources?.length ?? 0;
 
 		return {
 			id: source.id,

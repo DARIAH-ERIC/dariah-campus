@@ -3,8 +3,11 @@ import { join } from "node:path";
 
 import type { MetadataRoute } from "next";
 
+import { env } from "@/config/env.config";
 import { client } from "@/lib/content/client";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
+
+const baseUrl = env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL;
 
 /**
  * Google supports up to 50.000 entries per sitemap file. Apps which need more than that can use
@@ -40,22 +43,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		routes.push(`/${segments.join("/")}`);
 	}
 
-	client.collections.resources.all().forEach((resource) => {
-		routes.push(resource.href);
-	});
-	client.collections.curricula.all().forEach((curriculum) => {
-		routes.push(curriculum.href);
-	});
-	client.collections.sources.all().forEach((source) => {
-		routes.push(source.href);
-	});
-	client.collections.documentation.all().forEach((page) => {
-		routes.push(page.href);
-	});
+	await Promise.all(
+		(await client.collections.resources.all()).map((resource) => {
+			routes.push(resource.href);
+		}),
+	);
+	await Promise.all(
+		(await client.collections.curricula.all()).map((curriculum) => {
+			routes.push(curriculum.href);
+		}),
+	);
+	await Promise.all(
+		(await client.collections.sources.all()).map((source) => {
+			routes.push(source.href);
+		}),
+	);
+	await Promise.all(
+		(await client.collections.documentation.all()).map((page) => {
+			routes.push(page.href);
+		}),
+	);
 
 	const entries = routes.map((pathname) => {
 		return {
-			url: String(createFullUrl({ pathname })),
+			url: String(createFullUrl({ baseUrl, pathname })),
 			/**
 			 * Only add `lastmod` when the publication date is actually known.
 			 * Don't use the build date instead.

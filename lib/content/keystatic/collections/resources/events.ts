@@ -481,6 +481,11 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 				validation: { length: { min: 0 } },
 				collection: withI18nPrefix("resources-events", locale),
 			}),
+			"is-translation-of": fields.relationship({
+				label: "Is translation of",
+				validation: { isRequired: false },
+				collection: withI18nPrefix("resources-events", locale),
+			}),
 			doi: readonly({
 				label: "PID (readonly)",
 				description: "Automatically assigned Handle PID.",

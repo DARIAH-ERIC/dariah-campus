@@ -157,6 +157,11 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 				validation: { length: { min: 0 } },
 				collection: withI18nPrefix("resources-external", locale),
 			}),
+			"is-translation-of": fields.relationship({
+				label: "Is translation of",
+				validation: { isRequired: false },
+				collection: withI18nPrefix("resources-external", locale),
+			}),
 			doi: readonly({
 				label: "PID (readonly)",
 				description: "Automatically assigned Handle PID.",

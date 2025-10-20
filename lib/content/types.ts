@@ -22,14 +22,14 @@ declare module "@acdh-oeaw/mdx-lib" {
 }
 
 export interface CollectionClient<T extends { id: string }> {
-	ids: () => Array<string>;
-	all: () => Array<T>;
-	byId: () => Map<string, T>;
-	get: (id: T["id"]) => T | null;
+	ids: () => Promise<Array<string>>;
+	all: () => Promise<Array<T>>;
+	byId: () => Promise<Map<string, T>>;
+	get: (id: T["id"]) => Promise<T | null>;
 }
 
 export interface SingletonClient<T> {
-	get: () => T;
+	get: () => Promise<T>;
 }
 
 export interface Client {

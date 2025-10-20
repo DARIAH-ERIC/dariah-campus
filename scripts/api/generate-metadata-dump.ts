@@ -1,22 +1,70 @@
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
-import { log } from "@acdh-oeaw/lib";
+import { assert, log } from "@acdh-oeaw/lib";
+import * as v from "valibot";
 
 import { client } from "@/lib/content/client";
-import type { CurriculumMetadata } from "@/public/metadata/curricula.json";
-import type { ResourceMetadata } from "@/public/metadata/resources.json";
 
 const formatters = {
 	duration: new Intl.NumberFormat("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
 };
 
-export function createMetadata(): {
+export const curriculumMetadataSchema = v.object({
+	id: v.string(),
+	collection: v.literal("curriculum"),
+	version: v.string(),
+	pid: v.string(),
+	title: v.string(),
+	summary: v.object({ title: v.string(), content: v.string() }),
+	license: v.string(),
+	locale: v.string(),
+	translations: v.array(v.string()),
+	"publication-date": v.string(),
+	"content-type": v.literal("curriculum"),
+	tags: v.array(v.object({ id: v.string(), name: v.string() })),
+	editors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
+	resources: v.array(v.object({ id: v.string(), collection: v.string() })),
+});
+
+export type CurriculumMetadata = v.InferOutput<typeof curriculumMetadataSchema>;
+
+export const resourceMetadataSchema = v.object({
+	id: v.string(),
+	collection: v.picklist([
+		"resourcesEvents",
+		"resourcesExternal",
+		"resourcesHosted",
+		"resourcesPathfinders",
+	]),
+	kind: v.picklist(["event", "external", "hosted", "pathfinder"]),
+	version: v.string(),
+	pid: v.string(),
+	title: v.string(),
+	summary: v.object({ title: v.string(), content: v.string() }),
+	license: v.string(),
+	locale: v.string(),
+	translations: v.array(v.string()),
+	"publication-date": v.string(),
+	"content-type": v.string(),
+	tags: v.array(v.object({ id: v.string(), name: v.string() })),
+	authors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
+	editors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
+	contributors: v.array(
+		v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) }),
+	),
+	sources: v.array(v.object({ id: v.string(), name: v.string() })),
+});
+
+export type ResourceMetadata = v.InferOutput<typeof resourceMetadataSchema>;
+
+export async function createMetadata(): Promise<{
 	curricula: Array<CurriculumMetadata>;
 	resources: Array<ResourceMetadata>;
-} {
-	function createPerson(id: string) {
-		const person = client.collections.people.get(id)!;
+}> {
+	async function createPerson(id: string) {
+		const person = await client.collections.people.get(id);
+		assert(person, `Missing person "${id}".`);
 		const { name, social } = person.metadata;
 		const orcid =
 			social.find((s) => {
@@ -25,14 +73,16 @@ export function createMetadata(): {
 		return { id, name, orcid };
 	}
 
-	function createSource(id: string) {
-		const source = client.collections.sources.get(id)!;
+	async function createSource(id: string) {
+		const source = await client.collections.sources.get(id);
+		assert(source, `Missing source "${id}".`);
 		const { name } = source.metadata;
 		return { id, name };
 	}
 
-	function createTag(id: string) {
-		const tag = client.collections.tags.get(id)!;
+	async function createTag(id: string) {
+		const tag = await client.collections.tags.get(id);
+		assert(tag, `Missing tag "${id}".`);
 		const { name } = tag.metadata;
 		return { id, name };
 	}
@@ -40,29 +90,34 @@ export function createMetadata(): {
 	const curricula: Array<CurriculumMetadata> = [];
 	const resources: Array<ResourceMetadata> = [];
 
-	client.collections.curricula.all().forEach((item) => {
-		const isDraft = "draft" in item.metadata && item.metadata.draft === true;
-		if (isDraft) return;
+	await Promise.all(
+		(await client.collections.curricula.all()).map(async (item) => {
+			const isDraft = "draft" in item.metadata && item.metadata.draft === true;
+			if (isDraft) return;
 
-		curricula.push({
-			id: item.id,
-			collection: "curriculum",
-			version: item.metadata.version,
-			pid: item.metadata.doi,
-			title: item.metadata.title,
-			summary: item.metadata.summary,
-			license: item.metadata.license,
-			locale: item.metadata.locale,
-			translations: item.metadata.translations,
-			"publication-date": item.metadata["publication-date"],
-			"content-type": "curriculum",
-			tags: item.metadata.tags.map(createTag),
-			editors: "editors" in item.metadata ? item.metadata.editors.map(createPerson) : [],
-			resources: item.metadata.resources.map((resource) => {
-				return { id: resource.value, collection: resource.discriminant };
-			}),
-		});
-	});
+			curricula.push({
+				id: item.id,
+				collection: "curriculum",
+				version: item.metadata.version,
+				pid: item.metadata.doi,
+				title: item.metadata.title,
+				summary: item.metadata.summary,
+				license: item.metadata.license,
+				locale: item.metadata.locale,
+				translations: item.metadata.translations,
+				"publication-date": item.metadata["publication-date"],
+				"content-type": "curriculum",
+				tags: await Promise.all(item.metadata.tags.map(createTag)),
+				editors:
+					"editors" in item.metadata
+						? await Promise.all(item.metadata.editors.map(createPerson))
+						: [],
+				resources: item.metadata.resources.map((resource) => {
+					return { id: resource.value, collection: resource.discriminant };
+				}),
+			});
+		}),
+	);
 
 	/** Resources. */
 
@@ -72,43 +127,53 @@ export function createMetadata(): {
 		["resourcesHosted", "hosted"],
 		["resourcesPathfinders", "pathfinder"],
 	] as const) {
-		client.collections[name].all().forEach((item) => {
-			const isDraft = "draft" in item.metadata && item.metadata.draft === true;
-			if (isDraft) return;
+		await Promise.all(
+			(await client.collections[name].all()).map(async (item) => {
+				const isDraft = "draft" in item.metadata && item.metadata.draft === true;
+				if (isDraft) return;
 
-			resources.push({
-				id: item.id,
-				collection: name,
-				kind,
-				version: item.metadata.version,
-				pid: item.metadata.doi,
-				title: item.metadata.title,
-				summary: item.metadata.summary,
-				license: item.metadata.license,
-				locale: item.metadata.locale,
-				translations: item.metadata.translations,
-				"publication-date": item.metadata["publication-date"],
-				"content-type": item.metadata["content-type"],
-				tags: item.metadata.tags.map(createTag),
-				authors: item.metadata.authors.map(createPerson),
-				editors: "editors" in item.metadata ? item.metadata.editors.map(createPerson) : [],
-				contributors:
-					"contributors" in item.metadata ? item.metadata.contributors.map(createPerson) : [],
-				sources: "sources" in item.metadata ? item.metadata.sources.map(createSource) : [],
-			});
-		});
+				resources.push({
+					id: item.id,
+					collection: name,
+					kind,
+					version: item.metadata.version,
+					pid: item.metadata.doi,
+					title: item.metadata.title,
+					summary: item.metadata.summary,
+					license: item.metadata.license,
+					locale: item.metadata.locale,
+					translations: item.metadata.translations,
+					"publication-date": item.metadata["publication-date"],
+					"content-type": item.metadata["content-type"],
+					tags: await Promise.all(item.metadata.tags.map(createTag)),
+					authors: await Promise.all(item.metadata.authors.map(createPerson)),
+					editors:
+						"editors" in item.metadata
+							? await Promise.all(item.metadata.editors.map(createPerson))
+							: [],
+					contributors:
+						"contributors" in item.metadata
+							? await Promise.all(item.metadata.contributors.map(createPerson))
+							: [],
+					sources:
+						"sources" in item.metadata
+							? await Promise.all(item.metadata.sources.map(createSource))
+							: [],
+				});
+			}),
+		);
 	}
 
 	return {
-		curricula,
-		resources,
+		curricula: v.parse(v.array(curriculumMetadataSchema), curricula),
+		resources: v.parse(v.array(resourceMetadataSchema), resources),
 	};
 }
 
 async function generate() {
 	const start = performance.now();
 
-	const { curricula, resources } = createMetadata();
+	const { curricula, resources } = await createMetadata();
 
 	const outputFolder = join(process.cwd(), "public", "metadata");
 
