@@ -1,4 +1,4 @@
-import { assert, groupByToMap } from "@acdh-oeaw/lib";
+import { groupByToMap } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
@@ -35,8 +35,7 @@ export default async function SourcesPage(): Promise<ReactNode> {
 		const href = `/sources/${source.id}`;
 
 		const resources = resourcesBySourceId.get(source.id);
-		assert(resources, `Missing resources for source "${source.id}".`);
-		const count = resources.length;
+		const count = resources?.length ?? 0;
 
 		return {
 			id: source.id,
