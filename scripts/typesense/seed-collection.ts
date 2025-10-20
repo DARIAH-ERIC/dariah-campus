@@ -33,7 +33,7 @@ async function seed() {
 		.documents()
 		.delete({ filter_by: "", ignore_not_found: true });
 
-	const documents = createDocuments();
+	const documents = await createDocuments();
 
 	await client.collections(collection).documents().import(documents);
 
