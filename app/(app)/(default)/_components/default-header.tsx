@@ -6,7 +6,7 @@ import { StickyHeader } from "@/app/(app)/(default)/_components/sticky-header";
 import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 import { NavLink } from "@/components/nav-link";
-import { client } from "@/lib/content/client";
+import { createClient } from "@/lib/content/create-client";
 import { createHref } from "@/lib/navigation/create-href";
 import type { NavigationLink, NavigationSeparator } from "@/lib/navigation/navigation";
 import logo from "@/public/assets/images/logo-dariah-with-text.svg";
@@ -17,6 +17,8 @@ export async function DefaultHeader(props: Readonly<DefaultHeaderProps>): Promis
 	const rest = props;
 
 	const t = await getTranslations("DefaultHeader");
+
+	const client = await createClient();
 
 	const label = t("navigation.label");
 
