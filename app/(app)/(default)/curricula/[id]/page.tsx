@@ -132,8 +132,30 @@ export default async function CurriculumPage(
 					<CurriculumResourcesList
 						label={t("overview")}
 						resources={await Promise.all(
-							resources.map(async ({ value: id }) => {
-								const resource = await client.collections.resources.get(id);
+							resources.map(async ({ value: id, discriminant: type }) => {
+								/**
+								 * Resolving `type` inline instead of calling
+								 * `client.collections.resources.get(id)` so this works with the github reader
+								 * in preview mode.
+								 */
+								function getResource() {
+									switch (type) {
+										case "resources-events": {
+											return client.collections.resourcesEvents.get(id);
+										}
+										case "resources-external": {
+											return client.collections.resourcesExternal.get(id);
+										}
+										case "resources-hosted": {
+											return client.collections.resourcesHosted.get(id);
+										}
+										case "resources-pathfinders": {
+											return client.collections.resourcesPathfinders.get(id);
+										}
+									}
+								}
+
+								const resource = await getResource();
 								assert(resource, `Missing resource "${id}".`);
 								return {
 									id,
