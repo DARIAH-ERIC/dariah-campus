@@ -20,7 +20,7 @@ import { createLinkButton } from "@/lib/content/keystatic/components/link-button
 import { createTabs } from "@/lib/content/keystatic/components/tabs";
 import { createVideo } from "@/lib/content/keystatic/components/video";
 import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
-import { contentLanguages, contentLicenses } from "@/lib/content/options";
+import { contentLanguages, contentLicenses, dariahNationalConsortia } from "@/lib/content/options";
 
 export const createResourcesPathfinders = createCollection(
 	"/resources/pathfinders/",
@@ -143,6 +143,11 @@ export const createResourcesPathfinders = createCollection(
 					label: "Is translation of",
 					validation: { isRequired: false },
 					collection: withI18nPrefix("resources-pathfinders", locale),
+				}),
+				"dariah-national-consortia": fields.multiselect({
+					label: "DARIAH National Consortia",
+					options: dariahNationalConsortia,
+					description: "DARIAH member country affiliation",
 				}),
 				doi: readonly({
 					label: "PID (readonly)",

@@ -18,7 +18,12 @@ import { createQuiz } from "@/lib/content/keystatic/components/quiz";
 import { createVideo } from "@/lib/content/keystatic/components/video";
 import { createVideoCard } from "@/lib/content/keystatic/components/video-card";
 import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
-import { contentLanguages, contentLicenses, contentTypes } from "@/lib/content/options";
+import {
+	contentLanguages,
+	contentLicenses,
+	contentTypes,
+	dariahNationalConsortia,
+} from "@/lib/content/options";
 
 export const createResourcesExternal = createCollection("/resources/external/", (paths, locale) => {
 	return collection({
@@ -161,6 +166,11 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 				label: "Is translation of",
 				validation: { isRequired: false },
 				collection: withI18nPrefix("resources-external", locale),
+			}),
+			"dariah-national-consortia": fields.multiselect({
+				label: "DARIAH National Consortia",
+				options: dariahNationalConsortia,
+				description: "DARIAH member country affiliation",
 			}),
 			doi: readonly({
 				label: "PID (readonly)",

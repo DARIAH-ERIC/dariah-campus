@@ -22,7 +22,7 @@ import { createTabs } from "@/lib/content/keystatic/components/tabs";
 import { createVideo } from "@/lib/content/keystatic/components/video";
 import { createVideoCard } from "@/lib/content/keystatic/components/video-card";
 import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
-import { contentLanguages, contentLicenses } from "@/lib/content/options";
+import { contentLanguages, contentLicenses, dariahNationalConsortia } from "@/lib/content/options";
 
 export const createCurricula = createCollection("/curricula/", (paths, locale) => {
 	return collection({
@@ -170,6 +170,11 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 				label: "Is translation of",
 				validation: { isRequired: false },
 				collection: withI18nPrefix("curricula", locale),
+			}),
+			"dariah-national-consortia": fields.multiselect({
+				label: "DARIAH National Consortia",
+				options: dariahNationalConsortia,
+				description: "DARIAH member country affiliation",
 			}),
 			doi: readonly({
 				label: "PID (readonly)",
