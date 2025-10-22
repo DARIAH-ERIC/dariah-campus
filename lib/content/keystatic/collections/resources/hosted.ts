@@ -15,7 +15,7 @@ import { createFigure } from "@/lib/content/keystatic/components/figure";
 import { createFootnote } from "@/lib/content/keystatic/components/footnote";
 import { createGrid } from "@/lib/content/keystatic/components/grid";
 import { createHeadingId } from "@/lib/content/keystatic/components/heading-id";
-import { createImageSlider } from "@/lib/content/keystatic/components/image-slider";
+import { createImageComparisonSlider } from "@/lib/content/keystatic/components/image-comparison-slider";
 import { createLink } from "@/lib/content/keystatic/components/link";
 import { createLinkButton } from "@/lib/content/keystatic/components/link-button";
 import { createQuiz } from "@/lib/content/keystatic/components/quiz";
@@ -134,7 +134,7 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 					...createFootnote(paths, locale),
 					...createGrid(paths, locale),
 					...createHeadingId(paths, locale),
-					...createImageSlider(paths, locale),
+					...createImageComparisonSlider(paths, locale),
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
 					...createQuiz(paths, locale),
