@@ -109,6 +109,7 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 				/>
 				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
 				<div
+					aria-label="Use arrow keys to move separator"
 					className={cn(
 						"absolute grid place-items-center",
 						orientation === "vertical"
@@ -125,7 +126,7 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 								}
 
 								case "ArrowDown": {
-									const dimensions = event.currentTarget.getBoundingClientRect();
+									const dimensions = event.currentTarget.parentElement!.getBoundingClientRect();
 									const newPosition = Math.min(position + 10, dimensions.height);
 									setPosition(newPosition);
 									break;
@@ -140,7 +141,7 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 								}
 
 								case "ArrowRight": {
-									const dimensions = event.currentTarget.getBoundingClientRect();
+									const dimensions = event.currentTarget.parentElement!.getBoundingClientRect();
 									const newPosition = Math.min(position + 10, dimensions.width);
 									setPosition(newPosition);
 									break;
