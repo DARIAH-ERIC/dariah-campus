@@ -172,10 +172,10 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 				collection: withI18nPrefix("curricula", locale),
 			}),
 			"dariah-national-consortia": fields.multiRelationship({
-				label: "DARIAH National Consortia",
+				label: "DARIAH national consortia",
 				validation: { length: { min: 0 } },
 				collection: withI18nPrefix("dariah-national-consortia", locale),
-				description: "DARIAH member country affiliation",
+				description: "DARIAH member countries contributing to resource (where applicable)",
 			}),
 			doi: readonly({
 				label: "PID (readonly)",
