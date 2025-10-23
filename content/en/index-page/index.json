@@ -100,23 +100,23 @@
     "team": [
       {
         "person": "tasovac-toma",
-        "role": "Editor in Chief / Strategic Advisor to DARIAH Board of Directors"
+        "role": "Editor-in-Chief"
       },
       {
         "person": "garnett-vicky",
-        "role": "Managing Editor / DARIAH-EU Training & Education Officer"
+        "role": "Managing Editor"
       },
       {
         "person": "mc-conville-amelia",
-        "role": "Community Editor / DARIAH-EU Community Engagement Officer"
+        "role": "Community Editor (ECHOES project)"
       },
       {
         "person": "koenigshofer-elisabeth",
-        "role": "Community Editor"
+        "role": "Community Editor (ARTEMIS project)"
       },
       {
         "person": "wiederaenders-maria",
-        "role": "Community Editor"
+        "role": "Community Editor (ARTEMIS Project)"
       }
     ]
   }
