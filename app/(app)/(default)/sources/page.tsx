@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 import { PageLead } from "@/components/page-lead";
 import { PageTitle } from "@/components/page-title";
 import { SourcesGrid } from "@/components/sources-grid";
-import { client } from "@/lib/content/client";
+import { createClient } from "@/lib/content/create-client";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("SourcesPage");
@@ -20,6 +20,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function SourcesPage(): Promise<ReactNode> {
 	const t = await getTranslations("SourcesPage");
+
+	const client = await createClient();
 
 	const sources = await client.collections.sources.all();
 	const resources = await client.collections.resources.all();

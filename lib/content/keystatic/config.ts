@@ -3,6 +3,7 @@ import { config as createConfig } from "@keystatic/core";
 
 import { env } from "@/config/env.config";
 import { createCurricula } from "@/lib/content/keystatic/collections/curricula";
+import { createDariahNationalConsortia } from "@/lib/content/keystatic/collections/dariah-national-consortia";
 import { createDocumentation } from "@/lib/content/keystatic/collections/documentation";
 import { createPeople } from "@/lib/content/keystatic/collections/people";
 import { createResourcesEvents } from "@/lib/content/keystatic/collections/resources/events";
@@ -22,6 +23,7 @@ const locale = getIntlLanguage(defaultLocale);
 export const config = createConfig({
 	collections: {
 		[withI18nPrefix("curricula", locale)]: createCurricula(locale),
+		[withI18nPrefix("dariah-national-consortia", locale)]: createDariahNationalConsortia(locale),
 		[withI18nPrefix("documentation", locale)]: createDocumentation(locale),
 		[withI18nPrefix("resources-events", locale)]: createResourcesEvents(locale),
 		[withI18nPrefix("people", locale)]: createPeople(locale),
@@ -68,6 +70,7 @@ export const config = createConfig({
 				withI18nPrefix("people", locale),
 				withI18nPrefix("sources", locale),
 				withI18nPrefix("tags", locale),
+				// withI18nPrefix("dariah-national-consortia", locale),
 			],
 			Pages: [withI18nPrefix("index-page", locale), withI18nPrefix("documentation", locale)],
 			Settings: [withI18nPrefix("navigation", locale), withI18nPrefix("metadata", locale)],

@@ -16,6 +16,7 @@ import { createFootnote } from "@/lib/content/keystatic/components/footnote";
 import { createGrid } from "@/lib/content/keystatic/components/grid";
 import { createH5PWrapper } from "@/lib/content/keystatic/components/h5p-wrapper";
 import { createHeadingId } from "@/lib/content/keystatic/components/heading-id";
+import { createImageComparisonSlider } from "@/lib/content/keystatic/components/image-comparison-slider";
 import { createLink } from "@/lib/content/keystatic/components/link";
 import { createLinkButton } from "@/lib/content/keystatic/components/link-button";
 import { createQuiz } from "@/lib/content/keystatic/components/quiz";
@@ -135,6 +136,7 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 					...createGrid(paths, locale),
 					...createH5PWrapper(paths, locale),
 					...createHeadingId(paths, locale),
+					...createImageComparisonSlider(paths, locale),
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
 					...createQuiz(paths, locale),
@@ -152,6 +154,12 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 				label: "Is translation of",
 				validation: { isRequired: false },
 				collection: withI18nPrefix("resources-hosted", locale),
+			}),
+			"dariah-national-consortia": fields.multiRelationship({
+				label: "DARIAH national consortia",
+				validation: { length: { min: 0 } },
+				collection: withI18nPrefix("dariah-national-consortia", locale),
+				description: "DARIAH member countries contributing to resource (where applicable)",
 			}),
 			doi: readonly({
 				label: "PID (readonly)",
