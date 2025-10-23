@@ -32,30 +32,6 @@ export const contentTypes = [
 
 export type ContentType = (typeof contentTypes)[number]["value"];
 
-export const dariahNationalConsortia = [
-	{ label: "CLARIAH-AT", value: "9403" },
-	{ label: "DARIAH-BE", value: "3235" },
-	{ label: "CLaDA-BG", value: "3754" },
-	{ label: "DARIAH-CH", value: "10002" },
-	{ label: "LINDAT/CLARIAH-CZ", value: "3804" },
-	{ label: "DARIAH-DE", value: "2868" },
-	{ label: "DARIAH-DK", value: "9560" },
-	{ label: "CLARIAH-ES", value: "11803" },
-	{ label: "DARIAH-FR", value: "10860" },
-	{ label: "DARIAH-GR / DYAS", value: "3502" },
-	{ label: "DARIAH-HR", value: "3403" },
-	{ label: "DARIAH-IE", value: "3755" },
-	{ label: "DARIAH-IT", value: "10226" },
-	{ label: "DARIAH-LU", value: "9561" },
-	{ label: "CLARIAH-NL", value: "9562" },
-	{ label: "DARIAH-PL", value: "3752" },
-	{ label: "DARIAH-PT / ROSSIO", value: "3553" },
-	{ label: "DARIAH-SE/Huminfra", value: "10722" },
-	{ label: "DARIAH-SI", value: "9133" },
-] as const;
-
-export type DariahNationalConsortium = (typeof dariahNationalConsortia)[number]["value"];
-
 export const figureAlignments = [
 	{ label: "Center", value: "center" },
 	{ label: "Stretch", value: "stretch" },

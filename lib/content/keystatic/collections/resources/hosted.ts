@@ -23,12 +23,7 @@ import { createTabs } from "@/lib/content/keystatic/components/tabs";
 import { createVideo } from "@/lib/content/keystatic/components/video";
 import { createVideoCard } from "@/lib/content/keystatic/components/video-card";
 import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
-import {
-	contentLanguages,
-	contentLicenses,
-	contentTypes,
-	dariahNationalConsortia,
-} from "@/lib/content/options";
+import { contentLanguages, contentLicenses, contentTypes } from "@/lib/content/options";
 
 export const createResourcesHosted = createCollection("/resources/hosted/", (paths, locale) => {
 	return collection({
@@ -158,9 +153,10 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 				validation: { isRequired: false },
 				collection: withI18nPrefix("resources-hosted", locale),
 			}),
-			"dariah-national-consortia": fields.multiselect({
+			"dariah-national-consortia": fields.multiRelationship({
 				label: "DARIAH National Consortia",
-				options: dariahNationalConsortia,
+				validation: { length: { min: 0 } },
+				collection: withI18nPrefix("dariah-national-consortia", locale),
 				description: "DARIAH member country affiliation",
 			}),
 			doi: readonly({
