@@ -33,6 +33,7 @@ import {
 	createTypographicQuotesPlugin,
 } from "@/lib/content/mdx/remark-plugins";
 import { createRemarkRehypeOptions } from "@/lib/content/mdx/remark-rehype-options";
+import type { Client } from "@/lib/content/types";
 import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
 
 const locale = defaultLocale;
@@ -89,6 +90,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	const evaluateOptions = createEvaluateOptions(String(createUrl({ baseUrl, pathname: basePath })));
 
 	const indexPage = {
+		async ids() {
+			return Promise.resolve([]);
+		},
+		async all() {
+			return Promise.resolve([]);
+		},
+		async byId() {
+			return Promise.resolve(new Map());
+		},
 		async get(): Promise<IndexPage> {
 			const data = await reader.singletons["en:index-page"].readOrThrow({
 				resolveLinkedFiles: true,
@@ -160,6 +170,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const curricula = {
+		async ids() {
+			return Promise.resolve([]);
+		},
+		async all() {
+			return Promise.resolve([]);
+		},
+		async byId() {
+			return Promise.resolve(new Map());
+		},
 		async get(id: string): Promise<Curriculum | null> {
 			const data = await reader.collections["en:curricula"].read(id, { resolveLinkedFiles: true });
 
@@ -193,6 +212,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const documentation = {
+		async ids() {
+			return Promise.resolve([]);
+		},
+		async all() {
+			return Promise.resolve([]);
+		},
+		async byId() {
+			return Promise.resolve(new Map());
+		},
 		async get(id: string): Promise<Documentation | null> {
 			const data = await reader.collections["en:documentation"].read(id, {
 				resolveLinkedFiles: true,
@@ -218,6 +246,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const people = {
+		async ids() {
+			return Promise.resolve([]);
+		},
+		async all() {
+			return Promise.resolve([]);
+		},
+		async byId() {
+			return Promise.resolve(new Map());
+		},
 		async get(id: string): Promise<Person | null> {
 			const data = await reader.collections["en:people"].read(id, {
 				resolveLinkedFiles: true,
@@ -244,6 +281,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resourcesEvents = {
+		async ids() {
+			return Promise.resolve([]);
+		},
+		async all() {
+			return Promise.resolve([]);
+		},
+		async byId() {
+			return Promise.resolve(new Map());
+		},
 		async get(id: string): Promise<EventResource | null> {
 			const data = await reader.collections["en:resources-events"].read(id, {
 				resolveLinkedFiles: true,
@@ -314,6 +360,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resourcesExternal = {
+		async ids() {
+			return Promise.resolve([]);
+		},
+		async all() {
+			return Promise.resolve([]);
+		},
+		async byId() {
+			return Promise.resolve(new Map());
+		},
 		async get(id: string): Promise<ExternalResource | null> {
 			const data = await reader.collections["en:resources-external"].read(id, {
 				resolveLinkedFiles: true,
@@ -353,6 +408,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resourcesHosted = {
+		async ids() {
+			return Promise.resolve([]);
+		},
+		async all() {
+			return Promise.resolve([]);
+		},
+		async byId() {
+			return Promise.resolve(new Map());
+		},
 		async get(id: string): Promise<HostedResource | null> {
 			const data = await reader.collections["en:resources-hosted"].read(id, {
 				resolveLinkedFiles: true,
@@ -392,6 +456,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resourcesPathfinders = {
+		async ids() {
+			return Promise.resolve([]);
+		},
+		async all() {
+			return Promise.resolve([]);
+		},
+		async byId() {
+			return Promise.resolve(new Map());
+		},
 		async get(id: string): Promise<PathfinderResource | null> {
 			const data = await reader.collections["en:resources-pathfinders"].read(id, {
 				resolveLinkedFiles: true,
@@ -431,7 +504,31 @@ export const createGitHubClient = cache(function createGitHubClient({
 		},
 	};
 
+	const resources = {
+		async ids() {
+			return Promise.resolve([]);
+		},
+		async all() {
+			return Promise.resolve([]);
+		},
+		async byId() {
+			return Promise.resolve(new Map());
+		},
+		async get(_id: string) {
+			return Promise.resolve(null);
+		},
+	};
+
 	const sources = {
+		async ids() {
+			return Promise.resolve([]);
+		},
+		async all() {
+			return Promise.resolve([]);
+		},
+		async byId() {
+			return Promise.resolve(new Map());
+		},
 		async get(id: string): Promise<Source | null> {
 			const data = await reader.collections["en:sources"].read(id, { resolveLinkedFiles: true });
 
@@ -446,7 +543,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 			const image = createGitHubUrl(metadata.image);
 
 			// TODO: read from prebuilt client?
-			const resources = client.collections.sources.get(id)?.resources ?? [];
+			const resources = (await client.collections.sources.get(id))?.resources ?? [];
 
 			return {
 				id,
@@ -462,6 +559,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const tags = {
+		async ids() {
+			return Promise.resolve([]);
+		},
+		async all() {
+			return Promise.resolve([]);
+		},
+		async byId() {
+			return Promise.resolve(new Map());
+		},
 		async get(id: string): Promise<Tag | null> {
 			const data = await reader.collections["en:tags"].read(id, {
 				resolveLinkedFiles: true,
@@ -485,9 +591,13 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 	return {
 		collections: {
+			contentLanguages: client.collections.contentLanguages,
+			contentLicenses: client.collections.contentLicenses,
+			contentTypes: client.collections.contentTypes,
 			curricula,
 			documentation,
 			people,
+			resources,
 			resourcesEvents,
 			resourcesExternal,
 			resourcesHosted,
@@ -497,6 +607,8 @@ export const createGitHubClient = cache(function createGitHubClient({
 		},
 		singletons: {
 			indexPage,
+			legalNotice: client.singletons.legalNotice,
+			navigation: client.singletons.navigation,
 		},
-	};
+	} satisfies Client;
 });

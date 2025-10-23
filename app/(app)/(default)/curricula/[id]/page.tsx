@@ -12,14 +12,15 @@ import { TagsList } from "@/components/tags-list";
 import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
 import { client } from "@/lib/content/client";
-import { createGitHubClient } from "@/lib/content/github-client";
-import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
+import { createClient } from "@/lib/content/create-client";
 import { pickRandom } from "@/lib/utils/pick-random";
 
 interface CurriculumPageProps extends PageProps<"/curricula/[id]"> {}
 
-export function generateStaticParams(): Array<Pick<Awaited<CurriculumPageProps["params"]>, "id">> {
-	const ids = client.collections.curricula.ids();
+export async function generateStaticParams(): Promise<
+	Array<Pick<Awaited<CurriculumPageProps["params"]>, "id">>
+> {
+	const ids = await client.collections.curricula.ids();
 
 	return ids.map((id) => {
 		return { id };
@@ -32,12 +33,9 @@ export async function generateMetadata(props: Readonly<CurriculumPageProps>): Pr
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const preview = await getPreviewMode();
+	const client = await createClient();
 
-	const curriculum =
-		preview.status === "enabled"
-			? await createGitHubClient(preview).collections.curricula.get(id)
-			: client.collections.curricula.get(id);
+	const curriculum = await client.collections.curricula.get(id);
 
 	if (curriculum == null) {
 		notFound();
@@ -63,12 +61,9 @@ export default async function CurriculumPage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const preview = await getPreviewMode();
+	const client = await createClient();
 
-	const curriculum =
-		preview.status === "enabled"
-			? await createGitHubClient(preview).collections.curricula.get(id)
-			: client.collections.curricula.get(id);
+	const curriculum = await client.collections.curricula.get(id);
 
 	if (curriculum == null) {
 		notFound();
@@ -88,8 +83,8 @@ export default async function CurriculumPage(
 
 	const related = pickRandom(Array.from(curriculum.related), 4);
 
-	function getTranslationMetadata(id: string) {
-		const curriculum = client.collections.curricula.get(id);
+	async function getTranslationMetadata(id: string) {
+		const curriculum = await client.collections.curricula.get(id);
 		assert(curriculum, `Missing curriculum "${id}".`);
 		return {
 			id,
@@ -99,9 +94,9 @@ export default async function CurriculumPage(
 		};
 	}
 
-	const translations = _translations.map(getTranslationMetadata);
+	const translations = await Promise.all(_translations.map(getTranslationMetadata));
 	const isTranslationOf =
-		_isTranslationOf != null ? getTranslationMetadata(_isTranslationOf) : null;
+		_isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
 
 	return (
 		<div>
@@ -112,74 +107,132 @@ export default async function CurriculumPage(
 				>
 					<PeopleList
 						label={t("editors")}
-						people={editors.map((id) => {
-							const person = client.collections.people.get(id);
-							assert(person, `Missing person "${id}".`);
-							const { image, name } = person.metadata;
-							return { id, image, name };
-						})}
+						people={await Promise.all(
+							editors.map(async (id) => {
+								const person = await client.collections.people.get(id);
+								assert(person, `Missing person "${id}".`);
+								const { image, name } = person.metadata;
+								return { id, image, name };
+							}),
+						)}
 					/>
 					<TagsList
 						label={t("tags")}
-						tags={tags.map((id) => {
-							const tag = client.collections.tags.get(id);
-							assert(tag, `Missing tag "${id}".`);
-							const { name } = tag.metadata;
-							return { id, name };
-						})}
+						tags={await Promise.all(
+							tags.map(async (id) => {
+								const tag = await client.collections.tags.get(id);
+								assert(tag, `Missing tag "${id}".`);
+								const { name } = tag.metadata;
+								return { id, name };
+							}),
+						)}
 					/>
 					<TranslationsList label={t("translations")} translations={translations} />
 					<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
 					<CurriculumResourcesList
 						label={t("overview")}
-						resources={resources.map(({ value: id }) => {
-							const resource = client.collections.resources.get(id);
-							assert(resource, `Missing resource "${id}".`);
-							return {
-								id,
-								summary: resource.metadata.summary,
-								title: resource.metadata.title,
-							};
-						})}
+						resources={await Promise.all(
+							resources.map(async ({ value: id, discriminant: type }) => {
+								/**
+								 * Resolving `type` inline instead of calling
+								 * `client.collections.resources.get(id)` so this works with the github reader
+								 * in preview mode.
+								 */
+								function getResource() {
+									switch (type) {
+										case "resources-events": {
+											return client.collections.resourcesEvents.get(id);
+										}
+										case "resources-external": {
+											return client.collections.resourcesExternal.get(id);
+										}
+										case "resources-hosted": {
+											return client.collections.resourcesHosted.get(id);
+										}
+										case "resources-pathfinders": {
+											return client.collections.resourcesPathfinders.get(id);
+										}
+									}
+								}
+
+								const resource = await getResource();
+								assert(resource, `Missing resource "${id}".`);
+								return {
+									id,
+									summary: resource.metadata.summary,
+									title: resource.metadata.title,
+								};
+							}),
+						)}
 					/>
 				</aside>
 
 				<div className="min-w-0">
 					<Curriculum
-						editors={editors.map((id) => {
-							const person = client.collections.people.get(id);
-							assert(person, `Missing person "${id}".`);
-							const { image, name } = person.metadata;
-							return { id, image, name };
-						})}
+						editors={await Promise.all(
+							editors.map(async (id) => {
+								const person = await client.collections.people.get(id);
+								assert(person, `Missing person "${id}".`);
+								const { image, name } = person.metadata;
+								return { id, image, name };
+							}),
+						)}
 						featuredImage={featuredImage}
 						isTranslationOf={isTranslationOf}
-						resources={resources.map(({ value: id, discriminant: type }) => {
-							const resource = client.collections.resources.get(id);
-							assert(resource, `Missing resource "${id}".`);
-							return {
-								authors: resource.metadata.authors.map((id) => {
-									const person = client.collections.people.get(id)!;
-									assert(person, `Missing person "${id}".`);
-									const { image, name } = person.metadata;
-									return { id, image, name };
-								}),
-								kind: type,
-								contentType: resource.metadata["content-type"],
-								id: resource.id,
-								href: resource.href,
-								locale: resource.metadata.locale,
-								summary: resource.metadata.summary,
-								title: resource.metadata.title,
-								draft: resource.metadata.draft,
-							};
-						})}
-						tags={tags.map((id) => {
-							const tag = client.collections.tags.get(id);
-							assert(tag, `Missing tag "${id}".`);
-							const { name } = tag.metadata;
-							return { id, name };
-						})}
+						resources={await Promise.all(
+							resources.map(async ({ value: id, discriminant: type }) => {
+								/**
+								 * Resolving `type` inline instead of calling
+								 * `client.collections.resources.get(id)` so this works with the github reader
+								 * in preview mode.
+								 */
+								function getResource() {
+									switch (type) {
+										case "resources-events": {
+											return client.collections.resourcesEvents.get(id);
+										}
+										case "resources-external": {
+											return client.collections.resourcesExternal.get(id);
+										}
+										case "resources-hosted": {
+											return client.collections.resourcesHosted.get(id);
+										}
+										case "resources-pathfinders": {
+											return client.collections.resourcesPathfinders.get(id);
+										}
+									}
+								}
+
+								const resource = await getResource();
+								assert(resource, `Missing resource "${id}".`);
+								return {
+									authors: await Promise.all(
+										resource.metadata.authors.map(async (id) => {
+											const person = await client.collections.people.get(id);
+											assert(person, `Missing person "${id}".`);
+											const { image, name } = person.metadata;
+											return { id, image, name };
+										}),
+									),
+									kind: type,
+									contentType: resource.metadata["content-type"],
+									id: resource.id,
+									href: resource.href,
+									locale: resource.metadata.locale,
+									summary: resource.metadata.summary,
+									title: resource.metadata.title,
+									draft: resource.metadata.draft,
+								};
+							}),
+						)}
+						tags={await Promise.all(
+							tags.map(async (id) => {
+								const tag = await client.collections.tags.get(id);
+								assert(tag, `Missing tag "${id}".`);
+								const { name } = tag.metadata;
+								return { id, name };
+							}),
+						)}
 						title={title}
 						translations={translations}
 					>
@@ -188,11 +241,13 @@ export default async function CurriculumPage(
 						</div>
 					</Curriculum>
 					<RelatedCurriculaList
-						curricula={related.map((id) => {
-							const curriculum = client.collections.curricula.get(id);
-							assert(curriculum, `Missing curriculum "${id}".`);
-							return { id, title: curriculum.metadata.title, href: curriculum.href };
-						})}
+						curricula={await Promise.all(
+							related.map(async (id) => {
+								const curriculum = await client.collections.curricula.get(id);
+								assert(curriculum, `Missing curriculum "${id}".`);
+								return { id, title: curriculum.metadata.title, href: curriculum.href };
+							}),
+						)}
 					/>
 				</div>
 			</div>

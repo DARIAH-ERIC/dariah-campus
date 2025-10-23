@@ -25,10 +25,10 @@ export async function createFeed(): Promise<string> {
 
 	const entries: Array<Entry> = [];
 
-	const curricula = client.collections.curricula.all();
-	const resources = client.collections.resources.all();
-	const people = client.collections.people.all();
-	const tags = client.collections.tags.all();
+	const curricula = await client.collections.curricula.all();
+	const resources = await client.collections.resources.all();
+	const people = await client.collections.people.all();
+	const tags = await client.collections.tags.all();
 	const peopleById = keyByToMap(people, (person) => {
 		return person.id;
 	});

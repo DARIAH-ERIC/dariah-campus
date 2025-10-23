@@ -24,8 +24,7 @@ import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
 import { env } from "@/config/env.config";
 import { client } from "@/lib/content/client";
-import { createGitHubClient } from "@/lib/content/github-client";
-import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
+import { createClient } from "@/lib/content/create-client";
 import { createResourceMetadata } from "@/lib/content/utils/create-resource-metadata";
 import { getMetadata } from "@/lib/i18n/metadata";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
@@ -33,10 +32,10 @@ import { pickRandom } from "@/lib/utils/pick-random";
 
 interface EventResourcePageProps extends PageProps<"/resources/events/[id]"> {}
 
-export function generateStaticParams(): Array<
-	Pick<Awaited<EventResourcePageProps["params"]>, "id">
+export async function generateStaticParams(): Promise<
+	Array<Pick<Awaited<EventResourcePageProps["params"]>, "id">>
 > {
-	const ids = client.collections.resourcesEvents.ids();
+	const ids = await client.collections.resourcesEvents.ids();
 
 	return ids.map((id) => {
 		return { id };
@@ -51,12 +50,9 @@ export async function generateMetadata(props: Readonly<EventResourcePageProps>):
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const preview = await getPreviewMode();
+	const client = await createClient();
 
-	const resource =
-		preview.status === "enabled"
-			? await createGitHubClient(preview).collections.resourcesEvents.get(id)
-			: client.collections.resourcesEvents.get(id);
+	const resource = await client.collections.resourcesEvents.get(id);
 
 	if (resource == null) {
 		notFound();
@@ -77,23 +73,27 @@ export async function generateMetadata(props: Readonly<EventResourcePageProps>):
 		title,
 		description: summary.content,
 		...createResourceMetadata({
-			authors: authors.map((id) => {
-				const person = client.collections.people.get(id);
-				assert(person, `Missing person "${id}".`);
-				const { name } = person.metadata;
-				return name;
-			}),
-			license: client.collections.contentLicenses.get(license)?.label ?? "Unknown",
+			authors: await Promise.all(
+				authors.map(async (id) => {
+					const person = await client.collections.people.get(id);
+					assert(person, `Missing person "${id}".`);
+					const { name } = person.metadata;
+					return name;
+				}),
+			),
+			license: (await client.collections.contentLicenses.get(license))?.label ?? "Unknown",
 			locale: contentLocale,
 			publicationDate: new Date(publicationDate).toISOString(),
 			siteTitle: meta.title,
 			summary: summary.content,
-			tags: tags.map((id) => {
-				const tag = client.collections.tags.get(id);
-				assert(tag, `Missing tag "${id}".`);
-				const { name } = tag.metadata;
-				return name;
-			}),
+			tags: await Promise.all(
+				tags.map(async (id) => {
+					const tag = await client.collections.tags.get(id);
+					assert(tag, `Missing tag "${id}".`);
+					const { name } = tag.metadata;
+					return name;
+				}),
+			),
 			title,
 			url: String(
 				createFullUrl({
@@ -119,12 +119,9 @@ export default async function EventResourcePage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const preview = await getPreviewMode();
+	const client = await createClient();
 
-	const resource =
-		preview.status === "enabled"
-			? await createGitHubClient(preview).collections.resourcesEvents.get(id)
-			: client.collections.resourcesEvents.get(id);
+	const resource = await client.collections.resourcesEvents.get(id);
 
 	if (resource == null) {
 		notFound();
@@ -163,8 +160,8 @@ export default async function EventResourcePage(
 		};
 	});
 
-	function getTranslationMetadata(id: string) {
-		const resource = client.collections.resources.get(id);
+	async function getTranslationMetadata(id: string) {
+		const resource = await client.collections.resources.get(id);
 		assert(resource, `Missing resource "${id}".`);
 		return {
 			id,
@@ -174,9 +171,9 @@ export default async function EventResourcePage(
 		};
 	}
 
-	const translations = _translations.map(getTranslationMetadata);
+	const translations = await Promise.all(_translations.map(getTranslationMetadata));
 	const isTranslationOf =
-		_isTranslationOf != null ? getTranslationMetadata(_isTranslationOf) : null;
+		_isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
 
 	return (
 		<div>
@@ -197,16 +194,18 @@ export default async function EventResourcePage(
 					abstract: summary.content,
 					description: summary.content,
 					inLanguage: contentLocale,
-					author: authors.map((id) => {
-						const person = client.collections.people.get(id);
-						assert(person, `Missing person "${id}".`);
-						return {
-							"@type": "Person" as const,
-							name: person.metadata.name,
-						};
-					}),
+					author: await Promise.all(
+						authors.map(async (id) => {
+							const person = await client.collections.people.get(id);
+							assert(person, `Missing person "${id}".`);
+							return {
+								"@type": "Person" as const,
+								name: person.metadata.name,
+							};
+						}),
+					),
 					version,
-					license: client.collections.contentLicenses.get(license)?.label ?? "Unknown",
+					license: (await client.collections.contentLicenses.get(license))?.label ?? "Unknown",
 					image:
 						typeof featuredImage === "string" ? featuredImage : (featuredImage?.src ?? undefined),
 					publisher: {
@@ -252,21 +251,25 @@ export default async function EventResourcePage(
 					</div>
 					<PeopleList
 						label={t("authors")}
-						people={authors.map((id) => {
-							const person = client.collections.people.get(id);
-							assert(person, `Missing person "${id}".`);
-							const { image, name } = person.metadata;
-							return { id, image, name };
-						})}
+						people={await Promise.all(
+							authors.map(async (id) => {
+								const person = await client.collections.people.get(id);
+								assert(person, `Missing person "${id}".`);
+								const { image, name } = person.metadata;
+								return { id, image, name };
+							}),
+						)}
 					/>
 					<TagsList
 						label={t("tags")}
-						tags={tags.map((id) => {
-							const tag = client.collections.tags.get(id);
-							assert(tag, `Missing tag "${id}".`);
-							const { name } = tag.metadata;
-							return { id, name };
-						})}
+						tags={await Promise.all(
+							tags.map(async (id) => {
+								const tag = await client.collections.tags.get(id);
+								assert(tag, `Missing tag "${id}".`);
+								const { name } = tag.metadata;
+								return { id, name };
+							}),
+						)}
 					/>
 					<TranslationsList label={t("translations")} translations={translations} />
 					<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
@@ -275,21 +278,25 @@ export default async function EventResourcePage(
 					<SocialMediaList label={t("social-media")} social={social} />
 					<OrganisationsList label={t("organized-by")} organisations={organisations} />
 					<CurriculaList
-						curricula={resource.curricula.map((id) => {
-							const curriculum = client.collections.curricula.get(id);
-							assert(curriculum, `Missing curriculum "${id}".`);
-							const { title } = curriculum.metadata;
-							return { id, title, href: curriculum.href };
-						})}
+						curricula={await Promise.all(
+							resource.curricula.map(async (id) => {
+								const curriculum = await client.collections.curricula.get(id);
+								assert(curriculum, `Missing curriculum "${id}".`);
+								const { title } = curriculum.metadata;
+								return { id, title, href: curriculum.href };
+							}),
+						)}
 						label={t("contained-in-curricula", { count: resource.curricula.length })}
 					/>
 					<Citation
-						authors={authors.map((id) => {
-							const person = client.collections.people.get(id);
-							assert(person, `Missing person "${id}".`);
-							const { image, name } = person.metadata;
-							return { id, image, name };
-						})}
+						authors={await Promise.all(
+							authors.map(async (id) => {
+								const person = await client.collections.people.get(id);
+								assert(person, `Missing person "${id}".`);
+								const { image, name } = person.metadata;
+								return { id, image, name };
+							}),
+						)}
 						contentType={resource.metadata["content-type"]}
 						publicationDate={new Date(publicationDate)}
 						title={title}
@@ -309,12 +316,14 @@ export default async function EventResourcePage(
 
 				<div className="min-w-0">
 					<Resource
-						authors={authors.map((id) => {
-							const person = client.collections.people.get(id);
-							assert(person, `Missing person "${id}".`);
-							const { image, name } = person.metadata;
-							return { id, image, name };
-						})}
+						authors={await Promise.all(
+							authors.map(async (id) => {
+								const person = await client.collections.people.get(id);
+								assert(person, `Missing person "${id}".`);
+								const { image, name } = person.metadata;
+								return { id, image, name };
+							}),
+						)}
 						collection={`resources-${resource.kind}`}
 						endDate={endDate != null ? new Date(endDate) : undefined}
 						featuredImage={featuredImage}
@@ -325,12 +334,14 @@ export default async function EventResourcePage(
 						organisations={organisations}
 						social={social}
 						startDate={new Date(startDate)}
-						tags={tags.map((id) => {
-							const tag = client.collections.tags.get(id);
-							assert(tag, `Missing tag "${id}".`);
-							const { name } = tag.metadata;
-							return { id, name };
-						})}
+						tags={await Promise.all(
+							tags.map(async (id) => {
+								const tag = await client.collections.tags.get(id);
+								assert(tag, `Missing tag "${id}".`);
+								const { name } = tag.metadata;
+								return { id, name };
+							}),
+						)}
 						title={title}
 						translations={translations}
 					>
@@ -339,47 +350,53 @@ export default async function EventResourcePage(
 						</div>
 
 						<ol className="list-none divide-y divide-neutral-200">
-							{sessions.map((session, index) => {
-								const SessionContent = session.content;
+							{await Promise.all(
+								sessions.map(async (session, index) => {
+									const SessionContent = session.content;
 
-								const speakers = session.speakers.map((id) => {
-									const person = client.collections.people.get(id)!;
-									assert(person, `Missing person "${id}".`);
-									const SpeakerDescription = person.content;
-									return {
-										id,
-										...person.metadata,
-										SpeakerDescription,
-									};
-								});
+									const speakers = await Promise.all(
+										session.speakers.map(async (id) => {
+											const person = await client.collections.people.get(id);
+											assert(person, `Missing person "${id}".`);
+											const SpeakerDescription = person.content;
+											return {
+												id,
+												...person.metadata,
+												SpeakerDescription,
+											};
+										}),
+									);
 
-								return (
-									<li key={index} id={`session-${String(index + 1)}`}>
-										<Session
-											attachments={session.attachments}
-											index={index + 1}
-											links={session.links}
-											presentations={session.presentations}
-											speakers={speakers}
-											title={session.title}
-										>
-											<div className="prose">
-												<SessionContent />
-											</div>
-										</Session>
-									</li>
-								);
-							})}
+									return (
+										<li key={index} id={`session-${String(index + 1)}`}>
+											<Session
+												attachments={session.attachments}
+												index={index + 1}
+												links={session.links}
+												presentations={session.presentations}
+												speakers={speakers}
+												title={session.title}
+											>
+												<div className="prose">
+													<SessionContent />
+												</div>
+											</Session>
+										</li>
+									);
+								}),
+							)}
 						</ol>
 					</Resource>
 					<div className="mx-auto mt-12 flex w-full max-w-(--size-content) flex-col gap-y-12 border-t border-neutral-200 pt-12 text-sm text-neutral-500 2xl:hidden">
 						<Citation
-							authors={authors.map((id) => {
-								const person = client.collections.people.get(id);
-								assert(person, `Missing person "${id}".`);
-								const { image, name } = person.metadata;
-								return { id, image, name };
-							})}
+							authors={await Promise.all(
+								authors.map(async (id) => {
+									const person = await client.collections.people.get(id);
+									assert(person, `Missing person "${id}".`);
+									const { image, name } = person.metadata;
+									return { id, image, name };
+								}),
+							)}
 							contentType={resource.metadata["content-type"]}
 							publicationDate={new Date(publicationDate)}
 							title={title}
@@ -397,44 +414,54 @@ export default async function EventResourcePage(
 						<ReUseConditions />
 					</div>
 					<ResourceMetadata
-						authors={authors.map((id) => {
-							const person = client.collections.people.get(id);
-							assert(person, `Missing person "${id}".`);
-							const { image, name } = person.metadata;
-							return { id, image, name };
-						})}
+						authors={await Promise.all(
+							authors.map(async (id) => {
+								const person = await client.collections.people.get(id);
+								assert(person, `Missing person "${id}".`);
+								const { image, name } = person.metadata;
+								return { id, image, name };
+							}),
+						)}
 						contentType={resource.metadata["content-type"]}
 						doi={doi}
-						license={client.collections.contentLicenses.get(license) ?? { label: "Unknown" }}
+						license={
+							(await client.collections.contentLicenses.get(license)) ?? { label: "Unknown" }
+						}
 						locale={contentLocale}
 						publicationDate={new Date(publicationDate)}
-						sources={sources.map((id) => {
-							const source = client.collections.sources.get(id);
-							assert(source, `Missing source "${id}".`);
-							const { name } = source.metadata;
-							return { id, name };
-						})}
-						tags={tags.map((id) => {
-							const tag = client.collections.tags.get(id);
-							assert(tag, `Missing tag "${id}".`);
-							const { name } = tag.metadata;
-							return { id, name };
-						})}
+						sources={await Promise.all(
+							sources.map(async (id) => {
+								const source = await client.collections.sources.get(id);
+								assert(source, `Missing source "${id}".`);
+								const { name } = source.metadata;
+								return { id, name };
+							}),
+						)}
+						tags={await Promise.all(
+							tags.map(async (id) => {
+								const tag = await client.collections.tags.get(id);
+								assert(tag, `Missing tag "${id}".`);
+								const { name } = tag.metadata;
+								return { id, name };
+							}),
+						)}
 						title={title}
 						version={version}
 					/>
 					<RelatedResourcesList
-						resources={related.map((id) => {
-							const resource = client.collections.resources.get(id);
-							assert(resource, `Missing resource "${id}".`);
+						resources={await Promise.all(
+							related.map(async (id) => {
+								const resource = await client.collections.resources.get(id);
+								assert(resource, `Missing resource "${id}".`);
 
-							return {
-								href: resource.href,
-								contentType: resource.metadata["content-type"],
-								id: resource.id,
-								title: resource.metadata.title,
-							};
-						})}
+								return {
+									href: resource.href,
+									contentType: resource.metadata["content-type"],
+									id: resource.id,
+									title: resource.metadata.title,
+								};
+							}),
+						)}
 					/>
 				</div>
 
