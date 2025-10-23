@@ -35,9 +35,20 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 		<figure className="flex flex-col">
 			<div
 				ref={init}
-				className="group not-prose relative grid min-h-12 cursor-pointer touch-none rounded border border-neutral-200"
+				className={cn(
+					"group not-prose relative grid min-h-12 touch-none rounded border border-neutral-200",
+					isDragging
+						? orientation === "vertical"
+							? "cursor-row-resize"
+							: "cursor-col-resize"
+						: "cursor-pointer",
+				)}
+				data-dragging={isDragging}
 				data-orientation={orientation}
 				onPointerDown={(event) => {
+					if (event.button !== 0) {
+						return;
+					}
 					setIsDragging(true);
 					const dimensions = event.currentTarget.getBoundingClientRect();
 					const position =
@@ -96,6 +107,7 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 								: "inset(0 0 0 var(--position))",
 					}}
 				/>
+				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
 				<div
 					className={cn(
 						"absolute grid place-items-center",
@@ -103,8 +115,42 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 							? "w-full translate-y-[calc(var(--position)-50%)] cursor-row-resize"
 							: "h-full translate-x-[calc(var(--position)-50%)] cursor-col-resize",
 					)}
+					onKeyDown={(event) => {
+						if (orientation === "vertical") {
+							switch (event.key) {
+								case "ArrowUp": {
+									const newPosition = Math.max(position - 10, 0);
+									setPosition(newPosition);
+									break;
+								}
+
+								case "ArrowDown": {
+									const dimensions = event.currentTarget.getBoundingClientRect();
+									const newPosition = Math.min(position + 10, dimensions.height);
+									setPosition(newPosition);
+									break;
+								}
+							}
+						} else {
+							switch (event.key) {
+								case "ArrowLeft": {
+									const newPosition = Math.max(position - 10, 0);
+									setPosition(newPosition);
+									break;
+								}
+
+								case "ArrowRight": {
+									const dimensions = event.currentTarget.getBoundingClientRect();
+									const newPosition = Math.min(position + 10, dimensions.width);
+									setPosition(newPosition);
+									break;
+								}
+							}
+						}
+					}}
 					role="separator"
-					tabIndex={-1}
+					// eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+					tabIndex={0}
 				>
 					<div
 						className={cn(
