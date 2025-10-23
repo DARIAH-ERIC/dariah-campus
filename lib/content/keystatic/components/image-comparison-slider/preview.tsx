@@ -42,7 +42,15 @@ export function ImageComparisonSliderPreview(
 		<figure className="flex flex-col">
 			<NotEditable
 				ref={init}
-				className="group not-prose relative grid min-h-12 cursor-pointer touch-none rounded border border-neutral-200"
+				className={cn(
+					"group not-prose relative grid min-h-12 touch-none rounded border border-neutral-200",
+					isDragging
+						? orientation === "vertical"
+							? "cursor-row-resize"
+							: "cursor-col-resize"
+						: "cursor-pointer",
+				)}
+				data-dragging={isDragging}
 				data-orientation={orientation}
 				onPointerDown={(event) => {
 					setIsDragging(true);
@@ -103,15 +111,51 @@ export function ImageComparisonSliderPreview(
 								: "inset(0 0 0 var(--position))",
 					}}
 				/>
+				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
 				<div
+					aria-label="Use arrow keys to move separator"
 					className={cn(
 						"absolute grid place-items-center",
 						orientation === "vertical"
 							? "w-full translate-y-[calc(var(--position)-50%)] cursor-row-resize"
 							: "h-full translate-x-[calc(var(--position)-50%)] cursor-col-resize",
 					)}
+					onKeyDown={(event) => {
+						if (orientation === "vertical") {
+							switch (event.key) {
+								case "ArrowUp": {
+									const newPosition = Math.max(position - 10, 0);
+									setPosition(newPosition);
+									break;
+								}
+
+								case "ArrowDown": {
+									const dimensions = event.currentTarget.parentElement!.getBoundingClientRect();
+									const newPosition = Math.min(position + 10, dimensions.height);
+									setPosition(newPosition);
+									break;
+								}
+							}
+						} else {
+							switch (event.key) {
+								case "ArrowLeft": {
+									const newPosition = Math.max(position - 10, 0);
+									setPosition(newPosition);
+									break;
+								}
+
+								case "ArrowRight": {
+									const dimensions = event.currentTarget.parentElement!.getBoundingClientRect();
+									const newPosition = Math.min(position + 10, dimensions.width);
+									setPosition(newPosition);
+									break;
+								}
+							}
+						}
+					}}
 					role="separator"
-					tabIndex={-1}
+					// eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+					tabIndex={0}
 				>
 					<div
 						className={cn(
