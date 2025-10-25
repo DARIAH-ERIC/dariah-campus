@@ -4,15 +4,19 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
+import { Citation } from "@/components/citation";
 import { Curriculum } from "@/components/curriculum";
 import { CurriculumResourcesList } from "@/components/curriculum-resources-list";
 import { PeopleList } from "@/components/people-list";
+import { ReUseConditions } from "@/components/re-use-conditions";
 import { RelatedCurriculaList } from "@/components/related-curricula-list";
 import { TagsList } from "@/components/tags-list";
 import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
+import { env } from "@/config/env.config";
 import { client } from "@/lib/content/client";
 import { createClient } from "@/lib/content/create-client";
+import { createFullUrl } from "@/lib/navigation/create-full-url";
 import { pickRandom } from "@/lib/utils/pick-random";
 
 interface CurriculumPageProps extends PageProps<"/curricula/[id]"> {}
@@ -70,13 +74,16 @@ export default async function CurriculumPage(
 	}
 
 	const {
+		doi,
 		editors,
 		"featured-image": featuredImage,
+		"publication-date": publicationDate,
 		resources,
 		tags,
 		title,
 		translations: _translations,
 		"is-translation-of": _isTranslationOf,
+		version,
 	} = curriculum.metadata;
 
 	const Content = curriculum.content;
@@ -132,8 +139,30 @@ export default async function CurriculumPage(
 					<CurriculumResourcesList
 						label={t("overview")}
 						resources={await Promise.all(
-							resources.map(async ({ value: id }) => {
-								const resource = await client.collections.resources.get(id);
+							resources.map(async ({ value: id, discriminant: type }) => {
+								/**
+								 * Resolving `type` inline instead of calling
+								 * `client.collections.resources.get(id)` so this works with the github reader
+								 * in preview mode.
+								 */
+								function getResource() {
+									switch (type) {
+										case "resources-events": {
+											return client.collections.resourcesEvents.get(id);
+										}
+										case "resources-external": {
+											return client.collections.resourcesExternal.get(id);
+										}
+										case "resources-hosted": {
+											return client.collections.resourcesHosted.get(id);
+										}
+										case "resources-pathfinders": {
+											return client.collections.resourcesPathfinders.get(id);
+										}
+									}
+								}
+
+								const resource = await getResource();
 								assert(resource, `Missing resource "${id}".`);
 								return {
 									id,
@@ -143,6 +172,30 @@ export default async function CurriculumPage(
 							}),
 						)}
 					/>
+					<Citation
+						authors={await Promise.all(
+							editors.map(async (id) => {
+								const person = await client.collections.people.get(id);
+								assert(person, `Missing person "${id}".`);
+								const { image, name } = person.metadata;
+								return { id, image, name };
+							}),
+						)}
+						contentType="curriculum"
+						publicationDate={new Date(publicationDate)}
+						title={title}
+						url={
+							doi ||
+							String(
+								createFullUrl({
+									baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+									pathname: curriculum.href,
+								}),
+							)
+						}
+						version={version}
+					/>
+					<ReUseConditions />
 				</aside>
 
 				<div className="min-w-0">
@@ -159,7 +212,29 @@ export default async function CurriculumPage(
 						isTranslationOf={isTranslationOf}
 						resources={await Promise.all(
 							resources.map(async ({ value: id, discriminant: type }) => {
-								const resource = await client.collections.resources.get(id);
+								/**
+								 * Resolving `type` inline instead of calling
+								 * `client.collections.resources.get(id)` so this works with the github reader
+								 * in preview mode.
+								 */
+								function getResource() {
+									switch (type) {
+										case "resources-events": {
+											return client.collections.resourcesEvents.get(id);
+										}
+										case "resources-external": {
+											return client.collections.resourcesExternal.get(id);
+										}
+										case "resources-hosted": {
+											return client.collections.resourcesHosted.get(id);
+										}
+										case "resources-pathfinders": {
+											return client.collections.resourcesPathfinders.get(id);
+										}
+									}
+								}
+
+								const resource = await getResource();
 								assert(resource, `Missing resource "${id}".`);
 								return {
 									authors: await Promise.all(
@@ -205,6 +280,33 @@ export default async function CurriculumPage(
 							}),
 						)}
 					/>
+
+					<div className="mx-auto mt-12 flex w-full max-w-(--size-content) flex-col gap-y-12 border-t border-neutral-200 pt-12 text-sm text-neutral-500 2xl:hidden">
+						<Citation
+							authors={await Promise.all(
+								editors.map(async (id) => {
+									const person = await client.collections.people.get(id);
+									assert(person, `Missing person "${id}".`);
+									const { image, name } = person.metadata;
+									return { id, image, name };
+								}),
+							)}
+							contentType="curriculum"
+							publicationDate={new Date(publicationDate)}
+							title={title}
+							url={
+								doi ||
+								String(
+									createFullUrl({
+										baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
+										pathname: curriculum.href,
+									}),
+								)
+							}
+							version={version}
+						/>
+						<ReUseConditions />
+					</div>
 				</div>
 			</div>
 		</div>

@@ -11,7 +11,7 @@ export function DisclosurePreview(props: Readonly<DisclosurePreviewProps>): Reac
 	const { children, title } = props;
 
 	return (
-		<details className="group my-4 grid border-y border-neutral-200 open:pb-4" open={true}>
+		<details className="group my-4 flex flex-col border-y border-neutral-200 open:pb-4" open={true}>
 			<summary className="my-3 inline-flex cursor-pointer list-none py-1 font-bold group-open:pb-0 hover:underline focus:outline-none">
 				<NotEditable className="inline-flex flex-1 items-center justify-between gap-x-4">
 					<span>{title || "(Disclosure title)"}</span>
