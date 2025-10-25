@@ -3,7 +3,7 @@ import type { ImageResponse } from "next/og";
 import { getLocale } from "next-intl/server";
 
 import { MetadataImage } from "@/components/metadata-image";
-import { client } from "@/lib/content/client";
+import { createClient } from "@/lib/content/create-client";
 
 interface OpenGraphImageProps extends PageProps<"/sources/[id]"> {}
 
@@ -22,7 +22,9 @@ export default async function OpenGraphImage(
 	const { id: _id } = await params;
 	const id = decodeURIComponent(_id);
 
-	const resource = client.collections.sources.get(id);
+	const client = await createClient();
+
+	const resource = await client.collections.sources.get(id);
 
 	if (resource == null) {
 		notFound();
