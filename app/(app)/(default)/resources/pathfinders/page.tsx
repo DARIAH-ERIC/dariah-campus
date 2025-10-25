@@ -1,11 +1,11 @@
+import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { PageTitle } from "@/components/page-title";
 import { ResourcesGrid } from "@/components/resources-grid";
-import { client } from "@/lib/content/client";
+import { createClient } from "@/lib/content/create-client";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("PathfinderResourcesPage");
@@ -17,38 +17,44 @@ export async function generateMetadata(): Promise<Metadata> {
 	return metadata;
 }
 
-export default function PathfinderResourcesPage(): ReactNode {
-	const t = useTranslations("PathfinderResourcesPage");
+export default async function PathfinderResourcesPage(): Promise<ReactNode> {
+	const t = await getTranslations("PathfinderResourcesPage");
 
-	const resources = client.collections.resourcesPathfinders.all();
-	const peopleById = client.collections.people.byId();
+	const client = await createClient();
 
-	const items = resources.map((resource) => {
-		const { authors, locale, summary, title } = resource.metadata;
+	const resources = await client.collections.resourcesPathfinders.all();
 
-		const people = authors.map((id) => {
-			const person = peopleById.get(id)!;
-			const { image, name } = person.metadata;
-			return { id, name, image };
-		});
+	const items = await Promise.all(
+		resources.map(async (resource) => {
+			const { authors, locale, summary, title } = resource.metadata;
 
-		const isDraft = "draft" in resource.metadata && resource.metadata.draft === true;
+			const people = await Promise.all(
+				authors.map(async (id) => {
+					const person = await client.collections.people.get(id);
+					assert(person, `Missing person "${id}".`);
+					const { image, name } = person.metadata;
+					return { id, name, image };
+				}),
+			);
 
-		const href = isDraft ? null : resource.href;
+			const isDraft = "draft" in resource.metadata && resource.metadata.draft === true;
 
-		const contentType = "pathfinder";
+			const href = isDraft ? null : resource.href;
 
-		return {
-			id: resource.id,
-			collection: `resources-${resource.kind}`,
-			title,
-			summary,
-			people,
-			href,
-			locale,
-			contentType,
-		} as const;
-	});
+			const contentType = "pathfinder";
+
+			return {
+				id: resource.id,
+				collection: `resources-${resource.kind}`,
+				title,
+				summary,
+				people,
+				href,
+				locale,
+				contentType,
+			} as const;
+		}),
+	);
 
 	return (
 		<div className="mx-auto grid w-full max-w-screen-xl content-start gap-y-12 px-4 py-8 xs:px-8 xs:py-16 md:py-24">

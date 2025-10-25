@@ -21,15 +21,15 @@ export type Person = (typeof all)[number];
 
 export const client: CollectionClient<Person> = {
 	ids() {
-		return ids;
+		return Promise.resolve(ids);
 	},
 	all() {
-		return all;
+		return Promise.resolve(all);
 	},
 	byId() {
-		return byId;
+		return Promise.resolve(byId);
 	},
 	get(id: (typeof ids)[number]) {
-		return byId.get(id) ?? null;
+		return Promise.resolve(byId.get(id) ?? null);
 	},
 };

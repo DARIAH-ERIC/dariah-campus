@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import type { ComponentProps, ReactNode } from "react";
 
 import { MobileNavSidePanel } from "@/app/(app)/(default)/_components/mobile-nav-side-panel";
@@ -6,17 +6,19 @@ import { StickyHeader } from "@/app/(app)/(default)/_components/sticky-header";
 import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 import { NavLink } from "@/components/nav-link";
-import { client } from "@/lib/content/client";
+import { createClient } from "@/lib/content/create-client";
 import { createHref } from "@/lib/navigation/create-href";
 import type { NavigationLink, NavigationSeparator } from "@/lib/navigation/navigation";
 import logo from "@/public/assets/images/logo-dariah-with-text.svg";
 
 interface DefaultHeaderProps extends ComponentProps<"header"> {}
 
-export function DefaultHeader(props: Readonly<DefaultHeaderProps>): ReactNode {
+export async function DefaultHeader(props: Readonly<DefaultHeaderProps>): Promise<ReactNode> {
 	const rest = props;
 
-	const t = useTranslations("DefaultHeader");
+	const t = await getTranslations("DefaultHeader");
+
+	const client = await createClient();
 
 	const label = t("navigation.label");
 
@@ -26,7 +28,7 @@ export function DefaultHeader(props: Readonly<DefaultHeaderProps>): ReactNode {
 			href: createHref({ pathname: "/" }),
 			label: t("navigation.items.home"),
 		} as NavigationLink,
-		...client.singletons.navigation.get(),
+		...(await client.singletons.navigation.get()),
 	} satisfies Record<string, NavigationLink | NavigationSeparator>;
 
 	return (
