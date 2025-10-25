@@ -7,6 +7,7 @@ import { Embed } from "@/components/content/embed";
 import { ExternalResource } from "@/components/content/external-resource";
 import { Figure } from "@/components/content/figure";
 import { Grid, GridItem } from "@/components/content/grid";
+import { ImageComparisonSlider } from "@/components/content/image-comparison-slider";
 import { Link as ContentLink } from "@/components/content/link";
 import { LinkButton } from "@/components/content/link-button";
 import { MermaidDiagram } from "@/components/content/mermaid-diagram";
@@ -33,6 +34,7 @@ export const components = {
 	Grid,
 	GridItem,
 	img: Image,
+	ImageComparisonSlider,
 	Link: ContentLink,
 	LinkButton,
 	MermaidDiagram,
