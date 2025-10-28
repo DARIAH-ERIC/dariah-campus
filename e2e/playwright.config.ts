@@ -17,7 +17,6 @@ for (const envFilePath of [".env.test.local", ".env.local", ".env.test", ".env"]
 const port = Number(process.env.PORT) || 3000;
 const baseUrl = `http://localhost:${String(port)}`;
 
-// eslint-disable-next-line import-x/no-default-export
 export default defineConfig({
 	testDir: "../e2e",
 	snapshotDir: "../e2e/snapshots",

@@ -1,7 +1,7 @@
 "use client";
 
 import { assert } from "@acdh-oeaw/lib";
-import { createContext, type ReactNode, useContext, useState } from "react";
+import { createContext, type ReactNode, use, useState } from "react";
 
 import { getChildrenElements } from "@/components/content/get-children-elements";
 
@@ -18,7 +18,7 @@ interface QuizContextValue {
 const QuizContext = createContext<QuizContextValue | null>(null);
 
 export function useQuizContext(): QuizContextValue {
-	const value = useContext(QuizContext);
+	const value = use(QuizContext);
 	assert(value != null);
 	return value;
 }
@@ -57,9 +57,9 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 				const isCurrent = index === currentIndex;
 
 				return (
-					<QuizContext.Provider key={index} value={{ ...value, isCurrent }}>
+					<QuizContext key={index} value={{ ...value, isCurrent }}>
 						{quiz}
-					</QuizContext.Provider>
+					</QuizContext>
 				);
 			})}
 		</aside>

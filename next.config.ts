@@ -11,14 +11,9 @@ const config: Config = {
 	allowedDevOrigins: ["127.0.0.1"],
 	/** Compression should be handled by the `nginx` reverse proxy. */
 	compress: false,
-	eslint: {
-		ignoreDuringBuilds: true,
-	},
 	experimental: {
 		browserDebugInfoInTerminal: true,
 		globalNotFound: true,
-		optimizeRouterScrolling: true,
-		reactCompiler: true,
 	},
 	headers() {
 		const headers: Awaited<ReturnType<NonNullable<Config["headers"]>>> = [
@@ -32,6 +27,7 @@ const config: Config = {
 	outputFileTracingIncludes: {
 		"**/*": ["./public/assets/fonts/*.ttf"],
 	},
+	reactCompiler: true,
 	redirects() {
 		const redirects: Awaited<ReturnType<NonNullable<Config["redirects"]>>> = [
 			{
@@ -66,13 +62,30 @@ const config: Config = {
 
 		return Promise.resolve(rewrites);
 	},
+	turbopack: {
+		rules: {
+			/** @see {@link https://github.com/vercel/next.js/discussions/77721#discussioncomment-14576268} */
+			"*": {
+				condition: {
+					all: [
+						"foreign",
+						"browser",
+						{
+							path: /(@react-stately|@react-aria|@react-spectrum|react-aria-components)\/.*\/[a-z]{2}-[A-Z]{2}/,
+						},
+					],
+				},
+				loaders: ["null-loader"],
+				as: "*.js",
+			},
+		},
+	},
 	typedRoutes: true,
 	typescript: {
 		ignoreBuildErrors: true,
 	},
 	webpack(config, { isServer }) {
-		// TODO: This does not work with turbopack yet.
-		/** @see https://react-spectrum.adobe.com/react-aria/ssr.html#nextjs-app-router */
+		/** @see {@link https://react-spectrum.adobe.com/react-aria/ssr.html#nextjs-app-router} */
 		if (!isServer) {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
 			config.plugins.push(localesPlugin.webpack({ locales: [] }));
@@ -86,7 +99,7 @@ const config: Config = {
 const plugins: Array<(config: Config) => Config> = [
 	createNextIntlPlugin({
 		experimental: {
-			/** @see https://next-intl.dev/docs/workflows/typescript#messages-arguments */
+			/** @see {@link https://next-intl.dev/docs/workflows/typescript#messages-arguments} */
 			createMessagesDeclaration: ["./content/en/metadata/index.json", "./messages/en.json"],
 		},
 		requestConfig: "./lib/i18n/request.ts",

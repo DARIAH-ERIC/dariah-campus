@@ -146,7 +146,6 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 				<div className="flex items-center justify-end gap-x-4">
 					<span className="text-right">
 						{t.rich("license", {
-							// eslint-disable-next-line react/no-unstable-nested-components
 							link(chunks) {
 								return (
 									<a

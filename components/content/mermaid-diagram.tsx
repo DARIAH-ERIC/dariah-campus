@@ -23,5 +23,6 @@ export function MermaidDiagram(props: Readonly<MermaidDiagramProps>): ReactNode 
 		void render();
 	}, [id, diagram]);
 
+	// eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
 	return <figure dangerouslySetInnerHTML={{ __html: svg }} data-mermaid-diagram={true} />;
 }
