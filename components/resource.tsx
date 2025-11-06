@@ -70,7 +70,9 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 	const t = useTranslations("Resource");
 	const format = useFormatter();
 
-	const href = String(createFullUrl({ pathname: _href }));
+	const href = String(
+		createFullUrl({ baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL, pathname: _href }),
+	);
 
 	return (
 		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
