@@ -1,4 +1,4 @@
-/* eslint-disable react-x/prefer-read-only-props */
+/* eslint-disable @eslint-react/prefer-read-only-props */
 
 import { createAssetOptions, createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
