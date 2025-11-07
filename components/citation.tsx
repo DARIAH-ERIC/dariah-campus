@@ -33,7 +33,7 @@ export function Citation(props: Readonly<CitationProps>): ReactNode {
 	const t = useTranslations("Citation");
 	const format = useFormatter();
 
-	const citation = [
+	const citationWithoutUrl = [
 		format.list(
 			[...authors, ...(contributors ?? [])].map((person) => {
 				return person.name;
@@ -51,13 +51,22 @@ export function Citation(props: Readonly<CitationProps>): ReactNode {
 			: "",
 		publisher,
 		` [${t(`content-types.${contentType}`)}]. `,
-		url,
 	].join("");
+
+	const citation = [citationWithoutUrl, url].join("");
 
 	return (
 		<div className="space-y-1.5">
 			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("cite-as")}</h2>
-			<p>{citation}</p>
+			<p>
+				{citationWithoutUrl}{" "}
+				<a
+					className="underline decoration-dotted underline-offset-2 hover:decoration-solid"
+					href={url}
+				>
+					{url}
+				</a>
+			</p>
 			<CitationCopyButton citation={citation}>{t("copy-citation")}</CitationCopyButton>
 		</div>
 	);

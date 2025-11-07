@@ -1,4 +1,5 @@
 import { assert } from "@acdh-oeaw/lib";
+import { cn } from "@acdh-oeaw/style-variants";
 import { ChevronDownIcon, SearchIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
@@ -271,7 +272,13 @@ async function TeamSection(props: Readonly<TeamSectionProps>): Promise<ReactNode
 		<Section>
 			<SectionTitle>{title}</SectionTitle>
 			<SectionLead>{lead}</SectionLead>
-			<ul className="mx-auto grid grid-cols-2 gap-8 py-6 md:grid-cols-4" role="list">
+			<ul
+				className={cn(
+					"mx-auto grid grid-cols-2 gap-8 py-6",
+					team.length % 2 === 0 ? "md:grid-cols-4" : "md:grid-cols-3",
+				)}
+				role="list"
+			>
 				{await Promise.all(
 					team.map(async (item, index) => {
 						const { person: id, role } = item;
