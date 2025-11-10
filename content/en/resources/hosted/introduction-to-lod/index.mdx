@@ -100,7 +100,7 @@ In the above graph, some entities appear in a similar context. "Shakespeare" and
 
 Ontologies provide the structured framework that allows us to define the relationships between different concepts in a domain. In the context of the Semantic Web, an ontology is a formal specification of the **classes** (types of things), **properties** (relationships), and **constraints** that describe the data within a specific knowledge domain. Simply put, the ontology describes, what kind of things are in our world (classes), how these things relate to one another (properties) and what kinds of relations are (or are not) possible (constraints).
 
-By defining these elements, ontologies enable consistency, interoperability, and shared understanding of data across different systems. In our Shakespeare example, an ontology might specify that an author (class) writes (property) a book (class), helping systems understand how these entities are related. The class constraints in the example specify, that any subject of the \<is author of> property is an `<author>` and that any object is a `<book>` (or `<literary work>` in general). They would also allow us to add information on **class hierarchy**, e.g. defining that every `<author>` is also a `<person>`. Through these constraints, ontologies enable us to reason over data and infer new knowledge, making them a powerful tool for organizing and connecting complex information in the semantic web. Our basic Shakespeare triple (Shakespeare → is author of → Hamlet) could hence be used to infer that:
+By defining these elements, ontologies enable consistency, interoperability, and shared understanding of data across different systems. In our Shakespeare example, an ontology might specify that an author (class) writes (property) a book (class), helping systems understand how these entities are related. The class constraints in the example specify, that any subject of the `<is author of>` property is an `<author>` and that any object is a `<book>` (or `<literary work>` in general). They would also allow us to add information on **class hierarchy**, e.g. defining that every `<author>` is also a `<person>`. Through these constraints, ontologies enable us to reason over data and infer new knowledge, making them a powerful tool for organizing and connecting complex information in the semantic web. Our basic Shakespeare triple (Shakespeare → is author of → Hamlet) could hence be used to infer that:
 
 1. Shakespeare is an author.
 2. Shakespeare is also a person.
@@ -144,6 +144,10 @@ WHERE {
 }
 ```
 
+<Callout kind="important">
+  Note that `?work` is really just a made-up name; the same query would also work with `?variable`, `?some_work`, or `?x` instead.
+</Callout>
+
 <Callout kind="tip" title="Would you like to code along?">
   You can try out the following SPARQL queries yourself using the <Link link={{"discriminant":"external","value":"https://atomgraph.github.io/SPARQL-Playground/"}}>SPARQL Playground</Link>. Just paste the following Turtle representation of our demo data into the upper left textbox ("RDF input") and enter your SPARQL queries in the textbox in the upper right corner.
 
@@ -165,7 +169,7 @@ WHERE {
 }
 ```
 
-The long URLs look a bit bulky. We can shorten them by introducing a PREFIX clause at the beginning of our query:
+The long URLs look a bit bulky. We can shorten them by introducing a `PREFIX` clause at the beginning of our query:
 
 ```sparql
 PREFIX ex: <http://example.org/>
@@ -204,7 +208,7 @@ There are more clauses that can be used within our queries. The complete list, i
 As we learned earlier, SPARQL can not only be used to retrieve (`SELECT`) data, but also to update and describe it. There are four types of SPARQL queries:
 
 * **SELECT** : returns values based on some query pattern
-* **CONSTRUCT** : creates a new graph consisting of new triples
+* **CONSTRUCT** : returns a new graph consisting of new triples. The new graph does not overwrite the current graph but is returned as RDF triples.
 * **ASK** : returns a yes/no answer, e.g. do any entities with given property exist
 * **DESCRIBE** : provides information about a resource, without explicitly stating the query pattern. The query processor determines the result set.
 
@@ -243,7 +247,7 @@ All *"incoming and outgoing"* triples for every entity  are listed in the \[Sour
 ### [Querying the CLSCor Catalogue](https://clscor.acdh-dev.oeaw.ac.at/sparql)
 
 <Callout kind="tip" title="Try it out">
-  You can code along and try out all queries in this section using the SPARQL interface at [https://clscor.io](https://clscor.acdh.oeaw.ac.at/sparql).
+  You can code along and try out all queries in this section using the SPARQL interface at [https://clscor.io](https://clscor.acdh.oeaw.ac.at/sparql). Feel free to remove the initial content of the query input, including the prefixes - we will fill in all necessary text ourselves.
 </Callout>
 
 Let's send our first SPARQL queries to the CLSCor catalogue. We start with a list of all corpora:
@@ -261,7 +265,7 @@ Note that we are using the prefix `crmcls` within the query. The SPARQL interfac
 PREFIX crmcls: <https://clscor.io/ontologies/CRMcls/>
 ```
 
-The result is a list of URIs, all of which refer to a corpus in the dataset. If we now want to see their labels, too, we click on the "Fetch Labels" button on the right side.
+The result is a list of URIs, all of which refer to a corpus in the dataset. If we now want to see their labels, i.e. the names of the corpora and documents, we click on the "Fetch Labels" button on the right side.&#x20;
 
 If we are interested in the corpus documents per corpus, we can query for the property `P148_has_component` from corpus to corpus document:
 
@@ -440,7 +444,7 @@ If you have ever worked with semantic web technologies, [Wikidata](https://www.w
 Luckily, Wikidata also has a [SPARQL endpoint](https://query.wikidata.org/). Let's see if we can find one of our authors there: William Shakespeare.
 
 <Callout kind="important" title="Important note">
-  The following queries will be executed in the [Wikidata Query Interface](https://query.wikidata.org/) (not the CLSCor interface) unless mentioned otherwise. Wikidata has its own data model, including properties and classes that differ from those in CLSCor. This also affects our SPARQL queries, e.g. when querying for *persons*, we will now use `wd:Q5` instead of `crm:E39_Actor`.
+  The following queries will be executed in the [Wikidata Query Interface](https://query.wikidata.org/) (not the CLSCor interface) unless mentioned otherwise. Wikidata has its own data model, including properties and classes that differ from those in CLSCor. This also affects our SPARQL queries, e.g. when querying for *persons*, we will now use `wd:Q5` instead of `crm:E39_Actor`. Click <Link link={{"discriminant":"external","value":"https://www.wikidata.org/wiki/Wikidata:WikiProject_Ontology"}}>here</Link> for more details on the Wikidata ontology and here for the CLSCor ontology.
 </Callout>
 
 A naive first approach leads to no results:
