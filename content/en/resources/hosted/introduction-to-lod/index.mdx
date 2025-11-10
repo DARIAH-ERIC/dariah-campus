@@ -112,25 +112,23 @@ Once a knowledge graph is filled with triples, one may wonder how to ask it for 
 
 ### Basic Structure of a SPARQL Query
 
-<Callout kind="important" title="SPARQL Variables & Pattern Matching">
-  SPARQL uses pattern matching to find unknown values in a graph. It allows us to formulate questions like "Shakespeare is the author of \_\_\_", retrieving all entities in the graph that fill the gap. The placeholder used to indicate the underline is called a **variable** and usually starts with a "?", e.g. `?work`. Using the knowledge graph from before, ?work can stand for both, Hamlet and Macbeth, since we have two matching triples in the graph:
+SPARQL uses pattern matching to find unknown values in a graph. It allows us to formulate questions like "Shakespeare is the author of \_\_\_", retrieving all entities in the graph that fill the gap. The placeholder used to indicate the underline is called a **variable** and usually starts with a "?", e.g. `?work` (the rest of the name can be chosen freely). Using the knowledge graph from before, `?work` can stand for both, Hamlet and Macbeth, since we have two matching triples in the graph:
 
-  ```mermaid
-  graph LR;
-    accTitle: Shakespeare is author of Hamlet.
-    accDescr: A diagram showing that Shakespeare is the author of Hamlet.
-    Shakespeare-->|is author of| Hamlet;
-  ```
+```mermaid
+graph LR;
+  accTitle: Shakespeare is author of Hamlet.
+  accDescr: A diagram showing that Shakespeare is the author of Hamlet.
+  Shakespeare-->|is author of| Hamlet;
+```
 
-  and
+and
 
-  ```mermaid
-  graph LR;
-    accTitle: Shakespeare is author of Macbeth.
-    accDescr: A diagram showing that Shakespeare is the author of Macbeth.
-    Shakespeare-->|is author of| Macbeth;
-  ```
-</Callout>
+```mermaid
+graph LR;
+  accTitle: Shakespeare is author of Macbeth.
+  accDescr: A diagram showing that Shakespeare is the author of Macbeth.
+  Shakespeare-->|is author of| Macbeth;
+```
 
 A very simple SPARQL query only consists of two clauses:
 
@@ -146,7 +144,7 @@ WHERE {
 }
 ```
 
-`?work` is a variable that stands for the the results we want to retrieve. The name can be chosen freely and has to start with a question mark. The variable needs to sit in the position where you would expect the result to be within the RDF graph.
+
 
 <Callout kind="tip" title="Would you like to code along?">
   You can try out the following SPARQL queries yourself using the <Link link={{"discriminant":"external","value":"https://atomgraph.github.io/SPARQL-Playground/"}}>SPARQL Playground</Link>. Just paste the following Turtle representation of our demo data into the upper left textbox ("RDF input") and enter your SPARQL queries in the textbox in the upper right corner.
