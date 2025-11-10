@@ -89,7 +89,7 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 		},
 		contact: {
 			type: "link",
-			href: "https://www.dariah.eu/helpdesk/",
+			href: "mailto:info@dariah.eu",
 			label: t("navigation.items.contact"),
 		},
 	} satisfies Record<string, NavigationItem>;
