@@ -1,5 +1,6 @@
 onlyBuiltDependencies:
   - '@parcel/watcher'
+  - '@swc/core'
   - '@tailwindcss/oxide'
   - esbuild
   - node
@@ -10,4 +11,9 @@ onlyBuiltDependencies:
   - vue-demi
 
 patchedDependencies:
+  '@keystatic/core@0.5.48': patches/@keystatic__core@0.5.48.patch
   next: patches/next.patch
+
+shellEmulator: true
+
+strictDepBuilds: true

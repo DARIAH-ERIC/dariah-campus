@@ -12,7 +12,6 @@ export function ReUseConditions(): ReactNode {
 			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("label")}</h2>
 			<p>
 				{t.rich("reuse-conditions", {
-					// eslint-disable-next-line react/no-unstable-nested-components
 					link(chunks) {
 						return (
 							<Link

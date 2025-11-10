@@ -2,10 +2,6 @@
 	"title": "DARIAH-Campus",
 	"description": "Discovery layer and hosting platform for DARIAH learning resources.",
 	"creator": "DARIAH-EU",
-	"twitter": {
-		"creator": "@dariaheu",
-		"site": "@dariaheu"
-	},
 	"manifest": {
 		"name": "DARIAH-Campus",
 		"short-name": "DARIAH-Campus",
@@ -34,7 +30,7 @@
 		},
 		{
 			"kind": "email",
-			"href": "https://www.dariah.eu/helpdesk/"
+			"href": "info@dariah.eu"
 		},
 		{
 			"kind": "website",
