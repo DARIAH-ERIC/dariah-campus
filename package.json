@@ -13,7 +13,7 @@
 			"onFail": "download"
 		}
 	},
-	"packageManager": "pnpm@10.20.0",
+	"packageManager": "pnpm@10.21.0",
 	"scripts": {
 		"app:build": "next build",
 		"app:dev": "next dev --turbopack",
@@ -25,9 +25,9 @@
 		"dev:typesense:up": "docker compose --env-file=./.env.local up --detach",
 		"format:check": "prettier . --cache --cache-location ./.prettiercache --check",
 		"format:fix": "pnpm run format:check --write",
-		"generate:api-docs": "tsx ./scripts/api/generate-api-docs.ts",
+		"generate:api-docs": "dotenv -c -- tsx ./scripts/api/generate-api-docs.ts",
 		"generate:handle": "bash ./scripts/handle/create-handle.sh",
-		"generate:metadata-dump": "dotenv -c production -- tsx ./scripts/api/generate-metadata-dump.ts",
+		"generate:metadata-dump": "dotenv -c -- tsx ./scripts/api/generate-metadata-dump.ts",
 		"i18n:check": "i18n-check --format next-intl --locales ./messages/ --source en --unused ./app/ ./components/",
 		"lint:check": "run-p --continue-on-error \"lint:*:check\"",
 		"lint:fix": "run-p --continue-on-error \"lint:*:fix\"",
@@ -48,10 +48,10 @@
 		"test:e2e:update-snapshots": "pnpm run test:e2e --update-snapshots",
 		"types:check": "tsc --noEmit",
 		"types:prepare": "next typegen",
-		"typesense:api-key:create": "dotenv -c development -- tsx ./scripts/typesense/create-api-key.ts",
+		"typesense:api-key:create": "dotenv -c -- tsx ./scripts/typesense/create-api-key.ts",
 		"typesense:build": "dotenv -c production -- tsx ./scripts/typesense/create-search-index.ts",
-		"typesense:collection:create": "dotenv -c development -- tsx ./scripts/typesense/create-collection.ts",
-		"typesense:collection:seed": "dotenv -c development -- tsx ./scripts/typesense/seed-collection.ts"
+		"typesense:collection:create": "dotenv -c -- tsx ./scripts/typesense/create-collection.ts",
+		"typesense:collection:seed": "dotenv -c -- tsx ./scripts/typesense/seed-collection.ts"
 	},
 	"dependencies": {
 		"@acdh-oeaw/keystatic-lib": "^0.8.0",
@@ -79,7 +79,7 @@
 		"mdast-util-mdx-jsx": "^3.2.0",
 		"mermaid": "^11.12.1",
 		"next": "^16.0.1",
-		"next-intl": "^4.4.0",
+		"next-intl": "^4.5.0",
 		"p-limit": "^7.2.0",
 		"react": "^19.2.0",
 		"react-aria": "^3.44.0",
@@ -111,7 +111,7 @@
 		"yaml": "^2.8.1"
 	},
 	"devDependencies": {
-		"@acdh-oeaw/content-lib": "^0.1.2",
+		"@acdh-oeaw/content-lib": "^0.1.3",
 		"@acdh-oeaw/eslint-config": "^2.0.10",
 		"@acdh-oeaw/eslint-config-next": "^4.0.3",
 		"@acdh-oeaw/eslint-config-node": "^2.0.10",
