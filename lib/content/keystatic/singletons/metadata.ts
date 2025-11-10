@@ -1,7 +1,6 @@
 import { createSingleton } from "@acdh-oeaw/keystatic-lib";
 import { fields, singleton } from "@keystatic/core";
 
-import * as validation from "@/lib/content/keystatic/validation";
 import { socialMediaKinds } from "@/lib/content/options";
 
 export const createMetadata = createSingleton("/metadata/", (paths, _locale) => {
@@ -23,21 +22,6 @@ export const createMetadata = createSingleton("/metadata/", (paths, _locale) => 
 				label: "Creator",
 				validation: { isRequired: true },
 			}),
-			twitter: fields.object(
-				{
-					creator: fields.text({
-						label: "Creator",
-						validation: { isRequired: true, pattern: validation.twitter },
-					}),
-					site: fields.text({
-						label: "Site",
-						validation: { isRequired: true, pattern: validation.twitter },
-					}),
-				},
-				{
-					label: "Twitter",
-				},
-			),
 			manifest: fields.object(
 				{
 					name: fields.text({
