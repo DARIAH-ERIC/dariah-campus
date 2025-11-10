@@ -11,6 +11,7 @@ onlyBuiltDependencies:
   - vue-demi
 
 patchedDependencies:
+  '@keystar/ui': patches/@keystar__ui.patch
   '@keystatic/core@0.5.48': patches/@keystatic__core@0.5.48.patch
   next: patches/next.patch
 

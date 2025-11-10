@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
+  '@keystar/ui':
+    hash: 4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877
+    path: patches/@keystar__ui.patch
   '@keystatic/core@0.5.48':
     hash: 9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46
     path: patches/@keystatic__core@0.5.48.patch
@@ -18,7 +21,7 @@ importers:
     dependencies:
       '@acdh-oeaw/keystatic-lib':
         specifier: ^0.8.0
-        version: 0.8.0(@keystar/ui@0.7.19(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@keystatic/core@0.5.48(patch_hash=9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46)(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+        version: 0.8.0(@keystar/ui@0.7.19(patch_hash=4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877)(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@keystatic/core@0.5.48(patch_hash=9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46)(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
       '@acdh-oeaw/lib':
         specifier: ^0.3.5
         version: 0.3.5
@@ -36,7 +39,7 @@ importers:
         version: 0.1.1(typescript@5.9.3)
       '@keystar/ui':
         specifier: ^0.7.19
-        version: 0.7.19(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 0.7.19(patch_hash=4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877)(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@keystatic/core':
         specifier: ^0.5.48
         version: 0.5.48(patch_hash=9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46)(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -7602,9 +7605,9 @@ snapshots:
       - eslint-plugin-import
       - supports-color
 
-  '@acdh-oeaw/keystatic-lib@0.8.0(@keystar/ui@0.7.19(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@keystatic/core@0.5.48(patch_hash=9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46)(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)':
+  '@acdh-oeaw/keystatic-lib@0.8.0(@keystar/ui@0.7.19(patch_hash=4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877)(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@keystatic/core@0.5.48(patch_hash=9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46)(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@keystar/ui': 0.7.19(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@keystar/ui': 0.7.19(patch_hash=4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877)(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@keystatic/core': 0.5.48(patch_hash=9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46)(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@sindresorhus/slugify': 2.2.1
       '@types/mdx': 2.0.13
@@ -8562,7 +8565,7 @@ snapshots:
 
   '@juggle/resize-observer@3.4.0': {}
 
-  '@keystar/ui@0.7.19(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@keystar/ui@0.7.19(patch_hash=4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877)(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@babel/runtime': 7.28.3
       '@emotion/css': 11.13.5
@@ -8666,7 +8669,7 @@ snapshots:
       '@emotion/weak-memoize': 0.3.1
       '@floating-ui/react': 0.24.8(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@internationalized/string': 3.2.7
-      '@keystar/ui': 0.7.19(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@keystar/ui': 0.7.19(patch_hash=4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877)(next@16.0.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.56.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@markdoc/markdoc': 0.4.0(@types/react@19.2.2)(react@19.2.0)
       '@react-aria/focus': 3.21.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@react-aria/i18n': 3.12.11(react-dom@19.2.0(react@19.2.0))(react@19.2.0)

@@ -15,7 +15,7 @@
 	},
 	"packageManager": "pnpm@10.21.0",
 	"scripts": {
-		"app:build": "next build --webpack",
+		"app:build": "next build",
 		"app:dev": "next dev --turbopack",
 		"build": "run-s generate:handle content:build generate:api-docs generate:metadata-dump app:build typesense:build",
 		"content:build": "dotenv -c -- tsx ./scripts/content/generate-content.ts build",
