@@ -64,6 +64,7 @@ function HeroSection(props: Readonly<HeroSectionProps>): ReactNode {
 			<Image
 				alt=""
 				className="mx-auto h-48 w-auto text-brand-700 lg:h-60"
+				loading="eager"
 				preload={true}
 				src={image}
 			/>
@@ -294,6 +295,7 @@ async function TeamSection(props: Readonly<TeamSectionProps>): Promise<ReactNode
 										alt=""
 										className="mb-2 size-24 rounded-full border border-neutral-200 object-cover"
 										height={96}
+										sizes="96px"
 										src={image}
 										width={96}
 									/>
