@@ -20,6 +20,7 @@ summary:
   content: This article provides an introduction to Linked Open Data and SPARQL
 content-type: training-module
 translations: []
+dariah-national-consortia: []
 ---
 # Introduction to Linked Open Data
 
@@ -78,6 +79,8 @@ Following the principles of the semantic web, the entities within a triple are i
 <http://example.org/William_Shakespeare> <http://example.org/author> <http://example.org/Hamlet> .
 ```
 
+Since the triples in an RDF graph are directed, we read the TTL statements from left to right:  Shakespeare is the author of Hamlet, but Hamlet is not the author of Shakespeare.
+
 Multiple triples can be used to form a **knowledge graph** and extend our knowledge base even further, e.g.:
 
 ```mermaid
@@ -97,13 +100,37 @@ In the above graph, some entities appear in a similar context. "Shakespeare" and
 
 Ontologies provide the structured framework that allows us to define the relationships between different concepts in a domain. In the context of the Semantic Web, an ontology is a formal specification of the **classes** (types of things), **properties** (relationships), and **constraints** that describe the data within a specific knowledge domain. Simply put, the ontology describes, what kind of things are in our world (classes), how these things relate to one another (properties) and what kinds of relations are (or are not) possible (constraints).
 
-By defining these elements, ontologies enable consistency, interoperability, and shared understanding of data across different systems. In our Shakespeare example, an ontology might specify that an author (class) writes (property) a book (class), helping systems understand how these entities are related. Ontologies also allow us to reason over data and infer new knowledge, making them a powerful tool for organizing and connecting complex information in the semantic web.
+By defining these elements, ontologies enable consistency, interoperability, and shared understanding of data across different systems. In our Shakespeare example, an ontology might specify that an author (class) writes (property) a book (class), helping systems understand how these entities are related. The class constraints in the example specify, that any subject of the \<is author of> property is an \<author> and that any object is a \<book> (or \<literary work> in general). They would also allow us to add information on **class hierarchy**, e.g. defining that every \<author> is also a \<person>. Through these constraints, ontologies enable us to reason over data and infer new knowledge, making them a powerful tool for organizing and connecting complex information in the semantic web. Our basic Shakespeare triple (Shakespeare → is author of → Hamlet) could hence be used to infer that:
+
+1. Shakespeare is an author.
+2. Shakespeare is also a person.
+3. Hamlet is a literary work.
 
 ## SPARQL (SPARQL Protocol and RDF Query Language)
 
 Once a knowledge graph is filled with triples, one may wonder how to ask it for specific information. This can be done using [SPARQL](https://www.w3.org/TR/rdf-sparql-query/), a query language designed for the Semantic Web. It provides a powerful means of querying RDF datasets, enabling users to retrieve, manipulate, and update data. It is similar in syntax and structure to **SQL**, but it is designed specifically for querying RDF datasets.
 
 ### Basic Structure of a SPARQL Query
+
+<Callout kind="important" title="SPARQL Variables & Pattern Matching">
+  SPARQL uses pattern matching to find unknown values in a graph. It allows us to formulate questions like "Shakespeare is the author of \_\_\_", retrieving all entities in the graph that fill the gap. The placeholder used to indicate the underline is called a **variable** and usually starts with a "?", e.g. `?work`. Using the knowledge graph from before, ?work can stand for both, Hamlet and Macbeth, since we have two matching triples in the graph:
+
+  ```mermaid
+  graph LR;
+    accTitle: Shakespeare is author of Hamlet.
+    accDescr: A diagram showing that Shakespeare is the author of Hamlet.
+    Shakespeare-->|is author of| Hamlet;
+  ```
+
+  and
+
+  ```mermaid
+  graph LR;
+    accTitle: Shakespeare is author of Macbeth.
+    accDescr: A diagram showing that Shakespeare is the author of Macbeth.
+    Shakespeare-->|is author of| Macbeth;
+  ```
+</Callout>
 
 A very simple SPARQL query only consists of two clauses:
 
