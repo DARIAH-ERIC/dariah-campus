@@ -20,7 +20,7 @@ export function SourceCard(props: Readonly<SearchCardProps>): ReactNode {
 		<Card>
 			<Image
 				alt=""
-				className="aspect-[1.25] border-b border-neutral-200 object-cover"
+				className="aspect-[1.25] border-b border-neutral-200 object-cover w-full"
 				sizes="800px"
 				src={image}
 			/>
