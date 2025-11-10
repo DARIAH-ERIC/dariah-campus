@@ -1,5 +1,6 @@
 onlyBuiltDependencies:
   - '@parcel/watcher'
+  - '@swc/core'
   - '@tailwindcss/oxide'
   - esbuild
   - node
@@ -11,3 +12,9 @@ onlyBuiltDependencies:
 
 patchedDependencies:
   next: patches/next.patch
+
+# https://pnpm.io/settings#shellemulator
+shellEmulator: true
+
+# https://pnpm.io/settings#strictdepbuilds
+strictDepBuilds: true
