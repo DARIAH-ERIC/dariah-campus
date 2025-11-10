@@ -106,7 +106,7 @@
 		overflow-wrap: break-word;
 
 		/** Don't add backticks around inline `code`. */
-		code {
+		& code {
 			&::before {
 				content: unset;
 			}
@@ -250,9 +250,11 @@
 		background-color: var(--color-background-base);
 		color: var(--color-text-strong);
 		font-family: var(--font-body);
+		font-synthesis: none;
 		text-rendering: optimizeLegibility;
 		-webkit-tap-highlight-color: transparent;
 		text-size-adjust: none;
+		interpolate-size: allow-keywords;
 	}
 
 	:root,
