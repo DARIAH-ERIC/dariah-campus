@@ -14,6 +14,7 @@ import { People } from "@/components/people";
 import { SocialMedia } from "@/components/social-media";
 import { SocialMediaShareLinks } from "@/components/social-media-share-links";
 import { Tags } from "@/components/tags";
+import { TranslationOf } from "@/components/translation-of";
 import { Translations } from "@/components/translations";
 import { env } from "@/config/env.config";
 import type { SocialMediaKind } from "@/lib/content/options";
@@ -29,10 +30,11 @@ interface ResourceProps {
 	}>;
 	children: ReactNode;
 	collection: string;
-	href: string;
 	endDate?: Date;
 	featuredImage?: StaticImageData | string | null;
+	href: string;
 	id: string;
+	isTranslationOf: { id: string; href: string; title: string; locale: string } | null;
 	links?: Array<{ label: string; href: string }>;
 	location?: string;
 	organisations?: ReadonlyArray<{ name: string; url: string; logo: StaticImageData | string }>;
@@ -53,6 +55,7 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 		endDate,
 		featuredImage,
 		id,
+		isTranslationOf,
 		links = [],
 		location,
 		organisations = [],
@@ -67,7 +70,9 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 	const t = useTranslations("Resource");
 	const format = useFormatter();
 
-	const href = String(createFullUrl({ pathname: _href }));
+	const href = String(
+		createFullUrl({ baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL, pathname: _href }),
+	);
 
 	return (
 		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
@@ -97,6 +102,7 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 					<People label={t("authors")} people={authors} />
 					<Tags label={t("tags")} tags={tags} />
 					<Translations label={t("translations")} translations={translations} />
+					<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
 					<SocialMedia label={t("social-media")} social={social} />
 					<Organisations label={t("organized-by")} organisations={organisations} />
 					<Attachments attachments={attachments} label={t("attachments")} />
@@ -108,7 +114,7 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 					<Image
 						alt=""
 						className="mb-8 w-full overflow-hidden rounded-lg border border-neutral-200 object-cover"
-						priority={true}
+						preload={true}
 						sizes="720px"
 						src={featuredImage}
 					/>

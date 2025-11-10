@@ -1,4 +1,5 @@
 import { assert } from "@acdh-oeaw/lib";
+import { cn } from "@acdh-oeaw/style-variants";
 import { ChevronDownIcon, SearchIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
@@ -15,10 +16,8 @@ import { VideoCard } from "@/app/(app)/(default)/(index)/_components/video-card"
 import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 import { SearchForm } from "@/components/search-form";
-import { client } from "@/lib/content/client";
 import type { IndexPage as IndexPageContent } from "@/lib/content/client/index-page";
-import { createGitHubClient } from "@/lib/content/github-client";
-import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
+import { createClient } from "@/lib/content/create-client";
 
 export function generateMetadata(): Metadata {
 	const metadata: Metadata = {
@@ -34,12 +33,9 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function IndexPage(): Promise<ReactNode> {
-	const preview = await getPreviewMode();
+	const client = await createClient();
 
-	const page =
-		preview.status === "enabled"
-			? await createGitHubClient(preview).singletons.indexPage.get()
-			: client.singletons.indexPage.get();
+	const page = await client.singletons.indexPage.get();
 
 	return (
 		<div className="mx-auto w-full max-w-screen-lg space-y-24 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
@@ -68,7 +64,8 @@ function HeroSection(props: Readonly<HeroSectionProps>): ReactNode {
 			<Image
 				alt=""
 				className="mx-auto h-48 w-auto text-brand-700 lg:h-60"
-				priority={true}
+				loading="eager"
+				preload={true}
 				src={image}
 			/>
 			<h1 className="text-5xl font-bold lg:text-6xl">{title}</h1>
@@ -124,6 +121,7 @@ function BrowseSection(props: Readonly<BrowseSectionProps>): ReactNode {
 			<ul className="grid gap-8 py-6 md:grid-cols-3" role="list">
 				{links.map((link, index) => {
 					const { title, href, image } = link;
+
 					return (
 						<li key={index}>
 							<article className="relative flex h-full flex-col items-center gap-y-2 rounded-xl border border-neutral-200 bg-white p-12 text-center shadow-md transition focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
@@ -208,7 +206,6 @@ function FaqSection(props: Readonly<FaqSectionProps>): ReactNode {
 							<DisclosurePanel className="space-y-1.5 p-6 text-left">
 								<Content
 									components={{
-										// eslint-disable-next-line react/no-unstable-nested-components
 										a(props) {
 											return (
 												<a
@@ -265,39 +262,50 @@ interface TeamSectionProps {
 	section: IndexPageContent["team-section"];
 }
 
-function TeamSection(props: Readonly<TeamSectionProps>): ReactNode {
+async function TeamSection(props: Readonly<TeamSectionProps>): Promise<ReactNode> {
 	const { section } = props;
 
 	const { lead, team, title } = section;
+
+	const client = await createClient();
 
 	return (
 		<Section>
 			<SectionTitle>{title}</SectionTitle>
 			<SectionLead>{lead}</SectionLead>
-			<ul className="mx-auto grid grid-cols-2 gap-8 py-6 md:grid-cols-4" role="list">
-				{team.map((item, index) => {
-					const { person: id, role } = item;
+			<ul
+				className={cn(
+					"mx-auto grid grid-cols-2 gap-8 py-6",
+					team.length % 2 === 0 ? "md:grid-cols-4" : "md:grid-cols-3",
+				)}
+				role="list"
+			>
+				{await Promise.all(
+					team.map(async (item, index) => {
+						const { person: id, role } = item;
 
-					const person = client.collections.people.get(id);
-					assert(person, `Missing person "${id}".`);
-					const { image, name } = person.metadata;
+						const person = await client.collections.people.get(id);
+						assert(person, `Missing person "${id}".`);
+						const { image, name } = person.metadata;
 
-					return (
-						<li key={index}>
-							<article className="flex flex-col items-center">
-								<Image
-									alt=""
-									className="mb-2 size-24 rounded-full border border-neutral-200 object-cover"
-									height={96}
-									src={image}
-									width={96}
-								/>
-								<h3 className="font-bold">{name}</h3>
-								<p className="text-sm text-neutral-500">{role}</p>
-							</article>
-						</li>
-					);
-				})}
+						return (
+							<li key={index}>
+								<article className="flex flex-col items-center">
+									<Image
+										alt=""
+										className="mb-2 size-24 rounded-full border border-neutral-200 object-cover"
+										height={96}
+										sizes="96px"
+										src={image}
+										width={96}
+									/>
+									<h3 className="font-bold">{name}</h3>
+									<p className="text-sm text-neutral-500">{role}</p>
+								</article>
+							</li>
+						);
+					}),
+				)}
 			</ul>
 		</Section>
 	);

@@ -139,6 +139,17 @@ export const createResourcesPathfinders = createCollection(
 					validation: { length: { min: 0 } },
 					collection: withI18nPrefix("resources-pathfinders", locale),
 				}),
+				"is-translation-of": fields.relationship({
+					label: "Is translation of",
+					validation: { isRequired: false },
+					collection: withI18nPrefix("resources-pathfinders", locale),
+				}),
+				"dariah-national-consortia": fields.multiRelationship({
+					label: "DARIAH national consortia",
+					validation: { length: { min: 0 } },
+					collection: withI18nPrefix("dariah-national-consortia", locale),
+					description: "DARIAH member countries contributing to resource (where applicable)",
+				}),
 				doi: readonly({
 					label: "PID (readonly)",
 					description: "Automatically assigned Handle PID.",

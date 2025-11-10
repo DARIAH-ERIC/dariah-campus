@@ -10,6 +10,7 @@ import { Link } from "@/components/link";
 import { PageTitle } from "@/components/page-title";
 import { People } from "@/components/people";
 import { Tags } from "@/components/tags";
+import { TranslationOf } from "@/components/translation-of";
 import { Translations } from "@/components/translations";
 import type { ContentType } from "@/lib/content/options";
 
@@ -22,6 +23,7 @@ interface CurriculumProps {
 	}>;
 	// editUrl: string;
 	featuredImage?: StaticImageData | string | null;
+	isTranslationOf: { id: string; href: string; title: string; locale: string } | null;
 	// lastUpdatedAt: Date;
 	resources: Array<{
 		authors: Array<{
@@ -43,7 +45,16 @@ interface CurriculumProps {
 }
 
 export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
-	const { children, editors, featuredImage, resources, tags, title, translations } = props;
+	const {
+		children,
+		editors,
+		featuredImage,
+		isTranslationOf,
+		resources,
+		tags,
+		title,
+		translations,
+	} = props;
 
 	const t = useTranslations("Curriculum");
 	const _format = useFormatter();
@@ -56,6 +67,7 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 					<People label={t("editors")} people={editors} />
 					<Tags label={t("tags")} tags={tags} />
 					<Translations label={t("translations")} translations={translations} />
+					<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
 				</div>
 			</header>
 			<div>
@@ -63,7 +75,7 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 					<Image
 						alt=""
 						className="mb-8 w-full overflow-hidden rounded-lg border border-neutral-200 object-cover"
-						priority={true}
+						preload={true}
 						sizes="720px"
 						src={featuredImage}
 					/>
@@ -104,6 +116,9 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 									</CardContent>
 									<CardFooter>
 										<AvatarsList avatars={authors} label={t("authors")} />
+										{href == null ? (
+											<span className="text-sm text-neutral-500">{t("coming-soon")}</span>
+										) : null}
 									</CardFooter>
 								</Card>
 							</li>

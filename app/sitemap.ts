@@ -43,16 +43,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		routes.push(`/${segments.join("/")}`);
 	}
 
-	client.collections.resources.all().forEach((resource) => {
+	(await client.collections.resources.all()).map((resource) => {
 		routes.push(resource.href);
 	});
-	client.collections.curricula.all().forEach((curriculum) => {
+	(await client.collections.curricula.all()).map((curriculum) => {
 		routes.push(curriculum.href);
 	});
-	client.collections.sources.all().forEach((source) => {
+	(await client.collections.sources.all()).map((source) => {
 		routes.push(source.href);
 	});
-	client.collections.documentation.all().forEach((page) => {
+	(await client.collections.documentation.all()).map((page) => {
 		routes.push(page.href);
 	});
 
