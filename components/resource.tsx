@@ -70,7 +70,9 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 	const t = useTranslations("Resource");
 	const format = useFormatter();
 
-	const href = String(createFullUrl({ pathname: _href }));
+	const href = String(
+		createFullUrl({ baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL, pathname: _href }),
+	);
 
 	return (
 		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
@@ -112,7 +114,7 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 					<Image
 						alt=""
 						className="mb-8 w-full overflow-hidden rounded-lg border border-neutral-200 object-cover"
-						priority={true}
+						preload={true}
 						sizes="720px"
 						src={featuredImage}
 					/>
