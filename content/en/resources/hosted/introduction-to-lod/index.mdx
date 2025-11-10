@@ -76,7 +76,7 @@ graph LR;
 Following the principles of the semantic web, the entities within a triple are identified using URIs. In a more formal syntax, namely the Terse RDF Triple Language (**TTL** or **Turtle** 🐢), the above triple could then look as follows:
 
 ```turtle
-<http://example.org/William_Shakespeare> <http://example.org/author> <http://example.org/Hamlet> .
+<http://example.org/William_Shakespeare> <http://example.org/is_author_of> <http://example.org/Hamlet> .
 ```
 
 Since the triples in an RDF graph are directed, we read the TTL statements from left to right:  Shakespeare is the author of Hamlet, but Hamlet is not the author of Shakespeare.
@@ -112,7 +112,7 @@ Once a knowledge graph is filled with triples, one may wonder how to ask it for 
 
 ### Basic Structure of a SPARQL Query
 
-SPARQL uses pattern matching to find unknown values in a graph. It allows us to formulate questions like "Shakespeare is the author of \_\_\_", retrieving all entities in the graph that fill the gap. The placeholder used to indicate the underline is called a **variable** and usually starts with a "?", e.g. `?work` (the rest of the name can be chosen freely). Using the knowledge graph from before, `?work` can stand for both, Hamlet and Macbeth, since we have two matching triples in the graph:
+SPARQL uses pattern matching to find unknown values in a graph. It allows us to formulate questions like "Shakespeare is the author of \_\_\_", retrieving all entities in the graph that fill the gap. The placeholder used to indicate the underline is called a **variable** and usually starts with a "?" while the rest of the name can be chosen freely, e.g. `?work`. Using the knowledge graph from before, `?work` can stand for both, Hamlet and Macbeth, since we have two matching triples in the graph:
 
 ```mermaid
 graph LR;
@@ -144,15 +144,13 @@ WHERE {
 }
 ```
 
-
-
 <Callout kind="tip" title="Would you like to code along?">
   You can try out the following SPARQL queries yourself using the <Link link={{"discriminant":"external","value":"https://atomgraph.github.io/SPARQL-Playground/"}}>SPARQL Playground</Link>. Just paste the following Turtle representation of our demo data into the upper left textbox ("RDF input") and enter your SPARQL queries in the textbox in the upper right corner.
 
   <Disclosure title="RDF input for our first queries">
     ```turtle
-    <http://example.org/William_Shakespeare> <http://example.org/author> <http://example.org/Hamlet> .
-    <http://example.org/William_Shakespeare> <http://example.org/author> <http://example.org/Macbeth> .
+    <http://example.org/William_Shakespeare> <http://example.org/is_author_of> <http://example.org/Hamlet> .
+    <http://example.org/William_Shakespeare> <http://example.org/is_author_of> <http://example.org/Macbeth> .
     <http://example.org/Hamlet> <http://example.org/location> <http://example.org/Denmark> .
     ```
   </Disclosure>
@@ -163,7 +161,7 @@ Remember that RDF encourages us to use URIs to identify the entities in our data
 ```sparql
 SELECT ?work
 WHERE {
-    <http://example.org/William_Shakespeare> <http://example.org/author> ?work.
+    <http://example.org/William_Shakespeare> <http://example.org/is_author_of> ?work.
 }
 ```
 
@@ -174,7 +172,7 @@ PREFIX ex: <http://example.org/>
 
 SELECT ?work
 WHERE {
-    ex:William_Shakespeare ex:author ?work.
+    ex:William_Shakespeare ex:is_author_of ?work.
 }
 ```
 
@@ -185,7 +183,7 @@ PREFIX ex: <http://example.org/>
 
 SELECT ?work
 WHERE {
-    ex:William_Shakespeare ex:author ?work.
+    ex:William_Shakespeare ex:is_author_of ?work.
     ?work ex:location ex:Denmark.
 }
 ```
