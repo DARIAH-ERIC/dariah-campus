@@ -444,7 +444,7 @@ If you have ever worked with semantic web technologies, [Wikidata](https://www.w
 Luckily, Wikidata also has a [SPARQL endpoint](https://query.wikidata.org/). Let's see if we can find one of our authors there: William Shakespeare.
 
 <Callout kind="important" title="Important note">
-  The following queries will be executed in the [Wikidata Query Interface](https://query.wikidata.org/) (not the CLSCor interface) unless mentioned otherwise. Wikidata has its own data model, including properties and classes that differ from those in CLSCor. This also affects our SPARQL queries, e.g. when querying for *persons*, we will now use `wd:Q5` instead of `crm:E39_Actor`. Click <Link link={{"discriminant":"external","value":"https://www.wikidata.org/wiki/Wikidata:WikiProject_Ontology"}}>here</Link> for more details on the Wikidata ontology and here for the CLSCor ontology.
+  The following queries will be executed in the [Wikidata Query Interface](https://query.wikidata.org/) (not the CLSCor interface) unless mentioned otherwise. Wikidata has its own data model, including properties and classes that differ from those in CLSCor. This also affects our SPARQL queries, e.g. when querying for *persons*, we will now use `wd:Q5` instead of `crm:E39_Actor`. Click <Link link={{"discriminant":"external","value":"https://www.wikidata.org/wiki/Wikidata:WikiProject_Ontology"}}>here</Link> for more details on the Wikidata ontology and [here](https://gitlab.clsinfra.io/cls-infra/wp567/clscor/-/blob/main/model/CLSCorDataModel.ttl?ref_type=heads) for the CLSCor ontology.
 </Callout>
 
 A naive first approach leads to no results:
@@ -564,7 +564,7 @@ We...
 
 1. want to retrieve all authors from the CLSCor dataset,
 2. transform their names to the format "FirstName LastName",
-3. populate these names to Wikidata and
+3. forward these names to Wikidata to
 4. retrieve a description for the corresponding author.
 
 All we have to do is combine the author query
