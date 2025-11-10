@@ -158,6 +158,24 @@ WHERE {
     <http://example.org/Hamlet> <http://example.org/location> <http://example.org/Denmark> .
     ```
   </Disclosure>
+
+  The corresponding graph looks as follows:
+
+  ```mermaid
+  graph LR;
+    accTitle: Multiple triples forming a graph
+    accDescr: A diagram displaying multiple connected nodes as a knowledge graph.
+    s["`Shakespeare
+    <sub>Author</sub>
+    `"]-->|is author of| h["`Hamlet
+    <sub>Work</sub>`"];
+    s-->|is author of| m["`Macbeth
+    <sub>Work</sub>`"];
+    h-->|is set in| l["`Denmark
+    <sub>Location</sub>
+    `"];
+
+  ```
 </Callout>
 
 Remember that RDF encourages us to use URIs to identify the entities in our dataset. In order for our query to succeed, we hence have to use the exact same URIs that we used to define our graph:
