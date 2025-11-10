@@ -1,0 +1,14 @@
+name: Editorial issue
+description: Report an editorial issue with DARIAH-Campus
+assignees:
+  - vickygarnett
+labels:
+  - needs-review
+type: content
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: A concise description of the request.
+    validations:
+      required: true
