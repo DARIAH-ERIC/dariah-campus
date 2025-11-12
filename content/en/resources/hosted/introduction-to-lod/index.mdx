@@ -54,7 +54,7 @@ The main principles of LOD include:
 
 LOD allows for the creation of a web of interlinked data that facilitates new ways of browsing, querying, and discovering information. The result can be visualized and explored at [https://lod-cloud.net/](https://lod-cloud.net/):
 
-<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-lod/lod-cloud.svg" alt="Image of the larges nodes in the linked open data cloud" alignment="center">
+<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-lod/lod-cloud.svg" alt="Image of the large nodes in the linked open data cloud" alignment="center">
   This figure represents LOD on the internet, colour-coding different domains and showing their connections. For an interactive version of the cloud, you can visit [https://lod-cloud.net/clouds/lod-cloud.svg](https://lod-cloud.net/clouds/lod-cloud.svg).
 </Figure>
 
@@ -148,10 +148,10 @@ WHERE {
   Note that `?work` is really just a made-up name; the same query would also work with `?variable`, `?some_work`, or `?x` instead.
 </Callout>
 
-<Callout kind="tip" title="Would you like to code along?">
+<Callout kind="tip" title="Would You Like to Code Along?">
   You can try out the following SPARQL queries yourself using the <Link link={{"discriminant":"external","value":"https://atomgraph.github.io/SPARQL-Playground/"}}>SPARQL Playground</Link>. Just paste the following Turtle representation of our demo data into the upper left textbox ("RDF input") and enter your SPARQL queries in the textbox in the upper right corner.
 
-  <Disclosure title="RDF input for our first queries">
+  <Disclosure title="RDF Input for our First Queries">
     ```turtle
     <http://example.org/William_Shakespeare> <http://example.org/is_author_of> <http://example.org/Hamlet> .
     <http://example.org/William_Shakespeare> <http://example.org/is_author_of> <http://example.org/Macbeth> .
@@ -264,7 +264,7 @@ All *"incoming and outgoing"* triples for every entity  are listed in the \[Sour
 
 ### [Querying the CLSCor Catalogue](https://clscor.acdh-dev.oeaw.ac.at/sparql)
 
-<Callout kind="tip" title="Try it out">
+<Callout kind="tip" title="Try It Out">
   You can code along and try out all queries in this section using the SPARQL interface at [https://clscor.io](https://clscor.acdh.oeaw.ac.at/sparql). Feel free to remove the initial content of the query input, including the prefixes - we will fill in all necessary text ourselves.
 </Callout>
 
@@ -329,7 +329,7 @@ ORDER BY ?count
 
 Congratulations! You just completed your first SPARQL queries in the wild. This might be a good time to pause reading for a moment and play around with your queries a little more before we continue with some advanced functions.
 
-<Callout kind="note" title="SPARQL exercise">
+<Callout kind="note" title="SPARQL Exercise">
   ```mermaid
   graph LR;
     accTitle: Simplified version of the CLSCor ontology
@@ -349,7 +349,7 @@ Congratulations! You just completed your first SPARQL queries in the wild. This 
   We will use a similar query in the next chapter on advanced SPARQL functions.
 </Callout>
 
-## Advanced SPARQL functions
+## Advanced SPARQL Functions
 
 Now that we know the basic concepts of SPARQL and have formulated our first successful queries, we are ready for some more advanced functions. We will start with some commonly used functions, e.g. `BIND` and `FILTER`, followed by concepts that you are less likely to encounter in the wild: query federation and nested queries.
 
@@ -455,13 +455,13 @@ SELECT ?author ?authorName ?transformedName WHERE {
 ORDER BY ?authorName
 ```
 
-### Federated queries - Wikidata enrichment
+### Federated Queries - Wikidata Enrichment
 
 If you have ever worked with semantic web technologies, [Wikidata](https://www.wikidata.org/) is probably familiar to you. It is a huge knowledge base with hundreds of millions of entries - including many authors that are also part of the CLSCor dataset. How nice would it be to link our entities to those in Wikidata?
 
 Luckily, Wikidata also has a [SPARQL endpoint](https://query.wikidata.org/). Let's see if we can find one of our authors there: William Shakespeare.
 
-<Callout kind="important" title="Important note">
+<Callout kind="important" title="Important Note">
   The following queries will be executed in the [Wikidata Query Interface](https://query.wikidata.org/) (not the CLSCor interface) unless mentioned otherwise. Wikidata has its own data model, including properties and classes that differ from those in CLSCor. This also affects our SPARQL queries, e.g. when querying for *persons*, we will now use `wd:Q5` instead of `crm:E39_Actor`. Click <Link link={{"discriminant":"external","value":"https://www.wikidata.org/wiki/Wikidata:WikiProject_Ontology"}}>here</Link> for more details on the Wikidata ontology and [here](https://gitlab.clsinfra.io/cls-infra/wp567/clscor/-/blob/main/model/CLSCorDataModel.ttl?ref_type=heads) for the CLSCor ontology.
 </Callout>
 
@@ -532,7 +532,7 @@ SELECT * WHERE {
 
 Now, we should get one result: `English playwright and poet (1564–1616)`.
 
-#### Query Federation from our CLSInfra instance
+#### Query Federation from our CLSInfra Instance
 
 We now know
 
@@ -681,7 +681,7 @@ SELECT ?x ?y WHERE {
 
 To keep the example short, we directly assign values to these variables using the keyword `VALUES` instead of matching a pattern of classes and properties like we did in our previous queries. `VALUES` provides a mechanism to add data to a query, in this case it assigns "a", "b" and "c" to the variable `?y` and 1, 2 and 3 to the variable `?x`. Feel free to try the query in a SPARQL interface of your choice.
 
-<Disclosure title="Side note: A practical use case for VALUES">
+<Disclosure title="Side Note: A Practical Use Case for VALUES">
   A cool practical use case for `VALUES` is to limit unification for a binding:
 
   ```sparql
@@ -752,7 +752,7 @@ SELECT DISTINCT ?authorName ?transformedName ?description WHERE {
 
 The query targeting the local CLSCor instance is nested, which means that the CLSCor result set is generated first and its bindings are then projected to the federated query. As a result, you should see a list of authors in our dataset, their transformed names and the description that was fetched from Wikidata.
 
-## Conclusion and recommended reading
+## Conclusion and Recommended Reading
 
 Congratulations, you have completed this module on Linked Open Data. You know the principles of LOD, are familiar with RDF and the basic concepts of ontologies and you are able to write your own SPARQL queries - even with query federation to other triple stores!
 
