@@ -1,13 +1,34 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { createContext, type ReactNode, use, useMemo } from "react";
+
+interface DiagramContextValue {
+	link: boolean;
+}
+
+const DiagramContext = createContext<DiagramContextValue>({ link: false });
+
+export function useDiagramContext(): DiagramContextValue {
+	return use(DiagramContext);
+}
 
 interface DiagramProps {
 	children: ReactNode;
+	link: boolean;
 }
 
 export function Diagram(props: Readonly<DiagramProps>): ReactNode {
-	const { children } = props;
+	const { children, link } = props;
 
-	return <figure className="flex flex-col">{children}</figure>;
+	const value = useMemo(() => {
+		return { link };
+	}, [link]);
+
+	return (
+		<figure className="flex flex-col">
+			<DiagramContext value={value}>{children}</DiagramContext>
+		</figure>
+	);
 }
 
 interface DiagramCodeBlockProps {
