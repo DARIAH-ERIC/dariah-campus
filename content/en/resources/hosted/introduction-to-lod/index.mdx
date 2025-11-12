@@ -329,6 +329,24 @@ ORDER BY ?count
 
 Congratulations! You just completed your first SPARQL queries in the wild. This might be a good time to pause reading for a moment and play around with your queries a little more before we continue with some advanced functions.
 
+<Callout kind="note">
+  <Callout kind="note" title="SPARQL Exercise">
+    ```mermaid
+    graph LR;
+      accTitle: Simplified version of the CLSCor ontology
+      accDescr: A diagram displaying the property paths from X1_Corpus to E39_Actor.
+      crmcls:X1_Corpus-->|crm:P148_has_component| crmcls:X2_Corpus_Document;
+      crmcls:X2_Corpus_Document--> |crm:P148i_is_component_of| crmcls:X1_Corpus
+      crm:E39_Actor-->|crm:P14i_performed| lrm:F28_Expression_Creation;
+      lrm:F28_Expression_Creation-->|crm:P14_carried_out_by| crm:E39_Actor;
+      lrm:F28_Expression_Creation-->|lrm:R17_created| lrm:F2_Expression;
+      lrm:F2_Expression-->|lrm:R17i_was_created_by| lrm:F28_Expression_Creation;
+      lrm:F2_Expression-->|lrm:R4i_is_embodied_in| crmcls:X2_Corpus_Document;
+      crmcls:X2_Corpus_Document-->|lrm:R4_embodies| lrm:F2_Expression;
+    ```
+  </Callout>
+</Callout>
+
 <Callout kind="note" title="SPARQL Exercise">
   ```mermaid
   graph LR;
