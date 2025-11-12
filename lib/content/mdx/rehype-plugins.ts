@@ -7,22 +7,19 @@ import {
 	withTableOfContents,
 	withUnwrappedMdxFlowContent,
 } from "@acdh-oeaw/mdx-lib";
-import withSyntaxHighlighter, { type RehypeShikiOptions } from "@shikijs/rehype";
+import withSyntaxHighlighter, {
+	type Options as SyntaxHighlighterOptions,
+} from "rehype-pretty-code";
 import withHeadingIds from "rehype-slug";
 import type { Pluggable } from "unified";
 
 import { withMermaidDiagrams } from "@/lib/content/mdx/with-mermaid-diagrams";
 import { withRemoteImageUrls } from "@/lib/content/mdx/with-remote-image-urls";
 
-const syntaxHighlighterConfig: RehypeShikiOptions = {
-	defaultColor: "light",
-	defaultLanguage: "text",
-	/** Languages are lazy-loaded on demand. */
-	langs: [],
-	lazy: true,
-	themes: {
-		light: "github-light",
-	},
+const syntaxHighlighterConfig: SyntaxHighlighterOptions = {
+	bypassInlineCode: true,
+	defaultLang: "plaintext",
+	theme: "github-light",
 };
 
 export function createCustomHeadingIdsPlugin() {
