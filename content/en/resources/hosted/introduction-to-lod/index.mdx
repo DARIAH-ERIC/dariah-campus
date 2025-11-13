@@ -33,7 +33,7 @@ After completing this module, learners will be able to:
 * Write your own simple SPARQL queries and query the CLSCor Catalogue
 * Explain advanced SPARQL functions and federated queries
 
-<Disclosure title="About This Material">
+<Disclosure title="About this Material">
   This training material was originally produced for the CLS INFRA Training School in Vienna in June 2024. You can find more information about the project and the training school as well as recordings of the individual sessions [here](https://campus.dariah.eu/resources/events/explore-cor-using-programmable-corpora-in-computational-literary-studies).
 
   The CLSCor Catalogue is one outcome of the EU-funded CLS INFRA project, namely an exploration platform gathering information about literary corpora and applicable tools. The metadata on both corpora and tools was harmonised and mapped to a specifically designed data model which will be addressed later in this article and serves as the base for our upcoming LOD exercises.
@@ -238,6 +238,8 @@ Of course, our CLSCor catalogue also offers an endpoint to query the dataset: [h
 
 ## Hands-on: Let's SPARQL the CLSCor Catalogue
 
+In this part of the course, you will get to practice your new skills on an actual data catalogue.
+
 ### Details about CLSCor
 
 RDF data is usually stored in databases that are specialized for triples, so-called **triple stores**. The data in the CLSCor catalogue is stored in a triple store called [Blazegraph](https://blazegraph.com/). The store is connected to the semantic knowledge platform [Researchspace](https://researchspace.org/) that is used to provide a frontend application for our data at [https://clscor.io](https://clscor.io).
@@ -344,18 +346,9 @@ Congratulations! You just completed your first SPARQL queries in the wild. This 
         crmcls:X2_Corpus_Document-->|lrm:R4_embodies| lrm:F2_Expression;
       ```
     </DiagramCodeBlock>
-
-    <DiagramCodeBlock>
-      |   |   |   |
-      | - | - | - |
-      |   |   |   |
-      |   |   |   |
-    </DiagramCodeBlock>
   </Diagram>
 
-  ```mermaid
   If you are interested in a little SPARQL exercise, try to retrieve the authors for every corpus document. The diagram above will help you with the required properties and classes.
-  ```
 
   We will use a similar query in the next chapter on advanced SPARQL functions.
 </Callout>
