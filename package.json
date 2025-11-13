@@ -126,6 +126,7 @@
 		"@playwright/test": "^1.56.1",
 		"@react-aria/optimize-locales-plugin": "^1.1.5",
 		"@react-types/shared": "^3.32.1",
+		"@shikijs/transformers": "^3.15.0",
 		"@tailwindcss/postcss": "^4.1.17",
 		"@tailwindcss/typography": "^0.5.19",
 		"@types/hast": "^3.0.4",
