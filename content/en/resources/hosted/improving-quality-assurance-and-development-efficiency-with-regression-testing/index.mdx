@@ -63,3 +63,10 @@ This article will not go into the specifics of the encoding schema of the editio
 * for certain elements different font, text formatting and spacing properties have to be applied
 
 Additionally, the migration process includes simplifying certain parts of the code base which has grown due to ongoing changes in the source data and additional feature requests. Here, simplifying means using more concise XSLT and CSS rules to reduce complexity and improve maintainability.
+
+The edition view consists of 65 HTML pages. [Page 18](https://karl-kraus.github.io/wpn-static/absatz_18.html) of the edition gives a good example of the complexity that has to be dealt with.
+
+Since changing the XSLT or CSS rules may effect multiple pages of the edition efficient testing is necessary. Therefore the same test is executed for all pages by parameterizing the URL path as well as the screenshot path. Instead of taking the initial screenshots of the new app they are taken from the legacy app. Also, not the whole page is screenshotted but only the part that should be compared, which in this case is only the running text of the edition. The test should not care about or fail because of differences in components like menus or side panels.
+
+As mentioned Playwright provides an interactive interface for browsing test results via the HTML Reporter. After running the tests two result views are available.
+The first view displays all completed tests (failed and passed) in list form (65 tests for 65 pages):
