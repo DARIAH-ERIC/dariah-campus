@@ -9,11 +9,11 @@
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": ">= 22.18 < 23",
+			"version": "^24",
 			"onFail": "download"
 		}
 	},
-	"packageManager": "pnpm@10.21.0",
+	"packageManager": "pnpm@10.22.0",
 	"scripts": {
 		"app:build": "next build --webpack",
 		"app:dev": "next dev --turbopack",
