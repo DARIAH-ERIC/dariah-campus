@@ -22,3 +22,31 @@ content-type: training-module
 translations: []
 dariah-national-consortia: []
 ---
+<Callout kind="note">
+  Target audience: Developers, Project Managers
+</Callout>
+
+## Introduction
+
+Developing applications in the field of humanities sometimes means rendering a lot of textual data with regards to scientific rules (e.g. citation patterns).
+Digital editions can be particularly challenging.
+
+The following sections try to give an insight into the benefits of regression testing using the example of migrating a digital edition to a slightly different tech stack. In this scenario e2e testing is used to make sure that the new application displays the data after the migration exactly as it did before.
+
+The tool of choice in this example is the [Playwright](https://playwright.dev/) framework, which allows us running multiple browser interactions and comparing the result to our test data. By using parameterized tests we can speed up the development process and achieve high test coverage. The usefulness of setting up these tests becomes evident looking at the quantity and quality of the data in our use case.
+
+The tech stack is pretty straight forward: XML gets transformed to HTML by using XSLT.
+XML structures can be rather simple and flat. But in the case of digital editions the complexity increases based on the levels of nesting and the amount of enriched data combined with a sophisticated rule set regarding the desired display.
+
+In the following two types of tests will by presented: Comparison by Screenshot and Text Matching.
+
+## Learning Outcomes
+
+After completing this learning resource, learners should be able to:
+
+* Name types of regression tests that are beneficial and appropriate when developing digital editions.
+* List features of a tool like Playwright that are particularly useful for testing text-heavy applications.&#x20;
+* Approach testing in their own development stack.
+
+---
+
