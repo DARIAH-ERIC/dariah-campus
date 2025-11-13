@@ -283,6 +283,14 @@ console.log('Not highlighted')
 ```
 ````
 
+This will render:
+
+```ts
+console.log('Not highlighted')
+console.log('Highlighted') // [!code highlight]
+console.log('Not highlighted')
+```
+
 To highlight multiple lines:
 
 ````md
@@ -293,6 +301,15 @@ console.log('Highlighted')
 console.log('Not highlighted')
 ```
 ````
+
+This will render:
+
+```ts
+// [!code highlight:2]
+console.log('Highlighted')
+console.log('Highlighted')
+console.log('Not highlighted')
+```
 
 **Table** - Use this icon to add a table. It will show a 3 x 3 table by default, but you can edit this. Do note, though, that larger tables don't work as well on mobile devices.
 
