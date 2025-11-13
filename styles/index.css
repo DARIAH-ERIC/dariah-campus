@@ -17,6 +17,10 @@
 	--breakpoint-2xl: 90rem;
 }
 
+/** ===============================================================================================
+ * Theme.
+ * ============================================================================================= */
+
 @theme {
 	--color-brand-50: #f0f9ff;
 	--color-brand-100: #dff3ff;
@@ -99,6 +103,10 @@
 	--font-body: var(--_font-body, var(--default-font-family));
 	--font-code: var(--_font-code, var(--default-mono-font-family));
 }
+
+/** ===============================================================================================
+ * Rich text.
+ * ============================================================================================= */
 
 @layer utilities {
 	.prose {
@@ -245,6 +253,10 @@
 	}
 }
 
+/** ===============================================================================================
+ * Global styles.
+ * ============================================================================================= */
+
 @layer base {
 	:root {
 		background-color: var(--color-background-base);
@@ -284,5 +296,63 @@
 
 	input[type="search"]::-webkit-search-results-decoration {
 		display: none;
+	}
+}
+
+/** ===============================================================================================
+ * Syntax highlighting.
+ * ============================================================================================= */
+
+/* stylelint-disable number-max-precision */
+
+@layer base {
+	/** @see {@link https://shiki.style/guide/dual-themes#class-based-dark-mode} */
+	[data-ui-color-scheme="dark"] .shiki,
+	[data-ui-color-scheme="dark"] .shiki span {
+		background-color: var(--shiki-dark-bg) !important;
+		color: var(--shiki-dark) !important;
+		font-weight: var(--shiki-dark-font-weight) !important;
+		font-style: var(--shiki-dark-font-style) !important;
+		text-decoration: var(--shiki-dark-text-decoration) !important;
+	}
+
+	/** @see {@link https://shiki.style/packages/transformers} */
+	.shiki {
+		& .line.higlighted {
+			display: inline-block;
+			width: calc(100% + 48px);
+			margin-inline: -1.14286em;
+			padding-inline: 1.14286em;
+			background-color: #0000000d;
+			transition: background-color 0.5s;
+		}
+
+		& .highlighted-word {
+			margin: -1px -3px;
+			padding: 1px 3px;
+			border: 1px solid var(--color-neutral-200);
+			border-radius: var(--rounded-xs);
+		}
+
+		& .line.diff {
+			&::before {
+				position: absolute;
+				left: 10px;
+			}
+		}
+
+		& .line.diff.add {
+			&::before {
+				content: "+";
+				color: var(--color-success-600);
+			}
+		}
+
+		& .line.diff.remove {
+			&::before {
+				content: "-";
+				color: var(--color-error-600);
+			}
+		}
 	}
 }
