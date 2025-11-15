@@ -48,7 +48,7 @@
 		"types:check": "tsc --noEmit",
 		"types:prepare": "next typegen",
 		"typesense:api-key:create": "dotenv -c -- tsx ./scripts/typesense/create-api-key.ts",
-		"typesense:build": "dotenv -c production -- tsx ./scripts/typesense/create-search-index.ts",
+		"typesense:build": "dotenv -c -- tsx ./scripts/typesense/create-search-index.ts",
 		"typesense:collection:create": "dotenv -c -- tsx ./scripts/typesense/create-collection.ts",
 		"typesense:collection:seed": "dotenv -c -- tsx ./scripts/typesense/seed-collection.ts"
 	},
