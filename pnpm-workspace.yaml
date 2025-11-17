@@ -3,12 +3,10 @@ onlyBuiltDependencies:
   - '@swc/core'
   - '@tailwindcss/oxide'
   - esbuild
-  - node
   - sharp
   - simple-git-hooks
   - typesense-instantsearch-adapter
   - unrs-resolver
-  - vue-demi
 
 patchedDependencies:
   '@keystatic/core@0.5.48': patches/@keystatic__core@0.5.48.patch
