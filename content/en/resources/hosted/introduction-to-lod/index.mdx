@@ -18,12 +18,17 @@ license: cc-by-4.0
 table-of-contents: true
 summary:
   title: Introduction to Linked Open Data
-  content: This article provides an introduction to Linked Open Data and SPARQL
+  content: >-
+    This resource provides an introduction to Linked Open Data and SPARQL. It
+    explains how LOD is used to publish structured data on the web and basic
+    concepts like RDF, ontologies and using URIs. Practical exercises using
+    SPARQL queries and SPARQL endpoints in the SPARQL playground and the CLSCor
+    Catalogue complete the course.
 content-type: training-module
 translations: []
 dariah-national-consortia: []
 ---
-This article gives a very short introduction to the basic concepts of the **Semantic Web** and **Linked Open Data (LOD)**, including a crash course in **SPARQL**, a query language for LOD. This will be followed by a hands-on part applying SPARQL on the data in the CLSCor Catalogue.
+This resource gives a very short introduction to the basic concepts of the **Semantic Web** and **Linked Open Data (LOD)**, including a crash course in **SPARQL**, a query language for LOD. This will be followed by a hands-on part applying SPARQL on the data in the CLSCor Catalogue.
 
 ## Learning Outcomes
 
@@ -34,15 +39,15 @@ After completing this module, learners will be able to:
 * Write your own simple SPARQL queries and query the CLSCor Catalogue
 * Explain advanced SPARQL functions and federated queries
 
-<Disclosure title="About this Material">
-  This training material was originally produced for the CLS INFRA Training School in Vienna in June 2024. You can find more information about the project and the training school as well as recordings of the individual sessions [here](https://campus.dariah.eu/resources/events/explore-cor-using-programmable-corpora-in-computational-literary-studies).
+#### About this Material
 
-  The CLSCor Catalogue is one outcome of the EU-funded CLS INFRA project, namely an exploration platform gathering information about literary corpora and applicable tools. The metadata on both corpora and tools was harmonised and mapped to a specifically designed data model which will be addressed later in this article and serves as the base for our upcoming LOD exercises.
-</Disclosure>
+This training material was originally produced for the CLS INFRA Training School in Vienna in June 2024. You can find more information about the project and the training school as well as recordings of the individual sessions in the [ExploreCor event materials](https://campus.dariah.eu/resources/events/explore-cor-using-programmable-corpora-in-computational-literary-studies).
+
+The CLSCor Catalogue is one outcome of the EU-funded CLS INFRA project, namely an exploration platform gathering information about literary corpora and applicable tools. The metadata on both corpora and tools was harmonised and mapped to a specifically designed data model which will be addressed later in this article and serves as the base for our upcoming LOD exercises.
 
 ## Linked Open Data
 
-Linked Open Data (LOD) refers to a method of ”publishing structured data on the Web” [\[1\]](https://www.w3.org/wiki/LinkedData) so that it can be interlinked and become more useful. The concept builds on the principles of the Semantic Web, where data is given meaningful links that allow it to be connected across different domains and platforms. LOD consists of open datasets that are published in a machine-readable format, allowing computers to easily discover and process the data.
+Linked Open Data (LOD) refers to a method of ”publishing structured data on the Web”, as explained in the [W3C Wiki](https://www.w3.org/wiki/LinkedData), so that it can be interlinked and become more useful. The concept builds on the principles of the Semantic Web, where data is given meaningful links that allow it to be connected across different domains and platforms. LOD consists of open datasets that are published in a machine-readable format, allowing computers to easily discover and process the data.
 
 The main principles of LOD include:
 
@@ -97,7 +102,7 @@ In the above graph, some entities appear in a similar context. "Shakespeare" and
 
 ## Ontologies
 
-Ontologies provide the structured framework that allows us to define the relationships between different concepts in a domain. In the context of the Semantic Web, an ontology is a formal specification of the **classes** (types of things), **properties** (relationships), and **constraints** that describe the data within a specific knowledge domain. Simply put, the ontology describes, what kind of things are in our world (classes), how these things relate to one another (properties) and what kinds of relations are (or are not) possible (constraints).
+Ontologies provide the structured framework that allows us to define the relationships between different concepts in a domain. In the context of the Semantic Web, an ontology is a formal specification of the **classes** (types of things), **properties** (relationships), and **constraints** that describe the data within a specific knowledge domain. Simply put, the ontology describes what kind of things are in our world (classes), how these things relate to one another (properties) and what kinds of relations are (or are not) possible (constraints).
 
 By defining these elements, ontologies enable consistency, interoperability, and shared understanding of data across different systems. In our Shakespeare example, an ontology might specify that an author (class) writes (property) a book (class), helping systems understand how these entities are related. The class constraints in the example specify, that any subject of the `<is author of>` property is an `<author>` and that any object is a `<book>` (or `<literary work>` in general). They would also allow us to add information on **class hierarchy**, e.g. defining that every `<author>` is also a `<person>`. Through these constraints, ontologies enable us to reason over data and infer new knowledge, making them a powerful tool for organizing and connecting complex information in the semantic web. Our basic Shakespeare triple (Shakespeare → is author of → Hamlet) could hence be used to infer that:
 
