@@ -163,8 +163,6 @@ WHERE {
   <http://example.org/Hamlet> <http://example.org/location> <http://example.org/Denmark> .
   ```
 
-
-
   The corresponding graph looks as follows:
 
   ```mermaid
@@ -692,6 +690,10 @@ SELECT ?x ?y WHERE {
 ```
 
 To keep the example short, we directly assign values to these variables using the keyword `VALUES` instead of matching a pattern of classes and properties like we did in our previous queries. `VALUES` provides a mechanism to add data to a query, in this case it assigns "a", "b" and "c" to the variable `?y` and 1, 2 and 3 to the variable `?x`. Feel free to try the query in a SPARQL interface of your choice.
+
+<Callout kind="note" title="Side Note: A Practical Use Case for VALUES">
+
+</Callout>
 
 <Disclosure title="Side Note: A Practical Use Case for VALUES">
   A cool practical use case for `VALUES` is to limit unification for a binding:
