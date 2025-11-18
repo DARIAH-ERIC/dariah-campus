@@ -163,13 +163,7 @@ WHERE {
   <http://example.org/Hamlet> <http://example.org/location> <http://example.org/Denmark> .
   ```
 
-  <Disclosure title="RDF Input for our first queries">
-    ```turtle
-    <http://example.org/William_Shakespeare> <http://example.org/is_author_of> <http://example.org/Hamlet> .
-    <http://example.org/William_Shakespeare> <http://example.org/is_author_of> <http://example.org/Macbeth> .
-    <http://example.org/Hamlet> <http://example.org/location> <http://example.org/Denmark> .
-    ```
-  </Disclosure>
+
 
   The corresponding graph looks as follows:
 
@@ -252,11 +246,11 @@ Of course, our CLSCor catalogue also offers an endpoint to query the dataset: [h
 
 ## Hands-on: Let's SPARQL the CLSCor Catalogue
 
-In this part of the course, you will get to practice your new skills on an actual data catalogue.
+In this part of the course, you will get to practise your new skills on an actual data catalogue.
 
 ### Details about CLSCor
 
-RDF data is usually stored in databases that are specialized for triples, so-called **triple stores**. The data in the CLSCor catalogue is stored in a triple store called [Blazegraph](https://blazegraph.com/). The store is connected to the semantic knowledge platform [Researchspace](https://researchspace.org/) that is used to provide a frontend application for our data at [https://clscor.io](https://clscor.io).
+RDF data is usually stored in databases that are specialised for triples, so-called **triple stores**. The data in the CLSCor catalogue is stored in a triple store called [Blazegraph](https://blazegraph.com/). The store is connected to the semantic knowledge platform [Researchspace](https://researchspace.org/) that is used to provide a frontend application for our data at [https://clscor.io](https://clscor.io).
 
 We will not cover all the details about the ontologies used in the CLSCor catalogue (they can be viewed [here](https://clscor.acdh.oeaw.ac.at/resource/?uri=http%3A%2F%2Fwww.researchspace.org%2Fresource%2Fassets%2FOntologies\&semanticSearch=N4IgZiBcDaC6A0IBOBTAzgVwDYBcrAF9EATAQx1LRRzSjkVKwEsBzAOwFsU29JQAVKCAAi5UgDoAsqQCeAIxQhEANXwEiIFklIAHABYBlAMYB7HSgMpSSI3vwhBkEWKmyFSkKr7qCQA)), but only look into single classes that are relevant for now:
 
@@ -678,7 +672,7 @@ Fortunately, there is a useful little helper that lets us specify which part of 
 
 #### Nested Queries
 
-SPARQL allows us to wrap queries, i.e. `SELECT … WHERE { … }`, inside of other queries. These nested queries (also called "subqueries") allow to modularize complex queries into more manageable parts and also provide a means of controlling query execution order. Unification happens from inner to outer query level which means that the innermost query is executed first.
+SPARQL allows us to wrap queries, i.e. `SELECT … WHERE { … }`, inside of other queries. These nested queries (also called "subqueries") allow to modularise complex queries into more manageable parts and also provide a means of controlling query execution order. Unification happens from inner to outer query level which means that the innermost query is executed first.
 
 Let's take a look at an example. The following simple toy query features two variables, `?x` and `?y`:
 
