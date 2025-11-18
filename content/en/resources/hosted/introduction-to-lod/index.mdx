@@ -724,39 +724,6 @@ To keep the example short, we directly assign values to these variables using th
   The containment check version is radically less efficient though, since the processor has to check *every* label in the entire graph and compare it to the entities specified in the filter clause. Reducing the result set quickly is a key technique for writing efficient queries and `VALUES` can be a great tool for that.
 </Callout>
 
-<Disclosure title="Side Note: A Practical Use Case for VALUES">
-  A cool practical use case for `VALUES` is to limit unification for a binding:
-
-  ```sparql
-  SELECT *
-  WHERE {
-    VALUES ?author {
-      <https://clscor.io/entity/b131343253>
-      <https://clscor.io/entity/3049ca6ae0>
-    }
-    ?author rdfs:label ?label
-  }
-  ```
-
-  This statically unifies `?author` for the given URIs.
-
-  The above behavior could also be achieved with membership testing.
-
-  ```sparql
-  SELECT *
-  WHERE {
-   ?author rdfs:label ?label
-   FILTER (?author IN (
-       <https://clscor.io/entity/b131343253>,
-       <https://clscor.io/entity/3049ca6ae0>
-     )
-   )
-  }
-  ```
-
-  The containment check version is radically less efficient though, since the processor has to check *every* label in the entire graph and compare it to the entities specified in the filter clause. Reducing the result set quickly is a key technique for writing efficient queries and `VALUES` can be a great tool for that.
-</Disclosure>
-
 The important part in this example query is the fact that the inner query will be executed first and hence `?y` will be bound before `?x`. This is exactly what we want to achieve for our federated query!
 
 Wrapping the upper half of our original query in a subquery allows us to execute this part first and hence binding the variable `?transformedNameWithLanguage` before it is forwarded to Wikidata:
@@ -801,7 +768,6 @@ Congratulations, you have completed this module on Linked Open Data. You know th
 
 If you are interested in further reading regarding knowledge graphs and the semantic web, we recommend the following books, articles and videos:
 
-* Creator (PublicationYear). Title. Version. Publisher. ResourceType. Identifier
 * Haslhofer, B., Antoine Isaac, A., Simon, R. (2018). Knowledge Graphs in the Libraries and Digital Humanities Domain. ArXiv:1803.03198 \[Cs], 1–8. Paper. [https://link.springer.com/rwe/10.1007/978-3-319-63962-8\_291-1](https://link.springer.com/rwe/10.1007/978-3-319-63962-8_291-1)&#x20;
 * Hitzler, P. (25 January 2021). A review of the semantic web field. Communications of the ACM 64, Nr. 2: 76–83. Paper. [https://doi.org/10.1145/3397512](https://doi.org/10.1145/3397512)
 * Studer, R., Benjamins, V. R., & Fensel, D. (1998). Knowledge engineering: Principles and methods. Data & knowledge engineering, 25(1-2), 161-197. Paper.
