@@ -245,7 +245,7 @@ From left to right:
   ###
 </Figure>
 
-**Footnote** - this icon allows you to create a footnote.  Click on the icon and type in or paste in your footnote.  This will appear as superscript, but in the published version that text will appear at the very end of the resource as a footnote, and a reference number will appear where you typed this text.
+**Footnote** - this icon allows you to create a footnote. Click on the icon and type in or paste in your footnote. This will appear as superscript, but in the published version that text will appear at the very end of the resource as a footnote, and a reference number will appear where you typed this text.
 
 <Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.22-footnotes.png" alignment="center">
 
@@ -265,9 +265,29 @@ From left to right:
 
 **Code Block** - This is the second of the two 'Code' icons. Use it for longer code examples or instructions that stand on their own like a paragraph. You can set the programming language in the pop-out window that appears in order to enable syntax highlighting. In the example below we set the programming language to 'C'. You then type the code you want to include directly into the 'Code Block' box.
 
-<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/coding-2-image.jpeg" alt="demonstration of the code block option, showing the pop-up window that defines the coding language used (in this case 'C'), and the necessary code for printing the phrase 'hello, world' typed into the code block box." alignment="center">
-  ###
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/coding-2-image.jpeg" alt="demonstration of the code block option, showing the pop-up window that defines the coding language used (in this case 'c'), and the necessary code for printing the phrase 'hello, world' typed into the code block box." alignment="center">
+
 </Figure>
+
+You can find the supported programming languages [here](https://shiki.style/languages). Use the value from the `ID` column in the pop-out window.
+
+Highlighting lines or words in code blocks is supported via [special comment syntax](https://shiki.style/packages/transformers#transformernotationhighlight).
+
+To highlight a line, place a comment at the end of the line:
+
+```
+console.log('Not highlighted')
+console.log('Highlighted') // [!code highlight]
+console.log('Not highlighted')
+```
+
+This will render:
+
+```ts
+console.log('Not highlighted')
+console.log('Highlighted') // [!code highlight]
+console.log('Not highlighted')
+```
 
 **Table** - Use this icon to add a table. It will show a 3 x 3 table by default, but you can edit this. Do note, though, that larger tables don't work as well on mobile devices.
 
