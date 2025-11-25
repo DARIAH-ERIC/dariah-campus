@@ -1,6 +1,6 @@
 {
 	"name": "Next.js",
-	"image": "ghcr.io/acdh-oeaw/devcontainer-frontend:22",
+	"image": "ghcr.io/acdh-oeaw/devcontainer-frontend:24",
 	"customizations": {
 		"vscode": {
 			"extensions": [
