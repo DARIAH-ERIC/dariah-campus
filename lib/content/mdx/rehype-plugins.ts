@@ -8,6 +8,11 @@ import {
 	withUnwrappedMdxFlowContent,
 } from "@acdh-oeaw/mdx-lib";
 import withSyntaxHighlighter, { type RehypeShikiOptions } from "@shikijs/rehype";
+import {
+	transformerNotationDiff,
+	transformerNotationHighlight,
+	transformerNotationWordHighlight,
+} from "@shikijs/transformers";
 import withHeadingIds from "rehype-slug";
 import type { Pluggable } from "unified";
 
@@ -23,6 +28,12 @@ const syntaxHighlighterConfig: RehypeShikiOptions = {
 	themes: {
 		light: "github-light",
 	},
+	/** @see {@link https://shiki.style/packages/transformers} */
+	transformers: [
+		transformerNotationDiff({ matchAlgorithm: "v3" }),
+		transformerNotationHighlight({ matchAlgorithm: "v3" }),
+		transformerNotationWordHighlight({ matchAlgorithm: "v3" }),
+	],
 };
 
 export function createCustomHeadingIdsPlugin() {
