@@ -1,6 +1,7 @@
 /* eslint-disable @eslint-react/prefer-read-only-props */
 
 import { createComponent } from "@acdh-oeaw/keystatic-lib";
+import { fields } from "@keystatic/core";
 import { repeating, wrapper } from "@keystatic/core/content-components";
 import { ChartBarStackedIcon, TextIcon } from "lucide-react";
 
@@ -16,13 +17,19 @@ export const createDiagram = createComponent((_paths, _locale) => {
 			label: "Diagram",
 			description: "Insert a diagram with caption.",
 			icon: <ChartBarStackedIcon />,
-			schema: {},
-			children: ["DiagramCaption", "DiagramCodeBlock"],
+			schema: {
+				link: fields.checkbox({
+					label: "Add link to caption",
+					description: "Include a link to open the graphic in a separate tab.",
+					defaultValue: false,
+				}),
+			},
+			children: ["DiagramCodeBlock", "DiagramCaption"],
 			validation: { children: { min: 1, max: 2 } },
 			ContentView(props) {
-				const { children } = props;
+				const { children, value } = props;
 
-				return <DiagramPreview>{children}</DiagramPreview>;
+				return <DiagramPreview link={value.link}>{children}</DiagramPreview>;
 			},
 		}),
 		DiagramCaption: wrapper({

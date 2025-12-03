@@ -31,6 +31,7 @@ import {
 	createFootnotesPlugin,
 	createGitHubMarkdownPlugin,
 	createTypographicQuotesPlugin,
+	createUnwrappedAutolinkLiteralsPlugin,
 } from "@/lib/content/mdx/remark-plugins";
 import { createRemarkRehypeOptions } from "@/lib/content/mdx/remark-rehype-options";
 import type { Client } from "@/lib/content/types";
@@ -42,6 +43,7 @@ const createEvaluateOptions = (baseUrl: string) => {
 	return {
 		remarkPlugins: [
 			createGitHubMarkdownPlugin(),
+			createUnwrappedAutolinkLiteralsPlugin(),
 			createFootnotesPlugin(),
 			createTypographicQuotesPlugin(getIntlLanguage(locale)),
 		],
