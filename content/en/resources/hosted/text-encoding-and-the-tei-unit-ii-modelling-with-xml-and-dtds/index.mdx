@@ -246,7 +246,8 @@ The XML specifications require that within an XML document all elements have to 
 
 To explain basic principle of nesting in XML, the Russian ‘Matryoshka doll’ might make a good analogy. The root element is the largest container. All other elements have to be entirely nested within the root element or another element. In a similar way smaller Matryoshka dolls’are nested within bigger ones.
 
-![](/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/15cf90b368ddf75e0e850b1b5e1eceb7cdf44bfb-5727.jpg)In the address book example, all \<entry> elements are completely nested within the start and end root element. Furthermore, each address entry can other have elements nested in it. For instance, an entry may have \<name> as follows:
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/15cf90b368ddf75e0e850b1b5e1eceb7cdf44bfb-5727.jpg" alt="" alignment="stretch" />
+In the address book example, all \<entry> elements are completely nested within the start and end root element. Furthermore, each address entry can other have elements nested in it. For instance, an entry may have \<name> as follows:
 
 ```
 <addressBook>
@@ -293,7 +294,8 @@ That this data is nested provides important information to the computer. For exa
 
 Conceptually, the structure of an XML document is a tree structure. The *root element*, forms the basis of the XML tree and all other element nodes, attribute nodes and text nodes reach out like braches and leaves. Visually this could be represented as a tree graph as in the following figure of the address book in the previous section:
 
-![](/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/f7fad3bcd13b476edb7bf474b6623f5448753a38-5739.png)Moreover, various relationships between elements exist. In the **child-parent relationship** one element (the child) is nested in another element (the parent). In the following example the element \<name> is nested in the element \<entry> and consequently \<name> is the child of \<entry> and \<entry> the parent of \<child>.
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/f7fad3bcd13b476edb7bf474b6623f5448753a38-5739.png" alt="" alignment="stretch" />
+Moreover, various relationships between elements exist. In the **child-parent relationship** one element (the child) is nested in another element (the parent). In the following example the element \<name> is nested in the element \<entry> and consequently \<name> is the child of \<entry> and \<entry> the parent of \<child>.
 
 ```
  <entry>
