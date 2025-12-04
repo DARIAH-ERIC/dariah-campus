@@ -5,10 +5,15 @@ import withGfm from "remark-gfm";
 import withTypographicQuotes from "remark-smartypants";
 import type { Pluggable } from "unified";
 
+import { withUnwrappedAutolinkLiterals } from "@/lib/content/mdx/with-unwrapped-autolink-literals";
 import type { IntlLanguage } from "@/lib/i18n/locales";
 
 export function createGitHubMarkdownPlugin() {
 	return withGfm satisfies Pluggable;
+}
+
+export function createUnwrappedAutolinkLiteralsPlugin() {
+	return withUnwrappedAutolinkLiterals satisfies Pluggable;
 }
 
 export function createFootnotesPlugin() {

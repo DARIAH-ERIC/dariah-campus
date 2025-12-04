@@ -33,6 +33,12 @@ export function getLinkProps(params: LinkSchema) {
 			};
 		}
 
+		case "email": {
+			return {
+				href: `mailto:${params.value}`,
+			};
+		}
+
 		case "external": {
 			return {
 				href: params.value,
