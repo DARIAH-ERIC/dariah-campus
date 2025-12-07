@@ -31,6 +31,10 @@ export function createLinkSchema<TPath extends `/${string}/`>(
 				validation: { isRequired: true },
 				...createAssetOptions(downloadPath),
 			}),
+			email: fields.text({
+				label: "Email",
+				validation: { isRequired: true, pattern: validation.email },
+			}),
 			"resources-events": fields.object({
 				id: fields.relationship({
 					label: "Event",

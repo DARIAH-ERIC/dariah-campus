@@ -28,7 +28,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        node-version: [22.x]
+        node-version: [24.x]
         os: [ubuntu-24.04]
 
     steps:
