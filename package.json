@@ -16,7 +16,7 @@
 	"packageManager": "pnpm@10.23.0",
 	"scripts": {
 		"app:build": "next build",
-		"app:dev": "next dev --turbopack",
+		"app:dev": "next dev",
 		"build": "run-s generate:handle content:build generate:metadata-dump generate:api-docs app:build typesense:build",
 		"content:build": "dotenv -c -- tsx ./scripts/content/generate-content.ts build",
 		"content:dev": "dotenv -c -- tsx ./scripts/content/generate-content.ts watch",
@@ -121,7 +121,6 @@
 		"@acdh-oeaw/tsconfig": "^1.5.1",
 		"@next/eslint-plugin-next": "^16.0.7",
 		"@playwright/test": "^1.57.0",
-		"@react-aria/optimize-locales-plugin": "^1.1.5",
 		"@react-types/shared": "^3.32.1",
 		"@shikijs/transformers": "^3.19.0",
 		"@tailwindcss/postcss": "^4.1.17",
