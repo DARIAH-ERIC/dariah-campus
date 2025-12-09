@@ -1,0 +1,37 @@
+diff --git a/dist/keystatic-core-ui.js b/dist/keystatic-core-ui.js
+index b9e7dd88647f58af0aca3a401cb9850bd90e3003..e9db20dfeb16990e8bee38b425f949dce22dc59b 100644
+--- a/dist/keystatic-core-ui.js
++++ b/dist/keystatic-core-ui.js
+@@ -1494,7 +1494,7 @@ function ForkRepoDialog(props) {
+       props.onDismiss();
+     },
+     children: [/*#__PURE__*/jsx(Heading, {
+-      children: "Fork Repo"
++      children: "Suggest changes"
+     }), state.kind === 'error' ? /*#__PURE__*/jsxs(Fragment, {
+       children: [/*#__PURE__*/jsx(Content, {
+         children: /*#__PURE__*/jsx(Notice, {
+@@ -1513,19 +1513,10 @@ function ForkRepoDialog(props) {
+           gap: "large",
+           direction: "column",
+           marginBottom: "large",
+-          children: [/*#__PURE__*/jsx(Text, {
+-            children: "You don't have permission to write to this repo so to save your changes, you need to fork the repo."
+-          }), /*#__PURE__*/jsxs(Text, {
+-            children: ["To start,", ' ', /*#__PURE__*/jsx(TextLink, {
+-              href: `https://github.com/${serializeRepoConfig(props.config.storage.repo)}/fork`,
+-              target: "_blank",
+-              rel: "noopener noreferrer",
+-              children: "fork the repo on GitHub"
+-            }), ". Then, come back to this page and", ' ', /*#__PURE__*/jsx(TextLink, {
+-              href: `https://github.com/apps/${appSlug === null || appSlug === void 0 ? void 0 : appSlug.value}/installations/new?state=close`,
+-              target: "_blank",
+-              rel: "noopener noreferrer",
+-              children: "install the Keystatic GitHub App on your fork."
++          children: [/*#__PURE__*/jsxs(Text, {
++            children: ["Only contributors with write privileges can propose changes through the DARIAH-Campus Content Management System. If you haven’t contributed to DARIAH-Campus before, you can get in touch with us at", ' ', /*#__PURE__*/jsx(TextLink, {
++              href: `mailto:info@dariah.eu`,
++              children: "info@dariah.eu"
+             })]
+           })]
+         })

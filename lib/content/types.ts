@@ -1,18 +1,8 @@
-import type * as runtime from "react/jsx-runtime";
-
 import type { components } from "@/lib/content/mdx/components";
 import type { IntlLanguage } from "@/lib/i18n/locales";
 
 declare global {
 	type MDXProvidedComponents = typeof components;
-}
-
-declare module "mdx/types" {
-	namespace JSX {
-		type Element = runtime.JSX.Element;
-		type ElementClass = runtime.JSX.ElementClass;
-		type IntrinsicElements = runtime.JSX.IntrinsicElements;
-	}
 }
 
 declare module "@acdh-oeaw/mdx-lib" {
@@ -22,14 +12,14 @@ declare module "@acdh-oeaw/mdx-lib" {
 }
 
 export interface CollectionClient<T extends { id: string }> {
-	ids: () => Array<string>;
-	all: () => Array<T>;
-	byId: () => Map<string, T>;
-	get: (id: T["id"]) => T | null;
+	ids: () => Promise<Array<string>>;
+	all: () => Promise<Array<T>>;
+	byId: () => Promise<Map<string, T>>;
+	get: (id: T["id"]) => Promise<T | null>;
 }
 
 export interface SingletonClient<T> {
-	get: () => T;
+	get: () => Promise<T>;
 }
 
 export interface Client {

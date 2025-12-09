@@ -36,7 +36,7 @@ export function createRemarkRehypeOptions(locale: IntlLocale) {
 			});
 		},
 		footnoteLabel: t("footnotes"),
-		footnoteLabelProperties: { className: ["sr-only"] },
+		footnoteLabelProperties: { className: [] },
 		footnoteLabelTagName: "h2",
 	} satisfies RemarkRehypeOptions;
 }
