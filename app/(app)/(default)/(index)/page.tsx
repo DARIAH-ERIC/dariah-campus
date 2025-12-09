@@ -203,21 +203,8 @@ function FaqSection(props: Readonly<FaqSectionProps>): ReactNode {
 									/>
 								</Button>
 							</Heading>
-							<DisclosurePanel className="space-y-1.5 p-6 text-left">
-								<Content
-									components={{
-										a(props) {
-											return (
-												<a
-													{...props}
-													className="rounded p-0.5 text-brand-700 underline transition hover:no-underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-												>
-													{props.children}
-												</a>
-											);
-										},
-									}}
-								/>
+							<DisclosurePanel className="prose space-y-1.5 p-6 text-left">
+								<Content />
 							</DisclosurePanel>
 						</Disclosure>
 					);
