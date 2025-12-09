@@ -31,7 +31,8 @@ import { type LinkProps as AriaLinkProps, useRenderProps } from "react-aria-comp
  */
 
 export interface LinkProps
-	extends Pick<NextLinkProps, "prefetch" | "replace" | "scroll" | "shallow">,
+	extends
+		Pick<NextLinkProps, "prefetch" | "replace" | "scroll" | "shallow">,
 		Omit<AriaLinkProps, "elementType" | "href" | "routerOptions" | "slot">,
 		Pick<ComponentPropsWithoutRef<"a">, "aria-current" | "id"> {
 	href?: string | undefined;
