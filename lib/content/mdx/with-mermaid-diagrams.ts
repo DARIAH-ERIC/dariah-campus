@@ -13,6 +13,7 @@ export const withMermaidDiagrams: Plugin<[WithMermaidDiagramsOptions], Root> =
 				if (index == null) return;
 
 				if (
+					// eslint-disable-next-line @typescript-eslint/prefer-optional-chain
 					parent == null ||
 					parent.type !== "element" ||
 					parent.tagName !== "pre" ||

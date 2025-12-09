@@ -34,6 +34,10 @@ export type ContentType = (typeof contentTypes)[number]["value"];
 
 export const figureAlignments = [
 	{ label: "Center", value: "center" },
+	{ label: "Right, 1/4", value: "right-one-fourth" },
+	{ label: "Right, 1/3", value: "right-one-third" },
+	{ label: "Right, 1/2", value: "right-one-half" },
+	{ label: "Right, 2/3", value: "right-two-thirds" },
 	{ label: "Stretch", value: "stretch" },
 ] as const;
 
@@ -61,6 +65,7 @@ export const linkKinds = [
 	{ label: "Direct URL", value: "external" },
 	{ label: "Heading identifier", value: "hash" },
 	{ label: "Download", value: "download" },
+	{ label: "Email", value: "email" },
 	{ label: "Events", value: "resources-events" },
 	{ label: "External resources", value: "resources-external" },
 	{ label: "Hosted resources", value: "resources-hosted" },

@@ -34,13 +34,13 @@
 				"id": "7tVuL0XX0GY",
 				"title": "For learners",
 				"description": "Providing trustworthy, reusable, open learning resources",
-				"src": "/assets/content/assets/en/index-page/about-section/videos/0/image.png"
+				"src": "/assets/content/assets/en/index-page/about-section/videos/0/src.png"
 			},
 			{
 				"id": "vWh6Wmn635w",
 				"title": "For trainers",
 				"description": "Ensuring the impact and sustainability of training resources",
-				"src": "/assets/content/assets/en/index-page/about-section/videos/1/image.png"
+				"src": "/assets/content/assets/en/index-page/about-section/videos/1/src.png"
 			}
 		]
 	},
@@ -62,7 +62,7 @@
 			},
 			{
 				"title": "How to get in touch?",
-				"content": "The easiest way for you to get in touch with us is by using the [DARIAH Help Desk](https://www.dariah.eu/helpdesk/). Make sure you select \"Education and training\" as the subject of your message.\n"
+				"content": "The easiest way for you to get in touch with us is by emailing the Editorial Team via [info@dariah.eu](mailto:info@dariah.eu). Make sure you select \"Education and training\" as the subject of your message.\n"
 			},
 			{
 				"title": "What is DARIAH-Campus powered by?",
@@ -78,41 +78,45 @@
 				"id": "OqYJNUmhJzw",
 				"title": "Laurent Romary",
 				"description": "Former DARIAH Director",
-				"src": "/assets/content/assets/en/index-page/testimonial-section/videos/0/image.jpg"
+				"src": "/assets/content/assets/en/index-page/testimonial-section/videos/0/src.jpg"
 			},
 			{
 				"id": "iwz0uhEhtg4",
 				"title": "Jennifer Edmond",
-				"description": "DARIAH Director",
-				"src": "/assets/content/assets/en/index-page/testimonial-section/videos/1/image.jpg"
+				"description": "Former DARIAH Director",
+				"src": "/assets/content/assets/en/index-page/testimonial-section/videos/1/src.jpg"
 			},
 			{
 				"id": "soL0itkLYpk",
 				"title": "Frank Fischer",
 				"description": "Former DARIAH Director",
-				"src": "/assets/content/assets/en/index-page/testimonial-section/videos/2/image.jpg"
+				"src": "/assets/content/assets/en/index-page/testimonial-section/videos/2/src.jpg"
 			}
 		]
 	},
 	"team-section": {
-		"title": "We are here to help",
-		"lead": "Our DARIAH-CAMPUS team is just an email away and ready to answer your questions",
+		"title": "Meet the DARIAH-Campus Editorial Team",
+		"lead": "Our DARIAH-CAMPUS team are here to discuss your next training resource. Reach out to us on info@dariah.eu ",
 		"team": [
 			{
+				"person": "tasovac-toma",
+				"role": "Editor-in-Chief"
+			},
+			{
 				"person": "garnett-vicky",
-				"role": "Training & Education Officer"
+				"role": "Managing Editor"
+			},
+			{
+				"person": "mc-conville-amelia",
+				"role": "Community Editor (ECHOES project)"
 			},
 			{
 				"person": "koenigshofer-elisabeth",
-				"role": "Community Editor"
+				"role": "Community Editor (ARTEMIS project)"
 			},
 			{
-				"person": "tasovac-toma",
-				"role": "DARIAH Director"
-			},
-			{
-				"person": "toth-czifra-erzsebet",
-				"role": "Open Science Officer"
+				"person": "wiederaenders-maria",
+				"role": "Community Editor (ARTEMIS Project)"
 			}
 		]
 	}

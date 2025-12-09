@@ -2,7 +2,7 @@ import { unique } from "@acdh-oeaw/lib";
 
 import { client } from "@/lib/content/client";
 
-export function createDocuments(): Array<object> {
+export async function createDocuments(): Promise<Array<object>> {
 	const documents: Array<object> = [];
 
 	for (const name of [
@@ -12,7 +12,7 @@ export function createDocuments(): Array<object> {
 		"resourcesPathfinders",
 		"curricula",
 	] as const) {
-		client.collections[name].all().forEach((item) => {
+		(await client.collections[name].all()).map((item) => {
 			const isDraft = "draft" in item.metadata && item.metadata.draft === true;
 			if (isDraft) return;
 
