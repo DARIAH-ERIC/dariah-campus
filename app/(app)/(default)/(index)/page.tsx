@@ -64,7 +64,8 @@ function HeroSection(props: Readonly<HeroSectionProps>): ReactNode {
 			<Image
 				alt=""
 				className="mx-auto h-48 w-auto text-brand-700 lg:h-60"
-				priority={true}
+				loading="eager"
+				preload={true}
 				src={image}
 			/>
 			<h1 className="text-5xl font-bold lg:text-6xl">{title}</h1>
@@ -202,22 +203,8 @@ function FaqSection(props: Readonly<FaqSectionProps>): ReactNode {
 									/>
 								</Button>
 							</Heading>
-							<DisclosurePanel className="space-y-1.5 p-6 text-left">
-								<Content
-									components={{
-										// eslint-disable-next-line react/no-unstable-nested-components
-										a(props) {
-											return (
-												<a
-													{...props}
-													className="rounded p-0.5 text-brand-700 underline transition hover:no-underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-												>
-													{props.children}
-												</a>
-											);
-										},
-									}}
-								/>
+							<DisclosurePanel className="prose space-y-1.5 p-6 text-left">
+								<Content />
 							</DisclosurePanel>
 						</Disclosure>
 					);
@@ -295,6 +282,7 @@ async function TeamSection(props: Readonly<TeamSectionProps>): Promise<ReactNode
 										alt=""
 										className="mb-2 size-24 rounded-full border border-neutral-200 object-cover"
 										height={96}
+										sizes="96px"
 										src={image}
 										width={96}
 									/>

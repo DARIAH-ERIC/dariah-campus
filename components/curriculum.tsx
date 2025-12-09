@@ -75,7 +75,7 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 					<Image
 						alt=""
 						className="mb-8 w-full overflow-hidden rounded-lg border border-neutral-200 object-cover"
-						priority={true}
+						preload={true}
 						sizes="720px"
 						src={featuredImage}
 					/>

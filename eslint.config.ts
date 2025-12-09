@@ -6,9 +6,9 @@ import nodeConfig from "@acdh-oeaw/eslint-config-node";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
 import reactConfig from "@acdh-oeaw/eslint-config-react";
 import tailwindConfig from "@acdh-oeaw/eslint-config-tailwindcss";
+import { defineConfig } from "eslint/config";
 import gitignore from "eslint-config-flat-gitignore";
 import checkFilePlugin from "eslint-plugin-check-file";
-import { config as createConfig } from "typescript-eslint";
 
 const restrictedImports = {
 	paths: [
@@ -24,7 +24,7 @@ const restrictedImports = {
 	],
 };
 
-export default createConfig(
+export default defineConfig(
 	gitignore({ strict: false }),
 	{ ignores: ["content/**", "public/**"] },
 	baseConfig,
@@ -104,7 +104,8 @@ export default createConfig(
 			],
 			"@typescript-eslint/strict-boolean-expressions": "error",
 			"react/jsx-sort-props": ["error", { reservedFirst: true }],
-			"react-x/prefer-read-only-props": "error",
+			"@eslint-react/prefer-read-only-props": "error",
+			"@eslint-react/no-array-index-key": "off",
 		},
 	},
 	{
