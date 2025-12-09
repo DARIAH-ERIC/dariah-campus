@@ -28,7 +28,7 @@ export function VideoCard(props: Readonly<VideoCardProps>): ReactNode {
 					<Image
 						alt=""
 						className="absolute inset-0 size-full object-cover"
-						sizes="800px"
+						sizes="(max-width: 839px) 723px, 320px"
 						src={src}
 					/>
 				</div>

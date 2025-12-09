@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { PageTitle } from "@/components/page-title";
-import { client } from "@/lib/content/client";
+import { createClient } from "@/lib/content/create-client";
 
 export const revalidate = 2592000; /** 30 days. */
 
@@ -18,10 +17,12 @@ export async function generateMetadata(): Promise<Metadata> {
 	return metadata;
 }
 
-export default function ImprintPage(): ReactNode {
-	const t = useTranslations("ImprintPage");
+export default async function ImprintPage(): Promise<ReactNode> {
+	const t = await getTranslations("ImprintPage");
 
-	const Content = client.singletons.legalNotice.get().content;
+	const client = await createClient();
+
+	const Content = (await client.singletons.legalNotice.get()).content;
 
 	return (
 		<div className="mx-auto grid w-full max-w-screen-lg content-start gap-y-24 px-4 py-8 xs:px-8 xs:py-16 md:py-24">

@@ -10,7 +10,7 @@ export function Disclosure(props: Readonly<DisclosureProps>): ReactNode {
 	const { children, title } = props;
 
 	return (
-		<details className="group my-4 grid border-y border-neutral-200 open:pb-4">
+		<details className="group my-4 flex flex-col border-y border-neutral-200 open:pb-4">
 			<summary className="my-3 inline-flex cursor-pointer list-none items-center justify-between gap-x-4 py-1 font-bold group-open:pb-0 hover:underline">
 				<span>{title}</span>
 				<ChevronDownIcon
