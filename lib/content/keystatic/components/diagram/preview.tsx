@@ -4,22 +4,13 @@ import type { ReactNode } from "react";
 
 interface DiagramPreviewProps {
 	children: ReactNode;
+	link: boolean;
 }
 
 export function DiagramPreview(props: Readonly<DiagramPreviewProps>): ReactNode {
 	const { children } = props;
 
 	return <figure>{children}</figure>;
-}
-
-interface DiagramCaptionPreviewProps {
-	children: ReactNode;
-}
-
-export function DiagramCaptionPreview(props: Readonly<DiagramCaptionPreviewProps>): ReactNode {
-	const { children } = props;
-
-	return <figcaption className="text-sm">{children}</figcaption>;
 }
 
 interface DiagramCodeBlockPreviewProps {
@@ -32,13 +23,26 @@ export function DiagramCodeBlockPreview(props: Readonly<DiagramCodeBlockPreviewP
 	return (
 		<div className="flex flex-col gap-y-1">
 			<div className="text-sm italic">
-				See the{" "}
-				<a href="https://mermaid.js.org/config/accessibility.html" target="_blank">
-					Mermaid documentation
-				</a>{" "}
-				to learn how to describe the diagram for assistive technology.
+				<p>Insert a code block, and provide `mermaid` as language tag.</p>
+				<p>
+					See the{" "}
+					<a href="https://mermaid.js.org/config/accessibility.html" target="_blank">
+						Mermaid documentation
+					</a>{" "}
+					to learn how to describe the diagram for assistive technology.
+				</p>
 			</div>
 			{children}
 		</div>
 	);
+}
+
+interface DiagramCaptionPreviewProps {
+	children: ReactNode;
+}
+
+export function DiagramCaptionPreview(props: Readonly<DiagramCaptionPreviewProps>): ReactNode {
+	const { children } = props;
+
+	return <figcaption className="text-sm">{children}</figcaption>;
 }

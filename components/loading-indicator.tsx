@@ -6,7 +6,8 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { useLabels } from "@/lib/hooks/use-labels";
 
 interface LoadingIndicatorProps
-	extends AriaLabelingProps,
+	extends
+		AriaLabelingProps,
 		DOMProps,
 		Pick<ComponentPropsWithoutRef<"svg">, "aria-hidden" | "className"> {}
 

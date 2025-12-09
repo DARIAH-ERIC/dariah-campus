@@ -1,3 +1,4 @@
+import * as fs from "node:fs/promises";
 import * as path from "node:path";
 
 import { log } from "@acdh-oeaw/lib";
@@ -10,7 +11,7 @@ const formatters = {
 async function generate() {
 	const start = performance.now();
 
-	await generateApiDocs({
+	const openapiDoc = await generateApiDocs({
 		directory: path.resolve("app"),
 		info: {
 			title: "DARIAH-Campus API",
@@ -21,6 +22,13 @@ async function generate() {
 			{ url: "https://campus.dariah.eu", description: "Production deployment" },
 			{ url: "http://localhost:3000", description: "Local development server" },
 		],
+	});
+
+	const outputFolder = path.join(process.cwd(), "public");
+	await fs.mkdir(outputFolder, { recursive: true });
+
+	await fs.writeFile(path.join(outputFolder, "openapi.json"), JSON.stringify(openapiDoc, null, 2), {
+		encoding: "utf-8",
 	});
 
 	const end = performance.now();
