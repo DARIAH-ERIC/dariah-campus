@@ -1,6 +1,7 @@
 import { createAssetOptions, createSingleton, withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { fields, singleton } from "@keystatic/core";
 
+import { createLink } from "@/lib/content/keystatic/components/link";
 import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
 
 export const createIndexPage = createSingleton("/index-page/", (paths, locale) => {
@@ -152,7 +153,9 @@ export const createIndexPage = createSingleton("/index-page/", (paths, locale) =
 										image: false,
 										table: false,
 									},
-									components: {},
+									components: {
+										...createLink(paths, locale),
+									},
 								}),
 							},
 							{

@@ -1,8 +1,4 @@
-import {
-	createRouteHandler,
-	toOpenApiResponseSchema,
-	toOpenApiSearchParamsSchema,
-} from "@acdh-oeaw/openapi-nextjs";
+import { createRouteHandler, toOpenApiSchema } from "@acdh-oeaw/openapi-nextjs";
 import { type NextRequest, NextResponse } from "next/server";
 import * as v from "valibot";
 
@@ -62,12 +58,21 @@ const responseSchema = v.object({
 const resources = v.parse(itemsSchema, _resources);
 
 export const GET = createRouteHandler(
-	{
+	toOpenApiSchema({
 		description: "Retrieves a paginated list of resources.",
-		searchParams: toOpenApiSearchParamsSchema(searchParamsSchema),
-		response: toOpenApiResponseSchema(responseSchema),
-	},
-	async (request: NextRequest) => {
+		searchParams: searchParamsSchema,
+		responses: {
+			200: {
+				description: "Successful response",
+				content: {
+					"application/json": {
+						schema: responseSchema,
+					},
+				},
+			},
+		},
+	}),
+	async (request: NextRequest, _context: RouteContext<"/api/v2/metadata/resources">) => {
 		const url = new URL(request.url);
 
 		try {

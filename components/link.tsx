@@ -31,7 +31,8 @@ import { type LinkProps as AriaLinkProps, useRenderProps } from "react-aria-comp
  */
 
 export interface LinkProps
-	extends Pick<NextLinkProps, "prefetch" | "replace" | "scroll" | "shallow">,
+	extends
+		Pick<NextLinkProps, "prefetch" | "replace" | "scroll" | "shallow">,
 		Omit<AriaLinkProps, "elementType" | "href" | "routerOptions" | "slot">,
 		Pick<ComponentPropsWithoutRef<"a">, "aria-current" | "id"> {
 	href?: string | undefined;
@@ -45,6 +46,7 @@ export function Link(props: Readonly<LinkProps>): ReactNode {
 	const ref = useRef<HTMLAnchorElement | HTMLSpanElement>(null);
 	const linkRef = useObjectRef(
 		useMemo(() => {
+			// eslint-disable-next-line react-hooks/refs
 			return mergeRefs(forwardedRef, ref);
 		}, [forwardedRef, ref]),
 	);
