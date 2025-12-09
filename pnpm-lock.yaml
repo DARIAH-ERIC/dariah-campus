@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
+  '@keystar/ui':
+    hash: 4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877
+    path: patches/@keystar__ui.patch
   '@keystatic/core@0.5.48':
     hash: 9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46
     path: patches/@keystatic__core@0.5.48.patch
@@ -18,7 +21,7 @@ importers:
     dependencies:
       '@acdh-oeaw/keystatic-lib':
         specifier: ^0.8.0
-        version: 0.8.0(@keystar/ui@0.7.19(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@keystatic/core@0.5.48(patch_hash=9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46)(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)
+        version: 0.8.0(@keystar/ui@0.7.19(patch_hash=4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877)(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@keystatic/core@0.5.48(patch_hash=9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46)(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)
       '@acdh-oeaw/lib':
         specifier: ^0.3.7
         version: 0.3.7
@@ -215,9 +218,6 @@ importers:
       '@playwright/test':
         specifier: ^1.57.0
         version: 1.57.0
-      '@react-aria/optimize-locales-plugin':
-        specifier: ^1.1.5
-        version: 1.1.5
       '@react-types/shared':
         specifier: ^3.32.1
         version: 3.32.1(react@19.2.1)
@@ -1731,9 +1731,6 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
       react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-
-  '@react-aria/optimize-locales-plugin@1.1.5':
-    resolution: {integrity: sha512-X8Y2Jm8pxNGQ3yBtiSZ8u3tn7YKg+xKUNZZWEFXiNR0Cd2Hu25NMEIUs2xoX+6gP6UbFBhwl3erEbnJRSIaHcw==}
 
   '@react-aria/overlays@3.28.0':
     resolution: {integrity: sha512-qaHahAXTmxXULgg2/UfWEIwfgdKsn27XYryXAWWDu2CAZTcbI+5mGwYrQZSDWraM6v5PUUepzOVvm7hjTqiMFw==}
@@ -6799,10 +6796,6 @@ packages:
   unist-util-visit@5.0.0:
     resolution: {integrity: sha512-MR04uvD+07cwl/yhVuVWAtw+3GOR/knlL55Nd/wAdblk27GCVt3lqpTivy/tkJcZoNPzTwS1Y+KMojlLDhoTzg==}
 
-  unplugin@1.16.1:
-    resolution: {integrity: sha512-4/u/j4FrCKdi17jaxuJA0jClGxB1AvU2hw/IuayPc4ay1XGaJs/rbb4v5WKwAjNifjmXK9PIFyuPiaK8azyR9w==}
-    engines: {node: '>=14.0.0'}
-
   unrs-resolver@1.11.1:
     resolution: {integrity: sha512-bSjt9pjaEBnNiGgc9rUiHGKv5l4/TGzDmYw3RhnkJGtLhbnnA/5qJj7x3dNDCRx/PJxu774LlH8lCOlB4hEfKg==}
 
@@ -6915,9 +6908,6 @@ packages:
   webpack-sources@3.3.3:
     resolution: {integrity: sha512-yd1RBzSGanHkitROoPFd6qsrxt+oFhg/129YzheDGqeustzX0vTZJZsSsQjVQC4yzBQ56K55XU8gaNCtIzOnTg==}
     engines: {node: '>=10.13.0'}
-
-  webpack-virtual-modules@0.6.2:
-    resolution: {integrity: sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==}
 
   webpack@5.102.1:
     resolution: {integrity: sha512-7h/weGm9d/ywQ6qzJ+Xy+r9n/3qgp/thalBbpOi5i223dPXKi04IBtqPN9nTd+jBc7QKfvDbaBnFipYp4sJAUQ==}
@@ -7146,9 +7136,9 @@ snapshots:
       - eslint-plugin-import
       - supports-color
 
-  '@acdh-oeaw/keystatic-lib@0.8.0(@keystar/ui@0.7.19(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@keystatic/core@0.5.48(patch_hash=9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46)(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)':
+  '@acdh-oeaw/keystatic-lib@0.8.0(@keystar/ui@0.7.19(patch_hash=4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877)(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@keystatic/core@0.5.48(patch_hash=9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46)(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react@19.2.1)':
     dependencies:
-      '@keystar/ui': 0.7.19(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      '@keystar/ui': 0.7.19(patch_hash=4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877)(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@keystatic/core': 0.5.48(patch_hash=9ba064c8747e47c0d954fa6ca4f5f249de6c5a1c5c6b1d2455170a6fa0171a46)(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@sindresorhus/slugify': 2.2.1
       '@types/mdx': 2.0.13
@@ -8011,7 +8001,7 @@ snapshots:
 
   '@juggle/resize-observer@3.4.0': {}
 
-  '@keystar/ui@0.7.19(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
+  '@keystar/ui@0.7.19(patch_hash=4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877)(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
       '@babel/runtime': 7.28.3
       '@emotion/css': 11.13.5
@@ -8115,7 +8105,7 @@ snapshots:
       '@emotion/weak-memoize': 0.3.1
       '@floating-ui/react': 0.24.8(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@internationalized/string': 3.2.7
-      '@keystar/ui': 0.7.19(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      '@keystar/ui': 0.7.19(patch_hash=4b74efbfba86623507a4f80aee1f679b5ee28431c29661511512e97487e5e877)(next@16.0.7(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@babel/core@7.28.3)(@opentelemetry/api@1.9.0)(@playwright/test@1.57.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@markdoc/markdoc': 0.4.0(@types/react@19.2.7)(react@19.2.1)
       '@react-aria/focus': 3.21.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@react-aria/i18n': 3.12.11(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -9010,10 +9000,6 @@ snapshots:
       '@swc/helpers': 0.5.17
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
-
-  '@react-aria/optimize-locales-plugin@1.1.5':
-    dependencies:
-      unplugin: 1.16.1
 
   '@react-aria/overlays@3.28.0(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
@@ -15478,11 +15464,6 @@ snapshots:
       unist-util-is: 6.0.0
       unist-util-visit-parents: 6.0.1
 
-  unplugin@1.16.1:
-    dependencies:
-      acorn: 8.15.0
-      webpack-virtual-modules: 0.6.2
-
   unrs-resolver@1.11.1:
     dependencies:
       napi-postinstall: 0.3.3
@@ -15622,8 +15603,6 @@ snapshots:
   web-namespaces@2.0.1: {}
 
   webpack-sources@3.3.3: {}
-
-  webpack-virtual-modules@0.6.2: {}
 
   webpack@5.102.1:
     dependencies:
