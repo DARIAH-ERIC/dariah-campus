@@ -115,6 +115,8 @@
 
 		/** Don't add backticks around inline `code`. */
 		& code {
+			font-family: var(--font-code);
+
 			&::before {
 				content: unset;
 			}
@@ -305,22 +307,14 @@
 
 /* stylelint-disable number-max-precision */
 
-@layer base {
-	/** @see {@link https://shiki.style/guide/dual-themes#class-based-dark-mode} */
-	[data-ui-color-scheme="dark"] .shiki,
-	[data-ui-color-scheme="dark"] .shiki span {
-		background-color: var(--shiki-dark-bg) !important;
-		color: var(--shiki-dark) !important;
-		font-weight: var(--shiki-dark-font-weight) !important;
-		font-style: var(--shiki-dark-font-style) !important;
-		text-decoration: var(--shiki-dark-text-decoration) !important;
-	}
-
+@layer utilities {
 	/** @see {@link https://shiki.style/packages/transformers} */
-	.shiki {
-		& .line.higlighted {
+	pre.shiki code {
+		font-family: var(--font-code);
+
+		& .line.highlighted {
 			display: inline-block;
-			width: calc(100% + 48px);
+			width: calc(100% + 2 * 1.14286em);
 			margin-inline: -1.14286em;
 			padding-inline: 1.14286em;
 			background-color: #0000000d;

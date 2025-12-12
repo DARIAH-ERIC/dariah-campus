@@ -1,40 +1,40 @@
 {
-	"title": "DARIAH-Campus",
-	"description": "Discovery layer and hosting platform for DARIAH learning resources.",
-	"creator": "DARIAH-EU",
-	"manifest": {
-		"name": "DARIAH-Campus",
-		"short-name": "DARIAH-Campus",
-		"description": "Discovery layer and hosting platform for DARIAH learning resources."
-	},
-	"social": [
-		{
-			"kind": "twitter",
-			"href": "https://twitter.com/dariaheu"
-		},
-		{
-			"kind": "flickr",
-			"href": "https://www.flickr.com/photos/142235661@N08/albums/with/72157695786965901"
-		},
-		{
-			"kind": "youtube",
-			"href": "https://www.youtube.com/channel/UCeQpM_gUvNZXUWf6qQ226GQ"
-		},
-		{
-			"kind": "github",
-			"href": "https://github.com/dariah-eric"
-		},
-		{
-			"kind": "rss",
-			"href": "/rss.xml"
-		},
-		{
-			"kind": "email",
-			"href": "info@dariah.eu"
-		},
-		{
-			"kind": "website",
-			"href": "https://www.dariah.eu/"
-		}
-	]
+  "title": "DARIAH-Campus",
+  "description": "Discovery layer and hosting platform for DARIAH learning resources.",
+  "creator": "DARIAH-EU",
+  "manifest": {
+    "name": "DARIAH-Campus",
+    "short-name": "DARIAH-Campus",
+    "description": "Discovery layer and hosting platform for DARIAH learning resources."
+  },
+  "social": [
+    {
+      "kind": "twitter",
+      "href": "https://twitter.com/dariaheu"
+    },
+    {
+      "kind": "flickr",
+      "href": "https://www.flickr.com/photos/142235661@N08/albums/with/72157695786965901"
+    },
+    {
+      "kind": "youtube",
+      "href": "https://www.youtube.com/channel/UCeQpM_gUvNZXUWf6qQ226GQ"
+    },
+    {
+      "kind": "github",
+      "href": "https://github.com/dariah-eric"
+    },
+    {
+      "kind": "rss",
+      "href": "/rss.xml"
+    },
+    {
+      "kind": "email",
+      "href": "info@dariah.eu"
+    },
+    {
+      "kind": "website",
+      "href": "https://www.dariah.eu/"
+    }
+  ]
 }
