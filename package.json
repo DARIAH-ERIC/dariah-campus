@@ -55,7 +55,7 @@
 	"dependencies": {
 		"@acdh-oeaw/keystatic-lib": "^0.8.0",
 		"@acdh-oeaw/lib": "^0.3.7",
-		"@acdh-oeaw/mdx-lib": "^0.1.4",
+		"@acdh-oeaw/mdx-lib": "^0.2.0",
 		"@acdh-oeaw/openapi-nextjs": "^0.0.3",
 		"@acdh-oeaw/style-variants": "^0.1.0",
 		"@acdh-oeaw/validate-env": "^0.1.1",
