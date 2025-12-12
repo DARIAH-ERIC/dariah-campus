@@ -31,7 +31,7 @@ dariah-national-consortia: []
 Developing applications in the field of humanities sometimes means rendering a lot of textual data with regards to scientific rules (e.g. citation patterns).
 Digital editions can be particularly challenging.
 
-The following sections try to give an insight into the benefits of regression testing using the example of migrating a digital edition to a slightly different tech stack. In this scenario e2e testing is used to make sure that the new application displays the data after the migration exactly as it did before.
+The following sections try to give an insight into the benefits of regression testing using the example of migrating a digital edition - <Link link={{"discriminant":"external","value":"https://kraus1933.ace.oeaw.ac.at"}}>Karl Kraus 1933: Dritte Walpurgisnacht</Link> - to a slightly different tech stack. In this scenario e2e testing is used to make sure that the new application displays the data after the migration exactly as it did before.
 
 The tool of choice in this example is the [Playwright](https://playwright.dev/) framework, which allows us running multiple browser interactions and comparing the result to our test data. By using parameterized tests we can speed up the development process and achieve high test coverage. The usefulness of setting up these tests becomes evident looking at the quantity and quality of the data in our use case.
 
@@ -56,7 +56,7 @@ In Playwright [Visual comparisons](https://playwright.dev/docs/test-snapshots) p
 
 ### Testing the editions main view containing the running text
 
-This article will not go into the specifics of the encoding schema of the edition, but here is a list of some criteria the rendering has to meet:
+This article will not go into the specifics of the complex TEI-XML structure of this edition, but here is a list of some criteria the rendering has to meet:
 
 * certain elements should not be rendered at all
 * certain elements should be rendered at a different position
@@ -66,7 +66,12 @@ Additionally, the migration process includes simplifying certain parts of the co
 
 The edition view consists of 65 HTML pages. [Page 18](https://karl-kraus.github.io/wpn-static/absatz_18.html) of the edition gives a good example of the complexity that has to be dealt with.
 
-Since changing the XSLT or CSS rules may effect multiple pages of the edition efficient testing is necessary. Therefore the same test is executed for all pages by parameterizing the URL path as well as the screenshot path. Instead of taking the initial screenshots of the new app they are taken from the legacy app. Also, not the whole page is screenshotted but only the part that should be compared, which in this case is only the running text of the edition. The test should not care about or fail because of differences in components like menus or side panels.
+Since changing the XSLT or CSS rules may effect multiple pages of the edition, efficient testing is necessary. Therefore the same test is executed for all pages by parameterizing the URL path as well as the screenshot path. In this migration scenario the initial set of screenshots are taken from the legacy app, by using its URL in the first test run.   \
+\
+The screenshots in this setup have to meet two important criteria:
+
+* Only capture the running text of the edition. The test should not care about or fail because of differences in components like menus or side panels. This would be different test cases.
+* Capture the full vertical scrollable content, not only the part currently visible in the viewport.
 
 As mentioned Playwright provides an interactive interface for browsing test results via the HTML Reporter. After running the tests two result views are available.
 The first view displays all completed tests (failed and passed) in list form (65 tests for 65 pages):
