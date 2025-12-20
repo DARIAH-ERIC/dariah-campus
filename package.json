@@ -15,7 +15,7 @@
 	},
 	"packageManager": "pnpm@10.26.1",
 	"scripts": {
-		"analyze": "next experimental-analyze --experimental-next-config-strip-types",
+		"analyze": "next experimental-analyze",
 		"app:build": "next build --experimental-next-config-strip-types",
 		"app:dev": "next dev --experimental-next-config-strip-types",
 		"build": "run-s generate:handle content:build generate:metadata-dump generate:api-docs app:build typesense:build",

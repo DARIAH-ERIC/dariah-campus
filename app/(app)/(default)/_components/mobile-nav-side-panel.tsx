@@ -19,14 +19,14 @@ export function MobileNavSidePanel(props: Readonly<MobileNavSidePanelProps>): Re
 
 	return (
 		<DialogTrigger>
-			<Button className="-mr-2.5 rounded p-2.5 text-neutral-600 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700">
+			<Button className="-mr-2.5 rounded-sm p-2.5 text-neutral-600 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700">
 				<span className="sr-only">{triggerLabel}</span>
 				<MenuIcon aria-hidden={true} className="size-6 shrink-0" />
 			</Button>
 
 			<ModalOverlay
 				className={cn(
-					"fixed top-0 left-0 isolate z-20 h-[var(--visual-viewport-height)] w-full bg-black/25",
+					"fixed top-0 left-0 isolate z-20 h-(--visual-viewport-height) w-full bg-black/25",
 					"entering:animate-in entering:duration-200 entering:ease-out entering:fade-in",
 					"exiting:animate-out exiting:duration-200 exiting:ease-in exiting:fade-out",
 				)}
@@ -47,7 +47,7 @@ export function MobileNavSidePanel(props: Readonly<MobileNavSidePanelProps>): Re
 							return (
 								<Fragment>
 									<Button
-										className="justify-self-end rounded p-2.5 text-neutral-600 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+										className="justify-self-end rounded-sm p-2.5 text-neutral-600 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 										slot="close"
 									>
 										<span className="sr-only">{closeLabel}</span>
@@ -59,7 +59,7 @@ export function MobileNavSidePanel(props: Readonly<MobileNavSidePanelProps>): Re
 											return (
 												<li key={key}>
 													<Link
-														className="flex rounded px-2 py-2.5 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+														className="flex rounded-sm px-2 py-2.5 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 														href={link.href}
 														onPress={() => {
 															requestAnimationFrame(() => {
