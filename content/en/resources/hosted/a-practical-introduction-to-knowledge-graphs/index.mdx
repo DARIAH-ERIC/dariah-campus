@@ -34,8 +34,6 @@ content-type: training-module
 translations: []
 dariah-national-consortia: []
 ---
-
-
 ## Description
 
 The course offers an extensive introduction to the topic of Knowledge Graphs. We explore their basic principles, demonstrate the benefits of their use and examine various digital methods for their design and creation from text. Specifically, following a real use-case scenario -that of modeling and transforming Humanities research articles into a scholarly knowledge graph- we examine the application of various digital methods involved in the entire workflow concerning the design, creation and use of Knowledge Graphs: from organizing and representing domain knowledge, to textual data processing, information extraction, entity disambiguation and linking as well as linked data generation and query formulation.
@@ -116,7 +114,7 @@ Simply put, Knowledge Graphs can be utilized in order to represent every concept
 
 ### Modeling Languages for the Semantic Web: RDF and RDFS
 
-Adopting the above guidelines allows for transformation of the way information is shared and exchanged on the web. In order to do so, however, we need a specific language that makes this representation machine comprehendible and a syntax so that this representation is serializable and can be stored as a file. The language that was developed for representing KGs in the Semantic Web is called Resource Description Framework (RDF) and is based on the following principles:
+Adopting the above guidelines allows for transformation of the way information is shared and exchanged on the web. In order to do so, however, we need a specific language that makes this representation machine comprehendible and a syntax so that this representation is serializable and can be stored as a file. The language that was developed for representing KGs in the Semantic Web is called [Resource Description Framework (RDF)](https://www.w3.org/RDF/) and is based on the following principles:
 
 * A Resource is every “object” or “thing” that we want to talk about.&#x20;
 * Every resource has a URI. A URI can be a URL for the case of web pages or any other kind of unique identifier.&#x20;
@@ -135,5 +133,36 @@ Using the following rules, knowledge can be represented in the form of triples (
 This statement is in the form of resource-property-resource and consists of three URIs: two nodes and one property. So, a computer, parsing the above triple could understand that it is talking about two resources (the URLs of Parthenon and Athens from the Wikipedia and DBpedia websites) that are interrelated through the property of location as defined in its DBpedia URL respectively.
 
 <Callout kind="tip">
-  In this example, each URI is actually a URL i.e. a unique identifier denoting the location of the resource on the web (its web address). The first part of each URI (i.e. the part of the address until the name of the resource) represents the namespace, the space where all the resources are getting their names. In other words, the namespace Wikipedia (https\://en.wikipedia.org) is where the name Parthenon is defined, while the namespace DBpedia (http\://dbpedia.org) is where the resources location and Athens are defined. Through RDF any individual namespaces can be interconnected based on this simple resource-property-value triple form.
+  In this example, each URI is actually a URL i.e. a unique identifier denoting the location of the resource on the web (its web address). The first part of each URI (i.e. the part of the address until the name of the resource) represents the namespace, the space where all the resources are getting their names. In other words, the namespace Wikipedia ([https://en.wikipedia.org](https://en.wikipedia.org)) is where the name Parthenon is defined, while the namespace DBpedia ([http://dbpedia.org](http://dbpedia.org)) is where the resources location and Athens are defined. Through RDF any individual namespaces can be interconnected based on this simple resource-property-value triple form.
 </Callout>
+
+Up until now we have managed to represent knowledge in a machine-readable way, allowing us to talk about anything in the form of resource-property-value triples. In this way, RDF is a universal language that lets users describe resources using their own vocabularies. However, RDF doesn’t make any assumptions regarding the meaning of these resources. In the previous example, the only assumption that is made is that Parthenon is a resource (since it is assigned a URI). Nothing is expressed regarding what Parthenon is. To do so, we need to build vocabularies (i.e. groups of terms along with their definitions, also known as controlled vocabularies -CVs), hierarchies of terms (i.e. taxonomies) or ontologies. In other words, we need to extend RDF with the ability to define our own schemas for describing the domains of knowledge we need to represent. This is accomplished by [RDF Schema (RDFS)](https://www.w3.org/TR/rdf12-schema/), an extension of RDF, implemented as a set of URIs that are universally declared by W3C  (World Wide Web Consortium) and define -among others- the following concepts:
+
+* A class can be thought as a set of elements (rdfs:class).&#x20;
+* Individual objects that belong to a class a referred to as instances of the class (rdfs:type).&#x20;
+* Restrictions can be imposed by specifying the domain and range of the class (rdfs:domain, rdfs:range).&#x20;
+* Hierarchies and inheritance among the classes and properties can be modeled (rdfs:subClassOf, rdfs:subPropertyOf).&#x20;
+* Human friendly labels can be associated with a resource (rdfs:label).
+
+Using these properties we can:&#x20;
+
+1. define concepts as classes of specific meaning;&#x20;
+2. assign meaning to resources, by declaring them as instances (types) of a particular class;&#x20;
+3. describe rules for a resource in order for it to belong to a specific class;&#x20;
+4. declare structure among classes and thus inheritance of their attributes (e.g. every instance that belongs to a class inherits all the attributes of its superclass as well) and&#x20;
+5. represent the URIs in a human friendlier manner using simple labels.
+
+An example of the functionalities that can be achieved with RDFS in terms of knowledge representation can be demonstrated in the following figure:
+
+<Figure src="/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/rdfs-example.png" alt="rdfs example" alignment="stretch">
+
+</Figure>
+
+Following the previous statement, using the predefined terms of RDFS we can create an ontology that defines the classes *Monument*, *ArtificialObject*, *City*, *Country* and *Region* as well as the properties *locatedInCity* and *locatedIn* along with their assigned domains and ranges respectively. In addition, we can define the attribute *ConstructionDate* with range the literal (date) and domain the class *ArtificialObject*. We can also define hierarchies using the rdfs properties: *subClassOf* and *subPropertyOf* in order to impose inheritance of properties and attributes among classes.
+
+So, in our initial statement “Parthenon is Located in Athens” each resource can be modeled, using the (*rdfs:typeOf*), as instance of the classes: *Monument*, *LocatedIn* and *City* respectively. Using this language, a machine that parses the above triplets of our KG will be able to understand that Parthenon is a monument which is a type of building that is located in Athens which is a City of Greece, etc. This way we can declare arbitrarily complex schemas representing knowledge of various domains and then provide actual data as instances of those classes and relationships so that computers, parsing our data, can understand not only the information itself but also the meaning of it.
+
+
+
+
+
