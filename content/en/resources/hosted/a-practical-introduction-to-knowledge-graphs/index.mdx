@@ -106,7 +106,7 @@ The most prominent endeavor to apply the above concepts for representing knowled
 
 In order to apply these ideas, the vision of Semantic Web provided the following technology guidelines:
 
-* Use labeled GraphsIn simple words, <Footnote>a labeled graph can be considered a “web” of nodes that are interconnected through various relationships, where each node or relationship can be assigned a specific “name” via a label in order to describe its function (semantics)</Footnote> to model objects and their relations.&#x20;
+* Use labeled Graphs, <Footnote>a labeled graph can be considered a “web” of nodes that are interconnected through various relationships, where each node or relationship can be assigned a specific “name” via a label in order to describe its function (semantics)</Footnote> to model objects and their relations.&#x20;
 * Use web identifiers <Footnote>A web identifier is a unique sequence of characters that is used to identify an object in a domain. A special case of URI is the Uniform Resource Locator (URL) that is used to uniquely identify the address of a web page over the internet. The difference with a URI is that the naming in a URI is more general and can contain components like a scheme, authority, path, and query. URL has similar components to a URI, but its authority consists of a domain name and port.</Footnote> (Uniform Resource Identifiers -URIs) to identify the individual data-items and their relations.&#x20;
 * Use ontologies as the data model to formally represent the intended semantics of the data.
 
@@ -162,7 +162,29 @@ Following the previous statement, using the predefined terms of RDFS we can crea
 
 So, in our initial statement “Parthenon is Located in Athens” each resource can be modeled, using the (*rdfs:typeOf*), as instance of the classes: *Monument*, *LocatedIn* and *City* respectively. Using this language, a machine that parses the above triplets of our KG will be able to understand that Parthenon is a monument which is a type of building that is located in Athens which is a City of Greece, etc. This way we can declare arbitrarily complex schemas representing knowledge of various domains and then provide actual data as instances of those classes and relationships so that computers, parsing our data, can understand not only the information itself but also the meaning of it.
 
+### Syntax Formats
 
+As with every language, syntax provides a way to “serialize” what is articulated, in a specific format. In computer languages like RDF and RDFS, syntax formats transform an abstract model into a serialized sequence of symbols that can be stored in a specific -machine readable- file, the same way a text in a word processor can be serialized into .doc, .docx or .lib file, an image into a .jpg file, etc.. For the Semantic Web family of languages, the most common syntax formats are:
 
+* Turtle (Terse RDF Triple Language) that uses the extension .ttl for the serialized files. It is a text-based syntax for RDF where URLs are enclosed in angle brackets. The subject, property, and object of a statement appear in order, followed by a period.&#x20;
+* RDF/XML, is an encoding of RDF in XML language allowing it to be parsed by browsers and other XML processing software. It is one of the first syntaxes of RDF that was gradually replaced by the easier-to-read Turtle.&#x20;
+* RDFa, a syntax format specifically developed for enabling RDF to describe or markup the content of HTML web pages by embedding RDF within HTML tags.&#x20;
+* OWL/XML, an XML syntax specifically developed in order to capture the functional-style-syntax that relates more to the formal structure of ontologies but at the same time being readable by XML parsing tools.&#x20;
+* Manchester, originally developed by the University of Manchester and designed to be as human-readable as possible. Currently can be used by ontology editors such as [Protége](https://protege.stanford.edu/).
 
+### Use Case: Creating an Ontology for research activities
+
+In the following example we will demonstrate the basic functionalities of RDFLib by designing our own KG. Specifically, we will focus in i) creating a domain ontology by declaring our classes and properties and ii) serializing our schema into a file. Our use case will be the creation of a KG regarding scholarly work in humanities. In order to do so we will borrow a few concepts from Scholarly Ontology (SO), a conceptual framework specifically designed to document scholarly activities, as they appear in research articles.
+
+For the purposes of our use case we will build a small ontology consisting of the core concepts and relationships of SO, i.e. those of i) Activity, describing any research activities or parts thereof (such as an archaeological excavation, a biological experiment, a social study, etc.); ii) Method, denoting any plan, technique or procedure that describes how the activity was conducted; iii) Person, denoting any researcher that participates in an activity and iv) Article, denoting the research article where the above instances were derived from. This schema is illustrated in the following figure:
+
+<Figure src="/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/exersice-ontology.png" alt="ontology example" alignment="center">
+
+</Figure>
+
+In this example, we define only one direction for each property of our ontology for readability purposes. In reality, depending on the information needs, we could also create a separate property for each direction of our semantic relationships (e.g. employs(Activity,Method) and isEmployedBy(Method,Activity), etc.). Creating specific properties for each direction can help for faster query execution when the specific semantic direction of the graph traversal is needed but increases the need for storage since, we add more triples to our KG.
+
+---
+
+## Populating Knowledge Graphs
 
