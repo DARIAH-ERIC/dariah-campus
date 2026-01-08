@@ -34,6 +34,8 @@ content-type: training-module
 translations: []
 dariah-national-consortia: []
 ---
+
+
 ## Description
 
 The course offers an extensive introduction to the topic of Knowledge Graphs. We explore their basic principles, demonstrate the benefits of their use and examine various digital methods for their design and creation from text. Specifically, following a real use-case scenario -that of modeling and transforming Humanities research articles into a scholarly knowledge graph- we examine the application of various digital methods involved in the entire workflow concerning the design, creation and use of Knowledge Graphs: from organizing and representing domain knowledge, to textual data processing, information extraction, entity disambiguation and linking as well as linked data generation and query formulation.
@@ -96,9 +98,38 @@ As mentioned above, Knowledge Graphs constitute organized representations of dat
 
 Along the same line, an ontology in computer science, is defined as a formal specification of concepts and their interconnections within a specific domain of knowledge; this definition makes ontologies an ideal candidate to act as the blueprint that provides the organizing principles for knowledge graphs. The schema of the KG follows the same entity-relationship structure found throughout the knowledge graph instances, allowing queries to draw information from both instance and schema layer.
 
+### The Semantic Web
 
+The most prominent endeavor to apply the above concepts for representing knowledge at a global scale is the Semantic Web. The main idea behind it is to make the web more accessible to computers. Indeed, the internet can be considered as a web of interconnected resources such as text, images, sounds, videos, etc. However, without actual representation of the content that is exchanged, all these resources become black boxes for computers that, apart from indexing and transferring information from servers to clients, have very limited use in assisting humans do the actual hard work, that of aggregate, combine, select, and comprehend content. In order to solve this issue, the philosophy of Semantic Web was built upon three basic ideas:
 
+* Make structured and semi-structured data available in standardized formats on the web.&#x20;
+* Make not just the datasets but their individual data elements and their relations accessible on the web.&#x20;
+* Describe the intended semantics of such data in a formalism, so that it can be processed by machines.
 
+In order to apply these ideas, the vision of Semantic Web provided the following technology guidelines:
 
+* Use labeled GraphsIn simple words, <Footnote>a labeled graph can be considered a “web” of nodes that are interconnected through various relationships, where each node or relationship can be assigned a specific “name” via a label in order to describe its function (semantics)</Footnote> to model objects and their relations.&#x20;
+* Use web identifiers <Footnote>A web identifier is a unique sequence of characters that is used to identify an object in a domain. A special case of URI is the Uniform Resource Locator (URL) that is used to uniquely identify the address of a web page over the internet. The difference with a URI is that the naming in a URI is more general and can contain components like a scheme, authority, path, and query. URL has similar components to a URI, but its authority consists of a domain name and port.</Footnote> (Uniform Resource Identifiers -URIs) to identify the individual data-items and their relations.&#x20;
+* Use ontologies as the data model to formally represent the intended semantics of the data.
 
+Simply put, Knowledge Graphs can be utilized in order to represent every concept that we need to talk about on the internet. Digital objects (text, video, image, sound, etc.) or parts thereof can be assigned a unique identifier that acts as their ID and be connected to each other through appropriate relationships that describe semantic context. This representation of entities and relationships is organized by schemas (i.e. ontologies) that provide the conceptual map -the blueprints- of those interconnections.
 
+### Modeling Languages for the Semantic Web: RDF and RDFS
+
+Adopting the above guidelines allows for transformation of the way information is shared and exchanged on the web. In order to do so, however, we need a specific language that makes this representation machine comprehendible and a syntax so that this representation is serializable and can be stored as a file. The language that was developed for representing KGs in the Semantic Web is called Resource Description Framework (RDF) and is based on the following principles:
+
+* A Resource is every “object” or “thing” that we want to talk about.&#x20;
+* Every resource has a URI. A URI can be a URL for the case of web pages or any other kind of unique identifier.&#x20;
+* Properties are a special kind of resource: they describe relations between other resources ●	Like all resources, properties are also identified by URIs.&#x20;
+* Statements are assertions regarding the properties of resources.&#x20;
+* A statement is an entity-attribute-value triple, consisting of a resource, a property and a value.
+* The value can be either a resource or a literal.&#x20;
+* Literals are atomic values (i.e. numbers, strings, dates, currencies, etc.) and they are not assigned URIs.
+
+Using the following rules, knowledge can be represented in the form of triples (subject, predicate, value) in RDF. The following figure shows how the previous statement in the form of a labeled graph can be transformed into an RDF triple:
+
+<Figure src="/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/sample-rdf-triple.png" alt="sample RDF triple" alignment="stretch">
+
+</Figure>
+
+This statement is in the form of resource-property-resource and consists of three URIs: two nodes and one property. So, a computer, parsing the above triple could understand that it is talking about two resources (the URLs of Parthenon and Athens from the Wikipedia and DBpedia websites) that are interrelated through the property of location as defined in its DBpedia URL respectively.
