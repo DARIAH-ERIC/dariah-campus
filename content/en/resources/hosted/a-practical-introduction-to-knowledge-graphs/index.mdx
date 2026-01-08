@@ -64,5 +64,22 @@ This course utilizes digital methods and tools from various computer science top
 
 ---
 
-## Introduction
+## Designing Knowledge Graphs for the Semantic Web
 
+### Introduction
+
+In this section we will delve into the world of Knowledge Graphs and the representation of knowledge in a structured -machine comprehendible- way. Specifically, we will focus on designing Knowledge Graphs for the Semantic Web. We will explore their role and usage in knowledge representation, we will explain their relationship with conceptual models like ontologies and familiarize ourselves with the RDF / RDFS languages for designing our models and the SPARQL language for querying our knowledge graphs. Finally, we will go hands on with building a schema for a knowledge graph using the RDFLib Python Library. So, let’s start from the beginning by answering the most important question:
+
+### What is a Knowledge Graph?
+
+A Knowledge Graph (KG) is an organized representation of data in the form of entities and their relationships. Entities can represent various concepts (such as real objects, events, persons, or types of entities), while the relationships among them capture their semantic context, meaning they describe how they are connected. Typically, KGs are implemented in a form of Directed Labeled Graph, meaning a structure of interconnected i) nodes and ii) links among them. Both nodes and links bear a label that is used for describing their semantic meaning in natural language. In addition, the links can bear a direction, that describes how their semantic meaning is applied (i.e. from which node it starts and to which node it ends).&#x20;
+
+As an example, consider the phrase: “Parthenon is located in Athens”. Using the above principles, we could represent the knowledge encoded in the above phrase as a directed labeled graph, where two nodes represent the Parthenon and Athens and a relationship *isLocatedIn(Parthenon,Athens)* links Parthenon to Athens based on the semantics declared by its label. This transformation is shown in the following figure.
+
+<Figure src="/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/sample-triple.png" alt="sample triple transformation" alignment="stretch">
+
+</Figure>
+
+### Why Knowledge Graphs?
+
+The usefulness of Knowledge Graphs (KGs) lies in the way they organize data in the form of a network of interconnected concepts. This inherent structure allows for easy exploration and retrieval of information (by traversing the graph) as well as the inference of new knowledge through the application of inference rules, network analysis algorithms, graph embeddings etc. In addition, when combined with Large Language Models such as Chat-GPT, KGs can help increase response accuracy and improve explainability with the context provided by data relationships. This is achieved, using Graph-based Retrieval Augmented Generation (Graph-RAG), a technique that grounds LLMs with domain knowledge. For the above reasons, KGs can be very useful in many use cases of real-world applications such as Fraud Detection and Analytics in Financial Services, Banking and Insurance, investigative journalism, drug discovery in healthcare research, recommender systems, etc. In fact, the entire web can be considered as a huge knowledge graph with websites and digital resources linked to each other. Access to that knowledge graph is witnessed every time we use our familiar search engines like google search:
