@@ -59,7 +59,7 @@ Upon completion of the course, participants are expected to be able to:
 ## Prerequisites
 
 Students must be familiarized with Python Programming Language.
-In addition, there is extended use of the Python libraries: RDFLib, as well as SpaCy NLP framework.
+In addition, there is extended use of the Python libraries: [RDFLib](https://rdflib.readthedocs.io/en/stable/), as well as [SpaCy](https://spacy.io/) NLP framework.
 This course utilizes digital methods and tools from various computer science topics such as conceptual modeling, RDFS, Machine Learning, entity extraction, entity disambiguation, SPARQL. Each mentioned topic is briefly reviewed and explained to make the course comprehensive and self-sufficient. Nevertheless, for more in-depth understanding, additional bibliography and resources will be provided on each occasion.
 
 ---
@@ -87,3 +87,18 @@ The usefulness of Knowledge Graphs (KGs) lies in the way they organize data in t
 <Figure src="/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/google-search.png" alt="google sample search" alignment="stretch">
 
 </Figure>
+
+The <Link link={{"discriminant":"external"}}>[Google Knowledge Graph](https://blog.google/products/search/introducing-knowledge-graph-things-not/)</Link> compiles facts about people, places, and things into an interconnected web of entities. During a Google search, it leverages these connections between entities to provide relevant results within context, displayed as the "[knowledge panel](https://support.google.com/knowledgepanel/answer/9163198?hl=en)". The entities in the knowledge graph reflect our understanding of the world, representing a shift from viewing data as mere text ("strings") to organized entities ("things"). This transformation allows Google to utilize the collective intelligence embedded in this network to deliver search results that align with the intent behind your query rather than just matching keywords.
+
+### Ontologies as Blueprints for Knowledge Graphs
+
+As mentioned above, Knowledge Graphs constitute organized representations of data in the form of entities and their relationships. This “organization” that provides the internal structure among the KG derives from a set of “organizing principles”, that serve as a framework or schema that arranges entities and their connections based on core concepts, crucial for specific use cases. Unlike many other data structures, knowledge graphs can accommodate multiple organizing principles. Consider an organizing principle as a conceptual map or *metadata layer* that provides the schema of the structure of the actual data of the KG and is superimposed on its instances which -along with their connections- constitute the *instance layer*.
+
+Along the same line, an ontology in computer science, is defined as a formal specification of concepts and their interconnections within a specific domain of knowledge; this definition makes ontologies an ideal candidate to act as the blueprint that provides the organizing principles for knowledge graphs. The schema of the KG follows the same entity-relationship structure found throughout the knowledge graph instances, allowing queries to draw information from both instance and schema layer.
+
+
+
+
+
+
+
