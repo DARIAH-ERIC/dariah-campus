@@ -133,3 +133,7 @@ Using the following rules, knowledge can be represented in the form of triples (
 </Figure>
 
 This statement is in the form of resource-property-resource and consists of three URIs: two nodes and one property. So, a computer, parsing the above triple could understand that it is talking about two resources (the URLs of Parthenon and Athens from the Wikipedia and DBpedia websites) that are interrelated through the property of location as defined in its DBpedia URL respectively.
+
+<Callout kind="tip">
+  In this example, each URI is actually a URL i.e. a unique identifier denoting the location of the resource on the web (its web address). The first part of each URI (i.e. the part of the address until the name of the resource) represents the namespace, the space where all the resources are getting their names. In other words, the namespace Wikipedia (https\://en.wikipedia.org) is where the name Parthenon is defined, while the namespace DBpedia (http\://dbpedia.org) is where the resources location and Athens are defined. Through RDF any individual namespaces can be interconnected based on this simple resource-property-value triple form.
+</Callout>
