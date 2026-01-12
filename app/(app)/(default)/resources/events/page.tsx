@@ -57,7 +57,7 @@ export default async function EventResourcesPage(): Promise<ReactNode> {
 	);
 
 	return (
-		<div className="mx-auto grid w-full max-w-screen-xl content-start gap-y-12 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
+		<div className="mx-auto grid w-full max-w-7xl content-start gap-y-12 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
 			<div className="grid gap-y-4">
 				<PageTitle>{t("title")}</PageTitle>
 			</div>
