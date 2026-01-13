@@ -35,16 +35,12 @@ In this unit you will learn more about the specifics of geotagging images. Watch
   *Introduction on image geotagging by Dr. Angeliki Chrysanthi*
 </Embed>
 
-
-
 ### 1.1.2 Manual Image Geotagging
 
 *A large collection of graphic materials produced by foreign travellers in Athens, Greece, from the* 15th\* \*to the 20th century, was recently digitised following all proper standards and ensuring that the digital collection contains rich metadata. A new research project began when a scholar wished to explore the spatiotemporal patterns of production of such graphic material within the collection. While a significant number of files contained geographic metadata such as place and region names, very few had geolocation coordinates embedded in the actual files.
 
-
-
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/b57b246b5c742f3fcbbc9cc1cf913acf6c4a3e0f-36179.PNG" alt="Europeana website screen capture" alignment="stretch">
-  Figure 1. The online record of a digital image collection. Europeana Collections website.\*
+  *Figure 1. The online record of a digital image collection. Europeana Collections website.*
 </Figure>
 
 The above scenario highlights a common problem encountered by scholars who wish to explore the spatiotemporal aspects of a substantial digital archive image collection. Geographic metadata is a prerequisite for performing sophisticated spatial analysis of images, but in reality, very few humanities collections consist of files with such embedded metadata. Geotagging image files is a process that enables the geospatial exploration of such collections. In the following section, you will learn a manual approach to achieve this.
@@ -82,15 +78,13 @@ Tips on data gathering\
 
 The GPS data is downloaded from the GPS device and saved in GPX XML format. GPX, or GPS Exchange Format, is an XML schema used to communicate information between GPS devices, software applications and online services and it describes waypoints, tracks, and routes. In this schema, location and other related data such as time and elevation are stored in tags (see Fig. 6). Based on the World Geodetic System (WGS) 84, latitude and longitude are expressed in decimal degrees and elevation in meters. The complete schema documentation can be found here.
 
-*Figure 6. A colour annotated and truncated GPX XML document describing a track.*\\
+
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/d75d7e0814d8ee316d1839c30353c6e72e776a0b-36196.png" alt="colour annotated GPX document" alignment="stretch">
-
+  *Figure 6. A colour annotated and truncated GPX XML document describing a track.*
 </Figure>
 
 ### 1.1.5 Batch Image Geotagging: Tutorial
-
-
 
 Once GPS and image data are collected (manual step) one can proceed with geotagging. In this section, you will continue to work with Geosetter and learn the batch geotagging process. Batch geotagging here means that a sequence of commands will be executed by the programme in one unit to match and embed the GPS coordinates in the recorded image files (automatic step). To continue in this section and follow through with the tutorial you are going to work with a set of images and a GPX XML file provided in the tutorial sources for Unit I. These datasets derive from a real study of collecting visitor movement and image recordings at the archaeological site of Gournia in Crete, Greece.
 
@@ -110,8 +104,6 @@ You can continue practising this approach by repeating the process for image fol
 
 <H5PWrapper path="spatial-image-analytics/georeferencing-221" />
 
-
-
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/bc9fb381e196999b196eb590e161249a6272743d-36181.PNG" alt="Geotag result" alignment="stretch">
   *Figure 7. An instance of the batch image geotagging result in Geosetter.*\\
 </Figure>
@@ -128,15 +120,11 @@ To learn how to geotag an image file in Geosetter, you are going to work with th
 
 To assign location information from the map to the image file, you will need first to find the location of the depicted place/monument. Login to Geonames web service and search for *Temple of Olympian Zeus Athens* and the service should return one record with five fields (see Fig. 3).
 
-
-
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/a6c555be2d4709f05d9d9436ac38a874391f8200-36188.PNG" alt="geonames screen capture" alignment="stretch">
   *Figure 3. Returned search results from Geonames web service.*
 </Figure>
 
 Click on **S** symbol which represents a feature class to switch to map view. Copy the coordinates in the decimal format, return to Geosetter and fill in the field coordinates (in the map window) with the values in the appropriate format. Now the map should be focused on the area of interest. Click on Add/Edit. On the opened window click on the **Get from Web.** Notice the fields that have automatically updated. Now you can write the name of this location. Click ok and notice that a favourite place has been added to the map (see star symbol, Fig. 4). On the left, make sure that the image file you want to edit is selected, click on the star symbol on the map window and then choose **Assign position to selected images**. Notice to the left that the selected image has been assigned with location information (e.g. coordinates, area name and country). Now click save to embed information in the image file itself. Double-click the image and go to **Location** tab. Notice the added geolocation information.
-
-
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/587aa421b201d9edb4ea69efa5db520e7e76ecac-36189.PNG" alt="geotagged_archival image" alignment="stretch">
   *Figure 4. The geotagged archival image highlighted on the left of the Geosetter interface*
@@ -178,8 +166,6 @@ Start from **File Options** tab\*\*.\*\* In the list shown to the left select th
 </Figure>
 
 On the **Startup** tab select the directory of the image folder you are going to use for this exercise. Note that it is a good practice to use a copy of the files to avoid overwriting the originals. This step should look like Fig 2.
-
-
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/5f9a2c1e1ed415dfba445a42a3eba4e19dc2ba09-36202.PNG" alt="Figure 2. Directory selection" alignment="stretch">
   *Figure 2. Directory selection*\\
