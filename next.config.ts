@@ -1,11 +1,13 @@
-import localesPlugin from "@react-aria/optimize-locales-plugin";
 import type { NextConfig as Config } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
-import _redirects from "@/public/redirects.json";
-import _redirectsIds from "@/public/redirects-ids.json";
-
-import { env } from "./config/env.config";
+/**
+ * File extensions and import attributes are necessary for node.js native typescript resolution
+ * with `--experimental-next-config-strip-types` next.js cli option.
+ */
+import { env } from "./config/env.config.ts";
+import _redirects from "./public/redirects.json" with { type: "json" };
+import _redirectsIds from "./public/redirects-ids.json" with { type: "json" };
 
 const config: Config = {
 	allowedDevOrigins: ["127.0.0.1"],
@@ -83,16 +85,6 @@ const config: Config = {
 	typedRoutes: true,
 	typescript: {
 		ignoreBuildErrors: true,
-	},
-	webpack(config, { isServer }) {
-		/** @see {@link https://react-spectrum.adobe.com/react-aria/ssr.html#nextjs-app-router} */
-		if (!isServer) {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-			config.plugins.push(localesPlugin.webpack({ locales: [] }));
-		}
-
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-return
-		return config;
 	},
 };
 

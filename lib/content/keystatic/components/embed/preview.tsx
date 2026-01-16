@@ -19,6 +19,7 @@ export function EmbedPreview(props: Readonly<EmbedPreviewProps>): ReactNode {
 						allowFullScreen={true}
 						className="aspect-square w-full overflow-hidden rounded-lg border border-neutral-200 bg-white"
 						loading="lazy"
+						sandbox=""
 						src={src}
 					/>
 				) : null}

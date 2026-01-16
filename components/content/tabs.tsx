@@ -55,7 +55,9 @@ export function Tabs(props: Readonly<TabsProps>): ReactNode {
 }
 
 interface TabProps {
+	// eslint-disable-next-line @eslint-react/no-unused-props
 	children: ReactNode;
+	// eslint-disable-next-line @eslint-react/no-unused-props
 	title: string;
 }
 
