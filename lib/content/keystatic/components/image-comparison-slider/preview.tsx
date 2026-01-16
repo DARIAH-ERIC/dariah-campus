@@ -43,7 +43,7 @@ export function ImageComparisonSliderPreview(
 			<NotEditable
 				ref={init}
 				className={cn(
-					"group not-prose relative grid min-h-12 touch-none rounded border border-neutral-200",
+					"group not-prose relative grid min-h-12 touch-none rounded-sm border border-neutral-200",
 					isDragging
 						? orientation === "vertical"
 							? "cursor-row-resize"
@@ -159,13 +159,13 @@ export function ImageComparisonSliderPreview(
 				>
 					<div
 						className={cn(
-							"rounded bg-white shadow [grid-area:1/-1]",
+							"rounded-sm bg-white shadow-sm [grid-area:1/-1]",
 							orientation === "vertical" ? "h-1 w-full" : "h-full w-1",
 						)}
 					/>
 					<GripVerticalIcon
 						className={cn(
-							"size-3 h-6 rounded bg-white shadow [grid-area:1/-1]",
+							"size-3 h-6 rounded-sm bg-white shadow-sm [grid-area:1/-1]",
 							orientation === "vertical" ? "rotate-90" : "",
 						)}
 					/>

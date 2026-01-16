@@ -92,7 +92,7 @@ export default async function DocumentationPage(
 									<li key={doc.id}>
 										<Link
 											aria-current={doc.id === id ? "page" : undefined}
-											className="relative flex items-center gap-x-1.5 rounded text-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700 aria-[current]:font-bold"
+											className="relative flex items-center gap-x-1.5 rounded-sm text-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700 aria-[current]:font-bold"
 											href={href}
 										>
 											<span>{doc.metadata.title}</span>
@@ -125,7 +125,7 @@ export default async function DocumentationPage(
 									<li key={doc.id}>
 										<Link
 											aria-current={doc.id === id ? "page" : undefined}
-											className="relative flex items-center gap-x-1.5 rounded text-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700 aria-[current]:font-bold"
+											className="relative flex items-center gap-x-1.5 rounded-sm text-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700 aria-[current]:font-bold"
 											href={href}
 										>
 											<span>{doc.metadata.title}</span>

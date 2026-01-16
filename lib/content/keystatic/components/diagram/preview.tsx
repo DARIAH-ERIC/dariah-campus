@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 
 interface DiagramPreviewProps {
 	children: ReactNode;
+	// eslint-disable-next-line @eslint-react/no-unused-props
 	link: boolean;
 }
 
