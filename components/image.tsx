@@ -8,7 +8,7 @@ import { env } from "@/config/env.config";
 interface ImageProps extends Omit<NextImageProps, "loader"> {}
 
 export function Image(props: Readonly<ImageProps>): ReactNode {
-	const { alt = "", src, ...rest } = props;
+	const { alt, src, ...rest } = props;
 
 	if (typeof src === "string") {
 		const owner = env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_OWNER;

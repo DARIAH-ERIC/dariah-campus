@@ -1,0 +1,22 @@
+diff --git a/dist/keystar-ui-layout.js b/dist/keystar-ui-layout.js
+index 39a6f6ac0693b403f2a12e8954b2a8fca95fdde5..3867dfc1ed6c764f58a22bc4dfd7bf7a896af6ad 100644
+--- a/dist/keystar-ui-layout.js
++++ b/dist/keystar-ui-layout.js
+@@ -7,7 +7,7 @@ import { forwardRefWithAs } from '@keystar/ui/utils/ts';
+ import { useSeparator } from '@react-aria/separator';
+ import { useSlotProps } from '@keystar/ui/slots';
+ import { forwardRef, useState, useCallback, useContext, createContext } from 'react';
+-import { useGridStyleProps as useGridStyleProps$1 } from './keystar-ui-layout.js';
++// import { useGridStyleProps as useGridStyleProps } from './keystar-ui-layout.js';
+ import { TOKEN_PREFIX } from '@keystar/ui/primitives';
+ 
+ /**
+@@ -377,7 +377,7 @@ const ScrollView = /*#__PURE__*/forwardRef(function ScrollView(props, forwardedR
+   } = props;
+   let ref = useObjectRef(forwardedRef);
+   let [scrollIndicator, setScrollIndicator] = useState('none');
+-  let styleProps = useGridStyleProps$1(otherProps);
++  let styleProps = useGridStyleProps(otherProps);
+   let updateScrollPosition = useCallback(() => {
+     let node = ref.current;
+     if (!node) {
