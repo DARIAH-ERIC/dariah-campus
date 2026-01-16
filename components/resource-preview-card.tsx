@@ -32,7 +32,7 @@ export function ResourcePreviewCard(props: Readonly<ResourcePreviewCardProps>): 
 			<CardContent>
 				<CardTitle>
 					<Link
-						className="rounded transition after:absolute after:inset-0 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+						className="rounded-sm transition after:absolute after:inset-0 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 						href={href ?? undefined}
 					>
 						<span className="mr-2 inline-flex text-brand-700">
@@ -42,7 +42,7 @@ export function ResourcePreviewCard(props: Readonly<ResourcePreviewCardProps>): 
 					</Link>
 				</CardTitle>
 				<div className="flex">
-					<div className="rounded bg-brand-700 px-2 py-1 text-xs font-medium text-white">
+					<div className="rounded-sm bg-brand-700 px-2 py-1 text-xs font-medium text-white">
 						{locale.toUpperCase()}
 					</div>
 				</div>

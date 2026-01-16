@@ -15,7 +15,7 @@ export function ReUseConditions(): ReactNode {
 					link(chunks) {
 						return (
 							<Link
-								className="rounded text-brand-700 transition hover:text-brand-900 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+								className="rounded-sm text-brand-700 transition hover:text-brand-900 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 								href={createHref({ pathname: "/documentation/reuse-charter" })}
 							>
 								{chunks}

@@ -1,4 +1,3 @@
-// eslint-disable-next-line n/no-unsupported-features/node-builtins
 import { glob } from "node:fs/promises";
 import { join, relative } from "node:path";
 import { parseArgs } from "node:util";
