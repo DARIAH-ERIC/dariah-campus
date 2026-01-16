@@ -27,7 +27,7 @@ export function CurriculaList(props: Readonly<CurriculaListProps>): ReactNode {
 					return (
 						<li key={id}>
 							<Link
-								className="relative flex items-baseline gap-x-1.5 rounded text-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+								className="relative flex items-baseline gap-x-1.5 rounded-sm text-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 								href={href}
 							>
 								<ContentTypeIcon className="size-4 shrink-0 translate-y-0.5" kind="curriculum" />

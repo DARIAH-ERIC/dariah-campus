@@ -22,7 +22,7 @@ export function SearchFiltersSidePanel(props: Readonly<SearchFiltersSidePanelPro
 			</Button>
 			<ModalOverlay
 				className={cn(
-					"fixed top-0 left-0 isolate z-20 h-[var(--visual-viewport-height)] w-full bg-black/25",
+					"fixed top-0 left-0 isolate z-20 h-(--visual-viewport-height) w-full bg-black/25",
 					"entering:animate-in entering:duration-200 entering:ease-out entering:fade-in",
 					"exiting:animate-out exiting:duration-200 exiting:ease-in exiting:fade-out",
 				)}

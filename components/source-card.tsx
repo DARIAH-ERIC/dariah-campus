@@ -27,7 +27,7 @@ export function SourceCard(props: Readonly<SearchCardProps>): ReactNode {
 			<CardContent>
 				<CardTitle>
 					<Link
-						className="rounded transition after:absolute after:inset-0 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+						className="rounded-sm transition after:absolute after:inset-0 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 						href={href}
 					>
 						{name}
