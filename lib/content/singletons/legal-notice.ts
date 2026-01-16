@@ -9,7 +9,6 @@ import { compile, type CompileOptions } from "@/lib/content/mdx/compile";
 import {
 	createGitHubMarkdownPlugin,
 	createTypographicQuotesPlugin,
-	createUnwrappedAutolinkLiteralsPlugin,
 } from "@/lib/content/mdx/remark-plugins";
 import { createRemarkRehypeOptions } from "@/lib/content/mdx/remark-rehype-options";
 import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
@@ -19,7 +18,6 @@ const locale = defaultLocale;
 const compileOptions: CompileOptions = {
 	remarkPlugins: [
 		createGitHubMarkdownPlugin(),
-		createUnwrappedAutolinkLiteralsPlugin(),
 		createTypographicQuotesPlugin(getIntlLanguage(locale)),
 	],
 	remarkRehypeOptions: createRemarkRehypeOptions(locale),
