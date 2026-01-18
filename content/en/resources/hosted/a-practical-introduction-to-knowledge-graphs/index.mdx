@@ -34,6 +34,8 @@ content-type: training-module
 translations: []
 dariah-national-consortia: []
 ---
+
+
 ## Description
 
 The course offers an extensive introduction to the topic of Knowledge Graphs. We explore their basic principles, demonstrate the benefits of their use and examine various digital methods for their design and creation from text. Specifically, following a real use-case scenario -that of modeling and transforming Humanities research articles into a scholarly knowledge graph- we examine the application of various digital methods involved in the entire workflow concerning the design, creation and use of Knowledge Graphs: from organizing and representing domain knowledge, to textual data processing, information extraction, entity disambiguation and linking as well as linked data generation and query formulation.
@@ -212,5 +214,32 @@ Starting with the parsed text in the input, the basic steps of the information e
 
 Entity Extraction from text involves the recognition and extraction of textual spans that can be associated with a specific type of entity. Examples of extracted entities include phrases in text denoting dates, historic events, persons' names, locations, organizations, etc. The extraction of such entities varies in difficulity based on the lexical complexity of the entity type and usually involves the employment of ML or DL models that are previously trained (or fine tuned in case of DL models) in extracting the specific type of entity from text. Along this line, entity extraction is usually treated as a token classification or sequence labelling task where a classifier (trained ML or DL model) predicts whether each token in the input belongs to the entity (or entities) in question or not.
 
+<Callout kind="note">
+  In machine learning, a **token** is **the basic unit of data that an AI model processes, essentially breaking down text or other inputs into manageable pieces like words, sub-words, or characters, allowing the model to understand patterns, context, and meaning for tasks like language generation or analysis**. Depending on the tockenizer and the purposes of the task, tokens can be:
+
+  * **Words:** Simple splitting by spaces (e.g., "Hello world" becomes \["Hello", "world"]).
+  * **Sub-words/Parts of Words:** More advanced tokenizers break down complex words (e.g., "tokenization" might become "token" + "ization") to handle rare words better.
+  * **Characters:** Individual letters, numbers, or symbols.
+  * **Punctuation:** Commas, periods, and other symbols are often separate tokens
+</Callout>
+
+
+
 #### Entity Disambiguation
+
+Entity disambiguation (ED) is **a core Natural Language Processing (NLP) task that resolves ambiguity by linking mentions of real-world things (like people, places, organizations) in text to their unique, correct entry in a knowledge base, preventing confusion between homonyms** (e.g., "Apple" the fruit vs. "Apple" the company). It's crucial for accurate information extraction, semantic search, and AI systems, allowing them to understand context and identify specific entities, even when names are common or shared. Usually tntity disambiguation is conducted in **named entities** (i.e. entities that can be found in literature under the same proper name or variations of it) and perform the disambiguation by associating them with their corresponding entry in a Knowledge Base such as Wikipedia.
+
+<Callout kind="note" title="Knowledge Base vs Knowledge Graph">
+  A **knowledge base** is a broad term for a repository of information (structured or unstructured) for easy access, while a **knowledge graph** is a specific *type* of knowledge base that uses a graph structure (nodes and edges) to explicitly represent entities and their semantic relationships, enabling complex reasoning by machines for AI tasks like intelligent search and recommendations. Essentially, all knowledge graphs are knowledge bases, but not all knowledge bases are knowledge graphs; **the key difference is the emphasis on interconnected, meaning-rich relationships in a graph**. 
+</Callout>
+
+Entity disambiguation systems are usualy ML or DL models trained to associate the extracted entity with the apporpriate link in a KB out of a set of generated candidates. This linking is done based on the context of the extracted entity such as the sentence, phrase or even paragraph that the entity was extracted from. Typically the steps for entity disambiguation (after the entity is extracted) are the following:&#x20;
+
+* **Generates Candidates:** The system generates possible real-world entities (for example, for the extracted entity "Washington", the system witll generate candidate links from the Knowledge base (like Wikipedia) such as Washington State, Washington D.C., George Washington).
+* **Uses Context:** The system analyzes the surrounding text (context) of the extracted entity and the relationships / textual descriptions within the KB for each of the candidates in order to determine which candidate is the intended one.
+* **Links to Knowledge Base:** Finally, it maps the text mention to that specific, unique entity in the knowledge base (e.g., mapping "Washington" to the U.S. capital entity)
+
+
+
+#### Entity Linking
 
