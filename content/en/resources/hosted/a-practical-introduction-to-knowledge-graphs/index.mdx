@@ -34,8 +34,6 @@ content-type: training-module
 translations: []
 dariah-national-consortia: []
 ---
-
-
 ## Description
 
 The course offers an extensive introduction to the topic of Knowledge Graphs. We explore their basic principles, demonstrate the benefits of their use and examine various digital methods for their design and creation from text. Specifically, following a real use-case scenario -that of modeling and transforming Humanities research articles into a scholarly knowledge graph- we examine the application of various digital methods involved in the entire workflow concerning the design, creation and use of Knowledge Graphs: from organizing and representing domain knowledge, to textual data processing, information extraction, entity disambiguation and linking as well as linked data generation and query formulation.
@@ -223,8 +221,6 @@ Entity Extraction from text involves the recognition and extraction of textual s
   * **Punctuation:** Commas, periods, and other symbols are often separate tokens
 </Callout>
 
-
-
 #### Entity Disambiguation
 
 Entity disambiguation (ED) is **a core Natural Language Processing (NLP) task that resolves ambiguity by linking mentions of real-world things (like people, places, organizations) in text to their unique, correct entry in a knowledge base, preventing confusion between homonyms** (e.g., "Apple" the fruit vs. "Apple" the company). It's crucial for accurate information extraction, semantic search, and AI systems, allowing them to understand context and identify specific entities, even when names are common or shared. Usually tntity disambiguation is conducted in **named entities** (i.e. entities that can be found in literature under the same proper name or variations of it) and perform the disambiguation by associating them with their corresponding entry in a Knowledge Base such as Wikipedia.
@@ -233,13 +229,33 @@ Entity disambiguation (ED) is **a core Natural Language Processing (NLP) task th
   A **knowledge base** is a broad term for a repository of information (structured or unstructured) for easy access, while a **knowledge graph** is a specific *type* of knowledge base that uses a graph structure (nodes and edges) to explicitly represent entities and their semantic relationships, enabling complex reasoning by machines for AI tasks like intelligent search and recommendations. Essentially, all knowledge graphs are knowledge bases, but not all knowledge bases are knowledge graphs; **the key difference is the emphasis on interconnected, meaning-rich relationships in a graph**. 
 </Callout>
 
-Entity disambiguation systems are usualy ML or DL models trained to associate the extracted entity with the apporpriate link in a KB out of a set of generated candidates. This linking is done based on the context of the extracted entity such as the sentence, phrase or even paragraph that the entity was extracted from. Typically the steps for entity disambiguation (after the entity is extracted) are the following:&#x20;
+Entity disambiguation systems are usualy ML or DL models trained to associate the extracted entity with the apporpriate entry in a KB out of a set of generated candidates. This association is done based on the context of the extracted entity such as the sentence, phrase or even paragraph that the entity was extracted from. Typically the steps for entity disambiguation (after the entity is extracted) are the following:&#x20;
 
 * **Generates Candidates:** The system generates possible real-world entities (for example, for the extracted entity "Washington", the system witll generate candidate links from the Knowledge base (like Wikipedia) such as Washington State, Washington D.C., George Washington).
 * **Uses Context:** The system analyzes the surrounding text (context) of the extracted entity and the relationships / textual descriptions within the KB for each of the candidates in order to determine which candidate is the intended one.
-* **Links to Knowledge Base:** Finally, it maps the text mention to that specific, unique entity in the knowledge base (e.g., mapping "Washington" to the U.S. capital entity)
 
+#### Relation Extraction
 
+Relation (or relationship) Extraction is the task of identifying and extracting semantic relationships from a text. Extracted relationships usually occur between two or more entities of a certain type (e.g. Person, Organisation, Location, etc.) and fall into a number of semantic categories (e.g. isFriendOf, isEmployedBy, livesIn, etc.).
 
-#### Entity Linking
+#### Linking
+
+Linking is the process that produces links among pbjects in order to associate them in some semantic way. These objects can be mentions of entities  that are extracted from text (i.e. textual spans that refer to a specific entity), entries from a Knowledge Base such as Wikipedia, metadata elements from varius repositories, etc.&#x20;
+
+Especially for Semantic Web, there are several properties in RDFS and OWL languages that are specifically designed for producing varius semantic links among resources depending on whether they are Classes, individuals (i.e. instances of the KG) or properties (i.e. relationships among resources):
+
+##### RDFS Properties for linking Resources:
+
+* &#x20;**rdfs:subClassOf:** This property defines a hierarchy between classes, indicating that one class is a subclass of another. For example, if Person is a subclass of Entity, then any instance of Person is also an instance of Entity.&#x20;
+* **rdfs:domain** and **rdfs:range:** These properties specify the classes of entities that can be subjects and objects of a particular property, respectively. This helps define the scope of relationships between entities.&#x20;
+* **rdfs:subPropertyOf:** This property establishes a hierarchical relationship between properties, indicating that one property is a subproperty of another. For instance, if *hasName* is a subproperty of *hasProperty*, then any entity related by *hasName* is also related by *hasProperty*.&#x20;
+* **rdfs:label** and **rdfs:comment**: These properties provide human-readable labels and comments for entities, which can be helpful in understanding the relationships between entities.&#x20;
+
+##### OWL Properties for  linking:&#x20;
+
+* **owl:equivalentClass**: This property indicates that two classes are considered to be semantically equivalent.&#x20;
+* **owl:sameAs**: This property is used to assert that two individuals are the same entity.
+* **owl:ObjectProperty** and **owl:DatatypeProperty**: These properties define the types of relationships between entities and their associated values.&#x20;
+* **owl:disjointWith**: This property indicates that two classes have no common instances.&#x20;
+* **owl:intersectionOf**, **owl:unionOf**, and **owl:complementOf**: These properties are used to define complex class descriptions by combining simpler classes.
 
