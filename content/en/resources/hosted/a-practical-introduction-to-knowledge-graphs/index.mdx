@@ -162,6 +162,16 @@ Following the previous statement, using the predefined terms of RDFS we can crea
 
 So, in our initial statement “Parthenon is Located in Athens” each resource can be modeled, using the (*rdfs:typeOf*), as instance of the classes: *Monument*, *LocatedIn* and *City* respectively. Using this language, a machine that parses the above triplets of our KG will be able to understand that Parthenon is a monument which is a type of building that is located in Athens which is a City of Greece, etc. This way we can declare arbitrarily complex schemas representing knowledge of various domains and then provide actual data as instances of those classes and relationships so that computers, parsing our data, can understand not only the information itself but also the meaning of it.
 
+#####
+
+<Callout kind="note" title="RDFS Properties for designing schemas:">
+  * **rdfs:type:** This property declares a resource (subject) is an instance of a class (object), essentially saying "this thing is a type of that category," For example the triple: John rdfs:type foaf:Person means John is a person, linking data to its schema definitions for meaning and inference.
+  * **rdfs:subClassOf:** This property defines a hierarchy between classes, indicating that one class is a subclass of another. For example, if Man is a subclass of Person, then any instance of Man is also an instance of Person.&#x20;
+  * **rdfs:domain** and **rdfs:range:** These properties specify the classes of entities that can be subjects and objects of a particular property, respectively. This helps define the scope of relationships between entities.&#x20;
+  * **rdfs:subPropertyOf:** This property establishes a hierarchical relationship between properties, indicating that one property is a subproperty of another. For instance, if *hasName* is a subproperty of *hasProperty*, then any entity related by *hasName* is also related by *hasProperty*.&#x20;
+  * **rdfs:label** and **rdfs:comment**: These properties provide human-readable labels and comments for entities, which can be helpful in understanding the relationships between entities.&#x20;
+</Callout>
+
 ### Syntax Formats
 
 As with every language, syntax provides a way to “serialize” what is articulated, in a specific format. In computer languages like RDF and RDFS, syntax formats transform an abstract model into a serialized sequence of symbols that can be stored in a specific -machine readable- file, the same way a text in a word processor can be serialized into .doc, .docx or .lib file, an image into a .jpg file, etc.. For the Semantic Web family of languages, the most common syntax formats are:
@@ -238,30 +248,20 @@ Entity disambiguation systems are usualy ML or DL models trained to associate th
 
 Relation (or relationship) Extraction (RE) is the task of identifying and extracting semantic relationships from a text. Extracted relationships usually occur between two or more entities of a certain type (e.g. Person, Organisation, Location, etc.) and fall into a number of semantic categories (e.g. isFriendOf, isEmployedBy, livesIn, etc.). In this sence, RE is crucial for building knowledge graphs and powering applications like question answering and search, moving from unstructured text to structured knowledge.&#x20;
 
-As with other IE tasks, RE can be achieved using methods from rule-based systems, to ML / DL pretrained models or even by prompting Large Language Models (LLMs). Depending on the methodology, varius aspects are examined. For example, in rule-based aproaches, usualy the textual properties of the extracted entities (i.e. overlap of entities, inclusion in the same sentence/paragraph, containing specific lexical indicators, etc.) play a key role in defining the rules for relation extraction. In ML / DL apporaches extracting relations is treated as text classification problem. This requires examining all entity pairs. Specifically, for every pair of extracted entities, the text chunk bounded by these two entities, \[entity1, ..., entity2], is treated as expressing a candidate relation. In order to restrict the search to a reasonable set of candidates but also to allow for possible coreferences among sen-tences to be resolved, a maximum limit (e.g. the bounding entities must be in the same paragraph or in the same sentence) is set for candidate creation. A classifier then determines whether the bounding entities of the chunk satisfy the property in question.&#x20;
+As with other IE tasks, RE can be achieved using methods from rule-based systems, to ML / DL pretrained models or even by prompting Large Language Models (LLMs). Depending on the methodology, varius aspects are examined in order to extract a relation. For example, in rule-based aproaches, usualy the textual characteristics of the extracted entities play a key role in defining the rules for relation extraction. Such characteristics are for example to check whether the extracted entities  overlap, if they are included in the same sentence/paragraph, if they contain any specific lexical indicators, etc.)  In ML / DL apporaches extracting relations is treated as text classification problem. This requires examining all entity pairs. Specifically, for every pair of extracted entities, the text chunk bounded by these two entities, \[entity1, ..., entity2], is treated as expressing a candidate relation. In order to restrict the search to a reasonable set of candidates but also to allow for possible coreferences among sentences to be resolved, a maximum limit (e.g. the bounding entities must be in the same paragraph or in the same sentence) is set for candidate creation. A classifier then determines whether the bounding entities of the chunk satisfy the relation in question.&#x20;
 
 #### Linking
 
-Linking is the process that produces links among pbjects in order to associate them in some semantic way. These objects can be mentions of entities  that are extracted from text (i.e. textual spans that refer to a specific entity), entries from a Knowledge Base such as Wikipedia, metadata elements from varius repositories, etc.&#x20;
+Linking is the process that produces links among οbjects in order to associate them in some semantic way. These objects can be mentions of entities  that are extracted from text (i.e. textual spans that refer to a specific entity), entries from a Knowledge Base such as Wikipedia, metadata elements from varius repositories, etc.&#x20;
 
-Especially for Semantic Web, there are several properties in RDFS and OWL languages that are specifically designed for producing varius semantic links among resources depending on whether they are Classes, individuals (i.e. instances of the KG) or properties (i.e. relationships among resources):
+Especially for Semantic Web, there are several properties in RDFS and OWL languages that are specifically designed for producing varius semantic links among resources depending on whether they are Classes, individuals (i.e. instances of the KG) or properties (i.e. relationships among resources)
 
-##### RDFS Properties for linking Resources:
-
-* &#x20;**rdfs:subClassOf:** This property defines a hierarchy between classes, indicating that one class is a subclass of another. For example, if Person is a subclass of Entity, then any instance of Person is also an instance of Entity.&#x20;
-* **rdfs:domain** and **rdfs:range:** These properties specify the classes of entities that can be subjects and objects of a particular property, respectively. This helps define the scope of relationships between entities.&#x20;
-* **rdfs:subPropertyOf:** This property establishes a hierarchical relationship between properties, indicating that one property is a subproperty of another. For instance, if *hasName* is a subproperty of *hasProperty*, then any entity related by *hasName* is also related by *hasProperty*.&#x20;
-* **rdfs:label** and **rdfs:comment**: These properties provide human-readable labels and comments for entities, which can be helpful in understanding the relationships between entities.&#x20;
-
-##### OWL Properties for  linking:&#x20;
-
-* **owl:equivalentClass**: This property indicates that two classes are considered to be semantically equivalent.&#x20;
-* **owl:sameAs**: This property is used to assert that two individuals are the same entity.
-* **owl:ObjectProperty** and **owl:DatatypeProperty**: These properties define the types of relationships between entities and their associated values.&#x20;
-* **owl:disjointWith**: This property indicates that two classes have no common instances.&#x20;
-* **owl:intersectionOf**, **owl:unionOf**, and **owl:complementOf**: These properties are used to define complex class descriptions by combining simpler classes.
+<Callout kind="note" title="SW Properties for  linking:">
+  * **owl:equivalentClass**: This property indicates that two classes are considered to be semantically equivalent.&#x20;
+  * **owl:sameAs**: This property is used to assert that two individuals are the same entity.
+  * **owl:ObjectProperty** and **owl:DatatypeProperty**: These properties define the types of relationships between entities and their associated values.&#x20;
+  * **owl:disjointWith**: This property indicates that two classes have no common instances.&#x20;
+  * **owl:intersectionOf**, **owl:unionOf**, and **owl:complementOf**: These properties are used to define complex class descriptions by combining simpler classes.
+</Callout>
 
 &#x20;
-
-
-
