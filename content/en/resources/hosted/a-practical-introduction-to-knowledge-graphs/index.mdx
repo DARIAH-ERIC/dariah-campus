@@ -224,7 +224,7 @@ Starting with the parsed text in the input, the basic steps of the information e
 
 Entity Extraction from text involves the recognition and extraction of textual spans that can be associated with a specific type of entity. Examples of extracted entities include phrases in text denoting dates, historic events, persons' names, locations, organizations, etc. The extraction of such entities varies in difficulity based on the lexical complexity of the entity type and usually involves the employment of ML or DL models that are previously trained (or fine tuned in case of DL models) in extracting the specific type of entity from text. Along this line, entity extraction is usually treated as a token classification or sequence labelling task where a classifier (trained ML or DL model) predicts whether each token in the input belongs to the entity (or entities) in question or not.
 
-<Callout kind="note">
+<Callout kind="note" title="A word on Tokens">
   In machine learning, a token is the basic unit of data that an AI model processes, essentially breaking down text or other inputs into manageable pieces like words, sub-words, or characters, allowing the model to understand patterns, context, and meaning for tasks like language generation or analysis. Depending on the tockenizer and the purposes of the task, tokens can be:
 
   * **Words:** Simple splitting by spaces (e.g., "Hello world" becomes \["Hello", "world"]).
@@ -271,6 +271,36 @@ As with other IE tasks, RE can be achieved using methods ranging from rule-based
   To train a ML model, we need training data, i.e. examples of text along with the labels we want the model to predict. When training a ML model, we don’t just want it to memorize our examples – we want it to come up with a “theory” that can be generalized across unseen data. That’s why the training data should always be representative of the data we want to process. A ML model trained on Twitter, for example, will most likely perform badly on research articles, etc.
 
   This also means that in order to know how the model is performing, and whether it’s learning the right things, we don’t only need training data but also need evaluation data. If we only test the model with the data it was trained on, we’ll have no idea how well it’s generalizing to new stuff. If we want to train a model from scratch, we usually need at least a few hundred examples for both training and evaluation. In general the size of the training / evaluation datasets can vary from few hundreds to thousands, depending on the complexity of the task at hand and the types of ML models to be used.
+</Callout>
+
+
+
+<Callout kind="important" title="Evaluation metrics">
+  The most common way to evaluate a ML model is by measuring Precision, Recall and F1 scores. Each score measures different aspects of the performance of the model.&#x20;
+
+  To demonstrate the use of each metric, let’s say that we have created a ML classifier for recognizing research methods’ names. In order to evaluate the performance of our ML model, we have created an annotated dataset of 100 sentences with a total of 1000 tokens that constitutes the gold standard. During evaluation, our Methods classifier will parse each token in the input and predict whether it is part of a researrch method’s name or not. At the end we will compare the predictions of our classifier with the gold standard and based on this comparison we will calculate the following scores:
+
+  **Precision** is about **accuracy among the selected**. Out of all the tokens our model labeled as METHOD, how many actually were? If our classifier finds 100 tokens, but only 80 of them are actually parts of a research method name, then:&#x20;
+
+  * **Precision = 80/100 = 0.8 or 80%**&#x20;
+  * We got 20 false positives (tokens not part of a method name that were wrongly labeled as methods).
+
+  **High precision = fewer false positives.**
+
+  **Recall** is about **completeness**.
+  Out of all the tokens that are indeed method names in the dataset, how many did our model successfully predict?
+  If there are actually 200 tokens that should be labeled as METHOD in the dataset, and our model found 80 of them:
+
+  * **Recall = 80/200 = 0.4 or 40%**&#x20;
+  * We missed 120 tokens—false negatives.&#x20;
+
+  **High recall = fewer false negatives.**
+
+  The **F1 Score** is the **harmonic average of precision and recall**. Think of it as a way to balance both measures when you don’t want to prioritize one over the other. If precision is about being right, and recall is about being thorough, F1 is about being both. It penalizes you if you're great at one but bad at the other. In our example:&#x20;
+
+  * Precision = 0.8&#x20;
+  * Recall = 0.4 Then:&#x20;
+  * **F1 Score = 2 × (0.8 × 0.4) / (0.8 + 0.4) = 0.533 or 53.3%**
 </Callout>
 
 
