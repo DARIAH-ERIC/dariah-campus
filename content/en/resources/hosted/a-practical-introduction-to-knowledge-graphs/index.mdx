@@ -225,7 +225,7 @@ Starting with the parsed text in the input, the basic steps of the information e
 Entity Extraction from text involves the recognition and extraction of textual spans that can be associated with a specific type of entity. Examples of extracted entities include phrases in text denoting dates, historic events, persons' names, locations, organizations, etc. The extraction of such entities varies in difficulity based on the lexical complexity of the entity type and usually involves the employment of ML or DL models that are previously trained (or fine tuned in case of DL models) in extracting the specific type of entity from text. Along this line, entity extraction is usually treated as a token classification or sequence labelling task where a classifier (trained ML or DL model) predicts whether each token in the input belongs to the entity (or entities) in question or not.
 
 <Callout kind="note">
-  In machine learning, a **token** is **the basic unit of data that an AI model processes, essentially breaking down text or other inputs into manageable pieces like words, sub-words, or characters, allowing the model to understand patterns, context, and meaning for tasks like language generation or analysis**. Depending on the tockenizer and the purposes of the task, tokens can be:
+  In machine learning, a token is the basic unit of data that an AI model processes, essentially breaking down text or other inputs into manageable pieces like words, sub-words, or characters, allowing the model to understand patterns, context, and meaning for tasks like language generation or analysis. Depending on the tockenizer and the purposes of the task, tokens can be:
 
   * **Words:** Simple splitting by spaces (e.g., "Hello world" becomes \["Hello", "world"]).
   * **Sub-words/Parts of Words:** More advanced tokenizers break down complex words (e.g., "tokenization" might become "token" + "ization") to handle rare words better.
@@ -246,17 +246,11 @@ Entity disambiguation systems are usualy ML or DL models trained to associate th
 * **Generates Candidates:** The system generates possible real-world entities (for example, for the extracted entity "Washington", the system witll generate candidate links from the Knowledge base (like Wikipedia) such as Washington State, Washington D.C., George Washington).
 * **Uses Context:** The system analyzes the surrounding text (context) of the extracted entity and the relationships / textual descriptions within the KB for each of the candidates in order to determine which candidate is the intended one.
 
-#### Relation Extraction
-
-Relation (or relationship) Extraction (RE) is the task of identifying and extracting semantic relationships from a text. Extracted relationships usually occur between two or more entities of a certain type (e.g. Person, Organisation, Location, etc.) and fall into a number of semantic categories (e.g. isFriendOf, isEmployedBy, livesIn, etc.). In this sence, RE is crucial for building knowledge graphs and powering applications like question answering and search, moving from unstructured text to structured knowledge.&#x20;
-
-As with other IE tasks, RE can be achieved using methods from rule-based systems, to ML / DL pretrained models or even by prompting Large Language Models (LLMs). Depending on the methodology, varius aspects are examined in order to extract a relation. For example, in rule-based aproaches, usualy the textual characteristics of the extracted entities play a key role in defining the rules for relation extraction. Such characteristics are for example to check whether the extracted entities  overlap, if they are included in the same sentence/paragraph, if they contain any specific lexical indicators, etc.)  In ML / DL apporaches extracting relations is treated as text classification problem. This requires examining all entity pairs. Specifically, for every pair of extracted entities, the text chunk bounded by these two entities, \[entity1, ..., entity2], is treated as expressing a candidate relation. In order to restrict the search to a reasonable set of candidates but also to allow for possible coreferences among sentences to be resolved, a maximum limit (e.g. the bounding entities must be in the same paragraph or in the same sentence) is set for candidate creation. A classifier then determines whether the bounding entities of the chunk satisfy the relation in question.&#x20;
-
 #### Linking
 
 Linking is the process that produces links among οbjects in order to associate them in some semantic way. These objects can be mentions of entities  that are extracted from text (i.e. textual spans that refer to a specific entity), entries from a Knowledge Base such as Wikipedia, metadata elements from varius repositories, etc.&#x20;
 
-Especially for Semantic Web, there are several properties in RDFS and OWL languages that are specifically designed for producing varius semantic links among resources depending on whether they are Classes, individuals (i.e. instances of the KG) or properties (i.e. relationships among resources).
+Especially for Semantic Web, there are several properties in [RDFS](https://www.w3.org/TR/rdf-schema/) and [OWL](https://www.w3.org/TR/owl-features/) languages that are specifically designed for producing varius semantic links among resources depending on whether they are Classes, individuals (i.e. instances of the KG) or properties (i.e. relationships among resources).
 
 <Callout kind="note" title="SW Properties for  linking:">
   * **owl:equivalentClass**: This property indicates that two classes are considered to be semantically equivalent.&#x20;
@@ -265,4 +259,10 @@ Especially for Semantic Web, there are several properties in RDFS and OWL langua
   * **owl:intersectionOf**, **owl:unionOf**, and **owl:complementOf**: These properties are used to define complex class descriptions by combining simpler classes.
 </Callout>
 
-&#x20;
+#### Relation Extraction
+
+Relation (or relationship) Extraction (RE) is the task of identifying and extracting semantic relationships from a text. Extracted relationships usually occur between two or more entities of a certain type (e.g. Person, Organisation, Location, etc.) and fall into a number of semantic categories (e.g. isFriendOf, isEmployedBy, livesIn, etc.). In this sence, RE is crucial for building knowledge graphs and powering applications like question answering and search, moving from unstructured text to structured knowledge.&#x20;
+
+As with other IE tasks, RE can be achieved using methods from rule-based systems, to ML / DL pretrained models or even by prompting Large Language Models (LLMs). Depending on the methodology, varius aspects are examined in order to extract a relation. For example, in rule-based aproaches, usualy the textual characteristics of the extracted entities play a key role in defining the rules for relation extraction. Such characteristics are for example to check whether the extracted entities  overlap, if they are included in the same sentence/paragraph, if they contain any specific lexical indicators, etc.)  In ML / DL apporaches extracting relations is treated as text classification problem. This requires examining all entity pairs. Specifically, for every pair of extracted entities, the text chunk bounded by these two entities, \[entity1, ..., entity2], is treated as expressing a candidate relation. In order to restrict the search to a reasonable set of candidates but also to allow for possible coreferences among sentences to be resolved, a maximum limit (e.g. the bounding entities must be in the same paragraph or in the same sentence) is set for candidate creation. A classifier then determines whether the bounding entities of the chunk satisfy the relation in question.&#x20;
+
+####
