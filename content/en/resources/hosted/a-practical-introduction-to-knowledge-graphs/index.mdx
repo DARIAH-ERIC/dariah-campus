@@ -287,9 +287,7 @@ As with other IE tasks, RE can be achieved using methods ranging from rule-based
 
   **High precision = fewer false positives.**
 
-  **Recall** is about **completeness**.
-  Out of all the tokens that are indeed method names in the dataset, how many did our model successfully predict?
-  If there are actually 200 tokens that should be labeled as METHOD in the dataset, and our model found 80 of them:
+  **Recall** is about **completeness**. Out of all the tokens that are indeed method names in the dataset, how many did our model successfully predict? If there are actually 200 tokens that should be labeled as METHOD in the dataset, and our model found 80 of them:
 
   * **Recall = 80/200 = 0.4 or 40%**&#x20;
   * We missed 120 tokens—false negatives.&#x20;
@@ -302,6 +300,66 @@ As with other IE tasks, RE can be achieved using methods ranging from rule-based
   * Recall = 0.4 Then:&#x20;
   * **F1 Score = 2 × (0.8 × 0.4) / (0.8 + 0.4) = 0.533 or 53.3%**
 </Callout>
+
+
+
+---
+
+## Publishing and querying KGs for the Semantic Web
+
+As we explored earlier, the main idea behind the Semantic Web vision was to publish structured information (not just datasets but each individual data element) by describing their intended semantics as a directed, labeled graph of inter-related instances, so that it can be processed by machines.&#x20;
+
+The implementation of the above principles led to the creation of the RDF RDFS and OWL data models that provide the frameworks for building “inter-related instances” and the SPARQL language for querying them. In fact, this concept of iter-relating published data where each data element can be accessed individually through basic web protocols is what led to the idea of “Linked Data”. The latter can be seen as a set of best practices for publishing data on the web in a machine-readable, interconnected format with the goal to create a global graph of data where different datasets can be linked together and accessed easily. More specifically the Linked Data principles can be summarized as follows:
+
+1. Use URIs as names for things
+2. Use HTTP URIs so that people can look up those names.
+3. When someone looks up a URI, provide useful information, using the standards (RDF, SPARQL)
+4. Include links to other URIs so that they can discover more things.
+
+Let’s dive into each of these principles one by one to make them clearer: &#x20;
+
+### The Anatomy of a URI
+
+**Uniform Resource Identifiers** are a crucial element used to uniquely identify resources, including both physical and abstract objects when it comes to publishing information for the Semantic Web. In addition, the use of -commonly used by all web servers- HTTP protocol in order to create those URIs allows for easy adaptation and recognition of those identifiers by any server in the web. Focusing on the anatomy of a URI this can be decomposed into the following parts:
+
+![the anatomy of a URI](/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/image.png)
+
+
+
+**Protocol:**
+This specifies the protocol or mechanism used to access the resource, such as http, https, or urn.
+**Domain:**
+This part indicates the domain or server that hosts the resource
+**Path:**
+This specifies the location of the resource within the domain, often using a directory structure and file name.
+**Local Unique Identifier:**
+This is an optional part that identifies a specific portion or sub-resource within the primary resource.
+
+The protocol, along with the domain and the path, constitute the namespace of the URI. The latter is separated by the local unique identifier using -preferably- a hashtag or a backslash in order to discern it from the rest of the path. Following this structure, we can create URIs for all of our resources which will constitute the instances of our Knowledge Graph. In fact, this structure is quite similar to a webpage URL with the local unique identifier being the slug. As such -in accordance with guidelines 2 and 3- individual webpages or even sections on pages could be associated with and thus provide useful information for the corresponding URIs.
+
+### The SPARQL query language
+
+So far, using the RDF and RDFS vocabularies, we are able to represent any kind of knowledge regarding digital objects themselves or even the types they belong to in the form of Knowledge Graphs for the Semantic Web. Access to this structured knowledge can be achieved through queries, i.e. encoded requests that enable users to retrieve information from databases. In fact, when designing storage applications for any type of data, the basic functions that are considered necessary are those for Create, Read, Update and Delete data elements (CRUD). Along this line, any language developed for querying a storage interface (i.e. endpoint) must support these basic operations. When it comes to retrieving and manipulating data stored in Resource Description Framework format, the SPARQL query language has been developed. This allows for performing any of the CRUD operations in knowledge graphs for the Semantic Web while at the same time using the structure of the internet protocols for communication. In particular, the main idea behind storing and retrieving data in Semantic Web can be summarized as follows:
+
+•	Use triple stores to store RDF data (accessible through Endpoints)
+•	Use SPARQL queries to access or update the triple store (CRUD operations)
+•	Communication with the triple store can be achieved through HTTP protocol
+
+As with any other language, queries in SPARQL must follow a specific format. An indicative example demonstrating the basic sections of a SPARQL query can be seen in the figure below:
+
+Every SPARQL query must consist at least of two sections: 1) the section where we specify the type of the result we want and the variables to appear in the query results (query result clause) and 2) the section where we specify the patterns, we want the query to match against (query pattern). In our example we use the SELECT DISTINCT clause to declare that we want to perform a Retrieve operation and we are interested in only distinct values of the variable ?name inside the graph (each variable name is declared using the “?” prefix). In addition, we use the WHERE clause to declare inside curly brackets that the pattern we want to match inside the graph consists of any two variables that are connected with each other through the relationship foaf:name.
+
+For readability purposes we use the shortcut foaf instead of the entire URI of the relationship (http\://xmlns.com/foaf). This shortcut declaration is optional and can take place in the beginning of the query using the PREFIX clause. Another optional declaration can take place at the end of the query using various modifiers that describe how the retrieved results should be presented (e.g. in which order, how many, etc.). In our example, we use two modifiers: the first (“order by”) to declare that we want the results (values of the variable ?name) to be presented in alphabetical order and the second (“limit”) to declare that we want to display only the first 10 of those results.
+
+A SPARQL query can be executed in a triple store (i.e. a repository for storing Knowledge Graphs in the form of RDF triples) via a SPARQL endpoint (i.e., a specific interface for connecting with triple stores and executing any CRUD operation with SPARQL). Running it would cause the traversal of the KG and the retrieval of all the values that match the specified pattern (i.e. are connected with any resource through the foaf:name property in our case). After the values are retrieved, they are sorted in alphabetical order and then the first ten are displayed to the user (as specified by the modifiers order by and limit respectively). For a thorough exploration of the SPARQL language you can visit the official SPARQL W3C website.
+
+
+
+
+
+
+
+
 
 
 
