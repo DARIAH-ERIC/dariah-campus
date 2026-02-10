@@ -1,0 +1,158 @@
+---
+title: Improving quality assurance and development efficiency with regression testing
+locale: en
+publication-date: 2025-11-13
+version: 1.0.0
+authors:
+  - krautgartner-barbara
+editors: []
+contributors: []
+tags:
+  - software-development
+sources:
+  - acdh
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >-
+    This resources demonstrates how regression testing can improve quality
+    assurance and boost development efficiency illustrated through the use case
+    of a digital edition.
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+---
+<Callout kind="note">
+  Target audience: Developers, Project Managers\
+  The repository for the project referenced in this resource is hosted on <Link link={{"discriminant":"external","value":"https://github.com/karl-kraus/wpn-static/"}}>Github</Link>. Test related files can be found in the e2e directory.
+</Callout>
+
+## Introduction
+
+Developing applications in the field of humanities sometimes means rendering a lot of textual data with regards to scientific rules. \
+Digital editions can be particularly challenging.
+
+The following sections try to give an insight into the benefits of regression testing using the example of migrating a digital edition — <Link link={{"discriminant":"external","value":"https://kraus1933.ace.oeaw.ac.at"}}>Karl Kraus 1933: Dritte Walpurgisnacht</Link> — to a slightly different tech stack. In this scenario e2e testing is used to make sure that the new application displays the data after the migration exactly as it did before.
+
+The tool of choice in this example is the [Playwright](https://playwright.dev/) framework, which allows us running multiple browser interactions and comparing the result to our test data. By using parameterized tests we can speed up the development process and achieve high test coverage. The usefulness of setting up these tests becomes evident looking at the quantity and quality of the data in our use case.
+
+The tech stack is pretty straight forward: XML gets transformed to HTML by using XSLT.&#x20;
+
+XML structures can be rather simple and flat. But in the case of digital editions philological requirements can increase the need for more structural complexity (i.e. multiple levels of nesting, varying ancestor-descendent relationships). Additionally sophisticated rule sets regarding the desired display need to be followed (i.e. citation patterns). Exceptions of rules have to be handled as well.&#x20;
+
+In the following two types of tests will by presented: Comparison by Screenshot and Text Matching.
+
+## Learning Outcomes
+
+After completing this learning resource, learners should be able to:
+
+* Name types of regression tests that are beneficial and appropriate when developing digital editions.
+* List features of a tool like Playwright that are particularly useful for testing text-heavy applications.&#x20;
+* Approach testing in their own development stack.
+
+---
+
+## Screenshot Comparison Tests
+
+In Playwright [Visual comparisons](https://playwright.dev/docs/test-snapshots) provide the ability to take browser screenshots and compare them. Usually the developer would work on a view of his app and run an initial screenshot comparison test — which fails expectedly, because there are no screenshots yet — to produce reference screenshots which are then used when rerunning the test.
+
+Running tests generates a test report. This report can come in different formats based on the chosen [reporter](https://playwright.dev/docs/test-reporters) in the configuration. By using the [HTML Reporter](https://playwright.dev/docs/test-reporters#html-reporter) the results can be easily browsed, which will be shown in the following section.
+
+### Testing the editions main view containing the running text
+
+This resource will not go into the specifics of the complex TEI-XML structure of this edition, but here is a list of some criteria the rendering has to meet:
+
+* certain elements should not be rendered at all
+* certain elements should be rendered at a different position
+* for certain elements different font, text formatting and spacing properties have to be applied
+
+Additionally, the migration process includes simplifying certain parts of the code base which has grown due to ongoing changes in the source data and additional feature requests. Here, simplifying means using more concise XSLT and CSS rules to reduce complexity and improve maintainability.
+
+The edition view consists of 65 HTML pages. [Page 18](https://karl-kraus.github.io/wpn-static/absatz_18.html) of the edition gives a good example of the complexity that has to be dealt with.
+
+Since changing the XSLT or CSS rules may effect multiple pages of the edition, efficient testing is necessary. To test all pages the same test logic is reused by parameterizing the URL path as well as the screenshot path generating 65 tests. \
+\
+In this migration scenario the initial set of screenshots are taken from the legacy app, by using its URL in the first test run. \
+\
+The screenshots in this setup have to meet two important criteria:
+
+* Only capture the running text of the edition. The test should not care about or fail because of differences in components like menus or side panels. This would be different test cases.
+* Capture the full vertical scrollable content, not only the part currently visible in the viewport.
+
+Have a look at the <Link link={{"discriminant":"external","value":"https://raw.githubusercontent.com/karl-kraus/wpn-static/6c5706fb67901100307ed4e665630a9ae0c0c088/e2e/specs/edition_view.spec.ts-snapshots/snapshot-absatz-18-chromium-linux.png"}}>screenshot for page 18</Link> in the project repository.&#x20;
+
+As mentioned Playwright provides an interactive interface for browsing test results via the HTML Reporter. After running the tests two result views are available. The first view displays all completed tests (failed and passed) in list form (65 tests for 65 pages). From the list view, the detail view of a test can be accessed. If a test failed this detail view contains handy sub views including a side-by-side comparison as well as a "slider":
+
+<Video provider="vimeo" id="1129159679">
+
+</Video>
+
+## Text Comparison Tests
+
+Another test method is text matching, a common approach in automated testing for ensuring that the correct information is displayed.
+
+### Testing the editions detail views containing meta information
+
+Next to the structural markup the edition contains annotations that point to metadata.
+
+References to metadata as of November 2024 (beginning of migration):
+
+* persons, person groups: 899
+* intertexts: 1950
+* comments: 766
+
+The metadata is displayed next to the main text in the edition view in two different modes/views: a short info view and a detail view.
+
+<Figure src="/assets/content/assets/en/resources/hosted/improving-quality-assurance-and-development-efficiency-with-regression-testing/short-info-wpn.png" alignment="stretch">
+  Karl Kraus 1933: Dritte Walpurgisnacht — Edition view with short info
+</Figure>
+
+<Figure src="/assets/content/assets/en/resources/hosted/improving-quality-assurance-and-development-efficiency-with-regression-testing/detail-info-wpn.png" alignment="stretch">
+  Karl Kraus 1933: Dritte Walpurgisnacht — Edition view with expanded detail info
+</Figure>
+
+For the each of these annotations at least one short info view and one detail info view is needed. In some cases an annotation contains multiple references.
+
+During the first phase of the project a significant amount of time was invested into defining and refining the rule set for rendering prosographic and bibliographic data, as well as proofreading the final outcome.
+
+To ensure consistency throughout the migration process text comparison tests were setup. The pre-migration version of the application generates most of the data necessary for the mentioned views during its build process. This means that the data needed for the tests neither has to be gathered by repeatedly requesting the running application (pre-migration app) during testing nor by scraping single views or APIs. Rather, the generated build files could be reused as test data.
+
+A single test checking the correctness of a short info
+
+1. navigates to a page of the edition
+2. looks up the HTML element that contains the info
+3. compares its text content to the expected text
+
+Considering the number of annotations in the edition the most efficient way is to reuse the approach of rerunning parameterized tests. Its up to the developer or test manager which structure makes the most sense for a project. To maintain a better overview the test data is provided in smaller junks: one JSON file per edition page.
+
+For each page the script
+
+1. iterates through the test data objects
+2. sets the parameters
+3. executes the test
+
+## Sharing the tests and test results with data curators
+
+The tests are executed in two environments:
+
+**The local environment**\
+The developer runs and inspects the tests on his local machine.
+
+**The CI/CD (Continuous Integration / Continuous Deployment) environment**\
+The application is built an deployed via [GitHub Actions worflow](https://docs.github.com/en/actions/how-tos/write-workflows).
+The TEI-XML for the edition is hosted in a separate repository than the application code and is
+fetched in a workflow step. The tests are executed in another step.
+
+After the tests are finished the test report gets deployed to another repository.
+This allows data curators to browse the test results without the need for a local development
+environment.
+
+<Callout kind="note">
+  In 2025 the edition has been extended with an <Link link={{"discriminant":"external","value":"https://kraus1933.acdh.oeaw.ac.at/idPb0001.html?mode=off&view=all-columns"}}>additional transcription</Link> of a different text source that required an increasingly complex rendering. The benefits of introducing tests to this project have become evident by the successful reuse of the test setup during development of this additional publication step.
+</Callout>
+
+## Conclusion
+
+Including tests in development processes is not only best practice but crucial and becomes even more so as data volume and complexity increases. It will save you a lot of time and energy. \
+After reading this resource you should be able to reflect on the benefits of introducing tests into your own project. You should also be able to name the two types of presented tests: screenshot comparison and text comparison tests.\
+Do not hesitate to contact the author if you need help with a similar scenario.
