@@ -30,7 +30,7 @@ interface GridPreviewProps {
 	alignment?: GridAlignment;
 	children: ReactNode;
 	/** @default "two-columns" */
-	layout: GridLayout;
+	layout?: GridLayout;
 }
 
 export function GridPreview(props: Readonly<GridPreviewProps>): ReactNode {

@@ -1,4 +1,3 @@
-// eslint-disable-next-line n/no-unsupported-features/node-builtins
 import { glob } from "node:fs/promises";
 import { join, relative } from "node:path";
 import { parseArgs } from "node:util";
@@ -91,7 +90,10 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 										),
 									}),
 								),
-								social: v.array(v.object({ discriminant: v.string(), value: v.string() })),
+								social: v.optional(
+									v.array(v.object({ discriminant: v.string(), value: v.string() })),
+									[],
+								),
 							}),
 							frontmatter,
 						);
@@ -137,7 +139,10 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 					if (directory.includes("people")) {
 						const result = v.parse(
 							v.object({
-								social: v.array(v.object({ discriminant: v.string(), value: v.string() })),
+								social: v.optional(
+									v.array(v.object({ discriminant: v.string(), value: v.string() })),
+									[],
+								),
 							}),
 							frontmatter,
 						);

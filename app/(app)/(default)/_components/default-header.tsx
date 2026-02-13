@@ -34,7 +34,7 @@ export async function DefaultHeader(props: Readonly<DefaultHeaderProps>): Promis
 	return (
 		<StickyHeader {...rest}>
 			<Link
-				className="shrink-0 rounded transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+				className="shrink-0 rounded-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 				href={navigation.home.href}
 			>
 				<Image alt="" className="h-auto w-36 xl:w-48" loading="eager" preload={true} src={logo} />
@@ -51,7 +51,7 @@ export async function DefaultHeader(props: Readonly<DefaultHeaderProps>): Promis
 								return (
 									<li key={key}>
 										<NavLink
-											className="rounded transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+											className="rounded-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 											href={item.href}
 										>
 											{item.label}

@@ -30,7 +30,7 @@ interface GridProps {
 	alignment?: GridAlignment;
 	children: ReactNode;
 	/** @default "two-columns" */
-	layout: GridLayout;
+	layout?: GridLayout;
 }
 
 export function Grid(props: Readonly<GridProps>): ReactNode {

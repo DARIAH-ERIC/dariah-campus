@@ -1,4 +1,4 @@
-import { resolve } from "node:path";
+import * as path from "node:path";
 
 import baseConfig from "@acdh-oeaw/eslint-config";
 import nextConfig from "@acdh-oeaw/eslint-config-next";
@@ -6,7 +6,7 @@ import nodeConfig from "@acdh-oeaw/eslint-config-node";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
 import reactConfig from "@acdh-oeaw/eslint-config-react";
 import tailwindConfig from "@acdh-oeaw/eslint-config-tailwindcss";
-import { defineConfig } from "eslint/config";
+import { defineConfig, globalIgnores } from "eslint/config";
 import gitignore from "eslint-config-flat-gitignore";
 import checkFilePlugin from "eslint-plugin-check-file";
 
@@ -26,15 +26,19 @@ const restrictedImports = {
 
 export default defineConfig(
 	gitignore({ strict: false }),
-	{ ignores: ["content/**", "public/**"] },
+	globalIgnores(["content/**", "public/**"]),
 	baseConfig,
 	reactConfig,
 	nextConfig,
-	tailwindConfig,
 	{
+		name: "tailwindcss-config",
+		extends: [tailwindConfig],
+		rules: {
+			"better-tailwindcss/no-unknown-classes": ["error", { ignore: ["lead", "not-prose"] }],
+		},
 		settings: {
-			tailwindcss: {
-				config: resolve("./styles/index.css"),
+			"better-tailwindcss": {
+				entryPoint: path.resolve("./styles/index.css"),
 			},
 		},
 	},
@@ -104,8 +108,10 @@ export default defineConfig(
 			],
 			"@typescript-eslint/strict-boolean-expressions": "error",
 			"react/jsx-sort-props": ["error", { reservedFirst: true }],
-			"@eslint-react/prefer-read-only-props": "error",
 			"@eslint-react/no-array-index-key": "off",
+			"@eslint-react/no-unstable-default-props": "off",
+			"@eslint-react/prefer-destructuring-assignment": "off",
+			"@eslint-react/prefer-read-only-props": "error",
 		},
 	},
 	{
