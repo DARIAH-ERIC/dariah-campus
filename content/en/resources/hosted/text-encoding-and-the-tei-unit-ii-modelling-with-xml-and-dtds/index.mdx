@@ -1,11 +1,12 @@
 ---
 title: 'Unit II: Modelling with XML and DTDs'
 locale: en
-publication-date: '2016-01-26'
+publication-date: 2016-01-26
 version: '1.0'
 authors:
   - schreibman-susan
   - bleier-roman
+editors: []
 contributors:
   - schreibman-susan
   - bleier-roman
@@ -46,9 +47,9 @@ summary:
     adheres to the DTD) for a recipe.
 
 content-type: training-module
-
+translations: []
+dariah-national-consortia: []
 ---
-
 ## Basic XML rules: well-formed and valid XML
 
 ### Well-formed vs valid XML
@@ -57,7 +58,7 @@ XML documents are essentially text documents containing data and markup. Data ca
 
 All XML documents have to conform to a set of rules that were developed by the World Wide Web Consortium (W3C) a community of organisations that develop web standards for core languages of the WWW (including HTML, CSS and XML). The rules for XML documents are described in the XML specification ([https://www.w3.org/XML/](https://www.w3.org/XML/)). XML processing software expects XML documents to be structured following these rules, and any divergence causes what is known as a parsing or syntax error.
 
-W3Schools identifies five key rules for XML syntax. Documents that conform to these rules are called *Well-Formed*:
+<Link link={{"discriminant":"external","value":"http://www.w3schools.com/xml/xml_validator.asp"}}>W3Schools</Link> identifies five key rules for XML syntax. Documents that conform to these rules are called *Well-Formed*:
 
 1. XML documents must have a root element
 2. XML elements must have a closing tag
@@ -246,7 +247,10 @@ The XML specifications require that within an XML document all elements have to 
 
 To explain basic principle of nesting in XML, the Russian ‘Matryoshka doll’ might make a good analogy. The root element is the largest container. All other elements have to be entirely nested within the root element or another element. In a similar way smaller Matryoshka dolls’are nested within bigger ones.
 
-<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/15cf90b368ddf75e0e850b1b5e1eceb7cdf44bfb-5727.jpg" alt="" alignment="stretch" />
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/15cf90b368ddf75e0e850b1b5e1eceb7cdf44bfb-5727.jpg" alignment="stretch">
+
+</Figure>
+
 In the address book example, all \<entry> elements are completely nested within the start and end root element. Furthermore, each address entry can other have elements nested in it. For instance, an entry may have \<name> as follows:
 
 ```
@@ -294,7 +298,10 @@ That this data is nested provides important information to the computer. For exa
 
 Conceptually, the structure of an XML document is a tree structure. The *root element*, forms the basis of the XML tree and all other element nodes, attribute nodes and text nodes reach out like braches and leaves. Visually this could be represented as a tree graph as in the following figure of the address book in the previous section:
 
-<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/f7fad3bcd13b476edb7bf474b6623f5448753a38-5739.png" alt="" alignment="stretch" />
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/f7fad3bcd13b476edb7bf474b6623f5448753a38-5739.png" alignment="stretch">
+
+</Figure>
+
 Moreover, various relationships between elements exist. In the **child-parent relationship** one element (the child) is nested in another element (the parent). In the following example the element \<name> is nested in the element \<entry> and consequently \<name> is the child of \<entry> and \<entry> the parent of \<child>.
 
 ```
@@ -321,15 +328,17 @@ These relationships provide powerful structure for other software, as well as ot
 
 As discussed in the previous section, to be a well-formed XML document a set of rules must be adhered to. Many documents also conform to another set of rules that constrain what, how, and the frequency of elements and attributes. An XML document that is well-formed and conforms to a schema or DTD is called a *Valid* XML document.
 
-This unit will teach the basic principles of one of these rule sets: Document Type Definition (DTD). DTDs were originally developed to work with SGML and do not use SGML or XML syntax. Every SGML document instance was required to have a DTD. XML is more flexible and does not require documents to conform to a DTD or schema (i.e. they are well formed but not valid). Schema languages include XML Schema, RNG Schema or Schematon. However, the underlying modelling principles are very similar and we teach DTDs here because it is a simpler syntax to learn. The TEI P4 guidelines had its own chapter on the use of DTDs \[TEI P4 Documentation, Chapter. 3].
+This unit will teach the basic principles of one of these rule sets: Document Type Definition (DTD). DTDs were originally developed to work with SGML and do not use SGML or XML syntax. Every SGML document instance was required to have a DTD. XML is more flexible and does not require documents to conform to a DTD or schema (i.e. they are well formed but not valid). Schema languages include XML Schema, RNG Schema or Schematon. However, the underlying modelling principles are very similar and we teach DTDs here because it is a simpler syntax to learn. The TEI P4 guidelines had its own chapter on the use of DTDs \[<Link link={{"discriminant":"external","value":"http://www.tei-c.org/Vault/P5/1.0.1/doc/tei-p4-doc/html/ST.html"}}>TEI P4 Documentation, Chapter. 3</Link>].
 
 A DTD is a series of statements that can be written either at the beginning of an XML document (an internal DTD right after the XML declaration, or in a separate file from the XML document (an external DTD). The main advantage of an external DTD is that the rules defined in an external DTDs can be applied to many XML documents (called, in this case, document instances). This facilitates consistency of encoding and maintenance of the DTD. For the following examples and exercise we will use internal DTDs, because we are only working with one XML document. However, the same DTD statements would also apply to external DTDs.
 
-<Embed src="https://www.youtube.com/embed/xp2hbHaBZwI" />
+<Embed src="https://www.youtube.com/embed/xp2hbHaBZwI">
+
+</Embed>
 
 ##### Further reading
 
-W3schools, DTD Tutorial, [http://www.w3schools.com/xml/xml\\\_dtd\\\_intro.asp](http://www.w3schools.com/xml/xml\\_dtd\\_intro.asp)
+W3schools, DTD Tutorial, <Link link={{"discriminant":"external","value":"http://www.w3schools.com/xml/xml_dtd_intro.asp"}}>[http://www.w3schools.com/xml/xml\\\_dtd\\\_intro.asp](http://www.w3schools.com/xml/xml\\_dtd\\_intro.asp)</Link>
 
 ### Creating Elements
 
@@ -365,7 +374,9 @@ Between the square brackets (in blue) is the declaration of the root element. Th
 
 The following video shows how a DTD should be placed at the beginning of an XML document and how a text editor such as oXygen can be used to evaluate if an XML is well-formed and valid.
 
-<Embed src="https://www.youtube.com/embed/kEprJ0U0FiE" />
+<Embed src="https://www.youtube.com/embed/kEprJ0U0FiE">
+
+</Embed>
 
 The above DTD statement specifies an addressBook element that can only store character data such as:
 
@@ -436,7 +447,7 @@ In the first part of this exercise, we will create a simple DTD for poetry. In t
 * note
 * author
 
-To help you with the DTD syntax, we’ve created a DTD Cheat Sheet. Open up the PDF and keep it handy when you are creating the DTD. Create the DTD in a parsing editor such as oXygen. oXygen understands DTD syntax, and once you begin creating the document instance, it will give error messages if you do something wrong. However, until the XML code is in place, you will get parsing errors.
+To help you with the DTD syntax, we’ve created a <Link link={{"discriminant":"download","value":"/assets/content/downloads/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/dtd-cheat-sheet.pdf"}}>DTD Cheat Sheet</Link>. Open up the PDF and keep it handy when you are creating the DTD. Create the DTD in a parsing editor such as oXygen. oXygen understands DTD syntax, and once you begin creating the document instance, it will give error messages if you do something wrong. However, until the XML code is in place, you will get parsing errors.
 
 Start by opening oXygen, and then choose the top left icon, the new document icon, and then choose 'XML Document'. Begin by creating the root element right below the XML declaration.
 
@@ -450,7 +461,9 @@ Save your file. Create your DTD using the elements above using the syntax provid
 
 You can try to create the DTD on your own, or follow along with this video
 
-<Embed src="https://www.youtube.com/embed/CKC3_kAbWPg?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL" />
+<Embed src="https://www.youtube.com/embed/CKC3_kAbWPg?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL">
+
+</Embed>
 
 ### Defining different types of elements
 
@@ -612,7 +625,9 @@ This is the syntax you can use for the number attribute
 
 Be sure to create the statement directly after the line element statement. You can add the attributes on your own, or do it while watching the video below.
 
-<Embed src="https://www.youtube.com/embed/2L9XBuCsQUw?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL" />
+<Embed src="https://www.youtube.com/embed/2L9XBuCsQUw?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL">
+
+</Embed>
 
 ## Advanced DTD exercise
 
