@@ -1,0 +1,185 @@
+---
+title: 'Unit I: Geotagging Images'
+locale: en
+publication-date: 2017-03-08
+version: '1.0'
+authors:
+  - chrysanthi-angeliki
+editors: []
+contributors:
+  - chrysanthi-angeliki
+tags:
+  - history
+  - mapping
+  - workshop
+  - spatial-analysis
+  - images
+  - geotagging
+sources:
+  - dariah
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: No summary content available.
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+---
+## 1.1 Background and Methods
+
+### 1.1.1 What is Image Geotagging?
+
+In this unit you will learn more about the specifics of geotagging images. Watch the video below to get an introduction to image geotagging.
+
+<Embed src="https://www.youtube.com/embed/Z_CGKjMLRio">
+  *Introduction on image geotagging by Dr. Angeliki Chrysanthi*
+</Embed>
+
+### 1.1.2 Manual Image Geotagging
+
+*A large collection of graphic materials produced by foreign travellers in Athens, Greece, from the* 15th\* \*to the 20th century, was recently digitised following all proper standards and ensuring that the digital collection contains rich metadata. A new research project began when a scholar wished to explore the spatiotemporal patterns of production of such graphic material within the collection. While a significant number of files contained geographic metadata such as place and region names, very few had geolocation coordinates embedded in the actual files.
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/b57b246b5c742f3fcbbc9cc1cf913acf6c4a3e0f-36179.PNG" alt="Europeana website screen capture" alignment="stretch">
+  *Figure 1. The online record of a digital image collection. Europeana Collections website.*
+</Figure>
+
+The above scenario highlights a common problem encountered by scholars who wish to explore the spatiotemporal aspects of a substantial digital archive image collection. Geographic metadata is a prerequisite for performing sophisticated spatial analysis of images, but in reality, very few humanities collections consist of files with such embedded metadata. Geotagging image files is a process that enables the geospatial exploration of such collections. In the following section, you will learn a manual approach to achieve this.
+
+To continue to the next section, you will need to have completed the <Link link={{"discriminant":"external","value":"https://clarin.oeaw.ac.at/moodledariahteach/mod/page/view.php?id=354"}}>Geotagging setup</Link> guidelines and launch Geosetter.
+
+### 1.1.4 Batch Image Geotagging
+
+*A heritage scholar has recently conducted a visitor survey as part of her research project focusing on understanding visitor movement and interactions in archaeological sites. Apart from systematic observations, interviews and the collection of other qualitative-quantitative data through questionnaires, she also employed tracking and recording technologies such as GPS tracking and camera recordings for obtaining location-based feedback. She will eventually analyse all visitor feedback by employing a mixed-method analysis, and for this, she will also need to prepare her image datasets for analysis. The first step is to use the obtained GPS data and geotag the hundreds of images captured by the study subjects.*\
+In the above scenario, apart from the usual ethnomethodological approaches, the scholar employed Visitor Employed Photography (VEP) while she also collected geolocation data about each visitor's itinerary within an archaeological site. VEP has been commonly used in visitor studies for measuring visitor attention to exhibits or the natural environment (Camp *et al.* 2000). The GPS data are used in this case to geotag a large number of images which will be then analysed to reveal certain location-specific and theme-specific patterns of movement and linger behaviours. This geotagging approach uses the time metadata recorded both on GPS and image data to match the recording events. In this section, you will familiarise yourself with the process of collecting such data and the basic concepts involved in this geotagging approach which can apply to different studies.
+
+Collecting and preparing data for Geotagging\*\*\
+Although giving a tutorial here on how to set up and operate a GPS device for data collection falls outside the scope of this workshop, it is important to understand the basic steps in the process of data collection. GPS data can be collected via any GPS handheld or wearable device.
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/3f23979a9bbe798342c8ffe120ae09abee3d41e5-36195.png" alt="gps settings" alignment="stretch">
+  *Figure 5. GPS settings on a Garmin eTrex device.*
+</Figure>
+
+However, standard lightweight GPS devices, such as Garmin eTrex, have been reported as the most efficient tools for capturing geographic positions and movement in relatively small sized and entrance-exit controlled areas such as archaeological sites (Shoval and Isaacson 2010). GPS devices can be set up in two ways to aid image geotagging (see Fig. 5, left image):
+
+a) to record 'waypoints' (i.e. the GPS coordinates of a particular location) each time the user captures an image.
+
+b) to record a 'track' (i.e. a series of sequential GPS coordinates indicating the user's position each time during an itinerary) automatically based on a set time interval (e.g. every 2 seconds for high-density recording - see Fig. 5, lower right image).
+
+For the collection of image data, any digital camera should usually suffice. However, it is important to synchronise the camera's clock based on the accurate GPS time reading before starting data collection (see Fig. 5, left image).
+
+Tips on data gathering\
+• Keeping notes all the time about anything\
+• Give unique numbers to recording events, GPS devices/cameras if you are using more than one set\
+• Note the date and time of each recording event each time it starts and finishes\
+• Be consistent when coding and dealing with data\
+• Need to synchronise your digital camera's clock to GPS time before taking photos\
+• Ensure that the right date and year are displayed in the camera\
+• Set your GPS to record track points on a frequent basis. The more track points you record, the better geotagging results you will obtain
+
+The GPS data is downloaded from the GPS device and saved in GPX XML format. GPX, or GPS Exchange Format, is an XML schema used to communicate information between GPS devices, software applications and online services and it describes waypoints, tracks, and routes. In this schema, location and other related data such as time and elevation are stored in tags (see Fig. 6). Based on the World Geodetic System (WGS) 84, latitude and longitude are expressed in decimal degrees and elevation in meters. The complete schema documentation can be found <Link link={{"discriminant":"external","value":"http://www.topografix.com/gpx/1/1/#SchemaProperties"}}>here</Link>.
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/d75d7e0814d8ee316d1839c30353c6e72e776a0b-36196.png" alt="colour annotated GPX document" alignment="stretch">
+  *Figure 6. A colour annotated and truncated GPX XML document describing a track.*
+</Figure>
+
+### 1.1.5 Batch Image Geotagging: Tutorial
+
+Once GPS and image data are collected (manual step) one can proceed with geotagging. In this section, you will continue to work with Geosetter and learn the batch geotagging process. Batch geotagging here means that a sequence of commands will be executed by the programme in one unit to match and embed the GPS coordinates in the recorded image files (automatic step). To continue in this section and follow through with the tutorial you are going to work with a set of images and a GPX XML file provided in the tutorial sources for Unit I. These datasets derive from a real study of collecting visitor movement and image recordings at the archaeological site of Gournia in Crete, Greece.
+
+Navigate to the directory where you have downloaded **Images\_copy** folder and select subfolder *V1*. Double-click on the first image *DSC05331* and then click on the tabs **Location** and **Source Description**\*\*\*.\*\*\* Notice that the description fields are empty. Go to the **Date tab** and notice the date and time metadata. The software is going to use this information to add geolocation metadata to the files.
+
+Select all image files. Then, go to **Images** tab and click on **Synchronise with GPS data files**. On the opened window, choose to **synchronise with data file** and navigate to the directory of the **GPS\_copy** folder and choose file *V1*. Now you will need to adjust the time on the images since GPS receivers capture the date and time in UTC format (nearly Greenwich Mean Time) and the sample images were created in a different Time Zone. Here you will need to add a time value. On the first drop down list choose \*\*Use Time Zone and on the second select the *Time Zone* of the location where the images were recorded. In this case, the images were captured in Greece, so choose (*UTC+02:00) Europe/Athens (plus DST +01:00 for all images).* After confirming your selection by clicking ok, a window should pop-up stating that ‘GPS data has been found for all ten images’ and asking permission to proceed with geotagging. On the menu bar click **Images > Save Changes** to save the geolocation information in the Exchangeable Image File Format (EXIF) header. EXIF data is a type of technical metadata that digital cameras and scanners produce to give information about the recording, such as shutter speed, aperture, camera orientation, GPS coordinates, image dimensions and other information.
+
+Notice that the map has automatically displayed and zoomed in the area of interest (Fig. 7, on the right part of the interface) and that the images are assigned with geolocation metadata (Fig. 7, the highlighted coordinates in red on the left part of the interface). Also, notice that when you click on one of the files on the left its geolocation is highlighted in the map area. Now click **Save** to embed the geolocation metadata in the files.
+
+You can continue practising this approach by repeating the process for image folders and GPS files V5 and V8 respectively. Then do the following exercise:
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/0b4ccd4d5aa6a1904674faacd014c2c10ae8b446-36184.png" alignment="stretch">
+
+</Figure>
+
+**Exercise:** A Recap on Image Geotagging. Answer the following questions
+
+<H5PWrapper path="spatial-image-analytics/georeferencing-221" />
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/bc9fb381e196999b196eb590e161249a6272743d-36181.PNG" alt="Geotag result" alignment="stretch">
+  *Figure 7. An instance of the batch image geotagging result in Geosetter.*\\
+</Figure>
+
+### 1.1.3 Manual Image Geotagging: Tutorial
+
+As mentioned in the <Link link={{"discriminant":"external","value":""}}>introduction video</Link>, adding and editing metadata to image files can be done via commercial, freeware and open source tools. Geosetter provides one of the best workflows for geotagging images, but it also allows users to add and edit administrative, descriptive, copyright as well as technical metadata.
+
+To learn how to geotag an image file in Geosetter, you are going to work with the digital image from one of <Link link={{"discriminant":"external","value":"http://eng.travelogues.gr/collection.php?view=303"}}>Stackelberg</Link> works created during his travels in Greece between 1810-13 (Fig. 2). Navigate to the directory of the ***Images\_copy*** folder and select Stackelberg subfolder. The file should appear in the upper left window of the interface. Double-click on the first image entitled **The Temple of Olympian Zeus in Athens** and then click on the tabs *Location* and *Source Description.* Notice that the fields are empty.
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/724c5f7e7e574791ee6380478be2567a24653eef-36176.jpg" alt="The temple of the Olympian Zeus in Athens" alignment="stretch">
+  *Figure 2. Black & white lithograph of the temple of Olympian Zeus, Athens from Stackelberg's "La Grèce. Vues Pitttoresques et Topographiques."*
+</Figure>
+
+To assign location information from the map to the image file, you will need first to find the location of the depicted place/monument. Login to Geonames web service and search for *Temple of Olympian Zeus Athens* and the service should return one record with five fields (see Fig. 3).
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/a6c555be2d4709f05d9d9436ac38a874391f8200-36188.PNG" alt="geonames screen capture" alignment="stretch">
+  *Figure 3. Returned search results from Geonames web service.*
+</Figure>
+
+Click on **S** symbol which represents a feature class to switch to map view. Copy the coordinates in the decimal format, return to Geosetter and fill in the field coordinates (in the map window) with the values in the appropriate format. Now the map should be focused on the area of interest. Click on Add/Edit. On the opened window click on the **Get from Web.** Notice the fields that have automatically updated. Now you can write the name of this location. Click ok and notice that a favourite place has been added to the map (see star symbol, Fig. 4). On the left, make sure that the image file you want to edit is selected, click on the star symbol on the map window and then choose **Assign position to selected images**. Notice to the left that the selected image has been assigned with location information (e.g. coordinates, area name and country). Now click save to embed information in the image file itself. Double-click the image and go to **Location** tab. Notice the added geolocation information.
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/587aa421b201d9edb4ea69efa5db520e7e76ecac-36189.PNG" alt="geotagged_archival image" alignment="stretch">
+  *Figure 4. The geotagged archival image highlighted on the left of the Geosetter interface*
+</Figure>
+
+## Image Geotagging Assignment&#x20;
+
+**Optional assignment**
+
+Use a set of archival images to apply the manual geotagging approach you learnt in this unit. You can choose a set of images based on your background and previous experience, or something related to a topic you are studying in another module, or something that simply interests you. If you don't have a set of images available you can visit a humanities repository (e.g. <Link link={{"discriminant":"external","value":"http://portal.europeana.eu/portal/en"}}>Europeana Collections</Link>) and find a collection of images to work with.# Geotagging setup
+<Link link={{"discriminant":"external","value":"http://www.geonames.org/"}}>http://www.geonames.org/</Link>
+In order to be able to complete Unit I you will need to:
+
+* download and setup Geosetter, a specialised freeware for editing image metadata and geotagging. Available at:
+
+[http://www.geosetter.de/en/download/](http://www.geosetter.de/en/download/)
+
+<Link link={{"discriminant":"external","value":"http://www.geosetter.de/en/download/"}}>http://www.geosetter.de/en/download/</Link> has been developed for Windows Operating systems. To run Geosetter on an Apple Macintosh computer, the Mac must be set up to run Windows by following one of two installation options:
+
+*Option 1* : Create a dual-boot setup on your Mac. This allows you to boot into either Mac OS or Windows OS. The usual way to do this is to use the free software BootCamp. Available at: <Link link={{"discriminant":"external","value":"http://www.apple.com/support/bootcamp/"}}>http://www.apple.com/support/bootcamp/</Link>
+
+*Option 2* : Create a virtual machine on your Mac. This allows you to run an installation of Windows OS in parallel with your existing Mac OS, and to seamlessly switch between the two. Typical choices for the virtualization option are the licensed software Parallels or VMware.
+<Link link={{"discriminant":"external","value":"http://www.geosetter.de/en/download/"}}>http://www.geosetter.de/en/download/</Link>
+
+* open a free account on Geonames geographical database
+
+<Link link={{"discriminant":"external","value":"http://www.geonames.org/"}}>http://www.geonames.org</Link>
+
+* download and unzip the folder 'tutorial\_resources \_1'
+
+**Geosetter setup**
+
+Run the executable file **geosetter.setup(.exe)** and follow the instructions in the wizard. Once the programme runs, firstly you will be prompted to configure the settings.
+
+Start from **File Options** tab\*\*.\*\* In the list shown to the left select the file type 'JPEG'. The parameters we define on the right side will apply only to this type of files. On the right, check the boxes as they appear in Fig 1. The chosen options will allow you both to store your metadata in a sidecar file as well as embed them in the file itself to avoid problems that occur when metadata are stored separately (see note 1 and 2).
+
+*Figure 1. File options setup.*\\
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/4c19d756f90c25bf0d18c9c0ac4a21b951a2d16f-36200.PNG" alt="Figure 1. File options set up " alignment="stretch">
+
+</Figure>
+
+On the **Startup** tab select the directory of the image folder you are going to use for this exercise. Note that it is a good practice to use a copy of the files to avoid overwriting the originals. This step should look like Fig 2.
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics-unit-i-geotagging-images/5f9a2c1e1ed415dfba445a42a3eba4e19dc2ba09-36202.PNG" alt="Figure 2. Directory selection" alignment="stretch">
+  *Figure 2. Directory selection*\\
+</Figure>
+
+On **Data Preferences** set the default time zone to (UTC+02:00) Europe/Athens. Make sure the box **Save GPS destination coordinates** is checked. On **Misc** set units of measurement to Metric and Format of coordinates to Decimal.
+
+Finally, go to **Internet** tab and change the URL address under Geonames to: <Link link={{"discriminant":"external","value":"http://www.geonames.org/"}}>http://www.geonames.org/</Link>
+
+---
+
+*note 1* Metadata is generally stored in two main places:\
+Internally – embedded in the image file, in formats such as JPEG or TIFF.\
+Externally – outside the image file in a Digital Asset Management (DAM) system or by a 'sidecar' file, such as the one supported by the Extensible Metadata Platform (XMP).
+
+*note 2*\
+Regarding metadata, it falls outside the scope of this workshop to familiarise students with basic concepts and terminology. However those who wish to delve into image metadata, I recommend reading the Guidelines For Handling Image Metadata by Metadata Working Group.
