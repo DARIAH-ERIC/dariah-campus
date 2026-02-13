@@ -25,6 +25,7 @@ export const curriculumMetadataSchema = v.object({
 	tags: v.array(v.object({ id: v.string(), name: v.string() })),
 	editors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
 	resources: v.array(v.object({ id: v.string(), collection: v.string() })),
+	"dariah-national-consortia": v.optional(v.array(v.string()), []),
 });
 
 export type CurriculumMetadata = v.InferOutput<typeof curriculumMetadataSchema>;
@@ -54,6 +55,7 @@ export const resourceMetadataSchema = v.object({
 		v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) }),
 	),
 	sources: v.array(v.object({ id: v.string(), name: v.string() })),
+	"dariah-national-consortia": v.optional(v.array(v.string()), []),
 });
 
 export type ResourceMetadata = v.InferOutput<typeof resourceMetadataSchema>;
@@ -115,6 +117,7 @@ export async function createMetadata(): Promise<{
 				resources: item.metadata.resources.map((resource) => {
 					return { id: resource.value, collection: resource.discriminant };
 				}),
+				"dariah-national-consortia": item.metadata["dariah-national-consortia"],
 			});
 		}),
 	);
@@ -131,7 +134,6 @@ export async function createMetadata(): Promise<{
 			(await client.collections[name].all()).map(async (item) => {
 				const isDraft = "draft" in item.metadata && item.metadata.draft === true;
 				if (isDraft) return;
-
 				resources.push({
 					id: item.id,
 					collection: name,
@@ -159,6 +161,7 @@ export async function createMetadata(): Promise<{
 						"sources" in item.metadata
 							? await Promise.all(item.metadata.sources.map(createSource))
 							: [],
+					"dariah-national-consortia": item.metadata["dariah-national-consortia"],
 				});
 			}),
 		);

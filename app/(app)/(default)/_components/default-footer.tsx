@@ -108,7 +108,7 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 						return (
 							<li key={key} className="inline-flex">
 								<Link
-									className="rounded p-2 text-center transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
+									className="rounded-sm p-2 text-center transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
 									href={link.href}
 								>
 									{link.label}
@@ -128,7 +128,7 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 							<li key={kind}>
 								<a
 									aria-label={t(`navigation-social-media.items.${kind}`)}
-									className="inline-block rounded p-2 transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
+									className="inline-block rounded-sm p-2 transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
 									href={href}
 								>
 									<Icon className="size-4" />
@@ -149,7 +149,7 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 							link(chunks) {
 								return (
 									<a
-										className="rounded transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
+										className="rounded-sm transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
 										href="https://creativecommons.org/licenses/by/4.0/"
 									>
 										{chunks}
@@ -170,7 +170,7 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 				</Suspense>
 				<span> &bull; </span>
 				<Link
-					className="rounded transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
+					className="rounded-sm transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
 					href={createHref({ pathname: "/imprint" })}
 				>
 					{t("navigation.items.imprint")}
