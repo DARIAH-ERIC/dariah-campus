@@ -18,6 +18,7 @@ export const createTags = createCollection("/tags/", (paths, _locale) => {
 			}),
 			content: fields.mdx({
 				label: "Description",
+				description: "Please add a short description for the tag (ca. 50 words)",
 				options: {
 					blockquote: false,
 					codeBlock: false,
