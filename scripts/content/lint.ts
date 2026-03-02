@@ -90,7 +90,10 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 										),
 									}),
 								),
-								social: v.array(v.object({ discriminant: v.string(), value: v.string() })),
+								social: v.optional(
+									v.array(v.object({ discriminant: v.string(), value: v.string() })),
+									[],
+								),
 							}),
 							frontmatter,
 						);
@@ -136,7 +139,10 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 					if (directory.includes("people")) {
 						const result = v.parse(
 							v.object({
-								social: v.array(v.object({ discriminant: v.string(), value: v.string() })),
+								social: v.optional(
+									v.array(v.object({ discriminant: v.string(), value: v.string() })),
+									[],
+								),
 							}),
 							frontmatter,
 						);
