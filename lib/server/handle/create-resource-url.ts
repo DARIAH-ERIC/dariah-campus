@@ -3,7 +3,7 @@ import { assert, createUrl } from "@acdh-oeaw/lib";
 import { env } from "@/config/env.config";
 
 export function createResourceUrl(path: string): URL {
-	const message = "Invalid resource path.";
+	const message = `Invalid resource path: ${path}`;
 
 	assert(path.endsWith("/index.mdx"), message);
 
