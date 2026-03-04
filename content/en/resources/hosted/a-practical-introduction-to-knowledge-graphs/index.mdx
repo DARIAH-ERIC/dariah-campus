@@ -72,7 +72,7 @@ In this section we will delve into the world of Knowledge Graphs and the represe
 
 ### What is a Knowledge Graph?
 
-A Knowledge Graph (KG) is an organized representation of data in the form of entities and their relationships. Entities can represent various concepts (such as real objects, events, persons, or types of entities), while the relationships among them capture their semantic context, meaning they describe how they are connected. Typically, KGs are implemented in a form of Directed Labeled Graph, meaning a structure of interconnected i) nodes and ii) links among them. Both nodes and links bear a label that is used for describing their semantic meaning in natural language. In addition, the links can bear a direction, that describes how their semantic meaning is applied (i.e. from which node it starts and to which node it ends).&#x20;
+A Knowledge Graph (KG) is an organized representation of data in the form of entities and their relationships. Entities can represent various concepts (such as real objects, events, persons, or types of entities), while the relationships among them capture their semantic context, meaning  they describe how they are connected. Typically, KGs are implemented in a form of **Directed Labeled Graph**, meaning a structure of interconnected i) nodes and ii) links among them. Both nodes and links bear a label that is used for describing their semantic meaning in natural language. In addition, the links can bear a direction, that describes how their semantic meaning is applied (i.e. from which node it starts and to which node it ends).&#x20;
 
 As an example, consider the phrase: “Parthenon is located in Athens”. Using the above principles, we could represent the knowledge encoded in the above phrase as a directed labeled graph, where two nodes represent the Parthenon and Athens and a relationship *isLocatedIn(Parthenon,Athens)* links Parthenon to Athens based on the semantics declared by its label. This transformation is shown in the following figure.
 
@@ -118,7 +118,8 @@ Adopting the above guidelines allows for transformation of the way information i
 
 * A Resource is every “object” or “thing” that we want to talk about.&#x20;
 * Every resource has a URI. A URI can be a URL for the case of web pages or any other kind of unique identifier.&#x20;
-* Properties are a special kind of resource: they describe relations between other resources ●	Like all resources, properties are also identified by URIs.&#x20;
+* Properties are a special kind of resource: they describe relations between other resources&#x20;
+* Like all resources, properties are also identified by URIs.&#x20;
 * Statements are assertions regarding the properties of resources.&#x20;
 * A statement is an entity-attribute-value triple, consisting of a resource, a property and a value.
 * The value can be either a resource or a literal.&#x20;
@@ -136,7 +137,7 @@ This statement is in the form of resource-property-resource and consists of thre
   In this example, each URI is actually a URL i.e. a unique identifier denoting the location of the resource on the web (its web address). The first part of each URI (i.e. the part of the address until the name of the resource) represents the namespace, the space where all the resources are getting their names. In other words, the namespace Wikipedia ([https://en.wikipedia.org](https://en.wikipedia.org)) is where the name Parthenon is defined, while the namespace DBpedia ([http://dbpedia.org](http://dbpedia.org)) is where the resources location and Athens are defined. Through RDF any individual namespace can be interconnected based on this simple resource-property-value triple form.
 </Callout>
 
-Up until now we have managed to represent knowledge in a machine-readable way, allowing us to talk about anything in the form of resource-property-value triples. In this way, RDF is a universal language that lets users describe resources using their own vocabularies. However, RDF doesn’t make any assumptions regarding the meaning of these resources. In the previous example, the only assumption that is made is that Parthenon is a resource (since it is assigned a URI). Nothing is expressed regarding what Parthenon is. To do so, we need to build vocabularies (i.e. groups of terms along with their definitions, also known as controlled vocabularies -CVs), hierarchies of terms (i.e. taxonomies) or ontologies. In other words, we need to extend RDF with the ability to define our own schemas for describing the domains of knowledge we need to represent. This is accomplished by [RDF Schema (RDFS)](https://www.w3.org/TR/rdf12-schema/), an extension of RDF, implemented as a set of URIs that are universally declared by W3C  (World Wide Web Consortium) and define -among others- the following concepts:
+Up until now we have managed to represent knowledge in a machine-readable way, allowing us to talk about anything in the form of resource-property-value triples. In this way, RDF is a universal language that lets users describe resources using their own vocabularies. However, RDF doesn’t make any assumptions regarding the meaning of these resources. In the previous example, the only assumption that is made is that Parthenon is a resource (since it is assigned a URI). Nothing is expressed regarding *what* Parthenon is. To do so, we need to build vocabularies (i.e. groups of terms along with their definitions, also known as controlled vocabularies -CVs), hierarchies of terms (i.e. taxonomies) or ontologies. In other words, we need to extend RDF with the ability to define our own schemas for describing the domains of knowledge we need to represent. This is accomplished by [RDF Schema (RDFS)](https://www.w3.org/TR/rdf12-schema/), an extension of RDF implemented as a set of URIs that are universally declared by <Link link={{"discriminant":"external"}}>[W3C  (World Wide Web Consortium)](https://www.w3.org/)</Link> and define -among others- the following concepts:
 
 * A class can be thought as a set of elements (rdfs:class).&#x20;
 * Individual objects that belong to a class a referred to as instances of the class (rdfs:type).&#x20;
@@ -171,7 +172,6 @@ So, in our initial statement “Parthenon is Located in Athens” each resource 
   * **rdfs:domain** and **rdfs:range:** These properties specify the classes of entities that can be subjects and objects of a particular property, respectively. This helps define the scope of relationships between entities.&#x20;
   * **rdfs:subPropertyOf:** This property establishes a hierarchical relationship between properties, indicating that one property is a subproperty of another. For instance, if *hasName* is a subproperty of *hasProperty*, then any entity related by *hasName* is also related by *hasProperty*.&#x20;
   * **rdfs:label** and **rdfs:comment**: These properties provide human-readable labels and comments for entities, which can be helpful in understanding the relationships between entities.&#x20;
-  * **owl:ObjectProperty** and **owl:DatatypeProperty**: These properties define the types of relationships between entities and their associated values.&#x20;
 </Callout>
 
 ### Syntax Formats
@@ -188,7 +188,7 @@ As with every language, syntax provides a way to “serialize” what is articul
 
 In the following example we will demonstrate the basic functionalities of RDFLib by designing our own KG. Specifically, we will focus in i) creating a domain ontology by declaring our classes and properties and ii) serializing our schema into a file. Our use case will be the creation of a KG regarding scholarly work in humanities. In order to do so we will borrow a few concepts from Scholarly Ontology (SO), a conceptual framework specifically designed to document scholarly activities, as they appear in research articles.
 
-For the purposes of our use case we will build a small ontology consisting of the core concepts and relationships of SO, i.e. those of i) Activity, describing any research activities or parts thereof (such as an archaeological excavation, a biological experiment, a social study, etc.); ii) Method, denoting any plan, technique or procedure that describes how the activity was conducted; iii) Person, denoting any researcher that participates in an activity and iv) Article, denoting the research article where the above instances were derived from. This schema is illustrated in the following figure:
+For the purposes of our use case we will build a small ontology consisting of the core concepts and relationships of SO, i.e. those of i) *Activity*, describing any research activities or parts thereof (such as an archaeological excavation, a biological experiment, a social study, etc.); ii) *Method*, denoting any plan, technique or procedure that describes how the activity was conducted; iii) *Person*, denoting any researcher that participates in an activity and iv) *Article*, denoting the research article where the above instances were derived from. This schema is illustrated in the following figure:
 
 <Figure src="/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/exersice-ontology.png" alt="ontology example" alignment="center">
 
@@ -202,7 +202,7 @@ In this example, we define only one direction for each property of our ontology 
 
 ### Datasets as source for Knowledge Graph population
 
-As mentioned in the previous section, a Knowledge Graph (KG) is an organized representation of data in the form of entities and their relationships. Along this line, in order to build a KG we first need to gather data out of which we will create its instances. Instances of a KG refer to the actual objects that populate the KG wheter they are entities ore relationships. &#x20;
+As mentioned in the previous section, a Knowledge Graph (KG) is an organized representation of data in the form of entities and their relationships. Along this line, in order to build a KG we first need to gather data out of which we will create instances. Instances of a KG refer to the actual objects that populate the KG wheter they are entities or relationships. &#x20;
 
 <Callout kind="tip">
   Data gathering can be achieved through various ways. Indicatively, we can use Application Programming Interfaces (APIs) and retrieve data from publishing repositories such as [Springer](https://www.springeropen.com/get-published/indexing-archiving-and-access-to-data/api), [Elsevier](https://dev.elsevier.com/), [Constellate](https://constellate.org/builder?unigrams=patients,%20health), etc.; we can use database endpoints and retrieve our data using a query language (e.g. SPARQL queries in an RDF repository like [DBPedia](https://www.dbpedia.org/), [Wikidata](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service), etc.); or we could download entire datasets from the web (e.g. through websites like [Kaggle](https://www.kaggle.com/), [Data.Gov](https://data.gov/), or using [Google Dataset Search](https://datasetsearch.research.google.com/), etc.). Alternatively, we could exploit the structured content of web sites and gather our data through a technique called web scraping.&#x20;
@@ -219,10 +219,8 @@ After aquiring our dataset, the next step is to extract information from it whic
 
   To train a ML model, we need training data, i.e. examples of text along with the labels we want the model to predict. When training a ML model, we don’t just want it to memorize our examples – we want it to come up with a “theory” that can be generalized across unseen data. That’s why the training data should always be representative of the data we want to process. A ML model trained on Twitter, for example, will most likely perform badly on research articles, etc.
 
-  This also means that in order to know how the model is performing, and whether it’s learning the right things, we don’t only need training data but also need evaluation data. If we only test the model with the data it was trained on, we’ll have no idea how well it’s generalizing to new stuff. If we want to train a model from scratch, we usually need at least a few hundred examples for both training and evaluation. In general the size of the training / evaluation datasets can vary from few hundreds to thousands, depending on the complexity of the task at hand and the types of ML models to be used.
+  This also means that in order to know how the model is performing, and whether it’s learning the right things, we don’t only need training data but also need evaluation data. If we only test the model with the data it was trained on, we’ll have no idea how well it’s generalizing to new stuff. If we want to train a model from scratch, we usually need at least a few hundred examples for both training and evaluation. In general the size of the training / evaluation datasets can vary from few hundreds to thousands, depending on the complexity of the task at hand and the types of ML or DL models to be used.
 </Callout>
-
-
 
 <Callout kind="important" title="Evaluation metrics">
   The most common way to evaluate a ML model is by measuring Precision, Recall and F1 scores. Each score measures different aspects of the performance of the model.&#x20;
@@ -250,8 +248,6 @@ After aquiring our dataset, the next step is to extract information from it whic
   * **F1 Score = 2 × (0.8 × 0.4) / (0.8 + 0.4) = 0.533 or 53.3%**
 </Callout>
 
-
-
 Starting with the parsed text in the input, the basic steps of the information extraction workflow are can be seen in the followung figure:
 
 <Figure src="/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/ssh-workflow.png" alignment="center">
@@ -273,7 +269,7 @@ Entity Extraction from text involves the recognition and extraction of textual s
 
 #### Entity Disambiguation
 
-Entity disambiguation (ED) is **a core Natural Language Processing (NLP) task that resolves ambiguity by linking mentions of real-world things (like people, places, organizations) in text to their unique, correct entry in a knowledge base, preventing confusion between homonyms** (e.g., "Apple" the fruit vs. "Apple" the company). It's crucial for accurate information extraction, semantic search, and AI systems, allowing them to understand context and identify specific entities, even when names are common or shared. Usually tntity disambiguation is conducted in **named entities** (i.e. entities that can be found in literature under the same proper name or variations of it) and perform the disambiguation by associating them with their corresponding entry in a Knowledge Base such as Wikipedia.
+Entity disambiguation (ED) is **a core Natural Language Processing (NLP) task that resolves ambiguity by linking mentions of real-world things (like people, places, organizations) in text to their unique, correct entry in a knowledge base, preventing confusion between homonyms** (e.g., "Apple" the fruit vs. "Apple" the company). It's crucial for accurate information extraction, semantic search, and AI systems, allowing them to understand context and identify specific entities, even when names are common or shared. Usually entity disambiguation is conducted in **named entities** (i.e. entities that can be found in literature under the same proper name or variations of it) and performed by associating them with their corresponding entry in a Knowledge Base such as Wikipedia.
 
 <Callout kind="note" title="Knowledge Base vs Knowledge Graph">
   A **knowledge base** is a broad term for a repository of information (structured or unstructured) for easy access, while a **knowledge graph** is a specific *type* of knowledge base that uses a graph structure (nodes and edges) to explicitly represent entities and their semantic relationships, enabling complex reasoning by machines for AI tasks like intelligent search and recommendations. Essentially, all knowledge graphs are knowledge bases, but not all knowledge bases are knowledge graphs; **the key difference is the emphasis on interconnected, meaning-rich relationships in a graph**. 
@@ -301,9 +297,7 @@ Especially for Semantic Web, there are several properties in [RDFS](https://www.
 
 Relation (or relationship) Extraction (RE) is the task of identifying and extracting semantic relationships from a text. Extracted relationships usually occur between two or more entities of a certain type (e.g. Person, Organisation, Location, etc.) and fall into a number of semantic categories (e.g. isFriendOf, isEmployedBy, livesIn, etc.). In this sence, RE is crucial for building knowledge graphs and powering applications like question answering and search, moving from unstructured text to structured knowledge.&#x20;
 
-As with other IE tasks, RE can be achieved using methods ranging from rule-based systems, to ML / DL pretrained models or even by prompting Large Language Models (LLMs). Depending on the methodology, varius aspects are examined in order to extract a relation. For example, in rule-based aproaches, usualy the textual characteristics of the extracted entities play a key role in defining the rules for relation extraction. Such characteristics are, for example, to check whether the extracted entities  overlap, if they are included in the same sentence/paragraph, if they contain any specific lexical indicators, etc..  In ML / DL apporaches extracting relations is usualy treated as a text classification problem. This requires examining all entity pairs. Specifically, for every pair of extracted entities, the text chunk bounded by these two entities, \[entity1, ..., entity2], is treated as expressing a candidate relation. In order to restrict the search to a reasonable set of candidates but also to allow for possible coreferences among sentences to be resolved, a maximum limit (e.g. the bounding entities must be in the same paragraph or in the same sentence) is set for candidate creation. A classifier then determines whether the bounding entities of the chunk satisfy the relation in question.&#x20;
-
-
+As with other IE tasks, RE can be achieved using methods ranging from rule-based systems, to ML / DL pretrained models or even by prompting Large Language Models (LLMs). Depending on the methodology, various aspects are examined in order to extract a relation. For example, in rule-based aproaches, usualy the textual characteristics of the extracted entities play a key role in defining the rules for relation extraction. Such characteristics are, for example, to check whether the extracted entities  overlap, if they are included in the same sentence/paragraph, if they contain any specific lexical indicators, etc..  In ML / DL apporaches extracting relations is usualy treated as a text classification problem. This requires examining all entity pairs. Specifically, for every pair of extracted entities, the text chunk bounded by these two entities, \[entity1, ..., entity2], is treated as expressing a candidate relation. In order to restrict the search to a reasonable set of candidates but also to allow for possible coreferences among sentences to be resolved, a maximum limit (e.g. the bounding entities must be in the same paragraph or in the same sentence) is set for candidate creation. A classifier then determines whether the bounding entities of the chunk satisfy the relation in question.&#x20;
 
 ---
 
@@ -325,8 +319,6 @@ Let’s dive into each of these principles one by one to make them clearer: &#x2
 **Uniform Resource Identifiers** are a crucial element used to uniquely identify resources, including both physical and abstract objects when it comes to publishing information for the Semantic Web. In addition, the use of -commonly used by all web servers- HTTP protocol in order to create those URIs allows for easy adaptation and recognition of those identifiers by any server in the web. Focusing on the anatomy of a URI this can be decomposed into the following parts:
 
 ![the anatomy of a URI](/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/image.png)
-
-
 
 **Protocol:**
 This specifies the protocol or mechanism used to access the resource, such as http, https, or urn.
@@ -353,8 +345,6 @@ As with any other language, queries in SPARQL must follow a specific format. An 
 
 </Figure>
 
-
-
 Every SPARQL query must consist at least of two sections:&#x20;
 
 1. the section where we specify the type of the result we want and the variables to appear in the query results (query result clause) and&#x20;
@@ -366,15 +356,8 @@ For readability purposes we use the shortcut foaf instead of the entire URI of t
 
 A SPARQL query can be executed in a triple store via a SPARQL endpoint. Running it would cause the traversal of the KG and the retrieval of all the values that match the specified pattern (i.e. are connected with any resource through the foaf:name property in our case). After the values are retrieved, they are sorted in alphabetical order and then the first ten are displayed to the user (as specified by the modifiers order by and limit respectively). For a thorough exploration of the SPARQL language you can visit the official SPARQL W3C website.
 
-
-
 <Callout kind="note" title="Triple stores and Endpoints">
   A triple store (or RDF store) is **a specialized graph database management system designed to store, query, and manage data structured as triples**—Subject-Predicate-Object statements—which form the foundation of knowledge graphs. They are highly efficient for storing semantic, interconnected data, utilizing the Resource Description Framework (RDF) and querying via SPARQL to link diverse datasets. 
 
   A SPARQL endpoint is a web-based service (URL) that allows users to query **RDF** datasets using the **SPARQL query language**. It acts as a gateway to a Knowledge Graph or triplestore, receiving HTTP requests and returning data in formats like JSON, XML, or RDF. These endpoints enable decentralized, interoperable data access across the web. 
 </Callout>
-
-
-
-
-
