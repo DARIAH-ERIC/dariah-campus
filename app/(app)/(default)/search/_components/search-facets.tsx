@@ -29,6 +29,8 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 		attribute,
 		limit: 15,
 		showMore: true,
+		/** Default is 20. */
+		showMoreLimit: 500,
 	});
 
 	return (
