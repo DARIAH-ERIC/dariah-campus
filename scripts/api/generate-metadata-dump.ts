@@ -5,6 +5,7 @@ import { assert, log } from "@acdh-oeaw/lib";
 import * as v from "valibot";
 
 import { client } from "@/lib/content/client";
+import { resources as sharedMetadata } from "@/lib/content/shared-metadata.config";
 
 const formatters = {
 	duration: new Intl.NumberFormat("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
@@ -25,6 +26,8 @@ export const curriculumMetadataSchema = v.object({
 	tags: v.array(v.object({ id: v.string(), name: v.string() })),
 	editors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
 	resources: v.array(v.object({ id: v.string(), collection: v.string() })),
+	domain: v.string(),
+	"target-group": v.string(),
 	"dariah-national-consortia": v.optional(v.array(v.string()), []),
 });
 
@@ -55,6 +58,8 @@ export const resourceMetadataSchema = v.object({
 		v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) }),
 	),
 	sources: v.array(v.object({ id: v.string(), name: v.string() })),
+	domain: v.string(),
+	"target-group": v.string(),
 	"dariah-national-consortia": v.optional(v.array(v.string()), []),
 });
 
@@ -118,6 +123,8 @@ export async function createMetadata(): Promise<{
 					return { id: resource.value, collection: resource.discriminant };
 				}),
 				"dariah-national-consortia": item.metadata["dariah-national-consortia"],
+				domain: sharedMetadata.domain,
+				"target-group": sharedMetadata["target-group"],
 			});
 		}),
 	);
@@ -162,6 +169,8 @@ export async function createMetadata(): Promise<{
 							? await Promise.all(item.metadata.sources.map(createSource))
 							: [],
 					"dariah-national-consortia": item.metadata["dariah-national-consortia"],
+					domain: sharedMetadata.domain,
+					"target-group": sharedMetadata["target-group"],
 				});
 			}),
 		);
