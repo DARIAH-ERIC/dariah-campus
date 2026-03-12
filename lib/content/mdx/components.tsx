@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import { Callout } from "@/components/content/callout";
 import { Diagram, DiagramCaption, DiagramCodeBlock } from "@/components/content/diagram";
 import { Disclosure } from "@/components/content/disclosure";
@@ -48,6 +50,39 @@ export const components = {
 	Tabs,
 	Video,
 	VideoCard,
+
+	/**
+	 * DARIAH-teach components.
+	 *
+	 * Need to decide on Resource
+	 */
+	Resource(
+		props: Readonly<{
+			children: ReactNode;
+			title: string;
+			id: string;
+			moduleId: string;
+			files: Array<{ file: string }>;
+		}>,
+	): ReactNode {
+		const { files } = props;
+
+		return (
+			<aside>
+				{/* FIXME: currently titles are duplicated in markdown  */}
+				{/* <h2>{title}</h2> */}
+				<ul role="list">
+					{files.map(({ file }, index) => {
+						return (
+							<li key={index}>
+								<a href={file}>{file}</a>
+							</li>
+						);
+					})}
+				</ul>
+			</aside>
+		);
+	},
 };
 
 export function useMDXComponents(): MDXProvidedComponents {
