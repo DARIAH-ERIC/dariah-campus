@@ -21,7 +21,7 @@ const icons: Record<Exclude<CalloutKind, "none">, LucideIcon> = {
 };
 
 const calloutStyles = styles({
-	base: "my-12 grid gap-y-3 rounded-md border p-6 shadow [&_*]:text-inherit [&_*::marker]:text-inherit",
+	base: "my-12 grid gap-y-3 rounded-md border p-6 shadow-sm **:text-inherit [&_*::marker]:text-inherit",
 	variants: {
 		kind: {
 			caution:
