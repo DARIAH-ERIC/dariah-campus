@@ -184,15 +184,27 @@ As with every language, syntax provides a way to “serialize” what is articul
 * OWL/XML, an XML syntax specifically developed in order to capture the functional-style-syntax that relates more to the formal structure of ontologies but at the same time being readable by XML parsing tools.&#x20;
 * Manchester, originally developed by the University of Manchester and designed to be as human-readable as possible. Currently can be used by ontology editors such as [Protége](https://protege.stanford.edu/).
 
+### Declaring and Editing a Schema
+
+In order to declare a schema or the actual instances of a Knowledge Graph we need an editor. The latter can support a visual interface for ease of use (such as the open source visual editor <Link link={{"discriminant":"external","value":"https://protege.stanford.edu/"}}>Protégé</Link> that is specifically designed for designing ontologies and supports the SW languages and the majority of syntaxes or any other text editor that supports integration with the language we want to use. When it comes to SW languages, instead of a visual editor we can also use the <Link link={{"discriminant":"external","value":"https://rdflib.readthedocs.io/en/stable/"}}>RDFLib python library</Link> and write RDF statements directly in python using our favorite editor such as <Link link={{"discriminant":"external","value":"https://code.visualstudio.com/"}}>VS studio code</Link>, or <Link link={{"discriminant":"external","value":"https://www.sublimetext.com/"}}>Sublime Text</Link>. The benefits of using RDFLib instead of a visual editor are that, by integrating RDF with a powerful programming language like Python, we can write scripts that automate the design and creation of schemas, queries or the actual instances of Knowledge Graphs. This can be a game changer in i) handling very big structures of data (KGs with millions of triples or very complex schemas); ii) transforming data from one format to another (e.g. from json structure to rdf etc.) or iii) communicating with other repositories through APIs by calling inside our code the appropriate python libraries that handling the above functionalities for us.
+
+
+
+
+
 ### Use Case: Creating an Ontology for research activities
 
 In the following example we will demonstrate the basic functionalities of RDFLib by designing our own KG. Specifically, we will focus in i) creating a domain ontology by declaring our classes and properties and ii) serializing our schema into a file. Our use case will be the creation of a KG regarding scholarly work in humanities. In order to do so we will borrow a few concepts from Scholarly Ontology (SO), a conceptual framework specifically designed to document scholarly activities, as they appear in research articles.
 
-For the purposes of our use case we will build a small ontology consisting of the core concepts and relationships of SO, i.e. those of i) *Activity*, describing any research activities or parts thereof (such as an archaeological excavation, a biological experiment, a social study, etc.); ii) *Method*, denoting any plan, technique or procedure that describes how the activity was conducted; iii) Goal, denoting any objective of an activity; iv) *Article*, denoting any research publication where the above instances are described, documented or mentioned; v) Person, denoting the authors of the publication that participate in the described activities; vi) Topic, denoting the research interests of the authors that also constitute (as author keywords) the topics of the article. This schema is illustrated in the following figure:
+For the purposes of our use case we will build a small ontology consisting of the core concepts and relationships of SO, i.e. those of i) *Activity*, describing any research activities or parts thereof (such as an archaeological excavation, a biological experiment, a social study, etc.); ii) *Method*, denoting any plan, technique or procedure that describes how the activity was conducted; iii) Goal, denoting any objective of an activity; and iv) Person, denoting the authors of the publication that participate in the described activities; This schema is illustrated in the following figure:
 
-<Figure src="/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/screenshot-2026-03-21-at-19.43.46.png" alt="ontology example" alignment="center">
+<Figure src="/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/screenshot-2026-03-22-at-13.24.45.png" alt="ontology example" alignment="center">
 
 </Figure>
+
+
+
+We will declare our classes and relationships in RDF an RDFS data models using Python. For this purpose we can take advantage of the <Link link={{"discriminant":"external","value":"https://rdflib.readthedocs.io/en/stable/"}}>RDFLib</Link> python library&#x20;
 
 In this example, we define only one direction for each property of our ontology for readability purposes. In reality, depending on the information needs, we could also create a separate property for each direction of our semantic relationships (e.g. employs(Activity,Method) and isEmployedBy(Method,Activity), etc.). Creating specific properties for each direction can help for faster query execution when the specific semantic direction of the graph traversal is needed but increases the need for storage since, we add more triples to our KG.
 
