@@ -274,6 +274,27 @@ After gathering our data we need to parse them and extract the clean text prefer
 
 After aquiring our dataset, the next step is to extract information from it which can then be transformed into instances for our Knowledge Graph. This process is called information extraction from text and can be achieved through various ways ranging from simple rule-based methods to more sophisticated machine learning (ML) or deep learning (DL) techniques.&#x20;
 
+Starting with the parsed text in the input, the basic steps of the information extraction workflow are can be seen in the followung figure:
+
+<Figure src="/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/ssh-workflow.png" alignment="center">
+
+</Figure>
+
+#### Entity Extraction
+
+Entity Extraction from text involves the recognition and extraction of textual spans that can be associated with a specific type of entity. Examples of extracted entities include phrases in text denoting dates, historic events, persons' names, locations, organizations, etc. The extraction of such entities varies in difficulity based on the lexical complexity of the entity type and relies on the employment of varius methods ranging from: i) lexico-syntactic rules that need to be identified in text (using for example regular expressions) in order to match the textual span with the entity; ii) ML or DL models that are previously trained (or fine tuned in case of DL models) in extracting the specific type of entity from text. Along this line, entity extraction is usually treated as a token classification or sequence labelling task where a classifier (trained ML or DL model) predicts whether each token in the input belongs to the entity (or entities) in question or not.
+
+<Callout kind="note" title="A word on Tokens">
+  In machine learning, a token is the basic unit of data that an AI model processes, essentially breaking down text or other inputs into manageable pieces like words, sub-words, or characters, allowing the model to understand patterns, context, and meaning for tasks like language generation or analysis. Depending on the tockenizer and the purposes of the task, tokens can be:
+
+  * **Words:** Simple splitting by spaces (e.g., "Hello world" becomes \["Hello", "world"]).
+  * **Sub-words/Parts of Words:** More advanced tokenizers break down complex words (e.g., "tokenization" might become "token" + "ization") to handle rare words better.
+  * **Characters:** Individual letters, numbers, or symbols.
+  * **Punctuation:** Commas, periods, and other symbols are often separate tokens
+</Callout>
+
+
+
 <Callout kind="note" title="Using Machine Learning Methods">
   Using Machine Learning methods for a specific task requires ML models that are trained approprietly in order to be able to perform for the task at hand.
 
@@ -306,25 +327,6 @@ After aquiring our dataset, the next step is to extract information from it whic
   * Precision = 0.8&#x20;
   * Recall = 0.4 Then:&#x20;
   * **F1 Score = 2 × (0.8 × 0.4) / (0.8 + 0.4) = 0.533 or 53.3%**
-</Callout>
-
-Starting with the parsed text in the input, the basic steps of the information extraction workflow are can be seen in the followung figure:
-
-<Figure src="/assets/content/assets/en/resources/hosted/a-practical-introduction-to-knowledge-graphs/ssh-workflow.png" alignment="center">
-
-</Figure>
-
-#### Entity Extraction
-
-Entity Extraction from text involves the recognition and extraction of textual spans that can be associated with a specific type of entity. Examples of extracted entities include phrases in text denoting dates, historic events, persons' names, locations, organizations, etc. The extraction of such entities varies in difficulity based on the lexical complexity of the entity type and usually involves the employment of ML or DL models that are previously trained (or fine tuned in case of DL models) in extracting the specific type of entity from text. Along this line, entity extraction is usually treated as a token classification or sequence labelling task where a classifier (trained ML or DL model) predicts whether each token in the input belongs to the entity (or entities) in question or not.
-
-<Callout kind="note" title="A word on Tokens">
-  In machine learning, a token is the basic unit of data that an AI model processes, essentially breaking down text or other inputs into manageable pieces like words, sub-words, or characters, allowing the model to understand patterns, context, and meaning for tasks like language generation or analysis. Depending on the tockenizer and the purposes of the task, tokens can be:
-
-  * **Words:** Simple splitting by spaces (e.g., "Hello world" becomes \["Hello", "world"]).
-  * **Sub-words/Parts of Words:** More advanced tokenizers break down complex words (e.g., "tokenization" might become "token" + "ization") to handle rare words better.
-  * **Characters:** Individual letters, numbers, or symbols.
-  * **Punctuation:** Commas, periods, and other symbols are often separate tokens
 </Callout>
 
 #### Entity Disambiguation
