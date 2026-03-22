@@ -198,7 +198,17 @@ For the purposes of our use case we will build a small ontology consisting of th
 
 </Figure>
 
-We will declare our classes and relationships in RDF an RDFS data models using the Python RDFLib package. The script for installing RDFLib and calling the appropriate functions can be seen as follows:
+We will declare our classes and relationships in RDF an RDFS data models using the Python RDFLib package. The latter can be installed using pip in command line or a terminal:
+
+```
+pip install rdflib
+```
+
+<Callout kind="tip" title="RDFLib">
+  RDFLib uses python containers called Graphs to interface with RDF. Graph containers function as an intermediate between the programmer and the actual RDF data. So, the user can perform any common operation (like adding /subtracting triples to a graph, traverse the graph, etc.) by just using pythonic methods and functions. At the end, the KG can be serialized into a file through integrated RDF serializers, supporting the majority of RDF syntaxes.
+</Callout>
+
+Having installed RDFLib, the script for declaring the above classes and relationships is illustrated below:
 
 ```
 from rdflib import Graph, Namespace, RDF, URIRef, RDFS
@@ -238,13 +248,11 @@ g.add((hasParticipant, RDFS.range, actor))
 g.add((hasObjective, RDFS.domain, activity))
 g.add((hasObjective, RDFS.range, goal))
 
-so_schema_file_name = './so_schema_sample.rdf'
+#serialize our graph object using the rdf/xml syntax 
+#and store it into a file named "sample_schema.rdf":
+so_schema_file_name = './sample_schema.rdf'
 g.serialize(destination=so_schema_file_name, format='xml')
 ```
-
-<Callout kind="tip" title="RDFLib">
-  RDFLib uses python containers called Graphs to interface with RDF. Graph containers function as an intermediate between the programmer and the actual RDF data. So, the user can perform any common operation (like adding /subtracting triples to a graph, traverse the graph, etc.) by just using pythonic methods and functions. At the end, the KG can be serialized into a file through integrated RDF serializers, supporting the majority of RDF syntaxes.
-</Callout>
 
 In this example, we define only one direction for each property of our ontology for readability purposes. In reality, depending on the information needs, we could also create a separate property for each direction of our semantic relationships (e.g. employs(Activity,Method) and isEmployedBy(Method,Activity), etc.). Creating specific properties for each direction can help for faster query execution when the specific semantic direction of the graph traversal is needed but increases the need for storage since, we add more triples to our KG.
 
