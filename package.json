@@ -166,18 +166,6 @@
 		"unified-lint-rule": "^3.0.1",
 		"vfile-reporter": "^8.1.1"
 	},
-	"browserslist": {
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		],
-		"production": [
-			">=0.75%",
-			"not dead",
-			"not op_mini all"
-		]
-	},
 	"lint-staged": {
 		"*.@(js|ts|tsx)": [
 			"eslint --fix",
