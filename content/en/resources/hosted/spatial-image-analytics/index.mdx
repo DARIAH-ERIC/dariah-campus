@@ -173,23 +173,17 @@ You can continue practising this approach by repeating the process for image fol
   <H5PWrapper path="spatial-image-analytics/georeferencing-221" />
 </Callout>
 
-
-
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/bc9fb381e196999b196eb590e161249a6272743d-36181.PNG" alt="Geotag result" alignment="stretch">
   *Figure 4. An instance of the batch image geotagging result in Geosetter.*
 </Figure>
 
-###
-
-## Image Geotagging Assignment&#x20;
-
-### **Optional assignment**
+### Image Geotagging Assignment&#x20;
 
 Use a set of archival images to apply the manual geotagging approach you learnt in this section. You can choose a set of images based on your background and previous experience, or something related to a topic you are studying in another module, or something that simply interests you. If you don't have a set of images available you can visit a humanities repository (e.g. <Link link={{"discriminant":"external","value":"http://portal.europeana.eu/portal/en"}}>Europeana Collections</Link>) and find a collection of images to work with.
 
 ## Geotagging setup&#x20;
 
-&#x20;In order to be able to complete Unit I you will need to:
+&#x20;In order to be able to complete this 'Image Geotagging' section you will need to:
 
 * download and setup Geosetter, a specialised freeware for editing image metadata and geotagging. Available at [http://www.geosetter.de/en/download/](http://www.geosetter.de/en/download/)
 
@@ -233,9 +227,9 @@ Finally, go to **Internet** tab and change the URL address under Geonames to: <L
 
 ---
 
-## Background and Method
+## 2 What is Spatial Image Analytics?
 
-### What is Spatial Image Analytics?
+### 2.1. Background and Method
 
 Image analysis refers to any process of obtaining meaningful information from images and image analytics refer to processes involving the application of digital techniques for the same purpose. Humans are very well equipped to extract meaning from individual images and perform sophisticated analysis of small datasets but not adept at processing a large number of records. Computation, on the other hand, can handle large amounts of data to identify new correlations and interpretations for various disciplines and applications.
 
@@ -251,7 +245,7 @@ Then the term 'analytics' indicates that this type of image data inquiries is pr
 
 In the following section, you are going to learn how to perform a particular type of analysis which explores spatial patterns of incident data. The 'incidents,' in this case, will be the locations of images recorded by visitors in the second scenario of Unit I (see section Batch Image Geotagging).
 
-### Introduction to Hotspot Analysis
+### 2.2 Introduction to Hotspot Analysis
 
 A significant step towards making better sense of the collected image data in our working scenario is the HotSpot (HS) Analysis. This analysis is carried out in ArcMap, the desktop application of ESRI suite, with the aggregated and integrated points of image locations captured by the visitors. For this analysis, ModelBuilder, a toolbox in ArcMap that acts as a visual programming language for building geoprocessing workflows is used to create a conceptual model of the analysis. For instance, a typical workflow may include some geoprocessing tools such as *Copy Features*, *Integrate*, *Collect Events* and *Hot Spot Analysis*.
 
@@ -260,40 +254,47 @@ The methodological procedure of conducting HS analysis is well documented in Arc
 A simple hotspot analysis (Hotspot Analysis with Rendering) can be a very useful spatial statistical approach for cases where you have good knowledge of the geographic extent that spatial phenomena take place and you require a simple method to spatially classify image datasets. The heritage scenario discussed in *Unit I* offers a good example. In this research study, the dataset consists of 1656 geotagged images recorded by visitors at the archaeological site of Gournia, a Minoan urban settlement. For this type of study, you will usually have a good knowledge of the case and site-specific parameters (e.g. the geolocation accuracy, the dense urban character and relatively small size of the site and the visitor-space interaction approach), and better control over the scale of the investigation. The assumption is that certain locations attract visitors' attention more than others not only because of a single attraction (e.g. an impressive feature of the site) but because of a combination of features and site attributes in around a small area. Then each image (feature) is processed within the context of neighboring features based on a designated distance. This way, images that were captured outside the distance of the target feature each time do not influence calculations.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/78dcdc392cebac94fbc0992cc80ede5acfaed240-36209.jpg" alt="Gournia_HS analysis" alignment="stretch">
-  *Figure 10*
+  *Figure 11*
 </Figure>
 
 The final output is a cluster analysis visualisation indicating the hotspots or points of interest (statistically significant locations). The clusters here represent classified areas depending on how many images were recorded by visitors the most at certain locations and provide a useful exploration of the visitor-space interaction. This particular analysis generated 58 unique locations, the hotspots, which represent weighted clusters of image data. The resulted clusters were classified and visualised with a colour ramp. Based on the latter, warm colours indicate higher values of weighted clusters and cold indicate lower values. As you can see in the image, the red dots indicate areas where visitors captured the most images while the blue dots indicate areas with the least image recordings. The exact value of each generated HS is found in the ICOUNT field, which is the resultant count attribute indicating the number of events/image points contained in each HS. It is also worth mentioning that in order to complete the interpretation of the data, other qualitative image analyses complemented the HS analysis such as the thematic classification of images for each hotspot.
 
 To continue to the next section, you will need to have completed the <Link link={{"discriminant":"external","value":"https://clarin.oeaw.ac.at/moodledariahteach/mod/page/view.php?id=384"}}>Spatial analysis setup</Link> guidelines and launch ArcMap.
 
-### Hotspot analysis for image data: tutorial
+### 2.3 Hotspot analysis for image data: tutorial
 
-**Adding a Map** \*Figure 1. Adding map from ArcGIS Online.\*Launch ArcMap. Before preparing for the actual analysis we first need to add a background map (basemap) in our ArcMap workspace. By default, when you launch ArcMap, you will be prompted to choose between opening a new map or creating one from a template. Choose to create one and select *blank map*. Now you will need to select an open source map from ArcGIS Online. Go to **File** and click **ArcGIS online** and proceed to sign in. For this tutorial, you need to add a basemap from Greece. On the search box type for maps and data by using the term ‘Greece’. You can choose any map you prefer, but it is recommended that you choose a detailed topographic map (e.g. such as the one produced by the Community Maps Programme, see Fig. 1).
+#### **Adding a Map**&#x20;
+
+Launch ArcMap. Before preparing for the actual analysis we first need to add a background map (basemap) in our ArcMap workspace. By default, when you launch ArcMap, you will be prompted to choose between opening a new map or creating one from a template. Choose to create one and select *blank map*. Now you will need to select an open source map from ArcGIS Online. Go to **File** and click **ArcGIS online** and proceed to sign in. For this tutorial, you need to add a basemap from Greece. On the search box type for maps and data by using the term ‘Greece’. You can choose any map you prefer, but it is recommended that you choose a detailed topographic map (e.g. such as the one produced by the Community Maps Programme, see Fig. 12).
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/e7411e975e10b7b2ac4d859afcb80e82dff27d29-36212.PNG" alt="basemap spatial analysis tutorial" alignment="stretch">
-  *Figure 11*
+  *Figure 12. Adding map from ArcGIS Online.*
 </Figure>
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/9ba055fc0f23e81fd6618b47bf4bc3fbff180da7-36214.PNG" alt="identifier" alignment="stretch">
-  *Figure 12. Image data points and Identify window in ArcMap.*
+  *Figure 13. Image data points and Identify window in ArcMap.*
 </Figure>
 
 #### **Data Management**
 
-On the right of the ArcMap interface, open the **Catalog** menu. Here you will find all sets of tools (toolboxes) required for setting up and running the analysis. First, you will have to convert your geotagged image data to points. Under **Data Management Tools.tbx**, go to **Photos>Geotagged Photos To Points**. In the **Input Folder** field, navigate to the directory where you have saved your geotagged images from Unit I and select the respective folder. To do this, you will need first to establish a folder connection so that ArcMap knows each time where you keep your data. Click on the folder icon, select **Connect To Folder,** navigate to the folder and **Add** it to your connected folders. Both input and output fields are filled in automatically. You can choose to specify the location where the analysis will save the invalid photos table and **Add Photos As Attachments**. Both these options are preferred for providing better control over the analysis results at the interpretation stage. Select ok and notice the new layer with the image data created on the left, under **Table of Contents** and the points of data overlayed on the map area. You can explore and edit the properties of this new layer by right clicking the layer and selecting **Properties**. On the **Source** tab, notice the Geographic Coordinate System and Datum information. The performed Data Management approach uses by default the same coordinate system with the input data (GCS\_WGS\_1984, D\_WGS\_1984). Also, you can change the **Symbology** properties to enhance the visual output of the data. Return to the toolbar section, select **Identify** and hover the cursor over the image points. Click one of the points and in the opened window notice the available metadata (e.g. *Location, Name, Date* and *Path*). From **Path**, you can access and view the raster image file which has been attached to the respective image point.
+On the right of the ArcMap interface, open the **Catalog** menu. Here you will find all sets of tools (toolboxes) required for setting up and running the analysis. First, you will have to convert your geotagged image data to points. Under **Data Management Tools.tbx**, go to **Photos>Geotagged Photos To Points**. In the **Input Folder** field, navigate to the directory where you have saved your geotagged images from the Image Geotagging section and select the respective folder. To do this, you will need first to establish a folder connection so that ArcMap knows each time where you keep your data. Click on the folder icon, select **Connect To Folder,** navigate to the folder and **Add** it to your connected folders. Both input and output fields are filled in automatically. You can choose to specify the location where the analysis will save the invalid photos table and **Add Photos As Attachments**. Both these options are preferred for providing better control over the analysis results at the interpretation stage. Select ok and notice the new layer with the image data created on the left, under **Table of Contents** and the points of data overlayed on the map area. You can explore and edit the properties of this new layer by right clicking the layer and selecting **Properties**. On the **Source** tab, notice the Geographic Coordinate System and Datum information. The performed Data Management approach uses by default the same coordinate system with the input data (GCS\_WGS\_1984, D\_WGS\_1984). Also, you can change the **Symbology** properties to enhance the visual output of the data. Return to the toolbar section, select **Identify** and hover the cursor over the image points. Click one of the points and in the opened window notice the available metadata (e.g. *Location, Name, Date* and *Path*). From **Path**, you can access and view the raster image file which has been attached to the respective image point.
 
-**HotSpot Analysis with Rendering** Once the data are ready for analysis you will proceed with building the conceptual model for the analysis. On the toolbar, go to **Geoprocessing** and select **ModelBuilder**. Begin creating the model by dragging the image layer from the ArcMap Table of Contents into the model. Next add the **Copy Features** geoprocessing tool to your model (drag from ArcToolbox). The Copy Features tool is located in **Data Management Tools>Features toolset**. **Connect** the Calls object to the Copy Features tool which will order a copy of the feature class because we are going to use tools that will change the geometry of the original input feature class. You can rename the Copy Features output to *Collected\_Photos*. To do this, double‐click on the Copy Features tool and change the Output Feature Class.
+#### **HotSpot Analysis with Rendering**&#x20;
+
+Once the data are ready for analysis you will proceed with building the conceptual model for the analysis. On the toolbar, go to **Geoprocessing** and select **ModelBuilder**. Begin creating the model by dragging the image layer from the ArcMap Table of Contents into the model. Next add the **Copy Features** geoprocessing tool to your model (drag from ArcToolbox). The Copy Features tool is located in **Data Management Tools>Features toolset**. **Connect** the Calls object to the Copy Features tool which will order a copy of the feature class because we are going to use tools that will change the geometry of the original input feature class. You can rename the Copy Features output to *Collected\_Photos*. To do this, double‐click on the Copy Features tool and change the Output Feature Class.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/014281a2373c1dedfa35cccc5e2c3c169e06e936-36215.PNG" alt="modelbuilder1" alignment="stretch">
-  *Figure 13. The conceptual model at the Integrate stage.*
+  *Figure 14. The conceptual model at the Integrate stage.*
 </Figure>
 
-Add the **Integrate** tool to the model (drag from ArcToolbox). The Integrate tool is located in **Data Management Tools>Feature Class toolset**. This function will aggregate image points that are within a given distance range or XY or on top of each other and will create an attribute value associated with each feature which will be used as the Hotspot analysis Input field. The Integrate tool allows moving all image points that occur within a specified distance into a single location where they can be counted using the **Collect Events** tool. Use the Connect Tool to connect Collected\_Photos to Integrate. Then double click the Integrate tool and enter 6m for the XY tolerance parameters. This distance means that any image taken within a radius of 6 meters of another will be considered by Integrate process. Rename the Integrate Feature Output to Integrate Output (right click>rename). So far, your model should look like the model in Figure 13.
+Add the **Integrate** tool to the model (drag from ArcToolbox). The Integrate tool is located in **Data Management Tools>Feature Class toolset**. This function will aggregate image points that are within a given distance range or XY or on top of each other and will create an attribute value associated with each feature which will be used as the Hotspot analysis Input field. The Integrate tool allows moving all image points that occur within a specified distance into a single location where they can be counted using the **Collect Events** tool. Use the Connect Tool to connect Collected\_Photos to Integrate. Then double click the Integrate tool and enter 6m for the XY tolerance parameters. This distance means that any image taken within a radius of 6 meters of another will be considered by Integrate process. Rename the Integrate Feature Output to Integrate Output (right click>rename). So far, your model should look like the model in Figure 14.
 
-Add the **Collect Events** tool located in **Spatial Statistics Tools>Utilities toolset**. The Collect Events tool will create a new feature class with a count field indicating the number of coincident image points at each location. The Integrate and Collect Events tools use the same input file, but since the first step of the point aggregation process is the Integrate tool, the Collect Events tool must not run until after the Integrate tool is finished making points within a radius of 6m. To set this parameter, right‐click on the Collect Events tool and select **Properties**. Under the **Preconditions tab,** set **Integrate Output** as a precondition. Rename the Collect Events output to **WeightedPhotos** by double‐clicking on the Collect Events tool and changing the Output Weighted Point Feature Class. Double-click on the Results and notice that a count field is created which will indicate the number of images aggregated in one location based on the analysis parameters.\
+Add the **Collect Events** tool located in **Spatial Statistics Tools>Utilities toolset**. The Collect Events tool will create a new feature class with a count field indicating the number of coincident image points at each location. The Integrate and Collect Events tools use the same input file, but since the first step of the point aggregation process is the Integrate tool, the Collect Events tool must not run until after the Integrate tool is finished making points within a radius of 6m. To set this parameter, right‐click on the Collect Events tool and select **Properties**. Under the **Preconditions tab,** set **Integrate Output** as a precondition. Rename the Collect Events output to **WeightedPhotos** by double‐clicking on the Collect Events tool and changing the Output Weighted Point Feature Class. Double-click on the Results and notice that a count field is created which will indicate the number of images aggregated in one location based on the analysis parameters.
+
+\
 Add the **Hot Spot Analysis (Getis Ord GI\*)** tool to your model by dragging from **Spatial Statistics Tools>Mapping Clusters**. Double‐click the tool and specify all the following parameters:
 
+* Input Feature Class: Weighted\_Photos
 * Input Field: ICOUNT
 * Output Feature class: ConceptualisedHotSpotResult
 * Conceptualization of Spatial Relationships: Zone of Indifference
@@ -301,17 +302,17 @@ Add the **Hot Spot Analysis (Getis Ord GI\*)** tool to your model by dragging fr
 * Distance Band/Threshold Distance: 6
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/cdb9de2718f51356f046ea7eadff70a22098b951-36216.PNG" alt="modelbuilder schema final" alignment="stretch">
-  *Figure 14: The final conceptual model of Hotspot Analysis.*- Input Feature Class: Weighted\_Photos
+  *Figure 15: The final conceptual model of Hotspot Analysis.*
 </Figure>
 
-Right-click on HotSpot Results and select **Add To Display**. This will ensure that when the model is run the results layer will be added to the map display. The final model should look like Figure 14. Run the model and go to the map area to see the displayed results and play around with the visualisation options. Right-click the generated hotspot layer and go to **Properties**. Choose **Symbology>Graduated symbols** and set parameters as shown in Figure 15. You can also choose the **Graduated Colours** option. Go back to map and explore the results of the Hotspot analysis.
+Right-click on HotSpot Results and select **Add To Display**. This will ensure that when the model is run the results layer will be added to the map display. The final model should look like Figure 15. Run the model and go to the map area to see the displayed results and play around with the visualisation options. Right-click the generated hotspot layer and go to **Properties**. Choose **Symbology>Graduated symbols** and set parameters as shown in Figure 16. You can also choose the **Graduated Colours** option. Go back to map and explore the results of the Hotspot analysis.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/82091cbdf892d495693ca6c87456e385b274cb42-36217.PNG" alt="Symbology" alignment="stretch">
-  *Figure 15. Symbology settings.*
+  *Figure 16. Symbology settings.*
 </Figure>
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/ef0dbbe31833c8bcba3d5215c2f327934d05a10f-36218.PNG" alt="HS_final" alignment="stretch">
-  *Figure 16. ArcMap interface with displayed Hotspot results*
+  *Figure 17. ArcMap interface with displayed Hotspot results*
 </Figure>
 
 ## Spatial Image Analysis Assignment
