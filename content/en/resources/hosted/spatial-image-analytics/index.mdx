@@ -60,13 +60,17 @@ The following video introduces the basic concepts and the value of Spatial Image
 
 </Figure>
 
-**Exercise:** Introduction to Spatial Image Analytics
+Exercise&#x20;
+
+<Callout kind="note">
+
+</Callout>
 
 <H5PWrapper path="spatial-image-analytics/image-metadata-quiz-220" />
 
-## 1.1 Background and Methods
+## Background and Methods
 
-### 1.1.1 What is Image Geotagging?
+### What is Image Geotagging?
 
 In this unit you will learn more about the specifics of geotagging images. Watch the video below to get an introduction to image geotagging.
 
@@ -74,11 +78,9 @@ In this unit you will learn more about the specifics of geotagging images. Watch
   *Introduction to Geotagging Images by Angeliki Chrysanthi*
 </Video>
 
+### Manual Image Geotagging
 
-
-### 1.1.2 Manual Image Geotagging
-
-*A large collection of graphic materials produced by foreign travellers in Athens, Greece, from the* 15th\* \*to the 20th century, was recently digitised following all proper standards and ensuring that the digital collection contains rich metadata. A new research project began when a scholar wished to explore the spatiotemporal patterns of production of such graphic material within the collection. While a significant number of files contained geographic metadata such as place and region names, very few had geolocation coordinates embedded in the actual files.
+*A large collection of graphic materials produced by foreign travellers in Athens, Greece, from the 15th to the 20th century, was recently digitised following all proper standards and ensuring that the digital collection contains rich metadata. A new research project began when a scholar wished to explore the spatiotemporal patterns of production of such graphic material within the collection. While a significant number of files contained geographic metadata such as place and region names, very few had geolocation coordinates embedded in the actual files.*
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/b57b246b5c742f3fcbbc9cc1cf913acf6c4a3e0f-36179.PNG" alt="Europeana website screen capture" alignment="stretch">
   *Figure 1. The online record of a digital image collection. Europeana Collections website.*
@@ -88,19 +90,22 @@ The above scenario highlights a common problem encountered by scholars who wish 
 
 To continue to the next section, you will need to have completed the <Link link={{"discriminant":"external","value":"https://clarin.oeaw.ac.at/moodledariahteach/mod/page/view.php?id=354"}}>Geotagging setup</Link> guidelines and launch Geosetter.
 
-### 1.1.4 Batch Image Geotagging
+### Batch Image Geotagging
 
-*A heritage scholar has recently conducted a visitor survey as part of her research project focusing on understanding visitor movement and interactions in archaeological sites. Apart from systematic observations, interviews and the collection of other qualitative-quantitative data through questionnaires, she also employed tracking and recording technologies such as GPS tracking and camera recordings for obtaining location-based feedback. She will eventually analyse all visitor feedback by employing a mixed-method analysis, and for this, she will also need to prepare her image datasets for analysis. The first step is to use the obtained GPS data and geotag the hundreds of images captured by the study subjects.*\
+*A heritage scholar has recently conducted a visitor survey as part of her research project focusing on understanding visitor movement and interactions in archaeological sites. Apart from systematic observations, interviews and the collection of other qualitative-quantitative data through questionnaires, she also employed tracking and recording technologies such as GPS tracking and camera recordings for obtaining location-based feedback. She will eventually analyse all visitor feedback by employing a mixed-method analysis, and for this, she will also need to prepare her image datasets for analysis. The first step is to use the obtained GPS data and geotag the hundreds of images captured by the study subjects.*
+
+\
 In the above scenario, apart from the usual ethnomethodological approaches, the scholar employed Visitor Employed Photography (VEP) while she also collected geolocation data about each visitor's itinerary within an archaeological site. VEP has been commonly used in visitor studies for measuring visitor attention to exhibits or the natural environment (Camp *et al.* 2000). The GPS data are used in this case to geotag a large number of images which will be then analysed to reveal certain location-specific and theme-specific patterns of movement and linger behaviours. This geotagging approach uses the time metadata recorded both on GPS and image data to match the recording events. In this section, you will familiarise yourself with the process of collecting such data and the basic concepts involved in this geotagging approach which can apply to different studies.
 
-Collecting and preparing data for Geotagging\*\*\
+#### Collecting and preparing data for Geotagging
+
 Although giving a tutorial here on how to set up and operate a GPS device for data collection falls outside the scope of this workshop, it is important to understand the basic steps in the process of data collection. GPS data can be collected via any GPS handheld or wearable device.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/3f23979a9bbe798342c8ffe120ae09abee3d41e5-36195.png" alt="gps settings" alignment="stretch">
-  *Figure 5. GPS settings on a Garmin eTrex device.*
+  *Figure 2. GPS settings on a Garmin eTrex device.*
 </Figure>
 
-However, standard lightweight GPS devices, such as Garmin eTrex, have been reported as the most efficient tools for capturing geographic positions and movement in relatively small sized and entrance-exit controlled areas such as archaeological sites (Shoval and Isaacson 2010). GPS devices can be set up in two ways to aid image geotagging (see Fig. 5, left image):
+However, standard lightweight GPS devices, such as Garmin eTrex, have been reported as the most efficient tools for capturing geographic positions and movement in relatively small sized and entrance-exit controlled areas such as archaeological sites (Shoval and Isaacson 2010). GPS devices can be set up in two ways to aid image geotagging (see Fig. 2, left image):
 
 a) to record 'waypoints' (i.e. the GPS coordinates of a particular location) each time the user captures an image.
 
@@ -117,13 +122,13 @@ Tips on data gathering\
 • Ensure that the right date and year are displayed in the camera\
 • Set your GPS to record track points on a frequent basis. The more track points you record, the better geotagging results you will obtain
 
-The GPS data is downloaded from the GPS device and saved in GPX XML format. GPX, or GPS Exchange Format, is an XML schema used to communicate information between GPS devices, software applications and online services and it describes waypoints, tracks, and routes. In this schema, location and other related data such as time and elevation are stored in tags (see Fig. 6). Based on the World Geodetic System (WGS) 84, latitude and longitude are expressed in decimal degrees and elevation in meters. The complete schema documentation can be found <Link link={{"discriminant":"external","value":"http://www.topografix.com/gpx/1/1/#SchemaProperties"}}>here</Link>.
+The GPS data is downloaded from the GPS device and saved in GPX XML format. GPX, or GPS Exchange Format, is an XML schema used to communicate information between GPS devices, software applications and online services and it describes waypoints, tracks, and routes. In this schema, location and other related data such as time and elevation are stored in tags (see Fig. 3). Based on the World Geodetic System (WGS) 84, latitude and longitude are expressed in decimal degrees and elevation in meters. The complete schema documentation can be found <Link link={{"discriminant":"external","value":"http://www.topografix.com/gpx/1/1/#SchemaProperties"}}>here</Link>.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/d75d7e0814d8ee316d1839c30353c6e72e776a0b-36196.png" alt="colour annotated GPX document" alignment="stretch">
-  *Figure 6. A colour annotated and truncated GPX XML document describing a track.*
+  *Figure 3. A colour annotated and truncated GPX XML document describing a track.*
 </Figure>
 
-### 1.1.5 Batch Image Geotagging: Tutorial
+### Batch Image Geotagging: Tutorial
 
 Once GPS and image data are collected (manual step) one can proceed with geotagging. In this section, you will continue to work with Geosetter and learn the batch geotagging process. Batch geotagging here means that a sequence of commands will be executed by the programme in one unit to match and embed the GPS coordinates in the recorded image files (automatic step). To continue in this section and follow through with the tutorial you are going to work with a set of images and a GPX XML file provided in the tutorial sources for Unit I. These datasets derive from a real study of collecting visitor movement and image recordings at the archaeological site of Gournia in Crete, Greece.
 
@@ -144,29 +149,29 @@ You can continue practising this approach by repeating the process for image fol
 <H5PWrapper path="spatial-image-analytics/georeferencing-221" />
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/bc9fb381e196999b196eb590e161249a6272743d-36181.PNG" alt="Geotag result" alignment="stretch">
-  *Figure 7. An instance of the batch image geotagging result in Geosetter.*\\
+  *Figure 4. An instance of the batch image geotagging result in Geosetter.*
 </Figure>
 
-### 1.1.3 Manual Image Geotagging: Tutorial
+### Manual Image Geotagging: Tutorial
 
 As mentioned in the <Link link={{"discriminant":"external"}}>introduction video</Link>, adding and editing metadata to image files can be done via commercial, freeware and open source tools. Geosetter provides one of the best workflows for geotagging images, but it also allows users to add and edit administrative, descriptive, copyright as well as technical metadata.
 
-To learn how to geotag an image file in Geosetter, you are going to work with the digital image from one of <Link link={{"discriminant":"external","value":"http://eng.travelogues.gr/collection.php?view=303"}}>Stackelberg</Link> works created during his travels in Greece between 1810-13 (Fig. 2). Navigate to the directory of the ***Images\_copy*** folder and select Stackelberg subfolder. The file should appear in the upper left window of the interface. Double-click on the first image entitled **The Temple of Olympian Zeus in Athens** and then click on the tabs *Location* and *Source Description.* Notice that the fields are empty.
+To learn how to geotag an image file in Geosetter, you are going to work with the digital image from one of <Link link={{"discriminant":"external","value":"http://eng.travelogues.gr/collection.php?view=303"}}>Stackelberg</Link> works created during his travels in Greece between 1810-13 (Fig. 5). Navigate to the directory of the ***Images\_copy*** folder and select Stackelberg subfolder. The file should appear in the upper left window of the interface. Double-click on the first image entitled **The Temple of Olympian Zeus in Athens** and then click on the tabs *Location* and *Source Description.* Notice that the fields are empty.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/724c5f7e7e574791ee6380478be2567a24653eef-36176.jpg" alt="The temple of the Olympian Zeus in Athens" alignment="stretch">
-  *Figure 2. Black & white lithograph of the temple of Olympian Zeus, Athens from Stackelberg's "La Grèce. Vues Pitttoresques et Topographiques."*
+  *Figure 5. Black & white lithograph of the temple of Olympian Zeus, Athens from Stackelberg's "La Grèce. Vues Pitttoresques et Topographiques."*
 </Figure>
 
-To assign location information from the map to the image file, you will need first to find the location of the depicted place/monument. Login to Geonames web service and search for *Temple of Olympian Zeus Athens* and the service should return one record with five fields (see Fig. 3).
+To assign location information from the map to the image file, you will need first to find the location of the depicted place/monument. Login to Geonames web service and search for *Temple of Olympian Zeus Athens* and the service should return one record with five fields (see Fig. 6).
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/a6c555be2d4709f05d9d9436ac38a874391f8200-36188.PNG" alt="geonames screen capture" alignment="stretch">
-  *Figure 3. Returned search results from Geonames web service.*
+  *Figure 6. Returned search results from Geonames web service.*
 </Figure>
 
-Click on **S** symbol which represents a feature class to switch to map view. Copy the coordinates in the decimal format, return to Geosetter and fill in the field coordinates (in the map window) with the values in the appropriate format. Now the map should be focused on the area of interest. Click on Add/Edit. On the opened window click on the **Get from Web.** Notice the fields that have automatically updated. Now you can write the name of this location. Click ok and notice that a favourite place has been added to the map (see star symbol, Fig. 4). On the left, make sure that the image file you want to edit is selected, click on the star symbol on the map window and then choose **Assign position to selected images**. Notice to the left that the selected image has been assigned with location information (e.g. coordinates, area name and country). Now click save to embed information in the image file itself. Double-click the image and go to **Location** tab. Notice the added geolocation information.
+Click on **S** symbol which represents a feature class to switch to map view. Copy the coordinates in the decimal format, return to Geosetter and fill in the field coordinates (in the map window) with the values in the appropriate format. Now the map should be focused on the area of interest. Click on Add/Edit. On the opened window click on the **Get from Web.** Notice the fields that have automatically updated. Now you can write the name of this location. Click ok and notice that a favourite place has been added to the map (see star symbol, Fig. 7). On the left, make sure that the image file you want to edit is selected, click on the star symbol on the map window and then choose **Assign position to selected images**. Notice to the left that the selected image has been assigned with location information (e.g. coordinates, area name and country). Now click save to embed information in the image file itself. Double-click the image and go to **Location** tab. Notice the added geolocation information.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/587aa421b201d9edb4ea69efa5db520e7e76ecac-36189.PNG" alt="geotagged_archival image" alignment="stretch">
-  *Figure 4. The geotagged archival image highlighted on the left of the Geosetter interface*
+  *Figure 7. The geotagged archival image highlighted on the left of the Geosetter interface*
 </Figure>
 
 ## Image Geotagging Assignment&#x20;
@@ -200,16 +205,14 @@ Run the executable file **geosetter.setup(.exe)** and follow the instructions in
 
 Start from **File Options** tab\*\*.\*\* In the list shown to the left select the file type 'JPEG'. The parameters we define on the right side will apply only to this type of files. On the right, check the boxes as they appear in Fig 1. The chosen options will allow you both to store your metadata in a sidecar file as well as embed them in the file itself to avoid problems that occur when metadata are stored separately (see note 1 and 2).
 
-*Figure 1. File options setup.*\\
-
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/4c19d756f90c25bf0d18c9c0ac4a21b951a2d16f-36200.PNG" alt="Figure 1. File options set up " alignment="stretch">
-
+  *Figure 8: File options set up*&#x20;
 </Figure>
 
-On the **Startup** tab select the directory of the image folder you are going to use for this exercise. Note that it is a good practice to use a copy of the files to avoid overwriting the originals. This step should look like Fig 2.
+On the **Startup** tab select the directory of the image folder you are going to use for this exercise. Note that it is a good practice to use a copy of the files to avoid overwriting the originals. This step should look like Fig 9.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/5f9a2c1e1ed415dfba445a42a3eba4e19dc2ba09-36202.PNG" alt="Figure 2. Directory selection" alignment="stretch">
-  *Figure 2. Directory selection*\\
+  *Figure 9. Directory selection*
 </Figure>
 
 On **Data Preferences** set the default time zone to (UTC+02:00) Europe/Athens. Make sure the box **Save GPS destination coordinates** is checked. On **Misc** set units of measurement to Metric and Format of coordinates to Decimal.
@@ -225,25 +228,25 @@ Externally – outside the image file in a Digital Asset Management (DAM) system
 *note 2*\
 Regarding metadata, it falls outside the scope of this workshop to familiarise students with basic concepts and terminology. However those who wish to delve into image metadata, I recommend reading the Guidelines For Handling Image Metadata by Metadata Working Group.
 
-## 2. Background and Method
+## Background and Method
 
-### 2.1.1 What is Spatial Image Analytics?
+### What is Spatial Image Analytics?
 
 Image analysis refers to any process of obtaining meaningful information from images and image analytics refer to processes involving the application of digital techniques for the same purpose. Humans are very well equipped to extract meaning from individual images and perform sophisticated analysis of small datasets but not adept at processing a large number of records. Computation, on the other hand, can handle large amounts of data to identify new correlations and interpretations for various disciplines and applications.
 
 In this context, different techniques are continuously applied and developed to meet the requirements of cultural heritage as well as other arts and humanities disciplines. A substantial amount of work is focusing on data mining, remote sensing, and other image geospatial applications, on image processing for recording heritage and visual pattern or stylistic recognition, and influence in art and heritage collections. Other studies are more concerned with improving the spatial, temporal and visual classification of image datasets to enable searchability and further analyses.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/db735e7d4fa40be41daad5fcd3c199d32e1b2b11-36207.png" alt="spatial image analysis_Gournia" alignment="stretch">
-
+  *Figure 10*
 </Figure>
 
-&#x20;This workshop is concerned with the spatial properties of image collections and the methods that efficiently addressing questions about the 'where' of such humanities data. Such questions may wish to explore, for example, places of historical graphic material production and patterns of distribution, spatial patterns of cultural change as well as public perception and participation in understanding, safeguarding and disseminating cultural heritage artefacts and sites. This type of analysis uses directly geolocation metadata embedded in the image files rather than features within digital pictures (image processing).
+This workshop is concerned with the spatial properties of image collections and the methods that efficiently addressing questions about the 'where' of such humanities data. Such questions may wish to explore, for example, places of historical graphic material production and patterns of distribution, spatial patterns of cultural change as well as public perception and participation in understanding, safeguarding and disseminating cultural heritage artefacts and sites. This type of analysis uses directly geolocation metadata embedded in the image files rather than features within digital pictures (image processing).
 
 Then the term 'analytics' indicates that this type of image data inquiries is primarily quantitative. In essence, regardless of the particular software or programming approach employed each time, the analysis involves some spatial statistics applied to large scale image datasets. Today arts and humanities researchers and practitioners can use different software to perform this analysis also depending on the type of investigation and the visual output affordances. For instance, ImagePlot, a free software developed by the <Link link={{"discriminant":"external","value":"http://www.softwarestudies.com/"}}>Software Studies Initiative</Link> for Humanities research, affords to plot, visualise and discover different patterns in image collections and other media by exploring either image properties or file metadata.
 
 In the following section, you are going to learn how to perform a particular type of analysis which explores spatial patterns of incident data. The 'incidents,' in this case, will be the locations of images recorded by visitors in the second scenario of Unit I (see section Batch Image Geotagging).
 
-### 2.1.2 Introduction to Hotspot Analysis
+### Introduction to Hotspot Analysis
 
 A significant step towards making better sense of the collected image data in our working scenario is the HotSpot (HS) Analysis. This analysis is carried out in ArcMap, the desktop application of ESRI suite, with the aggregated and integrated points of image locations captured by the visitors. For this analysis, ModelBuilder, a toolbox in ArcMap that acts as a visual programming language for building geoprocessing workflows is used to create a conceptual model of the analysis. For instance, a typical workflow may include some geoprocessing tools such as *Copy Features*, *Integrate*, *Collect Events* and *Hot Spot Analysis*.
 
@@ -252,35 +255,36 @@ The methodological procedure of conducting HS analysis is well documented in Arc
 A simple hotspot analysis (Hotspot Analysis with Rendering) can be a very useful spatial statistical approach for cases where you have good knowledge of the geographic extent that spatial phenomena take place and you require a simple method to spatially classify image datasets. The heritage scenario discussed in *Unit I* offers a good example. In this research study, the dataset consists of 1656 geotagged images recorded by visitors at the archaeological site of Gournia, a Minoan urban settlement. For this type of study, you will usually have a good knowledge of the case and site-specific parameters (e.g. the geolocation accuracy, the dense urban character and relatively small size of the site and the visitor-space interaction approach), and better control over the scale of the investigation. The assumption is that certain locations attract visitors' attention more than others not only because of a single attraction (e.g. an impressive feature of the site) but because of a combination of features and site attributes in around a small area. Then each image (feature) is processed within the context of neighboring features based on a designated distance. This way, images that were captured outside the distance of the target feature each time do not influence calculations.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/78dcdc392cebac94fbc0992cc80ede5acfaed240-36209.jpg" alt="Gournia_HS analysis" alignment="stretch">
-
+  *Figure 10*
 </Figure>
 
 The final output is a cluster analysis visualisation indicating the hotspots or points of interest (statistically significant locations). The clusters here represent classified areas depending on how many images were recorded by visitors the most at certain locations and provide a useful exploration of the visitor-space interaction. This particular analysis generated 58 unique locations, the hotspots, which represent weighted clusters of image data. The resulted clusters were classified and visualised with a colour ramp. Based on the latter, warm colours indicate higher values of weighted clusters and cold indicate lower values. As you can see in the image, the red dots indicate areas where visitors captured the most images while the blue dots indicate areas with the least image recordings. The exact value of each generated HS is found in the ICOUNT field, which is the resultant count attribute indicating the number of events/image points contained in each HS. It is also worth mentioning that in order to complete the interpretation of the data, other qualitative image analyses complemented the HS analysis such as the thematic classification of images for each hotspot.
 
 To continue to the next section, you will need to have completed the <Link link={{"discriminant":"external","value":"https://clarin.oeaw.ac.at/moodledariahteach/mod/page/view.php?id=384"}}>Spatial analysis setup</Link> guidelines and launch ArcMap.
 
-### 2.1.3 Hotspot analysis for image data: tutorial
+### Hotspot analysis for image data: tutorial
 
 **Adding a Map** \*Figure 1. Adding map from ArcGIS Online.\*Launch ArcMap. Before preparing for the actual analysis we first need to add a background map (basemap) in our ArcMap workspace. By default, when you launch ArcMap, you will be prompted to choose between opening a new map or creating one from a template. Choose to create one and select *blank map*. Now you will need to select an open source map from ArcGIS Online. Go to **File** and click **ArcGIS online** and proceed to sign in. For this tutorial, you need to add a basemap from Greece. On the search box type for maps and data by using the term ‘Greece’. You can choose any map you prefer, but it is recommended that you choose a detailed topographic map (e.g. such as the one produced by the Community Maps Programme, see Fig. 1).
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/e7411e975e10b7b2ac4d859afcb80e82dff27d29-36212.PNG" alt="basemap spatial analysis tutorial" alignment="stretch">
-
+  *Figure 11*
 </Figure>
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/9ba055fc0f23e81fd6618b47bf4bc3fbff180da7-36214.PNG" alt="identifier" alignment="stretch">
-  *Figure 2. Image data points and Identify window in ArcMap.*
+  *Figure 12. Image data points and Identify window in ArcMap.*
 </Figure>
 
-**Data Management**\
+#### **Data Management**
+
 On the right of the ArcMap interface, open the **Catalog** menu. Here you will find all sets of tools (toolboxes) required for setting up and running the analysis. First, you will have to convert your geotagged image data to points. Under **Data Management Tools.tbx**, go to **Photos>Geotagged Photos To Points**. In the **Input Folder** field, navigate to the directory where you have saved your geotagged images from Unit I and select the respective folder. To do this, you will need first to establish a folder connection so that ArcMap knows each time where you keep your data. Click on the folder icon, select **Connect To Folder,** navigate to the folder and **Add** it to your connected folders. Both input and output fields are filled in automatically. You can choose to specify the location where the analysis will save the invalid photos table and **Add Photos As Attachments**. Both these options are preferred for providing better control over the analysis results at the interpretation stage. Select ok and notice the new layer with the image data created on the left, under **Table of Contents** and the points of data overlayed on the map area. You can explore and edit the properties of this new layer by right clicking the layer and selecting **Properties**. On the **Source** tab, notice the Geographic Coordinate System and Datum information. The performed Data Management approach uses by default the same coordinate system with the input data (GCS\_WGS\_1984, D\_WGS\_1984). Also, you can change the **Symbology** properties to enhance the visual output of the data. Return to the toolbar section, select **Identify** and hover the cursor over the image points. Click one of the points and in the opened window notice the available metadata (e.g. *Location, Name, Date* and *Path*). From **Path**, you can access and view the raster image file which has been attached to the respective image point.
 
 **HotSpot Analysis with Rendering** Once the data are ready for analysis you will proceed with building the conceptual model for the analysis. On the toolbar, go to **Geoprocessing** and select **ModelBuilder**. Begin creating the model by dragging the image layer from the ArcMap Table of Contents into the model. Next add the **Copy Features** geoprocessing tool to your model (drag from ArcToolbox). The Copy Features tool is located in **Data Management Tools>Features toolset**. **Connect** the Calls object to the Copy Features tool which will order a copy of the feature class because we are going to use tools that will change the geometry of the original input feature class. You can rename the Copy Features output to *Collected\_Photos*. To do this, double‐click on the Copy Features tool and change the Output Feature Class.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/014281a2373c1dedfa35cccc5e2c3c169e06e936-36215.PNG" alt="modelbuilder1" alignment="stretch">
-  *Figure 3. The conceptual model at the Integrate stage.*
+  *Figure 13. The conceptual model at the Integrate stage.*
 </Figure>
 
-Add the **Integrate** tool to the model (drag from ArcToolbox). The Integrate tool is located in **Data Management Tools>Feature Class toolset**. This function will aggregate image points that are within a given distance range or XY or on top of each other and will create an attribute value associated with each feature which will be used as the Hotspot analysis Input field. The Integrate tool allows moving all image points that occur within a specified distance into a single location where they can be counted using the **Collect Events** tool. Use the Connect Tool to connect Collected\_Photos to Integrate. Then double click the Integrate tool and enter 6m for the XY tolerance parameters. This distance means that any image taken within a radius of 6 meters of another will be considered by Integrate process. Rename the Integrate Feature Output to Integrate Output (right click>rename). So far, your model should look like the model in Figure 3.
+Add the **Integrate** tool to the model (drag from ArcToolbox). The Integrate tool is located in **Data Management Tools>Feature Class toolset**. This function will aggregate image points that are within a given distance range or XY or on top of each other and will create an attribute value associated with each feature which will be used as the Hotspot analysis Input field. The Integrate tool allows moving all image points that occur within a specified distance into a single location where they can be counted using the **Collect Events** tool. Use the Connect Tool to connect Collected\_Photos to Integrate. Then double click the Integrate tool and enter 6m for the XY tolerance parameters. This distance means that any image taken within a radius of 6 meters of another will be considered by Integrate process. Rename the Integrate Feature Output to Integrate Output (right click>rename). So far, your model should look like the model in Figure 13.
 
 Add the **Collect Events** tool located in **Spatial Statistics Tools>Utilities toolset**. The Collect Events tool will create a new feature class with a count field indicating the number of coincident image points at each location. The Integrate and Collect Events tools use the same input file, but since the first step of the point aggregation process is the Integrate tool, the Collect Events tool must not run until after the Integrate tool is finished making points within a radius of 6m. To set this parameter, right‐click on the Collect Events tool and select **Properties**. Under the **Preconditions tab,** set **Integrate Output** as a precondition. Rename the Collect Events output to **WeightedPhotos** by double‐clicking on the Collect Events tool and changing the Output Weighted Point Feature Class. Double-click on the Results and notice that a count field is created which will indicate the number of images aggregated in one location based on the analysis parameters.\
 Add the **Hot Spot Analysis (Getis Ord GI\*)** tool to your model by dragging from **Spatial Statistics Tools>Mapping Clusters**. Double‐click the tool and specify all the following parameters:
@@ -292,17 +296,17 @@ Add the **Hot Spot Analysis (Getis Ord GI\*)** tool to your model by dragging fr
 * Distance Band/Threshold Distance: 6
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/cdb9de2718f51356f046ea7eadff70a22098b951-36216.PNG" alt="modelbuilder schema final" alignment="stretch">
-  *Figure 4: The final conceptual model of Hotspot Analysis.*- Input Feature Class: Weighted\_Photos
+  *Figure 14: The final conceptual model of Hotspot Analysis.*- Input Feature Class: Weighted\_Photos
 </Figure>
 
-Right-click on HotSpot Results and select **Add To Display**. This will ensure that when the model is run the results layer will be added to the map display. The final model should look like Figure 4. Run the model and go to the map area to see the displayed results and play around with the visualisation options. Right-click the generated hotspot layer and go to **Properties**. Choose **Symbology>Graduated symbols** and set parameters as shown in Figure 5. You can also choose the **Graduated Colours** option. Go back to map and explore the results of the Hotspot analysis.
+Right-click on HotSpot Results and select **Add To Display**. This will ensure that when the model is run the results layer will be added to the map display. The final model should look like Figure 14. Run the model and go to the map area to see the displayed results and play around with the visualisation options. Right-click the generated hotspot layer and go to **Properties**. Choose **Symbology>Graduated symbols** and set parameters as shown in Figure 15. You can also choose the **Graduated Colours** option. Go back to map and explore the results of the Hotspot analysis.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/82091cbdf892d495693ca6c87456e385b274cb42-36217.PNG" alt="Symbology" alignment="stretch">
-  *Figure 5. Symbology settings.*
+  *Figure 15. Symbology settings.*
 </Figure>
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/ef0dbbe31833c8bcba3d5215c2f327934d05a10f-36218.PNG" alt="HS_final" alignment="stretch">
-  *Figure 6. ArcMap interface with displayed Hotspot results*
+  *Figure 16. ArcMap interface with displayed Hotspot results*
 </Figure>
 
 ## Spatial Image Analysis Assignment
@@ -313,8 +317,9 @@ Then write a short essay of approximately 1000 words addressing the following qu
 a) Describe your dataset. How does the spatial analysis improve your understanding of the data?\
 b) What kind of new questions will this analysis be able to answer? Why is this important in your study area?
 
-Use images from your collection and an instance of the produced map overlayed with the analysis results to present your essay.# Spatial analysis setup
-**Software Download**
+Use images from your collection and an instance of the produced map overlayed with the analysis results to present your essay.&#x20;
+
+Spatial analysis setup **Software Download**
 
 In order to be able to follow through and complete this unit's practical you are required to create an ArcGIS account and download ArcMap as specified below:
 
@@ -326,11 +331,11 @@ Available at: <Link link={{"discriminant":"external","value":"https://www.arcgis
 
 ArcGIS for Desktop has been developed for Windows Operating systems. To run ArcGIS 10.x on an Apple Macintosh computer, the Mac must be set up to run Windows by following one of two installation options:
 
-Option 1: Create a dual-boot setup on your Mac. This allows you to boot into either Mac OS or Windows OS. The usual way to do this is to use the free software BootCamp.
+* Option 1: Create a dual-boot setup on your Mac. This allows you to boot into either Mac OS or Windows OS. The usual way to do this is to use the free software BootCamp.
 
 Using BootCamp: <Link link={{"discriminant":"external","value":"http://www.apple.com/support/bootcamp/"}}>[http://www.apple.com/support/bootcamp/](http://www.apple.com/support/bootcamp/)</Link>
 
-Option 2: Create a virtual machine on your Mac. This allows you to run an installation of Windows OS in parallel with your existing Mac OS, and to seamlessly switch between the two. Typical choices for the virtualization option are the licensed software Parallels or VMware.
+* Option 2: Create a virtual machine on your Mac. This allows you to run an installation of Windows OS in parallel with your existing Mac OS, and to seamlessly switch between the two. Typical choices for the virtualization option are the licensed software Parallels or VMware.
 
 ESRI has more information on these options <Link link={{"discriminant":"external","value":"https://blogs.esri.com/esri/arcgis/2016/03/08/arcgis-pro-in-mac-os-x/"}}>here</Link>. When configuring Windows with any of these options, pay attention to the <Link link={{"discriminant":"external","value":"http://desktop.arcgis.com/en/system-requirements/latest/arcgis-desktop-system-requirements.htm"}}>minimum system requirements</Link> for installing ArcGIS.
 
