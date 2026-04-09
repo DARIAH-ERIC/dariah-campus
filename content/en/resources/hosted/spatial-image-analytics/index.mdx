@@ -6,17 +6,15 @@ version: '1.0'
 authors:
   - chrysanthi-angeliki
 editors:
+  - schreibman-susan
   - mc-conville-amelia
+  - garnett-vicky
 contributors: []
 tags:
-  - history
-  - mapping
-  - workshop
-  - spatial-analysis
-  - images
   - geotagging
   - spatial-humanities
   - data-visualisation
+  - spatial-analysis
 sources:
   - dariah
   - dariah-teach
@@ -38,9 +36,14 @@ This learning resource introduces participants to the background, and certain te
 
 After completing this resource, learners will be able to:
 
-* X
-* Y&#x20;
-* Z
+* Explain the concept of image geotagging and its value for spatial analysis of humanities and cultural heritage image collections.
+* Apply manual and batch geotagging techniques to embed geolocation metadata into image files using specialist tools such as Geosetter and GPS data in GPX format.&#x20;
+* Convert geotagged image data into spatial point features and perform hotspot analysis using GIS software to identify statistically significant spatial patterns.&#x20;
+* Critically evaluate how spatial image analytics can generate new research questions and deepen understanding of image datasets in humanities and cultural heritage contexts.
+
+*Please Note: These learning outcomes were generated with the use of Anthropic Claude Sonnet 4.6*
+
+---
 
 ## Introduction to Spatial Image Analytics
 
@@ -86,9 +89,50 @@ In this section you will learn more about the specifics of geotagging images. Wa
 
 The above scenario highlights a common problem encountered by scholars who wish to explore the spatiotemporal aspects of a substantial digital archive image collection. Geographic metadata is a prerequisite for performing sophisticated spatial analysis of images, but in reality, very few humanities collections consist of files with such embedded metadata. Geotagging image files is a process that enables the geospatial exploration of such collections. In the following section, you will learn a manual approach to achieve this.
 
-To continue to the next section, you will need to have completed the <Link link={{"discriminant":"external","value":"https://clarin.oeaw.ac.at/moodledariahteach/mod/page/view.php?id=354"}}>Geotagging setup</Link> **\[THIS LINK JUST GOES TO THE TEACH HOME PAGE?? - MOVE GEOTAGGING WORKFLOW BELOW TO HERE?]** guidelines and launch Geosetter.
-
 ### 1.3 Manual Image Geotagging: Tutorial
+
+#### Geotagging setup&#x20;
+
+&#x20;In order to be able to complete this 'Manual Image Geotagging' section you will need to:
+
+* download and setup Geosetter, a specialised freeware for editing image metadata and geotagging. Available at [http://www.geosetter.de/en/download/](http://www.geosetter.de/en/download/)
+
+##### A Note on Operating Systems
+
+Geosetter has been developed for Windows Operating systems. To run Geosetter on an Apple Macintosh computer, the Mac must be set up to run Windows by following one of two installation options:
+
+1. *Either* create a dual-boot setup on your Mac. This allows you to boot into either Mac OS or Windows OS. The usual way to do this is to use the free software BootCamp. Available at: [http://www.apple.com/support/bootcamp/](http://www.apple.com/support/bootcamp/), or;
+2. Create a virtual machine on your Mac. This allows you to run an installation of Windows OS in parallel with your existing Mac OS, and to seamlessly switch between the two. Typical choices for the virtualization option are the licensed software Parallels or VMware.
+
+* open a free account on Geonames geographical database [http://www.geonames.org](http://www.geonames.org)
+* download and unzip the folder 'tutorial\_resources \_1'
+
+#### **Geosetter setup**
+
+Run the executable file **geosetter.setup(.exe)** and follow the instructions in the wizard. Once the programme runs, firstly you will be prompted to configure the settings.
+
+Start from **File Options** tab. In the list shown to the left select the file type 'JPEG'. The parameters we define on the right side will apply only to this type of files. On the right, check the boxes as they appear in Fig 8. The chosen options will allow you both to store your metadata in a sidecar file as well as embed them in the file itself to avoid problems that occur when metadata are stored separately.
+
+Metadata is generally stored in two main places:
+
+* Internally – embedded in the image file, in formats such as JPEG or TIFF.
+* Externally – outside the image file in a Digital Asset Management (DAM) system or by a 'sidecar' file, such as the one supported by the Extensible Metadata Platform (XMP).
+
+Regarding metadata, it falls outside the scope of this resource to familiarise students with basic concepts and terminology. However those who wish to delve into image metadata, I recommend reading the Guidelines For Handling Image Metadata by Metadata Working Group.
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/4c19d756f90c25bf0d18c9c0ac4a21b951a2d16f-36200.PNG" alt="Figure 1. File options set up " alignment="stretch">
+  *Figure 8: File options set up*&#x20;
+</Figure>
+
+On the **Startup** tab select the directory of the image folder you are going to use for this exercise. Note that it is a good practice to use a copy of the files to avoid overwriting the originals. This step should look like Fig 9.
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/5f9a2c1e1ed415dfba445a42a3eba4e19dc2ba09-36202.PNG" alt="Figure 2. Directory selection" alignment="stretch">
+  *Figure 9. Directory selection*
+</Figure>
+
+On **Data Preferences** set the default time zone to (UTC+02:00) Europe/Athens. Make sure the box **Save GPS destination coordinates** is checked. On **Misc** set units of measurement to Metric and Format of coordinates to Decimal.
+
+Finally, go to **Internet** tab and change the URL address under Geonames to: [http://www.geonames.org/](http://www.geonames.org/)
 
 As mentioned in the <Link link={{"discriminant":"external"}}>introduction video</Link>, adding and editing metadata to image files can be done via commercial, freeware and open source tools. Geosetter provides one of the best workflows for geotagging images, but it also allows users to add and edit administrative, descriptive, copyright as well as technical metadata.
 
@@ -181,49 +225,7 @@ You can continue practising this approach by repeating the process for image fol
 
 Use a set of archival images to apply the manual geotagging approach you learnt in this section. You can choose a set of images based on your background and previous experience, or something related to a topic you are studying in another module, or something that simply interests you. If you don't have a set of images available you can visit a humanities repository (e.g. <Link link={{"discriminant":"external","value":"http://portal.europeana.eu/portal/en"}}>Europeana Collections</Link>) and find a collection of images to work with.
 
-## Geotagging setup&#x20;
-
-&#x20;In order to be able to complete this 'Image Geotagging' section you will need to:
-
-* download and setup Geosetter, a specialised freeware for editing image metadata and geotagging. Available at [http://www.geosetter.de/en/download/](http://www.geosetter.de/en/download/)
-
-Geosetter has been developed for Windows Operating systems. To run Geosetter on an Apple Macintosh computer, the Mac must be set up to run Windows by following one of two installation options:
-
-* *Option 1* : Create a dual-boot setup on your Mac. This allows you to boot into either Mac OS or Windows OS. The usual way to do this is to use the free software BootCamp. Available at: <Link link={{"discriminant":"external","value":"http://www.apple.com/support/bootcamp/"}}>[http://www.apple.com/support/bootcamp/](http://www.apple.com/support/bootcamp/)</Link>
-* *Option 2* : Create a virtual machine on your Mac. This allows you to run an installation of Windows OS in parallel with your existing Mac OS, and to seamlessly switch between the two. Typical choices for the virtualization option are the licensed software Parallels or VMware.
-
-- open a free account on Geonames geographical database <Link link={{"discriminant":"external","value":"http://www.geonames.org/"}}>[http://www.geonames.org](http://www.geonames.org)</Link>
-- download and unzip the folder 'tutorial\_resources \_1'
-
-### **Geosetter setup**
-
-Run the executable file **geosetter.setup(.exe)** and follow the instructions in the wizard. Once the programme runs, firstly you will be prompted to configure the settings.
-
-Start from **File Options** tab. In the list shown to the left select the file type 'JPEG'. The parameters we define on the right side will apply only to this type of files. On the right, check the boxes as they appear in Fig 8. The chosen options will allow you both to store your metadata in a sidecar file as well as embed them in the file itself to avoid problems that occur when metadata are stored separately.
-
-<Callout kind="note" title=" Note 1: Metadata">
-  Metadata is generally stored in two main places:\
-  Internally – embedded in the image file, in formats such as JPEG or TIFF.\
-  Externally – outside the image file in a Digital Asset Management (DAM) system or by a 'sidecar' file, such as the one supported by the Extensible Metadata Platform (XMP).
-</Callout>
-
-<Callout kind="note">
-  Regarding metadata, it falls outside the scope of this resource to familiarise students with basic concepts and terminology. However those who wish to delve into image metadata, I recommend reading the Guidelines For Handling Image Metadata by Metadata Working Group.
-</Callout>
-
-<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/4c19d756f90c25bf0d18c9c0ac4a21b951a2d16f-36200.PNG" alt="Figure 1. File options set up " alignment="stretch">
-  *Figure 8: File options set up*&#x20;
-</Figure>
-
-On the **Startup** tab select the directory of the image folder you are going to use for this exercise. Note that it is a good practice to use a copy of the files to avoid overwriting the originals. This step should look like Fig 9.
-
-<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/5f9a2c1e1ed415dfba445a42a3eba4e19dc2ba09-36202.PNG" alt="Figure 2. Directory selection" alignment="stretch">
-  *Figure 9. Directory selection*
-</Figure>
-
-On **Data Preferences** set the default time zone to (UTC+02:00) Europe/Athens. Make sure the box **Save GPS destination coordinates** is checked. On **Misc** set units of measurement to Metric and Format of coordinates to Decimal.
-
-Finally, go to **Internet** tab and change the URL address under Geonames to: <Link link={{"discriminant":"external","value":"http://www.geonames.org/"}}>[http://www.geonames.org/](http://www.geonames.org/)</Link>
+##
 
 ---
 
@@ -259,9 +261,41 @@ A simple hotspot analysis (Hotspot Analysis with Rendering) can be a very useful
 
 The final output is a cluster analysis visualisation indicating the hotspots or points of interest (statistically significant locations). The clusters here represent classified areas depending on how many images were recorded by visitors the most at certain locations and provide a useful exploration of the visitor-space interaction. This particular analysis generated 58 unique locations, the hotspots, which represent weighted clusters of image data. The resulted clusters were classified and visualised with a colour ramp. Based on the latter, warm colours indicate higher values of weighted clusters and cold indicate lower values. As you can see in the image, the red dots indicate areas where visitors captured the most images while the blue dots indicate areas with the least image recordings. The exact value of each generated HS is found in the ICOUNT field, which is the resultant count attribute indicating the number of events/image points contained in each HS. It is also worth mentioning that in order to complete the interpretation of the data, other qualitative image analyses complemented the HS analysis such as the thematic classification of images for each hotspot.
 
-To continue to the next section, you will need to have completed the <Link link={{"discriminant":"external","value":"https://clarin.oeaw.ac.at/moodledariahteach/mod/page/view.php?id=384"}}>Spatial analysis setup</Link> guidelines and launch ArcMap.
+
 
 ### 2.3 Hotspot analysis for image data: tutorial
+
+#### Spatial analysis setup&#x20;
+
+Before continuing with this section, you will need to download and install ArcGIS to your local machine.  The following steps will guide you through how to do that.
+
+##### **Software Download**
+
+In order to be able to follow through and complete this section's practical exercises you are required to create an ArcGIS account and download ArcMap as specified below:
+
+* Open an ArcGIS account and subscribe for a 60-day trial of the software which includes access to the following: ArcGIS Online, ArcGIS for Desktop, ArcMap, ArcGIS Pro, additional ready-to-use apps.
+
+Available at: [https://www.arcgis.com/features/free-trial.html](https://www.arcgis.com/features/free-trial.html)
+
+* Download, Install and Authorise ArcMap with extensions. Once you have created the account, you will receive an e-mail with detailed steps and the authorisation code for ArcMap. This is the main tool you will be using throughout this unit.
+
+ArcGIS for Desktop has been developed for Windows Operating systems. To run ArcGIS 10.x on an Apple Macintosh computer, the Mac must be set up to run Windows by following one of two installation options:
+
+* Option 1: Create a dual-boot setup on your Mac. This allows you to boot into either Mac OS or Windows OS. The usual way to do this is to use the free software BootCamp.
+
+Using BootCamp: [http://www.apple.com/support/bootcamp/](http://www.apple.com/support/bootcamp/)
+
+* Option 2: Create a virtual machine on your Mac. This allows you to run an installation of Windows OS in parallel with your existing Mac OS, and to seamlessly switch between the two. Typical choices for the virtualization option are the licensed software Parallels or VMware.
+
+ESRI has more information on these options <Link link={{"discriminant":"external","value":"https://blogs.esri.com/esri/arcgis/2016/03/08/arcgis-pro-in-mac-os-x/"}}>here</Link>. When configuring Windows with any of these options, pay attention to the <Link link={{"discriminant":"external","value":"http://desktop.arcgis.com/en/system-requirements/latest/arcgis-desktop-system-requirements.htm"}}>minimum system requirements</Link> for installing ArcGIS.
+
+##### **Data Resources Download**
+
+Make sure you have concluded the first section of this resource, and that you have geotagged all the files of *tutorial resources,* folders *V1-V8.*&#x20;
+
+Rename the image files in a way that each set of images reflect the ID of their creator \[e.g. files in V1 were created by visitor #1, so they could be renamed as V(1), V(2),....V(n)].&#x20;
+
+Then extract all renamed geotagged images from their individual folders and create a single folder to use for the spatial image analysis tutorial.
 
 #### **Adding a Map**&#x20;
 
@@ -317,37 +351,20 @@ Right-click on HotSpot Results and select **Add To Display**. This will ensure t
 
 ## Spatial Image Analysis Assignment
 
-**Optional Assignment** Choose a set of geotagged images based on your background and previous experience, or something related to a topic you are studying in another module, or something that simply interests you. If you have completed Unit I, use the dataset that derived from Image Geotagging Assignment. Perform a hotspot analysis on your dataset.
+<Callout kind="none" title="Optional Exercise">
+  Choose a set of geotagged images based on your background and previous experience, or something related to a topic you are studying in another module, or something that simply interests you. If you have completed Unit I, use the dataset that derived from Image Geotagging Assignment. Perform a hotspot analysis on your dataset.
 
-Then write a short essay of approximately 1000 words addressing the following questions:\
-a) Describe your dataset. How does the spatial analysis improve your understanding of the data?\
-b) What kind of new questions will this analysis be able to answer? Why is this important in your study area?
+  Then write a short essay of approximately 1000 words addressing the following questions:
 
-Use images from your collection and an instance of the produced map overlayed with the analysis results to present your essay.&#x20;
+  1. Describe your dataset. How does the spatial analysis improve your understanding of the data?
+  2. What kind of new questions will this analysis be able to answer? Why is this important in your study area?
 
-Spatial analysis setup **Software Download**
+  Use images from your collection and an instance of the produced map overlayed with the analysis results to present your essay.&#x20;
+</Callout>
 
-In order to be able to follow through and complete this unit's practical you are required to create an ArcGIS account and download ArcMap as specified below:
 
-* Open an ArcGIS account and subscribe for a 60-day trial of the software which includes access to the following: ArcGIS Online, ArcGIS for Desktop, ArcMap, ArcGIS Pro, additional ready-to-use apps.
 
-Available at: <Link link={{"discriminant":"external","value":"https://www.arcgis.com/features/free-trial.html"}}>[https://www.arcgis.com/features/free-trial.html](https://www.arcgis.com/features/free-trial.html)</Link>
-
-* Download, Install and Authorise ArcMap with extensions. Once you have created the account, you will receive an e-mail with detailed steps and the authorisation code for ArcMap. This is the main tool you will be using throughout this unit.
-
-ArcGIS for Desktop has been developed for Windows Operating systems. To run ArcGIS 10.x on an Apple Macintosh computer, the Mac must be set up to run Windows by following one of two installation options:
-
-* Option 1: Create a dual-boot setup on your Mac. This allows you to boot into either Mac OS or Windows OS. The usual way to do this is to use the free software BootCamp.
-
-Using BootCamp: <Link link={{"discriminant":"external","value":"http://www.apple.com/support/bootcamp/"}}>[http://www.apple.com/support/bootcamp/](http://www.apple.com/support/bootcamp/)</Link>
-
-* Option 2: Create a virtual machine on your Mac. This allows you to run an installation of Windows OS in parallel with your existing Mac OS, and to seamlessly switch between the two. Typical choices for the virtualization option are the licensed software Parallels or VMware.
-
-ESRI has more information on these options <Link link={{"discriminant":"external","value":"https://blogs.esri.com/esri/arcgis/2016/03/08/arcgis-pro-in-mac-os-x/"}}>here</Link>. When configuring Windows with any of these options, pay attention to the <Link link={{"discriminant":"external","value":"http://desktop.arcgis.com/en/system-requirements/latest/arcgis-desktop-system-requirements.htm"}}>minimum system requirements</Link> for installing ArcGIS.
-
-**Data resources download**
-
-Make sure you have concluded Unit I and that you have geotagged all the files of *tutorial resources,* folders *V1-V8.* Rename the image files in a way that each set of images reflect the ID of their creator \[e.g. files in V1 were created by visitor #1, so they could be renamed as V(1), V(2),....V(n)]. Then extract all renamed geotagged images from their individual folders and create a single folder to use for the spatial image analysis tutorial.
+---
 
 ## Bibliography
 
