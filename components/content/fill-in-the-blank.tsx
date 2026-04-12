@@ -1,7 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { createContext, type ReactNode, use, useId, useState } from "react";
+import { createContext, type ReactNode, use, useState } from "react";
+import { Button, Dialog, DialogTrigger, Popover } from "react-aria-components";
 
 type ExerciseStatus = "idle" | "checked" | "solved";
 
@@ -9,8 +10,6 @@ interface FillInTheBlankContextValue {
 	inputs: Array<string>;
 	setInput: (id: number, value: string) => void;
 	status: ExerciseStatus;
-	showHints: Array<boolean>;
-	toggleHint: (id: number) => void;
 	caseSensitive: boolean;
 	validateOnBlur: boolean;
 	validated: Array<boolean>;
@@ -57,11 +56,6 @@ export function FillInTheBlank(props: Readonly<FillInTheBlankProps>): ReactNode 
 		});
 	});
 	const [status, setStatus] = useState<ExerciseStatus>("idle");
-	const [showHints, setShowHints] = useState<Array<boolean>>(() => {
-		return Array.from({ length: count }, () => {
-			return false;
-		});
-	});
 	const [validated, setValidated] = useState<Array<boolean>>(() => {
 		return Array.from({ length: count }, () => {
 			return false;
@@ -79,14 +73,6 @@ export function FillInTheBlank(props: Readonly<FillInTheBlankProps>): ReactNode 
 			});
 		},
 		status,
-		showHints,
-		toggleHint(id) {
-			setShowHints((prev) => {
-				return prev.map((x, i) => {
-					return i === id ? !x : x;
-				});
-			});
-		},
 		caseSensitive,
 		validateOnBlur,
 		validated,
@@ -100,7 +86,7 @@ export function FillInTheBlank(props: Readonly<FillInTheBlankProps>): ReactNode 
 	};
 
 	const correctCount =
-		status !== "idle" && answers != null
+		status === "checked" && answers != null
 			? inputs.filter((v, i) => {
 					return isCorrectAnswer(v, answers[i] ?? [], caseSensitive);
 				}).length
@@ -112,7 +98,7 @@ export function FillInTheBlank(props: Readonly<FillInTheBlankProps>): ReactNode 
 				<div className="leading-loose">{children}</div>
 
 				{correctCount != null ? (
-					<p className="text-sm font-medium">
+					<p className="not-prose text-sm font-medium text-neutral-600">
 						{t("score", { correct: String(correctCount), total: String(count) })}
 					</p>
 				) : null}
@@ -139,11 +125,6 @@ export function FillInTheBlank(props: Readonly<FillInTheBlankProps>): ReactNode 
 								}),
 							);
 							setStatus("idle");
-							setShowHints(
-								Array.from({ length: count }, () => {
-									return false;
-								}),
-							);
 							setValidated(
 								Array.from({ length: count }, () => {
 									return false;
@@ -186,31 +167,17 @@ export function Blank(props: Readonly<BlankProps>): ReactNode {
 
 	const ctx = use(FillInTheBlankContext);
 	const t = useTranslations("content.FillInTheBlank");
-	const uId = useId();
-	const inputId = `${uId}-input`;
-	const hintId = `${uId}-hint`;
 
 	/** When rendered outside a FillInTheBlank show the first answer as a placeholder. */
 	if (ctx == null) {
 		return <span className="border-b-2 border-dashed border-neutral-400 px-1">{answer[0]}</span>;
 	}
 
-	const {
-		inputs,
-		setInput,
-		status,
-		showHints,
-		toggleHint,
-		caseSensitive,
-		validateOnBlur,
-		validated,
-		validateBlank,
-	} = ctx;
+	const { inputs, setInput, status, caseSensitive, validateOnBlur, validated, validateBlank } = ctx;
 
 	const inputValue = inputs[id] ?? "";
 	const isReadOnly = status === "solved";
 	const displayValue = isReadOnly ? (answer[0] ?? "") : inputValue;
-	const isHintVisible = showHints[id] ?? false;
 	const longestAnswer = answer.reduce((a, b) => {
 		return a.length >= b.length ? a : b;
 	}, "");
@@ -230,11 +197,9 @@ export function Blank(props: Readonly<BlankProps>): ReactNode {
 		<span className="inline-block align-baseline">
 			<span className="inline-flex items-center gap-x-1">
 				<input
-					aria-describedby={hint != null && isHintVisible ? hintId : undefined}
 					aria-invalid={isValidated && status !== "solved" && !isCorrect ? true : undefined}
 					aria-label={t("blank-label", { index: String(id + 1) })}
 					className={`rounded-sm border-2 px-2 py-0.5 font-mono text-sm focus:outline-none focus:ring-2 ${borderClass}`}
-					id={inputId}
 					onBlur={
 						validateOnBlur && !isReadOnly
 							? () => {
@@ -251,25 +216,25 @@ export function Blank(props: Readonly<BlankProps>): ReactNode {
 					value={displayValue}
 				/>
 				{hint != null ? (
-					<button
-						aria-controls={hintId}
-						aria-expanded={isHintVisible}
-						aria-label={t("hint-label")}
-						className="inline-flex size-5 items-center justify-center rounded-full border border-neutral-300 text-xs text-neutral-500 hover:border-brand-400 hover:text-brand-600"
-						onClick={() => {
-							toggleHint(id);
-						}}
-						type="button"
-					>
-						{"?"}
-					</button>
+					<DialogTrigger>
+						<Button
+							aria-label={t("hint-label")}
+							className="inline-flex size-5 items-center justify-center rounded-full border border-neutral-300 text-xs text-neutral-500 hover:border-brand-400 hover:text-brand-600 pressed:border-brand-400 pressed:text-brand-600"
+						>
+							{"?"}
+						</Button>
+						<Popover
+							className="max-w-56 rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-600 shadow-md"
+							offset={6}
+							placement="top"
+						>
+							<Dialog aria-label={t("hint-label")} className="outline-none">
+								{hint}
+							</Dialog>
+						</Popover>
+					</DialogTrigger>
 				) : null}
 			</span>
-			{hint != null && isHintVisible ? (
-				<span className="ml-1 text-sm text-neutral-500 italic" id={hintId} role="note">
-					{hint}
-				</span>
-			) : null}
 		</span>
 	);
 }
