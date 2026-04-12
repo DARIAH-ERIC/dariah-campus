@@ -12,6 +12,7 @@ import { createCallout } from "@/lib/content/keystatic/components/callout";
 import { createDisclosure } from "@/lib/content/keystatic/components/disclosure";
 import { createEmbed } from "@/lib/content/keystatic/components/embed";
 import { createFigure } from "@/lib/content/keystatic/components/figure";
+import { createFillInTheBlank } from "@/lib/content/keystatic/components/fill-in-the-blank";
 import { createFootnote } from "@/lib/content/keystatic/components/footnote";
 import { createGrid } from "@/lib/content/keystatic/components/grid";
 import { createHeadingId } from "@/lib/content/keystatic/components/heading-id";
@@ -155,6 +156,7 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 					...createHeadingId(paths, locale),
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
+					...createFillInTheBlank(paths, locale),
 					...createQuiz(paths, locale),
 					...createTabs(paths, locale),
 					...createVideo(paths, locale),

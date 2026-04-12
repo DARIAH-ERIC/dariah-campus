@@ -1,5 +1,12 @@
 {
 	"content": {
+		"FillInTheBlank": {
+			"blank-label": "Blank {index}",
+			"check": "Check",
+			"hint-label": "Show hint",
+			"retry": "Retry",
+			"show-solution": "Show solution"
+		},
 		"QuizControls": {
 			"correct": "Correct!",
 			"incorrect": "Incorrect!",
