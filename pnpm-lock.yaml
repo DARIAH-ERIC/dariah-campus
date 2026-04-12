@@ -70,6 +70,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      estree-util-value-to-estree:
+        specifier: ^3.5.0
+        version: 3.5.0
       hast-util-to-string:
         specifier: ^3.0.1
         version: 3.0.1
