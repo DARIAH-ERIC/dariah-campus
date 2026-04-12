@@ -4,7 +4,8 @@
 			"blank-label": "Blank {index}",
 			"check": "Check",
 			"hint-label": "Show hint",
-			"retry": "Retry",
+			"reset": "Reset",
+			"score": "{correct} / {total} correct",
 			"show-solution": "Show solution"
 		},
 		"QuizControls": {

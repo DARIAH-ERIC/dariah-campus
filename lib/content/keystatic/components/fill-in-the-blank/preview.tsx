@@ -23,7 +23,7 @@ export function FillInTheBlankPreview(props: Readonly<FillInTheBlankPreviewProps
 							<td>Single accepted answer</td>
 						</tr>
 						<tr>
-							<td className="pr-3 font-mono">{"@@ans1/ans2@@"}</td>
+							<td className="pr-3 font-mono">{"@@answer1//answer2@@"}</td>
 							<td>Multiple accepted answers</td>
 						</tr>
 						<tr>

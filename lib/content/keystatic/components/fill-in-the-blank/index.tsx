@@ -18,6 +18,12 @@ export const createFillInTheBlank = createComponent((_paths, _locale) => {
 					label: "Case sensitive",
 					defaultValue: false,
 				}),
+				validateOnBlur: fields.checkbox({
+					label: "Validate on blur",
+					description:
+						"Show correct/incorrect feedback when the user leaves a blank, without requiring the Check button.",
+					defaultValue: false,
+				}),
 			},
 			ContentView(props) {
 				const { children } = props;
