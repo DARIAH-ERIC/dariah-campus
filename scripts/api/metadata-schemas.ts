@@ -17,7 +17,14 @@ export const curriculumMetadataSchema = v.object({
 	resources: v.array(v.object({ id: v.string(), collection: v.string() })),
 	domain: v.string(),
 	"target-group": v.string(),
-	"dariah-national-consortia": v.optional(v.array(v.string()), []),
+	"dariah-national-consortia": v.optional(
+		v.array(v.object({ code: v.string(), "sshoc-marketplace-id": v.string() })),
+		[],
+	),
+	"dariah-working-groups": v.optional(
+		v.array(v.object({ slug: v.string(), "sshoc-marketplace-id": v.string() })),
+		[],
+	),
 });
 
 export type CurriculumMetadata = v.InferOutput<typeof curriculumMetadataSchema>;
@@ -49,7 +56,14 @@ export const resourceMetadataSchema = v.object({
 	sources: v.array(v.object({ id: v.string(), name: v.string() })),
 	domain: v.string(),
 	"target-group": v.string(),
-	"dariah-national-consortia": v.optional(v.array(v.string()), []),
+	"dariah-national-consortia": v.optional(
+		v.array(v.object({ code: v.string(), "sshoc-marketplace-id": v.string() })),
+		[],
+	),
+	"dariah-working-groups": v.optional(
+		v.array(v.object({ slug: v.string(), "sshoc-marketplace-id": v.string() })),
+		[],
+	),
 });
 
 export type ResourceMetadata = v.InferOutput<typeof resourceMetadataSchema>;

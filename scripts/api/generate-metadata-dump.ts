@@ -1,4 +1,4 @@
-import { writeFile } from "node:fs/promises";
+import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 import { assert, log } from "@acdh-oeaw/lib";
@@ -17,10 +17,49 @@ const formatters = {
 	duration: new Intl.NumberFormat("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
 };
 
+async function loadJsonDir<T extends Record<string, unknown>>(
+	dir: string,
+): Promise<Map<string, T>> {
+	const files = await readdir(dir);
+	const map = new Map<string, T>();
+	await Promise.all(
+		files
+			.filter((f) => {return f.endsWith(".json")})
+			.map(async (file) => {
+				const raw = await readFile(join(dir, file), "utf-8");
+				map.set(file.slice(0, -5), JSON.parse(raw) as T);
+			}),
+	);
+	return map;
+}
+
 export async function createMetadata(): Promise<{
 	curricula: Array<CurriculumMetadata>;
 	resources: Array<ResourceMetadata>;
 }> {
+	const contentDir = join(process.cwd(), "content", "en");
+
+	const consortiaData = await loadJsonDir<{ "sshoc-marketplace-id": string }>(
+		join(contentDir, "dariah-national-consortia"),
+	);
+	const workingGroupsData = await loadJsonDir<{ "sshoc-marketplace-id": string }>(
+		join(contentDir, "dariah-working-groups"),
+	);
+
+	function createNationalConsortium(code: string) {
+		return {
+			code,
+			"sshoc-marketplace-id": consortiaData.get(code)?.["sshoc-marketplace-id"] ?? "",
+		};
+	}
+
+	function createWorkingGroup(slug: string) {
+		return {
+			slug,
+			"sshoc-marketplace-id": workingGroupsData.get(slug)?.["sshoc-marketplace-id"] ?? "",
+		};
+	}
+
 	async function createPerson(id: string) {
 		const person = await client.collections.people.get(id);
 		assert(person, `Missing person "${id}".`);
@@ -74,7 +113,9 @@ export async function createMetadata(): Promise<{
 				resources: item.metadata.resources.map((resource) => {
 					return { id: resource.value, collection: resource.discriminant };
 				}),
-				"dariah-national-consortia": item.metadata["dariah-national-consortia"],
+				"dariah-national-consortia":
+					item.metadata["dariah-national-consortia"].map(createNationalConsortium),
+				"dariah-working-groups": item.metadata["dariah-working-groups"].map(createWorkingGroup),
 				domain: sharedMetadata.domain,
 				"target-group": sharedMetadata["target-group"],
 			});
@@ -120,7 +161,9 @@ export async function createMetadata(): Promise<{
 						"sources" in item.metadata
 							? await Promise.all(item.metadata.sources.map(createSource))
 							: [],
-					"dariah-national-consortia": item.metadata["dariah-national-consortia"],
+					"dariah-national-consortia":
+						item.metadata["dariah-national-consortia"].map(createNationalConsortium),
+					"dariah-working-groups": item.metadata["dariah-working-groups"].map(createWorkingGroup),
 					domain: sharedMetadata.domain,
 					"target-group": sharedMetadata["target-group"],
 				});
