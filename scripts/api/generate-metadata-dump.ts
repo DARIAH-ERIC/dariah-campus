@@ -24,7 +24,9 @@ async function loadJsonDir<T extends Record<string, unknown>>(
 	const map = new Map<string, T>();
 	await Promise.all(
 		files
-			.filter((f) => {return f.endsWith(".json")})
+			.filter((f) => {
+				return f.endsWith(".json");
+			})
 			.map(async (file) => {
 				const raw = await readFile(join(dir, file), "utf-8");
 				map.set(file.slice(0, -5), JSON.parse(raw) as T);
