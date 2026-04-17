@@ -135,8 +135,10 @@ export async function createMetadata(): Promise<{
 		await Promise.all(
 			(await client.collections[name].all()).map(async (item) => {
 				const isDraft = "draft" in item.metadata && item.metadata.draft === true;
+
 				if (isDraft) return;
-				resources.push({
+
+				const resource = {
 					id: item.id,
 					collection: name,
 					kind,
@@ -168,7 +170,22 @@ export async function createMetadata(): Promise<{
 					"dariah-working-groups": item.metadata["dariah-working-groups"].map(createWorkingGroup),
 					domain: sharedMetadata.domain,
 					"target-group": sharedMetadata["target-group"],
-				});
+				};
+
+				if (kind === "external") {
+					const external = await client.collections.resourcesExternal.get(item.id);
+					assert(external);
+
+					resources.push({
+						...resource,
+						external: {
+							"publication-date": external.metadata.remote["publication-date"],
+							url: external.metadata.remote.url,
+						},
+					} as ResourceMetadata);
+				} else {
+					resources.push(resource as ResourceMetadata);
+				}
 			}),
 		);
 	}

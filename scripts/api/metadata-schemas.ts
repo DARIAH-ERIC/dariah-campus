@@ -29,15 +29,8 @@ export const curriculumMetadataSchema = v.object({
 
 export type CurriculumMetadata = v.InferOutput<typeof curriculumMetadataSchema>;
 
-export const resourceMetadataSchema = v.object({
+const baseResourceFields = {
 	id: v.string(),
-	collection: v.picklist([
-		"resourcesEvents",
-		"resourcesExternal",
-		"resourcesHosted",
-		"resourcesPathfinders",
-	]),
-	kind: v.picklist(["event", "external", "hosted", "pathfinder"]),
 	version: v.string(),
 	pid: v.string(),
 	title: v.string(),
@@ -64,6 +57,46 @@ export const resourceMetadataSchema = v.object({
 		v.array(v.object({ slug: v.string(), "sshoc-marketplace-id": v.string() })),
 		[],
 	),
+};
+
+const eventResourceSchema = v.object({
+	...baseResourceFields,
+	collection: v.literal("resourcesEvents"),
+	kind: v.literal("event"),
 });
+
+const externalResourceSchema = v.object({
+	...baseResourceFields,
+	collection: v.literal("resourcesExternal"),
+	kind: v.literal("external"),
+	external: v.object({
+		url: v.string(),
+		"publication-date": v.string(),
+	}),
+});
+
+const hostedResourceSchema = v.object({
+	...baseResourceFields,
+	collection: v.literal("resourcesHosted"),
+	kind: v.literal("hosted"),
+});
+
+const pathfinderResourceSchema = v.object({
+	...baseResourceFields,
+	collection: v.literal("resourcesPathfinders"),
+	kind: v.literal("pathfinder"),
+});
+
+export const resourceMetadataSchema = v.variant("kind", [
+	eventResourceSchema,
+	externalResourceSchema,
+	hostedResourceSchema,
+	pathfinderResourceSchema,
+]);
+
+export type EventResourceMetadata = v.InferOutput<typeof eventResourceSchema>;
+export type ExternalResourceMetadata = v.InferOutput<typeof externalResourceSchema>;
+export type HostedResourceMetadata = v.InferOutput<typeof hostedResourceSchema>;
+export type PathfinderResourceMetadata = v.InferOutput<typeof pathfinderResourceSchema>;
 
 export type ResourceMetadata = v.InferOutput<typeof resourceMetadataSchema>;
