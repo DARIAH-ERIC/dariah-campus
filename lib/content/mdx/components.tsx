@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import { Callout } from "@/components/content/callout";
 import { Diagram, DiagramCaption, DiagramCodeBlock } from "@/components/content/diagram";
 import { Disclosure } from "@/components/content/disclosure";
@@ -6,6 +8,7 @@ import { ExternalResource } from "@/components/content/external-resource";
 import { Figure } from "@/components/content/figure";
 import { Blank, FillInTheBlank } from "@/components/content/fill-in-the-blank";
 import { Grid, GridItem } from "@/components/content/grid";
+import { H5PWrapper } from "@/components/content/h5p-wrapper";
 import { ImageComparisonSlider } from "@/components/content/image-comparison-slider";
 import { Link as ContentLink } from "@/components/content/link";
 import { LinkButton } from "@/components/content/link-button";
@@ -34,6 +37,7 @@ export const components = {
 	Figure,
 	Grid,
 	GridItem,
+	H5PWrapper,
 	img: Image,
 	ImageComparisonSlider,
 	Link: ContentLink,
@@ -51,6 +55,39 @@ export const components = {
 	Tabs,
 	Video,
 	VideoCard,
+
+	/**
+	 * DARIAH-teach components.
+	 *
+	 * Need to decide on Resource
+	 */
+	Resource(
+		props: Readonly<{
+			children: ReactNode;
+			title: string;
+			id: string;
+			moduleId: string;
+			files: Array<{ file: string }>;
+		}>,
+	): ReactNode {
+		const { files } = props;
+
+		return (
+			<aside>
+				{/* FIXME: currently titles are duplicated in markdown  */}
+				{/* <h2>{title}</h2> */}
+				<ul role="list">
+					{files.map(({ file }, index) => {
+						return (
+							<li key={index}>
+								<a href={file}>{file}</a>
+							</li>
+						);
+					})}
+				</ul>
+			</aside>
+		);
+	},
 };
 
 export function useMDXComponents(): MDXProvidedComponents {
