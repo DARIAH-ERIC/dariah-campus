@@ -1,0 +1,657 @@
+---
+title: 'Unit II: Modelling with XML and DTDs'
+locale: en
+publication-date: 2016-01-26
+version: '1.0'
+authors:
+  - schreibman-susan
+  - bleier-roman
+editors: []
+contributors:
+  - schreibman-susan
+  - bleier-roman
+tags:
+  - markup-languages
+  - modelling
+  - tei
+  - dtd
+sources:
+  - dariah
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >+
+    This unit is divided into three lessons:
+
+
+
+    In Basic XML rules: well formed vs. valid XML the key rules for XML
+    documents are discussed. The basic rules to construct XML documents are
+    explained, how to use elements and attributs, how to encode special
+    characters (via Unicode), how elements are nested, and what the
+    relationships between elements are, described as a family (parent, children,
+    sibling) relationships.
+
+
+
+    Introduction to DTDs provides a history of DTDs, what they are used for, and
+    the difference between internal and external DTDs. There are exercises in
+    creating elements and attributes, as well as the opportunity to create your
+    first DTD. The DTD exercise is designed for you to put into practice what
+    you have learned through modelling a poem.
+
+
+
+    The Advanced DTD Exercise is an challenge exercise which provides you with
+    the framework for creating a DTD and document instance (XML document that
+    adheres to the DTD) for a recipe.
+
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+---
+## Basic XML rules: well-formed and valid XML
+
+### Well-formed vs valid XML
+
+XML documents are essentially text documents containing data and markup. Data can be text or numeric. Markup is the tags used to add structure and semantic information. XML processing software expects basic rules to be followed that distinguishes data from markup. If you are familiar with HTML, XML will seem quite familiar as it uses a similar markup system.
+
+All XML documents have to conform to a set of rules that were developed by the World Wide Web Consortium (W3C) a community of organisations that develop web standards for core languages of the WWW (including HTML, CSS and XML). The rules for XML documents are described in the XML specification ([https://www.w3.org/XML/](https://www.w3.org/XML/)). XML processing software expects XML documents to be structured following these rules, and any divergence causes what is known as a parsing or syntax error.
+
+<Link link={{"discriminant":"external","value":"http://www.w3schools.com/xml/xml_validator.asp"}}>W3Schools</Link> identifies five key rules for XML syntax. Documents that conform to these rules are called *Well-Formed*:
+
+1. XML documents must have a root element
+2. XML elements must have a closing tag
+3. XML tags are case sensitive
+4. XML elements must be properly nested
+5. XML attribute values must be quoted
+
+*Valid* XML, on the other hand, is a document that has additional constraints. In addition to being Well Formed, a Valid XML document adheres to the a set of rules as defined by a Document Type Definition (DTD) or a Schema. A Parsing Editor, software that understands XML syntax, will check your documents for conformity in terms of the rules of Well-Formedness, and if your document calls a DTD or Schema, the parsing editor will also check that your document abides by additional constraints, which include element and attribute names, where in the document elements and attributes can be used, and how frequently elements can be used.
+
+### Building-blocks of XML documents
+
+##### Elements
+
+Within an XML document data is contained within elements. Elements have a start-tag and an end-tag. Start- and end-tags consist of an **element name,** which is a string of text such as ‘PersonName’, and a delimiter indicating the beginning and end of a tag. XML tags are delimited from the stored data by use of angle brackets (or inequality signs). The bracket \< is used to indicate the beginning of an XML start-tag and > is used to indicate the end of a start-tag.
+
+The end-tag starts with the delimiter \</ and ends with the angle bracket >. The following would be an example of an XML element describing a person name. The content of the element, or in XML parlance, PCDATA (Parsed Character Data) 'Clark Kent' appears between the start- and end-tags:
+
+```
+<PersonName>Clark Kent</PersonName>
+```
+
+A special case are so-called **empty elements**. Empty elements do not contain PCDATA, and one tag functions as both the start and end tag. Empty elements are typically used as milestones. The XHTML \<br /> which indicates line breaks would be typical of this. This structure is frequently necessary to indicate where breaks occur in a source text (e.g. a page or section break in a book or an article).
+
+In the example of our element \<PersonName> the element name is a string of characters. The rules for XML element names are that names must start with a letter or underscore, they can contain letters, digits, hyphens, underscores, and periods and they are case-sensitive. The following table shows a examples of valid XML names:
+
+**Correct XML element names**
+
+\<\_newElement> \</newElement>
+
+Element names must start with a letter or underscore
+
+\<newElement> \</newElement>
+
+Element names are case-sensitive, start and end tag have to match
+
+\<my.new\_Element-1>\</my.new\_Element-1>
+
+Element names can contain letters, digits, hyphens, underscores, and periods
+
+Incorrect construction of element names leads to XML data that is not Well Formed. An XML processor will not process the data, but instead indicate an error message. The following table shows examples of illegal XML element names:
+
+**Illegal XML element names**
+
+\<1Element> \</1Element>
+
+Element names cannot start with a digit, hyphen or period
+
+\< Element /> \</ Element>
+
+Element names cannot start with an initial space
+
+\<newElement> \</Newelement>
+
+Element names are case-sensitive and start and end tag must match
+
+\<xmlElement>\</xmlElement>
+
+Element names cannot start with the string xml, XML, Xml, etc
+
+\<new Element> \</new Element>
+
+Element names cannot contain whitespace
+
+##### Attributes
+
+Another building block of XML documents are attributes. Attributes are a way to add additional information in the form of name-value pairs to an XML element. Attributes modify, refine, or further delineate elements. If elements are thought of as nouns, attributes can be likened to adjectives. Attributes have to be placed after the element name of the start tag and they are separated by a whitespace from the element name. In the following example the attributes @first-name and @last-name with values are added to the XML element person:
+
+```
+<person first-name=”Henry” last-name=”James” />
+```
+
+Attributes can also be used to store data and sometimes it is difficult to decide if data should be stored as an attribute value or within an element. A clear benefit for storing information within an element is that data can be structured further by nesting other XML elements or with attributes. This cannot be done with an attribute value. The benefit of attributes is that they can be useful to describe an element and its content further and with schemas ,the data that is stored as attribute values can be restricted to specific data types and values.
+
+For attributes, there are similar naming rules to elements. Names must start with a letter or underscore, they can contain letters, digits, hyphens, underscores, and periods, but cannot contain whitespace. Attribute values have to be quoted, they can contain alphanumeric characters, whitespace and various other characters such as period, hyphen, underscore, comma, etc. However, you have to be careful using single and double quotes. If single quotes are used as attribute value delimiter, they are not allowed in the value string. If double quotes are used as attribute value delimiter, they are not allowed in the value string. The following table contains examples of valid use of attributes.
+
+**Valid use of attributes in XML**
+
+\<newElement attribute1=”attribute value: 1” />
+
+Attribute name may contain digits, but cannot start with a digit. Attribute values may contain whitespaces, punctuation and alphanumeric characters in any order.
+
+\<person name=Rob Miller’ />
+
+\<person name=”Rob Miller” />
+
+Single quotes or double quotes can be used as delimiter of attribute values.
+
+\<address owner=”Mary’s address” />
+
+Single quotes can be used within a value string, but only if they are not deliminators.
+
+\<sentence spoken=’He said: “go”!’ />
+
+Double quotes can be used within a value string, but only if they are not deliminators.
+
+Incorrect attribute syntax leads to XML data that is not Well-Formed. An XML processor will not process the data, but instead indicate that there is an error. The following table shows examples of illegal attribute names and values:
+
+**Illegal use of attribute names and values in XML**
+
+\<person name=Robert />
+
+Attribute values must be quoted.
+
+\<person name=”Robert’ />
+
+No mismatch between the quote delimiters.
+
+\<sentence spoken=”He said: “go”!” />
+
+If double quotes are used as deliminators of a value string, they cannot be used in the value string itself.
+
+\<address owner=’Mary‘s address’ />
+
+If single quotes are used as deliminators of a value string, they cannot be used in the value string itself.
+
+\<person first name=”Frank” />
+
+An attribute name cannot contain whitespace characters.
+
+\<person 1stname=”Robert” />
+
+Attribute names must start with a letter or underscore
+
+\<person name=”Robert” name=”James” />
+
+An element cannot have multiple attributes with the same name.
+
+Elements and attributes are the main building blocks of XML and they are essential for structuring and modelling data. Other important components that are present in most XML documents are *Processing instructions* and XML and Unicode entities.
+
+######
+
+Processing instructions
+
+Processing instructions contain instructions for an XML processor specifying what version of XML is used, what character encoding and/or what schema should be used to validate the XML document. Processing instructions can be easily recognised because they are written in the first lines of an XML document. Processing instruction do not have a start- and end-tags. However, they do have attributes to store information. For instance, the following processing instruction is the XML declaration and should be at the beginning of every XML document. It declares that this document is encoded according the XML standard using XML version 1.0 and the character encoding UTF-8:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+```
+
+###### Unicode entities
+
+The text stored in an XML element is usually PCDATA (Parsed Character Data). This is a data definition used in XML documents and specifies that the five characters that are used to distinguish mark-up from data, such as angle brackets (for elements), single and double quotes (for attributes) and ampersand (for named entities), have to be *escaped* using Entity references. Entity references begin with & and end with a semicolon. The following list shows what Entities have to be used instead of the five illegal characters:
+
+Character
+
+XML entity
+
+\<
+
+\&lt;
+
+\>
+
+\&gt;
+
+&
+
+\&amp;
+
+'
+
+\&apos;
+
+"
+
+\&quote;
+
+Another form of Entity references are *Character* references for characters or symbols not contained in the ASCII character set. For instance, Unicode character references can be used within an XML document. Such character references start with &
+
+## and end with a semicolon and are directly embedded into an XML document. For instance, the Greek Capital Letter Pi has the character reference: \&#x03A0;
+
+### Nesting elements
+
+The XML specifications require that within an XML document all elements have to be nested within a root element. If you take the simple example of an address book, the root element could be \<addressBook>. Nested within the root element you may have several \<entry> elements containing address information. . A very basic structure might look something like this:
+
+```
+<addressBook>
+    <entry>
+        This is the first entry!
+    </entry>
+    <entry>
+        This is the second entry!
+    </entry>
+</addressBook>
+```
+
+To explain basic principle of nesting in XML, the Russian ‘Matryoshka doll’ might make a good analogy. The root element is the largest container. All other elements have to be entirely nested within the root element or another element. In a similar way smaller Matryoshka dolls’are nested within bigger ones.
+
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/15cf90b368ddf75e0e850b1b5e1eceb7cdf44bfb-5727.jpg" alignment="stretch">
+
+</Figure>
+
+In the address book example, all \<entry> elements are completely nested within the start and end root element. Furthermore, each address entry can other have elements nested in it. For instance, an entry may have \<name> as follows:
+
+```
+<addressBook>
+    <entry>
+        <name></name>
+    </entry>
+</addressBook>
+```
+
+Each entry could have additional elements nested inside it, including house number, street name, town, telephone number, etc. Nesting elements provides additional structure which makes it easier for searching . For instance, consider the following address:
+
+> Clark Kent 344 Clinton Street Metropolis 55 50145
+
+As humans we can read each part of the entry and understand what part is the name, the address and the telephone number. A computer does not understand text in the same way as humans do, hence adding more structure provides for this specificity:
+
+```
+<entry>
+    <name>Clark Kent</name>
+    <address>344 Clinton Street Metropolis</address>
+    <phoneNr>55 50145</phoneNr>
+</entry>
+```
+
+With more elements, even more data can be specified as follows:
+
+```
+<entry>
+    <name>
+        <forename>Clark</forename>
+	<surname>Kent</surname>
+    </name>
+    <address>
+       <houseNr>344</houseNr>
+       <street>Clinton Street</street>
+       <town>Metropolis</town>
+    </address>
+    <phoneNr>55 50145</phoneNr>
+</entry>
+```
+
+That this data is nested provides important information to the computer. For example, since the \<address> element encloses \<houseNr>, \<street> and \<town>, it can be inferred that they belong to the same address.
+
+### Element relationships within an XML document
+
+Conceptually, the structure of an XML document is a tree structure. The *root element*, forms the basis of the XML tree and all other element nodes, attribute nodes and text nodes reach out like braches and leaves. Visually this could be represented as a tree graph as in the following figure of the address book in the previous section:
+
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/f7fad3bcd13b476edb7bf474b6623f5448753a38-5739.png" alignment="stretch">
+
+</Figure>
+
+Moreover, various relationships between elements exist. In the **child-parent relationship** one element (the child) is nested in another element (the parent). In the following example the element \<name> is nested in the element \<entry> and consequently \<name> is the child of \<entry> and \<entry> the parent of \<child>.
+
+```
+ <entry>
+        <name>Clark Kent</name>
+</entry>
+```
+
+A **sibling relationship** means that elements (the siblings) have the same parent element. For instance, in our address example the elements \<name>, \<address> and \<phoneNr> have the same parent \<entry> and are hence siblings to each other:
+
+```
+<entry>
+     <name>Clark Kent</name>
+     <address>344 Clinton Street Metropolis</address>
+     <phoneNr>55 50145</phoneNr>
+</entry>
+```
+
+These relationships provide powerful structure for other software, as well as other XML-standards, such as XPath and XQuery to navigate the tree structure for formatting, for searching, and for extracting information from the XML document instance.
+
+## Introduction to DTDs
+
+### Introduction to DTDs
+
+As discussed in the previous section, to be a well-formed XML document a set of rules must be adhered to. Many documents also conform to another set of rules that constrain what, how, and the frequency of elements and attributes. An XML document that is well-formed and conforms to a schema or DTD is called a *Valid* XML document.
+
+This unit will teach the basic principles of one of these rule sets: Document Type Definition (DTD). DTDs were originally developed to work with SGML and do not use SGML or XML syntax. Every SGML document instance was required to have a DTD. XML is more flexible and does not require documents to conform to a DTD or schema (i.e. they are well formed but not valid). Schema languages include XML Schema, RNG Schema or Schematon. However, the underlying modelling principles are very similar and we teach DTDs here because it is a simpler syntax to learn. The TEI P4 guidelines had its own chapter on the use of DTDs \[<Link link={{"discriminant":"external","value":"http://www.tei-c.org/Vault/P5/1.0.1/doc/tei-p4-doc/html/ST.html"}}>TEI P4 Documentation, Chapter. 3</Link>].
+
+A DTD is a series of statements that can be written either at the beginning of an XML document (an internal DTD right after the XML declaration, or in a separate file from the XML document (an external DTD). The main advantage of an external DTD is that the rules defined in an external DTDs can be applied to many XML documents (called, in this case, document instances). This facilitates consistency of encoding and maintenance of the DTD. For the following examples and exercise we will use internal DTDs, because we are only working with one XML document. However, the same DTD statements would also apply to external DTDs.
+
+<Embed src="https://www.youtube.com/embed/xp2hbHaBZwI">
+
+</Embed>
+
+##### Further reading
+
+W3schools, DTD Tutorial, <Link link={{"discriminant":"external","value":"http://www.w3schools.com/xml/xml_dtd_intro.asp"}}>[http://www.w3schools.com/xml/xml\\\_dtd\\\_intro.asp](http://www.w3schools.com/xml/xml\\_dtd\\_intro.asp)</Link>
+
+### Creating Elements
+
+In this unit you will learn to develop a DTD for a simple address book. An address book usually contains several entries and each entry will contain information about a person including a name, address, and telephone number such as in the following table:
+
+Name
+
+Address
+
+Telephone number
+
+Clark Kent
+
+344 Clinton Street Metropolis
+
+55 50145
+
+Bruce Wayne
+
+1007 Mountain Drive Gotham
+
+53 59333
+
+As was mentioned previously, every XML document must have exactly one root element which encloses all other elements. The root element, like every other element, must be declared in the DTD. Root elements should be descriptive of the content. So, in our case, we will use the root element \<addressBook>. The following statement declares that \<addressBook> is the root element:
+
+```
+
+	<!ELEMENT addressBook (#PCDATA)>
+]>
+```
+
+Between the square brackets (in blue) is the declaration of the root element. The DTD element declaration starts always with \<! and ends with the ‘greater than symbol’, >.The definition within the round brackets means that the content of the element \<addressBook> can only be of type "#PCDATA". PCDATA, or Parsed Character Data, is a data definition used in XML documents and basically means plain text with a few constraints. For instance, an important restriction of PCDATA is that characters such as ampersand angle brackets (\< or >) and single and double quotes have to be escaped because these characters are used to distinguish mark-up from data.
+
+The following video shows how a DTD should be placed at the beginning of an XML document and how a text editor such as oXygen can be used to evaluate if an XML is well-formed and valid.
+
+<Embed src="https://www.youtube.com/embed/kEprJ0U0FiE">
+
+</Embed>
+
+The above DTD statement specifies an addressBook element that can only store character data such as:
+
+```
+<addressBook> Clark Kent 344 Clinton Street Metropolis 55 50145 Bruce Wayne 1007 Mountain Drive Gotham 53 59333</addressBook>
+```
+
+Within the \<addressBook> element currently only text is allowed. If more than one address entry, it would soon become confusing and difficult to see where one entry ends and the next one starts. Therefore, another element is needed to separate individual entries. Building on our previous example, we will add an \<entry> element so that individual addresses can be separated:
+
+```
+
+	<!ELEMENT addressBook (entry*)>
+	<!ELEMENT entry (#PCDATA)>
+]>
+```
+
+Not only did we declare a second element, we added in additional constraints to the \<addressBook> element. In the first example, \<addressBook> coud only contain PCDATA (i.e. plain text). But now it cannot contain PCDATA but must only contain the element \<entry>. Moreover, the asterix \* after the element name specifies that ‘zero or more’ \<entry> elements are contained within \<addressBook>. Now each address entry can be encoded as an individual \<entry> element as below:
+
+```
+<addressBook>
+     <entry>Clark Kent 344 Clinton Street Metropolis 55 50145</entry>
+     <entry>Bruce Wayne 1007 Mountain Drive Gotham 53 59333</entry>
+</addressBook>
+```
+
+##### Nesting Elements
+
+```
+
+	<!ELEMENT addressBook (#PCDATA)>
+]>
+```
+
+The above DTD statement specifies an addressBook element that can only store character data such as text and numbers:
+
+```
+<addressBook> Clark Kent 344 Clinton Street Metropolis 55 50145 Bruce Wayne 1007 Mountain Drive Gotham 53 59333</addressBook>
+```
+
+Within the \<addressBook> element currently only text is allowed. An address book has usually more address entries. In order to tell the computer where one address starts and another ends an element is needed to separate individual entries. Building on our previous example, we will add an \<entry> element so that individual addresses can be separated:
+
+```
+
+	<!ELEMENT addressBook (entry*)>
+	<!ELEMENT entry (#PCDATA)>
+]>
+```
+
+Not only did we declare a second element, we added additional constraints to the \<addressBook> element. The \<addressBook> element cannot contain PCDATA (text and numbers) anymore. Now it can only contain the element \<entry>. Moreover, the asterix \* after the element name specifies that ‘zero or more’ \<entry> elements are contained within \<addressBook>. Now each address entry can be encoded as an individual \<entry> element as below:
+
+```
+<addressBook>
+     <entry>Clark Kent 344 Clinton Street Metropolis 55 50145</entry>
+     <entry>Bruce Wayne 1007 Mountain Drive Gotham 53 59333</entry>
+</addressBook>
+```
+
+Within entry further elements could be nested such as elements for name or street or telephone number. How would you define the elements \<name>, \<street> and \<phoneNr> with DTD? They should all be children of \<entry> and contain only PCDATA content.
+
+### DTD Exercise I
+
+In the first part of this exercise, we will create a simple DTD for poetry. In the first part of the exercise, only use the elements below:
+
+* poem (which will be the root element)
+* verse
+* line
+* title
+* note
+* author
+
+To help you with the DTD syntax, we’ve created a <Link link={{"discriminant":"download","value":"/assets/content/downloads/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/dtd-cheat-sheet.pdf"}}>DTD Cheat Sheet</Link>. Open up the PDF and keep it handy when you are creating the DTD. Create the DTD in a parsing editor such as oXygen. oXygen understands DTD syntax, and once you begin creating the document instance, it will give error messages if you do something wrong. However, until the XML code is in place, you will get parsing errors.
+
+Start by opening oXygen, and then choose the top left icon, the new document icon, and then choose 'XML Document'. Begin by creating the root element right below the XML declaration.
+
+```
+<?xml version="1.0"?>
+
+]>
+```
+
+Save your file. Create your DTD using the elements above using the syntax provided in this section. Remember, the element declarations go in between the square \[] brackets. After you create your DTD, see if the DTD will model your poem the way you expect. To do this, create a document instance right below the DTD. Once everything works correctly, go back and add occurrence indicators to further define the behavior of the elements.
+
+You can try to create the DTD on your own, or follow along with this video
+
+<Embed src="https://www.youtube.com/embed/CKC3_kAbWPg?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL">
+
+</Embed>
+
+### Defining different types of elements
+
+DTD’s allow for the definition of different types of Elements. It can be specified that an element should contain **text content, element content, mixed content or no content**. Earlier we have already seen how **text content** is defined using the string ‘#PCDATA’ and how elements can be added to our \<addressBook>. By replacing the string ‘#PCDATA’ with the name of the element \<entry>. This specifies that the element \<addressBook> can only contain ‘entry’ elements’ (**element content**).
+
+Next, we structure our entries even further by providing a more descriptive model for address entries:
+
+```
+<br></br>  <!ELEMENT addressBook (entry*)><br></br>  <!ELEMENT entry (name, address, phoneNr)><br></br>  <!ELEMENT name (#PCDATA)><br></br>  <!ELEMENT address (#PCDATA)><br></br>  <!ELEMENT phoneNr (#PCDATA)> ]>
+```
+
+The above DTD extends the previous DTD. The content model of \<entry> was changed from #PCDATA to allow \<name>, \<address> and \<phoneNr>. The new DTD requires that each entry element has exactly one \<name> element, one \<address> element and one \<phoneNr> element.
+
+```
+<addressBook>
+   <entry>
+      <name>Clark Kent</name>
+      <address>344 Clinton Street Metropolis</address>
+      <phoneNr>55 50145</phoneNr>
+   </entry>
+   <entry>
+      <name>Bruce Wayne</name>
+      <address>1007 Mountain Drive Gotham</address>
+      <phoneNr>53 59333</phoneNr>
+   </entry>
+</addressBook>
+```
+
+**Mixed element content** is a combination of text and element content. For instance, within the element \<phoneNr> it might be necessary to tag the country calling code with an element \<countryCode>, but leave the rest of the telephone number as text. Such mixed element content can be defined in the following way:
+
+```
+<!ELEMENT phoneNr (#PCDATA | countryCode)*>
+```
+
+```
+<!ELEMENT countryCode (#PCDATA)>
+```
+
+The above DTD will allow us to identify the country code in the following way:
+
+```
+<phoneNr>
+    <countryCode>53</countryCode>
+    59333
+</phoneNr>
+```
+
+Another form of element content are **empty elements**, elements that contain no content. In HTML the \<br /> element indicating a line break and \<hr /> element indicating a horizontal row. These are examples of empty elements. The characteristic of empty elements is that they do not contain data, text or child elements and the element is closed immediately. With DTD empty elements can be defined with the keyword ‘EMPTY’. For instance, the following statement defines an empty element named \<relationship>:
+
+```
+<!ELEMENT relationship EMPTY>
+```
+
+### Creating Attributes
+
+In the previous unit we learned the basic syntax of the DTD language to define a set of rules for our XML documents. We saw how rules for element names and element content can be defined. Now we will have a look at how attributes and attribute values can be defined in DTDs.
+
+In the last unit we built a DTD for the following address book XML:
+
+```
+<addressBook>
+    <entry>
+         <name>Clark Kent</name>
+         <address>344 Clinton Street Metropolis</address>
+         <phoneNr>55 50145</phoneNr>
+        <relationship/>
+  </entry>
+  <entry>
+          <name>Bruce Wayne</name>
+          <address>1007 Mountain Drive Gotham</address>
+          <phoneNr>53 59333</phoneNr>
+          <relationship/>
+   </entry>
+</addressBook>
+```
+
+The element ‘relationship’ is an empty element containing no data and is therefore not meaningful yet. We will learn now how to add a ‘type’ attribute that contains information about the type of relationship. The DTD code that defines the above XML is the following:
+
+```
+<!DOCTYPE addressBook [
+            <!ELEMENT addressBook (entry*)>
+            <!ELEMENT entry (name, address, phoneNr, relationship)>
+            <!ELEMENT name (#PCDATA)>
+            <!ELEMENT address (#PCDATA)>
+            <!ELEMENT phoneNr (#PCDATA)>
+            <!ELEMENT relationship EMPTY> ]>
+```
+
+The following DTD statement defines an attribute named ‘type’ for the element ‘relationship’.
+
+```
+<!ATTLIST relationship type CDATA #REQUIRED>
+```
+
+The components of this statement are:
+
+**\<!**
+
+Start of attribute definition
+
+**ATTLIST**
+
+declares an attribute list
+
+**relationship**
+
+declares the element to which the attribute belongs
+
+**type**
+
+declares the attribute name
+
+**CDATA**
+
+defines the content type of the attribute, CDATA stands for ‘character data’
+
+**#REQUIRED**
+
+declares that this attribute is mandatory on every ‘relationship’ element
+
+**>**
+
+End of attribute definition
+
+DTDs allow to specify different content types for attributes. Besides character data (CDATA) the values … are possible.
+
+For some attributes it is useful to specify predefined values. This can be done by adding the predefined values in round brackets after the attribute name instead of the CDATA in the example above:
+
+```
+<!ATTLIST relationship type (private|work) #REQUIRED>
+```
+
+One attribute list can contain several attributes of an element. For instance, the following statements declares the attributes ‘first’, ‘second’ and ‘title’ on the name element:
+
+```
+<!ATTLIST name first CDATA #REQUIRED second CDATA #REQUIRED
+title CDATA #REQUIRED>
+```
+
+All attributes that we defined here are mandatory as indicated by the #REQUIRED statement. In order to make an attribute optional #REQUIRED has to be replaced with #IMPLIED. As in the example of the ‘title’ attribute here:
+
+```
+<!ATTLIST name first CDATA #REQUIRED second CDATA #REQUIRED <br></br>title CDATA #IMPLIED>
+```
+
+### DTD Exercise II: Adding Attributes
+
+Now we will use the DTD created earlier for poems, and add two attribute values.
+
+1\) add the attribute n (for number) on the line and verse elements
+
+2\) add the attribute type on the note element
+
+This is the syntax you can use for the number attribute
+
+```
+<!ATTLIST line n CDATA #IMPLIED>
+```
+
+Be sure to create the statement directly after the line element statement. You can add the attributes on your own, or do it while watching the video below.
+
+<Embed src="https://www.youtube.com/embed/2L9XBuCsQUw?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL">
+
+</Embed>
+
+## Advanced DTD exercise
+
+### Advanced DTD exercise
+
+##### Recipe exercise
+
+On the internet you can find a great number of cooking websites with recipes. Most cooking recipes have a similar content types and a similar structure. For this exercise look up online recipes websites and try to find a model to express recipes.
+
+* Identify at least five things that you would like to tag in recipes and think about suitable element and/or attribute names
+* Open up your XML editor and create a new XML document called recipe.xml
+* Copy and paste the text from one of the recipes that you found online into recipe.xml
+* Try to tag the different parts of the recipe with your element and attributes.
+* Make sure that the XML document is well-formed by checking well-formedness
+* Write a DTD model for your recipe and validate it against your XML
+
+### Challenge exercise
+
+##### Cookbook exercise
+
+Based on the previous exercise you should create an online cookbook now. Starting from the recipe model, what elements and attributes do you need to create a model of a cookbook?
+
+* In your XML editor create a new XML document: cookbook.xml
+* Copy and paste the DTD and XML from your recipe.xml
+* Copy and paste the content for two other recipes into your new cookbook.xml
+* Extend your DTD model to include additional elements that you think are required for a cookbook
+* Add these additional elements to your cookbook XML and validate your XML document
