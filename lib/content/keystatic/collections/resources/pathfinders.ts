@@ -14,6 +14,7 @@ import { createEmbed } from "@/lib/content/keystatic/components/embed";
 import { createFigure } from "@/lib/content/keystatic/components/figure";
 import { createFootnote } from "@/lib/content/keystatic/components/footnote";
 import { createGrid } from "@/lib/content/keystatic/components/grid";
+import { createH5PWrapper } from "@/lib/content/keystatic/components/h5p-wrapper";
 import { createHeadingId } from "@/lib/content/keystatic/components/heading-id";
 import { createLink } from "@/lib/content/keystatic/components/link";
 import { createLinkButton } from "@/lib/content/keystatic/components/link-button";
@@ -127,6 +128,7 @@ export const createResourcesPathfinders = createCollection(
 						...createFigure(paths, locale),
 						...createFootnote(paths, locale),
 						...createGrid(paths, locale),
+						...createH5PWrapper(paths, locale),
 						...createHeadingId(paths, locale),
 						...createLink(paths, locale),
 						...createLinkButton(paths, locale),
@@ -149,6 +151,12 @@ export const createResourcesPathfinders = createCollection(
 					validation: { length: { min: 0 } },
 					collection: withI18nPrefix("dariah-national-consortia", locale),
 					description: "DARIAH member countries contributing to resource (where applicable)",
+				}),
+				"dariah-working-groups": fields.multiRelationship({
+					label: "DARIAH working groups",
+					validation: { length: { min: 0 } },
+					collection: withI18nPrefix("dariah-working-groups", locale),
+					description: "DARIAH working groups contributing to resource (where applicable)",
 				}),
 				doi: readonly({
 					label: "PID (readonly)",

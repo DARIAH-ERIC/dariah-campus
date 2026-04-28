@@ -21,14 +21,17 @@ sources:
 license: cc-by-4.0
 table-of-contents: true
 summary:
-  content: Thesauri, taxonomies and other forms of controlled vocabularies
-    represent a conceptual backbone of the research, playing an ever-increasing
-    role in various aspects of the data management process.  These resources are
+  content: >-
+    Thesauri, taxonomies and other forms of controlled vocabularies represent a
+    conceptual backbone of the research, playing an ever-increasing role in
+    various aspects of the data management process.  These resources are
     indispensable to determine common understanding allowing to systematically
     categorize and enrich research data in a consistent manner, as well as
     foster the data interoperability and integration among projects and web
     applications.
 content-type: training-module
+translations: []
+dariah-national-consortia: []
 doi: https://hdl.handle.net/21.11159/019595c5-11fa-7123-835a-783727ceee5a
 ---
 ## About this module
@@ -39,7 +42,7 @@ This learning resource is presented in two formats: a video screencast, which yo
 
 This screencast was recorded for the Spring School LiSeH 2021, and presents much of the same material as in the full module below, with some omissions.
 
-<VideoCard provider="youtube" id="DUlfC8NL0Bs" title="Controlled Vocabularies and SKOS" src="/assets/content/assets/en/resources/hosted/controlled-vocabularies-and-skos/cv-and-skos-title-image.jpg" subtitle="Click to view" />
+<VideoCard provider="youtube" id="DUlfC8NL0Bs" title="Controlled Vocabularies and SKOS" subtitle="Click here to view" src="/assets/content/assets/en/resources/hosted/controlled-vocabularies-and-skos/cv-and-skos-title-image.jpg" />
 
 ## Introduction
 
@@ -47,7 +50,7 @@ This screencast was recorded for the Spring School LiSeH 2021, and presents much
 
 Controlled vocabularies are knowledge organization systems that contain (optionally) structured set of concepts/terms for organizing and classifying data in order to ensure its future access and retrieval. The concepts/terms are data descriptors related to each other via explicit relationships (hierarchical or associative). These data descriptors are used to distinguish and define the characteristics of knowledge resources in a specific domain. Using controlled vocabularies the resources can be queried, retrieved, analysed and linked to other relevant information objects.
 
-Patricia Harpring [^1] introduced the following definition of controlled vocabulary (CV):
+Patricia Harpring \[^1] introduced the following definition of controlled vocabulary (CV):
 
 > "A controlled vocabulary is an organized arrangement of words and phrases used to index content and/or to retrieve content through browsing or searching. It typically includes preferred and variant terms and has a defined scope or describes a specific domain." (Harpring, P., 2010)
 
@@ -88,13 +91,13 @@ Thereby the CVs are used :
 
 The main idea of Semantic Web is to enrich data with its semantics/meaning that not only humans but also machines could use, interpret and infer new knowledge from. CVs provide and document data semantics.
 
-Tim Berners-Lee in his fundamental paper "The Semantic Web" (2001) says that on the Semantic Web "information is given well-defined meaning" [^2]. CVs are one of the tools used for this mission.
+Tim Berners-Lee in his fundamental paper "The Semantic Web" (2001) says that on the Semantic Web "information is given well-defined meaning" \[^2]. CVs are one of the tools used for this mission.
 
 W3C developed specifications and standards to support the usage of CVs in the context of the Semantic Web in order to express knowledge in a machine-readable format that can be used by computer applications to interpret it. SKOS (Simple Knowledge Organization System) is a standard schema to represent CVs using [Resource Description Framework (RDF)](https://www.w3.org/RDF/), which is a standard model for data exchange on the Web. Usage of RDF for CVs representation allows metadata to be shared and retrieved across different applications.
 
 ### CVs in a Digital Humanities context
 
-The field of Digital Humanities (DH) deals with the production of digital objects which could be data resources (e.g. 3D models, TEI [^3] documents, data visualizations) as well as with the production of metadata for real-world objects (e.g. archaeological finds, historical manuscripts). In both cases, it involves the creation of digital assets. CVs are used to describe, group and distinguish these resources.
+The field of Digital Humanities (DH) deals with the production of digital objects which could be data resources (e.g. 3D models, TEI \[^3] documents, data visualizations) as well as with the production of metadata for real-world objects (e.g. archaeological finds, historical manuscripts). In both cases, it involves the creation of digital assets. CVs are used to describe, group and distinguish these resources.
 
 *Why CVs are important in DH projects?*
 
@@ -114,7 +117,7 @@ Another approach on **Diagram 3.** shows how different projects use their own pr
 
 ![Diagram 3. Interoperable controlled vocabularies](/assets/content/assets/en/resources/hosted/controlled-vocabularies-and-skos/diagram-3.jpg)
 
-There are also meta-vocabularies developed with a primary goal to be a high-level overarching vocabulary for more domain-specific CVs. Therefore making it easier to connect local CVs and establish relationships among them through common meta-level concepts. Backbone Thesaurus [^4] is one of the examples in the DH domain that has as its purpose to allow interdisciplinary CVs development and integration.
+There are also meta-vocabularies developed with a primary goal to be a high-level overarching vocabulary for more domain-specific CVs. Therefore making it easier to connect local CVs and establish relationships among them through common meta-level concepts. Backbone Thesaurus \[^4] is one of the examples in the DH domain that has as its purpose to allow interdisciplinary CVs development and integration.
 
 ![BBT - Backbone Thesaurus in Vocabs repository](/assets/content/assets/en/resources/hosted/controlled-vocabularies-and-skos/bbt.png)
 
@@ -122,7 +125,7 @@ There are also meta-vocabularies developed with a primary goal to be a high-leve
 
 ### About SKOS
 
-SKOS is a Simple Knowledge Organization System, a common data model for sharing and linking knowledge organization systems via the Web [^5].
+SKOS is a Simple Knowledge Organization System, a common data model for sharing and linking knowledge organization systems via the Web \[^5].
 
 SKOS is based on RDF and is a machine-readable format and can be exchanged between software applications and published on the Web.
 
@@ -506,7 +509,7 @@ There are many styles used to categorize music. Consider the following styles: p
 
 Controlled vocabularies provide data descriptors for future data retrieval. This directly impacts search and data discovery. A CV is a building block in database design and is a part of information architecture in the user interface. The following examples show how one CV is used in different parts of the web application. The following examples are taken from [Iron-Age-Danube](https://www.iron-age-danube.eu/) project's data management system.
 
-Picture 1. Visualization of IAD Thesaurus [^6]
+Picture 1. Visualization of IAD Thesaurus \[^6]
 
 ![Picture 1. Visualization of IAD thesaurus](/assets/content/assets/en/resources/hosted/controlled-vocabularies-and-skos/iad-thesaurus-visualization.png)
 
@@ -568,7 +571,6 @@ Most of the tools allow SKOS data import and export.
 Validation tools are very important to detect any inconsistencies in SKOS structure and syntax.
 
 * [Skosify](https://github.com/NatLibFi/Skosify) - corrects errors and adds missing symmetric statements; it can be used as a command line tool or python library.
-
 * [SKOS Testing tool](http://labs.sparna.fr/skos-testing-tool/) - provides a validation report on the quality of submitted SKOS file; based on qSKOS.
 
 ### Visualization
@@ -631,14 +633,14 @@ Various domains controlled vocabularies registry - [BARTOC](https://bartoc.org/e
 
 The creation of this learning material was supported by the Visegrad Fund Project "Training Digital Scholars: Knowledge Exchange between V4 and Austria" under the International Visegrad Fund's Grant No. 21820079.
 
-[^1]: Harpring, Patricia. Introduction to controlled vocabularies: terminology for art, architecture, and other cultural works. Getty Publications, 2010.
+\[^1]: Harpring, Patricia. Introduction to controlled vocabularies: terminology for art, architecture, and other cultural works. Getty Publications, 2010.
 
-[^2]: Berners-Lee, Tim, James Hendler, and Ora Lassila. "The semantic web." Scientific american 284, no. 5 (2001): 28-37.
+\[^2]: Berners-Lee, Tim, James Hendler, and Ora Lassila. "The semantic web." Scientific american 284, no. 5 (2001): 28-37.
 
-[^3]: [DariahTeach: Text encoding and the Text Encoding Initiative](https://teach.dariah.eu/course/view.php?id=23)
+\[^3]: [DariahTeach: Text encoding and the Text Encoding Initiative](https://teach.dariah.eu/course/view.php?id=23)
 
-[^4]: [Backbone Thesaurus](https://www.backbonethesaurus.eu/)
+\[^4]: [Backbone Thesaurus](https://www.backbonethesaurus.eu/)
 
-[^5]: [Alistair Miles, Sean Bechhofer. SKOS Reference, W3C Recommendation 18 August 2009](https://www.w3.org/TR/skos-reference/)
+\[^5]: [Alistair Miles, Sean Bechhofer. SKOS Reference, W3C Recommendation 18 August 2009](https://www.w3.org/TR/skos-reference/)
 
-[^6]: [IAD Thesaurus](https://vocabs.acdh.oeaw.ac.at/iad_thesaurus/en/)
+\[^6]: [IAD Thesaurus](https://vocabs.acdh.oeaw.ac.at/iad_thesaurus/en/)

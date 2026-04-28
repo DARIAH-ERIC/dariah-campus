@@ -1,67 +1,67 @@
-import { writeFile } from "node:fs/promises";
+import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 import { assert, log } from "@acdh-oeaw/lib";
 import * as v from "valibot";
 
 import { client } from "@/lib/content/client";
+import { resources as sharedMetadata } from "@/lib/content/shared-metadata.config";
+import {
+	type CurriculumMetadata,
+	curriculumMetadataSchema,
+	type ResourceMetadata,
+	resourceMetadataSchema,
+} from "@/scripts/api/metadata-schemas";
 
 const formatters = {
 	duration: new Intl.NumberFormat("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
 };
 
-export const curriculumMetadataSchema = v.object({
-	id: v.string(),
-	collection: v.literal("curriculum"),
-	version: v.string(),
-	pid: v.string(),
-	title: v.string(),
-	summary: v.object({ title: v.string(), content: v.string() }),
-	license: v.string(),
-	locale: v.string(),
-	translations: v.array(v.string()),
-	"publication-date": v.string(),
-	"content-type": v.literal("curriculum"),
-	tags: v.array(v.object({ id: v.string(), name: v.string() })),
-	editors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
-	resources: v.array(v.object({ id: v.string(), collection: v.string() })),
-});
-
-export type CurriculumMetadata = v.InferOutput<typeof curriculumMetadataSchema>;
-
-export const resourceMetadataSchema = v.object({
-	id: v.string(),
-	collection: v.picklist([
-		"resourcesEvents",
-		"resourcesExternal",
-		"resourcesHosted",
-		"resourcesPathfinders",
-	]),
-	kind: v.picklist(["event", "external", "hosted", "pathfinder"]),
-	version: v.string(),
-	pid: v.string(),
-	title: v.string(),
-	summary: v.object({ title: v.string(), content: v.string() }),
-	license: v.string(),
-	locale: v.string(),
-	translations: v.array(v.string()),
-	"publication-date": v.string(),
-	"content-type": v.string(),
-	tags: v.array(v.object({ id: v.string(), name: v.string() })),
-	authors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
-	editors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
-	contributors: v.array(
-		v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) }),
-	),
-	sources: v.array(v.object({ id: v.string(), name: v.string() })),
-});
-
-export type ResourceMetadata = v.InferOutput<typeof resourceMetadataSchema>;
+async function loadJsonDir<T extends Record<string, unknown>>(
+	dir: string,
+): Promise<Map<string, T>> {
+	const files = await readdir(dir);
+	const map = new Map<string, T>();
+	await Promise.all(
+		files
+			.filter((f) => {
+				return f.endsWith(".json");
+			})
+			.map(async (file) => {
+				const raw = await readFile(join(dir, file), "utf-8");
+				map.set(file.slice(0, -5), JSON.parse(raw) as T);
+			}),
+	);
+	return map;
+}
 
 export async function createMetadata(): Promise<{
 	curricula: Array<CurriculumMetadata>;
 	resources: Array<ResourceMetadata>;
 }> {
+	const contentDir = join(process.cwd(), "content", "en");
+
+	const consortiaData = await loadJsonDir<{ "sshoc-marketplace-id": string }>(
+		join(contentDir, "dariah-national-consortia"),
+	);
+	const workingGroupsData = await loadJsonDir<{ "sshoc-marketplace-id": string }>(
+		join(contentDir, "dariah-working-groups"),
+	);
+
+	function createNationalConsortium(code: string) {
+		return {
+			code,
+			"sshoc-marketplace-id": consortiaData.get(code)?.["sshoc-marketplace-id"] ?? "",
+		};
+	}
+
+	function createWorkingGroup(slug: string) {
+		return {
+			slug,
+			"sshoc-marketplace-id": workingGroupsData.get(slug)?.["sshoc-marketplace-id"] ?? "",
+		};
+	}
+
 	async function createPerson(id: string) {
 		const person = await client.collections.people.get(id);
 		assert(person, `Missing person "${id}".`);
@@ -115,6 +115,11 @@ export async function createMetadata(): Promise<{
 				resources: item.metadata.resources.map((resource) => {
 					return { id: resource.value, collection: resource.discriminant };
 				}),
+				"dariah-national-consortia":
+					item.metadata["dariah-national-consortia"].map(createNationalConsortium),
+				"dariah-working-groups": item.metadata["dariah-working-groups"].map(createWorkingGroup),
+				domain: sharedMetadata.domain,
+				"target-group": sharedMetadata["target-group"],
 			});
 		}),
 	);
@@ -130,9 +135,10 @@ export async function createMetadata(): Promise<{
 		await Promise.all(
 			(await client.collections[name].all()).map(async (item) => {
 				const isDraft = "draft" in item.metadata && item.metadata.draft === true;
+
 				if (isDraft) return;
 
-				resources.push({
+				const resource = {
 					id: item.id,
 					collection: name,
 					kind,
@@ -159,7 +165,27 @@ export async function createMetadata(): Promise<{
 						"sources" in item.metadata
 							? await Promise.all(item.metadata.sources.map(createSource))
 							: [],
-				});
+					"dariah-national-consortia":
+						item.metadata["dariah-national-consortia"].map(createNationalConsortium),
+					"dariah-working-groups": item.metadata["dariah-working-groups"].map(createWorkingGroup),
+					domain: sharedMetadata.domain,
+					"target-group": sharedMetadata["target-group"],
+				};
+
+				if (kind === "external") {
+					const external = await client.collections.resourcesExternal.get(item.id);
+					assert(external);
+
+					resources.push({
+						...resource,
+						external: {
+							"publication-date": external.metadata.remote["publication-date"],
+							url: external.metadata.remote.url,
+						},
+					} as ResourceMetadata);
+				} else {
+					resources.push(resource as ResourceMetadata);
+				}
 			}),
 		);
 	}
