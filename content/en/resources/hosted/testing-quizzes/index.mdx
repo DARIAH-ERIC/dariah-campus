@@ -22,22 +22,40 @@ dariah-working-groups: []
 ---
 This is a test for using the 'quizzes' widget in DARIAH-Campus.
 
-
-
-
-
 <Quiz>
-  <QuizTextInput>
-    Bumblebees are black and which other colour?
-  </QuizTextInput>
-
-  <QuizChoice variant="single" buttonLabel="Check Answer">
+  <QuizChoice variant="multiple">
     <QuizChoiceQuestion>
-
+      Bumblebees are black and which other colour?
     </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="correct">
+      yellow
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      blue
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      pink
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      green
+    </QuizChoiceAnswer>
+  </QuizChoice>
+
+  <QuizChoice variant="single" buttonLabel="check answer">
+    <QuizChoiceQuestion>
+      In which county in England is the city of York?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="correct">
+      Yorkshire
+    </QuizChoiceAnswer>
   </QuizChoice>
 
   <QuizTextInput>
-
+    Describe below how you would travel from London to Paris.
   </QuizTextInput>
 </Quiz>
