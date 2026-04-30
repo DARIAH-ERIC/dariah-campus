@@ -33,6 +33,7 @@ summary:
 content-type: training-module
 translations: []
 dariah-national-consortia: []
+dariah-working-groups: []
 ---
 ## Description
 
@@ -133,7 +134,7 @@ Using the following rules, knowledge can be represented in the form of triples (
 
 This statement is in the form of resource-property-resource and consists of three URIs: two nodes and one property. So, a computer, parsing the above triple could understand that it is talking about two resources (the URLs of Parthenon and Athens from the Wikipedia and DBpedia websites) that are interrelated through the property of location as defined in its DBpedia URL respectively.
 
-<Callout kind="tip">
+<Callout kind="tip" title="URLs & URIs">
   In this example, each URI is actually a URL i.e. a unique identifier denoting the location of the resource on the web (its web address). The first part of each URI (i.e. the part of the address until the name of the resource) represents the namespace, the space where all the resources are getting their names. In other words, the namespace Wikipedia ([https://en.wikipedia.org](https://en.wikipedia.org)) is where the name Parthenon is defined, while the namespace DBpedia ([http://dbpedia.org](http://dbpedia.org)) is where the resources location and Athens are defined. Through RDF any individual namespace can be interconnected based on this simple resource-property-value triple form.
 </Callout>
 
@@ -184,7 +185,7 @@ As with every language, syntax provides a way to “serialize” what is articul
 * OWL/XML, an XML syntax specifically developed in order to capture the functional-style-syntax that relates more to the formal structure of ontologies but at the same time being readable by XML parsing tools.&#x20;
 * Manchester, originally developed by the University of Manchester and designed to be as human-readable as possible. Currently can be used by ontology editors such as [Protége](https://protege.stanford.edu/).
 
-### Declaring and Editing a Schema
+### Tools for declaring and editing  a schema
 
 In order to declare a schema or the actual instances of a Knowledge Graph we need an editor. The latter can support a visual interface for ease of use (such as the open source visual editor <Link link={{"discriminant":"external","value":"https://protege.stanford.edu/"}}>Protégé</Link> that is specifically designed for designing ontologies and supports the SW languages and the majority of syntaxes or any other text editor that supports integration with the language we want to use. When it comes to SW languages, instead of a visual editor we can also use the <Link link={{"discriminant":"external","value":"https://rdflib.readthedocs.io/en/stable/"}}>RDFLib python library</Link> and write RDF statements directly in python using our favorite editor such as <Link link={{"discriminant":"external","value":"https://code.visualstudio.com/"}}>VS studio code</Link>, or <Link link={{"discriminant":"external","value":"https://www.sublimetext.com/"}}>Sublime Text</Link>. The benefits of using RDFLib instead of a visual editor are that, by integrating RDF with a powerful programming language like Python, we can write scripts that automate the design and creation of schemas, queries or the actual instances of Knowledge Graphs. This can be a game changer in i) handling very big structures of data (KGs with millions of triples or very complex schemas); ii) transforming data from one format to another (e.g. from json structure to rdf etc.) or iii) communicating with other repositories through APIs by calling inside our code the appropriate python libraries that handling the above functionalities for us.
 
@@ -264,13 +265,15 @@ In this example, we define only one direction for each property of our ontology 
 
 As mentioned in the previous section, a Knowledge Graph (KG) is an organized representation of data in the form of entities and their relationships. Along this line, in order to build a KG we first need to gather data out of which we will create instances. Instances of a KG refer to the actual objects that populate the KG wheter they are entities or relationships. &#x20;
 
-<Callout kind="tip">
+<Callout kind="tip" title="Data gathering sources">
   Data gathering can be achieved through various ways. Indicatively, we can use Application Programming Interfaces (APIs) and retrieve data from publishing repositories such as [Springer](https://www.springeropen.com/get-published/indexing-archiving-and-access-to-data/api), [Elsevier](https://dev.elsevier.com/), [Constellate](https://constellate.org/builder?unigrams=patients,%20health), [ADS](https://archaeologydataservice.ac.uk/), etc.; we can use database endpoints and retrieve our data using a query language (e.g. SPARQL queries in an RDF repository like [DBPedia](https://www.dbpedia.org/), [Wikidata](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service), etc.); or we could download entire datasets from the web (e.g. through websites like [Kaggle](https://www.kaggle.com/), [Data.Gov](https://data.gov/), or using [Google Dataset Search](https://datasetsearch.research.google.com/), etc.). Alternatively, we could exploit the structured content of web sites and gather our data through a technique called web scraping.&#x20;
 </Callout>
 
 After gathering our data we need to parse them and extract the clean text preferably segmented into sentences, paragraphs or sections. The parsed text can be used as a source for aquiring extra information and creating instances for our KG.
 
-### Information Extraction&#x20;
+### Data Preprocessing
+
+### Information Extraction for the Semantic Web
 
 After aquiring our dataset, the next step is to extract information from it which can then be transformed into instances for our Knowledge Graph. This process is called information extraction from text and can be achieved through various ways ranging from simple rule-based methods to more sophisticated machine learning (ML) or deep learning (DL) techniques.&#x20;
 
@@ -292,8 +295,6 @@ Entity Extraction from text involves the recognition and extraction of textual s
   * **Characters:** Individual letters, numbers, or symbols.
   * **Punctuation:** Commas, periods, and other symbols are often separate tokens
 </Callout>
-
-
 
 <Callout kind="note" title="Using Machine Learning Methods">
   Using Machine Learning methods for a specific task requires ML models that are trained approprietly in order to be able to perform for the task at hand.
@@ -342,9 +343,9 @@ Entity disambiguation systems are usualy ML or DL models trained to associate th
 * **Candidate Generation:** The system generates possible real-world entities (for example, for the extracted entity "Washington", the system witll generate candidate links from the Knowledge base (like Wikipedia) such as Washington State, Washington D.C., George Washington).
 * **Context Analysis:** The system analyzes the surrounding text (context) of the extracted entity and the relationships / textual descriptions within the KB for each of the candidates in order to determine which candidate is the intended one.
 
-#### Linking
+#### Entity Linking
 
-Linking is the process that produces links among οbjects in order to associate them in some semantic way. These objects can be mentions of entities  that are extracted from text (i.e. textual spans that refer to a specific entity), entries from a Knowledge Base such as Wikipedia, metadata elements from varius repositories, etc.&#x20;
+Entity linking is the process that produces links among οbjects in order to associate them in some semantic way. These objects can be mentions of entities  that are extracted from text (i.e. textual spans that refer to a specific entity), entries from a Knowledge Base such as Wikipedia, metadata elements from varius repositories, etc.&#x20;
 
 Especially for Semantic Web, there are several properties in [RDFS](https://www.w3.org/TR/rdf-schema/) and [OWL](https://www.w3.org/TR/owl-features/) languages that are specifically designed for producing varius semantic links among resources depending on whether they are classes, individuals (i.e. instances of the KG) or properties (i.e. relationships among resources).
 
@@ -361,9 +362,13 @@ Relation (or relationship) Extraction (RE) is the task of identifying and extrac
 
 As with other IE tasks, RE can be achieved using methods ranging from rule-based systems, to ML / DL pretrained models or even by prompting Large Language Models (LLMs). Depending on the methodology, various aspects are examined in order to extract a relation. For example, in rule-based aproaches, usualy the textual characteristics of the extracted entities play a key role in defining the rules for relation extraction. Such characteristics are, for example, to check whether the extracted entities  overlap, if they are included in the same sentence/paragraph, if they contain any specific lexical indicators, etc..  In ML / DL apporaches extracting relations is usualy treated as a text classification problem. This requires examining all entity pairs. Specifically, for every pair of extracted entities, the text chunk bounded by these two entities, \[entity1, ..., entity2], is treated as expressing a candidate relation. In order to restrict the search to a reasonable set of candidates but also to allow for possible coreferences among sentences to be resolved, a maximum limit (e.g. the bounding entities must be in the same paragraph or in the same sentence) is set for candidate creation. A classifier then determines whether the bounding entities of the chunk satisfy the relation in question.&#x20;
 
+### USE CASE: The “Research Spotlight” digital workflow
+
+### EXERCISE
+
 ---
 
-## Publishing and querying KGs for the Semantic Web
+## Publishing KGs for the Semantic Web
 
 As we explored earlier, the main idea behind the Semantic Web vision was to publish structured information (not just datasets but each individual data element) by describing their intended semantics as a directed, labeled graph of inter-related instances, so that it can be processed by machines.&#x20;
 
@@ -393,6 +398,20 @@ This is an optional part that identifies a specific portion or sub-resource with
 
 The protocol, along with the domain and the path, constitute the namespace of the URI. The latter is separated by the local unique identifier using -preferably- a hashtag or a backslash in order to discern it from the rest of the path. Following this structure, we can create URIs for all of our resources which will constitute the instances of our Knowledge Graph. In fact, this structure is quite similar to a webpage URL with the local unique identifier being the slug. As such -in accordance with guidelines 2 and 3- individual webpages or even sections on pages could be associated with and thus provide useful information for the corresponding URIs.
 
+### Building URIs for the Semantic Web
+
+### Publishing as Linked Open Data
+
+### The Five-Star Linked Open Data
+
+### USE CASE: publish a scholarly knowledge graph as Linked Open Data
+
+### EXERCISE
+
+---
+
+## **Querying Semantic Web Knowledge Graphs**
+
 ### The SPARQL query language
 
 So far, using the RDF and RDFS vocabularies, we are able to represent any kind of knowledge regarding digital objects themselves or even the types they belong to in the form of Knowledge Graphs for the Semantic Web. Access to this structured knowledge can be achieved through queries, i.e. encoded requests that enable users to retrieve information from databases. In fact, when designing storage applications for any type of data, the basic functions that are considered necessary are those for Create, Read, Update and Delete data elements (CRUD). Along this line, any language developed for querying a storage interface (i.e. endpoint) must support these basic operations. When it comes to retrieving and manipulating data stored in Resource Description Framework format, the [SPARQL](https://www.w3.org/TR/sparql11-query/) query language has been developed. This allows for performing any of the CRUD operations in knowledge graphs for the Semantic Web while at the same time using the structure of the internet protocols for communication. In particular, the main idea behind storing and retrieving data in Semantic Web can be summarized as follows:
@@ -400,6 +419,8 @@ So far, using the RDF and RDFS vocabularies, we are able to represent any kind o
 * Use triple stores to store RDF data (accessible through Endpoints)
 * Use SPARQL queries to access or update the triple store (CRUD operations)&#x20;
 * Communication with the triple store can be achieved through HTTP protocol
+
+### The anatomy of a SPARQL query
 
 As with any other language, queries in SPARQL must follow a specific format. An indicative example demonstrating the basic sections of a SPARQL query can be seen in the figure below:
 
@@ -423,3 +444,26 @@ A SPARQL query can be executed in a triple store via a SPARQL endpoint. Running 
 
   A SPARQL endpoint is a web-based service (URL) that allows users to query **RDF** datasets using the **SPARQL query language**. It acts as a gateway to a Knowledge Graph or triplestore, receiving HTTP requests and returning data in formats like JSON, XML, or RDF. These endpoints enable decentralized, interoperable data access across the web. 
 </Callout>
+
+### Querying public knowledge bases
+
+### USE CASE: querying scholarly knowledge
+
+### EXERCISE
+
+---
+
+## **The Journey continues…**
+
+### Directions for further reading
+
+### Advanced applications of Knowledge Graphs
+
+### Contributing to the Semantic Web community
+
+
+
+
+
+
+
