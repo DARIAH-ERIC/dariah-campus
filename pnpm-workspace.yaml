@@ -10,7 +10,7 @@ onlyBuiltDependencies:
 
 patchedDependencies:
   '@keystar/ui': patches/@keystar__ui.patch
-  '@keystatic/core@0.5.48': patches/@keystatic__core@0.5.48.patch
+  '@keystatic/core': patches/@keystatic__core.patch
   next: patches/next.patch
 
 shellEmulator: true
