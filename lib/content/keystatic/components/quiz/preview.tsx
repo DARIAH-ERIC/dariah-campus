@@ -77,13 +77,3 @@ export function QuizSuccessMessagePreview(
 
 	return children;
 }
-
-interface QuizTextInputPreviewProps {
-	children: ReactNode;
-}
-
-export function QuizTextInputPreview(props: Readonly<QuizTextInputPreviewProps>): ReactNode {
-	const { children } = props;
-
-	return children;
-}
