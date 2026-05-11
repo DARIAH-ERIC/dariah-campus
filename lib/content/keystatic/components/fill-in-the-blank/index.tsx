@@ -10,7 +10,7 @@ import { FillInTheBlankPreview } from "@/lib/content/keystatic/components/fill-i
 export const createFillInTheBlank = createComponent((_paths, _locale) => {
 	return {
 		FillInTheBlank: wrapper({
-			label: "Fill in the blank",
+			label: "Quiz - Fill in the blank",
 			description: "An interactive fill-in-the-blank exercise.",
 			icon: <FormInputIcon />,
 			schema: {
