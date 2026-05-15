@@ -295,6 +295,124 @@ Throughout this course, you will encounter two different types of learning tasks
 
 ## **Unit 2: Key Concepts and Foundations**
 
+In Unit 1, we talked about “the cloud” as a working environment in which the tools you use and the data you work with don’t have to live on your own computer. Cloud computing changes how you access resources, how you store and share information, and how you collaborate with your colleagues.
+
+But we have so far only scratched the surface. If you want to understand what the European Collaborative Cloud for Cultural Heritage is trying to accomplish, and, especially, if you want to get involved, you need to look more closely at some of the key concepts that are shaping this initiative. These concepts, such as *digital twins*, *interoperability*, *data models*, may sound technical at first. And we have to be honest about it: they *are*. But they are closely connected to everyday tasks in cultural heritage work, from digitisation and cataloguing to conservation and research.
+
+Because cultural heritage work involves many different communities, from curators and conservators to researchers and developers, it is important to have a shared way of talking about these concepts. Without a common vocabulary, we risk wasting a lot of energy talking *past* one another.
+
+In this unit, we will explore a set of key concepts that underpin the ECCCH, and explore how they relate to everyday practices in cultural heritage institutions.
+
+### Introducing the ECHOES Glossary
+
+When people from different backgrounds and domains work together, the same word can quietly mean different things. Even relatively common terms such as “metadata” (data about data),  “infrastructure” (basic facilities or services), or “workflow” (sequence of steps in a process) can carry distinct assumptions depending on one’s profession or experience. In such cases, a shared glossary can be very helpful: it doesn’t force everyone to think the same way, but it helps everyone communicate more clearly and efficiently.
+
+To help avoid confusion, ECHOES provides a shared glossary of key terms used throughout the project.
+
+The [ECHOES Glossary](https://vocabs.ilc4clarin.ilc.cnr.it/skosmos/echoes_glossary/en/) is designed as a practical reference. You can use it whenever you encounter a term you are unsure about, or when you want to understand how a concept is used in the context of the Cultural Heritage Cloud. The terms are based on existing vocabularies in the cultural heritage domain and have been reviewed by domain experts. The glossary is also multilingual and will continue to evolve as new terms are added and refined over time. 
+
+You don’t need to memorise any of the definitions that we will share with you in the following sections. We will introduce each of the key terms gradually, through a concrete example that you can follow step by step. The glossary will be there as a reference you can return to whenever you need it, one concept at a time.
+
+### **A Manuscript in the Cloud: Exploring Foundational Concepts Through a Use Case**
+
+Imagine you work at a small regional museum. In your storage room, carefully wrapped and rarely displayed, lies a 14th-century illuminated manuscript. As a physical object, it has weight, texture, material properties, and a specific history. Its pigments are still vibrant. Its binding shows signs of centuries of repair. Marginal notes reveal traces of readership across time.
+
+The museum decides to digitise the manuscript. A photographer captures high-resolution images of each folio. A conservator documents the state of the parchment and the pigments. A curator records descriptive metadata: title, approximate date, place of origin, script type. A historian adds notes about provenance. Eventually, a 3D scan is produced to document the binding and its structure.
+
+As a result of these activities, the manuscript begins to exist in two forms: the physical object in museum storage, and an enriched digital representation made up of images, measurements, metadata, and documentation. 
+
+In this context, we can begin to think of this enriched digital representation as a **digital twin** of the manuscript.
+
+\[2 figures here]&#x20;
+
+
+
+### **Heritage Digital Twins (HDT)**
+
+The ECHOES Glossary defines [heritage digital twins](https://vocabs.ilc4clarin.ilc.cnr.it/skosmos/echoes_glossary/en/page/heritage_digital_twin) as “complex, organized, digital information (including but not limited to data, metadata, paradata, workflows) about a real-world heritage asset, encompassing its tangible and intangible components, allowing for documentation, preservation and analysis”.
+
+In practice, this means that a digital twin is not just a photograph or a model. It is a structured digital representation of a heritage asset, which brings together different kinds of information about that asset and the processes through which this information was created. For your manuscript, this can include not only images, but also metadata, conservation reports, historical notes, and potentially 3D representations. 
+
+The value of a digital twin lies not simply in listing information, but in organising it so that the manuscript becomes easier to study, compare, and reuse in digital environments. The accompanying documentation makes clear what was captured, how it was captured, and what may be uncertain or incomplete.
+
+More immersive outputs, such as historically reconstructed game environments or virtual exhibitions, are not automatically digital twins in themselves. However, they may be built on digital-twin data when they use documented images, spatial models, rich metadata, historical sources, and scholarly interpretation to create an interactive representation of a heritage asset or setting. In that sense, they can be understood as applications or experiential layers built from, or connected to, a digital twin.
+
+### **ACTIVITY**
+
+Pause and reflect.
+
+* In your own work, what kinds of information are created around a cultural heritage object (e.g. images, metadata, reports)?
+* How are these currently stored: as separate files, or as part of a structured system?
+* What might be gained if these different types of information were connected into a single, evolving digital object?
+
+### **Interoperability**
+
+Once your museum decides to share your beautiful manuscript beyond the institution, a new challenge appears: different systems may store, describe, and organise data in different ways.
+
+For example, one system might record the manuscript’s date as “mid-14th century”, while another may say “circa 1350”. One database may describe the script type using a controlled vocabulary, while another may use free text. Even when the information refers to the same object, it may not be immediately compatible. 
+
+That’s why simply sharing data is not enough. For the manuscript to be truly discoverable and reusable, different systems need to be able to interpret and connect this information correctly. This is where **interoperability** becomes important.
+
+The ECHOES Glossary defines [interoperability](https://vocabs.ilc4clarin.ilc.cnr.it/vocabularies/echoes/interoperability) as “the actions necessary to ensure that services, applications, and tools can work with one another and that datasets can be used seamlessly regardless of origin, format, or the descriptions they carry, in a way that does not depend heavily on human involvement.”
+
+In practice, interoperability operates at different levels. 
+
+At the level of meaning (or so-called **semantic interoperability**), the question is whether different ways of describing the same concept can be mutually linked. If a researcher searches for a “codex,” will your system also return items described as “manuscripts”? If one catalogue uses “illuminated manuscript” and another uses “decorated codex,” can a search tool recognise that these are closely related descriptions? Achieving this kind of alignment often requires shared vocabularies and conceptual models. One such example is [CIDOC CRM](https://cidoc-crm.org/cidoc-crm-short-intro), a cultural heritage ontology: in simpler terms, it’s a shared framework for describing cultural heritage objects, people, places, events, and the relationships between them. It helps different institutions connect information even when their local catalogues use different structures or terms.
+
+At the level of structure (or so-called **syntactic interoperability**), the question is whether data created in different technical formats can be exchanged and processed by different systems. For example, one institution might provide metadata as CSV, a spreadsheet-like table; another as JSON, a compact data-exchange format commonly used by web applications; and another as RDF, a specific format designed to describe relationships between entities in machine-readable ways. If one institution provides metadata in CSV, another in JSON, and a third in RDF, can these representations be translated or mapped into forms that other systems can understand and process?
+
+### ACTIVITY
+
+Pause and reflect
+
+* In your work, do you use data from other institutions or projects?
+* Have you ever encountered differences in formats, terminology, or structure that made this difficult?
+* What would make it easier to combine or compare this data?
+
+### **Data models**
+
+Interoperability allows different systems to exchange and interpret data. But for this to work consistently, there also needs to be an agreement on how information is structured in the first place. 
+
+When a museum catalogue records information using fields such as object name, date, material, provenance, or current location, it is making decisions about what kinds of information matter, how they should be organised, and how they relate to the object being described.
+
+Different institutions may structure information about the same manuscript in different ways. One museum might describe the manuscript as a single object with one catalogue record, while another might divide it into smaller components, such as folios, bindings, illuminations, or annotations, each with their own records and relationships. One system may record the manuscript’s creator as a free-text field, while another may connect that person to an authority record shared across multiple collections. 
+
+A [**data model**](https://vocabs.ilc4clarin.ilc.cnr.it/skosmos/echoes_glossary/it/page/data_model?clang=en) provides the underlying structure that makes these decisions explicit and consistent: a conceptual blueprint that defines how information is structured and how entities relate to one another. A data model defines what kinds of entities exist (for example, manuscripts, people, places), what properties they can have (such as date, material, or location), and how they relate to each other.
+
+For the manuscript, this means being able to represent not just the object itself, but also its relationships to its creators, readers, place of origin, and to other related objects or collections.
+
+When shared data models are used, these relationships can be expressed consistently across institutions. This makes it easier to connect collections, integrate data into tools and platforms, and support more complex forms of search, analysis and interpretation.
+
+### ACTIVITY
+
+Pause and reflect. 
+
+* In your work, how is information about objects or collections structured?
+* Do different systems or teams organise this information in different ways?
+* What kinds of relationships between objects (e.g. people, places, events) are important but difficult to represent consistently?
+
+### **Digital ecosystem**
+
+Now, let’s widen the lens. Your manuscript could potentially have a wide audience. A conservation laboratory may want to analyse pigment composition. A digital humanities research group may want to train an AI model to identify scribal hands. A school teacher may want to build a virtual exhibition for their students. An archaeologist may want to connect place references in the manuscript to excavation sites and gazetteers.
+
+Together, these actors, tools, services, standards, and infrastructures form part of a **digital ecosystem**.
+
+The ECHOES Glossary defines the [digital ecosystem](https://vocabs.ilc4clarin.ilc.cnr.it/skosmos/echoes_glossary/it/page/digital_ecosystem?clang=en) as “an open, adaptable, distributed and interoperable infrastructure that connects actors, activities, and cultural heritage objects through a user-friendly and unified graphical user interface designed to suit the needs of the fragmented CH communities”.
+
+A digital ecosystem is broader than a digital commons. A digital commons comprises shared resources: data, tools, and knowledge that are made available for reuse under common rules. A digital ecosystem includes everything that surrounds and sustains their use: the institutions and communities that contribute to them, the platforms that host them and the processes through which they are interpreted, connected and reused.
+
+### **ACTIVITY**
+
+Pause and reflect
+
+* Think of a concrete CH asset in your institution, or your favourite museum object. Who might be interested in it, beyond the institution that holds it?
+* What kinds of expertise, tools, or services might be involved in working with it digitally?
+* Are there any standards or shared descriptions that would help different people and systems work with it more easily?
+
+### EXERCISE
+
+Interactive glossary quiz
+
 <Quiz>
   <QuizChoice variant="multiple">
     <QuizChoiceQuestion>
@@ -410,6 +528,31 @@ Throughout this course, you will encounter two different types of learning tasks
 <FillInTheBlank caseSensitive validateOnBlur={false}>
   A structured representation produced by the museum's digitisation department, which combines images, documentation, metadata, and provenance is called a **@@digital twin@@**. If the museum shares these resources under clear conditions that enable reuse, the manuscript becomes part of a **@@digital commons@@**. Once shared, the manuscript can only travel and “connect” if other systems can understand it, which is why **@@interoperability@@** and **@@data models@@** matter: they provide the shared meanings and shared structures that allow data to be discovered, linked, compared, and processed across institutional boundaries. When this begins to happen at scale, with many institutions, communities, infrastructures, and services interacting around shared resources, we can speak of a **@@digital ecosystem@@.**
 </FillInTheBlank>
+
+### **ACTIVITY**
+
+Pause and reflect.
+
+Think back to your own work or a cultural heritage institution that you are most familiar with:
+
+* What kind of digital information is created around an object?
+* Is this information stored and connected as part of a structured system, or in separate files?
+* What would need to change for this information to become part of a wider digital ecosystem?
+
+### **Conclusion**
+
+In this unit, we followed a manuscript as it transformed from being a physical object to becoming a connected digital resource. Along the way, we introduced a set of key concepts — digital twins, digital commons, interoperability, data models, and digital ecosystems — that together describe the foundations of the ECCCH. These concepts are not only about abstract and complex ideas about fairly technical matters: they also highlight practical ways in which data, tools, and people can come together in cultural heritage practice. In the next unit, we will focus on collaboration, and explore how these connections take shape through interactions between people, institutions, and technologies.
+
+### **SUPPLEMENTARY READING**
+
+1. **IBM Think** —[ What Is a Digital Twin?. ](https://www.ibm.com/think/topics/digital-twin)A clear, well-written explainer from IBM covering the concept, how it works, and real-world applications. No technical background required. In many languages.
+2. **Britannica** —[ Digital twin: Definition, History, Types & Facts ](https://www.britannica.com/technology/digital-twin)A good encyclopedic entry that covers history, types, and uses in plain language, a solid general reference.
+3. **Twinview Insights** —[ Preserving the Past Through the Future: How Digital Twins Are Transforming Heritage Conservation. ](https://www.twinview.com/insights/preserving-the-past-through-the-future-how-digital-twins-are-transforming-heritage-conservation)This is the most accessible non-scientific piece specifically on the heritage application: it explains the concept clearly and covers conservation use cases like monitoring historic buildings and replicating lost artefacts.
+
+**4. ACM Computing Surveys (2024/2025)** *Digital Twins for Cultural Heritage: A Systematic Analysis of the State of the Art* [https://dl.acm.org/doi/10.1145/3793541\
+](https://dl.acm.org/doi/10.1145/3793541) A comprehensive survey of 108 studies (2002–2025) that organises the field around three dimensions: user-facing applications, enabling technologies, and maturity levels. It also introduces a clear conceptual framework that distinguishes a basic digital replica from a true dynamic digital twin, useful for anyone seeking a rigorous definition grounded in the heritage domain.
+
+
 
 ## **Unit 3: Collaboration in the Cloud**
 
