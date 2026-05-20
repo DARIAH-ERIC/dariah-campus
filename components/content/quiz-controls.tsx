@@ -46,7 +46,7 @@ function Button(props: Readonly<ButtonProps>): ReactNode {
 	return (
 		<AriaButton
 			{...props}
-			className="inline-flex cursor-default items-center justify-center gap-x-2 rounded-md px-3 py-1.5 text-sm leading-normal font-medium whitespace-nowrap transition hover:bg-neutral-100 disabled:opacity-50 pressed:bg-neutral-200"
+			className="inline-flex cursor-default items-center justify-center gap-x-2 rounded-md px-3 py-1.5 text-sm/normal font-medium whitespace-nowrap transition hover:bg-neutral-100 disabled:opacity-50 pressed:bg-neutral-200"
 		>
 			{children}
 		</AriaButton>

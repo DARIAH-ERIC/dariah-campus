@@ -43,7 +43,7 @@ export function StickyHeader(props: Readonly<StickyHeaderProps>): ReactNode {
 			<header
 				className={cn(
 					"sticky top-0 z-10 flex items-baseline justify-between gap-x-8 bg-neutral-50 px-4 py-6 xs:px-8",
-					!isIntersecting && "shadow",
+					!isIntersecting && "shadow-sm",
 				)}
 			>
 				{children}

@@ -1,14 +1,19 @@
 {
 	"content": {
+		"FillInTheBlank": {
+			"blank-label": "Blank {index}",
+			"check": "Check",
+			"hint-label": "Show hint",
+			"reset": "Reset",
+			"score": "{correct} / {total} correct",
+			"show-solution": "Show solution"
+		},
 		"QuizControls": {
 			"correct": "Correct!",
 			"incorrect": "Incorrect!",
 			"next-question": "Next question",
 			"previous-question": "Previous question",
 			"validate": "Check answer"
-		},
-		"QuizTextInput": {
-			"label": "Answer"
 		}
 	},
 	"mdx": {
