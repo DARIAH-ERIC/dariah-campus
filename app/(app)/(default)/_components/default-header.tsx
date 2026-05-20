@@ -9,7 +9,7 @@ import { NavLink } from "@/components/nav-link";
 import { createClient } from "@/lib/content/create-client";
 import { createHref } from "@/lib/navigation/create-href";
 import type { NavigationLink, NavigationSeparator } from "@/lib/navigation/navigation";
-import logo from "@/public/assets/images/logo-dariah-with-text.svg";
+import logo from "@/public/assets/images/logo-dariah-campus.svg";
 
 interface DefaultHeaderProps extends ComponentProps<"header"> {}
 
