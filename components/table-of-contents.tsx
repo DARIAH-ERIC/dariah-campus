@@ -4,7 +4,7 @@ import { isNonEmptyArray } from "@acdh-oeaw/lib";
 import type { TableOfContents as TableOfContentsTree } from "@acdh-oeaw/mdx-lib";
 import cn from "clsx/lite";
 import { ChevronRightIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 
 import { Link } from "@/components/link";
 import { useLabels } from "@/lib/hooks/use-labels";
@@ -27,9 +27,18 @@ export function TableOfContents(props: Readonly<TableOfContentsProps>): ReactNod
 	const labelProps = useLabels(props);
 
 	const highlightedHeadingId = useTableOfContentsHighlight();
+	const containerRef = useRef<HTMLElement>(null);
+
+	useEffect(() => {
+		if (highlightedHeadingId == null) return;
+
+		const highlightedLink = containerRef.current?.querySelector('[aria-current="location"]');
+
+		highlightedLink?.scrollIntoView({ block: "nearest" });
+	}, [highlightedHeadingId]);
 
 	return (
-		<nav {...labelProps} className={className}>
+		<nav {...labelProps} ref={containerRef} className={className}>
 			{title}
 			<TableOfContentsLevel
 				headings={tableOfContents}
@@ -67,6 +76,7 @@ function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): React
 					<li key={index} className={spacing}>
 						{heading.id !== undefined ? (
 							<Link
+								aria-current={isHighlighted ? "location" : undefined}
 								className={cn(
 									"relative flex rounded-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700",
 									isHighlighted ? "pointer-events-none font-bold" : undefined,
