@@ -78,7 +78,7 @@ function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): React
 							<Link
 								aria-current={isHighlighted ? "location" : undefined}
 								className={cn(
-									"relative flex rounded-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700",
+									"relative flex scroll-my-8 rounded-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700",
 									isHighlighted ? "pointer-events-none font-bold" : undefined,
 								)}
 								href={createHref({ hash: heading.id })}
