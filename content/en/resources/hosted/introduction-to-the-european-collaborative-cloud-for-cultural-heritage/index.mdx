@@ -1294,15 +1294,11 @@ To answer these questions, we follow three fictional user stories. Each story sh
 #### **User Story 1: Making a Collection available in the Cloud**
 
 **Persona**: Claire Hewitt - Collections Steward\
-**Role**: Curator at a mid-sized regional museum
-
-<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-the-european-collaborative-cloud-for-cultural-heritage/picture1.png" alt="**Persona:** Claire Hewitt - Collections Steward\ **Role**: Curator at a mid-sized regional museum" alignment="right-two-thirds">
-
-</Figure>
+**Role**: Curator at a mid-sized regional museum&#x20;
 
 Claire works as a curator at a mid-sized regional museum. She manages a digitised collection from her institution’s regional history archive and wants to make it discoverable and interoperable with other European collections, while maintaining her institution’s data quality standards.
 
-<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-the-european-collaborative-cloud-for-cultural-heritage/screenshot-2026-05-25-at-18.58.55.png" alt="Alt text: Workflow diagram showing how a collections professional contributes data to the Cloud: login through a single access point, prepare and standardise metadata in a cataloguing tool, translate it into a shared model, store it in a distributed repository, and connect it to other datasets through a knowledge graph." alignment="stretch">
+<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-the-european-collaborative-cloud-for-cultural-heritage/screenshot-2026-05-25-at-19.26.59.png" alt="Alt text: Workflow diagram showing how a collections professional contributes data to the Cloud: login through a single access point, prepare and standardise metadata in a cataloguing tool, translate it into a shared model, store it in a distributed repository, and connect it to other datasets through a knowledge graph." alignment="stretch">
   **Fig. 5.1:** Claire contributes her collection to the Cloud through a structured workflow: logging in via the SEP, preparing her data using the Collections Ingestion Tool, making her metadata interoperable through the Cloud’s translation services, having her collection stored in her own repository while enabling connections with other collections through the Cloud’s Knowledge Graph.
 </Figure>
 
@@ -1357,10 +1353,6 @@ This transforms Claire’s collection from an isolated dataset into part of a br
 **Persona**: Dr. Anna Olsen - Research Data Scientist\
 **Role**: Researcher at a university studying migration patterns
 
-<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-the-european-collaborative-cloud-for-cultural-heritage/picture1.png" alignment="right-two-thirds">
-
-</Figure>
-
 Anna is researching migration patterns across Europe. The materials she needs are scattered across multiple archives in different countries.  She wants to search across collections, combine relevant sources, and build a coherent research dataset that follows FAIR principles, without navigating separate systems or manually aligning formats.
 
 <Figure src="/assets/content/assets/en/resources/hosted/introduction-to-the-european-collaborative-cloud-for-cultural-heritage/screenshot-2026-05-25-at-18.57.50.png" alignment="stretch">
@@ -1406,6 +1398,107 @@ This workspace is designed for research in progress. It allows Anna to experimen
 When her dataset is ready, she can choose to publish it into a shared repository, where it becomes, following FAIR principles, discoverable and reusable by others.
 
 #### **User Story 3: Working with 3D models**
+
+**Persona:** Dr. Elena Novak - Domain/Subject Specialist
+**Role:** Conservator-restorer specialising in archaeological artefacts
+
+Elena is working on a fragile archaeological artefact and has created a high-resolution 3D model of it. She wants to annotate the model with her observations and treatment plans, so that her conservation work is clearly documented, shareable with colleagues, and connected to the object's digital twin.
+
+<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-the-european-collaborative-cloud-for-cultural-heritage/screenshot-2026-05-25-at-19.19.53.png" alignment="stretch">
+
+</Figure>
+
+**Step 1: Logging in**
+
+Elena enters the Cloud through the Single Entry Point (SEP). 
+
+**Step 2: Annotating the 3D model with OCRA**
+
+After logging in, Elena opens a 3D annotation environment designed for conservation work. Here, she can examine the model: zoom into the surface, rotate the object, and select specific areas of the model. 
+
+Instead of writing a separate report disconnected from the artefact, she attaches observations directly to precise points or regions on the 3D model. Colleagues can later open the same model and immediately see what she observed and where.
+
+This environment is provided by the **Online Conservation Restoration Annotator (OCRA)**, a vertical application supporting conservation workflows. 
+
+**Step 3: Contributing to the heritage digital twin**
+
+Elena’s annotations do not remain separate from the object. They become part of its digital representation.
+
+A heritage digital twin, as you already learned earlier in this course, brings together different types of information about a cultural heritage object into a structured whole. This can include metadata describing the artefact, provenance and conservation history, related documentation and links to other objects or entities. 
+
+By adding her observations directly to the 3D model, Elena extends this digital twin. Her notes, interpretations, and treatment plans become part of a shared, evolving record of the object. This means that her work is not locked in a local report, but connected to the object itself and available to others working with it.
+
+**Step 4: Ensuring secure collaboration and traceability**
+
+Some of Elena’s observations are sensitive and should not be openly accessible. She needs to control who can view or edit her work, while still collaborating with trusted colleagues. 
+
+In the Cloud, this is handled automatically. Elena can share her work with selected users, knowing that access is managed according to defined permissions. 
+
+At the same time, her contributions are recorded and tracked over time. Changes can be reviewed, previous versions can be restored, and the history of the object remains transparent. 
+
+These functions of the Cloud are supported in part by the **Knowledge Base Management System (KBMS),** which manages the metadata layer, ensuring that contributions, permissions, and versioning information are structured and traceable. The underlying data itself is handled by other components of the infrastructure.
+
+**Step 5: Storing and connecting the data**
+
+The annotated model is stored within a federated repository, meaning Elena’s institution retains control over the data.
+
+At the same time, the model and its associated information are connected to the wider Knowledge Graph, allowing the object to be discovered, linked, and studied in relation to other collections.
+
+#### **User Story 4: Demonstrating Vertical Transcription Lab**
+
+**Persona**: Luca Minelli\
+**Role**: Early career explorer
+
+Luca is studying a collection of fragile historical manuscripts stored across several European archives. Many of these documents are handwritten and cannot be easily searched or analysed. He wants to transform the manuscripts into structured, searchable text while preserving the source material and ensuring that his work follows FAIR principles
+
+<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-the-european-collaborative-cloud-for-cultural-heritage/screenshot-2026-05-25-at-19.17.32.png" alignment="stretch">
+
+</Figure>
+
+**Step 1: Logging in** 
+
+Luca accesses the Cloud using the Single Entry Point (SEP). With one secure login, he gains access to the tools and datasets he is authorised to use.
+
+The SEP allows users to move between services without repeated authentication and while respecting institutional access policies.
+
+**Step 2: Working with manuscripts - The Virtual Transcription Laboratory**
+
+Luca opens the **Virtual Transcription Laboratory (VTL)**, a specialised vertical application designed for textual heritage. It supports the transformation of handwritten material into structured digital text. Within the VTL, Luca can:
+
+* view high-resolution images of manuscripts;
+* apply automated text recognition suggestions;
+* correct and refine results manually;
+* align terms with controlled vocabularies;
+* document uncertainties or historical context.
+
+The VTL follows a human-in-the-loop approach. Computational tools assist by suggesting transcriptions, but Luca remains responsible for interpretation and validation. This ensures both efficiency and academic reliability. 
+
+**Step 3: Structuring and connecting the transcription (HDTO)\
+\&#xA;**&#x41;s Luca works, his transcription is structured and connected to related information in the Cloud. It is linked to metadata describing the manuscript, including provenance, historical context, and references to people, places, and events.
+
+This is enabled by the Cloud’s shared semantic framework (HDTO), which ensures that the transcription is not treated as an isolated text but as part of a wider network of knowledge. As a result, Luca’s work becomes searchable, linkable, and reusable across collections.
+
+**Step 4: Saving, managing and sharing results** 
+
+Luca’s transcription is stored within the Cloud environment, where he can continue refining it in a controlled workspace before publication. Background services manage:
+
+* access permissions;
+* version history;
+* contribution tracking.
+
+When the transcription is validated, Luca can publish it to a shared repository, where it becomes part of the wider Knowledge Base and can be accessed and reused by others.
+
+### **The architectural principles behind the Cloud**
+
+The four user stories presented above are not isolated scenarios. Each of them illustrates how the Cloud is designed to support everyday work through a combination of shared architectural principles. 
+
+When Claire works in a shared cataloguing environment, she benefits from **federation**, which allows her institution to retain control while linking to others. At the same time, she works with a specialised tool – a so-called vertical application – which operates within the Cloud by integrating with its underlying services and components. This is enabled by **modularity**: an architectural approach in which the system is composed of distinct but interoperable components, allowing specialised applications to be developed and used for specific purposes while relying on shared services and standardised interfaces.
+
+When Anna analyses distributed datasets, she relies on **semantic interoperability**: the ability to combine and interpret data from different sources in a consistent and meaningful way. This is made possible through the **Heritage Digital Twin Ontology (HDTO),** which provides a shared conceptual framework for describing and connecting cultural heritage data across institutions. 
+
+When Elena annotates a 3D model, she works in an environment that ensures both **availability** and **scalability**: the Cloud has been designed to provide stable and reliable access to services, while supporting increasing amounts of data and growing numbers of users without loss of performance.  
+
+Taken together, these principles - federation, modularity, semantic interoperability, availability, and scalability - show how the Cloud transforms architectural design into practical, robust, and trustworthy services that effectively support everyday work.
 
 
 
