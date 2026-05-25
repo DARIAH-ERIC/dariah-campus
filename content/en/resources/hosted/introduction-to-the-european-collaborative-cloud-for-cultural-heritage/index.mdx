@@ -1308,7 +1308,51 @@ Claire works as a curator at a mid-sized regional museum. She manages a digitise
 
 
 
+**Step 1: Logging in - The Single Entry Point (SEP)**
 
+Claire accesses the Cloud and logs in via a web browser using her institutional account. She does not need to create a new username and password. Once authenticated, she can move between different services without logging in again. She can only see and access the services she is authorised to use, based on her institutional role and permissions.\
+\
+This is enabled through federated identity and authentication mechanisms, which connect existing institutional and academic identity providers (e.g. ORCID, eduGAIN). These identities are recognised by her institution, meaning access rights and responsibilities can be managed through her existing organisational affiliation rather than separate Cloud-specific accounts.
+
+The **Single Entry Point (SEP)** refers to this unified access experience across services. It is broader than a simple login mechanism and supports seamless navigation across the Cloud ecosystem (see glossary entry for SEP).
+
+**Step 2: Preparing the data**
+
+Claire prepares and structures her collection using tools provided by the Cloud. Instead of working in isolated spreadsheets or local databases, she works within an environment that interacts directly with the Cloud’s **Knowledge Base** and [**Knowledge Graph**](https://vocabs.ilc4clarin.ilc.cnr.it/voca%20bularies/echoes/knowledge_graph) –  the core components that support the structuring, linking, and integration of data across the infrastructure.
+
+She uses the **Collection Ingestion Tool (CIT)**, which is currently being developed as part of the ECHOES project. The CIT does not create or duplicate databases; instead, it generates and manages catalogue views by interacting with these underlying components and existing data structures.
+
+This type of specialised tool is known as a [**vertical application**](https://vocabs.ilc4clarin.ilc.cnr.it/vocabularies/echoes/vertical_application): within the ECHOES infrastructure, this means a cross-layer application – typically with a graphical user interface – that integrates components from multiple architectural levels to support an end-to-end professional workflow. In Claire’s case, the CIT brings together data access, transformation, and interaction with the Knowledge Graph in a single environment tailored to cataloguing tasks.
+
+**Step 3: Making metadata interoperable - Metadata transformation**
+
+Claire’s museum already uses its own metadata schema. The Cloud does not require  institutions to abandon their existing systems. 
+
+Instead, interoperability is achieved through metadata transformation mechanisms. In some cases, a component called a **metadata broker (translator)** can be used to map local metadata into the shared model used across the Cloud. However, this is not an automated or default process, and it is typically considered a fallback solution. Where possible, institutions are encouraged to adopt the Heritage Digital Twin Ontology (HDTO) directly to minimise transformation effort and improve long-term interoperability.
+
+Unlike the API Gateway, which handles requests, the metadata broker works on the data itself, ensuring that information can be interpreted consistently across systems while preserving its original structure.
+
+This allows Claire’s collection to connect with others without losing its original structure or meaning. As we saw in unit 2, this is what interoperability is about. 
+
+**Step 4: Where the data is stored - Federated repositories**
+
+Claire’s collection is not moved into a single central database. Instead, it remains in her institution’s repository while being connected to the wider Cloud environment.
+
+This approach is known as **federation** meaning that data remains under local institutional governance while being accessible within a connected infrastructure,  provided that participating repositories meet the Cloud’s technical and semantic requirements.  
+
+Federation enables collaboration without centralising ownership, allowing institutions to retain control over their data while participating in shared discovery and access frameworks.
+
+**Step 5: How data connects with other data - The Knowledge Graph**
+
+Once Claire’s data is integrated, it can become part of the Knowledge Graph, provided it meets the required modelling and interoperability standards.
+
+The Knowledge Graph does not simply reveal connections automatically. Instead, it enables the discovery of relationships that already exist or can be inferred through structured linking of people, places, events, and objects across datasets.
+
+For example, if Claire’s collection includes an artefact related to a historical figure, and that figure also appears in another collection that’s linked to the Cloud, the system can reveal that connection. 
+
+This type of linking between related bits of information about people, places, events and objects across different collections is made possible by the **Knowledge Graph**. Instead of treating datasets as isolated records, the Knowledge Graph allows them to be explored as part of a wider web of relationships.
+
+This transforms Claire’s collection from an isolated dataset into part of a broader network of interconnected cultural information, supporting richer discovery and reuse across institutions.
 
 ## **Continuing the Journey**
 
