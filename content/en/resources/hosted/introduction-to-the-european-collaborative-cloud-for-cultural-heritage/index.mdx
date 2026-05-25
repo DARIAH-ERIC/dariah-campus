@@ -1363,11 +1363,47 @@ This transforms Claire’s collection from an isolated dataset into part of a br
 
 Anna is researching migration patterns across Europe. The materials she needs are scattered across multiple archives in different countries.  She wants to search across collections, combine relevant sources, and build a coherent research dataset that follows FAIR principles, without navigating separate systems or manually aligning formats.
 
-
-
 <Figure src="/assets/content/assets/en/resources/hosted/introduction-to-the-european-collaborative-cloud-for-cultural-heritage/screenshot-2026-05-25-at-18.57.50.png" alignment="stretch">
 
 </Figure>
+
+**Step 1: Accessing the Cloud - Logging in once**
+
+Anna enters the Cloud through the Single Entry Point (SEP) using her ORCID account. As with Claire, she signs in once and can move between different services without repeated authentication. She only sees and accesses the services she is authorised to use.
+
+**Step 2: Searching across collections - API Gateway**
+
+Anna enters her search query for migration-related materials once and retrieves results from multiple collections at the same time. She does not need to visit each archive separately or adapt her search to different systems. 
+
+Behind the scenes, the Cloud determines which collections and services are relevant to her query at runtime. The **API Gateway** plays a key role in this process. It acts as an interface between different components of the infrastructure, routing requests to appropriate services, handling authentication and access checks, and enabling communication between systems.
+
+The API Gateway does not interpret or transform the data itself. Instead, it ensures that requests are correctly forwarded and that responses from different services can be returned in a consistent way to the user interface.
+
+**Step 3: Making sense of the connections: Knowledge Graph and HDTO**
+
+As Anna explores the results, she begins to see how the materials are connected to one another.
+
+Records from different collections are mutually linked through shared references to people, places, events and objects, allowing her to follow relationships across collections. 
+
+These connections are made visible through the **Knowledge Graph**, which organises information as a network of connections. They rely on a shared conceptual framework that defines how different types of information relate to one another. Unlike the metadata broker, which aligns data formats, the Knowledge Graph reveals how the data is related.
+
+For this purpose, the Cloud uses a framework called the **Heritage Digital Twin Ontology (HDTO)**, which defines:
+
+* what can be represented (objects, actors, locations, events, processes);
+* how entities are connected;
+* how provenance, transformations, and historical context are recorded.
+
+Because these relationships are defined consistently in the Cloud, Anna can collect materials from different sources and use them in a large-scale comparative study.
+
+**Step 4: Working across collections - Private workspace**
+
+As Anna builds her dataset, she works with materials stored in different institutional repositories. This you already saw in Claire’s case: the data remains where it is, while the Cloud allows it to be accessed and combined across collections.
+
+To organise her work, Anna uses a **private workspace** within the Cloud. Here, she can gather selected materials, refine metadata, add annotations, and prepare her dataset.
+
+This workspace is designed for research in progress. It allows Anna to experiment, organise her data, and document her work before deciding what to share more broadly.
+
+When her dataset is ready, she can choose to publish it into a shared repository, where it becomes, following FAIR principles, discoverable and reusable by others.
 
 
 
