@@ -444,6 +444,46 @@ You can add a message to learners to indicate whether they have got the answer r
 
 </Figure>
 
+#### Quiz - Fill in the blanks
+
+The ‘Fill in the blanks’ interactive quiz option allows you to text learners’ knowledge by having them fill in the missing words from a statement.  For example “The colour of grass is \[BLANK]’ and the learner would type in their answer and check to see if they have got it right.
+
+To add a ‘Fill in the blank’ quiz, go to the Widget menu and select the ‘Fill in the Blank’ option.  An editable box will appear with some guiding information for how to give the correct syntax for the different options.  Those different options are:
+
+* Single accepted answer (syntax: @@answer@@)
+* Multiple accepted answers (syntax: @@answer1//answer2@@)
+* Answer with hint (syntax: @@answer::hint@@)
+
+
+
+You can make the answers case sensitive if necessary by clicking on the ‘edit’ button and selecting this option.
+
+For the ‘Single accepted answer’, you simply replace the ‘answer’ with the correct answer, e.g. The colour of grass is @@green@@.
+
+For ‘Multiple accepted answers, you replace the different numbered instances of ‘answer’ with the correct answers.  This is useful if you know that there is some ambiguity in the correct answer, e.g. “@@John Lennon//Paul McCartney//Ringo Starr//George Harrison” was a member of The Beatles”. 
+
+You can also combine this function if you want the learner to list all the possible right answers.  For this, though, you will need to change the order in which the answers appear in the syntax, e.g. “Bumblebees are often striped in two colours:  @@black//yellow@@ and @@yellow//black@@”.  This is because the widget will pick the first option in each syntax field when giving the learner clicks on the ‘Show Solution’ button.  
+
+If you want to add a hint to an answer, you can do so using the ‘Answer with hint’ syntax.  Here you give the correct answer, and then type in a hint after the double colons, e.g. “Bees will do what is known as a @@waggledance::a dance that involves a specific movement of their bums@@”.  This will then give the learner an option to view a hint if they need one.
+
+
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/fitb-1-editing.jpg" alignment="stretch">
+
+</Figure>
+
+When published, you will then see that each of these syntax fields has been turned into a box that learners can type directly into. If you have added a hint, this will show up as a question mark in a circle that learners can click on to see the hint.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/fitb-published-with-hint.png" alignment="stretch">
+
+</Figure>
+
+Once learners have filled in their answers, they can then click on the ‘Check’ button to see how they’ve done.  Correct answers will be outlined in green, while incorrect answers will be outlined in red.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/fitb-check-answers-published-.png" alignment="stretch">
+
+</Figure>
+
 #### Tabs
 
 Tabs offer a different layout for text, particularly if that text is related in some way. They work in a similar way to the 'disclosure' option in that they can reveal text, but more than one tab can be added to a block.
@@ -473,8 +513,6 @@ You can add videos from four specified video content providers: YouTube, Vimeo, 
 <Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/nakala-video-id.jpg" alt="Two screengrabs side by side: the first screengrab is of a video on the Nakala page, showing the location of the 'Copy ID' button; the second image shows the 'Video Card' edit widget with the Nakala video ID pasted into the 'Video ID' field." alignment="stretch">
   *Copying and pasting the Video ID for videos on Nakala*
 </Figure>
-
-
 
 You can also specify a start time in the video if there is a certain section you want to showcase.
 
