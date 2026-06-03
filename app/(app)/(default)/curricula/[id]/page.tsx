@@ -84,9 +84,11 @@ export default async function CurriculumPage(
 		translations: _translations,
 		"is-translation-of": _isTranslationOf,
 		version,
+		"supplementary-information": supplementary,
 	} = curriculum.metadata;
 
 	const Content = curriculum.content;
+	const Supplementary = supplementary.content;
 
 	const related = pickRandom(Array.from(curriculum.related), 4);
 
@@ -271,6 +273,11 @@ export default async function CurriculumPage(
 							<Content />
 						</div>
 					</Curriculum>
+					<div className="mx-auto w-full max-w-(--size-content) space-y-10">
+						<div className="prose">
+							<Supplementary />
+						</div>
+					</div>
 					<RelatedCurriculaList
 						curricula={await Promise.all(
 							related.map(async (id) => {
