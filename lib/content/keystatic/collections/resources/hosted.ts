@@ -12,6 +12,7 @@ import { createDiagram } from "@/lib/content/keystatic/components/diagram";
 import { createDisclosure } from "@/lib/content/keystatic/components/disclosure";
 import { createEmbed } from "@/lib/content/keystatic/components/embed";
 import { createFigure } from "@/lib/content/keystatic/components/figure";
+import { createFillInTheBlank } from "@/lib/content/keystatic/components/fill-in-the-blank";
 import { createFootnote } from "@/lib/content/keystatic/components/footnote";
 import { createGrid } from "@/lib/content/keystatic/components/grid";
 import { createH5PWrapper } from "@/lib/content/keystatic/components/h5p-wrapper";
@@ -139,6 +140,7 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 					...createImageComparisonSlider(paths, locale),
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
+					...createFillInTheBlank(paths, locale),
 					...createQuiz(paths, locale),
 					...createTabs(paths, locale),
 					...createVideo(paths, locale),
@@ -160,6 +162,12 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 				validation: { length: { min: 0 } },
 				collection: withI18nPrefix("dariah-national-consortia", locale),
 				description: "DARIAH member countries contributing to resource (where applicable)",
+			}),
+			"dariah-working-groups": fields.multiRelationship({
+				label: "DARIAH working groups",
+				validation: { length: { min: 0 } },
+				collection: withI18nPrefix("dariah-working-groups", locale),
+				description: "DARIAH working groups contributing to resource (where applicable)",
 			}),
 			doi: readonly({
 				label: "PID (readonly)",
