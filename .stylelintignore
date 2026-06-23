@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# misc
+.idea/
+
+# next.js
+.next/
+next-env.d.ts
+out/
+
+# test
+/coverage/
+
+# playwright
+/blob-report/
+/playwright/.cache/
+/playwright-report/
+/test-results/
+
+#vendor
+/public/vendor
+
