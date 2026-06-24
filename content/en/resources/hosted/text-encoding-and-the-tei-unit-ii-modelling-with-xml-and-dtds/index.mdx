@@ -50,9 +50,25 @@ translations: []
 dariah-national-consortia: []
 dariah-working-groups: []
 ---
-## Basic XML rules: well-formed and valid XML
+This 'Modelling with XML and DTDs' module is divided into three lesson. In **Basic XML rules: well formed vs. valid XML** the key rules for XML documents are discussed. The basic rules to construct XML documents are explained, how to use elements and attributes, how to encode special characters (via Unicode), how elements are nested, and what the relationships between elements are, described as a family (parent, children, sibling) relationships. **Introduction to DTDs provides a history of DTDs**, what they are used for, and the difference between internal and external DTDs. There are exercises in creating elements and attributes, as well as the opportunity to create your first DTD. The DTD exercise is designed for you to put into practice what you have learned through modelling a poem. The **Advanced DTD Exercise** is an challenge exercise which provides you with the framework for creating a DTD and document instance (XML document that adheres to the DTD)  for a recipe.
 
-### Well-formed vs valid XML
+
+
+This resource is part of the DARIAH-Teach "<Link link={{"discriminant":"curricula","value":{"id":"text-encoding-and-the-tei"}}}>Text Encoding and the Text Encoding Initiative</Link>".
+
+## Learning Outcomes
+
+After completing this module, learners will be able to:
+
+* X
+* Y
+* Z
+
+---
+
+## Basic XML Rules: Well-Formed and Valid XML
+
+### Well-Formed vs Valid XML
 
 XML documents are essentially text documents containing data and markup. Data can be text or numeric. Markup is the tags used to add structure and semantic information. XML processing software expects basic rules to be followed that distinguishes data from markup. If you are familiar with HTML, XML will seem quite familiar as it uses a similar markup system.
 
@@ -70,7 +86,7 @@ All XML documents have to conform to a set of rules that were developed by the W
 
 ### Building-blocks of XML documents
 
-##### Elements
+#### Elements
 
 Within an XML document data is contained within elements. Elements have a start-tag and an end-tag. Start- and end-tags consist of an **element name,** which is a string of text such as ‘PersonName’, and a delimiter indicating the beginning and end of a tag. XML tags are delimited from the stored data by use of angle brackets (or inequality signs). The bracket \< is used to indicate the beginning of an XML start-tag and > is used to indicate the end of a start-tag.
 
@@ -84,43 +100,23 @@ A special case are so-called **empty elements**. Empty elements do not contain P
 
 In the example of our element \<PersonName> the element name is a string of characters. The rules for XML element names are that names must start with a letter or underscore, they can contain letters, digits, hyphens, underscores, and periods and they are case-sensitive. The following table shows a examples of valid XML names:
 
-**Correct XML element names**
+##### **Correct XML Element Names**
 
-\<\_newElement> \</newElement>
-
-Element names must start with a letter or underscore
-
-\<newElement> \</newElement>
-
-Element names are case-sensitive, start and end tag have to match
-
-\<my.new\_Element-1>\</my.new\_Element-1>
-
-Element names can contain letters, digits, hyphens, underscores, and periods
+| \<\_newElement> \</newElement>            | Element names must start with a letter or underscore                         |
+| ----------------------------------------- | ---------------------------------------------------------------------------- |
+| \<newElement> \</newElement>              | Element names are case-sensitive, start and end tag have to match            |
+| \<my.new\_Element-1>\</my.new\_Element-1> | Element names can contain letters, digits, hyphens, underscores, and periods |
 
 Incorrect construction of element names leads to XML data that is not Well Formed. An XML processor will not process the data, but instead indicate an error message. The following table shows examples of illegal XML element names:
 
-**Illegal XML element names**
+##### **Illegal XML Element Names**
 
-\<1Element> \</1Element>
-
-Element names cannot start with a digit, hyphen or period
-
-\< Element /> \</ Element>
-
-Element names cannot start with an initial space
-
-\<newElement> \</Newelement>
-
-Element names are case-sensitive and start and end tag must match
-
-\<xmlElement>\</xmlElement>
-
-Element names cannot start with the string xml, XML, Xml, etc
-
-\<new Element> \</new Element>
-
-Element names cannot contain whitespace
+| \<1Element> \</1Element>       | Element names cannot start with a digit, hyphen or period         |
+| ------------------------------ | ----------------------------------------------------------------- |
+| \< Element /> \</ Element>     | Element names cannot start with an initial space                  |
+| \<newElement> \</Newelement>   | Element names are case-sensitive and start and end tag must match |
+| \<xmlElement>\</xmlElement>    | Element names cannot start with the string xml, XML, Xml, etc     |
+| \<new Element> \</new Element> | Element names cannot contain whitespace                           |
 
 ##### Attributes
 
@@ -134,63 +130,30 @@ Attributes can also be used to store data and sometimes it is difficult to decid
 
 For attributes, there are similar naming rules to elements. Names must start with a letter or underscore, they can contain letters, digits, hyphens, underscores, and periods, but cannot contain whitespace. Attribute values have to be quoted, they can contain alphanumeric characters, whitespace and various other characters such as period, hyphen, underscore, comma, etc. However, you have to be careful using single and double quotes. If single quotes are used as attribute value delimiter, they are not allowed in the value string. If double quotes are used as attribute value delimiter, they are not allowed in the value string. The following table contains examples of valid use of attributes.
 
-**Valid use of attributes in XML**
+##### **Valid Use of Attributes in XML**
 
-\<newElement attribute1=”attribute value: 1” />
-
-Attribute name may contain digits, but cannot start with a digit. Attribute values may contain whitespaces, punctuation and alphanumeric characters in any order.
-
-\<person name=Rob Miller’ />
-
-\<person name=”Rob Miller” />
-
-Single quotes or double quotes can be used as delimiter of attribute values.
-
-\<address owner=”Mary’s address” />
-
-Single quotes can be used within a value string, but only if they are not deliminators.
-
-\<sentence spoken=’He said: “go”!’ />
-
-Double quotes can be used within a value string, but only if they are not deliminators.
+| \<newElement attribute1=”attribute value: 1” />            | Attribute name may contain digits, but cannot start with a digit. Attribute values may contain whitespaces, punctuation and alphanumeric characters in any order. |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \<person name=Rob Miller’ /> \<person name=”Rob Miller” /> | Single quotes or double quotes can be used as delimiter of attribute values.                                                                                      |
+| \<address owner=”Mary’s address” />                        | Single quotes can be used within a value string, but only if they are not deliminators.                                                                           |
+| \<sentence spoken=’He said: “go”!’ />                      | Double quotes can be used within a value string, but only if they are not deliminators.                                                                           |
 
 Incorrect attribute syntax leads to XML data that is not Well-Formed. An XML processor will not process the data, but instead indicate that there is an error. The following table shows examples of illegal attribute names and values:
 
-**Illegal use of attribute names and values in XML**
+##### **Illegal Use of Attribute Names and Values in XML**
 
-\<person name=Robert />
-
-Attribute values must be quoted.
-
-\<person name=”Robert’ />
-
-No mismatch between the quote delimiters.
-
-\<sentence spoken=”He said: “go”!” />
-
-If double quotes are used as deliminators of a value string, they cannot be used in the value string itself.
-
-\<address owner=’Mary‘s address’ />
-
-If single quotes are used as deliminators of a value string, they cannot be used in the value string itself.
-
-\<person first name=”Frank” />
-
-An attribute name cannot contain whitespace characters.
-
-\<person 1stname=”Robert” />
-
-Attribute names must start with a letter or underscore
-
-\<person name=”Robert” name=”James” />
-
-An element cannot have multiple attributes with the same name.
+| \<person name=Robert />                | Attribute values must be quoted.                                                                             |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| \<person name=”Robert’ />              | No mismatch between the quote delimiters.                                                                    |
+| \<sentence spoken=”He said: “go”!” />  | If double quotes are used as deliminators of a value string, they cannot be used in the value string itself. |
+| \<address owner=’Mary‘s address’ />    | If single quotes are used as deliminators of a value string, they cannot be used in the value string itself. |
+| \<person first name=”Frank” />         | An attribute name cannot contain whitespace characters.                                                      |
+| \<person 1stname=”Robert” />           | Attribute names must start with a letter or underscore                                                       |
+| \<person name=”Robert” name=”James” /> | An element cannot have multiple attributes with the same name.                                               |
 
 Elements and attributes are the main building blocks of XML and they are essential for structuring and modelling data. Other important components that are present in most XML documents are *Processing instructions* and XML and Unicode entities.
 
-######
-
-Processing instructions
+##### Processing instructions
 
 Processing instructions contain instructions for an XML processor specifying what version of XML is used, what character encoding and/or what schema should be used to validate the XML document. Processing instructions can be easily recognised because they are written in the first lines of an XML document. Processing instruction do not have a start- and end-tags. However, they do have attributes to store information. For instance, the following processing instruction is the XML declaration and should be at the beginning of every XML document. It declares that this document is encoded according the XML standard using XML version 1.0 and the character encoding UTF-8:
 
@@ -198,37 +161,21 @@ Processing instructions contain instructions for an XML processor specifying wha
 <?xml version="1.0" encoding="UTF-8"?>
 ```
 
-###### Unicode entities
+##### Unicode entities
 
 The text stored in an XML element is usually PCDATA (Parsed Character Data). This is a data definition used in XML documents and specifies that the five characters that are used to distinguish mark-up from data, such as angle brackets (for elements), single and double quotes (for attributes) and ampersand (for named entities), have to be *escaped* using Entity references. Entity references begin with & and end with a semicolon. The following list shows what Entities have to be used instead of the five illegal characters:
 
-Character
+| Character | XML entity |
+| --------- | ---------- |
+| \<        | \&lt;      |
+| >         | \&gt;      |
+| &         | \&amp;     |
+| '         | \&apos;    |
+| "         | \&quote;   |
 
-XML entity
 
-\<
 
-\&lt;
-
-\>
-
-\&gt;
-
-&
-
-\&amp;
-
-'
-
-\&apos;
-
-"
-
-\&quote;
-
-Another form of Entity references are *Character* references for characters or symbols not contained in the ASCII character set. For instance, Unicode character references can be used within an XML document. Such character references start with &
-
-## and end with a semicolon and are directly embedded into an XML document. For instance, the Greek Capital Letter Pi has the character reference: \&#x03A0;
+Another form of Entity references are *Character* references for characters or symbols not contained in the ASCII character set. For instance, Unicode character references can be used within an XML document. Such character references start with \&# and end with a semicolon and are directly embedded into an XML document. For instance, the Greek Capital Letter Pi has the character reference: \&#x03A0;
 
 ### Nesting elements
 
@@ -245,9 +192,9 @@ The XML specifications require that within an XML document all elements have to 
 </addressBook>
 ```
 
-To explain basic principle of nesting in XML, the Russian ‘Matryoshka doll’ might make a good analogy. The root element is the largest container. All other elements have to be entirely nested within the root element or another element. In a similar way smaller Matryoshka dolls’are nested within bigger ones.
+To explain basic principle of nesting in XML, the Russian ‘Matryoshka doll’ might make a good analogy. The root element is the largest container. All other elements have to be entirely nested within the root element or another element. In a similar way smaller Matryoshka dolls are nested within bigger ones.
 
-<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/15cf90b368ddf75e0e850b1b5e1eceb7cdf44bfb-5727.jpg" alignment="stretch">
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/15cf90b368ddf75e0e850b1b5e1eceb7cdf44bfb-5727.jpg" alt="Matryoshka dolls." alignment="right-one-fourth">
 
 </Figure>
 
@@ -294,9 +241,9 @@ With more elements, even more data can be specified as follows:
 
 That this data is nested provides important information to the computer. For example, since the \<address> element encloses \<houseNr>, \<street> and \<town>, it can be inferred that they belong to the same address.
 
-### Element relationships within an XML document
+### Element Relationships Within an XML Document
 
-Conceptually, the structure of an XML document is a tree structure. The *root element*, forms the basis of the XML tree and all other element nodes, attribute nodes and text nodes reach out like braches and leaves. Visually this could be represented as a tree graph as in the following figure of the address book in the previous section:
+Conceptually, the structure of an XML document is a tree structure. The *root element*, forms the basis of the XML tree and all other element nodes, attribute nodes and text nodes reach out like branches and leaves. Visually this could be represented as a tree graph as in the following figure of the address book in the previous section:
 
 <Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/f7fad3bcd13b476edb7bf474b6623f5448753a38-5739.png" alignment="stretch">
 
@@ -323,8 +270,6 @@ A **sibling relationship** means that elements (the siblings) have the same pare
 These relationships provide powerful structure for other software, as well as other XML-standards, such as XPath and XQuery to navigate the tree structure for formatting, for searching, and for extracting information from the XML document instance.
 
 ## Introduction to DTDs
-
-### Introduction to DTDs
 
 As discussed in the previous section, to be a well-formed XML document a set of rules must be adhered to. Many documents also conform to another set of rules that constrain what, how, and the frequency of elements and attributes. An XML document that is well-formed and conforms to a schema or DTD is called a *Valid* XML document.
 
