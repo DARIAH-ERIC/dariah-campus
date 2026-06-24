@@ -52,8 +52,6 @@ dariah-working-groups: []
 ---
 This 'Modelling with XML and DTDs' module is divided into three lesson. In **Basic XML rules: well formed vs. valid XML** the key rules for XML documents are discussed. The basic rules to construct XML documents are explained, how to use elements and attributes, how to encode special characters (via Unicode), how elements are nested, and what the relationships between elements are, described as a family (parent, children, sibling) relationships. **Introduction to DTDs provides a history of DTDs**, what they are used for, and the difference between internal and external DTDs. There are exercises in creating elements and attributes, as well as the opportunity to create your first DTD. The DTD exercise is designed for you to put into practice what you have learned through modelling a poem. The **Advanced DTD Exercise** is an challenge exercise which provides you with the framework for creating a DTD and document instance (XML document that adheres to the DTD)  for a recipe.
 
-
-
 This resource is part of the DARIAH-Teach "<Link link={{"discriminant":"curricula","value":{"id":"text-encoding-and-the-tei"}}}>Text Encoding and the Text Encoding Initiative</Link>".
 
 ## Learning Outcomes
@@ -173,8 +171,6 @@ The text stored in an XML element is usually PCDATA (Parsed Character Data). Thi
 | '         | \&apos;    |
 | "         | \&quote;   |
 
-
-
 Another form of Entity references are *Character* references for characters or symbols not contained in the ASCII character set. For instance, Unicode character references can be used within an XML document. Such character references start with \&# and end with a semicolon and are directly embedded into an XML document. For instance, the Greek Capital Letter Pi has the character reference: \&#x03A0;
 
 ### Nesting elements
@@ -277,35 +273,20 @@ This unit will teach the basic principles of one of these rule sets: Document Ty
 
 A DTD is a series of statements that can be written either at the beginning of an XML document (an internal DTD right after the XML declaration, or in a separate file from the XML document (an external DTD). The main advantage of an external DTD is that the rules defined in an external DTDs can be applied to many XML documents (called, in this case, document instances). This facilitates consistency of encoding and maintenance of the DTD. For the following examples and exercise we will use internal DTDs, because we are only working with one XML document. However, the same DTD statements would also apply to external DTDs.
 
-<Embed src="https://www.youtube.com/embed/xp2hbHaBZwI">
+<Video provider="youtube" id="xp2hbHaBZwI?si=6sRjFwVYlZyMt4zx">
 
-</Embed>
+</Video>
 
-##### Further reading
-
-W3schools, DTD Tutorial, <Link link={{"discriminant":"external","value":"http://www.w3schools.com/xml/xml_dtd_intro.asp"}}>[http://www.w3schools.com/xml/xml\\\_dtd\\\_intro.asp](http://www.w3schools.com/xml/xml\\_dtd\\_intro.asp)</Link>
+*~~Further reading has been moved to the bottom~~*
 
 ### Creating Elements
 
 In this unit you will learn to develop a DTD for a simple address book. An address book usually contains several entries and each entry will contain information about a person including a name, address, and telephone number such as in the following table:
 
-Name
-
-Address
-
-Telephone number
-
-Clark Kent
-
-344 Clinton Street Metropolis
-
-55 50145
-
-Bruce Wayne
-
-1007 Mountain Drive Gotham
-
-53 59333
+| Name        | Address                       | Telephone number |
+| ----------- | ----------------------------- | ---------------- |
+| Clark Kent  | 344 Clinton Street Metropolis | 55 50145         |
+| Bruce Wayne | 1007 Mountain Drive Gotham    | 53 59333         |
 
 As was mentioned previously, every XML document must have exactly one root element which encloses all other elements. The root element, like every other element, must be declared in the DTD. Root elements should be descriptive of the content. So, in our case, we will use the root element \<addressBook>. The following statement declares that \<addressBook> is the root element:
 
@@ -319,9 +300,14 @@ Between the square brackets (in blue) is the declaration of the root element. Th
 
 The following video shows how a DTD should be placed at the beginning of an XML document and how a text editor such as oXygen can be used to evaluate if an XML is well-formed and valid.
 
-<Embed src="https://www.youtube.com/embed/kEprJ0U0FiE">
+<Video provider="youtube" id="sDH0w-I9qYM?si=EydgobWyfstwk-xU">
 
-</Embed>
+</Video>
+
+### Nesting Elements
+
+```<!DOCTYPE addressBook
+```
 
 The above DTD statement specifies an addressBook element that can only store character data such as:
 
@@ -600,3 +586,11 @@ Based on the previous exercise you should create an online cookbook now. Startin
 * Copy and paste the content for two other recipes into your new cookbook.xml
 * Extend your DTD model to include additional elements that you think are required for a cookbook
 * Add these additional elements to your cookbook XML and validate your XML document
+
+
+
+## Further Reading
+
+##### Further reading
+
+W3schools, DTD Tutorial, [http://www.w3schools.com/xml/xml\\\_dtd\\\_intro.asp](http://www.w3schools.com/xml/xml\\_dtd\\_intro.asp)
