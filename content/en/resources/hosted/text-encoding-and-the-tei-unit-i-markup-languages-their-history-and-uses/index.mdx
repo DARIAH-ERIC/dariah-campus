@@ -56,8 +56,6 @@ This resource on markup languages and their history is divided into four lessons
 * **What is Text Really?** discusses the concept of  'text', and how it is understood from a text encoding perspective. The theory of the OHCO Model (Ordered Hierarchy of Content Objects) is discussed. It describes a rationale for issues common to SGML-based markup languages, as well as a broader understanding of what constitutes text in the digital age.
 * **Modelling With XML** and **Modelling with TEI** explores the history of XML and TEI, their characteristics, as well as the strengths and weaknesses of markup languages. This introduces the building blocks of XML: elements and attributes. 
 
-
-
 ## Learning Outcomes
 
 After completing this module, learners will be able to:
@@ -81,8 +79,6 @@ In the eighteenth and nineteenth centuries as print became the de facto medium i
 <Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/e24d3b6500c680bda715ff2d4876f202b94967db-5625.jpg" alt="A printed page of text with annotations and comments written in pen ink." alignment="right-one-half">
   &#x20;*Example of copyediting of a print manuscript*&#x20;
 </Figure>
-
-
 
 As publishing became an industry in its own right, a text might pass through many hands before it was published. Long before the invention of computers, markup was used to annotate a text to instruct a compositor or typist how a particular passage should be printed or laid out.
 
@@ -162,8 +158,6 @@ Markup languages are used to enrich plain text with information which is readabl
 
 There is always an opening tag (e.g. \<h1>) and a closing tag (e.g. \</h1>) indicating the start and the end of a heading. These tags designate a semantic function of the text. TEI, the encoding standard of the Text Encoding Initiative, is an XML-language and the same convention applies and angle brackets are used to distinguish tags from data. TEI, however, has a much larger and richer vocabulary of elements to capture many more features across a wide range of text types, from tombstones to manuscripts to the born digital.
 
-
-
 *~~Further reading moved to the bottom of the resource~~*
 
 ## What is Text Really?
@@ -196,8 +190,7 @@ For example, metaphors may span many lines or stanzas of verse. Narrative events
 
 Thus the theory of text that SGML (and hence XML and TEI)most eloquently expresses is what one might term the editorial or bibliographic; that is, representing the text in terms of sentences, paragraphs, chapters, front and back matter, and so on. This is not surprising given SGML’s roots as a language written to publish documentary texts in electronic form. From this point of view, one might deduce that the documentary view of text can be read as its *only* structure.
 
-While Renear and his colleagues argued for the OHCO model through the the mid-2000s in a series of articles that further refined and developed their original OCHO proposition, within the TEI community, most academics favour McGann’s view (while necessarily having to conform to an OCHO model as that is what the language most natively facilitates) in which texts encoding is approached from the perspective of complex text structures that do not necessarily all fit into a rigid hierarchy.\
-
+While Renear and his colleagues argued for the OHCO model through the the mid-2000s in a series of articles that further refined and developed their original OCHO proposition, within the TEI community, most academics favour McGann’s view (while necessarily having to conform to an OCHO model as that is what the language most natively facilitates) in which texts encoding is approached from the perspective of complex text structures that do not necessarily all fit into a rigid hierarchy.\\
 
 *~~Further reading moved to the bottom of the resource~~*
 
@@ -241,13 +234,13 @@ To help enforce uniformity in element naming and syntax, SGML used a language ca
 
 DTDs represent an abstract model of the structure of an XML document, while providing a mechanism for a an individual or community to develop a vocabulary of element names that suits the data they are encoding. In due course, the W3C, the organisation that monitors and develops HTML and XML standards, developed a rules-based language specifically for XML documents written in XML syntax. While DTDs can still be used with XML, the more powerful and flexible XML Schema and RNG are more commonly used. Later in this course we will introduce you to DTD syntax as it is easier to learn and use than schema languages, while the general principles of modelling are similar.
 
-### Why would you model a text with XML?
+### Why Would you Model a Text with XML?
 
 XML is the acronym for eXtensible Markup Language (XML). XML was developed in the 1990s and is based on Standard Generalised Markup Language (SGML). The original function of SGML was to provide a software-independent language for the formatting of text. SGML, as is its derivative XML, more properly a metalanguage whose syntax and structure can be used to describe vocbularies for specific domain use. Hypertext Markup Language (HTML), the language that powers the World Wide Web, is probably the most well-known SGML vocabulary. Because SGML was developed in a pre-internet environment, in the late 1990s XML was developed to overcome some shortcomings of SGML and to provide a lightweight and easy-to-learn markup language for data exchange. Today XML is a central language for data exchange and many other languages such as XHTML, SVG or RDF are based on XML syntax.
 
-<Embed src="https://www.youtube.com/embed/vkGsjOin0KA">
+<Video provider="youtube" id="vkGsjOin0KA?si=NfIGiab4WCSGZnZs">
 
-</Embed>
+</Video>
 
 XML is a descriptive or semantic markup language. With XML all kinds of data can be encoded in a way so they can be understood not only by humans, but also computers. As humans we can understand an address information such as:
 
@@ -267,7 +260,7 @@ However, even for humans it might not be clear that the last 10 digits are a tel
 
 Now it is much clearer what each element of the text represents with the added benefit that the XML elements can be processed by a computer programme. If you had hundred address entires all encoded in the same way, software can easily generate a list of telephone number or search only through the person names to check if a 'Robert Smith' is among your list of addresses.
 
-### Overlapping hierarchies
+### Overlapping Hierarchies
 
 One of drawbacks of modelling with XML is that XML does not allow for overlapping hierarchies. The issue was already mentioned in the context of the discussion of OHCO (in the 'What is Text Really Section'). Essentially, the issue is that XML requires a hierarchical data model and all elements need to be nested within other elements. This means that an XML element cannot be opened inside of one element and closed in another. The correct nesting of elements was this example used previously:
 
@@ -285,37 +278,35 @@ In the above example, the first \<l> element opens and closes, then the second \
 
 Yet, the second representation may more accurately represent the content. A metaphor in a poem may cut across two or more lines (marked by the tag \<l>). It might seem like a purely technical issue that a language like XML requires one element to close before another opens, as in the following: The creators of the OHCO theory concede that this may be more than a technical issue and that it may point to some of the thorniest issues surrounding text encoding as an intellectual endeavor. Text encoding, like any other area of textual scholarship, is not theory-free. It is subjective, theoretical, and interpretative. Texts, particularly literary texts, have competing hierarchies, all of which may have equal claim to being represented as they express different views of the text. For example, the hierarchy that SGML and hence XML most eloquently expresses is what one might term the editorial or bibliographic; that is, representing the text in terms of sentences, paragraphs, chapters, front and back matter, and so on. This is not surprising given SGML’s roots as a language written to publish documentary texts in electronic form. From this point of view, one might deduce that the documentary view of text can be read as its *only* structure.
 
-Yet there are many textual features that do not conform to this hierarchy. As mentioned previously, metaphors may span many lines or stanzas of verse. Narrative events may span many paragraphs and indeed may overlap. Verse drama contains dialogue lines (speeches), metrical lines, and sentences. But these sentences and metrical lines overlap in the case of enjambment or when a character begins talking and another interrupts (Renear 119–21). All these hierarchies have equal claim to representation. There are possiblities to get around this problem by using empty elements and they will be discussed in a later section.
+Yet there are many textual features that do not conform to this hierarchy. As mentioned previously, metaphors may span many lines or stanzas of verse. Narrative events may span many paragraphs and indeed may overlap. Verse drama contains dialogue lines (speeches), metrical lines, and sentences. But these sentences and metrical lines overlap in the case of enjambment or when a character begins talking and another interrupts (Renear 119–21). All these hierarchies have equal claim to representation. There are possibilities to get around this problem by using empty elements and they will be discussed in a later section.
 
-Further Reading
+*~~Further reading moved to the bottom of the resource~~*
 
-Text Encoding Initiative, Non-hierarchical Structures, <Link link={{"discriminant":"external","value":"http://www.tei-c.org/release/doc/tei-p5-doc/en/html/NH.html"}}>[http://www.tei-c.org/release/doc/tei-p5-doc/en/html/NH.html](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/NH.html)</Link>
-
-Renear, Allen, Text Encoding, A Companion to Digital Humanities, ed. Susan Schreibman, Ray Siemens, John Unsworth. Oxford: Blackwell, 2004, <Link link={{"discriminant":"external","value":"http://www.digitalhumanities.org/companion/"}}>[http://www.digitalhumanities.org/companion/](http://www.digitalhumanities.org/companion/)</Link>
-
-### XML and its advantages
+### XML and its Advantages
 
 The Extensible Markup Language (or XML) is a specification of the World Wide Web Consortium (W3C). As discussed in the last unit, XML is a metalanguage and can be used to describe custom markup languages that conform to the basic rules of XML. The entire XML specification can be found on the W3C website at [https://www.w3.org/XML/](https://www.w3.org/XML/)
 
 Today XML is used in the world of technology and in particular on the Internet. For instance, XML-based markup languages such as XHTML, an XML version of HTML, SVG, a standard to describe graphics, and RDF, a standard that is central to the semantic web, are central to the Internet today. Since 2004 also TEI, the encoding recommendations of the Text Encoding Initiative, uses XML. XML was originally developed as a standard for data exchange over the web and its main advantages are that it is a device independent standard, that it is machine and human readable, and that XML promotes a clear separation between data and presentation.
 
-##### XML is device independent
+#### XML is Device Independent
 
-One of the main advantages of XML is its high degree of interoperability. XML data can be used by different programmes on different platforms. XML files are simple text files and are not platform or software dependent. Consequently, an XML document can be written on a Mac, stored on a Linux server and downloaded to a Windows PC. All these operating systems are able to read an XML file. At the same time, XML can be used to exchange data between different programmes. For instance, since Microsoft Word introduced its xml-based document format, Word documents can be viewed and edited by other software such as LibreOffice.
+One of the main advantages of XML is its high degree of interoperability. XML data can be used by different programmes on different platforms. XML files are simple text files and are not platform or software dependent. Consequently, an XML document can be written on a Mac, stored on a Linux server and downloaded to a Windows PC. All these operating systems are able to read an XML file. At the same time, XML can be used to exchange data between different programmes. For instance, since Microsoft Word introduced its XML-based document format, Word documents can be viewed and edited by other software such as LibreOffice.
 
-##### XML is machine and human readable
+#### XML is Machine and Human Readable
 
 Another advantage of XML is that it can be written, read and altered by humans as well as computers. No special software is required to access the data in XML documents. A simple text editor such as Notepad, Vi or TextEdit can be used to open and edit XML documents.
 
 For instance, before Microsoft Word used XML it was very difficult to rescue your data from a corrupted Word document. Now, XML content of a Microsoft document can easily be extracted and viewed with a simple text editor. The following video will show you how you can open a Microsoft Word document and read its XML content. Try to follow it on your own computer and stop the video if necessary. Instead of a Microsoft Word document, you could also try the exercise with a LibreOffice document.
 
-<Embed src="https://www.youtube.com/embed/Gp1MOemMh9k">
+<Video provider="youtube" id="Gp1MOemMh9k?si=-Q5zY7y_mhcQmOsR">
 
-</Embed>
+</Video>
 
-##### XML promotes a clear separation of data and presentation
 
-The third major advantage of XML documents is that XML promotes a clear separation of data and presentation. This enables the possiblity that XML encoded data can be exchanged without presentational information attached. On the one hand this reduces file size overhead and is an advantage for the exchange of huge amounts of data over networks, on the other hand it allows for the presentation of the same data in different formats. Using an XML parser, a software developed to access and manipulate XML documents, the same underlying data can be used in multiple and very different presentation scenarios and the same XML document can be convert to a PDF, a Microsoft Word document and a web page as per the image below.
+
+#### XML Promotes a Clear Separation of Data and Presentation
+
+The third major advantage of XML documents is that XML promotes a clear separation of data and presentation. This enables the possibility that XML encoded data can be exchanged without presentational information attached. On the one hand this reduces file size overhead and is an advantage for the exchange of huge amounts of data over networks, on the other hand it allows for the presentation of the same data in different formats. Using an XML parser, a software developed to access and manipulate XML documents, the same underlying data can be used in multiple and very different presentation scenarios and the same XML document can be convert to a PDF, a Microsoft Word document and a web page as per the image below.
 
 <Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/b28abb73c0ea8f07ef02ec04a0c3df7b56a581de-2015.png" alt="XML to different output formats" alignment="stretch">
 
@@ -325,7 +316,7 @@ The third major advantage of XML documents is that XML promotes a clear separati
 
 As XML is a metalanguage. It has no predefined tags. Rather, it provides a syntax for the development of vocabularies, including XHTML and SVG. These are two standards that have become important in web development and they highlight two different XML use cases: for the description of web pages and for the description of graphics.
 
-##### XHTML
+#### XHTML
 
 One of the best known XML standards is probably XHTML. XHTML is an XML vocabulary for the description of web pages. The basic structure of an XHTML document consists of an \<html> root element and two nested child elements, \<head> and \<body>. The head section may contain metadata and links to external files (e.g. CSS and JavaScript files), while the body section contains the page content that is displayed by the web browser. The page content in the body section can be further structured using elements to identify divisions, \<div>, headings, e.g. \<h1>, \<h2> and \<h3>, paragraphs, \<p>. Furthermore images and other media can be included with XML elements.
 
@@ -349,7 +340,7 @@ One of the best known XML standards is probably XHTML. XHTML is an XML vocabular
 
 A crucial difference between XHTML and HTML is that because HTML is not an XML language it does not need to follow the XML rules (although it does follow SGML rules). For instance, in HTML5 not all elements need to be closed with a closing tag, while XHTML requires that every opening tag has a corresponding closing tag. For more information on XHTML and the differences between HTML and XHTML we recommend online tuturials such as the one provided by <Link link={{"discriminant":"external","value":"http://www.w3schools.com/html/html_xhtml.asp"}}>W3schools</Link>.
 
-##### SVG
+#### SVG
 
 SVG is a standard developed by the W3C to describe vector graphics. SVG is an XML based language that uses the same basic syntax as other XML languages. Like all XML languages also SVG files can be opened with a simple XML editor and it contains human-readable data that is interpreted by an SVG processor as a graphic. For instance, the following statement describes a black circle with a radius r of 50:
 
@@ -359,13 +350,13 @@ SVG is a standard developed by the W3C to describe vector graphics. SVG is an XM
 
 SVG documents are essentially a series of XML statements that describe graphic elements. These statements can easily be changed and rewritten with a programming language such as JavaScript. Therefore, SVG images are becoming increasingly popular in interactive web development and online gaming. W3Cschools has a gaming tutorial that uses SVG (<Link link={{"discriminant":"external","value":"http://www.w3schools.com/games/"}}>[http://www.w3schools.com/games/](http://www.w3schools.com/games/)</Link>). However, SVG is also used in the print publishing industry for high-quality images for posters.
 
-If you are interested to learn more about SVG the tutorial of <Link link={{"discriminant":"external","value":"http://www.w3schools.com/svg/"}}>tutorial of W3school</Link> or the <Link link={{"discriminant":"external","value":"https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Introduction"}}>Introduction to SVG</Link> by the Mozilla Developement Network are good places to start.
+If you are interested to learn more about SVG the tutorial of <Link link={{"discriminant":"external","value":"http://www.w3schools.com/svg/"}}>tutorial of W3school</Link> or the <Link link={{"discriminant":"external","value":"https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Introduction"}}>Introduction to SVG</Link> by the Mozilla Development Network are good places to start.
 
 ## Modelling with TEI
 
-### The TEI schema
+### The TEI Schema
 
-You have heard already about schemas and DTDs in the Modeling with XML section. Like every XML language TEI requires a schema that explains how elements and attributes are used in a TEI document. The TEI community provides a general schema that defines all TEI modules and attribute classes. This schema is called **tei\_all** and all TEI documents have to conform to this schema. The tei\_all schema exists in several different forms, for instance as a RELAX NG schema, a schema language developed for XML documents, or as DTD. The two schema versions can be found under the following URLs:
+You have heard already about schemas and DTDs in the 'Modelling with XML' section. Like every XML language TEI requires a schema that explains how elements and attributes are used in a TEI document. The TEI community provides a general schema that defines all TEI modules and attribute classes. This schema is called **tei\_all** and all TEI documents have to conform to this schema. The tei\_all schema exists in several different forms, for instance as a RELAX NG schema, a schema language developed for XML documents, or as DTD. The two schema versions can be found under the following URLs:
 
 ```
 <a href="https://www.tei-c.org/release/xml/tei/custom/schema/dtd/tei_all.dtd"><code data-lang="text">https://www.tei-c.org/release/xml/tei/custom/schema/dtd/tei_all.dtd</code></a>
@@ -381,15 +372,11 @@ The TEI community also provides subsets of tei\_all, because it can be very conf
 <a href="http://www.tei-c.org/Guidelines/Customization/">http://www.tei-c.org/Guidelines/Customization/</a><br></br>
 ```
 
-DTDs and schemas are used as a technical specification of an TEI/XML model. TEI has also its own modeling language called ODD (One Document Does it all). An ODD contains schema fragments as well as prose descriptions of element and attribute usage and examples from the TEI guidelines. An ODD can be used to generate a schema to document the XML model and a prose documentation in HTML or PDF. ODD is an holistic way to document a TEI customisation and it is a requirement for every TEI project to provide a detailed ODD model. You will learn more about ODD in a later session.
+DTDs and schemas are used as a technical specification of an TEI/XML model. TEI has also its own modelling language called ODD (One Document Does it all). An ODD contains schema fragments as well as prose descriptions of element and attribute usage and examples from the TEI guidelines. An ODD can be used to generate a schema to document the XML model and a prose documentation in HTML or PDF. ODD is an holistic way to document a TEI customisation and it is a requirement for every TEI project to provide a detailed ODD model. You will learn more about ODD in a later session.
 
-Further reading:
+*~~Further reading moved to the bottom of the resource~~*
 
-Elena Pierazzo, Modelling (Digital) Texts, in Digital Scholarly Editing: Theories, Models and Methods, 2015, <Link link={{"discriminant":"external","value":"http://hal.univ-grenoble-alpes.fr/hal-01182162"}}>[http://hal.univ-grenoble-alpes.fr/hal-01182162](http://hal.univ-grenoble-alpes.fr/hal-01182162)</Link>
-
-Text Encoding Initiative, The TEI Infrastructure, <Link link={{"discriminant":"external","value":"http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html"}}>[http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html)</Link>
-
-### Why use TEI?
+### Why Use TEI?
 
 In the previous unit we have learned how one can model data using XML to represent and describe a specific type of data. We could thus create a model in XML for a poem as below:
 
@@ -408,25 +395,43 @@ The main characteristics and benefits of the TEI markup language are that TEI wa
 
 Since the first draft of the TEI guidelines was released in the 1990s, TEI has developed into one of the most important encoding standards within the humanities. The first TEI guidelines P1 to P3 are based on SGML, while the more recent standards – TEI P4 ( June 2002) and TEI P5 ( November 2007) – use XML.
 
-Further reading:
-
-Lou Burnard, The Evolution of the Text Encoding Initiative: From Research Project to Research Infrastructure, in Journal of the Text Encoding Initiative, 2013, <Link link={{"discriminant":"external","value":"http://jtei.revues.org/811"}}>[http://jtei.revues.org/811](http://jtei.revues.org/811)</Link>
-
-Lou Burnard, What is the Text Encoding Initiative, 2014, <Link link={{"discriminant":"external","value":"http://books.openedition.org/oep/426?lang=en"}}>[http://books.openedition.org/oep/426?lang=en](http://books.openedition.org/oep/426?lang=en)</Link>
-
-Nancy M. Ide and C. M. Sperberg-McQueen, The Text Encoding Initiative: Its History, Goals, and Future Development:<Link link={{"discriminant":"external","value":"http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf"}}>[http://www.cs.vassar.edu/\~ide/papers/teiHistory.pdf](http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf)</Link>
+*~~Further reading moved to the bottom of the resource~~*
 
 ### TEI Guidelines
 
 The TEI Guidelines define and document the standard for electronic Text Encoding for Interchange (TEI). The Guidelines describe what TEI/XML elements and attributes are allowed and how they should be used. The Guidelines contain a declaration and description of each TEI element, code examples and several thematic chapters that explain how TEI elements and attributes should be used.\
 TEI is a language that was developed for modelling of various texts in the humanities. Therefore, TEI does not promote one model of a text, but is flexible enough to allow for a researcher to chose or create a model that suits her or his research needs. TEI has over 500 predefined elements organised in modules. Each module and the associated elements are described in the Guidelines. A TEI module groups together associated TEI elements such as the TEI elements recommended for the encoding of drama or dictionaries. There are also more general TEI modules which contain 'core' and 'header' elements, basic elements most likely to be used in all TEI documents. A full list of modules from the TEI guidelines:
 
-module namedescriptionanalysisSimple analytic mechanismscertaintyCertainty and uncertaintycoreElements common to all TEI documentscorpusHeader extensions for corpus textsdeclarefsFeature system declarationsdictionariesDictionaries and other lexical resourcesdramaPerformance textsfiguresTables, formulae, and figuresgaijiCharacter and glyph documentationheaderThe TEI Headeriso-fsFeature structureslinkingLinking, segmentation and alignmentmsdescriptionManuscript DescriptionnamesdatesNames and datesnetsGraphs, networks and treesspokenTranscribed SpeechtagdocsDocumentation of TEI modulesteiDeclarations for datatypes, classes, and macros available to all TEI modulestextcritText criticismtextstructureDefault text structuretranscrTranscription of primary sourcesverseVerse structures
+| module name   | description                                                                  |
+| ------------- | ---------------------------------------------------------------------------- |
+| analysis      | Simple analytic mechanisms                                                   |
+| certainty     | Certainty and uncertainty                                                    |
+| core          | Elements common to all TEI documents                                         |
+| corpus        | Header extensions for corpus texts                                           |
+| declarefs     | Feature system declarations                                                  |
+| dictionaries  | Dictionaries and other lexical resources                                     |
+| drama         | Performance texts                                                            |
+| figures       | Tables, formulae, and figures                                                |
+| gaiji         | Character and glyph documentation                                            |
+| header        | The TEI Header                                                               |
+| iso-fs        | Feature structures                                                           |
+| linking       | Linking, segmentation and alignment                                          |
+| msdescription | Manuscript Description                                                       |
+| namesdates    | Names and dates                                                              |
+| nets          | Graphs, networks and trees                                                   |
+| spoken        | Transcribed Speech                                                           |
+| tagdocs       | Documentation of TEI modules                                                 |
+| tei           | Declarations for datatypes, classes, and macros available to all TEI modules |
+| textcrit      | Text criticism                                                               |
+| textstructure | Default text structure                                                       |
+| transcr       | Transcription of primary sources                                             |
+| verse         | Verse structures                                                             |
+
+
 
 Besides modules, the TEI elements and attributes are also organised in model classes and attribute classes. The model classes group elements together based on the location they are appearing. For instance, the model 'nameLike' groups elements that can be used to tag various names such as person name, place name, organisation name. A full list of model classes can be found as <Link link={{"discriminant":"external","value":"http://www.tei-c.org/release/doc/tei-p5-doc/en/html/REF-CLASSES-MODEL.html"}}>Appendix A</Link> of the Guidelines. Another important building block of TEI/XML documents are attributes. Attributes are used to store additional information about an element and its content. In the TEI attributes are grouped together in attribute classes. One of the most important attribute classes is the 'global' class. It groups together TEI attributes that can be used on all TEI elements such as the attribute @xml:id (used for an identifier) or @n (used for a number or label). Some classes have also subclasses. For instance, the 'global' class has a subclass 'global.rendition'. This subclass contains attributes that describe rendition and styling of an encoded textual feature. The attribute classes are listed and documented in the TEI guidelines in <Link link={{"discriminant":"external","value":"http://www.tei-c.org/release/doc/tei-p5-doc/en/html/REF-CLASSES-ATTS.html"}}>Appendix B</Link>.
 
 Knowledge about TEI modules, model classes and attribute classes is essential for customisations. Customisations may be necessary in order to create a TEI model that is a close representation of a project-specific understanding of text.\
-\
 
 
 ## Further Reading
@@ -452,3 +457,23 @@ Shillingsburg, Peter L. *Scholarly Editing in the Computer Age: Theory and Pract
 Kirschenbaum, Matthew G. *Mechanisms: New Media and the Forensic Imagination. Cambridge Mass*: MIT Press, 2007.
 
 D.F. McKenzie. *bibliography and the Sociology of Texts*. Cambridge: Cambridge University Press, 1999. First published 1985.
+
+Further Reading
+
+Text Encoding Initiative, Non-hierarchical Structures, [http://www.tei-c.org/release/doc/tei-p5-doc/en/html/NH.html](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/NH.html)
+
+Renear, Allen, Text Encoding, A Companion to Digital Humanities, ed. Susan Schreibman, Ray Siemens, John Unsworth. Oxford: Blackwell, 2004, [http://www.digitalhumanities.org/companion/](http://www.digitalhumanities.org/companion/)
+
+Further reading:
+
+Elena Pierazzo, Modelling (Digital) Texts, in Digital Scholarly Editing: Theories, Models and Methods, 2015, [http://hal.univ-grenoble-alpes.fr/hal-01182162](http://hal.univ-grenoble-alpes.fr/hal-01182162)
+
+Text Encoding Initiative, The TEI Infrastructure, [http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html)
+
+Further reading:
+
+Lou Burnard, The Evolution of the Text Encoding Initiative: From Research Project to Research Infrastructure, in Journal of the Text Encoding Initiative, 2013, [http://jtei.revues.org/811](http://jtei.revues.org/811)
+
+Lou Burnard, What is the Text Encoding Initiative, 2014, [http://books.openedition.org/oep/426?lang=en](http://books.openedition.org/oep/426?lang=en)
+
+Nancy M. Ide and C. M. Sperberg-McQueen, The Text Encoding Initiative: Its History, Goals, and Future Development:[http://www.cs.vassar.edu/\~ide/papers/teiHistory.pdf](http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf)
