@@ -306,7 +306,10 @@ The following video shows how a DTD should be placed at the beginning of an XML 
 
 ### Nesting Elements
 
-```<!DOCTYPE addressBook
+```
+<!DOCTYPE addressBook [
+	<!ELEMENT addressBook (#PCDATA)>
+]>
 ```
 
 The above DTD statement specifies an addressBook element that can only store character data such as:
