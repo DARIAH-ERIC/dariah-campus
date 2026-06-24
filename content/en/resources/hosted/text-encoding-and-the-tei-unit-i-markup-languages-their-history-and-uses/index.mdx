@@ -302,8 +302,6 @@ For instance, before Microsoft Word used XML it was very difficult to rescue you
 
 </Video>
 
-
-
 #### XML Promotes a Clear Separation of Data and Presentation
 
 The third major advantage of XML documents is that XML promotes a clear separation of data and presentation. This enables the possibility that XML encoded data can be exchanged without presentational information attached. On the one hand this reduces file size overhead and is an advantage for the exchange of huge amounts of data over networks, on the other hand it allows for the presentation of the same data in different formats. Using an XML parser, a software developed to access and manipulate XML documents, the same underlying data can be used in multiple and very different presentation scenarios and the same XML document can be convert to a PDF, a Microsoft Word document and a web page as per the image below.
@@ -427,12 +425,9 @@ TEI is a language that was developed for modelling of various texts in the human
 | transcr       | Transcription of primary sources                                             |
 | verse         | Verse structures                                                             |
 
-
-
 Besides modules, the TEI elements and attributes are also organised in model classes and attribute classes. The model classes group elements together based on the location they are appearing. For instance, the model 'nameLike' groups elements that can be used to tag various names such as person name, place name, organisation name. A full list of model classes can be found as <Link link={{"discriminant":"external","value":"http://www.tei-c.org/release/doc/tei-p5-doc/en/html/REF-CLASSES-MODEL.html"}}>Appendix A</Link> of the Guidelines. Another important building block of TEI/XML documents are attributes. Attributes are used to store additional information about an element and its content. In the TEI attributes are grouped together in attribute classes. One of the most important attribute classes is the 'global' class. It groups together TEI attributes that can be used on all TEI elements such as the attribute @xml:id (used for an identifier) or @n (used for a number or label). Some classes have also subclasses. For instance, the 'global' class has a subclass 'global.rendition'. This subclass contains attributes that describe rendition and styling of an encoded textual feature. The attribute classes are listed and documented in the TEI guidelines in <Link link={{"discriminant":"external","value":"http://www.tei-c.org/release/doc/tei-p5-doc/en/html/REF-CLASSES-ATTS.html"}}>Appendix B</Link>.
 
-Knowledge about TEI modules, model classes and attribute classes is essential for customisations. Customisations may be necessary in order to create a TEI model that is a close representation of a project-specific understanding of text.\
-
+Knowledge about TEI modules, model classes and attribute classes is essential for customisations. Customisations may be necessary in order to create a TEI model that is a close representation of a project-specific understanding of text.
 
 ## Further Reading
 
