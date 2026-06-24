@@ -3,7 +3,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import * as v from "valibot";
 
 import _curricula from "@/public/metadata/curricula.json";
-import { curriculumMetadataSchema } from "@/scripts/api/generate-metadata-dump";
+import { curriculumMetadataSchema } from "@/scripts/api/metadata-schemas";
 
 const searchParamsSchema = v.object({
 	limit: v.nullish(
