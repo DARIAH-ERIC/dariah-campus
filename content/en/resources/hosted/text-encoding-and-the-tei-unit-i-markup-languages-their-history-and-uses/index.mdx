@@ -1,11 +1,12 @@
 ---
-title: 'Unit I: Markup languages: their history and uses'
+title: 'Unit I: Markup languages: Their History and Uses'
 locale: en
-publication-date: '2016-01-26'
+publication-date: 2016-01-26
 version: '1.0'
 authors:
   - schreibman-susan
   - bleier-roman
+editors: []
 contributors:
   - schreibman-susan
   - bleier-roman
@@ -45,10 +46,29 @@ summary:
     attributes.
 
 content-type: training-module
+translations: []
+dariah-national-consortia: []
+dariah-working-groups: []
+---
+This resource on markup languages and their history is divided into four lessons:
+
+* **Markup Languages and Text Modelling** introduces the history of markup languages. You will learn how to distinguish features  and characteristics of markup languages, and limitations and advantages of making text machine readable.
+* **What is Text Really?** discusses the concept of  'text', and how it is understood from a text encoding perspective. The theory of the OHCO Model (Ordered Hierarchy of Content Objects) is discussed. It describes a rationale for issues common to SGML-based markup languages, as well as a broader understanding of what constitutes text in the digital age.
+* **Modelling With XML** and **Modelling with TEI** explores the history of XML and TEI, their characteristics, as well as the strengths and weaknesses of markup languages. This introduces the building blocks of XML: elements and attributes. 
+
+
+
+## Learning Outcomes
+
+After completing this module, learners will be able to:
+
+* X
+* Y
+* Z
 
 ---
 
-## Markup Languages and text modelling
+## Markup Languages and Text Modelling
 
 ### Textual Scholarship, Markup and Modelling
 
@@ -56,9 +76,13 @@ Modelling has always been a core activity of textual scholarship as the human re
 
 For centuries textual scholars have made choices in disambiguating marks on page, in deciding how to format text as it migrates from one form to another, to show changes in a work over time, be they authorial (i.e. created by the author of the work) or by other agents (editors, relations, friends, or unknown scribes).
 
-In the eighteenth and nineteenth centuries as print became the de facto medium in which to transmit en masse the textual record, be it for pleasure (the rise of the novel), for religious purposes (the reproduction of sacred texts and commentary), for or political purposes (as a way of defining the new nation states and their peoples by their literary inheritance), so too the need arose for individuals to adjudicate on the version of the text to be published, what introductory material might be included, or which texts should be group
-<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/e24d3b6500c680bda715ff2d4876f202b94967db-5625.jpg" alt="" alignment="stretch" />
-&#x20;"Example of copyediting of a pirnt manuscript"together and published as collections.
+In the eighteenth and nineteenth centuries as print became the de facto medium in which to transmit en masse the textual record, be it for pleasure (the rise of the novel), for religious purposes (the reproduction of sacred texts and commentary), for or political purposes (as a way of defining the new nation states and their peoples by their literary inheritance), so too the need arose for individuals to adjudicate on the version of the text to be published, what introductory material might be included, or which texts should be grouped together and published as collections.
+
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/e24d3b6500c680bda715ff2d4876f202b94967db-5625.jpg" alt="A printed page of text with annotations and comments written in pen ink." alignment="right-one-half">
+  &#x20;*Example of copyediting of a print manuscript*&#x20;
+</Figure>
+
+
 
 As publishing became an industry in its own right, a text might pass through many hands before it was published. Long before the invention of computers, markup was used to annotate a text to instruct a compositor or typist how a particular passage should be printed or laid out.
 
@@ -74,28 +98,35 @@ In the case of HTML, for example, HTML tags are used to structure the text (para
 
 HTML and LaTeX are examples of **presentational or procedural markup languages**. They are used primarily to indicate how text and data is supposed to be processed by a software. For instance, HTML developers are primarily concerned with how something looks in the web browser. However, in recent years with the development of HTML5, HTML has becomes more similar to **descriptive or semantic markup**. This kind of markup language describes the data that is encoded, eg a text an address, a pizza menu, or a stanza of a poem. The benefit of this kind of markup is that it can be understood by software such as search engines. A typical example of a descriptive markup language is the Text Encoding Initiative (TEI). Markup is typically not visible to the reader of electronic text. Rather, it serves as instructions for software to process text.
 
-<Embed src="https://www.youtube.com/embed/E7-g17oL7w0" />
+<Video provider="youtube" id="E7-g17oL7w0?si=iCxaNgFaABLcjPm-">
+
+</Video>
 
 ### Markup Languages vs Plain Text
 
 As mentioned previously, markup languages both inherit characteristics from earlier print-based markup practices, while extending and augmenting those practices for electronic reading, analysis, and distribution. Markup can be expressed, as we saw previously, via handwritten characters or symbols. For computer-based processing, the markup or annotation vocabulary must be itself expressed in machine readable form in a standardised manner.
 
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/12e535814338e541c9ee62c66827b2f87676456e-5648.png" alt="A document in letter format, but all the letters have been replaced with 'X'." alignment="right-one-fourth">
+
+</Figure>
+
 But why, you might ask, do we even need markup? Why not simply use plain text? Plain electronic texts, such as txt-files downloaded from online archives such as Project Gutenberg, do usually not contain any markup. For a human reader this tends not to be a problem as long as she knows the language, writing system, and genre conventions. For example, most readers of Indo-European languages will recognise the form of the following genre types, without needing to read the content:
 
-<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/12e535814338e541c9ee62c66827b2f87676456e-5648.png" alt="" alignment="stretch" />
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/fb98bcd1f127a69d7f4190ef21f77ddd9e553bfb-5649.png" alt="A document, but all the letters have been replaced with the letter 'X'." alignment="right-one-fourth">
 
-<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/fb98bcd1f127a69d7f4190ef21f77ddd9e553bfb-5649.png" alt="" alignment="stretch" />
-
+</Figure>
 
 We learn how to read texts, how to distinguish individual words, and how to interpret words in the context of their linguistic structure. Even if texts are written without spaces between the words or without punctuation in scriptura continua, a human reader, used to this writing system, can identify words and sentences and hence discern their meaning.
 
 Similarly, Cross-Hatch writing, a common convention in the Eighteenth Century to save money on post, in which the author of the letter would write horizontally across the page, and then when she reached the bottom of the page, would turn it vertically and write across the previous writing. Ancient manuscripts written in scriptura continua and Eighteenth Century cross-hatch letters proof that humans can adapt to writing conventions that lack white space and/or punctuation. For computers, however, plain text is more difficult to format, and can be more difficult to process, particularly when features of individuals words (such as parts of speech), grammatical constructs, or structures of meaning within a text need to be taken into account.
 
-<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/c17de6f9b1c9ca01635503424751dd493b9b595d-5650.png" alt="" alignment="stretch" />
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/c17de6f9b1c9ca01635503424751dd493b9b595d-5650.png" alt="A handwritten letter with text written vertically and horizontally across the page." alignment="center">
 
+</Figure>
 
-<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/81088c251e7743b7204ea63d6121c98db7b803f0-5651.jpg" alt="" alignment="stretch" />
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/81088c251e7743b7204ea63d6121c98db7b803f0-5651.jpg" alt="Calligraphy text written without any spaces or punctuation." alignment="right-one-third">
 
+</Figure>
 
 Hence markup is an important enhancement that expands the potential of electronic texts. Markup languages tend to be human readable (i.e. they do not need to be compiled like programming languages) as well as descriptive for example, this fragment of HTML indicates that there are two headings, and the first is more major:
 
@@ -131,15 +162,15 @@ Markup languages are used to enrich plain text with information which is readabl
 
 There is always an opening tag (e.g. \<h1>) and a closing tag (e.g. \</h1>) indicating the start and the end of a heading. These tags designate a semantic function of the text. TEI, the encoding standard of the Text Encoding Initiative, is an XML-language and the same convention applies and angle brackets are used to distinguish tags from data. TEI, however, has a much larger and richer vocabulary of elements to capture many more features across a wide range of text types, from tombstones to manuscripts to the born digital.
 
-**Further Reading**\
-SGML Users' Group. 'A Brief History of the Development of SGML'. 1990. Online.\
-Hockey, Susan M. *Electronic Texts in the Humanities: Principles and Practice*. Oxford ; New York: Oxford University Press, 2000.
 
-## What is text really?
 
-### The OHCO (Ordiered Hierarcy of Content Objects) model
+*~~Further reading moved to the bottom of the resource~~*
 
-One of these theories comes directly out of the inherent structure of a markup language such as SGML (discussed in the Markup Languages and Text Modelling section), and its derivative languages, including HTML and XML. SGML structures data hierarchically. In other words, elements must be nested within one another like a series of Russian dolls. Moreover, there are rules languages (Schema and DTDs, discussed in the Modelling with XML section that follows) that govern for example, where, how frequently, and if elements can be used one or more times within another element.
+## What is Text Really?
+
+### The OHCO (Ordiered Hierarcy of Content Objects) Model
+
+One of these theories comes directly out of the inherent structure of a markup language such as SGML (discussed in the Markup Languages and Text Modelling section), and its derivative languages, including HTML and XML. SGML structures data hierarchically. In other words, elements must be nested within one another like a series of Russian dolls. Moreover, there are rules languages (Schema and document type definitions, more commonly known as DTDs, discussed in the Modelling with XML section that follows) that govern for example, where, how frequently, and if elements can be used one or more times within another element.
 
 Consequently a meta-language like XML or SGML enforces a particular way of thinking about texts. In the late 1980s and into the 1990s a group of scholars including Allen Renear, Elli Mylonas, and David Durand developed a theory for the practice of text encoding specifically, and text more generally. It was called an ‘Ordered Hierarchy of Content Objects’ (OHCO). They proposed that although different kinds of texts may be organised differently, they still have a hierarchical organisation. In their first iteration of the OCHO model, they asserted
 
@@ -166,35 +197,23 @@ For example, metaphors may span many lines or stanzas of verse. Narrative events
 Thus the theory of text that SGML (and hence XML and TEI)most eloquently expresses is what one might term the editorial or bibliographic; that is, representing the text in terms of sentences, paragraphs, chapters, front and back matter, and so on. This is not surprising given SGML’s roots as a language written to publish documentary texts in electronic form. From this point of view, one might deduce that the documentary view of text can be read as its *only* structure.
 
 While Renear and his colleagues argued for the OHCO model through the the mid-2000s in a series of articles that further refined and developed their original OCHO proposition, within the TEI community, most academics favour McGann’s view (while necessarily having to conform to an OCHO model as that is what the language most natively facilitates) in which texts encoding is approached from the perspective of complex text structures that do not necessarily all fit into a rigid hierarchy.\
-**Further Reading**
 
-Hockey, Susan, Alan Renear, Jerome McGann. '<Link link={{"discriminant":"external","value":"http://http//www2.iath.virginia.edu/ach-allc.99/proceedings/hockey-renear2.html"}}>Panel: What is text? A Debate on the Philosophical and Epistemological Nature of Text in the Light of Humanities Computing Research.</Link> Web. 29 August 2016.
 
-McGann, Jerome. *Radiant Textuality: Literature After the World Wide Web.* London: Palgrave, 2001.
+*~~Further reading moved to the bottom of the resource~~*
 
-Renear, Allen, Elli Mylonas, and David Durand. “<Link link={{"discriminant":"external","value":"http://http//www.stg.brown.edu/resources/stg/monographs/ohco.html."}}>“Refining Our Notion of What Text Really Is: The Problem of Overlapping Hierarchies</Link>.” N.p., 6 Jan. 1993. Web. 17 Sept. 2012.
+### So What is Text?
 
-Scholen, David and Sandra Scholen. '<Link link={{"discriminant":"external","value":"http://www.digitalhumanities.org/dhq/vol/8/4/000196/000196.html"}}>Beyond Gutenberg: Transcending the Document Paradigm in Digital Humanities</Link>'. Digital Humanities Quarterly. Vol. 8 No. 4. 2014.
-
-Shillingsburg, Peter L. *Scholarly Editing in the Computer Age: Theory and Practice.* Ann Arbor: University of Michigan Press, 1996.
-
-### So what is text?
-
-Until recently, most textual editors worked in disciplines that recorded the written record -- not only in manuscript and print form -- but in any text bearing object, including stone, metal, and wood. In the 1980s, D.F. McKenzie, in *Bibliography and the Sociology of Texts* argued for a more embracive conception of text, to include any form of transmission, not simply of the written word, but of ideas, whatever form they may take. He thus defines text as any 'verbal, visual, oral, and numeric data in the form of maps, prints, and music, of archives of recorded sound, of films, videos, and any computer-stored information, everything in fact from epigraphy to the latest forms of discography.' (13) McKenzie was prescient in including the born digital: texts that originate on a computer which include not only machine readable text, but multimedia and code.
+Until recently, most textual editors worked in disciplines that recorded the written record - not only in manuscript and print form - but in any text bearing object, including stone, metal, and wood. In the 1980s, D.F. McKenzie, in *Bibliography and the Sociology of Texts* argued for a more embracive conception of text, to include any form of transmission, not simply of the written word, but of ideas, whatever form they may take. He thus defines text as any 'verbal, visual, oral, and numeric data in the form of maps, prints, and music, of archives of recorded sound, of films, videos, and any computer-stored information, everything in fact from epigraphy to the latest forms of discography' (McKenzie, 1999). McKenzie was prescient in including the born digital: texts that originate on a computer which include not only machine readable text, but multimedia and code.
 
 Thus textual editing in the 21st century includes not simply the forensics traditionally associated with textual editing of tracing a text over time back to the original version or sifting through an author's manuscripts to recreate the writing process, but uncovering the trail of correction and revision by examining the drives and discs of an author (see Matthew G. Kirschenbaum's *Mechanisms).*
 
 After the Second World War, textual editors began to move to computers to model text, originally for text types such as concordances and indexes. But increasingly, particularly after the advent of the World Wide Web, it is a medium that is surpassing print as a way to make available scholarly editions. The ways in which the text of these editions is marked or tagged underpins underlying theoretical perspectives embedded in the markup itself.
 
-**Further Reading**
-
-Kirschenbaum, Matthew G. *Mechanisms: New Media and the Forensic Imagination. Cambridge Mass*: MIT Press, 2007.
-
-D.F. McKenzie. *bibliography and the Sociology of Texts*. Cambridge: Cambridge University Press, 1999. First published 1985.
+*~~Further reading moved to the bottom of the resource~~*
 
 ## Modelling with XML
 
-### XML modeling languages
+### XML Modelling Languages
 
 XML, like SGML before it, allows you to create your own element names. In the example used earlier we could have used the element \<pers> instead of \<personName> and \<townName> instead of \<town>:
 
@@ -226,7 +245,9 @@ DTDs represent an abstract model of the structure of an XML document, while prov
 
 XML is the acronym for eXtensible Markup Language (XML). XML was developed in the 1990s and is based on Standard Generalised Markup Language (SGML). The original function of SGML was to provide a software-independent language for the formatting of text. SGML, as is its derivative XML, more properly a metalanguage whose syntax and structure can be used to describe vocbularies for specific domain use. Hypertext Markup Language (HTML), the language that powers the World Wide Web, is probably the most well-known SGML vocabulary. Because SGML was developed in a pre-internet environment, in the late 1990s XML was developed to overcome some shortcomings of SGML and to provide a lightweight and easy-to-learn markup language for data exchange. Today XML is a central language for data exchange and many other languages such as XHTML, SVG or RDF are based on XML syntax.
 
-<Embed src="https://www.youtube.com/embed/vkGsjOin0KA" />
+<Embed src="https://www.youtube.com/embed/vkGsjOin0KA">
+
+</Embed>
 
 XML is a descriptive or semantic markup language. With XML all kinds of data can be encoded in a way so they can be understood not only by humans, but also computers. As humans we can understand an address information such as:
 
@@ -268,9 +289,9 @@ Yet there are many textual features that do not conform to this hierarchy. As me
 
 Further Reading
 
-Text Encoding Initiative, Non-hierarchical Structures, <Link link={{"discriminant":"external","value":"http://www.tei-c.org/release/doc/tei-p5-doc/en/html/NH.html"}}>http://www.tei-c.org/release/doc/tei-p5-doc/en/html/NH.html</Link>
+Text Encoding Initiative, Non-hierarchical Structures, <Link link={{"discriminant":"external","value":"http://www.tei-c.org/release/doc/tei-p5-doc/en/html/NH.html"}}>[http://www.tei-c.org/release/doc/tei-p5-doc/en/html/NH.html](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/NH.html)</Link>
 
-Renear, Allen, Text Encoding, A Companion to Digital Humanities, ed. Susan Schreibman, Ray Siemens, John Unsworth. Oxford: Blackwell, 2004, <Link link={{"discriminant":"external","value":"http://www.digitalhumanities.org/companion/"}}>http://www.digitalhumanities.org/companion/</Link>
+Renear, Allen, Text Encoding, A Companion to Digital Humanities, ed. Susan Schreibman, Ray Siemens, John Unsworth. Oxford: Blackwell, 2004, <Link link={{"discriminant":"external","value":"http://www.digitalhumanities.org/companion/"}}>[http://www.digitalhumanities.org/companion/](http://www.digitalhumanities.org/companion/)</Link>
 
 ### XML and its advantages
 
@@ -288,14 +309,17 @@ Another advantage of XML is that it can be written, read and altered by humans a
 
 For instance, before Microsoft Word used XML it was very difficult to rescue your data from a corrupted Word document. Now, XML content of a Microsoft document can easily be extracted and viewed with a simple text editor. The following video will show you how you can open a Microsoft Word document and read its XML content. Try to follow it on your own computer and stop the video if necessary. Instead of a Microsoft Word document, you could also try the exercise with a LibreOffice document.
 
-<Embed src="https://www.youtube.com/embed/Gp1MOemMh9k" />
+<Embed src="https://www.youtube.com/embed/Gp1MOemMh9k">
+
+</Embed>
 
 ##### XML promotes a clear separation of data and presentation
 
 The third major advantage of XML documents is that XML promotes a clear separation of data and presentation. This enables the possiblity that XML encoded data can be exchanged without presentational information attached. On the one hand this reduces file size overhead and is an advantage for the exchange of huge amounts of data over networks, on the other hand it allows for the presentation of the same data in different formats. Using an XML parser, a software developed to access and manipulate XML documents, the same underlying data can be used in multiple and very different presentation scenarios and the same XML document can be convert to a PDF, a Microsoft Word document and a web page as per the image below.
 
-<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/b28abb73c0ea8f07ef02ec04a0c3df7b56a581de-2015.png" alt="XML to different output formats" alignment="stretch" />
+<Figure src="/assets/content/assets/en/resources/hosted/text-encoding-and-the-tei-unit-i-markup-languages-their-history-and-uses/b28abb73c0ea8f07ef02ec04a0c3df7b56a581de-2015.png" alt="XML to different output formats" alignment="stretch">
 
+</Figure>
 
 ### Examples of XML languages
 
@@ -333,7 +357,7 @@ SVG is a standard developed by the W3C to describe vector graphics. SVG is an XM
 <circle  r="50" stroke="black" stroke-width="1"/>
 ```
 
-SVG documents are essentially a series of XML statements that describe graphic elements. These statements can easily be changed and rewritten with a programming language such as JavaScript. Therefore, SVG images are becoming increasingly popular in interactive web development and online gaming. W3Cschools has a gaming tutorial that uses SVG (<Link link={{"discriminant":"external","value":"http://www.w3schools.com/games/"}}>http://www.w3schools.com/games/</Link>). However, SVG is also used in the print publishing industry for high-quality images for posters.
+SVG documents are essentially a series of XML statements that describe graphic elements. These statements can easily be changed and rewritten with a programming language such as JavaScript. Therefore, SVG images are becoming increasingly popular in interactive web development and online gaming. W3Cschools has a gaming tutorial that uses SVG (<Link link={{"discriminant":"external","value":"http://www.w3schools.com/games/"}}>[http://www.w3schools.com/games/](http://www.w3schools.com/games/)</Link>). However, SVG is also used in the print publishing industry for high-quality images for posters.
 
 If you are interested to learn more about SVG the tutorial of <Link link={{"discriminant":"external","value":"http://www.w3schools.com/svg/"}}>tutorial of W3school</Link> or the <Link link={{"discriminant":"external","value":"https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Introduction"}}>Introduction to SVG</Link> by the Mozilla Developement Network are good places to start.
 
@@ -361,9 +385,9 @@ DTDs and schemas are used as a technical specification of an TEI/XML model. TEI 
 
 Further reading:
 
-Elena Pierazzo, Modelling (Digital) Texts, in Digital Scholarly Editing: Theories, Models and Methods, 2015, <Link link={{"discriminant":"external","value":"http://hal.univ-grenoble-alpes.fr/hal-01182162"}}>http://hal.univ-grenoble-alpes.fr/hal-01182162</Link>
+Elena Pierazzo, Modelling (Digital) Texts, in Digital Scholarly Editing: Theories, Models and Methods, 2015, <Link link={{"discriminant":"external","value":"http://hal.univ-grenoble-alpes.fr/hal-01182162"}}>[http://hal.univ-grenoble-alpes.fr/hal-01182162](http://hal.univ-grenoble-alpes.fr/hal-01182162)</Link>
 
-Text Encoding Initiative, The TEI Infrastructure, <Link link={{"discriminant":"external","value":"http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html"}}>http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html</Link>
+Text Encoding Initiative, The TEI Infrastructure, <Link link={{"discriminant":"external","value":"http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html"}}>[http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html](http://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html)</Link>
 
 ### Why use TEI?
 
@@ -386,11 +410,11 @@ Since the first draft of the TEI guidelines was released in the 1990s, TEI has d
 
 Further reading:
 
-Lou Burnard, The Evolution of the Text Encoding Initiative: From Research Project to Research Infrastructure, in Journal of the Text Encoding Initiative, 2013, <Link link={{"discriminant":"external","value":"http://jtei.revues.org/811"}}>http://jtei.revues.org/811</Link>
+Lou Burnard, The Evolution of the Text Encoding Initiative: From Research Project to Research Infrastructure, in Journal of the Text Encoding Initiative, 2013, <Link link={{"discriminant":"external","value":"http://jtei.revues.org/811"}}>[http://jtei.revues.org/811](http://jtei.revues.org/811)</Link>
 
-Lou Burnard, What is the Text Encoding Initiative, 2014, <Link link={{"discriminant":"external","value":"http://books.openedition.org/oep/426?lang=en"}}>http://books.openedition.org/oep/426?lang=en</Link>
+Lou Burnard, What is the Text Encoding Initiative, 2014, <Link link={{"discriminant":"external","value":"http://books.openedition.org/oep/426?lang=en"}}>[http://books.openedition.org/oep/426?lang=en](http://books.openedition.org/oep/426?lang=en)</Link>
 
-Nancy M. Ide and C. M. Sperberg-McQueen, The Text Encoding Initiative: Its History, Goals, and Future Development:<Link link={{"discriminant":"external","value":"http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf"}}>http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf</Link>
+Nancy M. Ide and C. M. Sperberg-McQueen, The Text Encoding Initiative: Its History, Goals, and Future Development:<Link link={{"discriminant":"external","value":"http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf"}}>[http://www.cs.vassar.edu/\~ide/papers/teiHistory.pdf](http://www.cs.vassar.edu/~ide/papers/teiHistory.pdf)</Link>
 
 ### TEI Guidelines
 
@@ -401,4 +425,30 @@ module namedescriptionanalysisSimple analytic mechanismscertaintyCertainty and u
 
 Besides modules, the TEI elements and attributes are also organised in model classes and attribute classes. The model classes group elements together based on the location they are appearing. For instance, the model 'nameLike' groups elements that can be used to tag various names such as person name, place name, organisation name. A full list of model classes can be found as <Link link={{"discriminant":"external","value":"http://www.tei-c.org/release/doc/tei-p5-doc/en/html/REF-CLASSES-MODEL.html"}}>Appendix A</Link> of the Guidelines. Another important building block of TEI/XML documents are attributes. Attributes are used to store additional information about an element and its content. In the TEI attributes are grouped together in attribute classes. One of the most important attribute classes is the 'global' class. It groups together TEI attributes that can be used on all TEI elements such as the attribute @xml:id (used for an identifier) or @n (used for a number or label). Some classes have also subclasses. For instance, the 'global' class has a subclass 'global.rendition'. This subclass contains attributes that describe rendition and styling of an encoded textual feature. The attribute classes are listed and documented in the TEI guidelines in <Link link={{"discriminant":"external","value":"http://www.tei-c.org/release/doc/tei-p5-doc/en/html/REF-CLASSES-ATTS.html"}}>Appendix B</Link>.
 
-Knowledge about TEI modules, model classes and attribute classes is essential for customisations. Customisations may be necessary in order to create a TEI model that is a close representation of a project-specific understanding of text.
+Knowledge about TEI modules, model classes and attribute classes is essential for customisations. Customisations may be necessary in order to create a TEI model that is a close representation of a project-specific understanding of text.\
+\
+
+
+## Further Reading
+
+\
+SGML Users' Group. 'A Brief History of the Development of SGML'. 1990. Online.\
+Hockey, Susan M. *Electronic Texts in the Humanities: Principles and Practice*. Oxford ; New York: Oxford University Press, 2000.
+
+**Further Reading**
+
+Hockey, Susan, Alan Renear, Jerome McGann. '<Link link={{"discriminant":"external","value":"http://http//www2.iath.virginia.edu/ach-allc.99/proceedings/hockey-renear2.html"}}>Panel: What is text? A Debate on the Philosophical and Epistemological Nature of Text in the Light of Humanities Computing Research.</Link> Web. 29 August 2016.
+
+McGann, Jerome. *Radiant Textuality: Literature After the World Wide Web.* London: Palgrave, 2001.
+
+Renear, Allen, Elli Mylonas, and David Durand. “<Link link={{"discriminant":"external","value":"http://http//www.stg.brown.edu/resources/stg/monographs/ohco.html."}}>“Refining Our Notion of What Text Really Is: The Problem of Overlapping Hierarchies</Link>.” N.p., 6 Jan. 1993. Web. 17 Sept. 2012.
+
+Scholen, David and Sandra Scholen. '<Link link={{"discriminant":"external","value":"http://www.digitalhumanities.org/dhq/vol/8/4/000196/000196.html"}}>Beyond Gutenberg: Transcending the Document Paradigm in Digital Humanities</Link>'. Digital Humanities Quarterly. Vol. 8 No. 4. 2014.
+
+Shillingsburg, Peter L. *Scholarly Editing in the Computer Age: Theory and Practice.* Ann Arbor: University of Michigan Press, 1996.
+
+**Further Reading**
+
+Kirschenbaum, Matthew G. *Mechanisms: New Media and the Forensic Imagination. Cambridge Mass*: MIT Press, 2007.
+
+D.F. McKenzie. *bibliography and the Sociology of Texts*. Cambridge: Cambridge University Press, 1999. First published 1985.
