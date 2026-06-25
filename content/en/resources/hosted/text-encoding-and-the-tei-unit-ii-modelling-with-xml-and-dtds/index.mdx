@@ -363,10 +363,8 @@ Within entry further elements could be nested such as elements for name or stree
   You can try to create the DTD on your own, or follow along with this video:
 
   <Video provider="youtube" id="CKC3_kAbWPg?si=RVjY3cCYAErgxyBh">
-
+    ###
   </Video>
-
-  ###
 </Callout>
 
 ### Defining Different Types of Elements
@@ -464,33 +462,14 @@ The following DTD statement defines an attribute named ‘type’ for the elemen
 
 The components of this statement are:
 
-**\<!**
-
-Start of attribute definition
-
-**ATTLIST**
-
-declares an attribute list
-
-**relationship**
-
-declares the element to which the attribute belongs
-
-**type**
-
-declares the attribute name
-
-**CDATA**
-
-defines the content type of the attribute, CDATA stands for ‘character data’
-
-**#REQUIRED**
-
-declares that this attribute is mandatory on every ‘relationship’ element
-
-**>**
-
-End of attribute definition
+| **\<!**          | Start of attribute definition                                                |
+| ---------------- | ---------------------------------------------------------------------------- |
+| **ATTLIST**      | declares an attribute list                                                   |
+| **relationship** | declares the element to which the attribute belongs                          |
+| **type**         | declares the attribute name                                                  |
+| **CDATA**        | defines the content type of the attribute, CDATA stands for ‘character data’ |
+| **#REQUIRED**    | declares that this attribute is mandatory on every ‘relationship’ element    |
+| **>**            | End of attribute definition                                                  |
 
 DTDs allow to specify different content types for attributes. Besides character data (CDATA) the values … are possible.
 
@@ -513,27 +492,52 @@ All attributes that we defined here are mandatory as indicated by the #REQUIRED 
 <!ATTLIST name first CDATA #REQUIRED second CDATA #REQUIRED <br></br>title CDATA #IMPLIED>
 ```
 
-### DTD Exercise II: Adding Attributes
+<Callout kind="none" title="DTD Exercise 2: Adding Attributes">
+  Now we will use the DTD created earlier for poems, and add two attribute values.
 
-Now we will use the DTD created earlier for poems, and add two attribute values.
+  1\) add the attribute n (for number) on the line and verse elements
 
-1\) add the attribute n (for number) on the line and verse elements
+  2\) add the attribute type on the note element
 
-2\) add the attribute type on the note element
+  This is the syntax you can use for the number attribute
 
-This is the syntax you can use for the number attribute
+  ```
+  <!ATTLIST line n CDATA #IMPLIED>
+  ```
 
-```
-<!ATTLIST line n CDATA #IMPLIED>
-```
+  Be sure to create the statement directly after the line element statement. You can add the attributes on your own, or do it while watching the video below.
 
-Be sure to create the statement directly after the line element statement. You can add the attributes on your own, or do it while watching the video below.
+  <Video provider="youtube" id="2L9XBuCsQUw?si=TTOfl6-u5fHWImSa">
 
-<Embed src="https://www.youtube.com/embed/2L9XBuCsQUw?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL">
+  </Video>
+</Callout>
 
-</Embed>
+## Advanced DTD exercises
 
-## Advanced DTD exercise
+<Tabs>
+  <Tab title="Recipe exercise">
+    On the internet you can find a great number of cooking websites with recipes. Most cooking recipes have a similar content types and a similar structure. For this exercise look up online recipes websites and try to find a model to express recipes.
+
+    * Identify at least five things that you would like to tag in recipes and think about suitable element and/or attribute names
+    * Open up your XML editor and create a new XML document called recipe.xml
+    * Copy and paste the text from one of the recipes that you found online into recipe.xml
+    * Try to tag the different parts of the recipe with your element and attributes.
+    * Make sure that the XML document is well-formed by checking well-formedness
+    * Write a DTD model for your recipe and validate it against your XML
+  </Tab>
+
+  <Tab title="Cookbook exercise">
+    Based on the Recipe exercise you should create an online cookbook now. Starting from the recipe model, what elements and attributes do you need to create a model of a cookbook?
+
+    * In your XML editor create a new XML document: cookbook.xml
+    * Copy and paste the DTD and XML from your recipe.xml
+    * Copy and paste the content for two other recipes into your new cookbook.xml
+    * Extend your DTD model to include additional elements that you think are required for a cookbook
+    * Add these additional elements to your cookbook XML and validate your XML document
+  </Tab>
+</Tabs>
+
+## (Delete below if Susan approves of tabs)
 
 ### Advanced DTD exercise
 
