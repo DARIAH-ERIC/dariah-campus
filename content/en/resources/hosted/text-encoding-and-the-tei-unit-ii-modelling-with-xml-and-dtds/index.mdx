@@ -336,70 +336,40 @@ Not only did we declare a second element, we added in additional constraints to 
 </addressBook>
 ```
 
-##### Nesting Elements
-
-```
-
-	<!ELEMENT addressBook (#PCDATA)>
-]>
-```
-
-The above DTD statement specifies an addressBook element that can only store character data such as text and numbers:
-
-```
-<addressBook> Clark Kent 344 Clinton Street Metropolis 55 50145 Bruce Wayne 1007 Mountain Drive Gotham 53 59333</addressBook>
-```
-
-Within the \<addressBook> element currently only text is allowed. An address book has usually more address entries. In order to tell the computer where one address starts and another ends an element is needed to separate individual entries. Building on our previous example, we will add an \<entry> element so that individual addresses can be separated:
-
-```
-
-	<!ELEMENT addressBook (entry*)>
-	<!ELEMENT entry (#PCDATA)>
-]>
-```
-
-Not only did we declare a second element, we added additional constraints to the \<addressBook> element. The \<addressBook> element cannot contain PCDATA (text and numbers) anymore. Now it can only contain the element \<entry>. Moreover, the asterix \* after the element name specifies that ‘zero or more’ \<entry> elements are contained within \<addressBook>. Now each address entry can be encoded as an individual \<entry> element as below:
-
-```
-<addressBook>
-     <entry>Clark Kent 344 Clinton Street Metropolis 55 50145</entry>
-     <entry>Bruce Wayne 1007 Mountain Drive Gotham 53 59333</entry>
-</addressBook>
-```
-
 Within entry further elements could be nested such as elements for name or street or telephone number. How would you define the elements \<name>, \<street> and \<phoneNr> with DTD? They should all be children of \<entry> and contain only PCDATA content.
 
-### DTD Exercise I
+<Callout kind="none" title="DTD Exercise 1">
+  In the first part of this exercise, we will create a simple DTD for poetry. In the first part of the exercise, only use the elements below:
 
-In the first part of this exercise, we will create a simple DTD for poetry. In the first part of the exercise, only use the elements below:
+  * poem (which will be the root element)
+  * verse
+  * line
+  * title
+  * note
+  * author
 
-* poem (which will be the root element)
-* verse
-* line
-* title
-* note
-* author
+  To help you with the DTD syntax, we’ve created a <Link link={{"discriminant":"download","value":"/assets/content/downloads/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/dtd-cheat-sheet.pdf"}}>DTD Cheat Sheet</Link>. Open up the PDF and keep it handy when you are creating the DTD. Create the DTD in a parsing editor such as oXygen. oXygen understands DTD syntax, and once you begin creating the document instance, it will give error messages if you do something wrong. However, until the XML code is in place, you will get parsing errors.
 
-To help you with the DTD syntax, we’ve created a <Link link={{"discriminant":"download","value":"/assets/content/downloads/en/resources/hosted/text-encoding-and-the-tei-unit-ii-modelling-with-xml-and-dtds/dtd-cheat-sheet.pdf"}}>DTD Cheat Sheet</Link>. Open up the PDF and keep it handy when you are creating the DTD. Create the DTD in a parsing editor such as oXygen. oXygen understands DTD syntax, and once you begin creating the document instance, it will give error messages if you do something wrong. However, until the XML code is in place, you will get parsing errors.
+  Start by opening oXygen, and then choose the top left icon, the new document icon, and then choose 'XML Document'. Begin by creating the root element right below the XML declaration.
 
-Start by opening oXygen, and then choose the top left icon, the new document icon, and then choose 'XML Document'. Begin by creating the root element right below the XML declaration.
+  ```
+  <?xml version="1.0"?>
 
-```
-<?xml version="1.0"?>
+  ]>
+  ```
 
-]>
-```
+  Save your file. Create your DTD using the elements above using the syntax provided in this section. Remember, the element declarations go in between the square \[] brackets. After you create your DTD, see if the DTD will model your poem the way you expect. To do this, create a document instance right below the DTD. Once everything works correctly, go back and add occurrence indicators to further define the behavior of the elements.
 
-Save your file. Create your DTD using the elements above using the syntax provided in this section. Remember, the element declarations go in between the square \[] brackets. After you create your DTD, see if the DTD will model your poem the way you expect. To do this, create a document instance right below the DTD. Once everything works correctly, go back and add occurrence indicators to further define the behavior of the elements.
+  You can try to create the DTD on your own, or follow along with this video:
 
-You can try to create the DTD on your own, or follow along with this video
+  <Video provider="youtube" id="CKC3_kAbWPg?si=RVjY3cCYAErgxyBh">
 
-<Embed src="https://www.youtube.com/embed/CKC3_kAbWPg?list=PL77mHK9JuenPCC9a7xa8IhXBzHclJZ-nL">
+  </Video>
 
-</Embed>
+  ###
+</Callout>
 
-### Defining different types of elements
+### Defining Different Types of Elements
 
 DTD’s allow for the definition of different types of Elements. It can be specified that an element should contain **text content, element content, mixed content or no content**. Earlier we have already seen how **text content** is defined using the string ‘#PCDATA’ and how elements can be added to our \<addressBook>. By replacing the string ‘#PCDATA’ with the name of the element \<entry>. This specifies that the element \<addressBook> can only contain ‘entry’ elements’ (**element content**).
 
@@ -589,8 +559,6 @@ Based on the previous exercise you should create an online cookbook now. Startin
 * Copy and paste the content for two other recipes into your new cookbook.xml
 * Extend your DTD model to include additional elements that you think are required for a cookbook
 * Add these additional elements to your cookbook XML and validate your XML document
-
-
 
 ## Further Reading
 
