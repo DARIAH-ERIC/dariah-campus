@@ -14,7 +14,7 @@ export function Embed(props: Readonly<EmbedProps>): ReactNode {
 		<figure className="flex flex-col">
 			<iframe
 				allowFullScreen={true}
-				className="aspect-square w-full overflow-hidden rounded-lg border border-neutral-200 bg-white"
+				className="aspect-video w-full overflow-hidden rounded-lg border border-neutral-200 bg-white"
 				loading="lazy"
 				referrerPolicy="strict-origin-when-cross-origin"
 				src={src}
