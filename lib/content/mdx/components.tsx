@@ -6,6 +6,7 @@ import { Disclosure } from "@/components/content/disclosure";
 import { Embed } from "@/components/content/embed";
 import { ExternalResource } from "@/components/content/external-resource";
 import { Figure } from "@/components/content/figure";
+import { Blank, FillInTheBlank } from "@/components/content/fill-in-the-blank";
 import { Grid, GridItem } from "@/components/content/grid";
 import { H5PWrapper } from "@/components/content/h5p-wrapper";
 import { ImageComparisonSlider } from "@/components/content/image-comparison-slider";
@@ -14,7 +15,6 @@ import { LinkButton } from "@/components/content/link-button";
 import { MermaidDiagram } from "@/components/content/mermaid-diagram";
 import { Quiz, QuizErrorMessage, QuizSuccessMessage } from "@/components/content/quiz";
 import { QuizChoice, QuizChoiceAnswer, QuizChoiceQuestion } from "@/components/content/quiz-choice";
-import { QuizTextInput } from "@/components/content/quiz-text-input";
 import { TableOfContents } from "@/components/content/table-of-contents";
 import { Tab, Tabs } from "@/components/content/tabs";
 import { Video } from "@/components/content/video";
@@ -24,7 +24,9 @@ import { Link } from "@/components/link";
 
 export const components = {
 	a: Link,
+	Blank,
 	Callout,
+	FillInTheBlank,
 	Diagram,
 	DiagramCaption,
 	DiagramCodeBlock,
@@ -46,7 +48,6 @@ export const components = {
 	QuizChoiceQuestion,
 	QuizErrorMessage,
 	QuizSuccessMessage,
-	QuizTextInput,
 	Tab,
 	TableOfContents,
 	Tabs,
