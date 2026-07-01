@@ -1,5 +1,5 @@
 ---
-title: Improving quality assurance and development efficiency with regression testing
+title: Improving Quality Assurance and Development Efficiency with Regression Testing
 locale: en
 publication-date: 2025-11-13
 version: 1.0.0
@@ -9,6 +9,8 @@ editors: []
 contributors: []
 tags:
   - software-development
+  - tei
+  - xml
 sources:
   - acdh
 license: cc-by-4.0
@@ -20,9 +22,10 @@ summary:
     of a digital edition.
 content-type: training-module
 translations: []
-dariah-national-consortia: []
+dariah-national-consortia:
+  - at
+dariah-working-groups: []
 ---
-
 ## Introduction
 
 Developing applications in the field of humanities sometimes means rendering a lot of textual data in accordance with scholarly rules.
@@ -46,12 +49,12 @@ After completing this learning resource, learners should be able to:
 
 ## Glossary
 
-* regression testing: testing whether changes in code introduced unwanted side effects or have broken previously working functionality
+* Regression testing: testing whether changes in code introduced unwanted side effects or have broken previously working functionality
 * XML (eXtensible Markup Language): a markup language for structuring and encoding texts in a machine-readable, tag-based format
 * XSLT (eXtensible Stylesheet Language Transformations): language for transforming XML files into other formats like HTML
 * TEI (Text Encoding Initiative): guidelines for encoding literary and linguistic texts in XML
 * eXist-db: an open source XML database
-* end-to-end (E2E) testing: validating real user workflows across an application
+* End-to-end (E2E) testing: validating real user workflows across an application
 * Playwright: an end-to-end test framework. (<Link link={{"discriminant":"external","value":"https://playwright.dev/docs/intro"}}>Playwright documentation</Link>)
 * Screenshot tests: automated comparison of rendered output to baseline images through pixel-by-pixel diffing
 * String comparison tests: automated comparison of rendered strings to baseline data
@@ -77,15 +80,13 @@ In addition to the migration, the edition is still undergoing editorial revision
   In 2025, the edition was expanded with an <Link link={{"discriminant":"external","value":"https://kraus1933.acdh.oeaw.ac.at/idPb0001.html?mode=off&view=all-columns"}}>additional transcription</Link> of a different text source that required an increasingly complex rendering. The benefits of introducing tests to this project have become evident by the successful reuse of the test setup during development of this additional publication step.
 </Callout>
 
-
-## Why test?
+## Why Test?
 
 Compared to manual reviewing, automated testing is more time-efficient and enables faster detection of regressions.
 
 The following section presents two types of tests: screenshot comparison and text matching. These approaches are well suited to automating tasks typically performed by a human reviewer.
 
 The tool of choice in this example is the [Playwright](https://playwright.dev/) framework, which allows running multiple browser interactions and comparing the result to the test data. By using parameterised tests, the development process can be sped up and high test coverage can be achieved. The usefulness of setting up these tests becomes evident when looking at the quantity and quality of the data in the presented use case.
-
 
 ## Screenshot Comparison Tests
 
@@ -95,7 +96,7 @@ In Playwright [Visual comparisons](https://playwright.dev/docs/test-snapshots) p
 
 Running tests generates a test report. This report can come in different formats based on the chosen [reporter](https://playwright.dev/docs/test-reporters) in the configuration. By using the [HTML Reporter](https://playwright.dev/docs/test-reporters#html-reporter) the results can be easily browsed, which will be shown in the following section.
 
-### Testing the edition's main view containing the running text
+### Testing the Edition's Main View Containing the Running Text
 
 This resource will not go into the specifics of the complex TEI-XML structure of this edition, but here is a list of some criteria the rendering has to meet:
 
@@ -105,7 +106,7 @@ This resource will not go into the specifics of the complex TEI-XML structure of
 
 Additionally, the migration process includes simplifying certain parts of the codebase which has grown due to ongoing changes in the source data and additional feature requests. Here, simplifying means using more concise XSLT and CSS rules to reduce complexity and improve maintainability.
 
- [Page 18](https://karl-kraus.github.io/wpn-static/absatz_18.html) of the edition gives a good example of the complexity that has to be dealt with.
+[Page 18](https://karl-kraus.github.io/wpn-static/absatz_18.html) of the edition gives a good example of the complexity that has to be dealt with.
 
 Since changing the XSLT or CSS rules may affect multiple pages of the edition, efficient testing is therefore necessary. To test all pages the same test logic is reused by parameterising the URL path as well as the screenshot path, thereby generating 65 tests. \
 \
@@ -120,7 +121,9 @@ Have a look at the <Link link={{"discriminant":"external","value":"https://raw.g
 
 As mentioned Playwright provides an interactive interface for browsing test results via the HTML Reporter. After running the tests two result views are available. The first view displays all completed tests (failed and passed) in list form (65 tests for 65 pages). From the list view, the detail view of a test can be accessed. If a test failed, this detail view contains handy sub-views, including a side-by-side comparison as well as a "slider":
 
-<Video provider="vimeo" id="1129159679"/>
+<Video provider="vimeo" id="1129159679">
+
+</Video>
 
 Introducing and automating screenshot comparison avoids the necessity of a human curator rechecking the same view after every data or code change, speeding up editorial and development workflow. Tools like Playwright detect pixel-level differences instantly, catching visual regressions faster and more reliably than the human eye, which can easily overlook subtle changes.
 
@@ -133,8 +136,7 @@ Next to the main edition text, the interface shows annotation metadata (person, 
 
 Because the edition contains a large amount of metadata, storing baseline strings is much lighter and faster than saving screenshots of small parts of the screen.
 
-
-### Testing the edition's detail views containing metadata
+### Testing the Edition's Detail Views Containing Metadata
 
 References to metadata as of November 2024 (beginning of migration):
 
@@ -176,7 +178,7 @@ Automating string comparison avoids the necessity of a human curator rechecking 
 
 Developers and editors should be aware of potential "false negatives". For example, tests may fail because of insignificant whitespace differences. Trimming and collapsing whitespace before the comparison usually prevents these failures.
 
-## Sharing the tests and test results with data curators
+## Sharing the Tests and Test Results with Data Curators
 
 Data curators may introduce changes to the markup that affect the expected rendering of the edition. Types of possible changes:
 
@@ -216,4 +218,4 @@ The resources focused on two types of tests:
 * Screenshot comparison tests – automate comparing the appearance of an element on a website before and after a change.
 * Text comparison tests – automate proofreading of textual content on a website before and after a change.
 
-After reading this resource you should be able to reflect on the benefits of introducing tests into your own project. You should also be able to name the two types of presented tests: screenshot comparison and text comparison tests.
+By reviewing the processes shown above of screenshot comparison and text comparison tests, you should now be able to reflect on the benefits of introducing these tests into your own project, and put them into practice. &#x20;
