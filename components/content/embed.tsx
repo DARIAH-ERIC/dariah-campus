@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 interface EmbedProps {
-	children: ReactNode;
+	children?: ReactNode;
 	src: string;
 	/** Added by `with-iframe-titles` mdx plugin. */
 	title?: string;
@@ -20,7 +20,7 @@ export function Embed(props: Readonly<EmbedProps>): ReactNode {
 				src={src}
 				title={title}
 			/>
-			<figcaption>{children}</figcaption>
+			{children != null && children !== "" ? <figcaption>{children}</figcaption> : null}
 		</figure>
 	);
 }
