@@ -51,6 +51,11 @@ export const schema: CollectionCreateSchema = {
 		},
 	],
 	default_sorting_field: "publication-timestamp",
+	metadata: {
+		description: "DARIAH-Campus",
+		owners: ["stefan.probst@oeaw.ac.at"],
+		service_ids: [16225],
+	},
 };
 
 export interface CollectionDocument {
