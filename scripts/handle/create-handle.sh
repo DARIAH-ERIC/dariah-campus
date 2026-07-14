@@ -17,7 +17,9 @@ if [[ -n "${files}" ]]; then
     --header "X-GitHub-Api-Version: 2022-11-28" \
     "https://api.github.com/repos/${repo}/pulls?head=${VERCEL_GIT_REPO_OWNER}:${branch}&base=main&state=open")
 
-  if [[ "${existing_pr}" != "[]" ]]; then
+  # The GitHub API returns an empty result set as "[\n\n]", not a literal "[]",
+  # so match on an actual pull request field instead of comparing the raw body.
+  if echo "${existing_pr}" | grep -q '"number"'; then
     echo "Pull request already exists for ${branch}."
     exit 0
   fi
