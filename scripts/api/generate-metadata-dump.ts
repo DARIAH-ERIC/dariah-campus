@@ -178,6 +178,8 @@ export async function createMetadata(): Promise<{
 
 					resources.push({
 						...resource,
+						/** External resources are hosted elsewhere and are not assigned a handle pid. */
+						pid: null,
 						external: {
 							"publication-date": external.metadata.remote["publication-date"],
 							url: external.metadata.remote.url,
