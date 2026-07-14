@@ -69,6 +69,8 @@ const externalResourceSchema = v.object({
 	...baseResourceFields,
 	collection: v.literal("resourcesExternal"),
 	kind: v.literal("external"),
+	/** External resources are hosted elsewhere and are not assigned a handle pid. */
+	pid: v.null(),
 	external: v.object({
 		url: v.string(),
 		"publication-date": v.string(),
