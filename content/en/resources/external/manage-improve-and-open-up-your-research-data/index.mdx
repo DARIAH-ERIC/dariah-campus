@@ -48,6 +48,10 @@ dariah-working-groups: []
 ---
 This module looks at emerging trends and best practice in data management, quality assessment and IPR issues. It looks at policies regarding data management and their implementation, particularly in the framework of a Research Infrastructure.
 
+You can progress through this module in the order in which we present the various sections.  However, this is merely a suggestion as to how you might approach this topic.  You might choose to skip certain sections depending on your level of previous knowledge in that area.  You can navigate this via the menu on the lefthand side.
+
+Each section has a set of resources and tools that you might find useful, as well as a list of items that we recommend for further reading around the subject.
+
 ## Learning Outcomes
 
 By the end of this module, you should be able to:
@@ -58,4 +62,627 @@ By the end of this module, you should be able to:
 * describe best practices around data management; and
 * understand and explain how Research Infrastructures interact with and inform policy on issues around data management.
 
-<ExternalResource title="Interested in learning more?" subtitle="Check out Manage, Improve and Open Up Your Research Data on PARTHENOS" url="http://training.parthenos-project.eu/sample-page/manage-improve-and-open-up-your-research-and-data/" />
+---
+
+## Introduction to the module
+
+Depending on what discipline or sector you work in, you may not even think you have data.  Part of this may be a semantic issue: the word data seems to be able to stand for a huge variety of things these days, digital and analogue, machine created or human created, highly structured or utterly unstructured.  Data, it seems, is in the eye of the beholder, meaning perhaps ‘research inputs’ or perhaps merely ‘stuff.’ Humanists don’t tend to use the word data, however, though they do use a lot of referents that would be seen as data by others.
+
+### What is Data, Anyway?
+
+None of this is to say that no attempts have been made to define the word data: much to the contrary, many scholars of science have written about data, and the definitions are myriad.  Within the discourse of users of data (eg. computer scientists) the word moves fluidly between referents such as those given above.  For the humanist, primary sources, secondary sources, theoretical texts, methodological tools, digital tools, notes, annotations, references … all of these comprise research data in the humanities.
+
+#### How does humanities data tend to be different?
+
+There are problems with sharing and managing the humanistic data, however.  First of all, much of it is not digital.  Humanists still tend to gravitate toward multimodal knowledge creation systems, hybrid digital and technical worlds that resist norms of deposit and reuse.  Second, the semiotic systems of humanities data can be quite personal and individual: we prepare our sources to be useful for us, and what works for our research questions and personal epistemic instruments may not work at all for anyone else.  Finally, and perhaps most importantly, cultural data is seldom if ever ‘raw,’ and seldom, if ever, under the sole ownership of the researcher him or herself.  The records of human activity and creativity belong to everyone and no one, they are often preserved and curated by dedicated public institutions or private publishers.  Whatever humanities data is, it is not simple!
+
+#### Why would I want or need to manage, improve or open up my data?
+
+The time step of humanities research is slow, and this can lead to systemic inefficiencies.  If we could protect early stage insight in the humanities, would we reuse them sooner? Would we find more effective ways to apply humanities knowledge to contemporary problems, and give access to citizens (who may not read our books or articles) to our insights? Opening up our data could open up many opportunities for using and reusing it, for collaborating, informing and increasing the impact of our work.
+
+But there is a further incentive as well.  At a European level, support for data sharing across the disciplines is gaining momentum, and will likely become policy for publicly funded research in the near future.  Though the challenges may be great, we cannot afford to allow the humanities disciplines be left out of EU policies for research.  At the same time, the mechanisms for management and sharing of data that work for physics won’t work for the humanities and cultural data.  New ways must be found, and it is the goal of this module to give its users a basis for understanding the issues and opportunities.
+
+#### **Cooperation in the Management of Data**
+
+Infrastructures, cultural heritage institutions, data libraries and researchers need to work together to create and sustain the evolving system for research data sharing.  Some of the tools we use for this exist as standards (allowing disparate data to be described similarly, and potentially used as a common resource on that basis).  To support the more active use of appropriate standards between researchers and source providers, the PARTHENOS project is building a Standardisation Survival Kit (to be launched shortly).   But there are also active collaboration platforms you can engage with, such as the Data Reuse Charter initiative (which you can learn more about [here](../research-infrastructures-and-data-policy/index.html) in the section on **Research Infrastructures and Data Policy** at the end of this module).
+
+[+ Further Reading](#891_2)
+
+Christine Borgman “Big Data, Little Data, No Data: Scholarship in the Networked World” 2015, MIT Press, London [https://mitpress.mit.edu/big-data-little-data-no-data](https://mitpress.mit.edu/big-data-little-data-no-data)
+
+Sahle, Kronenwett: Jenseits der Daten: Überlegungen zu Datenzentren für die Geisteswissenschaften am Beispiel des Kölner ‘Data Center for the Humanities’, [http://libreas.eu/ausgabe23/09sahle/](http://libreas.eu/ausgabe23/09sahle/) (German / Deutsch)
+
+Website: Research Data Management E-Learning platform, [http://www.researchdatamanagement.ch/](http://www.researchdatamanagement.ch/) (Deutsch / Francais)
+
+### The FAIR Principles
+
+#### What are the FAIR Principles?
+
+If we agree that improved and increased the sharing of research data would be of benefit to research communities and collections holding institutions alike, then how should we proceed?  What ground rules should given how people share, when and where?  How can we establish a common understanding of how far the ethic of sharing can and should extend?
+
+These questions have been answered by the development of the FAIR (which stands for Findable, Accessible, Interoperable, Reusable) principles.  Developed by FORCE 11 (a pan-disciplinary organisation, not one specific to arts and humanities), these principles provide a baseline understanding for the value sharing data can deliver, and the baseline requirements for doing so.
+
+The FAIR principles are described as follows:
+
+**TO BE FINDABLE:**
+
+F1. (meta)data are assigned a ***globally unique and eternally persistent identifier.***\
+F2. data are described with ***rich metadata.***\
+F3. (meta)data are ***registered or indexed in a searchable resource.***\
+F4. metadata ***specify*** the data identifier.
+
+**TO BE ACCESSIBLE:**
+
+A1  (meta)data are ***retrievable by their identifier*** using ***a standardised communications protocol.***\
+A1.1 the ***protocol*** is open, free, and universally implementable.\
+A1.2 the ***protocol***&#x61;llows for an authentication and authorisation procedure, where necessary.\
+A2 ***metadata are accessible***, even when the data are no longer available.
+
+**TO BE INTEROPERABLE:**
+
+I1. (meta)data use &#x61;***formal, accessible, shared, and broadly applicable language*** for knowledge representation.\
+I2. (meta)data use ***vocabularies that follow FAIR principles.***\
+I3. (meta)data include ***qualified references*** to other (meta)data.
+
+**TO BE RE-USABLE:**
+
+R1. meta(data) have a ***plurality of accurate and relevant attributes.***\
+R1.1. (meta)data are released with &#x61;***clear and accessible data usage license.***\
+R1.2. (meta)data are associated with their ***provenance.***\
+R1.3. (meta)data ***meet domain-relevant community standards.***
+
+Obviously not every collection of research data is equally eligible to be shared in a FAIR way.  Anonymity of personal data must be respected and may only be sharable in a redacted form, for example, or unprotected research discoveries may require an embargo.  Particular problems in the arts and humanities can exist, due to the shared nature of the ownership of cultural data (eg. between archives and researchers, or between publishers and authors).  So the application of the FAIR principles is usually applied with the caveat condition that data be “as open as possible, as closed as necessary”
+
+### Watch!
+
+#### The FAIR Principles in practice.
+
+This video shows how data that complies with the FAIR Principles helps researchers to use Linked Open Data.
+
+“Linked Open Data – What is it?” from Europeana (approx 4 minutes)
+
+(To watch this video in another language visit available at [https://vimeo.com/36752317](https://vimeo.com/36752317))
+
+[Linked Open Data – What is it?](https://vimeo.com/36752317) from [Europeana](https://vimeo.com/europeana) on [Vimeo](https://vimeo.com).
+
+###
+
+[+ Case Study: CENDARI 'Data Soup'](#672_3)
+
+The Collaborative European Digital Archive Infrastructure (CENDARI) project is one of the PARTHENOS participating e-infrastructures. CENDARI gathers curated data covering two research areas in the community of “Studies of the Past”: WW1 and Middle Ages. It includes data from different sources (mostly across the GLAMs sector) both unique and deposited. The so-called CENDARI ‘data soup’, contains a wide range of formats and levels of description of data. Recognised and interoperable standards – in use in the different research domains involved – were used to encode data and describe cultural objects and collections (i.e.: EAD for Archival documents).
+
+The CENDARI dataspace contains 829,087 descriptions, represented in several types of data formats. This information is stored in a repository called CKAN, an open source data portal platform developed and maintained by the Open Knowledge Foundation. The kind of file formats and standards, as well as the level of organization and accessibility of data provided by the Cultural Heritage Institutions in contact with CENDARI, vary from case to case: small archives are usually lacking resources for metadata standardization and data storage, therefore their archival descriptions are often accessible via spreadsheets and are not available online (hidden archives). National and international archives, instead, usually have a cataloguing and encoding department: nevertheless, they often lack both technical and political means to share their data with other institutions and projects.
+
+Along with the aggregation work on data, CENDARI researchers have also encoded information related to archival descriptions and archival institutions, using the open source software ATOM (‘Access to Memory’), promoted by the International Council for Archives and fully supporting all the archival descriptions standards. CENDARI established collaborations with international networks in Digital Humanities, in order to engage communities of scholars and digital humanists: thus, the risk that data collected in the context of research projects become obsolete and unusable is reduced.
+
+## Watch!
+
+Dieter Van Uytvanck – CLARIN and the FAIR Principles (approx 30 mins)
+
+Look at how Research Infrastructures ensure that they are compliant with the FAIR Principles.  Dieter Van Uytvanck of CLARIN gave this presentation at the PARTHENOS-DARIAH-CLARIN ‘FAIR Principles Workshop’ held on the periphery of DHBenelux2017 in Utrecht, July 2017.
+
+[+ Further Reading](#672_4)
+
+The Fair Data Principles
+
+[https://www.force11.org/group/fairgroup/fairprinciples](https://www.force11.org/group/fairgroup/fairprinciples)
+
+YouTube video: “Barend Mons / FAIR Principles”, by GODAN Secretariat, published 15th Sept 2016, [https://youtu.be/K40utIzUzOk](https://youtu.be/K40utIzUzOk)(accessed 23rd Jan 2018)
+
+## Managing Cultural Heritage Assets
+
+### What are Digital Cultural Heritage Assets?
+
+Digital Cultural Heritage Assets such as digital photographs, high-resolution scans of manuscripts, 3D objects and ‘born digital’ items  can be hosted by Cultural Heritage Institutions (CHIs) or by dedicated Data Centres. The data they host can be used for all sorts of purposes, by individual researchers for several different purposes, or non-academic researchers working on local history projects, family history, or even as inspiration for art, or as local school projects. To ensure that the data is used to its fullest, CHIs may choose to collaborate with a Research Infrastructure, so that researchers can make use of the best tools, services and methods available.  The benefits of such an approach mean that  scholarly use becomes easier and provides incentives and best practices to all stakeholders.
+
+However, the very basis for collaboration between Cultural Heritage institutions and Research Infrastructures and individual scholarly use of Digital Cultural Heritage Assets is formed by a non-restrictive, easy to understand and applicable general framework that provides incentives and best practices to all stakeholders (e.g. the individual parties involved in the research process) about access, use, and reuse.  Many of the general framework aspects touch especially legal aspects which cause a lot of uncertainties on the side of the individual researchers as the necessity to care about clearing rights impacts greatly their work conditions and forms an obstacle to apply digital methods and tools in first place. For the individual cultural heritage institution a case-by-case approach can be time consuming when wishing to establish clearing rights as well as actually getting few feedback of what kind of research has been done with their data, as a question and underlying motivation of the visibility of their Cultural Heritage Assets, affects their digitisation efforts.
+
+A better approach is to develop and use standards for licences in order to **create legal certainty and the necessary freedom to work with digital tools and contents**. This means that researchers planning digital humanities research projects need to pay attention to **both copyright and other rights concerning the tools, research environment, and contents they are using, reusing, and creating** on the one hand, and on the other hand that they **need open contents** to work with.
+
+#### Research Infrastructures and Digital Cultural Heritage Assets
+
+In this context Digital Humanities and Cultural Heritage Research Infrastructures are combining their resources and efforts to improve the interplay between scientific research and CHIs. They strive to stimulate and enforce the creation and application of standards to improve interoperability of different data and data exchange; to improve the sustainability of data in general; to exchange good practices and knowledge about tools and methods; and to advance the implementation of open science and open access. They do this by promoting the integration of the FAIR Principles by acting on the pedagogical dimension of the integration of standards, that is the need to change the way of working in a digital environment.
+
+### The Cultural Heritage Data Charter
+
+To this end, the Cultural Heritage Data Reuse Charter is a particular initiative that was developed by [DARIAH-EU](http://www.dariah.eu/) and now involves a wide community of interest that includes infrastructures like [CLARIN-EU](https://www.clarin.eu/), [E-RIHS](http://www.erihs.fr/), [Europeana](http://www.europeana.eu/portal/en) and affiliated projects such as [HaS](http://has.dariah.eu/), [IPERION-CH](http://www.iperionch.eu/), [EHRI](http://www.ehri-project.eu/), [PARTHENOS](http://www.parthenos-project.eu/).
+
+The Cultural Heritage Reuse Charter is neither a substitute to CHI content catalogues, nor a copyright clearing environment.  It provides information on reuse, recommendations and links to content that might be of interest for the user (catalogues, license information etc.).  It takes into consideration the relationship between the actors exchanging data and seeks to make it more practical for all actors.
+
+### Watch!
+
+Anne Baillot – The Cultural Heritage Data Reuse Charter (17 mins)
+
+### Know Your Rights!
+
+*This section was kindly contributed by Jolan Wuyts, Europeana*
+
+[www.rightsstatements.org](http://www.rightsstatements.org) is an initiative of the DPLA and Europeana to create easy standardized terms to describe the copyright status of cultural heritage works online. These rights statements were developed to make it easier for cultural heritage institutions to communicate the intellectual property rights of their Works and how those Works can be used by others.
+
+The rights statements have been designed with both human users and machine users (such as search engines) in mind and make use of semantic web technology. Simplifying the use and application of Rights Statements benefits both contributing organizations, which share their valuable collections online through aggregators such as Europeana and the DPLA, and the people who engage with those collections. Understanding and using these rights statements enables Digital Humanities researchers to know which digital objects they can use and re-use, and who should be credited when using them.
+
+Rights Statements is the result of the collaboration of Europeana and the DPLA in the international rights statements working group. In 2015, they released a [whitepaper with Recommendations for standardized international Rights Statements](http://rightsstatements.org/files/151002recommendations_for_standardized_international_rights_statements.pdf) and subsequently created [www.rightsstatements.org](http://www.rightsstatements.org) as a set of rights statements that follow their recommendations. They have been widely used since their release, and have become the standard way of describing the rights of online cultural heritage works.
+
+[+ Further reading](#138_2)
+
+**FAIR Data in Trustworthy Data Repositories Webinar**\
+Webinar proceedings from December 2016, from an event organised by DANS, EUDAT and OpenAIRE
+
+[https://www.eudat.eu/events/webinar/fair-data-in-trustworthy-data-repositories-webinar](https://www.eudat.eu/events/webinar/fair-data-in-trustworthy-data-repositories-webinar)
+
+---
+
+### Reviews of practices within CHIs
+
+!\[ussher-library-internal-smaller]\(../../../../wp-content/uploads/2016/11/Ussher-Library-Internal-smaller-e1480525719780-680x450.jpeg)Many of the issues discussed elsewhere in this module directly relate to the issues that Cultural Heritage Institutions face in managing their data.  A movement towards more Open Data, while still ensuring that they provide a trusted repository for those who are contributing their assets can sometimes come into conflict.  For this reason, CHIs need to continually revise and review their activities to make sure they are fulfilling as many needs as they can for all their stakeholders.
+
+#### Optimising Digital Cultural Heritage Assets for Stakeholders
+
+But who are the ‘stakeholders’ for CHIs?  The term ‘research communities’ is used widely, but often, even if viewed in disciplinary terms, this can be somewhat nebulous.  Perhaps it comes down to methodology, or maybe the stage in your career could make you a member of one community or another.
+
+What is important to remember is that these “communities” cannot always be regarded as a single “stakeholder” or “actor”, since the communities rarely act as one entity or group; more often than not, individual researchers or research projects will be the actors whose needs and questions in the field of repository and (meta)data quality will have to be addressed.
+
+Still, communities as a whole can sometimes become powerful entities which function in a way similar to Research Infrastructures (see below) and develop binding standards. One example of this is the Text Encoding Initiative (TEI). “Repository quality” can mean quite different things to different research communities or individual researchers and its interpretation strongly depends on the conventions within a certain community, the nature of the data or the goals of the project.
+
+As mentioned, there are also different perspectives between disciplines and even within disciplines. They are, on the one hand, caused by different approaches and traditions as well as different levels of familiarity with digital methods, and on the other by the different types of data produced and used. An example would be the audio / video data produced by social scientists and linguists versus the data on artefacts. It also makes a difference whether researchers work in smaller projects applying digital methods or whether their work is done in the context of (larger) Research Infrastructures.
+
+For smaller projects, the quality of the immediate outcome at the end of the project may be more important than a long-term perspective for the data produced. This, in turn, might lead to larger amounts of lower quality data rather than smaller amounts of detailed data with proper metadata, and complex visualisations rather than proper archiving. For data archives and RIs, this can make the data difficult to store and to preserve; for the other members of the research community, it can discourage the reuse of existing data.
+
+Of course, “research communities” are not the only stakeholders for CHIs.  Research Infrastructures (such as CLARIN or DARIAH) represent and support certain research communities and provide those communities with the means to archive their data (as well as access data and provide tools and services for its analysis).
+
+## Reviewing practices, tools and services within a Cultural Heritage Institution
+
+In order for CHIs to ensure that their data is meeting the needs of stakeholders, they have to go through a period of review and analysis on a reasonably frequent basis.  As methods change and tools improve, the services provided by CHIs have to update.
+
+This could mean updating background services such as APIs to ensure that the formats in which data is retrieved are still the most relevant to the tools being used, or that the data provided is of the highest quality for researchers.
+
+Trying to predict and ‘future proof’ data is difficult without extensive conversations with users who already engage with the data in a CHI.  However, it is equally important to conduct a review with people who DON’T yet use the data, to find out what the barriers are that prevent them from engaging.  Reviews and re-evaluation should be built in at a strategic level.
+
+An example of this in practice is the Europeana 2020 Strategy.
+
+> **Europeana** is Europe’s platform for digital cultural heritage with a mission to ‘transform the world with culture’.  It builds on Europe’s rich cultural heritage and makes it easier for people to use for work, learning or pleasure.  [Europeana Collections](http://www.europeana.eu/portal/en) is the digital library, museum, gallery and archive that presents aggregated metadata and allows people to link through to the holding institution’s own catalogues, and where possible, access the full digital item.
+>
+> In 2014, Europeana launched its five-year strategy “We transform the world with culture”: Europeana Strategy 2015-2020.  In it, they declared three key priorities for the Foundation to focus on:
+>
+> 1. Improve data quality
+> 2. Open the data
+> 3. Create value for partners
+>
+> The purpose of these priorities was to attract more institutions who hold Digital Cultural Heritage Assets to share their best materials with Europeana in a way that promotes trust between them and the Cultural Heritage Institutions that are sharing the data, while ensuring that users are able to access the data easily in order to make use of it.  This would thus create value for Europeana Partners, who would be further supported through a ‘Commons’ space where information and value ‘flows in all directions through the system’.
+>
+> To this end, Europeana has been dedicated to ensuring open access, and promoting the use of Creative Commons licences for all its assets.
+>
+> Since creating this Strategy, Europeana has undergone a mid-term review to look at what is working, and where they need to improve.  The results of this have been published in “A Call to Culture: Europeana 2020 Strategic Update”.  They discovered three ‘pain points’ that have informed three further priorities:
+>
+> 1. Make it easy and rewarding for Cultural Heritage Institutions to share high-quality content
+> 2. Scale with partners to reach target markets and audiences
+> 3. Engage people on Europeana websites and via participatory campaigns.
+>
+> Listening to users and being objectively critical of their approach has allowed Europeana to review and adjust the way they manage their Digital Cultural Heritage Assets.
+
+### The Europeana Data Model
+
+The Europeana Data Model (EDM) has been used by Cultural Heritage Institutions across Europe since it was created in the ’00s.  It is designed to pull together multiple metadata standards using Linked Open Data, while maintaining the complex and rich nature of the metadata used and held within CHIs, although it is important to note that the EDM is not built on any one community standard.  This allows users to access the information, and for Europeana and CHIs to forge more meaningful links to data in other European CHIs.
+
+The EDM was designed by technical experts from CHIs to accommodate a wide range of metadata standards, including DC, METS, EAD, and LIDO.
+
+#### How can this help my data?
+
+For Cultural Heritage practitioners, the EDM can bring together information about items in your collections.  For example, if a library in Ireland has information in the METS metadata standard for one object – let’s say a folio of works by Beckett – and an archive in France has information on other folios that exist written by Beckett or his contemporaries, but that information is in a different metadata format (for example, LIDO), then the EDM can bring those two records together to mutually contextualise the items held by both the Irish library, and the French archive.  This helps researchers as well as CHIs, and opens up collections further for use.
+
+You can download the EDM Factsheet from Europeana here: [**EDM factsheet**](../../../../wp-content/uploads/2017/11/EDM-factsheet.pdf)**&#xA0;129KB**
+
+---
+
+[+ Further Resources](#313_2)
+
+Europeana Strategy 2015-2020: ‘We transform the world with culture’.  Available from [https://pro.europeana.eu/files/Europeana\_Professional/Publications/Europeana Strategy 2020.pdf](https://pro.europeana.eu/files/Europeana_Professional/Publications/Europeana%20Strategy%202020.pdf) (accessed 1st Nov 2017)\
+‘A Call to Culture’ Europeana 2020 Strategic Update.  Website, available at [http://strategy2020.europeana.eu/update/](http://strategy2020.europeana.eu/update/) (accessed 1st Nov 2017)
+
+Charles, V. (2016) “Building a framework for semantic cultural heritage data”, presentation given at VALA2016 – CC BY-SA [https://www.vala.org.au/direct-download/vala2016-proceedings/vala2016-slides/734-vala2016-plenary-3-charles-slides/file](https://www.vala.org.au/direct-download/vala2016-proceedings/vala2016-slides/734-vala2016-plenary-3-charles-slides/file) (accessed 27th Nov 2017)
+
+Europeana Data Model Primer (published 14 July 2013) [https://pro.europeana.eu/files/Europeana\_Professional/Share\_your\_data/Technical\_requirements/EDM\_Documentation/EDM\_Primer\_130714.pdf](https://pro.europeana.eu/files/Europeana_Professional/Share_your_data/Technical_requirements/EDM_Documentation/EDM_Primer_130714.pdf) (accessed 29th Nov 2017)
+
+Europeana Data Model Documentation (Published 18th Nov 2014) [https://pro.europeana.eu/page/edm-documentation](https://pro.europeana.eu/page/edm-documentation) (accessed 29th Nov 2017)
+
+---
+
+## Data Management Planning
+
+### **Data Management Plans**
+
+Whether you are working independently on a traditional research project or leading a large collaborative team building a digital research tool, you will need some sort of data management plan (DMP).  A DMP is a plan that you draw up, usually at the beginning of your research project, that outlines how you intend to manage the data within your research project responsibly.
+
+If you are an independent researcher, you may never write it down, or think explicitly about it: research notes and references may be held in your Zotero library or in a certain file on your computer, photocopies of source material or articles may inhabit one or more box files or piles on your desk.
+
+The more complicated your team and your project, however, the more likely you will need not only an explicit data management plan, but a written and agreed one.  And, if your research is in receipt of external funding, you will almost certainly be required to have one.  To help with this, many of these funding agencies provide a model or template for a DMP for you to follow.
+
+This need not be an intimidating, or even an unwelcome task, however.  While a data management plan will take some time to devise and agree, in the end, it is just a tool for thinking systematically through the kinds of material your work will produce, how you will work with it and ensure its integrity during the project, the possible reuse value of this material, and how it will be made safe and available into the future.  A DMP is like an insurance policy for sustainability, ensuring you will maximise research value and have no unpleasant surprises at the close of your project.
+
+#### Common Headings in a DMP
+
+There is no hard and fast standard for DMPs, largely because the nature of research data can vary so significantly between projects.  The following three categories (and the associated questions) will give you a sense of the kinds of information your DMP should capture, however.  Not all of these may apply to your project and your data, but a subset almost certainly will!
+
+##### **What data will be collected, processed and/or generated**
+
+What does your data consist of? Why are you collecting it?  How many and what file types will be represented? How large will the overall corpus be?  How will it be collected (by survey, interview, desk research from secondary sources, from a data repository)? Will any transformations be applied to the data as you find or capture it?  Will it need to be translated, transcribed, structured, anonymised or federated with other sources?  Will it be encoded?  Will the coding protocols be shared among a team, or unique to one individual coder?  Will there need to be any short or long term restrictions on use, or an embargo?  Will the conditions of use (for example, a creative commons license) be readily available (in human and machine readable forms)?  Will the identity and purpose of the person seeking later access to the data be recorded or monitored?  If so how?  How will you ensure data quality?
+
+##### **The handling of research data during and after the end of the project**
+
+How will the data be kept secure?  What backup protocol is being used within the project? How are you making it FAIR (findable, accessible, interoperable, reusable)? Will data will be shared/made open access? How data will be curated and preserved (including after the end of the project)?  Who will take responsibility for the data protocols?  How will any investments required be funded/supported?  How many people will have access to it?  What data repository will you use during and after the project to store it?
+
+##### **Which methodology and standards will be applied**
+
+What metadata will you maintain?  What standards will you use for this purpose?  Will any standard thesauri, vocabularies or methods be applied?  If you are creating your own metadata schema, vocabulary or other convention, will a crosswalk or mapping to commonly available alternatives be made available? Will you apply a particular naming convention to the files?  Will you be able to use permanent identifiers (PIDs) to enhance long-term findability of your resources?  Will particular software tools be required to access and interrogate it?  If so, can the source code for this software be made available as well?  How long can you commit to the data being accessible for?  What institution guarantees this commitment?
+
+You will probably need also to think about the ethical of your data and data collection processes.  For more information on this, see the next section of this module.
+
+##
+
+---
+
+###
+
+[+ Further Reading](#374_2)
+
+DCC DMP wizard: [https://dmponline.dcc.ac.uk/](https://dmponline.dcc.ac.uk/)
+
+DMP OPIDoR (DMP pur une Optimisation du Partage et de l’Interoperabilite des Donnees de la Recherche): [https://dmp.opidor.fr/](https://dmp.opidor.fr/) (en Francais)
+
+
+
+---
+
+## Data Quality Assessment
+
+### **What is Data Quality?**
+
+Virtually everyone who owns data has had experience with data quality, albeit often not consciously. Maybe there is that holiday picture which was spoiled by lens flare; maybe you lost it, because you forgot how you named the file; or it vanished as the external hard drive on which it was stored broke down and could not be recovered.
+
+All of these examples illustrate a lack in data quality and its possible consequences. Hence, they show why it is of vital importance to handle your data with care and to be wary of the risks of quality loss.
+
+#### **Why is Data Quality important?**
+
+When using data for research, it is vital that the source can be both understood and trusted. This starts at the level of the data itself. When a digitized image is distorted, that could make it harder to determine where the photo was shot or recognize faces of people. This is why organizations can decide to install technical image criteria, such as color accuracy, bit depth, white balance and gain modulation.
+
+On metadata level, there is also a variety of considerations which are important when deciding on metadata management. High-quality metadata greatly enhance the findability, accessibility (and restrictions where they are due), interoperability and reusability of the data they are about. The importance of these four positive features of data and ways to make sure that your metadata live up to them can be found under the paragraph on the FAIR principles.
+
+Lastly, the quality of the repository is important for the durability of your data. Quality here is mainly concerned with data management. This involves technical trustworthiness (“are the authenticity and integrity of the data preserved in a secure way?”) and legal coverage (“can the data be accessed under clear rights and licenses?”). To prove that both are taken care of, a data repository can be certified, e.g., under the data seal of approval
+
+The following video from the WePreserve project (now ended) explains the importance of data quality:
+
+[https://www.youtube.com/watch?v=pbBa6Oam7-w\&feature=youtu.be](https://www.youtube.com/watch?v=pbBa6Oam7-w\&feature=youtu.be)
+
+When carefully planning data quality, it is important to involve all relevant stakeholders. This could include a wide range of groups, among which: research communities, Research Infrastructures, data repositories, and Cultural Heritage Institutions.
+
+The concept of Data Quality applies both to the (meta)data and to the repository, on which these data are stored.
+
+#### **How do you assess Data Quality?**
+
+To make sure that the quality of your data is up to standards, you can investigate their structure. To assist this process, sets of guidelines have been designed. As stated earlier, the FAIR principles can be a useful tool when examining the level of data quality, as the degree of findability, accessibility, interoperability and reusability of data, are important factors when determining whether the full potential of data is unlocked.
+
+An important principle is that research data should be understandable to other researchers. For the assessment, this means that data formats and metadata need to be examined from the perspective of a user who has not worked with the data before. Can they find what they are looking for, can they gather the data they need, can they open the data, and can they understand the content? These are crucial questions when determining whether data can be reused.
+
+Metadata need to be as complete as possible and as transparent as possible. If codes or variables are used, the explanation of those codes and variables needs to be directly available. Additionally, users need to be able to determine which files contain what kind of data. They need to be able to open the file format, and if possible, without needing to use specific software or hardware.
+
+Generally, when applying the FAIR principles to data for their assessment, the following questions could serve as a point of departure:
+
+* Does the dataset have a persistent identifier?
+* Is there metadata or documentation available? Is the metadata sufficient for fully understanding the data content?
+* Are the metadata accessible?
+* Does the dataset have a user licence, are there clear conditions of reuse? Do user restrictions apply?
+* Are the data files in a proprietary format, a well-supported ‘acceptable proprietary format, or are they in a preferred/open format?
+* Does the data use a standardized coding scheme?
+* Is the data linked to other data (how)?
+
+##### **How do you assess Data Repository Quality?**
+
+Even if the data adheres to almost all the FAIR principles, the data repository is an important factor in determining their long-term sustainability. For that reason, it is vital to choose a repository which adheres to legal and technical checks and balances, making it a trustworthy location where the authenticity, integrity and security of data is warranted.
+
+When choosing a data repository which carries a certification, the quality assessment has already been done for you. The certification can be done at different levels.
+
+This framework has *three* levels, in increasing trustworthiness:
+
+1. **Core Certification** is granted to repositories which obtain the CoreSealTrust certification (see the [next page in this module](coretrustseal/index.html))
+2. **Extended Certification** is granted to Basic Certification repositories which *in addition* perform a structured, externally reviewed and publicly available self-audit based on DIN 31644: [nestorSeal](http://d-nb.info/1047613859/34).
+3. **Formal Certification** is granted to repositories which *in addition t*o Basic Certification obtain full external audit and certification based on ISO 16363: the [ISO-certification](http://www.iso16363.org/standards/iso-16363/).
+
+The first two levels are based on self-assessment, combined with external review. The third and highest level, the formal certification, however, is based on a full external audit.
+
+For more information, see the Data Quality Repositories webinar by DANS (approx 1 hour duration):
+
+[https://www.youtube.com/watch?v=VFLTJ7D2y5s\&t=5m35s](https://www.youtube.com/watch?v=VFLTJ7D2y5s\&t=5m35s)
+
+[+ Further Reading](#49_2)
+
+Metamorfoze > National Programme for the Preservation of Paper Heritage “Metamorfoze Preservation Imaging Guidelines, V1.0” Hans van Dormolen, 2012  [https://www.metamorfoze.nl/sites/metamorfoze.nl/files/publicatie\_documenten/Metamorfoze\_Preservation\_Imaging\_Guidelines\_1.0.pdf](https://www.metamorfoze.nl/sites/metamorfoze.nl/files/publicatie_documenten/Metamorfoze_Preservation_Imaging_Guidelines_1.0.pdf)
+
+Website: PLANETS – PRESERVATION AND LONG-TERM ACCESS THROUGH NETWORKED SERVICES Training Materials, [http://www.planets-project.eu/training-materials/](http://www.planets-project.eu/training-materials/) (accessed 23rd Jan 2018)
+
+---
+
+### The CoreTrustSeal
+
+
+
+!\[big data EU Webnerd small]\(../../../../wp-content/uploads/2017/07/big-data-EU-Webnerd-small.jpg)The CoreTrustSeal is a recent development, formed from the combination of the ICSU World Data System, and the Data Seal of Approval (DSA). Repositories can apply for the CoreTrustSeal so that users can trust that it will treat their data to a high standard.
+
+In order for repositories to make an application, and be assessed, they need to provide information on:
+
+1. The Repository Type (so that reviewers can understand the function of the repository)
+2. The Repository’s intended community (so that the reviewers can assess how the repository interacts with that community)
+3. The level of curation within the repository (so that reviewers can determine how the data is treated once it is deposited. Is the data kept unchanged, or are edits made to the metadata to make it more searchable, and if so how is this done, for example)
+4. Which partners does the repository outsource to, and what is the nature of that relationship (so that reviewers can ensure that all people who will be handling the content of the repository also do so to a high standard)
+5. Any other relevant information (just in case there is something else the reviewers should know)
+
+The full list of requirements can be found here: [https://www.coretrustseal.org/wp-content/uploads/2017/01/Core\_Trustworthy\_Data\_Repositories\_Requirements\_01\_00.pdf](https://www.coretrustseal.org/wp-content/uploads/2017/01/Core_Trustworthy_Data_Repositories_Requirements_01_00.pdf)  (PDF)
+
+You can find more information on the CoreTrustSeal at [https://www.coretrustseal.org/why-certification/requirements/](https://www.coretrustseal.org/why-certification/requirements/).
+
+#### History of the CoreTrustSeal
+
+As previously mentioned, the CoreTrustSeal is the reult of a merge between the ICSU World Data System, and the Data Seal of Approval.
+
+The [ICSU World Data System](https://www.icsu-wds.org/) (ICSU-WDS) was formed by the International Council for Science (ICSU), which aims to build ‘communities of excellence’ in data services through their member organisations.  ICSU-WDS was established in 2009, in response to a need for previous bodies working in relation to scientific data (also part of ICSU) to respond to modern requirements for data management.
+
+The Data Seal of Approval (DSA) was result of a multinational collaboration between institution with a remit for the management of scientific data, and is managed by a Board bringing together: Alfred Wegener Institute (Germany), CINES (France), DANS (The Netherlands), ICPSR (USA), MPI for Psycholinguistics (The Netherlands), NESTOR (Germany) and UK Data Archive (United Kingdom).
+
+While the The Data Seal of Approval was merged with the ICSU World Data System [in 2017 to create the CoreTrustSeal](https://www.datasealofapproval.org/en/news-and-events/news/2017/9/11/coretrustseal-certification-launched/), many of the issues faced by repositories under the Data Seal of Approval are still relevant.  You can see this in the video below of a presentation made in July 2017.
+
+#### Videos
+
+Peter Doorn, Director of DANS-KNAW, talks about the FAIR Principles and the Data Seal of Approval, and how trusted repositories can make use of them (from July 2017).
+
+#### **Image credits:**
+
+‘Big Data” by EU Webnerd – CC0 Public Domain, available from [Flickr Commons](https://www.flickr.com/photos/136929098@N08/28348996385/in/photolist-Kc71XK-dq4Xtz-ndqbMg-aqqbra-dB1EUc-a5duou-aoREnF-ayaKv6-YyHB5H-dJUgW8-8diSQB-ccDTDQ-YmKWQ2-bZbYjs-8diSur-jecwye-k4e1G-9u5W3z-8dn9Go-dB78Z5-htL67R-bBp553-VJY5G9-255JT1-9Ufm1x-nm8YVk-oD2L2e-oVfcAp-8diS2T-aydmSQ-8dn95b-69BbEc-ccDU3U-8dn9nS-WJm5bX-RS7kg2-fuWXaD-bZbYFE-9u5VL6-ahL8Hv-ap7Tgd-9vSoy6-bBkhhW-cMnAd7-9gHxKb-dB1EVM-s1PDHa-9gEs44-9y5zQR-YmwdXX), accessed 2nd Jan 2018
+
+#### [Further Learning (click to expand)](#1547722765459-cd21269e-3130)
+
+* About the CoreTrustSeal: [https://www.coretrustseal.org/about/](https://www.coretrustseal.org/about/) (accessed 2nd Jan 2018)
+* CoreTrustSeal Requirements:\
+  [https://www.coretrustseal.org/wp-content/uploads/2017/01/Core\_Trustworthy\_Data\_Repositories\_Requirements\_01\_00.pdf](https://www.coretrustseal.org/wp-content/uploads/2017/01/Core_Trustworthy_Data_Repositories_Requirements_01_00.pdf)\
+  (accessed 2nd Jan 2018)
+* About the ICSU World Data System [https://www.icsu-wds.org/organization](https://www.icsu-wds.org/organization) (accessed 2nd Jan 2018)
+* About the Data Seal of Approval: [https://www.datasealofapproval.org/en/](https://www.datasealofapproval.org/en/) (accessed 2nd Jan 2018)
+
+---
+
+# Ethics and Research
+
+While the management of data in order to make it more open, accessible and interoperable is of course important, it is equally important to make sure that due ethical consideration has been given to the data.
+
+When dealing with data found within the arts and humanities, most of the time this can mean dealing with data about humans.  Those working within the social sciences are perhaps more likely to find this to be an issue for consideration than, say, an art historian, but the ethical treatment of data is something that is becoming of greater concern to funding agencies, and is often required as part of a Data Management Plan when submitting a proposal for funding.
+
+### **When should you consider ethics in research?**
+
+There are perhaps two main types of research in Arts, Humanities and Social Sciences, which for the sake of ease we might call ‘Participatory Research’ and ‘Non-Participatory Research’.
+
+**Participatory research** is the kind of research where you gather new data from participants.  This might be through any interviews you conduct for various reasons, anonymous surveys, or testing, or crowd-sourcing for example.  The important thing is that your research relies on the input of other individuals in order to create data.  We call these individuals ‘participants’.
+
+**Non-participatory research** might involve research within manuscripts or archives.  You do not require the participation of individuals or groups in order to generate data for your research, you can gather this from Cultural Heritage Institutes, such as archives, libraries, museums, etc.  The difference here is that the data has already been generated by someone else, however you still need to be ethically responsible when dealing with this kind of data.
+
+### Ethics in Participatory Research
+
+At a very basic level, the protection of any participants who assist or participate in your research is the basis for ensuring good ethical practice in research.  For those working in medical sciences, ethics deal with the physical and mental health of participants, and ensuring that they are informed sufficiently to fully agree to participate.  The same principles apply when conducting research for Arts, Humanities and Social Science (AHSS) subjects.  While the physical well-being of participants is less likely to be at risk in AHSS-based research, the mental well-being, and need to ensure that participants are well informed is still vital.
+
+The kind of research data that would usually be subject to ethical approval includes (but is not necessarily limited to:
+
+* Any recorded interviews (either video or audio)
+* Surveys or questionnaires that collect personal information such as date/place of birth or anything else that could identify the participant
+* Research where the participant is asked to reveal or reflect on instances from their past (e.g. oral histories, psychology experiments)
+* Anything that involves the participation of minors (additional ethical requirements may be in place for such instances)
+* Anything in which the participant is asked to reveal something that might cause them or others physical or mental harm or embarrassment if it were to be made public.
+* Any research in which the participant is asked to complete tests, or test-like scenarios
+
+#### **What do we mean by ‘being well informed’?  listen-1702648\_1920**
+
+In an ideal world, the participant in any research would be completely informed of what you are looking for, and how you intend to go about seeking that information.  However, in some instances, telling the participant absolutely everything can be counter-productive.  The ‘Observer Paradox’ can mean that a participant will not necessarily behave as they normally might, and this might skew your results.
+
+So how does one make sure that the participant is sufficiently informed as to make a decision and not to feel like they’ve been ‘duped’ or exploited by participating in the research, but not know so much that they might behave differently?
+
+Sometimes, providing a summary of what your research aims to achieve can be enough.  For example, if you are a linguist and you want to know how people within a specific region might use prepositions to describe spatial elements, you can simply tell your participants that you are interested in language variation, and you want to see what variation occurs in that region.
+
+But, a participant does need to know:
+
+* What is going to happen during the interview
+* If personal data about them is to be taken, and what happens to that personal data after the research is completed.
+
+Most faculties and universities will have a standard procedure for granting ethical approval for research.
+
+#### **What is the difference between ‘Confidential’ and ‘Anonymous’?**
+
+!\[hospice-1793998\_1920]\(../../../wp-content/uploads/2017/09/hospice-1793998\_1920-720x450.jpg)It is important to remember the distinction between ‘confidential’ and ‘anonymous’.
+
+A participant’s data is **confidential** when it is held securely and only accessible to the participant, and the researcher.  The researcher will have met, or interacted with the participant in some way, but usually the name of the participant as well as any other personal information is withheld from any publications.  If something related to the participant needs to be stated in order to support an argument in the research, this is usually done through a code that does not reveal the identity of that participant.
+
+A participant is **anonymous** if they take part in the research without having any interaction with the researcher at all.  The researcher only knows that ‘someone’ has participated, but does not know the name or identity of the participant.  A clear example of this might be if the participant fills in an online survey and doesn’t give their name or any other personal details that might reveal their identity.   Only the participant knows that they have taken part in the research.
+
+### Ethics in Non-Participatory Research
+
+Just because you are not dealing directly with the participation of individuals in order to gather your data, does not mean that you are not responsible for the ethical management of your data.  The kinds of documents or data you may find in archives or museums should be treated with just as much care.
+
+An example of this might be if you were to be working Holocaust studies, and were analysing oral histories from Holocaust survivors.  The people who provided those oral histories may still be alive, or if they are not might have relatives who are.  Re-producing their data has the potential to cause anxiety and pain.
+
+This may also be found with information that was gathered after a conflict or period of extended tension within a region.  Consider the period in Northern Ireland known as The Troubles.  Interviews provided even in recent years still has the potential to cause harm if they were to be treated irresponsibly.
+
+Therefore, it is important to remember that while your research might not involve gathering data through the direct participation of individuals or groups, consideration for the ethical implications still needs to be given.
+
+### **Ethics and Data Management Plans**
+
+A DMP requires a strategy for storing and allowing access to the data you gather during your research project.  In some cases it might not be appropriate to allow access to your data, either whole or in part (e.g. embargo, personal data, sensitive content, etc.), but you should explain why, and make sure this is clearly stated in the data management plan (see the previous section: [Data Management Planning](../data-management-planning/index.html)).
+
+[+ Further Reading](#397_2)
+
+Bernard, H. R. (2011). *Research methods in anthropology: Qualitative and quantitative approaches*. Rowman Altamira.
+
+Chu, H. (2015). Research methods in library and information science: A content analysis. *Library and Information Science Research*, *37*, 36–41. [https://doi.org/10.1016/j.lisr.2014.09.003](https://doi.org/10.1016/j.lisr.2014.09.003)
+
+Josselson, R., & Lieblich, A. (2001). Narrative research and humanism. *The Handbook of Humanistic Psychology*, 275–289
+
+Sieber, J. (2012). *The Ethics of Social Research: Surveys and Experiments*. Springer Science & Business Media
+
+European Commission, July 2016: “H2020 Programme; Guidance How to complete your ethics self-assessment” [http://ec.europa.eu/research/participants/data/ref/h2020/grants\_manual/hi/ethics/h2020\_hi\_ethics-self-assess\_en.pdf](http://ec.europa.eu/research/participants/data/ref/h2020/grants_manual/hi/ethics/h2020_hi_ethics-self-assess_en.pdf) (accessed 2nd Jan 2018)
+
+**Website:**
+
+“Ethique et Droit” blog (en Francais) [http://ethiquedroit.hypotheses.org/](http://ethiquedroit.hypotheses.org/)
+
+Cessda, “Ethics and data protection” [https://www.cessda.eu/Research-Infrastructure/Training/Expert-tour-guide-on-Data-Management/5.-Protect/Ethics-and-data-protection](https://www.cessda.eu/Research-Infrastructure/Training/Expert-tour-guide-on-Data-Management/5.-Protect/Ethics-and-data-protection) (accessed 2nd Jan 2018)
+
+**IMAGE CREDITS:**
+
+1. ‘Laptop’ by StockSnap, CC0 Creative Commons available on [https://pixabay.com/en/laptop-apple-macbook-computer-2561018/](https://pixabay.com/en/laptop-apple-macbook-computer-2561018/)
+2. ‘Listen’ by jamesoladujoye, CC0 Creative Commons available on [https://pixabay.com/en/listen-informal-meeting-chatting-1702648/](https://pixabay.com/en/listen-informal-meeting-chatting-1702648/)
+3. ‘Hospice’ by maxlkt, CC0 Creative Commons available on [https://pixabay.com/en/hospice-hand-in-hand-caring-care-1793998/](https://pixabay.com/en/hospice-hand-in-hand-caring-care-1793998/)
+
+---
+
+## Open Data, Open Access and Open Science
+
+### **How to Define Open Science?**
+
+This is actually not a simple question to answer: for some it is a set of values, others a set of activities.  For some, it is located in one or more specific mandates (such as open access); for others it represents a broader set of changes.  Perhaps this scenario, featured in the European Commission’s official publication on the topic (*Open Innovation Open Science Open to the World – a vision for Europe, 2016*) highlights the vision best;
+
+*“The year is 2030. Open Science has become a reality and is offering a whole range of new, unlimited opportunities for research and discovery worldwide. Scientists, citizens, publishers, research institutions, public and private research funders, students and education professionals as well as companies from around the globe are sharing an open, virtual environment, called The Lab. Open source communities and scientists, publishing companies and the high-tech industry have pushed the EU and UNESCO to develop common open research standards, establishing a virtual learning gateway, offering free public access to all scientific data as well as to all publicly funded research. The OECD as well as many countries from Africa, Asia, and Latin America have adopted these new standards, allowing users to share a common platform to exchange knowledge at a global scale. High-tech start-ups and small public-private partnerships have spread across the globe to become the service providers of the new digital science learning network, empowering researchers, citizens, educators, innovators and students worldwide to share knowledge by using the best available technology. Free and open, high quality and crowd-sourced science, focusing on the grand societal challenges of our time, shapes the daily life of a new generation of researchers.”*
+
+## Watch!
+
+Sara Di Giorgio explains Open Access and Open Data (20 mins)
+
+The transcript from this video is available in:
+
+* [**English (PDF download)**](../../../wp-content/uploads/2017/07/Open-Data-Open-Science-Open-Access-Transcription-ENGLISH.pdf)
+* [**Italiano (PDF download)**](../../../wp-content/uploads/2017/07/Open-Data-Open-Science-Open-Access-Trascrizione-ITALIANO.pdf)
+
+### **Component Features of Open Science**
+
+In spite of the mobility of the definition of Open Science, it is clear that certain activities and communities are very much implicated in its delivery.
+
+* **Open Access to Research Publications:**  This is perhaps the Open Science issue researchers will have heard the most about, with the ‘green,’ ‘gold’ and ‘hybrid’ models for making scholarship freely available the most well-known.  But these terms largely refer to management of particular forms of scholarship with their roots in the affordances and constraints of earlier eras.  Open Science looks to go beyond these forms and the players invested in their continuation, to explore new business models and modes for scholarly communications.
+* **Open Research Data and the European Open Science Cloud (EOSC):**  Knowledge creation can be more fluid and efficient if we can share not only our results, but the underlying data we used to draw our conclusions.  Broadening the pool of researchers committed to FAIR open research data (see the first section of this module for a discussion of the FAIR principles) will progress this goal on a cultural level.  The EOSC will be a key common infrastructural development to enable this.
+* **Skills and Rewards for Open Science:** Researchers must come to see openness as a scholarly value on a par with the development of new knowledge and the communication of same.  For this, early career and senior researchers will need both the tools and the incentives to change their practices.
+* **Alternative Metrics:**  New practices cannot necessarily be evaluated using the same criteria as were most applicable to their predecessors.  Exploring alternative metrics and approaches to the evaluation of science quality is therefore a key enabler for Open Science.
+* **Citizen Science:** Once science is open, then new actors will be able to enter the system and share their knowledge.  Industry is a key audience here, but also citizens, who may engage with scientific materials or indeed with active research groups to satisfy their curiosity and build their skills.
+* **Research Integrity:**  In a new scholarly communications system based on sharing and openness, what issues need to be reconsidered regarding the protection and assignment of intellectual property, the prevention of plagiarism or the management of potentially predatory publishing practices?
+
+### **Open Science and the Humanities**
+
+For a number of reasons, the arts and humanities have been relatively slow to take on the challenges of Open Science.  There are good reasons for this: the policies and processes that have so quickly become mainstreamed seem at times antithetical to the values, conditions and methods of the humanities.  Gold open access depends upon a level of funding the humanities by and large do not have access to.   Open access to books is only just becoming a part of the discussion, complicated by the partial access to so many scientific publications facilitated by Google.  The lack of licenses or patents as a way of protecting valuable knowledge makes the early release of key results seem risky, in particular in communities where the most prestigious publishers offer no viable open access option.  And of course, the hybrid nature of humanities sources, and the long tradition of sharing ownership of them between cultural heritage institutions researchers, makes the idea of openly sharing research data problematic.
+
+That said, there are strong incentives.  Finding ways to release knowledge more widely and faster stands to bring great benefit also to the humanities.  It will allow new perspectives to arise in a more informed landscape, eliminating potential duplication of research topics.  Furthermore, it will allow knowledge to be better broadcasted to and integrated with that of scholars around the world, enabling broader research impacts broader research impacts on society at large.  It will allow the humanities to take advantage of (rather than be subject to) the emerging norms of publication and dissemination of scholarship, in which new standards are emerging for the granularity and form of verifiable new knowledge, from blog posts to pre prints to data sets.  Increasing the impact and visibility of humanities research work, at an individual level and collectively, builds our digital sovereignty as scholars, and is one of the key potential benefits of embedding open access in the humanities.
+
+Should these arguments not be compelling enough, we must also be aware of directives, such as the Public Sector Information re-use directive or the emerging EC policy on open access to research data, that may drive us toward open science, whether we want to go there or not.  Ensuring that processes and resources for openness that are attuned to humanities methodologies and values is therefore a key challenge of the current moment.
+
+###
+
+## **Watch!**
+
+[What is open culture? Interview with Jill Cousins](https://vimeo.com/230736351) from [Europeana](https://vimeo.com/europeana) on [Vimeo](https://vimeo.com).
+
+### Case Studies
+
+Click to expand
+
+[+ Case Study: Open Access](#507_5)
+
+How “Lexicon Philosophicum” became an Open Source journal
+
+International Journal for the History of Texts and Ideas, [http://www.lexicon.cnr.it](http://www.lexicon.cnr.it), is an international Open Access electronic journal published by the Istituto per il Lessico Intellettuale Europeo e Storia delle Idee (ILIESI-CNR). The journal is the outgrowth of a previous traditional journal published on paper: since 1985 the ILIESI has published twelve volumes in the form of ‘Cahier’ under the same name Lexicon Philosophicum, appearing in the series “Lessico Intellettuale Europeo” published in Florence by Olschki.
+
+The current Lexicon Philosophicum is an annual, open peer-reviewed, open access journal, with an interdisciplinary character. The journal provides open access to original, unpublished high quality contributions: critical essays, research articles, short texts editions, and critical bibliographic reviews on the history of philosophy, the history of science, and the history of ideas, with a special attention to textual and lexical data.
+
+The new journal has been created within the activities of the European project Agora Scholarly Open Access Research in European Philosophy (2011- 2014). The journal has been part of an evaluation experiment (see below) for which the goal was to determine and enhance standards in the field of open collaborative peer review in the Humanities and Social Sciences
+
+The journal articles can be interlinked with a large collection of primary sources of Ancient and Early Modern Philosophy available in the portal Daphnet ([http://www.daphnet.org/](http://www.daphnet.org/)) and with the selected contributions contained in the Daphnet Digital Library platform ([http://scholarlysource.daphnet.org/index.php/DDL](http://scholarlysource.daphnet.org/index.php/DDL)). ILIESI always ask permissions for online publications in these platforms: a) in case of explicit authorization CC-BY-NC-SA is used; b) if the authorization for reuse is not present, “all rights reserved” is applied; c) if authorization is difficult to ask for, CC-BY-NC-SA (silence means consent) is used.
+
+Adopting the Open Journal System (OJS), the journal adheres to the open access protocols to improve the quality and the dissemination of scholarly publishing in the field of philosophy. OJS is a journal management and publishing system that has been developed by the Public Knowledge Project. Its main features are:
+
+1. It is installed and controlled locally.
+2. Editors configure the requirements, sections, review process, etcetera.
+3. There is online submission and management of all content.
+4. A subscription module with delayed open access options.
+5. Comprehensive indexing of content part of global system.
+6. Reading Tools for content, based on field and editors’ choice.
+7. Email notification and commenting ability for readers.
+8. LOCKSS system to create a distributed archiving system among participating libraries and which permits those libraries to create permanent archives of the journal for purposes of preservation and restoration.
+
+Lexicon Philosophicum uses DOI to guarantee the URL stability of its documents. Lexicon Philosophicum provides immediate open access to its content on the principle that making research freely available to the public supports a greater global exchange of knowledge. The contributions published in the journal are made available in Open Access under the Creative Commons General Public Licence Attribution, Non Commercial, Share-Alike version 3.0 (CCPL BY-NC-SA). Such a licence, while granting the paternity and integrity to the original author(s), permits public and unrestricted access to the works, their use, copy, reproduction, and redistribution, provided that such uses are not commercial. It also allows the creation of derivative works (such as translations and adaptations), provided that the derivative works are distributed under the same licence as the original works.
+
+Open peer review experiment: Lexicon Philosophicum and Nordic Wittgenstein Review (NWR; [www.nordicwittgensteinreview.com](http://www.nordicwittgensteinreview.com)) took part in an Open Review experiment, in which double-blind peer review was supplemented with a session of Open Review or Preview online of the submitted articles accepted for publication for one month during which registered users were asked to comment on and discuss the accepted papers. Discussions were moderated by the editors and editor-in-chief.
+
+[+ Case Study: IPR and the CENDARI project](#507_6)
+
+One of the key tasks of the CENDARI project ([www.cendari.eu](http://www.cendari.eu)) was to federate a large corpus of highly heterogeneous data and metadata from a range of over 1,200 institutions. For some of these institutions, data could be accessed via an aggregator, such as Europeana, which offers an open API for data sharing. In other cases, individual institutional data was either delivered via a file transfer or had to be created or curated by hand by the project researchers.
+
+This landscape of partners, formats and datatypes resulted in an exceptionally complex IPR situation with many different licence types and restrictions already governing the data coming in which had to be preserved going out. In addition, there were often competing voices and positions among the many communities and institutions the project was dealing with.
+
+The approach taken by CENDARI was to work within the standard and recognised Creative Commons licensing system, which was applied as follows: a CC-BY licence was applied by default to all data in the system. This was in step with the Archives Portal Europe, a key partner in recruiting data, as well as with the DARIAH ERIC, the project’s umbrella infrastructure. Data coming from Europeana, however, had to be flagged as reusable under the same licence it was acquired under, in most cases CC-0. Individual institutions contributing under CC-BY were also given the option to use CC-0, in particular for metadata that did not appear in the Europeana ecosystem, to facilitate its later presentation there. This exemption enabled sharing between CENDARI and Europeana in two directions, to the benefit of smaller partner institutions.
+
+Finally, in some cases, specific licences were requested by institutions, such as the addition of an NC-SA clause for one particular US-based institution. This flexibility allowed the project to recruit data that might not have been available if a narrower approach to rights management had been applied. This did create additional system complexity, however, as metadata outlining the rights under which a specific dataset had been acquired and could be reused had to be applied at a far finer level of granularity.
+
+[+ Case Study: How DANS implements CC0 licences on data](#507_7)
+
+**Implementing CCO licence on data**\
+Both government and the scientific community increasingly emphasise the importance of open access to publicly funded data. The European Science Foundation and other leading European research funders have declared their support for the “Berlin Declaration on Open Access to Knowledge in the Sciences and Humanities”.
+
+As an early adopter of open access and open data, DANS is implementing this policy in practice. DANS has decided to no longer require registration for users as a standard. The registration of users is considered as an obstacle to this “open access”. Furthermore, computer applications (such as linked data apps, text and data mining) encounter barriers with registration and are not able to query archived data or edit them. By removing this registration requirement, the licence ‘Open access for registered users’ will change to an open licence, for which DANS uses CC0 Waiver of Creative Commons as the standard. The standard limits the legal and technical barriers for the reuse of data by waiving copyright and neighbouring rights, to the extent permitted by the law. DANS will continue to draw users’ attention to the fact that, in accordance with the VSNU/KNAW Code of Conduct for Academic Practice, proper citation of research remains imperative.
+
+The strategic decision was made to make the default setting Open access for everyone in EASY the online archiving system of DANS. The more practical phase of implementing this new standard required the following steps to:\
+– Update the DANS Licence agreement by including CC0.\
+– Update the guidelines on data depositing.\
+– Update the help texts in the archiving system EASY: the dataset files are accessible to all users of EASY and ‘CC0 Waiver – No Rights Reserved’ applies. For more information please visit https\://creativecommons.org/about/cc0.
+
+In this category, all possible rights (such as copyrights and database rights) on the dataset files have been waived. Other actions undertaken by DANS are:\
+– Communication and disseminating activities by promoting them in DataLink, the newsletter of DANS, on the DANS website and in mailings.\
+– Contacting researchers who deposited their data in previous years to enquire if they objected to transforming their data to a CCO licence. If depositors didn’t agree they could opt out by choosing a more restricted category. At the start, 405 (non- archaeological) depositors of one or more datasets were willing to change their data into CC0. This was followed by a number of archaeological organisations which agreed to change a collection of thousands of archaeological datasets into Open Access.
+
+Implementing this change by software developers in the archiving system EASY by transferring thousands of datasets towards the status ‘Open for Everyone’ is still in progress. Not only the change of category but also the update of the old licence related to the archived data is needed.
+
+The open access movement is an ongoing process and DANS likes to share its experiences on this. A related document is the IPR report comparing licences and access at Europeana and DANS (Heiko Tjalsma) which was presented at the PARTHENOS Workshop in Rome in November 2016.
+
+### Resources
+
+[+ Further Reading](#507_8)
+
+**Online Resources**
+
+* FOSTER Open Science: [https://www.fosteropenscience.eu/](https://www.fosteropenscience.eu/)
+* SHERPA Romeo journal OA policy directory [http://www.sherpa.ac.uk/romeo/index.php](http://www.sherpa.ac.uk/romeo/index.php)
+* [http://opendatatoolkit.worldbank.org/fr/index.html](http://opendatatoolkit.worldbank.org/fr/index.html)
+* The Open Science Monitor [http://ec.europa.eu/research/openscience/index.cfm?pg=home\&section=monitor](http://ec.europa.eu/research/openscience/index.cfm?pg=home\&section=monitor)
+* The Shuttleworth Foundation [https://www.shuttleworthfoundation.org/](https://www.shuttleworthfoundation.org/)
+* A Vision For Europe: The Three Os – Open Innovation, Open Science, Open to the World ([https://ec.europa.eu/research/openvision/index.cfm](https://ec.europa.eu/research/openvision/index.cfm) – accessed 22nd Nov 2017) [Open Data, Open Science, Open Access Transcription ENGLISH](../../../wp-content/uploads/2017/07/Open-Data-Open-Science-Open-Access-Transcription-ENGLISH.pdf)
+* Creative Commons [https://creativecommons.org/](https://creativecommons.org/)
+
+**Publications**
+
+* Masuzzo P, Martens L. (2017) Do you speak open science? Resources and tips to learn the language. PeerJ Preprints 5:e2689v1 [https://doi.org/10.7287/peerj.preprints.2689v1](https://doi.org/10.7287/peerj.preprints.2689v1)
+
+---
+
+## Research Infrastructures and Data Policy
+
+### How can research infrastructures help researchers to adapt to shifting cultures of data?
+
+### Conducting Best Practice
+
+If you find the changing landscape of data requirements confusing or indeed intimidating, then research infrastructures may be able to help.  Because of the scale of infrastructural work, RIs have very often developed a vast experience of the standards and protocols that work for a given community (and probably also many that don’t work!).  Such knowledge is made available though reports and publications, through the tools we offer, and through the advice our communities can share.
+
+### Informing Best Practice
+
+In addition, RIs are working at the forefront of the emerging policies for Open Science, translating the needs of the humanities upwards into discussions with European Commission bodies, but also with organisations like the [Research Data Alliance](https://www.rd-alliance.org/), projects like [Open Aire](https://www.openaire.eu/), and initiatives such as [GoFAIR](https://www.dtls.nl/fair-data/go-fair/). There are so many issues involved in the transformation of the entire system of science from a closed to an open mode in Europe – RIs are uniquely well-placed therefore to bridge the gap between researcher needs and macro-level requirements.
+
+
+
+---
+
+### Full Module Credits
+
+This PARTHENOS Training module was authored by Dr. Jennifer Edmond.  It was edited by Vicky Garnett (Trinity College Dublin).
+
+If you would like to cite this module, we suggest the following citation:
+
+“*Manage, Improve and Open Up Your Research Data*”, Edmond, J. (Auth), Garnett, V. (Ed), for PARTHENOS.   \<URL> (Retrieved on ***…***)
+
+#### Please note: Authors are listed in alphabetical order, and listing does not reflect level of contribution
