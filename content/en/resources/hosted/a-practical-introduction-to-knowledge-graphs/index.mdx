@@ -1,7 +1,7 @@
 ---
 title: A Practical Introduction to Knowledge Graphs
 locale: en
-publication-date: 2026-10-31
+publication-date: 2027-10-31
 version: 1.0.0
 authors:
   - pertsas-vayianos
@@ -428,7 +428,24 @@ In **ML / DL apporaches** extracting relations is usualy treated as a text class
 
 Following the same line of creating a scholarly knowledge graph regarding research activities, methods and goals -as a use case example- we will implement the above IE steps into a digital workflow. To do so we need to employ the various digital methods described above on a dataset from reasearch publications in order to extract, dissambiguate, link and interrelate entities regarding research activities, research methods and reasearch goals. For the purposes of this use case we will use [Research Spotlight (RS)](https://marketplace.sshopencloud.eu/tool-or-service/R60WeD) a digital workflow specifically designed for educational purposes, that incorporates all the nessecary modules including DL models that are already pretrained on the specific entity types for the task at hand.
 
-More specifically, [RS's github implementation](https://github.com/athenarc/research-spotlight) provides a modular notebook-based process, organised into a sequence of Jupyter/Google Colab cells. This format allows the technical process to be divided into smaller, traceable steps, each corresponding to a specific operation performed on the input datasets. Each module follows a broadly similar structure: configuration of paths and dependencies, definition of the relevant functions, execution of the module on the input dataset, and, where useful, inspection or visualisation of the output.&#x20;
+[RS's github implementation](https://github.com/athenarc/research-spotlight) provides a modular notebook-based process, organised into a sequence of Jupyter/Google Colab cells. This format allows the technical process to be divided into smaller, traceable steps, each corresponding to a specific operation performed on the input datasets. Each module follows a broadly similar structure: configuration of paths and dependencies, definition of the relevant functions, execution of the module on the input dataset, and, where useful, inspection or visualisation of the output.&#x20;
+
+More specifically, based pn our use case example, the RS notebook is organized into **five main modules**:
+
+1. **Text Extraction**\
+   Extract text from PDF files.
+2. **Entity Extraction**\
+   Extract textual spans that represent a specific type of entity. In this workflow implementation we extract three types of entities: reserarch METHOD, research ACTIVITY and research GOAL as defined in Scholarly Ontology.
+3. **Entity Disambiguation**\
+   Resolve ambiguities among entities with similar or identical surface forms. In this workflow implementation we dissambiguate the extracted METHOD names by employing the [**GENRE**](https://github.com/facebookresearch/GENRE) system ([De Cao et. al, 2021](https://arxiv.org/abs/2010.00904)) for Wikipedia-based disambiguation.
+4. **Entity Linking**\
+   Link extracted entities. In this workflow implementation we link METHOD entities to canonical identifiers in Wikipedia, Wikidata and authors' metadata using the [ORCID](https://orcid.org/) API.
+5. **Relation Extraction**\
+   Detect and classify semantic relationships between entities. In this workflow implementation, we create the `employs(Activity,Method)` and the `hasObjective(Activity,Goal)` relationship.
+6. **RDF Generation**\
+   Generate RDF triples based on linked data standards for the Semantic Web.
+
+For demonstration purposes&#x20;
 
 <Callout kind="none" title="Research Spotlight and the 2nd ATRIUM Mutual Learning Exercise">
   On June 9 2026, Research Spotlight was presented in the [second Mutual Learning Exercise (MLE)](https://atrium-research.eu/news/atrium-second-mutual-learning-exercise/) a workshop format designed to promote mutual learning and the exchange of experiences among participants within the scope of the ATRIUM project.
