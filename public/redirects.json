@@ -1326,6 +1326,11 @@
 			"permanent": true
 		},
 		{
+			"source": "/resources/external/citizen-science-in-the-digital-arts-and-humanities",
+			"destination": "/resources/hosted/citizen-science-in-the-digital-arts-and-humanities",
+			"permanent": true
+		},
+		{
 			"source": "/sources/acdh-ch",
 			"destination": "/sources/acdh",
 			"permanent": false
