@@ -1,3 +1,4 @@
+import { isNonEmptyString } from "@acdh-oeaw/lib";
 import { useFormatter, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -117,7 +118,7 @@ export function ResourceMetadata(props: Readonly<ResourceMetadataProps>): ReactN
 					<dt>{t("version")}:</dt>
 					<dd>{version}</dd>
 				</div>
-				{doi != null ? (
+				{isNonEmptyString(doi) ? (
 					<div className="flex gap-x-1.5">
 						<dt>{t("pid")}:</dt>
 						<dd>
