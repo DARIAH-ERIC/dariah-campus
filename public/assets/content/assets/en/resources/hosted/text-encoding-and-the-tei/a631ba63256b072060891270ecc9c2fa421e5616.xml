@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI version="5.0" xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title><!-- title of the electronic text --></title>
+                <author><!-- author's name --></author>
+                <principal><!-- principal researcher responsible for the TEI document, add your own name --></principal>
+            </titleStmt>
+            <publicationStmt>
+                <distributor><!-- name of the repository responsible for the distribution of the TEI document --></distributor>
+                <availability>
+                    <p><!-- copyright statement --></p>
+                </availability>
+                <date><!-- date of the publication of the TEI document --></date>
+            </publicationStmt>
+            <sourceDesc>
+                <bibl>
+                    <author><!-- author of the book --></author>,
+                    <title level="m"><!-- title of the book  --></title>,
+                    <publisher><!-- publisher of the book --></publisher>
+                    <pubPlace><!-- place of publication --></pubPlace>,
+                    <date><!-- date of publication --></date>. </bibl>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div><!-- This is not the teiHeader anymore. Here the electronic text of The Hobbit could be added --></div>
+        </body>
+    </text>
+</TEI>
