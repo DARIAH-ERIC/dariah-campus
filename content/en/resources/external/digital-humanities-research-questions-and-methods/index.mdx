@@ -28,8 +28,10 @@ tags:
   - e-heritage
 sources:
   - parthenos
+featured-image: >-
+  /assets/content/assets/en/resources/external/digital-humanities-research-questions-and-methods/featured-image.jpg
 license: cc-by-4.0
-table-of-contents: false
+table-of-contents: true
 summary:
   content: >-
     This module is dedicated to developing research questions in the Digital
@@ -54,12 +56,16 @@ This module is dedicated to developing research questions in the Digital Humanit
 The target audiences of this module are Digital Humanities and Cultural Heritage (CH) researchers and practitioners who wish to learn how to best benefit from and work with digital collections using digital RIs. The module is also suitable for computer scientists and researchers/practitioners in data centres who want to gain insight into more humanities & cultural heritage related aspects of digital research infrastructures.
 
 <Callout kind="note">
-  **Credits and Acknowledgements:** The concept of this module, the introduction and the submodules “Collections of Parliamentary Records” and “Collections of Computer-Mediated Communication” were developed by Darja Fišer (University of Ljubljana and Jožef Stefan Institute) and Jakob Lenardič (University of Ljubljana) in close cooperation with the PARTHENOS Training team. Submodules and Case studies contributed by PARTHENOS Partners are indicated where applicable.
+  **Credits and Acknowledgements:** The concept of this module, and the introduction were developed by Darja Fišer (University of Ljubljana and Jožef Stefan Institute) and Jakob Lenardič (University of Ljubljana) in close cooperation with the PARTHENOS Training team.  It was edited by Marie Annisius (University of Leipzig), Vicky Garnett (Trinity College Dublin) and Ulrike Wuttke (Fachhochschule Potsdam). &#x20;
 
-  #### About the project
+  #### About the PARTHENOS Project
 
   PARTHENOS was a Horizon 2020 project funded by the European Commission. The views and opinions expressed in this publication are the sole responsibility of the author and do not necessarily reflect the views of the European Commission.
 </Callout>
+
+### Format of this Module
+
+This module is broken down into specific research areas with case studies to illustrate the methods and tools used within those research areas. The sections were written by different authors, and the full credits for each section can be found at the end of that section.
 
 ## Learning Outcomes
 
@@ -87,9 +93,9 @@ The parliament is the most important political institution in a democratic socie
 
 Recently, through Freedom of Information Acts, a growing number of countries have started providing free and transparent access to parliamentary proceedings, often in common formats such as PDF and HTML. This enables informed participation by the public, improves effective functioning of democratic systems and also makes the datasets more readily available for researchers with heterogeneous backgrounds to look into the characteristics of parliamentary institutions, detect policy changes, conduct diachronic and transnational comparative analyses, etc. Among the latest hot research topics are issues such as the societal paradigm shifts that lead to political polarisations and the emergence of popular and populist movements.
 
-For more details on this, see [Working with parliamentary corpora](working-with-parliamentary-corpora/index.html).
+For more details on this, see <Link link={{"discriminant":"external"}}>***Working with parliamentary corpora***</Link>***&#x20;(LINK TO HEADING)***.
 
-### The Importance of Parliamentary Debates for Cross-Disciplinary Research
+#### The Importance of Parliamentary Debates for Cross-Disciplinary Research
 
 Parliamentary discourse is governed by strict rules and conventions and is therefore characterized by specific institutional discursive features. Furthermore, parliamentary speeches are motivated by a wide range of communicative goals, such as position-claiming, persuasion, negotiation, agenda-setting and opinion-building, which follow a specific ideology or party line. As such, parliamentary discourse is heavily characterized by role-based commitments and confrontation and the constant awareness of a multi-layered audience.
 
@@ -97,42 +103,43 @@ Due to their unique content, structure and language, records of parliamentary se
 
 With an increasingly decisive role of parliaments and their rapidly changing institutional relations with the public, the mass media, the executive branch and international organizations, further empirical research and development of integrative analytical tools is needed in order to achieve a better understanding of the commonalities and specificities of parliamentary discourse as well as its wider societal impact, in particular with studies that represent diverse parts of society (women, minorities, marginalized groups) and cross-cultural studies.
 
-For more details on this, see [Boosting Digital Humanities research with parliamentary data](boosting-digital-humanities-research-with-parliamentary-data/index.html).
+For more details on this, see <Link link={{"discriminant":"external"}}>***Boosting Digital Humanities research with parliamentary data&#x20;***</Link>***(ADD LINK TO HEADING).***
 
-### Parliamentary Proceedings and Research Infrastructures
+#### Parliamentary Proceedings and Research Infrastructures
 
 The good availability of parliamentary proceedings in digitized form and granted access rights to public information in the EU countries have motivated a number of national as well as international initiatives to compile, process and analyse parliamentary corpora. They are available for most countries within the CLARIN ERIC research infrastructure for language resources and technology, with the UK’s Hansard Corpus being the largest (1.6 billion tokens) and spanning the longest time period (1803-2005) while corpora from other countries are significantly smaller (most comprise between 10 and 100 million tokens) and cover shorter periods (mostly from the 1970s onwards). Most of these corpora can be directly downloaded from the national CLARIN repositories or queried through online search environments. They are also richly annotated and available under open licences.
 
-For more details on this, see [Parliamentary corpora in CLARIN Resource Families](parliamentary-corpora-in-clarin-resource-families/index.html).
-
-#### [Further Learning (click to expand)](#1547722765459-cd21269e-3130)
-
-* Cornelia Ilie (ed.) 2010. European Parliaments under Scrutiny. Discourse Strategies and Interaction Practices. John Benjamins Publishing Company. Link to publisher’s website: [https://benjamins.com/catalog/dapsac.38](https://benjamins.com/catalog/dapsac.38)
-* Pasi Ihalainen, Cornelia Ilie, and Kari Palonen (eds.) 2016. Parliaments and Parliamentarism. A comparative History of a European Concept. Berghan Books. Link to publisher’s website: [https://www.berghahnbooks.com/title/IhalainenParliament](https://www.berghahnbooks.com/title/IhalainenParliament)
+For more details on this, see <Link link={{"discriminant":"external"}}>***Parliamentary corpora in CLARIN Resource Families.***</Link>***&#x20;(LINK TO HEADING)***
 
 ### Working with Parliamentary Corpora
 
-### Parliamentary proceedings as a research dataset
+#### Parliamentary proceedings as a research dataset
 
 Parliamentary proceedings have some important characteristics that researchers need to take into account throughout their work. Their most distinguishing characteristic is that they are essentially transcriptions of spoken language produced in highly controlled and regulated settings. They are also rich in invaluable (sociodemographic) metadata. To enable data-driven science, parliamentary data must be easily findable and accessible, encoded according to international standards and recommendation, with rich and correct annotations and metadata.
 
-### Encoding of parliamentary data
+#### Encoding of parliamentary data
 
 For the encoding of parliamentary data, the format, quality and structure of the source files are essential.
 
-#### Source files
+##### Source files
 
 Most frequently, transcriptions of parliamentary proceedings are made available in HTML or PDF formats. These formats are appropriate for reading by humans but are not appropriate for direct processing by computers. For this purpose, a much better, i.e. more explicit format, is XML. Therefore documents stored in HTML and PDF need to be converted to XML, a process which can range from trivial to highly complex.
 
 Traditionally, only transcriptions of parliamentary sessions have been made available but they are now being increasingly released in audio and video as well.
 
-|                                                                                                                                                                   |                                                                                                                                                          |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Proceedings of the Austrian parliament in PDF.](../../../../wp-content/uploads/2018/10/Figure1_neu.png) Figure 1. Proceedings of the Austrian parliament in PDF. | [Proceedings of the Danish parliament in HTML.](../../../../wp-content/uploads/2018/10/Fig2.png) Figure 2. Proceedings of the Danish parliament in HTML. |
+<Figure src="/assets/content/assets/en/resources/external/digital-humanities-research-questions-and-methods/dhrq-1-figure1-neu.png" alt="Scanned image of Stenography Protocols in German language" alignment="stretch">
+  Figure 1. Proceedings of the Austrian parliament in PDF.
+</Figure>
 
-|                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Proceedings of the German parliament in XML.](../../../../wp-content/uploads/2018/10/Fig3.jpg) Figure 3. Proceedings of the German parliament in XML. |
+<Figure src="/assets/content/assets/en/resources/external/digital-humanities-research-questions-and-methods/dhrq-2-fig2.png" alt="Scan of a document in Danish language." alignment="stretch">
+  Figure 2. Proceedings of the Danish parliament in HTML.
+</Figure>
+
+<Figure src="/assets/content/assets/en/resources/external/digital-humanities-research-questions-and-methods/dhrq-3-figure3-neu.png" alt="Document in XML format." alignment="stretch">
+  Figure 3. Proceedings of the German parliament in XML.
+</Figure>
+
+
 
 !\[Informally presented structure of Slovenian parliamentary proceedings (with minimal and maximal occurrences of structural elements).]\(../../../../wp-content/uploads/2018/10/Fig4-300x254.png)
 
@@ -323,6 +330,11 @@ Figure 19. Metadata for one of the concordance lines in the corpus.
 
 Figure 14 is taken from Clarin.eu: [Parliamentary corpora](https://www.clarin.eu/resource-families/parliamentary-corpora).\
 Figures 15-19 are screenshots from the [Hansard corpus in the CoCa concordancer](https://www.hansard-corpus.org/x.asp).
+
+#### [Further Learning (click to expand)](#1547722765459-cd21269e-3130)
+
+* Cornelia Ilie (ed.) 2010. European Parliaments under Scrutiny. Discourse Strategies and Interaction Practices. John Benjamins Publishing Company. Link to publisher’s website: [https://benjamins.com/catalog/dapsac.38](https://benjamins.com/catalog/dapsac.38)
+* Pasi Ihalainen, Cornelia Ilie, and Kari Palonen (eds.) 2016. Parliaments and Parliamentarism. A comparative History of a European Concept. Berghan Books. Link to publisher’s website: [https://www.berghahnbooks.com/title/IhalainenParliament](https://www.berghahnbooks.com/title/IhalainenParliament)
 
 #### [Further Learning (click to expand)](#1547722765459-cd21269e-3130)
 
@@ -711,10 +723,8 @@ The information produced by OCR processing is then stored under two standards:
 * Library of Congress: [https://www.loc.gov/standards/alto/v4/alto.xsd](https://www.loc.gov/standards/alto/v4/alto.xsd)
 * Optical Character Recognition (OCR) – by Computerphile, with Professor Steve Simske (Honorary Professor at the University of Nottingham as well as Director & Chief Technologist at HP Labs’ Security Printing Solutions): [https://www.youtube.com/watch?v=ZNrteLp\_SvY](https://www.youtube.com/watch?v=ZNrteLp_SvY)
 * In The Field: National Digital Newspaper Program: in the video produced by the NEH, you can follow the stages in the digitisation process, which require many stakeholders and manipulations of the original source before it can be read and analysed: Link to the NEH video: [https://www.youtube.com/watch?v=LclIm9s7Iho\&t=18s](https://www.youtube.com/watch?v=LclIm9s7Iho\&t=18s)
-* Digitisation tools at Europeana: http\://www\.europeana-newspapers.eu/public-materials/tools/ METS/ALTO explained by Veridian: [https://veridiansoftware.com/knowledge-base/metsalto/](https://veridiansoftware.com/knowledge-base/metsalto/)
+* Digitisation tools at Europeana: [http://www.europeana-newspapers.eu/public-materials/tools/](http://www.europeana-newspapers.eu/public-materials/tools/) METS/ALTO explained by Veridian: [https://veridiansoftware.com/knowledge-base/metsalto/](https://veridiansoftware.com/knowledge-base/metsalto/)
 * Output of newspapers digitisation by ProQuest: Cornell, Jennifer. ‘LibGuides: ProQuest Historical Newspapers’.//proquest.libguides.com/hnp/searchinghnp.
-
-
 
 ### Digital source criticism applied to newspapers
 
@@ -805,13 +815,9 @@ An example of a damaged scanned page can be seen on the ANNO interface: [http://
 
 * Ranke2 – Critical analysis of digital resources:  [https://ranke2.uni.lu/u/archival-digital-turn/](https://ranke2.uni.lu/u/archival-digital-turn/)
 
-
-
 ### How to access the digitised newspapers?
 
 Collections of digitised newspapers are part of a more general trend of providing online access to historical sources: there are increasing numbers of digitised cultural heritage collections, digital libraries and web archives. We have seen so far how the digitisation of newspapers functions in a general way; we will now explore how to access currently available collections in practice. The materiality of digitised newspapers is defined not only by the process of digitisation but also by the interfaces produced by the holders of digitised collections to provide access to these collections. Another crucial element over which holders generally have little influence (especially in the case of national libraries) is copyright, which can restrict access to digitised newspapers.
-
-
 
 At the end of the digitisation and post-digitisation process, we find ourselves with several types of data, potentially stored in various databases, in different formats and in large quantities. Digitisation and processing create many entry points into newspaper collections: we can potentially search with keywords, filter by time period or language, search for given topics and identify people. But not all interfaces offer all these options. The interface is part of the general workflow of the researcher: queries are formulated based on previous research, and generally the researcher needs to take the results of the queries out of the interface to analyse them.
 
@@ -900,7 +906,7 @@ ANNO front page three days after the sinking of the Titanic
 
 The GIF below shows the process of selecting newspapers from a given day:
 
-Gif: https\://media.giphy.com/media/QwzjRgwb1Bedqe2grG/giphy.gif
+Gif: [https://media.giphy.com/media/QwzjRgwb1Bedqe2grG/giphy.gif](https://media.giphy.com/media/QwzjRgwb1Bedqe2grG/giphy.gif)
 
 [via GIPHY](https://giphy.com/gifs/newspapers-titanic-QwzjRgwb1Bedqe2grG)
 
@@ -1046,8 +1052,6 @@ To have a better understanding of what topic modelling does and what are the out
 * Upchurch, Charles. ‘Full-Text Databases and Historical Research: Cautionary Results from a Ten-Year Study’. *Journal of Social History* 46, no. 1 (1 September 2012): 89–105.[https://doi.org/10.1093/jsh/shs035](https://doi.org/10.1093/jsh/shs035).
 * Wijfjes, Huub. ‘Digital Humanities and Media History. A Challenge for Historical Newspaper Research’. *Tijdschrift Voor Mediageschiedenis* 20, no. 1 (26 June 2017): 4-24–24.[https://doi.org/10.18146/tmg20277](https://doi.org/10.18146/tmg20277).
 
-
-
 ## Digital Humanities and Heritage Science Research Infrastructures
 
 ### **Digital Humanities and Heritage Science Research Infrastructures: New Approaches to the Study of Pre-Modern Manuscripts**
@@ -1065,8 +1069,6 @@ Work in Digital Humanities has greatly expanded the means and methods for studyi
 Heritage Science is a relatively new term that was coined just over 10 years ago to encompass the established fields of Archaeological Science, Conservation Science and Technical Art History, but it has since expanded to include all sciences applied to the study of heritage. In this broader definition, the part of Digital Humanities that concerns heritage documents could also be part of Heritage Science. Drawing on the experience of a number of EU funded research infrastructures for conservation science and archaeology, [European Research Infrastructure for Heritage Science](http://www.e-rihs.eu/about/about/) (E-RIHS) is being established to support interdisciplinary research in heritage science. Specifically, the research infrastructure involves 4 platforms ARCHLAB (archives), DIGILAB (virtual facilities), FIXLAB (fixed facilities) and MOLAB (mobile facilities). There is clearly an overlap between DIGILAB and parts of Digital Humanities that concerns heritage.
 
 While the application of science to manuscript studies goes back to at least the 18th century, science has been used only occasionally and mainly for the revealing of faded or erased writings. Manuscripts are fragile and most libraries and museums today would not allow samples to be taken from manuscripts for scientific analysis which limits the range of analysis that can be conducted. In the last decade or so, technological advances have made non-invasive scientific analysis and imaging tools increasingly available for the characterisation of manuscripts. This development has meant that increasingly manuscripts can be analysed scientifically to characterise the materials and the production method in addition to revealing hidden writings. The materials and how they were used on manuscripts often allow us to distinguish between the workshops of production, different cultural or regional influences and to inform the trade and technological exchanges between different geographic locations which in turn are determined by the geopolitics at the time.
-
-
 
 ### Historical Research: Requirements and tools
 
@@ -1132,7 +1134,7 @@ The importance of the scientific analysis as well as the contribution of the Her
 
 ***Digital Edition of the Canterbury Roll***
 
-* Chris Jones, Christopher Thomson, Maree Shirota, Elisabeth Rolston, Thandi Parker, and Jennifer Middendorf, ed., “The Canterbury Roll – A Digital Edition.” Canterbury: Canterbury University Press, 2017. Open Access: http\://www\.canterbury.ac.nz/canterburyroll.
+* Chris Jones, Christopher Thomson, Maree Shirota, Elisabeth Rolston, Thandi Parker, and Jennifer Middendorf, ed., “The Canterbury Roll – A Digital Edition.” Canterbury: Canterbury University Press, 2017. Open Access: [http://www.canterbury.ac.nz/canterburyroll](http://www.canterbury.ac.nz/canterburyroll).
 * For a detailed bibliography and a project to catalogue all such scrolls, please consult the Harvard database [Medieval Scrolls](http://medievalscrolls.com/about).
 
 ***For the Canterbury Roll in its Medieval Context***
@@ -1140,14 +1142,14 @@ The importance of the scientific analysis as well as the contribution of the Her
 * Alison Allan, “Royal Propaganda and the Proclamations of Edward IV.” *Bulletin of the Institute of Historical Research* 59, (1986): 146–154.
 * Alison Allan, “Yorkist Propaganda: Pedigree, Prophecy and the ‘British History’ in the Reign of Edward IV.” In *Patronage, Pedigree and Power in Later Medieval England*, edited by Charles D. Ross, 171–192. Gloucester: A. Sutton, 1979.
 * Chris Jones, “The Canterbury Roll.” In *Treasures of the University of Canterbury Library*, edited by Chris Jones and Bronwyn Matthews with Jennifer Clement, 85–90. Christchurch: Canterbury University Press, 2011.
-* Thandiwe Parker, “A Woman’s Role: How Scribes Depicted Women On The Fifteenth-Century Canterbury Roll.” *Comitatus* 48, (2017): 95–115, https\://doi.org/10.1353/cjm.2017.0004
+* Thandiwe Parker, “A Woman’s Role: How Scribes Depicted Women On The Fifteenth-Century Canterbury Roll.” *Comitatus* 48, (2017): 95–115, [https://doi.org/10.1353/cjm.2017.0004](https://doi.org/10.1353/cjm.2017.0004)
 * Maree Shirota, “Royal Depositions and the ‘Canterbury Roll’.” *Parergon* 32, no. 2 (2015): 39–61,
 
 ***For Digitization of Pre-Modern Manuscripts***
 
 * For TEI: [The Text Encoding Initiative](http://www.tei-c.org/)
 * Jasmine Elizabeth Burns, “Digital Facsimiles and the Modern Viewer: Medieval Manuscripts and Archival Practice in the Age of New Media.” *Art Documentation: Bulletin of the Art Libraries Society of North America* 33, no. 4 (2014): 148–167.
-* Arianna Ciula and Tamara Lopez, “Reflecting on a Dual Publication: Henry III Fine Rolls Print and Web.” *Literary and Linguistic Computing* 24, no. 2 (2009): 129–141, https\://doi.org/10.1093/llc/fqp007
+* Arianna Ciula and Tamara Lopez, “Reflecting on a Dual Publication: Henry III Fine Rolls Print and Web.” *Literary and Linguistic Computing* 24, no. 2 (2009): 129–141, [https://doi.org/10.1093/llc/fqp007](https://doi.org/10.1093/llc/fqp007)
 * Jock Phillips, “A Click to the Past: Digital History in New Zealand.” *New Zealand Journal of History* 47, no. 2 (2013): 232–248.
 
 ***For Heritage Science & Pre-Modern Manuscripts***
@@ -1197,14 +1199,3 @@ If you would like to cite this section, we suggest the following citation:
 “Collections of Computer-Mediated Communication”, Annisius, Marie (Ed.), Baldszuhn, Nadja (Ed.), Fišer, Darja (Auth.), Lenardič, Jakob (Auth.), Wuttke, Ulrike (Ed.) as part of “Digital Humanities Research Questions and Methods”, Annisius, Marie (Ed.); Baldszuhn, Nadja (Ed.); Fišer, Darja (Auth.); Lenardič, Jakob (Auth.); Wuttke, Ulrike (Ed.) for PARTHENOS. Retrieved \< DATE >, from \< LINK >
 
 **Please note: Authors are listed in alphabetical order, and listing does not reflect level of contribution.**
-
-
-
-
-
-
-
-
-
-
-
