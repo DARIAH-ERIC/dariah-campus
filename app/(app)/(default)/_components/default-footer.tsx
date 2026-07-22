@@ -129,7 +129,7 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 								<a
 									aria-label={t(`navigation-social-media.items.${kind}`)}
 									className="inline-block rounded-sm p-2 transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
-									href={href}
+									href={kind === "email" ? `mailto:${href}` : href}
 								>
 									<Icon className="size-4" />
 								</a>
