@@ -374,41 +374,71 @@ Social media corpora have some important characteristics that researchers need t
 
 When dealing with social media data, especially if they are non-public, data acquisition and dissemination is quite complex. Due to legal concerns, ethical issues and technical demands related to data retrieval and the linking of mixed resources (e.g. linking the content of the posts with the sociodemographic metadata), researchers are increasingly choosing between two options. For smaller collections, they first seek explicit user consent and then share the entire collection, which includes the data, metadata and annotations. This approach has been followed in the [DiDi project](https://dh.fbk.eu/events/didi-project-collecting-and-analyzing-german-data-computer-mediated-communication) and the [What’s up Switzerland project](https://www.whatsup-switzerland.ch/index.php/en/). In the case of larger collections, for which obtaining user consent from every individual is not feasible, only post IDs are shared, based on which other researchers can obtain the texts and their metadata on their own, provided that the content has not been removed. While this model brings a lot of benefits in terms of controlled and comprehensive data collection on a large scale, it also makes it harder to share the textual annotations along with the text (e.g. lemmas and standardized forms of non-standardly spelled words, as they give a close approximation of the original text). The [JANES project](http://nl.ijs.si/janes/english/), which has followed the latter approach, provides a specialized encoder program that keeps only the annotation differences against the original text, and a decoder that, upon retrieving the original text given its ID, reconstitutes the annotations.
 
-#### Encoding of social media data
+#### Encoding of Social Media Data
 
 **Source files:** Social media content obtained through APIs offered by content providers typically come in a light-weight [JSON format](https://gist.github.com/hrp/900964), which is readable by humans and easy to process by computers. Collaborative content, such as Wikipedia, is available in XML dumps for which parsers already exist. User-generated content harvested from websites in HTML, on the other hand, requires dedicated text and metadata extraction scripts.
 
----
+<Grid layout="two-columns" alignment="stretch">
+  <GridItem alignment="stretch">
+    <Figure src="/assets/content/assets/en/resources/external/digital-humanities-research-questions-and-methods/dhrg-20-cmc-figure-1a.png" alt="A tweet" alignment="stretch">
+      Figure 20a. Original tweet&#x20;
+    </Figure>
 
-!\[Figure 1. Original tweet.]\(../../../../wp-content/uploads/2018/11/Figure-1a-300x294.png "Figure 1. Original tweet.")
 
-Figure 1. Original tweet (Click for larger image)
+  </GridItem>
 
-!\[Figure 2. Tweet in JSON format as obtained from the Twitter streaming API (Click for larger image).]\(../../../../wp-content/uploads/2018/11/Figure-2c-300x300.png "Figure 2. Tweet in JSON format as obtained from the Twitter streaming API.")
+  <GridItem alignment="stretch">
+    <Figure src="/assets/content/assets/en/resources/external/digital-humanities-research-questions-and-methods/dhrq-21-cmc-figure-2c.png" alt="The tweet in JSON format." alignment="stretch">
+      Figure 20b. Tweet in JSON format as obtained from the Twitter streaming API&#x20;
+    </Figure>
 
-Figure 2. Tweet in JSON format as obtained from the Twitter streaming API (Click for larger image).
 
-!\[Figure 3. Original Wikipedia Talk Page.]\(../../../../wp-content/uploads/2019/02/Working-with-social-media-corpora\_3-300x300.jpg "Working with social media corpora\_3")
+  </GridItem>
+</Grid>
 
-Figure 3. Original Wikipedia Talk Page.
 
-!\[Figure 4. Example of an original Wikipedia Talk Page and the same page in XML.]\(../../../../wp-content/uploads/2018/11/Figure-2b-300x300.png "Figure 4. Example of an original Wikipedia Talk Page and the same page in XML.")
 
-Figure 4. Example of an original Wikipedia Talk Page and the same page in XML.
+<Grid layout="two-columns" alignment="stretch">
+  <GridItem alignment="stretch">
 
-!\[Figure 5. Original blog post.]\(../../../../wp-content/uploads/2018/11/Figure-3a-300x300.png "Figure 5. Original blog post.")
+  </GridItem>
 
-Figure 5. Original blog post (Click for larger image).
+  <GridItem alignment="stretch">
 
-!\[Figure 6. Blog post in html.]\(../../../../wp-content/uploads/2018/11/Figure-3b-300x300.png "Figure 6. Blog post in html.")
+  </GridItem>
+</Grid>
 
-Figure 6. Blog post in html (Click for larger image).
 
-#### Encoding standards:
+
+<Figure src="/assets/content/assets/en/resources/external/digital-humanities-research-questions-and-methods/dhrq-22-working-with-social-media-corpora-3-1024x318.jpg" alt="A wikipedia entry in Slovenian." alignment="stretch">
+  Figure 21a. Original Wikipedia Talk Page.
+</Figure>
+
+
+
+<Figure src="/assets/content/assets/en/resources/external/digital-humanities-research-questions-and-methods/dhrq-23-figure-2b.png" alt="The same wikipedia page from fig. 22 in XML format." alignment="stretch">
+  Figure 21b. Example of an original Wikipedia Talk Page and the same page in XML.
+</Figure>
+
+<Figure src="/assets/content/assets/en/resources/external/digital-humanities-research-questions-and-methods/dhrq-24-figure-3a-1024x799.png" alt="Screengrab of a blog post." alignment="stretch">
+  Figure 22a. Original blog post
+</Figure>
+
+
+
+<Figure src="/assets/content/assets/en/resources/external/digital-humanities-research-questions-and-methods/dhrq-22b-figure-3b-1024x186.png" alt="HTML of text from blog post in Fig 22a." alignment="stretch">
+  Figure 22b. Blog post in html&#x20;
+</Figure>
+
+#### Encoding Standards
 
 No encoding standard has been widely accepted for social media corpora. But there is a special interest group (SIG) on [Computer-Mediated Communication in the Text Encoding Initiative](http://www.tei-c.org/activities/sig/cmc/) (TEI), which is working on extending the TEI framework with additions dedicated to the representation of the structural and linguistic peculiarities of CMC genres. The latest version ([Beißwenger et al. 2016](http://www.ep.liu.se/ecp/136/001/ecp17136001.pdf)) of the [proposed schema](https://wiki.tei-c.org/index.php/SIG:CMC/CLARIN-D_schema_draft_for_representing_CMC_in_TEI_\(2015\)) extends the TEI-P5 guidelines to reflect the following specific properties of the social media genre: new elements (e.g. for a written contribution to a discussion thread), new attributes (e.g. @auto for automatically generated messages) and adaptations of content models (e.g. may occur without the rigid positional constraints as is typical for more traditional texts). Many social media corpora are therefore still encoded in bespoke formats.
 
-!\["Figure7.]\(../../../../wp-content/uploads/2018/11/Figure7.png)
+<Figure src="/assets/content/assets/en/resources/external/digital-humanities-research-questions-and-methods/dhrq-23-figure7.png" alignment="stretch">
+  Figure 22. Two different coding languages for the same social media post.
+</Figure>
+
+
 
 #### Metadata
 
@@ -586,19 +616,11 @@ In addition to regular parts of speech, the Janes Tweet corpus has special tags 
 
 Figure 25. A metadata analysis reveals that emoticons and emojis are predominantly used by private and female users. They are characteristic to accompany non-standard language use and messages with a positive or neutral sentiment. They are also very systematically more frequently used in shorter tweets (by examining the positive filter p it turns out that the 6 occurrences in tweets comprising 39 words and the 2 occurrences in tweets of 46 words are actually encoding errors).
 
-
-
 #### [Further Learning (click to expand)](#1547722765459-cd21269e-3130)
 
 * Alexandra Georgakopoulou, Tereza Spilioti, 2015: The Routledge Handbook of Language and Digital Communication. London: Routledge.
 * Katrin Weller, Axel Bruns, Jean Burgess, Merja Mahrt and Cornelius Puschmann, 2014: Twitter and society (Vol. 89). Peter Lang.
 * Crystal, David, 2011: Internet Linguistics: A Student Guide. New York: Routledge.
-
-
-
-
-
-
 
 #### [Further Reading (click to expand)](#1548695822511-28c12da6-1898)
 
