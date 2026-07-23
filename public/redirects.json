@@ -1326,6 +1326,11 @@
 			"permanent": true
 		},
 		{
+			"source": "/resources/external/manage-improve-and-open-up-your-research-data",
+			"destination": "/resources/hosted/manage-improve-and-open-up-your-research-data",
+			"permanent": true
+		},
+		{
 			"source": "/sources/acdh-ch",
 			"destination": "/sources/acdh",
 			"permanent": false
