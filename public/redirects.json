@@ -1326,6 +1326,11 @@
 			"permanent": true
 		},
 		{
+			"source": "/resources/external/digital-humanities-research-questions-and-methods",
+			"destination": "/resources/hosted/digital-humanities-research-questions-and-methods",
+			"permanent": true
+		},
+		{
 			"source": "/sources/acdh-ch",
 			"destination": "/sources/acdh",
 			"permanent": false
