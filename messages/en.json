@@ -149,6 +149,9 @@
 		"table-of-contents": "Table of contents",
 		"toggle-table-of-contents": "Toggle table of contents"
 	},
+	"Domain": {
+		"label": "Domain"
+	},
 	"ErrorPage": {
 		"meta": {
 			"title": "Error"
@@ -224,6 +227,12 @@
 		"search": "Search",
 		"submit-search-form": "Submit"
 	},
+	"Language": {
+		"label": "Language"
+	},
+	"License": {
+		"label": "License"
+	},
 	"Loading": {
 		"loading": "Loading"
 	},
@@ -254,6 +263,9 @@
 			"title": "Pathfinders"
 		},
 		"title": "Pathfinders"
+	},
+	"PublicationDate": {
+		"label": "Published to DARIAH-Campus"
 	},
 	"PreviewCard": {
 		"authors": "Authors",
@@ -354,6 +366,9 @@
 	},
 	"SocialMediaShareLinks": {
 		"share-link": "Share link on {platform}"
+	},
+	"Sources": {
+		"label": "Sources"
 	},
 	"SourcePage": {
 		"authors": "Authors",
