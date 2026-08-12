@@ -1,5 +1,17 @@
 {
 	"content": {
+		"DragTheWords": {
+			"blank-label-empty": "Blank {index}. Select a word.",
+			"blank-label-filled": "Blank {index}. Currently {word}.",
+			"choose-answer-label": "Choose answer {index}",
+			"remove-word": "Remove word",
+			"check": "Check",
+			"hint-label": "Show hint",
+			"reset": "Reset",
+			"score": "{correct} / {total} correct",
+			"show-solution": "Show solution",
+			"word-bank-label": "Answers"
+		},
 		"FillInTheBlank": {
 			"blank-label": "Blank {index}",
 			"check": "Check",

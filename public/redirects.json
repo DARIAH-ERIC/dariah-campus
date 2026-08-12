@@ -1326,8 +1326,8 @@
 			"permanent": true
 		},
 		{
-			"source": "/resources/external/manage-improve-and-open-up-your-research-data",
-			"destination": "/resources/hosted/manage-improve-and-open-up-your-research-data",
+			"source": "/resources/external/citizen-science-in-the-digital-arts-and-humanities",
+			"destination": "/resources/hosted/citizen-science-in-the-digital-arts-and-humanities",
 			"permanent": true
 		},
 		{

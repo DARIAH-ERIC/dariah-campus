@@ -10,6 +10,7 @@ import { collection, fields } from "@keystatic/core";
 import { createCallout } from "@/lib/content/keystatic/components/callout";
 import { createDiagram } from "@/lib/content/keystatic/components/diagram";
 import { createDisclosure } from "@/lib/content/keystatic/components/disclosure";
+import { createDragTheWords } from "@/lib/content/keystatic/components/drag-the-words";
 import { createEmbed } from "@/lib/content/keystatic/components/embed";
 import { createFigure } from "@/lib/content/keystatic/components/figure";
 import { createFillInTheBlank } from "@/lib/content/keystatic/components/fill-in-the-blank";
@@ -131,6 +132,7 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 					...createCallout(paths, locale),
 					...createDiagram(paths, locale),
 					...createDisclosure(paths, locale),
+					...createDragTheWords(paths, locale),
 					...createEmbed(paths, locale),
 					...createFigure(paths, locale),
 					...createFootnote(paths, locale),
