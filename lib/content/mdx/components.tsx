@@ -1,6 +1,7 @@
 import { Callout } from "@/components/content/callout";
 import { Diagram, DiagramCaption, DiagramCodeBlock } from "@/components/content/diagram";
 import { Disclosure } from "@/components/content/disclosure";
+import { DragTheWords, Drop } from "@/components/content/drag-the-words";
 import { Embed } from "@/components/content/embed";
 import { ExternalResource } from "@/components/content/external-resource";
 import { Figure } from "@/components/content/figure";
@@ -28,6 +29,8 @@ export const components = {
 	DiagramCaption,
 	DiagramCodeBlock,
 	Disclosure,
+	DragTheWords,
+	Drop,
 	Embed,
 	ExternalResource,
 	Figure,

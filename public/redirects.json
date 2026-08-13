@@ -1329,6 +1329,11 @@
 			"source": "/resources/external/digital-humanities-research-questions-and-methods",
 			"destination": "/resources/hosted/digital-humanities-research-questions-and-methods",
 			"permanent": true
+    },
+    {
+			"source": "/resources/external/citizen-science-in-the-digital-arts-and-humanities",
+			"destination": "/resources/hosted/citizen-science-in-the-digital-arts-and-humanities",
+			"permanent": true
 		},
 		{
 			"source": "/sources/acdh-ch",
