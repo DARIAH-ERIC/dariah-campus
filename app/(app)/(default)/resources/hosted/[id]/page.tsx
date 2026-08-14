@@ -158,9 +158,9 @@ export default async function HostedResourcePage(
 
 	return (
 		<div>
-			<div className="mx-auto grid w-full max-w-screen-lg gap-y-10 px-4 py-8 xs:px-8 xs:py-16 2xl:max-w-none 2xl:grid-cols-(--content-layout) 2xl:gap-x-10 2xl:gap-y-0">
+			<div className="mx-auto grid w-full max-w-screen-lg gap-y-10 px-4 py-8 xs:px-8 xs:py-16 xl:max-w-none xl:grid-cols-(--content-layout) xl:gap-x-8 xl:gap-y-0">
 				<aside
-					className="sticky top-24 hidden max-h-screen w-full max-w-xs gap-y-8 justify-self-end overflow-y-auto p-8 text-sm text-neutral-500 2xl:flex 2xl:flex-col"
+					className="sticky top-24 hidden max-h-screen w-full max-w-xs gap-y-8 justify-self-end overflow-y-auto p-6 text-sm text-neutral-500 xl:flex xl:flex-col 2xl:p-8"
 					style={{ maxHeight: "calc(100dvh - 12px - var(--page-header-height))" }}
 				>
 					<PeopleList
@@ -292,7 +292,7 @@ export default async function HostedResourcePage(
 							<Content />
 						</div>
 					</Resource>
-					<div className="mx-auto mt-12 flex w-full max-w-(--size-content) flex-col gap-y-12 border-t border-neutral-200 pt-12 text-sm text-neutral-500 2xl:hidden">
+					<div className="mx-auto mt-12 flex w-full max-w-(--size-content) flex-col gap-y-12 border-t border-neutral-200 pt-12 text-sm text-neutral-500 xl:hidden">
 						<Citation
 							authors={await Promise.all(
 								authors.map(async (id) => {
@@ -391,7 +391,7 @@ export default async function HostedResourcePage(
 				tableOfContents.length > 0 ? (
 					<Fragment>
 						<aside
-							className="sticky top-24 hidden max-h-screen w-full max-w-xs overflow-y-auto p-8 text-sm text-neutral-500 2xl:flex 2xl:flex-col"
+							className="sticky top-24 hidden max-h-screen w-full max-w-xs overflow-y-auto p-6 text-sm text-neutral-500 xl:flex xl:flex-col 2xl:p-8"
 							style={{
 								maxHeight: "calc(100dvh - 12px - var(--page-header-height))",
 							}}
@@ -410,7 +410,7 @@ export default async function HostedResourcePage(
 								}
 							/>
 						</aside>
-						<aside className="2xl:hidden">
+						<aside className="xl:hidden">
 							<FloatingTableOfContents
 								closeLabel={t("close")}
 								label={t("table-of-contents")}
