@@ -80,7 +80,7 @@ export function ResourceMetadata(props: Readonly<ResourceMetadataProps>): ReactN
 					<div className="flex gap-x-1.5">
 						<dt>{t("remote-url")}:</dt>
 						<dd>
-							<a className="underline hover:no-underline" href={remoteUrl}>
+							<a className="wrap-anywhere underline hover:no-underline" href={remoteUrl}>
 								{remoteUrl}
 							</a>
 						</dd>
@@ -122,7 +122,7 @@ export function ResourceMetadata(props: Readonly<ResourceMetadataProps>): ReactN
 					<div className="flex gap-x-1.5">
 						<dt>{t("pid")}:</dt>
 						<dd>
-							<a className="underline hover:no-underline" href={doi}>
+							<a className="wrap-anywhere underline hover:no-underline" href={doi}>
 								{doi}
 							</a>
 						</dd>

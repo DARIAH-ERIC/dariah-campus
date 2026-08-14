@@ -61,7 +61,7 @@ export function Citation(props: Readonly<CitationProps>): ReactNode {
 			<p>
 				{citationWithoutUrl}{" "}
 				<a
-					className="underline decoration-dotted underline-offset-2 hover:decoration-solid"
+					className="wrap-anywhere underline decoration-dotted underline-offset-2 hover:decoration-solid"
 					href={url}
 				>
 					{url}
