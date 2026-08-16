@@ -13,6 +13,7 @@ export const createDragTheWords = createComponent((_paths, _locale) => {
 			label: "Quiz - Drag the words",
 			description: "An interactive drag-the-words exercise.",
 			icon: <FormInputIcon />,
+			forSpecificLocations: true,
 			schema: {
 				caseSensitive: fields.checkbox({
 					label: "Case sensitive",
@@ -32,10 +33,10 @@ export const createDragTheWords = createComponent((_paths, _locale) => {
 						},
 					},
 				),
-				validateOnBlur: fields.checkbox({
-					label: "Validate on blur",
+				instantFeedback: fields.checkbox({
+					label: "Instant feedback",
 					description:
-						"Show correct/incorrect feedback when the user leaves a blank, without requiring the Check button.",
+						"Show correct/incorrect feedback as soon as the user places a word, without requiring the Check button.",
 					defaultValue: false,
 				}),
 			},

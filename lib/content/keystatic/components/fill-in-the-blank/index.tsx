@@ -13,6 +13,7 @@ export const createFillInTheBlank = createComponent((_paths, _locale) => {
 			label: "Quiz - Fill in the blank",
 			description: "An interactive fill-in-the-blank exercise.",
 			icon: <FormInputIcon />,
+			forSpecificLocations: true,
 			schema: {
 				caseSensitive: fields.checkbox({
 					label: "Case sensitive",

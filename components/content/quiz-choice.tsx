@@ -1,9 +1,11 @@
+"use client";
+
 import { getFormDataValues } from "@acdh-oeaw/lib";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
 import { QuizErrorMessage, QuizSuccessMessage } from "@/components/content/quiz";
-import { QuizForm, type QuizFormState } from "@/components/content/quiz-form";
+import { QuizForm } from "@/components/content/quiz-form";
 import { useQuizChildren } from "@/components/content/use-quiz-children";
 
 interface QuizChoiceProps {
@@ -25,10 +27,7 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 
 	const type = variant === "multiple" ? "checkbox" : "radio";
 
-	// eslint-disable-next-line @typescript-eslint/require-await
-	async function validate(state: QuizFormState | undefined, formData: FormData) {
-		"use server";
-
+	function validate(formData: FormData) {
 		const data = getFormDataValues(formData) as { checks: Array<"correct" | "incorrect"> } & (
 			| { variant: "multiple"; checked: Array<string> }
 			| { variant: "single"; checked: string }
@@ -44,10 +43,10 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 				return !checked.has(String(index));
 			})
 		) {
-			return { status: "correct" as const };
+			return true;
 		}
 
-		return { status: "incorrect" as const };
+		return false;
 	}
 
 	return (
