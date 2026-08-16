@@ -4,6 +4,7 @@ import { typographyConfig, withFootnotes, withGfm } from "@acdh-oeaw/mdx-lib";
 import withTypographicQuotes from "remark-smartypants";
 import type { Pluggable } from "unified";
 
+import { withDragTheWords } from "@/lib/content/mdx/with-drag-the-words";
 import { withFillInTheBlank } from "@/lib/content/mdx/with-fill-in-the-blank";
 import type { IntlLanguage } from "@/lib/i18n/locales";
 
@@ -21,4 +22,8 @@ export function createTypographicQuotesPlugin(language: IntlLanguage) {
 
 export function createFillInTheBlankPlugin() {
 	return withFillInTheBlank satisfies Pluggable;
+}
+
+export function createDragTheWordsPlugin() {
+	return withDragTheWords satisfies Pluggable;
 }
