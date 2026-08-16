@@ -15,6 +15,7 @@ import {
 	createUnwrappedMdxFlowContentPlugin,
 } from "@/lib/content/mdx/rehype-plugins";
 import {
+	createDragTheWordsPlugin,
 	createFillInTheBlankPlugin,
 	createFootnotesPlugin,
 	createGitHubMarkdownPlugin,
@@ -32,13 +33,14 @@ const compileOptions: CompileOptions = {
 		createFootnotesPlugin(),
 		createTypographicQuotesPlugin(getIntlLanguage(locale)),
 		createFillInTheBlankPlugin(),
+		createDragTheWordsPlugin(),
 	],
 	remarkRehypeOptions: createRemarkRehypeOptions(locale),
 	rehypePlugins: [
 		createCustomHeadingIdsPlugin(),
 		createHeadingIdsPlugin(),
 		createIframeTitlesPlugin(["Embed", "Video"]),
-		createImageSizesPlugin(["Figure", "VideoCard"]),
+		createImageSizesPlugin(["Figure", "QuizImageHotspots", "VideoCard"]),
 		createMermaidDiagramsPlugin(),
 		createSyntaxHighlighterPlugin(),
 		createTableOfContentsPlugin(),
