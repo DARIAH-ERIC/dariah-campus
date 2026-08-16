@@ -87,7 +87,7 @@ function SearchSection(): ReactNode {
 					<div className="group relative mx-auto flex w-full max-w-2xl overflow-hidden rounded-full bg-white bg-clip-padding text-lg shadow-xl transition focus-within:ring focus-within:ring-brand-800">
 						<input
 							className="min-w-0 flex-1 rounded-l-full border border-neutral-200 bg-none px-6 py-5 transition group-focus-within:border-brand-800 group-hover:border-brand-800 placeholder:text-neutral-400 focus:outline-none"
-							name="q" // FIXME: change when removing instantsearch
+							name="q"
 							placeholder={`${t("search")}...`}
 							type="search"
 						/>

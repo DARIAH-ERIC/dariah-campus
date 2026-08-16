@@ -2,7 +2,8 @@
 
 import type { ReactNode } from "react";
 import { Input, Label, SearchField as AriaSearchField } from "react-aria-components";
-import { useSearchBox } from "react-instantsearch-core";
+
+import { useSearch } from "@/app/(app)/(default)/search/_components/search-provider";
 
 interface SearchFieldProps {
 	label: string;
@@ -11,16 +12,10 @@ interface SearchFieldProps {
 export function SearchField(props: Readonly<SearchFieldProps>): ReactNode {
 	const { label } = props;
 
-	const searchBox = useSearchBox();
+	const { query, setQuery } = useSearch();
 
 	return (
-		<AriaSearchField
-			className="mx-auto w-full max-w-screen-lg"
-			defaultValue={searchBox.query}
-			onChange={(value) => {
-				searchBox.refine(value);
-			}}
-		>
+		<AriaSearchField className="mx-auto w-full max-w-screen-lg" onChange={setQuery} value={query}>
 			<Label className="sr-only">{label}</Label>
 			<Input
 				className="w-full rounded-full border border-neutral-200 bg-white px-10 py-5 focus:border-brand-700 focus:outline-none focus-visible:border-brand-700 focus-visible:ring focus-visible:ring-brand-700"

@@ -168,6 +168,12 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 				collection: withI18nPrefix("dariah-national-consortia", locale),
 				description: "DARIAH member countries contributing to resource (where applicable)",
 			}),
+			"dariah-working-groups": fields.multiRelationship({
+				label: "DARIAH working groups",
+				validation: { length: { min: 0 } },
+				collection: withI18nPrefix("dariah-working-groups", locale),
+				description: "DARIAH working groups contributing to resource (where applicable)",
+			}),
 			doi: readonly({
 				label: "PID (readonly)",
 				description: "Automatically assigned Handle PID.",

@@ -54,7 +54,7 @@ const createEvaluateOptions = (baseUrl: string) => {
 			createSyntaxHighlighterPlugin(),
 			createTableOfContentsPlugin(),
 			createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
-			createRemoteImageUrlsPlugin(baseUrl, ["Figure", "VideoCard"]),
+			createRemoteImageUrlsPlugin(baseUrl, ["Figure", "QuizImageHotspots", "VideoCard"]),
 		],
 	} satisfies EvaluateOptions;
 };
@@ -190,6 +190,10 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const href = `/curricula/${id}`;
 			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
+			const { default: supplementary } = await evaluate(
+				metadata["supplementary-information"],
+				evaluateOptions,
+			);
 			const featuredImage =
 				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
@@ -204,6 +208,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 					...metadata,
 					"content-type": "curriculum" as const,
 					"featured-image": featuredImage,
+					"supplementary-information": { content: supplementary },
 				},
 				related,
 				tableOfContents,

@@ -24,6 +24,6 @@ export const urlSearchParamsOptional = {
 };
 
 export const videoId = {
-	regex: /^[\w-]+$/,
+	regex: /^(?!https?:\/\/)/,
 	message: "Must only include the 'id', not the full URL.",
 };

@@ -3,7 +3,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import * as v from "valibot";
 
 import _resources from "@/public/metadata/resources.json";
-import { resourceMetadataSchema } from "@/scripts/api/generate-metadata-dump";
+import { resourceMetadataSchema } from "@/scripts/api/metadata-schemas";
 
 const searchParamsSchema = v.object({
 	limit: v.nullish(

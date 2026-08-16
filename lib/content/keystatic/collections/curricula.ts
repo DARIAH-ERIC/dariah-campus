@@ -18,6 +18,7 @@ import { createHeadingId } from "@/lib/content/keystatic/components/heading-id";
 import { createLink } from "@/lib/content/keystatic/components/link";
 import { createLinkButton } from "@/lib/content/keystatic/components/link-button";
 import { createQuiz } from "@/lib/content/keystatic/components/quiz";
+// import { createQuiz } from "@/lib/content/keystatic/components/quiz";
 import { createTabs } from "@/lib/content/keystatic/components/tabs";
 import { createVideo } from "@/lib/content/keystatic/components/video";
 import { createVideoCard } from "@/lib/content/keystatic/components/video-card";
@@ -31,7 +32,7 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 		format: { contentField: "content" },
 		slugField: "title",
 		columns: ["title"],
-		entryLayout: "content",
+		entryLayout: "form",
 		previewUrl: createPreviewUrl("/curricula/{slug}"),
 		schema: {
 			title: fields.slug({
@@ -161,6 +162,28 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 					...createVideoCard(paths, locale),
 				},
 			}),
+			"supplementary-information": fields.mdx({
+				label: "Supplementary information",
+				description: "Use this for further reading, references, or other notes.",
+				options: {
+					...createContentFieldOptions(paths),
+				},
+				components: {
+					...createCallout(paths, locale),
+					...createDisclosure(paths, locale),
+					...createEmbed(paths, locale),
+					...createFigure(paths, locale),
+					...createFootnote(paths, locale),
+					...createGrid(paths, locale),
+					...createHeadingId(paths, locale),
+					...createLink(paths, locale),
+					...createLinkButton(paths, locale),
+					// ...createQuiz(paths, locale),
+					...createTabs(paths, locale),
+					...createVideo(paths, locale),
+					// ...createVideoCard(paths, locale),
+				},
+			}),
 			translations: fields.multiRelationship({
 				label: "Translations",
 				validation: { length: { min: 0 } },
@@ -176,6 +199,12 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 				validation: { length: { min: 0 } },
 				collection: withI18nPrefix("dariah-national-consortia", locale),
 				description: "DARIAH member countries contributing to resource (where applicable)",
+			}),
+			"dariah-working-groups": fields.multiRelationship({
+				label: "DARIAH working groups",
+				validation: { length: { min: 0 } },
+				collection: withI18nPrefix("dariah-working-groups", locale),
+				description: "DARIAH working groups contributing to resource (where applicable)",
 			}),
 			doi: readonly({
 				label: "PID (readonly)",
