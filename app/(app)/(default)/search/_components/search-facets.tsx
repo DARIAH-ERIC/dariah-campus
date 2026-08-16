@@ -51,12 +51,17 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 			}
 		}
 
+		const selectedValues = new Set(selected);
 		const normalizedFilter = filter.trim().toLocaleLowerCase();
 		return Array.from(valuesById.values())
 			.filter((item) => {
 				return getLabel(item.value).toLocaleLowerCase().includes(normalizedFilter);
 			})
 			.toSorted((a, b) => {
+				const selectedDifference =
+					Number(selectedValues.has(b.value)) - Number(selectedValues.has(a.value));
+				if (selectedDifference !== 0) return selectedDifference;
+
 				const countDifference = (b.count ?? -1) - (a.count ?? -1);
 				if (countDifference !== 0) return countDifference;
 
