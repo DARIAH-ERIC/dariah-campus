@@ -94,10 +94,10 @@ function splitTextNode(
 }
 
 /**
- * Remark plugin that transforms `@@answer@@` markers inside `<FillInTheBlank>`
+ * Remark plugin that transforms `@@answer@@` markers inside `<QuizFillInTheBlank>`
  * into `<Blank id={n} answer={["..."]} hint="..." />` JSX text elements.
  *
- * Also injects onto `<FillInTheBlank>`:
+ * Also injects onto `<QuizFillInTheBlank>`:
  *   - `blankCount={n}` - total number of blanks
  *   - `answers={[["answer1","answer2"], ["ans3"]]}` - correct answers by blank index,
  *     enabling score computation in the parent without walking children at runtime.
@@ -111,7 +111,7 @@ function splitTextNode(
 export const withFillInTheBlank: Plugin<[], Root> = function withFillInTheBlank() {
 	return function transformer(tree) {
 		visit(tree, "mdxJsxFlowElement", (fillInTheBlankNode) => {
-			if (fillInTheBlankNode.name !== "FillInTheBlank") return;
+			if (fillInTheBlankNode.name !== "QuizFillInTheBlank") return;
 
 			let blankCount = 0;
 			const allAnswerGroups: Array<Array<string>> = [];

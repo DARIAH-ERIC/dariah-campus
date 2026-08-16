@@ -1,6 +1,6 @@
 {
 	"content": {
-		"DragTheWords": {
+		"QuizDragTheWords": {
 			"blank-label-empty": "Blank {index}. Select a word.",
 			"blank-label-filled": "Blank {index}. Currently {word}.",
 			"choose-answer-label": "Choose answer {index}",
@@ -12,13 +12,19 @@
 			"show-solution": "Show solution",
 			"word-bank-label": "Answers"
 		},
-		"FillInTheBlank": {
+		"QuizFillInTheBlank": {
 			"blank-label": "Blank {index}",
 			"check": "Check",
 			"hint-label": "Show hint",
 			"reset": "Reset",
 			"score": "{correct} / {total} correct",
 			"show-solution": "Show solution"
+		},
+		"QuizImageHotspots": {
+			"close": "Close annotation",
+			"hotspot-label": "Hotspot {index}",
+			"inline-panel-label": "Image annotation",
+			"select-hotspot": "Select a point on the image to view its annotation."
 		},
 		"QuizControls": {
 			"correct": "Correct!",
@@ -143,6 +149,9 @@
 		"table-of-contents": "Table of contents",
 		"toggle-table-of-contents": "Toggle table of contents"
 	},
+	"Domain": {
+		"label": "Domain"
+	},
 	"ErrorPage": {
 		"meta": {
 			"title": "Error"
@@ -218,6 +227,12 @@
 		"search": "Search",
 		"submit-search-form": "Submit"
 	},
+	"Language": {
+		"label": "Language"
+	},
+	"License": {
+		"label": "License"
+	},
 	"Loading": {
 		"loading": "Loading"
 	},
@@ -229,6 +244,9 @@
 			"title": "Page not found"
 		},
 		"title": "Page not found"
+	},
+	"OriginalPublicationDate": {
+		"label": "Originally published"
 	},
 	"PathfinderResourcePage": {
 		"authors": "Authors",
@@ -248,6 +266,9 @@
 			"title": "Pathfinders"
 		},
 		"title": "Pathfinders"
+	},
+	"PublicationDate": {
+		"label": "Published to DARIAH-Campus"
 	},
 	"PreviewCard": {
 		"authors": "Authors",
@@ -279,33 +300,6 @@
 		"tags": "Topics",
 		"translations": "Translations"
 	},
-	"ResourceMetadata": {
-		"authors": "Authors",
-		"content-type": "Content type",
-		"content-types": {
-			"audio": "Audio",
-			"curriculum": "Curriculum",
-			"event": "Event",
-			"pathfinder": "Pathfinder",
-			"slides": "Slides",
-			"training-module": "Training module",
-			"video": "Video",
-			"webinar-recording": "Webinar recording",
-			"website": "Website"
-		},
-		"domain": "Domain",
-		"label": "Full metadata",
-		"license": "License",
-		"language": "Language",
-		"pid": "PID",
-		"publication-date": "Published to DARIAH-Campus",
-		"remote-publication-date": "Originally published",
-		"remote-url": "URL",
-		"sources": "Sources",
-		"tags": "Topics",
-		"title": "Title",
-		"version": "Version"
-	},
 	"ResourcePreviewCard": {
 		"coming-soon": "Coming soon!"
 	},
@@ -333,8 +327,10 @@
 		},
 		"nothing-found": "Nothing found",
 		"people": "People",
+		"results-found": "{count, plural, =0 {Nothing found.} =1 {One result found.} other {# results found.}}",
 		"search": "Search",
 		"search-filter": "Filter",
+		"searching": "Searching",
 		"show-less-label": "Show less",
 		"show-more-label": "Show more",
 		"sources": "Sources",
@@ -348,6 +344,9 @@
 	},
 	"SocialMediaShareLinks": {
 		"share-link": "Share link on {platform}"
+	},
+	"Sources": {
+		"label": "Sources"
 	},
 	"SourcePage": {
 		"authors": "Authors",

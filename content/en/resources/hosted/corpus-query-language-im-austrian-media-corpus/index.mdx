@@ -180,23 +180,33 @@ Typischerweise finden sich in den Attributen des `<doc>`-Elements die Metadaten 
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="correct">
-      Einem Token können zusätzliche Informationen in Form von Attributen zugeordnet werden.
+      <QuizChoiceAnswerLabel>
+        Einem Token können zusätzliche Informationen in Form von Attributen zugeordnet werden.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      Ein Token ist eine linguistisch sinnvolle Einheit.
+      <QuizChoiceAnswerLabel>
+        Ein Token ist eine linguistisch sinnvolle Einheit.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      Abkürzungen enthalten als Token auch Satzzeichen und dürfen nicht von diesen getrennt werden.
+      <QuizChoiceAnswerLabel>
+        Abkürzungen enthalten als Token auch Satzzeichen und dürfen nicht von diesen getrennt werden.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      Satzzeichen bilden eigene Token.
+      <QuizChoiceAnswerLabel>
+        Satzzeichen bilden eigene Token.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      Ein Token ist ein orthographisches Wort.
+      <QuizChoiceAnswerLabel>
+        Ein Token ist ein orthographisches Wort.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizSuccessMessage>
@@ -210,19 +220,27 @@ Typischerweise finden sich in den Attributen des `<doc>`-Elements die Metadaten 
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="correct">
-      Angaben zum Autor/ zur Autorin des Textes
+      <QuizChoiceAnswerLabel>
+        Angaben zum Autor/ zur Autorin des Textes
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      Angaben zur Morphologie eines Tokens
+      <QuizChoiceAnswerLabel>
+        Angaben zur Morphologie eines Tokens
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      Angaben zu synonymer Verwendung des Tokens
+      <QuizChoiceAnswerLabel>
+        Angaben zu synonymer Verwendung des Tokens
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      Angaben zum Lemma des Tokens
+      <QuizChoiceAnswerLabel>
+        Angaben zum Lemma des Tokens
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizErrorMessage>
@@ -240,19 +258,27 @@ Typischerweise finden sich in den Attributen des `<doc>`-Elements die Metadaten 
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="incorrect">
-      Das amc beinhaltet Zeitungsartikel aus österreichischen Printmedien.
+      <QuizChoiceAnswerLabel>
+        Das amc beinhaltet Zeitungsartikel aus österreichischen Printmedien.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      Das amc ist eine Kooperation des ACDH-CH und der APA, die Texte für sprachwissenschaftliche Fragestellungen zur Verfügung stellt.
+      <QuizChoiceAnswerLabel>
+        Das amc ist eine Kooperation des ACDH-CH und der APA, die Texte für sprachwissenschaftliche Fragestellungen zur Verfügung stellt.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      Das amc ist ein Textcorpus, das aufgrund der linguistischen Annotation mithilfe der NoSketch-Engine und der Corpus Query Language durchsucht werden kann.
+      <QuizChoiceAnswerLabel>
+        Das amc ist ein Textcorpus, das aufgrund der linguistischen Annotation mithilfe der NoSketch-Engine und der Corpus Query Language durchsucht werden kann.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      Alle genannten Antworten sind richtig.
+      <QuizChoiceAnswerLabel>
+        Alle genannten Antworten sind richtig.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
   </QuizChoice>
 </Quiz>
@@ -372,31 +398,45 @@ verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche er
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="incorrect">
-      `[lemma="*anze"]`
+      <QuizChoiceAnswerLabel>
+        `[lemma="*anze"]`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      `[word=".anze"]`
+      <QuizChoiceAnswerLabel>
+        `[word=".anze"]`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      `[word="*anze."]`
+      <QuizChoiceAnswerLabel>
+        `[word="*anze."]`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      `[word=".?anze"]`
+      <QuizChoiceAnswerLabel>
+        `[word=".?anze"]`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      `[lemma=".*anze"]`
+      <QuizChoiceAnswerLabel>
+        `[lemma=".*anze"]`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      `[lemma=".anze"]`
+      <QuizChoiceAnswerLabel>
+        `[lemma=".anze"]`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      `[word="*anze"]`
+      <QuizChoiceAnswerLabel>
+        `[word="*anze"]`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizSuccessMessage>
@@ -414,15 +454,21 @@ verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche er
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="correct">
-      "." ersetzt nur 1 Zeichen.
+      <QuizChoiceAnswerLabel>
+        "." ersetzt nur 1 Zeichen.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      `[word=".anze"]` sucht nur nach flektierten Verben
+      <QuizChoiceAnswerLabel>
+        `[word=".anze"]` sucht nur nach flektierten Verben
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      Mit `[word=".anze"]` können nur klein geschriebene Worte in den Texten gefunden werden.
+      <QuizChoiceAnswerLabel>
+        Mit `[word=".anze"]` können nur klein geschriebene Worte in den Texten gefunden werden.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizSuccessMessage>
@@ -440,11 +486,15 @@ verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche er
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="correct">
-      `[lemma="Katze*"]`
+      <QuizChoiceAnswerLabel>
+        `[lemma="Katze*"]`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      `[word="Katze."]`
+      <QuizChoiceAnswerLabel>
+        `[word="Katze."]`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizSuccessMessage>
@@ -462,19 +512,27 @@ verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche er
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="correct">
-      "+" findet immer das vorangehende Zeichen, zumindest einmal.
+      <QuizChoiceAnswerLabel>
+        "+" findet immer das vorangehende Zeichen, zumindest einmal.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      ".+" findet alle Ausdrücke, in denen sich ein beliebiges Zeichen beliebig oft, aber mindestens einmal wiederholt.
+      <QuizChoiceAnswerLabel>
+        ".+" findet alle Ausdrücke, in denen sich ein beliebiges Zeichen beliebig oft, aber mindestens einmal wiederholt.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      "+" findet Wiederholungen, die zumindest so lang sind wie der vorangehene Ausdruck.
+      <QuizChoiceAnswerLabel>
+        "+" findet Wiederholungen, die zumindest so lang sind wie der vorangehene Ausdruck.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      "." findet ein beliebiges Zeichen
+      <QuizChoiceAnswerLabel>
+        "." findet ein beliebiges Zeichen
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizSuccessMessage>
@@ -492,15 +550,21 @@ verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche er
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="correct">
-      `[word=".+anze"]`
+      <QuizChoiceAnswerLabel>
+        `[word=".+anze"]`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      `[word=".?anze"]`
+      <QuizChoiceAnswerLabel>
+        `[word=".?anze"]`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      `[word=".*anze"]`
+      <QuizChoiceAnswerLabel>
+        `[word=".*anze"]`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
   </QuizChoice>
 </Quiz>
@@ -601,19 +665,27 @@ Die bisherigen Beispiele lassen sich wie gezeigt auch mit der Verwendung von Gru
     </QuizChoiceQuestion>
 
 		<QuizChoiceAnswer kind="incorrect">
+		  <QuizChoiceAnswerLabel>
 			strange Operator, `{ }`
+		  </QuizChoiceAnswerLabel>
 		</QuizChoiceAnswer>
 
 		<QuizChoiceAnswer kind="incorrect">
+		  <QuizChoiceAnswerLabel>
 			length Operator, `[ ]`
+		  </QuizChoiceAnswerLabel>
 		</QuizChoiceAnswer>
 
 		<QuizChoiceAnswer kind="correct">
+		  <QuizChoiceAnswerLabel>
 			ranges Operator, `{ }`
+		  </QuizChoiceAnswerLabel>
 		</QuizChoiceAnswer>
 
 		<QuizChoiceAnswer kind="incorrect">
+		  <QuizChoiceAnswerLabel>
 			distance Operator, `[ ]`
+		  </QuizChoiceAnswerLabel>
 		</QuizChoiceAnswer>
 
     <QuizSuccessMessage>
@@ -631,15 +703,21 @@ Die bisherigen Beispiele lassen sich wie gezeigt auch mit der Verwendung von Gru
     </QuizChoiceQuestion>
 
 		<QuizChoiceAnswer kind="incorrect">
+		  <QuizChoiceAnswerLabel>
 			Die Worte "Klimaschutz", "Klimagerät", "Klimawandelleugner" überschreiten die Maximalanzahl an Wiederholungen nach dem Ausdruck "klima."
+		  </QuizChoiceAnswerLabel>
 		</QuizChoiceAnswer>
 
 		<QuizChoiceAnswer kind="correct">
+		  <QuizChoiceAnswerLabel>
 			Aufgrund des logischen UND müssen zwei Kriterien erfüllt sein:  der Ausdruck "klima." muss vorkommen, UND es darf durch TreeTagger nicht als Nomen markiert worden sein.
+		  </QuizChoiceAnswerLabel>
 		</QuizChoiceAnswer>
 
 		<QuizChoiceAnswer kind="incorrect">
+		  <QuizChoiceAnswerLabel>
 			Aufgrund des logischen ODER können nur Treffer gefunden werden, die entweder das Wort "klima" beinhalten ODER aber Nomen sind. Bei zwei ausschließenden Kriterien wird immer nur das erste Kriterium unbedingt erfüllt.
+		  </QuizChoiceAnswerLabel>
 		</QuizChoiceAnswer>
 
     <QuizSuccessMessage>
@@ -657,11 +735,15 @@ Die bisherigen Beispiele lassen sich wie gezeigt auch mit der Verwendung von Gru
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="correct">
-      Ohne das logische ODER würde nach der gesamten Zeichenfolge gesucht werden.
+      <QuizChoiceAnswerLabel>
+        Ohne das logische ODER würde nach der gesamten Zeichenfolge gesucht werden.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      Im Anlaut eines Wortes muss immer mit logischem ODER gesucht werden.
+      <QuizChoiceAnswerLabel>
+        Im Anlaut eines Wortes muss immer mit logischem ODER gesucht werden.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
   </QuizChoice>
 </Quiz>
@@ -701,19 +783,27 @@ z.B.: Suche nach dem Lemma "Hund" in dessen linker oder rechter Umgebung im maxi
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="incorrect">
-      `(meet [lemma="schützen"] [lemma="Klima|Kanzler"] -2 2)`
+      <QuizChoiceAnswerLabel>
+        `(meet [lemma="schützen"] [lemma="Klima|Kanzler"] -2 2)`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      `(meet [lemma="schützen"] [lemma="Klima"] -5 5)`
+      <QuizChoiceAnswerLabel>
+        `(meet [lemma="schützen"] [lemma="Klima"] -5 5)`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      `(meet [lemma="schützen"] [lemma="Klima"])`
+      <QuizChoiceAnswerLabel>
+        `(meet [lemma="schützen"] [lemma="Klima"])`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      `([lemma="schützen"] [lemma="Klima|Kanzler"] -2 2)`
+      <QuizChoiceAnswerLabel>
+        `([lemma="schützen"] [lemma="Klima|Kanzler"] -2 2)`
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizSuccessMessage>
@@ -731,15 +821,21 @@ z.B.: Suche nach dem Lemma "Hund" in dessen linker oder rechter Umgebung im maxi
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="incorrect">
-      Mit meet kann im linken und rechten Kontext eines Ausdrucks gesucht werden.
+      <QuizChoiceAnswerLabel>
+        Mit meet kann im linken und rechten Kontext eines Ausdrucks gesucht werden.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      Die Nachbarschaft, in der gesucht wird, kann für den linken und rechten Kontext separat festgelegt werden.
+      <QuizChoiceAnswerLabel>
+        Die Nachbarschaft, in der gesucht wird, kann für den linken und rechten Kontext separat festgelegt werden.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      Durch das Nutzen von RegEx können auch Suchen auf der Bedeutungsebene im AMC durchgeführt werden.
+      <QuizChoiceAnswerLabel>
+        Durch das Nutzen von RegEx können auch Suchen auf der Bedeutungsebene im AMC durchgeführt werden.
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizSuccessMessage>

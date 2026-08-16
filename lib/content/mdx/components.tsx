@@ -3,18 +3,25 @@ import type { ReactNode } from "react";
 import { Callout } from "@/components/content/callout";
 import { Diagram, DiagramCaption, DiagramCodeBlock } from "@/components/content/diagram";
 import { Disclosure } from "@/components/content/disclosure";
-import { DragTheWords, Drop } from "@/components/content/drag-the-words";
+import { Drop, QuizDragTheWords } from "@/components/content/drag-the-words";
 import { Embed } from "@/components/content/embed";
 import { ExternalResource } from "@/components/content/external-resource";
 import { Figure } from "@/components/content/figure";
-import { Blank, FillInTheBlank } from "@/components/content/fill-in-the-blank";
+import { Blank, QuizFillInTheBlank } from "@/components/content/fill-in-the-blank";
 import { Grid, GridItem } from "@/components/content/grid";
 import { ImageComparisonSlider } from "@/components/content/image-comparison-slider";
 import { Link as ContentLink } from "@/components/content/link";
 import { LinkButton } from "@/components/content/link-button";
 import { MermaidDiagram } from "@/components/content/mermaid-diagram";
 import { Quiz, QuizErrorMessage, QuizSuccessMessage } from "@/components/content/quiz";
-import { QuizChoice, QuizChoiceAnswer, QuizChoiceQuestion } from "@/components/content/quiz-choice";
+import {
+	QuizChoice,
+	QuizChoiceAnswer,
+	QuizChoiceAnswerErrorMessage,
+	QuizChoiceAnswerLabel,
+	QuizChoiceQuestion,
+} from "@/components/content/quiz-choice";
+import { QuizImageHotspot, QuizImageHotspots } from "@/components/content/quiz-image-hotspots";
 import { TableOfContents } from "@/components/content/table-of-contents";
 import { Tab, Tabs } from "@/components/content/tabs";
 import { Video } from "@/components/content/video";
@@ -26,12 +33,10 @@ export const components = {
 	a: Link,
 	Blank,
 	Callout,
-	FillInTheBlank,
 	Diagram,
 	DiagramCaption,
 	DiagramCodeBlock,
 	Disclosure,
-	DragTheWords,
 	Drop,
 	Embed,
 	ExternalResource,
@@ -46,8 +51,14 @@ export const components = {
 	Quiz,
 	QuizChoice,
 	QuizChoiceAnswer,
+	QuizChoiceAnswerErrorMessage,
+	QuizChoiceAnswerLabel,
 	QuizChoiceQuestion,
 	QuizErrorMessage,
+	QuizDragTheWords,
+	QuizFillInTheBlank,
+	QuizImageHotspot,
+	QuizImageHotspots,
 	QuizSuccessMessage,
 	Tab,
 	TableOfContents,

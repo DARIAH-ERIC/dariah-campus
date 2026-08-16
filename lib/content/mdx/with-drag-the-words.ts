@@ -81,10 +81,10 @@ function splitTextNode(
 }
 
 /**
- * Remark plugin that transforms `@@answer@@` markers inside `<DragTheWords>`
+ * Remark plugin that transforms `@@answer@@` markers inside `<QuizDragTheWords>`
  * into `<Drop id="n" answer="..." hint="..." />` JSX text elements.
  *
- * Also injects onto `<DragTheWords>`:
+ * Also injects onto `<QuizDragTheWords>`:
  *   - `blankCount="n"` - total number of blanks
  *   - `answers={["answer1","answer2"]}` - the answer for each blank, by index.
  *     Unlike the fill-in-the-blank exercise, the component needs these at the parent
@@ -102,7 +102,7 @@ function splitTextNode(
 export const withDragTheWords: Plugin<[], Root> = function withDragTheWords() {
 	return function transformer(tree, file) {
 		visit(tree, "mdxJsxFlowElement", (dragTheWordsNode) => {
-			if (dragTheWordsNode.name !== "DragTheWords") return;
+			if (dragTheWordsNode.name !== "QuizDragTheWords") return;
 
 			let blankCount = 0;
 			const allAnswers: Array<string> = [];
@@ -122,7 +122,7 @@ export const withDragTheWords: Plugin<[], Root> = function withDragTheWords() {
 			});
 
 			if (blankCount === 0) {
-				file.message("DragTheWords has no blanks. Mark words with @@word@@.", dragTheWordsNode);
+				file.message("QuizDragTheWords has no blanks. Mark words with @@word@@.", dragTheWordsNode);
 			}
 
 			/**
@@ -132,7 +132,7 @@ export const withDragTheWords: Plugin<[], Root> = function withDragTheWords() {
 			allAnswers.forEach((answer, id) => {
 				if (answer.length === 0) {
 					file.message(
-						`DragTheWords blank ${String(id + 1)} has no answer to drag.`,
+						`QuizDragTheWords blank ${String(id + 1)} has no answer to drag.`,
 						dragTheWordsNode,
 					);
 				}
