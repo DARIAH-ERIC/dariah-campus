@@ -15,6 +15,8 @@ import {
 	createUnwrappedMdxFlowContentPlugin,
 } from "@/lib/content/mdx/rehype-plugins";
 import {
+	createDragTheWordsPlugin,
+	createFillInTheBlankPlugin,
 	createFootnotesPlugin,
 	createGitHubMarkdownPlugin,
 	createTypographicQuotesPlugin,
@@ -30,13 +32,15 @@ const compileOptions: CompileOptions = {
 		createGitHubMarkdownPlugin(),
 		createFootnotesPlugin(),
 		createTypographicQuotesPlugin(getIntlLanguage(locale)),
+		createFillInTheBlankPlugin(),
+		createDragTheWordsPlugin(),
 	],
 	remarkRehypeOptions: createRemarkRehypeOptions(locale),
 	rehypePlugins: [
 		createCustomHeadingIdsPlugin(),
 		createHeadingIdsPlugin(),
 		createIframeTitlesPlugin(["Embed", "Video"]),
-		createImageSizesPlugin(["Figure", "VideoCard"]),
+		createImageSizesPlugin(["Figure", "QuizImageHotspots", "VideoCard"]),
 		createMermaidDiagramsPlugin(),
 		createSyntaxHighlighterPlugin(),
 		createTableOfContentsPlugin(),
@@ -57,6 +61,16 @@ export const curricula = createCollection({
 		const input = new VFile({ path: item.absoluteFilePath, value: content });
 		const output = await compile(input, compileOptions);
 		const module = context.createJavaScriptImport<MDXContent>(String(output));
+
+		const supplementaryInput = new VFile({
+			path: item.absoluteFilePath,
+			value: metadata["supplementary-information"],
+		});
+		const supplementaryOutput = await compile(supplementaryInput, compileOptions);
+		const supplementaryModule = context.createJavaScriptImport<MDXContent>(
+			String(supplementaryOutput),
+		);
+
 		const tableOfContents = output.data.tableOfContents;
 		const featuredImage =
 			metadata["featured-image"] != null
@@ -70,6 +84,7 @@ export const curricula = createCollection({
 				...metadata,
 				"content-type": "curriculum" as const,
 				"featured-image": featuredImage,
+				"supplementary-information": { content: supplementaryModule },
 			},
 			tableOfContents,
 		};
