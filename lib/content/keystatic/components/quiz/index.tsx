@@ -5,8 +5,8 @@ import { fields } from "@keystatic/core";
 import { repeating, wrapper } from "@keystatic/core/content-components";
 import { MessageCircleQuestionIcon } from "lucide-react";
 
-import { createDragTheWords } from "@/lib/content/keystatic/components/drag-the-words";
-import { createFillInTheBlank } from "@/lib/content/keystatic/components/fill-in-the-blank";
+import { createQuizDragTheWords } from "@/lib/content/keystatic/components/drag-the-words";
+import { createQuizFillInTheBlank } from "@/lib/content/keystatic/components/fill-in-the-blank";
 import {
 	QuizChoiceAnswerPreview,
 	QuizChoicePreview,
@@ -20,13 +20,13 @@ import {
 
 export const createQuiz = createComponent((paths, locale) => {
 	return {
-		...createDragTheWords(paths, locale),
-		...createFillInTheBlank(paths, locale),
+		...createQuizDragTheWords(paths, locale),
+		...createQuizFillInTheBlank(paths, locale),
 		Quiz: repeating({
 			label: "Quiz",
 			description: "An interactive quiz.",
 			icon: <MessageCircleQuestionIcon />,
-			children: ["QuizChoice", "QuizImageHotspots", "FillInTheBlank", "DragTheWords"],
+			children: ["QuizChoice", "QuizImageHotspots", "QuizFillInTheBlank", "QuizDragTheWords"],
 			schema: {},
 			ContentView(props) {
 				const { children } = props;

@@ -29,7 +29,7 @@ function isCorrectAnswer(input: string, answers: Array<string>, caseSensitive: b
 	return normalisedAnswers.includes(normalised);
 }
 
-interface FillInTheBlankProps {
+interface QuizFillInTheBlankProps {
 	/** Injected by the remark plugin - correct answers per blank index. */
 	answers?: Array<Array<string>>;
 	/** Injected by the remark plugin - total number of blanks. */
@@ -39,7 +39,7 @@ interface FillInTheBlankProps {
 	children: ReactNode;
 }
 
-export function FillInTheBlank(props: Readonly<FillInTheBlankProps>): ReactNode {
+export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): ReactNode {
 	const {
 		answers,
 		blankCount: blankCountStr = "0",
@@ -48,7 +48,7 @@ export function FillInTheBlank(props: Readonly<FillInTheBlankProps>): ReactNode 
 		children,
 	} = props;
 
-	const t = useTranslations("content.FillInTheBlank");
+	const t = useTranslations("content.QuizFillInTheBlank");
 	const controlsT = useTranslations("content.QuizControls");
 	const count = Number(blankCountStr);
 	const { isCurrent, setStatus, status } = useQuizContext();
@@ -161,9 +161,9 @@ export function Blank(props: Readonly<BlankProps>): ReactNode {
 	const id = Number(idStr);
 
 	const ctx = use(FillInTheBlankContext);
-	const t = useTranslations("content.FillInTheBlank");
+	const t = useTranslations("content.QuizFillInTheBlank");
 
-	/** When rendered outside a FillInTheBlank show the first answer as a placeholder. */
+	/** When rendered outside a QuizFillInTheBlank show the first answer as a placeholder. */
 	if (ctx == null) {
 		return <span className="border-b-2 border-dashed border-neutral-400 px-1">{answer[0]}</span>;
 	}
