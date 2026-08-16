@@ -20,6 +20,12 @@
 			"score": "{correct} / {total} correct",
 			"show-solution": "Show solution"
 		},
+		"QuizImageHotspots": {
+			"close": "Close annotation",
+			"hotspot-label": "Hotspot {index}",
+			"inline-panel-label": "Image annotation",
+			"select-hotspot": "Select a point on the image to view its annotation."
+		},
 		"QuizControls": {
 			"correct": "Correct!",
 			"incorrect": "Incorrect!",

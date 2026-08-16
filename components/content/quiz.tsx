@@ -34,6 +34,8 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 
 	const [currentIndex, setCurrentIndex] = useState(0);
 
+	if (quizzes.length === 0) return null;
+
 	const value: Omit<QuizContextValue, "isCurrent"> = {
 		navigation: {
 			hasNext: currentIndex < quizzes.length - 1,

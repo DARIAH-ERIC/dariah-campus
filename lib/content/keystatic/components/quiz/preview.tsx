@@ -3,6 +3,11 @@
 import { NotEditable } from "@keystatic/core";
 import type { ReactNode } from "react";
 
+export {
+	QuizImageHotspotEditor,
+	QuizImageHotspotsPreview,
+} from "@/lib/content/keystatic/components/quiz/image-hotspots-preview";
+
 interface QuizPreviewProps {
 	children: ReactNode;
 }

@@ -13,6 +13,7 @@ import { LinkButton } from "@/components/content/link-button";
 import { MermaidDiagram } from "@/components/content/mermaid-diagram";
 import { Quiz, QuizErrorMessage, QuizSuccessMessage } from "@/components/content/quiz";
 import { QuizChoice, QuizChoiceAnswer, QuizChoiceQuestion } from "@/components/content/quiz-choice";
+import { QuizImageHotspot, QuizImageHotspots } from "@/components/content/quiz-image-hotspots";
 import { TableOfContents } from "@/components/content/table-of-contents";
 import { Tab, Tabs } from "@/components/content/tabs";
 import { Video } from "@/components/content/video";
@@ -46,6 +47,8 @@ export const components = {
 	QuizChoiceAnswer,
 	QuizChoiceQuestion,
 	QuizErrorMessage,
+	QuizImageHotspot,
+	QuizImageHotspots,
 	QuizSuccessMessage,
 	Tab,
 	TableOfContents,

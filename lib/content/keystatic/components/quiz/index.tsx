@@ -1,6 +1,6 @@
 /* eslint-disable @eslint-react/prefer-read-only-props */
 
-import { createComponent } from "@acdh-oeaw/keystatic-lib";
+import { createAssetOptions, createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { repeating, wrapper } from "@keystatic/core/content-components";
 import { MessageCircleQuestionIcon } from "lucide-react";
@@ -10,18 +10,19 @@ import {
 	QuizChoicePreview,
 	QuizChoiceQuestionPreview,
 	QuizErrorMessagePreview,
+	QuizImageHotspotEditor,
+	QuizImageHotspotsPreview,
 	QuizPreview,
 	QuizSuccessMessagePreview,
 } from "@/lib/content/keystatic/components/quiz/preview";
 
-export const createQuiz = createComponent((_paths, _locale) => {
+export const createQuiz = createComponent((paths, _locale) => {
 	return {
 		Quiz: repeating({
 			label: "Quiz",
 			description: "An interactive quiz.",
 			icon: <MessageCircleQuestionIcon />,
-			children: ["QuizChoice"],
-			validation: { children: { min: 1 } },
+			children: ["QuizChoice", "QuizImageHotspots"],
 			schema: {},
 			ContentView(props) {
 				const { children } = props;
@@ -64,6 +65,76 @@ export const createQuiz = createComponent((_paths, _locale) => {
 						{children}
 					</QuizChoicePreview>
 				);
+			},
+		}),
+		QuizImageHotspots: repeating({
+			label: "Quiz - Image hotspots",
+			description: "An image with points that reveal explanatory content.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			children: ["QuizImageHotspot"],
+			validation: { children: { min: 1 } },
+			schema: {
+				src: fields.image({
+					label: "Image",
+					validation: { isRequired: true },
+					...createAssetOptions(paths.assetPath),
+				}),
+				alt: fields.text({
+					label: "Image description for assistive technology",
+					description:
+						"Describe the image and the relevant spatial information; leave empty only if the image is decorative.",
+					validation: { isRequired: false },
+				}),
+				presentation: fields.select({
+					label: "Hotspot content presentation",
+					description:
+						"Inline panels sit beside or below the image. Modal side panels provide more room for longer content. Anchored popovers work best for short explanations.",
+					options: [
+						{ label: "Inline panel", value: "inline" },
+						{ label: "Modal side panel", value: "sidepanel" },
+						{ label: "Anchored popover", value: "popover" },
+					],
+					defaultValue: "inline",
+				}),
+			},
+			ContentView(props) {
+				const { children, value } = props;
+
+				return (
+					<QuizImageHotspotsPreview alt={value.alt} src={value.src}>
+						{children}
+					</QuizImageHotspotsPreview>
+				);
+			},
+		}),
+		QuizImageHotspot: wrapper({
+			label: "Image hotspot",
+			description: "A point on the image that opens explanatory content.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			editChildrenIn: "modal",
+			schema: {
+				label: fields.text({
+					label: "Hotspot label",
+					description: "Identifies the hotspot to screen-reader users and titles its popover.",
+					validation: { isRequired: true },
+				}),
+				x: fields.number({
+					label: "Horizontal position (%)",
+					defaultValue: 50,
+					step: 0.1,
+					validation: { isRequired: true, min: 0, max: 100 },
+				}),
+				y: fields.number({
+					label: "Vertical position (%)",
+					defaultValue: 50,
+					step: 0.1,
+					validation: { isRequired: true, min: 0, max: 100 },
+				}),
+			},
+			NodeView(props) {
+				return <QuizImageHotspotEditor {...props} />;
 			},
 		}),
 		QuizChoiceAnswer: wrapper({
