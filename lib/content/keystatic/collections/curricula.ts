@@ -173,7 +173,6 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 					...createDisclosure(paths, locale),
 					...createEmbed(paths, locale),
 					...createFigure(paths, locale),
-					// ...createFillInTheBlank(paths, locale),
 					...createFootnote(paths, locale),
 					...createGrid(paths, locale),
 					...createHeadingId(paths, locale),

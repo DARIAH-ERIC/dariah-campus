@@ -103,7 +103,7 @@ function isWordDrag(event: DragEvent<HTMLElement>): boolean {
 	return event.dataTransfer.types.includes(dragType);
 }
 
-interface DragTheWordsProps {
+interface QuizDragTheWordsProps {
 	/** Injected by the remark plugin - the accepted answer per blank index. */
 	answers?: Array<string>;
 	/** Injected by the remark plugin - total number of blanks. */
@@ -119,7 +119,7 @@ interface DragTheWordsProps {
 	children: ReactNode;
 }
 
-export function DragTheWords(props: Readonly<DragTheWordsProps>): ReactNode {
+export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactNode {
 	const {
 		answers = [],
 		blankCount: blankCountStr = "0",
@@ -129,7 +129,7 @@ export function DragTheWords(props: Readonly<DragTheWordsProps>): ReactNode {
 		children,
 	} = props;
 
-	const t = useTranslations("content.DragTheWords");
+	const t = useTranslations("content.QuizDragTheWords");
 	const controlsT = useTranslations("content.QuizControls");
 
 	const count = Number(blankCountStr);
@@ -347,11 +347,11 @@ export function Drop(props: Readonly<DropProps>): ReactNode {
 
 	const id = Number(idStr);
 	const ctx = use(DragTheWordsContext);
-	const t = useTranslations("content.DragTheWords");
+	const t = useTranslations("content.QuizDragTheWords");
 
 	const [isDropTarget, setIsDropTarget] = useState(false);
 
-	/** Outside a DragTheWords, or with a malformed id, fall back to showing the answer. */
+	/** Outside a QuizDragTheWords, or with a malformed id, fall back to showing the answer. */
 	if (ctx == null || !Number.isInteger(id)) {
 		return <span className="border-b-2 border-dashed border-neutral-400 px-1">{answer}</span>;
 	}
