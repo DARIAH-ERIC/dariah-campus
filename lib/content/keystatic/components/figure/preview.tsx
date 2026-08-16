@@ -17,15 +17,21 @@ export function FigurePreview(props: Readonly<FigurePreviewProps>): ReactNode {
 	const { alignment = "stretch", alt = "", children, src } = props;
 
 	const url = useObjectUrl(src);
+	const figureStyles: Record<FigureAlignment, string | undefined> = {
+		center: "justify-center",
+		"left-one-fourth": "justify-start",
+		"left-one-third": "justify-start",
+		"left-one-half": "justify-start",
+		"left-two-thirds": "justify-start",
+		"right-one-fourth": "justify-end",
+		"right-one-third": "justify-end",
+		"right-one-half": "justify-end",
+		"right-two-thirds": "justify-end",
+		stretch: undefined,
+	};
 
 	return (
-		<figure
-			className={cn(
-				"grid gap-y-2",
-				alignment === "center" ? "justify-center" : undefined,
-				alignment.includes("right") ? "justify-end" : undefined,
-			)}
-		>
+		<figure className={cn("grid gap-y-2", figureStyles[alignment])}>
 			<NotEditable>
 				{url != null ? (
 					// eslint-disable-next-line @next/next/no-img-element
