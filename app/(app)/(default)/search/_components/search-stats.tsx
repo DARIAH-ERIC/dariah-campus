@@ -12,17 +12,17 @@ export function SearchStats(): ReactNode {
 
 	return (
 		<div
-			className="mx-auto grid h-5 w-full grid-cols-[1fr_auto_1fr] items-center text-sm text-neutral-600"
+			className="mx-auto grid h-5 w-full place-items-center text-sm text-neutral-600"
 			role="status"
 		>
 			{isLoading ? (
-				<span className="col-start-3 ml-2 inline-flex justify-self-start animate-in delay-150 duration-0 fill-mode-both fade-in">
+				<span className="col-start-1 row-start-1 inline-flex w-full justify-end animate-in delay-150 duration-0 fill-mode-both fade-in">
 					<LoaderCircleIcon aria-hidden={true} className="size-5 animate-spin" />
 					<span className="sr-only">{t("searching")}</span>
 				</span>
 			) : null}
 			{hasData || !isLoading ? (
-				<span className="col-start-2">{t("results-found", { count: found })}</span>
+				<span className="col-start-1 row-start-1">{t("results-found", { count: found })}</span>
 			) : null}
 		</div>
 	);
