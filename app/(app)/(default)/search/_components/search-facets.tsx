@@ -1,7 +1,9 @@
 "use client";
 
 import { CheckIcon } from "lucide-react";
+import { useFormatter } from "next-intl";
 import { type ReactNode, useId, useMemo, useState } from "react";
+import { useCollator } from "react-aria";
 import { Button, Checkbox, CheckboxGroup, Input, Label, SearchField } from "react-aria-components";
 
 import { useSearch } from "@/app/(app)/(default)/search/_components/search-provider";
@@ -31,8 +33,10 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 		showMoreLabel,
 	} = props;
 	const { facets, isLoading, selectedFilters, setFilter: setSearchFilter } = useSearch();
+	const format = useFormatter();
 	const [filter, setFilter] = useState("");
 	const [isShowingMore, setIsShowingMore] = useState(false);
+	const collator = useCollator({ sensitivity: "base", usage: "sort" });
 	const labelId = useId();
 	const selected = selectedFilters[attribute];
 	const items = useMemo(() => {
@@ -48,10 +52,17 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 		}
 
 		const normalizedFilter = filter.trim().toLocaleLowerCase();
-		return Array.from(valuesById.values()).filter((item) => {
-			return getLabel(item.value).toLocaleLowerCase().includes(normalizedFilter);
-		});
-	}, [facets, attribute, filter, getLabel, isLoading, selected]);
+		return Array.from(valuesById.values())
+			.filter((item) => {
+				return getLabel(item.value).toLocaleLowerCase().includes(normalizedFilter);
+			})
+			.toSorted((a, b) => {
+				const countDifference = (b.count ?? -1) - (a.count ?? -1);
+				if (countDifference !== 0) return countDifference;
+
+				return collator.compare(getLabel(a.value), getLabel(b.value));
+			});
+	}, [facets, attribute, collator, filter, getLabel, isLoading, selected]);
 	const visibleLimit = isShowingMore ? maxVisibleFacets : defaultVisibleFacets;
 	const visibleItems = items.slice(0, visibleLimit);
 	const canToggleShowMore = items.length > defaultVisibleFacets;
@@ -99,7 +110,7 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 												</span>
 												<span>
 													{getLabel(item.value)}
-													{item.count === undefined ? null : ` (${String(item.count)})`}
+													{item.count === undefined ? null : ` (${format.number(item.count)})`}
 												</span>
 											</>
 										);

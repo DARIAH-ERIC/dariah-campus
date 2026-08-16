@@ -31,29 +31,18 @@ interface SearchProviderProps {
 export function SearchProvider(props: Readonly<SearchProviderProps>): ReactNode {
 	const { children, initialState } = props;
 	const [state, setState] = useState(initialState);
-	const [requestState, setRequestState] = useState(initialState);
 	const [data, setData] = useState(emptySearchData);
 	const [error, setError] = useState<unknown>(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const abortControllerRef = useRef<AbortController>(null);
 
 	useEffect(() => {
-		const timeout = window.setTimeout(() => {
-			setRequestState(state);
-		}, 200);
-
-		return () => {
-			window.clearTimeout(timeout);
-		};
-	}, [state]);
-
-	useEffect(() => {
 		const abortController = new AbortController();
 		abortControllerRef.current = abortController;
 
-		void search(requestState, abortController.signal)
+		void search(state, abortController.signal)
 			.then((data) => {
-				setData(data);
+				if (!abortController.signal.aborted) setData(data);
 			})
 			.catch((error: unknown) => {
 				if (!abortController.signal.aborted) setError(error);
@@ -65,7 +54,7 @@ export function SearchProvider(props: Readonly<SearchProviderProps>): ReactNode 
 		return () => {
 			abortController.abort();
 		};
-	}, [requestState]);
+	}, [state]);
 
 	useEffect(() => {
 		const searchParams = createSearchParameters(state);

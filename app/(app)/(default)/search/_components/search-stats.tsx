@@ -11,7 +11,7 @@ export function SearchStats(): ReactNode {
 	const { found, isLoading } = useSearch();
 
 	return (
-		<div className="mx-auto text-sm text-neutral-600" role="status">
+		<div className="mx-auto flex h-5 items-center text-sm text-neutral-600" role="status">
 			{isLoading ? (
 				<span className="inline-flex">
 					<LoaderCircleIcon aria-hidden={true} className="size-5 animate-spin" />
