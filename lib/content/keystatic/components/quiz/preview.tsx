@@ -49,6 +49,40 @@ export function QuizChoiceAnswerPreview(props: Readonly<QuizChoiceAnswerPreviewP
 	);
 }
 
+interface QuizChoiceAnswerLabelPreviewProps {
+	children: ReactNode;
+}
+
+export function QuizChoiceAnswerLabelPreview(
+	props: Readonly<QuizChoiceAnswerLabelPreviewProps>,
+): ReactNode {
+	const { children } = props;
+
+	return (
+		<div>
+			<NotEditable>Answer text:</NotEditable>
+			{children}
+		</div>
+	);
+}
+
+interface QuizChoiceAnswerErrorMessagePreviewProps {
+	children: ReactNode;
+}
+
+export function QuizChoiceAnswerErrorMessagePreview(
+	props: Readonly<QuizChoiceAnswerErrorMessagePreviewProps>,
+): ReactNode {
+	const { children } = props;
+
+	return (
+		<div>
+			<NotEditable>Error message:</NotEditable>
+			{children}
+		</div>
+	);
+}
+
 interface QuizChoiceQuestionPreviewProps {
 	children: ReactNode;
 }

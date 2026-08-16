@@ -8,6 +8,8 @@ import { MessageCircleQuestionIcon } from "lucide-react";
 import { createQuizDragTheWords } from "@/lib/content/keystatic/components/drag-the-words";
 import { createQuizFillInTheBlank } from "@/lib/content/keystatic/components/fill-in-the-blank";
 import {
+	QuizChoiceAnswerErrorMessagePreview,
+	QuizChoiceAnswerLabelPreview,
 	QuizChoiceAnswerPreview,
 	QuizChoicePreview,
 	QuizChoiceQuestionPreview,
@@ -141,11 +143,13 @@ export const createQuiz = createComponent((paths, locale) => {
 				return <QuizImageHotspotEditor {...props} />;
 			},
 		}),
-		QuizChoiceAnswer: wrapper({
+		QuizChoiceAnswer: repeating({
 			label: "Answer",
 			description: "An answer in a multiple choice quiz.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
+			children: ["QuizChoiceAnswerLabel", "QuizChoiceAnswerErrorMessage"],
+			validation: { children: { min: 1, max: 2 } },
 			schema: {
 				kind: fields.select({
 					label: "Kind",
@@ -160,6 +164,32 @@ export const createQuiz = createComponent((paths, locale) => {
 				const { children, value } = props;
 
 				return <QuizChoiceAnswerPreview kind={value.kind}>{children}</QuizChoiceAnswerPreview>;
+			},
+		}),
+		QuizChoiceAnswerLabel: wrapper({
+			label: "Answer text",
+			description: "The text displayed next to the answer control.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			schema: {},
+			ContentView(props) {
+				const { children } = props;
+
+				return <QuizChoiceAnswerLabelPreview>{children}</QuizChoiceAnswerLabelPreview>;
+			},
+		}),
+		QuizChoiceAnswerErrorMessage: wrapper({
+			label: "Answer error message",
+			description: "Rich-text feedback shown when this answer's selected state is incorrect.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			schema: {},
+			ContentView(props) {
+				const { children } = props;
+
+				return (
+					<QuizChoiceAnswerErrorMessagePreview>{children}</QuizChoiceAnswerErrorMessagePreview>
+				);
 			},
 		}),
 		QuizChoiceQuestion: wrapper({
