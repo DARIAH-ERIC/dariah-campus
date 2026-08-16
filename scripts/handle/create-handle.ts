@@ -27,6 +27,11 @@ async function create() {
 	const args = parseArgs({ options: { resource: { type: "string", short: "r" } } });
 	const { resource: path } = v.parse(ArgsInputSchema, args.values);
 
+	/** External resources are hosted elsewhere and must not be assigned a handle. */
+	if (/[/\\]resources[/\\]external[/\\]/.test(path)) {
+		return null;
+	}
+
 	const absoluteFilePath = join(process.cwd(), path);
 	const vfile = await read(absoluteFilePath, { encoding: "utf-8" });
 	matter(vfile, { strip: true });
