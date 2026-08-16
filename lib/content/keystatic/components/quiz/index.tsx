@@ -5,6 +5,8 @@ import { fields } from "@keystatic/core";
 import { repeating, wrapper } from "@keystatic/core/content-components";
 import { MessageCircleQuestionIcon } from "lucide-react";
 
+import { createDragTheWords } from "@/lib/content/keystatic/components/drag-the-words";
+import { createFillInTheBlank } from "@/lib/content/keystatic/components/fill-in-the-blank";
 import {
 	QuizChoiceAnswerPreview,
 	QuizChoicePreview,
@@ -16,13 +18,15 @@ import {
 	QuizSuccessMessagePreview,
 } from "@/lib/content/keystatic/components/quiz/preview";
 
-export const createQuiz = createComponent((paths, _locale) => {
+export const createQuiz = createComponent((paths, locale) => {
 	return {
+		...createDragTheWords(paths, locale),
+		...createFillInTheBlank(paths, locale),
 		Quiz: repeating({
 			label: "Quiz",
 			description: "An interactive quiz.",
 			icon: <MessageCircleQuestionIcon />,
-			children: ["QuizChoice", "QuizImageHotspots"],
+			children: ["QuizChoice", "QuizImageHotspots", "FillInTheBlank", "DragTheWords"],
 			schema: {},
 			ContentView(props) {
 				const { children } = props;

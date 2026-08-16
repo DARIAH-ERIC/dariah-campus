@@ -5,14 +5,19 @@ import { createContext, type ReactNode, use, useState } from "react";
 
 import { getChildrenElements } from "@/components/content/get-children-elements";
 
+export type QuizPageStatus = "correct" | "idle" | "incorrect" | "solved";
+
 interface QuizContextValue {
 	isCurrent: boolean;
 	navigation: {
 		hasNext: boolean;
 		hasPrevious: boolean;
+		isPaginated: boolean;
 		next: () => void;
 		previous: () => void;
 	};
+	setStatus: (status: QuizPageStatus) => void;
+	status: QuizPageStatus;
 }
 
 const QuizContext = createContext<QuizContextValue | null>(null);
@@ -33,23 +38,27 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 	const quizzes = getChildrenElements(children);
 
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const [statuses, setStatuses] = useState<Array<QuizPageStatus>>(() => {
+		return quizzes.map(() => {
+			return "idle";
+		});
+	});
 
 	if (quizzes.length === 0) return null;
 
-	const value: Omit<QuizContextValue, "isCurrent"> = {
-		navigation: {
-			hasNext: currentIndex < quizzes.length - 1,
-			hasPrevious: currentIndex > 0,
-			next() {
-				setCurrentIndex((currentIndex) => {
-					return currentIndex + 1;
-				});
-			},
-			previous() {
-				setCurrentIndex((currentIndex) => {
-					return currentIndex - 1;
-				});
-			},
+	const navigation: QuizContextValue["navigation"] = {
+		hasNext: currentIndex < quizzes.length - 1,
+		hasPrevious: currentIndex > 0,
+		isPaginated: quizzes.length > 1,
+		next() {
+			setCurrentIndex((currentIndex) => {
+				return currentIndex + 1;
+			});
+		},
+		previous() {
+			setCurrentIndex((currentIndex) => {
+				return currentIndex - 1;
+			});
 		},
 	};
 
@@ -57,9 +66,22 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 		<aside>
 			{quizzes.map((quiz, index) => {
 				const isCurrent = index === currentIndex;
+				const status = statuses[index] ?? "idle";
+				const value: QuizContextValue = {
+					isCurrent,
+					navigation,
+					setStatus(status) {
+						setStatuses((statuses) => {
+							return statuses.map((currentStatus, statusIndex) => {
+								return statusIndex === index ? status : currentStatus;
+							});
+						});
+					},
+					status,
+				};
 
 				return (
-					<QuizContext key={index} value={{ ...value, isCurrent }}>
+					<QuizContext key={index} value={value}>
 						{quiz}
 					</QuizContext>
 				);

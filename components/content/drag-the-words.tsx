@@ -13,6 +13,9 @@ import {
 	Separator,
 } from "react-aria-components";
 
+import { type QuizPageStatus, useQuizContext } from "@/components/content/quiz";
+import { QuizControls } from "@/components/content/quiz-controls";
+
 /**
  * Keyboard and touch users open a blank and choose from the remaining words, so focus never
  * leaves the reading order. Mouse users can additionally drag a word into a blank, using the
@@ -22,8 +25,6 @@ import {
 const dragType = "application/x-drag-the-words";
 
 const removeAction = "__remove__";
-
-type ExerciseStatus = "idle" | "checked" | "solved";
 
 interface Word {
 	id: string;
@@ -38,7 +39,7 @@ interface DragTheWordsContextValue {
 	instantFeedback: boolean;
 	placements: Array<string | null>;
 	putWord: (wordId: string, blankId: number) => void;
-	status: ExerciseStatus;
+	status: QuizPageStatus;
 	touched: Array<boolean>;
 	words: Array<Word>;
 }
@@ -129,8 +130,10 @@ export function DragTheWords(props: Readonly<DragTheWordsProps>): ReactNode {
 	} = props;
 
 	const t = useTranslations("content.DragTheWords");
+	const controlsT = useTranslations("content.QuizControls");
 
 	const count = Number(blankCountStr);
+	const { isCurrent, setStatus, status } = useQuizContext();
 
 	/** One word per blank, plus decoys, ordered so the two are indistinguishable. */
 	const words = useMemo(() => {
@@ -155,7 +158,6 @@ export function DragTheWords(props: Readonly<DragTheWordsProps>): ReactNode {
 			return null;
 		});
 	});
-	const [status, setStatus] = useState<ExerciseStatus>("idle");
 	const [touched, setTouched] = useState<Array<boolean>>(() => {
 		return Array.from({ length: count }, () => {
 			return false;
@@ -237,7 +239,10 @@ export function DragTheWords(props: Readonly<DragTheWordsProps>): ReactNode {
 
 	return (
 		<DragTheWordsContext value={ctx}>
-			<div className="my-12 grid gap-4 rounded-md border border-neutral-200 p-6 shadow-sm sm:grid-cols-[1fr_11rem]">
+			<section
+				className="my-4 grid gap-4 rounded-md border border-neutral-200 p-6 shadow-sm sm:grid-cols-[1fr_11rem]"
+				hidden={!isCurrent}
+			>
 				<div className="leading-loose sm:col-start-1">{children}</div>
 
 				<div
@@ -295,7 +300,7 @@ export function DragTheWords(props: Readonly<DragTheWordsProps>): ReactNode {
 					</ul>
 				</div>
 
-				{status === "checked" ? (
+				{status === "correct" || status === "incorrect" ? (
 					<p
 						className="not-prose text-sm font-medium text-neutral-600 sm:col-start-1"
 						role="status"
@@ -304,36 +309,27 @@ export function DragTheWords(props: Readonly<DragTheWordsProps>): ReactNode {
 					</p>
 				) : null}
 
-				<div className="flex flex-wrap gap-2 sm:col-start-1">
-					<button
-						className="rounded-md bg-brand-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-brand-700"
-						onClick={() => {
-							setStatus("checked");
+				<div className="sm:col-span-2">
+					<QuizControls
+						nextButtonLabel={controlsT("next-question")}
+						onReset={reset}
+						onShowSolution={
+							status === "solved"
+								? undefined
+								: () => {
+										setStatus("solved");
+									}
+						}
+						onValidate={() => {
+							setStatus(correctCount === count ? "correct" : "incorrect");
 						}}
-						type="button"
-					>
-						{t("check")}
-					</button>
-					<button
-						className="rounded-md border border-neutral-300 px-4 py-1.5 text-sm font-medium text-neutral-700 hover:bg-neutral-100"
-						onClick={reset}
-						type="button"
-					>
-						{t("reset")}
-					</button>
-					{status !== "solved" ? (
-						<button
-							className="rounded-md border border-neutral-300 px-4 py-1.5 text-sm font-medium text-neutral-700 hover:bg-neutral-100"
-							onClick={() => {
-								setStatus("solved");
-							}}
-							type="button"
-						>
-							{t("show-solution")}
-						</button>
-					) : null}
+						previousButtonLabel={controlsT("previous-question")}
+						resetButtonLabel={t("reset")}
+						showSolutionButtonLabel={status === "solved" ? undefined : t("show-solution")}
+						validateButtonLabel={t("check")}
+					/>
 				</div>
-			</div>
+			</section>
 		</DragTheWordsContext>
 	);
 }
@@ -379,7 +375,10 @@ export function Drop(props: Readonly<DropProps>): ReactNode {
 	const displayText = isReadOnly ? answer : placedWord?.text;
 
 	const isValidated =
-		status === "checked" || status === "solved" || (instantFeedback && (touched[id] ?? false));
+		status === "correct" ||
+		status === "incorrect" ||
+		status === "solved" ||
+		(instantFeedback && (touched[id] ?? false));
 	const isCorrect = placedWord != null && isCorrectAnswer(placedWord.text, answer, caseSensitive);
 
 	let stateClass = "border-neutral-300 text-neutral-400";

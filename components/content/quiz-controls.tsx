@@ -8,32 +8,64 @@ import { useQuizContext } from "@/components/content/quiz";
 
 interface QuizControlsProps {
 	nextButtonLabel: string;
+	onReset?: () => void;
+	onShowSolution?: () => void;
+	onValidate?: () => void;
 	previousButtonLabel: string;
+	resetButtonLabel?: string;
+	showSolutionButtonLabel?: string;
 	validateButtonLabel?: string;
 }
 
 export function QuizControls(props: Readonly<QuizControlsProps>): ReactNode {
-	const { nextButtonLabel, previousButtonLabel, validateButtonLabel } = props;
+	const {
+		nextButtonLabel,
+		onReset,
+		onShowSolution,
+		onValidate,
+		previousButtonLabel,
+		resetButtonLabel,
+		showSolutionButtonLabel,
+		validateButtonLabel,
+	} = props;
 
 	const { navigation } = useQuizContext();
 
 	return (
-		<div className="flex items-center justify-between gap-x-4">
-			<Button isDisabled={!navigation.hasPrevious} onPress={navigation.previous}>
-				<ChevronLeftIcon aria-hidden={true} className="size-4 shrink-0" />
-				<span>{previousButtonLabel}</span>
-			</Button>
-
-			{validateButtonLabel != null ? (
-				<Button type="submit">
-					<span>{validateButtonLabel}</span>
+		<div
+			className={`flex items-center gap-x-4 ${navigation.isPaginated ? "justify-between" : "justify-center"}`}
+		>
+			{navigation.isPaginated ? (
+				<Button isDisabled={!navigation.hasPrevious} onPress={navigation.previous}>
+					<ChevronLeftIcon aria-hidden={true} className="size-4 shrink-0" />
+					<span>{previousButtonLabel}</span>
 				</Button>
 			) : null}
 
-			<Button isDisabled={!navigation.hasNext} onPress={navigation.next}>
-				<span>{nextButtonLabel}</span>
-				<ChevronRightIcon aria-hidden={true} className="size-4 shrink-0" />
-			</Button>
+			<div className="flex flex-wrap items-center justify-center gap-2">
+				{validateButtonLabel != null ? (
+					<Button onPress={onValidate} type={onValidate == null ? "submit" : "button"}>
+						<span>{validateButtonLabel}</span>
+					</Button>
+				) : null}
+				{resetButtonLabel != null ? (
+					<Button onPress={onReset} type="reset">
+						<span>{resetButtonLabel}</span>
+					</Button>
+				) : null}
+				{showSolutionButtonLabel != null ? (
+					<Button onPress={onShowSolution} type="button">
+						<span>{showSolutionButtonLabel}</span>
+					</Button>
+				) : null}
+			</div>
+
+			{navigation.isPaginated ? (
+				<Button isDisabled={!navigation.hasNext} onPress={navigation.next}>
+					<span>{nextButtonLabel}</span>
+					<ChevronRightIcon aria-hidden={true} className="size-4 shrink-0" />
+				</Button>
+			) : null}
 		</div>
 	);
 }

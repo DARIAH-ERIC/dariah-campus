@@ -4,12 +4,13 @@ import { useTranslations } from "next-intl";
 import { createContext, type ReactNode, use, useState } from "react";
 import { Button, Dialog, DialogTrigger, Popover } from "react-aria-components";
 
-type ExerciseStatus = "idle" | "checked" | "solved";
+import { type QuizPageStatus, useQuizContext } from "@/components/content/quiz";
+import { QuizControls } from "@/components/content/quiz-controls";
 
 interface FillInTheBlankContextValue {
 	inputs: Array<string>;
 	setInput: (id: number, value: string) => void;
-	status: ExerciseStatus;
+	status: QuizPageStatus;
 	caseSensitive: boolean;
 	validateOnBlur: boolean;
 	validated: Array<boolean>;
@@ -48,14 +49,15 @@ export function FillInTheBlank(props: Readonly<FillInTheBlankProps>): ReactNode 
 	} = props;
 
 	const t = useTranslations("content.FillInTheBlank");
+	const controlsT = useTranslations("content.QuizControls");
 	const count = Number(blankCountStr);
+	const { isCurrent, setStatus, status } = useQuizContext();
 
 	const [inputs, setInputs] = useState<Array<string>>(() => {
 		return Array.from({ length: count }, () => {
 			return "";
 		});
 	});
-	const [status, setStatus] = useState<ExerciseStatus>("idle");
 	const [validated, setValidated] = useState<Array<boolean>>(() => {
 		return Array.from({ length: count }, () => {
 			return false;
@@ -86,7 +88,7 @@ export function FillInTheBlank(props: Readonly<FillInTheBlankProps>): ReactNode 
 	};
 
 	const correctCount =
-		status === "checked" && answers != null
+		(status === "correct" || status === "incorrect") && answers != null
 			? inputs.filter((v, i) => {
 					return isCorrectAnswer(v, answers[i] ?? [], caseSensitive);
 				}).length
@@ -94,7 +96,10 @@ export function FillInTheBlank(props: Readonly<FillInTheBlankProps>): ReactNode 
 
 	return (
 		<FillInTheBlankContext value={ctx}>
-			<div className="my-12 grid gap-y-4 rounded-md border border-neutral-200 p-6 shadow-sm">
+			<section
+				className="my-4 grid gap-y-4 rounded-md border border-neutral-200 p-6 shadow-sm"
+				hidden={!isCurrent}
+			>
 				<div className="leading-loose">{children}</div>
 
 				{correctCount != null ? (
@@ -103,52 +108,42 @@ export function FillInTheBlank(props: Readonly<FillInTheBlankProps>): ReactNode 
 					</p>
 				) : null}
 
-				<div className="flex flex-wrap gap-2">
-					{status === "idle" ? (
-						<button
-							className="rounded-md bg-brand-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-brand-700"
-							onClick={() => {
-								setStatus("checked");
-							}}
-							type="button"
-						>
-							{t("check")}
-						</button>
-					) : null}
-
-					<button
-						className="rounded-md border border-neutral-300 px-4 py-1.5 text-sm font-medium text-neutral-700 hover:bg-neutral-100"
-						onClick={() => {
-							setInputs(
-								Array.from({ length: count }, () => {
-									return "";
-								}),
-							);
-							setStatus("idle");
-							setValidated(
-								Array.from({ length: count }, () => {
-									return false;
-								}),
-							);
-						}}
-						type="button"
-					>
-						{t("reset")}
-					</button>
-
-					{status !== "solved" ? (
-						<button
-							className="rounded-md border border-neutral-300 px-4 py-1.5 text-sm font-medium text-neutral-700 hover:bg-neutral-100"
-							onClick={() => {
-								setStatus("solved");
-							}}
-							type="button"
-						>
-							{t("show-solution")}
-						</button>
-					) : null}
-				</div>
-			</div>
+				<QuizControls
+					nextButtonLabel={controlsT("next-question")}
+					onReset={() => {
+						setInputs(
+							Array.from({ length: count }, () => {
+								return "";
+							}),
+						);
+						setStatus("idle");
+						setValidated(
+							Array.from({ length: count }, () => {
+								return false;
+							}),
+						);
+					}}
+					onShowSolution={
+						status === "solved"
+							? undefined
+							: () => {
+									setStatus("solved");
+								}
+					}
+					onValidate={() => {
+						const isCorrect =
+							answers != null &&
+							inputs.every((input, index) => {
+								return isCorrectAnswer(input, answers[index] ?? [], caseSensitive);
+							});
+						setStatus(isCorrect ? "correct" : "incorrect");
+					}}
+					previousButtonLabel={controlsT("previous-question")}
+					resetButtonLabel={t("reset")}
+					showSolutionButtonLabel={status === "solved" ? undefined : t("show-solution")}
+					validateButtonLabel={t("check")}
+				/>
+			</section>
 		</FillInTheBlankContext>
 	);
 }
@@ -183,7 +178,10 @@ export function Blank(props: Readonly<BlankProps>): ReactNode {
 	}, "");
 
 	const isValidated =
-		status === "checked" || status === "solved" || (validateOnBlur && (validated[id] ?? false));
+		status === "correct" ||
+		status === "incorrect" ||
+		status === "solved" ||
+		(validateOnBlur && (validated[id] ?? false));
 	const isCorrect = isCorrectAnswer(inputValue, answer, caseSensitive);
 
 	let borderClass = "border-neutral-300 focus:ring-brand-500";

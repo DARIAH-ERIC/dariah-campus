@@ -15,6 +15,8 @@ import {
 	createUnwrappedMdxFlowContentPlugin,
 } from "@/lib/content/mdx/rehype-plugins";
 import {
+	createDragTheWordsPlugin,
+	createFillInTheBlankPlugin,
 	createFootnotesPlugin,
 	createGitHubMarkdownPlugin,
 	createTypographicQuotesPlugin,
@@ -30,6 +32,8 @@ const compileOptions: CompileOptions = {
 		createGitHubMarkdownPlugin(),
 		createFootnotesPlugin(),
 		createTypographicQuotesPlugin(getIntlLanguage(locale)),
+		createFillInTheBlankPlugin(),
+		createDragTheWordsPlugin(),
 	],
 	remarkRehypeOptions: createRemarkRehypeOptions(locale),
 	rehypePlugins: [
