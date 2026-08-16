@@ -10,6 +10,7 @@ interface QuizFormProps {
 	children: ReactNode;
 	errorMessages: ReactNode;
 	nextButtonLabel: string;
+	onReset?: () => void;
 	previousButtonLabel: string;
 	successMessages: ReactNode;
 	validate: (formData: FormData) => boolean;
@@ -21,6 +22,7 @@ export function QuizForm(props: Readonly<QuizFormProps>): ReactNode {
 		children,
 		errorMessages,
 		nextButtonLabel,
+		onReset,
 		previousButtonLabel,
 		successMessages,
 		validate,
@@ -36,6 +38,7 @@ export function QuizForm(props: Readonly<QuizFormProps>): ReactNode {
 		>
 			<form
 				onReset={() => {
+					onReset?.();
 					setStatus("idle");
 				}}
 				onSubmit={(event) => {

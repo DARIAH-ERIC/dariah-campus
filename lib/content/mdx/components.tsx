@@ -12,7 +12,13 @@ import { Link as ContentLink } from "@/components/content/link";
 import { LinkButton } from "@/components/content/link-button";
 import { MermaidDiagram } from "@/components/content/mermaid-diagram";
 import { Quiz, QuizErrorMessage, QuizSuccessMessage } from "@/components/content/quiz";
-import { QuizChoice, QuizChoiceAnswer, QuizChoiceQuestion } from "@/components/content/quiz-choice";
+import {
+	QuizChoice,
+	QuizChoiceAnswer,
+	QuizChoiceAnswerErrorMessage,
+	QuizChoiceAnswerLabel,
+	QuizChoiceQuestion,
+} from "@/components/content/quiz-choice";
 import { QuizImageHotspot, QuizImageHotspots } from "@/components/content/quiz-image-hotspots";
 import { TableOfContents } from "@/components/content/table-of-contents";
 import { Tab, Tabs } from "@/components/content/tabs";
@@ -43,6 +49,8 @@ export const components = {
 	Quiz,
 	QuizChoice,
 	QuizChoiceAnswer,
+	QuizChoiceAnswerErrorMessage,
+	QuizChoiceAnswerLabel,
 	QuizChoiceQuestion,
 	QuizErrorMessage,
 	QuizDragTheWords,
