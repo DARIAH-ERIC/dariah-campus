@@ -72,5 +72,5 @@ export interface CollectionDocument {
 	sources: Array<string>;
 	tags: Array<string>;
 	summary: string;
-	summaryTitle: string;
+	"summary-title": string;
 }
