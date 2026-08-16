@@ -1,5 +1,5 @@
 import { assert, log } from "@acdh-oeaw/lib";
-import { Client, Errors } from "typesense";
+import { Client } from "typesense";
 
 import { env } from "@/config/env.config";
 import { createDocuments } from "@/lib/typesense/create-documents";
@@ -36,15 +36,11 @@ async function create() {
 		],
 	});
 
-	try {
-		await client.collections(collection).delete();
-	} catch (error) {
-		if (!(error instanceof Errors.ObjectNotFound)) {
-			throw error;
-		}
+	if (await client.collections(collection).exists()) {
+		await client.collections(collection).documents().delete({ truncate: true });
+	} else {
+		await client.collections().create(schema);
 	}
-
-	await client.collections().create(schema);
 
 	const documents = await createDocuments();
 
