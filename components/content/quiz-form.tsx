@@ -1,22 +1,19 @@
 "use client";
 
 import { AlertCircleIcon, CheckIcon } from "lucide-react";
-import { type ReactNode, useActionState, useTransition } from "react";
+import type { ReactNode } from "react";
 
 import { useQuizContext } from "@/components/content/quiz";
 import { QuizControls } from "@/components/content/quiz-controls";
-
-export interface QuizFormState {
-	status: "initial" | "correct" | "incorrect";
-}
 
 interface QuizFormProps {
 	children: ReactNode;
 	errorMessages: ReactNode;
 	nextButtonLabel: string;
+	onReset?: () => void;
 	previousButtonLabel: string;
 	successMessages: ReactNode;
-	validate: (formState: QuizFormState | undefined, formData: FormData) => Promise<QuizFormState>;
+	validate: (formData: FormData) => boolean;
 	validateButtonLabel: string;
 }
 
@@ -25,15 +22,14 @@ export function QuizForm(props: Readonly<QuizFormProps>): ReactNode {
 		children,
 		errorMessages,
 		nextButtonLabel,
+		onReset,
 		previousButtonLabel,
 		successMessages,
 		validate,
 		validateButtonLabel,
 	} = props;
 
-	const { isCurrent } = useQuizContext();
-	const [formState, formAction] = useActionState(validate, undefined);
-	const [_isPending, startTransition] = useTransition();
+	const { isCurrent, setStatus, status } = useQuizContext();
 
 	return (
 		<section
@@ -41,14 +37,16 @@ export function QuizForm(props: Readonly<QuizFormProps>): ReactNode {
 			hidden={!isCurrent}
 		>
 			<form
+				onReset={() => {
+					onReset?.();
+					setStatus("idle");
+				}}
 				onSubmit={(event) => {
 					/** Using `onSubmit` instead of `action` to avoid resetting checkboxes after submit. */
 					event.preventDefault();
 
 					const formData = new FormData(event.currentTarget as HTMLFormElement);
-					startTransition(() => {
-						formAction(formData);
-					});
+					setStatus(validate(formData) ? "correct" : "incorrect");
 				}}
 			>
 				{children}
@@ -63,18 +61,18 @@ export function QuizForm(props: Readonly<QuizFormProps>): ReactNode {
 					<div
 						aria-live="polite"
 						className={
-							formState == null
+							status === "idle"
 								? "sr-only"
-								: formState.status === "correct"
+								: status === "correct"
 									? "text-success-600"
 									: "text-error-600"
 						}
 					>
-						{formState?.status === "correct" ? (
+						{status === "correct" ? (
 							<div className="mt-2 flex items-center gap-x-2">
 								<CheckIcon aria-hidden={true} className="size-4 shrink-0" /> {successMessages}
 							</div>
-						) : formState?.status === "incorrect" ? (
+						) : status === "incorrect" ? (
 							<div className="mt-2 flex items-center gap-x-2">
 								<AlertCircleIcon aria-hidden={true} className="size-4 shrink-0" />
 								{errorMessages}
