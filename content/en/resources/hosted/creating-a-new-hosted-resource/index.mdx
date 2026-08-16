@@ -136,7 +136,9 @@ You can use this to add a link button out to an external website.
 
 #### Quiz
 
-There are a couple of quiz options ('multiple choice' or 'text input' options) available to you if you want to add short self-evaluation exercises into your learning resource.  You can do this mid-way through the resource to allow learners to check their learning as they go, or you can add quizzes at the end for a final test.
+There are a few quiz options ('multiple choice', 'fill in the blank', 'drag the words' or 'image hotspots' options) available to you if you want to add short self-evaluation exercises into your learning resource.  You can do this mid-way through the resource to allow learners to check their learning as they go, or you can add quizzes at the end for a final test.
+
+In a multiple choice quiz, every answer has an 'Answer text', which is what learners see next to the checkbox or radio button.  Each answer can optionally also have an 'Answer error message'.  This message is only shown next to that particular answer, and only when the learner got that answer wrong &#x2014; either by ticking an incorrect answer, or by leaving a correct one unticked.  This is a good way to explain *why* an answer is wrong, in addition to the general error message shown for the whole question.
 
 <Quiz>
   <QuizChoice variant="multiple">
@@ -145,19 +147,35 @@ There are a couple of quiz options ('multiple choice' or 'text input' options) a
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="incorrect">
-      Red
+      <QuizChoiceAnswerLabel>
+        Red
+      </QuizChoiceAnswerLabel>
+
+      <QuizChoiceAnswerErrorMessage>
+        Red skies do happen at sunrise and sunset, but that is not the everyday colour of the sky.
+      </QuizChoiceAnswerErrorMessage>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="correct">
-      Blue
+      <QuizChoiceAnswerLabel>
+        Blue
+      </QuizChoiceAnswerLabel>
+
+      <QuizChoiceAnswerErrorMessage>
+        This one should have been ticked: sunlight is scattered by the atmosphere, and blue light scatters most.
+      </QuizChoiceAnswerErrorMessage>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      Green
+      <QuizChoiceAnswerLabel>
+        Green
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizChoiceAnswer kind="incorrect">
-      Yellow
+      <QuizChoiceAnswerLabel>
+        Yellow
+      </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
     <QuizSuccessMessage>
