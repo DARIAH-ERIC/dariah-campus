@@ -6,16 +6,12 @@ import { Fragment, type ReactNode } from "react";
 
 import { Citation } from "@/components/citation";
 import { CurriculaList } from "@/components/curricula-list";
-import { Domain } from "@/components/domain";
 import { FloatingTableOfContents } from "@/components/floating-table-of-contents";
-import { Language } from "@/components/language";
-import { License } from "@/components/licence";
 import { PeopleList } from "@/components/people-list";
-import { PublicationDate } from "@/components/publication-date";
 import { ReUseConditions } from "@/components/re-use-conditions";
 import { RelatedResourcesList } from "@/components/related-resources-list";
 import { Resource } from "@/components/resource";
-import { Sources } from "@/components/sources";
+import { ResourceDetails } from "@/components/resource-details";
 import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
 import { TranslationOf } from "@/components/translation-of";
@@ -159,6 +155,17 @@ export default async function HostedResourcePage(
 	const translations = await Promise.all(_translations.map(getTranslationMetadata));
 	const isTranslationOf =
 		_isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
+	const [contentLicense, resourceSources] = await Promise.all([
+		client.collections.contentLicenses.get(license),
+		Promise.all(
+			sources.map(async (id) => {
+				const source = await client.collections.sources.get(id);
+				assert(source, `Missing source "${id}".`);
+				const { name } = source.metadata;
+				return { id, name };
+			}),
+		),
+	]);
 
 	return (
 		<div>
@@ -167,63 +174,71 @@ export default async function HostedResourcePage(
 					className="sticky top-24 hidden max-h-screen w-full max-w-xs gap-y-8 justify-self-end overflow-y-auto p-6 text-sm text-neutral-500 xl:flex xl:flex-col 2xl:p-8"
 					style={{ maxHeight: "calc(100dvh - 12px - var(--page-header-height))" }}
 				>
-					<PeopleList
-						label={t("authors")}
-						people={await Promise.all(
-							authors.map(async (id) => {
-								const person = await client.collections.people.get(id);
-								assert(person, `Missing person "${id}".`);
-								const { image, name } = person.metadata;
-								return { id, image, name };
-							}),
-						)}
-					/>
-					<PeopleList
-						label={t("contributors")}
-						people={await Promise.all(
-							contributors.map(async (id) => {
-								const person = await client.collections.people.get(id);
-								assert(person, `Missing person "${id}".`);
-								const { image, name } = person.metadata;
-								return { id, image, name };
-							}),
-						)}
-					/>
-					<PeopleList
-						label={t("editors")}
-						people={await Promise.all(
-							editors.map(async (id) => {
-								const person = await client.collections.people.get(id);
-								assert(person, `Missing person "${id}".`);
-								const { image, name } = person.metadata;
-								return { id, image, name };
-							}),
-						)}
-					/>
-					<TagsList
-						label={t("tags")}
-						tags={await Promise.all(
-							tags.map(async (id) => {
-								const tag = await client.collections.tags.get(id);
-								assert(tag, `Missing tag "${id}".`);
-								const { name } = tag.metadata;
-								return { id, name };
-							}),
-						)}
-					/>
-					<TranslationsList label={t("translations")} translations={translations} />
-					<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
-					<CurriculaList
-						curricula={await Promise.all(
-							resource.curricula.map(async (id) => {
-								const curriculum = await client.collections.curricula.get(id);
-								assert(curriculum, `Missing curriculum "${id}".`);
-								const { title } = curriculum.metadata;
-								return { id, title, href: curriculum.href };
-							}),
-						)}
-						label={t("contained-in-curricula", { count: resource.curricula.length })}
-					/>
+					<div className="flex flex-col gap-y-5">
+						<PeopleList
+							label={t("authors")}
+							people={await Promise.all(
+								authors.map(async (id) => {
+									const person = await client.collections.people.get(id);
+									assert(person, `Missing person "${id}".`);
+									const { image, name } = person.metadata;
+									return { id, image, name };
+								}),
+							)}
+						/>
+						<PeopleList
+							label={t("contributors")}
+							people={await Promise.all(
+								contributors.map(async (id) => {
+									const person = await client.collections.people.get(id);
+									assert(person, `Missing person "${id}".`);
+									const { image, name } = person.metadata;
+									return { id, image, name };
+								}),
+							)}
+						/>
+						<PeopleList
+							label={t("editors")}
+							people={await Promise.all(
+								editors.map(async (id) => {
+									const person = await client.collections.people.get(id);
+									assert(person, `Missing person "${id}".`);
+									const { image, name } = person.metadata;
+									return { id, image, name };
+								}),
+							)}
+						/>
+						<TagsList
+							label={t("tags")}
+							tags={await Promise.all(
+								tags.map(async (id) => {
+									const tag = await client.collections.tags.get(id);
+									assert(tag, `Missing tag "${id}".`);
+									const { name } = tag.metadata;
+									return { id, name };
+								}),
+							)}
+						/>
+						<TranslationsList label={t("translations")} translations={translations} />
+						<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
+						<CurriculaList
+							curricula={await Promise.all(
+								resource.curricula.map(async (id) => {
+									const curriculum = await client.collections.curricula.get(id);
+									assert(curriculum, `Missing curriculum "${id}".`);
+									const { title } = curriculum.metadata;
+									return { id, title, href: curriculum.href };
+								}),
+							)}
+							label={t("contained-in-curricula", { count: resource.curricula.length })}
+						/>
+						<ResourceDetails
+							license={contentLicense ?? { label: "Unknown" }}
+							locale={contentLocale}
+							publicationDate={new Date(publicationDate)}
+							sources={resourceSources}
+						/>
+					</div>
 					<Citation
 						authors={await Promise.all(
 							authors.map(async (id) => {
@@ -264,26 +279,6 @@ export default async function HostedResourcePage(
 						version={version}
 					/>
 					<ReUseConditions />
-					<dl className="flex flex-col gap-y-8">
-						<Domain />
-						<Language locale={contentLocale} />
-						<PublicationDate publicationDate={new Date(publicationDate)} />
-						<License
-							license={
-								(await client.collections.contentLicenses.get(license)) ?? { label: "Unknown" }
-							}
-						/>
-						<Sources
-							sources={await Promise.all(
-								sources.map(async (id) => {
-									const source = await client.collections.sources.get(id);
-									assert(source, `Missing source "${id}".`);
-									const { name } = source.metadata;
-									return { id, name };
-								}),
-							)}
-						/>
-					</dl>
 				</aside>
 
 				<div className="min-w-0">
@@ -317,6 +312,12 @@ export default async function HostedResourcePage(
 						</div>
 					</Resource>
 					<div className="mx-auto mt-12 flex w-full max-w-(--size-content) flex-col gap-y-12 border-t border-neutral-200 pt-12 text-sm text-neutral-500 xl:hidden">
+						<ResourceDetails
+							license={contentLicense ?? { label: "Unknown" }}
+							locale={contentLocale}
+							publicationDate={new Date(publicationDate)}
+							sources={resourceSources}
+						/>
 						<Citation
 							authors={await Promise.all(
 								authors.map(async (id) => {
