@@ -14,6 +14,7 @@ import {
 
 interface SearchContextValue extends SearchData {
 	error: unknown;
+	hasData: boolean;
 	isLoading: boolean;
 	query: string;
 	setFilter: (attribute: FacetAttribute, values: Array<string>) => void;
@@ -32,6 +33,7 @@ export function SearchProvider(props: Readonly<SearchProviderProps>): ReactNode 
 	const { children, initialState } = props;
 	const [state, setState] = useState(initialState);
 	const [data, setData] = useState(emptySearchData);
+	const [hasData, setHasData] = useState(false);
 	const [error, setError] = useState<unknown>(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const abortControllerRef = useRef<AbortController>(null);
@@ -42,7 +44,10 @@ export function SearchProvider(props: Readonly<SearchProviderProps>): ReactNode 
 
 		void search(state, abortController.signal)
 			.then((data) => {
-				if (!abortController.signal.aborted) setData(data);
+				if (!abortController.signal.aborted) {
+					setData(data);
+					setHasData(true);
+				}
 			})
 			.catch((error: unknown) => {
 				if (!abortController.signal.aborted) setError(error);
@@ -81,6 +86,7 @@ export function SearchProvider(props: Readonly<SearchProviderProps>): ReactNode 
 		return {
 			...data,
 			error,
+			hasData,
 			isLoading,
 			query: state.query,
 			selectedFilters: state.filters,
@@ -104,7 +110,7 @@ export function SearchProvider(props: Readonly<SearchProviderProps>): ReactNode 
 				});
 			},
 		};
-	}, [data, error, isLoading, state]);
+	}, [data, error, hasData, isLoading, state]);
 
 	return <SearchContext value={value}>{children}</SearchContext>;
 }
