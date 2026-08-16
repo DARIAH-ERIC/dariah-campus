@@ -149,6 +149,9 @@
 		"table-of-contents": "Table of contents",
 		"toggle-table-of-contents": "Toggle table of contents"
 	},
+	"Domain": {
+		"label": "Domain"
+	},
 	"ErrorPage": {
 		"meta": {
 			"title": "Error"
@@ -224,6 +227,12 @@
 		"search": "Search",
 		"submit-search-form": "Submit"
 	},
+	"Language": {
+		"label": "Language"
+	},
+	"License": {
+		"label": "License"
+	},
 	"Loading": {
 		"loading": "Loading"
 	},
@@ -235,6 +244,9 @@
 			"title": "Page not found"
 		},
 		"title": "Page not found"
+	},
+	"OriginalPublicationDate": {
+		"label": "Originally published"
 	},
 	"PathfinderResourcePage": {
 		"authors": "Authors",
@@ -254,6 +266,9 @@
 			"title": "Pathfinders"
 		},
 		"title": "Pathfinders"
+	},
+	"PublicationDate": {
+		"label": "Published to DARIAH-Campus"
 	},
 	"PreviewCard": {
 		"authors": "Authors",
@@ -284,33 +299,6 @@
 		"suggest-changes-to-resource": "Suggest changes to resource",
 		"tags": "Topics",
 		"translations": "Translations"
-	},
-	"ResourceMetadata": {
-		"authors": "Authors",
-		"content-type": "Content type",
-		"content-types": {
-			"audio": "Audio",
-			"curriculum": "Curriculum",
-			"event": "Event",
-			"pathfinder": "Pathfinder",
-			"slides": "Slides",
-			"training-module": "Training module",
-			"video": "Video",
-			"webinar-recording": "Webinar recording",
-			"website": "Website"
-		},
-		"domain": "Domain",
-		"label": "Full metadata",
-		"license": "License",
-		"language": "Language",
-		"pid": "PID",
-		"publication-date": "Published to DARIAH-Campus",
-		"remote-publication-date": "Originally published",
-		"remote-url": "URL",
-		"sources": "Sources",
-		"tags": "Topics",
-		"title": "Title",
-		"version": "Version"
 	},
 	"ResourcePreviewCard": {
 		"coming-soon": "Coming soon!"
@@ -354,6 +342,9 @@
 	},
 	"SocialMediaShareLinks": {
 		"share-link": "Share link on {platform}"
+	},
+	"Sources": {
+		"label": "Sources"
 	},
 	"SourcePage": {
 		"authors": "Authors",
