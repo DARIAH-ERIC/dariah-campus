@@ -1,18 +1,14 @@
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@swc/core'
-  - '@tailwindcss/oxide'
-  - esbuild
-  - sharp
-  - simple-git-hooks
-  - typesense-instantsearch-adapter
-  - unrs-resolver
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  esbuild: true
+  sharp: true
+  simple-git-hooks: true
+  typesense-instantsearch-adapter: true
+  unrs-resolver: true
 
 patchedDependencies:
-  '@keystar/ui': patches/@keystar__ui.patch
-  '@keystatic/core': patches/@keystatic__core.patch
+  "@keystatic/core": patches/@keystatic__core.patch
   next: patches/next.patch
 
 shellEmulator: true
-
-strictDepBuilds: true

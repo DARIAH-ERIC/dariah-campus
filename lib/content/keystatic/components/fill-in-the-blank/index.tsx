@@ -7,12 +7,13 @@ import { FormInputIcon } from "lucide-react";
 
 import { FillInTheBlankPreview } from "@/lib/content/keystatic/components/fill-in-the-blank/preview";
 
-export const createFillInTheBlank = createComponent((_paths, _locale) => {
+export const createQuizFillInTheBlank = createComponent((_paths, _locale) => {
 	return {
-		FillInTheBlank: wrapper({
-			label: "Fill in the blank",
+		QuizFillInTheBlank: wrapper({
+			label: "Quiz - Fill in the blank",
 			description: "An interactive fill-in-the-blank exercise.",
 			icon: <FormInputIcon />,
+			forSpecificLocations: true,
 			schema: {
 				caseSensitive: fields.checkbox({
 					label: "Case sensitive",
