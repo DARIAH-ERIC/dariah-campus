@@ -26,7 +26,7 @@ export function RelatedResourcesList(props: Readonly<RelatedResourcesListProps>)
 	return (
 		<nav
 			aria-labelledby={id}
-			className="mx-auto mb-12 w-full max-w-(--size-content) space-y-3 border-t border-neutral-200 py-12"
+			className="mx-auto my-12 w-full max-w-(--size-content) space-y-3 border-t border-neutral-200 py-12"
 		>
 			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id={id}>
 				{t("label")}
