@@ -1,45 +1,24 @@
 "use client";
 
 import { assert } from "@acdh-oeaw/lib";
+import cn from "clsx/lite";
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
-import { useHits } from "react-instantsearch-core";
 
+import { useSearch } from "@/app/(app)/(default)/search/_components/search-provider";
 import { ResourcesGrid } from "@/components/resources-grid";
-import type { ContentType } from "@/lib/content/options";
-
-interface Hit {
-	collection:
-		| "curricula"
-		| "resources-hosted"
-		| "resources-external"
-		| "resources-events"
-		| "resources-pathfinders";
-	kind: string;
-	"content-type": "event" | "curriculum" | "pathfinder" | ContentType;
-	id: string;
-	href: string;
-	locale: "en" | "de" | "sv";
-	people: Array<string>;
-	"publication-date": string;
-	summary: string;
-	"summary-title": string;
-	tags: Array<string>;
-	title: string;
-}
 
 interface SearchResultsProps {
 	peopleLabel: string;
 	peopleById: Map<string, { name: string; image: StaticImageData | string }>;
-	tagsById: Map<string, { name: string }>;
 }
 
 export function SearchResults(props: Readonly<SearchResultsProps>): ReactNode {
 	const { peopleLabel, peopleById } = props;
 
-	const hits = useHits<Hit>();
+	const { error, hits, isLoading } = useSearch();
 
-	const items = hits.items.map((hit) => {
+	const items = hits.map((hit) => {
 		const {
 			collection,
 			href,
@@ -71,5 +50,17 @@ export function SearchResults(props: Readonly<SearchResultsProps>): ReactNode {
 		};
 	});
 
-	return <ResourcesGrid peopleLabel={peopleLabel} resources={items} variant="search" />;
+	if (error != null) {
+		return (
+			<p className="text-center text-neutral-600" role="alert">
+				{"Search failed."}
+			</p>
+		);
+	}
+
+	return (
+		<div className={cn("transition-opacity", isLoading ? "opacity-75" : "opacity-100")}>
+			<ResourcesGrid peopleLabel={peopleLabel} resources={items} variant="search" />
+		</div>
+	);
 }

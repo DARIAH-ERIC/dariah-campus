@@ -18,27 +18,30 @@ interface FigureProps {
 
 export function Figure(props: Readonly<FigureProps>): ReactNode {
 	const { alignment = "stretch", alt = "", children, height, src, width } = props;
-	const figureWidths = {
-		"right-one-fourth": "sm:w-1/4",
-		"right-one-third": "sm:w-1/3",
-		"right-one-half": "sm:w-1/2",
-		"right-two-thirds": "sm:w-2/3",
-		center: "",
-		stretch: "",
+	const figureStyles: Record<FigureAlignment, string | undefined> = {
+		center: undefined,
+		"left-one-fourth": "inline-block sm:float-left sm:my-0 sm:me-4 sm:w-1/4",
+		"left-one-third": "inline-block sm:float-left sm:my-0 sm:me-4 sm:w-1/3",
+		"left-one-half": "inline-block sm:float-left sm:my-0 sm:me-4 sm:w-1/2",
+		"left-two-thirds": "inline-block sm:float-left sm:my-0 sm:me-4 sm:w-2/3",
+		"right-one-fourth": "inline-block sm:float-right sm:my-0 sm:ms-4 sm:w-1/4",
+		"right-one-third": "inline-block sm:float-right sm:my-0 sm:ms-4 sm:w-1/3",
+		"right-one-half": "inline-block sm:float-right sm:my-0 sm:ms-4 sm:w-1/2",
+		"right-two-thirds": "inline-block sm:float-right sm:my-0 sm:ms-4 sm:w-2/3",
+		stretch: undefined,
 	};
+	const isFloating = alignment.startsWith("left") || alignment.startsWith("right");
 
 	return (
 		<figure
 			className={cn(
 				"flex flex-col",
 				alignment === "center" ? "justify-center" : undefined,
-				alignment.includes("right")
-					? `inline-block sm:float-right sm:my-0 sm:ms-4 ${figureWidths[alignment]}`
-					: undefined,
+				figureStyles[alignment],
 			)}
 		>
 			<Image alt={alt} height={height} src={src} width={width} />
-			<figcaption className={alignment.includes("right") ? "sm:contain-inline-size" : undefined}>
+			<figcaption className={isFloating ? "sm:contain-inline-size" : undefined}>
 				{children}
 			</figcaption>
 		</figure>

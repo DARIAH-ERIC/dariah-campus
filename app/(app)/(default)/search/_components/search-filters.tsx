@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { SearchFacets } from "@/app/(app)/(default)/search/_components/search-facets";
 
@@ -50,11 +50,8 @@ export function SearchFilters(props: Readonly<SearchFiltersProps>): ReactNode {
 	} = props;
 
 	return (
-		<Fragment>
-			<div className="grid gap-y-1.5">
-				<h3 className="text-sm font-bold tracking-widest text-neutral-600 uppercase">
-					{localeLabel}
-				</h3>
+		<div className="contents">
+			<div>
 				<SearchFacets
 					attribute="locale"
 					filterLabel={localeFilterLabel}
@@ -62,16 +59,14 @@ export function SearchFilters(props: Readonly<SearchFiltersProps>): ReactNode {
 					getLabel={(id: string) => {
 						return localesById.get(id)?.label ?? "Unknown language";
 					}}
+					label={localeLabel}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}
 					showMoreLabel={showMoreLabel}
 				/>
 			</div>
 
-			<div className="grid gap-y-1.5">
-				<h3 className="text-sm font-bold tracking-widest text-neutral-600 uppercase">
-					{tagsLabel}
-				</h3>
+			<div>
 				<SearchFacets
 					attribute="tags"
 					filterLabel={tagsFilterLabel}
@@ -79,16 +74,14 @@ export function SearchFilters(props: Readonly<SearchFiltersProps>): ReactNode {
 					getLabel={(id: string) => {
 						return tagsById.get(id)?.name ?? "Unknown tag";
 					}}
+					label={tagsLabel}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}
 					showMoreLabel={showMoreLabel}
 				/>
 			</div>
 
-			<div className="grid gap-y-1.5">
-				<h3 className="text-sm font-bold tracking-widest text-neutral-600 uppercase">
-					{contentTypesLabel}
-				</h3>
+			<div>
 				<SearchFacets
 					attribute="content-type"
 					filterLabel={contentTypesFilterLabel}
@@ -96,16 +89,14 @@ export function SearchFilters(props: Readonly<SearchFiltersProps>): ReactNode {
 					getLabel={(id: string) => {
 						return contentTypesById.get(id)?.label ?? "Unknown content type";
 					}}
+					label={contentTypesLabel}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}
 					showMoreLabel={showMoreLabel}
 				/>
 			</div>
 
-			<div className="grid gap-y-1.5">
-				<h3 className="text-sm font-bold tracking-widest text-neutral-600 uppercase">
-					{peopleLabel}
-				</h3>
+			<div>
 				<SearchFacets
 					attribute="people"
 					filterLabel={peopleFilterLabel}
@@ -113,16 +104,14 @@ export function SearchFilters(props: Readonly<SearchFiltersProps>): ReactNode {
 					getLabel={(id: string) => {
 						return peopleById.get(id)?.name ?? "Unknown person";
 					}}
+					label={peopleLabel}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}
 					showMoreLabel={showMoreLabel}
 				/>
 			</div>
 
-			<div className="grid gap-y-1.5">
-				<h3 className="text-sm font-bold tracking-widest text-neutral-600 uppercase">
-					{sourcesLabel}
-				</h3>
+			<div>
 				<SearchFacets
 					attribute="sources"
 					filterLabel={sourcesFilterLabel}
@@ -130,11 +119,12 @@ export function SearchFilters(props: Readonly<SearchFiltersProps>): ReactNode {
 					getLabel={(id: string) => {
 						return sourcesById.get(id)?.name ?? "Unknown source";
 					}}
+					label={sourcesLabel}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}
 					showMoreLabel={showMoreLabel}
 				/>
 			</div>
-		</Fragment>
+		</div>
 	);
 }
