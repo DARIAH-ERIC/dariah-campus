@@ -12,8 +12,8 @@ export function License(props: Readonly<LicenceProps>): ReactNode {
 
 	return (
 		<div className="space-y-1.5">
-			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("label")}</h2>
-			<p>{license.label}</p>
+			<dt className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("label")}</dt>
+			<dd>{license.label}</dd>
 		</div>
 	);
 }

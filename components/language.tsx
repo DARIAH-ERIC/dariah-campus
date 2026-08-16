@@ -14,8 +14,8 @@ export function Language(props: Readonly<LanguageProps>): ReactNode {
 
 	return (
 		<div className="space-y-1.5">
-			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("label")}</h2>
-			<p>{new Intl.DisplayNames(locale, { type: "language" }).of(locale)}</p>
+			<dt className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("label")}</dt>
+			<dd>{new Intl.DisplayNames(locale, { type: "language" }).of(locale)}</dd>
 		</div>
 	);
 }

@@ -12,14 +12,14 @@ export function Sources(props: Readonly<SourcesProps>): ReactNode {
 
 	return (
 		<div className="space-y-1.5">
-			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("label")}</h2>
-			<p>
+			<dt className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("label")}</dt>
+			<dd>
 				{sources
 					.map((source) => {
 						return source.name;
 					})
 					.join(", ")}
-			</p>
+			</dd>
 		</div>
 	);
 }

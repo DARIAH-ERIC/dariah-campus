@@ -264,24 +264,26 @@ export default async function HostedResourcePage(
 						version={version}
 					/>
 					<ReUseConditions />
-					<Domain />
-					<Language locale={contentLocale} />
-					<PublicationDate publicationDate={new Date(publicationDate)} />
-					<License
-						license={
-							(await client.collections.contentLicenses.get(license)) ?? { label: "Unknown" }
-						}
-					/>
-					<Sources
-						sources={await Promise.all(
-							sources.map(async (id) => {
-								const source = await client.collections.sources.get(id);
-								assert(source, `Missing source "${id}".`);
-								const { name } = source.metadata;
-								return { id, name };
-							}),
-						)}
-					/>
+					<dl className="flex flex-col gap-y-8">
+						<Domain />
+						<Language locale={contentLocale} />
+						<PublicationDate publicationDate={new Date(publicationDate)} />
+						<License
+							license={
+								(await client.collections.contentLicenses.get(license)) ?? { label: "Unknown" }
+							}
+						/>
+						<Sources
+							sources={await Promise.all(
+								sources.map(async (id) => {
+									const source = await client.collections.sources.get(id);
+									assert(source, `Missing source "${id}".`);
+									const { name } = source.metadata;
+									return { id, name };
+								}),
+							)}
+						/>
+					</dl>
 				</aside>
 
 				<div className="min-w-0">

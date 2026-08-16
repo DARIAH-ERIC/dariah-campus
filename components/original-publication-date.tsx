@@ -1,14 +1,14 @@
 import { useFormatter, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-interface PublicationDateProps {
+interface OriginalPublicationDateProps {
 	publicationDate: Date;
 }
 
-export function PublicationDate(props: Readonly<PublicationDateProps>): ReactNode {
+export function OriginalPublicationDate(props: Readonly<OriginalPublicationDateProps>): ReactNode {
 	const { publicationDate } = props;
 
-	const t = useTranslations("PublicationDate");
+	const t = useTranslations("OriginalPublicationDate");
 	const format = useFormatter();
 
 	return (

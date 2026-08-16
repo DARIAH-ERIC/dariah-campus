@@ -6,12 +6,17 @@ import { Fragment, type ReactNode } from "react";
 
 import { Citation } from "@/components/citation";
 import { CurriculaList } from "@/components/curricula-list";
+import { Domain } from "@/components/domain";
 import { FloatingTableOfContents } from "@/components/floating-table-of-contents";
+import { Language } from "@/components/language";
+import { License } from "@/components/licence";
+import { OriginalPublicationDate } from "@/components/original-publication-date";
 import { PeopleList } from "@/components/people-list";
+import { PublicationDate } from "@/components/publication-date";
 import { ReUseConditions } from "@/components/re-use-conditions";
 import { RelatedResourcesList } from "@/components/related-resources-list";
 import { Resource } from "@/components/resource";
-import { ResourceMetadata } from "@/components/resource-metadata";
+import { Sources } from "@/components/sources";
 import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
 import { TranslationOf } from "@/components/translation-of";
@@ -124,7 +129,6 @@ export default async function ExternalResourcePage(
 	const {
 		authors,
 		contributors,
-		doi,
 		editors,
 		"featured-image": featuredImage,
 		license,
@@ -254,6 +258,27 @@ export default async function ExternalResourcePage(
 						version={version}
 					/>
 					<ReUseConditions />
+					<dl className="flex flex-col gap-y-8">
+						<Domain />
+						<Language locale={contentLocale} />
+						<PublicationDate publicationDate={new Date(publicationDate)} />
+						<OriginalPublicationDate publicationDate={new Date(remote["publication-date"])} />
+						<License
+							license={
+								(await client.collections.contentLicenses.get(license)) ?? { label: "Unknown" }
+							}
+						/>
+						<Sources
+							sources={await Promise.all(
+								sources.map(async (id) => {
+									const source = await client.collections.sources.get(id);
+									assert(source, `Missing source "${id}".`);
+									const { name } = source.metadata;
+									return { id, name };
+								}),
+							)}
+						/>
+					</dl>
 				</aside>
 
 				<div className="min-w-0">
@@ -321,43 +346,6 @@ export default async function ExternalResourcePage(
 						/>
 						<ReUseConditions />
 					</div>
-					<ResourceMetadata
-						authors={await Promise.all(
-							authors.map(async (id) => {
-								const person = await client.collections.people.get(id);
-								assert(person, `Missing person "${id}".`);
-								const { image, name } = person.metadata;
-								return { id, image, name };
-							}),
-						)}
-						contentType={resource.metadata["content-type"]}
-						doi={doi}
-						license={
-							(await client.collections.contentLicenses.get(license)) ?? { label: "Unknown" }
-						}
-						locale={contentLocale}
-						publicationDate={new Date(publicationDate)}
-						remotePublicationDate={new Date(remote["publication-date"])}
-						remoteUrl={remote.url}
-						sources={await Promise.all(
-							sources.map(async (id) => {
-								const source = await client.collections.sources.get(id);
-								assert(source, `Missing source "${id}".`);
-								const { name } = source.metadata;
-								return { id, name };
-							}),
-						)}
-						tags={await Promise.all(
-							tags.map(async (id) => {
-								const tag = await client.collections.tags.get(id);
-								assert(tag, `Missing tag "${id}".`);
-								const { name } = tag.metadata;
-								return { id, name };
-							}),
-						)}
-						title={title}
-						version={version}
-					/>
 					<RelatedResourcesList
 						resources={await Promise.all(
 							related.map(async (id) => {
