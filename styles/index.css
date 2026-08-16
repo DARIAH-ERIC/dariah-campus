@@ -89,7 +89,7 @@
 	:root {
 		--page-header-height: 100px;
 		--size-content: 720px;
-		--content-layout: 1fr 720px 1fr;
+		--content-layout: 1fr 42rem 1fr;
 	}
 }
 

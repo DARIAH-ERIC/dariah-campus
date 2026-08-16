@@ -3,12 +3,13 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { Providers } from "@/app/(app)/(default)/search/_components/providers";
 import { SearchField } from "@/app/(app)/(default)/search/_components/search-field";
 import { SearchFilters } from "@/app/(app)/(default)/search/_components/search-filters";
 import { SearchFiltersSidePanel } from "@/app/(app)/(default)/search/_components/search-filters-side-panel";
+import { SearchProvider } from "@/app/(app)/(default)/search/_components/search-provider";
 import { SearchResults } from "@/app/(app)/(default)/search/_components/search-results";
 import { SearchStats } from "@/app/(app)/(default)/search/_components/search-stats";
+import { createSearchState } from "@/app/(app)/(default)/search/_lib/typesense";
 import { PageTitle } from "@/components/page-title";
 import { client } from "@/lib/content/client";
 
@@ -22,9 +23,11 @@ export async function generateMetadata(): Promise<Metadata> {
 	return metadata;
 }
 
-export default async function SearchPage(): Promise<ReactNode> {
-	const t = await getTranslations("SearchPage");
+interface SearchPageProps {
+	searchParams: Promise<Record<string, Array<string> | string | undefined>>;
+}
 
+export default async function SearchPage(props: Readonly<SearchPageProps>): Promise<ReactNode> {
 	/**
 	 * Not using github reader, because results returned from `typesense` will only include content
 	 * from `main` branch.
@@ -35,8 +38,18 @@ export default async function SearchPage(): Promise<ReactNode> {
 	 * Ensure `content` fields, which are function components and cannot be passed through
 	 * the server-client serialization boundary, are omitted.
 	 */
+	const [searchParams, t, people, sources, tags, contentLanguagesById, contentTypesById] =
+		await Promise.all([
+			props.searchParams,
+			getTranslations("SearchPage"),
+			client.collections.people.all(),
+			client.collections.sources.all(),
+			client.collections.tags.all(),
+			client.collections.contentLanguages.byId(),
+			client.collections.contentTypes.byId(),
+		]);
 	const peopleById = keyByToMap(
-		(await client.collections.people.all()).map((person) => {
+		people.map((person) => {
 			const { image, name } = person.metadata;
 			return { id: person.id, image, name };
 		}),
@@ -45,7 +58,7 @@ export default async function SearchPage(): Promise<ReactNode> {
 		},
 	);
 	const sourcesById = keyByToMap(
-		(await client.collections.sources.all()).map((source) => {
+		sources.map((source) => {
 			const { name } = source.metadata;
 			return { id: source.id, name };
 		}),
@@ -54,7 +67,7 @@ export default async function SearchPage(): Promise<ReactNode> {
 		},
 	);
 	const tagsById = keyByToMap(
-		(await client.collections.tags.all()).map((tag) => {
+		tags.map((tag) => {
 			const { name } = tag.metadata;
 			return { id: tag.id, name };
 		}),
@@ -62,11 +75,8 @@ export default async function SearchPage(): Promise<ReactNode> {
 			return tag.id;
 		},
 	);
-	const contentLanguagesById = await client.collections.contentLanguages.byId();
-	const contentTypesById = await client.collections.contentTypes.byId();
-
 	return (
-		<Providers>
+		<SearchProvider initialState={createSearchState(searchParams)}>
 			<div className="mx-auto grid min-h-[calc(100dvh-100px)] w-full max-w-7xl content-start gap-y-12 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
 				<div className="grid gap-y-4">
 					<PageTitle>{t("title")}</PageTitle>
@@ -133,11 +143,10 @@ export default async function SearchPage(): Promise<ReactNode> {
 						<SearchResults
 							peopleById={peopleById}
 							peopleLabel={t("authors-editors-contributors")}
-							tagsById={tagsById}
 						/>
 					</section>
 				</div>
 			</div>
-		</Providers>
+		</SearchProvider>
 	);
 }
