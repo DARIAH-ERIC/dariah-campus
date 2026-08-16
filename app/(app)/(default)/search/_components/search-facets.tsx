@@ -82,7 +82,7 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 				<SearchField className="mb-1" onChange={setFilter} value={filter}>
 					<Label className="sr-only">{filterLabel}</Label>
 					<Input
-						className="w-full rounded-md border border-neutral-300 px-3 py-1 focus-visible:ring focus-visible:ring-brand-700"
+						className="w-full rounded-md border border-neutral-300 px-3 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
 						placeholder={filterPlaceholder}
 					/>
 				</SearchField>
@@ -102,7 +102,7 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 							return (
 								<Checkbox
 									key={item.value}
-									className="group flex items-center gap-x-2 rounded-sm focus-visible:outline-none focus-visible:ring focus-visible:ring-brand-700"
+									className="group flex items-center gap-x-2 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
 									value={item.value}
 								>
 									{({ isSelected }) => {
