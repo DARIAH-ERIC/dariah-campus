@@ -9,7 +9,7 @@ import { useQuizContext } from "@/components/content/quiz";
 interface QuizControlsProps {
 	nextButtonLabel: string;
 	previousButtonLabel: string;
-	validateButtonLabel: string;
+	validateButtonLabel?: string;
 }
 
 export function QuizControls(props: Readonly<QuizControlsProps>): ReactNode {
@@ -24,9 +24,11 @@ export function QuizControls(props: Readonly<QuizControlsProps>): ReactNode {
 				<span>{previousButtonLabel}</span>
 			</Button>
 
-			<Button type="submit">
-				<span>{validateButtonLabel}</span>
-			</Button>
+			{validateButtonLabel != null ? (
+				<Button type="submit">
+					<span>{validateButtonLabel}</span>
+				</Button>
+			) : null}
 
 			<Button isDisabled={!navigation.hasNext} onPress={navigation.next}>
 				<span>{nextButtonLabel}</span>
