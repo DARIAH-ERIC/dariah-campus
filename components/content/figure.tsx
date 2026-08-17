@@ -8,7 +8,7 @@ interface FigureProps {
 	/** @default "stretch" */
 	alignment?: FigureAlignment;
 	alt?: string;
-	children: ReactNode;
+	children?: ReactNode;
 	/** Maybe added by `with-image-sizes` mdx plugin. */
 	height?: number;
 	src: string;
@@ -41,9 +41,11 @@ export function Figure(props: Readonly<FigureProps>): ReactNode {
 			)}
 		>
 			<Image alt={alt} height={height} src={src} width={width} />
-			<figcaption className={isFloating ? "sm:contain-inline-size" : undefined}>
-				{children}
-			</figcaption>
+			{children != null && children !== "" ? (
+				<figcaption className={isFloating ? "sm:contain-inline-size" : undefined}>
+					{children}
+				</figcaption>
+			) : null}
 		</figure>
 	);
 }
