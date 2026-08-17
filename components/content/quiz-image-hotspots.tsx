@@ -18,9 +18,9 @@ import {
 import { Button, Dialog, DialogTrigger, Modal, ModalOverlay, OverlayArrow, Popover } from "react-aria-components";
 import { createPortal } from "react-dom";
 
-import { useQuizContext } from "#/components/content/quiz";
-import { QuizControls } from "#/components/content/quiz-controls";
-import { Image } from "#/components/image";
+import { useQuizContext } from "#/components/content/quiz.tsx";
+import { QuizControls } from "#/components/content/quiz-controls.tsx";
+import { Image } from "#/components/image.tsx";
 
 type HotspotPresentation = "inline" | "popover" | "sidepanel";
 

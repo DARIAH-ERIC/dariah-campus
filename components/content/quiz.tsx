@@ -3,7 +3,7 @@
 import { assert } from "@acdh-oeaw/lib";
 import { createContext, type ReactNode, use, useState } from "react";
 
-import { getChildrenElements } from "#/components/content/get-children-elements";
+import { getChildrenElements } from "#/components/content/get-children-elements.ts";
 
 export type QuizPageStatus = "correct" | "idle" | "incorrect" | "solved";
 

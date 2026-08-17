@@ -91,6 +91,20 @@ export function createSearchAdminService(params: CreateSearchAdminServiceParams)
 					});
 				},
 
+				truncate(): Promise<Result<void, SearchCollectionError>> {
+					return Result.tryPromise({
+						async try() {
+							await client
+								.collections<ResourceDocument>(collections.resources)
+								.documents()
+								.delete({ truncate: true });
+						},
+						catch(cause) {
+							return new SearchCollectionError({ cause });
+						},
+					});
+				},
+
 				ingest(documents: Array<ResourceDocument>): Promise<Result<void, SearchImportError>> {
 					return Result.tryPromise({
 						async try() {

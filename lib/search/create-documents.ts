@@ -1,48 +1,48 @@
 import { unique } from "@acdh-oeaw/lib";
 
-import { client } from "#/lib/content/client";
-import type { ResourceDocument } from "#/lib/search/admin";
+import { client } from "#/lib/content/client/index.ts";
+import type { ResourceDocument } from "#/lib/search/admin.ts";
 
 type CollectionDocument = ResourceDocument
 
 export async function createDocuments(): Promise<Array<CollectionDocument>> {
-  const documents: Array<CollectionDocument> = [];
+	const documents: Array<CollectionDocument> = [];
 
-  for (const name of [
-    "resourcesEvents",
-    "resourcesExternal",
-    "resourcesHosted",
-    "resourcesPathfinders",
-    "curricula",
-  ] as const) {
-    (await client.collections[name].all()).map((item) => {
-      const isDraft = "draft" in item.metadata && item.metadata.draft === true;
-      if (isDraft) return;
+	for (const name of [
+		"resourcesEvents",
+		"resourcesExternal",
+		"resourcesHosted",
+		"resourcesPathfinders",
+		"curricula",
+	] as const) {
+		(await client.collections[name].all()).map((item) => {
+			const isDraft = "draft" in item.metadata && item.metadata.draft === true;
+			if (isDraft) return;
 
-      const authors = "authors" in item.metadata ? item.metadata.authors : [];
-      const editors = "editors" in item.metadata ? item.metadata.editors : [];
-      const contributors = "contributors" in item.metadata ? item.metadata.contributors : [];
+			const authors = "authors" in item.metadata ? item.metadata.authors : [];
+			const editors = "editors" in item.metadata ? item.metadata.editors : [];
+			const contributors = "contributors" in item.metadata ? item.metadata.contributors : [];
 
-      documents.push({
-        id: item.id,
-        collection: name,
-        href: item.href,
-        title: item.metadata.summary.title || item.metadata.title,
-        locale: item.metadata.locale,
-        "publication-date": item.metadata["publication-date"],
-        "publication-timestamp": new Date(item.metadata["publication-date"]).getTime(),
-        "content-type": item.metadata["content-type"],
-        summary: item.metadata.summary.content,
-        "summary-title": item.metadata.summary.title,
-        tags: item.metadata.tags,
-        people: unique([...authors, ...editors, ...contributors]),
-        authors,
-        editors,
-        contributors,
-        sources: "sources" in item.metadata ? item.metadata.sources : [],
-      });
-    });
-  }
+			documents.push({
+				id: item.id,
+				collection: name,
+				href: item.href,
+				title: item.metadata.summary.title || item.metadata.title,
+				locale: item.metadata.locale,
+				"publication-date": item.metadata["publication-date"],
+				"publication-timestamp": new Date(item.metadata["publication-date"]).getTime(),
+				"content-type": item.metadata["content-type"],
+				summary: item.metadata.summary.content,
+				"summary-title": item.metadata.summary.title,
+				tags: item.metadata.tags,
+				people: unique([...authors, ...editors, ...contributors]),
+				authors,
+				editors,
+				contributors,
+				sources: "sources" in item.metadata ? item.metadata.sources : [],
+			});
+		});
+	}
 
-  return documents;
+	return documents;
 }

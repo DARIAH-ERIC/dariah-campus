@@ -1,7 +1,7 @@
 import { createUrl } from "@acdh-oeaw/lib";
 import type { MetadataRoute } from "next";
 
-import { env } from "#/configs/env.config";
+import { env } from "#/configs/env.config.ts";
 
 const baseUrl = env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL;
 

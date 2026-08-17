@@ -11,6 +11,6 @@ export function compile(input: VFile, options: CompileOptions): Promise<VFile> {
 		...options,
 		format: "mdx",
 		jsx: true,
-		providerImportSource: "@/lib/content/mdx/components",
+		providerImportSource: "#/lib/content/mdx/components",
 	});
 }

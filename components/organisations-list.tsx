@@ -1,7 +1,7 @@
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { Image } from "#/components/image";
+import { Image } from "#/components/image.tsx";
 
 interface OrganisationsListProps {
 	label: ReactNode;

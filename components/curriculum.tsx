@@ -2,18 +2,18 @@ import { useFormatter, useTranslations } from "next-intl";
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { AvatarsList } from "#/components/avatars-list";
-import { Card, CardContent, CardFooter, CardTitle } from "#/components/card";
-import { ContentTypeIcon } from "#/components/content-type-icon";
-import { Image } from "#/components/image";
-import { Link } from "#/components/link";
-import { PageTitle } from "#/components/page-title";
-import { People } from "#/components/people";
-import { Sources } from "#/components/sources";
-import { Tags } from "#/components/tags";
-import { TranslationOf } from "#/components/translation-of";
-import { Translations } from "#/components/translations";
-import type { ContentType } from "#/lib/content/options";
+import { AvatarsList } from "#/components/avatars-list.tsx";
+import { Card, CardContent, CardFooter, CardTitle } from "#/components/card.tsx";
+import { ContentTypeIcon } from "#/components/content-type-icon.tsx";
+import { Image } from "#/components/image.tsx";
+import { Link } from "#/components/link.tsx";
+import { PageTitle } from "#/components/page-title.tsx";
+import { People } from "#/components/people.tsx";
+import { Sources } from "#/components/sources.tsx";
+import { Tags } from "#/components/tags.tsx";
+import { TranslationOf } from "#/components/translation-of.tsx";
+import { Translations } from "#/components/translations.tsx";
+import type { ContentType } from "#/lib/content/options.ts";
 
 interface CurriculumProps {
 	children: ReactNode;

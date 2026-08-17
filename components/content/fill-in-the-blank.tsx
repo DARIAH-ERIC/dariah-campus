@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 import { createContext, type ReactNode, use, useState } from "react";
 import { Button, Dialog, DialogTrigger, Popover } from "react-aria-components";
 
-import { type QuizPageStatus, useQuizContext } from "#/components/content/quiz";
-import { QuizControls } from "#/components/content/quiz-controls";
+import { type QuizPageStatus, useQuizContext } from "#/components/content/quiz.tsx";
+import { QuizControls } from "#/components/content/quiz-controls.tsx";
 
 interface FillInTheBlankContextValue {
 	inputs: Array<string>;

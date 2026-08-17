@@ -3,9 +3,9 @@ import { join } from "node:path";
 
 import type { MetadataRoute } from "next";
 
-import { env } from "#/configs/env.config";
-import { client } from "#/lib/content/client";
-import { createFullUrl } from "#/lib/navigation/create-full-url";
+import { env } from "#/configs/env.config.ts";
+import { client } from "#/lib/content/client/index.ts";
+import { createFullUrl } from "#/lib/navigation/create-full-url.ts";
 
 const baseUrl = env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL;
 

@@ -1,7 +1,7 @@
 import { groupByToMap, keyByToMap } from "@acdh-oeaw/lib";
 import collection from "@content/curricula";
 
-import type { CollectionClient } from "#/lib/content/types";
+import type { CollectionClient } from "#/lib/content/types.ts";
 
 const byTagId = groupByToMap(Array.from(collection.values()), (entry) => {
   return entry.document.metadata.tags;

@@ -4,8 +4,8 @@ import type { ProcessorOptions } from "@mdx-js/mdx";
 import type { ElementContent } from "hast";
 import { createTranslator } from "next-intl";
 
-import type { IntlLocale } from "@/lib/i18n/locales";
-import messages from "@/messages/en.json";
+import type { IntlLocale } from "#/lib/i18n/locales.ts";
+import messages from "#/messages/en.json";
 
 type RemarkRehypeOptions = NonNullable<ProcessorOptions["remarkRehypeOptions"]>;
 

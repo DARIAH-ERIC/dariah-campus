@@ -4,7 +4,7 @@ import type { MdxJsxAttribute, MdxJsxAttributeValueExpression, MdxJsxTextElement
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
-const BLANK_PATTERN = /@@([^@]+)@@/g;
+const BLANK_PATTERN = /@@([^@]+)@#/g;
 
 /**
  * Parses the inner content of a blank marker. Answers are separated by `//`, hint follows `::`. Examples: `Paris` →

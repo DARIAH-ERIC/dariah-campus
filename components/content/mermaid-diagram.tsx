@@ -2,7 +2,7 @@
 
 import { type ReactNode, useEffect, useId, useState } from "react";
 
-import { useDiagramContext } from "#/components/content/diagram";
+import { useDiagramContext } from "#/components/content/diagram.tsx";
 
 interface MermaidDiagramProps {
 	diagram: string;

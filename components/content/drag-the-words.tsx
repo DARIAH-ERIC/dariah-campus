@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 import { createContext, type DragEvent, type ReactNode, use, useMemo, useState } from "react";
 import { Button, Dialog, DialogTrigger, Menu, MenuItem, MenuTrigger, Popover, Separator } from "react-aria-components";
 
-import { type QuizPageStatus, useQuizContext } from "#/components/content/quiz";
-import { QuizControls } from "#/components/content/quiz-controls";
+import { type QuizPageStatus, useQuizContext } from "#/components/content/quiz.tsx";
+import { QuizControls } from "#/components/content/quiz-controls.tsx";
 
 /**
  * Keyboard and touch users open a blank and choose from the remaining words, so focus never leaves the reading order.

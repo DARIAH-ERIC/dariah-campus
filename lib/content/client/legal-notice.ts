@@ -1,6 +1,6 @@
 import singleton from "@content/legal-notice";
 
-import type { SingletonClient } from "#/lib/content/types";
+import type { SingletonClient } from "#/lib/content/types.ts";
 
 const item = singleton.get("")!.document;
 

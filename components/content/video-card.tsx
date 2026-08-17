@@ -2,10 +2,10 @@ import { PlayCircleIcon } from "lucide-react";
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { LightBox, LightBoxOverlay, LightboxTrigger } from "#/components/content/lightbox";
-import { Image } from "#/components/image";
-import type { VideoProvider } from "#/lib/content/options";
-import { createVideoUrl } from "#/lib/navigation/create-video-url";
+import { LightBox, LightBoxOverlay, LightboxTrigger } from "#/components/content/lightbox.tsx";
+import { Image } from "#/components/image.tsx";
+import type { VideoProvider } from "#/lib/content/options.ts";
+import { createVideoUrl } from "#/lib/navigation/create-video-url.ts";
 
 interface VideoCardProps {
 	id: string;

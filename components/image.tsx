@@ -3,7 +3,7 @@
 import NextImage, { type ImageProps as NextImageProps } from "next/image";
 import type { ReactNode } from "react";
 
-import { env } from "#/configs/env.config";
+import { env } from "#/configs/env.config.ts";
 
 interface ImageProps extends Omit<NextImageProps, "loader"> {}
 

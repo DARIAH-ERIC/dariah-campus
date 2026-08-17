@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-import { Link } from "#/components/link";
-import { createSearchUrl } from "#/lib/navigation/create-search-url";
+import { Link } from "#/components/link.tsx";
+import { createSearchUrl } from "#/lib/navigation/create-search-url.ts";
 
 interface TagsProps {
 	label: ReactNode;

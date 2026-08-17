@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { env } from "#/configs/env.config";
+import { env } from "#/configs/env.config.ts";
 
 export function TailwindIndicator(): ReactNode {
 	if (env.NODE_ENV !== "development") return null;

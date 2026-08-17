@@ -1,9 +1,9 @@
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { Card, CardContent, CardFooter, CardTitle } from "#/components/card";
-import { Image } from "#/components/image";
-import { Link } from "#/components/link";
+import { Card, CardContent, CardFooter, CardTitle } from "#/components/card.tsx";
+import { Image } from "#/components/image.tsx";
+import { Link } from "#/components/link.tsx";
 
 interface SearchCardProps {
 	count: string;

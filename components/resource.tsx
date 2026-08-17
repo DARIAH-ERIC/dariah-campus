@@ -5,21 +5,21 @@ import { useFormatter, useLocale, useTranslations } from "next-intl";
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { Attachments } from "#/components/attachments";
-import { Image } from "#/components/image";
-import { Links } from "#/components/links";
-import { Organisations } from "#/components/organisations";
-import { PageTitle } from "#/components/page-title";
-import { People } from "#/components/people";
-import { SocialMedia } from "#/components/social-media";
-import { SocialMediaShareLinks } from "#/components/social-media-share-links";
-import { Tags } from "#/components/tags";
-import { TranslationOf } from "#/components/translation-of";
-import { Translations } from "#/components/translations";
-import { env } from "#/configs/env.config";
-import type { SocialMediaKind } from "#/lib/content/options";
-import { getIntlLanguage } from "#/lib/i18n/locales";
-import { createFullUrl } from "#/lib/navigation/create-full-url";
+import { Attachments } from "#/components/attachments.tsx";
+import { Image } from "#/components/image.tsx";
+import { Links } from "#/components/links.tsx";
+import { Organisations } from "#/components/organisations.tsx";
+import { PageTitle } from "#/components/page-title.tsx";
+import { People } from "#/components/people.tsx";
+import { SocialMedia } from "#/components/social-media.tsx";
+import { SocialMediaShareLinks } from "#/components/social-media-share-links.tsx";
+import { Tags } from "#/components/tags.tsx";
+import { TranslationOf } from "#/components/translation-of.tsx";
+import { Translations } from "#/components/translations.tsx";
+import { env } from "#/configs/env.config.ts";
+import type { SocialMediaKind } from "#/lib/content/options.ts";
+import { getIntlLanguage } from "#/lib/i18n/locales.ts";
+import { createFullUrl } from "#/lib/navigation/create-full-url.ts";
 
 interface ResourceProps {
 	attachments?: Array<{ label: string; file: string }>;

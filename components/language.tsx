@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import type { ContentLanguage } from "#/lib/content/options";
+import type { ContentLanguage } from "#/lib/content/options.ts";
 
 interface LanguageProps {
 	locale: ContentLanguage;

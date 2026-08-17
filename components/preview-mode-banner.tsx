@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { cookies, draftMode } from "next/headers";
 import type { ReactNode } from "react";
 
-import { Link } from "#/components/link";
+import { Link } from "#/components/link.tsx";
 
 export async function PreviewModeBanner(): Promise<ReactNode> {
 	const t = await getTranslations("PreviewModeBanner");

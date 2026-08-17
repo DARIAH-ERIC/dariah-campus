@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
 
-import { TailwindIndicator } from "#/app/_components/tailwind-indicator";
+import { TailwindIndicator } from "#/app/_components/tailwind-indicator.tsx";
 
 interface DocumentBodyProps extends ComponentProps<"body"> {
 	children: ReactNode;

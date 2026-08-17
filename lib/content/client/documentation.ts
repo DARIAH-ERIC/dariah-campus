@@ -2,7 +2,7 @@ import { keyByToMap } from "@acdh-oeaw/lib";
 import collection from "@content/documentation";
 import navigation from "@content/navigation";
 
-import type { CollectionClient } from "#/lib/content/types";
+import type { CollectionClient } from "#/lib/content/types.ts";
 
 const order = navigation.get("")!.document.documentation.links;
 

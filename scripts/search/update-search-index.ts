@@ -2,7 +2,7 @@ import { log } from "@acdh-oeaw/lib";
 
 import { env } from "#/configs/env.config.ts";
 import { createSearchAdminService } from "#/lib/search/admin.ts";
-import { createDocuments } from "#/lib/search/create-documents";
+import { createDocuments } from "#/lib/search/create-documents.ts";
 
 const admin = createSearchAdminService({
 	apiKey: env.TYPESENSE_ADMIN_API_KEY,
@@ -27,8 +27,8 @@ async function main() {
 		return;
 	}
 
-	// TODO: truncate instead of delete
-	(await admin.collections.resources.reset()).unwrap();
+	(await admin.collections.resources.create()).unwrap();
+	(await admin.collections.resources.truncate()).unwrap();
 
 	const documents = await createDocuments();
 

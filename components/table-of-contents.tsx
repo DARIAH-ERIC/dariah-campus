@@ -6,10 +6,10 @@ import cn from "clsx/lite";
 import { ChevronRightIcon } from "lucide-react";
 import { type ReactNode, useEffect, useRef } from "react";
 
-import { Link } from "#/components/link";
-import { useLabels } from "#/lib/hooks/use-labels";
-import { useTableOfContentsHighlight } from "#/lib/hooks/use-table-of-contents-highlight";
-import { createHref } from "#/lib/navigation/create-href";
+import { Link } from "#/components/link.tsx";
+import { useLabels } from "#/lib/hooks/use-labels.ts";
+import { useTableOfContentsHighlight } from "#/lib/hooks/use-table-of-contents-highlight.ts";
+import { createHref } from "#/lib/navigation/create-href.ts";
 
 interface TableOfContentsProps {
 	"aria-labelledby"?: string;

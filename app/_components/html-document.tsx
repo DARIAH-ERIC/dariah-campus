@@ -3,8 +3,8 @@ import "#/styles/index.css";
 import cn from "clsx/lite";
 import type { ComponentProps, ReactNode } from "react";
 
-import * as fonts from "#/app/_lib/fonts";
-import type { IntlLocale } from "#/lib/i18n/locales";
+import * as fonts from "#/app/_lib/fonts.ts";
+import type { IntlLocale } from "#/lib/i18n/locales.ts";
 
 interface HtmlDocumentProps extends ComponentProps<"html"> {
 	children: ReactNode;

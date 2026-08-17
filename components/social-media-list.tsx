@@ -14,8 +14,8 @@ import {
 	TwitterIcon,
 	WebsiteIcon,
 	YouTubeIcon,
-} from "#/components/social-media-icons";
-import type { SocialMediaKind } from "#/lib/content/options";
+} from "#/components/social-media-icons.tsx";
+import type { SocialMediaKind } from "#/lib/content/options.ts";
 
 const logos: Record<SocialMediaKind, FC<{ className?: string }>> = {
 	bluesky: BlueskyIcon,
