@@ -100,10 +100,7 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 			className="flex flex-col gap-y-6 bg-brand-950 px-4 py-16 text-sm font-medium text-neutral-400 xs:px-8"
 		>
 			<nav aria-label={t("navigation.label")}>
-				<ul
-					className="flex flex-col items-center justify-center gap-y-3 md:flex-row md:gap-x-6 md:gap-y-0"
-					role="list"
-				>
+				<ul className="flex flex-col items-center justify-center gap-y-3 md:flex-row md:gap-x-6 md:gap-y-0" role="list">
 					{Object.entries(navigation).map(([key, link]) => {
 						return (
 							<li key={key} className="inline-flex">

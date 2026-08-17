@@ -1,8 +1,6 @@
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 
-/**
- * Use `{slug}` as a placeholder for the current entry's id.
- */
+/** Use `{slug}` as a placeholder for the current entry's id. */
 export function createPreviewUrl(previewUrl: string): string {
 	if (env.NEXT_PUBLIC_KEYSTATIC_MODE === "github") {
 		return `/api/preview/enable?branch={branch}&to=${previewUrl}`;

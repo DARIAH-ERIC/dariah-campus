@@ -8,7 +8,7 @@ import { Button, Checkbox, CheckboxGroup, Input, Label, SearchField } from "reac
 
 import { useSearch } from "@/app/(app)/(default)/search/_components/search-provider";
 import type { FacetAttribute } from "@/app/(app)/(default)/search/_lib/typesense";
-import { defaultVisibleFacets, maxVisibleFacets } from "@/config/search.config";
+import { defaultVisibleFacets, maxVisibleFacets } from "@/configs/search.config";
 
 interface SearchFacetsProps {
 	attribute: FacetAttribute;
@@ -58,8 +58,7 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 				return getLabel(item.value).toLocaleLowerCase().includes(normalizedFilter);
 			})
 			.toSorted((a, b) => {
-				const selectedDifference =
-					Number(selectedValues.has(b.value)) - Number(selectedValues.has(a.value));
+				const selectedDifference = Number(selectedValues.has(b.value)) - Number(selectedValues.has(a.value));
 				if (selectedDifference !== 0) return selectedDifference;
 
 				const countDifference = (b.count ?? -1) - (a.count ?? -1);
@@ -109,9 +108,7 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 										return (
 											<>
 												<span className="pointer-events-none flex size-4 shrink-0 items-center justify-center rounded-xs border border-neutral-400 group-selected:border-brand-700 group-selected:bg-brand-700">
-													{isSelected ? (
-														<CheckIcon aria-hidden={true} className="size-3 text-white" />
-													) : null}
+													{isSelected ? <CheckIcon aria-hidden={true} className="size-3 text-white" /> : null}
 												</span>
 												<span>
 													{getLabel(item.value)}
@@ -127,9 +124,7 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 				) : null}
 			</CheckboxGroup>
 
-			{visibleItems.length === 0 ? (
-				<div className="text-neutral-600">{nothingFoundLabel}</div>
-			) : null}
+			{visibleItems.length === 0 ? <div className="text-neutral-600">{nothingFoundLabel}</div> : null}
 
 			{canToggleShowMore ? (
 				<Button

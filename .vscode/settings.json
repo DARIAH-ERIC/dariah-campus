@@ -4,7 +4,7 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "explicit"
 	},
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.defaultFormatter": "oxc.oxc-vscode",
 	"editor.detectIndentation": false,
 	"editor.formatOnSave": true,
 	"editor.inlayHints.enabled": "offUnlessPressed",
@@ -39,7 +39,6 @@
 	"i18n-ally.tabStyle": "tab",
 	"less.validate": false,
 	"mdx.server.enable": true,
-	"prettier.ignorePath": ".gitignore",
 	"scss.validate": false,
 	"search.exclude": {
 		".content/**": true,

@@ -1,6 +1,6 @@
 import type { CollectionCreateSchema } from "typesense/lib/Typesense/Collections";
 
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 
 export const cacheSearchResultsForSeconds = 60 * 60;
 

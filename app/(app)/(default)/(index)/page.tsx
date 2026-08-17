@@ -61,13 +61,7 @@ function HeroSection(props: Readonly<HeroSectionProps>): ReactNode {
 
 	return (
 		<section className="flex flex-col items-center gap-y-4 text-center">
-			<Image
-				alt=""
-				className="mx-auto h-48 w-auto text-brand-700 lg:h-60"
-				loading="eager"
-				preload={true}
-				src={image}
-			/>
+			<Image alt="" className="mx-auto h-48 w-auto text-brand-700 lg:h-60" loading="eager" preload={true} src={image} />
 			<h1 className="text-5xl font-bold lg:text-6xl">{title}</h1>
 			<p className="text-xl text-neutral-500 lg:text-2xl">{lead}</p>
 		</section>
@@ -158,12 +152,7 @@ function AboutSection(props: Readonly<AboutSectionProps>): ReactNode {
 				{videos.map((video, index) => {
 					return (
 						<li key={index}>
-							<VideoCard
-								description={video.description}
-								id={video.id}
-								src={video.src}
-								title={video.title}
-							/>
+							<VideoCard description={video.description} id={video.id} src={video.src} title={video.title} />
 						</li>
 					);
 				})}
@@ -231,12 +220,7 @@ function TestimonialSection(props: Readonly<TestimonialSectionProps>): ReactNode
 				{videos.map((video, index) => {
 					return (
 						<li key={index}>
-							<VideoCard
-								description={video.description}
-								id={video.id}
-								src={video.src}
-								title={video.title}
-							/>
+							<VideoCard description={video.description} id={video.id} src={video.src} title={video.title} />
 						</li>
 					);
 				})}

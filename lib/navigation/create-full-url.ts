@@ -5,7 +5,7 @@ import {
 	type CreateUrlSearchParamsParams,
 } from "@acdh-oeaw/lib";
 
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 
 export interface CreateFullUrlParams extends Omit<CreateUrlParams, "baseUrl" | "searchParams"> {
 	baseUrl?: CreateUrlParams["baseUrl"];

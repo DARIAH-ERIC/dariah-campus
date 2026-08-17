@@ -1,7 +1,7 @@
 import { assert, createUrl } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { getFormatter, getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
 import { Fragment, type ReactNode } from "react";
 import { jsonLdScriptProps } from "react-schemaorg";
 
@@ -22,7 +22,7 @@ import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
 import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 import { client } from "@/lib/content/client";
 import { createClient } from "@/lib/content/create-client";
 import { createResourceMetadata } from "@/lib/content/utils/create-resource-metadata";
@@ -32,9 +32,7 @@ import { pickRandom } from "@/lib/utils/pick-random";
 
 interface EventResourcePageProps extends PageProps<"/resources/events/[id]"> {}
 
-export async function generateStaticParams(): Promise<
-	Array<Pick<Awaited<EventResourcePageProps["params"]>, "id">>
-> {
+export async function generateStaticParams(): Promise<Array<Pick<Awaited<EventResourcePageProps["params"]>, "id">>> {
 	const ids = await client.collections.resourcesEvents.ids();
 
 	return ids.map((id) => {
@@ -107,9 +105,7 @@ export async function generateMetadata(props: Readonly<EventResourcePageProps>):
 	return metadata;
 }
 
-export default async function EventResourcePage(
-	props: Readonly<EventResourcePageProps>,
-): Promise<ReactNode> {
+export default async function EventResourcePage(props: Readonly<EventResourcePageProps>): Promise<ReactNode> {
 	const { params } = props;
 
 	const t = await getTranslations("EventResourcePage");
@@ -172,8 +168,7 @@ export default async function EventResourcePage(
 	}
 
 	const translations = await Promise.all(_translations.map(getTranslationMetadata));
-	const isTranslationOf =
-		_isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
+	const isTranslationOf = _isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
 	const [contentLicense, resourceSources] = await Promise.all([
 		client.collections.contentLicenses.get(license),
 		Promise.all(
@@ -217,8 +212,7 @@ export default async function EventResourcePage(
 					),
 					version,
 					license: (await client.collections.contentLicenses.get(license))?.label ?? "Unknown",
-					image:
-						typeof featuredImage === "string" ? featuredImage : (featuredImage?.src ?? undefined),
+					image: typeof featuredImage === "string" ? featuredImage : (featuredImage?.src ?? undefined),
 					publisher: {
 						"@type": "Organization",
 						name: meta.title,
@@ -230,9 +224,7 @@ export default async function EventResourcePage(
 								pathname: `/logo.svg`,
 							}),
 						),
-						sameAs: String(
-							createUrl({ baseUrl: "https://twitter.com", pathname: meta.social.twitter }),
-						),
+						sameAs: String(createUrl({ baseUrl: "https://twitter.com", pathname: meta.social.twitter })),
 					},
 				})}
 			/>
@@ -244,15 +236,11 @@ export default async function EventResourcePage(
 				>
 					<div className="flex flex-col gap-y-5">
 						<div className="flex flex-col gap-y-2 text-sm text-neutral-500">
-							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">
-								{t("location")}
-							</div>
+							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("location")}</div>
 							<div>{location}</div>
 						</div>
 						<div className="flex flex-col gap-y-2 text-sm text-neutral-500">
-							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">
-								{t("date")}
-							</div>
+							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("date")}</div>
 							<div>
 								{endDate != null
 									? format.dateTimeRange(new Date(startDate), new Date(endDate), {

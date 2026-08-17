@@ -24,9 +24,7 @@ export function ResourceDetails(props: Readonly<ResourceDetailsProps>): ReactNod
 			<Domain />
 			<Language locale={locale} />
 			<PublicationDate publicationDate={publicationDate} />
-			{originalPublicationDate != null ? (
-				<OriginalPublicationDate publicationDate={originalPublicationDate} />
-			) : null}
+			{originalPublicationDate != null ? <OriginalPublicationDate publicationDate={originalPublicationDate} /> : null}
 			<License license={license} />
 			<Sources sources={sources} />
 		</dl>

@@ -1,7 +1,7 @@
 import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { PageLead } from "@/components/page-lead";
@@ -12,9 +12,7 @@ import { createClient } from "@/lib/content/create-client";
 
 interface SourcePageProps extends PageProps<"/sources/[id]"> {}
 
-export async function generateStaticParams(): Promise<
-	Array<Pick<Awaited<SourcePageProps["params"]>, "id">>
-> {
+export async function generateStaticParams(): Promise<Array<Pick<Awaited<SourcePageProps["params"]>, "id">>> {
 	const ids = await client.collections.sources.ids();
 
 	return ids.map((id) => {
@@ -137,9 +135,7 @@ export default async function SourcePage(props: Readonly<SourcePageProps>): Prom
 				</section>
 			) : null}
 			<section className="space-y-5">
-				<h2 className={curricula.length > 0 ? "text-2xl font-bold" : "sr-only"}>
-					{t("resources")}
-				</h2>
+				<h2 className={curricula.length > 0 ? "text-2xl font-bold" : "sr-only"}>{t("resources")}</h2>
 				<ResourcesGrid peopleLabel={t("authors")} resources={items} />
 			</section>
 		</div>

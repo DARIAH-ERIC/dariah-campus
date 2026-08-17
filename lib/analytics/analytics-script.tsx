@@ -7,7 +7,7 @@ import Script from "next/script";
 import { useReportWebVitals } from "next/web-vitals";
 import { Fragment, type ReactNode, Suspense, useEffect } from "react";
 
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 
 declare global {
 	interface Window {

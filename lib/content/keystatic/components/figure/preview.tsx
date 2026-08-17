@@ -35,11 +35,7 @@ export function FigurePreview(props: Readonly<FigurePreviewProps>): ReactNode {
 			<NotEditable>
 				{url != null ? (
 					// eslint-disable-next-line @next/next/no-img-element
-					<img
-						alt={alt}
-						className="w-full overflow-hidden rounded-lg border border-neutral-200 bg-white"
-						src={url}
-					/>
+					<img alt={alt} className="w-full overflow-hidden rounded-lg border border-neutral-200 bg-white" src={url} />
 				) : null}
 			</NotEditable>
 			<figcaption>{children}</figcaption>

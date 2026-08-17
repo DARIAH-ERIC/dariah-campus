@@ -67,15 +67,11 @@ export const curricula = createCollection({
 			value: metadata["supplementary-information"],
 		});
 		const supplementaryOutput = await compile(supplementaryInput, compileOptions);
-		const supplementaryModule = context.createJavaScriptImport<MDXContent>(
-			String(supplementaryOutput),
-		);
+		const supplementaryModule = context.createJavaScriptImport<MDXContent>(String(supplementaryOutput));
 
 		const tableOfContents = output.data.tableOfContents;
 		const featuredImage =
-			metadata["featured-image"] != null
-				? await getImageDimensions(metadata["featured-image"])
-				: null;
+			metadata["featured-image"] != null ? await getImageDimensions(metadata["featured-image"]) : null;
 
 		return {
 			id: item.id,

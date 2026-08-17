@@ -61,9 +61,7 @@ export const resourcesPathfinders = createCollection({
 		const module = context.createJavaScriptImport<MDXContent>(String(output));
 		const tableOfContents = output.data.tableOfContents;
 		const featuredImage =
-			metadata["featured-image"] != null
-				? await getImageDimensions(metadata["featured-image"])
-				: null;
+			metadata["featured-image"] != null ? await getImageDimensions(metadata["featured-image"]) : null;
 
 		return {
 			id: item.id,

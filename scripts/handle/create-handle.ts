@@ -8,7 +8,7 @@ import * as v from "valibot";
 import { matter } from "vfile-matter";
 import * as YAML from "yaml";
 
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 import { createHandle } from "@/lib/server/handle/create-handle";
 import { createResourceUrl } from "@/lib/server/handle/create-resource-url";
 

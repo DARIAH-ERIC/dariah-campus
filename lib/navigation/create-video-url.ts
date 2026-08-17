@@ -2,11 +2,7 @@ import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 
 import type { VideoProvider } from "@/lib/content/options";
 
-export function createVideoUrl(
-	provider: VideoProvider,
-	id: string,
-	startTime?: number | null,
-): URL {
+export function createVideoUrl(provider: VideoProvider, id: string, startTime?: number | null): URL {
 	switch (provider) {
 		case "nakala": {
 			return createUrl({

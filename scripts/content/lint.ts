@@ -90,10 +90,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 										),
 									}),
 								),
-								social: v.optional(
-									v.array(v.object({ discriminant: v.string(), value: v.string() })),
-									[],
-								),
+								social: v.optional(v.array(v.object({ discriminant: v.string(), value: v.string() })), []),
 							}),
 							frontmatter,
 						);
@@ -139,10 +136,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 					if (directory.includes("people")) {
 						const result = v.parse(
 							v.object({
-								social: v.optional(
-									v.array(v.object({ discriminant: v.string(), value: v.string() })),
-									[],
-								),
+								social: v.optional(v.array(v.object({ discriminant: v.string(), value: v.string() })), []),
 							}),
 							frontmatter,
 						);
@@ -237,10 +231,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 					case "LinkButton": {
 						const link = getAttributeExpressionValue(node, "link");
 						const value = JSON.parse(link.value) as unknown;
-						const result = v.safeParse(
-							v.object({ discriminant: v.literal("external"), value: v.string() }),
-							value,
-						);
+						const result = v.safeParse(v.object({ discriminant: v.literal("external"), value: v.string() }), value);
 
 						if (result.success) {
 							add(result.output.value, node);
@@ -286,18 +277,11 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 				issue.fatal = message.fatal;
 			}
 
-			if (
-				result.permanent === true &&
-				result.status === "alive" &&
-				new URL(url).href !== result.url
-			) {
-				const message = file.message(
-					`Unexpected redirecting URL \`${url}\`, expected final URL \`${result.url}\``,
-					{
-						ancestors: [node],
-						place: node.position,
-					},
-				);
+			if (result.permanent === true && result.status === "alive" && new URL(url).href !== result.url) {
+				const message = file.message(`Unexpected redirecting URL \`${url}\`, expected final URL \`${result.url}\``, {
+					ancestors: [node],
+					place: node.position,
+				});
 				message.actual = url;
 				message.expected = [result.url];
 			}

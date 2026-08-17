@@ -40,13 +40,7 @@ interface QuizFillInTheBlankProps {
 }
 
 export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): ReactNode {
-	const {
-		answers,
-		blankCount: blankCountStr = "0",
-		caseSensitive = false,
-		validateOnBlur = false,
-		children,
-	} = props;
+	const { answers, blankCount: blankCountStr = "0", caseSensitive = false, validateOnBlur = false, children } = props;
 
 	const t = useTranslations("content.QuizFillInTheBlank");
 	const controlsT = useTranslations("content.QuizControls");
@@ -96,10 +90,7 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 
 	return (
 		<FillInTheBlankContext value={ctx}>
-			<section
-				className="my-4 grid gap-y-4 rounded-md border border-neutral-200 p-6 shadow-sm"
-				hidden={!isCurrent}
-			>
+			<section className="my-4 grid gap-y-4 rounded-md border border-neutral-200 p-6 shadow-sm" hidden={!isCurrent}>
 				<div className="leading-loose">{children}</div>
 
 				{correctCount != null ? (

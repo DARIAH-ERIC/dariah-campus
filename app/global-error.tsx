@@ -12,8 +12,8 @@ import { defaultLocale } from "@/lib/i18n/locales";
 export { viewport } from "@/app/_lib/viewport.config";
 
 /**
- * Currently, the global error page does not support metadata, because error pages in next.js
- * must be client components. We can add a document title with `<title>` though.
+ * Currently, the global error page does not support metadata, because error pages in next.js must be client components.
+ * We can add a document title with `<title>` though.
  *
  * Also, we cannot use i18n without importing all messages client-side.
  */

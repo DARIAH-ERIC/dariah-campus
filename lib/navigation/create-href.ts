@@ -1,4 +1,4 @@
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 import { createFullUrl, type CreateFullUrlParams } from "@/lib/navigation/create-full-url";
 
 const baseUrl = env.NEXT_PUBLIC_APP_BASE_URL;

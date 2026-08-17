@@ -4,7 +4,7 @@ import { assert, createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 import { Agent, fetch } from "undici";
 import { v7 as uuid } from "uuid";
 
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 
 const baseUrl = env.HANDLE_PROVIDER;
 const key = env.HANDLE_KEY;
@@ -18,10 +18,9 @@ const agent = new Agent({
 		cert,
 		rejectUnauthorized: false,
 		/**
-		 * The server resumes the TLS session during renegotiation (using the ticket from the
-		 * initial handshake), which causes an abbreviated handshake with no CertificateRequest.
-		 * Without CertificateRequest the client never sends its cert and the server returns 401.
-		 * SSL_OP_NO_TICKET disables session tickets so renegotiation always does a full
+		 * The server resumes the TLS session during renegotiation (using the ticket from the initial handshake), which
+		 * causes an abbreviated handshake with no CertificateRequest. Without CertificateRequest the client never sends its
+		 * cert and the server returns 401. SSL_OP_NO_TICKET disables session tickets so renegotiation always does a full
 		 * handshake with CertificateRequest, allowing the client cert to be sent.
 		 */
 		secureOptions: constants.SSL_OP_NO_TICKET,

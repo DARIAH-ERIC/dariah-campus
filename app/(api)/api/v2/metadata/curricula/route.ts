@@ -81,10 +81,7 @@ export const GET = createRouteHandler(
 			const items =
 				searchParams["publication-year"] != null
 					? _items.filter((item) => {
-							return (
-								new Date(item["publication-date"]).getUTCFullYear() ===
-								searchParams["publication-year"]
-							);
+							return new Date(item["publication-date"]).getUTCFullYear() === searchParams["publication-year"];
 						})
 					: _items;
 

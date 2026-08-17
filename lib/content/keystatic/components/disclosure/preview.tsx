@@ -21,9 +21,7 @@ export function DisclosurePreview(props: Readonly<DisclosurePreviewProps>): Reac
 					/>
 				</NotEditable>
 			</summary>
-			<div className="**:first:mt-0 **:last:mb-0 [&_a]:underline [&_a:hover]:no-underline">
-				{children}
-			</div>
+			<div className="**:first:mt-0 **:last:mb-0 [&_a]:underline [&_a:hover]:no-underline">{children}</div>
 		</details>
 	);
 }

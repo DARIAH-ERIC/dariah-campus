@@ -16,11 +16,7 @@ export function HtmlDocument(props: Readonly<HtmlDocumentProps>): ReactNode {
 
 	return (
 		<html
-			className={cn(
-				fonts.body.variable,
-				fonts.code.variable,
-				"bg-neutral-50 font-body text-neutral-900 antialiased",
-			)}
+			className={cn(fonts.body.variable, fonts.code.variable, "bg-neutral-50 font-body text-neutral-900 antialiased")}
 			lang={locale}
 		>
 			{children}

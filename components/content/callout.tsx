@@ -1,13 +1,6 @@
 import { capitalize, isNonEmptyString } from "@acdh-oeaw/lib";
 import { styles } from "@acdh-oeaw/style-variants";
-import {
-	AlertTriangleIcon,
-	BoltIcon,
-	InfoIcon,
-	LightbulbIcon,
-	type LucideIcon,
-	PencilIcon,
-} from "lucide-react";
+import { AlertTriangleIcon, BoltIcon, InfoIcon, LightbulbIcon, type LucideIcon, PencilIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
 import type { CalloutKind } from "@/lib/content/options";
@@ -53,9 +46,7 @@ export function Callout(props: Readonly<CalloutProps>): ReactNode {
 	return (
 		<aside className={calloutStyles({ kind })}>
 			<CalloutHeader kind={kind} title={title} />
-			<div className="min-w-0 **:first:mt-0 **:last:mb-0 [&_a]:underline [&_a:hover]:no-underline">
-				{children}
-			</div>
+			<div className="min-w-0 **:first:mt-0 **:last:mb-0 [&_a]:underline [&_a:hover]:no-underline">{children}</div>
 		</aside>
 	);
 }

@@ -1,7 +1,7 @@
 import { withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { config as createConfig } from "@keystatic/core";
 
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 import { createCurricula } from "@/lib/content/keystatic/collections/curricula";
 import { createDariahNationalConsortia } from "@/lib/content/keystatic/collections/dariah-national-consortia";
 import { createDariahWorkingGroups } from "@/lib/content/keystatic/collections/dariah-working-groups";

@@ -37,11 +37,7 @@ export const createImageComparisonSlider = createComponent((paths, _locale) => {
 				const { children, value } = props;
 
 				return (
-					<ImageComparisonSliderPreview
-						left={value.left}
-						orientation={value.orientation}
-						right={value.right}
-					>
+					<ImageComparisonSliderPreview left={value.left} orientation={value.orientation} right={value.right}>
 						{children}
 					</ImageComparisonSliderPreview>
 				);

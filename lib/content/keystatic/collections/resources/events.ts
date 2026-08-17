@@ -258,8 +258,8 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 				options: {
 					...createContentFieldOptions(paths),
 					/**
-					 * Prefer `<Link>` component over regular markdown links.
-					 * Note that this also disables *parsing* regular markdown links.
+					 * Prefer `<Link>` component over regular markdown links. Note that this also disables _parsing_ regular
+					 * markdown links.
 					 */
 					// link: false,
 				},
@@ -344,8 +344,8 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 							options: {
 								...createContentFieldOptions(paths),
 								/**
-								 * Prefer `<Link>` component over regular markdown links.
-								 * Note that this also disables *parsing* regular markdown links.
+								 * Prefer `<Link>` component over regular markdown links. Note that this also disables _parsing_ regular
+								 * markdown links.
 								 */
 								// link: false,
 							},
@@ -430,8 +430,8 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 										options: {
 											...createContentFieldOptions(paths),
 											/**
-											 * Prefer `<Link>` component over regular markdown links.
-											 * Note that this also disables *parsing* regular markdown links.
+											 * Prefer `<Link>` component over regular markdown links. Note that this also disables _parsing_
+											 * regular markdown links.
 											 */
 											// link: false,
 										},

@@ -41,12 +41,7 @@ export const createQuiz = createComponent((paths, locale) => {
 			description: "A quiz with one or more correct answers.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
-			children: [
-				"QuizChoiceQuestion",
-				"QuizChoiceAnswer",
-				"QuizSuccessMessage",
-				"QuizErrorMessage",
-			],
+			children: ["QuizChoiceQuestion", "QuizChoiceAnswer", "QuizSuccessMessage", "QuizErrorMessage"],
 			validation: { children: { min: 1 } },
 			schema: {
 				variant: fields.select({
@@ -187,9 +182,7 @@ export const createQuiz = createComponent((paths, locale) => {
 			ContentView(props) {
 				const { children } = props;
 
-				return (
-					<QuizChoiceAnswerErrorMessagePreview>{children}</QuizChoiceAnswerErrorMessagePreview>
-				);
+				return <QuizChoiceAnswerErrorMessagePreview>{children}</QuizChoiceAnswerErrorMessagePreview>;
 			},
 		}),
 		QuizChoiceQuestion: wrapper({

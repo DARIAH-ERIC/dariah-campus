@@ -1,5 +1,5 @@
-import type { StaticImageData } from "next/image";
 import { useTranslations } from "next-intl";
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { AvatarsList } from "@/components/avatars-list";
@@ -42,9 +42,7 @@ export function ResourcePreviewCard(props: Readonly<ResourcePreviewCardProps>): 
 					</Link>
 				</CardTitle>
 				<div className="flex">
-					<div className="rounded-sm bg-brand-700 px-2 py-1 text-xs font-medium text-white">
-						{locale.toUpperCase()}
-					</div>
+					<div className="rounded-sm bg-brand-700 px-2 py-1 text-xs font-medium text-white">{locale.toUpperCase()}</div>
 				</div>
 				<div className="leading-7 text-neutral-500">{summary.content}</div>
 			</CardContent>

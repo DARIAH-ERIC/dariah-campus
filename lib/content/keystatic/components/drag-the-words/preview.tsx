@@ -13,9 +13,7 @@ export function DragTheWordsPreview(props: Readonly<DragTheWordsPreviewProps>): 
 	return (
 		<div className="grid gap-y-2 rounded-md border border-neutral-200 p-4">
 			<NotEditable>
-				<p className="text-xs text-neutral-500">
-					Use this syntax to create blanks (with optional hint):
-				</p>
+				<p className="text-xs text-neutral-500">Use this syntax to create blanks (with optional hint):</p>
 				<table className="w-full text-xs text-neutral-500">
 					<tbody>
 						<tr>

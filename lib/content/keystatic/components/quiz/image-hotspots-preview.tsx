@@ -23,19 +23,14 @@ interface QuizImageHotspotsPreviewProps {
 	src: UseObjectUrlParams | null;
 }
 
-export function QuizImageHotspotsPreview(
-	props: Readonly<QuizImageHotspotsPreviewProps>,
-): ReactNode {
+export function QuizImageHotspotsPreview(props: Readonly<QuizImageHotspotsPreviewProps>): ReactNode {
 	const { alt = "", children, src } = props;
 	const url = useObjectUrl(src);
 
 	return (
 		<figure className="grid gap-y-3 rounded-md border border-neutral-200 p-3">
 			<NotEditable>
-				<div
-					className="relative isolate min-h-12 overflow-hidden rounded-md"
-					data-hotspot-overlay=""
-				>
+				<div className="relative isolate min-h-12 overflow-hidden rounded-md" data-hotspot-overlay="">
 					{url != null ? (
 						// eslint-disable-next-line @next/next/no-img-element
 						<img alt={alt} className="h-auto w-full" draggable={false} src={url} />
@@ -82,9 +77,7 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 	const x = value.x ?? 50;
 	const y = value.y ?? 50;
 	const initCard = useCallback((element: HTMLDivElement | null) => {
-		const overlay = element
-			?.closest("figure")
-			?.querySelector<HTMLElement>("[data-hotspot-overlay]");
+		const overlay = element?.closest("figure")?.querySelector<HTMLElement>("[data-hotspot-overlay]");
 		setOverlay(overlay ?? null);
 	}, []);
 	const style = {
@@ -209,9 +202,7 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 				</div>
 			</NotEditable>
 			{children != null ? (
-				<div className="mt-3 min-h-20 border-t border-(--kui-color-alias-border-idle) pt-3">
-					{children}
-				</div>
+				<div className="mt-3 min-h-20 border-t border-(--kui-color-alias-border-idle) pt-3">{children}</div>
 			) : null}
 		</div>
 	);

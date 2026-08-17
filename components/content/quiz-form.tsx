@@ -60,13 +60,7 @@ export function QuizForm(props: Readonly<QuizFormProps>): ReactNode {
 
 					<div
 						aria-live="polite"
-						className={
-							status === "idle"
-								? "sr-only"
-								: status === "correct"
-									? "text-success-600"
-									: "text-error-600"
-						}
+						className={status === "idle" ? "sr-only" : status === "correct" ? "text-success-600" : "text-error-600"}
 					>
 						{status === "correct" ? (
 							<div className="mt-2 flex items-center gap-x-2">

@@ -1,8 +1,8 @@
 import { withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { createUrl } from "@acdh-oeaw/lib";
 import { PencilIcon } from "lucide-react";
-import type { StaticImageData } from "next/image";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { Attachments } from "@/components/attachments";
@@ -16,7 +16,7 @@ import { SocialMediaShareLinks } from "@/components/social-media-share-links";
 import { Tags } from "@/components/tags";
 import { TranslationOf } from "@/components/translation-of";
 import { Translations } from "@/components/translations";
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 import type { SocialMediaKind } from "@/lib/content/options";
 import { getIntlLanguage } from "@/lib/i18n/locales";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
@@ -70,9 +70,7 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 	const t = useTranslations("Resource");
 	const format = useFormatter();
 
-	const href = String(
-		createFullUrl({ baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL, pathname: _href }),
-	);
+	const href = String(createFullUrl({ baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL, pathname: _href }));
 
 	return (
 		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
@@ -81,17 +79,13 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 				<div className="space-y-6 border-y border-neutral-200 py-10 xl:hidden">
 					{location != null ? (
 						<div className="flex flex-col gap-y-2 text-sm text-neutral-500">
-							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">
-								{t("location")}
-							</div>
+							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("location")}</div>
 							<div>{location}</div>
 						</div>
 					) : null}
 					{startDate ? (
 						<div className="flex flex-col gap-y-2 text-sm text-neutral-500">
-							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">
-								{t("date")}
-							</div>
+							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("date")}</div>
 							<div>
 								{endDate
 									? format.dateTimeRange(startDate, endDate, { dateStyle: "long" })

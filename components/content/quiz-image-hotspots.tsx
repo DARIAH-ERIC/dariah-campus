@@ -15,15 +15,7 @@ import {
 	useRef,
 	useState,
 } from "react";
-import {
-	Button,
-	Dialog,
-	DialogTrigger,
-	Modal,
-	ModalOverlay,
-	OverlayArrow,
-	Popover,
-} from "react-aria-components";
+import { Button, Dialog, DialogTrigger, Modal, ModalOverlay, OverlayArrow, Popover } from "react-aria-components";
 import { createPortal } from "react-dom";
 
 import { useQuizContext } from "@/components/content/quiz";
@@ -75,9 +67,7 @@ export function QuizImageHotspots(props: Readonly<QuizImageHotspotsProps>): Reac
 				<div
 					className={cn(
 						"not-prose grid gap-4",
-						presentation === "inline"
-							? "@[48rem]:grid-cols-[minmax(0,3fr)_minmax(16rem,2fr)]"
-							: undefined,
+						presentation === "inline" ? "@[48rem]:grid-cols-[minmax(0,3fr)_minmax(16rem,2fr)]" : undefined,
 					)}
 				>
 					<div className="relative isolate self-start overflow-hidden rounded-md">
@@ -94,18 +84,13 @@ export function QuizImageHotspots(props: Readonly<QuizImageHotspotsProps>): Reac
 								activeId == null ? "grid place-items-center" : undefined,
 							)}
 						>
-							{activeId == null ? (
-								<p className="text-center text-neutral-600">{hotspotsT("select-hotspot")}</p>
-							) : null}
+							{activeId == null ? <p className="text-center text-neutral-600">{hotspotsT("select-hotspot")}</p> : null}
 						</aside>
 					) : null}
 				</div>
 			</HotspotContext>
 
-			<QuizControls
-				nextButtonLabel={t("next-question")}
-				previousButtonLabel={t("previous-question")}
-			/>
+			<QuizControls nextButtonLabel={t("next-question")} previousButtonLabel={t("previous-question")} />
 		</section>
 	);
 }

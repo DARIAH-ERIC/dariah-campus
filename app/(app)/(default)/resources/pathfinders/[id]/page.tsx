@@ -1,7 +1,7 @@
 import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
 import { Fragment, type ReactNode } from "react";
 
 import { Citation } from "@/components/citation";
@@ -16,7 +16,7 @@ import { TableOfContents } from "@/components/table-of-contents";
 import { TagsList } from "@/components/tags-list";
 import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 import { client } from "@/lib/content/client";
 import { createClient } from "@/lib/content/create-client";
 import { createResourceMetadata } from "@/lib/content/utils/create-resource-metadata";
@@ -36,9 +36,7 @@ export async function generateStaticParams(): Promise<
 	});
 }
 
-export async function generateMetadata(
-	props: Readonly<PathfinderResourcePageProps>,
-): Promise<Metadata> {
+export async function generateMetadata(props: Readonly<PathfinderResourcePageProps>): Promise<Metadata> {
 	const { params } = props;
 
 	const meta = await getMetadata();
@@ -103,9 +101,7 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default async function PathfinderResourcePage(
-	props: Readonly<PathfinderResourcePageProps>,
-): Promise<ReactNode> {
+export default async function PathfinderResourcePage(props: Readonly<PathfinderResourcePageProps>): Promise<ReactNode> {
 	const { params } = props;
 
 	const t = await getTranslations("PathfinderResourcePage");
@@ -153,8 +149,7 @@ export default async function PathfinderResourcePage(
 	}
 
 	const translations = await Promise.all(_translations.map(getTranslationMetadata));
-	const isTranslationOf =
-		_isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
+	const isTranslationOf = _isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
 	const [contentLicense, resourceSources] = await Promise.all([
 		client.collections.contentLicenses.get(license),
 		Promise.all(
@@ -376,9 +371,7 @@ export default async function PathfinderResourcePage(
 					/>
 				</div>
 
-				{resource.metadata["table-of-contents"] &&
-				tableOfContents != null &&
-				tableOfContents.length > 0 ? (
+				{resource.metadata["table-of-contents"] && tableOfContents != null && tableOfContents.length > 0 ? (
 					<Fragment>
 						<aside
 							className="sticky top-24 hidden max-h-screen w-full max-w-xs overflow-y-auto p-6 text-sm text-neutral-500 xl:flex xl:flex-col 2xl:p-8"
@@ -391,10 +384,7 @@ export default async function PathfinderResourcePage(
 								className="w-full space-y-2"
 								tableOfContents={tableOfContents}
 								title={
-									<h2
-										className="text-xs font-bold tracking-wide text-neutral-600 uppercase"
-										id="table-of-contents"
-									>
+									<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id="table-of-contents">
 										{t("table-of-contents")}
 									</h2>
 								}

@@ -34,10 +34,7 @@ export function VideoCard(props: Readonly<VideoCardProps>): ReactNode {
 				</div>
 				<figcaption>
 					<LightboxTrigger className="grid justify-center justify-items-center gap-y-1 after:absolute after:inset-0 focus:outline-none">
-						<PlayCircleIcon
-							aria-hidden={true}
-							className="mx-auto size-12 shrink-0 text-brand-700"
-						/>
+						<PlayCircleIcon aria-hidden={true} className="mx-auto size-12 shrink-0 text-brand-700" />
 						<strong className="text-xl font-bold">{title}</strong>
 						<div className="text-neutral-500">{description}</div>
 					</LightboxTrigger>

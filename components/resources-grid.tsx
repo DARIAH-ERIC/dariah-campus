@@ -43,9 +43,7 @@ export function ResourcesGrid(props: Readonly<ResourcesGridProps>): ReactNode {
 									<li
 										key={
 											// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-											resource.collection
-												? [resource.collection, resource.id].join(":")
-												: resource.id
+											resource.collection ? [resource.collection, resource.id].join(":") : resource.id
 										}
 										role="listitem"
 									>

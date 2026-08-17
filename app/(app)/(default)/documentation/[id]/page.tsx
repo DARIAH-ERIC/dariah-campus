@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
 import { Fragment, type ReactNode } from "react";
 
 import { FloatingTableOfContents } from "@/components/floating-table-of-contents";
@@ -13,9 +13,7 @@ import { createClient } from "@/lib/content/create-client";
 
 interface DocumentationPageProps extends PageProps<"/documentation/[id]"> {}
 
-export async function generateStaticParams(): Promise<
-	Array<Pick<Awaited<DocumentationPageProps["params"]>, "id">>
-> {
+export async function generateStaticParams(): Promise<Array<Pick<Awaited<DocumentationPageProps["params"]>, "id">>> {
 	const ids = await client.collections.documentation.ids();
 
 	return ids.map((id) => {
@@ -46,9 +44,7 @@ export async function generateMetadata(props: Readonly<DocumentationPageProps>):
 	return metadata;
 }
 
-export default async function DocumentationPage(
-	props: Readonly<DocumentationPageProps>,
-): Promise<ReactNode> {
+export default async function DocumentationPage(props: Readonly<DocumentationPageProps>): Promise<ReactNode> {
 	const { params } = props;
 
 	const t = await getTranslations("DocumentationPage");
@@ -78,10 +74,7 @@ export default async function DocumentationPage(
 					style={{ maxHeight: "calc(100dvh - 12px - var(--page-header-height))" }}
 				>
 					<nav aria-labelledby="docs-nav" className="grid w-full content-start gap-y-2">
-						<h2
-							className="text-xs font-bold tracking-wide text-neutral-600 uppercase"
-							id="docs-nav"
-						>
+						<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id="docs-nav">
 							{t("navigation")}
 						</h2>
 						<ul className="grid content-start gap-y-2">
@@ -111,10 +104,7 @@ export default async function DocumentationPage(
 					</div>
 
 					<nav aria-labelledby="docs-nav" className="grid w-full content-start gap-y-2 2xl:hidden">
-						<h2
-							className="text-xs font-bold tracking-wide text-neutral-600 uppercase"
-							id="docs-nav"
-						>
+						<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id="docs-nav">
 							{t("navigation")}
 						</h2>
 						<ul className="grid content-start gap-y-2">

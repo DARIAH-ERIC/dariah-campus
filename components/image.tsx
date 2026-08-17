@@ -3,7 +3,7 @@
 import NextImage, { type ImageProps as NextImageProps } from "next/image";
 import type { ReactNode } from "react";
 
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 
 interface ImageProps extends Omit<NextImageProps, "loader"> {}
 
@@ -20,9 +20,8 @@ export function Image(props: Readonly<ImageProps>): ReactNode {
 			 *
 			 * Note that this will only work for public repositories.
 			 *
-			 * For private repositories we would need to fetch the image blob via api,
-			 * and provide an access token via authorization header. We can display the image
-			 * with `URL.createObjectURL` and `URL.revokeObjectURL`.
+			 * For private repositories we would need to fetch the image blob via api, and provide an access token via
+			 * authorization header. We can display the image with `URL.createObjectURL` and `URL.revokeObjectURL`.
 			 */
 			const github = `https://raw.githubusercontent.com/${owner}/${repo}/refs/heads/`;
 

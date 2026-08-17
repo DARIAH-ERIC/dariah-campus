@@ -17,11 +17,7 @@ const result = createEnv({
 			const result = v.safeParse(schema, environment);
 
 			if (!result.success) {
-				return err(
-					new ValidationError(
-						`Invalid or missing environment variables.\n${v.summarize(result.issues)}`,
-					),
-				);
+				return err(new ValidationError(`Invalid or missing environment variables.\n${v.summarize(result.issues)}`));
 			}
 
 			return ok(result.output);
@@ -44,11 +40,7 @@ const result = createEnv({
 			const result = v.safeParse(schema, environment);
 
 			if (!result.success) {
-				return err(
-					new ValidationError(
-						`Invalid or missing environment variables.\n${v.summarize(result.issues)}`,
-					),
-				);
+				return err(new ValidationError(`Invalid or missing environment variables.\n${v.summarize(result.issues)}`));
 			}
 
 			return ok(result.output);
@@ -75,13 +67,7 @@ const result = createEnv({
 				),
 				NEXT_PUBLIC_TYPESENSE_COLLECTION: v.pipe(v.string(), v.nonEmpty()),
 				NEXT_PUBLIC_TYPESENSE_HOST: v.pipe(v.string(), v.nonEmpty()),
-				NEXT_PUBLIC_TYPESENSE_PORT: v.pipe(
-					v.string(),
-					v.transform(Number),
-					v.number(),
-					v.integer(),
-					v.minValue(1),
-				),
+				NEXT_PUBLIC_TYPESENSE_PORT: v.pipe(v.string(), v.transform(Number), v.number(), v.integer(), v.minValue(1)),
 				NEXT_PUBLIC_TYPESENSE_PROTOCOL: v.picklist(["http", "https"]),
 				NEXT_PUBLIC_TYPESENSE_SEARCH_API_KEY: v.optional(v.pipe(v.string(), v.nonEmpty())),
 			});
@@ -89,11 +75,7 @@ const result = createEnv({
 			const result = v.safeParse(schema, environment);
 
 			if (!result.success) {
-				return err(
-					new ValidationError(
-						`Invalid or missing environment variables.\n${v.summarize(result.issues)}`,
-					),
-				);
+				return err(new ValidationError(`Invalid or missing environment variables.\n${v.summarize(result.issues)}`));
 			}
 
 			return ok(result.output);
@@ -131,10 +113,7 @@ const result = createEnv({
 		VERCEL_ENV: process.env.VERCEL_ENV,
 		VERCEL_GIT_COMMIT_REF: process.env.VERCEL_GIT_COMMIT_REF,
 	},
-	validation: v.parse(
-		v.optional(v.picklist(["disabled", "enabled", "public"]), "enabled"),
-		process.env.ENV_VALIDATION,
-	),
+	validation: v.parse(v.optional(v.picklist(["disabled", "enabled", "public"]), "enabled"), process.env.ENV_VALIDATION),
 });
 
 if (isErr(result)) {

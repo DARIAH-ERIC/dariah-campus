@@ -53,9 +53,7 @@ interface QuizChoiceAnswerLabelPreviewProps {
 	children: ReactNode;
 }
 
-export function QuizChoiceAnswerLabelPreview(
-	props: Readonly<QuizChoiceAnswerLabelPreviewProps>,
-): ReactNode {
+export function QuizChoiceAnswerLabelPreview(props: Readonly<QuizChoiceAnswerLabelPreviewProps>): ReactNode {
 	const { children } = props;
 
 	return (
@@ -87,9 +85,7 @@ interface QuizChoiceQuestionPreviewProps {
 	children: ReactNode;
 }
 
-export function QuizChoiceQuestionPreview(
-	props: Readonly<QuizChoiceQuestionPreviewProps>,
-): ReactNode {
+export function QuizChoiceQuestionPreview(props: Readonly<QuizChoiceQuestionPreviewProps>): ReactNode {
 	const { children } = props;
 
 	return children;
@@ -109,9 +105,7 @@ interface QuizSuccessMessagePreviewProps {
 	children: ReactNode;
 }
 
-export function QuizSuccessMessagePreview(
-	props: Readonly<QuizSuccessMessagePreviewProps>,
-): ReactNode {
+export function QuizSuccessMessagePreview(props: Readonly<QuizSuccessMessagePreviewProps>): ReactNode {
 	const { children } = props;
 
 	return children;

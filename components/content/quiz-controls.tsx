@@ -32,9 +32,7 @@ export function QuizControls(props: Readonly<QuizControlsProps>): ReactNode {
 	const { navigation } = useQuizContext();
 
 	return (
-		<div
-			className={`flex items-center gap-x-4 ${navigation.isPaginated ? "justify-between" : "justify-center"}`}
-		>
+		<div className={`flex items-center gap-x-4 ${navigation.isPaginated ? "justify-between" : "justify-center"}`}>
 			{navigation.isPaginated ? (
 				<Button isDisabled={!navigation.hasPrevious} onPress={navigation.previous}>
 					<ChevronLeftIcon aria-hidden={true} className="size-4 shrink-0" />

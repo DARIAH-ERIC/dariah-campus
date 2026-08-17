@@ -60,10 +60,7 @@ export function Citation(props: Readonly<CitationProps>): ReactNode {
 			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("cite-as")}</h2>
 			<p>
 				{citationWithoutUrl}{" "}
-				<a
-					className="wrap-anywhere underline decoration-dotted underline-offset-2 hover:decoration-solid"
-					href={url}
-				>
+				<a className="wrap-anywhere underline decoration-dotted underline-offset-2 hover:decoration-solid" href={url}>
 					{url}
 				</a>
 			</p>

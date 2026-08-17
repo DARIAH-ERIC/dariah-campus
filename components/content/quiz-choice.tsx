@@ -143,9 +143,7 @@ interface QuizChoiceAnswerErrorMessageProps {
 	children: ReactNode;
 }
 
-export function QuizChoiceAnswerErrorMessage(
-	props: Readonly<QuizChoiceAnswerErrorMessageProps>,
-): ReactNode {
+export function QuizChoiceAnswerErrorMessage(props: Readonly<QuizChoiceAnswerErrorMessageProps>): ReactNode {
 	const { children } = props;
 
 	return children;

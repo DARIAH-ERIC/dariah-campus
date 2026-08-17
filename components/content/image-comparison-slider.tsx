@@ -24,8 +24,7 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 				return;
 			}
 			const dimensions = element.getBoundingClientRect();
-			const position =
-				orientation === "vertical" ? dimensions.height * 0.5 : dimensions.width * 0.5;
+			const position = orientation === "vertical" ? dimensions.height * 0.5 : dimensions.width * 0.5;
 			setPosition(position);
 		},
 		[orientation],
@@ -37,11 +36,7 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 				ref={init}
 				className={cn(
 					"group not-prose relative grid min-h-12 touch-none rounded-sm border border-neutral-200",
-					isDragging
-						? orientation === "vertical"
-							? "cursor-row-resize"
-							: "cursor-col-resize"
-						: "cursor-pointer",
+					isDragging ? (orientation === "vertical" ? "cursor-row-resize" : "cursor-col-resize") : "cursor-pointer",
 				)}
 				data-dragging={isDragging}
 				data-orientation={orientation}
@@ -101,10 +96,7 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 					draggable={false}
 					src={right}
 					style={{
-						clipPath:
-							orientation === "vertical"
-								? "inset(var(--position) 0 0 0)"
-								: "inset(0 0 0 var(--position))",
+						clipPath: orientation === "vertical" ? "inset(var(--position) 0 0 0)" : "inset(0 0 0 var(--position))",
 					}}
 				/>
 				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}

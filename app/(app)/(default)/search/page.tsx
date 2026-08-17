@@ -28,26 +28,22 @@ interface SearchPageProps {
 }
 
 export default async function SearchPage(props: Readonly<SearchPageProps>): Promise<ReactNode> {
-	/**
-	 * Not using github reader, because results returned from `typesense` will only include content
-	 * from `main` branch.
-	 */
+	/** Not using github reader, because results returned from `typesense` will only include content from `main` branch. */
 	// const client = await createClient()
 
 	/**
-	 * Ensure `content` fields, which are function components and cannot be passed through
-	 * the server-client serialization boundary, are omitted.
+	 * Ensure `content` fields, which are function components and cannot be passed through the server-client serialization
+	 * boundary, are omitted.
 	 */
-	const [searchParams, t, people, sources, tags, contentLanguagesById, contentTypesById] =
-		await Promise.all([
-			props.searchParams,
-			getTranslations("SearchPage"),
-			client.collections.people.all(),
-			client.collections.sources.all(),
-			client.collections.tags.all(),
-			client.collections.contentLanguages.byId(),
-			client.collections.contentTypes.byId(),
-		]);
+	const [searchParams, t, people, sources, tags, contentLanguagesById, contentTypesById] = await Promise.all([
+		props.searchParams,
+		getTranslations("SearchPage"),
+		client.collections.people.all(),
+		client.collections.sources.all(),
+		client.collections.tags.all(),
+		client.collections.contentLanguages.byId(),
+		client.collections.contentTypes.byId(),
+	]);
 	const peopleById = keyByToMap(
 		people.map((person) => {
 			const { image, name } = person.metadata;
@@ -140,10 +136,7 @@ export default async function SearchPage(props: Readonly<SearchPageProps>): Prom
 					</SearchFiltersSidePanel>
 
 					<section>
-						<SearchResults
-							peopleById={peopleById}
-							peopleLabel={t("authors-editors-contributors")}
-						/>
+						<SearchResults peopleById={peopleById} peopleLabel={t("authors-editors-contributors")} />
 					</section>
 				</div>
 			</div>

@@ -1,8 +1,8 @@
 "use client";
 
 /**
- * Once firefox and safari land support, we should use scroll-driven animations,
- * so this does not have to be a client component.
+ * Once firefox and safari land support, we should use scroll-driven animations, so this does not have to be a client
+ * component.
  *
  * @see https://ryanmulligan.dev/blog/sticky-header-scroll-shadow/
  */

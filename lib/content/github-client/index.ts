@@ -190,12 +190,8 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const href = `/curricula/${id}`;
 			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
-			const { default: supplementary } = await evaluate(
-				metadata["supplementary-information"],
-				evaluateOptions,
-			);
-			const featuredImage =
-				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
+			const { default: supplementary } = await evaluate(metadata["supplementary-information"], evaluateOptions);
+			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
 			const related = new Set<string>();
@@ -336,8 +332,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 				organisations.push({ ...organisation, logo });
 			}
 
-			const featuredImage =
-				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
+			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
 			const curricula: Array<string> = [];
@@ -387,8 +382,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const href = `/resources/external/${id}`;
 			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
-			const featuredImage =
-				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
+			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
 			const curricula: Array<string> = [];
@@ -435,8 +429,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const href = `/resources/hosted/${id}`;
 			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
-			const featuredImage =
-				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
+			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
 			const curricula: Array<string> = [];
@@ -483,8 +476,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const href = `/resources/pathfinders/${id}`;
 			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
-			const featuredImage =
-				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
+			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
 			const curricula: Array<string> = [];

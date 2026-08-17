@@ -2,10 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
-import {
-	I18nProvider as AriaI18nProvider,
-	RouterProvider as AriaRouterProvider,
-} from "react-aria-components";
+import { I18nProvider as AriaI18nProvider, RouterProvider as AriaRouterProvider } from "react-aria-components";
 
 import type { IntlLocale } from "@/lib/i18n/locales";
 

@@ -1,6 +1,6 @@
+import { getLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ImageResponse } from "next/og";
-import { getLocale } from "next-intl/server";
 
 import { MetadataImage } from "@/components/metadata-image";
 import { createClient } from "@/lib/content/create-client";
@@ -12,9 +12,7 @@ export const size = {
 	height: 630,
 };
 
-export default async function OpenGraphImage(
-	props: Readonly<OpenGraphImageProps>,
-): Promise<ImageResponse> {
+export default async function OpenGraphImage(props: Readonly<OpenGraphImageProps>): Promise<ImageResponse> {
 	const { params } = props;
 
 	const locale = await getLocale();

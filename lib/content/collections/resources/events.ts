@@ -93,9 +93,7 @@ export const resourcesEvents = createCollection({
 		}
 
 		const featuredImage =
-			metadata["featured-image"] != null
-				? await getImageDimensions(metadata["featured-image"])
-				: null;
+			metadata["featured-image"] != null ? await getImageDimensions(metadata["featured-image"]) : null;
 
 		return {
 			id: item.id,

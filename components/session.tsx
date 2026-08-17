@@ -1,8 +1,8 @@
 import { assert } from "@acdh-oeaw/lib";
 import { DownloadIcon } from "lucide-react";
 import type { MDXContent } from "mdx/types";
-import type { StaticImageData } from "next/image";
 import { getTranslations } from "next-intl/server";
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { Image } from "@/components/image";
@@ -219,10 +219,7 @@ export async function Session(props: Readonly<SessionProps>): Promise<ReactNode>
 																			download={true}
 																			href={attachment.file}
 																		>
-																			<DownloadIcon
-																				aria-hidden={true}
-																				className="size-4 shrink-0"
-																			/>
+																			<DownloadIcon aria-hidden={true} className="size-4 shrink-0" />
 																			{attachment.label}
 																		</a>
 																	);

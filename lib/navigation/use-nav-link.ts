@@ -1,7 +1,7 @@
 import { usePathname } from "next/navigation";
 import type { ComponentProps } from "react";
 
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
 
 type AriaCurrentValue = ComponentProps<"a">["aria-current"];

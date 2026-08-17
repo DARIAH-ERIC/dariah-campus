@@ -3,8 +3,8 @@ import type { SearchResponse } from "typesense/lib/Typesense/Documents";
 import SearchClient from "typesense/lib/Typesense/SearchClient";
 import type { MultiSearchRequestSchema } from "typesense/lib/Typesense/Types";
 
-import { env } from "@/config/env.config";
-import { limit, maxFacetValues } from "@/config/search.config";
+import { env } from "@/configs/env.config";
+import { limit, maxFacetValues } from "@/configs/search.config";
 import type { ContentType } from "@/lib/content/options";
 
 export const facetAttributes = ["locale", "tags", "content-type", "people", "sources"] as const;
@@ -143,9 +143,7 @@ export async function search(state: SearchState, abortSignal?: AbortSignal): Pro
 		{},
 		{ abortSignal },
 	);
-	const [resultsResponse, ...facetResponses] = response.results as Array<
-		SearchResponse<SearchDocument>
-	>;
+	const [resultsResponse, ...facetResponses] = response.results as Array<SearchResponse<SearchDocument>>;
 	assert(resultsResponse, "Typesense returned no search result.");
 
 	const facets = Object.fromEntries(
@@ -173,10 +171,7 @@ export async function search(state: SearchState, abortSignal?: AbortSignal): Pro
 	};
 }
 
-function createFilter(
-	filters: SearchState["filters"],
-	omitAttribute?: FacetAttribute,
-): string | undefined {
+function createFilter(filters: SearchState["filters"], omitAttribute?: FacetAttribute): string | undefined {
 	const clauses = facetAttributes.flatMap((attribute) => {
 		const values = filters[attribute];
 		if (attribute === omitAttribute || values.length === 0) return [];

@@ -1,5 +1,5 @@
 import type metadata from "@/content/en/metadata/index.json";
-import { getIntlLanguage, type IntlLocale } from "@/lib/i18n/locales";
+import { type IntlLocale, getIntlLanguage } from "@/lib/i18n/locales";
 import type messages from "@/messages/en.json";
 
 type Messages = typeof messages;

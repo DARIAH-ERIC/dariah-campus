@@ -1,5 +1,5 @@
-import type { StaticImageData } from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
 import { AvatarsList } from "@/components/avatars-list";
@@ -47,17 +47,7 @@ interface CurriculumProps {
 }
 
 export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
-	const {
-		children,
-		editors,
-		featuredImage,
-		isTranslationOf,
-		resources,
-		sources,
-		tags,
-		title,
-		translations,
-	} = props;
+	const { children, editors, featuredImage, isTranslationOf, resources, sources, tags, title, translations } = props;
 
 	const t = useTranslations("Curriculum");
 	const _format = useFormatter();
@@ -122,9 +112,7 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 									</CardContent>
 									<CardFooter>
 										<AvatarsList avatars={authors} label={t("authors")} />
-										{href == null ? (
-											<span className="text-sm text-neutral-500">{t("coming-soon")}</span>
-										) : null}
+										{href == null ? <span className="text-sm text-neutral-500">{t("coming-soon")}</span> : null}
 									</CardFooter>
 								</Card>
 							</li>

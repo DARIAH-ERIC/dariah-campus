@@ -17,9 +17,7 @@ const formatters = {
 	duration: new Intl.NumberFormat("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
 };
 
-async function loadJsonDir<T extends Record<string, unknown>>(
-	dir: string,
-): Promise<Map<string, T>> {
+async function loadJsonDir<T extends Record<string, unknown>>(dir: string): Promise<Map<string, T>> {
 	const files = await readdir(dir);
 	const map = new Map<string, T>();
 	await Promise.all(
@@ -108,19 +106,12 @@ export async function createMetadata(): Promise<{
 				"publication-date": item.metadata["publication-date"],
 				"content-type": "curriculum",
 				tags: await Promise.all(item.metadata.tags.map(createTag)),
-				editors:
-					"editors" in item.metadata
-						? await Promise.all(item.metadata.editors.map(createPerson))
-						: [],
-				sources:
-					"sources" in item.metadata
-						? await Promise.all(item.metadata.sources.map(createSource))
-						: [],
+				editors: "editors" in item.metadata ? await Promise.all(item.metadata.editors.map(createPerson)) : [],
+				sources: "sources" in item.metadata ? await Promise.all(item.metadata.sources.map(createSource)) : [],
 				resources: item.metadata.resources.map((resource) => {
 					return { id: resource.value, collection: resource.discriminant };
 				}),
-				"dariah-national-consortia":
-					item.metadata["dariah-national-consortia"].map(createNationalConsortium),
+				"dariah-national-consortia": item.metadata["dariah-national-consortia"].map(createNationalConsortium),
 				"dariah-working-groups": item.metadata["dariah-working-groups"].map(createWorkingGroup),
 				domain: sharedMetadata.domain,
 				"target-group": sharedMetadata["target-group"],
@@ -157,20 +148,11 @@ export async function createMetadata(): Promise<{
 					"content-type": item.metadata["content-type"],
 					tags: await Promise.all(item.metadata.tags.map(createTag)),
 					authors: await Promise.all(item.metadata.authors.map(createPerson)),
-					editors:
-						"editors" in item.metadata
-							? await Promise.all(item.metadata.editors.map(createPerson))
-							: [],
+					editors: "editors" in item.metadata ? await Promise.all(item.metadata.editors.map(createPerson)) : [],
 					contributors:
-						"contributors" in item.metadata
-							? await Promise.all(item.metadata.contributors.map(createPerson))
-							: [],
-					sources:
-						"sources" in item.metadata
-							? await Promise.all(item.metadata.sources.map(createSource))
-							: [],
-					"dariah-national-consortia":
-						item.metadata["dariah-national-consortia"].map(createNationalConsortium),
+						"contributors" in item.metadata ? await Promise.all(item.metadata.contributors.map(createPerson)) : [],
+					sources: "sources" in item.metadata ? await Promise.all(item.metadata.sources.map(createSource)) : [],
+					"dariah-national-consortia": item.metadata["dariah-national-consortia"].map(createNationalConsortium),
 					"dariah-working-groups": item.metadata["dariah-working-groups"].map(createWorkingGroup),
 					domain: sharedMetadata.domain,
 					"target-group": sharedMetadata["target-group"],

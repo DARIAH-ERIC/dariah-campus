@@ -2,25 +2,15 @@
 
 import { useTranslations } from "next-intl";
 import { createContext, type DragEvent, type ReactNode, use, useMemo, useState } from "react";
-import {
-	Button,
-	Dialog,
-	DialogTrigger,
-	Menu,
-	MenuItem,
-	MenuTrigger,
-	Popover,
-	Separator,
-} from "react-aria-components";
+import { Button, Dialog, DialogTrigger, Menu, MenuItem, MenuTrigger, Popover, Separator } from "react-aria-components";
 
 import { type QuizPageStatus, useQuizContext } from "@/components/content/quiz";
 import { QuizControls } from "@/components/content/quiz-controls";
 
 /**
- * Keyboard and touch users open a blank and choose from the remaining words, so focus never
- * leaves the reading order. Mouse users can additionally drag a word into a blank, using the
- * browser's native drag and drop - it only starts from a pointer gesture, so it never
- * collides with the keyboard interaction.
+ * Keyboard and touch users open a blank and choose from the remaining words, so focus never leaves the reading order.
+ * Mouse users can additionally drag a word into a blank, using the browser's native drag and drop - it only starts from
+ * a pointer gesture, so it never collides with the keyboard interaction.
  */
 const dragType = "application/x-drag-the-words";
 
@@ -54,9 +44,8 @@ function isCorrectAnswer(input: string, answer: string, caseSensitive: boolean):
 }
 
 /**
- * Stable string hash used to order the word bank. Sorting by it scrambles the words without
- * correlating to blank order, and gives the same result on the server and the client - a
- * random shuffle would not survive hydration.
+ * Stable string hash used to order the word bank. Sorting by it scrambles the words without correlating to blank order,
+ * and gives the same result on the server and the client - a random shuffle would not survive hydration.
  */
 function sortKey(value: string): number {
 	let n = 0;
@@ -67,15 +56,11 @@ function sortKey(value: string): number {
 }
 
 /**
- * Moves a word into `to` (a blank index), or back to the bank when `to` is `null`. Dropping
- * onto an occupied blank swaps the two words if the dragged word came from another blank,
- * and returns the displaced word to the bank if it came from the bank.
+ * Moves a word into `to` (a blank index), or back to the bank when `to` is `null`. Dropping onto an occupied blank
+ * swaps the two words if the dragged word came from another blank, and returns the displaced word to the bank if it
+ * came from the bank.
  */
-function moveWord(
-	placements: Array<string | null>,
-	wordId: string,
-	to: number | null,
-): Array<string | null> {
+function moveWord(placements: Array<string | null>, wordId: string, to: number | null): Array<string | null> {
 	const next = [...placements];
 	const from = next.indexOf(wordId);
 	if (from !== -1) {
@@ -110,8 +95,8 @@ interface QuizDragTheWordsProps {
 	blankCount?: string;
 	caseSensitive?: boolean;
 	/**
-	 * Decoy words that join the bank but fit no blank, so the exercise cannot be solved by
-	 * elimination. A list from the CMS, or a comma separated string in hand-written MDX.
+	 * Decoy words that join the bank but fit no blank, so the exercise cannot be solved by elimination. A list from the
+	 * CMS, or a comma separated string in hand-written MDX.
 	 */
 	distractors?: Array<string> | string;
 	/** Mark each blank right or wrong as soon as a word lands in it. */
@@ -301,10 +286,7 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 				</div>
 
 				{status === "correct" || status === "incorrect" ? (
-					<p
-						className="not-prose text-sm font-medium text-neutral-600 sm:col-start-1"
-						role="status"
-					>
+					<p className="not-prose text-sm font-medium text-neutral-600 sm:col-start-1" role="status">
 						{t("score", { correct: String(correctCount), total: String(count) })}
 					</p>
 				) : null}
@@ -356,17 +338,8 @@ export function Drop(props: Readonly<DropProps>): ReactNode {
 		return <span className="border-b-2 border-dashed border-neutral-400 px-1">{answer}</span>;
 	}
 
-	const {
-		availableWords,
-		caseSensitive,
-		clearBlank,
-		instantFeedback,
-		placements,
-		putWord,
-		status,
-		touched,
-		words,
-	} = ctx;
+	const { availableWords, caseSensitive, clearBlank, instantFeedback, placements, putWord, status, touched, words } =
+		ctx;
 
 	const isReadOnly = status === "solved";
 	const placedWord = words.find((word) => {
@@ -387,9 +360,7 @@ export function Drop(props: Readonly<DropProps>): ReactNode {
 	} else if (isDropTarget) {
 		stateClass = "border-brand-500 bg-brand-50 text-neutral-700";
 	} else if (isValidated && placedWord != null) {
-		stateClass = isCorrect
-			? "border-success-500 text-neutral-700"
-			: "border-error-500 text-neutral-700";
+		stateClass = isCorrect ? "border-success-500 text-neutral-700" : "border-error-500 text-neutral-700";
 	} else if (placedWord != null) {
 		stateClass = "border-neutral-300 text-neutral-700";
 	}

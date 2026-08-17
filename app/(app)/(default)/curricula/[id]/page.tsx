@@ -1,7 +1,7 @@
 import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { Citation } from "@/components/citation";
@@ -14,7 +14,7 @@ import { Sources } from "@/components/sources";
 import { TagsList } from "@/components/tags-list";
 import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
-import { env } from "@/config/env.config";
+import { env } from "@/configs/env.config";
 import { client } from "@/lib/content/client";
 import { createClient } from "@/lib/content/create-client";
 import { createFullUrl } from "@/lib/navigation/create-full-url";
@@ -22,9 +22,7 @@ import { pickRandom } from "@/lib/utils/pick-random";
 
 interface CurriculumPageProps extends PageProps<"/curricula/[id]"> {}
 
-export async function generateStaticParams(): Promise<
-	Array<Pick<Awaited<CurriculumPageProps["params"]>, "id">>
-> {
+export async function generateStaticParams(): Promise<Array<Pick<Awaited<CurriculumPageProps["params"]>, "id">>> {
 	const ids = await client.collections.curricula.ids();
 
 	return ids.map((id) => {
@@ -56,9 +54,7 @@ export async function generateMetadata(props: Readonly<CurriculumPageProps>): Pr
 	return metadata;
 }
 
-export default async function CurriculumPage(
-	props: Readonly<CurriculumPageProps>,
-): Promise<ReactNode> {
+export default async function CurriculumPage(props: Readonly<CurriculumPageProps>): Promise<ReactNode> {
 	const { params } = props;
 
 	const t = await getTranslations("CurriculumPage");
@@ -106,8 +102,7 @@ export default async function CurriculumPage(
 	}
 
 	const translations = await Promise.all(_translations.map(getTranslationMetadata));
-	const isTranslationOf =
-		_isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
+	const isTranslationOf = _isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
 	const curriculumSources = await Promise.all(
 		sources.map(async (id) => {
 			const source = await client.collections.sources.get(id);
@@ -153,9 +148,8 @@ export default async function CurriculumPage(
 						resources={await Promise.all(
 							resources.map(async ({ value: id, discriminant: type }) => {
 								/**
-								 * Resolving `type` inline instead of calling
-								 * `client.collections.resources.get(id)` so this works with the github reader
-								 * in preview mode.
+								 * Resolving `type` inline instead of calling `client.collections.resources.get(id)` so this works with
+								 * the github reader in preview mode.
 								 */
 								function getResource() {
 									switch (type) {
@@ -228,9 +222,8 @@ export default async function CurriculumPage(
 						resources={await Promise.all(
 							resources.map(async ({ value: id, discriminant: type }) => {
 								/**
-								 * Resolving `type` inline instead of calling
-								 * `client.collections.resources.get(id)` so this works with the github reader
-								 * in preview mode.
+								 * Resolving `type` inline instead of calling `client.collections.resources.get(id)` so this works with
+								 * the github reader in preview mode.
 								 */
 								function getResource() {
 									switch (type) {
