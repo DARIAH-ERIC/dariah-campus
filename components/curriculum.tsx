@@ -9,6 +9,7 @@ import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 import { PageTitle } from "@/components/page-title";
 import { People } from "@/components/people";
+import { Sources } from "@/components/sources";
 import { Tags } from "@/components/tags";
 import { TranslationOf } from "@/components/translation-of";
 import { Translations } from "@/components/translations";
@@ -39,6 +40,7 @@ interface CurriculumProps {
 		summary: { title: string; content: string };
 		title: string;
 	}>;
+	sources: Array<{ id: string; name: string }>;
 	tags: Array<{ id: string; name: string }>;
 	title: string;
 	translations: Array<{ id: string; href: string; title: string; locale: string }>;
@@ -51,6 +53,7 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 		featuredImage,
 		isTranslationOf,
 		resources,
+		sources,
 		tags,
 		title,
 		translations,
@@ -68,6 +71,9 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 					<Tags label={t("tags")} tags={tags} />
 					<Translations label={t("translations")} translations={translations} />
 					<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
+					<dl>
+						<Sources sources={sources} />
+					</dl>
 				</div>
 			</header>
 			<div>

@@ -112,6 +112,10 @@ export async function createMetadata(): Promise<{
 					"editors" in item.metadata
 						? await Promise.all(item.metadata.editors.map(createPerson))
 						: [],
+				sources:
+					"sources" in item.metadata
+						? await Promise.all(item.metadata.sources.map(createSource))
+						: [],
 				resources: item.metadata.resources.map((resource) => {
 					return { id: resource.value, collection: resource.discriminant };
 				}),

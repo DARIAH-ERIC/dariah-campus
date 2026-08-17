@@ -1,4 +1,5 @@
 import { groupByToMap, keyByToMap } from "@acdh-oeaw/lib";
+import curricula from "@content/curricula";
 import events from "@content/resources-events";
 import external from "@content/resources-external";
 import hosted from "@content/resources-hosted";
@@ -19,6 +20,10 @@ const resourcesBySourceId = groupByToMap(
 	},
 );
 
+const curriculaBySourceId = groupByToMap(Array.from(curricula.values()), (entry) => {
+	return entry.document.metadata.sources;
+});
+
 //
 
 const ids = Array.from(collection.keys());
@@ -32,9 +37,15 @@ const all = Array.from(collection.values())
 				return entry.document.id;
 			}) ?? [];
 
+		const curricula =
+			curriculaBySourceId.get(entry.document.id)?.map((entry) => {
+				return entry.document.id;
+			}) ?? [];
+
 		return {
 			...entry.document,
 			href,
+			curricula,
 			resources,
 		};
 	})

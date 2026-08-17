@@ -10,6 +10,8 @@ export function Sources(props: Readonly<SourcesProps>): ReactNode {
 
 	const t = useTranslations("Sources");
 
+	if (sources.length === 0) return null;
+
 	return (
 		<div className="space-y-1.5">
 			<dt className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("label")}</dt>

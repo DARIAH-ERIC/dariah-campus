@@ -350,9 +350,12 @@
 	},
 	"SourcePage": {
 		"authors": "Authors",
+		"curricula": "Curricula",
+		"editors": "Editors",
 		"resources": "Resources"
 	},
 	"SourcesPage": {
+		"curricula": "{count, plural, =0 {no curricula} =1 {one curriculum} other {# curricula}}",
 		"lead": "DARIAH learning resources don't all live in one place. Here you can explore our materials based on the context in which they were produced.",
 		"meta": {
 			"title": "Sources"

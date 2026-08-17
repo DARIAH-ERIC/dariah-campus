@@ -10,6 +10,7 @@ import { CurriculumResourcesList } from "@/components/curriculum-resources-list"
 import { PeopleList } from "@/components/people-list";
 import { ReUseConditions } from "@/components/re-use-conditions";
 import { RelatedCurriculaList } from "@/components/related-curricula-list";
+import { Sources } from "@/components/sources";
 import { TagsList } from "@/components/tags-list";
 import { TranslationOf } from "@/components/translation-of";
 import { TranslationsList } from "@/components/translations-list";
@@ -79,6 +80,7 @@ export default async function CurriculumPage(
 		"featured-image": featuredImage,
 		"publication-date": publicationDate,
 		resources,
+		sources,
 		tags,
 		title,
 		translations: _translations,
@@ -106,6 +108,14 @@ export default async function CurriculumPage(
 	const translations = await Promise.all(_translations.map(getTranslationMetadata));
 	const isTranslationOf =
 		_isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
+	const curriculumSources = await Promise.all(
+		sources.map(async (id) => {
+			const source = await client.collections.sources.get(id);
+			assert(source, `Missing source "${id}".`);
+			const { name } = source.metadata;
+			return { id, name };
+		}),
+	);
 
 	return (
 		<div>
@@ -174,6 +184,9 @@ export default async function CurriculumPage(
 							}),
 						)}
 					/>
+					<dl className="flex flex-col gap-y-5">
+						<Sources sources={curriculumSources} />
+					</dl>
 					<Citation
 						authors={await Promise.all(
 							editors.map(async (id) => {
@@ -258,6 +271,7 @@ export default async function CurriculumPage(
 								};
 							}),
 						)}
+						sources={curriculumSources}
 						tags={await Promise.all(
 							tags.map(async (id) => {
 								const tag = await client.collections.tags.get(id);

@@ -65,6 +65,11 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 				validation: { length: { min: 1 } },
 				collection: withI18nPrefix("tags", locale),
 			}),
+			sources: fields.multiRelationship({
+				label: "Sources",
+				validation: { length: { min: 0 } },
+				collection: withI18nPrefix("sources", locale),
+			}),
 			"featured-image": fields.image({
 				label: "Featured image",
 				validation: { isRequired: false },

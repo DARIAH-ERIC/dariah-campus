@@ -14,6 +14,7 @@ export const curriculumMetadataSchema = v.object({
 	"content-type": v.literal("curriculum"),
 	tags: v.array(v.object({ id: v.string(), name: v.string() })),
 	editors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
+	sources: v.optional(v.array(v.object({ id: v.string(), name: v.string() })), []),
 	resources: v.array(v.object({ id: v.string(), collection: v.string() })),
 	domain: v.string(),
 	"target-group": v.string(),
