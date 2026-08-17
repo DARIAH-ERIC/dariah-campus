@@ -3,9 +3,9 @@
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { ResourcePreviewCard } from "@/components/resource-preview-card";
-import type { ContentType } from "@/lib/content/options";
-import { useMasonryLayout } from "@/lib/hooks/use-masonry-layout";
+import { ResourcePreviewCard } from "#/components/resource-preview-card";
+import type { ContentType } from "#/lib/content/options";
+import { useMasonryLayout } from "#/lib/hooks/use-masonry-layout";
 
 interface ResourcesGridProps {
 	peopleLabel: string;

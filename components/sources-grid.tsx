@@ -3,8 +3,8 @@
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { SourceCard } from "@/components/source-card";
-import { useMasonryLayout } from "@/lib/hooks/use-masonry-layout";
+import { SourceCard } from "#/components/source-card";
+import { useMasonryLayout } from "#/lib/hooks/use-masonry-layout";
 
 interface SourcesGridProps {
 	sources: Array<{

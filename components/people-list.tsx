@@ -1,9 +1,9 @@
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { Image } from "@/components/image";
-import { Link } from "@/components/link";
-import { createSearchUrl } from "@/lib/navigation/create-search-url";
+import { Image } from "#/components/image";
+import { Link } from "#/components/link";
+import { createSearchUrl } from "#/lib/navigation/create-search-url";
 
 const max = 4;
 

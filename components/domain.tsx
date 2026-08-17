@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import { resources as sharedMetadata } from "@/lib/content/shared-metadata.config";
+import { resources as sharedMetadata } from "#/lib/content/shared-metadata.config";
 
 export function Domain(): ReactNode {
 	const { domain } = sharedMetadata;

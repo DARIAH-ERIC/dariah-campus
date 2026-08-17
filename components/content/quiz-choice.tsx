@@ -5,10 +5,10 @@ import { AlertCircleIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useId, useState } from "react";
 
-import { getChildrenElements } from "@/components/content/get-children-elements";
-import { QuizErrorMessage, QuizSuccessMessage } from "@/components/content/quiz";
-import { QuizForm } from "@/components/content/quiz-form";
-import { useQuizChildren } from "@/components/content/use-quiz-children";
+import { getChildrenElements } from "#/components/content/get-children-elements";
+import { QuizErrorMessage, QuizSuccessMessage } from "#/components/content/quiz";
+import { QuizForm } from "#/components/content/quiz-form";
+import { useQuizChildren } from "#/components/content/use-quiz-children";
 
 interface QuizChoiceProps {
 	buttonLabel?: string;

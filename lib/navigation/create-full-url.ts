@@ -1,29 +1,29 @@
 import {
-	createUrl,
-	type CreateUrlParams,
-	createUrlSearchParams,
-	type CreateUrlSearchParamsParams,
+  createUrl,
+  type CreateUrlParams,
+  createUrlSearchParams,
+  type CreateUrlSearchParamsParams,
 } from "@acdh-oeaw/lib";
 
-import { env } from "@/configs/env.config";
+import { env } from "#/configs/env.config";
 
 export interface CreateFullUrlParams extends Omit<CreateUrlParams, "baseUrl" | "searchParams"> {
-	baseUrl?: CreateUrlParams["baseUrl"];
-	searchParams?: CreateUrlSearchParamsParams;
+  baseUrl?: CreateUrlParams["baseUrl"];
+  searchParams?: CreateUrlSearchParamsParams;
 }
 
 export function createFullUrl(params: CreateFullUrlParams): URL {
-	const { baseUrl = env.NEXT_PUBLIC_APP_BASE_URL, pathname, searchParams, hash } = params;
+  const { baseUrl = env.NEXT_PUBLIC_APP_BASE_URL, pathname, searchParams, hash } = params;
 
-	return createUrl({
-		baseUrl,
-		pathname,
-		searchParams:
-			searchParams != null
-				? searchParams instanceof URLSearchParams
-					? searchParams
-					: createUrlSearchParams(searchParams)
-				: undefined,
-		hash,
-	});
+  return createUrl({
+    baseUrl,
+    pathname,
+    searchParams:
+      searchParams != null
+        ? searchParams instanceof URLSearchParams
+          ? searchParams
+          : createUrlSearchParams(searchParams)
+        : undefined,
+    hash,
+  });
 }

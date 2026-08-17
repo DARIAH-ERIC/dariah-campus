@@ -4,7 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { Button as AriaButton, type ButtonProps as AriaButtonProps } from "react-aria-components";
 
-import { useQuizContext } from "@/components/content/quiz";
+import { useQuizContext } from "#/components/content/quiz";
 
 interface QuizControlsProps {
 	nextButtonLabel: string;

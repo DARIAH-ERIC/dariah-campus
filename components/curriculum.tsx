@@ -2,18 +2,18 @@ import { useFormatter, useTranslations } from "next-intl";
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { AvatarsList } from "@/components/avatars-list";
-import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
-import { ContentTypeIcon } from "@/components/content-type-icon";
-import { Image } from "@/components/image";
-import { Link } from "@/components/link";
-import { PageTitle } from "@/components/page-title";
-import { People } from "@/components/people";
-import { Sources } from "@/components/sources";
-import { Tags } from "@/components/tags";
-import { TranslationOf } from "@/components/translation-of";
-import { Translations } from "@/components/translations";
-import type { ContentType } from "@/lib/content/options";
+import { AvatarsList } from "#/components/avatars-list";
+import { Card, CardContent, CardFooter, CardTitle } from "#/components/card";
+import { ContentTypeIcon } from "#/components/content-type-icon";
+import { Image } from "#/components/image";
+import { Link } from "#/components/link";
+import { PageTitle } from "#/components/page-title";
+import { People } from "#/components/people";
+import { Sources } from "#/components/sources";
+import { Tags } from "#/components/tags";
+import { TranslationOf } from "#/components/translation-of";
+import { Translations } from "#/components/translations";
+import type { ContentType } from "#/lib/content/options";
 
 interface CurriculumProps {
 	children: ReactNode;

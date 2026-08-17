@@ -4,15 +4,15 @@ import { useMessages, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { DocumentBody } from "@/app/_components/document-body";
-import { HtmlDocument } from "@/app/_components/html-document";
-import { Providers } from "@/app/_components/providers";
-import { Main } from "@/components/main";
-import { PageTitle } from "@/components/page-title";
-import { defaultLocale } from "@/lib/i18n/locales";
-import { getMetadata } from "@/lib/i18n/metadata";
+import { DocumentBody } from "#/app/_components/document-body";
+import { HtmlDocument } from "#/app/_components/html-document";
+import { Providers } from "#/app/_components/providers";
+import { Main } from "#/components/main";
+import { PageTitle } from "#/components/page-title";
+import { defaultLocale } from "#/lib/i18n/locales";
+import { getMetadata } from "#/lib/i18n/metadata";
 
-export { viewport } from "@/app/_lib/viewport.config";
+export { viewport } from "#/app/_lib/viewport.config";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("GlobalNotFoundPage");

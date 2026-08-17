@@ -6,7 +6,7 @@ import { TableOfContentsIcon, XIcon } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { Button, Dialog, DialogTrigger, Modal, ModalOverlay } from "react-aria-components";
 
-import { TableOfContents } from "@/components/table-of-contents";
+import { TableOfContents } from "#/components/table-of-contents";
 
 interface FloatingTableOfContentsProps {
 	closeLabel: string;

@@ -5,8 +5,8 @@ import { getTranslations } from "next-intl/server";
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { Image } from "@/components/image";
-import { createClient } from "@/lib/content/create-client";
+import { Image } from "#/components/image";
+import { createClient } from "#/lib/content/create-client";
 
 interface SessionProps {
 	attachments: ReadonlyArray<{ label: string; file: string }>;

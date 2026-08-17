@@ -3,9 +3,9 @@
 import cn from "clsx/lite";
 import type { ReactNode } from "react";
 
-import { Link } from "@/components/link";
-import { useTableOfContentsHighlight } from "@/lib/hooks/use-table-of-contents-highlight";
-import { createHref } from "@/lib/navigation/create-href";
+import { Link } from "#/components/link";
+import { useTableOfContentsHighlight } from "#/lib/hooks/use-table-of-contents-highlight";
+import { createHref } from "#/lib/navigation/create-href";
 
 interface CurriculumResourcesListProps {
 	label: ReactNode;

@@ -4,14 +4,14 @@ import type { ReactNode } from "react";
 import { jsonLdScriptProps } from "react-schemaorg";
 import type { WebSite, WithContext } from "schema-dts";
 
-import { DocumentBody } from "@/app/_components/document-body";
-import { HtmlDocument } from "@/app/_components/html-document";
-import { Providers } from "@/app/_components/providers";
-import { env } from "@/configs/env.config";
-import { AnalyticsScript } from "@/lib/analytics/analytics-script";
-import { getMetadata } from "@/lib/i18n/metadata";
+import { DocumentBody } from "#/app/_components/document-body";
+import { HtmlDocument } from "#/app/_components/html-document";
+import { Providers } from "#/app/_components/providers";
+import { env } from "#/configs/env.config";
+import { AnalyticsScript } from "#/lib/analytics/analytics-script";
+import { getMetadata } from "#/lib/i18n/metadata";
 
-export { viewport } from "@/app/_lib/viewport.config";
+export { viewport } from "#/app/_lib/viewport.config";
 
 interface LocaleLayoutProps extends LayoutProps<"/"> {}
 

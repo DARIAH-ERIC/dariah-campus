@@ -2,9 +2,9 @@ import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import { Link } from "@/components/link";
-import { BlueskyIcon, FacebookIcon, LinkedInIcon, TwitterIcon } from "@/components/social-media-icons";
-import { useMetadata } from "@/lib/i18n/metadata";
+import { Link } from "#/components/link";
+import { BlueskyIcon, FacebookIcon, LinkedInIcon, TwitterIcon } from "#/components/social-media-icons";
+import { useMetadata } from "#/lib/i18n/metadata";
 
 interface SocialMediaShareLinksProps {
 	href: string;

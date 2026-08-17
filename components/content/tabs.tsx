@@ -8,7 +8,7 @@ import {
 	Tabs as AriaTabs,
 } from "react-aria-components";
 
-import { getChildrenElements } from "@/components/content/get-children-elements";
+import { getChildrenElements } from "#/components/content/get-children-elements";
 
 interface TabsProps {
 	children: ReactNode;

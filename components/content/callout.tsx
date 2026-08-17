@@ -3,7 +3,7 @@ import { styles } from "@acdh-oeaw/style-variants";
 import { AlertTriangleIcon, BoltIcon, InfoIcon, LightbulbIcon, type LucideIcon, PencilIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
-import type { CalloutKind } from "@/lib/content/options";
+import type { CalloutKind } from "#/lib/content/options";
 
 const icons: Record<Exclude<CalloutKind, "none">, LucideIcon> = {
 	caution: BoltIcon,

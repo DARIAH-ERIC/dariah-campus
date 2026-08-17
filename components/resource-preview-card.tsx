@@ -2,11 +2,11 @@ import { useTranslations } from "next-intl";
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { AvatarsList } from "@/components/avatars-list";
-import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
-import { ContentTypeIcon } from "@/components/content-type-icon";
-import { Link } from "@/components/link";
-import type { ContentType } from "@/lib/content/options";
+import { AvatarsList } from "#/components/avatars-list";
+import { Card, CardContent, CardFooter, CardTitle } from "#/components/card";
+import { ContentTypeIcon } from "#/components/content-type-icon";
+import { Link } from "#/components/link";
+import type { ContentType } from "#/lib/content/options";
 
 interface ResourcePreviewCardProps {
 	contentType: ContentType | "curriculum" | "event" | "pathfinder";

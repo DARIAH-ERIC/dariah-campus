@@ -1,8 +1,8 @@
 import cn from "clsx/lite";
 import type { ReactNode } from "react";
 
-import { Image } from "@/components/image";
-import type { FigureAlignment } from "@/lib/content/options";
+import { Image } from "#/components/image";
+import type { FigureAlignment } from "#/lib/content/options";
 
 interface FigureProps {
 	/** @default "stretch" */

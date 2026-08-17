@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-import { ContentTypeIcon } from "@/components/content-type-icon";
-import { Link } from "@/components/link";
+import { ContentTypeIcon } from "#/components/content-type-icon";
+import { Link } from "#/components/link";
 
 interface CurriculaListProps {
 	curricula: Array<{ id: string; title: string; href: string }>;

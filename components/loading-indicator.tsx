@@ -3,7 +3,7 @@ import cn from "clsx/lite";
 import { Loader2Icon } from "lucide-react";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-import { useLabels } from "@/lib/hooks/use-labels";
+import { useLabels } from "#/lib/hooks/use-labels";
 
 interface LoadingIndicatorProps
 	extends AriaLabelingProps, DOMProps, Pick<ComponentPropsWithoutRef<"svg">, "aria-hidden" | "className"> {}

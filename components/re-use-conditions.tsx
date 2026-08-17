@@ -1,8 +1,8 @@
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import { Link } from "@/components/link";
-import { createHref } from "@/lib/navigation/create-href";
+import { Link } from "#/components/link";
+import { createHref } from "#/lib/navigation/create-href";
 
 export function ReUseConditions(): ReactNode {
 	const t = useTranslations("ReUseConditions");

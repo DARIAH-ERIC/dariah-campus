@@ -3,13 +3,13 @@
 import { log } from "@acdh-oeaw/lib";
 import { type ReactNode, useEffect } from "react";
 
-import { DocumentBody } from "@/app/_components/document-body";
-import { HtmlDocument } from "@/app/_components/html-document";
-import { Providers } from "@/app/_components/providers";
-import { Main } from "@/components/main";
-import { defaultLocale } from "@/lib/i18n/locales";
+import { DocumentBody } from "#/app/_components/document-body";
+import { HtmlDocument } from "#/app/_components/html-document";
+import { Providers } from "#/app/_components/providers";
+import { Main } from "#/components/main";
+import { defaultLocale } from "#/lib/i18n/locales";
 
-export { viewport } from "@/app/_lib/viewport.config";
+export { viewport } from "#/app/_lib/viewport.config";
 
 /**
  * Currently, the global error page does not support metadata, because error pages in next.js must be client components.

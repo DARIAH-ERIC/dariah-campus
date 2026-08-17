@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 import { ImageResponse } from "next/og";
 
-import type { IntlLocale } from "@/lib/i18n/locales";
+import type { IntlLocale } from "#/lib/i18n/locales";
 
 interface MetadataImageProps {
 	locale: IntlLocale;

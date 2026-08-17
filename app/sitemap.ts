@@ -3,9 +3,9 @@ import { join } from "node:path";
 
 import type { MetadataRoute } from "next";
 
-import { env } from "@/configs/env.config";
-import { client } from "@/lib/content/client";
-import { createFullUrl } from "@/lib/navigation/create-full-url";
+import { env } from "#/configs/env.config";
+import { client } from "#/lib/content/client";
+import { createFullUrl } from "#/lib/navigation/create-full-url";
 
 const baseUrl = env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL;
 
@@ -17,52 +17,52 @@ const baseUrl = env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL;
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const routes: Array<string> = [];
+  const routes: Array<string> = [];
 
-	for await (const path of glob("./**/page.tsx", {
-		cwd: join(process.cwd(), "app", "(app)"),
-	})) {
-		const route = path.slice(0, -"/page.tsx".length);
+  for await (const path of glob("./**/page.tsx", {
+    cwd: join(process.cwd(), "app", "(app)"),
+  })) {
+    const route = path.slice(0, -"/page.tsx".length);
 
-		const segments = [];
+    const segments = [];
 
-		for (const segment of route.split("/")) {
-			/** Dynamic routes. */
-			if (segment.startsWith("[") && segment.endsWith("]")) {
-				break;
-			}
+    for (const segment of route.split("/")) {
+      /** Dynamic routes. */
+      if (segment.startsWith("[") && segment.endsWith("]")) {
+        break;
+      }
 
-			/** Route groups. */
-			if (segment.startsWith("(") && segment.endsWith(")")) {
-				continue;
-			}
+      /** Route groups. */
+      if (segment.startsWith("(") && segment.endsWith(")")) {
+        continue;
+      }
 
-			segments.push(segment);
-		}
+      segments.push(segment);
+    }
 
-		routes.push(`/${segments.join("/")}`);
-	}
+    routes.push(`/${segments.join("/")}`);
+  }
 
-	(await client.collections.resources.all()).map((resource) => {
-		routes.push(resource.href);
-	});
-	(await client.collections.curricula.all()).map((curriculum) => {
-		routes.push(curriculum.href);
-	});
-	(await client.collections.sources.all()).map((source) => {
-		routes.push(source.href);
-	});
-	(await client.collections.documentation.all()).map((page) => {
-		routes.push(page.href);
-	});
+  (await client.collections.resources.all()).map((resource) => {
+    routes.push(resource.href);
+  });
+  (await client.collections.curricula.all()).map((curriculum) => {
+    routes.push(curriculum.href);
+  });
+  (await client.collections.sources.all()).map((source) => {
+    routes.push(source.href);
+  });
+  (await client.collections.documentation.all()).map((page) => {
+    routes.push(page.href);
+  });
 
-	const entries = routes.map((pathname) => {
-		return {
-			url: String(createFullUrl({ baseUrl, pathname })),
-			/** Only add `lastmod` when the publication date is actually known. Don't use the build date instead. */
-			// lastModified: new Date(),
-		};
-	});
+  const entries = routes.map((pathname) => {
+    return {
+      url: String(createFullUrl({ baseUrl, pathname })),
+      /** Only add `lastmod` when the publication date is actually known. Don't use the build date instead. */
+      // lastModified: new Date(),
+    };
+  });
 
-	return entries;
+  return entries;
 }
