@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import * as v from "valibot";
 
-import _curricula from "@/public/metadata/legacy/curricula.json";
+import _curricula from "#/public/metadata/legacy/curricula.json";
 
 const { curricula } = _curricula;
 

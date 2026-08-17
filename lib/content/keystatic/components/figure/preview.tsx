@@ -3,7 +3,7 @@ import { NotEditable } from "@keystatic/core";
 import cn from "clsx/lite";
 import type { ReactNode } from "react";
 
-import type { FigureAlignment } from "@/lib/content/options";
+import type { FigureAlignment } from "#/lib/content/options.ts";
 
 interface FigurePreviewProps {
 	/** @default "stretch" */

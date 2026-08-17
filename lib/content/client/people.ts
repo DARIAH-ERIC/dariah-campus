@@ -1,7 +1,7 @@
 import { keyByToMap } from "@acdh-oeaw/lib";
 import collection from "@content/people";
 
-import type { CollectionClient } from "@/lib/content/types";
+import type { CollectionClient } from "#/lib/content/types.ts";
 
 const ids = Array.from(collection.keys());
 

@@ -5,7 +5,7 @@ import external from "@content/resources-external";
 import hosted from "@content/resources-hosted";
 import collection from "@content/resources-pathfinders";
 
-import type { CollectionClient } from "@/lib/content/types";
+import type { CollectionClient } from "#/lib/content/types.ts";
 
 const curriculaByResourceId = groupByToMap(Array.from(curricula.values()), (entry) => {
 	return entry.document.metadata.resources.map((resource) => {

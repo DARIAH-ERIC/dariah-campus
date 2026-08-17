@@ -3,15 +3,15 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { SearchField } from "@/app/(app)/(default)/search/_components/search-field";
-import { SearchFilters } from "@/app/(app)/(default)/search/_components/search-filters";
-import { SearchFiltersSidePanel } from "@/app/(app)/(default)/search/_components/search-filters-side-panel";
-import { SearchProvider } from "@/app/(app)/(default)/search/_components/search-provider";
-import { SearchResults } from "@/app/(app)/(default)/search/_components/search-results";
-import { SearchStats } from "@/app/(app)/(default)/search/_components/search-stats";
-import { createSearchState } from "@/app/(app)/(default)/search/_lib/typesense";
-import { PageTitle } from "@/components/page-title";
-import { client } from "@/lib/content/client";
+import { SearchField } from "#/app/(app)/(default)/search/_components/search-field.tsx";
+import { SearchFiltersSidePanel } from "#/app/(app)/(default)/search/_components/search-filters-side-panel.tsx";
+import { SearchFilters } from "#/app/(app)/(default)/search/_components/search-filters.tsx";
+import { SearchProvider } from "#/app/(app)/(default)/search/_components/search-provider.tsx";
+import { SearchResults } from "#/app/(app)/(default)/search/_components/search-results.tsx";
+import { SearchStats } from "#/app/(app)/(default)/search/_components/search-stats.tsx";
+import { createSearchState } from "#/app/(app)/(default)/search/_lib/search.ts";
+import { PageTitle } from "#/components/page-title.tsx";
+import { client } from "#/lib/content/client/index.ts";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("SearchPage");

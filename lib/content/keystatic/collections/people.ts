@@ -2,8 +2,8 @@ import { createAssetOptions, createCollection } from "@acdh-oeaw/keystatic-lib";
 import { collection, fields } from "@keystatic/core";
 import slugify from "@sindresorhus/slugify";
 
-import * as validation from "@/lib/content/keystatic/validation";
-import { socialMediaKinds } from "@/lib/content/options";
+import * as validation from "#/lib/content/keystatic/validation.ts";
+import { socialMediaKinds } from "#/lib/content/options.ts";
 
 export const createPeople = createCollection("/people/", (paths, _locale) => {
 	return collection({

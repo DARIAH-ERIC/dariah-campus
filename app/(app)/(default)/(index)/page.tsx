@@ -11,13 +11,13 @@ import {
 	DisclosureGroup,
 	DisclosurePanel,
 	Heading,
-} from "@/app/(app)/(default)/(index)/_components/disclosure";
-import { VideoCard } from "@/app/(app)/(default)/(index)/_components/video-card";
-import { Image } from "@/components/image";
-import { Link } from "@/components/link";
-import { SearchForm } from "@/components/search-form";
-import type { IndexPage as IndexPageContent } from "@/lib/content/client/index-page";
-import { createClient } from "@/lib/content/create-client";
+} from "#/app/(app)/(default)/(index)/_components/disclosure.tsx";
+import { VideoCard } from "#/app/(app)/(default)/(index)/_components/video-card.tsx";
+import { Image } from "#/components/image.tsx";
+import { Link } from "#/components/link.tsx";
+import { SearchForm } from "#/components/search-form.tsx";
+import type { IndexPage as IndexPageContent } from "#/lib/content/client/index-page.ts";
+import { createClient } from "#/lib/content/create-client.ts";
 
 export function generateMetadata(): Metadata {
 	const metadata: Metadata = {

@@ -4,7 +4,7 @@ import { NotEditable } from "@keystatic/core";
 import { AlertTriangleIcon, BoltIcon, InfoIcon, LightbulbIcon, type LucideIcon, PencilIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
-import type { CalloutKind } from "@/lib/content/options";
+import type { CalloutKind } from "#/lib/content/options.ts";
 
 const calloutIcons: Record<Exclude<CalloutKind, "none">, LucideIcon> = {
 	caution: BoltIcon,

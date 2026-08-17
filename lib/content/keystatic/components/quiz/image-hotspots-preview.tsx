@@ -1,6 +1,5 @@
 "use client";
 
-/* eslint-disable react/jsx-no-literals */
 
 import { useObjectUrl, type UseObjectUrlParams } from "@acdh-oeaw/keystatic-lib/preview";
 import { Button } from "@keystar/ui/button";

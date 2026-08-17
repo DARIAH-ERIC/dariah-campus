@@ -182,7 +182,6 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 		});
 	}
 
-	// eslint-disable-next-line @eslint-react/no-unstable-context-value
 	const ctx: DragTheWordsContextValue = {
 		availableWords,
 		caseSensitive,

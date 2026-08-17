@@ -1,11 +1,11 @@
 import { useTranslations } from "next-intl";
 import { Fragment, type ReactNode, Suspense } from "react";
 
-import { DefaultFooter } from "@/app/(app)/(default)/_components/default-footer";
-import { DefaultHeader } from "@/app/(app)/(default)/_components/default-header";
-import { Main } from "@/components/main";
-import { PreviewModeBanner } from "@/components/preview-mode-banner";
-import { SkipLink } from "@/components/skip-link";
+import { DefaultFooter } from "#/app/(app)/(default)/_components/default-footer.tsx";
+import { DefaultHeader } from "#/app/(app)/(default)/_components/default-header.tsx";
+import { Main } from "#/components/main.tsx";
+import { PreviewModeBanner } from "#/components/preview-mode-banner.tsx";
+import { SkipLink } from "#/components/skip-link.tsx";
 
 const mainContentId = "main-content";
 

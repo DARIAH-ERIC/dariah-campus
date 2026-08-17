@@ -1,11 +1,9 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createAssetOptions, createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { wrapper } from "@keystatic/core/content-components";
 import { ImagesIcon } from "lucide-react";
 
-import { ImageComparisonSliderPreview } from "@/lib/content/keystatic/components/image-comparison-slider/preview";
+import { ImageComparisonSliderPreview } from "#/lib/content/keystatic/components/image-comparison-slider/preview.tsx";
 
 export const createImageComparisonSlider = createComponent((paths, _locale) => {
 	return {

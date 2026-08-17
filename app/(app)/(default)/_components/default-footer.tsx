@@ -1,9 +1,9 @@
 import { useTranslations } from "next-intl";
 import { type ComponentProps, type FC, type ReactNode, Suspense } from "react";
 
-import { CopyrightNotice } from "@/app/(app)/(default)/_components/copyright-notice";
-import { Image } from "@/components/image";
-import { Link } from "@/components/link";
+import { CopyrightNotice } from "#/app/(app)/(default)/_components/copyright-notice.tsx";
+import { Image } from "#/components/image.tsx";
+import { Link } from "#/components/link.tsx";
 import {
 	BlueskyIcon,
 	EmailIcon,
@@ -18,14 +18,14 @@ import {
 	TwitterIcon,
 	WebsiteIcon,
 	YouTubeIcon,
-} from "@/components/social-media-icons";
-import type { SocialMediaKind } from "@/lib/content/options";
-import { useMetadata } from "@/lib/i18n/metadata";
-import { createHref } from "@/lib/navigation/create-href";
-import type { NavigationItem } from "@/lib/navigation/navigation";
-import by from "@/public/assets/images/by.svg";
-import cc from "@/public/assets/images/cc.svg";
-import eu from "@/public/assets/images/logo-eu.svg";
+} from "#/components/social-media-icons.tsx";
+import type { SocialMediaKind } from "#/lib/content/options.ts";
+import { useMetadata } from "#/lib/i18n/metadata.ts";
+import { createHref } from "#/lib/navigation/create-href.ts";
+import type { NavigationItem } from "#/lib/navigation/navigation.ts";
+import by from "#/public/assets/images/by.svg";
+import cc from "#/public/assets/images/cc.svg";
+import eu from "#/public/assets/images/logo-eu.svg";
 
 const socialMediaIcons: Record<SocialMediaKind, FC<{ className?: string }>> = {
 	bluesky: BlueskyIcon,

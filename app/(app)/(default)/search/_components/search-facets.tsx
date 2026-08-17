@@ -6,9 +6,9 @@ import { type ReactNode, useId, useMemo, useState } from "react";
 import { useCollator } from "react-aria";
 import { Button, Checkbox, CheckboxGroup, Input, Label, SearchField } from "react-aria-components";
 
-import { useSearch } from "@/app/(app)/(default)/search/_components/search-provider";
-import type { FacetAttribute } from "@/app/(app)/(default)/search/_lib/typesense";
-import { defaultVisibleFacets, maxVisibleFacets } from "@/configs/search.config";
+import { useSearch } from "#/app/(app)/(default)/search/_components/search-provider.tsx";
+import type { FacetAttribute } from "#/app/(app)/(default)/search/_lib/search.ts";
+import { defaultVisibleFacets, maxVisibleFacets } from "#/configs/search.config.ts";
 
 interface SearchFacetsProps {
 	attribute: FacetAttribute;
@@ -41,7 +41,7 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 	const selected = selectedFilters[attribute];
 	const items = useMemo(() => {
 		const valuesById = new Map<string, { count: number | undefined; value: string }>(
-			facets[attribute].map((item) => {
+			facets[attribute].values.map((item) => {
 				return [item.value, item] as const;
 			}),
 		);
@@ -77,7 +77,7 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 				{label}
 			</h3>
 
-			{facets[attribute].length > defaultVisibleFacets ? (
+			{facets[attribute].values.length > defaultVisibleFacets ? (
 				<SearchField className="mb-1" onChange={setFilter} value={filter}>
 					<Label className="sr-only">{filterLabel}</Label>
 					<Input

@@ -1,15 +1,15 @@
 import { getTranslations } from "next-intl/server";
 import type { ComponentProps, ReactNode } from "react";
 
-import { MobileNavSidePanel } from "@/app/(app)/(default)/_components/mobile-nav-side-panel";
-import { StickyHeader } from "@/app/(app)/(default)/_components/sticky-header";
-import { Image } from "@/components/image";
-import { Link } from "@/components/link";
-import { NavLink } from "@/components/nav-link";
-import { createClient } from "@/lib/content/create-client";
-import { createHref } from "@/lib/navigation/create-href";
-import type { NavigationLink, NavigationSeparator } from "@/lib/navigation/navigation";
-import logo from "@/public/assets/images/logo-dariah-campus.svg";
+import { MobileNavSidePanel } from "#/app/(app)/(default)/_components/mobile-nav-side-panel.tsx";
+import { StickyHeader } from "#/app/(app)/(default)/_components/sticky-header.tsx";
+import { Image } from "#/components/image.tsx";
+import { Link } from "#/components/link.tsx";
+import { NavLink } from "#/components/nav-link.tsx";
+import { createClient } from "#/lib/content/create-client.ts";
+import { createHref } from "#/lib/navigation/create-href.ts";
+import type { NavigationLink, NavigationSeparator } from "#/lib/navigation/navigation.ts";
+import logo from "#/public/assets/images/logo-dariah-campus.svg";
 
 interface DefaultHeaderProps extends ComponentProps<"header"> {}
 

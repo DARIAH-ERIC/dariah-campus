@@ -39,7 +39,6 @@ export function ResourcesGrid(props: Readonly<ResourcesGridProps>): ReactNode {
 						<div key={index} className="grid flex-1 content-start gap-y-6" role="presentation">
 							{resources.map((resource) => {
 								return (
-									// eslint-disable-next-line jsx-a11y/no-redundant-roles
 									<li
 										key={
 											// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions

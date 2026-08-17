@@ -1,7 +1,7 @@
 import { keyByToMap } from "@acdh-oeaw/lib";
 
-import { contentLicenses as collection } from "@/lib/content/options";
-import type { CollectionClient } from "@/lib/content/types";
+import { contentLicenses as collection } from "#/lib/content/options.ts";
+import type { CollectionClient } from "#/lib/content/types.ts";
 
 const ids = collection.map((item) => {
 	return item.value;

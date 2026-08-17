@@ -3,7 +3,7 @@ import { unique } from "@acdh-oeaw/lib";
 import { client } from "#/lib/content/client/index.ts";
 import type { ResourceDocument } from "#/lib/search/admin.ts";
 
-type CollectionDocument = ResourceDocument
+type CollectionDocument = ResourceDocument;
 
 export async function createDocuments(): Promise<Array<CollectionDocument>> {
 	const documents: Array<CollectionDocument> = [];

@@ -4,11 +4,11 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { PageLead } from "@/components/page-lead";
-import { PageTitle } from "@/components/page-title";
-import { ResourcesGrid } from "@/components/resources-grid";
-import { client } from "@/lib/content/client";
-import { createClient } from "@/lib/content/create-client";
+import { PageLead } from "#/components/page-lead.tsx";
+import { PageTitle } from "#/components/page-title.tsx";
+import { ResourcesGrid } from "#/components/resources-grid.tsx";
+import { client } from "#/lib/content/client/index.ts";
+import { createClient } from "#/lib/content/create-client.ts";
 
 interface SourcePageProps extends PageProps<"/sources/[id]"> {}
 

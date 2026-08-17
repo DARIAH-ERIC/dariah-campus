@@ -6,7 +6,7 @@ import hosted from "@content/resources-hosted";
 import pathfinders from "@content/resources-pathfinders";
 import collection from "@content/sources";
 
-import type { CollectionClient } from "@/lib/content/types";
+import type { CollectionClient } from "#/lib/content/types.ts";
 
 const resourcesBySourceId = groupByToMap(
 	[

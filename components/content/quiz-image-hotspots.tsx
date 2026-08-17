@@ -53,7 +53,6 @@ export function QuizImageHotspots(props: Readonly<QuizImageHotspotsProps>): Reac
 	const contextValue = useMemo(() => {
 		return { activeId, inlinePanel, presentation, select: setActiveId };
 	}, [activeId, inlinePanel, presentation]);
-	// eslint-disable-next-line @eslint-react/no-children-map -- MDX supplies hotspots as opaque children; wrapping them preserves their elements while providing document order.
 	const indexedHotspotChildren = Children.map(children, (child, index) => {
 		return <HotspotIndexContext value={index + 1}>{child}</HotspotIndexContext>;
 	});

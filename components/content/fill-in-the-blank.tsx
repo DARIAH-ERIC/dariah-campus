@@ -58,7 +58,6 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 		});
 	});
 
-	// eslint-disable-next-line @eslint-react/no-unstable-context-value
 	const ctx: FillInTheBlankContextValue = {
 		inputs,
 		setInput(id, value) {

@@ -10,10 +10,11 @@ import {
 	search,
 	type SearchData,
 	type SearchState,
-} from "@/app/(app)/(default)/search/_lib/typesense";
+} from "#/app/(app)/(default)/search/_lib/search.ts";
+import type { SearchError } from "#/lib/search/index.ts";
 
 interface SearchContextValue extends SearchData {
-	error: unknown;
+	error: SearchError | null;
 	hasData: boolean;
 	isLoading: boolean;
 	query: string;
@@ -34,7 +35,7 @@ export function SearchProvider(props: Readonly<SearchProviderProps>): ReactNode 
 	const [state, setState] = useState(initialState);
 	const [data, setData] = useState(emptySearchData);
 	const [hasData, setHasData] = useState(false);
-	const [error, setError] = useState<unknown>(null);
+	const [error, setError] = useState<SearchError | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const abortControllerRef = useRef<AbortController>(null);
 
@@ -42,19 +43,22 @@ export function SearchProvider(props: Readonly<SearchProviderProps>): ReactNode 
 		const abortController = new AbortController();
 		abortControllerRef.current = abortController;
 
-		void search(state, abortController.signal)
-			.then((data) => {
-				if (!abortController.signal.aborted) {
+		void search(state, abortController.signal).then((result) => {
+			result.match({
+				ok(data) {
 					setData(data);
 					setHasData(true);
-				}
-			})
-			.catch((error: unknown) => {
-				if (!abortController.signal.aborted) setError(error);
-			})
-			.finally(() => {
-				if (!abortController.signal.aborted) setIsLoading(false);
+					setIsLoading(false);
+				},
+				err(error) {
+					/** A superseded request is not a failure, the replacement will settle the state. */
+					if (error._tag === "SearchAbortedError") return;
+
+					setError(error);
+					setIsLoading(false);
+				},
 			});
+		});
 
 		return () => {
 			abortController.abort();

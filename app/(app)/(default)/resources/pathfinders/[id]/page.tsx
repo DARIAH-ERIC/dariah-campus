@@ -4,25 +4,25 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Fragment, type ReactNode } from "react";
 
-import { Citation } from "@/components/citation";
-import { CurriculaList } from "@/components/curricula-list";
-import { FloatingTableOfContents } from "@/components/floating-table-of-contents";
-import { PeopleList } from "@/components/people-list";
-import { ReUseConditions } from "@/components/re-use-conditions";
-import { RelatedResourcesList } from "@/components/related-resources-list";
-import { Resource } from "@/components/resource";
-import { ResourceDetails } from "@/components/resource-details";
-import { TableOfContents } from "@/components/table-of-contents";
-import { TagsList } from "@/components/tags-list";
-import { TranslationOf } from "@/components/translation-of";
-import { TranslationsList } from "@/components/translations-list";
-import { env } from "@/configs/env.config";
-import { client } from "@/lib/content/client";
-import { createClient } from "@/lib/content/create-client";
-import { createResourceMetadata } from "@/lib/content/utils/create-resource-metadata";
-import { getMetadata } from "@/lib/i18n/metadata";
-import { createFullUrl } from "@/lib/navigation/create-full-url";
-import { pickRandom } from "@/lib/utils/pick-random";
+import { Citation } from "#/components/citation.tsx";
+import { CurriculaList } from "#/components/curricula-list.tsx";
+import { FloatingTableOfContents } from "#/components/floating-table-of-contents.tsx";
+import { PeopleList } from "#/components/people-list.tsx";
+import { ReUseConditions } from "#/components/re-use-conditions.tsx";
+import { RelatedResourcesList } from "#/components/related-resources-list.tsx";
+import { ResourceDetails } from "#/components/resource-details.tsx";
+import { Resource } from "#/components/resource.tsx";
+import { TableOfContents } from "#/components/table-of-contents.tsx";
+import { TagsList } from "#/components/tags-list.tsx";
+import { TranslationOf } from "#/components/translation-of.tsx";
+import { TranslationsList } from "#/components/translations-list.tsx";
+import { env } from "#/configs/env.config.ts";
+import { client } from "#/lib/content/client/index.ts";
+import { createClient } from "#/lib/content/create-client.ts";
+import { createResourceMetadata } from "#/lib/content/utils/create-resource-metadata.ts";
+import { getMetadata } from "#/lib/i18n/metadata.ts";
+import { createFullUrl } from "#/lib/navigation/create-full-url.ts";
+import { pickRandom } from "#/lib/utils/pick-random.ts";
 
 interface PathfinderResourcePageProps extends PageProps<"/resources/pathfinders/[id]"> {}
 

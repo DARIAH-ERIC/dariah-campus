@@ -2,8 +2,8 @@ import { getLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ImageResponse } from "next/og";
 
-import { MetadataImage } from "@/components/metadata-image";
-import { createClient } from "@/lib/content/create-client";
+import { MetadataImage } from "#/components/metadata-image.tsx";
+import { createClient } from "#/lib/content/create-client.ts";
 
 interface OpenGraphImageProps extends PageProps<"/resources/events/[id]"> {}
 

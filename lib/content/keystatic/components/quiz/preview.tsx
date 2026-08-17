@@ -1,12 +1,10 @@
-/* eslint-disable react/jsx-no-literals */
-
 import { NotEditable } from "@keystatic/core";
 import type { ReactNode } from "react";
 
 export {
 	QuizImageHotspotEditor,
 	QuizImageHotspotsPreview,
-} from "@/lib/content/keystatic/components/quiz/image-hotspots-preview";
+} from "#/lib/content/keystatic/components/quiz/image-hotspots-preview.tsx";
 
 interface QuizPreviewProps {
 	children: ReactNode;

@@ -1,7 +1,7 @@
 import { createAssetOptions, createCollection } from "@acdh-oeaw/keystatic-lib";
 import { collection, fields } from "@keystatic/core";
 
-import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
+import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 
 export const createSources = createCollection("/sources/", (paths, _locale) => {
 	return collection({

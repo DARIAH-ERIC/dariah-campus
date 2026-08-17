@@ -28,7 +28,6 @@ export function AnalyticsScript(props: Readonly<AnalyticsProps>): ReactNode {
 	return (
 		<Fragment>
 			<Script
-				// eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
 				dangerouslySetInnerHTML={{
 					__html: `(${String(createAnalyticsScript)})("${baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`}", "${String(id)}");`,
 				}}

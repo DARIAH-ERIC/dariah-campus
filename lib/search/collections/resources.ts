@@ -1,3 +1,4 @@
+import type { ContentType } from "#/lib/content/options.ts";
 import {
 	type CollectionDocument,
 	type CollectionFacetableFieldName,
@@ -6,7 +7,7 @@ import {
 	type CollectionSortableFieldName,
 	defineCollection,
 } from "#/lib/search/schema.ts";
-import type { SearchCollectionParams, SearchFacet, SearchItem, SearchResult } from "#/lib/search/search.ts";
+import type { SearchCollectionParams, SearchItem, SearchResult } from "#/lib/search/search.ts";
 
 export const resourcesCollection = defineCollection({
 	fields: [
@@ -36,14 +37,22 @@ export const resourcesCollection = defineCollection({
 	},
 });
 
-export interface ResourceDocument extends CollectionDocument<typeof resourcesCollection> { }
+/** Typesense only knows `content-type` as a string, the collections it is indexed from know better. */
+export interface ResourceDocument extends Omit<CollectionDocument<typeof resourcesCollection>, "content-type"> {
+	"content-type": ContentType | "curriculum" | "event" | "pathfinder";
+}
 
 export type ResourceSearchField = CollectionSearchableFieldName<typeof resourcesCollection>;
 export type ResourceFilterField = CollectionFilterableFieldName<typeof resourcesCollection>;
 export type ResourceSortField = CollectionSortableFieldName<typeof resourcesCollection>;
 export type ResourceFacetField = CollectionFacetableFieldName<typeof resourcesCollection>;
 
-export type SearchResourcesParams = SearchCollectionParams<typeof resourcesCollection>;
+export type SearchResourcesParams<FacetField extends ResourceFacetField = never> = SearchCollectionParams<
+	typeof resourcesCollection,
+	FacetField
+>;
 export type ResourceItem = SearchItem<ResourceDocument>;
-export type ResourceFacet = SearchFacet;
-export type ResourceSearchResult = SearchResult<ResourceDocument, ResourceFacetField>;
+export type ResourceSearchResult<FacetField extends ResourceFacetField = never> = SearchResult<
+	ResourceDocument,
+	FacetField
+>;

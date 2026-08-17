@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { Input, Label, SearchField as AriaSearchField } from "react-aria-components";
 
-import { useSearch } from "@/app/(app)/(default)/search/_components/search-provider";
+import { useSearch } from "#/app/(app)/(default)/search/_components/search-provider.tsx";
 
 interface SearchFieldProps {
 	label: string;

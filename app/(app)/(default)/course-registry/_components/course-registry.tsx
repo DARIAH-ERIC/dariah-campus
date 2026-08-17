@@ -2,7 +2,7 @@
 
 import { type ReactNode, useState } from "react";
 
-import { LoadingIndicator } from "@/components/loading-indicator";
+import { LoadingIndicator } from "#/components/loading-indicator.tsx";
 
 export function CourseRegistry(): ReactNode {
 	const [isLoading, setIsLoading] = useState(true);

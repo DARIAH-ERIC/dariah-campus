@@ -23,7 +23,7 @@ async function main() {
 	const isMainBranch = env.VERCEL_GIT_COMMIT_REF === "main";
 
 	if (!isProductionEnvironment || !isMainBranch) {
-		log.info(`Skipped updating collection "${env.NEXT_PUBLIC_TYPESENSE_COLLECTION}".`)
+		log.info(`Skipped updating collection "${env.NEXT_PUBLIC_TYPESENSE_COLLECTION}".`);
 		return;
 	}
 

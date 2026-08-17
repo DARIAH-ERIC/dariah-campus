@@ -5,7 +5,7 @@ import { MenuIcon, XIcon } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { Button, Dialog, DialogTrigger, Modal, ModalOverlay } from "react-aria-components";
 
-import { Link } from "@/components/link";
+import { Link } from "#/components/link.tsx";
 
 interface MobileNavSidePanelProps {
 	closeLabel: string;

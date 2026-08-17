@@ -123,7 +123,7 @@
 		"selector-pseudo-element-colon-notation": "double",
 		"selector-type-case": "lower",
 		"shorthand-property-no-redundant-values": true,
-		"value-keyword-case": "lower",
+		"value-keyword-case": ["lower", { "camelCaseSvgKeywords": true }],
 		"value-no-vendor-prefix": [true, { "ignoreValues": ["box", "inline-box"] }]
 	}
 }

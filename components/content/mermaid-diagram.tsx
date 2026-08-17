@@ -45,7 +45,6 @@ export function MermaidDiagram(props: Readonly<MermaidDiagramProps>): ReactNode 
 
 	return (
 		<div>
-			{/* eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml */}
 			<div dangerouslySetInnerHTML={{ __html: svg }} data-mermaid-diagram={true} />
 			{link && href != null ? (
 				<a

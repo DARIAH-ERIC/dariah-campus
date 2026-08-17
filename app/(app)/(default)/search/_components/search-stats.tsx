@@ -4,11 +4,11 @@ import { LoaderCircleIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import { useSearch } from "@/app/(app)/(default)/search/_components/search-provider";
+import { useSearch } from "#/app/(app)/(default)/search/_components/search-provider.tsx";
 
 export function SearchStats(): ReactNode {
 	const t = useTranslations("SearchPage");
-	const { found, hasData, isLoading } = useSearch();
+	const { hasData, isLoading, pagination } = useSearch();
 
 	return (
 		<div className="mx-auto grid h-5 w-full place-items-center text-sm text-neutral-600" role="status">
@@ -19,7 +19,7 @@ export function SearchStats(): ReactNode {
 				</span>
 			) : null}
 			{hasData || !isLoading ? (
-				<span className="col-start-1 row-start-1">{t("results-found", { count: found })}</span>
+				<span className="col-start-1 row-start-1">{t("results-found", { count: pagination.total })}</span>
 			) : null}
 		</div>
 	);

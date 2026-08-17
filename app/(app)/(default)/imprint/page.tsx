@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { PageTitle } from "@/components/page-title";
-import { createClient } from "@/lib/content/create-client";
+import { PageTitle } from "#/components/page-title.tsx";
+import { createClient } from "#/lib/content/create-client.ts";
 
 export const revalidate = 2592000; /** 30 days. */
 

@@ -1,6 +1,6 @@
 import { keyByToMap } from "@acdh-oeaw/lib";
 
-import type { CollectionClient } from "@/lib/content/types";
+import type { CollectionClient } from "#/lib/content/types.ts";
 
 import { client as events, type EventResource } from "./events";
 import { client as external, type ExternalResource } from "./external";

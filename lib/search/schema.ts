@@ -26,17 +26,23 @@ interface FieldTypeMap {
 
 type SearchableFieldType = "string" | "string[]" | "string*";
 
-type RequiredFieldNames<T extends CollectionFieldSchema> = T extends { optional: true } ? never : T["name"];
-type OptionalFieldNames<T extends CollectionFieldSchema> = T extends { optional: true } ? T["name"] : never;
-type QueryableFieldNames<T extends CollectionFieldSchema> = T extends { index: false } ? never : T["name"];
-type SearchableFieldNames<T extends CollectionFieldSchema> = T extends { index: false }
-	? never
-	: T["type"] extends SearchableFieldType
-		? T["name"]
-		: never;
-type FilterableFieldNames<T extends CollectionFieldSchema> = T extends { index: false } ? never : T["name"];
-type SortableFieldNames<T extends CollectionFieldSchema> = T extends { sort: true } ? T["name"] : never;
-type FacetableFieldNames<T extends CollectionFieldSchema> = T extends { facet: true } ? T["name"] : never;
+/**
+ * Field selections are expressed as `Extract`/`Exclude` rather than bare conditional types so that a runtime type
+ * predicate narrowing to the same type proves the mapped names match, which is what keeps the getters below free of
+ * assertions.
+ */
+type IndexedFields<T extends CollectionFieldSchema> = Exclude<T, { index: false }>;
+type SearchableFields<T extends CollectionFieldSchema> = Extract<IndexedFields<T>, { type: SearchableFieldType }>;
+type SortableFields<T extends CollectionFieldSchema> = Extract<T, { sort: true }>;
+type FacetableFields<T extends CollectionFieldSchema> = Extract<T, { facet: true }>;
+
+type RequiredFieldNames<T extends CollectionFieldSchema> = Exclude<T, { optional: true }>["name"];
+type OptionalFieldNames<T extends CollectionFieldSchema> = Extract<T, { optional: true }>["name"];
+type QueryableFieldNames<T extends CollectionFieldSchema> = IndexedFields<T>["name"];
+type SearchableFieldNames<T extends CollectionFieldSchema> = SearchableFields<T>["name"];
+type FilterableFieldNames<T extends CollectionFieldSchema> = IndexedFields<T>["name"];
+type SortableFieldNames<T extends CollectionFieldSchema> = SortableFields<T>["name"];
+type FacetableFieldNames<T extends CollectionFieldSchema> = FacetableFields<T>["name"];
 
 type DocumentFromFields<F extends ReadonlyArray<CollectionFieldSchema>> = {
 	[K in RequiredFieldNames<F[number]>]: FieldTypeMap[Extract<F[number], { name: K }>["type"]];
@@ -44,36 +50,86 @@ type DocumentFromFields<F extends ReadonlyArray<CollectionFieldSchema>> = {
 	[K in OptionalFieldNames<F[number]>]?: FieldTypeMap[Extract<F[number], { name: K }>["type"]] | null;
 };
 
+const searchableFieldTypes = new Set<string>(["string", "string[]", "string*"]);
+
+function isIndexed<T extends CollectionFieldSchema>(field: T): field is IndexedFields<T> {
+	return field.index !== false;
+}
+
+function isSearchable<T extends CollectionFieldSchema>(field: T): field is SearchableFields<T> {
+	return isIndexed(field) && searchableFieldTypes.has(field.type);
+}
+
+function isSortable<T extends CollectionFieldSchema>(field: T): field is SortableFields<T> {
+	return field.sort === true;
+}
+
+function isFacetable<T extends CollectionFieldSchema>(field: T): field is FacetableFields<T> {
+	return field.facet === true;
+}
+
+function toName<T extends CollectionFieldSchema>(field: T): T["name"] {
+	return field.name;
+}
+
 function getQueryableFields<F extends ReadonlyArray<CollectionFieldSchema>>(
 	fields: F,
 ): Array<QueryableFieldNames<F[number]>> {
-	return fields.filter((f) => f.index !== false).map((f) => f.name) as Array<QueryableFieldNames<F[number]>>;
+	return fields
+		.filter((field) => {
+			return isIndexed(field);
+		})
+		.map((field) => {
+			return toName(field);
+		});
 }
 
 function getSearchableFields<F extends ReadonlyArray<CollectionFieldSchema>>(
 	fields: F,
 ): Array<SearchableFieldNames<F[number]>> {
 	return fields
-		.filter((f) => f.index !== false && ["string", "string[]", "string*"].includes(f.type))
-		.map((f) => f.name) as Array<SearchableFieldNames<F[number]>>;
+		.filter((field) => {
+			return isSearchable(field);
+		})
+		.map((field) => {
+			return toName(field);
+		});
 }
 
 function getFilterableFields<F extends ReadonlyArray<CollectionFieldSchema>>(
 	fields: F,
 ): Array<FilterableFieldNames<F[number]>> {
-	return fields.filter((f) => f.index !== false).map((f) => f.name) as Array<FilterableFieldNames<F[number]>>;
+	return fields
+		.filter((field) => {
+			return isIndexed(field);
+		})
+		.map((field) => {
+			return toName(field);
+		});
 }
 
 function getSortableFields<F extends ReadonlyArray<CollectionFieldSchema>>(
 	fields: F,
 ): Array<SortableFieldNames<F[number]>> {
-	return fields.filter((f) => f.sort === true).map((f) => f.name) as Array<SortableFieldNames<F[number]>>;
+	return fields
+		.filter((field) => {
+			return isSortable(field);
+		})
+		.map((field) => {
+			return toName(field);
+		});
 }
 
 function getFacetableFields<F extends ReadonlyArray<CollectionFieldSchema>>(
 	fields: F,
 ): Array<FacetableFieldNames<F[number]>> {
-	return fields.filter((f) => f.facet === true).map((f) => f.name) as Array<FacetableFieldNames<F[number]>>;
+	return fields
+		.filter((field) => {
+			return isFacetable(field);
+		})
+		.map((field) => {
+			return toName(field);
+		});
 }
 
 export type CollectionDocument<C extends { fields: ReadonlyArray<CollectionFieldSchema> }> = DocumentFromFields<
@@ -99,7 +155,7 @@ export interface Collection<F extends ReadonlyArray<CollectionFieldSchema>, M ex
 	facetableFields: ReadonlyArray<FacetableFieldNames<F[number]>>;
 	defaultSortingField: SortableFieldNames<F[number]> | undefined;
 	metadata: M | undefined;
-	schema(name: string): CollectionCreateSchema;
+	schema: (name: string) => CollectionCreateSchema;
 }
 
 export interface CollectionConfig<F extends ReadonlyArray<StrictFieldSchema>, M extends object> {

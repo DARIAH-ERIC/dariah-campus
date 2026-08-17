@@ -6,21 +6,21 @@ import { env } from "#/configs/env.config.ts";
 const baseUrl = env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL;
 
 export default function robots(): MetadataRoute.Robots {
-  if (env.NEXT_PUBLIC_BOTS !== "enabled") {
-    return {
-      rules: {
-        disallow: "/",
-        userAgent: "*",
-      },
-    };
-  }
+	if (env.NEXT_PUBLIC_BOTS !== "enabled") {
+		return {
+			rules: {
+				disallow: "/",
+				userAgent: "*",
+			},
+		};
+	}
 
-  return {
-    host: baseUrl,
-    rules: {
-      allow: "/",
-      userAgent: "*",
-    },
-    sitemap: String(createUrl({ baseUrl, pathname: "/sitemap.xml" })),
-  };
+	return {
+		host: baseUrl,
+		rules: {
+			allow: "/",
+			userAgent: "*",
+		},
+		sitemap: String(createUrl({ baseUrl, pathname: "/sitemap.xml" })),
+	};
 }

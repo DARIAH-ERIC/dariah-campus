@@ -1,11 +1,12 @@
 import { TaggedError } from "better-result";
 
-export class SearchConnectionError extends TaggedError("SearchConnectionError")<{
+export class SearchError extends TaggedError("SearchError")<{
 	readonly cause?: unknown;
 	readonly message?: string;
 }> {}
 
-export class SearchError extends TaggedError("SearchError")<{
+/** The request was cancelled by the caller, not a failure. */
+export class SearchAbortedError extends TaggedError("SearchAbortedError")<{
 	readonly cause?: unknown;
 	readonly message?: string;
 }> {}

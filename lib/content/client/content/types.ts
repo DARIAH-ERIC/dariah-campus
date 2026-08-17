@@ -1,7 +1,7 @@
 import { keyByToMap } from "@acdh-oeaw/lib";
 
-import { contentTypes as _collection } from "@/lib/content/options";
-import type { CollectionClient } from "@/lib/content/types";
+import { contentTypes as _collection } from "#/lib/content/options.ts";
+import type { CollectionClient } from "#/lib/content/types.ts";
 
 const collection = [
 	..._collection,

@@ -99,7 +99,6 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 						clipPath: orientation === "vertical" ? "inset(var(--position) 0 0 0)" : "inset(0 0 0 var(--position))",
 					}}
 				/>
-				{/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
 				<div
 					aria-label="Use arrow keys to move separator"
 					className={cn(
@@ -142,7 +141,6 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 						}
 					}}
 					role="separator"
-					// eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
 					tabIndex={0}
 				>
 					<div

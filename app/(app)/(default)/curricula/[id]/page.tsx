@@ -4,21 +4,21 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { Citation } from "@/components/citation";
-import { Curriculum } from "@/components/curriculum";
-import { CurriculumResourcesList } from "@/components/curriculum-resources-list";
-import { PeopleList } from "@/components/people-list";
-import { ReUseConditions } from "@/components/re-use-conditions";
-import { RelatedCurriculaList } from "@/components/related-curricula-list";
-import { Sources } from "@/components/sources";
-import { TagsList } from "@/components/tags-list";
-import { TranslationOf } from "@/components/translation-of";
-import { TranslationsList } from "@/components/translations-list";
-import { env } from "@/configs/env.config";
-import { client } from "@/lib/content/client";
-import { createClient } from "@/lib/content/create-client";
-import { createFullUrl } from "@/lib/navigation/create-full-url";
-import { pickRandom } from "@/lib/utils/pick-random";
+import { Citation } from "#/components/citation.tsx";
+import { CurriculumResourcesList } from "#/components/curriculum-resources-list.tsx";
+import { Curriculum } from "#/components/curriculum.tsx";
+import { PeopleList } from "#/components/people-list.tsx";
+import { ReUseConditions } from "#/components/re-use-conditions.tsx";
+import { RelatedCurriculaList } from "#/components/related-curricula-list.tsx";
+import { Sources } from "#/components/sources.tsx";
+import { TagsList } from "#/components/tags-list.tsx";
+import { TranslationOf } from "#/components/translation-of.tsx";
+import { TranslationsList } from "#/components/translations-list.tsx";
+import { env } from "#/configs/env.config.ts";
+import { client } from "#/lib/content/client/index.ts";
+import { createClient } from "#/lib/content/create-client.ts";
+import { createFullUrl } from "#/lib/navigation/create-full-url.ts";
+import { pickRandom } from "#/lib/utils/pick-random.ts";
 
 interface CurriculumPageProps extends PageProps<"/curricula/[id]"> {}
 

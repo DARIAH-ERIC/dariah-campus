@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-literals */
-
 import { NotEditable } from "@keystatic/core";
 import type { ReactNode } from "react";
 

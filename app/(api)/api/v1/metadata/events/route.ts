@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import * as v from "valibot";
 
-import _events from "@/public/metadata/legacy/events.json";
+import _events from "#/public/metadata/legacy/events.json";
 
 const { events } = _events;
 

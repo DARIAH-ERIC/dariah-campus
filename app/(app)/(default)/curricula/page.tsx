@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { PageTitle } from "@/components/page-title";
-import { ResourcesGrid } from "@/components/resources-grid";
-import { createClient } from "@/lib/content/create-client";
+import { PageTitle } from "#/components/page-title.tsx";
+import { ResourcesGrid } from "#/components/resources-grid.tsx";
+import { createClient } from "#/lib/content/create-client.ts";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("CurriculaPage");

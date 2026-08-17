@@ -5,9 +5,9 @@ import { useTranslations } from "next-intl";
 import { type ReactNode, useEffect } from "react";
 import { Button } from "react-aria-components";
 
-import { PageTitle } from "@/components/page-title";
+import { PageTitle } from "#/components/page-title.tsx";
 
-export { viewport } from "@/app/_lib/viewport.config";
+export { viewport } from "#/app/_lib/viewport.config.ts";
 
 interface ErrorPageProps {
 	error: Error & { digest?: string };

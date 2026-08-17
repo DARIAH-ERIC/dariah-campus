@@ -1,11 +1,9 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { wrapper } from "@keystatic/core/content-components";
 import { FormInputIcon } from "lucide-react";
 
-import { DragTheWordsPreview } from "@/lib/content/keystatic/components/drag-the-words/preview";
+import { DragTheWordsPreview } from "#/lib/content/keystatic/components/drag-the-words/preview.tsx";
 
 export const createQuizDragTheWords = createComponent((_paths, _locale) => {
 	return {

@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 
-import { SearchFacets } from "@/app/(app)/(default)/search/_components/search-facets";
+import { SearchFacets } from "#/app/(app)/(default)/search/_components/search-facets.tsx";
 
 interface SearchFiltersProps {
 	contentTypesById: Map<string, { label: string }>;

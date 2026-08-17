@@ -94,10 +94,7 @@ export function createSearchAdminService(params: CreateSearchAdminServiceParams)
 				truncate(): Promise<Result<void, SearchCollectionError>> {
 					return Result.tryPromise({
 						async try() {
-							await client
-								.collections<ResourceDocument>(collections.resources)
-								.documents()
-								.delete({ truncate: true });
+							await client.collections<ResourceDocument>(collections.resources).documents().delete({ truncate: true });
 						},
 						catch(cause) {
 							return new SearchCollectionError({ cause });

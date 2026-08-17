@@ -4,19 +4,19 @@ import { assert, createUrl } from "@acdh-oeaw/lib";
 import { createGitHubReader } from "@keystatic/core/reader/github";
 import { cache } from "react";
 
-import { client } from "@/lib/content/client";
-import type { Curriculum } from "@/lib/content/client/curricula";
-import type { Documentation } from "@/lib/content/client/documentation";
-import type { IndexPage } from "@/lib/content/client/index-page";
-import type { Person } from "@/lib/content/client/people";
-import type { EventResource } from "@/lib/content/client/resources/events";
-import type { ExternalResource } from "@/lib/content/client/resources/external";
-import type { HostedResource } from "@/lib/content/client/resources/hosted";
-import type { PathfinderResource } from "@/lib/content/client/resources/pathfinders";
-import type { Source } from "@/lib/content/client/sources";
-import type { Tag } from "@/lib/content/client/tags";
-import { config } from "@/lib/content/keystatic/config";
-import { evaluate, type EvaluateOptions } from "@/lib/content/mdx/evaluate";
+import { client } from "#/lib/content/client/index.ts";
+import type { Curriculum } from "#/lib/content/client/curricula.ts";
+import type { Documentation } from "#/lib/content/client/documentation.ts";
+import type { IndexPage } from "#/lib/content/client/index-page.ts";
+import type { Person } from "#/lib/content/client/people.ts";
+import type { EventResource } from "#/lib/content/client/resources/events.ts";
+import type { ExternalResource } from "#/lib/content/client/resources/external.ts";
+import type { HostedResource } from "#/lib/content/client/resources/hosted.ts";
+import type { PathfinderResource } from "#/lib/content/client/resources/pathfinders.ts";
+import type { Source } from "#/lib/content/client/sources.ts";
+import type { Tag } from "#/lib/content/client/tags.ts";
+import { config } from "#/lib/content/keystatic/config.ts";
+import { evaluate, type EvaluateOptions } from "#/lib/content/mdx/evaluate.ts";
 import {
 	createCustomHeadingIdsPlugin,
 	createHeadingIdsPlugin,
@@ -26,15 +26,15 @@ import {
 	createSyntaxHighlighterPlugin,
 	createTableOfContentsPlugin,
 	createUnwrappedMdxFlowContentPlugin,
-} from "@/lib/content/mdx/rehype-plugins";
+} from "#/lib/content/mdx/rehype-plugins.ts";
 import {
 	createFootnotesPlugin,
 	createGitHubMarkdownPlugin,
 	createTypographicQuotesPlugin,
-} from "@/lib/content/mdx/remark-plugins";
-import { createRemarkRehypeOptions } from "@/lib/content/mdx/remark-rehype-options";
-import type { Client } from "@/lib/content/types";
-import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
+} from "#/lib/content/mdx/remark-plugins.ts";
+import { createRemarkRehypeOptions } from "#/lib/content/mdx/remark-rehype-options.ts";
+import type { Client } from "#/lib/content/types.ts";
+import { defaultLocale, getIntlLanguage } from "#/lib/i18n/locales.ts";
 
 const locale = defaultLocale;
 

@@ -2,8 +2,8 @@ import { createRouteHandler, toOpenApiSchema } from "@acdh-oeaw/openapi-nextjs";
 import { type NextRequest, NextResponse } from "next/server";
 import * as v from "valibot";
 
-import _curricula from "@/public/metadata/curricula.json";
-import { curriculumMetadataSchema } from "@/scripts/api/metadata-schemas";
+import _curricula from "#/public/metadata/curricula.json";
+import { curriculumMetadataSchema } from "#/scripts/api/metadata-schemas.ts";
 
 const searchParamsSchema = v.object({
 	limit: v.nullish(

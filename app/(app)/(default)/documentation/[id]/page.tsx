@@ -3,13 +3,13 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Fragment, type ReactNode } from "react";
 
-import { FloatingTableOfContents } from "@/components/floating-table-of-contents";
-import { Link } from "@/components/link";
-import { PageLead } from "@/components/page-lead";
-import { PageTitle } from "@/components/page-title";
-import { TableOfContents } from "@/components/table-of-contents";
-import { client } from "@/lib/content/client";
-import { createClient } from "@/lib/content/create-client";
+import { FloatingTableOfContents } from "#/components/floating-table-of-contents.tsx";
+import { Link } from "#/components/link.tsx";
+import { PageLead } from "#/components/page-lead.tsx";
+import { PageTitle } from "#/components/page-title.tsx";
+import { TableOfContents } from "#/components/table-of-contents.tsx";
+import { client } from "#/lib/content/client/index.ts";
+import { createClient } from "#/lib/content/create-client.ts";
 
 interface DocumentationPageProps extends PageProps<"/documentation/[id]"> {}
 

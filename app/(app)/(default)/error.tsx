@@ -8,7 +8,7 @@ import { lazy } from "react";
  * @see https://next-intl-docs.vercel.app/docs/environments/error-files#errorjs
  */
 const ErrorPage = lazy(() => {
-	return import("@/app/(app)/(default)/error-page");
+	return import("#/app/(app)/(default)/error-page.tsx");
 });
 
 export default ErrorPage;

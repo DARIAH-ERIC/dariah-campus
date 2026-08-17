@@ -1,12 +1,12 @@
 import singleton from "@content/navigation";
 
-import type { SingletonClient } from "@/lib/content/types";
-import { getLinkProps } from "@/lib/content/utils/get-link-props";
+import type { SingletonClient } from "#/lib/content/types.ts";
+import { getLinkProps } from "#/lib/content/utils/get-link-props.ts";
 import type {
 	NavigationLink,
 	// NavigationMenu,
 	NavigationSeparator,
-} from "@/lib/navigation/navigation";
+} from "#/lib/navigation/navigation.ts";
 
 const items = singleton.get("")!.document.links;
 
