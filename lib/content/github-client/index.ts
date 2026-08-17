@@ -548,12 +548,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 			const image = createGitHubUrl(metadata.image);
 
 			// TODO: read from prebuilt client?
-			const resources = (await client.collections.sources.get(id))?.resources ?? [];
+			const source = await client.collections.sources.get(id);
+			const curricula = source?.curricula ?? [];
+			const resources = source?.resources ?? [];
 
 			return {
 				id,
 				content: component,
 				href,
+				curricula,
 				resources,
 				metadata: {
 					...metadata,
