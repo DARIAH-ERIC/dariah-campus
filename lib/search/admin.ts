@@ -2,7 +2,6 @@ import { Result } from "better-result";
 import { Client } from "typesense";
 
 import { type ResourceDocument, resourcesCollection } from "#/lib/search/collections/resources.ts";
-import { type WebsiteDocument, websiteCollection } from "#/lib/search/collections/website.ts";
 import {
 	SearchApiKeyError,
 	SearchCollectionError,
@@ -12,14 +11,12 @@ import {
 } from "#/lib/search/errors.ts";
 
 export type { ResourceDocument } from "#/lib/search/collections/resources.ts";
-export type { WebsiteDocument } from "#/lib/search/collections/website.ts";
 
 export interface CreateSearchAdminServiceParams {
 	apiKey: string;
 	nodes: Array<{ host: string; port: number; protocol: "http" | "https" }>;
 	collections: {
 		resources: string;
-		website: string;
 	};
 }
 
@@ -50,7 +47,7 @@ export function createSearchAdminService(params: CreateSearchAdminServiceParams)
 						const key = await client.keys().create({
 							description: "Search API key",
 							actions: ["documents:export", "documents:get", "documents:search"],
-							collections: [collections.resources, collections.website],
+							collections: [collections.resources],
 						});
 
 						return key.value!;
@@ -123,74 +120,6 @@ export function createSearchAdminService(params: CreateSearchAdminServiceParams)
 					return Result.tryPromise({
 						async try() {
 							await client.collections<ResourceDocument>(collections.resources).documents(documentId).delete();
-						},
-						catch(cause) {
-							return new SearchDocumentDeleteError({ cause });
-						},
-					});
-				},
-			},
-
-			website: {
-				create(): Promise<Result<void, SearchCollectionError>> {
-					return Result.tryPromise({
-						async try() {
-							if (await collectionExists(collections.website)) {
-								return;
-							}
-
-							await client.collections().create(websiteCollection.schema(collections.website));
-						},
-						catch(cause) {
-							return new SearchCollectionError({ cause });
-						},
-					});
-				},
-
-				reset(): Promise<Result<void, SearchCollectionError>> {
-					return Result.tryPromise({
-						async try() {
-							if (await collectionExists(collections.website)) {
-								await client.collections(collections.website).delete();
-							}
-
-							await client.collections().create(websiteCollection.schema(collections.website));
-						},
-						catch(cause) {
-							return new SearchCollectionError({ cause });
-						},
-					});
-				},
-
-				ingest(documents: Array<WebsiteDocument>): Promise<Result<void, SearchImportError>> {
-					return Result.tryPromise({
-						async try() {
-							await client
-								.collections<WebsiteDocument>(collections.website)
-								.documents()
-								.import(documents, { action: "upsert" });
-						},
-						catch(cause) {
-							return new SearchImportError({ cause });
-						},
-					});
-				},
-
-				upsert(document: WebsiteDocument): Promise<Result<void, SearchDocumentUpsertError>> {
-					return Result.tryPromise({
-						async try() {
-							await client.collections<WebsiteDocument>(collections.website).documents().upsert(document);
-						},
-						catch(cause) {
-							return new SearchDocumentUpsertError({ cause });
-						},
-					});
-				},
-
-				delete(documentId: string): Promise<Result<void, SearchDocumentDeleteError>> {
-					return Result.tryPromise({
-						async try() {
-							await client.collections<WebsiteDocument>(collections.website).documents(documentId).delete();
 						},
 						catch(cause) {
 							return new SearchDocumentDeleteError({ cause });

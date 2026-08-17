@@ -4,7 +4,7 @@ import SearchClient from "typesense/lib/Typesense/SearchClient";
 import type { MultiSearchRequestSchema } from "typesense/lib/Typesense/Types";
 
 import { env } from "@/configs/env.config";
-import { limit, maxFacetValues } from "@/configs/search.config";
+import { cacheSearchResultsForSeconds, limit, maxFacetValues } from "@/configs/search.config";
 import type { ContentType } from "@/lib/content/options";
 
 export const facetAttributes = ["locale", "tags", "content-type", "people", "sources"] as const;
@@ -67,6 +67,7 @@ export function createSearchClient(): SearchClient {
 
 	searchClient = new SearchClient({
 		apiKey,
+		cacheSearchResultsForSeconds,
 		connectionTimeoutSeconds: 3,
 		nodes: [
 			{

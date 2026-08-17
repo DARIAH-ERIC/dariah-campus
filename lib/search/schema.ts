@@ -90,17 +90,28 @@ export type CollectionSortableFieldName<C extends { fields: ReadonlyArray<Collec
 export type CollectionFacetableFieldName<C extends { fields: ReadonlyArray<CollectionFieldSchema> }> =
 	FacetableFieldNames<C["fields"][number]>;
 
-export interface Collection<F extends ReadonlyArray<CollectionFieldSchema>> {
+export interface Collection<F extends ReadonlyArray<CollectionFieldSchema>, M extends object = object> {
 	fields: F;
 	queryableFields: ReadonlyArray<QueryableFieldNames<F[number]>>;
 	searchableFields: ReadonlyArray<SearchableFieldNames<F[number]>>;
 	filterableFields: ReadonlyArray<FilterableFieldNames<F[number]>>;
 	sortableFields: ReadonlyArray<SortableFieldNames<F[number]>>;
 	facetableFields: ReadonlyArray<FacetableFieldNames<F[number]>>;
+	defaultSortingField: SortableFieldNames<F[number]> | undefined;
+	metadata: M | undefined;
 	schema(name: string): CollectionCreateSchema;
 }
 
-export function defineCollection<F extends ReadonlyArray<StrictFieldSchema>>(config: { fields: F }): Collection<F> {
+export interface CollectionConfig<F extends ReadonlyArray<StrictFieldSchema>, M extends object> {
+	fields: F;
+	/** Must be one of the fields marked as `sort: true`. */
+	defaultSortingField?: SortableFieldNames<F[number]>;
+	metadata?: M;
+}
+
+export function defineCollection<F extends ReadonlyArray<StrictFieldSchema>, M extends object = object>(
+	config: CollectionConfig<F, M>,
+): Collection<F, M> {
 	return {
 		fields: config.fields,
 		queryableFields: getQueryableFields(config.fields),
@@ -108,8 +119,20 @@ export function defineCollection<F extends ReadonlyArray<StrictFieldSchema>>(con
 		filterableFields: getFilterableFields(config.fields),
 		sortableFields: getSortableFields(config.fields),
 		facetableFields: getFacetableFields(config.fields),
+		defaultSortingField: config.defaultSortingField,
+		metadata: config.metadata,
 		schema(name: string): CollectionCreateSchema {
-			return { name, fields: [...config.fields] };
+			const schema: CollectionCreateSchema = { name, fields: [...config.fields] };
+
+			if (config.defaultSortingField != null) {
+				schema.default_sorting_field = config.defaultSortingField;
+			}
+
+			if (config.metadata != null) {
+				schema.metadata = config.metadata;
+			}
+
+			return schema;
 		},
 	};
 }

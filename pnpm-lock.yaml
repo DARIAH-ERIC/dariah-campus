@@ -226,9 +226,6 @@ importers:
       '@acdh-oeaw/style-variants':
         specifier: ^0.1.0
         version: 0.1.0
-      '@acdh-oeaw/validate-env':
-        specifier: ^0.2.1
-        version: 0.2.1(typescript@5.9.3)
       '@keystar/ui':
         specifier: 0.7.21
         version: 0.7.21(@react-spectrum/provider@3.11.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(next@16.3.1(patch_hash=de17907a43a1b46b5534a9628cc7b229f5c0cce5a5f7b19baa0dde85ba1b7624)(@playwright/test@1.62.1)(@types/node@24.13.3)(babel-plugin-macros@3.1.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@10.2.2)
@@ -259,6 +256,9 @@ importers:
       '@valibot/to-json-schema':
         specifier: ^1.7.1
         version: 1.7.1(valibot@1.4.2(typescript@5.9.3))
+      better-result:
+        specifier: ^3.0.1
+        version: 3.0.1
       client-only:
         specifier: ^0.0.1
         version: 0.0.1
@@ -338,8 +338,8 @@ importers:
         specifier: ^8.0.0
         version: 8.0.0
       typesense:
-        specifier: ^2.1.0
-        version: 2.1.0(@babel/runtime@7.29.7)(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2)
+        specifier: ^3.0.6
+        version: 3.0.6(@babel/runtime@7.29.7)(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2)
       undici:
         specifier: ^7.29.0
         version: 7.29.0
@@ -528,12 +528,6 @@ packages:
   '@acdh-oeaw/style-variants@0.1.0':
     resolution: {integrity: sha512-raVq99q1TyJSbQ2bQGDTaWCqbaKQG1Uj5sythsDj5qMZJURrpujGzJ8nC4RRRX1bLb5t3Xbm4MDL4JT51JqA5Q==}
     engines: {node: '>=22', pnpm: 9.x}
-
-  '@acdh-oeaw/validate-env@0.2.1':
-    resolution: {integrity: sha512-HuU7IwYhvumCQN1Nk1wppujSEvXl03JZ4G8oGuhDG01Kepq86GNq0OKPEgenA74teyTTHu3B7N5buCfq5edINQ==}
-    engines: {node: ^22 || ^24}
-    peerDependencies:
-      typescript: '>=5.4'
 
   '@adobe/react-spectrum-ui@1.2.1':
     resolution: {integrity: sha512-wcrbEE2O/9WnEn6avBnaVRRx88S5PLFsPLr4wffzlbMfXeQsy+RMQwaJd3cbzrn18/j04Isit7f7Emfn0dhrJA==}
@@ -2926,6 +2920,9 @@ packages:
   bcp-47@2.1.1:
     resolution: {integrity: sha512-KLw+H/gd2p4zly1X7Yh/qziuyae5/w/QFnvTng9eZL5fvszL7Whl3MBoWF8yxL7ksUjBfOD+OxkytiqbBpG+Fw==}
 
+  better-result@3.0.1:
+    resolution: {integrity: sha512-rnCeqEXkKPHmz5MO5ZroPRDyHe4YvlNPyy7qj8cVcWs/GnvSvC3086G74/220W+wWcIWlXgzvcjskFV0A4blUQ==}
+
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
@@ -3255,8 +3252,8 @@ packages:
   dagre-d3-es@7.0.14:
     resolution: {integrity: sha512-P4rFMVq9ESWqmOgK+dlXvOtLwYg0i7u0HBGJER0LZDJT2VHIPAMZ/riPxqJceWMStH5+E61QxFra9kIS3AqdMg==}
 
-  dayjs@1.11.21:
-    resolution: {integrity: sha512-98IT+HOahAisibz/yjKbzuOBwYcjJ7BCLPzARyHiyEBmRz4fatF+KPJszEHXsGYjUG234aH/cOjW1wwTbKUZlA==}
+  dayjs@1.11.22:
+    resolution: {integrity: sha512-1YRnxzt/AabP3GHxnaB9/b+ZScCKu5TeF+co+BWG+lnWVIwEcTFc1FVE0WLNmNO3sA6GGXL40i5qkHfbLzpwrg==}
 
   dead-or-alive@1.0.5:
     resolution: {integrity: sha512-WTw0SWjsRlwhEK34dQgiXCwfoVH7C4DcViKYT/K43ShApOsMiQDryup3SJ/Fp7fVsDA/NqeW810oUnuICYYzNA==}
@@ -5184,8 +5181,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typesense@2.1.0:
-    resolution: {integrity: sha512-a/IRTL+dRXlpRDU4UodyGj8hl5xBz3nKihVRd/KfSFAfFPGcpdX6lxIgwdXy3O6VLNNiEsN8YwIsPHQPVT0vNw==}
+  typesense@3.0.6:
+    resolution: {integrity: sha512-d3LL1qOLS8FCRxgAOqH+uDuK+VVA+/HYI1frU9fjYVwOg68mg/dX6XTtZ4yKKAkDCasB/se5uh/ZpMdOz/uJNg==}
     engines: {node: '>=18'}
     peerDependencies:
       '@babel/runtime': ^7.23.2
@@ -5466,11 +5463,6 @@ snapshots:
   '@acdh-oeaw/style-variants@0.1.0':
     dependencies:
       clsx: 2.1.1
-
-  '@acdh-oeaw/validate-env@0.2.1(typescript@5.9.3)':
-    dependencies:
-      '@acdh-oeaw/lib': 0.3.7
-      typescript: 5.9.3
 
   '@adobe/react-spectrum-ui@1.2.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
@@ -7942,6 +7934,8 @@ snapshots:
       is-alphanumerical: 2.0.1
       is-decimal: 2.0.1
 
+  better-result@3.0.1: {}
+
   binary-extensions@2.3.0: {}
 
   boolbase@1.0.0: {}
@@ -8297,7 +8291,7 @@ snapshots:
       d3: 7.9.0
       lodash-es: 4.18.1
 
-  dayjs@1.11.21: {}
+  dayjs@1.11.22: {}
 
   dead-or-alive@1.0.5:
     dependencies:
@@ -9344,7 +9338,7 @@ snapshots:
       d3: 7.9.0
       d3-sankey: 0.12.3
       dagre-d3-es: 7.0.14
-      dayjs: 1.11.21
+      dayjs: 1.11.22
       dompurify: 3.4.13
       es-toolkit: 1.50.0
       katex: 0.16.47
@@ -10655,7 +10649,7 @@ snapshots:
 
   typescript@5.9.3: {}
 
-  typesense@2.1.0(@babel/runtime@7.29.7)(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2):
+  typesense@3.0.6(@babel/runtime@7.29.7)(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2):
     dependencies:
       '@babel/runtime': 7.29.7
       axios: 1.19.0(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2)

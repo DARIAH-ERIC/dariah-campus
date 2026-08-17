@@ -1,9 +1,12 @@
 import { unique } from "@acdh-oeaw/lib";
 
 import { client } from "@/lib/content/client";
+import type { ResourceDocument } from "#/lib/search/admin";
 
-export async function createDocuments(): Promise<Array<object>> {
-	const documents: Array<object> = [];
+type CollectionDocument = ResourceDocument
+
+export async function createDocuments(): Promise<Array<CollectionDocument>> {
+	const documents: Array<CollectionDocument> = [];
 
 	for (const name of [
 		"resourcesEvents",

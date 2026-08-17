@@ -14,13 +14,6 @@ import {
 	type SearchResourcesParams,
 	resourcesCollection,
 } from "#/lib/search/collections/resources.ts";
-import {
-	type SearchWebsiteParams,
-	type WebsiteDocument,
-	type WebsiteFacetField,
-	type WebsiteSearchResult,
-	websiteCollection,
-} from "#/lib/search/collections/website.ts";
 import { SearchError } from "#/lib/search/errors.ts";
 import {
 	type SearchCollectionParams,
@@ -43,23 +36,7 @@ export type {
 } from "#/lib/search/collections/resources.ts";
 export {
 	resourcesCollection,
-	resourceServiceKinds,
-	resourceSources,
-	resourceTypes,
 } from "#/lib/search/collections/resources.ts";
-export type {
-	SearchWebsiteParams,
-	WebsiteDocument,
-	WebsiteEntityDocument,
-	WebsiteFacet,
-	WebsiteFacetField,
-	WebsiteFilterField,
-	WebsiteItem,
-	WebsiteSearchField,
-	WebsiteSearchResult,
-	WebsiteSortField,
-} from "#/lib/search/collections/website.ts";
-export { websiteCollection, websiteEntityTypes, websiteResourceTypes } from "#/lib/search/collections/website.ts";
 export type {
 	SearchCollectionParams,
 	SearchFacet,
@@ -71,7 +48,7 @@ export type {
 	SearchSort,
 } from "#/lib/search/search.ts";
 
-export interface SearchServiceConfig extends Pick<ConfigurationOptions, "cacheSearchResultsForSeconds"> {}
+export interface SearchServiceConfig extends Pick<ConfigurationOptions, "cacheSearchResultsForSeconds"> { }
 
 export interface CreateSearchServiceParams {
 	apiKey: string;
@@ -178,26 +155,6 @@ export function createSearchService(params: CreateSearchServiceParams) {
 								);
 
 							return mapSearchResponse<ResourceDocument, ResourceFacetField>(result);
-						},
-						catch(cause) {
-							return new SearchError({ cause });
-						},
-					});
-				},
-			},
-
-			website: {
-				search(searchParams: SearchWebsiteParams): Promise<Result<WebsiteSearchResult, SearchError>> {
-					return Result.tryPromise({
-						async try() {
-							const result = await client
-								.collections<WebsiteDocument>(collections.website)
-								.documents()
-								.search(
-									createSearchParameters<WebsiteDocument, typeof websiteCollection>(websiteCollection, searchParams),
-								);
-
-							return mapSearchResponse<WebsiteDocument, WebsiteFacetField>(result);
 						},
 						catch(cause) {
 							return new SearchError({ cause });
