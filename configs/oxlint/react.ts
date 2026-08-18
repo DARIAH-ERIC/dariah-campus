@@ -39,6 +39,10 @@ const config = defineConfig({
 		"jsx-a11y/no-autofocus": ["warn", { ignoreNonDOM: true }],
 		"jsx-a11y/no-distracting-elements": "off",
 		"jsx-a11y/no-noninteractive-tabindex": "error",
+
+		"jsx-a11y/control-has-associated-label": "off",
+		"jsx-a11y/no-noninteractive-element-to-interactive-role": ["error", { li: ["separator"] }],
+
 		/** @see {@link https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html} */
 		"jsx-a11y/no-redundant-roles": ["warn", { ul: ["list"], ol: ["list"] }],
 		"jsx-a11y/no-static-element-interactions": "warn",

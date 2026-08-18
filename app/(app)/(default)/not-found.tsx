@@ -31,7 +31,7 @@ export default function NotFoundPage(): ReactNode {
 	const t = useTranslations("NotFoundPage");
 
 	return (
-		<div className="grid min-h-[calc(100dvh-100px)] place-content-center place-items-center">
+		<div className="grid place-content-center place-items-center min-block-[calc(100dvh-100px)]">
 			<PageTitle>{t("title")}</PageTitle>
 		</div>
 	);

@@ -48,7 +48,9 @@ export const emptySearchData: SearchData = {
 let searchService: SearchService | undefined;
 
 function getSearchService(): SearchService {
-	if (searchService != null) return searchService;
+	if (searchService != null) {
+		return searchService;
+	}
 
 	const apiKey = env.NEXT_PUBLIC_TYPESENSE_SEARCH_API_KEY;
 	assert(apiKey, "Missing NEXT_PUBLIC_TYPESENSE_SEARCH_API_KEY environment variable.");
@@ -77,18 +79,12 @@ function getSearchService(): SearchService {
 export function createSearchState(searchParams: SearchParameterRecord): SearchState {
 	return {
 		query: getValues(searchParams.q).at(0) ?? "",
-		filters: toRecord(facetAttributes, (attribute) => {
-			return normalizeValues(getValues(searchParams[attribute]));
-		}),
+		filters: toRecord(facetAttributes, (attribute) => normalizeValues(getValues(searchParams[attribute]))),
 	};
 }
 
 export function createSearchStateFromUrl(searchParams: URLSearchParams): SearchState {
-	const parameters = Object.fromEntries(
-		["q", ...facetAttributes].map((name) => {
-			return [name, searchParams.getAll(name)];
-		}),
-	);
+	const parameters = Object.fromEntries(["q", ...facetAttributes].map((name) => [name, searchParams.getAll(name)]));
 
 	return createSearchState(parameters);
 }
@@ -97,9 +93,13 @@ export function createSearchParameters(state: SearchState): URLSearchParams {
 	const searchParams = new URLSearchParams();
 	const query = state.query.trim();
 
-	if (query !== "") searchParams.set("q", query);
+	if (query !== "") {
+		searchParams.set("q", query);
+	}
 	for (const attribute of facetAttributes) {
-		for (const value of state.filters[attribute]) searchParams.append(attribute, value);
+		for (const value of state.filters[attribute]) {
+			searchParams.append(attribute, value);
+		}
 	}
 
 	return searchParams;
@@ -128,13 +128,5 @@ function getValues(value: Array<string> | string | undefined): Array<string> {
 }
 
 function normalizeValues(values: Array<string>): Array<string> {
-	return Array.from(
-		new Set(
-			values
-				.map((value) => {
-					return value.trim();
-				})
-				.filter(Boolean),
-		),
-	);
+	return Array.from(new Set(values.map((value) => value.trim()).filter(Boolean)));
 }

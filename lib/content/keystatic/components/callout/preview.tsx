@@ -66,7 +66,7 @@ function CalloutPreviewHeader(props: Readonly<CalloutPreviewHeaderProps>): React
 
 		return (
 			<strong className="flex items-center gap-x-2 font-bold">
-				<Icon aria-hidden={true} className="size-5 shrink-0" />
+				<Icon aria-hidden={true} className="shrink-0 block-5 inline-5" />
 				<span>{hasTitle ? title : capitalize(kind)}</span>
 			</strong>
 		);

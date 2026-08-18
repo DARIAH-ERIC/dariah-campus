@@ -11,10 +11,10 @@ export function SearchStats(): ReactNode {
 	const { hasData, isLoading, pagination } = useSearch();
 
 	return (
-		<div className="mx-auto grid h-5 w-full place-items-center text-sm text-neutral-600" role="status">
+		<div className="mx-auto grid place-items-center text-sm text-neutral-600 block-5 inline-full" role="status">
 			{isLoading ? (
-				<span className="col-start-1 row-start-1 inline-flex w-full justify-end animate-in delay-150 duration-0 fill-mode-both fade-in">
-					<LoaderCircleIcon aria-hidden={true} className="size-5 animate-spin" />
+				<span className="col-start-1 row-start-1 inline-flex animate-in justify-end delay-150 duration-0 fill-mode-both fade-in inline-full">
+					<LoaderCircleIcon aria-hidden={true} className="animate-spin block-5 inline-5" />
 					<span className="sr-only">{t("searching")}</span>
 				</span>
 			) : null}

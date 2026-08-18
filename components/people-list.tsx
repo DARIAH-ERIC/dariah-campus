@@ -19,7 +19,9 @@ interface PeopleListProps {
 export function PeopleList(props: Readonly<PeopleListProps>): ReactNode {
 	const { label, people } = props;
 
-	if (people.length === 0) return null;
+	if (people.length === 0) {
+		return null;
+	}
 
 	return (
 		<div className="grid gap-y-1 text-sm text-neutral-500">
@@ -36,7 +38,7 @@ export function PeopleList(props: Readonly<PeopleListProps>): ReactNode {
 							>
 								<Image
 									alt=""
-									className="size-8 rounded-full border border-neutral-200 object-cover"
+									className="rounded-full border border-neutral-200 object-cover block-8 inline-8"
 									height={32}
 									src={image}
 									width={32}
@@ -52,7 +54,7 @@ export function PeopleList(props: Readonly<PeopleListProps>): ReactNode {
 					<summary className="cursor-pointer transition hover:text-brand-900">
 						{`and ${String(people.length - max)} more`}
 					</summary>
-					<ul className="pt-2">
+					<ul className="pbs-2">
 						{people.slice(max).map((person) => {
 							const { id, image, name } = person;
 
@@ -64,7 +66,7 @@ export function PeopleList(props: Readonly<PeopleListProps>): ReactNode {
 									>
 										<Image
 											alt=""
-											className="size-8 rounded-full border border-neutral-200 object-cover"
+											className="rounded-full border border-neutral-200 object-cover block-8 inline-8"
 											height={32}
 											src={image}
 											width={32}

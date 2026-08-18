@@ -3,7 +3,7 @@ import type { MDXContent } from "mdx/types";
 import { VFile } from "vfile";
 
 import { reader } from "#/lib/content/keystatic/reader.ts";
-import { compile, type CompileOptions } from "#/lib/content/mdx/compile.ts";
+import { type CompileOptions, compile } from "#/lib/content/mdx/compile.ts";
 import {
 	createCustomHeadingIdsPlugin,
 	createHeadingIdsPlugin,

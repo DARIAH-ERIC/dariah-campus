@@ -16,8 +16,8 @@ import { createTabs } from "#/lib/content/keystatic/components/tabs/index.tsx";
 import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx";
 import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 
-export const createDocumentation = createCollection("/documentation/", (paths, locale) => {
-	return collection({
+export const createDocumentation = createCollection("/documentation/", (paths, locale) => 
+	collection({
 		label: "Documentation",
 		path: paths.contentPath,
 		format: { contentField: "content" },
@@ -64,5 +64,5 @@ export const createDocumentation = createCollection("/documentation/", (paths, l
 				},
 			}),
 		},
-	});
-});
+	})
+);

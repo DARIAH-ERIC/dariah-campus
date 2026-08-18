@@ -23,8 +23,8 @@ import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx"
 import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 import { contentLanguages, contentLicenses } from "#/lib/content/options.ts";
 
-export const createResourcesPathfinders = createCollection("/resources/pathfinders/", (paths, locale) => {
-	return collection({
+export const createResourcesPathfinders = createCollection("/resources/pathfinders/", (paths, locale) => 
+	collection({
 		label: "Pathfinders",
 		path: paths.contentPath,
 		format: { contentField: "content" },
@@ -162,5 +162,5 @@ export const createResourcesPathfinders = createCollection("/resources/pathfinde
 			}),
 			draft: fields.ignored(),
 		},
-	});
-});
+	})
+);

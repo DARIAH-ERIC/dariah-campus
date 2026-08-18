@@ -12,14 +12,14 @@ export function CourseRegistry(): ReactNode {
 	}
 
 	return (
-		<div className="relative min-h-[calc(100dvh-100px)]">
+		<div className="relative min-block-[calc(100dvh-100px)]">
 			{isLoading ? (
 				<div className="absolute inset-0 grid place-content-center">
 					<LoadingIndicator />
 				</div>
 			) : null}
 			<iframe
-				className="relative size-full"
+				className="relative block-full inline-full"
 				loading="lazy"
 				onLoad={onLoad}
 				src="https://dhcr.clarin-dariah.eu?parent_domain=dariah.eu"

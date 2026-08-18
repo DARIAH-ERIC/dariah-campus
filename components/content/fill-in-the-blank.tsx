@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { createContext, type ReactNode, use, useState } from "react";
+import { type ReactNode, createContext, use, useState } from "react";
 import { Button, Dialog, DialogTrigger, Popover } from "react-aria-components";
 
 import { type QuizPageStatus, useQuizContext } from "#/components/content/quiz.tsx";
@@ -23,9 +23,9 @@ function isCorrectAnswer(input: string, answers: Array<string>, caseSensitive: b
 	const normalised = caseSensitive ? input.trim() : input.trim().toLowerCase();
 	const normalisedAnswers = caseSensitive
 		? answers
-		: answers.map((a) => {
-				return a.toLowerCase();
-			});
+		: answers.map((a) => 
+				a.toLowerCase()
+			);
 	return normalisedAnswers.includes(normalised);
 }
 
@@ -47,44 +47,44 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 	const count = Number(blankCountStr);
 	const { isCurrent, setStatus, status } = useQuizContext();
 
-	const [inputs, setInputs] = useState<Array<string>>(() => {
-		return Array.from({ length: count }, () => {
-			return "";
-		});
-	});
-	const [validated, setValidated] = useState<Array<boolean>>(() => {
-		return Array.from({ length: count }, () => {
-			return false;
-		});
-	});
+	const [inputs, setInputs] = useState<Array<string>>(() => 
+		Array.from({ length: count }, () => 
+			""
+		)
+	);
+	const [validated, setValidated] = useState<Array<boolean>>(() => 
+		Array.from({ length: count }, () => 
+			false
+		)
+	);
 
 	const ctx: FillInTheBlankContextValue = {
 		inputs,
 		setInput(id, value) {
-			setInputs((prev) => {
-				return prev.map((x, i) => {
-					return i === id ? value : x;
-				});
-			});
+			setInputs((prev) => 
+				prev.map((x, i) => 
+					i === id ? value : x
+				)
+			);
 		},
 		status,
 		caseSensitive,
 		validateOnBlur,
 		validated,
 		validateBlank(id) {
-			setValidated((prev) => {
-				return prev.map((x, i) => {
-					return i === id ? true : x;
-				});
-			});
+			setValidated((prev) => 
+				prev.map((x, i) => 
+					i === id ? true : x
+				)
+			);
 		},
 	};
 
 	const correctCount =
 		(status === "correct" || status === "incorrect") && answers != null
-			? inputs.filter((v, i) => {
-					return isCorrectAnswer(v, answers[i] ?? [], caseSensitive);
-				}).length
+			? inputs.filter((v, i) => 
+					isCorrectAnswer(v, answers[i] ?? [], caseSensitive)
+				).length
 			: null;
 
 	return (
@@ -102,15 +102,15 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 					nextButtonLabel={controlsT("next-question")}
 					onReset={() => {
 						setInputs(
-							Array.from({ length: count }, () => {
-								return "";
-							}),
+							Array.from({ length: count }, () => 
+								""
+							),
 						);
 						setStatus("idle");
 						setValidated(
-							Array.from({ length: count }, () => {
-								return false;
-							}),
+							Array.from({ length: count }, () => 
+								false
+							),
 						);
 					}}
 					onShowSolution={
@@ -123,9 +123,9 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 					onValidate={() => {
 						const isCorrect =
 							answers != null &&
-							inputs.every((input, index) => {
-								return isCorrectAnswer(input, answers[index] ?? [], caseSensitive);
-							});
+							inputs.every((input, index) => 
+								isCorrectAnswer(input, answers[index] ?? [], caseSensitive)
+							);
 						setStatus(isCorrect ? "correct" : "incorrect");
 					}}
 					previousButtonLabel={controlsT("previous-question")}
@@ -155,7 +155,7 @@ export function Blank(props: Readonly<BlankProps>): ReactNode {
 
 	/** When rendered outside a QuizFillInTheBlank show the first answer as a placeholder. */
 	if (ctx == null) {
-		return <span className="border-b-2 border-dashed border-neutral-400 px-1">{answer[0]}</span>;
+		return <span className="border-be-2 border-dashed border-neutral-400 px-1">{answer[0]}</span>;
 	}
 
 	const { inputs, setInput, status, caseSensitive, validateOnBlur, validated, validateBlank } = ctx;
@@ -163,9 +163,9 @@ export function Blank(props: Readonly<BlankProps>): ReactNode {
 	const inputValue = inputs[id] ?? "";
 	const isReadOnly = status === "solved";
 	const displayValue = isReadOnly ? (answer[0] ?? "") : inputValue;
-	const longestAnswer = answer.reduce((a, b) => {
-		return a.length >= b.length ? a : b;
-	}, "");
+	const longestAnswer = answer.reduce((a, b) => 
+		a.length >= b.length ? a : b
+	, "");
 
 	const isValidated =
 		status === "correct" ||
@@ -187,7 +187,7 @@ export function Blank(props: Readonly<BlankProps>): ReactNode {
 				<input
 					aria-invalid={isValidated && status !== "solved" && !isCorrect ? true : undefined}
 					aria-label={t("blank-label", { index: String(id + 1) })}
-					className={`rounded-sm border-2 px-2 py-0.5 font-mono text-sm focus:outline-none focus:ring-2 ${borderClass}`}
+					className={`rounded-sm border-2 px-2 py-0.5 font-mono text-sm focus:ring-2 focus:outline-none ${borderClass}`}
 					onBlur={
 						validateOnBlur && !isReadOnly
 							? () => {
@@ -207,12 +207,12 @@ export function Blank(props: Readonly<BlankProps>): ReactNode {
 					<DialogTrigger>
 						<Button
 							aria-label={t("hint-label")}
-							className="inline-flex size-5 items-center justify-center rounded-full border border-neutral-300 text-xs text-neutral-500 hover:border-brand-400 hover:text-brand-600 pressed:border-brand-400 pressed:text-brand-600"
+							className="inline-flex items-center justify-center rounded-full border border-neutral-300 text-xs text-neutral-500 block-5 inline-5 hover:border-brand-400 hover:text-brand-600 pressed:border-brand-400 pressed:text-brand-600"
 						>
 							{"?"}
 						</Button>
 						<Popover
-							className="max-w-56 rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-600 shadow-md"
+							className="rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-600 shadow-md max-inline-56"
 							offset={6}
 							placement="top"
 						>

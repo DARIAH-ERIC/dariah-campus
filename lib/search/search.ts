@@ -108,11 +108,11 @@ export function toRecord<Key extends string, Value>(
 export function serializeSort<Field extends string>(
 	sortBy?: ReadonlyArray<SearchSort<Field>>,
 ): Array<string> | undefined {
-	if (sortBy == null || sortBy.length === 0) return undefined;
+	if (sortBy == null || sortBy.length === 0) {
+		return undefined;
+	}
 
-	return sortBy.map(({ field, direction }) => {
-		return `${field}:${direction}`;
-	});
+	return sortBy.map(({ field, direction }) => `${field}:${direction}`);
 }
 
 function escapeFilterValue(value: string): string {
@@ -135,16 +135,16 @@ export function serializeFilter<Field extends string>(
 	 * identically — otherwise the same selection can miss the result cache purely because the caller built the object or
 	 * the url in a different order.
 	 */
-	const entries = Object.entries<ReadonlyArray<string> | undefined>(refinements ?? {}).toSorted(([a], [b]) => {
-		return a < b ? -1 : a > b ? 1 : 0;
-	});
+	const entries = Object.entries<ReadonlyArray<string> | undefined>(refinements ?? {}).toSorted(([a], [b]) =>
+		a < b ? -1 : a > b ? 1 : 0,
+	);
 
 	for (const [field, values] of entries) {
-		if (field === omitField || values == null || values.length === 0) continue;
+		if (field === omitField || values == null || values.length === 0) {
+			continue;
+		}
 
-		const escapedValues = values.toSorted().map((value) => {
-			return `\`${escapeFilterValue(value)}\``;
-		});
+		const escapedValues = values.toSorted().map((value) => `\`${escapeFilterValue(value)}\``);
 
 		clauses.push(`${field}:=[${escapedValues.join(",")}]`);
 	}
@@ -182,11 +182,7 @@ export function mapFacets<Field extends string>(
 	fields: ReadonlyArray<Field>,
 	facetCounts: ReadonlyArray<FacetCount>,
 ): Record<Field, SearchFacet> {
-	const facetCountsByField = new Map(
-		facetCounts.map((facetCount) => {
-			return [facetCount.field_name, facetCount];
-		}),
-	);
+	const facetCountsByField = new Map(facetCounts.map((facetCount) => [facetCount.field_name, facetCount]));
 
 	return toRecord(fields, (field) => {
 		const facetCount = facetCountsByField.get(field);

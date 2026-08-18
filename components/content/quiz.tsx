@@ -1,7 +1,7 @@
 "use client";
 
 import { assert } from "@acdh-oeaw/lib";
-import { createContext, type ReactNode, use, useState } from "react";
+import { type ReactNode, createContext, use, useState } from "react";
 
 import { getChildrenElements } from "#/components/content/get-children-elements.ts";
 
@@ -38,27 +38,27 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 	const quizzes = getChildrenElements(children);
 
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const [statuses, setStatuses] = useState<Array<QuizPageStatus>>(() => {
-		return quizzes.map(() => {
-			return "idle";
-		});
-	});
+	const [statuses, setStatuses] = useState<Array<QuizPageStatus>>(() => 
+		quizzes.map(() => 
+			"idle"
+		)
+	);
 
-	if (quizzes.length === 0) return null;
+	if (quizzes.length === 0) {return null;}
 
 	const navigation: QuizContextValue["navigation"] = {
 		hasNext: currentIndex < quizzes.length - 1,
 		hasPrevious: currentIndex > 0,
 		isPaginated: quizzes.length > 1,
 		next() {
-			setCurrentIndex((currentIndex) => {
-				return currentIndex + 1;
-			});
+			setCurrentIndex((currentIndex) => 
+				currentIndex + 1
+			);
 		},
 		previous() {
-			setCurrentIndex((currentIndex) => {
-				return currentIndex - 1;
-			});
+			setCurrentIndex((currentIndex) => 
+				currentIndex - 1
+			);
 		},
 	};
 
@@ -71,11 +71,11 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 					isCurrent,
 					navigation,
 					setStatus(status) {
-						setStatuses((statuses) => {
-							return statuses.map((currentStatus, statusIndex) => {
-								return statusIndex === index ? status : currentStatus;
-							});
-						});
+						setStatuses((statuses) => 
+							statuses.map((currentStatus, statusIndex) => 
+								statusIndex === index ? status : currentStatus
+							)
+						);
 					},
 					status,
 				};

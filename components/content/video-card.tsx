@@ -23,11 +23,11 @@ export function VideoCard(props: Readonly<VideoCardProps>): ReactNode {
 
 	return (
 		<LightBoxOverlay>
-			<figure className="relative flex size-full flex-col items-center gap-y-4 rounded-xl border border-neutral-200 bg-white p-6 text-neutral-800 shadow-md transition focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
-				<div className="relative aspect-video size-full overflow-hidden rounded-lg border border-neutral-200">
+			<figure className="relative flex flex-col items-center gap-y-4 rounded-xl border border-neutral-200 bg-white p-6 text-neutral-800 shadow-md transition block-full inline-full focus-within:ring focus-within:ring-brand-700 hover:shadow-lg">
+				<div className="relative aspect-video overflow-hidden rounded-lg border border-neutral-200 block-full inline-full">
 					<Image
 						alt=""
-						className="not-prose absolute inset-0 m-0 size-full object-cover"
+						className="not-prose absolute inset-0 m-0 object-cover block-full inline-full"
 						fill={true}
 						sizes="800px"
 						src={src}
@@ -35,7 +35,7 @@ export function VideoCard(props: Readonly<VideoCardProps>): ReactNode {
 				</div>
 				<figcaption>
 					<LightboxTrigger className="grid justify-center justify-items-center gap-y-1 after:absolute after:inset-0 focus:outline-none">
-						<PlayCircleIcon aria-hidden={true} className="mx-auto size-12 shrink-0 text-brand-700" />
+						<PlayCircleIcon aria-hidden={true} className="mx-auto shrink-0 text-brand-700 block-12 inline-12" />
 						<strong className="text-xl font-bold">{title}</strong>
 						<div className="text-neutral-500">{subtitle}</div>
 					</LightboxTrigger>
@@ -46,7 +46,7 @@ export function VideoCard(props: Readonly<VideoCardProps>): ReactNode {
 				<iframe
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 					allowFullScreen={true}
-					className="absolute inset-0 size-full object-cover"
+					className="absolute inset-0 object-cover block-full inline-full"
 					loading="lazy"
 					src={String(url)}
 					title={title}

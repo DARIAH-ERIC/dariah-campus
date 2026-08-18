@@ -37,7 +37,7 @@ export async function DefaultHeader(props: Readonly<DefaultHeaderProps>): Promis
 				className="shrink-0 rounded-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 				href={navigation.home.href}
 			>
-				<Image alt="" className="h-auto w-36 xl:w-48" loading="eager" preload={true} src={logo} />
+				<Image alt="" className="block-auto inline-36 xl:inline-48" loading="eager" preload={true} src={logo} />
 				<span className="sr-only">{navigation.home.label}</span>
 			</Link>
 
@@ -61,7 +61,7 @@ export async function DefaultHeader(props: Readonly<DefaultHeaderProps>): Promis
 							}
 
 							case "separator": {
-								return <li key={key} className="h-full w-px border-l-neutral-200" role="separator" />;
+								return <li key={key} className="border-s-neutral-200 block-full inline-px" role="separator" />;
 							}
 						}
 					})}

@@ -17,7 +17,9 @@ export async function createDocuments(): Promise<Array<CollectionDocument>> {
 	] as const) {
 		(await client.collections[name].all()).map((item) => {
 			const isDraft = "draft" in item.metadata && item.metadata.draft === true;
-			if (isDraft) return;
+			if (isDraft) {
+				return;
+			}
 
 			const authors = "authors" in item.metadata ? item.metadata.authors : [];
 			const editors = "editors" in item.metadata ? item.metadata.editors : [];

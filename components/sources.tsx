@@ -15,13 +15,7 @@ export function Sources(props: Readonly<SourcesProps>): ReactNode {
 	return (
 		<div className="space-y-1.5">
 			<dt className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("label")}</dt>
-			<dd>
-				{sources
-					.map((source) => {
-						return source.name;
-					})
-					.join(", ")}
-			</dd>
+			<dd>{sources.map((source) => source.name).join(", ")}</dd>
 		</div>
 	);
 }

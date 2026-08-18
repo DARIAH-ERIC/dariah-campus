@@ -21,7 +21,9 @@ export function StickyHeader(props: Readonly<StickyHeaderProps>): ReactNode {
 	const [isIntersecting, setIsIntersecting] = useState(false);
 
 	useEffect(() => {
-		if (ref.current == null) return;
+		if (ref.current == null) {
+			return;
+		}
 
 		const observer = new IntersectionObserver(
 			([entry]) => {
@@ -39,10 +41,10 @@ export function StickyHeader(props: Readonly<StickyHeaderProps>): ReactNode {
 
 	return (
 		<Fragment>
-			<div ref={ref} className="absolute top-32" data-sentinel={true}></div>
+			<div ref={ref} className="absolute inset-bs-32" data-sentinel={true}></div>
 			<header
 				className={cn(
-					"sticky top-0 z-10 flex items-baseline justify-between gap-x-8 bg-neutral-50 px-4 py-6 xs:px-8",
+					"sticky inset-bs-0 z-10 flex items-baseline justify-between gap-x-8 bg-neutral-50 px-4 py-6 xs:px-8",
 					!isIntersecting && "shadow-sm",
 				)}
 			>

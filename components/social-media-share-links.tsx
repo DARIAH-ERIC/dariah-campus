@@ -37,7 +37,7 @@ export function SocialMediaShareLinks(props: Readonly<SocialMediaShareLinksProps
 				pathname: "/sharer/sharer.php",
 				searchParams: createUrlSearchParams({
 					u: url,
-					title: title,
+					title,
 				}),
 			}),
 			icon: <FacebookIcon />,
@@ -78,18 +78,16 @@ export function SocialMediaShareLinks(props: Readonly<SocialMediaShareLinksProps
 
 	return (
 		<div className="my-8 flex items-center justify-center gap-x-4 text-neutral-500">
-			{Object.entries(links).map(([id, link]) => {
-				return (
-					<Link
-						key={id}
-						className="block rounded-full transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-						href={String(link.href)}
-					>
-						{link.icon}
-						<span className="sr-only">{link.label}</span>
-					</Link>
-				);
-			})}
+			{Object.entries(links).map(([id, link]) => (
+				<Link
+					key={id}
+					className="block rounded-full transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+					href={String(link.href)}
+				>
+					{link.icon}
+					<span className="sr-only">{link.label}</span>
+				</Link>
+			))}
 		</div>
 	);
 }

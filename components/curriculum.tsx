@@ -53,7 +53,7 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 	const _format = useFormatter();
 
 	return (
-		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
+		<article className="mx-auto space-y-10 inline-full max-inline-(--size-content)">
 			<header className="space-y-10">
 				<PageTitle>{title}</PageTitle>
 				<div className="space-y-6 border-y border-neutral-200 py-10 xl:hidden">
@@ -70,7 +70,7 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 				{featuredImage != null ? (
 					<Image
 						alt=""
-						className="mb-8 w-full overflow-hidden rounded-lg border border-neutral-200 object-cover"
+						className="mbe-8 overflow-hidden rounded-lg border border-neutral-200 object-cover inline-full"
 						preload={true}
 						sizes="720px"
 						src={featuredImage}
@@ -97,8 +97,8 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 												className="rounded-sm transition after:absolute after:inset-0 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 												href={href ?? undefined}
 											>
-												<span className="mr-2 inline-flex text-brand-700">
-													<ContentTypeIcon className="size-5 shrink-0" kind={contentType} />
+												<span className="me-2 inline-flex text-brand-700">
+													<ContentTypeIcon className="shrink-0 block-5 inline-5" kind={contentType} />
 												</span>
 												<span>{summary.title || title}</span>
 											</Link>
@@ -120,7 +120,7 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 					})}
 				</ol>
 			</div>
-			<footer className="pt-2"></footer>
+			<footer className="pbs-2"></footer>
 		</article>
 	);
 }

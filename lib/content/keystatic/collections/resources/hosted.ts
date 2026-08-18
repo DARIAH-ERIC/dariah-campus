@@ -26,8 +26,8 @@ import { createVideoCard } from "#/lib/content/keystatic/components/video-card/i
 import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 import { contentLanguages, contentLicenses, contentTypes } from "#/lib/content/options.ts";
 
-export const createResourcesHosted = createCollection("/resources/hosted/", (paths, locale) => {
-	return collection({
+export const createResourcesHosted = createCollection("/resources/hosted/", (paths, locale) => 
+	collection({
 		label: "Hosted resources",
 		path: paths.contentPath,
 		format: { contentField: "content" },
@@ -173,5 +173,5 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 			}),
 			draft: fields.ignored(),
 		},
-	});
-});
+	})
+);

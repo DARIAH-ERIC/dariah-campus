@@ -34,21 +34,11 @@ export function Citation(props: Readonly<CitationProps>): ReactNode {
 	const format = useFormatter();
 
 	const citationWithoutUrl = [
-		format.list(
-			[...authors, ...(contributors ?? [])].map((person) => {
-				return person.name;
-			}),
-		),
+		format.list([...authors, ...(contributors ?? [])].map((person) => person.name)),
 		` (${String(publicationDate.getFullYear())}). `,
 		title.endsWith("!") || title.endsWith("?") ? `${title} ` : `${title}. `,
 		version ? `Version ${version}. ` : "",
-		isNonEmptyArray(editors)
-			? `Edited by ${format.list(
-					editors.map((person) => {
-						return person.name;
-					}),
-				)}. `
-			: "",
+		isNonEmptyArray(editors) ? `Edited by ${format.list(editors.map((person) => person.name))}. ` : "",
 		publisher,
 		` [${t(`content-types.${contentType}`)}]. `,
 	].join("");

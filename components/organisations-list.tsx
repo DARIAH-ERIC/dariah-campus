@@ -33,7 +33,7 @@ export function OrganisationsList(props: Readonly<OrganisationsListProps>): Reac
 										<Image
 											alt=""
 											/** FIXME: Inverting the logo because they are all white. */
-											className="h-14 object-contain p-3 opacity-50 invert"
+											className="object-contain p-3 opacity-50 invert block-14"
 											src={logo}
 										/>
 									</div>

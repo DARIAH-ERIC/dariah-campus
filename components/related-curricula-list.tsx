@@ -13,14 +13,16 @@ export function RelatedCurriculaList(props: Readonly<RelatedCurriculaListProps>)
 
 	const t = useTranslations("RelatedCurriculaList");
 
-	if (curricula.length === 0) return null;
+	if (curricula.length === 0) {
+		return null;
+	}
 
 	const id = "related-curricula";
 
 	return (
 		<nav
 			aria-labelledby={id}
-			className="mx-auto mb-12 w-full max-w-(--size-content) space-y-3 border-t border-neutral-200 py-12"
+			className="mx-auto mbe-12 space-y-3 border-bs border-neutral-200 py-12 inline-full max-inline-(--size-content)"
 		>
 			<h2 className="text-2xl font-bold" id={id}>
 				{t("label")}
@@ -35,7 +37,7 @@ export function RelatedCurriculaList(props: Readonly<RelatedCurriculaListProps>)
 								className="flex items-center gap-x-1.5 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 								href={href}
 							>
-								<ContentTypeIcon className="size-3 shrink-0 text-brand-700" kind="curriculum" />
+								<ContentTypeIcon className="shrink-0 text-brand-700 block-3 inline-3" kind="curriculum" />
 								<span>{title}</span>
 							</Link>
 						</li>

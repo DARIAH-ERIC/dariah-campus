@@ -29,12 +29,8 @@ export async function createFeed(): Promise<string> {
 	const resources = await client.collections.resources.all();
 	const people = await client.collections.people.all();
 	const tags = await client.collections.tags.all();
-	const peopleById = keyByToMap(people, (person) => {
-		return person.id;
-	});
-	const tagsById = keyByToMap(tags, (tag) => {
-		return tag.id;
-	});
+	const peopleById = keyByToMap(people, (person) => person.id);
+	const tagsById = keyByToMap(tags, (tag) => tag.id);
 
 	resources.forEach((resource) => {
 		const authors = resource.metadata.authors.map((id) => {

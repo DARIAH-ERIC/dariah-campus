@@ -20,8 +20,8 @@ import { createVideoCard } from "#/lib/content/keystatic/components/video-card/i
 import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 import { contentLanguages, contentLicenses, contentTypes } from "#/lib/content/options.ts";
 
-export const createResourcesExternal = createCollection("/resources/external/", (paths, locale) => {
-	return collection({
+export const createResourcesExternal = createCollection("/resources/external/", (paths, locale) => 
+	collection({
 		label: "External resources",
 		path: paths.contentPath,
 		format: { contentField: "content" },
@@ -180,5 +180,5 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 			}),
 			draft: fields.ignored(),
 		},
-	});
-});
+	})
+);

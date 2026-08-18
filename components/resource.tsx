@@ -73,7 +73,7 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 	const href = String(createFullUrl({ baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL, pathname: _href }));
 
 	return (
-		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
+		<article className="mx-auto space-y-10 inline-full max-inline-(--size-content)">
 			<header className="space-y-10">
 				<PageTitle>{title}</PageTitle>
 				<div className="space-y-6 border-y border-neutral-200 py-10 xl:hidden">
@@ -107,7 +107,7 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 				{featuredImage != null ? (
 					<Image
 						alt=""
-						className="mb-8 w-full overflow-hidden rounded-lg border border-neutral-200 object-cover"
+						className="mbe-8 overflow-hidden rounded-lg border border-neutral-200 object-cover inline-full"
 						preload={true}
 						sizes="720px"
 						src={featuredImage}
@@ -115,11 +115,11 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 				) : null}
 				{children}
 			</div>
-			<footer className="pt-2">
+			<footer className="pbs-2">
 				<SocialMediaShareLinks href={href} title={title} />
-				<div className="flex justify-end text-right">
+				<div className="flex justify-end text-end">
 					<a
-						className="inline-flex items-center gap-x-1.5 text-right text-sm text-brand-700 transition hover:text-brand-800 hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-800"
+						className="inline-flex items-center gap-x-1.5 text-end text-sm text-brand-700 transition hover:text-brand-800 hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-800"
 						href={String(
 							createUrl({
 								baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
@@ -128,8 +128,8 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 						)}
 						target="_blank"
 					>
-						<PencilIcon className="size-4 shrink-0" />
-						<span className="text-right">{t("suggest-changes-to-resource")}</span>
+						<PencilIcon className="shrink-0 block-4 inline-4" />
+						<span className="text-end">{t("suggest-changes-to-resource")}</span>
 					</a>
 				</div>
 			</footer>

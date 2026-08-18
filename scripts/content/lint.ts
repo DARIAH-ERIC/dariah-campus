@@ -33,9 +33,9 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 
 	function add(value: string, node: Node) {
 		if (
-			skipUrlPatterns.some((pattern) => {
-				return pattern.test(value);
-			})
+			skipUrlPatterns.some((pattern) =>
+				pattern.test(value)
+			)
 		) {
 			return;
 		}
@@ -67,13 +67,13 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 
 					const directory = relative(file.cwd, file.dirname!);
 
-					const socialMediaIds: Array<string> = socialMediaKinds
-						.map((kind) => {
-							return kind.value;
-						})
-						.filter((value) => {
-							return value !== "email";
-						});
+					const socialMediaIds = new Set<string>(socialMediaKinds
+						.map((kind) =>
+							kind.value
+						)
+						.filter((value) =>
+							value !== "email"
+						));
 
 					if (directory.includes("events")) {
 						const result = v.parse(
@@ -116,7 +116,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 						}
 
 						for (const social of result.social) {
-							if (socialMediaIds.includes(social.discriminant)) {
+							if (socialMediaIds.has(social.discriminant)) {
 								add(social.value, node);
 							}
 						}
@@ -142,7 +142,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 						);
 
 						for (const social of result.social) {
-							if (socialMediaIds.includes(social.discriminant)) {
+							if (socialMediaIds.has(social.discriminant)) {
 								add(social.value, node);
 							}
 						}
@@ -162,9 +162,9 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 
 			case "mdxJsxFlowElement": {
 				function getAttributeValue(node: MdxJsxFlowElement, name: string) {
-					const value = node.attributes.find((attribute) => {
-						return attribute.type === "mdxJsxAttribute" && attribute.name === name;
-					})?.value;
+					const value = node.attributes.find((attribute) =>
+						attribute.type === "mdxJsxAttribute" && attribute.name === name
+					)?.value;
 
 					assert(
 						isNonEmptyString(value),
@@ -194,9 +194,9 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 						const provider = getAttributeValue(node, "provider");
 						assert(
 							includes(
-								videoProviders.map((provider) => {
-									return provider.value;
-								}),
+								videoProviders.map((provider) =>
+									provider.value
+								),
 								provider,
 							),
 							`Invalid \`provider\` attribute on \`${node.name}\` component in \`${file.path}\`.`,
@@ -213,9 +213,9 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 
 			case "mdxJsxTextElement": {
 				function getAttributeExpressionValue(node: MdxJsxTextElement, name: string) {
-					const value = node.attributes.find((attribute) => {
-						return attribute.type === "mdxJsxAttribute" && attribute.name === name;
-					})?.value;
+					const value = node.attributes.find((attribute) =>
+						attribute.type === "mdxJsxAttribute" && attribute.name === name
+					)?.value;
 
 					assert(
 						value != null && typeof value === "object",
@@ -260,11 +260,13 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 	}
 
 	for (const [url, nodes] of nodesByUrl) {
+		// oxlint-disable-next-line no-await-in-loop
 		const result = await deadOrAlive(url, { findUrls: false });
 
 		for (const node of nodes) {
 			for (const message of result.messages) {
 				/** Avoid printing full fetch error stacks. */
+				// oxlint-disable-next-line unicorn/no-instanceof-builtins
 				if (message.cause instanceof Error) {
 					message.cause.stack = "";
 				}

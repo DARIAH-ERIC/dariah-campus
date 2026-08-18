@@ -17,7 +17,7 @@ export function EmbedPreview(props: Readonly<EmbedPreviewProps>): ReactNode {
 					<iframe
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						allowFullScreen={true}
-						className="aspect-square w-full overflow-hidden rounded-lg border border-neutral-200 bg-white"
+						className="aspect-square overflow-hidden rounded-lg border border-neutral-200 bg-white inline-full"
 						loading="lazy"
 						sandbox=""
 						src={src}

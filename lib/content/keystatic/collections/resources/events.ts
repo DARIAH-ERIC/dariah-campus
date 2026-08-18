@@ -23,8 +23,8 @@ import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-u
 import * as validation from "#/lib/content/keystatic/validation.ts";
 import { contentLanguages, contentLicenses, socialMediaKinds } from "#/lib/content/options.ts";
 
-export const createResourcesEvents = createCollection("/resources/events/", (paths, locale) => {
-	return collection({
+export const createResourcesEvents = createCollection("/resources/events/", (paths, locale) => 
+	collection({
 		label: "Events",
 		path: paths.contentPath,
 		format: { contentField: "content" },
@@ -504,5 +504,5 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 			}),
 			draft: fields.ignored(),
 		},
-	});
-});
+	})
+);

@@ -1,4 +1,4 @@
-import { compile as compileMdx, evaluate as evaluateMdx, type ProcessorOptions } from "@mdx-js/mdx";
+import { type ProcessorOptions, compile as compileMdx, evaluate as evaluateMdx } from "@mdx-js/mdx";
 import type { MDXContent } from "mdx/types";
 import * as runtime from "react/jsx-runtime";
 import type { VFile } from "vfile";
@@ -34,7 +34,7 @@ export function evaluate<TNamedExports = never>(
 			...runtime,
 			// baseUrl,
 			format: "mdx",
-			// @ts-expect-error Type error probably because of ReactNode return type.
+			// @ts-expect-error -- Type error probably because of ReactNode return type.
 			useMDXComponents,
 		},
 	) as Promise<MDXModule<TNamedExports>>;

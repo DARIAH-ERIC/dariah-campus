@@ -25,8 +25,8 @@ import { createVideoCard } from "#/lib/content/keystatic/components/video-card/i
 import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 import { contentLanguages, contentLicenses } from "#/lib/content/options.ts";
 
-export const createCurricula = createCollection("/curricula/", (paths, locale) => {
-	return collection({
+export const createCurricula = createCollection("/curricula/", (paths, locale) => 
+	collection({
 		label: "Curricula",
 		path: paths.contentPath,
 		format: { contentField: "content" },
@@ -216,5 +216,5 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 				description: "Automatically assigned Handle PID.",
 			}),
 		},
-	});
-});
+	})
+);

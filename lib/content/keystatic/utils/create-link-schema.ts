@@ -1,11 +1,11 @@
-import { createAssetOptions, type Paths, withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
+import { type Paths, createAssetOptions, withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 
 import * as validation from "#/lib/content/keystatic/validation.ts";
 import { linkKinds } from "#/lib/content/options.ts";
 import type { IntlLanguage } from "#/lib/i18n/locales.ts";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+// oxlint-disable-next-line typescript/no-unnecessary-type-parameters typescript/explicit-module-boundary-types
 export function createLinkSchema<TPath extends `/${string}/`>(
 	downloadPath: Paths<TPath>["downloadPath"],
 	locale: IntlLanguage,

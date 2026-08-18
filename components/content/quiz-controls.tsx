@@ -35,7 +35,7 @@ export function QuizControls(props: Readonly<QuizControlsProps>): ReactNode {
 		<div className={`flex items-center gap-x-4 ${navigation.isPaginated ? "justify-between" : "justify-center"}`}>
 			{navigation.isPaginated ? (
 				<Button isDisabled={!navigation.hasPrevious} onPress={navigation.previous}>
-					<ChevronLeftIcon aria-hidden={true} className="size-4 shrink-0" />
+					<ChevronLeftIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
 					<span>{previousButtonLabel}</span>
 				</Button>
 			) : null}
@@ -61,7 +61,7 @@ export function QuizControls(props: Readonly<QuizControlsProps>): ReactNode {
 			{navigation.isPaginated ? (
 				<Button isDisabled={!navigation.hasNext} onPress={navigation.next}>
 					<span>{nextButtonLabel}</span>
-					<ChevronRightIcon aria-hidden={true} className="size-4 shrink-0" />
+					<ChevronRightIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
 				</Button>
 			) : null}
 		</div>

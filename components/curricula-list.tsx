@@ -11,12 +11,14 @@ interface CurriculaListProps {
 export function CurriculaList(props: Readonly<CurriculaListProps>): ReactNode {
 	const { curricula, label } = props;
 
-	if (curricula.length === 0) return null;
+	if (curricula.length === 0) {
+		return null;
+	}
 
 	const id = "curricula-list";
 
 	return (
-		<nav aria-labelledby={id} className="grid w-full content-start gap-y-2">
+		<nav aria-labelledby={id} className="grid content-start gap-y-2 inline-full">
 			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id={id}>
 				{label}
 			</h2>
@@ -30,7 +32,7 @@ export function CurriculaList(props: Readonly<CurriculaListProps>): ReactNode {
 								className="relative flex items-baseline gap-x-1.5 rounded-sm text-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 								href={href}
 							>
-								<ContentTypeIcon className="size-4 shrink-0 translate-y-0.5" kind="curriculum" />
+								<ContentTypeIcon className="shrink-0 translate-y-0.5 block-4 inline-4" kind="curriculum" />
 								<span>{title}</span>
 							</Link>
 						</li>

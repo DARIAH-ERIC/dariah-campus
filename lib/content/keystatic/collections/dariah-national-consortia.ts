@@ -1,8 +1,8 @@
 import { createCollection } from "@acdh-oeaw/keystatic-lib";
 import { collection, fields } from "@keystatic/core";
 
-export const createDariahNationalConsortia = createCollection("/dariah-national-consortia/", (paths, locale) => {
-	return collection({
+export const createDariahNationalConsortia = createCollection("/dariah-national-consortia/", (paths, locale) => 
+	collection({
 		label: "DARIAH national consortia",
 		path: `./content/${locale}/dariah-national-consortia/*`,
 		format: { data: "json" },
@@ -25,5 +25,5 @@ export const createDariahNationalConsortia = createCollection("/dariah-national-
 				validation: { isRequired: true },
 			}),
 		},
-	});
-});
+	})
+);

@@ -1,4 +1,4 @@
-import singleton from "@content/legal-notice";
+import singleton from "#content/legal-notice";
 
 import type { SingletonClient } from "#/lib/content/types.ts";
 

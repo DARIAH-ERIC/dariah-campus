@@ -16,7 +16,7 @@ import type { PathfinderResource } from "#/lib/content/client/resources/pathfind
 import type { Source } from "#/lib/content/client/sources.ts";
 import type { Tag } from "#/lib/content/client/tags.ts";
 import { config } from "#/lib/content/keystatic/config.ts";
-import { evaluate, type EvaluateOptions } from "#/lib/content/mdx/evaluate.ts";
+import { evaluate } from "#/lib/content/mdx/evaluate.ts";
 import {
 	createCustomHeadingIdsPlugin,
 	createHeadingIdsPlugin,
@@ -56,7 +56,7 @@ const createEvaluateOptions = (baseUrl: string) => {
 			createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
 			createRemoteImageUrlsPlugin(baseUrl, ["Figure", "QuizImageHotspots", "VideoCard"]),
 		],
-	} satisfies EvaluateOptions;
+	}
 };
 
 export const createGitHubClient = cache(function createGitHubClient({
@@ -91,13 +91,13 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 	const indexPage = {
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(): Promise<IndexPage> {
 			const data = await reader.singletons["en:index-page"].readOrThrow({
@@ -171,13 +171,13 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 	const curricula = {
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<Curriculum | null> {
 			const data = await reader.collections["en:curricula"].read(id, { resolveLinkedFiles: true });
@@ -214,13 +214,13 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 	const documentation = {
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<Documentation | null> {
 			const data = await reader.collections["en:documentation"].read(id, {
@@ -248,13 +248,13 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 	const people = {
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<Person | null> {
 			const data = await reader.collections["en:people"].read(id, {
@@ -283,13 +283,13 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 	const resourcesEvents = {
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<EventResource | null> {
 			const data = await reader.collections["en:resources-events"].read(id, {
@@ -361,13 +361,13 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 	const resourcesExternal = {
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<ExternalResource | null> {
 			const data = await reader.collections["en:resources-external"].read(id, {
@@ -408,13 +408,13 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 	const resourcesHosted = {
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<HostedResource | null> {
 			const data = await reader.collections["en:resources-hosted"].read(id, {
@@ -455,13 +455,13 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 	const resourcesPathfinders = {
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<PathfinderResource | null> {
 			const data = await reader.collections["en:resources-pathfinders"].read(id, {
@@ -503,28 +503,28 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 	const resources = {
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(_id: string) {
-			return Promise.resolve(null);
+			return null;
 		},
 	};
 
 	const sources = {
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<Source | null> {
 			const data = await reader.collections["en:sources"].read(id, { resolveLinkedFiles: true });
@@ -560,13 +560,13 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 	const tags = {
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<Tag | null> {
 			const data = await reader.collections["en:tags"].read(id, {

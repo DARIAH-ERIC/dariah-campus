@@ -1,4 +1,4 @@
-import { compile as compileMdx, type ProcessorOptions } from "@mdx-js/mdx";
+import { type ProcessorOptions, compile as compileMdx } from "@mdx-js/mdx";
 import type { VFile } from "vfile";
 
 export type CompileOptions = Pick<

@@ -4,9 +4,9 @@ import type { FC, ReactElement, ReactNode } from "react";
 import { getChildrenElements } from "#/components/content/get-children-elements.ts";
 
 export function useQuizChildren(children: ReactNode) {
-  const map = groupByToMap(getChildrenElements(children), (child) => {
-    return child.type;
-  });
+  const map = groupByToMap(getChildrenElements(children), (child) => 
+    child.type
+  );
 
   return function get<P extends object>(component: FC<P>): Array<ReactElement<P>> {
     return (map.get(component) ?? []) as Array<ReactElement<P>>;

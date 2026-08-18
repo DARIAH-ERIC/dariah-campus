@@ -75,61 +75,31 @@ function toName<T extends CollectionFieldSchema>(field: T): T["name"] {
 function getQueryableFields<F extends ReadonlyArray<CollectionFieldSchema>>(
 	fields: F,
 ): Array<QueryableFieldNames<F[number]>> {
-	return fields
-		.filter((field) => {
-			return isIndexed(field);
-		})
-		.map((field) => {
-			return toName(field);
-		});
+	return fields.filter((field) => isIndexed(field)).map((field) => toName(field));
 }
 
 function getSearchableFields<F extends ReadonlyArray<CollectionFieldSchema>>(
 	fields: F,
 ): Array<SearchableFieldNames<F[number]>> {
-	return fields
-		.filter((field) => {
-			return isSearchable(field);
-		})
-		.map((field) => {
-			return toName(field);
-		});
+	return fields.filter((field) => isSearchable(field)).map((field) => toName(field));
 }
 
 function getFilterableFields<F extends ReadonlyArray<CollectionFieldSchema>>(
 	fields: F,
 ): Array<FilterableFieldNames<F[number]>> {
-	return fields
-		.filter((field) => {
-			return isIndexed(field);
-		})
-		.map((field) => {
-			return toName(field);
-		});
+	return fields.filter((field) => isIndexed(field)).map((field) => toName(field));
 }
 
 function getSortableFields<F extends ReadonlyArray<CollectionFieldSchema>>(
 	fields: F,
 ): Array<SortableFieldNames<F[number]>> {
-	return fields
-		.filter((field) => {
-			return isSortable(field);
-		})
-		.map((field) => {
-			return toName(field);
-		});
+	return fields.filter((field) => isSortable(field)).map((field) => toName(field));
 }
 
 function getFacetableFields<F extends ReadonlyArray<CollectionFieldSchema>>(
 	fields: F,
 ): Array<FacetableFieldNames<F[number]>> {
-	return fields
-		.filter((field) => {
-			return isFacetable(field);
-		})
-		.map((field) => {
-			return toName(field);
-		});
+	return fields.filter((field) => isFacetable(field)).map((field) => toName(field));
 }
 
 export type CollectionDocument<C extends { fields: ReadonlyArray<CollectionFieldSchema> }> = DocumentFromFields<

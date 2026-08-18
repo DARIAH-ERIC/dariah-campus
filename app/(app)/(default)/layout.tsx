@@ -24,10 +24,10 @@ export default function DefaultLayout(props: Readonly<DefaultLayoutProps>): Reac
 				<PreviewModeBanner />
 			</Suspense>
 
-			<div className="relative isolate grid min-h-full grid-rows-[auto_1fr_auto]">
+			<div className="relative isolate grid grid-rows-[auto_1fr_auto] min-block-full">
 				<DefaultHeader />
 
-				<Main className="min-w-0 flex-1" id={mainContentId}>
+				<Main className="flex-1 min-inline-0" id={mainContentId}>
 					{children}
 				</Main>
 

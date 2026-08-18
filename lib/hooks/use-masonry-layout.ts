@@ -47,11 +47,11 @@ export function useMasonryLayout<T>(
 	}, [variant]);
 
 	const columns = useMemo(() => {
-		if (columnCount == null) return null;
+		if (columnCount == null) {
+			return null;
+		}
 
-		const columns = Array.from({ length: columnCount }, () => {
-			return [] as Array<T>;
-		});
+		const columns = Array.from({ length: columnCount }, () => [] as Array<T>);
 
 		items.forEach((item, index) => {
 			const column = index % columnCount;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useObjectUrl, type UseObjectUrlParams } from "@acdh-oeaw/keystatic-lib/preview";
+import { type UseObjectUrlParams, useObjectUrl } from "@acdh-oeaw/keystatic-lib/preview";
 import { NotEditable } from "@keystatic/core";
 import cn from "clsx/lite";
 import { GripVerticalIcon } from "lucide-react";
@@ -40,7 +40,7 @@ export function ImageComparisonSliderPreview(props: Readonly<ImageComparisonSlid
 			<NotEditable
 				ref={init}
 				className={cn(
-					"group not-prose relative grid min-h-12 touch-none rounded-sm border border-neutral-200",
+					"group not-prose relative grid touch-none rounded-sm border border-neutral-200 min-block-12",
 					isDragging ? (orientation === "vertical" ? "cursor-row-resize" : "cursor-col-resize") : "cursor-pointer",
 				)}
 				data-dragging={isDragging}
@@ -76,8 +76,8 @@ export function ImageComparisonSliderPreview(props: Readonly<ImageComparisonSlid
 				<img
 					alt=""
 					className={cn(
-						"size-full! object-cover select-none [grid-area:1/-1]",
-						orientation === "vertical" ? "rounded-t" : "rounded-l",
+						"object-cover select-none [grid-area:1/-1] block-full! inline-full!",
+						orientation === "vertical" ? "rounded-t" : "rounded-s",
 					)}
 					draggable={false}
 					src={left}
@@ -92,8 +92,8 @@ export function ImageComparisonSliderPreview(props: Readonly<ImageComparisonSlid
 				<img
 					alt=""
 					className={cn(
-						"size-full! object-cover select-none [grid-area:1/-1]",
-						orientation === "vertical" ? "rounded-b" : "rounded-r",
+						"object-cover select-none [grid-area:1/-1] block-full! inline-full!",
+						orientation === "vertical" ? "rounded-b" : "rounded-e",
 					)}
 					draggable={false}
 					src={right}
@@ -106,8 +106,8 @@ export function ImageComparisonSliderPreview(props: Readonly<ImageComparisonSlid
 					className={cn(
 						"absolute grid place-items-center",
 						orientation === "vertical"
-							? "w-full translate-y-[calc(var(--position)-50%)] cursor-row-resize"
-							: "h-full translate-x-[calc(var(--position)-50%)] cursor-col-resize",
+							? "translate-y-[calc(var(--position)-50%)] cursor-row-resize inline-full"
+							: "translate-x-[calc(var(--position)-50%)] cursor-col-resize block-full",
 					)}
 					onKeyDown={(event) => {
 						if (orientation === "vertical") {
@@ -148,12 +148,12 @@ export function ImageComparisonSliderPreview(props: Readonly<ImageComparisonSlid
 					<div
 						className={cn(
 							"rounded-sm bg-white shadow-sm [grid-area:1/-1]",
-							orientation === "vertical" ? "h-1 w-full" : "h-full w-1",
+							orientation === "vertical" ? "block-1 inline-full" : "block-full inline-1",
 						)}
 					/>
 					<GripVerticalIcon
 						className={cn(
-							"size-3 h-6 rounded-sm bg-white shadow-sm [grid-area:1/-1]",
+							"rounded-sm bg-white shadow-sm [grid-area:1/-1] block-6 inline-3",
 							orientation === "vertical" ? "rotate-90" : "",
 						)}
 					/>

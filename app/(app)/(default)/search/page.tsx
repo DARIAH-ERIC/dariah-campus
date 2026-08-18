@@ -3,15 +3,15 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { SearchField } from "#/app/(app)/(default)/search/_components/search-field.tsx";
-import { SearchFiltersSidePanel } from "#/app/(app)/(default)/search/_components/search-filters-side-panel.tsx";
-import { SearchFilters } from "#/app/(app)/(default)/search/_components/search-filters.tsx";
-import { SearchProvider } from "#/app/(app)/(default)/search/_components/search-provider.tsx";
-import { SearchResults } from "#/app/(app)/(default)/search/_components/search-results.tsx";
-import { SearchStats } from "#/app/(app)/(default)/search/_components/search-stats.tsx";
-import { createSearchState } from "#/app/(app)/(default)/search/_lib/search.ts";
-import { PageTitle } from "#/components/page-title.tsx";
-import { client } from "#/lib/content/client/index.ts";
+import { SearchField } from "#/app/(app)/(default)/search/_components/search-field";
+import { SearchFilters } from "#/app/(app)/(default)/search/_components/search-filters";
+import { SearchFiltersSidePanel } from "#/app/(app)/(default)/search/_components/search-filters-side-panel";
+import { SearchProvider } from "#/app/(app)/(default)/search/_components/search-provider";
+import { SearchResults } from "#/app/(app)/(default)/search/_components/search-results";
+import { SearchStats } from "#/app/(app)/(default)/search/_components/search-stats";
+import { createSearchState } from "#/app/(app)/(default)/search/_lib/typesense";
+import { PageTitle } from "#/components/page-title";
+import { client } from "#/lib/content/client";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("SearchPage");
@@ -49,31 +49,25 @@ export default async function SearchPage(props: Readonly<SearchPageProps>): Prom
 			const { image, name } = person.metadata;
 			return { id: person.id, image, name };
 		}),
-		(person) => {
-			return person.id;
-		},
+		(person) => person.id,
 	);
 	const sourcesById = keyByToMap(
 		sources.map((source) => {
 			const { name } = source.metadata;
 			return { id: source.id, name };
 		}),
-		(source) => {
-			return source.id;
-		},
+		(source) => source.id,
 	);
 	const tagsById = keyByToMap(
 		tags.map((tag) => {
 			const { name } = tag.metadata;
 			return { id: tag.id, name };
 		}),
-		(tag) => {
-			return tag.id;
-		},
+		(tag) => tag.id,
 	);
 	return (
 		<SearchProvider initialState={createSearchState(searchParams)}>
-			<div className="mx-auto grid min-h-[calc(100dvh-100px)] w-full max-w-7xl content-start gap-y-12 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
+			<div className="mx-auto grid content-start gap-y-12 px-4 py-8 inline-full max-inline-7xl min-block-[calc(100dvh-100px)] xs:px-8 xs:py-16 md:py-24">
 				<div className="grid gap-y-4">
 					<PageTitle>{t("title")}</PageTitle>
 				</div>

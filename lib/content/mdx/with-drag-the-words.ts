@@ -97,16 +97,16 @@ function splitTextNode(
 export const withDragTheWords: Plugin<[], Root> = function withDragTheWords() {
 	return function transformer(tree, file) {
 		visit(tree, "mdxJsxFlowElement", (dragTheWordsNode) => {
-			if (dragTheWordsNode.name !== "QuizDragTheWords") return;
+			if (dragTheWordsNode.name !== "QuizDragTheWords") {return;}
 
 			let blankCount = 0;
 			const allAnswers: Array<string> = [];
 
 			visit(dragTheWordsNode as unknown as Root, "text", (textNode: Text, index, parent) => {
-				if (parent == null || index == null) return;
+				if (parent == null || index == null) {return;}
 
 				BLANK_PATTERN.lastIndex = 0;
-				if (!BLANK_PATTERN.test(textNode.value)) return;
+				if (!BLANK_PATTERN.test(textNode.value)) {return;}
 
 				const { nodes, nextId, answers } = splitTextNode(textNode, blankCount);
 				blankCount = nextId;

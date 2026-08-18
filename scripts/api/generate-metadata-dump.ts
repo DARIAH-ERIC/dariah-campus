@@ -1,4 +1,4 @@
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import { readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 import { assert, log } from "@acdh-oeaw/lib";
@@ -8,8 +8,8 @@ import { client } from "#/lib/content/client/index.ts";
 import { resources as sharedMetadata } from "#/lib/content/shared-metadata.config.ts";
 import {
 	type CurriculumMetadata,
-	curriculumMetadataSchema,
 	type ResourceMetadata,
+	curriculumMetadataSchema,
 	resourceMetadataSchema,
 } from "#/scripts/api/metadata-schemas.ts";
 
@@ -22,9 +22,7 @@ async function loadJsonDir<T extends Record<string, unknown>>(dir: string): Prom
 	const map = new Map<string, T>();
 	await Promise.all(
 		files
-			.filter((f) => {
-				return f.endsWith(".json");
-			})
+			.filter((f) => f.endsWith(".json"))
 			.map(async (file) => {
 				const raw = await readFile(join(dir, file), "utf-8");
 				map.set(file.slice(0, -5), JSON.parse(raw) as T);
@@ -64,10 +62,7 @@ export async function createMetadata(): Promise<{
 		const person = await client.collections.people.get(id);
 		assert(person, `Missing person "${id}".`);
 		const { name, social } = person.metadata;
-		const orcid =
-			social.find((s) => {
-				return s.discriminant === "orcid";
-			})?.value ?? null;
+		const orcid = social.find((s) => s.discriminant === "orcid")?.value ?? null;
 		return { id, name, orcid };
 	}
 
@@ -91,7 +86,9 @@ export async function createMetadata(): Promise<{
 	await Promise.all(
 		(await client.collections.curricula.all()).map(async (item) => {
 			const isDraft = "draft" in item.metadata && item.metadata.draft === true;
-			if (isDraft) return;
+			if (isDraft) {
+				return;
+			}
 
 			curricula.push({
 				id: item.id,
@@ -131,7 +128,9 @@ export async function createMetadata(): Promise<{
 			(await client.collections[name].all()).map(async (item) => {
 				const isDraft = "draft" in item.metadata && item.metadata.draft === true;
 
-				if (isDraft) return;
+				if (isDraft) {
+					return;
+				}
 
 				const resource = {
 					id: item.id,

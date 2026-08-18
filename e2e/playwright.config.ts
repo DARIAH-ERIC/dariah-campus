@@ -2,7 +2,7 @@ import { join } from "node:path";
 
 import { isNonEmptyString } from "@acdh-oeaw/lib";
 import { config as dotenv } from "@dotenvx/dotenvx";
-import { defineConfig, devices, type PlaywrightTestConfig } from "@playwright/test";
+import { type PlaywrightTestConfig, defineConfig, devices } from "@playwright/test";
 import isCI from "is-in-ci";
 
 /**

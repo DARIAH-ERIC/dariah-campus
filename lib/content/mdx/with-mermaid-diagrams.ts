@@ -9,7 +9,7 @@ interface WithMermaidDiagramsOptions {}
 export const withMermaidDiagrams: Plugin<[WithMermaidDiagramsOptions], Root> = function withMermaidDiagrams(_options) {
 	return function transformer(tree) {
 		visit(tree, "element", (node, index, parent) => {
-			if (index == null) return;
+			if (index == null) {return;}
 
 			if (
 				// eslint-disable-next-line @typescript-eslint/prefer-optional-chain
@@ -23,11 +23,11 @@ export const withMermaidDiagrams: Plugin<[WithMermaidDiagramsOptions], Root> = f
 
 			const isMermaidDiagram =
 				Array.isArray(node.properties.className) &&
-				node.properties.className.some((className) => {
-					return className === "language-mermaid";
-				});
+				node.properties.className.some((className) => 
+					className === "language-mermaid"
+				);
 
-			if (!isMermaidDiagram) return;
+			if (!isMermaidDiagram) {return;}
 
 			const diagram = toString(node);
 

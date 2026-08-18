@@ -112,14 +112,8 @@ async function searchCollection<
 	 * not one per facet.
 	 */
 	const isolatedFacets =
-		facetMode === "disjunctive"
-			? facets.filter((field) => {
-					return (refinements?.[field]?.length ?? 0) > 0;
-				})
-			: [];
-	const inlineFacets = facets.filter((field) => {
-		return !isolatedFacets.includes(field);
-	});
+		facetMode === "disjunctive" ? facets.filter((field) => (refinements?.[field]?.length ?? 0) > 0) : [];
+	const inlineFacets = facets.filter((field) => !isolatedFacets.includes(field));
 
 	const sharedParameters = {
 		collection: collectionName,
@@ -197,9 +191,7 @@ async function searchCollection<
 		},
 		facets: mapFacets(
 			facets,
-			results.flatMap((result) => {
-				return result.facet_counts ?? [];
-			}),
+			results.flatMap((result) => result.facet_counts ?? []),
 		),
 	};
 }

@@ -18,7 +18,7 @@
 		"noUncheckedIndexedAccess": true,
 		"paths": {
 			"#/*": ["./*"],
-			"@content/*": ["./.content/generated/*"]
+			"#content/*": ["./.content/generated/*"]
 		},
 		"plugins": [{ "name": "next" }],
 		"resolveJsonModule": true,

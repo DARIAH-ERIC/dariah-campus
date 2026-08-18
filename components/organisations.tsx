@@ -11,7 +11,9 @@ interface OrganisationsProps {
 export function Organisations(props: Readonly<OrganisationsProps>): ReactNode {
 	const { label, organisations } = props;
 
-	if (organisations.length === 0) return null;
+	if (organisations.length === 0) {
+		return null;
+	}
 
 	return (
 		<div className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
@@ -31,7 +33,7 @@ export function Organisations(props: Readonly<OrganisationsProps>): ReactNode {
 										<Image
 											alt=""
 											/** FIXME: Inverting the logo because they are all white. */
-											className="h-10 w-auto object-contain p-2 opacity-50 invert"
+											className="object-contain p-2 opacity-50 invert block-10 inline-auto"
 											src={logo}
 										/>
 									</div>

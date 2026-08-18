@@ -35,8 +35,8 @@ export function ResourcePreviewCard(props: Readonly<ResourcePreviewCardProps>): 
 						className="rounded-sm transition after:absolute after:inset-0 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 						href={href ?? undefined}
 					>
-						<span className="mr-2 inline-flex text-brand-700">
-							<ContentTypeIcon className="size-5 shrink-0" kind={contentType} />
+						<span className="me-2 inline-flex text-brand-700">
+							<ContentTypeIcon className="shrink-0 block-5 inline-5" kind={contentType} />
 						</span>
 						<span>{summary.title || title}</span>
 					</Link>

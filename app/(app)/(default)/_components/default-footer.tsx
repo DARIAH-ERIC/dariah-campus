@@ -101,18 +101,16 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 		>
 			<nav aria-label={t("navigation.label")}>
 				<ul className="flex flex-col items-center justify-center gap-y-3 md:flex-row md:gap-x-6 md:gap-y-0" role="list">
-					{Object.entries(navigation).map(([key, link]) => {
-						return (
-							<li key={key} className="inline-flex">
-								<Link
-									className="rounded-sm p-2 text-center transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
-									href={link.href}
-								>
-									{link.label}
-								</Link>
-							</li>
-						);
-					})}
+					{Object.entries(navigation).map(([key, link]) => (
+						<li key={key} className="inline-flex">
+							<Link
+								className="rounded-sm p-2 text-center transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
+								href={link.href}
+							>
+								{link.label}
+							</Link>
+						</li>
+					))}
 				</ul>
 			</nav>
 			<nav aria-label={t("navigation-social-media.label")} className="flex flex-col items-center">
@@ -128,7 +126,7 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 									className="inline-block rounded-sm p-2 transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
 									href={kind === "email" ? `mailto:${href}` : href}
 								>
-									<Icon className="size-4" />
+									<Icon className="block-4 inline-4" />
 								</a>
 							</li>
 						);
@@ -137,27 +135,21 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 			</nav>
 			<div className="mx-auto flex max-w-screen-lg flex-col items-center justify-between gap-y-8 text-xs font-normal xs:flex-row xs:gap-x-8 xs:gap-y-0">
 				<div className="flex items-center gap-x-4">
-					<Image alt="" className="h-6 w-9 shrink-0" src={eu} />
+					<Image alt="" className="shrink-0 block-6 inline-9" src={eu} />
 					<span>{t("funding")}</span>
 				</div>
 				<div className="flex items-center justify-end gap-x-4">
-					<span className="text-right">
+					<span className="text-end">
 						{t.rich("license", {
+							// oxlint-disable-next-line react/no-unstable-nested-components
 							link(chunks) {
-								return (
-									<a
-										className="rounded-sm transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
-										href="https://creativecommons.org/licenses/by/4.0/"
-									>
-										{chunks}
-									</a>
-								);
+								return <LicenseLink>{chunks}</LicenseLink>;
 							},
 						})}
 					</span>
 					<span className="flex shrink-0 items-center">
-						<Image alt="" className="size-6 shrink-0" src={cc} />
-						<Image alt="" className="size-6 shrink-0" src={by} />
+						<Image alt="" className="shrink-0 block-6 inline-6" src={cc} />
+						<Image alt="" className="shrink-0 block-6 inline-6" src={by} />
 					</span>
 				</div>
 			</div>
@@ -174,5 +166,22 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 				</Link>
 			</small>
 		</footer>
+	);
+}
+
+interface LicenseLinkProps {
+	children: ReactNode;
+}
+
+function LicenseLink(props: Readonly<LicenseLinkProps>): ReactNode {
+	const { children } = props;
+
+	return (
+		<a
+			className="rounded-sm transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
+			href="https://creativecommons.org/licenses/by/4.0/"
+		>
+			{children}
+		</a>
 	);
 }

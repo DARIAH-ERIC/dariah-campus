@@ -42,7 +42,7 @@ export default function GlobalNotFoundPage(): ReactNode {
 		<HtmlDocument locale={locale}>
 			<DocumentBody>
 				<Providers locale={locale} messages={pick(messages, ["GlobalNotFoundPage"])}>
-					<Main className="grid min-h-[calc(100dvh-100px)] place-content-center place-items-center">
+					<Main className="grid place-content-center place-items-center min-block-[calc(100dvh-100px)]">
 						<PageTitle>{t("title")}</PageTitle>
 					</Main>
 				</Providers>

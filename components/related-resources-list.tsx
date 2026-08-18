@@ -19,14 +19,16 @@ export function RelatedResourcesList(props: Readonly<RelatedResourcesListProps>)
 
 	const t = useTranslations("RelatedResourcesList");
 
-	if (resources.length === 0) return null;
+	if (resources.length === 0) {
+		return null;
+	}
 
 	const id = "related-resources";
 
 	return (
 		<nav
 			aria-labelledby={id}
-			className="mx-auto my-12 w-full max-w-(--size-content) space-y-3 border-t border-neutral-200 py-12"
+			className="mx-auto my-12 space-y-3 border-bs border-neutral-200 py-12 inline-full max-inline-(--size-content)"
 		>
 			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id={id}>
 				{t("label")}
@@ -41,7 +43,7 @@ export function RelatedResourcesList(props: Readonly<RelatedResourcesListProps>)
 								className="flex items-center gap-x-1.5 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 								href={href}
 							>
-								<ContentTypeIcon className="size-3 shrink-0 text-brand-700" kind={contentType} />
+								<ContentTypeIcon className="shrink-0 text-brand-700 block-3 inline-3" kind={contentType} />
 								<span>{title}</span>
 							</Link>
 						</li>

@@ -51,6 +51,7 @@ const config: Config = {
 				permanent: false,
 			},
 			..._redirects.redirects,
+			// oxlint-disable-next-line oxc/no-map-spread
 			..._redirects.redirects.map((redirect) => {
 				return {
 					...redirect,
@@ -101,6 +102,4 @@ const plugins: Array<(config: Config) => Config> = [
 	}),
 ];
 
-export default plugins.reduce((config, plugin) => {
-	return plugin(config);
-}, config);
+export default plugins.reduce((config, plugin) => plugin(config), config);

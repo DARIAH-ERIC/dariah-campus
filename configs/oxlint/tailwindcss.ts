@@ -9,7 +9,7 @@ const config = defineConfig({
 		 * ================================================================================================================
 		 */
 
-		"better-tailwindcss/no-unknown-classes": "error",
+		"better-tailwindcss/no-unknown-classes": ["error", { ignore: ["lead", "not-prose"] }],
 		"better-tailwindcss/no-conflicting-classes": "error",
 		"better-tailwindcss/no-restricted-classes": "error",
 

@@ -30,7 +30,9 @@ export function TableOfContents(props: Readonly<TableOfContentsProps>): ReactNod
 	const containerRef = useRef<HTMLElement>(null);
 
 	useEffect(() => {
-		if (highlightedHeadingId == null) return;
+		if (highlightedHeadingId == null) {
+			return;
+		}
 
 		const highlightedLink = containerRef.current?.querySelector('[aria-current="location"]');
 
@@ -87,7 +89,7 @@ function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): React
 								{isHighlighted ? (
 									<ChevronRightIcon
 										aria-hidden={true}
-										className="absolute right-full mr-1 h-full w-3.5 shrink-0 transform"
+										className="absolute inset-e-full me-1 shrink-0 transform block-full inline-3.5"
 									/>
 								) : null}
 								{heading.value}

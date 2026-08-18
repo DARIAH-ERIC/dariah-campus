@@ -1,15 +1,15 @@
 "use client";
 
-import { createContext, type ReactNode, use, useEffect, useMemo, useRef, useState } from "react";
+import { type ReactNode, createContext, use, useEffect, useMemo, useRef, useState } from "react";
 
 import {
+	type FacetAttribute,
+	type SearchData,
+	type SearchState,
 	createSearchParameters,
 	createSearchStateFromUrl,
 	emptySearchData,
-	type FacetAttribute,
 	search,
-	type SearchData,
-	type SearchState,
 } from "#/app/(app)/(default)/search/_lib/search.ts";
 import type { SearchError } from "#/lib/search/index.ts";
 
@@ -52,7 +52,9 @@ export function SearchProvider(props: Readonly<SearchProviderProps>): ReactNode 
 				},
 				err(error) {
 					/** A superseded request is not a failure, the replacement will settle the state. */
-					if (error._tag === "SearchAbortedError") return;
+					if (error._tag === "SearchAbortedError") {
+						return;
+					}
 
 					setError(error);
 					setIsLoading(false);
@@ -121,7 +123,9 @@ export function SearchProvider(props: Readonly<SearchProviderProps>): ReactNode 
 
 export function useSearch(): SearchContextValue {
 	const context = use(SearchContext);
-	if (context == null) throw new Error("useSearch must be used within a SearchProvider.");
+	if (context == null) {
+		throw new Error("useSearch must be used within a SearchProvider.");
+	}
 
 	return context;
 }

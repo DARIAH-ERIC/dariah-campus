@@ -26,7 +26,7 @@ export default function ErrorPage(props: Readonly<ErrorPageProps>): ReactNode {
 	}, [error]);
 
 	return (
-		<div className="grid min-h-[calc(100dvh-100px)] place-content-center place-items-center gap-y-6">
+		<div className="grid place-content-center place-items-center gap-y-6 min-block-[calc(100dvh-100px)]">
 			<PageTitle>{t("title")}</PageTitle>
 
 			<Button

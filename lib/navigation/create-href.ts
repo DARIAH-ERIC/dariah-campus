@@ -1,5 +1,5 @@
 import { env } from "#/configs/env.config.ts";
-import { createFullUrl, type CreateFullUrlParams } from "#/lib/navigation/create-full-url.ts";
+import { type CreateFullUrlParams, createFullUrl } from "#/lib/navigation/create-full-url.ts";
 
 const baseUrl = env.NEXT_PUBLIC_APP_BASE_URL;
 

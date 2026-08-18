@@ -40,7 +40,7 @@ export async function Session(props: Readonly<SessionProps>): Promise<ReactNode>
 		<article className="grid content-start gap-y-8 py-8">
 			<div className="prose">
 				<h2>
-					<span className="mr-2">{index}.</span>
+					<span className="me-2">{index}.</span>
 					{title}
 				</h2>
 			</div>
@@ -52,7 +52,7 @@ export async function Session(props: Readonly<SessionProps>): Promise<ReactNode>
 					<dl className="grid content-start gap-y-8">
 						{speakers.length > 0 ? (
 							<div className="grid content-start gap-y-6">
-								<dt className="border-b border-neutral-200 pb-2 text-xl font-bold">
+								<dt className="border-be border-neutral-200 pbe-2 text-xl font-bold">
 									{t("speakers", { count: speakers.length })}
 								</dt>
 								<dd>
@@ -65,7 +65,7 @@ export async function Session(props: Readonly<SessionProps>): Promise<ReactNode>
 													<div className="grid content-start gap-y-4">
 														<Image
 															alt=""
-															className="aspect-square size-20 rounded-full border border-neutral-200 object-cover"
+															className="aspect-square rounded-full border border-neutral-200 object-cover block-20 inline-20"
 															height={128}
 															sizes="256px"
 															src={image}
@@ -86,44 +86,40 @@ export async function Session(props: Readonly<SessionProps>): Promise<ReactNode>
 
 						{attachments.length > 0 ? (
 							<div className="grid content-start gap-y-6">
-								<dt className="border-b border-neutral-200 pb-2 text-xl font-bold">
+								<dt className="border-be border-neutral-200 pbe-2 text-xl font-bold">
 									{t("attachments", { count: attachments.length })}
 								</dt>
 								<dd>
-									{attachments.map((attachment, index) => {
-										return (
-											<a
-												key={index}
-												className="inline-flex items-center gap-x-2 text-brand-700 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-												download={true}
-												href={attachment.file}
-											>
-												<DownloadIcon aria-hidden={true} className="size-4 shrink-0" />
-												{attachment.label}
-											</a>
-										);
-									})}
+									{attachments.map((attachment, index) => (
+										<a
+											key={index}
+											className="inline-flex items-center gap-x-2 text-brand-700 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+											download={true}
+											href={attachment.file}
+										>
+											<DownloadIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
+											{attachment.label}
+										</a>
+									))}
 								</dd>
 							</div>
 						) : null}
 
 						{links.length > 0 ? (
 							<div className="grid content-start gap-y-6">
-								<dt className="border-b border-neutral-200 pb-2 text-xl font-bold">
+								<dt className="border-be border-neutral-200 pbe-2 text-xl font-bold">
 									{t("links", { count: links.length })}
 								</dt>
 								<dd>
-									{links.map((link, index) => {
-										return (
-											<a
-												key={index}
-												className="inline-flex items-center gap-x-2 text-brand-700 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-												href={link.href}
-											>
-												{link.label}
-											</a>
-										);
-									})}
+									{links.map((link, index) => (
+										<a
+											key={index}
+											className="inline-flex items-center gap-x-2 text-brand-700 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+											href={link.href}
+										>
+											{link.label}
+										</a>
+									))}
 								</dd>
 							</div>
 						) : null}
@@ -157,7 +153,7 @@ export async function Session(props: Readonly<SessionProps>): Promise<ReactNode>
 									<article className="grid content-start gap-y-8 py-8">
 										<div className="prose">
 											<h2>
-												<span className="mr-2">
+												<span className="me-2">
 													{index}.{presentationIndex + 1}.
 												</span>
 												{title}
@@ -173,7 +169,7 @@ export async function Session(props: Readonly<SessionProps>): Promise<ReactNode>
 												<dl className="grid content-start gap-y-8">
 													{speakers.length > 0 ? (
 														<div className="grid content-start gap-y-6">
-															<dt className="border-b border-neutral-200 pb-2 text-xl font-bold">
+															<dt className="border-be border-neutral-200 pbe-2 text-xl font-bold">
 																{t("speakers", { count: speakers.length })}
 															</dt>
 															<dd>
@@ -186,7 +182,7 @@ export async function Session(props: Readonly<SessionProps>): Promise<ReactNode>
 																				<div className="grid content-start gap-y-4">
 																					<Image
 																						alt=""
-																						className="aspect-square size-20 rounded-full border border-neutral-200 object-cover"
+																						className="aspect-square rounded-full border border-neutral-200 object-cover block-20 inline-20"
 																						height={128}
 																						sizes="256px"
 																						src={image}
@@ -207,44 +203,40 @@ export async function Session(props: Readonly<SessionProps>): Promise<ReactNode>
 
 													{attachments.length > 0 ? (
 														<div className="grid content-start gap-y-6">
-															<dt className="border-b border-neutral-200 pb-2 text-xl font-bold">
+															<dt className="border-be border-neutral-200 pbe-2 text-xl font-bold">
 																{t("attachments", { count: attachments.length })}
 															</dt>
 															<dd>
-																{attachments.map((attachment, index) => {
-																	return (
-																		<a
-																			key={index}
-																			className="inline-flex items-center gap-x-2 text-brand-700 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-																			download={true}
-																			href={attachment.file}
-																		>
-																			<DownloadIcon aria-hidden={true} className="size-4 shrink-0" />
-																			{attachment.label}
-																		</a>
-																	);
-																})}
+																{attachments.map((attachment, index) => (
+																	<a
+																		key={index}
+																		className="inline-flex items-center gap-x-2 text-brand-700 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+																		download={true}
+																		href={attachment.file}
+																	>
+																		<DownloadIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
+																		{attachment.label}
+																	</a>
+																))}
 															</dd>
 														</div>
 													) : null}
 
 													{links.length > 0 ? (
 														<div className="grid content-start gap-y-6">
-															<dt className="border-b border-neutral-200 pb-2 text-xl font-bold">
+															<dt className="border-be border-neutral-200 pbe-2 text-xl font-bold">
 																{t("links", { count: links.length })}
 															</dt>
 															<dd>
-																{links.map((link, index) => {
-																	return (
-																		<a
-																			key={index}
-																			className="inline-flex items-center gap-x-2 text-brand-700 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-																			href={link.href}
-																		>
-																			{link.label}
-																		</a>
-																	);
-																})}
+																{links.map((link, index) => (
+																	<a
+																		key={index}
+																		className="inline-flex items-center gap-x-2 text-brand-700 transition hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+																		href={link.href}
+																	>
+																		{link.label}
+																	</a>
+																))}
 															</dd>
 														</div>
 													) : null}

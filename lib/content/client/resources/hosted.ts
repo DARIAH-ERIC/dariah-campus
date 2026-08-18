@@ -1,17 +1,17 @@
 import { groupByToMap, keyByToMap } from "@acdh-oeaw/lib";
-import curricula from "@content/curricula";
-import events from "@content/resources-events";
-import external from "@content/resources-external";
-import collection from "@content/resources-hosted";
-import pathfinders from "@content/resources-pathfinders";
+import curricula from "#content/curricula";
+import events from "#content/resources-events";
+import external from "#content/resources-external";
+import collection from "#content/resources-hosted";
+import pathfinders from "#content/resources-pathfinders";
 
 import type { CollectionClient } from "#/lib/content/types.ts";
 
-const curriculaByResourceId = groupByToMap(Array.from(curricula.values()), (entry) => {
-	return entry.document.metadata.resources.map((resource) => {
-		return resource.value;
-	});
-});
+const curriculaByResourceId = groupByToMap(Array.from(curricula.values()), (entry) =>
+	entry.document.metadata.resources.map((resource) =>
+		resource.value
+	)
+);
 
 const resourcesByTagId = groupByToMap(
 	[
@@ -20,9 +20,9 @@ const resourcesByTagId = groupByToMap(
 		...Array.from(collection.values()),
 		...Array.from(pathfinders.values()),
 	],
-	(entry) => {
-		return entry.document.metadata.tags;
-	},
+	(entry) =>
+		entry.document.metadata.tags
+	,
 );
 
 //
@@ -30,13 +30,14 @@ const resourcesByTagId = groupByToMap(
 const ids = Array.from(collection.keys());
 
 const all = Array.from(collection.values())
+	// oxlint-disable-next-line oxc/no-map-spread
 	.map((entry) => {
 		const href = `/resources/hosted/${entry.document.id}`;
 
 		const curricula =
-			curriculaByResourceId.get(entry.document.id)?.map((entry) => {
-				return entry.document.id;
-			}) ?? [];
+			curriculaByResourceId.get(entry.document.id)?.map((entry) =>
+				entry.document.id
+			) ?? [];
 
 		const related = new Set<string>();
 
@@ -60,13 +61,14 @@ const all = Array.from(collection.values())
 			related,
 		};
 	})
-	.sort((a, z) => {
-		return z.metadata["publication-date"].localeCompare(a.metadata["publication-date"]);
-	});
+	// oxlint-disable-next-line unicorn/no-array-sort
+	.sort((a, z) =>
+		z.metadata["publication-date"].localeCompare(a.metadata["publication-date"])
+	);
 
-const byId = keyByToMap(all, (item) => {
-	return item.id;
-});
+const byId = keyByToMap(all, (item) =>
+	item.id
+);
 
 export type HostedResource = (typeof all)[number];
 
