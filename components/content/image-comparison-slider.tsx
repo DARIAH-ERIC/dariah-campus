@@ -74,7 +74,7 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 				<img
 					alt=""
 					className={cn(
-						"object-cover select-none [grid-area:1/-1] block-full inline-full",
+						"object-cover select-none [grid-area:1/-1] block-full inline-full max-block-[min(60vh,32rem)]",
 						orientation === "vertical" ? "rounded-t" : "rounded-s",
 					)}
 					draggable={false}
@@ -90,7 +90,7 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 				<img
 					alt=""
 					className={cn(
-						"object-cover select-none [grid-area:1/-1] block-full inline-full",
+						"object-cover select-none [grid-area:1/-1] block-full inline-full max-block-[min(60vh,32rem)]",
 						orientation === "vertical" ? "rounded-b" : "rounded-e",
 					)}
 					draggable={false}
