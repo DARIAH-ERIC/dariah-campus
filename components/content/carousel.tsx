@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { type ComponentPropsWithRef, type ReactNode, useCallback, useSyncExternalStore } from "react";
 
 import { getChildrenElements } from "#/components/content/get-children-elements.ts";
+import { Image } from "#/components/image.tsx";
 
 interface CarouselProps {
 	children: ReactNode;
@@ -20,7 +21,10 @@ export function Carousel(props: Readonly<CarouselProps>): ReactNode {
 
 	const t = useTranslations("content.Carousel");
 
-	const slides = getChildrenElements<CarouselItemProps>(children);
+	/** Slides without image are ignored, because the cms allows inserting empty slides. */
+	const slides = getChildrenElements<CarouselItemProps>(children).filter((slide) =>
+		isNonEmptyString(slide.props.src)
+	);
 
 	const [carouselRef, api] = useEmblaCarousel({ loop });
 
@@ -61,18 +65,26 @@ export function Carousel(props: Readonly<CarouselProps>): ReactNode {
 			<div ref={carouselRef} className="overflow-hidden">
 				<div className="-ms-4 flex">
 					{slides.map((slide, index) => {
-						const { children } = slide.props;
+						const { alt = "", children, height, src, width } = slide.props;
 
 						return (
-							<div
+							<figure
 								key={String(index)}
 								aria-label={t("slide-label", { index: String(index + 1), total: String(slides.length) })}
 								aria-roledescription={t("slide")}
-								className="shrink-0 grow-0 basis-full ps-4 min-inline-0 **:first:mbs-0 **:last:mbe-0 [&_img]:mx-auto [&_img]:inline-auto [&_img]:max-block-[min(60vh,32rem)]"
+								className="my-0 flex shrink-0 grow-0 basis-full flex-col ps-4 min-inline-0"
 								role="group"
 							>
-								{children}
-							</div>
+								<Image
+									alt={alt}
+									className="mx-auto object-contain block-auto inline-auto max-block-[min(60vh,32rem)] max-inline-full"
+									height={height}
+									src={src}
+									width={width}
+								/>
+
+								<figcaption className="**:first:mbs-0 **:last:mbe-0">{children}</figcaption>
+							</figure>
 						);
 					})}
 				</div>
@@ -151,7 +163,13 @@ function Button(props: Readonly<ButtonProps>): ReactNode {
 }
 
 interface CarouselItemProps {
+	alt?: string;
 	children: ReactNode;
+	/** Maybe added by `with-image-sizes` mdx plugin. */
+	height?: number;
+	src: string;
+	/** Maybe added by `with-image-sizes` mdx plugin. */
+	width?: number;
 }
 
 export function CarouselItem(_props: Readonly<CarouselItemProps>): ReactNode {

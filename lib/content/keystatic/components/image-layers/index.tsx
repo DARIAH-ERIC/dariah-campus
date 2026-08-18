@@ -9,7 +9,7 @@ export const createImageLayers = createComponent((paths, _locale) => {
 	return {
 		ImageLayers: repeating({
 			label: "Image layers",
-			description: "Insert images which are stacked on top of each other, and revealed one by one with a slider.",
+			description: "Insert stacked images revealed with a slider.",
 			icon: <LayersIcon />,
 			schema: {
 				label: fields.text({

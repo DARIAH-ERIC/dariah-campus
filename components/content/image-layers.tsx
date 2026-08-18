@@ -116,7 +116,7 @@ export function ImageLayers(props: Readonly<ImageLayersProps>): ReactNode {
 										);
 									})}
 
-									<SliderThumb className="cursor-default rounded-full border border-neutral-300 bg-white shadow-sm transition block-5 inline-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-800 dragging:bg-neutral-100" />
+									<SliderThumb className="inset-bs-1/2 cursor-default rounded-full border border-neutral-300 bg-white shadow-sm transition block-5 inline-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-800 dragging:bg-neutral-100" />
 								</Fragment>
 							)}
 						</SliderTrack>
