@@ -68,23 +68,26 @@ export function Carousel(props: Readonly<CarouselProps>): ReactNode {
 						const { alt = "", children, height, src, width } = slide.props;
 
 						return (
-							<figure
+							<div
 								key={String(index)}
 								aria-label={t("slide-label", { index: String(index + 1), total: String(slides.length) })}
 								aria-roledescription={t("slide")}
-								className="my-0 flex shrink-0 grow-0 basis-full flex-col ps-4 min-inline-0"
+								className="shrink-0 grow-0 basis-full ps-4 min-inline-0"
 								role="group"
 							>
-								<Image
-									alt={alt}
-									className="mx-auto object-contain block-auto inline-auto max-block-[min(60vh,32rem)] max-inline-full"
-									height={height}
-									src={src}
-									width={width}
-								/>
+								{/** The figure only takes up as much space as the image, so the caption aligns with it. */}
+								<figure className="mx-auto my-0 flex flex-col inline-fit max-inline-full">
+									<Image
+										alt={alt}
+										className="self-center object-contain block-auto inline-auto max-block-[min(60vh,32rem)] max-inline-full"
+										height={height}
+										src={src}
+										width={width}
+									/>
 
-								<figcaption className="**:first:mbs-0 **:last:mbe-0">{children}</figcaption>
-							</figure>
+									<figcaption className="contain-inline-size **:first:mbs-0 **:last:mbe-0">{children}</figcaption>
+								</figure>
+							</div>
 						);
 					})}
 				</div>
