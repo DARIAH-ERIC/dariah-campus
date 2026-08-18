@@ -5,30 +5,22 @@ import cn from "clsx/lite";
 import { MapPinIcon, XIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import {
-	Children,
-	createContext,
 	type CSSProperties,
+	Children,
 	type ReactNode,
+	createContext,
 	use,
 	useId,
 	useMemo,
 	useRef,
 	useState,
 } from "react";
-import {
-	Button,
-	Dialog,
-	DialogTrigger,
-	Modal,
-	ModalOverlay,
-	OverlayArrow,
-	Popover,
-} from "react-aria-components";
+import { Button, Dialog, DialogTrigger, Modal, ModalOverlay, OverlayArrow, Popover } from "react-aria-components";
 import { createPortal } from "react-dom";
 
-import { useQuizContext } from "@/components/content/quiz";
-import { QuizControls } from "@/components/content/quiz-controls";
-import { Image } from "@/components/image";
+import { useQuizContext } from "#/components/content/quiz.tsx";
+import { QuizControls } from "#/components/content/quiz-controls.tsx";
+import { Image } from "#/components/image.tsx";
 
 type HotspotPresentation = "inline" | "popover" | "sidepanel";
 
@@ -61,10 +53,10 @@ export function QuizImageHotspots(props: Readonly<QuizImageHotspotsProps>): Reac
 	const contextValue = useMemo(() => {
 		return { activeId, inlinePanel, presentation, select: setActiveId };
 	}, [activeId, inlinePanel, presentation]);
-	// eslint-disable-next-line @eslint-react/no-children-map -- MDX supplies hotspots as opaque children; wrapping them preserves their elements while providing document order.
-	const indexedHotspotChildren = Children.map(children, (child, index) => {
-		return <HotspotIndexContext value={index + 1}>{child}</HotspotIndexContext>;
-	});
+	// oxlint-disable-next-line react/no-react-children
+	const indexedHotspotChildren = Children.map(children, (child, index) =>
+		<HotspotIndexContext value={index + 1}>{child}</HotspotIndexContext>
+	);
 
 	return (
 		<section
@@ -75,13 +67,11 @@ export function QuizImageHotspots(props: Readonly<QuizImageHotspotsProps>): Reac
 				<div
 					className={cn(
 						"not-prose grid gap-4",
-						presentation === "inline"
-							? "@[48rem]:grid-cols-[minmax(0,3fr)_minmax(16rem,2fr)]"
-							: undefined,
+						presentation === "inline" ? "@[48rem]:grid-cols-[minmax(0,3fr)_minmax(16rem,2fr)]" : undefined,
 					)}
 				>
 					<div className="relative isolate self-start overflow-hidden rounded-md">
-						<Image alt={alt} className="h-auto w-full" height={height} src={src} width={width} />
+						<Image alt={alt} className="block-auto inline-full" height={height} src={src} width={width} />
 						{indexedHotspotChildren}
 					</div>
 
@@ -90,22 +80,17 @@ export function QuizImageHotspots(props: Readonly<QuizImageHotspotsProps>): Reac
 							ref={setInlinePanel}
 							aria-label={hotspotsT("inline-panel-label")}
 							className={cn(
-								"max-h-96 min-h-32 overflow-y-auto overscroll-contain rounded-md border border-neutral-200 bg-neutral-50 p-4",
+								"overflow-y-auto overscroll-contain rounded-md border border-neutral-200 bg-neutral-50 p-4 max-block-96 min-block-32",
 								activeId == null ? "grid place-items-center" : undefined,
 							)}
 						>
-							{activeId == null ? (
-								<p className="text-center text-neutral-600">{hotspotsT("select-hotspot")}</p>
-							) : null}
+							{activeId == null ? <p className="text-center text-neutral-600">{hotspotsT("select-hotspot")}</p> : null}
 						</aside>
 					) : null}
 				</div>
 			</HotspotContext>
 
-			<QuizControls
-				nextButtonLabel={t("next-question")}
-				previousButtonLabel={t("previous-question")}
-			/>
+			<QuizControls nextButtonLabel={t("next-question")} previousButtonLabel={t("previous-question")} />
 		</section>
 	);
 }
@@ -136,19 +121,19 @@ export function QuizImageHotspot(props: Readonly<QuizImageHotspotProps>): ReactN
 			<DialogTrigger>
 				<Button
 					aria-label={resolvedLabel}
-					className="absolute top-(--hotspot-y) left-(--hotspot-x) grid size-9 -translate-1/2 place-items-center rounded-full border-2 border-white bg-brand-700 text-white shadow-md outline-none transition hover:scale-110 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 pressed:scale-95"
+					className="absolute inset-s-(--hotspot-x) inset-bs-(--hotspot-y) grid -translate-1/2 place-items-center rounded-full border-2 border-white bg-brand-700 text-white shadow-md transition outline-none block-9 inline-9 hover:scale-110 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 pressed:scale-95"
 					style={style}
 				>
-					<MapPinIcon aria-hidden={true} className="size-5" />
+					<MapPinIcon aria-hidden={true} className="block-5 inline-5" />
 				</Button>
 				<Popover
-					className="prose prose-sm max-h-[min(70vh,32rem)] w-80 max-w-[calc(100vw-2rem)] overflow-auto rounded-md border border-neutral-200 bg-white px-4 py-3 text-neutral-950 shadow-lg"
+					className="prose prose-sm overflow-auto rounded-md border border-neutral-200 bg-white px-4 py-3 text-neutral-950 shadow-lg inline-80 max-block-[min(70vh,32rem)] max-inline-[calc(100vw-2rem)]"
 					offset={12}
 				>
 					<OverlayArrow className="group">
 						<svg
 							aria-hidden={true}
-							className="block fill-white stroke-1 stroke-neutral-200 group-placement-bottom:rotate-180 group-placement-left:-rotate-90 group-placement-right:rotate-90"
+							className="block fill-white stroke-neutral-200 stroke-1 group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180"
 							height={12}
 							viewBox="0 0 12 12"
 							width={12}
@@ -170,25 +155,25 @@ export function QuizImageHotspot(props: Readonly<QuizImageHotspotProps>): ReactN
 			<DialogTrigger>
 				<Button
 					aria-label={resolvedLabel}
-					className="absolute top-(--hotspot-y) left-(--hotspot-x) grid size-9 -translate-1/2 place-items-center rounded-full border-2 border-white bg-brand-700 text-white shadow-md outline-none transition hover:scale-110 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 pressed:scale-95"
+					className="absolute inset-s-(--hotspot-x) inset-bs-(--hotspot-y) grid -translate-1/2 place-items-center rounded-full border-2 border-white bg-brand-700 text-white shadow-md transition outline-none block-9 inline-9 hover:scale-110 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 pressed:scale-95"
 					style={style}
 				>
-					<MapPinIcon aria-hidden={true} className="size-5" />
+					<MapPinIcon aria-hidden={true} className="block-5 inline-5" />
 				</Button>
 				<ModalOverlay className="fixed inset-0 z-50 bg-neutral-950/40" isDismissable={true}>
-					<Modal className="fixed inset-y-0 right-0 w-full max-w-xl overflow-y-auto bg-white text-neutral-950 shadow-2xl outline-none">
-						<Dialog aria-label={resolvedLabel} className="min-h-full outline-none">
-							<header className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-neutral-200 bg-white px-6 py-4">
+					<Modal className="fixed inset-y-0 inset-e-0 overflow-y-auto bg-white text-neutral-950 shadow-2xl outline-none inline-full max-inline-xl">
+						<Dialog aria-label={resolvedLabel} className="outline-none min-block-full">
+							<header className="sticky inset-bs-0 z-10 flex items-start justify-between gap-4 border-be border-neutral-200 bg-white px-6 py-4">
 								<h2 className="text-lg font-semibold">{resolvedLabel}</h2>
 								<Button
 									aria-label={t("close")}
-									className="grid size-8 shrink-0 place-items-center rounded-md text-neutral-600 outline-none hover:bg-neutral-100 focus-visible:ring-2 focus-visible:ring-brand-700 pressed:bg-neutral-200"
+									className="grid shrink-0 place-items-center rounded-md text-neutral-600 outline-none block-8 inline-8 hover:bg-neutral-100 focus-visible:ring-2 focus-visible:ring-brand-700 pressed:bg-neutral-200"
 									slot="close"
 								>
-									<XIcon aria-hidden={true} className="size-4" />
+									<XIcon aria-hidden={true} className="block-4 inline-4" />
 								</Button>
 							</header>
-							<div className="prose prose-sm max-w-none px-6 py-5">{children}</div>
+							<div className="prose prose-sm px-6 py-5 max-inline-none">{children}</div>
 						</Dialog>
 					</Modal>
 				</ModalOverlay>
@@ -204,7 +189,7 @@ export function QuizImageHotspot(props: Readonly<QuizImageHotspotProps>): ReactN
 				aria-expanded={isActive}
 				aria-label={resolvedLabel}
 				className={cn(
-					"absolute top-(--hotspot-y) left-(--hotspot-x) grid size-9 -translate-1/2 place-items-center rounded-full border-2 border-white bg-brand-700 text-white shadow-md outline-none transition hover:scale-110 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 pressed:scale-95",
+					"absolute inset-s-(--hotspot-x) inset-bs-(--hotspot-y) grid -translate-1/2 place-items-center rounded-full border-2 border-white bg-brand-700 text-white shadow-md transition outline-none block-9 inline-9 hover:scale-110 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2 pressed:scale-95",
 					isActive ? "scale-110 bg-brand-900 ring-2 ring-white" : undefined,
 				)}
 				onPress={() => {
@@ -212,22 +197,22 @@ export function QuizImageHotspot(props: Readonly<QuizImageHotspotProps>): ReactN
 				}}
 				style={style}
 			>
-				<MapPinIcon aria-hidden={true} className="size-5" />
+				<MapPinIcon aria-hidden={true} className="block-5 inline-5" />
 			</Button>
 			{isActive && inlinePanel != null
 				? createPortal(
 						<section aria-label={resolvedLabel} className="prose prose-sm" id={panelId}>
-							<header className="not-prose mb-3 flex items-start justify-between gap-3">
+							<header className="not-prose mbe-3 flex items-start justify-between gap-3">
 								<p className="font-semibold text-neutral-950">{resolvedLabel}</p>
 								<Button
 									aria-label={t("close")}
-									className="grid size-8 shrink-0 place-items-center rounded-md text-neutral-600 outline-none hover:bg-neutral-200 focus-visible:ring-2 focus-visible:ring-brand-700 pressed:bg-neutral-300"
+									className="grid shrink-0 place-items-center rounded-md text-neutral-600 outline-none block-8 inline-8 hover:bg-neutral-200 focus-visible:ring-2 focus-visible:ring-brand-700 pressed:bg-neutral-300"
 									onPress={() => {
 										select(null);
 										triggerRef.current?.focus();
 									}}
 								>
-									<XIcon aria-hidden={true} className="size-4" />
+									<XIcon aria-hidden={true} className="block-4 inline-4" />
 								</Button>
 							</header>
 							{children}

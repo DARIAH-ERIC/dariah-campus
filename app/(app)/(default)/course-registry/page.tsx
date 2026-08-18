@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { CourseRegistry } from "@/app/(app)/(default)/course-registry/_components/course-registry";
+import { CourseRegistry } from "#/app/(app)/(default)/course-registry/_components/course-registry.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("CourseRegistryPage");

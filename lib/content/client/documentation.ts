@@ -1,8 +1,8 @@
 import { keyByToMap } from "@acdh-oeaw/lib";
-import collection from "@content/documentation";
-import navigation from "@content/navigation";
+import collection from "#content/documentation";
+import navigation from "#content/navigation";
 
-import type { CollectionClient } from "@/lib/content/types";
+import type { CollectionClient } from "#/lib/content/types.ts";
 
 const order = navigation.get("")!.document.documentation.links;
 
@@ -11,6 +11,7 @@ const order = navigation.get("")!.document.documentation.links;
 const ids = Array.from(collection.keys());
 
 const all = Array.from(collection.values())
+	// oxlint-disable-next-line oxc/no-map-spread
 	.map((entry) => {
 		const href = `/documentation/${entry.document.id}`;
 
@@ -19,20 +20,21 @@ const all = Array.from(collection.values())
 			href,
 		};
 	})
-	.sort((a, z) => {
-		return (
-			order.findIndex((id) => {
-				return a.id === id;
-			}) -
-			order.findIndex((id) => {
-				return z.id === id;
-			})
-		);
-	});
+	// oxlint-disable-next-line unicorn/no-array-sort
+	.sort((a, z) =>
+	(
+		order.findIndex((id) =>
+			a.id === id
+		) -
+		order.findIndex((id) =>
+			z.id === id
+		)
+	)
+	);
 
-const byId = keyByToMap(all, (item) => {
-	return item.id;
-});
+const byId = keyByToMap(all, (item) =>
+	item.id
+);
 
 export type Documentation = (typeof all)[number];
 

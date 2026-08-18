@@ -22,10 +22,7 @@ export const curriculumMetadataSchema = v.object({
 		v.array(v.object({ code: v.string(), "sshoc-marketplace-id": v.string() })),
 		[],
 	),
-	"dariah-working-groups": v.optional(
-		v.array(v.object({ slug: v.string(), "sshoc-marketplace-id": v.string() })),
-		[],
-	),
+	"dariah-working-groups": v.optional(v.array(v.object({ slug: v.string(), "sshoc-marketplace-id": v.string() })), []),
 });
 
 export type CurriculumMetadata = v.InferOutput<typeof curriculumMetadataSchema>;
@@ -44,9 +41,7 @@ const baseResourceFields = {
 	tags: v.array(v.object({ id: v.string(), name: v.string() })),
 	authors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
 	editors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
-	contributors: v.array(
-		v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) }),
-	),
+	contributors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
 	sources: v.array(v.object({ id: v.string(), name: v.string() })),
 	domain: v.string(),
 	"target-group": v.string(),
@@ -54,10 +49,7 @@ const baseResourceFields = {
 		v.array(v.object({ code: v.string(), "sshoc-marketplace-id": v.string() })),
 		[],
 	),
-	"dariah-working-groups": v.optional(
-		v.array(v.object({ slug: v.string(), "sshoc-marketplace-id": v.string() })),
-		[],
-	),
+	"dariah-working-groups": v.optional(v.array(v.object({ slug: v.string(), "sshoc-marketplace-id": v.string() })), []),
 };
 
 const eventResourceSchema = v.object({

@@ -3,8 +3,8 @@
 import { AlertCircleIcon, CheckIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
-import { useQuizContext } from "@/components/content/quiz";
-import { QuizControls } from "@/components/content/quiz-controls";
+import { useQuizContext } from "#/components/content/quiz.tsx";
+import { QuizControls } from "#/components/content/quiz-controls.tsx";
 
 interface QuizFormProps {
 	children: ReactNode;
@@ -45,7 +45,7 @@ export function QuizForm(props: Readonly<QuizFormProps>): ReactNode {
 					/** Using `onSubmit` instead of `action` to avoid resetting checkboxes after submit. */
 					event.preventDefault();
 
-					const formData = new FormData(event.currentTarget as HTMLFormElement);
+					const formData = new FormData(event.currentTarget);
 					setStatus(validate(formData) ? "correct" : "incorrect");
 				}}
 			>
@@ -60,21 +60,15 @@ export function QuizForm(props: Readonly<QuizFormProps>): ReactNode {
 
 					<div
 						aria-live="polite"
-						className={
-							status === "idle"
-								? "sr-only"
-								: status === "correct"
-									? "text-success-600"
-									: "text-error-600"
-						}
+						className={status === "idle" ? "sr-only" : status === "correct" ? "text-success-600" : "text-error-600"}
 					>
 						{status === "correct" ? (
-							<div className="mt-2 flex items-center gap-x-2">
-								<CheckIcon aria-hidden={true} className="size-4 shrink-0" /> {successMessages}
+							<div className="mbs-2 flex items-center gap-x-2">
+								<CheckIcon aria-hidden={true} className="shrink-0 block-4 inline-4" /> {successMessages}
 							</div>
 						) : status === "incorrect" ? (
-							<div className="mt-2 flex items-center gap-x-2">
-								<AlertCircleIcon aria-hidden={true} className="size-4 shrink-0" />
+							<div className="mbs-2 flex items-center gap-x-2">
+								<AlertCircleIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
 								{errorMessages}
 							</div>
 						) : null}

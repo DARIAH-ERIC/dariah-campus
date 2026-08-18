@@ -1,12 +1,6 @@
-import { createHref } from "@/lib/navigation/create-href";
+import { createHref } from "#/lib/navigation/create-href.ts";
 
-export function createSearchUrl({
-	people = [],
-	tags = [],
-}: {
-	people?: Array<string>;
-	tags?: Array<string>;
-}): string {
+export function createSearchUrl({ people = [], tags = [] }: { people?: Array<string>; tags?: Array<string> }): string {
 	const searchParams = new URLSearchParams();
 
 	people.forEach((person, index) => {

@@ -1,11 +1,11 @@
 import { createAssetOptions, createSingleton, withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { fields, singleton } from "@keystatic/core";
 
-import { createLink } from "@/lib/content/keystatic/components/link";
-import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
+import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
+import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 
-export const createIndexPage = createSingleton("/index-page/", (paths, locale) => {
-	return singleton({
+export const createIndexPage = createSingleton("/index-page/", (paths, locale) => 
+	singleton({
 		label: "Home page",
 		path: paths.contentPath,
 		format: { data: "json" },
@@ -262,5 +262,5 @@ export const createIndexPage = createSingleton("/index-page/", (paths, locale) =
 				},
 			),
 		},
-	});
-});
+	})
+);

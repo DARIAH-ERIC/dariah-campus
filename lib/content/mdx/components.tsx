@@ -1,31 +1,31 @@
-import { Callout } from "@/components/content/callout";
-import { Diagram, DiagramCaption, DiagramCodeBlock } from "@/components/content/diagram";
-import { Disclosure } from "@/components/content/disclosure";
-import { Drop, QuizDragTheWords } from "@/components/content/drag-the-words";
-import { Embed } from "@/components/content/embed";
-import { ExternalResource } from "@/components/content/external-resource";
-import { Figure } from "@/components/content/figure";
-import { Blank, QuizFillInTheBlank } from "@/components/content/fill-in-the-blank";
-import { Grid, GridItem } from "@/components/content/grid";
-import { ImageComparisonSlider } from "@/components/content/image-comparison-slider";
-import { Link as ContentLink } from "@/components/content/link";
-import { LinkButton } from "@/components/content/link-button";
-import { MermaidDiagram } from "@/components/content/mermaid-diagram";
-import { Quiz, QuizErrorMessage, QuizSuccessMessage } from "@/components/content/quiz";
+import { Callout } from "#/components/content/callout.tsx";
+import { Diagram, DiagramCaption, DiagramCodeBlock } from "#/components/content/diagram.tsx";
+import { Disclosure } from "#/components/content/disclosure.tsx";
+import { Drop, QuizDragTheWords } from "#/components/content/drag-the-words.tsx";
+import { Embed } from "#/components/content/embed.tsx";
+import { ExternalResource } from "#/components/content/external-resource.tsx";
+import { Figure } from "#/components/content/figure.tsx";
+import { Blank, QuizFillInTheBlank } from "#/components/content/fill-in-the-blank.tsx";
+import { Grid, GridItem } from "#/components/content/grid.tsx";
+import { ImageComparisonSlider } from "#/components/content/image-comparison-slider.tsx";
+import { Link as ContentLink } from "#/components/content/link.tsx";
+import { LinkButton } from "#/components/content/link-button.tsx";
+import { MermaidDiagram } from "#/components/content/mermaid-diagram.tsx";
+import { Quiz, QuizErrorMessage, QuizSuccessMessage } from "#/components/content/quiz.tsx";
 import {
 	QuizChoice,
 	QuizChoiceAnswer,
 	QuizChoiceAnswerErrorMessage,
 	QuizChoiceAnswerLabel,
 	QuizChoiceQuestion,
-} from "@/components/content/quiz-choice";
-import { QuizImageHotspot, QuizImageHotspots } from "@/components/content/quiz-image-hotspots";
-import { TableOfContents } from "@/components/content/table-of-contents";
-import { Tab, Tabs } from "@/components/content/tabs";
-import { Video } from "@/components/content/video";
-import { VideoCard } from "@/components/content/video-card";
-import { Image } from "@/components/image";
-import { Link } from "@/components/link";
+} from "#/components/content/quiz-choice.tsx";
+import { QuizImageHotspot, QuizImageHotspots } from "#/components/content/quiz-image-hotspots.tsx";
+import { TableOfContents } from "#/components/content/table-of-contents.tsx";
+import { Tab, Tabs } from "#/components/content/tabs.tsx";
+import { Video } from "#/components/content/video.tsx";
+import { VideoCard } from "#/components/content/video-card.tsx";
+import { Image } from "#/components/image.tsx";
+import { Link } from "#/components/link.tsx";
 
 export const components = {
 	a: Link,

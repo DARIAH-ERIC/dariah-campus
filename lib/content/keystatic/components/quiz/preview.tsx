@@ -1,12 +1,10 @@
-/* eslint-disable react/jsx-no-literals */
-
 import { NotEditable } from "@keystatic/core";
 import type { ReactNode } from "react";
 
 export {
 	QuizImageHotspotEditor,
 	QuizImageHotspotsPreview,
-} from "@/lib/content/keystatic/components/quiz/image-hotspots-preview";
+} from "#/lib/content/keystatic/components/quiz/image-hotspots-preview.tsx";
 
 interface QuizPreviewProps {
 	children: ReactNode;
@@ -53,9 +51,7 @@ interface QuizChoiceAnswerLabelPreviewProps {
 	children: ReactNode;
 }
 
-export function QuizChoiceAnswerLabelPreview(
-	props: Readonly<QuizChoiceAnswerLabelPreviewProps>,
-): ReactNode {
+export function QuizChoiceAnswerLabelPreview(props: Readonly<QuizChoiceAnswerLabelPreviewProps>): ReactNode {
 	const { children } = props;
 
 	return (
@@ -87,9 +83,7 @@ interface QuizChoiceQuestionPreviewProps {
 	children: ReactNode;
 }
 
-export function QuizChoiceQuestionPreview(
-	props: Readonly<QuizChoiceQuestionPreviewProps>,
-): ReactNode {
+export function QuizChoiceQuestionPreview(props: Readonly<QuizChoiceQuestionPreviewProps>): ReactNode {
 	const { children } = props;
 
 	return children;
@@ -109,9 +103,7 @@ interface QuizSuccessMessagePreviewProps {
 	children: ReactNode;
 }
 
-export function QuizSuccessMessagePreview(
-	props: Readonly<QuizSuccessMessagePreviewProps>,
-): ReactNode {
+export function QuizSuccessMessagePreview(props: Readonly<QuizSuccessMessagePreviewProps>): ReactNode {
 	const { children } = props;
 
 	return children;

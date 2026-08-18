@@ -16,13 +16,13 @@ export function SearchFiltersSidePanel(props: Readonly<SearchFiltersSidePanelPro
 
 	return (
 		<DialogTrigger>
-			<Button className="fixed right-6 bottom-6 z-10 flex size-12 items-center justify-center rounded-full bg-brand-700 text-white shadow-lg md:hidden">
+			<Button className="fixed inset-e-6 inset-be-6 z-10 flex items-center justify-center rounded-full bg-brand-700 text-white shadow-lg block-12 inline-12 md:hidden">
 				<span className="sr-only">{label}</span>
-				<FilterIcon className="size-10 p-2" />
+				<FilterIcon className="p-2 block-10 inline-10" />
 			</Button>
 			<ModalOverlay
 				className={cn(
-					"fixed top-0 left-0 isolate z-20 h-(--visual-viewport-height) w-full bg-black/25",
+					"fixed inset-s-0 inset-bs-0 isolate z-20 bg-black/25 block-(--visual-viewport-height) inline-full",
 					"entering:animate-in entering:duration-200 entering:ease-out entering:fade-in",
 					"exiting:animate-out exiting:duration-200 exiting:ease-in exiting:fade-out",
 				)}
@@ -30,21 +30,21 @@ export function SearchFiltersSidePanel(props: Readonly<SearchFiltersSidePanelPro
 			>
 				<Modal
 					className={cn(
-						"mr-12 size-full max-h-full max-w-sm bg-white shadow-lg forced-colors:bg-[Canvas]",
+						"me-12 bg-white shadow-lg block-full inline-full max-block-full max-inline-sm forced-colors:bg-[Canvas]",
 						"entering:animate-in entering:duration-200 entering:ease-out entering:slide-in-from-left",
 						"exiting:animate-out exiting:duration-200 exiting:ease-in exiting:slide-out-to-left",
 					)}
 				>
 					<Dialog
 						aria-label={label}
-						className="relative grid h-full max-h-[inherit] content-start gap-y-8 overflow-auto p-8 outline-none"
+						className="relative grid content-start gap-y-8 overflow-auto p-8 outline-none block-full max-block-[inherit]"
 					>
 						<Button
 							className="justify-self-end py-2.5 text-neutral-600 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 							slot="close"
 						>
 							<span className="sr-only">{closeLabel}</span>
-							<XIcon aria-hidden={true} className="size-6" />
+							<XIcon aria-hidden={true} className="block-6 inline-6" />
 						</Button>
 
 						<div className="grid content-start gap-y-8">{children}</div>

@@ -6,10 +6,10 @@ import cn from "clsx/lite";
 import { ChevronRightIcon } from "lucide-react";
 import { type ReactNode, useEffect, useRef } from "react";
 
-import { Link } from "@/components/link";
-import { useLabels } from "@/lib/hooks/use-labels";
-import { useTableOfContentsHighlight } from "@/lib/hooks/use-table-of-contents-highlight";
-import { createHref } from "@/lib/navigation/create-href";
+import { Link } from "#/components/link.tsx";
+import { useLabels } from "#/lib/hooks/use-labels.ts";
+import { useTableOfContentsHighlight } from "#/lib/hooks/use-table-of-contents-highlight.ts";
+import { createHref } from "#/lib/navigation/create-href.ts";
 
 interface TableOfContentsProps {
 	"aria-labelledby"?: string;
@@ -30,7 +30,9 @@ export function TableOfContents(props: Readonly<TableOfContentsProps>): ReactNod
 	const containerRef = useRef<HTMLElement>(null);
 
 	useEffect(() => {
-		if (highlightedHeadingId == null) return;
+		if (highlightedHeadingId == null) {
+			return;
+		}
 
 		const highlightedLink = containerRef.current?.querySelector('[aria-current="location"]');
 
@@ -87,7 +89,7 @@ function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): React
 								{isHighlighted ? (
 									<ChevronRightIcon
 										aria-hidden={true}
-										className="absolute right-full mr-1 h-full w-3.5 shrink-0 transform"
+										className="absolute inset-e-full me-1 shrink-0 transform block-full inline-3.5"
 									/>
 								) : null}
 								{heading.value}

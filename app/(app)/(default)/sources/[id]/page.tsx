@@ -1,20 +1,18 @@
 import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { PageLead } from "@/components/page-lead";
-import { PageTitle } from "@/components/page-title";
-import { ResourcesGrid } from "@/components/resources-grid";
-import { client } from "@/lib/content/client";
-import { createClient } from "@/lib/content/create-client";
+import { PageLead } from "#/components/page-lead.tsx";
+import { PageTitle } from "#/components/page-title.tsx";
+import { ResourcesGrid } from "#/components/resources-grid.tsx";
+import { client } from "#/lib/content/client/index.ts";
+import { createClient } from "#/lib/content/create-client.ts";
 
 interface SourcePageProps extends PageProps<"/sources/[id]"> {}
 
-export async function generateStaticParams(): Promise<
-	Array<Pick<Awaited<SourcePageProps["params"]>, "id">>
-> {
+export async function generateStaticParams(): Promise<Array<Pick<Awaited<SourcePageProps["params"]>, "id">>> {
 	const ids = await client.collections.sources.ids();
 
 	return ids.map((id) => {
@@ -123,7 +121,7 @@ export default async function SourcePage(props: Readonly<SourcePageProps>): Prom
 	);
 
 	return (
-		<div className="mx-auto grid w-full max-w-7xl content-start gap-y-12 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
+		<div className="mx-auto grid content-start gap-y-12 px-4 py-8 inline-full max-inline-7xl xs:px-8 xs:py-16 md:py-24">
 			<div className="grid gap-y-4">
 				<PageTitle>{name}</PageTitle>
 				<PageLead>
@@ -137,9 +135,7 @@ export default async function SourcePage(props: Readonly<SourcePageProps>): Prom
 				</section>
 			) : null}
 			<section className="space-y-5">
-				<h2 className={curricula.length > 0 ? "text-2xl font-bold" : "sr-only"}>
-					{t("resources")}
-				</h2>
+				<h2 className={curricula.length > 0 ? "text-2xl font-bold" : "sr-only"}>{t("resources")}</h2>
 				<ResourcesGrid peopleLabel={t("authors")} resources={items} />
 			</section>
 		</div>

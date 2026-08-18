@@ -5,10 +5,10 @@ import { AlertCircleIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useId, useState } from "react";
 
-import { getChildrenElements } from "@/components/content/get-children-elements";
-import { QuizErrorMessage, QuizSuccessMessage } from "@/components/content/quiz";
-import { QuizForm } from "@/components/content/quiz-form";
-import { useQuizChildren } from "@/components/content/use-quiz-children";
+import { getChildrenElements } from "#/components/content/get-children-elements.ts";
+import { QuizErrorMessage, QuizSuccessMessage } from "#/components/content/quiz.tsx";
+import { QuizForm } from "#/components/content/quiz-form.tsx";
+import { useQuizChildren } from "#/components/content/use-quiz-children.ts";
 
 interface QuizChoiceProps {
 	buttonLabel?: string;
@@ -21,9 +21,9 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 
 	const t = useTranslations("content.QuizControls");
 	const answerMessagePrefixId = useId();
-	const [incorrectAnswerIndices, setIncorrectAnswerIndices] = useState<Set<number>>(() => {
-		return new Set();
-	});
+	const [incorrectAnswerIndices, setIncorrectAnswerIndices] = useState<Set<number>>(() =>
+		new Set()
+	);
 
 	const get = useQuizChildren(children);
 	const questions = get(QuizChoiceQuestion);
@@ -39,14 +39,14 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 			| { variant: "single"; checked: string }
 		);
 
-		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+		// oxlint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		const checks = data.checks ?? [];
 		const checked = new Set(data.variant === "single" ? [data.checked] : data.checked);
 
 		const incorrectAnswerIndices = new Set<number>();
 		checks.forEach((check, index) => {
 			const shouldBeChecked = check === "correct";
-			if (checked.has(String(index)) !== shouldBeChecked) incorrectAnswerIndices.add(index);
+			if (checked.has(String(index)) !== shouldBeChecked) {incorrectAnswerIndices.add(index);}
 		});
 		setIncorrectAnswerIndices(incorrectAnswerIndices);
 
@@ -68,15 +68,15 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 			<header className="text-base">{questions}</header>
 
 			<input name="variant" type="hidden" value={variant} />
-			<ul className="list-none pl-0 accent-brand-700" role="list">
+			<ul className="list-none ps-0 accent-brand-700" role="list">
 				{answers.map((answer, index) => {
 					const answerChildren = getChildrenElements(answer.props.children);
-					const labels = answerChildren.filter((child) => {
-						return child.type === QuizChoiceAnswerLabel;
-					});
-					const errorMessages = answerChildren.filter((child) => {
-						return child.type === QuizChoiceAnswerErrorMessage;
-					});
+					const labels = answerChildren.filter((child) =>
+						child.type === QuizChoiceAnswerLabel
+					);
+					const errorMessages = answerChildren.filter((child) =>
+						child.type === QuizChoiceAnswerErrorMessage
+					);
 					const isIncorrect = incorrectAnswerIndices.has(index);
 					const errorMessageId = `${answerMessagePrefixId}-answer-${String(index)}`;
 					const hasErrorMessage = errorMessages.length > 0;
@@ -95,8 +95,8 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 								<span>{labels}</span>
 							</label>
 							{isIncorrect && hasErrorMessage ? (
-								<div className="ml-7 flex items-start gap-x-2 text-error-600" id={errorMessageId}>
-									<AlertCircleIcon aria-hidden={true} className="mt-1 size-4 shrink-0" />
+								<div className="ms-7 flex items-start gap-x-2 text-error-600" id={errorMessageId}>
+									<AlertCircleIcon aria-hidden={true} className="mbs-1 shrink-0 block-4 inline-4" />
 									<div>{errorMessages}</div>
 								</div>
 							) : null}
@@ -143,9 +143,7 @@ interface QuizChoiceAnswerErrorMessageProps {
 	children: ReactNode;
 }
 
-export function QuizChoiceAnswerErrorMessage(
-	props: Readonly<QuizChoiceAnswerErrorMessageProps>,
-): ReactNode {
+export function QuizChoiceAnswerErrorMessage(props: Readonly<QuizChoiceAnswerErrorMessageProps>): ReactNode {
 	const { children } = props;
 
 	return children;

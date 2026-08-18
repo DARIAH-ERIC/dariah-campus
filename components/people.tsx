@@ -1,9 +1,9 @@
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { Image } from "@/components/image";
-import { Link } from "@/components/link";
-import { createSearchUrl } from "@/lib/navigation/create-search-url";
+import { Image } from "#/components/image.tsx";
+import { Link } from "#/components/link.tsx";
+import { createSearchUrl } from "#/lib/navigation/create-search-url.ts";
 
 const max = 4;
 
@@ -39,7 +39,7 @@ export function People(props: Readonly<PeopleProps>): ReactNode {
 								>
 									<Image
 										alt=""
-										className="size-8 rounded-full border border-neutral-200 object-cover"
+										className="rounded-full border border-neutral-200 object-cover block-8 inline-8"
 										height={32}
 										src={image}
 										width={32}
@@ -55,7 +55,7 @@ export function People(props: Readonly<PeopleProps>): ReactNode {
 						<summary className="cursor-pointer transition hover:text-brand-900">
 							{`and ${String(people.length - max)} more`}
 						</summary>
-						<ul className="pt-2">
+						<ul className="pbs-2">
 							{people.slice(max).map((author) => {
 								const { id, image, name } = author;
 
@@ -67,7 +67,7 @@ export function People(props: Readonly<PeopleProps>): ReactNode {
 										>
 											<Image
 												alt=""
-												className="size-8 rounded-full border border-neutral-200 object-cover"
+												className="rounded-full border border-neutral-200 object-cover block-8 inline-8"
 												height={32}
 												src={image}
 												width={32}

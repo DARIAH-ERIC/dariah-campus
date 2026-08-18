@@ -1,10 +1,10 @@
 import { createSingleton } from "@acdh-oeaw/keystatic-lib";
 import { fields, singleton } from "@keystatic/core";
 
-import { socialMediaKinds } from "@/lib/content/options";
+import { socialMediaKinds } from "#/lib/content/options.ts";
 
-export const createMetadata = createSingleton("/metadata/", (paths, _locale) => {
-	return singleton({
+export const createMetadata = createSingleton("/metadata/", (paths, _locale) => 
+	singleton({
 		label: "Metadata",
 		path: paths.contentPath,
 		format: { data: "json" },
@@ -66,5 +66,5 @@ export const createMetadata = createSingleton("/metadata/", (paths, _locale) => 
 				},
 			),
 		},
-	});
-});
+	})
+);

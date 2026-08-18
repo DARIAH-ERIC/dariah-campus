@@ -2,32 +2,38 @@ import type { NextConfig as Config } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 /**
- * File extensions and import attributes are necessary for node.js native typescript resolution
- * with `--experimental-next-config-strip-types` next.js cli option.
+ * File extensions and import attributes are necessary for node.js native typescript resolution with
+ * `--experimental-next-config-strip-types` next.js cli option.
  */
-import { env } from "./config/env.config.ts";
-import _redirects from "./public/redirects.json" with { type: "json" };
-import _redirectsIds from "./public/redirects-ids.json" with { type: "json" };
+import _redirectsIds from "#/public/redirects-ids.json" with { type: "json" };
+import _redirects from "#/public/redirects.json" with { type: "json" };
+
+const reactAriaPackages = [
+	"@react-stately",
+	"@react-aria",
+	"@react-spectrum",
+	"@adobe/react-spectrum",
+	"react-stately",
+	"react-aria",
+	"react-aria-components",
+];
+
+const reactAriaLocales = `**/{${reactAriaPackages.join(",")}}/**/??-??.{js,cjs,mjs,json}`;
 
 const config: Config = {
 	allowedDevOrigins: ["127.0.0.1"],
-	/** Compression should be handled by the `nginx` reverse proxy. */
-	compress: false,
+	// cacheComponents: true,
 	experimental: {
 		globalNotFound: true,
-	},
-	headers() {
-		const headers: Awaited<ReturnType<NonNullable<Config["headers"]>>> = [
-			/** @see https://nextjs.org/docs/app/guides/self-hosting#streaming-and-suspense */
-			{ source: "/:path*{/}?", headers: [{ key: "x-accel-buffering", value: "no" }] },
-		];
-
-		return Promise.resolve(headers);
+		turbopackRustReactCompiler: true,
 	},
 	logging: {
 		browserToTerminal: true,
+		fetches: {
+			hmrRefreshes: true,
+			fullUrl: true,
+		},
 	},
-	output: env.BUILD_MODE,
 	outputFileTracingIncludes: {
 		"**/*": ["./public/assets/fonts/*.ttf"],
 	},
@@ -45,6 +51,7 @@ const config: Config = {
 				permanent: false,
 			},
 			..._redirects.redirects,
+			// oxlint-disable-next-line oxc/no-map-spread
 			..._redirects.redirects.map((redirect) => {
 				return {
 					...redirect,
@@ -68,23 +75,18 @@ const config: Config = {
 	},
 	turbopack: {
 		rules: {
-			/** @see {@link https://github.com/vercel/next.js/discussions/77721#discussioncomment-14576268} */
-			"*": {
-				condition: {
-					all: [
-						"foreign",
-						"browser",
-						{
-							path: /(@react-stately|@react-aria|@react-spectrum|react-aria-components)\/.*\/[a-z]{2}-[A-Z]{2}/,
-						},
-					],
-				},
-				loaders: ["null-loader"],
+			[reactAriaLocales]: {
+				condition: { all: ["foreign", "browser"] },
+				loaders: ["./configs/turbopack/empty-locale-module-loader.cjs"],
 				as: "*.js",
+			},
+			"*.css": {
+				loaders: ["@tailwindcss/turbopack"],
+				as: "*.css",
 			},
 		},
 	},
-	typedRoutes: true,
+	typedRoutes: false,
 	typescript: {
 		ignoreBuildErrors: true,
 	},
@@ -100,6 +102,4 @@ const plugins: Array<(config: Config) => Config> = [
 	}),
 ];
 
-export default plugins.reduce((config, plugin) => {
-	return plugin(config);
-}, config);
+export default plugins.reduce((config, plugin) => plugin(config), config);

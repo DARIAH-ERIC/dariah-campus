@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { Link } from "@/components/link";
+import { Link } from "#/components/link.tsx";
 
 interface TranslationsProps {
 	label: string;
