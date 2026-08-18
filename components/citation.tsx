@@ -2,8 +2,8 @@ import { isNonEmptyArray } from "@acdh-oeaw/lib";
 import { useFormatter, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import { CitationCopyButton } from "@/components/citation-copy-button";
-import type { ContentType } from "@/lib/content/options";
+import { CitationCopyButton } from "#/components/citation-copy-button.tsx";
+import type { ContentType } from "#/lib/content/options.ts";
 
 interface CitationProps {
 	authors: Array<{ id: string; name: string }>;
@@ -34,21 +34,11 @@ export function Citation(props: Readonly<CitationProps>): ReactNode {
 	const format = useFormatter();
 
 	const citationWithoutUrl = [
-		format.list(
-			[...authors, ...(contributors ?? [])].map((person) => {
-				return person.name;
-			}),
-		),
+		format.list([...authors, ...(contributors ?? [])].map((person) => person.name)),
 		` (${String(publicationDate.getFullYear())}). `,
 		title.endsWith("!") || title.endsWith("?") ? `${title} ` : `${title}. `,
 		version ? `Version ${version}. ` : "",
-		isNonEmptyArray(editors)
-			? `Edited by ${format.list(
-					editors.map((person) => {
-						return person.name;
-					}),
-				)}. `
-			: "",
+		isNonEmptyArray(editors) ? `Edited by ${format.list(editors.map((person) => person.name))}. ` : "",
 		publisher,
 		` [${t(`content-types.${contentType}`)}]. `,
 	].join("");
@@ -60,10 +50,7 @@ export function Citation(props: Readonly<CitationProps>): ReactNode {
 			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("cite-as")}</h2>
 			<p>
 				{citationWithoutUrl}{" "}
-				<a
-					className="wrap-anywhere underline decoration-dotted underline-offset-2 hover:decoration-solid"
-					href={url}
-				>
+				<a className="wrap-anywhere underline decoration-dotted underline-offset-2 hover:decoration-solid" href={url}>
 					{url}
 				</a>
 			</p>

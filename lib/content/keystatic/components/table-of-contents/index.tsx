@@ -1,11 +1,9 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { block } from "@keystatic/core/content-components";
 import { ListIcon } from "lucide-react";
 
-import { TableOfContentsPreview } from "@/lib/content/keystatic/components/table-of-contents/preview";
+import { TableOfContentsPreview } from "#/lib/content/keystatic/components/table-of-contents/preview.tsx";
 
 export const createTableOfContents = createComponent((_paths, _locale) => {
 	return {

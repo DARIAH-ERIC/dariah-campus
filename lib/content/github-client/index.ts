@@ -4,19 +4,19 @@ import { assert, createUrl } from "@acdh-oeaw/lib";
 import { createGitHubReader } from "@keystatic/core/reader/github";
 import { cache } from "react";
 
-import { client } from "@/lib/content/client";
-import type { Curriculum } from "@/lib/content/client/curricula";
-import type { Documentation } from "@/lib/content/client/documentation";
-import type { IndexPage } from "@/lib/content/client/index-page";
-import type { Person } from "@/lib/content/client/people";
-import type { EventResource } from "@/lib/content/client/resources/events";
-import type { ExternalResource } from "@/lib/content/client/resources/external";
-import type { HostedResource } from "@/lib/content/client/resources/hosted";
-import type { PathfinderResource } from "@/lib/content/client/resources/pathfinders";
-import type { Source } from "@/lib/content/client/sources";
-import type { Tag } from "@/lib/content/client/tags";
-import { config } from "@/lib/content/keystatic/config";
-import { evaluate, type EvaluateOptions } from "@/lib/content/mdx/evaluate";
+import { client } from "#/lib/content/client/index.ts";
+import type { Curriculum } from "#/lib/content/client/curricula.ts";
+import type { Documentation } from "#/lib/content/client/documentation.ts";
+import type { IndexPage } from "#/lib/content/client/index-page.ts";
+import type { Person } from "#/lib/content/client/people.ts";
+import type { EventResource } from "#/lib/content/client/resources/events.ts";
+import type { ExternalResource } from "#/lib/content/client/resources/external.ts";
+import type { HostedResource } from "#/lib/content/client/resources/hosted.ts";
+import type { PathfinderResource } from "#/lib/content/client/resources/pathfinders.ts";
+import type { Source } from "#/lib/content/client/sources.ts";
+import type { Tag } from "#/lib/content/client/tags.ts";
+import { config } from "#/lib/content/keystatic/config.ts";
+import { evaluate } from "#/lib/content/mdx/evaluate.ts";
 import {
 	createCustomHeadingIdsPlugin,
 	createHeadingIdsPlugin,
@@ -26,15 +26,15 @@ import {
 	createSyntaxHighlighterPlugin,
 	createTableOfContentsPlugin,
 	createUnwrappedMdxFlowContentPlugin,
-} from "@/lib/content/mdx/rehype-plugins";
+} from "#/lib/content/mdx/rehype-plugins.ts";
 import {
 	createFootnotesPlugin,
 	createGitHubMarkdownPlugin,
 	createTypographicQuotesPlugin,
-} from "@/lib/content/mdx/remark-plugins";
-import { createRemarkRehypeOptions } from "@/lib/content/mdx/remark-rehype-options";
-import type { Client } from "@/lib/content/types";
-import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
+} from "#/lib/content/mdx/remark-plugins.ts";
+import { createRemarkRehypeOptions } from "#/lib/content/mdx/remark-rehype-options.ts";
+import type { Client } from "#/lib/content/types.ts";
+import { defaultLocale, getIntlLanguage } from "#/lib/i18n/locales.ts";
 
 const locale = defaultLocale;
 
@@ -56,7 +56,7 @@ const createEvaluateOptions = (baseUrl: string) => {
 			createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
 			createRemoteImageUrlsPlugin(baseUrl, ["Figure", "QuizImageHotspots", "VideoCard"]),
 		],
-	} satisfies EvaluateOptions;
+	}
 };
 
 export const createGitHubClient = cache(function createGitHubClient({
@@ -90,14 +90,17 @@ export const createGitHubClient = cache(function createGitHubClient({
 	const evaluateOptions = createEvaluateOptions(String(createUrl({ baseUrl, pathname: basePath })));
 
 	const indexPage = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(): Promise<IndexPage> {
 			const data = await reader.singletons["en:index-page"].readOrThrow({
@@ -170,14 +173,17 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const curricula = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<Curriculum | null> {
 			const data = await reader.collections["en:curricula"].read(id, { resolveLinkedFiles: true });
@@ -190,12 +196,8 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const href = `/curricula/${id}`;
 			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
-			const { default: supplementary } = await evaluate(
-				metadata["supplementary-information"],
-				evaluateOptions,
-			);
-			const featuredImage =
-				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
+			const { default: supplementary } = await evaluate(metadata["supplementary-information"], evaluateOptions);
+			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
 			const related = new Set<string>();
@@ -217,14 +219,17 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const documentation = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<Documentation | null> {
 			const data = await reader.collections["en:documentation"].read(id, {
@@ -251,14 +256,17 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const people = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<Person | null> {
 			const data = await reader.collections["en:people"].read(id, {
@@ -286,14 +294,17 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resourcesEvents = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<EventResource | null> {
 			const data = await reader.collections["en:resources-events"].read(id, {
@@ -336,8 +347,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 				organisations.push({ ...organisation, logo });
 			}
 
-			const featuredImage =
-				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
+			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
 			const curricula: Array<string> = [];
@@ -365,14 +375,17 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resourcesExternal = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<ExternalResource | null> {
 			const data = await reader.collections["en:resources-external"].read(id, {
@@ -387,8 +400,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const href = `/resources/external/${id}`;
 			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
-			const featuredImage =
-				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
+			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
 			const curricula: Array<string> = [];
@@ -413,14 +425,17 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resourcesHosted = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<HostedResource | null> {
 			const data = await reader.collections["en:resources-hosted"].read(id, {
@@ -435,8 +450,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const href = `/resources/hosted/${id}`;
 			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
-			const featuredImage =
-				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
+			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
 			const curricula: Array<string> = [];
@@ -461,14 +475,17 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resourcesPathfinders = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<PathfinderResource | null> {
 			const data = await reader.collections["en:resources-pathfinders"].read(id, {
@@ -483,8 +500,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const href = `/resources/pathfinders/${id}`;
 			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
-			const featuredImage =
-				metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
+			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
 			const curricula: Array<string> = [];
@@ -510,29 +526,36 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resources = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async get(_id: string) {
-			return Promise.resolve(null);
+			return null;
 		},
 	};
 
 	const sources = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<Source | null> {
 			const data = await reader.collections["en:sources"].read(id, { resolveLinkedFiles: true });
@@ -567,14 +590,17 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const tags = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
-			return Promise.resolve([]);
+			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
-			return Promise.resolve(new Map());
+			return new Map();
 		},
 		async get(id: string): Promise<Tag | null> {
 			const data = await reader.collections["en:tags"].read(id, {

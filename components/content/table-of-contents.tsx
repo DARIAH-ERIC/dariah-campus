@@ -15,17 +15,14 @@ export function TableOfContents(props: Readonly<TableOfContentsProps>): ReactNod
 	const t = useTranslations("mdx");
 	const id = useId();
 
-	if (!isNonEmptyArray(tableOfContents)) return null;
+	if (!isNonEmptyArray(tableOfContents)) {return null;}
 
 	const hasTitle = title != null;
 
 	return (
-		<nav
-			aria-label={hasTitle ? undefined : t("table-of-contents")}
-			aria-labelledby={hasTitle ? id : undefined}
-		>
+		<nav aria-label={hasTitle ? undefined : t("table-of-contents")} aria-labelledby={hasTitle ? id : undefined}>
 			{hasTitle ? <h2 id={id}>{title}</h2> : null}
-			<div className="not-prose mb-12">
+			<div className="not-prose mbe-12">
 				<TableOfContentsLevel headings={tableOfContents} />
 			</div>
 		</nav>
@@ -41,12 +38,9 @@ function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): React
 	const { depth = 0, headings } = props;
 
 	return (
-		<ol
-			className="grid gap-y-1.5 text-neutral-600"
-			style={{ marginLeft: `${String(depth * 8)}px` }}
-		>
-			{headings.map((heading) => {
-				return (
+		<ol className="grid gap-y-1.5 text-neutral-600" style={{ marginLeft: `${String(depth * 8)}px` }}>
+			{headings.map((heading) => 
+				(
 					<li key={heading.id} className="grid justify-start gap-y-1.5">
 						{heading.id != null ? (
 							<a
@@ -62,8 +56,8 @@ function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): React
 							<TableOfContentsLevel depth={depth + 1} headings={heading.children} />
 						) : null}
 					</li>
-				);
-			})}
+				)
+			)}
 		</ol>
 	);
 }

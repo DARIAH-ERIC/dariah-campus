@@ -7,24 +7,24 @@ import {
 import { readonly } from "@acdh-oeaw/keystatic-lib/fields/readonly";
 import { collection, fields } from "@keystatic/core";
 
-import { createCallout } from "@/lib/content/keystatic/components/callout";
-// import { createDiagram } from "@/lib/content/keystatic/components/diagram";
-import { createDisclosure } from "@/lib/content/keystatic/components/disclosure";
-import { createEmbed } from "@/lib/content/keystatic/components/embed";
-import { createFigure } from "@/lib/content/keystatic/components/figure";
-import { createFootnote } from "@/lib/content/keystatic/components/footnote";
-import { createGrid } from "@/lib/content/keystatic/components/grid";
-import { createHeadingId } from "@/lib/content/keystatic/components/heading-id";
-import { createLink } from "@/lib/content/keystatic/components/link";
-import { createLinkButton } from "@/lib/content/keystatic/components/link-button";
-import { createTabs } from "@/lib/content/keystatic/components/tabs";
-import { createVideo } from "@/lib/content/keystatic/components/video";
-import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
-import * as validation from "@/lib/content/keystatic/validation";
-import { contentLanguages, contentLicenses, socialMediaKinds } from "@/lib/content/options";
+import { createCallout } from "#/lib/content/keystatic/components/callout/index.tsx";
+// import { createDiagram } from "#/lib/content/keystatic/components/diagram/index.tsx";
+import { createDisclosure } from "#/lib/content/keystatic/components/disclosure/index.tsx";
+import { createEmbed } from "#/lib/content/keystatic/components/embed/index.tsx";
+import { createFigure } from "#/lib/content/keystatic/components/figure/index.tsx";
+import { createFootnote } from "#/lib/content/keystatic/components/footnote/index.tsx";
+import { createGrid } from "#/lib/content/keystatic/components/grid/index.tsx";
+import { createHeadingId } from "#/lib/content/keystatic/components/heading-id/index.tsx";
+import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
+import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
+import { createTabs } from "#/lib/content/keystatic/components/tabs/index.tsx";
+import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx";
+import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
+import * as validation from "#/lib/content/keystatic/validation.ts";
+import { contentLanguages, contentLicenses, socialMediaKinds } from "#/lib/content/options.ts";
 
-export const createResourcesEvents = createCollection("/resources/events/", (paths, locale) => {
-	return collection({
+export const createResourcesEvents = createCollection("/resources/events/", (paths, locale) => 
+	collection({
 		label: "Events",
 		path: paths.contentPath,
 		format: { contentField: "content" },
@@ -258,8 +258,8 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 				options: {
 					...createContentFieldOptions(paths),
 					/**
-					 * Prefer `<Link>` component over regular markdown links.
-					 * Note that this also disables *parsing* regular markdown links.
+					 * Prefer `<Link>` component over regular markdown links. Note that this also disables _parsing_ regular
+					 * markdown links.
 					 */
 					// link: false,
 				},
@@ -344,8 +344,8 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 							options: {
 								...createContentFieldOptions(paths),
 								/**
-								 * Prefer `<Link>` component over regular markdown links.
-								 * Note that this also disables *parsing* regular markdown links.
+								 * Prefer `<Link>` component over regular markdown links. Note that this also disables _parsing_ regular
+								 * markdown links.
 								 */
 								// link: false,
 							},
@@ -430,8 +430,8 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 										options: {
 											...createContentFieldOptions(paths),
 											/**
-											 * Prefer `<Link>` component over regular markdown links.
-											 * Note that this also disables *parsing* regular markdown links.
+											 * Prefer `<Link>` component over regular markdown links. Note that this also disables _parsing_
+											 * regular markdown links.
 											 */
 											// link: false,
 										},
@@ -504,5 +504,5 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 			}),
 			draft: fields.ignored(),
 		},
-	});
-});
+	})
+);

@@ -2,7 +2,7 @@
 
 import { type ReactNode, useEffect, useId, useState } from "react";
 
-import { useDiagramContext } from "@/components/content/diagram";
+import { useDiagramContext } from "#/components/content/diagram.tsx";
 
 interface MermaidDiagramProps {
 	diagram: string;
@@ -24,7 +24,7 @@ export function MermaidDiagram(props: Readonly<MermaidDiagramProps>): ReactNode 
 			const { default: mermaid } = await import("mermaid");
 
 			const result = await mermaid.render(id, diagram);
-			if (isCanceled) return;
+			if (isCanceled) {return;}
 			setSvg(result.svg);
 
 			const blob = new Blob([result.svg], { type: "image/svg+xml" });
@@ -45,7 +45,6 @@ export function MermaidDiagram(props: Readonly<MermaidDiagramProps>): ReactNode 
 
 	return (
 		<div>
-			{/* eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml */}
 			<div dangerouslySetInnerHTML={{ __html: svg }} data-mermaid-diagram={true} />
 			{link && href != null ? (
 				<a

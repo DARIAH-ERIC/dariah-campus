@@ -16,8 +16,8 @@ import {
 import withHeadingIds from "rehype-slug";
 import type { Pluggable } from "unified";
 
-import { withMermaidDiagrams } from "@/lib/content/mdx/with-mermaid-diagrams";
-import { withRemoteImageUrls } from "@/lib/content/mdx/with-remote-image-urls";
+import { withMermaidDiagrams } from "#/lib/content/mdx/with-mermaid-diagrams.ts";
+import { withRemoteImageUrls } from "#/lib/content/mdx/with-remote-image-urls.ts";
 
 const syntaxHighlighterConfig: RehypeShikiOptions = {
 	defaultColor: "light",

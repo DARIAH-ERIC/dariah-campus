@@ -2,8 +2,8 @@ import { createCollection } from "@acdh-oeaw/content-lib";
 import type { MDXContent } from "mdx/types";
 import { VFile } from "vfile";
 
-import { reader } from "@/lib/content/keystatic/reader";
-import { compile, type CompileOptions } from "@/lib/content/mdx/compile";
+import { reader } from "#/lib/content/keystatic/reader.ts";
+import { type CompileOptions, compile } from "#/lib/content/mdx/compile.ts";
 import {
 	createCustomHeadingIdsPlugin,
 	createHeadingIdsPlugin,
@@ -13,15 +13,15 @@ import {
 	createSyntaxHighlighterPlugin,
 	createTableOfContentsPlugin,
 	createUnwrappedMdxFlowContentPlugin,
-} from "@/lib/content/mdx/rehype-plugins";
+} from "#/lib/content/mdx/rehype-plugins.ts";
 import {
 	createFootnotesPlugin,
 	createGitHubMarkdownPlugin,
 	createTypographicQuotesPlugin,
-} from "@/lib/content/mdx/remark-plugins";
-import { createRemarkRehypeOptions } from "@/lib/content/mdx/remark-rehype-options";
-import { getImageDimensions } from "@/lib/content/utils/get-image-dimensions";
-import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
+} from "#/lib/content/mdx/remark-plugins.ts";
+import { createRemarkRehypeOptions } from "#/lib/content/mdx/remark-rehype-options.ts";
+import { getImageDimensions } from "#/lib/content/utils/get-image-dimensions.ts";
+import { defaultLocale, getIntlLanguage } from "#/lib/i18n/locales.ts";
 
 const locale = defaultLocale;
 
@@ -61,9 +61,7 @@ export const resourcesPathfinders = createCollection({
 		const module = context.createJavaScriptImport<MDXContent>(String(output));
 		const tableOfContents = output.data.tableOfContents;
 		const featuredImage =
-			metadata["featured-image"] != null
-				? await getImageDimensions(metadata["featured-image"])
-				: null;
+			metadata["featured-image"] != null ? await getImageDimensions(metadata["featured-image"]) : null;
 
 		return {
 			id: item.id,

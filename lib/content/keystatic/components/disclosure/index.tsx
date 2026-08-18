@@ -1,11 +1,9 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { wrapper } from "@keystatic/core/content-components";
 import { ChevronDownSquareIcon } from "lucide-react";
 
-import { DisclosurePreview } from "@/lib/content/keystatic/components/disclosure/preview";
+import { DisclosurePreview } from "#/lib/content/keystatic/components/disclosure/preview.tsx";
 
 export const createDisclosure = createComponent((_paths, _locale) => {
 	return {

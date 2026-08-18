@@ -3,9 +3,9 @@ import type { SearchResponse } from "typesense/lib/Typesense/Documents";
 import SearchClient from "typesense/lib/Typesense/SearchClient";
 import type { MultiSearchRequestSchema } from "typesense/lib/Typesense/Types";
 
-import { env } from "@/config/env.config";
-import { limit, maxFacetValues } from "@/config/search.config";
-import type { ContentType } from "@/lib/content/options";
+import { env } from "#/configs/env.config";
+import { cacheSearchResultsForSeconds, limit, maxFacetValues } from "#/configs/search.config";
+import type { ContentType } from "#/lib/content/options";
 
 export const facetAttributes = ["locale", "tags", "content-type", "people", "sources"] as const;
 
@@ -60,13 +60,16 @@ export const emptySearchData: SearchData = {
 let searchClient: SearchClient | undefined;
 
 export function createSearchClient(): SearchClient {
-	if (searchClient != null) return searchClient;
+	if (searchClient != null) {
+		return searchClient;
+	}
 
 	const apiKey = env.NEXT_PUBLIC_TYPESENSE_SEARCH_API_KEY;
 	assert(apiKey, "Missing NEXT_PUBLIC_TYPESENSE_SEARCH_API_KEY environment variable.");
 
 	searchClient = new SearchClient({
 		apiKey,
+		cacheSearchResultsForSeconds,
 		connectionTimeoutSeconds: 3,
 		nodes: [
 			{
@@ -83,20 +86,14 @@ export function createSearchClient(): SearchClient {
 export function createSearchState(searchParams: SearchParameterRecord): SearchState {
 	const query = getValues(searchParams.q).at(0) ?? "";
 	const filters = Object.fromEntries(
-		facetAttributes.map((attribute) => {
-			return [attribute, normalizeValues(getValues(searchParams[attribute]))];
-		}),
+		facetAttributes.map((attribute) => [attribute, normalizeValues(getValues(searchParams[attribute]))]),
 	) as SearchState["filters"];
 
 	return { filters, query };
 }
 
 export function createSearchStateFromUrl(searchParams: URLSearchParams): SearchState {
-	const parameters = Object.fromEntries(
-		["q", ...facetAttributes].map((name) => {
-			return [name, searchParams.getAll(name)];
-		}),
-	);
+	const parameters = Object.fromEntries(["q", ...facetAttributes].map((name) => [name, searchParams.getAll(name)]));
 
 	return createSearchState(parameters);
 }
@@ -105,9 +102,13 @@ export function createSearchParameters(state: SearchState): URLSearchParams {
 	const searchParams = new URLSearchParams();
 	const query = state.query.trim();
 
-	if (query !== "") searchParams.set("q", query);
+	if (query !== "") {
+		searchParams.set("q", query);
+	}
 	for (const attribute of facetAttributes) {
-		for (const value of state.filters[attribute]) searchParams.append(attribute, value);
+		for (const value of state.filters[attribute]) {
+			searchParams.append(attribute, value);
+		}
 	}
 
 	return searchParams;
@@ -143,17 +144,13 @@ export async function search(state: SearchState, abortSignal?: AbortSignal): Pro
 		{},
 		{ abortSignal },
 	);
-	const [resultsResponse, ...facetResponses] = response.results as Array<
-		SearchResponse<SearchDocument>
-	>;
+	const [resultsResponse, ...facetResponses] = response.results as Array<SearchResponse<SearchDocument>>;
 	assert(resultsResponse, "Typesense returned no search result.");
 
 	const facets = Object.fromEntries(
 		facetAttributes.map((attribute, index) => {
 			const response = facetResponses[index];
-			const facet = response?.facet_counts?.find((item) => {
-				return item.field_name === attribute;
-			});
+			const facet = response?.facet_counts?.find((item) => item.field_name === attribute);
 			const values =
 				facet?.counts.map((item) => {
 					return { count: item.count, value: item.value };
@@ -166,24 +163,18 @@ export async function search(state: SearchState, abortSignal?: AbortSignal): Pro
 	return {
 		facets,
 		found: resultsResponse.found,
-		hits:
-			resultsResponse.hits?.map((hit) => {
-				return hit.document;
-			}) ?? [],
+		hits: resultsResponse.hits?.map((hit) => hit.document) ?? [],
 	};
 }
 
-function createFilter(
-	filters: SearchState["filters"],
-	omitAttribute?: FacetAttribute,
-): string | undefined {
+function createFilter(filters: SearchState["filters"], omitAttribute?: FacetAttribute): string | undefined {
 	const clauses = facetAttributes.flatMap((attribute) => {
 		const values = filters[attribute];
-		if (attribute === omitAttribute || values.length === 0) return [];
+		if (attribute === omitAttribute || values.length === 0) {
+			return [];
+		}
 
-		const escapedValues = values.map((value) => {
-			return `\`${escapeFilterValue(value)}\``;
-		});
+		const escapedValues = values.map((value) => `\`${escapeFilterValue(value)}\``);
 
 		/** Values within a facet are ORed; separate facet groups are ANDed. */
 		return `${attribute}:=[${escapedValues.join(",")}]`;
@@ -201,13 +192,5 @@ function getValues(value: Array<string> | string | undefined): Array<string> {
 }
 
 function normalizeValues(values: Array<string>): Array<string> {
-	return Array.from(
-		new Set(
-			values
-				.map((value) => {
-					return value.trim();
-				})
-				.filter(Boolean),
-		),
-	);
+	return Array.from(new Set(values.map((value) => value.trim()).filter(Boolean)));
 }

@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 
-import { SearchFacets } from "@/app/(app)/(default)/search/_components/search-facets";
+import { SearchFacets } from "#/app/(app)/(default)/search/_components/search-facets.tsx";
 
 interface SearchFiltersProps {
 	contentTypesById: Map<string, { label: string }>;
@@ -56,9 +56,7 @@ export function SearchFilters(props: Readonly<SearchFiltersProps>): ReactNode {
 					attribute="locale"
 					filterLabel={localeFilterLabel}
 					filterPlaceholder={filterPlaceholder}
-					getLabel={(id: string) => {
-						return localesById.get(id)?.label ?? "Unknown language";
-					}}
+					getLabel={(id: string) => localesById.get(id)?.label ?? "Unknown language"}
 					label={localeLabel}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}
@@ -71,9 +69,7 @@ export function SearchFilters(props: Readonly<SearchFiltersProps>): ReactNode {
 					attribute="tags"
 					filterLabel={tagsFilterLabel}
 					filterPlaceholder={filterPlaceholder}
-					getLabel={(id: string) => {
-						return tagsById.get(id)?.name ?? "Unknown tag";
-					}}
+					getLabel={(id: string) => tagsById.get(id)?.name ?? "Unknown tag"}
 					label={tagsLabel}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}
@@ -86,9 +82,7 @@ export function SearchFilters(props: Readonly<SearchFiltersProps>): ReactNode {
 					attribute="content-type"
 					filterLabel={contentTypesFilterLabel}
 					filterPlaceholder={filterPlaceholder}
-					getLabel={(id: string) => {
-						return contentTypesById.get(id)?.label ?? "Unknown content type";
-					}}
+					getLabel={(id: string) => contentTypesById.get(id)?.label ?? "Unknown content type"}
 					label={contentTypesLabel}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}
@@ -101,9 +95,7 @@ export function SearchFilters(props: Readonly<SearchFiltersProps>): ReactNode {
 					attribute="people"
 					filterLabel={peopleFilterLabel}
 					filterPlaceholder={filterPlaceholder}
-					getLabel={(id: string) => {
-						return peopleById.get(id)?.name ?? "Unknown person";
-					}}
+					getLabel={(id: string) => peopleById.get(id)?.name ?? "Unknown person"}
 					label={peopleLabel}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}
@@ -116,9 +108,7 @@ export function SearchFilters(props: Readonly<SearchFiltersProps>): ReactNode {
 					attribute="sources"
 					filterLabel={sourcesFilterLabel}
 					filterPlaceholder={filterPlaceholder}
-					getLabel={(id: string) => {
-						return sourcesById.get(id)?.name ?? "Unknown source";
-					}}
+					getLabel={(id: string) => sourcesById.get(id)?.name ?? "Unknown source"}
 					label={sourcesLabel}
 					nothingFoundLabel={nothingFoundLabel}
 					showLessLabel={showLessLabel}

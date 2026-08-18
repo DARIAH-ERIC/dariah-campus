@@ -3,10 +3,10 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { PageTitle } from "@/components/page-title";
-import { getMetadata } from "@/lib/i18n/metadata";
+import { PageTitle } from "#/components/page-title.tsx";
+import { getMetadata } from "#/lib/i18n/metadata.ts";
 
-export { viewport } from "@/app/_lib/viewport.config";
+export { viewport } from "#/app/_lib/viewport.config.ts";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("NotFoundPage");
@@ -31,7 +31,7 @@ export default function NotFoundPage(): ReactNode {
 	const t = useTranslations("NotFoundPage");
 
 	return (
-		<div className="grid min-h-[calc(100dvh-100px)] place-content-center place-items-center">
+		<div className="grid place-content-center place-items-center min-block-[calc(100dvh-100px)]">
 			<PageTitle>{t("title")}</PageTitle>
 		</div>
 	);

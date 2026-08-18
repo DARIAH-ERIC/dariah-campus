@@ -1,12 +1,10 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createAssetOptions, createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { repeating, wrapper } from "@keystatic/core/content-components";
 import { MessageCircleQuestionIcon } from "lucide-react";
 
-import { createQuizDragTheWords } from "@/lib/content/keystatic/components/drag-the-words";
-import { createQuizFillInTheBlank } from "@/lib/content/keystatic/components/fill-in-the-blank";
+import { createQuizDragTheWords } from "#/lib/content/keystatic/components/drag-the-words/index.tsx";
+import { createQuizFillInTheBlank } from "#/lib/content/keystatic/components/fill-in-the-blank/index.tsx";
 import {
 	QuizChoiceAnswerErrorMessagePreview,
 	QuizChoiceAnswerLabelPreview,
@@ -18,7 +16,7 @@ import {
 	QuizImageHotspotsPreview,
 	QuizPreview,
 	QuizSuccessMessagePreview,
-} from "@/lib/content/keystatic/components/quiz/preview";
+} from "#/lib/content/keystatic/components/quiz/preview.tsx";
 
 export const createQuiz = createComponent((paths, locale) => {
 	return {
@@ -41,12 +39,7 @@ export const createQuiz = createComponent((paths, locale) => {
 			description: "A quiz with one or more correct answers.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
-			children: [
-				"QuizChoiceQuestion",
-				"QuizChoiceAnswer",
-				"QuizSuccessMessage",
-				"QuizErrorMessage",
-			],
+			children: ["QuizChoiceQuestion", "QuizChoiceAnswer", "QuizSuccessMessage", "QuizErrorMessage"],
 			validation: { children: { min: 1 } },
 			schema: {
 				variant: fields.select({
@@ -187,9 +180,7 @@ export const createQuiz = createComponent((paths, locale) => {
 			ContentView(props) {
 				const { children } = props;
 
-				return (
-					<QuizChoiceAnswerErrorMessagePreview>{children}</QuizChoiceAnswerErrorMessagePreview>
-				);
+				return <QuizChoiceAnswerErrorMessagePreview>{children}</QuizChoiceAnswerErrorMessagePreview>;
 			},
 		}),
 		QuizChoiceQuestion: wrapper({

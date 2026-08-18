@@ -1,12 +1,12 @@
 import { groupByToMap, keyByToMap } from "@acdh-oeaw/lib";
-import curricula from "@content/curricula";
-import events from "@content/resources-events";
-import external from "@content/resources-external";
-import hosted from "@content/resources-hosted";
-import pathfinders from "@content/resources-pathfinders";
-import collection from "@content/sources";
+import curricula from "#content/curricula";
+import events from "#content/resources-events";
+import external from "#content/resources-external";
+import hosted from "#content/resources-hosted";
+import pathfinders from "#content/resources-pathfinders";
+import collection from "#content/sources";
 
-import type { CollectionClient } from "@/lib/content/types";
+import type { CollectionClient } from "#/lib/content/types.ts";
 
 const resourcesBySourceId = groupByToMap(
 	[
@@ -15,32 +15,33 @@ const resourcesBySourceId = groupByToMap(
 		...Array.from(hosted.values()),
 		...Array.from(pathfinders.values()),
 	],
-	(entry) => {
-		return entry.document.metadata.sources;
-	},
+	(entry) =>
+		entry.document.metadata.sources
+	,
 );
 
-const curriculaBySourceId = groupByToMap(Array.from(curricula.values()), (entry) => {
-	return entry.document.metadata.sources;
-});
+const curriculaBySourceId = groupByToMap(Array.from(curricula.values()), (entry) =>
+	entry.document.metadata.sources
+);
 
 //
 
 const ids = Array.from(collection.keys());
 
 const all = Array.from(collection.values())
+	// oxlint-disable-next-line oxc/no-map-spread
 	.map((entry) => {
 		const href = `/sources/${entry.document.id}`;
 
 		const resources =
-			resourcesBySourceId.get(entry.document.id)?.map((entry) => {
-				return entry.document.id;
-			}) ?? [];
+			resourcesBySourceId.get(entry.document.id)?.map((entry) =>
+				entry.document.id
+			) ?? [];
 
 		const curricula =
-			curriculaBySourceId.get(entry.document.id)?.map((entry) => {
-				return entry.document.id;
-			}) ?? [];
+			curriculaBySourceId.get(entry.document.id)?.map((entry) =>
+				entry.document.id
+			) ?? [];
 
 		return {
 			...entry.document,
@@ -49,13 +50,14 @@ const all = Array.from(collection.values())
 			resources,
 		};
 	})
-	.sort((a, z) => {
-		return a.metadata.name.localeCompare(z.metadata.name);
-	});
+	// oxlint-disable-next-line unicorn/no-array-sort
+	.sort((a, z) =>
+		a.metadata.name.localeCompare(z.metadata.name)
+	);
 
-const byId = keyByToMap(all, (item) => {
-	return item.id;
-});
+const byId = keyByToMap(all, (item) =>
+	item.id
+);
 
 export type Source = (typeof all)[number];
 

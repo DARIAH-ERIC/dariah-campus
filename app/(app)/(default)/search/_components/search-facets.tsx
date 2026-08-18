@@ -6,9 +6,9 @@ import { type ReactNode, useId, useMemo, useState } from "react";
 import { useCollator } from "react-aria";
 import { Button, Checkbox, CheckboxGroup, Input, Label, SearchField } from "react-aria-components";
 
-import { useSearch } from "@/app/(app)/(default)/search/_components/search-provider";
-import type { FacetAttribute } from "@/app/(app)/(default)/search/_lib/typesense";
-import { defaultVisibleFacets, maxVisibleFacets } from "@/config/search.config";
+import { useSearch } from "#/app/(app)/(default)/search/_components/search-provider.tsx";
+import type { FacetAttribute } from "#/app/(app)/(default)/search/_lib/search.ts";
+import { defaultVisibleFacets, maxVisibleFacets } from "#/configs/search.config.ts";
 
 interface SearchFacetsProps {
 	attribute: FacetAttribute;
@@ -41,9 +41,7 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 	const selected = selectedFilters[attribute];
 	const items = useMemo(() => {
 		const valuesById = new Map<string, { count: number | undefined; value: string }>(
-			facets[attribute].map((item) => {
-				return [item.value, item] as const;
-			}),
+			facets[attribute].values.map((item) => [item.value, item] as const),
 		);
 		for (const value of selected) {
 			if (!valuesById.has(value)) {
@@ -54,16 +52,17 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 		const selectedValues = new Set(selected);
 		const normalizedFilter = filter.trim().toLocaleLowerCase();
 		return Array.from(valuesById.values())
-			.filter((item) => {
-				return getLabel(item.value).toLocaleLowerCase().includes(normalizedFilter);
-			})
+			.filter((item) => getLabel(item.value).toLocaleLowerCase().includes(normalizedFilter))
 			.toSorted((a, b) => {
-				const selectedDifference =
-					Number(selectedValues.has(b.value)) - Number(selectedValues.has(a.value));
-				if (selectedDifference !== 0) return selectedDifference;
+				const selectedDifference = Number(selectedValues.has(b.value)) - Number(selectedValues.has(a.value));
+				if (selectedDifference !== 0) {
+					return selectedDifference;
+				}
 
 				const countDifference = (b.count ?? -1) - (a.count ?? -1);
-				if (countDifference !== 0) return countDifference;
+				if (countDifference !== 0) {
+					return countDifference;
+				}
 
 				return collator.compare(getLabel(a.value), getLabel(b.value));
 			});
@@ -78,11 +77,11 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 				{label}
 			</h3>
 
-			{facets[attribute].length > defaultVisibleFacets ? (
-				<SearchField className="mb-1" onChange={setFilter} value={filter}>
+			{facets[attribute].values.length > defaultVisibleFacets ? (
+				<SearchField className="mbe-1" onChange={setFilter} value={filter}>
 					<Label className="sr-only">{filterLabel}</Label>
 					<Input
-						className="w-full rounded-md border border-neutral-300 px-3 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
+						className="rounded-md border border-neutral-300 px-3 py-1 inline-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
 						placeholder={filterPlaceholder}
 					/>
 				</SearchField>
@@ -98,46 +97,36 @@ export function SearchFacets(props: Readonly<SearchFacetsProps>): ReactNode {
 			>
 				{visibleItems.length > 0 ? (
 					<>
-						{visibleItems.map((item) => {
-							return (
-								<Checkbox
-									key={item.value}
-									className="group flex items-center gap-x-2 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
-									value={item.value}
-								>
-									{({ isSelected }) => {
-										return (
-											<>
-												<span className="pointer-events-none flex size-4 shrink-0 items-center justify-center rounded-xs border border-neutral-400 group-selected:border-brand-700 group-selected:bg-brand-700">
-													{isSelected ? (
-														<CheckIcon aria-hidden={true} className="size-3 text-white" />
-													) : null}
-												</span>
-												<span>
-													{getLabel(item.value)}
-													{item.count === undefined ? null : ` (${format.number(item.count)})`}
-												</span>
-											</>
-										);
-									}}
-								</Checkbox>
-							);
-						})}
+						{visibleItems.map((item) => (
+							<Checkbox
+								key={item.value}
+								className="group flex items-center gap-x-2 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
+								value={item.value}
+							>
+								{({ isSelected }) => (
+									<>
+										<span className="pointer-events-none flex shrink-0 items-center justify-center rounded-xs border border-neutral-400 block-4 inline-4 group-selected:border-brand-700 group-selected:bg-brand-700">
+											{isSelected ? <CheckIcon aria-hidden={true} className="text-white block-3 inline-3" /> : null}
+										</span>
+										<span>
+											{getLabel(item.value)}
+											{item.count === undefined ? null : ` (${format.number(item.count)})`}
+										</span>
+									</>
+								)}
+							</Checkbox>
+						))}
 					</>
 				) : null}
 			</CheckboxGroup>
 
-			{visibleItems.length === 0 ? (
-				<div className="text-neutral-600">{nothingFoundLabel}</div>
-			) : null}
+			{visibleItems.length === 0 ? <div className="text-neutral-600">{nothingFoundLabel}</div> : null}
 
 			{canToggleShowMore ? (
 				<Button
 					className="rounded-md py-1 text-sm text-neutral-600 transition hover:text-brand-700 focus-visible:ring focus-visible:ring-brand-700"
 					onPress={() => {
-						setIsShowingMore((value) => {
-							return !value;
-						});
+						setIsShowingMore((value) => !value);
 					}}
 				>
 					{isShowingMore ? showLessLabel : showMoreLabel}

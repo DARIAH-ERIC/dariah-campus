@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-import { Link } from "@/components/link";
-import { createSearchUrl } from "@/lib/navigation/create-search-url";
+import { Link } from "#/components/link.tsx";
+import { createSearchUrl } from "#/lib/navigation/create-search-url.ts";
 
 interface TagsListProps {
 	label: ReactNode;
@@ -11,7 +11,9 @@ interface TagsListProps {
 export function TagsList(props: Readonly<TagsListProps>): ReactNode {
 	const { label, tags } = props;
 
-	if (tags.length === 0) return null;
+	if (tags.length === 0) {
+		return null;
+	}
 
 	return (
 		<div className="flex flex-col gap-y-1.5 text-sm text-neutral-500">

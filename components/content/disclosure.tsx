@@ -10,17 +10,12 @@ export function Disclosure(props: Readonly<DisclosureProps>): ReactNode {
 	const { children, title } = props;
 
 	return (
-		<details className="group my-4 flex flex-col border-y border-neutral-200 open:pb-4">
-			<summary className="my-3 inline-flex cursor-pointer list-none items-center justify-between gap-x-4 py-1 font-bold group-open:pb-0 hover:underline">
+		<details className="group my-4 flex flex-col border-y border-neutral-200 open:pbe-4">
+			<summary className="my-3 inline-flex cursor-pointer list-none items-center justify-between gap-x-4 py-1 font-bold group-open:pbe-0 hover:underline">
 				<span>{title}</span>
-				<ChevronDownIcon
-					aria-hidden={true}
-					className="size-5 shrink-0 text-neutral-500 group-open:rotate-180"
-				/>
+				<ChevronDownIcon aria-hidden={true} className="shrink-0 text-neutral-500 block-5 inline-5 group-open:rotate-180" />
 			</summary>
-			<div className="**:first:mt-0 **:last:mb-0 [&_a]:underline [&_a:hover]:no-underline">
-				{children}
-			</div>
+			<div className="**:first:mbs-0 **:last:mbe-0 [&_a]:underline [&_a:hover]:no-underline">{children}</div>
 		</details>
 	);
 }

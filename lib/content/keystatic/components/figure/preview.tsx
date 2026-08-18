@@ -1,9 +1,9 @@
-import { useObjectUrl, type UseObjectUrlParams } from "@acdh-oeaw/keystatic-lib/preview";
+import { type UseObjectUrlParams, useObjectUrl } from "@acdh-oeaw/keystatic-lib/preview";
 import { NotEditable } from "@keystatic/core";
 import cn from "clsx/lite";
 import type { ReactNode } from "react";
 
-import type { FigureAlignment } from "@/lib/content/options";
+import type { FigureAlignment } from "#/lib/content/options.ts";
 
 interface FigurePreviewProps {
 	/** @default "stretch" */
@@ -34,12 +34,8 @@ export function FigurePreview(props: Readonly<FigurePreviewProps>): ReactNode {
 		<figure className={cn("grid gap-y-2", figureStyles[alignment])}>
 			<NotEditable>
 				{url != null ? (
-					// eslint-disable-next-line @next/next/no-img-element
-					<img
-						alt={alt}
-						className="w-full overflow-hidden rounded-lg border border-neutral-200 bg-white"
-						src={url}
-					/>
+					// oxlint-disable-next-line @next/next/no-img-element
+					<img alt={alt} className="overflow-hidden rounded-lg border border-neutral-200 bg-white inline-full" src={url} />
 				) : null}
 			</NotEditable>
 			<figcaption>{children}</figcaption>
