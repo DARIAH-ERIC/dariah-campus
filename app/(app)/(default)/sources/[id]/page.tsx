@@ -64,6 +64,34 @@ export default async function SourcePage(props: Readonly<SourcePageProps>): Prom
 	const { name } = source.metadata;
 	const Content = source.content;
 
+	const curricula = await Promise.all(
+		source.curricula.map(async (id) => {
+			const curriculum = await client.collections.curricula.get(id);
+			assert(curriculum, `Missing curriculum "${id}".`);
+			const { "content-type": contentType, editors, locale, summary, title } = curriculum.metadata;
+
+			const people = await Promise.all(
+				editors.map(async (id) => {
+					const person = await client.collections.people.get(id);
+					assert(person, `Missing person "${id}".`);
+					const { image, name } = person.metadata;
+					return { id, name, image };
+				}),
+			);
+
+			return {
+				id: curriculum.id,
+				collection: "curricula",
+				contentType,
+				href: curriculum.href,
+				locale,
+				people,
+				summary,
+				title,
+			} as const;
+		}),
+	);
+
 	const items = await Promise.all(
 		source.resources.map(async (id) => {
 			const resource = await client.collections.resources.get(id);
@@ -102,8 +130,16 @@ export default async function SourcePage(props: Readonly<SourcePageProps>): Prom
 					<Content />
 				</PageLead>
 			</div>
+			{curricula.length > 0 ? (
+				<section className="space-y-5">
+					<h2 className="text-2xl font-bold">{t("curricula")}</h2>
+					<ResourcesGrid peopleLabel={t("editors")} resources={curricula} />
+				</section>
+			) : null}
 			<section className="space-y-5">
-				<h2 className="sr-only">{t("resources")}</h2>
+				<h2 className={curricula.length > 0 ? "text-2xl font-bold" : "sr-only"}>
+					{t("resources")}
+				</h2>
 				<ResourcesGrid peopleLabel={t("authors")} resources={items} />
 			</section>
 		</div>

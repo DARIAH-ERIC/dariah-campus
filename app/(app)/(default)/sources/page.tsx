@@ -1,6 +1,5 @@
-import { assert, groupByToMap } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getFormatter, getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { PageLead } from "@/components/page-lead";
@@ -19,16 +18,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function SourcesPage(): Promise<ReactNode> {
+	const format = await getFormatter();
 	const t = await getTranslations("SourcesPage");
 
 	const client = await createClient();
 
 	const sources = await client.collections.sources.all();
-	const resources = await client.collections.resources.all();
-
-	const resourcesBySourceId = groupByToMap(resources, (resource) => {
-		return resource.metadata.sources;
-	});
 
 	const items = sources.map((source) => {
 		const { image, name } = source.metadata;
@@ -36,9 +31,15 @@ export default async function SourcesPage(): Promise<ReactNode> {
 
 		const href = `/sources/${source.id}`;
 
-		const resources = resourcesBySourceId.get(source.id);
-		assert(resources, `Missing resources for source "${source.id}".`);
-		const count = resources.length;
+		const counts = [];
+
+		if (source.curricula.length > 0) {
+			counts.push(t("curricula", { count: source.curricula.length }));
+		}
+
+		if (source.resources.length > 0 || counts.length === 0) {
+			counts.push(t("resources", { count: source.resources.length }));
+		}
 
 		return {
 			id: source.id,
@@ -46,7 +47,7 @@ export default async function SourcesPage(): Promise<ReactNode> {
 			content: <Content />,
 			image,
 			href,
-			count: t("resources", { count }),
+			count: format.list(counts, { type: "unit" }),
 		} as const;
 	});
 
