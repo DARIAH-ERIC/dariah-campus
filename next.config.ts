@@ -85,7 +85,7 @@ const config: Config = {
 			},
 		},
 	},
-	typedRoutes: true,
+	typedRoutes: false,
 	typescript: {
 		ignoreBuildErrors: true,
 	},
