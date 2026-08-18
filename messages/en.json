@@ -1,5 +1,15 @@
 {
 	"content": {
+		"Carousel": {
+			"carousel": "carousel",
+			"label": "Slides",
+			"next-slide": "Next slide",
+			"picker-item-label": "Slide {index}",
+			"picker-label": "Choose slide to display",
+			"previous-slide": "Previous slide",
+			"slide": "slide",
+			"slide-label": "Slide {index} of {total}"
+		},
 		"QuizDragTheWords": {
 			"blank-label-empty": "Blank {index}. Select a word.",
 			"blank-label-filled": "Blank {index}. Currently {word}.",
