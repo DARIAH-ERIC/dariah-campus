@@ -26,6 +26,7 @@ const config = defineConfig({
 		"jsx-a11y/aria-unsupported-elements": "error",
 		"jsx-a11y/autocomplete-valid": "error",
 		"jsx-a11y/click-events-have-key-events": "warn",
+		"jsx-a11y/control-has-associated-label": "off",
 		"jsx-a11y/heading-has-content": "error",
 		"jsx-a11y/html-has-lang": "error",
 		"jsx-a11y/iframe-has-title": "error",
@@ -38,11 +39,8 @@ const config = defineConfig({
 		"jsx-a11y/no-aria-hidden-on-focusable": "error",
 		"jsx-a11y/no-autofocus": ["warn", { ignoreNonDOM: true }],
 		"jsx-a11y/no-distracting-elements": "off",
+		"jsx-a11y/no-noninteractive-element-to-interactive-role": "error",
 		"jsx-a11y/no-noninteractive-tabindex": "error",
-
-		"jsx-a11y/control-has-associated-label": "off",
-		"jsx-a11y/no-noninteractive-element-to-interactive-role": ["error", { li: ["separator"] }],
-
 		/** @see {@link https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html} */
 		"jsx-a11y/no-redundant-roles": ["warn", { ul: ["list"], ol: ["list"] }],
 		"jsx-a11y/no-static-element-interactions": "warn",

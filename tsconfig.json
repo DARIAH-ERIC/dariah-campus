@@ -17,6 +17,7 @@
 		"noPropertyAccessFromIndexSignature": false,
 		"noUncheckedIndexedAccess": true,
 		"paths": {
+			"@/*": ["./*"],
 			"#/*": ["./*"],
 			"#content/*": ["./.content/generated/*"]
 		},

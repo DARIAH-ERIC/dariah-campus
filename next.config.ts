@@ -22,7 +22,7 @@ const reactAriaLocales = `**/{${reactAriaPackages.join(",")}}/**/??-??.{js,cjs,m
 
 const config: Config = {
 	allowedDevOrigins: ["127.0.0.1"],
-	cacheComponents: true,
+	// cacheComponents: true,
 	experimental: {
 		globalNotFound: true,
 		turbopackRustReactCompiler: true,

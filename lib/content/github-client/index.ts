@@ -90,12 +90,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	const evaluateOptions = createEvaluateOptions(String(createUrl({ baseUrl, pathname: basePath })));
 
 	const indexPage = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
 			return new Map();
 		},
@@ -109,6 +112,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			// TODO: p-limit for concurrency
 			for (const faq of faqSection.faq) {
+				// oxlint-disable-next-line no-await-in-loop
 				const { default: component } = await evaluate(faq.content, evaluateOptions);
 
 				faqs.push({ ...faq, content: component });
@@ -170,12 +174,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const curricula = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
 			return new Map();
 		},
@@ -213,12 +220,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const documentation = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
 			return new Map();
 		},
@@ -247,12 +257,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const people = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
 			return new Map();
 		},
@@ -282,12 +295,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resourcesEvents = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
 			return new Map();
 		},
@@ -309,12 +325,14 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			// TODO: p-limit for concurrency
 			for (const session of metadata.sessions) {
+				// oxlint-disable-next-line no-await-in-loop
 				const { default: component } = await evaluate(session.content, evaluateOptions);
 
 				const presentations = [];
 
 				// TODO: p-limit for concurrency
 				for (const presentation of session.presentations) {
+					// oxlint-disable-next-line no-await-in-loop
 					const { default: component } = await evaluate(presentation.content, evaluateOptions);
 
 					presentations.push({ ...presentation, content: component });
@@ -360,12 +378,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resourcesExternal = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
 			return new Map();
 		},
@@ -407,12 +428,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resourcesHosted = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
 			return new Map();
 		},
@@ -454,12 +478,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resourcesPathfinders = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
 			return new Map();
 		},
@@ -502,27 +529,34 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const resources = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
 			return new Map();
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async get(_id: string) {
 			return null;
 		},
 	};
 
 	const sources = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
 			return new Map();
 		},
@@ -559,12 +593,15 @@ export const createGitHubClient = cache(function createGitHubClient({
 	};
 
 	const tags = {
+		// oxlint-disable-next-line typescript/require-await
 		async ids() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async all() {
 			return [];
 		},
+		// oxlint-disable-next-line typescript/require-await
 		async byId() {
 			return new Map();
 		},

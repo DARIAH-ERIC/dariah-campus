@@ -61,7 +61,7 @@ export async function DefaultHeader(props: Readonly<DefaultHeaderProps>): Promis
 							}
 
 							case "separator": {
-								return <li key={key} className="border-s-neutral-200 block-full inline-px" role="separator" />;
+								return <li key={key} aria-hidden={true} className="border-s-neutral-200 block-full inline-px" />;
 							}
 						}
 					})}

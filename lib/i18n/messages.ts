@@ -10,8 +10,8 @@ type SocialMediaKind = Metadata["social"][number]["kind"];
 export async function getIntlMessages(locale: IntlLocale) {
 	const language = getIntlLanguage(locale);
 
-	const _messages = (await import(`#/messages/${language}.json`)) as Messages;
-	const _metadata = (await import(`#/content/${language}/metadata/index.json`)) as Metadata;
+	const _messages = (await import(`@/messages/${language}.json`)) as Messages;
+	const _metadata = (await import(`@/content/${language}/metadata/index.json`)) as Metadata;
 
 	const _social: Record<string, string> = {};
 

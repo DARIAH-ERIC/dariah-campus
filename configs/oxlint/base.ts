@@ -158,6 +158,7 @@ const config = defineConfig({
 		"no-implied-eval": "off",
 		"no-new": "warn",
 		"no-shadow": "off",
+		"no-underscore-dangle": "off",
 		"no-unexpected-multiline": "warn",
 		"no-unmodified-loop-condition": "warn",
 		"no-unneeded-ternary": "warn",
