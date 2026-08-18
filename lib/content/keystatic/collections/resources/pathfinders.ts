@@ -17,6 +17,7 @@ import { createFootnote } from "#/lib/content/keystatic/components/footnote/inde
 import { createGrid } from "#/lib/content/keystatic/components/grid/index.tsx";
 import { createH5PWrapper } from "#/lib/content/keystatic/components/h5p-wrapper/index.tsx";
 import { createHeadingId } from "#/lib/content/keystatic/components/heading-id/index.tsx";
+import { createImageLayers } from "#/lib/content/keystatic/components/image-layers/index.tsx";
 import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
 import { createTabs } from "#/lib/content/keystatic/components/tabs/index.tsx";
@@ -128,6 +129,7 @@ export const createResourcesPathfinders = createCollection("/resources/pathfinde
 					...createFigure(paths, locale),
 					...createFootnote(paths, locale),
 					...createGrid(paths, locale),
+					...createImageLayers(paths, locale),
 					...createH5PWrapper(paths, locale),
 					...createHeadingId(paths, locale),
 					...createLink(paths, locale),

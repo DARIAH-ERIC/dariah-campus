@@ -18,6 +18,7 @@ import { createGrid } from "#/lib/content/keystatic/components/grid/index.tsx";
 import { createH5PWrapper } from "#/lib/content/keystatic/components/h5p-wrapper/index.tsx";
 import { createHeadingId } from "#/lib/content/keystatic/components/heading-id/index.tsx";
 import { createImageComparisonSlider } from "#/lib/content/keystatic/components/image-comparison-slider/index.tsx";
+import { createImageLayers } from "#/lib/content/keystatic/components/image-layers/index.tsx";
 import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
 import { createQuiz } from "#/lib/content/keystatic/components/quiz/index.tsx";
@@ -139,6 +140,7 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 					...createH5PWrapper(paths, locale),
 					...createHeadingId(paths, locale),
 					...createImageComparisonSlider(paths, locale),
+					...createImageLayers(paths, locale),
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
 					...createQuiz(paths, locale),
