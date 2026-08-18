@@ -39,7 +39,7 @@ export function ImageLayers(props: Readonly<ImageLayersProps>): ReactNode {
 
 	return (
 		<figure className="my-4 flex flex-col gap-y-4">
-			<div className="not-prose grid overflow-hidden rounded-sm border border-neutral-200">
+			<div className="not-prose mx-auto grid justify-items-center overflow-hidden rounded-sm border border-neutral-200 inline-fit max-inline-full">
 				{layers.map((layer, index) => {
 					const { alt = "", height, src, width } = layer.props;
 
@@ -51,7 +51,7 @@ export function ImageLayers(props: Readonly<ImageLayersProps>): ReactNode {
 							alt={alt}
 							aria-hidden={!isVisible || undefined}
 							className={cn(
-								"object-contain transition-opacity [grid-area:1/-1] block-auto inline-full",
+								"object-contain transition-opacity [grid-area:1/-1] block-auto inline-auto max-block-[min(60vh,32rem)] max-inline-full",
 								isVisible ? "opacity-100" : "opacity-0",
 							)}
 							height={height}
