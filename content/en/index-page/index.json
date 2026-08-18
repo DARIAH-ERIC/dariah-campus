@@ -107,12 +107,12 @@
         "role": "Managing Editor"
       },
       {
-        "person": "mc-conville-amelia",
-        "role": "Community Editor (ECHOES project)"
-      },
-      {
         "person": "albrecht-marlene",
         "role": "Community Editor (ARTEMIS project)"
+      },
+      {
+        "person": "anreiter-tabea",
+        "role": "Community Editor (ARTEMIS Project)"
       },
       {
         "person": "koenigshofer-elisabeth",
@@ -137,6 +137,10 @@
       {
         "person": "kamal-ahmad",
         "role": "National Editor (Sweden)"
+      },
+      {
+        "person": "mc-conville-amelia",
+        "role": "Past Team Member"
       }
     ]
   }
