@@ -91,16 +91,24 @@ jobs:
 
       - name: Start typesense server and populate search index
         run: |
-          touch .env.local
-          pnpm run dev:typesense:up
+          set -euo pipefail
+          pnpm run dev:services:up
           echo "Waiting for Typesense to be ready..."
           until curl -s -o /dev/null -w "%{http_code}" -H "X-TYPESENSE-API-KEY: $TYPESENSE-API-KEY" http://localhost:8108/health | grep -q 200; do
             echo -n "."
             sleep 1
           done
-          pnpm run typesense:collection:create
-          pnpm run typesense:collection:seed
-          echo NEXT_PUBLIC_TYPESENSE_SEARCH_API_KEY=$(pnpm run typesense:api-key:create | awk -F'"' '{print $2}') >> $GITHUB_ENV
+          pnpm run search:collections:create
+          pnpm run search:collections:update
+          SEARCH_API_KEY="$(pnpm --silent run search:api-keys:generate --raw)"
+          if [ -z "$SEARCH_API_KEY" ]; then
+            echo "Failed to generate search api key." >&2
+            exit 1
+          fi
+          {
+            echo "NEXT_PUBLIC_TYPESENSE_SEARCH_API_KEY=$SEARCH_API_KEY"
+            echo "TYPESENSE_SEARCH_API_KEY=$SEARCH_API_KEY"
+          } >> "$GITHUB_ENV"
 
       - name: Build app
         run: pnpm run build
@@ -109,7 +117,7 @@ jobs:
         run: pnpm run test:e2e
 
       - name: Stop typesense server
-        run: pnpm run dev:typesense:down
+        run: pnpm run dev:services:down
 
       - uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
