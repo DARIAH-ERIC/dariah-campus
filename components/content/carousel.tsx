@@ -68,7 +68,7 @@ export function Carousel(props: Readonly<CarouselProps>): ReactNode {
 								key={String(index)}
 								aria-label={t("slide-label", { index: String(index + 1), total: String(slides.length) })}
 								aria-roledescription={t("slide")}
-								className="shrink-0 grow-0 basis-full ps-4 min-inline-0 **:first:mbs-0 **:last:mbe-0 [&_img]:mx-auto [&_img]:inline-auto [&_img]:max-block-[60vh]"
+								className="shrink-0 grow-0 basis-full ps-4 min-inline-0 **:first:mbs-0 **:last:mbe-0 [&_img]:mx-auto [&_img]:inline-auto [&_img]:max-block-[min(60vh,32rem)]"
 								role="group"
 							>
 								{children}
