@@ -178,7 +178,7 @@ const config = defineConfig({
 		"import/no-named-as-default": "warn",
 		"import/no-named-as-default-member": "warn",
 		"import/no-self-import": "warn",
-		"import/no-unassigned-import": ["warn", { allow: ["**/*.css", "server-only"] }],
+		"import/no-unassigned-import": ["warn", { allow: ["**/*.css", "server-only", "server-nodejs-only"] }],
 
 		"oxc/approx-constant": "warn",
 		"oxc/misrefactored-assign-op": "warn",

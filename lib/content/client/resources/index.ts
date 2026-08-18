@@ -10,7 +10,7 @@ import { type PathfinderResource, client as pathfinders } from "#/lib/content/cl
 // oxlint-disable-next-line node/no-top-level-await
 const ids = (await Promise.all([events.ids(), external.ids(), hosted.ids(), pathfinders.ids()])).flat();
 
-// oxlint-disable-next-line node/no-top-level-await
+// oxlint-disable-next-line node/no-top-level-await unicorn/no-array-sort
 const all = (await Promise.all([events.all(), external.all(), hosted.all(), pathfinders.all()])).flat().sort((a, z) =>
 	z.metadata["publication-date"].localeCompare(a.metadata["publication-date"])
 );

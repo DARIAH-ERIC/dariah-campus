@@ -38,8 +38,8 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 	const quizzes = getChildrenElements(children);
 
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const [statuses, setStatuses] = useState<Array<QuizPageStatus>>(() => 
-		quizzes.map(() => 
+	const [statuses, setStatuses] = useState<Array<QuizPageStatus>>(() =>
+		quizzes.map(() =>
 			"idle"
 		)
 	);
@@ -51,12 +51,12 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 		hasPrevious: currentIndex > 0,
 		isPaginated: quizzes.length > 1,
 		next() {
-			setCurrentIndex((currentIndex) => 
+			setCurrentIndex((currentIndex) =>
 				currentIndex + 1
 			);
 		},
 		previous() {
-			setCurrentIndex((currentIndex) => 
+			setCurrentIndex((currentIndex) =>
 				currentIndex - 1
 			);
 		},
@@ -71,8 +71,8 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 					isCurrent,
 					navigation,
 					setStatus(status) {
-						setStatuses((statuses) => 
-							statuses.map((currentStatus, statusIndex) => 
+						setStatuses((statuses) =>
+							statuses.map((currentStatus, statusIndex) =>
 								statusIndex === index ? status : currentStatus
 							)
 						);
@@ -81,6 +81,7 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 				};
 
 				return (
+					// oxlint-disable-next-line react/jsx-no-constructed-context-values
 					<QuizContext key={index} value={value}>
 						{quiz}
 					</QuizContext>

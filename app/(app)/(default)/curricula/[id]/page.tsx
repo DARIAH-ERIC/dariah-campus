@@ -101,7 +101,7 @@ export default async function CurriculumPage(props: Readonly<CurriculumPageProps
 		};
 	}
 
-	const translations = await Promise.all(_translations.map(getTranslationMetadata));
+	const translations = await Promise.all(_translations.map((id) => getTranslationMetadata(id)));
 	const isTranslationOf = _isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
 	const curriculumSources = await Promise.all(
 		sources.map(async (id) => {

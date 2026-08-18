@@ -50,6 +50,7 @@ function isCorrectAnswer(input: string, answer: string, caseSensitive: boolean):
 function sortKey(value: string): number {
 	let n = 0;
 	for (let i = 0; i < value.length; i++) {
+		// oxlint-disable-next-line unicorn/prefer-code-point
 		n = (n * 31 + value.charCodeAt(i)) % 2147483647;
 	}
 	return n;
@@ -133,6 +134,7 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 			.map((text, index) => {
 				return { id: `distractor-${String(index)}`, text };
 			});
+		// oxlint-disable-next-line unicorn/no-array-sort
 		return [...fromBlanks, ...decoys].sort((a, b) =>
 			sortKey(a.text) - sortKey(b.text)
 		);
@@ -222,6 +224,7 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 	}
 
 	return (
+		// oxlint-disable-next-line react/jsx-no-constructed-context-values
 		<DragTheWordsContext value={ctx}>
 			<section
 				className="my-4 grid gap-4 rounded-md border border-neutral-200 p-6 shadow-sm sm:grid-cols-[1fr_11rem]"

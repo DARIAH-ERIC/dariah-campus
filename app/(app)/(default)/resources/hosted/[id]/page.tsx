@@ -146,7 +146,7 @@ export default async function HostedResourcePage(props: Readonly<HostedResourceP
 		};
 	}
 
-	const translations = await Promise.all(_translations.map(getTranslationMetadata));
+	const translations = await Promise.all(_translations.map((v) => getTranslationMetadata(v)));
 	const isTranslationOf = _isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
 	const [contentLicense, resourceSources] = await Promise.all([
 		client.collections.contentLicenses.get(license),

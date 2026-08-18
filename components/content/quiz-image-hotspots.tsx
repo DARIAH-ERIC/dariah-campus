@@ -53,6 +53,7 @@ export function QuizImageHotspots(props: Readonly<QuizImageHotspotsProps>): Reac
 	const contextValue = useMemo(() => {
 		return { activeId, inlinePanel, presentation, select: setActiveId };
 	}, [activeId, inlinePanel, presentation]);
+	// oxlint-disable-next-line react/no-react-children
 	const indexedHotspotChildren = Children.map(children, (child, index) =>
 		<HotspotIndexContext value={index + 1}>{child}</HotspotIndexContext>
 	);

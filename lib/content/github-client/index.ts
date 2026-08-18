@@ -112,7 +112,6 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			// TODO: p-limit for concurrency
 			for (const faq of faqSection.faq) {
-				// oxlint-disable-next-line no-await-in-loop
 				const { default: component } = await evaluate(faq.content, evaluateOptions);
 
 				faqs.push({ ...faq, content: component });
@@ -325,14 +324,12 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			// TODO: p-limit for concurrency
 			for (const session of metadata.sessions) {
-				// oxlint-disable-next-line no-await-in-loop
 				const { default: component } = await evaluate(session.content, evaluateOptions);
 
 				const presentations = [];
 
 				// TODO: p-limit for concurrency
 				for (const presentation of session.presentations) {
-					// oxlint-disable-next-line no-await-in-loop
 					const { default: component } = await evaluate(presentation.content, evaluateOptions);
 
 					presentations.push({ ...presentation, content: component });

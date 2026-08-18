@@ -23,7 +23,7 @@ function isCorrectAnswer(input: string, answers: Array<string>, caseSensitive: b
 	const normalised = caseSensitive ? input.trim() : input.trim().toLowerCase();
 	const normalisedAnswers = caseSensitive
 		? answers
-		: answers.map((a) => 
+		: answers.map((a) =>
 				a.toLowerCase()
 			);
 	return normalisedAnswers.includes(normalised);
@@ -47,13 +47,13 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 	const count = Number(blankCountStr);
 	const { isCurrent, setStatus, status } = useQuizContext();
 
-	const [inputs, setInputs] = useState<Array<string>>(() => 
-		Array.from({ length: count }, () => 
+	const [inputs, setInputs] = useState<Array<string>>(() =>
+		Array.from({ length: count }, () =>
 			""
 		)
 	);
-	const [validated, setValidated] = useState<Array<boolean>>(() => 
-		Array.from({ length: count }, () => 
+	const [validated, setValidated] = useState<Array<boolean>>(() =>
+		Array.from({ length: count }, () =>
 			false
 		)
 	);
@@ -61,8 +61,8 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 	const ctx: FillInTheBlankContextValue = {
 		inputs,
 		setInput(id, value) {
-			setInputs((prev) => 
-				prev.map((x, i) => 
+			setInputs((prev) =>
+				prev.map((x, i) =>
 					i === id ? value : x
 				)
 			);
@@ -72,8 +72,8 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 		validateOnBlur,
 		validated,
 		validateBlank(id) {
-			setValidated((prev) => 
-				prev.map((x, i) => 
+			setValidated((prev) =>
+				prev.map((x, i) =>
 					i === id ? true : x
 				)
 			);
@@ -82,12 +82,13 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 
 	const correctCount =
 		(status === "correct" || status === "incorrect") && answers != null
-			? inputs.filter((v, i) => 
+			? inputs.filter((v, i) =>
 					isCorrectAnswer(v, answers[i] ?? [], caseSensitive)
 				).length
 			: null;
 
 	return (
+		// oxlint-disable-next-line react/jsx-no-constructed-context-values
 		<FillInTheBlankContext value={ctx}>
 			<section className="my-4 grid gap-y-4 rounded-md border border-neutral-200 p-6 shadow-sm" hidden={!isCurrent}>
 				<div className="leading-loose">{children}</div>
@@ -102,13 +103,13 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 					nextButtonLabel={controlsT("next-question")}
 					onReset={() => {
 						setInputs(
-							Array.from({ length: count }, () => 
+							Array.from({ length: count }, () =>
 								""
 							),
 						);
 						setStatus("idle");
 						setValidated(
-							Array.from({ length: count }, () => 
+							Array.from({ length: count }, () =>
 								false
 							),
 						);
@@ -123,7 +124,7 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 					onValidate={() => {
 						const isCorrect =
 							answers != null &&
-							inputs.every((input, index) => 
+							inputs.every((input, index) =>
 								isCorrectAnswer(input, answers[index] ?? [], caseSensitive)
 							);
 						setStatus(isCorrect ? "correct" : "incorrect");
@@ -163,7 +164,7 @@ export function Blank(props: Readonly<BlankProps>): ReactNode {
 	const inputValue = inputs[id] ?? "";
 	const isReadOnly = status === "solved";
 	const displayValue = isReadOnly ? (answer[0] ?? "") : inputValue;
-	const longestAnswer = answer.reduce((a, b) => 
+	const longestAnswer = answer.reduce((a, b) =>
 		a.length >= b.length ? a : b
 	, "");
 
