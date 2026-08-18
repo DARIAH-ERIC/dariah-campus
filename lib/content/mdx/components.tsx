@@ -1,4 +1,5 @@
 import { Callout } from "#/components/content/callout.tsx";
+import { Carousel, CarouselItem } from "#/components/content/carousel.tsx";
 import { Diagram, DiagramCaption, DiagramCodeBlock } from "#/components/content/diagram.tsx";
 import { Disclosure } from "#/components/content/disclosure.tsx";
 import { Drop, QuizDragTheWords } from "#/components/content/drag-the-words.tsx";
@@ -31,6 +32,8 @@ export const components = {
 	a: Link,
 	Blank,
 	Callout,
+	Carousel,
+	CarouselItem,
 	Diagram,
 	DiagramCaption,
 	DiagramCodeBlock,
