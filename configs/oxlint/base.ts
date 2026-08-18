@@ -185,7 +185,7 @@ const config = defineConfig({
 		"oxc/no-async-endpoint-handlers": "warn",
 		"oxc/no-this-in-exported-function": "warn",
 
-		"promise/always-return": "warn",
+		"promise/always-return": "off",
 		"promise/no-multiple-resolved": "warn",
 		"promise/no-promise-in-callback": "warn",
 
@@ -213,7 +213,7 @@ const config = defineConfig({
 		 * ================================================================================================================
 		 */
 
-		"no-await-in-loop": "warn",
+		"no-await-in-loop": "off",
 		"no-useless-call": "error",
 
 		"oxc/no-accumulating-spread": "error",

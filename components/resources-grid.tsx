@@ -39,7 +39,7 @@ export function ResourcesGrid(props: Readonly<ResourcesGridProps>): ReactNode {
 						{resources.map((resource) => (
 							<li
 								key={
-									// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+									// oxlint-disable-next-line @typescript-eslint/strict-boolean-expressions
 									resource.collection ? [resource.collection, resource.id].join(":") : resource.id
 								}
 							>
@@ -56,7 +56,7 @@ export function ResourcesGrid(props: Readonly<ResourcesGridProps>): ReactNode {
 		<ul className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 			{resources.map((resource) => (
 				<li
-					// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+					// oxlint-disable-next-line @typescript-eslint/strict-boolean-expressions
 					key={resource.collection ? [resource.collection, resource.id].join(":") : resource.id}
 				>
 					<ResourcePreviewCard peopleLabel={peopleLabel} {...resource} />

@@ -6,28 +6,28 @@ type Messages = typeof messages;
 type Metadata = typeof metadata;
 type SocialMediaKind = Metadata["social"][number]["kind"];
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+// oxlint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function getIntlMessages(locale: IntlLocale) {
-	const language = getIntlLanguage(locale);
+  const language = getIntlLanguage(locale);
 
-	const _messages = (await import(`@/messages/${language}.json`)) as Messages;
-	const _metadata = (await import(`@/content/${language}/metadata/index.json`)) as Metadata;
+  const _messages = (await import(`@/messages/${language}.json`)) as Messages;
+  const _metadata = (await import(`@/content/${language}/metadata/index.json`)) as Metadata;
 
-	const _social: Record<string, string> = {};
+  const _social: Record<string, string> = {};
 
-	_metadata.social.forEach((entry) => {
-		_social[entry.kind] = entry.href;
-	});
+  _metadata.social.forEach((entry) => {
+    _social[entry.kind] = entry.href;
+  });
 
-	const messages = {
-		..._messages,
-		metadata: {
-			..._metadata,
-			social: _social as Record<SocialMediaKind, string>,
-		},
-	};
+  const messages = {
+    ..._messages,
+    metadata: {
+      ..._metadata,
+      social: _social as Record<SocialMediaKind, string>,
+    },
+  };
 
-	return messages;
+  return messages;
 }
 
 export type IntlMessages = Awaited<ReturnType<typeof getIntlMessages>>;

@@ -31,7 +31,7 @@ export function QuizImageHotspotsPreview(props: Readonly<QuizImageHotspotsPrevie
 			<NotEditable>
 				<div className="relative isolate overflow-hidden rounded-md min-block-12" data-hotspot-overlay="">
 					{url != null ? (
-						// eslint-disable-next-line @next/next/no-img-element
+						// oxlint-disable-next-line @next/next/no-img-element
 						<img alt={alt} className="block-auto inline-full" draggable={false} src={url} />
 					) : (
 						<div className="grid place-items-center bg-neutral-100 text-neutral-500 min-block-32">
@@ -175,7 +175,7 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 				);
 
 	return (
-		// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- Pointer convenience; the pin and Edit button provide keyboard selection.
+		// oxlint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- Pointer convenience; the pin and Edit button provide keyboard selection.
 		<div
 			ref={initCard}
 			className={cn(

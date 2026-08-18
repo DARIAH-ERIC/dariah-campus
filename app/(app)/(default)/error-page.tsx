@@ -14,14 +14,13 @@ interface ErrorPageProps {
 	reset: () => void;
 }
 
-// eslint-disable-next-line import-x/no-default-export
+// oxlint-disable-next-line import-x/no-default-export
 export default function ErrorPage(props: Readonly<ErrorPageProps>): ReactNode {
 	const { error, reset } = props;
 
 	const t = useTranslations("ErrorPage");
 
 	useEffect(() => {
-		// TODO: Log the error to an error reporting service.
 		log.error(error);
 	}, [error]);
 

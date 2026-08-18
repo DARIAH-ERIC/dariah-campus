@@ -58,6 +58,7 @@ export async function createMetadata(): Promise<{
 		};
 	}
 
+	// oxlint-disable-next-line unicorn/consistent-function-scoping
 	async function createPerson(id: string) {
 		const person = await client.collections.people.get(id);
 		assert(person, `Missing person "${id}".`);
@@ -66,6 +67,7 @@ export async function createMetadata(): Promise<{
 		return { id, name, orcid };
 	}
 
+	// oxlint-disable-next-line unicorn/consistent-function-scoping
 	async function createSource(id: string) {
 		const source = await client.collections.sources.get(id);
 		assert(source, `Missing source "${id}".`);
@@ -73,6 +75,7 @@ export async function createMetadata(): Promise<{
 		return { id, name };
 	}
 
+	// oxlint-disable-next-line unicorn/consistent-function-scoping
 	async function createTag(id: string) {
 		const tag = await client.collections.tags.get(id);
 		assert(tag, `Missing tag "${id}".`);

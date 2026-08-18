@@ -21,7 +21,7 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 
 	const t = useTranslations("content.QuizControls");
 	const answerMessagePrefixId = useId();
-	const [incorrectAnswerIndices, setIncorrectAnswerIndices] = useState<Set<number>>(() => 
+	const [incorrectAnswerIndices, setIncorrectAnswerIndices] = useState<Set<number>>(() =>
 		new Set()
 	);
 
@@ -39,7 +39,7 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 			| { variant: "single"; checked: string }
 		);
 
-		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+		// oxlint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		const checks = data.checks ?? [];
 		const checked = new Set(data.variant === "single" ? [data.checked] : data.checked);
 
@@ -71,10 +71,10 @@ export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 			<ul className="list-none ps-0 accent-brand-700" role="list">
 				{answers.map((answer, index) => {
 					const answerChildren = getChildrenElements(answer.props.children);
-					const labels = answerChildren.filter((child) => 
+					const labels = answerChildren.filter((child) =>
 						child.type === QuizChoiceAnswerLabel
 					);
-					const errorMessages = answerChildren.filter((child) => 
+					const errorMessages = answerChildren.filter((child) =>
 						child.type === QuizChoiceAnswerErrorMessage
 					);
 					const isIncorrect = incorrectAnswerIndices.has(index);

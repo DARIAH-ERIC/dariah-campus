@@ -72,7 +72,7 @@ export function ImageComparisonSliderPreview(props: Readonly<ImageComparisonSlid
 				}}
 				style={{ "--position": `${String(position)}px` }}
 			>
-				{/* eslint-disable-next-line @next/next/no-img-element */}
+				{/* oxlint-disable-next-line @next/next/no-img-element */}
 				<img
 					alt=""
 					className={cn(
@@ -88,7 +88,7 @@ export function ImageComparisonSliderPreview(props: Readonly<ImageComparisonSlid
 								: "inset(0 calc(100%-var(--position)) 0 0)",
 					}}
 				/>
-				{/* eslint-disable-next-line @next/next/no-img-element */}
+				{/* oxlint-disable-next-line @next/next/no-img-element */}
 				<img
 					alt=""
 					className={cn(

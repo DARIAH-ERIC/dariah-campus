@@ -24,7 +24,7 @@ export function Image(props: Readonly<ImageProps>): ReactNode {
 			const github = `https://raw.githubusercontent.com/${owner}/${repo}/refs/heads/`;
 
 			if (src.startsWith(github)) {
-				// eslint-disable-next-line @next/next/no-img-element
+				// oxlint-disable-next-line @next/next/no-img-element
 				return <img {...rest} alt={alt} src={src} />;
 			}
 		}

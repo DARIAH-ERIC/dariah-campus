@@ -34,7 +34,7 @@ export function FigurePreview(props: Readonly<FigurePreviewProps>): ReactNode {
 		<figure className={cn("grid gap-y-2", figureStyles[alignment])}>
 			<NotEditable>
 				{url != null ? (
-					// eslint-disable-next-line @next/next/no-img-element
+					// oxlint-disable-next-line @next/next/no-img-element
 					<img alt={alt} className="overflow-hidden rounded-lg border border-neutral-200 bg-white inline-full" src={url} />
 				) : null}
 			</NotEditable>

@@ -26,7 +26,7 @@ export function VideoCardPreview(props: Readonly<VideoCardPreviewProps>): ReactN
 		<figure className="rounded-xl border border-neutral-200 bg-white text-neutral-800 shadow-md">
 			<NotEditable className="grid gap-y-6 p-6">
 				{href != null ? (
-					// eslint-disable-next-line jsx-a11y/iframe-has-title
+					// oxlint-disable-next-line jsx-a11y/iframe-has-title
 					<iframe
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						allowFullScreen={true}

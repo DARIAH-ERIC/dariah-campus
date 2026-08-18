@@ -28,7 +28,7 @@ export function SourcesGrid(props: Readonly<SourcesGridProps>): ReactNode {
 				{columns.map((sources, index) => (
 					<div key={index} className="flex-1 space-y-6" role="presentation">
 						{sources.map((source) => (
-							// eslint-disable-next-line jsx-a11y/no-redundant-roles
+							// oxlint-disable-next-line jsx-a11y/no-redundant-roles
 							<li key={source.id} role="listitem">
 								<SourceCard {...source} />
 							</li>

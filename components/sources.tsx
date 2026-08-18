@@ -10,7 +10,9 @@ export function Sources(props: Readonly<SourcesProps>): ReactNode {
 
 	const t = useTranslations("Sources");
 
-	if (sources.length === 0) return null;
+	if (sources.length === 0) {
+		return null;
+	}
 
 	return (
 		<div className="space-y-1.5">

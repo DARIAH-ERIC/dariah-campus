@@ -21,7 +21,7 @@ export function VideoPreview(props: Readonly<VideoPreviewProps>): ReactNode {
 		<figure className="grid gap-y-2">
 			<NotEditable>
 				{href != null ? (
-					// eslint-disable-next-line jsx-a11y/iframe-has-title
+					// oxlint-disable-next-line jsx-a11y/iframe-has-title
 					<iframe
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						allowFullScreen={true}

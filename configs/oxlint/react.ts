@@ -91,7 +91,7 @@ const config = defineConfig({
 		 */
 
 		"react/jsx-no-constructed-context-values": "warn",
-		"react/no-array-index-key": "warn",
+		"react/no-array-index-key": "off",
 		"react/no-object-type-as-default-prop": "warn",
 
 		/**
