@@ -10,6 +10,13 @@
 			"slide": "slide",
 			"slide-label": "Slide {index} of {total}"
 		},
+		"ImageLayers": {
+			"fewer-layers": "Show fewer layers",
+			"label": "Image layers",
+			"layer-label": "Layer {index}",
+			"more-layers": "Show more layers",
+			"output": "{label} ({index} of {total})"
+		},
 		"QuizDragTheWords": {
 			"blank-label-empty": "Blank {index}. Select a word.",
 			"blank-label-filled": "Blank {index}. Currently {word}.",

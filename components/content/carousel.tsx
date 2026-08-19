@@ -7,6 +7,8 @@ import { useTranslations } from "next-intl";
 import { type ComponentPropsWithRef, type ReactNode, useCallback, useSyncExternalStore } from "react";
 
 import { getChildrenElements } from "#/components/content/get-children-elements.ts";
+import { getImageMaxInlineSize } from "#/components/content/get-image-max-inline-size.ts";
+import { Image } from "#/components/image.tsx";
 
 interface CarouselProps {
 	children: ReactNode;
@@ -20,7 +22,10 @@ export function Carousel(props: Readonly<CarouselProps>): ReactNode {
 
 	const t = useTranslations("content.Carousel");
 
-	const slides = getChildrenElements<CarouselItemProps>(children);
+	/** Slides without image are ignored, because the cms allows inserting empty slides. */
+	const slides = getChildrenElements<CarouselItemProps>(children).filter((slide) =>
+		isNonEmptyString(slide.props.src)
+	);
 
 	const [carouselRef, api] = useEmblaCarousel({ loop });
 
@@ -61,17 +66,30 @@ export function Carousel(props: Readonly<CarouselProps>): ReactNode {
 			<div ref={carouselRef} className="overflow-hidden">
 				<div className="-ms-4 flex">
 					{slides.map((slide, index) => {
-						const { children } = slide.props;
+						const { alt = "", children, height, src, width } = slide.props;
 
 						return (
 							<div
 								key={String(index)}
 								aria-label={t("slide-label", { index: String(index + 1), total: String(slides.length) })}
 								aria-roledescription={t("slide")}
-								className="shrink-0 grow-0 basis-full ps-4 min-inline-0 **:first:mbs-0 **:last:mbe-0 [&_img]:mx-auto [&_img]:inline-auto [&_img]:max-block-[min(60vh,32rem)]"
+								className="shrink-0 grow-0 basis-full ps-4 min-inline-0"
 								role="group"
 							>
-								{children}
+								{/** The figure only takes up as much space as the image, so the caption aligns with it. */}
+								<figure className="mx-auto my-0 flex flex-col inline-fit max-inline-full min-inline-[min(100%,20rem)]">
+									<Image
+										alt={alt}
+										className="self-center object-contain block-auto"
+										height={height}
+										sizes="(max-width: 767px) 100vw, 720px"
+										src={src}
+										style={{ maxInlineSize: getImageMaxInlineSize(width, height) }}
+										width={width}
+									/>
+
+									<figcaption className="contain-inline-size **:first:mbs-0 **:last:mbe-0">{children}</figcaption>
+								</figure>
 							</div>
 						);
 					})}
@@ -151,7 +169,13 @@ function Button(props: Readonly<ButtonProps>): ReactNode {
 }
 
 interface CarouselItemProps {
+	alt?: string;
 	children: ReactNode;
+	/** Maybe added by `with-image-sizes` mdx plugin. */
+	height?: number;
+	src: string;
+	/** Maybe added by `with-image-sizes` mdx plugin. */
+	width?: number;
 }
 
 export function CarouselItem(_props: Readonly<CarouselItemProps>): ReactNode {

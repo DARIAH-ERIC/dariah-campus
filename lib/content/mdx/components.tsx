@@ -9,6 +9,7 @@ import { Figure } from "#/components/content/figure.tsx";
 import { Blank, QuizFillInTheBlank } from "#/components/content/fill-in-the-blank.tsx";
 import { Grid, GridItem } from "#/components/content/grid.tsx";
 import { ImageComparisonSlider } from "#/components/content/image-comparison-slider.tsx";
+import { ImageLayer, ImageLayers } from "#/components/content/image-layers.tsx";
 import { Link as ContentLink } from "#/components/content/link.tsx";
 import { LinkButton } from "#/components/content/link-button.tsx";
 import { MermaidDiagram } from "#/components/content/mermaid-diagram.tsx";
@@ -46,6 +47,8 @@ export const components = {
 	GridItem,
 	img: Image,
 	ImageComparisonSlider,
+	ImageLayer,
+	ImageLayers,
 	Link: ContentLink,
 	LinkButton,
 	MermaidDiagram,

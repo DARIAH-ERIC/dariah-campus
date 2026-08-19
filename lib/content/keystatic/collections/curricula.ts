@@ -16,6 +16,7 @@ import { createFigure } from "#/lib/content/keystatic/components/figure/index.ts
 import { createFootnote } from "#/lib/content/keystatic/components/footnote/index.tsx";
 import { createGrid } from "#/lib/content/keystatic/components/grid/index.tsx";
 import { createHeadingId } from "#/lib/content/keystatic/components/heading-id/index.tsx";
+import { createImageLayers } from "#/lib/content/keystatic/components/image-layers/index.tsx";
 import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
 import { createQuiz } from "#/lib/content/keystatic/components/quiz/index.tsx";
@@ -161,6 +162,7 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 					...createFootnote(paths, locale),
 					...createGrid(paths, locale),
 					...createHeadingId(paths, locale),
+					...createImageLayers(paths, locale),
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
 					...createQuiz(paths, locale),
@@ -184,6 +186,7 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 					...createFootnote(paths, locale),
 					...createGrid(paths, locale),
 					...createHeadingId(paths, locale),
+					...createImageLayers(paths, locale),
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
 					// ...createQuiz(paths, locale),
