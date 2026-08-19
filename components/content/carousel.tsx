@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { type ComponentPropsWithRef, type ReactNode, useCallback, useSyncExternalStore } from "react";
 
 import { getChildrenElements } from "#/components/content/get-children-elements.ts";
+import { getImageMaxInlineSize } from "#/components/content/get-image-max-inline-size.ts";
 import { Image } from "#/components/image.tsx";
 
 interface CarouselProps {
@@ -79,9 +80,11 @@ export function Carousel(props: Readonly<CarouselProps>): ReactNode {
 								<figure className="mx-auto my-0 flex flex-col inline-fit max-inline-full min-inline-[min(100%,20rem)]">
 									<Image
 										alt={alt}
-										className="self-center object-contain block-auto inline-auto max-block-[min(60vh,32rem)] max-inline-full"
+										className="self-center object-contain block-auto"
 										height={height}
+										sizes="(max-width: 767px) 100vw, 720px"
 										src={src}
+										style={{ maxInlineSize: getImageMaxInlineSize(width, height) }}
 										width={width}
 									/>
 

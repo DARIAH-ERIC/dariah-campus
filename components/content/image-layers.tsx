@@ -8,6 +8,7 @@ import { type ComponentPropsWithRef, Fragment, type ReactNode, useState } from "
 import { Label, Slider, SliderOutput, SliderThumb, SliderTrack } from "react-aria-components";
 
 import { getChildrenElements } from "#/components/content/get-children-elements.ts";
+import { getImageMaxInlineSize } from "#/components/content/get-image-max-inline-size.ts";
 import { Image } from "#/components/image.tsx";
 
 interface ImageLayersProps {
@@ -51,11 +52,13 @@ export function ImageLayers(props: Readonly<ImageLayersProps>): ReactNode {
 							alt={alt}
 							aria-hidden={!isVisible || undefined}
 							className={cn(
-								"object-contain transition-opacity [grid-area:1/-1] block-auto inline-auto max-block-[min(60vh,32rem)] max-inline-full",
+								"object-contain transition-opacity [grid-area:1/-1] block-auto",
 								isVisible ? "opacity-100" : "opacity-0",
 							)}
 							height={height}
+							sizes="(max-width: 767px) 100vw, 720px"
 							src={src}
+							style={{ maxInlineSize: getImageMaxInlineSize(width, height) }}
 							width={width}
 						/>
 					);
