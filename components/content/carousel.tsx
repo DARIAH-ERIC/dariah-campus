@@ -76,7 +76,7 @@ export function Carousel(props: Readonly<CarouselProps>): ReactNode {
 								role="group"
 							>
 								{/** The figure only takes up as much space as the image, so the caption aligns with it. */}
-								<figure className="mx-auto my-0 flex flex-col inline-fit max-inline-full">
+								<figure className="mx-auto my-0 flex flex-col inline-fit max-inline-full min-inline-[min(100%,20rem)]">
 									<Image
 										alt={alt}
 										className="self-center object-contain block-auto inline-auto max-block-[min(60vh,32rem)] max-inline-full"
