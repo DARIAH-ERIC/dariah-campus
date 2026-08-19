@@ -37,8 +37,9 @@ export const createImageLayers = createComponent((paths, _locale) => {
 				}),
 				label: fields.text({
 					label: "Layer name",
-					description: "Identifies the layer when it is selected with the slider.",
-					validation: { isRequired: true },
+					description:
+						"Identifies the layer when it is selected with the slider. Defaults to the layer's position.",
+					validation: { isRequired: false },
 				}),
 				alt: fields.text({
 					label: "Image description for assistive technology",
