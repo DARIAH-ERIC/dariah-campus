@@ -118,6 +118,32 @@ sections, a question without a prompt and a section without questions all have t
 	</QuizDragTheWords>
 </Quiz>
 
+## Quiz, drag and drop
+
+<Quiz>
+	<QuizDragAndDrop
+		alt="A plan of a church"
+		distractors="Cloister"
+		src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/annotated.png"
+	>
+		<QuizDropZone label="Nave" items={["Long central hall"]} x={5} y={10} width={40} height={30} />
+
+    	<QuizDropZone label="Apse" items={["Semicircular recess", "East end"]} x={55} y={55} width={40} height={30} />
+    </QuizDragAndDrop>
+
+</Quiz>
+
+## Quiz, drag and drop without an image
+
+<Quiz>
+	<QuizDragAndDrop>
+		<QuizDropZone label="Version control" items={["Git"]} />
+
+    	<QuizDropZone label="Repository hosting" items={["GitHub", "GitLab"]} />
+    </QuizDragAndDrop>
+
+</Quiz>
+
 ## Carousel
 
 <Carousel label="Fixture slides">

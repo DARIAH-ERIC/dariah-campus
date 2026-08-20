@@ -1,5 +1,7 @@
 import { type Locator, type Page, expect, test } from "@playwright/test";
 
+import { focusStably } from "#/e2e/utils.ts";
+
 /**
  * `/resources/hosted/git-collaboration` has a single `Quiz` with two paginated `QuizChoice` pages, both
  * `variant="multiple"`, and provides its own success and error messages ("Correct!" / "Try again").
@@ -170,6 +172,13 @@ function getFillInTheBlankQuiz(page: Page): Locator {
 function getFixtureChoiceQuiz(page: Page): Locator {
 	return page.getByRole("complementary").filter({
 		has: page.getByRole("checkbox", { name: "Markdown" }),
+	});
+}
+
+/** The fixture has two drag and drop exercises, told apart by a drop zone only one of them has. */
+function getDragAndDropQuiz(page: Page, zoneName: string): Locator {
+	return page.getByRole("complementary").filter({
+		has: page.getByRole("group", { name: zoneName }),
 	});
 }
 
@@ -382,5 +391,130 @@ test.describe("quiz, drag the words", () => {
 		const first = quiz.getByRole("button", { name: "Blank 1. Select a word." });
 		await expect(first).toHaveText("push");
 		await expect(first).toBeDisabled();
+	});
+});
+
+test.describe("quiz, drag and drop", () => {
+	test.beforeEach(() => {
+		test.skip(
+			// oxlint-disable-next-line node/no-process-env
+			Boolean(process.env.PLAYWRIGHT_TEST_APP_BASE_URL),
+			"The content widget fixture is not part of a deployed app.",
+		);
+	});
+
+	test("renders the image, its drop zones and the item bank", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getDragAndDropQuiz(page, "Nave");
+		await expect(quiz).toBeVisible();
+
+		/** The rehype plugin reads the dimensions off disk, so a missing size means the pipeline did not run. */
+		await expect(quiz.getByRole("img", { name: "A plan of a church" })).toHaveAttribute("width", "640");
+
+		await expect(quiz.getByRole("group", { name: "Nave" })).toBeVisible();
+		await expect(quiz.getByRole("group", { name: "Apse" })).toBeVisible();
+
+		/** Three items which belong in a zone, plus the distractor, ordered so the two are indistinguishable. */
+		await expect(quiz.getByRole("list", { name: "Items" }).getByRole("listitem")).toHaveCount(4);
+		await expect(quiz.getByRole("button", { name: "Cloister. Choose a drop zone." })).toBeVisible();
+	});
+
+	/** Items are placed through each item's menu, which is what keyboard and touch users get. */
+	test("scores the placed items", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getDragAndDropQuiz(page, "Nave");
+		const check = quiz.getByRole("button", { exact: true, name: "Check" });
+
+		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Apse" }).click();
+
+		await expect(quiz.getByRole("group", { name: "Apse" }).getByText("Long central hall")).toBeVisible();
+
+		await check.click();
+
+		await expect(quiz.getByText("0 / 3 correct")).toBeVisible();
+		await expect(quiz.getByRole("button", { name: "Long central hall, in Apse. Incorrect. Remove." })).toBeVisible();
+
+		await quiz.getByRole("button", { exact: true, name: "Reset" }).click();
+
+		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Nave" }).click();
+		await quiz.getByRole("button", { name: "Semicircular recess. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Apse" }).click();
+		await quiz.getByRole("button", { name: "East end. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Apse" }).click();
+
+		await check.click();
+
+		await expect(quiz.getByText("3 / 3 correct")).toBeVisible();
+		await expect(quiz.getByRole("button", { name: "East end, in Apse. Correct. Remove." })).toBeVisible();
+	});
+
+	test("returns a placed item to the bank", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getDragAndDropQuiz(page, "Nave");
+
+		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Nave" }).click();
+
+		await quiz.getByRole("button", { name: "Long central hall, in Nave. Remove." }).click();
+
+		await expect(quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." })).toBeVisible();
+		await expect(quiz.getByRole("group", { name: "Nave" }).getByRole("button")).toHaveCount(0);
+	});
+
+	test("fills in the solution on request", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getDragAndDropQuiz(page, "Nave");
+
+		await quiz.getByRole("button", { name: "Show solution" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Long central hall, in Nave." })).toBeDisabled();
+		await expect(quiz.getByRole("group", { name: "Apse" }).getByRole("button")).toHaveCount(2);
+
+		/** The distractor belongs in no zone, so the solution leaves it in the bank. */
+		await expect(quiz.getByRole("group", { name: "Nave" }).getByText("Cloister")).toBeHidden();
+	});
+
+	/**
+	 * An item is its own control, so moving it unmounts the button the reader was on. Without help focus would fall back
+	 * to the document, and a keyboard user would have to tab in again after every single move.
+	 */
+	test("keeps focus on the item it moves", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getDragAndDropQuiz(page, "Nave");
+		const item = quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." });
+
+		await focusStably(item);
+		await item.press("Enter");
+		await page.getByRole("menuitem", { name: "Nave" }).press("Enter");
+
+		await expect(quiz.getByRole("button", { name: "Long central hall, in Nave. Remove." })).toBeFocused();
+
+		await page.keyboard.press("Enter");
+
+		await expect(item).toBeFocused();
+	});
+
+	test("lays out the drop zones in a grid without a background image", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getDragAndDropQuiz(page, "Version control");
+		await expect(quiz).toBeVisible();
+
+		await expect(quiz.getByRole("img")).toHaveCount(0);
+		await expect(quiz.getByRole("list", { name: "Items" }).getByRole("listitem")).toHaveCount(3);
+
+		await quiz.getByRole("button", { name: "Git. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Version control" }).click();
+
+		await quiz.getByRole("button", { exact: true, name: "Check" }).click();
+
+		await expect(quiz.getByText("1 / 3 correct")).toBeVisible();
 	});
 });

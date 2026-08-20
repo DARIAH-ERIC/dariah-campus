@@ -54,7 +54,7 @@ const createEvaluateOptions = (baseUrl: string) => {
 			createSyntaxHighlighterPlugin(),
 			createTableOfContentsPlugin(),
 			createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
-			createRemoteImageUrlsPlugin(baseUrl, ["CarouselItem", "Figure", "ImageLayer", "QuizImageHotspots", "VideoCard"]),
+			createRemoteImageUrlsPlugin(baseUrl, ["CarouselItem", "Figure", "ImageLayer", "QuizDragAndDrop", "QuizImageHotspots", "VideoCard"]),
 		],
 	}
 };

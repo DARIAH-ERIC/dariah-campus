@@ -9,6 +9,7 @@ import {
 	WorksheetSection,
 	WorksheetSectionDescription,
 } from "#/components/content/worksheet.tsx";
+import { QuizDragAndDrop, QuizDropZone } from "#/components/content/drag-and-drop.tsx";
 import { Drop, QuizDragTheWords } from "#/components/content/drag-the-words.tsx";
 import { Embed } from "#/components/content/embed.tsx";
 import { ExternalResource } from "#/components/content/external-resource.tsx";
@@ -71,8 +72,10 @@ export const components = {
 	QuizChoiceAnswerLabel,
 	QuizChoiceQuestion,
 	QuizErrorMessage,
+	QuizDragAndDrop,
 	QuizDragTheWords,
 	QuizFillInTheBlank,
+	QuizDropZone,
 	QuizImageHotspot,
 	QuizImageHotspots,
 	QuizSuccessMessage,

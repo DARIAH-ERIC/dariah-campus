@@ -20,6 +20,19 @@
 			"more-layers": "Show more layers",
 			"output": "{label} ({index} of {total})"
 		},
+		"QuizDragAndDrop": {
+			"check": "Check",
+			"item-bank-label": "Items",
+			"item-label": "{item}. Choose a drop zone.",
+			"placed-item-label": "{item}, in {zone}. Remove.",
+			"placed-item-label-correct": "{item}, in {zone}. Correct. Remove.",
+			"placed-item-label-incorrect": "{item}, in {zone}. Incorrect. Remove.",
+			"reset": "Reset",
+			"score": "{correct} / {total} correct",
+			"show-solution": "Show solution",
+			"solution-item-label": "{item}, in {zone}.",
+			"zone-label": "Drop zone {index}"
+		},
 		"QuizDragTheWords": {
 			"blank-label-empty": "Blank {index}. Select a word.",
 			"blank-label-filled": "Blank {index}. Currently {word}.",
