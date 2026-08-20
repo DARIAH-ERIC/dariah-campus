@@ -51,6 +51,9 @@ jobs:
       - name: Format
         run: pnpm run format:check
 
+      - name: Create e2e fixture content
+        run: pnpm run e2e:fixtures:create
+
       - name: Transform content
         run: pnpm run content:build
 

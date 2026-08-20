@@ -35,7 +35,8 @@ const config = defineConfig({
 				"playwright/no-restricted-locators": "off",
 				"playwright/no-restricted-matchers": "off",
 				"playwright/no-restricted-roles": "off",
-				"playwright/no-skipped-test": "error",
+				/** Specs which depend on the e2e fixture content skip when running against a deployed app. */
+				"playwright/no-skipped-test": ["error", { allowConditional: true }],
 				"playwright/no-slowed-test": "warn",
 				"playwright/no-standalone-expect": "error",
 				"playwright/no-unsafe-references": "error",

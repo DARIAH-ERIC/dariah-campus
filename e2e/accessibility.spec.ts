@@ -1,0 +1,75 @@
+import { expect, test } from "@playwright/test";
+import { getViolations, injectAxe } from "axe-playwright";
+
+/**
+ * Scoped to the rendered content of the fixture resource, so the scan reports what the content components produce, and
+ * not pre-existing issues in the surrounding page chrome - a resource page has a `link-in-text-block` violation in its
+ * re-use conditions, which is nothing to do with the widgets.
+ */
+const pathname = "/resources/hosted/e2e-content-widgets";
+
+/** The rendered mdx content, which is exactly the widgets and nothing else on the page. */
+const selector = ".prose";
+
+const tags = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"];
+
+/** Asserted as a list rather than a count, so a new violation names itself in the failure message. */
+const knownViolations: Array<string> = [];
+
+function getViolationIds(violations: Awaited<ReturnType<typeof getViolations>>): Array<string> {
+	return violations.map((violation) => violation.id);
+}
+
+function formatViolations(violations: Awaited<ReturnType<typeof getViolations>>): Array<string> {
+	return violations.map(
+		(violation) => `${violation.id}: ${violation.nodes.map((node) => node.target.join(" ")).join(", ")}`,
+	);
+}
+
+test.describe("accessibility", () => {
+	test.beforeEach(async ({ page }) => {
+		test.skip(
+			// oxlint-disable-next-line node/no-process-env
+			Boolean(process.env.PLAYWRIGHT_TEST_APP_BASE_URL),
+			"The content widget fixture is not part of a deployed app.",
+		);
+
+		await page.goto(pathname);
+		await injectAxe(page);
+	});
+
+	test("has no violations in the initial state", async ({ page }) => {
+		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+
+	/** The error state adds `aria-invalid`, a live region and an `aria-describedby` reference. */
+	test("has no violations after an incorrect answer", async ({ page }) => {
+		const quiz = page.getByRole("complementary").filter({
+			has: page.getByRole("checkbox", { name: "Markdown" }),
+		});
+
+		await quiz.getByRole("checkbox", { name: "Markdown" }).check();
+		await quiz.getByRole("button", { name: "Check answer" }).click();
+
+		await expect(quiz.getByRole("checkbox", { name: "Markdown" })).toHaveAttribute("aria-invalid", "true");
+
+		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+
+	test("has no violations on the worksheet summary", async ({ page }) => {
+		const worksheet = page.getByRole("region", { name: "Research data plan" });
+
+		await worksheet.getByRole("button", { exact: true, name: "Next" }).click();
+		await worksheet.getByRole("button", { name: "Review answers" }).click();
+
+		await expect(worksheet.getByRole("group", { name: "Summary" })).toBeVisible();
+
+		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+});
