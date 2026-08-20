@@ -47,6 +47,7 @@
 			"correct": "Correct!",
 			"incorrect": "Incorrect!",
 			"next-question": "Next question",
+			"page-label": "Question {index} of {total}",
 			"previous-question": "Previous question",
 			"validate": "Check answer"
 		},

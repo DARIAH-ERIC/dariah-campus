@@ -34,7 +34,14 @@ export function QuizControls(props: Readonly<QuizControlsProps>): ReactNode {
 	return (
 		<div className={`flex items-center gap-x-4 ${navigation.isPaginated ? "justify-between" : "justify-center"}`}>
 			{navigation.isPaginated ? (
-				<Button isDisabled={!navigation.hasPrevious} onPress={navigation.previous}>
+				<Button
+					aria-disabled={!navigation.hasPrevious || undefined}
+					onPress={() => {
+						if (!navigation.hasPrevious) {return;}
+
+						navigation.previous();
+					}}
+				>
 					<ChevronLeftIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
 					<span>{previousButtonLabel}</span>
 				</Button>
@@ -59,7 +66,14 @@ export function QuizControls(props: Readonly<QuizControlsProps>): ReactNode {
 			</div>
 
 			{navigation.isPaginated ? (
-				<Button isDisabled={!navigation.hasNext} onPress={navigation.next}>
+				<Button
+					aria-disabled={!navigation.hasNext || undefined}
+					onPress={() => {
+						if (!navigation.hasNext) {return;}
+
+						navigation.next();
+					}}
+				>
 					<span>{nextButtonLabel}</span>
 					<ChevronRightIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
 				</Button>
@@ -78,7 +92,7 @@ function Button(props: Readonly<ButtonProps>): ReactNode {
 	return (
 		<AriaButton
 			{...props}
-			className="inline-flex cursor-default items-center justify-center gap-x-2 rounded-md px-3 py-1.5 text-sm/normal font-medium whitespace-nowrap transition hover:bg-neutral-100 disabled:opacity-50 pressed:bg-neutral-200"
+			className="inline-flex cursor-default items-center justify-center gap-x-2 rounded-md px-3 py-1.5 text-sm/normal font-medium whitespace-nowrap transition not-aria-disabled:hover:bg-neutral-100 aria-disabled:opacity-50 pressed:bg-neutral-200"
 		>
 			{children}
 		</AriaButton>
