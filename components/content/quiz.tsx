@@ -54,13 +54,15 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 	 * tab backwards to reach it - and screen readers would not announce that anything changed.
 	 */
 	const pageRefs = useRef<Map<number, HTMLDivElement | null>>(new Map());
-	/** Focus is only moved once a learner navigates, never on the initial render. */
-	const hasNavigated = useRef(false);
+	/** Comparing against the previous page keeps focus untouched on the initial render. */
+	const previousIndex = useRef(currentIndex);
 
 	useEffect(() => {
-		if (!hasNavigated.current) {return;}
+		if (previousIndex.current !== currentIndex) {
+			pageRefs.current.get(currentIndex)?.focus();
+		}
 
-		pageRefs.current.get(currentIndex)?.focus();
+		previousIndex.current = currentIndex;
 	}, [currentIndex]);
 
 	if (quizzes.length === 0) {return null;}
@@ -70,13 +72,11 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 		hasPrevious: currentIndex > 0,
 		isPaginated: quizzes.length > 1,
 		next() {
-			hasNavigated.current = true;
 			setCurrentIndex((currentIndex) =>
 				currentIndex + 1
 			);
 		},
 		previous() {
-			hasNavigated.current = true;
 			setCurrentIndex((currentIndex) =>
 				currentIndex - 1
 			);
@@ -104,18 +104,18 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 				return (
 					// oxlint-disable-next-line react/jsx-no-constructed-context-values
 					<QuizContext key={index} value={value}>
+						{/** A quiz which is not paginated has nothing to navigate to, so it needs no group to focus. */}
 						<div
 							ref={(node) => {
 								pageRefs.current.set(index, node);
 							}}
-							aria-label={t("page-label", {
-								index: String(index + 1),
-								total: String(quizzes.length),
-							})}
-							className="focus:outline-none"
+							aria-label={navigation.isPaginated
+								? t("page-label", { index: String(index + 1), total: String(quizzes.length) })
+								: undefined}
+							className={navigation.isPaginated ? "focus:outline-none" : undefined}
 							hidden={!isCurrent}
-							role="group"
-							tabIndex={-1}
+							role={navigation.isPaginated ? "group" : undefined}
+							tabIndex={navigation.isPaginated ? -1 : undefined}
 						>
 							{quiz}
 						</div>

@@ -104,8 +104,8 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 	 * tab backwards to reach them - and screen readers would not announce that anything changed.
 	 */
 	const stepRefs = useRef<Map<number, HTMLDivElement | null>>(new Map());
-	/** Focus is only moved once a learner navigates, never on the initial render. */
-	const hasNavigated = useRef(false);
+	/** Comparing against the previous step keeps focus untouched on the initial render. */
+	const previousIndex = useRef(0);
 
 	/**
 	 * Answers are only read from storage after mount, so server and client render the same empty form.
@@ -170,15 +170,12 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 	}, [documentTitle, isRestored, values]);
 
 	useEffect(() => {
-		if (!hasNavigated.current) {return;}
+		if (previousIndex.current !== currentIndex) {
+			stepRefs.current.get(currentIndex)?.focus();
+		}
 
-		stepRefs.current.get(currentIndex)?.focus();
+		previousIndex.current = currentIndex;
 	}, [currentIndex]);
-
-	function goToStep(index: number): void {
-		hasNavigated.current = true;
-		setIndex(index);
-	}
 
 	function createDocument(): string {
 		return createWorksheetDocument({
@@ -263,7 +260,7 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 		setState((state) => {
 			return { ...state, values: {} };
 		});
-		goToStep(0);
+		setIndex(0);
 		setIsConfirmingReset(false);
 	}
 
@@ -375,7 +372,7 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 					onPress={() => {
 						if (currentIndex === 0) {return;}
 
-						goToStep(currentIndex - 1);
+						setIndex(currentIndex - 1);
 					}}
 				>
 					<ChevronLeftIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
@@ -417,7 +414,7 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 					: (
 						<Button
 							onPress={() => {
-								goToStep(currentIndex + 1);
+								setIndex(currentIndex + 1);
 							}}
 							variant="primary"
 						>
