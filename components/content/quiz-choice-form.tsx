@@ -26,8 +26,8 @@ interface QuizChoiceFormProps {
 }
 
 /**
- * The interactive half of `QuizChoice`. Splitting the answers out of the rich-text children happens in the
- * server component, so components can be identified by comparing `child.type`.
+ * The interactive half of `QuizChoice`. Splitting the answers out of the rich-text children happens in the server
+ * component, so components can be identified by comparing `child.type`.
  */
 export function QuizChoiceForm(props: Readonly<QuizChoiceFormProps>): ReactNode {
 	const {
@@ -42,9 +42,7 @@ export function QuizChoiceForm(props: Readonly<QuizChoiceFormProps>): ReactNode 
 	} = props;
 
 	const answerMessagePrefixId = useId();
-	const [incorrectAnswerIndices, setIncorrectAnswerIndices] = useState<Set<number>>(() =>
-		new Set()
-	);
+	const [incorrectAnswerIndices, setIncorrectAnswerIndices] = useState<Set<number>>(() => new Set());
 
 	const type = variant === "multiple" ? "checkbox" : "radio";
 
@@ -61,7 +59,9 @@ export function QuizChoiceForm(props: Readonly<QuizChoiceFormProps>): ReactNode 
 		const incorrectAnswerIndices = new Set<number>();
 		checks.forEach((check, index) => {
 			const shouldBeChecked = check === "correct";
-			if (checked.has(String(index)) !== shouldBeChecked) {incorrectAnswerIndices.add(index);}
+			if (checked.has(String(index)) !== shouldBeChecked) {
+				incorrectAnswerIndices.add(index);
+			}
 		});
 		setIncorrectAnswerIndices(incorrectAnswerIndices);
 

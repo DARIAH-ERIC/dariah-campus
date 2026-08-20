@@ -4,10 +4,10 @@ import { assert, createUrl } from "@acdh-oeaw/lib";
 import { createGitHubReader } from "@keystatic/core/reader/github";
 import { cache } from "react";
 
-import { client } from "#/lib/content/client/index.ts";
 import type { Curriculum } from "#/lib/content/client/curricula.ts";
 import type { Documentation } from "#/lib/content/client/documentation.ts";
 import type { IndexPage } from "#/lib/content/client/index-page.ts";
+import { client } from "#/lib/content/client/index.ts";
 import type { Person } from "#/lib/content/client/people.ts";
 import type { EventResource } from "#/lib/content/client/resources/events.ts";
 import type { ExternalResource } from "#/lib/content/client/resources/external.ts";
@@ -56,7 +56,7 @@ const createEvaluateOptions = (baseUrl: string) => {
 			createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
 			createRemoteImageUrlsPlugin(baseUrl, ["CarouselItem", "Figure", "ImageLayer", "QuizImageHotspots", "VideoCard"]),
 		],
-	}
+	};
 };
 
 export const createGitHubClient = cache(function createGitHubClient({
@@ -288,6 +288,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 				metadata: {
 					...metadata,
 					image,
+					description: content.trim(),
 				},
 			};
 		},
@@ -618,7 +619,10 @@ export const createGitHubClient = cache(function createGitHubClient({
 			return {
 				id,
 				content: component,
-				metadata,
+				metadata: {
+					...metadata,
+					description: content.trim(),
+				},
 			};
 		},
 	};

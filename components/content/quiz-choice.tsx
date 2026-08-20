@@ -2,9 +2,8 @@ import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
 import { getChildrenByType } from "#/components/content/get-children-by-type.ts";
-import { QuizErrorMessage, QuizSuccessMessage } from "#/components/content/quiz.tsx";
 import { type QuizChoiceAnswerData, QuizChoiceForm } from "#/components/content/quiz-choice-form.tsx";
-
+import { QuizErrorMessage, QuizSuccessMessage } from "#/components/content/quiz.tsx";
 
 interface QuizChoiceProps {
 	buttonLabel?: string;
@@ -13,9 +12,9 @@ interface QuizChoiceProps {
 }
 
 /**
- * Note that this must stay a server component: it identifies its children by comparing `child.type`, which
- * only works while the mdx components and the imports here resolve to the same objects. In a client
- * component the children arrive as separate lazy references, and nothing matches.
+ * Note that this must stay a server component: it identifies its children by comparing `child.type`, which only works
+ * while the mdx components and the imports here resolve to the same objects. In a client component the children arrive
+ * as separate lazy references, and nothing matches.
  */
 export function QuizChoice(props: Readonly<QuizChoiceProps>): ReactNode {
 	const { buttonLabel, children, variant } = props;

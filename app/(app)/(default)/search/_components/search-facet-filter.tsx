@@ -20,11 +20,39 @@ import {
 
 import { useSearch } from "#/app/(app)/(default)/search/_components/search-provider.tsx";
 import type { FacetAttribute } from "#/app/(app)/(default)/search/_lib/search.ts";
+import { maxUnfilteredFacetValues } from "#/configs/search.config.ts";
 
 interface FacetItem {
 	/** `undefined` while the count for a refinement restored from the url is not yet known. */
 	count: number | undefined;
 	value: string;
+}
+
+interface FilterableProps {
+	children: ReactNode;
+	isFilterable: boolean;
+	renderFilter: () => ReactNode;
+}
+
+/**
+ * Wraps the list in an autocomplete, whose filter input is only worth the space when the list is long enough to be
+ * worth narrowing. Without it the list keeps real focus instead of the autocomplete's virtual focus.
+ */
+function Filterable(props: Readonly<FilterableProps>): ReactNode {
+	const { children, isFilterable, renderFilter } = props;
+
+	const { contains } = useFilter({ sensitivity: "base" });
+
+	if (!isFilterable) {
+		return children;
+	}
+
+	return (
+		<Autocomplete filter={contains}>
+			{renderFilter()}
+			{children}
+		</Autocomplete>
+	);
 }
 
 interface SearchFacetFilterProps {
@@ -41,7 +69,6 @@ export function SearchFacetFilter(props: Readonly<SearchFacetFilterProps>): Reac
 	const t = useTranslations("SearchPage");
 	const format = useFormatter();
 	const { facets, isLoading, selectedFilters, setFilter } = useSearch();
-	const { contains } = useFilter({ sensitivity: "base" });
 	const collator = useCollator({ sensitivity: "base", usage: "sort" });
 	const selected = selectedFilters[attribute];
 	/**
@@ -74,6 +101,7 @@ export function SearchFacetFilter(props: Readonly<SearchFacetFilterProps>): Reac
 			return collator.compare(getLabel(a.value), getLabel(b.value));
 		});
 	}, [attribute, collator, facets, getLabel, isLoading, pinned, selected]);
+	const isFilterable = items.length > maxUnfilteredFacetValues;
 
 	return (
 		<DialogTrigger
@@ -110,17 +138,22 @@ export function SearchFacetFilter(props: Readonly<SearchFacetFilterProps>): Reac
 				placement="bottom start"
 			>
 				<Dialog aria-label={label} className="grid gap-y-2 p-2 outline-none">
-					<Autocomplete filter={contains}>
-						<SearchField autoFocus={true}>
-							<Label className="sr-only">{t("filter-label", { attribute: label })}</Label>
-							<Input
-								className="rounded-md border border-neutral-300 px-3 py-1.5 text-sm inline-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
-								placeholder={t("filter-placeholder")}
-							/>
-						</SearchField>
-
+					<Filterable
+						isFilterable={isFilterable}
+						renderFilter={() => (
+							<SearchField autoFocus={true}>
+								<Label className="sr-only">{t("filter-label", { attribute: label })}</Label>
+								<Input
+									className="rounded-md border border-neutral-300 px-3 py-1.5 text-sm inline-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
+									placeholder={t("filter-placeholder")}
+								/>
+							</SearchField>
+						)}
+					>
 						<ListBox
 							aria-label={label}
+							/** Without a filter input to hold it, focus belongs to the list itself. */
+							autoFocus={!isFilterable}
 							className="grid gap-y-0.5 overflow-y-auto outline-none max-block-72"
 							/** Escape belongs to the popover here - without this it would clear the refinement instead of closing. */
 							escapeKeyBehavior="none"
@@ -168,7 +201,7 @@ export function SearchFacetFilter(props: Readonly<SearchFacetFilterProps>): Reac
 								</ListBoxItem>
 							)}
 						</ListBox>
-					</Autocomplete>
+					</Filterable>
 				</Dialog>
 			</Popover>
 		</DialogTrigger>

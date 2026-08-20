@@ -3,7 +3,7 @@ import { fields, singleton } from "@keystatic/core";
 
 import { socialMediaKinds } from "#/lib/content/options.ts";
 
-export const createMetadata = createSingleton("/metadata/", (paths, _locale) => 
+export const createMetadata = createSingleton("/metadata/", (paths, _locale) =>
 	singleton({
 		label: "Metadata",
 		path: paths.contentPath,
@@ -66,5 +66,5 @@ export const createMetadata = createSingleton("/metadata/", (paths, _locale) =>
 				},
 			),
 		},
-	})
+	}),
 );

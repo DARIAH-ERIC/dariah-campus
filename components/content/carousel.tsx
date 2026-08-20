@@ -23,9 +23,7 @@ export function Carousel(props: Readonly<CarouselProps>): ReactNode {
 	const t = useTranslations("content.Carousel");
 
 	/** Slides without image are ignored, because the cms allows inserting empty slides. */
-	const slides = getChildrenElements<CarouselItemProps>(children).filter((slide) =>
-		isNonEmptyString(slide.props.src)
-	);
+	const slides = getChildrenElements<CarouselItemProps>(children).filter((slide) => isNonEmptyString(slide.props.src));
 
 	const [carouselRef, api] = useEmblaCarousel({ loop });
 
@@ -151,8 +149,8 @@ interface ButtonProps extends ComponentPropsWithRef<"button"> {
 }
 
 /**
- * Note that the buttons are never actually disabled, they are only marked as `aria-disabled`, so keyboard
- * focus is not lost when the carousel reaches its first or last slide.
+ * Note that the buttons are never actually disabled, they are only marked as `aria-disabled`, so keyboard focus is not
+ * lost when the carousel reaches its first or last slide.
  */
 function Button(props: Readonly<ButtonProps>): ReactNode {
 	const { children } = props;

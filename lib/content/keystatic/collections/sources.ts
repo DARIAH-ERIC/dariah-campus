@@ -3,7 +3,7 @@ import { collection, fields } from "@keystatic/core";
 
 import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 
-export const createSources = createCollection("/sources/", (paths, _locale) => 
+export const createSources = createCollection("/sources/", (paths, _locale) =>
 	collection({
 		label: "Sources",
 		path: paths.contentPath,
@@ -36,5 +36,5 @@ export const createSources = createCollection("/sources/", (paths, _locale) =>
 				components: {},
 			}),
 		},
-	})
+	}),
 );

@@ -11,7 +11,6 @@ import { createCallout } from "#/lib/content/keystatic/components/callout/index.
 import { createCarousel } from "#/lib/content/keystatic/components/carousel/index.tsx";
 // import { createDiagram } from "#/lib/content/keystatic/components/diagram/index.tsx";
 import { createDisclosure } from "#/lib/content/keystatic/components/disclosure/index.tsx";
-import { createWorksheet } from "#/lib/content/keystatic/components/worksheet/index.tsx";
 import { createEmbed } from "#/lib/content/keystatic/components/embed/index.tsx";
 import { createFigure } from "#/lib/content/keystatic/components/figure/index.tsx";
 import { createFootnote } from "#/lib/content/keystatic/components/footnote/index.tsx";
@@ -19,14 +18,15 @@ import { createGrid } from "#/lib/content/keystatic/components/grid/index.tsx";
 import { createH5PWrapper } from "#/lib/content/keystatic/components/h5p-wrapper/index.tsx";
 import { createHeadingId } from "#/lib/content/keystatic/components/heading-id/index.tsx";
 import { createImageLayers } from "#/lib/content/keystatic/components/image-layers/index.tsx";
-import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
+import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createTabs } from "#/lib/content/keystatic/components/tabs/index.tsx";
 import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx";
+import { createWorksheet } from "#/lib/content/keystatic/components/worksheet/index.tsx";
 import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 import { contentLanguages, contentLicenses } from "#/lib/content/options.ts";
 
-export const createResourcesPathfinders = createCollection("/resources/pathfinders/", (paths, locale) => 
+export const createResourcesPathfinders = createCollection("/resources/pathfinders/", (paths, locale) =>
 	collection({
 		label: "Pathfinders",
 		path: paths.contentPath,
@@ -168,5 +168,5 @@ export const createResourcesPathfinders = createCollection("/resources/pathfinde
 			}),
 			draft: fields.ignored(),
 		},
-	})
+	}),
 );

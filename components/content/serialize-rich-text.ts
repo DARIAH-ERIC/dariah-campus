@@ -4,12 +4,14 @@ const strippedSelector = "script, style, template, noscript, iframe, object, emb
 /**
  * Serialises rendered rich text into plain html for the downloadable document.
  *
- * The rendered markup carries app styling, which the document has no stylesheet for, so every attribute is
- * dropped and only the semantic elements are kept. Links keep their `href`, resolved to an absolute url,
- * because the document is read outside of the site.
+ * The rendered markup carries app styling, which the document has no stylesheet for, so every attribute is dropped and
+ * only the semantic elements are kept. Links keep their `href`, resolved to an absolute url, because the document is
+ * read outside of the site.
  */
 export function serializeRichText(element: HTMLElement | null | undefined): string | undefined {
-	if (element == null) {return undefined;}
+	if (element == null) {
+		return undefined;
+	}
 
 	const clone = element.cloneNode(true) as HTMLElement;
 

@@ -3,17 +3,13 @@ import { keyByToMap } from "@acdh-oeaw/lib";
 import { contentLanguages as collection } from "#/lib/content/options.ts";
 import type { CollectionClient } from "#/lib/content/types.ts";
 
-const ids = collection.map((item) => 
-	item.value
-);
+const ids = collection.map((item) => item.value);
 
 const all = collection.map((item) => {
 	return { id: item.value, label: item.label };
 });
 
-const byId = keyByToMap(all, (item) => 
-	item.id
-);
+const byId = keyByToMap(all, (item) => item.id);
 
 export type ContentLanguage = (typeof all)[number];
 

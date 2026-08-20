@@ -10,9 +10,9 @@ interface WorksheetProps {
 }
 
 /**
- * Note that this must stay a server component: it identifies its children by comparing `child.type`, which
- * only works while the mdx components and the imports here resolve to the same objects. In a client
- * component the children arrive as separate lazy references, and nothing matches.
+ * Note that this must stay a server component: it identifies its children by comparing `child.type`, which only works
+ * while the mdx components and the imports here resolve to the same objects. In a client component the children arrive
+ * as separate lazy references, and nothing matches.
  */
 export function Worksheet(props: Readonly<WorksheetProps>): ReactNode {
 	const { children, title } = props;
@@ -22,8 +22,8 @@ export function Worksheet(props: Readonly<WorksheetProps>): ReactNode {
 	const description = get(WorksheetDescription);
 
 	/**
-	 * The cms saves entries even when a required field was left empty, so questions without a prompt, and
-	 * sections without any question, are dropped instead of rendering a step nobody can fill in.
+	 * The cms saves entries even when a required field was left empty, so questions without a prompt, and sections
+	 * without any question, are dropped instead of rendering a step nobody can fill in.
 	 */
 	const sections: Array<WorksheetSectionData> = get(WorksheetSection)
 		.map((section) => {
@@ -35,9 +35,7 @@ export function Worksheet(props: Readonly<WorksheetProps>): ReactNode {
 				/** Whether `description` has content, which cannot be determined from a `ReactNode`. */
 				hasDescription: description.length > 0,
 				questions: getSectionChild(WorksheetQuestion)
-					.filter((question) =>
-						isNonEmptyString(question.props.label)
-					)
+					.filter((question) => isNonEmptyString(question.props.label))
 					.map((question) => {
 						return {
 							description: question.props.description,
@@ -49,11 +47,11 @@ export function Worksheet(props: Readonly<WorksheetProps>): ReactNode {
 				title: section.props.title,
 			};
 		})
-		.filter((section) =>
-			section.questions.length > 0
-		);
+		.filter((section) => section.questions.length > 0);
 
-	if (sections.length === 0) {return null;}
+	if (sections.length === 0) {
+		return null;
+	}
 
 	return (
 		<WorksheetForm
@@ -88,9 +86,7 @@ interface WorksheetSectionDescriptionProps {
 	children: ReactNode;
 }
 
-export function WorksheetSectionDescription(
-	props: Readonly<WorksheetSectionDescriptionProps>,
-): ReactNode {
+export function WorksheetSectionDescription(props: Readonly<WorksheetSectionDescriptionProps>): ReactNode {
 	const { children } = props;
 
 	return children;

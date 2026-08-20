@@ -60,7 +60,7 @@ export function SearchResults(props: Readonly<SearchResultsProps>): ReactNode {
 
 	return (
 		<div className={cn("transition-opacity", isLoading ? "opacity-75" : "opacity-100")}>
-			<ResourcesGrid peopleLabel={peopleLabel} resources={items} variant="search" />
+			<ResourcesGrid peopleLabel={peopleLabel} resources={items} />
 		</div>
 	);
 }

@@ -37,7 +37,9 @@ export function QuizControls(props: Readonly<QuizControlsProps>): ReactNode {
 				<Button
 					aria-disabled={!navigation.hasPrevious || undefined}
 					onPress={() => {
-						if (!navigation.hasPrevious) {return;}
+						if (!navigation.hasPrevious) {
+							return;
+						}
 
 						navigation.previous();
 					}}
@@ -69,7 +71,9 @@ export function QuizControls(props: Readonly<QuizControlsProps>): ReactNode {
 				<Button
 					aria-disabled={!navigation.hasNext || undefined}
 					onPress={() => {
-						if (!navigation.hasNext) {return;}
+						if (!navigation.hasNext) {
+							return;
+						}
 
 						navigation.next();
 					}}

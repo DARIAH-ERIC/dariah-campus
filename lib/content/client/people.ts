@@ -1,22 +1,16 @@
 import { keyByToMap } from "@acdh-oeaw/lib";
-import collection from "#content/people";
 
 import type { CollectionClient } from "#/lib/content/types";
+import collection from "#content/people";
 
 const ids = Array.from(collection.keys());
 
 const all = Array.from(collection.values())
-	.map((entry) =>
-		entry.document
-	)
+	.map((entry) => entry.document)
 	// oxlint-disable-next-line unicorn/no-array-sort
-	.sort((a, z) =>
-		a.metadata.name.localeCompare(z.metadata.name)
-	);
+	.sort((a, z) => a.metadata.name.localeCompare(z.metadata.name));
 
-const byId = keyByToMap(all, (item) =>
-	item.id
-);
+const byId = keyByToMap(all, (item) => item.id);
 
 export type Person = (typeof all)[number];
 
