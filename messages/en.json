@@ -10,6 +10,9 @@
 			"slide": "slide",
 			"slide-label": "Slide {index} of {total}"
 		},
+		"ImageComparisonSlider": {
+			"separator-label": "Use arrow keys to move separator"
+		},
 		"ImageLayers": {
 			"fewer-layers": "Show fewer layers",
 			"label": "Image layers",

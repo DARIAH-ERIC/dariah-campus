@@ -5,7 +5,7 @@ import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
 // oxlint-disable-next-line prefer-named-capture-group
-const BLANK_PATTERN = /@@([^@]+)@#/g;
+const BLANK_PATTERN = /@@([^@]+)@@/g;
 
 /**
  * Parses the inner content of a blank marker. Answers are separated by `//`, hint follows `::`. Examples: `Paris` →

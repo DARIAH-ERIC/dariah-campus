@@ -19,6 +19,8 @@
 		"dev:services:down": "sh ./scripts/dev/services.sh stop",
 		"dev:services:setup": "sh ./scripts/dev/setup.sh",
 		"dev:services:up": "sh ./scripts/dev/services.sh start",
+		"e2e:fixtures:create": "tsx ./scripts/e2e/create-fixture-content.ts create",
+		"e2e:fixtures:remove": "tsx ./scripts/e2e/create-fixture-content.ts remove",
 		"format:check": "oxfmt --check",
 		"format:fix": "oxfmt --write",
 		"generate:api-docs": "dotenvx run -q -f ./.env.local --ignore MISSING_ENV_FILE -- tsx ./scripts/api/generate-api-docs.ts",
@@ -37,7 +39,7 @@
 		"search:collections:reset": "dotenvx run -q -f ./.env.local --ignore MISSING_ENV_FILE -- tsx ./scripts/search/reset-collections.ts",
 		"search:collections:update": "dotenvx run -q -f ./.env.local --ignore MISSING_ENV_FILE -- tsx ./scripts/search/update-search-index.ts",
 		"start": "next start --experimental-next-config-strip-types",
-		"test:e2e": "playwright test --config ./e2e/playwright.config.ts --pass-with-no-tests",
+		"test:e2e": "playwright test --config ./e2e/playwright.config.ts",
 		"types:check": "tsc --noEmit",
 		"types:prepare": "ENV_VALIDATION=\"disabled\" next typegen"
 	},
