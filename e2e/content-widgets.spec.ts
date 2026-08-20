@@ -259,12 +259,7 @@ test.describe("tabs", () => {
 
 		await waitForHydration(first);
 
-		/**
-		 * React-aria only knows which item is focused once something has interacted with the collection. A bare
-		 * `locator.focus()` leaves its focused key unset, and the first arrow key then drops focus to `<body>` instead of
-		 * moving along the tab list - in chromium and webkit, though not in firefox.
-		 */
-		await first.click();
+		await first.focus();
 		await expect(first).toBeFocused();
 
 		await page.keyboard.press("ArrowRight");
