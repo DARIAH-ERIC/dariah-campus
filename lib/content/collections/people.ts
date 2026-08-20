@@ -38,6 +38,8 @@ export const people = createCollection({
       metadata: {
         ...metadata,
         image,
+        /** The body as plain text, for contexts which cannot render the compiled mdx, e.g. a search filter chip. */
+        description: content.trim(),
       },
     };
   },

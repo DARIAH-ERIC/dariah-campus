@@ -33,7 +33,11 @@ export const tags = createCollection({
     return {
       id: item.id,
       content: module,
-      metadata,
+      metadata: {
+        ...metadata,
+        /** The body as plain text, for contexts which cannot render the compiled mdx, e.g. a search facet listbox. */
+        description: content.trim(),
+      },
     };
   },
 });
