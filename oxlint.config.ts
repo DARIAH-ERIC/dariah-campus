@@ -38,7 +38,7 @@ const config = defineConfig({
 	},
 	overrides: [
 		{
-			files: ["configs/**/*.ts"],
+			files: ["configs/**/*.ts", "vitest.config.ts"],
 			rules: {
 				"import/no-default-export": "off",
 			},
