@@ -1,4 +1,6 @@
-import { type Locator, expect, test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
+
+import { focusStably, waitForHydration } from "#/e2e/utils.ts";
 
 /**
  * Carousel, image layers, the image comparison slider, image hotspots and the link button have no published content
@@ -7,17 +9,6 @@ import { type Locator, expect, test } from "@playwright/test";
 const pathname = "/resources/hosted/e2e-content-widgets";
 
 const assetPrefix = "/assets/content/assets/en/resources/hosted/e2e-content-widgets";
-
-/**
- * A click on a widget with no native behaviour - a `div` with a `tab` role, say - is a silent no-op before react has
- * hydrated it, so a test which interacts straight after `goto` can lose the click entirely. React attaches its internal
- * keys to a dom node as it hydrates that node, which is what makes this observable.
- */
-async function waitForHydration(locator: Locator): Promise<void> {
-	await expect
-		.poll(() => locator.evaluate((node) => Object.keys(node).some((key) => key.startsWith("__reactFiber"))))
-		.toBe(true);
-}
 
 test.describe("carousel", () => {
 	test.beforeEach(() => {
@@ -178,7 +169,7 @@ test.describe("image comparison slider", () => {
 
 		const before = await readPosition();
 
-		await separator.focus();
+		await focusStably(separator);
 		await expect(separator).toBeFocused();
 
 		await separator.press("ArrowRight");
@@ -259,10 +250,11 @@ test.describe("tabs", () => {
 
 		await waitForHydration(first);
 
-		await first.focus();
+		await focusStably(first);
 		await expect(first).toBeFocused();
 
-		await page.keyboard.press("ArrowRight");
+		/** Pressing through the locator re-establishes focus with the key, so a re-render cannot land between the two. */
+		await first.press("ArrowRight");
 
 		await expect(second).toBeFocused();
 		await expect(second).toHaveAttribute("aria-selected", "true");

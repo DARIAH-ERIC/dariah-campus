@@ -60,6 +60,57 @@ test.describe("accessibility", () => {
 		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
 	});
 
+	/** Placing a word empties its slot in the bank, and checking marks every blank right or wrong. */
+	test("has no violations with words placed and checked", async ({ page }) => {
+		const quiz = page.getByRole("complementary").filter({
+			has: page.getByRole("list", { name: "Answers" }),
+		});
+
+		await quiz.getByRole("button", { name: "Blank 1. Select a word." }).click();
+		await page.getByRole("menuitem", { name: "push" }).click();
+		await quiz.getByRole("button", { name: "Blank 2. Select a word." }).click();
+		await page.getByRole("menuitem", { name: "merge" }).click();
+
+		await quiz.getByRole("button", { exact: true, name: "Check" }).click();
+
+		await expect(quiz.getByText("1 / 2 correct")).toBeVisible();
+
+		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+
+	/** The blanks grow `aria-invalid` and a description, and the solution replaces them with the answers. */
+	test("has no violations on a checked fill in the blank", async ({ page }) => {
+		const quiz = page.getByRole("complementary").filter({
+			has: page.getByRole("textbox", { name: "Blank 1" }),
+		});
+
+		await quiz.getByRole("textbox", { name: "Blank 1" }).fill("stage");
+		await quiz.getByRole("button", { exact: true, name: "Check" }).click();
+
+		await expect(quiz.getByRole("textbox", { name: "Blank 1" })).toHaveAttribute("aria-invalid", "true");
+
+		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+
+	/** The inline presentation moves the annotation into a panel beside the image. */
+	test("has no violations with an image hotspot open", async ({ page }) => {
+		const quiz = page.getByRole("complementary").filter({
+			has: page.getByRole("img", { name: "An annotated plan" }),
+		});
+
+		await quiz.getByRole("button", { exact: true, name: "Nave" }).click();
+
+		await expect(quiz.getByText("The central aisle of the building.")).toBeVisible();
+
+		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+
 	test("has no violations on the worksheet summary", async ({ page }) => {
 		const worksheet = page.getByRole("region", { name: "Research data plan" });
 
