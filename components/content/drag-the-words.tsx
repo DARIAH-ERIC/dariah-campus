@@ -259,7 +259,7 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 					 * blank's menu, so making them tab stops would only lengthen the tab order.
 					 * They stay readable, and draggable for mouse users.
 					 *
-					 * Placed words stay in the list, greyed out, so the bank keeps a fixed size
+					 * Placed words leave an empty slot behind, so the bank keeps a fixed size
 					 * instead of reflowing after every move. Used entries are hidden from
 					 * assistive technology, leaving the list as the set still available.
 					 */}
@@ -273,7 +273,7 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 									aria-hidden={isUsed}
 									className={`rounded-md border px-2 py-0.5 text-center font-mono text-sm wrap-break-word ${
 										isUsed
-											? "cursor-default border-neutral-200 bg-neutral-100 text-neutral-400"
+											? "cursor-default border-dashed border-neutral-300 bg-neutral-50"
 											: "cursor-grab border-neutral-300 bg-white text-neutral-700"
 									}`}
 									draggable={!isUsed}
@@ -281,7 +281,8 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 										startWordDrag(event, word.id, word.text);
 									}}
 								>
-									{word.text}
+									{/* Greyed-out text light enough to read as "used" would not meet contrast, so the word only holds the slot open. */}
+									<span className={isUsed ? "invisible" : undefined}>{word.text}</span>
 								</li>
 							);
 						})}
@@ -407,8 +408,11 @@ export function Drop(props: Readonly<DropProps>): ReactNode {
 					offset={4}
 					placement="bottom start"
 				>
+					{/*
+					 * The menu is named after its trigger by react-aria, which already reads as "Blank <n>. Select a
+					 * word.", so a label of its own would only be overridden.
+					 */}
 					<Menu
-						aria-label={t("choose-answer-label", { index: String(id + 1) })}
 						className="outline-none"
 						onAction={(key) => {
 							if (key === removeAction) {
