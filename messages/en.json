@@ -49,6 +49,23 @@
 			"next-question": "Next question",
 			"previous-question": "Previous question",
 			"validate": "Check answer"
+		},
+		"Worksheet": {
+			"download": "Download document",
+			"generated": "Generated on {date}.",
+			"next": "Next",
+			"not-answered": "Not answered",
+			"previous": "Back",
+			"print": "Print or save as PDF",
+			"progress-label": "Form progress",
+			"reset": "Clear answers",
+			"reset-confirm": "Confirm clearing answers",
+			"review": "Review answers",
+			"section-label": "Section {index}",
+			"source": "Source",
+			"step-label": "Step {index} of {total}",
+			"summary": "Summary",
+			"title": "Worksheet"
 		}
 	},
 	"mdx": {
