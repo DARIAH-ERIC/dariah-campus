@@ -2,6 +2,13 @@ import { Callout } from "#/components/content/callout.tsx";
 import { Carousel, CarouselItem } from "#/components/content/carousel.tsx";
 import { Diagram, DiagramCaption, DiagramCodeBlock } from "#/components/content/diagram.tsx";
 import { Disclosure } from "#/components/content/disclosure.tsx";
+import {
+	Worksheet,
+	WorksheetDescription,
+	WorksheetQuestion,
+	WorksheetSection,
+	WorksheetSectionDescription,
+} from "#/components/content/worksheet.tsx";
 import { Drop, QuizDragTheWords } from "#/components/content/drag-the-words.tsx";
 import { Embed } from "#/components/content/embed.tsx";
 import { ExternalResource } from "#/components/content/external-resource.tsx";
@@ -39,6 +46,11 @@ export const components = {
 	DiagramCaption,
 	DiagramCodeBlock,
 	Disclosure,
+	Worksheet,
+	WorksheetDescription,
+	WorksheetQuestion,
+	WorksheetSection,
+	WorksheetSectionDescription,
 	Drop,
 	Embed,
 	ExternalResource,

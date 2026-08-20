@@ -1,7 +1,9 @@
 "use client";
 
 import { assert } from "@acdh-oeaw/lib";
-import { type ReactNode, createContext, use, useState } from "react";
+import { type ReactNode, createContext, use, useEffect, useRef, useState } from "react";
+
+import { useTranslations } from "next-intl";
 
 import { getChildrenElements } from "#/components/content/get-children-elements.ts";
 
@@ -35,6 +37,8 @@ interface QuizProps {
 export function Quiz(props: Readonly<QuizProps>): ReactNode {
 	const { children } = props;
 
+	const t = useTranslations("content.QuizControls");
+
 	const quizzes = getChildrenElements(children);
 
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -43,6 +47,23 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 			"idle"
 		)
 	);
+
+	/**
+	 * A quiz page is a page of a form, so navigating moves focus to the new page, like following a link does.
+	 * Otherwise the new question sits *before* the controls in the document, and keyboard users would have to
+	 * tab backwards to reach it - and screen readers would not announce that anything changed.
+	 */
+	const pageRefs = useRef<Map<number, HTMLDivElement | null>>(new Map());
+	/** Comparing against the previous page keeps focus untouched on the initial render. */
+	const previousIndex = useRef(currentIndex);
+
+	useEffect(() => {
+		if (previousIndex.current !== currentIndex) {
+			pageRefs.current.get(currentIndex)?.focus();
+		}
+
+		previousIndex.current = currentIndex;
+	}, [currentIndex]);
 
 	if (quizzes.length === 0) {return null;}
 
@@ -83,7 +104,21 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 				return (
 					// oxlint-disable-next-line react/jsx-no-constructed-context-values
 					<QuizContext key={index} value={value}>
-						{quiz}
+						{/** A quiz which is not paginated has nothing to navigate to, so it needs no group to focus. */}
+						<div
+							ref={(node) => {
+								pageRefs.current.set(index, node);
+							}}
+							aria-label={navigation.isPaginated
+								? t("page-label", { index: String(index + 1), total: String(quizzes.length) })
+								: undefined}
+							className={navigation.isPaginated ? "focus:outline-none" : undefined}
+							hidden={!isCurrent}
+							role={navigation.isPaginated ? "group" : undefined}
+							tabIndex={navigation.isPaginated ? -1 : undefined}
+						>
+							{quiz}
+						</div>
 					</QuizContext>
 				);
 			})}

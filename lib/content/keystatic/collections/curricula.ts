@@ -11,6 +11,7 @@ import { createCallout } from "#/lib/content/keystatic/components/callout/index.
 import { createCarousel } from "#/lib/content/keystatic/components/carousel/index.tsx";
 // import { createDiagram } from "#/lib/content/keystatic/components/diagram/index.tsx";
 import { createDisclosure } from "#/lib/content/keystatic/components/disclosure/index.tsx";
+import { createWorksheet } from "#/lib/content/keystatic/components/worksheet/index.tsx";
 import { createEmbed } from "#/lib/content/keystatic/components/embed/index.tsx";
 import { createFigure } from "#/lib/content/keystatic/components/figure/index.tsx";
 import { createFootnote } from "#/lib/content/keystatic/components/footnote/index.tsx";
@@ -156,6 +157,7 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 					...createCarousel(paths, locale),
 					...createDisclosure(paths, locale),
 					// ...createDiagram(paths, locale),
+					...createWorksheet(paths, locale),
 					...createEmbed(paths, locale),
 					// ...createExternalResource(paths, locale),
 					...createFigure(paths, locale),
@@ -181,6 +183,7 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 					...createCallout(paths, locale),
 					...createCarousel(paths, locale),
 					...createDisclosure(paths, locale),
+					...createWorksheet(paths, locale),
 					...createEmbed(paths, locale),
 					...createFigure(paths, locale),
 					...createFootnote(paths, locale),
