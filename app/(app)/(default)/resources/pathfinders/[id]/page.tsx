@@ -164,9 +164,9 @@ export default async function PathfinderResourcePage(props: Readonly<PathfinderR
 
 	return (
 		<div>
-			<div className="mx-auto grid max-w-screen-lg gap-y-10 px-4 py-8 inline-full xs:px-8 xs:py-16 xl:grid-cols-(--content-layout) xl:gap-x-8 xl:gap-y-0 xl:max-inline-none">
+			<div className="mx-auto grid max-w-screen-lg gap-y-10 px-4 py-8 inline-full xs:px-8 xs:py-16 xl:grid-cols-(--content-layout) xl:gap-x-(--content-layout-gap) xl:gap-y-0 xl:max-inline-none">
 				<aside
-					className="sticky inset-bs-24 hidden gap-y-8 justify-self-end overflow-y-auto p-6 text-sm text-neutral-500 inline-full max-block-screen max-inline-xs xl:flex xl:flex-col 2xl:p-8"
+					className="sticky inset-bs-24 hidden gap-y-8 justify-self-end overflow-y-auto p-6 text-sm text-neutral-500 inline-full max-block-screen max-inline-(--size-sidebar) xl:flex xl:flex-col 2xl:p-8"
 					style={{ maxHeight: "calc(100dvh - 12px - var(--page-header-height))" }}
 				>
 					<div className="flex flex-col gap-y-5">
@@ -374,7 +374,7 @@ export default async function PathfinderResourcePage(props: Readonly<PathfinderR
 				{resource.metadata["table-of-contents"] && tableOfContents != null && tableOfContents.length > 0 ? (
 					<Fragment>
 						<aside
-							className="sticky inset-bs-24 hidden overflow-y-auto p-6 text-sm text-neutral-500 inline-full max-block-screen max-inline-xs xl:flex xl:flex-col 2xl:p-8"
+							className="sticky inset-bs-24 hidden overflow-y-auto p-6 text-sm text-neutral-500 inline-full max-block-screen max-inline-(--size-sidebar) xl:flex xl:flex-col 2xl:p-8"
 							style={{
 								maxHeight: "calc(100dvh - 12px - var(--page-header-height))",
 							}}
