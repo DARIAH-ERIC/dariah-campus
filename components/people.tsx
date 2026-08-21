@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 
 import { Image } from "#/components/image.tsx";
 import { Link } from "#/components/link.tsx";
-import { createSearchUrl } from "#/lib/navigation/create-search-url.ts";
 
 const max = 4;
 
@@ -35,7 +34,7 @@ export function People(props: Readonly<PeopleProps>): ReactNode {
 							<li key={id}>
 								<Link
 									className="inline-flex items-center gap-x-2 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-									href={createSearchUrl({ people: [id] })}
+									href={`/people/${id}`}
 								>
 									<Image
 										alt=""
@@ -63,7 +62,7 @@ export function People(props: Readonly<PeopleProps>): ReactNode {
 									<li key={id}>
 										<Link
 											className="inline-flex items-center gap-x-2 transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-											href={createSearchUrl({ people: [id] })}
+											href={`/people/${id}`}
 										>
 											<Image
 												alt=""

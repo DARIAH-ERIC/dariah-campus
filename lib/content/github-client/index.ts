@@ -279,12 +279,21 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const { content, ...metadata } = data;
 
+			const href = `/people/${id}`;
 			const { default: component } = await evaluate(content, evaluateOptions);
 			const image = createGitHubUrl(metadata.image);
+
+			// TODO: read from prebuilt client?
+			const person = await client.collections.people.get(id);
+			const curricula = person?.curricula ?? [];
+			const resources = person?.resources ?? [];
 
 			return {
 				id,
 				content: component,
+				href,
+				curricula,
+				resources,
 				metadata: {
 					...metadata,
 					image,
@@ -613,11 +622,20 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const { content, ...metadata } = data;
 
+			const href = `/topics/${id}`;
 			const { default: component } = await evaluate(content, evaluateOptions);
+
+			// TODO: read from prebuilt client?
+			const tag = await client.collections.tags.get(id);
+			const curricula = tag?.curricula ?? [];
+			const resources = tag?.resources ?? [];
 
 			return {
 				id,
 				content: component,
+				href,
+				curricula,
+				resources,
 				metadata,
 			};
 		},
