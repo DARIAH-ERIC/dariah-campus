@@ -58,7 +58,7 @@ const createEvaluateOptions = (baseUrl: string) => {
 				"CarouselItem",
 				"Figure",
 				"ImageLayer",
-				"QuizDragAndDrop",
+				"QuizImageDropZones",
 				"QuizImageHotspots",
 				"VideoCard",
 			]),

@@ -118,29 +118,31 @@ sections, a question without a prompt and a section without questions all have t
 	</QuizDragTheWords>
 </Quiz>
 
-## Quiz, drag and drop
+## Quiz, image drop zones
 
 <Quiz>
-	<QuizDragAndDrop
+	<QuizImageDropZones
 		alt="A plan of a church"
 		distractors="Cloister"
 		src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/annotated.png"
 	>
-		<QuizDropZone label="Nave" items={["Long central hall"]} x={5} y={10} width={40} height={30} />
+		<QuizImageDropZone label="Nave" items={["Long central hall"]} x={5} y={10} width={40} height={30}>
+			The hall the congregation sits in, running the length of the building.
+		</QuizImageDropZone>
 
-    	<QuizDropZone label="Apse" items={["Semicircular recess", "East end"]} x={55} y={55} width={40} height={30} />
-    </QuizDragAndDrop>
+    	<QuizImageDropZone label="Apse" shape="ellipse" items={["Semicircular recess", "East end"]} x={55} y={55} width={40} height={30} />
+    </QuizImageDropZones>
 
 </Quiz>
 
-## Quiz, drag and drop without an image
+## Quiz, image drop zones without a background image
 
 <Quiz>
-	<QuizDragAndDrop>
-		<QuizDropZone label="Version control" items={["Git"]} />
+	<QuizImageDropZones>
+		<QuizImageDropZone label="Version control" items={["Git"]} />
 
-    	<QuizDropZone label="Repository hosting" items={["GitHub", "GitLab"]} />
-    </QuizDragAndDrop>
+    	<QuizImageDropZone label="Repository hosting" items={["GitHub", "GitLab"]} />
+    </QuizImageDropZones>
 
 </Quiz>
 

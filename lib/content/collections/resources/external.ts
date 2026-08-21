@@ -40,7 +40,7 @@ const compileOptions: CompileOptions = {
 		createCustomHeadingIdsPlugin(),
 		createHeadingIdsPlugin(),
 		createIframeTitlesPlugin(["Embed", "Video"]),
-		createImageSizesPlugin(["Figure", "QuizDragAndDrop", "QuizImageHotspots", "VideoCard"]),
+		createImageSizesPlugin(["Figure", "QuizImageDropZones", "QuizImageHotspots", "VideoCard"]),
 		createMermaidDiagramsPlugin(),
 		createSyntaxHighlighterPlugin(),
 		createTableOfContentsPlugin(),

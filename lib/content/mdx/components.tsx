@@ -2,7 +2,6 @@ import { Callout } from "#/components/content/callout.tsx";
 import { Carousel, CarouselItem } from "#/components/content/carousel.tsx";
 import { Diagram, DiagramCaption, DiagramCodeBlock } from "#/components/content/diagram.tsx";
 import { Disclosure } from "#/components/content/disclosure.tsx";
-import { QuizDragAndDrop, QuizDropZone } from "#/components/content/drag-and-drop.tsx";
 import { Drop, QuizDragTheWords } from "#/components/content/drag-the-words.tsx";
 import { Embed } from "#/components/content/embed.tsx";
 import { ExternalResource } from "#/components/content/external-resource.tsx";
@@ -10,6 +9,7 @@ import { Figure } from "#/components/content/figure.tsx";
 import { Blank, QuizFillInTheBlank } from "#/components/content/fill-in-the-blank.tsx";
 import { Grid, GridItem } from "#/components/content/grid.tsx";
 import { ImageComparisonSlider } from "#/components/content/image-comparison-slider.tsx";
+import { QuizImageDropZone, QuizImageDropZones } from "#/components/content/image-drop-zones.tsx";
 import { ImageLayer, ImageLayers } from "#/components/content/image-layers.tsx";
 import { LinkButton } from "#/components/content/link-button.tsx";
 import { Link as ContentLink } from "#/components/content/link.tsx";
@@ -72,10 +72,10 @@ export const components = {
 	QuizChoiceAnswerLabel,
 	QuizChoiceQuestion,
 	QuizErrorMessage,
-	QuizDragAndDrop,
 	QuizDragTheWords,
 	QuizFillInTheBlank,
-	QuizDropZone,
+	QuizImageDropZone,
+	QuizImageDropZones,
 	QuizImageHotspot,
 	QuizImageHotspots,
 	QuizSuccessMessage,

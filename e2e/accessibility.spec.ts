@@ -67,7 +67,7 @@ test.describe("accessibility", () => {
 	});
 
 	/**
-	 * Drag and drop is the widget with the most states to get wrong: items move between the bank and the zones, the
+	 * Image drop zones is the widget with the most states to get wrong: items move between the bank and the zones, the
 	 * placed ones grow a correct/incorrect mark, and the bank keeps the moved ones as `aria-hidden` placeholders.
 	 */
 	test("has no violations with items placed and checked", async ({ page }) => {
@@ -91,7 +91,7 @@ test.describe("accessibility", () => {
 	});
 
 	/** The solved state disables every item and hides the whole bank from assistive technology. */
-	test("has no violations on the drag and drop solution", async ({ page }) => {
+	test("has no violations on the image drop zones solution", async ({ page }) => {
 		const quiz = page.getByRole("complementary").filter({
 			has: page.getByRole("group", { name: "Nave" }),
 		});

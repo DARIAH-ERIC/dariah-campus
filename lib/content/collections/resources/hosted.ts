@@ -44,7 +44,7 @@ const compileOptions: CompileOptions = {
 			"CarouselItem",
 			"Figure",
 			"ImageLayer",
-			"QuizDragAndDrop",
+			"QuizImageDropZones",
 			"QuizImageHotspots",
 			"VideoCard",
 		]),

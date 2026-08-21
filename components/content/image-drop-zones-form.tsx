@@ -15,19 +15,22 @@ import { Image } from "#/components/image.tsx";
  * gesture. Mouse users can additionally drag an item onto a zone, using the browser's native drag and drop - it only
  * starts from a pointer gesture, so it never collides with the menu interaction.
  */
-const dragType = "application/x-quiz-drag-and-drop";
+const dragType = "application/x-quiz-image-drop-zones";
 
-export interface DragAndDropItem {
+export interface DropZoneItem {
 	id: string;
 	label: string;
 	/** Index of the drop zone the item belongs in, or `null` for a distractor which belongs in none. */
 	zoneIndex: number | null;
 }
 
-export interface DragAndDropZone {
+export interface DropZone {
+	/** Revealed once the exercise has been answered, so it explains the zone without giving it away. */
+	explanation?: ReactNode;
 	label: string;
 	/** Percentages of the background image. Ignored when the exercise has no image to position the zones on. */
 	position: { height: number; width: number; x: number; y: number };
+	shape: "ellipse" | "rectangle";
 }
 
 function startItemDrag(event: DragEvent<HTMLElement>, itemIndex: number, label: string) {
@@ -41,25 +44,25 @@ function isItemDrag(event: DragEvent<HTMLElement>): boolean {
 	return event.dataTransfer.types.includes(dragType);
 }
 
-interface QuizDragAndDropFormProps {
+interface QuizImageDropZonesFormProps {
 	alt: string;
 	height?: number;
 	/** Mark each item right or wrong as soon as it lands in a zone. */
 	instantFeedback: boolean;
-	items: Array<DragAndDropItem>;
+	items: Array<DropZoneItem>;
 	src?: string;
 	width?: number;
-	zones: Array<DragAndDropZone>;
+	zones: Array<DropZone>;
 }
 
 /**
- * The interactive half of `QuizDragAndDrop`. Collecting the zones and their items out of the children happens in the
+ * The interactive half of `QuizImageDropZones`. Collecting the zones and their items out of the children happens in the
  * server component, so components can be identified by comparing `child.type`.
  */
-export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): ReactNode {
+export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormProps>): ReactNode {
 	const { alt, height, instantFeedback, items, src, width, zones } = props;
 
-	const t = useTranslations("content.QuizDragAndDrop");
+	const t = useTranslations("content.QuizImageDropZones");
 	const controlsT = useTranslations("content.QuizControls");
 
 	const { isCurrent, setStatus, status } = useQuizContext();
@@ -92,6 +95,13 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 
 	const isReadOnly = status === "solved";
 	const isValidated = status === "correct" || status === "incorrect";
+
+	/** Kept with the index the zone has in the exercise, so a zone without a label still names itself by its position. */
+	const explainedZones = zones
+		.map((zone, zoneIndex) => {
+			return { zone, zoneIndex };
+		})
+		.filter((entry) => entry.zone.explanation != null);
 
 	/** Distractors belong in no zone, so they add nothing to the score - but leaving one placed makes the answer wrong. */
 	const total = items.filter((item) => item.zoneIndex != null).length;
@@ -133,7 +143,7 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 		setStatus("solved");
 	}
 
-	function renderZone(zone: DragAndDropZone, zoneIndex: number): ReactNode {
+	function renderZone(zone: DropZone, zoneIndex: number): ReactNode {
 		const label = zone.label || t("zone-label", { index: String(zoneIndex + 1) });
 		const isDropTarget = dropTargetZoneIndex === zoneIndex;
 		/** The height is a minimum, so a zone which fills up grows instead of hiding what was dropped into it. */
@@ -147,13 +157,20 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 						minBlockSize: `${String(zone.position.height)}%`,
 					} as CSSProperties);
 
+		/**
+		 * Hit testing follows the border radius, so an ellipse turns away what is dropped into the corners of its box.
+		 * Without an image the zones are laid out in a grid, where an ellipse would only crop what was dropped into it.
+		 */
+		const isEllipse = src != null && zone.shape === "ellipse";
+
 		return (
 			// oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- Mouse convenience; every item's menu offers the same move.
 			<div
 				key={zoneIndex}
 				aria-label={label}
 				className={cn(
-					"flex flex-col gap-y-1 rounded-md border-2 border-dashed p-2 transition",
+					"flex flex-col gap-y-1 border-2 border-dashed p-2 transition",
+					isEllipse ? "items-center justify-center rounded-[50%] text-center" : "rounded-md",
 					src == null ? "bg-neutral-50 min-block-24" : "absolute bg-white/85",
 					isDropTarget ? "border-brand-500 bg-brand-50" : "border-neutral-400",
 				)}
@@ -198,7 +215,7 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 		);
 	}
 
-	function renderPlacedItem(item: DragAndDropItem, itemIndex: number, zoneLabel: string): ReactNode {
+	function renderPlacedItem(item: DropZoneItem, itemIndex: number, zoneLabel: string): ReactNode {
 		const isCorrect = placements[itemIndex] === item.zoneIndex;
 		/** In the solved state every item sits where it belongs, so marking each one adds nothing. */
 		const isMarked = !isReadOnly && (isValidated || instantFeedback);
@@ -356,6 +373,24 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 				<p className="not-prose text-sm font-medium text-neutral-600" role="status">
 					{t("score", { correct: String(correctCount), total: String(total) })}
 				</p>
+			) : null}
+
+			{/* Held back until the exercise has been answered, so it explains the zones instead of solving them. */}
+			{(isValidated || isReadOnly) && explainedZones.length > 0 ? (
+				<div className="grid gap-y-2">
+					<p className="not-prose text-sm font-medium text-neutral-600">{t("explanations-label")}</p>
+
+					<dl className="grid gap-y-3">
+						{explainedZones.map(({ zone, zoneIndex }) => (
+							<div key={zoneIndex} className="grid gap-y-1">
+								<dt className="not-prose text-sm font-medium text-neutral-700">
+									{zone.label || t("zone-label", { index: String(zoneIndex + 1) })}
+								</dt>
+								<dd className="text-sm text-neutral-700">{zone.explanation}</dd>
+							</div>
+						))}
+					</dl>
+				</div>
 			) : null}
 
 			<QuizControls

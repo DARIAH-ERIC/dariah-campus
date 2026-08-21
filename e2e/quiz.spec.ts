@@ -175,11 +175,19 @@ function getFixtureChoiceQuiz(page: Page): Locator {
 	});
 }
 
-/** The fixture has two drag and drop exercises, told apart by a drop zone only one of them has. */
-function getDragAndDropQuiz(page: Page, zoneName: string): Locator {
+/** The fixture has two image drop zone exercises, told apart by a drop zone only one of them has. */
+function getImageDropZonesQuiz(page: Page, zoneName: string): Locator {
 	return page.getByRole("complementary").filter({
 		has: page.getByRole("group", { name: zoneName }),
 	});
+}
+
+/**
+ * Hit testing follows the border radius, so an ellipse has to reach the browser as a radius rather than a class name.
+ * Only a percentage inscribes an ellipse in the box - a length rounds the corners off into a stadium instead.
+ */
+function getZoneCornerRadius(quiz: Locator, zoneName: string): Promise<string> {
+	return quiz.getByRole("group", { name: zoneName }).evaluate((node) => getComputedStyle(node).borderTopLeftRadius);
 }
 
 function getDragTheWordsQuiz(page: Page): Locator {
@@ -394,7 +402,7 @@ test.describe("quiz, drag the words", () => {
 	});
 });
 
-test.describe("quiz, drag and drop", () => {
+test.describe("quiz, image drop zones", () => {
 	test.beforeEach(() => {
 		test.skip(
 			// oxlint-disable-next-line node/no-process-env
@@ -406,7 +414,7 @@ test.describe("quiz, drag and drop", () => {
 	test("renders the image, its drop zones and the item bank", async ({ page }) => {
 		await page.goto(fixturePathname);
 
-		const quiz = getDragAndDropQuiz(page, "Nave");
+		const quiz = getImageDropZonesQuiz(page, "Nave");
 		await expect(quiz).toBeVisible();
 
 		/** The rehype plugin reads the dimensions off disk, so a missing size means the pipeline did not run. */
@@ -424,7 +432,7 @@ test.describe("quiz, drag and drop", () => {
 	test("scores the placed items", async ({ page }) => {
 		await page.goto(fixturePathname);
 
-		const quiz = getDragAndDropQuiz(page, "Nave");
+		const quiz = getImageDropZonesQuiz(page, "Nave");
 		const check = quiz.getByRole("button", { exact: true, name: "Check" });
 
 		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
@@ -455,7 +463,7 @@ test.describe("quiz, drag and drop", () => {
 	test("returns a placed item to the bank", async ({ page }) => {
 		await page.goto(fixturePathname);
 
-		const quiz = getDragAndDropQuiz(page, "Nave");
+		const quiz = getImageDropZonesQuiz(page, "Nave");
 
 		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
 		await page.getByRole("menuitem", { name: "Nave" }).click();
@@ -469,7 +477,7 @@ test.describe("quiz, drag and drop", () => {
 	test("fills in the solution on request", async ({ page }) => {
 		await page.goto(fixturePathname);
 
-		const quiz = getDragAndDropQuiz(page, "Nave");
+		const quiz = getImageDropZonesQuiz(page, "Nave");
 
 		await quiz.getByRole("button", { name: "Show solution" }).click();
 
@@ -487,7 +495,7 @@ test.describe("quiz, drag and drop", () => {
 	test("keeps focus on the item it moves", async ({ page }) => {
 		await page.goto(fixturePathname);
 
-		const quiz = getDragAndDropQuiz(page, "Nave");
+		const quiz = getImageDropZonesQuiz(page, "Nave");
 		const item = quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." });
 
 		await focusStably(item);
@@ -501,10 +509,37 @@ test.describe("quiz, drag and drop", () => {
 		await expect(item).toBeFocused();
 	});
 
+	test("draws an ellipse drop zone as an ellipse", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+
+		expect(await getZoneCornerRadius(quiz, "Apse")).toBe("50%");
+		expect(await getZoneCornerRadius(quiz, "Nave")).not.toBe("50%");
+	});
+
+	test("reveals what the drop zones mean once the exercise is answered", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+		const explanation = quiz.getByText("The hall the congregation sits in");
+
+		/** Held back while the exercise is still open, where it would give the answer away. */
+		await expect(explanation).toBeHidden();
+
+		await quiz.getByRole("button", { name: "Show solution" }).click();
+
+		await expect(quiz.getByText("What the drop zones mean")).toBeVisible();
+		await expect(explanation).toBeVisible();
+
+		/** Only the zone the author explained gets an entry, so the unexplained one is not listed as empty. */
+		await expect(quiz.getByRole("definition")).toHaveCount(1);
+	});
+
 	test("lays out the drop zones in a grid without a background image", async ({ page }) => {
 		await page.goto(fixturePathname);
 
-		const quiz = getDragAndDropQuiz(page, "Version control");
+		const quiz = getImageDropZonesQuiz(page, "Version control");
 		await expect(quiz).toBeVisible();
 
 		await expect(quiz.getByRole("img")).toHaveCount(0);

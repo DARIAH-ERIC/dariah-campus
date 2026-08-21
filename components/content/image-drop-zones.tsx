@@ -1,12 +1,13 @@
 import type { ReactNode } from "react";
 
-import {
-	type DragAndDropItem,
-	type DragAndDropZone,
-	QuizDragAndDropForm,
-} from "#/components/content/drag-and-drop-form.tsx";
 import { getChildrenByType } from "#/components/content/get-children-by-type.ts";
+import { getChildrenElements } from "#/components/content/get-children-elements.ts";
 import { getSortKey } from "#/components/content/get-sort-key.ts";
+import {
+	type DropZone,
+	type DropZoneItem,
+	QuizImageDropZonesForm,
+} from "#/components/content/image-drop-zones-form.tsx";
 
 /** A list from the cms, or a comma separated string in hand-written mdx. */
 function toList(value: Array<string> | string | undefined): Array<string> {
@@ -17,7 +18,7 @@ function toList(value: Array<string> | string | undefined): Array<string> {
 	return (typeof value === "string" ? value.split(",") : value).map((entry) => entry.trim()).filter(Boolean);
 }
 
-interface QuizDragAndDropProps {
+interface QuizImageDropZonesProps {
 	alt?: string;
 	children: ReactNode;
 	/**
@@ -37,14 +38,19 @@ interface QuizDragAndDropProps {
  * while the mdx components and the imports here resolve to the same objects. In a client component the children arrive
  * as separate lazy references, and nothing matches.
  */
-export function QuizDragAndDrop(props: Readonly<QuizDragAndDropProps>): ReactNode {
+export function QuizImageDropZones(props: Readonly<QuizImageDropZonesProps>): ReactNode {
 	const { alt = "", children, distractors, height, instantFeedback = false, src, width } = props;
 
 	const get = getChildrenByType(children);
-	const dropZones = get(QuizDropZone);
+	const dropZones = get(QuizImageDropZone);
 
-	const zones: Array<DragAndDropZone> = dropZones.map((zone) => {
+	const zones: Array<DropZone> = dropZones.map((zone) => {
 		return {
+			/**
+			 * Whatever the zone wraps explains what belongs in it, and is held back until the exercise is answered. The cms
+			 * writes an empty body for a zone nobody explained, which is whitespace rather than content once compiled.
+			 */
+			explanation: getChildrenElements(zone.props.children).length > 0 ? zone.props.children : undefined,
 			label: zone.props.label ?? "",
 			position: {
 				height: zone.props.height ?? 20,
@@ -52,6 +58,7 @@ export function QuizDragAndDrop(props: Readonly<QuizDragAndDropProps>): ReactNod
 				x: zone.props.x ?? 0,
 				y: zone.props.y ?? 0,
 			},
+			shape: zone.props.shape === "ellipse" ? "ellipse" : "rectangle",
 		};
 	});
 
@@ -59,7 +66,7 @@ export function QuizDragAndDrop(props: Readonly<QuizDragAndDropProps>): ReactNod
 	 * Every zone contributes the items which belong in it, and the distractors belong in none. They are ordered so the
 	 * two are indistinguishable, and so the bank does not give away which zone an item was authored for.
 	 */
-	const items: Array<DragAndDropItem> = [
+	const items: Array<DropZoneItem> = [
 		...dropZones.flatMap((zone, zoneIndex) =>
 			toList(zone.props.items).map((label, index) => {
 				return { id: `item-${String(zoneIndex)}-${String(index)}`, label, zoneIndex };
@@ -77,7 +84,7 @@ export function QuizDragAndDrop(props: Readonly<QuizDragAndDropProps>): ReactNod
 	}
 
 	return (
-		<QuizDragAndDropForm
+		<QuizImageDropZonesForm
 			alt={alt}
 			height={height}
 			instantFeedback={instantFeedback}
@@ -89,17 +96,22 @@ export function QuizDragAndDrop(props: Readonly<QuizDragAndDropProps>): ReactNod
 	);
 }
 
-interface QuizDropZoneProps {
+interface QuizImageDropZoneProps {
+	/** Explains what belongs in this zone, and is revealed once the exercise has been answered. Optional. */
+	children?: ReactNode;
 	/** Percentages of the background image, used only when the exercise has one. */
 	height?: number;
 	/** The items which belong in this zone. A list from the cms, or a comma separated string in hand-written mdx. */
 	items?: Array<string> | string;
 	label?: string;
+	/** An ellipse is inscribed in the same box as a rectangle, and only takes drops inside its outline. */
+	shape?: "ellipse" | "rectangle";
 	width?: number;
 	x?: number;
 	y?: number;
 }
 
-export function QuizDropZone(_props: Readonly<QuizDropZoneProps>): ReactNode {
+/** Read by the parent, which is why this renders nothing of its own - see the note on `QuizImageDropZones`. */
+export function QuizImageDropZone(_props: Readonly<QuizImageDropZoneProps>): ReactNode {
 	return null;
 }
