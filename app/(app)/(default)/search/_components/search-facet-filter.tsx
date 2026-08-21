@@ -139,11 +139,20 @@ export function SearchFacetFilter(props: Readonly<SearchFacetFilterProps>): Reac
 				)}
 			>
 				<span>{label}</span>
-				{selected.length > 0 ? (
-					<span className="rounded-full bg-brand-700 px-1.5 text-xs text-white tabular-nums">
-						{format.number(selected.length)}
-					</span>
-				) : null}
+				{/**
+				 * The badge keeps its space when there is nothing to count, so selecting a value does not resize the trigger and shove
+				 * its neighbours along the row. `visibility: hidden` already hides it from assistive technology, `aria-hidden` says so
+				 * outright.
+				 */}
+				<span
+					aria-hidden={selected.length === 0 || undefined}
+					className={cn(
+						"rounded-full bg-brand-700 px-1.5 text-center text-xs text-white tabular-nums min-inline-5",
+						selected.length === 0 ? "invisible" : undefined,
+					)}
+				>
+					{format.number(selected.length)}
+				</span>
 				<ChevronDownIcon aria-hidden={true} className="text-neutral-500 block-4 inline-4" />
 			</Button>
 
