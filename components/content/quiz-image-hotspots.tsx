@@ -18,8 +18,8 @@ import {
 import { Button, Dialog, DialogTrigger, Modal, ModalOverlay, OverlayArrow, Popover } from "react-aria-components";
 import { createPortal } from "react-dom";
 
-import { useQuizContext } from "#/components/content/quiz.tsx";
 import { QuizControls } from "#/components/content/quiz-controls.tsx";
+import { useQuizContext } from "#/components/content/quiz.tsx";
 import { Image } from "#/components/image.tsx";
 
 type HotspotPresentation = "inline" | "popover" | "sidepanel";
@@ -54,9 +54,9 @@ export function QuizImageHotspots(props: Readonly<QuizImageHotspotsProps>): Reac
 		return { activeId, inlinePanel, presentation, select: setActiveId };
 	}, [activeId, inlinePanel, presentation]);
 	// oxlint-disable-next-line react/no-react-children
-	const indexedHotspotChildren = Children.map(children, (child, index) =>
+	const indexedHotspotChildren = Children.map(children, (child, index) => (
 		<HotspotIndexContext value={index + 1}>{child}</HotspotIndexContext>
-	);
+	));
 
 	return (
 		<section

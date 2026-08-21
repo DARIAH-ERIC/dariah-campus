@@ -1,7 +1,7 @@
 import { createCollection } from "@acdh-oeaw/keystatic-lib";
 import { collection, fields } from "@keystatic/core";
 
-export const createDariahWorkingGroups = createCollection("/dariah-working-groups/", (paths, locale) => 
+export const createDariahWorkingGroups = createCollection("/dariah-working-groups/", (paths, locale) =>
 	collection({
 		label: "DARIAH working groups",
 		path: `./content/${locale}/dariah-working-groups/*`,
@@ -25,5 +25,5 @@ export const createDariahWorkingGroups = createCollection("/dariah-working-group
 				validation: { isRequired: true },
 			}),
 		},
-	})
+	}),
 );

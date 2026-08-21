@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 import { type ReactNode, createContext, use, useState } from "react";
 import { Button, Dialog, DialogTrigger, Popover } from "react-aria-components";
 
-import { type QuizPageStatus, useQuizContext } from "#/components/content/quiz.tsx";
 import { QuizControls } from "#/components/content/quiz-controls.tsx";
+import { type QuizPageStatus, useQuizContext } from "#/components/content/quiz.tsx";
 
 interface FillInTheBlankContextValue {
 	inputs: Array<string>;
@@ -21,11 +21,7 @@ const FillInTheBlankContext = createContext<FillInTheBlankContextValue | null>(n
 
 function isCorrectAnswer(input: string, answers: Array<string>, caseSensitive: boolean): boolean {
 	const normalised = caseSensitive ? input.trim() : input.trim().toLowerCase();
-	const normalisedAnswers = caseSensitive
-		? answers
-		: answers.map((a) =>
-				a.toLowerCase()
-			);
+	const normalisedAnswers = caseSensitive ? answers : answers.map((a) => a.toLowerCase());
 	return normalisedAnswers.includes(normalised);
 }
 
@@ -47,44 +43,26 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 	const count = Number(blankCountStr);
 	const { isCurrent, setStatus, status } = useQuizContext();
 
-	const [inputs, setInputs] = useState<Array<string>>(() =>
-		Array.from({ length: count }, () =>
-			""
-		)
-	);
-	const [validated, setValidated] = useState<Array<boolean>>(() =>
-		Array.from({ length: count }, () =>
-			false
-		)
-	);
+	const [inputs, setInputs] = useState<Array<string>>(() => Array.from({ length: count }, () => ""));
+	const [validated, setValidated] = useState<Array<boolean>>(() => Array.from({ length: count }, () => false));
 
 	const ctx: FillInTheBlankContextValue = {
 		inputs,
 		setInput(id, value) {
-			setInputs((prev) =>
-				prev.map((x, i) =>
-					i === id ? value : x
-				)
-			);
+			setInputs((prev) => prev.map((x, i) => (i === id ? value : x)));
 		},
 		status,
 		caseSensitive,
 		validateOnBlur,
 		validated,
 		validateBlank(id) {
-			setValidated((prev) =>
-				prev.map((x, i) =>
-					i === id ? true : x
-				)
-			);
+			setValidated((prev) => prev.map((x, i) => (i === id ? true : x)));
 		},
 	};
 
 	const correctCount =
 		(status === "correct" || status === "incorrect") && answers != null
-			? inputs.filter((v, i) =>
-					isCorrectAnswer(v, answers[i] ?? [], caseSensitive)
-				).length
+			? inputs.filter((v, i) => isCorrectAnswer(v, answers[i] ?? [], caseSensitive)).length
 			: null;
 
 	return (
@@ -102,17 +80,9 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 				<QuizControls
 					nextButtonLabel={controlsT("next-question")}
 					onReset={() => {
-						setInputs(
-							Array.from({ length: count }, () =>
-								""
-							),
-						);
+						setInputs(Array.from({ length: count }, () => ""));
 						setStatus("idle");
-						setValidated(
-							Array.from({ length: count }, () =>
-								false
-							),
-						);
+						setValidated(Array.from({ length: count }, () => false));
 					}}
 					onShowSolution={
 						status === "solved"
@@ -124,9 +94,7 @@ export function QuizFillInTheBlank(props: Readonly<QuizFillInTheBlankProps>): Re
 					onValidate={() => {
 						const isCorrect =
 							answers != null &&
-							inputs.every((input, index) =>
-								isCorrectAnswer(input, answers[index] ?? [], caseSensitive)
-							);
+							inputs.every((input, index) => isCorrectAnswer(input, answers[index] ?? [], caseSensitive));
 						setStatus(isCorrect ? "correct" : "incorrect");
 					}}
 					previousButtonLabel={controlsT("previous-question")}
@@ -164,9 +132,7 @@ export function Blank(props: Readonly<BlankProps>): ReactNode {
 	const inputValue = inputs[id] ?? "";
 	const isReadOnly = status === "solved";
 	const displayValue = isReadOnly ? (answer[0] ?? "") : inputValue;
-	const longestAnswer = answer.reduce((a, b) =>
-		a.length >= b.length ? a : b
-	, "");
+	const longestAnswer = answer.reduce((a, b) => (a.length >= b.length ? a : b), "");
 
 	const isValidated =
 		status === "correct" ||

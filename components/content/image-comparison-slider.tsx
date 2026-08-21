@@ -15,11 +15,7 @@ function getSize(element: Element, orientation: Orientation): number {
 }
 
 /** Where a pointer event falls on that axis, clamped to the element. */
-function getOffset(
-	element: Element,
-	orientation: Orientation,
-	event: { clientX: number; clientY: number },
-): number {
+function getOffset(element: Element, orientation: Orientation, event: { clientX: number; clientY: number }): number {
 	const dimensions = element.getBoundingClientRect();
 	const offset = orientation === "vertical" ? event.clientY - dimensions.top : event.clientX - dimensions.left;
 
@@ -150,9 +146,18 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 
 						const size = getSize(element, orientation);
 
-						const direction = orientation === "vertical"
-							? event.key === "ArrowUp" ? -1 : event.key === "ArrowDown" ? 1 : 0
-							: event.key === "ArrowLeft" ? -1 : event.key === "ArrowRight" ? 1 : 0;
+						const direction =
+							orientation === "vertical"
+								? event.key === "ArrowUp"
+									? -1
+									: event.key === "ArrowDown"
+										? 1
+										: 0
+								: event.key === "ArrowLeft"
+									? -1
+									: event.key === "ArrowRight"
+										? 1
+										: 0;
 
 						if (direction === 0) {
 							return;

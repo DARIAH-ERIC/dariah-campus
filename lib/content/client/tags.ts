@@ -1,12 +1,12 @@
 import { groupByToMap, keyByToMap } from "@acdh-oeaw/lib";
+
+import type { CollectionClient } from "#/lib/content/types.ts";
 import curricula from "#content/curricula";
 import events from "#content/resources-events";
 import external from "#content/resources-external";
 import hosted from "#content/resources-hosted";
 import pathfinders from "#content/resources-pathfinders";
 import collection from "#content/tags";
-
-import type { CollectionClient } from "#/lib/content/types.ts";
 
 const resourcesByTagId = groupByToMap(
 	[
@@ -15,14 +15,10 @@ const resourcesByTagId = groupByToMap(
 		...Array.from(hosted.values()),
 		...Array.from(pathfinders.values()),
 	],
-	(entry) =>
-		entry.document.metadata.tags
-	,
+	(entry) => entry.document.metadata.tags,
 );
 
-const curriculaByTagId = groupByToMap(Array.from(curricula.values()), (entry) =>
-	entry.document.metadata.tags
-);
+const curriculaByTagId = groupByToMap(Array.from(curricula.values()), (entry) => entry.document.metadata.tags);
 
 //
 
@@ -33,15 +29,9 @@ const all = Array.from(collection.values())
 	.map((entry) => {
 		const href = `/topics/${entry.document.id}`;
 
-		const resources =
-			resourcesByTagId.get(entry.document.id)?.map((entry) =>
-				entry.document.id
-			) ?? [];
+		const resources = resourcesByTagId.get(entry.document.id)?.map((entry) => entry.document.id) ?? [];
 
-		const curricula =
-			curriculaByTagId.get(entry.document.id)?.map((entry) =>
-				entry.document.id
-			) ?? [];
+		const curricula = curriculaByTagId.get(entry.document.id)?.map((entry) => entry.document.id) ?? [];
 
 		return {
 			...entry.document,
@@ -51,13 +41,9 @@ const all = Array.from(collection.values())
 		};
 	})
 	// oxlint-disable-next-line unicorn/no-array-sort
-	.sort((a, z) =>
-		a.metadata.name.localeCompare(z.metadata.name)
-	);
+	.sort((a, z) => a.metadata.name.localeCompare(z.metadata.name));
 
-const byId = keyByToMap(all, (item) =>
-	item.id
-);
+const byId = keyByToMap(all, (item) => item.id);
 
 export type Tag = (typeof all)[number];
 

@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 import { type DragEvent, type ReactNode, createContext, use, useMemo, useState } from "react";
 import { Button, Dialog, DialogTrigger, Menu, MenuItem, MenuTrigger, Popover, Separator } from "react-aria-components";
 
-import { type QuizPageStatus, useQuizContext } from "#/components/content/quiz.tsx";
 import { QuizControls } from "#/components/content/quiz-controls.tsx";
+import { type QuizPageStatus, useQuizContext } from "#/components/content/quiz.tsx";
 
 /**
  * Keyboard and touch users open a blank and choose from the remaining words, so focus never leaves the reading order.
@@ -127,61 +127,35 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 			return { id: `word-${String(index)}`, text: answer };
 		});
 		const decoys = (typeof distractors === "string" ? distractors.split(",") : distractors)
-			.map((word) =>
-				word.trim()
-			)
+			.map((word) => word.trim())
 			.filter(Boolean)
 			.map((text, index) => {
 				return { id: `distractor-${String(index)}`, text };
 			});
 		// oxlint-disable-next-line unicorn/no-array-sort
-		return [...fromBlanks, ...decoys].sort((a, b) =>
-			sortKey(a.text) - sortKey(b.text)
-		);
+		return [...fromBlanks, ...decoys].sort((a, b) => sortKey(a.text) - sortKey(b.text));
 	}, [answers, distractors]);
 
-	const [placements, setPlacements] = useState<Array<string | null>>(() =>
-		Array.from({ length: count }, () =>
-			null
-		)
-	);
-	const [touched, setTouched] = useState<Array<boolean>>(() =>
-		Array.from({ length: count }, () =>
-			false
-		)
-	);
+	const [placements, setPlacements] = useState<Array<string | null>>(() => Array.from({ length: count }, () => null));
+	const [touched, setTouched] = useState<Array<boolean>>(() => Array.from({ length: count }, () => false));
 	const [isBankDropTarget, setIsBankDropTarget] = useState(false);
 
 	const isReadOnly = status === "solved";
 
-	const bank = words.filter((word) =>
-		!placements.includes(word.id)
-	);
+	const bank = words.filter((word) => !placements.includes(word.id));
 
 	/** Two blanks can share an answer, so the same text may sit in the bank twice. */
-	const availableWords = bank.filter((word, index) =>
-		(
-			bank.findIndex((candidate) =>
-				candidate.text === word.text
-			) === index
-		)
+	const availableWords = bank.filter(
+		(word, index) => bank.findIndex((candidate) => candidate.text === word.text) === index,
 	);
 
 	function putWord(wordId: string, blankId: number) {
-		setPlacements((prev) =>
-			moveWord(prev, wordId, blankId)
-		);
-		setTouched((prev) =>
-			prev.map((wasTouched, i) =>
-				i === blankId ? true : wasTouched
-			)
-		);
+		setPlacements((prev) => moveWord(prev, wordId, blankId));
+		setTouched((prev) => prev.map((wasTouched, i) => (i === blankId ? true : wasTouched)));
 	}
 
 	function returnWord(wordId: string) {
-		setPlacements((prev) =>
-			moveWord(prev, wordId, null)
-		);
+		setPlacements((prev) => moveWord(prev, wordId, null));
 	}
 
 	const ctx: DragTheWordsContextValue = {
@@ -203,24 +177,14 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 	};
 
 	const correctCount = placements.filter((wordId, i) => {
-		const word = words.find((candidate) =>
-			candidate.id === wordId
-		);
+		const word = words.find((candidate) => candidate.id === wordId);
 		return word != null && isCorrectAnswer(word.text, answers[i] ?? "", caseSensitive);
 	}).length;
 
 	function reset() {
-		setPlacements(
-			Array.from({ length: count }, () =>
-				null
-			),
-		);
+		setPlacements(Array.from({ length: count }, () => null));
 		setStatus("idle");
-		setTouched(
-			Array.from({ length: count }, () =>
-				false
-			),
-		);
+		setTouched(Array.from({ length: count }, () => false));
 	}
 
 	return (
@@ -346,9 +310,7 @@ export function Drop(props: Readonly<DropProps>): ReactNode {
 		ctx;
 
 	const isReadOnly = status === "solved";
-	const placedWord = words.find((word) =>
-		word.id === placements[id]
-	);
+	const placedWord = words.find((word) => word.id === placements[id]);
 	const displayText = isReadOnly ? answer : placedWord?.text;
 
 	const isValidated =
@@ -422,18 +384,16 @@ export function Drop(props: Readonly<DropProps>): ReactNode {
 							putWord(String(key), id);
 						}}
 					>
-						{availableWords.map((word) =>
-							(
-								<MenuItem
-									key={word.id}
-									className="cursor-pointer px-3 py-1 font-mono text-sm text-neutral-700 outline-none focus:bg-brand-50 focus:text-brand-700"
-									id={word.id}
-									textValue={word.text}
-								>
-									{word.text}
-								</MenuItem>
-							)
-						)}
+						{availableWords.map((word) => (
+							<MenuItem
+								key={word.id}
+								className="cursor-pointer px-3 py-1 font-mono text-sm text-neutral-700 outline-none focus:bg-brand-50 focus:text-brand-700"
+								id={word.id}
+								textValue={word.text}
+							>
+								{word.text}
+							</MenuItem>
+						))}
 						{placedWord != null ? (
 							<>
 								<Separator className="my-1 border-bs border-neutral-200" />

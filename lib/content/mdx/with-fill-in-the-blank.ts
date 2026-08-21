@@ -18,9 +18,7 @@ function parseBlankContent(inner: string): { answers: Array<string>; hint: strin
 	const hint = sepIdx === -1 ? undefined : inner.slice(sepIdx + 2).trim() || undefined;
 	const answers = answerPart
 		.split("//")
-		.map((a) =>
-			a.trim()
-		)
+		.map((a) => a.trim())
 		.filter(Boolean);
 	return { answers, hint };
 }
@@ -102,16 +100,22 @@ function splitTextNode(
 export const withFillInTheBlank: Plugin<[], Root> = function withFillInTheBlank() {
 	return function transformer(tree) {
 		visit(tree, "mdxJsxFlowElement", (fillInTheBlankNode) => {
-			if (fillInTheBlankNode.name !== "QuizFillInTheBlank") { return; }
+			if (fillInTheBlankNode.name !== "QuizFillInTheBlank") {
+				return;
+			}
 
 			let blankCount = 0;
 			const allAnswerGroups: Array<Array<string>> = [];
 
 			visit(fillInTheBlankNode as unknown as Root, "text", (textNode: Text, index, parent) => {
-				if (parent == null || index == null) { return; }
+				if (parent == null || index == null) {
+					return;
+				}
 
 				BLANK_PATTERN.lastIndex = 0;
-				if (!BLANK_PATTERN.test(textNode.value)) { return; }
+				if (!BLANK_PATTERN.test(textNode.value)) {
+					return;
+				}
 
 				const { nodes, nextId, answerGroups } = splitTextNode(textNode, blankCount);
 				blankCount = nextId;

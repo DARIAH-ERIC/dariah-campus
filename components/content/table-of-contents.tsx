@@ -15,7 +15,9 @@ export function TableOfContents(props: Readonly<TableOfContentsProps>): ReactNod
 	const t = useTranslations("mdx");
 	const id = useId();
 
-	if (!isNonEmptyArray(tableOfContents)) {return null;}
+	if (!isNonEmptyArray(tableOfContents)) {
+		return null;
+	}
 
 	const hasTitle = title != null;
 
@@ -39,25 +41,23 @@ function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): React
 
 	return (
 		<ol className="grid gap-y-1.5 text-neutral-600" style={{ marginLeft: `${String(depth * 8)}px` }}>
-			{headings.map((heading) => 
-				(
-					<li key={heading.id} className="grid justify-start gap-y-1.5">
-						{heading.id != null ? (
-							<a
-								className="inline-flex underline decoration-dotted transition hover:text-neutral-950 hover:decoration-solid"
-								href={`#${heading.id}`}
-							>
-								{heading.value}
-							</a>
-						) : (
-							<span>{heading.value}</span>
-						)}
-						{isNonEmptyArray(heading.children) ? (
-							<TableOfContentsLevel depth={depth + 1} headings={heading.children} />
-						) : null}
-					</li>
-				)
-			)}
+			{headings.map((heading) => (
+				<li key={heading.id} className="grid justify-start gap-y-1.5">
+					{heading.id != null ? (
+						<a
+							className="inline-flex underline decoration-dotted transition hover:text-neutral-950 hover:decoration-solid"
+							href={`#${heading.id}`}
+						>
+							{heading.value}
+						</a>
+					) : (
+						<span>{heading.value}</span>
+					)}
+					{isNonEmptyArray(heading.children) ? (
+						<TableOfContentsLevel depth={depth + 1} headings={heading.children} />
+					) : null}
+				</li>
+			))}
 		</ol>
 	);
 }

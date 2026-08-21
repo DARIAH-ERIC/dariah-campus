@@ -12,15 +12,15 @@ import { createExternalResource } from "#/lib/content/keystatic/components/exter
 import { createFigure } from "#/lib/content/keystatic/components/figure/index.tsx";
 import { createGrid } from "#/lib/content/keystatic/components/grid/index.tsx";
 import { createHeadingId } from "#/lib/content/keystatic/components/heading-id/index.tsx";
-import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
+import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createQuiz } from "#/lib/content/keystatic/components/quiz/index.tsx";
-import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx";
 import { createVideoCard } from "#/lib/content/keystatic/components/video-card/index.tsx";
+import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx";
 import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 import { contentLanguages, contentLicenses, contentTypes } from "#/lib/content/options.ts";
 
-export const createResourcesExternal = createCollection("/resources/external/", (paths, locale) => 
+export const createResourcesExternal = createCollection("/resources/external/", (paths, locale) =>
 	collection({
 		label: "External resources",
 		path: paths.contentPath,
@@ -180,5 +180,5 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 			}),
 			draft: fields.ignored(),
 		},
-	})
+	}),
 );

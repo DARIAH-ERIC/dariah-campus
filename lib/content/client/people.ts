@@ -1,12 +1,12 @@
 import { groupByToMap, keyByToMap, unique } from "@acdh-oeaw/lib";
+
+import type { CollectionClient } from "#/lib/content/types";
 import curricula from "#content/curricula";
 import collection from "#content/people";
 import events from "#content/resources-events";
 import external from "#content/resources-external";
 import hosted from "#content/resources-hosted";
 import pathfinders from "#content/resources-pathfinders";
-
-import type { CollectionClient } from "#/lib/content/types";
 
 /** Not every collection has all of these fields, e.g. events only have authors. */
 function getPersonIds(metadata: {
@@ -26,13 +26,11 @@ const resourcesByPersonId = groupByToMap(
 		...Array.from(hosted.values()),
 		...Array.from(pathfinders.values()),
 	],
-	(entry) =>
-		getPersonIds(entry.document.metadata)
-	,
+	(entry) => getPersonIds(entry.document.metadata),
 );
 
 const curriculaByPersonId = groupByToMap(Array.from(curricula.values()), (entry) =>
-	getPersonIds(entry.document.metadata)
+	getPersonIds(entry.document.metadata),
 );
 
 //
@@ -44,15 +42,9 @@ const all = Array.from(collection.values())
 	.map((entry) => {
 		const href = `/people/${entry.document.id}`;
 
-		const resources =
-			resourcesByPersonId.get(entry.document.id)?.map((entry) =>
-				entry.document.id
-			) ?? [];
+		const resources = resourcesByPersonId.get(entry.document.id)?.map((entry) => entry.document.id) ?? [];
 
-		const curricula =
-			curriculaByPersonId.get(entry.document.id)?.map((entry) =>
-				entry.document.id
-			) ?? [];
+		const curricula = curriculaByPersonId.get(entry.document.id)?.map((entry) => entry.document.id) ?? [];
 
 		return {
 			...entry.document,
@@ -62,13 +54,9 @@ const all = Array.from(collection.values())
 		};
 	})
 	// oxlint-disable-next-line unicorn/no-array-sort
-	.sort((a, z) =>
-		a.metadata.name.localeCompare(z.metadata.name)
-	);
+	.sort((a, z) => a.metadata.name.localeCompare(z.metadata.name));
 
-const byId = keyByToMap(all, (item) =>
-	item.id
-);
+const byId = keyByToMap(all, (item) => item.id);
 
 export type Person = (typeof all)[number];
 

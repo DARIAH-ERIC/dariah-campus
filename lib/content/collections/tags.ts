@@ -11,29 +11,33 @@ import { defaultLocale, getIntlLanguage } from "#/lib/i18n/locales.ts";
 const locale = defaultLocale;
 
 const compileOptions: CompileOptions = {
-  remarkPlugins: [createGitHubMarkdownPlugin(), createTypographicQuotesPlugin(getIntlLanguage(locale))],
-  remarkRehypeOptions: createRemarkRehypeOptions(locale),
-  rehypePlugins: [],
+	remarkPlugins: [createGitHubMarkdownPlugin(), createTypographicQuotesPlugin(getIntlLanguage(locale))],
+	remarkRehypeOptions: createRemarkRehypeOptions(locale),
+	rehypePlugins: [],
 };
 
 export const tags = createCollection({
-  name: "tags",
-  directory: "./content/en/tags/",
-  include: ["*/index.mdx"],
-  read(item) {
-    return reader.collections["en:tags"].readOrThrow(item.id, { resolveLinkedFiles: true });
-  },
-  async transform(data, item, context) {
-    const { content, ...metadata } = data;
+	name: "tags",
+	directory: "./content/en/tags/",
+	include: ["*/index.mdx"],
+	read(item) {
+		return reader.collections["en:tags"].readOrThrow(item.id, { resolveLinkedFiles: true });
+	},
+	async transform(data, item, context) {
+		const { content, ...metadata } = data;
 
-    const input = new VFile({ path: item.absoluteFilePath, value: content });
-    const output = await compile(input, compileOptions);
-    const module = context.createJavaScriptImport<MDXContent>(String(output));
+		const input = new VFile({ path: item.absoluteFilePath, value: content });
+		const output = await compile(input, compileOptions);
+		const module = context.createJavaScriptImport<MDXContent>(String(output));
 
-    return {
-      id: item.id,
-      content: module,
-      metadata,
-    };
-  },
+		return {
+			id: item.id,
+			content: module,
+			metadata: {
+				...metadata,
+				/** The body as plain text, for contexts which cannot render the compiled mdx, e.g. a search facet listbox. */
+				description: content.trim(),
+			},
+		};
+	},
 });
