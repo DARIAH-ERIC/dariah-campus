@@ -7,7 +7,7 @@ import type { StaticImageData } from "next/image";
 import { type ReactNode, useState } from "react";
 import { Button, Dialog, DialogTrigger, Popover } from "react-aria-components";
 
-import { getPersonDescription } from "#/app/(app)/(default)/search/_lib/get-person-description.ts";
+import { getPersonDescription } from "#/app/(app)/(default)/search/_lib/get-person-description.tsx";
 import { Image } from "#/components/image.tsx";
 
 interface SearchFacetValueInfoProps {
@@ -25,7 +25,8 @@ export function SearchFacetValueInfo(props: Readonly<SearchFacetValueInfoProps>)
 	const { id, image, label, name } = props;
 
 	const t = useTranslations("SearchPage");
-	const [description, setDescription] = useState<string | null>(null);
+	/** The rendered mdx, streamed over from the server function rather than assembled here. */
+	const [description, setDescription] = useState<ReactNode>(null);
 	const [isLoading, setIsLoading] = useState(false);
 
 	function onOpenChange(isOpen: boolean) {
@@ -64,7 +65,14 @@ export function SearchFacetValueInfo(props: Readonly<SearchFacetValueInfoProps>)
 				)}
 				placement="bottom start"
 			>
-				<Dialog aria-label={name} className="grid gap-y-2 p-4 outline-none">
+				<Dialog
+					aria-label={name}
+					/**
+					 * The dialog itself scrolls, rather than a wrapper around the biography: react aria moves focus here when the
+					 * popover opens, so the scroll container is the focused element and the arrow keys drive it.
+					 */
+					className="grid gap-y-2 overflow-y-auto p-4 outline-none max-block-[min(60vh,24rem)]"
+				>
 					<div className="flex items-center gap-x-3">
 						{image == null ? null : (
 							<Image
@@ -78,7 +86,20 @@ export function SearchFacetValueInfo(props: Readonly<SearchFacetValueInfoProps>)
 						<span className="font-bold">{name}</span>
 					</div>
 
-					{description == null ? null : <p className="text-sm text-neutral-600">{description}</p>}
+					{description == null ? null : (
+						<div
+							className={cn(
+								"grid gap-y-2 text-sm/normal text-neutral-600",
+								/**
+								 * The site renders mdx inside `prose`, which is too much for a popover - links still need to read as
+								 * links.
+								 */
+								"[&_a]:underline [&_a]:underline-offset-2 [&_a]:transition [&_a:hover]:text-brand-700",
+							)}
+						>
+							{description}
+						</div>
+					)}
 
 					{isLoading ? (
 						<div className="flex items-center gap-x-2 text-sm text-neutral-500" role="status">

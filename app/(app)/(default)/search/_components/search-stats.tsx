@@ -11,7 +11,7 @@ export function SearchStats(): ReactNode {
 	const { hasData, isLoading, pagination } = useSearch();
 
 	return (
-		<div className="grid place-items-start text-sm text-neutral-600 block-5 inline-full" role="status">
+		<div className="grid place-items-center text-sm text-neutral-600 block-5 inline-full" role="status">
 			{isLoading ? (
 				<span className="col-start-1 row-start-1 inline-flex animate-in justify-end delay-150 duration-0 fill-mode-both fade-in inline-full">
 					<LoaderCircleIcon aria-hidden={true} className="animate-spin block-5 inline-5" />

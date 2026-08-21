@@ -104,7 +104,12 @@ export function SearchFilterBar(props: Readonly<SearchFilterBarProps>): ReactNod
 
 	return (
 		<div className="grid gap-y-3">
-			<div className="-mx-4 flex gap-2 overflow-x-auto px-4 pbe-1 xs:mx-0 xs:flex-wrap xs:px-0 xs:pbe-0">
+			{/**
+			 * The row only scrolls where it cannot wrap. `overflow-x` other than visible also clips the block axis, so the
+			 * scrolling state pads by the width of a focus ring and takes it back off as margin, and the wrapping state stops
+			 * clipping altogether - otherwise a trigger's focus ring is cut off against the edge of the row.
+			 */}
+			<div className="-mx-4 -mbs-1 -mbe-1 flex gap-2 overflow-x-auto px-4 pbs-1 pbe-1 xs:mx-0 xs:flex-wrap xs:justify-center xs:overflow-x-visible xs:px-0">
 				{facetAttributes.map((attribute) => (
 					<SearchFacetFilter
 						key={attribute}
@@ -117,7 +122,7 @@ export function SearchFilterBar(props: Readonly<SearchFilterBarProps>): ReactNod
 			</div>
 
 			{tags.length > 0 ? (
-				<div className="flex flex-wrap items-center gap-2">
+				<div className="flex flex-wrap items-center justify-center gap-2">
 					<TagGroup aria-label={t("selected-filters")} onRemove={onRemove}>
 						<TagList className="flex flex-wrap gap-2" items={tags}>
 							{(tag) => {
