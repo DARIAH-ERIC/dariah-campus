@@ -21,7 +21,7 @@ interface FacetConfig {
 interface SearchFilterBarProps {
 	contentTypesById: Map<string, { label: string }>;
 	localesById: Map<string, { label: string }>;
-	peopleById: Map<string, { description: string; image: StaticImageData | string; name: string }>;
+	peopleById: Map<string, { hasDescription: boolean; image: StaticImageData | string; name: string }>;
 	sourcesById: Map<string, { name: string }>;
 	tagsById: Map<string, { description: string; name: string }>;
 }
@@ -121,6 +121,7 @@ export function SearchFilterBar(props: Readonly<SearchFilterBarProps>): ReactNod
 					<TagGroup aria-label={t("selected-filters")} onRemove={onRemove}>
 						<TagList className="flex flex-wrap gap-2" items={tags}>
 							{(tag) => {
+								/** The biography itself is fetched on demand, so only its existence is known here. */
 								const person = tag.attribute === "people" ? peopleById.get(tag.value) : undefined;
 
 								return (
@@ -132,9 +133,9 @@ export function SearchFilterBar(props: Readonly<SearchFilterBarProps>): ReactNod
 										<span>{tag.label}</span>
 
 										{/** Approach 2: people have no page of their own, so context comes from a popover on the chip. */}
-										{person == null ? null : (
+										{person == null || !person.hasDescription ? null : (
 											<SearchFacetValueInfo
-												description={person.description}
+												id={tag.value}
 												image={person.image}
 												label={t("about-value", { value: tag.label })}
 												name={person.name}

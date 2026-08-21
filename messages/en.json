@@ -359,6 +359,7 @@
 		"content-types": "Content types",
 		"filter-label": "Filter {attribute} values",
 		"filter-placeholder": "Filter...",
+		"loading": "Loading…",
 		"locale": "Languages",
 		"meta": {
 			"title": "Search"

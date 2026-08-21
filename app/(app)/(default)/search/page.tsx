@@ -22,23 +22,6 @@ export async function generateMetadata(): Promise<Metadata> {
 	return metadata;
 }
 
-/**
- * Person biographies are sent to the client for every person which occurs in the index, so only the opening sentences
- * travel - which is all the contextual popover on a filter chip displays.
- */
-const maxDescriptionLength = 200;
-
-function truncate(description: string): string {
-	if (description.length <= maxDescriptionLength) {
-		return description;
-	}
-
-	const truncated = description.slice(0, maxDescriptionLength);
-	const lastSpace = truncated.lastIndexOf(" ");
-
-	return `${(lastSpace > 0 ? truncated.slice(0, lastSpace) : truncated).trimEnd()}\u2026`;
-}
-
 interface SearchPageProps {
 	searchParams: Promise<Record<string, Array<string> | string | undefined>>;
 }
@@ -63,7 +46,8 @@ export default async function SearchPage(props: Readonly<SearchPageProps>): Prom
 	const peopleById = keyByToMap(
 		people.map((person) => {
 			const { description, image, name } = person.metadata;
-			return { id: person.id, description: truncate(description), image, name };
+			/** Only whether there is a biography, not the biography itself - see `getPersonDescription`. */
+			return { id: person.id, hasDescription: description.trim() !== "", image, name };
 		}),
 		(person) => person.id,
 	);
