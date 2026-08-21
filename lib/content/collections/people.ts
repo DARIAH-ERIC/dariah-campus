@@ -35,6 +35,8 @@ export const people = createCollection({
     return {
       id: item.id,
       content: module,
+      /** Most people don't have a biography, so pages need to know whether to render the content at all. */
+      hasContent: content.trim().length > 0,
       metadata: {
         ...metadata,
         image,
