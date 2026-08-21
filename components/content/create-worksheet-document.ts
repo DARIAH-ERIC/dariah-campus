@@ -34,9 +34,7 @@ export interface CreateWorksheetDocumentParams {
 	title: string;
 }
 
-/**
- * Word only understands a small subset of css, so the stylesheet avoids modern layout and logical properties.
- */
+/** Word only understands a small subset of css, so the stylesheet avoids modern layout and logical properties. */
 const stylesheet = `
 @page { margin: 2cm; }
 body { margin: 2rem auto; max-width: 45rem; padding: 0 1rem; color: #1c1c1c; font-family: "Segoe UI", Arial, Helvetica, sans-serif; font-size: 11pt; line-height: 1.5; }
@@ -64,26 +62,20 @@ a { color: #016cab; }
 `;
 
 function escapeHtml(value: string): string {
-	return value
-		.replaceAll("&", "&amp;")
-		.replaceAll("<", "&lt;")
-		.replaceAll(">", "&gt;")
-		.replaceAll('"', "&quot;");
+	return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 }
 
 /** Turns the plain text a learner typed into paragraphs, so line breaks survive in the document. */
 function createParagraphs(value: string): string {
 	return value
 		.split(/\n{2,}/u)
-		.map((paragraph) => 
-			`<p>${escapeHtml(paragraph.trim()).replaceAll("\n", "<br />")}</p>`
-		)
+		.map((paragraph) => `<p>${escapeHtml(paragraph.trim()).replaceAll("\n", "<br />")}</p>`)
 		.join("\n");
 }
 
 /**
- * Creates a standalone html document, which is served both as a `.doc` download, and as the source for
- * printing to pdf via the browser's print dialog.
+ * Creates a standalone html document, which is served both as a `.doc` download, and as the source for printing to pdf
+ * via the browser's print dialog.
  */
 export function createWorksheetDocument(params: CreateWorksheetDocumentParams): string {
 	const { brand, descriptionHtml, labels, language, sections, source, title } = params;
@@ -92,17 +84,17 @@ export function createWorksheetDocument(params: CreateWorksheetDocumentParams): 
 		.map((section) => {
 			const heading = `<h2>${escapeHtml(section.title)}</h2>`;
 
-			const intro = section.descriptionHtml != null
-				? `<div class="rich-text section-description">${section.descriptionHtml}</div>`
-				: "";
+			const intro =
+				section.descriptionHtml != null
+					? `<div class="rich-text section-description">${section.descriptionHtml}</div>`
+					: "";
 
 			const questions = section.questions
 				.map((question) => {
 					const value = question.value.trim();
 
-					const answer = value.length > 0
-						? createParagraphs(value)
-						: `<p class="empty">${escapeHtml(labels.emptyAnswer)}</p>`;
+					const answer =
+						value.length > 0 ? createParagraphs(value) : `<p class="empty">${escapeHtml(labels.emptyAnswer)}</p>`;
 
 					return `<h3>${escapeHtml(question.label)}</h3>\n<div class="answer">${answer}</div>`;
 				})

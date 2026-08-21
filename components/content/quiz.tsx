@@ -1,9 +1,8 @@
 "use client";
 
 import { assert } from "@acdh-oeaw/lib";
-import { type ReactNode, createContext, use, useEffect, useRef, useState } from "react";
-
 import { useTranslations } from "next-intl";
+import { type ReactNode, createContext, use, useEffect, useRef, useState } from "react";
 
 import { getChildrenElements } from "#/components/content/get-children-elements.ts";
 
@@ -42,16 +41,12 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 	const quizzes = getChildrenElements(children);
 
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const [statuses, setStatuses] = useState<Array<QuizPageStatus>>(() =>
-		quizzes.map(() =>
-			"idle"
-		)
-	);
+	const [statuses, setStatuses] = useState<Array<QuizPageStatus>>(() => quizzes.map(() => "idle"));
 
 	/**
-	 * A quiz page is a page of a form, so navigating moves focus to the new page, like following a link does.
-	 * Otherwise the new question sits *before* the controls in the document, and keyboard users would have to
-	 * tab backwards to reach it - and screen readers would not announce that anything changed.
+	 * A quiz page is a page of a form, so navigating moves focus to the new page, like following a link does. Otherwise
+	 * the new question sits _before_ the controls in the document, and keyboard users would have to tab backwards to
+	 * reach it - and screen readers would not announce that anything changed.
 	 */
 	const pageRefs = useRef<Map<number, HTMLDivElement | null>>(new Map());
 	/** Comparing against the previous page keeps focus untouched on the initial render. */
@@ -65,21 +60,19 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 		previousIndex.current = currentIndex;
 	}, [currentIndex]);
 
-	if (quizzes.length === 0) {return null;}
+	if (quizzes.length === 0) {
+		return null;
+	}
 
 	const navigation: QuizContextValue["navigation"] = {
 		hasNext: currentIndex < quizzes.length - 1,
 		hasPrevious: currentIndex > 0,
 		isPaginated: quizzes.length > 1,
 		next() {
-			setCurrentIndex((currentIndex) =>
-				currentIndex + 1
-			);
+			setCurrentIndex((currentIndex) => currentIndex + 1);
 		},
 		previous() {
-			setCurrentIndex((currentIndex) =>
-				currentIndex - 1
-			);
+			setCurrentIndex((currentIndex) => currentIndex - 1);
 		},
 	};
 
@@ -93,9 +86,7 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 					navigation,
 					setStatus(status) {
 						setStatuses((statuses) =>
-							statuses.map((currentStatus, statusIndex) =>
-								statusIndex === index ? status : currentStatus
-							)
+							statuses.map((currentStatus, statusIndex) => (statusIndex === index ? status : currentStatus)),
 						);
 					},
 					status,
@@ -109,9 +100,11 @@ export function Quiz(props: Readonly<QuizProps>): ReactNode {
 							ref={(node) => {
 								pageRefs.current.set(index, node);
 							}}
-							aria-label={navigation.isPaginated
-								? t("page-label", { index: String(index + 1), total: String(quizzes.length) })
-								: undefined}
+							aria-label={
+								navigation.isPaginated
+									? t("page-label", { index: String(index + 1), total: String(quizzes.length) })
+									: undefined
+							}
 							className={navigation.isPaginated ? "focus:outline-none" : undefined}
 							hidden={!isCurrent}
 							role={navigation.isPaginated ? "group" : undefined}

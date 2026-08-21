@@ -1,9 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-export function useMasonryLayout<T>(
-	items: Array<T>,
-	variant: "default" | "search" = "default",
-): Array<Array<T>> | null {
+export function useMasonryLayout<T>(items: Array<T>): Array<Array<T>> | null {
 	const [columnCount, setColumnCount] = useState<number | null>(null);
 
 	useEffect(() => {
@@ -11,28 +8,12 @@ export function useMasonryLayout<T>(
 
 		function onWindowResize() {
 			requestAnimationFrame(() => {
-				switch (variant) {
-					case "default": {
-						if (window.innerWidth >= 1280) {
-							setColumnCount(3);
-						} else if (window.innerWidth >= 840) {
-							setColumnCount(2);
-						} else {
-							setColumnCount(1);
-						}
-
-						break;
-					}
-
-					case "search": {
-						if (window.innerWidth >= 1140) {
-							setColumnCount(2);
-						} else {
-							setColumnCount(1);
-						}
-
-						break;
-					}
+				if (window.innerWidth >= 1280) {
+					setColumnCount(3);
+				} else if (window.innerWidth >= 840) {
+					setColumnCount(2);
+				} else {
+					setColumnCount(1);
 				}
 			});
 		}
@@ -44,7 +25,7 @@ export function useMasonryLayout<T>(
 		return () => {
 			controller.abort();
 		};
-	}, [variant]);
+	}, []);
 
 	const columns = useMemo(() => {
 		if (columnCount == null) {

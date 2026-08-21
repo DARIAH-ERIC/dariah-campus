@@ -35,7 +35,11 @@ export function FigurePreview(props: Readonly<FigurePreviewProps>): ReactNode {
 			<NotEditable>
 				{url != null ? (
 					// oxlint-disable-next-line @next/next/no-img-element
-					<img alt={alt} className="overflow-hidden rounded-lg border border-neutral-200 bg-white inline-full" src={url} />
+					<img
+						alt={alt}
+						className="overflow-hidden rounded-lg border border-neutral-200 bg-white inline-full"
+						src={url}
+					/>
 				) : null}
 			</NotEditable>
 			<figcaption>{children}</figcaption>

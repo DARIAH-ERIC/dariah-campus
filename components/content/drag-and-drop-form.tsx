@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 import { type CSSProperties, type DragEvent, type ReactNode, useEffect, useRef, useState } from "react";
 import { Button, Menu, MenuItem, MenuTrigger, Popover } from "react-aria-components";
 
-import { useQuizContext } from "#/components/content/quiz.tsx";
 import { QuizControls } from "#/components/content/quiz-controls.tsx";
+import { useQuizContext } from "#/components/content/quiz.tsx";
 import { Image } from "#/components/image.tsx";
 
 /**
@@ -65,11 +65,7 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 	const { isCurrent, setStatus, status } = useQuizContext();
 
 	/** The zone each item currently sits in, by item index, or `null` while the item is still in the bank. */
-	const [placements, setPlacements] = useState<Array<number | null>>(() =>
-		items.map(() =>
-			null
-		)
-	);
+	const [placements, setPlacements] = useState<Array<number | null>>(() => items.map(() => null));
 	const [dropTargetZoneIndex, setDropTargetZoneIndex] = useState<number | null>(null);
 	const [isBankDropTarget, setIsBankDropTarget] = useState(false);
 
@@ -84,7 +80,9 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 
 	useEffect(() => {
 		const movedItem = movedItemRef.current;
-		if (movedItem == null) {return;}
+		if (movedItem == null) {
+			return;
+		}
 
 		movedItemRef.current = null;
 
@@ -96,19 +94,13 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 	const isValidated = status === "correct" || status === "incorrect";
 
 	/** Distractors belong in no zone, so they add nothing to the score - but leaving one placed makes the answer wrong. */
-	const total = items.filter((item) =>
-		item.zoneIndex != null
-	).length;
-	const correctCount = items.filter((item, index) =>
-		item.zoneIndex != null && placements[index] === item.zoneIndex
+	const total = items.filter((item) => item.zoneIndex != null).length;
+	const correctCount = items.filter(
+		(item, index) => item.zoneIndex != null && placements[index] === item.zoneIndex,
 	).length;
 
 	function place(itemIndex: number, zoneIndex: number | null) {
-		setPlacements((placements) =>
-			placements.map((placement, index) =>
-				index === itemIndex ? zoneIndex : placement
-			)
-		);
+		setPlacements((placements) => placements.map((placement, index) => (index === itemIndex ? zoneIndex : placement)));
 		movedItemRef.current = { index: itemIndex, to: zoneIndex == null ? "bank" : "zone" };
 	}
 
@@ -119,29 +111,25 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 
 		/** A drag which carries no payload of ours is not ours to handle - an empty string would read as item zero. */
 		const data = event.dataTransfer.getData(dragType);
-		if (isReadOnly || data === "") {return;}
+		if (isReadOnly || data === "") {
+			return;
+		}
 
 		const itemIndex = Number(data);
-		if (!Number.isInteger(itemIndex) || items[itemIndex] == null) {return;}
+		if (!Number.isInteger(itemIndex) || items[itemIndex] == null) {
+			return;
+		}
 
 		place(itemIndex, zoneIndex);
 	}
 
 	function reset() {
-		setPlacements(
-			items.map(() =>
-				null
-			),
-		);
+		setPlacements(items.map(() => null));
 		setStatus("idle");
 	}
 
 	function showSolution() {
-		setPlacements(
-			items.map((item) =>
-				item.zoneIndex
-			),
-		);
+		setPlacements(items.map((item) => item.zoneIndex));
 		setStatus("solved");
 	}
 
@@ -149,14 +137,15 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 		const label = zone.label || t("zone-label", { index: String(zoneIndex + 1) });
 		const isDropTarget = dropTargetZoneIndex === zoneIndex;
 		/** The height is a minimum, so a zone which fills up grows instead of hiding what was dropped into it. */
-		const style = src == null
-			? undefined
-			: ({
-				insetBlockStart: `${String(zone.position.y)}%`,
-				insetInlineStart: `${String(zone.position.x)}%`,
-				inlineSize: `${String(zone.position.width)}%`,
-				minBlockSize: `${String(zone.position.height)}%`,
-			} as CSSProperties);
+		const style =
+			src == null
+				? undefined
+				: ({
+						insetBlockStart: `${String(zone.position.y)}%`,
+						insetInlineStart: `${String(zone.position.x)}%`,
+						inlineSize: `${String(zone.position.width)}%`,
+						minBlockSize: `${String(zone.position.height)}%`,
+					} as CSSProperties);
 
 		return (
 			// oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- Mouse convenience; every item's menu offers the same move.
@@ -169,9 +158,7 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 					isDropTarget ? "border-brand-500 bg-brand-50" : "border-neutral-400",
 				)}
 				onDragLeave={() => {
-					setDropTargetZoneIndex((current) =>
-						current === zoneIndex ? null : current
-					);
+					setDropTargetZoneIndex((current) => (current === zoneIndex ? null : current));
 				}}
 				onDragOver={(event) => {
 					if (!isReadOnly && isItemDrag(event)) {
@@ -189,7 +176,9 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 
 				<ul className="flex flex-wrap gap-1">
 					{items.map((item, index) => {
-						if (placements[index] !== zoneIndex) {return null;}
+						if (placements[index] !== zoneIndex) {
+							return null;
+						}
 
 						return (
 							// oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions -- Mouse convenience; the item itself is a button.
@@ -262,15 +251,11 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 				{src != null ? (
 					<div className="relative isolate self-start overflow-hidden rounded-md">
 						<Image alt={alt} className="block-auto inline-full" height={height} src={src} width={width} />
-						{zones.map((zone, zoneIndex) =>
-							renderZone(zone, zoneIndex)
-						)}
+						{zones.map((zone, zoneIndex) => renderZone(zone, zoneIndex))}
 					</div>
 				) : (
 					<div className="grid gap-3 @[36rem]:grid-cols-2">
-						{zones.map((zone, zoneIndex) =>
-							renderZone(zone, zoneIndex)
-						)}
+						{zones.map((zone, zoneIndex) => renderZone(zone, zoneIndex))}
 					</div>
 				)}
 
@@ -347,18 +332,16 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 													place(index, Number(key));
 												}}
 											>
-												{zones.map((zone, zoneIndex) =>
-													(
-														<MenuItem
-															key={zoneIndex}
-															className="cursor-pointer px-3 py-1 text-sm text-neutral-700 outline-none focus:bg-brand-50 focus:text-brand-700"
-															id={String(zoneIndex)}
-															textValue={zone.label || t("zone-label", { index: String(zoneIndex + 1) })}
-														>
-															{zone.label || t("zone-label", { index: String(zoneIndex + 1) })}
-														</MenuItem>
-													)
-												)}
+												{zones.map((zone, zoneIndex) => (
+													<MenuItem
+														key={zoneIndex}
+														className="cursor-pointer px-3 py-1 text-sm text-neutral-700 outline-none focus:bg-brand-50 focus:text-brand-700"
+														id={String(zoneIndex)}
+														textValue={zone.label || t("zone-label", { index: String(zoneIndex + 1) })}
+													>
+														{zone.label || t("zone-label", { index: String(zoneIndex + 1) })}
+													</MenuItem>
+												))}
 											</Menu>
 										</Popover>
 									</MenuTrigger>
@@ -382,11 +365,7 @@ export function QuizDragAndDropForm(props: Readonly<QuizDragAndDropFormProps>): 
 				onValidate={() => {
 					/** A distractor left in the bank is part of the answer, so the score alone does not decide this. */
 					setStatus(
-						items.every((item, index) =>
-							(placements[index] ?? null) === item.zoneIndex
-						)
-							? "correct"
-							: "incorrect",
+						items.every((item, index) => (placements[index] ?? null) === item.zoneIndex) ? "correct" : "incorrect",
 					);
 				}}
 				previousButtonLabel={controlsT("previous-question")}

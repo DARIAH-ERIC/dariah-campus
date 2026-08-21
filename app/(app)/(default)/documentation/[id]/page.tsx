@@ -68,9 +68,9 @@ export default async function DocumentationPage(props: Readonly<DocumentationPag
 
 	return (
 		<div>
-			<div className="mx-auto grid max-w-screen-lg gap-y-10 px-4 py-8 inline-full xs:px-8 xs:py-16 2xl:grid-cols-(--content-layout) 2xl:gap-x-10 2xl:gap-y-0 2xl:max-inline-none">
+			<div className="mx-auto grid max-w-screen-lg gap-y-10 px-4 py-8 inline-full xs:px-8 xs:py-16 2xl:grid-cols-(--content-layout) 2xl:gap-x-(--content-layout-gap) 2xl:gap-y-0 2xl:max-inline-none">
 				<aside
-					className="sticky inset-bs-24 hidden gap-y-8 self-start justify-self-end overflow-y-auto p-8 text-sm text-neutral-500 inline-full max-block-screen max-inline-xs 2xl:flex 2xl:flex-col"
+					className="sticky inset-bs-24 hidden gap-y-8 self-start justify-self-end overflow-y-auto p-8 text-sm text-neutral-500 inline-full max-block-screen max-inline-(--size-sidebar) 2xl:flex 2xl:flex-col"
 					style={{ maxHeight: "calc(100dvh - 12px - var(--page-header-height))" }}
 				>
 					<nav aria-labelledby="docs-nav" className="grid content-start gap-y-2 inline-full">
@@ -136,7 +136,7 @@ export default async function DocumentationPage(props: Readonly<DocumentationPag
 				{tableOfContents.length > 0 ? (
 					<Fragment>
 						<aside
-							className="sticky inset-bs-24 hidden self-start overflow-y-auto p-8 text-sm text-neutral-500 inline-full max-block-screen max-inline-xs 2xl:flex 2xl:flex-col"
+							className="sticky inset-bs-24 hidden self-start overflow-y-auto p-8 text-sm text-neutral-500 inline-full max-block-screen max-inline-(--size-sidebar) 2xl:flex 2xl:flex-col"
 							style={{
 								maxHeight: "calc(100dvh - 12px - var(--page-header-height))",
 							}}

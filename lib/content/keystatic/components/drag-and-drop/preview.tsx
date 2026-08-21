@@ -100,8 +100,8 @@ export function QuizDropZonePreview(props: Readonly<QuizDropZonePreviewProps>): 
 			<NotEditable>
 				{box}
 				<p className="text-sm font-medium">
-					{label || "Untitled drop zone"} ({position.x}%, {position.y}%, {position.width}&nbsp;&times;{" "}
-					{position.height}%)
+					{label || "Untitled drop zone"} ({position.x}%, {position.y}%, {position.width}&nbsp;&times; {position.height}
+					%)
 				</p>
 				<p className="text-sm text-(--kui-color-foreground-neutral-secondary)">
 					{items.length > 0 ? items.join(", ") : "No items belong in this zone."}

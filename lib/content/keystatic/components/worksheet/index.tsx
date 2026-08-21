@@ -60,9 +60,7 @@ export const createWorksheet = createComponent((_paths, _locale) => {
 			ContentView(props) {
 				const { children, value } = props;
 
-				return (
-					<WorksheetSectionPreview title={value.title}>{children}</WorksheetSectionPreview>
-				);
+				return <WorksheetSectionPreview title={value.title}>{children}</WorksheetSectionPreview>;
 			},
 		}),
 		WorksheetSectionDescription: wrapper({
@@ -74,9 +72,7 @@ export const createWorksheet = createComponent((_paths, _locale) => {
 			ContentView(props) {
 				const { children } = props;
 
-				return (
-					<WorksheetSectionDescriptionPreview>{children}</WorksheetSectionDescriptionPreview>
-				);
+				return <WorksheetSectionDescriptionPreview>{children}</WorksheetSectionDescriptionPreview>;
 			},
 		}),
 		WorksheetQuestion: block({

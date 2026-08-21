@@ -2,13 +2,7 @@
 
 import { isNonEmptyString } from "@acdh-oeaw/lib";
 import cn from "clsx/lite";
-import {
-	ChevronLeftIcon,
-	ChevronRightIcon,
-	DownloadIcon,
-	PrinterIcon,
-	RotateCcwIcon,
-} from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, DownloadIcon, PrinterIcon, RotateCcwIcon } from "lucide-react";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { type ReactNode, useEffect, useId, useRef, useState } from "react";
 import {
@@ -42,16 +36,14 @@ export interface WorksheetSectionData {
 
 type Values = Record<string, string>;
 
-/**
- * Answers are keyed by position, so they survive editing a prompt's wording, but not reordering questions.
- */
+/** Answers are keyed by position, so they survive editing a prompt's wording, but not reordering questions. */
 function createAnswerKey(sectionIndex: number, questionIndex: number): string {
 	return `${String(sectionIndex)}.${String(questionIndex)}`;
 }
 
 /**
- * Answers are scoped to the page, so the same widget can be reused across resources, and to the document
- * title, so a page can contain more than one form.
+ * Answers are scoped to the page, so the same widget can be reused across resources, and to the document title, so a
+ * page can contain more than one form.
  */
 function createStorageKey(title: string): string {
 	return ["dariah-campus", "worksheet", window.location.pathname, title].join(":");
@@ -75,8 +67,8 @@ interface WorksheetFormProps {
 }
 
 /**
- * The interactive half of `Worksheet`. Splitting the sections and questions out of the rich-text
- * children happens in the server component, so components can be identified by comparing `child.type`.
+ * The interactive half of `Worksheet`. Splitting the sections and questions out of the rich-text children happens in
+ * the server component, so components can be identified by comparing `child.type`.
  */
 export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 	const { description, hasDescription, sections, title } = props;
@@ -92,24 +84,24 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 	const documentTitle = isNonEmptyString(title) ? title : t("title");
 
 	/**
-	 * Rich text is serialised out of the dom for the downloadable document, so every step stays mounted,
-	 * and inactive ones are only hidden.
+	 * Rich text is serialised out of the dom for the downloadable document, so every step stays mounted, and inactive
+	 * ones are only hidden.
 	 */
 	const descriptionRef = useRef<HTMLDivElement | null>(null);
 	const sectionDescriptionRefs = useRef<Map<number, HTMLDivElement | null>>(new Map());
 
 	/**
-	 * A step is a page of the form, so navigating moves focus to the new step, like following a link does.
-	 * Otherwise the new questions sit *before* the buttons in the document, and keyboard users would have to
-	 * tab backwards to reach them - and screen readers would not announce that anything changed.
+	 * A step is a page of the form, so navigating moves focus to the new step, like following a link does. Otherwise the
+	 * new questions sit _before_ the buttons in the document, and keyboard users would have to tab backwards to reach
+	 * them - and screen readers would not announce that anything changed.
 	 */
 	const stepRefs = useRef<Map<number, HTMLDivElement | null>>(new Map());
 	/** Comparing against the previous step keeps focus untouched on the initial render. */
 	const previousIndex = useRef(0);
 
 	/**
-	 * Answers are only read from storage after mount, so server and client render the same empty form.
-	 * Both values live in one state, so restoring them does not trigger a second render.
+	 * Answers are only read from storage after mount, so server and client render the same empty form. Both values live
+	 * in one state, so restoring them does not trigger a second render.
 	 */
 	const [state, setState] = useState<{ isRestored: boolean; values: Values }>({
 		isRestored: false,
@@ -125,12 +117,12 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 	const currentIndex = Math.min(index, lastIndex);
 	/** Section titles are required in the cms, but the cms saves entries with empty required fields. */
 	const sectionTitles = sections.map((section, index) =>
-		isNonEmptyString(section.title) ? section.title : t("section-label", { index: String(index + 1) })
+		isNonEmptyString(section.title) ? section.title : t("section-label", { index: String(index + 1) }),
 	);
 
 	/**
-	 * Answers are persisted in `localStorage`, which can only be read after hydration, so restoring them
-	 * necessarily happens in an effect.
+	 * Answers are persisted in `localStorage`, which can only be read after hydration, so restoring them necessarily
+	 * happens in an effect.
 	 */
 	useEffect(() => {
 		let restored: Values = {};
@@ -154,7 +146,9 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 	}, [documentTitle]);
 
 	useEffect(() => {
-		if (!isRestored) {return;}
+		if (!isRestored) {
+			return;
+		}
 
 		try {
 			const key = createStorageKey(documentTitle);
@@ -270,7 +264,9 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 			className="not-prose my-6 overflow-hidden rounded-md border border-neutral-200 bg-white text-neutral-950 shadow-sm"
 		>
 			<header className="border-be border-neutral-200 px-4 pbs-5 pbe-4 sm:px-6">
-				<strong className="text-lg/tight font-bold" id={id}>{documentTitle}</strong>
+				<strong className="text-lg/tight font-bold" id={id}>
+					{documentTitle}
+				</strong>
 
 				{hasDescription ? (
 					<div
@@ -292,13 +288,9 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 				{({ percentage }) => (
 					<div className="grid gap-y-2">
 						<div className="flex flex-wrap items-baseline justify-between gap-x-4 text-sm text-neutral-600">
-							<span>
-								{t("step-label", { index: String(currentIndex + 1), total: String(lastIndex + 1) })}
-							</span>
+							<span>{t("step-label", { index: String(currentIndex + 1), total: String(lastIndex + 1) })}</span>
 
-							<span>
-								{currentIndex === lastIndex ? t("summary") : sectionTitles[currentIndex]}
-							</span>
+							<span>{currentIndex === lastIndex ? t("summary") : sectionTitles[currentIndex]}</span>
 						</div>
 
 						<div className="overflow-hidden rounded-full bg-neutral-200 block-1.5">
@@ -318,34 +310,29 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 					event.preventDefault();
 				}}
 			>
-				{/**
-				 * Every step stays mounted, so the rich text of all sections is available in the dom when the
-				 * document is generated.
-				 */}
-				{sections.map((section, sectionIndex) =>
-					(
-						<Step
-							key={String(sectionIndex)}
-							descriptionRef={(node) => {
-								sectionDescriptionRefs.current.set(sectionIndex, node);
-							}}
-							isCurrent={sectionIndex === currentIndex}
-							id={`${id}-step-${String(sectionIndex)}`}
-							ref={(node) => {
-								stepRefs.current.set(sectionIndex, node);
-							}}
-							onChange={(key, value) => {
-								setState((state) => {
-									return { ...state, values: { ...state.values, [key]: value } };
-								});
-							}}
-							section={section}
-							sectionIndex={sectionIndex}
-							title={sectionTitles[sectionIndex] ?? ""}
-							values={values}
-						/>
-					)
-				)}
+				{/** Every step stays mounted, so the rich text of all sections is available in the dom when the document is generated. */}
+				{sections.map((section, sectionIndex) => (
+					<Step
+						key={String(sectionIndex)}
+						descriptionRef={(node) => {
+							sectionDescriptionRefs.current.set(sectionIndex, node);
+						}}
+						isCurrent={sectionIndex === currentIndex}
+						id={`${id}-step-${String(sectionIndex)}`}
+						ref={(node) => {
+							stepRefs.current.set(sectionIndex, node);
+						}}
+						onChange={(key, value) => {
+							setState((state) => {
+								return { ...state, values: { ...state.values, [key]: value } };
+							});
+						}}
+						section={section}
+						sectionIndex={sectionIndex}
+						title={sectionTitles[sectionIndex] ?? ""}
+						values={values}
+					/>
+				))}
 
 				<div
 					ref={(node) => {
@@ -357,12 +344,7 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 					role="group"
 					tabIndex={-1}
 				>
-					<Summary
-						emptyLabel={t("not-answered")}
-						sections={sections}
-						titles={sectionTitles}
-						values={values}
-					/>
+					<Summary emptyLabel={t("not-answered")} sections={sections} titles={sectionTitles} values={values} />
 				</div>
 			</form>
 
@@ -370,7 +352,9 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 				<Button
 					aria-disabled={currentIndex === 0 || undefined}
 					onPress={() => {
-						if (currentIndex === 0) {return;}
+						if (currentIndex === 0) {
+							return;
+						}
 
 						setIndex(currentIndex - 1);
 					}}
@@ -379,49 +363,45 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 					<span>{t("previous")}</span>
 				</Button>
 
-				{currentIndex === lastIndex
-					? (
-						<div className="flex flex-wrap items-center justify-end gap-3">
-							{isConfirmingReset
-								? (
-									<Button onPress={reset} variant="danger">
-										<RotateCcwIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
-										<span>{t("reset-confirm")}</span>
-									</Button>
-								)
-								: (
-									<Button
-										onPress={() => {
-											setIsConfirmingReset(true);
-										}}
-									>
-										<RotateCcwIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
-										<span>{t("reset")}</span>
-									</Button>
-								)}
-
-							<Button onPress={print}>
-								<PrinterIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
-								<span>{t("print")}</span>
+				{currentIndex === lastIndex ? (
+					<div className="flex flex-wrap items-center justify-end gap-3">
+						{isConfirmingReset ? (
+							<Button onPress={reset} variant="danger">
+								<RotateCcwIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
+								<span>{t("reset-confirm")}</span>
 							</Button>
-
-							<Button onPress={download} variant="primary">
-								<DownloadIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
-								<span>{t("download")}</span>
+						) : (
+							<Button
+								onPress={() => {
+									setIsConfirmingReset(true);
+								}}
+							>
+								<RotateCcwIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
+								<span>{t("reset")}</span>
 							</Button>
-						</div>
-					)
-					: (
-						<Button
-							onPress={() => {
-								setIndex(currentIndex + 1);
-							}}
-							variant="primary"
-						>
-							<span>{currentIndex === lastIndex - 1 ? t("review") : t("next")}</span>
-							<ChevronRightIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
+						)}
+
+						<Button onPress={print}>
+							<PrinterIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
+							<span>{t("print")}</span>
 						</Button>
-					)}
+
+						<Button onPress={download} variant="primary">
+							<DownloadIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
+							<span>{t("download")}</span>
+						</Button>
+					</div>
+				) : (
+					<Button
+						onPress={() => {
+							setIndex(currentIndex + 1);
+						}}
+						variant="primary"
+					>
+						<span>{currentIndex === lastIndex - 1 ? t("review") : t("next")}</span>
+						<ChevronRightIcon aria-hidden={true} className="shrink-0 block-4 inline-4" />
+					</Button>
+				)}
 			</footer>
 		</section>
 	);
@@ -457,7 +437,9 @@ function Step(props: Readonly<StepProps>): ReactNode {
 			tabIndex={-1}
 		>
 			<div className="grid gap-y-1">
-				<strong className="text-base/tight font-bold" id={id}>{title}</strong>
+				<strong className="text-base/tight font-bold" id={id}>
+					{title}
+				</strong>
 
 				<div
 					ref={descriptionRef}
@@ -484,11 +466,17 @@ function Step(props: Readonly<StepProps>): ReactNode {
 					>
 						<Label className="font-medium">{label}</Label>
 
-						{isNonEmptyString(description) ? <Text className="text-neutral-600" slot="description">{description}</Text> : null}
+						{isNonEmptyString(description) ? (
+							<Text className="text-neutral-600" slot="description">
+								{description}
+							</Text>
+						) : null}
 
-						{variant === "short"
-							? <Input className={inputStyles} placeholder={placeholder} />
-							: <TextArea className={inputStyles} placeholder={placeholder} rows={5} />}
+						{variant === "short" ? (
+							<Input className={inputStyles} placeholder={placeholder} />
+						) : (
+							<TextArea className={inputStyles} placeholder={placeholder} rows={5} />
+						)}
 					</TextField>
 				);
 			})}
@@ -513,9 +501,7 @@ function Summary(props: Readonly<SummaryProps>): ReactNode {
 
 				return (
 					<div key={String(sectionIndex)} className="grid gap-y-3">
-						<strong className="text-base/tight font-bold text-brand-700">
-							{titles[sectionIndex]}
-						</strong>
+						<strong className="text-base/tight font-bold text-brand-700">{titles[sectionIndex]}</strong>
 
 						{questions.map((question, questionIndex) => {
 							const key = createAnswerKey(sectionIndex, questionIndex);
@@ -525,9 +511,11 @@ function Summary(props: Readonly<SummaryProps>): ReactNode {
 								<div key={key} className="grid gap-y-1 border-s-2 border-neutral-200 ps-3 text-sm/relaxed">
 									<dfn className="font-medium not-italic">{question.label}</dfn>
 
-									{isNonEmptyString(value)
-										? <p className="whitespace-pre-line text-neutral-700">{value}</p>
-										: <p className="text-neutral-500 italic">{emptyLabel}</p>}
+									{isNonEmptyString(value) ? (
+										<p className="whitespace-pre-line text-neutral-700">{value}</p>
+									) : (
+										<p className="text-neutral-500 italic">{emptyLabel}</p>
+									)}
 								</div>
 							);
 						})}
@@ -554,8 +542,8 @@ function Button(props: Readonly<ButtonProps>): ReactNode {
 				variant === "primary"
 					? "border-brand-700 bg-brand-700 text-white not-aria-disabled:hover:bg-brand-800 pressed:bg-brand-800"
 					: variant === "danger"
-					? "border-error-600 bg-error-600 text-white not-aria-disabled:hover:bg-error-700 pressed:bg-error-700"
-					: "border-neutral-300 bg-white not-aria-disabled:hover:bg-neutral-100 pressed:bg-neutral-200",
+						? "border-error-600 bg-error-600 text-white not-aria-disabled:hover:bg-error-700 pressed:bg-error-700"
+						: "border-neutral-300 bg-white not-aria-disabled:hover:bg-neutral-100 pressed:bg-neutral-200",
 			)}
 		>
 			{children}

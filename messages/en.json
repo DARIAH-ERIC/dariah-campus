@@ -317,6 +317,12 @@
 		},
 		"title": "Pathfinders"
 	},
+	"PersonPage": {
+		"authors": "Authors",
+		"curricula": "Curricula",
+		"editors": "Editors",
+		"resources": "Resources"
+	},
 	"PublicationDate": {
 		"label": "Published to DARIAH-Campus"
 	},
@@ -367,7 +373,7 @@
 	"SearchPage": {
 		"authors": "Authors",
 		"authors-editors-contributors": "Authors, editors, and contributors",
-		"close": "Close",
+		"clear-filters": "Clear all filters",
 		"content-types": "Content types",
 		"filter-label": "Filter {attribute} values",
 		"filter-placeholder": "Filter...",
@@ -376,13 +382,12 @@
 			"title": "Search"
 		},
 		"nothing-found": "Nothing found",
+		"open-value-page": "Open the page for {value}",
 		"people": "People",
 		"results-found": "{count, plural, =0 {Nothing found.} =1 {One result found.} other {# results found.}}",
 		"search": "Search",
-		"search-filter": "Filter",
 		"searching": "Searching",
-		"show-less-label": "Show less",
-		"show-more-label": "Show more",
+		"selected-filters": "Selected filters",
 		"sources": "Sources",
 		"tags": "Topics",
 		"title": "Search"
@@ -412,5 +417,11 @@
 		},
 		"resources": "{count, plural, =0 {no resources} =1 {one resource} other {# resources}}",
 		"title": "Sources"
+	},
+	"TopicPage": {
+		"authors": "Authors",
+		"curricula": "Curricula",
+		"editors": "Editors",
+		"resources": "Resources"
 	}
 }

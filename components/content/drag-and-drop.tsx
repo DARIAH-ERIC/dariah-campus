@@ -10,21 +10,19 @@ import { getSortKey } from "#/components/content/get-sort-key.ts";
 
 /** A list from the cms, or a comma separated string in hand-written mdx. */
 function toList(value: Array<string> | string | undefined): Array<string> {
-	if (value == null) {return [];}
+	if (value == null) {
+		return [];
+	}
 
-	return (typeof value === "string" ? value.split(",") : value)
-		.map((entry) =>
-			entry.trim()
-		)
-		.filter(Boolean);
+	return (typeof value === "string" ? value.split(",") : value).map((entry) => entry.trim()).filter(Boolean);
 }
 
 interface QuizDragAndDropProps {
 	alt?: string;
 	children: ReactNode;
 	/**
-	 * Decoy items that join the bank but belong in no zone, so the exercise cannot be solved by elimination. Leaving
-	 * them in the bank is part of the correct answer.
+	 * Decoy items that join the bank but belong in no zone, so the exercise cannot be solved by elimination. Leaving them
+	 * in the bank is part of the correct answer.
 	 */
 	distractors?: Array<string> | string;
 	height?: number;
@@ -35,9 +33,9 @@ interface QuizDragAndDropProps {
 }
 
 /**
- * Note that this must stay a server component: it identifies its children by comparing `child.type`, which
- * only works while the mdx components and the imports here resolve to the same objects. In a client
- * component the children arrive as separate lazy references, and nothing matches.
+ * Note that this must stay a server component: it identifies its children by comparing `child.type`, which only works
+ * while the mdx components and the imports here resolve to the same objects. In a client component the children arrive
+ * as separate lazy references, and nothing matches.
  */
 export function QuizDragAndDrop(props: Readonly<QuizDragAndDropProps>): ReactNode {
 	const { alt = "", children, distractors, height, instantFeedback = false, src, width } = props;
@@ -65,18 +63,18 @@ export function QuizDragAndDrop(props: Readonly<QuizDragAndDropProps>): ReactNod
 		...dropZones.flatMap((zone, zoneIndex) =>
 			toList(zone.props.items).map((label, index) => {
 				return { id: `item-${String(zoneIndex)}-${String(index)}`, label, zoneIndex };
-			})
+			}),
 		),
 		...toList(distractors).map((label, index) => {
 			return { id: `distractor-${String(index)}`, label, zoneIndex: null };
 		}),
 		// oxlint-disable-next-line unicorn/no-array-sort
-	].sort((a, b) =>
-		getSortKey(a.label) - getSortKey(b.label)
-	);
+	].sort((a, b) => getSortKey(a.label) - getSortKey(b.label));
 
 	/** The cms saves entries even when a required field was left empty, so an exercise nobody can solve is dropped. */
-	if (zones.length === 0 || items.length === 0) {return null;}
+	if (zones.length === 0 || items.length === 0) {
+		return null;
+	}
 
 	return (
 		<QuizDragAndDropForm

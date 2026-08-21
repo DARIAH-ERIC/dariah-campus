@@ -1,6 +1,5 @@
 "use client";
 
-
 import { type UseObjectUrlParams, useObjectUrl } from "@acdh-oeaw/keystatic-lib/preview";
 import { Button } from "@keystar/ui/button";
 import { NotEditable } from "@keystatic/core";
@@ -85,7 +84,9 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 	} as CSSProperties;
 
 	function getPosition(clientX: number, clientY: number): { x: number; y: number } | null {
-		if (overlay == null) {return null;}
+		if (overlay == null) {
+			return null;
+		}
 
 		const bounds = overlay.getBoundingClientRect();
 		const x = Math.min(Math.max(((clientX - bounds.left) / bounds.width) * 100, 0), 100);
@@ -96,7 +97,9 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 
 	function previewPointerPosition(event: ReactPointerEvent<HTMLButtonElement>): void {
 		const position = getPosition(event.clientX, event.clientY);
-		if (position == null) {return;}
+		if (position == null) {
+			return;
+		}
 
 		event.currentTarget.style.setProperty("--hotspot-x", `${String(position.x)}%`);
 		event.currentTarget.style.setProperty("--hotspot-y", `${String(position.y)}%`);
@@ -122,7 +125,9 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 								ArrowUp: [0, -step],
 							}[event.key];
 
-							if (movement == null) {return;}
+							if (movement == null) {
+								return;
+							}
 							event.preventDefault();
 							onChange({
 								...value,
@@ -131,7 +136,9 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 							});
 						}}
 						onPointerDown={(event) => {
-							if (event.button !== 0) {return;}
+							if (event.button !== 0) {
+								return;
+							}
 							onSelect();
 							event.preventDefault();
 							event.stopPropagation();
@@ -144,27 +151,39 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 							};
 						}}
 						onPointerMove={(event) => {
-							if (!event.currentTarget.hasPointerCapture(event.pointerId)) {return;}
+							if (!event.currentTarget.hasPointerCapture(event.pointerId)) {
+								return;
+							}
 							const drag = dragStateRef.current;
-							if (drag?.pointerId !== event.pointerId) {return;}
+							if (drag?.pointerId !== event.pointerId) {
+								return;
+							}
 
 							if (!drag.hasMoved) {
 								const deltaX = event.clientX - drag.startX;
 								const deltaY = event.clientY - drag.startY;
-								if (Math.hypot(deltaX, deltaY) < 4) {return;}
+								if (Math.hypot(deltaX, deltaY) < 4) {
+									return;
+								}
 								drag.hasMoved = true;
 							}
 							previewPointerPosition(event);
 						}}
 						onPointerUp={(event) => {
-							if (!event.currentTarget.hasPointerCapture(event.pointerId)) {return;}
+							if (!event.currentTarget.hasPointerCapture(event.pointerId)) {
+								return;
+							}
 							const hasMoved = dragStateRef.current?.hasMoved === true;
 							event.currentTarget.releasePointerCapture(event.pointerId);
 							dragStateRef.current = null;
-							if (!hasMoved) {return;}
+							if (!hasMoved) {
+								return;
+							}
 
 							const position = getPosition(event.clientX, event.clientY);
-							if (position != null) {onChange({ ...value, ...position });}
+							if (position != null) {
+								onChange({ ...value, ...position });
+							}
 						}}
 						style={style}
 						type="button"

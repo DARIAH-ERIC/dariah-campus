@@ -4,8 +4,8 @@ import cn from "clsx/lite";
 import type { ReactNode } from "react";
 
 /**
- * Keystatic's own theme tokens, so previews follow the light and dark themes of the cms instead of the
- * palette of the website.
+ * Keystatic's own theme tokens, so previews follow the light and dark themes of the cms instead of the palette of the
+ * website.
  */
 const styles = {
 	border: "border-(--kui-color-border-muted)",
@@ -39,9 +39,7 @@ interface WorksheetDescriptionPreviewProps {
 	children: ReactNode;
 }
 
-export function WorksheetDescriptionPreview(
-	props: Readonly<WorksheetDescriptionPreviewProps>,
-): ReactNode {
+export function WorksheetDescriptionPreview(props: Readonly<WorksheetDescriptionPreviewProps>): ReactNode {
 	const { children } = props;
 
 	return <div className={cn("text-sm", styles.textSecondary)}>{children}</div>;
@@ -52,9 +50,7 @@ interface WorksheetSectionPreviewProps {
 	title: string;
 }
 
-export function WorksheetSectionPreview(
-	props: Readonly<WorksheetSectionPreviewProps>,
-): ReactNode {
+export function WorksheetSectionPreview(props: Readonly<WorksheetSectionPreviewProps>): ReactNode {
 	const { children, title } = props;
 
 	return (

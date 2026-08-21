@@ -37,7 +37,7 @@ export const createQuiz = createComponent((paths, locale) => {
 			},
 		}),
 		QuizChoice: repeating({
-			label: "Quiz - Multiple choice",
+			label: "Multiple choice",
 			description: "A quiz with one or more correct answers.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
@@ -69,7 +69,7 @@ export const createQuiz = createComponent((paths, locale) => {
 			},
 		}),
 		QuizImageHotspots: repeating({
-			label: "Quiz - Image hotspots",
+			label: "Image hotspots",
 			description: "An image with points that reveal explanatory content.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,

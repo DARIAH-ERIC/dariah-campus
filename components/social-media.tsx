@@ -1,37 +1,7 @@
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
-import {
-	BlueskyIcon,
-	EmailIcon,
-	FacebookIcon,
-	FlickrIcon,
-	GitHubIcon,
-	InstagramIcon,
-	LinkedInIcon,
-	MastodonIcon,
-	OrcidIcon,
-	RssIcon,
-	TwitterIcon,
-	WebsiteIcon,
-	YouTubeIcon,
-} from "#/components/social-media-icons.tsx";
+import { SocialMediaLinks } from "#/components/social-media-links.tsx";
 import type { SocialMediaKind } from "#/lib/content/options.ts";
-
-const logos: Record<SocialMediaKind, FC<{ className?: string }>> = {
-	bluesky: BlueskyIcon,
-	email: EmailIcon,
-	facebook: FacebookIcon,
-	flickr: FlickrIcon,
-	github: GitHubIcon,
-	instagram: InstagramIcon,
-	linkedin: LinkedInIcon,
-	mastodon: MastodonIcon,
-	orcid: OrcidIcon,
-	rss: RssIcon,
-	twitter: TwitterIcon,
-	website: WebsiteIcon,
-	youtube: YouTubeIcon,
-};
 
 interface SocialMediaProps {
 	label: string;
@@ -49,25 +19,7 @@ export function SocialMedia(props: Readonly<SocialMediaProps>): ReactNode {
 		<div className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
 			<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{label}</div>
 			<div>
-				<ul className="inline-flex gap-x-4">
-					{social.map((link, index) => {
-						const { discriminant, value } = link;
-
-						const Logo = logos[discriminant];
-
-						return (
-							<li key={index} className="list-none">
-								<a
-									className="transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-									href={value}
-								>
-									<Logo aria-hidden={true} className="inline text-neutral-500 block-5 inline-5" />
-									<span className="sr-only">{discriminant}</span>
-								</a>
-							</li>
-						);
-					})}
-				</ul>
+				<SocialMediaLinks social={social} />
 			</div>
 		</div>
 	);
