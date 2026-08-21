@@ -4,9 +4,10 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { PageLead } from "#/components/page-lead.tsx";
+import { Image } from "#/components/image.tsx";
 import { PageTitle } from "#/components/page-title.tsx";
 import { ResourcesGrid } from "#/components/resources-grid.tsx";
+import { SocialMediaLinks } from "#/components/social-media-links.tsx";
 import { client } from "#/lib/content/client/index.ts";
 import { createClient } from "#/lib/content/create-client.ts";
 
@@ -59,7 +60,7 @@ export default async function PersonPage(props: Readonly<PersonPageProps>): Prom
 		notFound();
 	}
 
-	const { name } = person.metadata;
+	const { image, name, social } = person.metadata;
 	const Content = person.content;
 
 	const curricula = await Promise.all(
@@ -124,12 +125,24 @@ export default async function PersonPage(props: Readonly<PersonPageProps>): Prom
 
 	return (
 		<div className="mx-auto grid content-start gap-y-12 px-4 py-8 inline-full max-inline-7xl xs:px-8 xs:py-16 md:py-24">
-			<div className="grid gap-y-4">
+			<header className="grid justify-items-center gap-y-6 text-center">
+				<Image
+					alt=""
+					className="rounded-full border border-neutral-200 object-cover block-32 inline-32"
+					height={128}
+					src={image}
+					width={128}
+				/>
 				<PageTitle>{name}</PageTitle>
-				<PageLead>
-					<Content />
-				</PageLead>
-			</div>
+				{social.length > 0 ? <SocialMediaLinks social={social} /> : null}
+			</header>
+			{person.hasContent ? (
+				<div className="mx-auto inline-full max-inline-(--size-content)">
+					<div className="prose">
+						<Content />
+					</div>
+				</div>
+			) : null}
 			{curricula.length > 0 ? (
 				<section className="space-y-5">
 					<h2 className="text-2xl font-bold">{t("curricula")}</h2>

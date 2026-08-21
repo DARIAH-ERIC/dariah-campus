@@ -282,6 +282,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 			const href = `/people/${id}`;
 			const { default: component } = await evaluate(content, evaluateOptions);
 			const image = createGitHubUrl(metadata.image);
+			const hasContent = content.trim().length > 0;
 
 			// TODO: read from prebuilt client?
 			const person = await client.collections.people.get(id);
@@ -291,6 +292,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 			return {
 				id,
 				content: component,
+				hasContent,
 				href,
 				curricula,
 				resources,
