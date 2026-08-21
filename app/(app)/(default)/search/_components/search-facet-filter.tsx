@@ -14,8 +14,10 @@ import {
 	Label,
 	ListBox,
 	ListBoxItem,
+	ListLayout,
 	Popover,
 	SearchField,
+	Virtualizer,
 } from "react-aria-components";
 
 import { useSearch } from "#/app/(app)/(default)/search/_components/search-provider.tsx";
@@ -27,6 +29,11 @@ interface FacetItem {
 	count: number | undefined;
 	value: string;
 }
+
+/** Measured from the rendered rows: a bare label, and a label above a description clamped to two lines. */
+const rowSize = 32;
+const estimatedRowSizeWithDescription = 56;
+const rowGap = 2;
 
 interface FilterableProps {
 	children: ReactNode;
@@ -102,6 +109,17 @@ export function SearchFacetFilter(props: Readonly<SearchFacetFilterProps>): Reac
 		});
 	}, [attribute, collator, facets, getLabel, isLoading, pinned, selected]);
 	const isFilterable = items.length > maxUnfilteredFacetValues;
+	/**
+	 * Only the visible rows are mounted, because a facet such as people runs to several hundred values. Rows carrying a
+	 * description vary in height and have to be measured, the rest are uniform and can be placed outright.
+	 */
+	const layoutOptions = useMemo(
+		() =>
+			getDescription == null
+				? { rowSize, gap: rowGap }
+				: { estimatedRowSize: estimatedRowSizeWithDescription, gap: rowGap },
+		[getDescription],
+	);
 
 	return (
 		<DialogTrigger
@@ -150,57 +168,63 @@ export function SearchFacetFilter(props: Readonly<SearchFacetFilterProps>): Reac
 							</SearchField>
 						)}
 					>
-						<ListBox
-							aria-label={label}
-							/** Without a filter input to hold it, focus belongs to the list itself. */
-							autoFocus={!isFilterable}
-							className="grid gap-y-0.5 overflow-y-auto outline-none max-block-72"
-							/** Escape belongs to the popover here - without this it would clear the refinement instead of closing. */
-							escapeKeyBehavior="none"
-							items={items}
-							onSelectionChange={(keys) => {
-								setFilter(
-									attribute,
-									keys === "all" ? items.map((item) => item.value) : (Array.from(keys) as Array<string>),
-								);
-							}}
-							renderEmptyState={() => (
-								<div className="px-2 py-4 text-center text-sm text-neutral-600">{t("nothing-found")}</div>
-							)}
-							selectedKeys={selected}
-							selectionMode="multiple"
-						>
-							{(item) => (
-								<ListBoxItem
-									className="group flex cursor-pointer items-start gap-x-2 rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-neutral-100 focus:bg-neutral-100"
-									id={item.value}
-									textValue={getLabel(item.value)}
-								>
-									{({ isSelected }) => {
-										const description = getDescription?.(item.value);
+						<Virtualizer layout={ListLayout} layoutOptions={layoutOptions}>
+							<ListBox
+								aria-label={label}
+								/** Without a filter input to hold it, focus belongs to the list itself. */
+								autoFocus={!isFilterable}
+								className="block overflow-y-auto outline-none max-block-72"
+								/** Escape belongs to the popover here - without this it would clear the refinement instead of closing. */
+								escapeKeyBehavior="none"
+								items={items}
+								onSelectionChange={(keys) => {
+									setFilter(
+										attribute,
+										keys === "all" ? items.map((item) => item.value) : (Array.from(keys) as Array<string>),
+									);
+								}}
+								renderEmptyState={() => (
+									<div className="px-2 py-4 text-center text-sm text-neutral-600">{t("nothing-found")}</div>
+								)}
+								selectedKeys={selected}
+								selectionMode="multiple"
+							>
+								{(item) => (
+									<ListBoxItem
+										className="group flex cursor-pointer items-start gap-x-2 rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-neutral-100 focus:bg-neutral-100"
+										id={item.value}
+										textValue={getLabel(item.value)}
+									>
+										{({ isSelected }) => {
+											const description = getDescription?.(item.value);
 
-										return (
-											<>
-												<span className="pointer-events-none mbs-0.5 flex shrink-0 items-center justify-center self-start rounded-xs border border-neutral-400 block-4 inline-4 group-selected:border-brand-700 group-selected:bg-brand-700">
-													{isSelected ? <CheckIcon aria-hidden={true} className="text-white block-3 inline-3" /> : null}
-												</span>
-												<span className="grid grow gap-y-0.5">
-													<span className="flex items-baseline gap-x-2">
-														<span className="grow">{getLabel(item.value)}</span>
-														{item.count === undefined ? null : (
-															<span className="text-xs text-neutral-500 tabular-nums">{format.number(item.count)}</span>
+											return (
+												<>
+													<span className="pointer-events-none mbs-0.5 flex shrink-0 items-center justify-center self-start rounded-xs border border-neutral-400 block-4 inline-4 group-selected:border-brand-700 group-selected:bg-brand-700">
+														{isSelected ? (
+															<CheckIcon aria-hidden={true} className="text-white block-3 inline-3" />
+														) : null}
+													</span>
+													<span className="grid grow gap-y-0.5">
+														<span className="flex items-baseline gap-x-2">
+															<span className="grow">{getLabel(item.value)}</span>
+															{item.count === undefined ? null : (
+																<span className="text-xs text-neutral-500 tabular-nums">
+																	{format.number(item.count)}
+																</span>
+															)}
+														</span>
+														{description == null || description === "" ? null : (
+															<span className="line-clamp-2 text-xs text-neutral-500">{description}</span>
 														)}
 													</span>
-													{description == null || description === "" ? null : (
-														<span className="line-clamp-2 text-xs text-neutral-500">{description}</span>
-													)}
-												</span>
-											</>
-										);
-									}}
-								</ListBoxItem>
-							)}
-						</ListBox>
+												</>
+											);
+										}}
+									</ListBoxItem>
+								)}
+							</ListBox>
+						</Virtualizer>
 					</Filterable>
 				</Dialog>
 			</Popover>
