@@ -35,11 +35,11 @@ export const people = createCollection({
 		return {
 			id: item.id,
 			content: module,
+			/** Most people don't have a biography, so pages need to know whether to render the content at all. */
+			hasContent: content.trim().length > 0,
 			metadata: {
 				...metadata,
 				image,
-				/** The body as plain text, for contexts which cannot render the compiled mdx, e.g. a search filter chip. */
-				description: content.trim(),
 			},
 		};
 	},

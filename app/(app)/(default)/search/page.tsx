@@ -45,23 +45,22 @@ export default async function SearchPage(props: Readonly<SearchPageProps>): Prom
 	]);
 	const peopleById = keyByToMap(
 		people.map((person) => {
-			const { description, image, name } = person.metadata;
-			/** Only whether there is a biography, not the biography itself - see `getPersonDescription`. */
-			return { id: person.id, hasDescription: description.trim() !== "", image, name };
+			const { image, name } = person.metadata;
+			return { id: person.id, href: person.href, image, name };
 		}),
 		(person) => person.id,
 	);
 	const sourcesById = keyByToMap(
 		sources.map((source) => {
 			const { name } = source.metadata;
-			return { id: source.id, name };
+			return { id: source.id, href: source.href, name };
 		}),
 		(source) => source.id,
 	);
 	const tagsById = keyByToMap(
 		tags.map((tag) => {
 			const { description, name } = tag.metadata;
-			return { id: tag.id, description, name };
+			return { id: tag.id, description, href: tag.href, name };
 		}),
 		(tag) => tag.id,
 	);

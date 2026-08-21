@@ -304,6 +304,12 @@
 		},
 		"title": "Pathfinders"
 	},
+	"PersonPage": {
+		"authors": "Authors",
+		"curricula": "Curricula",
+		"editors": "Editors",
+		"resources": "Resources"
+	},
 	"PublicationDate": {
 		"label": "Published to DARIAH-Campus"
 	},
@@ -352,14 +358,12 @@
 		"reuse-conditions": "Resources hosted on DARIAH-Campus are subjects to the <link>DARIAH-Campus Training Materials Reuse Charter</link>."
 	},
 	"SearchPage": {
-		"about-value": "About {value}",
 		"authors": "Authors",
 		"authors-editors-contributors": "Authors, editors, and contributors",
 		"clear-filters": "Clear all filters",
 		"content-types": "Content types",
 		"filter-label": "Filter {attribute} values",
 		"filter-placeholder": "Filter...",
-		"loading": "Loading…",
 		"locale": "Languages",
 		"meta": {
 			"title": "Search"
@@ -400,5 +404,11 @@
 		},
 		"resources": "{count, plural, =0 {no resources} =1 {one resource} other {# resources}}",
 		"title": "Sources"
+	},
+	"TopicPage": {
+		"authors": "Authors",
+		"curricula": "Curricula",
+		"editors": "Editors",
+		"resources": "Resources"
 	}
 }

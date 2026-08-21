@@ -51,8 +51,8 @@ describe("createSearchStateFromUrl", () => {
 	});
 
 	/**
-	 * `createSearchUrl` used to build `?tags[0]=a`, which parses as a parameter named `tags[0]` and left every person and
-	 * topic link on the site landing on an unfiltered search page.
+	 * Refinements travel as repeated keys. An indexed or bracketed key parses as a parameter of that literal name, so
+	 * anything building `?tags[0]=a` silently produces an unfiltered search rather than an error.
 	 */
 	it("does not recognise indexed or bracketed keys", () => {
 		expect(createSearchStateFromUrl(new URLSearchParams("tags[0]=a")).filters.tags).toEqual([]);

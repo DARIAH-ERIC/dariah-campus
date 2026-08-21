@@ -2,18 +2,18 @@
 
 import { ArrowUpRightIcon, XIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import type { StaticImageData } from "next/image";
 import { type Key, type ReactNode, useMemo } from "react";
 import { Button, Tag, TagGroup, TagList } from "react-aria-components";
 
 import { SearchFacetFilter } from "#/app/(app)/(default)/search/_components/search-facet-filter.tsx";
-import { SearchFacetValueInfo } from "#/app/(app)/(default)/search/_components/search-facet-value-info.tsx";
 import { useSearch } from "#/app/(app)/(default)/search/_components/search-provider.tsx";
 import { type FacetAttribute, facetAttributes } from "#/app/(app)/(default)/search/_lib/search.ts";
 import { Link } from "#/components/link.tsx";
 
 interface FacetConfig {
 	getDescription?: ((id: string) => string | undefined) | undefined;
+	/** Values with a page of their own, which an active refinement links to. */
+	getHref?: ((id: string) => string | undefined) | undefined;
 	getLabel: (id: string) => string;
 	label: string;
 }
@@ -21,9 +21,9 @@ interface FacetConfig {
 interface SearchFilterBarProps {
 	contentTypesById: Map<string, { label: string }>;
 	localesById: Map<string, { label: string }>;
-	peopleById: Map<string, { hasDescription: boolean; image: StaticImageData | string; name: string }>;
-	sourcesById: Map<string, { name: string }>;
-	tagsById: Map<string, { description: string; name: string }>;
+	peopleById: Map<string, { href: string; name: string }>;
+	sourcesById: Map<string, { href: string; name: string }>;
+	tagsById: Map<string, { description: string; href: string; name: string }>;
 }
 
 /** `:` never occurs in a facet attribute, so the first one separates attribute from value. */
@@ -54,8 +54,9 @@ export function SearchFilterBar(props: Readonly<SearchFilterBarProps>): ReactNod
 			tags: {
 				label: t("tags"),
 				getLabel: (id: string) => tagsById.get(id)?.name ?? "Unknown tag",
-				/** Approach 1: topics explain themselves in the listbox, where the value is picked. */
+				/** Topics explain themselves in the listbox, where the value is picked. */
 				getDescription: (id: string) => tagsById.get(id)?.description,
+				getHref: (id: string) => tagsById.get(id)?.href,
 			},
 			"content-type": {
 				label: t("content-types"),
@@ -64,10 +65,12 @@ export function SearchFilterBar(props: Readonly<SearchFilterBarProps>): ReactNod
 			people: {
 				label: t("people"),
 				getLabel: (id: string) => peopleById.get(id)?.name ?? "Unknown person",
+				getHref: (id: string) => peopleById.get(id)?.href,
 			},
 			sources: {
 				label: t("sources"),
 				getLabel: (id: string) => sourcesById.get(id)?.name ?? "Unknown source",
+				getHref: (id: string) => sourcesById.get(id)?.href,
 			},
 		};
 	}, [contentTypesById, localesById, peopleById, sourcesById, t, tagsById]);
@@ -77,6 +80,7 @@ export function SearchFilterBar(props: Readonly<SearchFilterBarProps>): ReactNod
 			return {
 				attribute,
 				id: createTagId(attribute, value),
+				href: facets[attribute].getHref?.(value),
 				label: facets[attribute].getLabel(value),
 				name: facets[attribute].label,
 				value,
@@ -125,49 +129,34 @@ export function SearchFilterBar(props: Readonly<SearchFilterBarProps>): ReactNod
 				<div className="flex flex-wrap items-center justify-center gap-2">
 					<TagGroup aria-label={t("selected-filters")} onRemove={onRemove}>
 						<TagList className="flex flex-wrap gap-2" items={tags}>
-							{(tag) => {
-								/** The biography itself is fetched on demand, so only its existence is known here. */
-								const person = tag.attribute === "people" ? peopleById.get(tag.value) : undefined;
+							{(tag) => (
+								<Tag
+									className="flex items-center gap-x-1.5 rounded-full border border-neutral-300 bg-neutral-50 py-1 ps-3 pe-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
+									textValue={`${tag.name}: ${tag.label}`}
+								>
+									<span className="text-neutral-500">{tag.name}</span>
+									<span>{tag.label}</span>
 
-								return (
-									<Tag
-										className="flex items-center gap-x-1.5 rounded-full border border-neutral-300 bg-neutral-50 py-1 ps-3 pe-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2"
-										textValue={`${tag.name}: ${tag.label}`}
-									>
-										<span className="text-neutral-500">{tag.name}</span>
-										<span>{tag.label}</span>
-
-										{/** Approach 2: people have no page of their own, so context comes from a popover on the chip. */}
-										{person == null || !person.hasDescription ? null : (
-											<SearchFacetValueInfo
-												id={tag.value}
-												image={person.image}
-												label={t("about-value", { value: tag.label })}
-												name={person.name}
-											/>
-										)}
-
-										{/** Approach 3: sources do have a page, so the chip carries a real link to it. */}
-										{tag.attribute === "sources" ? (
-											<Link
-												className="rounded-full p-0.5 text-neutral-500 transition hover:bg-neutral-200 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700"
-												href={`/sources/${tag.value}`}
-											>
-												<span className="sr-only">{t("open-value-page", { value: tag.label })}</span>
-												<ArrowUpRightIcon aria-hidden={true} className="block-4 inline-4" />
-											</Link>
-										) : null}
-
-										{/** React Aria labels this button from the tag's `textValue`, so it needs no text of its own. */}
-										<Button
+									{/** People, topics and sources each have a page of their own to read up on the value. */}
+									{tag.href == null ? null : (
+										<Link
 											className="rounded-full p-0.5 text-neutral-500 transition hover:bg-neutral-200 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700"
-											slot="remove"
+											href={tag.href}
 										>
-											<XIcon aria-hidden={true} className="block-4 inline-4" />
-										</Button>
-									</Tag>
-								);
-							}}
+											<span className="sr-only">{t("open-value-page", { value: tag.label })}</span>
+											<ArrowUpRightIcon aria-hidden={true} className="block-4 inline-4" />
+										</Link>
+									)}
+
+									{/** React Aria labels this button from the tag's `textValue`, so it needs no text of its own. */}
+									<Button
+										className="rounded-full p-0.5 text-neutral-500 transition hover:bg-neutral-200 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-700"
+										slot="remove"
+									>
+										<XIcon aria-hidden={true} className="block-4 inline-4" />
+									</Button>
+								</Tag>
+							)}
 						</TagList>
 					</TagGroup>
 

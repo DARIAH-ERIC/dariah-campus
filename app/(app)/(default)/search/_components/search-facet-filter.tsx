@@ -30,9 +30,9 @@ interface FacetItem {
 	value: string;
 }
 
-/** Measured from the rendered rows: a bare label, and a label above a description clamped to two lines. */
+/** Measured from the rendered rows: a bare label, and a label above a description clamped to three lines. */
 const rowSize = 32;
-const estimatedRowSizeWithDescription = 56;
+const estimatedRowSizeWithDescription = 72;
 const rowGap = 2;
 
 interface FilterableProps {
@@ -215,7 +215,7 @@ export function SearchFacetFilter(props: Readonly<SearchFacetFilterProps>): Reac
 															)}
 														</span>
 														{description == null || description === "" ? null : (
-															<span className="line-clamp-2 text-xs text-neutral-500">{description}</span>
+															<span className="line-clamp-3 text-xs text-neutral-500">{description}</span>
 														)}
 													</span>
 												</>
