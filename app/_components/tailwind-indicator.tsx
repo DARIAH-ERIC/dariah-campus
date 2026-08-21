@@ -16,7 +16,8 @@ export function TailwindIndicator(): ReactNode {
 			<span className="max-md:hidden lg:hidden">{"md"}</span>
 			<span className="max-lg:hidden xl:hidden">{"lg"}</span>
 			<span className="max-xl:hidden 2xl:hidden">{"xl"}</span>
-			<span className="max-2xl:hidden">{"2xl"}</span>
+			<span className="max-2xl:hidden 3xl:hidden">{"2xl"}</span>
+			<span className="max-3xl:hidden">{"3xl"}</span>
 		</div>
 	);
 }
