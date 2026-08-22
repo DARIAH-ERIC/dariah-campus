@@ -378,7 +378,8 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 			{/* Held back until the exercise has been answered, so it explains the zones instead of solving them. */}
 			{(isValidated || isReadOnly) && explainedZones.length > 0 ? (
 				<div className="grid gap-y-2">
-					<p className="not-prose text-sm font-medium text-neutral-600">{t("explanations-label")}</p>
+					{/* A widget must emit no headings, or it would turn up in the table of contents - see `Callout`. */}
+					<strong className="not-prose text-sm font-bold text-neutral-600">{t("explanations-label")}</strong>
 
 					<dl className="grid gap-y-3">
 						{explainedZones.map(({ zone, zoneIndex }) => (

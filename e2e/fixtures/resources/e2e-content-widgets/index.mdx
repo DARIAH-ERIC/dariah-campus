@@ -130,7 +130,7 @@ sections, a question without a prompt and a section without questions all have t
 			The hall the congregation sits in, running the length of the building.
 		</QuizImageDropZone>
 
-    	<QuizImageDropZone label="Apse" shape="ellipse" items={["Semicircular recess", "East end"]} x={55} y={55} width={40} height={30} />
+    	<QuizImageDropZone label="Apse" shape="ellipse" items={[{ label: "Semicircular recess" }, { label: "East end" }]} x={55} y={55} width={40} height={30} />
     </QuizImageDropZones>
 
 </Quiz>
@@ -142,6 +142,17 @@ sections, a question without a prompt and a section without questions all have t
 		<QuizImageDropZone label="Version control" items={["Git"]} />
 
     	<QuizImageDropZone label="Repository hosting" items={["GitHub", "GitLab"]} />
+    </QuizImageDropZones>
+
+</Quiz>
+
+## Quiz, image drop zones with instant feedback
+
+<Quiz>
+	<QuizImageDropZones instantFeedback={true}>
+		<QuizImageDropZone label="Primary sources" items={["Charter"]} />
+
+    	<QuizImageDropZone label="Secondary sources" items={["Monograph"]} />
     </QuizImageDropZones>
 
 </Quiz>

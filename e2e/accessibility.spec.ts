@@ -120,6 +120,27 @@ test.describe("accessibility", () => {
 		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
 	});
 
+	/**
+	 * Instant feedback marks an item the moment it lands, so the correct and incorrect states - and the descriptions the
+	 * marks add to each item's accessible name - exist in a quiz nobody has submitted.
+	 */
+	test("has no violations with instant feedback marks", async ({ page }) => {
+		const quiz = page.getByRole("complementary").filter({
+			has: page.getByRole("group", { name: "Primary sources" }),
+		});
+
+		await quiz.getByRole("button", { name: "Charter. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Primary sources" }).click();
+		await quiz.getByRole("button", { name: "Monograph. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Primary sources" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Monograph, in Primary sources. Incorrect. Remove." })).toBeVisible();
+
+		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+
 	/** Placing a word empties its slot in the bank, and checking marks every blank right or wrong. */
 	test("has no violations with words placed and checked", async ({ page }) => {
 		const quiz = page.getByRole("complementary").filter({

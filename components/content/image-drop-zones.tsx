@@ -9,13 +9,27 @@ import {
 	QuizImageDropZonesForm,
 } from "#/components/content/image-drop-zones-form.tsx";
 
-/** A list from the cms, or a comma separated string in hand-written mdx. */
-function toList(value: Array<string> | string | undefined): Array<string> {
+/** An item as the cms writes it. Kept an object so a field can be added to it without rewriting existing content. */
+interface Item {
+	label: string;
+}
+
+/**
+ * A list of items from the cms, or - in hand-written mdx, where an object per item would only be noise - a list of
+ * labels or a single comma separated string.
+ */
+function toItems(value: Array<Item> | Array<string> | string | undefined): Array<Item> {
 	if (value == null) {
 		return [];
 	}
 
-	return (typeof value === "string" ? value.split(",") : value).map((entry) => entry.trim()).filter(Boolean);
+	const entries = typeof value === "string" ? value.split(",") : value;
+
+	return entries
+		.map((entry) => {
+			return { label: (typeof entry === "string" ? entry : entry.label).trim() };
+		})
+		.filter((entry) => entry.label !== "");
 }
 
 interface QuizImageDropZonesProps {
@@ -25,7 +39,7 @@ interface QuizImageDropZonesProps {
 	 * Decoy items that join the bank but belong in no zone, so the exercise cannot be solved by elimination. Leaving them
 	 * in the bank is part of the correct answer.
 	 */
-	distractors?: Array<string> | string;
+	distractors?: Array<Item> | Array<string> | string;
 	height?: number;
 	/** Mark each item right or wrong as soon as it lands in a zone. */
 	instantFeedback?: boolean;
@@ -68,12 +82,12 @@ export function QuizImageDropZones(props: Readonly<QuizImageDropZonesProps>): Re
 	 */
 	const items: Array<DropZoneItem> = [
 		...dropZones.flatMap((zone, zoneIndex) =>
-			toList(zone.props.items).map((label, index) => {
-				return { id: `item-${String(zoneIndex)}-${String(index)}`, label, zoneIndex };
+			toItems(zone.props.items).map((item, index) => {
+				return { id: `item-${String(zoneIndex)}-${String(index)}`, label: item.label, zoneIndex };
 			}),
 		),
-		...toList(distractors).map((label, index) => {
-			return { id: `distractor-${String(index)}`, label, zoneIndex: null };
+		...toItems(distractors).map((item, index) => {
+			return { id: `distractor-${String(index)}`, label: item.label, zoneIndex: null };
 		}),
 		// oxlint-disable-next-line unicorn/no-array-sort
 	].sort((a, b) => getSortKey(a.label) - getSortKey(b.label));
@@ -101,8 +115,8 @@ interface QuizImageDropZoneProps {
 	children?: ReactNode;
 	/** Percentages of the background image, used only when the exercise has one. */
 	height?: number;
-	/** The items which belong in this zone. A list from the cms, or a comma separated string in hand-written mdx. */
-	items?: Array<string> | string;
+	/** The items which belong in this zone. See `toItems` for the shapes an author can write. */
+	items?: Array<Item> | Array<string> | string;
 	label?: string;
 	/** An ellipse is inscribed in the same box as a rectangle, and only takes drops inside its outline. */
 	shape?: "ellipse" | "rectangle";

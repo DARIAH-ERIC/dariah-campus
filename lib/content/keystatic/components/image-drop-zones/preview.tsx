@@ -188,7 +188,7 @@ function useOverlay(): {
 
 interface QuizImageDropZoneValue {
 	height: number | null;
-	items: ReadonlyArray<string>;
+	items: ReadonlyArray<{ label: string }>;
 	label: string;
 	shape: "ellipse" | "rectangle";
 	width: number | null;
@@ -509,7 +509,7 @@ export function QuizImageDropZoneEditor(props: Readonly<QuizImageDropZoneEditorP
 				</div>
 
 				<p className="text-sm text-(--kui-color-foreground-neutral-secondary)">
-					{value.items.length > 0 ? value.items.join(", ") : "No items belong in this zone."}
+					{value.items.length > 0 ? value.items.map((item) => item.label).join(", ") : "No items belong in this zone."}
 				</p>
 			</NotEditable>
 		</div>

@@ -32,16 +32,23 @@ export const createQuizImageDropZones = createComponent((paths, _locale) => {
 					validation: { isRequired: false },
 				}),
 				distractors: fields.array(
-					fields.text({
-						label: "Item",
-						validation: { length: { min: 1 } },
-					}),
+					fields.object(
+						{
+							label: fields.text({
+								label: "Item",
+								validation: { length: { min: 1 } },
+							}),
+						},
+						{
+							label: "Distractor",
+						},
+					),
 					{
 						label: "Distractors",
 						description:
 							"Extra items added to the bank that belong in no drop zone. They make the exercise harder to solve by elimination, and leaving them in the bank is part of the correct answer. Optional.",
 						itemLabel(props) {
-							return props.value;
+							return props.fields.label.value;
 						},
 					},
 				),
@@ -85,16 +92,23 @@ export const createQuizImageDropZones = createComponent((paths, _locale) => {
 					defaultValue: "rectangle",
 				}),
 				items: fields.array(
-					fields.text({
-						label: "Item",
-						validation: { length: { min: 1 } },
-					}),
+					fields.object(
+						{
+							label: fields.text({
+								label: "Item",
+								validation: { length: { min: 1 } },
+							}),
+						},
+						{
+							label: "Item",
+						},
+					),
 					{
 						label: "Correct items",
 						description:
 							"The items which belong in this drop zone. They join the shared item bank, so the exercise never gives away which zone an item was authored for. A zone without items accepts nothing, and works as a trap.",
 						itemLabel(props) {
-							return props.value;
+							return props.fields.label.value;
 						},
 					},
 				),

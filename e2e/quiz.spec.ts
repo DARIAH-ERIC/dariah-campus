@@ -529,11 +529,38 @@ test.describe("quiz, image drop zones", () => {
 
 		await quiz.getByRole("button", { name: "Show solution" }).click();
 
-		await expect(quiz.getByText("What the drop zones mean")).toBeVisible();
+		/** A widget emits no headings, so the section names itself with the importance `Callout` titles use. */
+		await expect(quiz.getByRole("strong")).toHaveText("What the drop zones mean");
 		await expect(explanation).toBeVisible();
+
+		/** The zone is the term and its prose the definition, so a reader landing on either half gets the pairing. */
+		await expect(quiz.getByRole("term")).toHaveText("Nave");
+		await expect(quiz.getByRole("definition")).toContainText("congregation");
 
 		/** Only the zone the author explained gets an entry, so the unexplained one is not listed as empty. */
 		await expect(quiz.getByRole("definition")).toHaveCount(1);
+	});
+
+	/**
+	 * With instant feedback the mark lands together with the item, so an item's accessible name has to change without a
+	 * Check press - and the score, which is the thing that reports a submitted answer, still must not.
+	 */
+	test("marks an item as soon as it lands when instant feedback is on", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Primary sources");
+
+		await quiz.getByRole("button", { name: "Charter. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Primary sources" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Charter, in Primary sources. Correct. Remove." })).toBeVisible();
+
+		await quiz.getByRole("button", { name: "Monograph. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Primary sources" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Monograph, in Primary sources. Incorrect. Remove." })).toBeVisible();
+
+		await expect(quiz.getByText("/ 2 correct")).toBeHidden();
 	});
 
 	test("lays out the drop zones in a grid without a background image", async ({ page }) => {
