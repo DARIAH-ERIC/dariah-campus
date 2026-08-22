@@ -210,7 +210,7 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 			>
 				<p className="text-xs font-medium text-neutral-700">{label}</p>
 
-				<ul className="flex flex-wrap gap-1">
+				<ul className={cn("flex flex-wrap gap-1", isEllipse ? "justify-center" : undefined)}>
 					{items.map((item, index) => {
 						if (placements[index] !== zoneIndex) {
 							return null;
@@ -356,7 +356,15 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 										 * Kept readable rather than blanked out: once an item is in a zone the zone shows only its number, so
 										 * the bank is the one place its text can still be read.
 										 */}
-										<span className="tabular-nums">{index + 1}.</span> {item.label}
+										<span
+											className={cn(
+												"me-1 inline-flex items-center justify-center rounded-xs px-1 text-xs font-medium tabular-nums min-inline-4",
+												activeItemIndex === index ? "bg-brand-100 text-brand-800" : "bg-neutral-200 text-neutral-500",
+											)}
+										>
+											{index + 1}
+										</span>{" "}
+										{item.label}
 									</li>
 								);
 							}
@@ -392,7 +400,15 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 												setActiveItemIndex(isHovered ? index : null);
 											}}
 										>
-											<span className="tabular-nums">{index + 1}.</span> {item.label}
+											<span
+												className={cn(
+													"me-1 inline-flex items-center justify-center rounded-xs px-1 text-xs font-medium tabular-nums min-inline-4",
+													activeItemIndex === index ? "bg-brand-100 text-brand-800" : "bg-neutral-100 text-neutral-500",
+												)}
+											>
+												{index + 1}
+											</span>{" "}
+											{item.label}
 										</Button>
 										<Popover
 											className="rounded-md border border-neutral-200 bg-white py-1 shadow-md min-inline-32"
@@ -447,7 +463,7 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 								<dt className="not-prose text-sm font-medium text-neutral-700">
 									{zone.label || t("zone-label", { index: String(zoneIndex + 1) })}
 								</dt>
-								<dd className="text-sm text-neutral-700">{zone.explanation}</dd>
+								<dd className="ms-0 text-sm text-neutral-700 **:first:mbs-0 **:last:mbe-0">{zone.explanation}</dd>
 							</div>
 						))}
 					</dl>

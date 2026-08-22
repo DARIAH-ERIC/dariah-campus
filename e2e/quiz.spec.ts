@@ -634,10 +634,10 @@ test.describe("quiz, image drop zones", () => {
 			);
 
 		await quiz.getByRole("button", { name: "Long central hall, in Nave" }).hover();
-		await expect.poll(highlighted).toStrictEqual(["1. Long central hall"]);
+		await expect.poll(highlighted).toStrictEqual(["1 Long central hall"]);
 
 		await quiz.getByRole("button", { name: "East end, in Apse" }).hover();
-		await expect.poll(highlighted).toStrictEqual(["3. East end"]);
+		await expect.poll(highlighted).toStrictEqual(["3 East end"]);
 	});
 
 	/**
