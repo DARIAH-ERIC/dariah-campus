@@ -16,6 +16,7 @@ import {
 	QuizImageHotspotEditor,
 	QuizImageHotspotsPreview,
 	QuizPreview,
+	QuizQuestionPreview,
 	QuizSuccessMessagePreview,
 } from "#/lib/content/keystatic/components/quiz/preview.tsx";
 
@@ -73,7 +74,7 @@ export const createQuiz = createComponent((paths, locale) => {
 			description: "An image with points that reveal explanatory content.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
-			children: ["QuizImageHotspot"],
+			children: ["QuizQuestion", "QuizImageHotspot"],
 			validation: { children: { min: 1 } },
 			schema: {
 				src: fields.image({
@@ -183,6 +184,18 @@ export const createQuiz = createComponent((paths, locale) => {
 				const { children } = props;
 
 				return <QuizChoiceAnswerErrorMessagePreview>{children}</QuizChoiceAnswerErrorMessagePreview>;
+			},
+		}),
+		QuizQuestion: wrapper({
+			label: "Question",
+			description: "The task the exercise sets, shown above it.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			schema: {},
+			ContentView(props) {
+				const { children } = props;
+
+				return <QuizQuestionPreview>{children}</QuizQuestionPreview>;
 			},
 		}),
 		QuizChoiceQuestion: wrapper({

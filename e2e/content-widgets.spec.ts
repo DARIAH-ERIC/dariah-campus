@@ -194,6 +194,23 @@ test.describe("quiz, image hotspots", () => {
 		);
 	});
 
+	/**
+	 * The question is authored as content rather than a field, so it has to reach the page as markup - and the server
+	 * component has to keep it out of the hotspots it is numbering.
+	 */
+	test("renders the question the exercise sets", async ({ page }) => {
+		await page.goto(pathname);
+
+		const quiz = page.getByRole("complementary").filter({ has: page.getByRole("img", { name: "An annotated plan" }) });
+
+		await expect(quiz.getByText("Select each marker to read what that")).toBeVisible();
+		await expect(quiz.getByRole("strong").filter({ hasText: "part of the church" })).toBeVisible();
+
+		/** Two hotspots, not three - the question sits among the children without becoming one. */
+		await expect(quiz.getByRole("button", { name: "Nave" })).toBeVisible();
+		await expect(quiz.getByRole("button", { name: "Apse" })).toBeVisible();
+	});
+
 	test("shows an annotation for the selected hotspot", async ({ page }) => {
 		await page.goto(pathname);
 

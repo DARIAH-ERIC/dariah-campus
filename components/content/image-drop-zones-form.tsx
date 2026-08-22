@@ -33,6 +33,11 @@ export interface DropZone {
 	shape: "ellipse" | "rectangle";
 }
 
+/** The number an item is known by while it is out of the bank, where its text no longer fits. */
+function getNumberedLabel(item: DropZoneItem, itemIndex: number): string {
+	return `${String(itemIndex + 1)}. ${item.label}`;
+}
+
 function startItemDrag(event: DragEvent<HTMLElement>, itemIndex: number, label: string) {
 	event.dataTransfer.setData(dragType, String(itemIndex));
 	event.dataTransfer.setData("text/plain", label);
@@ -50,6 +55,8 @@ interface QuizImageDropZonesFormProps {
 	/** Mark each item right or wrong as soon as it lands in a zone. */
 	instantFeedback: boolean;
 	items: Array<DropZoneItem>;
+	/** What the exercise asks for, authored as content so it can carry links and emphasis. */
+	question?: ReactNode;
 	src?: string;
 	width?: number;
 	zones: Array<DropZone>;
@@ -60,7 +67,7 @@ interface QuizImageDropZonesFormProps {
  * server component, so components can be identified by comparing `child.type`.
  */
 export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormProps>): ReactNode {
-	const { alt, height, instantFeedback, items, src, width, zones } = props;
+	const { alt, height, instantFeedback, items, question, src, width, zones } = props;
 
 	const t = useTranslations("content.QuizImageDropZones");
 	const controlsT = useTranslations("content.QuizControls");
@@ -71,6 +78,11 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 	const [placements, setPlacements] = useState<Array<number | null>>(() => items.map(() => null));
 	const [dropTargetZoneIndex, setDropTargetZoneIndex] = useState<number | null>(null);
 	const [isBankDropTarget, setIsBankDropTarget] = useState(false);
+	/**
+	 * A zone shows an item's number, the bank shows its text; pointing at either lights up both, so the two halves can be
+	 * read together without having to remember which number was which.
+	 */
+	const [activeItemIndex, setActiveItemIndex] = useState<number | null>(null);
 
 	/**
 	 * An item is its own control, so moving it unmounts the button the reader was on and focus would fall back to the
@@ -108,6 +120,10 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 	const correctCount = items.filter(
 		(item, index) => item.zoneIndex != null && placements[index] === item.zoneIndex,
 	).length;
+
+	function clearActiveItem() {
+		setActiveItemIndex(null);
+	}
 
 	function place(itemIndex: number, zoneIndex: number | null) {
 		setPlacements((placements) => placements.map((placement, index) => (index === itemIndex ? zoneIndex : placement)));
@@ -220,13 +236,19 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 		/** In the solved state every item sits where it belongs, so marking each one adds nothing. */
 		const isMarked = !isReadOnly && (isValidated || instantFeedback);
 
-		let label = t("placed-item-label", { item: item.label, zone: zoneLabel });
+		/**
+		 * A zone is a region of the image, often a small one, so what sits in it is the item's number rather than its text.
+		 * The number leads the accessible name too, because it is the visible label of the control.
+		 */
+		const numbered = getNumberedLabel(item, itemIndex);
+
+		let label = t("placed-item-label", { item: numbered, zone: zoneLabel });
 		if (isReadOnly) {
-			label = t("solution-item-label", { item: item.label, zone: zoneLabel });
+			label = t("solution-item-label", { item: numbered, zone: zoneLabel });
 		} else if (isMarked) {
 			label = isCorrect
-				? t("placed-item-label-correct", { item: item.label, zone: zoneLabel })
-				: t("placed-item-label-incorrect", { item: item.label, zone: zoneLabel });
+				? t("placed-item-label-correct", { item: numbered, zone: zoneLabel })
+				: t("placed-item-label-incorrect", { item: numbered, zone: zoneLabel });
 		}
 
 		return (
@@ -236,18 +258,26 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 				}}
 				aria-label={label}
 				className={cn(
-					"inline-flex items-center gap-x-1 rounded-sm border px-2 py-1 text-sm text-neutral-700 outline-none focus-visible:ring-2 focus-visible:ring-brand-500",
+					"inline-flex items-center justify-center gap-x-1 rounded-sm border px-2 py-1 text-sm text-neutral-700 tabular-nums outline-none min-inline-8 focus-visible:ring-2 focus-visible:ring-brand-500",
 					isMarked && !isCorrect ? "border-error-500 bg-error-50" : undefined,
 					isMarked && isCorrect ? "border-success-500 bg-success-50" : undefined,
 					isMarked ? undefined : "border-neutral-300 bg-white",
+					activeItemIndex === itemIndex ? "ring-2 ring-brand-500" : undefined,
 					isReadOnly ? undefined : "cursor-pointer hover:border-brand-400",
 				)}
 				isDisabled={isReadOnly}
+				onBlur={clearActiveItem}
+				onFocus={() => {
+					setActiveItemIndex(itemIndex);
+				}}
+				onHoverChange={(isHovered) => {
+					setActiveItemIndex(isHovered ? itemIndex : null);
+				}}
 				onPress={() => {
 					place(itemIndex, null);
 				}}
 			>
-				<span>{item.label}</span>
+				<span>{itemIndex + 1}</span>
 				{isMarked ? (
 					isCorrect ? (
 						<CircleCheckIcon aria-hidden={true} className="shrink-0 text-success-600 block-4 inline-4" />
@@ -264,6 +294,9 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 			className="@container my-4 grid gap-4 rounded-md border border-neutral-200 bg-white px-4 py-6 text-sm/relaxed text-neutral-950 shadow-sm"
 			hidden={!isCurrent}
 		>
+			{/* Outside `not-prose`, so the links and emphasis an author reaches for still render. */}
+			{question != null ? <header className="border-be border-neutral-200 pbe-4 text-base">{question}</header> : null}
+
 			<div className="not-prose grid gap-y-4">
 				{src != null ? (
 					<div className="relative isolate self-start overflow-hidden rounded-md">
@@ -307,10 +340,18 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 									<li
 										key={item.id}
 										aria-hidden={true}
-										className="rounded-sm border border-dashed border-neutral-300 bg-neutral-50 px-2 py-1 text-sm"
+										className={cn(
+											"rounded-sm border border-dashed px-2 py-1 text-sm transition",
+											activeItemIndex === index
+												? "border-brand-500 bg-brand-50 text-neutral-700"
+												: "border-neutral-300 bg-neutral-50 text-neutral-600",
+										)}
 									>
-										{/* The label holds the slot open, but greyed-out text would only be decoration too faint to read. */}
-										<span className="invisible">{item.label}</span>
+										{/*
+										 * Kept readable rather than blanked out: once an item is in a zone the zone shows only its number, so
+										 * the bank is the one place its text can still be read.
+										 */}
+										<span className="tabular-nums">{index + 1}.</span> {item.label}
 									</li>
 								);
 							}
@@ -329,10 +370,20 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 											ref={(element) => {
 												bankItemRefs.current.set(index, element);
 											}}
-											aria-label={t("item-label", { item: item.label })}
-											className="cursor-grab rounded-sm border border-neutral-300 bg-white px-2 py-1 text-sm text-neutral-700 outline-none hover:border-brand-400 focus-visible:ring-2 focus-visible:ring-brand-500"
+											aria-label={t("item-label", { item: getNumberedLabel(item, index) })}
+											className={cn(
+												"cursor-grab rounded-sm border bg-white px-2 py-1 text-sm text-neutral-700 transition outline-none focus-visible:ring-2 focus-visible:ring-brand-500",
+												activeItemIndex === index ? "border-brand-500 bg-brand-50" : "border-neutral-300",
+											)}
+											onBlur={clearActiveItem}
+											onFocus={() => {
+												setActiveItemIndex(index);
+											}}
+											onHoverChange={(isHovered) => {
+												setActiveItemIndex(isHovered ? index : null);
+											}}
 										>
-											{item.label}
+											<span className="tabular-nums">{index + 1}.</span> {item.label}
 										</Button>
 										<Popover
 											className="rounded-md border border-neutral-200 bg-white py-1 shadow-md min-inline-32"

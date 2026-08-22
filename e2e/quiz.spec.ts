@@ -182,6 +182,14 @@ function getImageDropZonesQuiz(page: Page, zoneName: string): Locator {
 	});
 }
 
+/** Read back in pixels, so two sizes can be compared without pinning either of them to a value. */
+function getFontSize(locator: Locator): Promise<number> {
+	return locator.evaluate(
+		// oxlint-disable-next-line unicorn/prefer-number-coercion -- the computed value carries its unit, which `Number` would choke on.
+		(node) => Number.parseFloat(getComputedStyle(node).fontSize),
+	);
+}
+
 /**
  * Hit testing follows the border radius, so an ellipse has to reach the browser as a radius rather than a class name.
  * Only a percentage inscribes an ellipse in the box - a length rounds the corners off into a stadium instead.
@@ -189,6 +197,38 @@ function getImageDropZonesQuiz(page: Page, zoneName: string): Locator {
 function getZoneCornerRadius(quiz: Locator, zoneName: string): Promise<string> {
 	return quiz.getByRole("group", { name: zoneName }).evaluate((node) => getComputedStyle(node).borderTopLeftRadius);
 }
+
+/**
+ * The widget carries an image with an intrinsic width, a bank of chips and a row of controls, any of which can stop
+ * shrinking and push the page wider than the screen - which is what the cms preview of it used to do.
+ */
+test.describe("quiz, image drop zones on a narrow viewport", () => {
+	test.use({ viewport: { height: 900, width: 360 } });
+
+	test.beforeEach(() => {
+		test.skip(
+			// oxlint-disable-next-line node/no-process-env
+			Boolean(process.env.PLAYWRIGHT_TEST_APP_BASE_URL),
+			"The content widget fixture is not part of a deployed app.",
+		);
+	});
+
+	test("does not push the page wider than the viewport", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+
+		/** Solved, so the placed chips, their marks and the explanations are all on screen at once. */
+		await quiz.getByRole("button", { name: "Show solution" }).click();
+		await expect(quiz.getByRole("strong").filter({ hasText: "What the drop zones mean" })).toBeVisible();
+
+		/** Measured on the widget rather than the page, which an ancestor could be clipping on its behalf. */
+		const overflow = await quiz.evaluate((section) => section.scrollWidth - section.clientWidth);
+
+		expect(overflow).toBeLessThanOrEqual(0);
+		expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(360);
+	});
+});
 
 function getDragTheWordsQuiz(page: Page): Locator {
 	return page.getByRole("complementary").filter({
@@ -438,7 +478,9 @@ test.describe("quiz, image drop zones", () => {
 		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
 		await page.getByRole("menuitem", { name: "Apse" }).click();
 
-		await expect(quiz.getByRole("group", { name: "Apse" }).getByText("Long central hall")).toBeVisible();
+		await expect(
+			quiz.getByRole("group", { name: "Apse" }).getByRole("button", { name: "Long central hall, in Apse" }),
+		).toBeVisible();
 
 		await check.click();
 
@@ -509,6 +551,59 @@ test.describe("quiz, image drop zones", () => {
 		await expect(item).toBeFocused();
 	});
 
+	/**
+	 * The question is authored as content rather than a field, so it has to survive the pipeline as markup rather than as
+	 * an escaped string - and it must not be counted as a drop zone.
+	 */
+	test("renders the question the exercise sets", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+
+		await expect(quiz.getByText("Drag each description onto the")).toBeVisible();
+		await expect(quiz.getByRole("strong").filter({ hasText: "part of the church" })).toBeVisible();
+
+		/** Two zones, not three - the question sits among the children without becoming one. */
+		await expect(quiz.getByRole("group")).toHaveCount(2);
+
+		/** The task reads at the size of the page around it, rather than shrunk to the size of the widget's controls. */
+		const task = await getFontSize(quiz.getByText("Drag each description onto the"));
+		const control = await getFontSize(quiz.getByRole("button", { name: "Cloister. Choose a drop zone." }));
+
+		expect(task).toBeGreaterThan(control);
+	});
+
+	/**
+	 * A zone is often a small region of the image, so what sits in it is the item's number and the bank keeps its text.
+	 * Pointing at either half has to light up the other, or the number is a riddle.
+	 */
+	test("links a placed item to its label in the bank", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+
+		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Nave" }).click();
+		await quiz.getByRole("button", { name: "East end. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Apse" }).click();
+
+		/** The zone shows a number, and the whole label stays readable in the bank. */
+		await expect(quiz.getByRole("group", { name: "Nave" })).toHaveText(/^Nave\s*1$/);
+
+		const highlighted = () =>
+			quiz.evaluate((section) =>
+				Array.from(section.querySelectorAll('ul[aria-label="Items"] > li'))
+					.filter((node) => node.className.includes("bg-brand-50"))
+					.map((node) => node.textContent.trim()),
+			);
+
+		await quiz.getByRole("button", { name: "Long central hall, in Nave" }).hover();
+		await expect.poll(highlighted).toStrictEqual(["1. Long central hall"]);
+
+		await quiz.getByRole("button", { name: "East end, in Apse" }).hover();
+		await expect.poll(highlighted).toStrictEqual(["3. East end"]);
+	});
+
 	test("draws an ellipse drop zone as an ellipse", async ({ page }) => {
 		await page.goto(fixturePathname);
 
@@ -530,7 +625,7 @@ test.describe("quiz, image drop zones", () => {
 		await quiz.getByRole("button", { name: "Show solution" }).click();
 
 		/** A widget emits no headings, so the section names itself with the importance `Callout` titles use. */
-		await expect(quiz.getByRole("strong")).toHaveText("What the drop zones mean");
+		await expect(quiz.getByRole("strong").filter({ hasText: "What the drop zones mean" })).toBeVisible();
 		await expect(explanation).toBeVisible();
 
 		/** The zone is the term and its prose the definition, so a reader landing on either half gets the pairing. */

@@ -8,6 +8,7 @@ import {
 	type DropZoneItem,
 	QuizImageDropZonesForm,
 } from "#/components/content/image-drop-zones-form.tsx";
+import { QuizQuestion } from "#/components/content/quiz-question.tsx";
 
 /** An item as the cms writes it. Kept an object so a field can be added to it without rewriting existing content. */
 interface Item {
@@ -57,6 +58,7 @@ export function QuizImageDropZones(props: Readonly<QuizImageDropZonesProps>): Re
 
 	const get = getChildrenByType(children);
 	const dropZones = get(QuizImageDropZone);
+	const question = get(QuizQuestion);
 
 	const zones: Array<DropZone> = dropZones.map((zone) => {
 		return {
@@ -100,6 +102,7 @@ export function QuizImageDropZones(props: Readonly<QuizImageDropZonesProps>): Re
 	return (
 		<QuizImageDropZonesForm
 			alt={alt}
+			question={question.length > 0 ? question : undefined}
 			height={height}
 			instantFeedback={instantFeedback}
 			items={items}

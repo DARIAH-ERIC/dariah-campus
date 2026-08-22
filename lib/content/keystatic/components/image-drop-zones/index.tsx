@@ -15,7 +15,7 @@ export const createQuizImageDropZones = createComponent((paths, _locale) => {
 			description: "Items which are dragged onto the drop zones they belong to.",
 			icon: <GrabIcon />,
 			forSpecificLocations: true,
-			children: ["QuizImageDropZone"],
+			children: ["QuizQuestion", "QuizImageDropZone"],
 			validation: { children: { min: 1 } },
 			schema: {
 				src: fields.image({
@@ -75,6 +75,9 @@ export const createQuizImageDropZones = createComponent((paths, _locale) => {
 			icon: <SquareDashedIcon />,
 			forSpecificLocations: true,
 			editChildrenIn: "modal",
+			contentLabel: "What this drop zone means, revealed once the exercise has been answered",
+			/** The four position fields are paired off into two rows; everything else keeps the full width. */
+			layout: [12, 12, 12, 6, 6, 6, 6],
 			schema: {
 				label: fields.text({
 					label: "Drop zone label",
@@ -84,7 +87,7 @@ export const createQuizImageDropZones = createComponent((paths, _locale) => {
 				shape: fields.select({
 					label: "Shape",
 					description:
-						"An ellipse is inscribed in the same box as a rectangle, and only accepts drops inside its outline. Because the position is measured in percentages of the image, equal width and height give a circle only on a square image.",
+						"An ellipse is inscribed in the same box as a rectangle, and only accepts drops inside its outline. Hold ctrl or cmd while drawing or resizing for a true square or circle.",
 					options: [
 						{ label: "Rectangle", value: "rectangle" },
 						{ label: "Ellipse", value: "ellipse" },
@@ -118,26 +121,25 @@ export const createQuizImageDropZones = createComponent((paths, _locale) => {
 				 */
 				x: fields.number({
 					label: "Horizontal position (%)",
-					description: "Distance of the zone's left edge from the left edge of the background image.",
+					description: "From the image's left edge.",
 					step: 0.1,
 					validation: { isRequired: false, min: 0, max: 100 },
 				}),
 				y: fields.number({
 					label: "Vertical position (%)",
-					description: "Distance of the zone's top edge from the top edge of the background image.",
+					description: "From the image's top edge.",
 					step: 0.1,
 					validation: { isRequired: false, min: 0, max: 100 },
 				}),
 				width: fields.number({
 					label: "Width (%)",
-					description: "Share of the background image's width.",
+					description: "Share of the image's width.",
 					step: 0.1,
 					validation: { isRequired: false, min: 1, max: 100 },
 				}),
 				height: fields.number({
 					label: "Height (%)",
-					description:
-						"Share of the background image's height. A rectangle grows beyond it when more items are dropped in than fit.",
+					description: "Share of the image's height; a rectangle grows past it to fit what is dropped in.",
 					step: 0.1,
 					validation: { isRequired: false, min: 1, max: 100 },
 				}),

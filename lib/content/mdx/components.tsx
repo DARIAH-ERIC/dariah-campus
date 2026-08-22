@@ -22,6 +22,7 @@ import {
 	QuizChoiceQuestion,
 } from "#/components/content/quiz-choice.tsx";
 import { QuizImageHotspot, QuizImageHotspots } from "#/components/content/quiz-image-hotspots.tsx";
+import { QuizQuestion } from "#/components/content/quiz-question.tsx";
 import { Quiz, QuizErrorMessage, QuizSuccessMessage } from "#/components/content/quiz.tsx";
 import { TableOfContents } from "#/components/content/table-of-contents.tsx";
 import { Tab, Tabs } from "#/components/content/tabs.tsx";
@@ -78,6 +79,7 @@ export const components = {
 	QuizImageDropZones,
 	QuizImageHotspot,
 	QuizImageHotspots,
+	QuizQuestion,
 	QuizSuccessMessage,
 	Tab,
 	TableOfContents,

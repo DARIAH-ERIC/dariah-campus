@@ -126,9 +126,13 @@ sections, a question without a prompt and a section without questions all have t
 		distractors="Cloister"
 		src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/annotated.png"
 	>
-		<QuizImageDropZone label="Nave" items={["Long central hall"]} x={5} y={10} width={40} height={30}>
-			The hall the congregation sits in, running the length of the building.
-		</QuizImageDropZone>
+		<QuizQuestion>
+			Drag each description onto the **part of the church** it names.
+		</QuizQuestion>
+
+    	<QuizImageDropZone label="Nave" items={["Long central hall"]} x={5} y={10} width={40} height={30}>
+    		The hall the congregation sits in, running the length of the building.
+    	</QuizImageDropZone>
 
     	<QuizImageDropZone label="Apse" shape="ellipse" items={[{ label: "Semicircular recess" }, { label: "East end" }]} x={55} y={55} width={40} height={30} />
     </QuizImageDropZones>
@@ -200,6 +204,10 @@ sections, a question without a prompt and a section without questions all have t
 
 <Quiz>
   <QuizImageHotspots alt="An annotated plan" presentation="inline" src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/annotated.png">
+    <QuizQuestion>
+      Select each marker to read what that **part of the church** was for.
+    </QuizQuestion>
+
     <QuizImageHotspot label="Nave" x={30} y={40}>
       The central aisle of the building.
     </QuizImageHotspot>
