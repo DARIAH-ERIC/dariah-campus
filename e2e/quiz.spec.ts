@@ -182,6 +182,23 @@ function getImageDropZonesQuiz(page: Page, zoneName: string): Locator {
 	});
 }
 
+/**
+ * Native drag and drop, driven by real mouse events. `dragTo` is not used because it scrolls each end into view in
+ * turn, which can push the other end off screen and leave the pointer moving over nothing.
+ */
+async function dragOnto(page: Page, source: Locator, target: Locator): Promise<void> {
+	const from = (await source.boundingBox())!;
+	const to = (await target.boundingBox())!;
+
+	await page.mouse.move(from.x + from.width / 2, from.y + from.height / 2);
+	await page.mouse.down();
+	await page.mouse.move(from.x + from.width / 2 + 20, from.y + from.height / 2 - 10, { steps: 8 });
+	await page.mouse.move(to.x + to.width / 2, to.y + to.height / 2, { steps: 15 });
+	/** A second move inside the target: webkit does not treat the arrival itself as a dragover there. */
+	await page.mouse.move(to.x + to.width / 2 + 4, to.y + to.height / 2 + 2, { steps: 3 });
+	await page.mouse.up();
+}
+
 /** Read back in pixels, so two sizes can be compared without pinning either of them to a value. */
 function getFontSize(locator: Locator): Promise<number> {
 	return locator.evaluate(
@@ -377,6 +394,25 @@ test.describe("quiz, drag the words", () => {
 			Boolean(process.env.PLAYWRIGHT_TEST_APP_BASE_URL),
 			"The content widget fixture is not part of a deployed app.",
 		);
+	});
+
+	/**
+	 * The bank offers dragging as well as the menu, and nothing covered it. This widget is not exposed to what broke
+	 * dragging in the image drop zones - a word in the bank is a plain span, not a react-aria button - but a regression
+	 * here would be just as silent.
+	 */
+	test("moves a word by dragging it", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getDragTheWordsQuiz(page);
+		const blank = quiz.getByRole("button", { name: "Blank 1. Select a word." });
+		await blank.scrollIntoViewIfNeeded();
+
+		const word = quiz.getByRole("list", { name: "Answers" }).getByRole("listitem").filter({ hasText: "push" });
+
+		await dragOnto(page, word, blank);
+
+		await expect(quiz.getByRole("button", { name: "Blank 1. Currently push." })).toBeVisible();
 	});
 
 	test("renders the passage, the word bank and a blank per gap", async ({ page }) => {
@@ -602,6 +638,35 @@ test.describe("quiz, image drop zones", () => {
 
 		await quiz.getByRole("button", { name: "East end, in Apse" }).hover();
 		await expect.poll(highlighted).toStrictEqual(["3. East end"]);
+	});
+
+	/**
+	 * Dragging is the enhancement over the menu, and it never worked: a press only starts a native drag when it lands on
+	 * an element react-aria is not handling presses for. Only the menu was ever covered, which is how that shipped.
+	 */
+	test("moves an item by dragging it", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+		const nave = quiz.getByRole("group", { name: "Nave" });
+		const apse = quiz.getByRole("group", { name: "Apse" });
+
+		/** Both ends of the drag have to be on screen, so scroll to the image rather than to either element. */
+		await nave.scrollIntoViewIfNeeded();
+
+		// oxlint-disable-next-line playwright/no-raw-locators -- the grip is hidden from assistive technology, so it has no role or name to find it by.
+		const grip = quiz
+			.getByRole("listitem")
+			.filter({ hasText: "Long central hall" })
+			.locator("span[aria-hidden] svg")
+			.first();
+
+		await dragOnto(page, grip, nave);
+		await expect(nave.getByRole("button", { name: "Long central hall" })).toBeVisible();
+
+		/** A placed item carries no menu, so it is a plain button and can be dragged on to the next zone by itself. */
+		await dragOnto(page, quiz.getByRole("button", { name: "Long central hall, in Nave" }), apse);
+		await expect(apse.getByRole("button", { name: "Long central hall" })).toBeVisible();
 	});
 
 	test("draws an ellipse drop zone as an ellipse", async ({ page }) => {

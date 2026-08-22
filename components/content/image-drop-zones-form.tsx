@@ -1,7 +1,7 @@
 "use client";
 
 import cn from "clsx/lite";
-import { CircleCheckIcon, CircleXIcon } from "lucide-react";
+import { CircleCheckIcon, CircleXIcon, GripVerticalIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { type CSSProperties, type DragEvent, type ReactNode, useEffect, useRef, useState } from "react";
 import { Button, Menu, MenuItem, MenuTrigger, Popover } from "react-aria-components";
@@ -11,9 +11,12 @@ import { useQuizContext } from "#/components/content/quiz.tsx";
 import { Image } from "#/components/image.tsx";
 
 /**
- * Keyboard and touch users open an item and pick a drop zone from a menu, so the exercise never depends on a pointer
- * gesture. Mouse users can additionally drag an item onto a zone, using the browser's native drag and drop - it only
- * starts from a pointer gesture, so it never collides with the menu interaction.
+ * Keyboard and touch users open an item and pick a drop zone from a menu, which is also what WCAG 2.5.7 asks for: every
+ * drag has to be achievable by a single pointer without dragging. Dragging is the enhancement on top of that.
+ *
+ * A press only starts a native drag when it lands on an element react-aria is not handling presses for, which is why an
+ * item in the bank carries a separate grip - the chip itself has to stay a react-aria button to open the menu. A placed
+ * item has no menu, so it is a plain button and can be dragged by itself.
  */
 const dragType = "application/x-quiz-image-drop-zones";
 
@@ -252,7 +255,7 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 		}
 
 		return (
-			<Button
+			<button
 				ref={(element) => {
 					placedItemRefs.current.set(itemIndex, element);
 				}}
@@ -265,17 +268,19 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 					activeItemIndex === itemIndex ? "ring-2 ring-brand-500" : undefined,
 					isReadOnly ? undefined : "cursor-pointer hover:border-brand-400",
 				)}
-				isDisabled={isReadOnly}
+				disabled={isReadOnly}
 				onBlur={clearActiveItem}
+				onClick={() => {
+					place(itemIndex, null);
+				}}
 				onFocus={() => {
 					setActiveItemIndex(itemIndex);
 				}}
-				onHoverChange={(isHovered) => {
-					setActiveItemIndex(isHovered ? itemIndex : null);
+				onPointerEnter={() => {
+					setActiveItemIndex(itemIndex);
 				}}
-				onPress={() => {
-					place(itemIndex, null);
-				}}
+				onPointerLeave={clearActiveItem}
+				type="button"
 			>
 				<span>{itemIndex + 1}</span>
 				{isMarked ? (
@@ -285,7 +290,7 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 						<CircleXIcon aria-hidden={true} className="shrink-0 text-error-600 block-4 inline-4" />
 					)
 				) : null}
-			</Button>
+			</button>
 		);
 	}
 
@@ -365,6 +370,10 @@ export function QuizImageDropZonesForm(props: Readonly<QuizImageDropZonesFormPro
 										startItemDrag(event, index, item.label);
 									}}
 								>
+									{/* Pointer-only, and duplicated by the menu, so it is not offered to assistive technology. */}
+									<span aria-hidden={true} className="inline-flex cursor-grab align-middle text-neutral-400">
+										<GripVerticalIcon className="block-4 inline-4" />
+									</span>
 									<MenuTrigger>
 										<Button
 											ref={(element) => {
