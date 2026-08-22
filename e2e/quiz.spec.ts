@@ -1,5 +1,7 @@
 import { type Locator, type Page, expect, test } from "@playwright/test";
 
+import { focusStably } from "#/e2e/utils.ts";
+
 /**
  * `/resources/hosted/git-collaboration` has a single `Quiz` with two paginated `QuizChoice` pages, both
  * `variant="multiple"`, and provides its own success and error messages ("Correct!" / "Try again").
@@ -173,6 +175,78 @@ function getFixtureChoiceQuiz(page: Page): Locator {
 	});
 }
 
+/** The fixture has two image drop zone exercises, told apart by a drop zone only one of them has. */
+function getImageDropZonesQuiz(page: Page, zoneName: string): Locator {
+	return page.getByRole("complementary").filter({
+		has: page.getByRole("group", { name: zoneName }),
+	});
+}
+
+/**
+ * Native drag and drop, driven by real mouse events. `dragTo` is not used because it scrolls each end into view in
+ * turn, which can push the other end off screen and leave the pointer moving over nothing.
+ */
+async function dragOnto(page: Page, source: Locator, target: Locator): Promise<void> {
+	const from = (await source.boundingBox())!;
+	const to = (await target.boundingBox())!;
+
+	await page.mouse.move(from.x + from.width / 2, from.y + from.height / 2);
+	await page.mouse.down();
+	await page.mouse.move(from.x + from.width / 2 + 20, from.y + from.height / 2 - 10, { steps: 8 });
+	await page.mouse.move(to.x + to.width / 2, to.y + to.height / 2, { steps: 15 });
+	/** A second move inside the target: webkit does not treat the arrival itself as a dragover there. */
+	await page.mouse.move(to.x + to.width / 2 + 4, to.y + to.height / 2 + 2, { steps: 3 });
+	await page.mouse.up();
+}
+
+/** Read back in pixels, so two sizes can be compared without pinning either of them to a value. */
+function getFontSize(locator: Locator): Promise<number> {
+	return locator.evaluate(
+		// oxlint-disable-next-line unicorn/prefer-number-coercion -- the computed value carries its unit, which `Number` would choke on.
+		(node) => Number.parseFloat(getComputedStyle(node).fontSize),
+	);
+}
+
+/**
+ * Hit testing follows the border radius, so an ellipse has to reach the browser as a radius rather than a class name.
+ * Only a percentage inscribes an ellipse in the box - a length rounds the corners off into a stadium instead.
+ */
+function getZoneCornerRadius(quiz: Locator, zoneName: string): Promise<string> {
+	return quiz.getByRole("group", { name: zoneName }).evaluate((node) => getComputedStyle(node).borderTopLeftRadius);
+}
+
+/**
+ * The widget carries an image with an intrinsic width, a bank of chips and a row of controls, any of which can stop
+ * shrinking and push the page wider than the screen - which is what the cms preview of it used to do.
+ */
+test.describe("quiz, image drop zones on a narrow viewport", () => {
+	test.use({ viewport: { height: 900, width: 360 } });
+
+	test.beforeEach(() => {
+		test.skip(
+			// oxlint-disable-next-line node/no-process-env
+			Boolean(process.env.PLAYWRIGHT_TEST_APP_BASE_URL),
+			"The content widget fixture is not part of a deployed app.",
+		);
+	});
+
+	test("does not push the page wider than the viewport", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+
+		/** Solved, so the placed chips, their marks and the explanations are all on screen at once. */
+		await quiz.getByRole("button", { name: "Show solution" }).click();
+		await expect(quiz.getByRole("strong").filter({ hasText: "What the drop zones mean" })).toBeVisible();
+
+		/** Measured on the widget rather than the page, which an ancestor could be clipping on its behalf. */
+		const overflow = await quiz.evaluate((section) => section.scrollWidth - section.clientWidth);
+
+		expect(overflow).toBeLessThanOrEqual(0);
+		expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(360);
+	});
+});
+
 function getDragTheWordsQuiz(page: Page): Locator {
 	return page.getByRole("complementary").filter({
 		has: page.getByRole("list", { name: "Answers" }),
@@ -322,6 +396,25 @@ test.describe("quiz, drag the words", () => {
 		);
 	});
 
+	/**
+	 * The bank offers dragging as well as the menu, and nothing covered it. This widget is not exposed to what broke
+	 * dragging in the image drop zones - a word in the bank is a plain span, not a react-aria button - but a regression
+	 * here would be just as silent.
+	 */
+	test("moves a word by dragging it", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getDragTheWordsQuiz(page);
+		const blank = quiz.getByRole("button", { name: "Blank 1. Select a word." });
+		await blank.scrollIntoViewIfNeeded();
+
+		const word = quiz.getByRole("list", { name: "Answers" }).getByRole("listitem").filter({ hasText: "push" });
+
+		await dragOnto(page, word, blank);
+
+		await expect(quiz.getByRole("button", { name: "Blank 1. Currently push." })).toBeVisible();
+	});
+
 	test("renders the passage, the word bank and a blank per gap", async ({ page }) => {
 		await page.goto(fixturePathname);
 
@@ -382,5 +475,268 @@ test.describe("quiz, drag the words", () => {
 		const first = quiz.getByRole("button", { name: "Blank 1. Select a word." });
 		await expect(first).toHaveText("push");
 		await expect(first).toBeDisabled();
+	});
+});
+
+test.describe("quiz, image drop zones", () => {
+	test.beforeEach(() => {
+		test.skip(
+			// oxlint-disable-next-line node/no-process-env
+			Boolean(process.env.PLAYWRIGHT_TEST_APP_BASE_URL),
+			"The content widget fixture is not part of a deployed app.",
+		);
+	});
+
+	test("renders the image, its drop zones and the item bank", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+		await expect(quiz).toBeVisible();
+
+		/** The rehype plugin reads the dimensions off disk, so a missing size means the pipeline did not run. */
+		await expect(quiz.getByRole("img", { name: "A plan of a church" })).toHaveAttribute("width", "640");
+
+		await expect(quiz.getByRole("group", { name: "Nave" })).toBeVisible();
+		await expect(quiz.getByRole("group", { name: "Apse" })).toBeVisible();
+
+		/** Three items which belong in a zone, plus the distractor, ordered so the two are indistinguishable. */
+		await expect(quiz.getByRole("list", { name: "Items" }).getByRole("listitem")).toHaveCount(4);
+		await expect(quiz.getByRole("button", { name: "Cloister. Choose a drop zone." })).toBeVisible();
+	});
+
+	/** Items are placed through each item's menu, which is what keyboard and touch users get. */
+	test("scores the placed items", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+		const check = quiz.getByRole("button", { exact: true, name: "Check" });
+
+		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Apse" }).click();
+
+		await expect(
+			quiz.getByRole("group", { name: "Apse" }).getByRole("button", { name: "Long central hall, in Apse" }),
+		).toBeVisible();
+
+		await check.click();
+
+		await expect(quiz.getByText("0 / 3 correct")).toBeVisible();
+		await expect(quiz.getByRole("button", { name: "Long central hall, in Apse. Incorrect. Remove." })).toBeVisible();
+
+		await quiz.getByRole("button", { exact: true, name: "Reset" }).click();
+
+		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Nave" }).click();
+		await quiz.getByRole("button", { name: "Semicircular recess. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Apse" }).click();
+		await quiz.getByRole("button", { name: "East end. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Apse" }).click();
+
+		await check.click();
+
+		await expect(quiz.getByText("3 / 3 correct")).toBeVisible();
+		await expect(quiz.getByRole("button", { name: "East end, in Apse. Correct. Remove." })).toBeVisible();
+	});
+
+	test("returns a placed item to the bank", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+
+		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Nave" }).click();
+
+		await quiz.getByRole("button", { name: "Long central hall, in Nave. Remove." }).click();
+
+		await expect(quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." })).toBeVisible();
+		await expect(quiz.getByRole("group", { name: "Nave" }).getByRole("button")).toHaveCount(0);
+	});
+
+	test("fills in the solution on request", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+
+		await quiz.getByRole("button", { name: "Show solution" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Long central hall, in Nave." })).toBeDisabled();
+		await expect(quiz.getByRole("group", { name: "Apse" }).getByRole("button")).toHaveCount(2);
+
+		/** The distractor belongs in no zone, so the solution leaves it in the bank. */
+		await expect(quiz.getByRole("group", { name: "Nave" }).getByText("Cloister")).toBeHidden();
+	});
+
+	/**
+	 * An item is its own control, so moving it unmounts the button the reader was on. Without help focus would fall back
+	 * to the document, and a keyboard user would have to tab in again after every single move.
+	 */
+	test("keeps focus on the item it moves", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+		const item = quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." });
+
+		await focusStably(item);
+		await item.press("Enter");
+		await page.getByRole("menuitem", { name: "Nave" }).press("Enter");
+
+		await expect(quiz.getByRole("button", { name: "Long central hall, in Nave. Remove." })).toBeFocused();
+
+		await page.keyboard.press("Enter");
+
+		await expect(item).toBeFocused();
+	});
+
+	/**
+	 * The question is authored as content rather than a field, so it has to survive the pipeline as markup rather than as
+	 * an escaped string - and it must not be counted as a drop zone.
+	 */
+	test("renders the question the exercise sets", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+
+		await expect(quiz.getByText("Drag each description onto the")).toBeVisible();
+		await expect(quiz.getByRole("strong").filter({ hasText: "part of the church" })).toBeVisible();
+
+		/** Two zones, not three - the question sits among the children without becoming one. */
+		await expect(quiz.getByRole("group")).toHaveCount(2);
+
+		/** The task reads at the size of the page around it, rather than shrunk to the size of the widget's controls. */
+		const task = await getFontSize(quiz.getByText("Drag each description onto the"));
+		const control = await getFontSize(quiz.getByRole("button", { name: "Cloister. Choose a drop zone." }));
+
+		expect(task).toBeGreaterThan(control);
+	});
+
+	/**
+	 * A zone is often a small region of the image, so what sits in it is the item's number and the bank keeps its text.
+	 * Pointing at either half has to light up the other, or the number is a riddle.
+	 */
+	test("links a placed item to its label in the bank", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+
+		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Nave" }).click();
+		await quiz.getByRole("button", { name: "East end. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Apse" }).click();
+
+		/** The zone shows a number, and the whole label stays readable in the bank. */
+		await expect(quiz.getByRole("group", { name: "Nave" })).toHaveText(/^Nave\s*1$/);
+
+		const highlighted = () =>
+			quiz.evaluate((section) =>
+				Array.from(section.querySelectorAll('ul[aria-label="Items"] > li'))
+					.filter((node) => node.className.includes("bg-brand-50"))
+					.map((node) => node.textContent.trim()),
+			);
+
+		await quiz.getByRole("button", { name: "Long central hall, in Nave" }).hover();
+		await expect.poll(highlighted).toStrictEqual(["1 Long central hall"]);
+
+		await quiz.getByRole("button", { name: "East end, in Apse" }).hover();
+		await expect.poll(highlighted).toStrictEqual(["3 East end"]);
+	});
+
+	/**
+	 * Dragging is the enhancement over the menu, and it never worked: a press only starts a native drag when it lands on
+	 * an element react-aria is not handling presses for. Only the menu was ever covered, which is how that shipped.
+	 */
+	test("moves an item by dragging it", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+		const nave = quiz.getByRole("group", { name: "Nave" });
+		const apse = quiz.getByRole("group", { name: "Apse" });
+
+		/** Both ends of the drag have to be on screen, so scroll to the image rather than to either element. */
+		await nave.scrollIntoViewIfNeeded();
+
+		// oxlint-disable-next-line playwright/no-raw-locators -- the grip is hidden from assistive technology, so it has no role or name to find it by.
+		const grip = quiz
+			.getByRole("listitem")
+			.filter({ hasText: "Long central hall" })
+			.locator("span[aria-hidden] svg")
+			.first();
+
+		await dragOnto(page, grip, nave);
+		await expect(nave.getByRole("button", { name: "Long central hall" })).toBeVisible();
+
+		/** A placed item carries no menu, so it is a plain button and can be dragged on to the next zone by itself. */
+		await dragOnto(page, quiz.getByRole("button", { name: "Long central hall, in Nave" }), apse);
+		await expect(apse.getByRole("button", { name: "Long central hall" })).toBeVisible();
+	});
+
+	test("draws an ellipse drop zone as an ellipse", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+
+		expect(await getZoneCornerRadius(quiz, "Apse")).toBe("50%");
+		expect(await getZoneCornerRadius(quiz, "Nave")).not.toBe("50%");
+	});
+
+	test("reveals what the drop zones mean once the exercise is answered", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Nave");
+		const explanation = quiz.getByText("The hall the congregation sits in");
+
+		/** Held back while the exercise is still open, where it would give the answer away. */
+		await expect(explanation).toBeHidden();
+
+		await quiz.getByRole("button", { name: "Show solution" }).click();
+
+		/** A widget emits no headings, so the section names itself with the importance `Callout` titles use. */
+		await expect(quiz.getByRole("strong").filter({ hasText: "What the drop zones mean" })).toBeVisible();
+		await expect(explanation).toBeVisible();
+
+		/** The zone is the term and its prose the definition, so a reader landing on either half gets the pairing. */
+		await expect(quiz.getByRole("term")).toHaveText("Nave");
+		await expect(quiz.getByRole("definition")).toContainText("congregation");
+
+		/** Only the zone the author explained gets an entry, so the unexplained one is not listed as empty. */
+		await expect(quiz.getByRole("definition")).toHaveCount(1);
+	});
+
+	/**
+	 * With instant feedback the mark lands together with the item, so an item's accessible name has to change without a
+	 * Check press - and the score, which is the thing that reports a submitted answer, still must not.
+	 */
+	test("marks an item as soon as it lands when instant feedback is on", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Primary sources");
+
+		await quiz.getByRole("button", { name: "Charter. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Primary sources" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Charter, in Primary sources. Correct. Remove." })).toBeVisible();
+
+		await quiz.getByRole("button", { name: "Monograph. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Primary sources" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Monograph, in Primary sources. Incorrect. Remove." })).toBeVisible();
+
+		await expect(quiz.getByText("/ 2 correct")).toBeHidden();
+	});
+
+	test("lays out the drop zones in a grid without a background image", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getImageDropZonesQuiz(page, "Version control");
+		await expect(quiz).toBeVisible();
+
+		await expect(quiz.getByRole("img")).toHaveCount(0);
+		await expect(quiz.getByRole("list", { name: "Items" }).getByRole("listitem")).toHaveCount(3);
+
+		await quiz.getByRole("button", { name: "Git. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Version control" }).click();
+
+		await quiz.getByRole("button", { exact: true, name: "Check" }).click();
+
+		await expect(quiz.getByText("1 / 3 correct")).toBeVisible();
 	});
 });

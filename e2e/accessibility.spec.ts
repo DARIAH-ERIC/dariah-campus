@@ -11,6 +11,12 @@ const pathname = "/resources/hosted/e2e-content-widgets";
 /** The rendered mdx content, which is exactly the widgets and nothing else on the page. */
 const selector = ".prose";
 
+/**
+ * Overlays are portalled to the end of the document, so they sit outside the scan above and need one of their own. The
+ * popover around them holds no content, which leaves the menu itself as the thing worth scanning.
+ */
+const menuSelector = '[role="menu"]';
+
 const tags = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"];
 
 /** Asserted as a list rather than a count, so a new violation names itself in the failure message. */
@@ -54,6 +60,81 @@ test.describe("accessibility", () => {
 		await quiz.getByRole("button", { name: "Check answer" }).click();
 
 		await expect(quiz.getByRole("checkbox", { name: "Markdown" })).toHaveAttribute("aria-invalid", "true");
+
+		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+
+	/**
+	 * Image drop zones is the widget with the most states to get wrong: items move between the bank and the zones, the
+	 * placed ones grow a correct/incorrect mark, and the bank keeps the moved ones as `aria-hidden` placeholders.
+	 */
+	test("has no violations with items placed and checked", async ({ page }) => {
+		const quiz = page.getByRole("complementary").filter({
+			has: page.getByRole("group", { name: "Nave" }),
+		});
+
+		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Nave" }).click();
+		await quiz.getByRole("button", { name: "Semicircular recess. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Nave" }).click();
+
+		await quiz.getByRole("button", { exact: true, name: "Check" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Long central hall, in Nave. Correct. Remove." })).toBeVisible();
+		await expect(quiz.getByRole("button", { name: "Semicircular recess, in Nave. Incorrect. Remove." })).toBeVisible();
+
+		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+
+	/** The solved state disables every item and hides the whole bank from assistive technology. */
+	test("has no violations on the image drop zones solution", async ({ page }) => {
+		const quiz = page.getByRole("complementary").filter({
+			has: page.getByRole("group", { name: "Nave" }),
+		});
+
+		await quiz.getByRole("button", { name: "Show solution" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Long central hall, in Nave." })).toBeDisabled();
+
+		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+
+	/** Every item offers its drop zones through a menu, which is the path keyboard and touch users take. */
+	test("has no violations in an open item menu", async ({ page }) => {
+		const quiz = page.getByRole("complementary").filter({
+			has: page.getByRole("group", { name: "Nave" }),
+		});
+
+		await quiz.getByRole("button", { name: "Long central hall. Choose a drop zone." }).click();
+
+		await expect(page.getByRole("menu", { name: "Long central hall. Choose a drop zone." })).toBeVisible();
+
+		const violations = await getViolations(page, menuSelector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+
+	/**
+	 * Instant feedback marks an item the moment it lands, so the correct and incorrect states - and the descriptions the
+	 * marks add to each item's accessible name - exist in a quiz nobody has submitted.
+	 */
+	test("has no violations with instant feedback marks", async ({ page }) => {
+		const quiz = page.getByRole("complementary").filter({
+			has: page.getByRole("group", { name: "Primary sources" }),
+		});
+
+		await quiz.getByRole("button", { name: "Charter. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Primary sources" }).click();
+		await quiz.getByRole("button", { name: "Monograph. Choose a drop zone." }).click();
+		await page.getByRole("menuitem", { name: "Primary sources" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Monograph, in Primary sources. Incorrect. Remove." })).toBeVisible();
 
 		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
 

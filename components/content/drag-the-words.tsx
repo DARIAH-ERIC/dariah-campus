@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { type DragEvent, type ReactNode, createContext, use, useMemo, useState } from "react";
 import { Button, Dialog, DialogTrigger, Menu, MenuItem, MenuTrigger, Popover, Separator } from "react-aria-components";
 
+import { getSortKey } from "#/components/content/get-sort-key.ts";
 import { QuizControls } from "#/components/content/quiz-controls.tsx";
 import { type QuizPageStatus, useQuizContext } from "#/components/content/quiz.tsx";
 
@@ -41,19 +42,6 @@ function isCorrectAnswer(input: string, answer: string, caseSensitive: boolean):
 		return input.trim() === answer;
 	}
 	return input.trim().toLowerCase() === answer.toLowerCase();
-}
-
-/**
- * Stable string hash used to order the word bank. Sorting by it scrambles the words without correlating to blank order,
- * and gives the same result on the server and the client - a random shuffle would not survive hydration.
- */
-function sortKey(value: string): number {
-	let n = 0;
-	for (let i = 0; i < value.length; i++) {
-		// oxlint-disable-next-line unicorn/prefer-code-point
-		n = (n * 31 + value.charCodeAt(i)) % 2147483647;
-	}
-	return n;
 }
 
 /**
@@ -133,7 +121,7 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 				return { id: `distractor-${String(index)}`, text };
 			});
 		// oxlint-disable-next-line unicorn/no-array-sort
-		return [...fromBlanks, ...decoys].sort((a, b) => sortKey(a.text) - sortKey(b.text));
+		return [...fromBlanks, ...decoys].sort((a, b) => getSortKey(a.text) - getSortKey(b.text));
 	}, [answers, distractors]);
 
 	const [placements, setPlacements] = useState<Array<string | null>>(() => Array.from({ length: count }, () => null));
