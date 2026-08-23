@@ -1,0 +1,41 @@
+---
+title: E2E Split Points
+locale: en
+publication-date: 2026-08-20
+version: 1.0.0
+authors:
+  - siam-omar
+editors: []
+contributors: []
+tags:
+  - data-management
+sources:
+  - acdh
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: Fixture resource for the end-to-end test suite. Copied into the content
+    collection by `pnpm run e2e:fixtures:create`, and never committed, so it is
+    not part of any real deployment.
+content-type: training-module
+---
+
+## Before the first split
+
+Content which precedes the first split point forms the first section.
+
+<SplitPoint id="middle" />
+
+## The middle section
+
+Content of the second section.
+
+### A nested heading
+
+More content of the second section.
+
+<SplitPoint id="last" />
+
+## The last section
+
+Content of the third section.

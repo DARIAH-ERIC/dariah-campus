@@ -105,6 +105,13 @@
 			"website": "Website"
 		}
 	},
+	"ContentSectionNavigation": {
+		"label": "Sections",
+		"next": "Next",
+		"position": "Section {current, number} of {total, number}",
+		"previous": "Previous",
+		"section": "Section {index, number}"
+	},
 	"CourseRegistryPage": {
 		"meta": {
 			"title": "Course registry"

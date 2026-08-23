@@ -18,6 +18,7 @@ import type { Tag } from "#/lib/content/client/tags.ts";
 import { config } from "#/lib/content/keystatic/config.ts";
 import { evaluate } from "#/lib/content/mdx/evaluate.ts";
 import {
+	createContentSectionsPlugin,
 	createCustomHeadingIdsPlugin,
 	createHeadingIdsPlugin,
 	createIframeTitlesPlugin,
@@ -52,6 +53,7 @@ const createEvaluateOptions = (baseUrl: string) => {
 			createIframeTitlesPlugin(["Embed", "Video"]),
 			createMermaidDiagramsPlugin(),
 			createSyntaxHighlighterPlugin(),
+			createContentSectionsPlugin(),
 			createTableOfContentsPlugin(),
 			createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
 			createRemoteImageUrlsPlugin(baseUrl, [
@@ -250,13 +252,14 @@ export const createGitHubClient = cache(function createGitHubClient({
 			const { content, ...metadata } = data;
 
 			const href = `/documentation/${id}`;
-			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
+			const { default: component, sections, tableOfContents } = await evaluate(content, evaluateOptions);
 
 			return {
 				id,
 				content: component,
 				href,
 				metadata,
+				sections,
 				tableOfContents,
 			};
 		},
@@ -467,7 +470,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 			const { content, ...metadata } = data;
 
 			const href = `/resources/hosted/${id}`;
-			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
+			const { default: component, sections, tableOfContents } = await evaluate(content, evaluateOptions);
 			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
@@ -487,6 +490,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 				},
 				curricula,
 				related,
+				sections,
 				tableOfContents,
 			};
 		},

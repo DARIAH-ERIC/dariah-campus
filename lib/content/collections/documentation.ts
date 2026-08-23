@@ -5,6 +5,7 @@ import { VFile } from "vfile";
 import { reader } from "#/lib/content/keystatic/reader.ts";
 import { type CompileOptions, compile } from "#/lib/content/mdx/compile.ts";
 import {
+	createContentSectionsPlugin,
 	createCustomHeadingIdsPlugin,
 	createHeadingIdsPlugin,
 	createIframeTitlesPlugin,
@@ -49,6 +50,7 @@ const compileOptions: CompileOptions = {
 		]),
 		createMermaidDiagramsPlugin(),
 		createSyntaxHighlighterPlugin(),
+		createContentSectionsPlugin(),
 		createTableOfContentsPlugin(),
 		createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
 	],
@@ -70,11 +72,13 @@ export const documentation = createCollection({
 		const output = await compile(input, compileOptions);
 		const module = context.createJavaScriptImport<MDXContent>(String(output));
 		const tableOfContents = output.data.tableOfContents;
+		const sections = output.data.sections ?? [];
 
 		return {
 			id: item.id,
 			content: module,
 			metadata,
+			sections,
 			tableOfContents,
 		};
 	},
