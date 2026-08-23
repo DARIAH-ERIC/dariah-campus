@@ -22,6 +22,7 @@ import { createImageLayers } from "#/lib/content/keystatic/components/image-laye
 import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
 import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createQuiz } from "#/lib/content/keystatic/components/quiz/index.tsx";
+import { createSplitPoint } from "#/lib/content/keystatic/components/split-point/index.tsx";
 import { createTabs } from "#/lib/content/keystatic/components/tabs/index.tsx";
 import { createVideoCard } from "#/lib/content/keystatic/components/video-card/index.tsx";
 import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx";
@@ -146,6 +147,7 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
 					...createQuiz(paths, locale),
+					...createSplitPoint(paths, locale),
 					...createTabs(paths, locale),
 					...createVideo(paths, locale),
 					...createVideoCard(paths, locale),
