@@ -18,8 +18,8 @@ export const urlFragmentOptional = {
 	message: "Must include the leading '#' character.",
 };
 
-export const urlSlug = {
-	regex: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+export const urlSlugOptional = {
+	regex: /^$|^[a-z0-9]+(?:-[a-z0-9]+)*$/,
 	message: "Must only contain lowercase letters, digits, and dashes.",
 };
 

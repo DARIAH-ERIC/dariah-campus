@@ -78,6 +78,29 @@ describe("withContentSections", () => {
 		expect(sections.map((section) => section.id)).toEqual(["one", "one-2"]);
 	});
 
+	it("generates an identifier for a split point without one", async () => {
+		const { sections } = await process(
+			["a", "", "<SplitPoint />", "", "b", "", '<SplitPoint id="end" />', "", "c"].join("\n"),
+		);
+
+		expect(sections.map((section) => section.id)).toEqual(["section-1", "section-2", "end"]);
+	});
+
+	it("generates an identifier for a split point with an empty one", async () => {
+		const { sections } = await process(["a", "", '<SplitPoint id="" />', "", "b"].join("\n"));
+
+		expect(sections.map((section) => section.id)).toEqual(["section-1", "section-2"]);
+	});
+
+	/** Otherwise inserting an unnamed section renames a section the author did name. */
+	it("never takes an identifier an author chose for a generated one", async () => {
+		const { sections } = await process(
+			["a", "", "<SplitPoint />", "", "b", "", '<SplitPoint id="section-2" />', "", "c"].join("\n"),
+		);
+
+		expect(sections.map((section) => section.id)).toEqual(["section-1", "section-2-2", "section-2"]);
+	});
+
 	it("ignores split points which are not top-level", async () => {
 		const { sections, value } = await process('<div>\n  <SplitPoint id="nested" />\n</div>\n');
 

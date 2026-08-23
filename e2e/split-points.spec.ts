@@ -44,7 +44,7 @@ test.describe("split points", () => {
 
 		await navigation.getByRole("link", { name: /Next/ }).click();
 
-		await expect(page).toHaveURL(`${pathname}?section=middle`);
+		await expect(page).toHaveURL(`${pathname}?section=section-2`);
 		await expect(page.getByRole("heading", { name: "The middle section" })).toBeVisible();
 
 		await navigation.getByRole("link", { name: /Previous/ }).click();
@@ -77,7 +77,7 @@ test.describe("split points", () => {
 		);
 		await expect(tableOfContents.getByRole("link", { name: "A nested heading" })).toHaveAttribute(
 			"href",
-			"?section=middle#a-nested-heading",
+			"?section=section-2#a-nested-heading",
 		);
 
 		await tableOfContents.getByRole("link", { name: "The last section" }).click();

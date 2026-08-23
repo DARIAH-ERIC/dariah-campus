@@ -10,14 +10,14 @@ export const createSplitPoint = createComponent((_paths, _locale) => {
 	return {
 		SplitPoint: block({
 			label: "Split point",
-			description: "Split the content into sections, which are displayed one at a time.",
+			description: "Start a new section.",
 			icon: <SeparatorHorizontalIcon />,
 			schema: {
 				id: fields.text({
 					label: "ID",
 					description:
-						'Identifies the section which follows this split point, and is used in the page url, e.g. "?section=getting-started".',
-					validation: { isRequired: true, pattern: validation.urlSlug },
+						'Identifies the section in the page url, e.g. "?section=getting-started". Generated when left empty, but then changes whenever a section is inserted before it.',
+					validation: { isRequired: false, pattern: validation.urlSlugOptional },
 				}),
 			},
 			ContentView(props) {

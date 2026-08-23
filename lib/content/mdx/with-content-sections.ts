@@ -24,6 +24,8 @@ const headingTagNames = new Set(["h1", "h2", "h3", "h4", "h5", "h6"]);
 
 interface Group {
 	id: string | null;
+	/** The split point which starts this group, absent for the content preceding the first split point. */
+	splitPoint: MdxJsxFlowElementHast | null;
 	children: Array<RootContent>;
 }
 
@@ -127,8 +129,9 @@ export interface WithContentSectionsOptions {
  * Splits a document into sections at top-level `<SplitPoint id="..." />` elements, and wraps each section in a
  * `<ContentSection id="...">` element, so consumers can render one section at a time.
  *
- * Content preceding the first split point becomes the first section, and receives a generated identifier. Authors can
- * name that section by putting a split point at the very start of the document instead.
+ * Identifiers are optional, and any section without one - the content preceding the first split point, and any split
+ * point the author left empty - receives a generated `section-{n}`. Note that a generated identifier is positional, so
+ * it changes as soon as another section is inserted before it, which breaks links pointing at it.
  *
  * The resulting sections - their identifiers, labels, and the headings they contain - are provided both as
  * `file.data.sections` and as a named `sections` export on the compiled module.
@@ -155,26 +158,20 @@ export const withContentSections: Plugin<[WithContentSectionsOptions?], Root> = 
 			return index;
 		});
 
-		const groups: Array<Group> = [{ id: null, children: [] }];
+		const groups: Array<Group> = [{ id: null, splitPoint: null, children: [] }];
 		const hoisted: Array<RootContent> = [];
 
 		for (const child of tree.children) {
 			if (child.type === "mdxjsEsm") {
 				hoisted.push(child);
-			} else if (!isSplitPoint(child, splitPoint)) {
-				groups.at(-1)!.children.push(child);
+			} else if (isSplitPoint(child, splitPoint)) {
+				groups.push({ id: getAttributeValue(child, "id"), splitPoint: child, children: [] });
 			} else {
-				const id = getAttributeValue(child, "id");
-
-				if (id == null) {
-					file.message(`Ignoring <${splitPoint}> without "id" attribute.`, child);
-				} else {
-					groups.push({ id, children: [] });
-				}
+				groups.at(-1)!.children.push(child);
 			}
 		}
 
-		/** Nothing to do when the document does not contain any valid split point. */
+		/** Nothing to do when the document does not contain any split point. */
 		if (groups.length === 1) {
 			file.data.sections = [];
 			tree.children.unshift(createSectionsExport([], identifier));
@@ -182,22 +179,54 @@ export const withContentSections: Plugin<[WithContentSectionsOptions?], Root> = 
 		}
 
 		/** Whitespace-only content before the first split point does not constitute a section. */
-		if (groups[0]!.id == null && groups[0]!.children.every(isBlank)) {
+		if (groups[0]!.splitPoint == null && groups[0]!.children.every(isBlank)) {
 			groups.shift();
 		}
 
 		const usedIds = new Set<string>();
+
+		/** Author-provided identifiers are assigned first, so a generated one can never take an identifier they chose. */
+		const ids = groups.map((group) => {
+			if (group.id == null) {
+				return null;
+			}
+
+			const id = createUniqueId(group.id, usedIds);
+
+			if (id !== group.id) {
+				file.message(
+					`Duplicate <${splitPoint}> identifier "${group.id}", using "${id}" instead.`,
+					group.splitPoint ?? undefined,
+				);
+			}
+
+			usedIds.add(id);
+
+			return id;
+		});
+
+		groups.forEach((group, index) => {
+			if (ids[index] != null) {
+				return;
+			}
+
+			const id = createUniqueId(`section-${String(index + 1)}`, usedIds);
+
+			/** Only a split point can be missing an identifier - leading content never had one to begin with. */
+			if (group.splitPoint != null) {
+				file.message(`Missing "id" attribute on <${splitPoint}>, using "${id}" instead.`, group.splitPoint);
+			}
+
+			usedIds.add(id);
+
+			ids[index] = id;
+		});
+
 		const sections: Array<ContentSection> = [];
 		const children: Array<RootContent> = [...hoisted];
 
 		groups.forEach((group, index) => {
-			const id = createUniqueId(group.id ?? `section-${String(index + 1)}`, usedIds);
-
-			if (group.id != null && group.id !== id) {
-				file.message(`Duplicate <${splitPoint}> identifier "${group.id}", using "${id}" instead.`);
-			}
-
-			usedIds.add(id);
+			const id = ids[index]!;
 
 			sections.push({ id, ...getLabelAndHeadingIds(group.children) });
 

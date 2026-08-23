@@ -111,7 +111,10 @@ export default async function DocumentationPage(props: Readonly<DocumentationPag
 						<PageLead>{lead}</PageLead>
 					</div>
 
-					<nav aria-labelledby="docs-nav" className="grid content-start gap-y-2 inline-full 2xl:hidden">
+					<nav
+						aria-labelledby="docs-nav"
+						className="mx-auto grid content-start gap-y-2 inline-full max-inline-(--size-content) 2xl:hidden"
+					>
 						<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id="docs-nav">
 							{t("navigation")}
 						</h2>
@@ -134,14 +137,16 @@ export default async function DocumentationPage(props: Readonly<DocumentationPag
 						</ul>
 					</nav>
 
-					<div className="prose max-inline-(--size-content)">
-						<article>
-							<Content
-								components={
-									currentSection != null ? { ContentSection: createContentSection(currentSection.id) } : undefined
-								}
-							/>
-						</article>
+					<div className="mx-auto inline-full max-inline-(--size-content)">
+						<div className="prose">
+							<article>
+								<Content
+									components={
+										currentSection != null ? { ContentSection: createContentSection(currentSection.id) } : undefined
+									}
+								/>
+							</article>
+						</div>
 						{currentSection != null ? (
 							<ContentSectionNavigation currentSectionId={currentSection.id} sections={sections} />
 						) : null}
