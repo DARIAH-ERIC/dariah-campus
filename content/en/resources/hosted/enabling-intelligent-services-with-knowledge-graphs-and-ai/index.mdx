@@ -184,14 +184,6 @@ This distinction is important. A generated statement can sound convincing becaus
 
 A hallucination is therefore not necessarily the result of the model "ignoring" relevant information. The system may generate a highly plausible continuation even when the underlying claim is wrong, missing, or insufficiently supported.
 
-### **Attention and Context**
-
-Modern LLMs are built on the Transformer architecture. A central mechanism is attention, which allows a model to assign different levels of relevance to different parts of the available context when producing the next token.
-
-Attention improves the model's ability to work with relationships across a text. It can identify which parts of the context appear most relevant to the current prediction.
-
-However, attention is not the same as factual verification. Attention weights represent statistical relevance. A model can focus on the most relevant passage and still generate an incorrect answer if the generation process is not grounded in verified knowledge.
-
 <Quiz>
   <QuizChoice variant="multiple">
     <QuizChoiceQuestion>
@@ -223,6 +215,14 @@ However, attention is not the same as factual verification. Attention weights re
     </QuizChoiceAnswer>
   </QuizChoice>
 </Quiz>
+
+### **Attention and Context**
+
+Modern LLMs are built on the Transformer architecture. A central mechanism is attention, which allows a model to assign different levels of relevance to different parts of the available context when producing the next token.
+
+Attention improves the model's ability to work with relationships across a text. It can identify which parts of the context appear most relevant to the current prediction.
+
+However, attention is not the same as factual verification. Attention weights represent statistical relevance. A model can focus on the most relevant passage and still generate an incorrect answer if the generation process is not grounded in verified knowledge.
 
 <Quiz>
   <QuizChoice variant="multiple">
