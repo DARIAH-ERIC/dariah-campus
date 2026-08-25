@@ -183,8 +183,6 @@ Note: The Pistoia pilot is used here as an illustrative example of how complexit
 
 The Pistoia pilot focuses on developing a platform that visualises and compares different types of data relating to Giovanni Pisano's medieval pulpit. Although the concept appears relatively straightforward, its implementation requires contributions from many different people. These include those responsible for commissioning, installing, and maintaining sensors, specialists analysing the collected data, software developers building the platform, project coordinators, and ultimately the users who interact with the final application. Each participant contributes specialised knowledge while working on only one part of the overall system.
 
-
-
 <Carousel loop>
   <CarouselItem src="/assets/content/assets/en/resources/hosted/complexity-feasibility-and-validation-in-digital-twin-and-spatial-simulation-projects/personas-1.jpg">
     **Personas**
@@ -209,4 +207,83 @@ The Pistoia pilot focuses on developing a platform that visualises and compares 
   </CarouselItem>
 </Carousel>
 
-\\
+#### **The Data Flow**
+
+For the platform to function successfully, information must flow through the entire project: from physical sensors at the heritage site to the digital interface presented to the end user. Every stage depends on the successful completion of the previous one. If information is lost or assumptions remain undocumented at any point in this chain, problems may only become apparent much later during implementation, when correcting them becomes significantly more difficult.
+
+#### **Broken Chain**
+
+In practice, the chain of information is rarely as seamless as project plans suggest. Different groups often work independently and may have only limited knowledge of activities taking place elsewhere in the project. As a result, assumptions are not always communicated or verified. The absence of information frequently becomes visible only when developers need to integrate sensor data into the platform and discover that essential details were never documented or shared. At that stage, resolving missing information can delay development and increase project complexity considerably.
+
+#### **No Answers**
+
+In complex projects, questions of this kind often emerge when responsibilities and data flows have not been clearly documented or communicated:
+
+* Is the data live or historical?
+* What does the data actually look like?
+* Which types of sensors are installed?
+* How many sensors are there?
+* Where are they located?
+* Who processes the data?
+* Who is responsible for providing the data?
+
+None of these questions is technically complex. However, if there is no clearly defined person or organisation able to answer them, they become significant obstacles to implementation. The challenge is therefore not simply collecting data but establishing a transparent chain of responsibility that allows information to move reliably throughout the project.
+
+#### **No Real Chain**
+
+The questions above reveal a more fundamental issue: in some projects, the chain of people and data does not actually exist as a coherent workflow. Rather than forming a connected sequence of responsibilities, information is distributed across individuals, institutions, and systems that may have little direct contact with one another. As a result, assumptions are made independently, communication gaps emerge, and critical knowledge remains isolated within individual teams.
+
+This fragmentation makes it difficult to trace how data moves through the project or who is responsible for each stage of the process. Instead of a continuous chain, the project consists of disconnected links that only become visible when implementation begins. Mapping actors, responsibilities, and data flows early in the project can therefore help transform a fragmented network into a coordinated workflow, reducing uncertainty and improving both feasibility and collaboration.
+
+### **3.2 Pilot 27 – Mértola Castle**
+
+While the Pistoia pilot illustrates complexity within organisational structures, the Mértola Castle pilot demonstrates how complexity can arise from the simulation itself. The project aims to create an immersive virtual environment that enables archaeologists to investigate historical battle scenarios and test archaeological hypotheses. Achieving this objective requires the integration of numerous interconnected simulation layers, each introducing additional interpretation and uncertainty.
+
+#### **Layers of Simulation**
+
+Unlike the Pistoia pilot, where complexity arises primarily through the chain of people and data, the complexity of the Mértola Castle pilot lies within the simulation itself. Creating an immersive environment requires much more than producing a three-dimensional model of the site. Instead, the simulation is built from multiple interconnected layers, each representing a different aspect of the historical environment.
+
+Every layer introduces new assumptions and interpretations. Some are based on measurable evidence, while others rely on archaeological knowledge, historical sources, or informed hypotheses. Importantly, these layers do not exist independently. Each one builds upon those beneath it, meaning that decisions made at an early stage influence all subsequent stages of the simulation. As more layers are added, uncertainty accumulates and the relationships between different components become increasingly complex.
+
+The following examples illustrate how these layers contribute to the overall simulation and why managing their interdependencies is essential for creating a meaningful and reliable research environment.
+
+As additional layers are introduced, uncertainty accumulates alongside complexity. The objective is therefore not necessarily to eliminate uncertainty, but to understand, document, and communicate the assumptions on which the simulation is based.
+
+#### **Terrain**
+
+The simulation begins with the terrain. Although modelling the landscape may initially appear straightforward, even small differences in elevation can influence archaeological interpretations. Accurate terrain modelling therefore forms the basis for all subsequent simulation layers.
+
+#### **Water**
+
+The surrounding rivers have shaped the landscape over centuries. Reconstructing historical environmental conditions therefore requires consideration of long-term geographical change rather than simply modelling the present-day landscape.
+
+#### **Vegetation**
+
+Vegetation introduces another level of interpretation. Researchers must consider which plants existed during a particular historical period, how densely the landscape was covered, and even which season is being represented. These decisions influence visibility, movement, and potentially the outcome of military engagements.
+
+#### **Castle**
+
+The reconstruction of the castle itself requires further interpretation. Architectural evidence must be combined with historical knowledge to determine how the structure may have appeared during the selected period and how its design influenced the events being simulated.
+
+#### **Battle**
+
+The simulation must also reconstruct the battle itself, including the participants, strategies, and sequence of events. Each of these decisions builds upon historical evidence while inevitably involving interpretation.
+
+#### **Arsenal**
+
+Weapons, armour, and military equipment constitute another simulation layer. These elements influence how participants interact with the environment and therefore contribute directly to archaeological interpretation.
+
+#### **Time**
+
+Historical reconstruction also requires consideration of different points in time. The original appearance of the castle, the selected historical period, and its present condition all represent different realities. Of these, only the present-day site can be observed directly; every earlier reconstruction relies on interpretation supported by available evidence.
+
+#### **Knowledge Base and AI Hyperlink Knowledge System**
+
+Underlying the simulation is a knowledge base that connects archaeological evidence, historical documentation, and digital models. Building upon this foundation, an AI-supported hyperlink system assists users in discovering relationships between different elements of the simulation and relevant documentary sources. These technologies make large bodies of information more accessible, but they also introduce additional layers of dependency and interpretation.
+
+Each additional simulation layer increases the complexity of the project because it depends upon the assumptions made in every preceding layer. As a result, the central question is no longer simply whether the simulation is technically accurate, but rather what *accuracy* actually means within the context of the research question being investigated.
+
+\
+
+
+\
