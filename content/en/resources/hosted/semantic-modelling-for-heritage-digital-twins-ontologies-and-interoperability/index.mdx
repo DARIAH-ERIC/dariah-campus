@@ -275,3 +275,28 @@ The distinction between event-centric traceability and provenance preservation i
 
 Consider the fictional Temple of Athena scenario. A laser-scanning campaign produces a raw 3D model, a mesh-cleaning operation transforms it into a new version, humidity monitoring produces observations, and a simulation uses selected inputs to assess moisture risk. Semantic interoperability connects these domains; event-centric traceability records the activities; provenance preservation links results to their sources and transformations; modular extensibility keeps the specialised domains distinct but connected; and flexible granularity allows each step to be documented with more or less detail depending on the needs of the project.
 
+<Quiz>
+  <QuizImageDropZones distractors={[]} instantFeedback={false}>
+    <QuizQuestion>
+      **Which Principle Is at Work?**
+
+      Match each scenario to the ARTEMIS design principle it illustrates.
+    </QuizQuestion>
+
+    <QuizImageDropZone label="A new domain-specific module is added without rebuilding the full ontology." shape="rectangle" items={[{"label":"Modular extensibility"}]}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="A dataset can be traced back to the activity, instrument and transformation that produced it." shape="rectangle" items={[{"label":"Provenance preservation"}]}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="Two systems use the same conceptual meaning for a heritage entity." shape="rectangle" items={[{"label":"Semantic interoperability"}]}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="One project documents every processing step in detail while another uses a lighter description." shape="rectangle" items={[{"label":"Flexible granularity"}]}>
+
+    </QuizImageDropZone>
+  </QuizImageDropZones>
+</Quiz>
