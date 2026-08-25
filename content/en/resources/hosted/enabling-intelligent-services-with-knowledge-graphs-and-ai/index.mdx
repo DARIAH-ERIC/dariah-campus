@@ -164,8 +164,6 @@ This multiplex structure is one reason cultural heritage data becomes difficult 
   </QuizChoice>
 </Quiz>
 
-
-
 ### **The Complexity Challenge: Why Turn to AI?**
 
 Heritage knowledge can contain large numbers of entities, sources, relationship types, and competing perspectives. The volume and diversity of this information can exceed what one person, or even one disciplinary team, can realistically process within a reasonable amount of time.
@@ -173,8 +171,6 @@ Heritage knowledge can contain large numbers of entities, sources, relationship 
 AI therefore appears attractive because it can assist with tasks involving large amounts of information. But the question is not simply whether AI can process more data. The more important question is whether the resulting output can be trusted.
 
 This creates a central tension for cultural heritage applications: AI can help us work with complexity, but AI systems themselves need to be critically evaluated and grounded in reliable knowledge.
-
-
 
 ### **Why Large Language Models Can Hallucinate**
 
@@ -188,8 +184,6 @@ This distinction is important. A generated statement can sound convincing becaus
 
 A hallucination is therefore not necessarily the result of the model "ignoring" relevant information. The system may generate a highly plausible continuation even when the underlying claim is wrong, missing, or insufficiently supported.
 
-
-
 ### **Attention and Context**
 
 Modern LLMs are built on the Transformer architecture. A central mechanism is attention, which allows a model to assign different levels of relevance to different parts of the available context when producing the next token.
@@ -197,6 +191,46 @@ Modern LLMs are built on the Transformer architecture. A central mechanism is at
 Attention improves the model's ability to work with relationships across a text. It can identify which parts of the context appear most relevant to the current prediction.
 
 However, attention is not the same as factual verification. Attention weights represent statistical relevance. A model can focus on the most relevant passage and still generate an incorrect answer if the generation process is not grounded in verified knowledge.
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      An LLM gives a fluent answer containing a plausible date for the construction of a monument, but the date is not supported by the available documentation. Which explanation best fits?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        LLMs retrieve every answer from a verified factual database but sometimes display the wrong row.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        LLMs predict likely language from statistical patterns, so a plausible continuation can still be factually incorrect.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        The model cannot process relationships between words.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Hallucinations occur only when a prompt contains spelling mistakes.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
+
+
+
+
+
+
+
+
 
 
 
