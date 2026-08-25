@@ -1,5 +1,3 @@
-import singleton from "#content/navigation";
-
 import type { SingletonClient } from "#/lib/content/types";
 import { getLinkProps } from "#/lib/content/utils/get-link-props";
 import type {
@@ -7,6 +5,7 @@ import type {
 	// NavigationMenu,
 	NavigationSeparator,
 } from "#/lib/navigation/navigation";
+import singleton from "#content/navigation";
 
 const items = singleton.get("")!.document.links;
 
@@ -69,9 +68,7 @@ const navigation = Object.fromEntries(
 				}
 			}
 		})
-		.map((item, index) =>
-			[`item-${String(index)}`, item]
-		),
+		.map((item, index) => [`item-${String(index)}`, item]),
 );
 
 export type Navigation = typeof navigation;

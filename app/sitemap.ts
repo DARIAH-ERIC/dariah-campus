@@ -52,6 +52,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	(await client.collections.sources.all()).map((source) => {
 		routes.push(source.href);
 	});
+	(await client.collections.people.all()).map((person) => {
+		routes.push(person.href);
+	});
+	(await client.collections.tags.all()).map((tag) => {
+		routes.push(tag.href);
+	});
 	(await client.collections.documentation.all()).map((page) => {
 		routes.push(page.href);
 	});

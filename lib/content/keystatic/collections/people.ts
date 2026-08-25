@@ -5,7 +5,7 @@ import slugify from "@sindresorhus/slugify";
 import * as validation from "#/lib/content/keystatic/validation.ts";
 import { socialMediaKinds } from "#/lib/content/options.ts";
 
-export const createPeople = createCollection("/people/", (paths, _locale) => 
+export const createPeople = createCollection("/people/", (paths, _locale) =>
 	collection({
 		label: "People",
 		path: paths.contentPath,
@@ -114,5 +114,5 @@ export const createPeople = createCollection("/people/", (paths, _locale) =>
 				components: {},
 			}),
 		},
-	})
+	}),
 );

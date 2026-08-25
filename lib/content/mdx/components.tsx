@@ -1,4 +1,6 @@
 import { Callout } from "#/components/content/callout.tsx";
+import { Carousel, CarouselItem } from "#/components/content/carousel.tsx";
+import { ContentSection } from "#/components/content/content-section.tsx";
 import { Diagram, DiagramCaption, DiagramCodeBlock } from "#/components/content/diagram.tsx";
 import { Disclosure } from "#/components/content/disclosure.tsx";
 import { Drop, QuizDragTheWords } from "#/components/content/drag-the-words.tsx";
@@ -8,10 +10,11 @@ import { Figure } from "#/components/content/figure.tsx";
 import { Blank, QuizFillInTheBlank } from "#/components/content/fill-in-the-blank.tsx";
 import { Grid, GridItem } from "#/components/content/grid.tsx";
 import { ImageComparisonSlider } from "#/components/content/image-comparison-slider.tsx";
-import { Link as ContentLink } from "#/components/content/link.tsx";
+import { QuizImageDropZone, QuizImageDropZones } from "#/components/content/image-drop-zones.tsx";
+import { ImageLayer, ImageLayers } from "#/components/content/image-layers.tsx";
 import { LinkButton } from "#/components/content/link-button.tsx";
+import { Link as ContentLink } from "#/components/content/link.tsx";
 import { MermaidDiagram } from "#/components/content/mermaid-diagram.tsx";
-import { Quiz, QuizErrorMessage, QuizSuccessMessage } from "#/components/content/quiz.tsx";
 import {
 	QuizChoice,
 	QuizChoiceAnswer,
@@ -20,10 +23,19 @@ import {
 	QuizChoiceQuestion,
 } from "#/components/content/quiz-choice.tsx";
 import { QuizImageHotspot, QuizImageHotspots } from "#/components/content/quiz-image-hotspots.tsx";
+import { QuizQuestion } from "#/components/content/quiz-question.tsx";
+import { Quiz, QuizErrorMessage, QuizSuccessMessage } from "#/components/content/quiz.tsx";
 import { TableOfContents } from "#/components/content/table-of-contents.tsx";
 import { Tab, Tabs } from "#/components/content/tabs.tsx";
-import { Video } from "#/components/content/video.tsx";
 import { VideoCard } from "#/components/content/video-card.tsx";
+import { Video } from "#/components/content/video.tsx";
+import {
+	Worksheet,
+	WorksheetDescription,
+	WorksheetQuestion,
+	WorksheetSection,
+	WorksheetSectionDescription,
+} from "#/components/content/worksheet.tsx";
 import { Image } from "#/components/image.tsx";
 import { Link } from "#/components/link.tsx";
 
@@ -31,10 +43,18 @@ export const components = {
 	a: Link,
 	Blank,
 	Callout,
+	Carousel,
+	CarouselItem,
+	ContentSection,
 	Diagram,
 	DiagramCaption,
 	DiagramCodeBlock,
 	Disclosure,
+	Worksheet,
+	WorksheetDescription,
+	WorksheetQuestion,
+	WorksheetSection,
+	WorksheetSectionDescription,
 	Drop,
 	Embed,
 	ExternalResource,
@@ -43,6 +63,8 @@ export const components = {
 	GridItem,
 	img: Image,
 	ImageComparisonSlider,
+	ImageLayer,
+	ImageLayers,
 	Link: ContentLink,
 	LinkButton,
 	MermaidDiagram,
@@ -55,8 +77,11 @@ export const components = {
 	QuizErrorMessage,
 	QuizDragTheWords,
 	QuizFillInTheBlank,
+	QuizImageDropZone,
+	QuizImageDropZones,
 	QuizImageHotspot,
 	QuizImageHotspots,
+	QuizQuestion,
 	QuizSuccessMessage,
 	Tab,
 	TableOfContents,

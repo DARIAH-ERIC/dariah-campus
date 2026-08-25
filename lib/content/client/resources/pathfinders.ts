@@ -1,16 +1,14 @@
 import { groupByToMap, keyByToMap } from "@acdh-oeaw/lib";
+
+import type { CollectionClient } from "#/lib/content/types.ts";
 import curricula from "#content/curricula";
 import events from "#content/resources-events";
 import external from "#content/resources-external";
 import hosted from "#content/resources-hosted";
 import collection from "#content/resources-pathfinders";
 
-import type { CollectionClient } from "#/lib/content/types.ts";
-
 const curriculaByResourceId = groupByToMap(Array.from(curricula.values()), (entry) =>
-	entry.document.metadata.resources.map((resource) =>
-		resource.value
-	)
+	entry.document.metadata.resources.map((resource) => resource.value),
 );
 
 const resourcesByTagId = groupByToMap(
@@ -20,9 +18,7 @@ const resourcesByTagId = groupByToMap(
 		...Array.from(hosted.values()),
 		...Array.from(collection.values()),
 	],
-	(entry) =>
-		entry.document.metadata.tags
-	,
+	(entry) => entry.document.metadata.tags,
 );
 
 //
@@ -34,10 +30,7 @@ const all = Array.from(collection.values())
 	.map((entry) => {
 		const href = `/resources/pathfinders/${entry.document.id}`;
 
-		const curricula =
-			curriculaByResourceId.get(entry.document.id)?.map((entry) =>
-				entry.document.id
-			) ?? [];
+		const curricula = curriculaByResourceId.get(entry.document.id)?.map((entry) => entry.document.id) ?? [];
 
 		const related = new Set<string>();
 
@@ -62,13 +55,9 @@ const all = Array.from(collection.values())
 		};
 	})
 	// oxlint-disable-next-line unicorn/no-array-sort
-	.sort((a, z) =>
-		z.metadata["publication-date"].localeCompare(a.metadata["publication-date"])
-	);
+	.sort((a, z) => z.metadata["publication-date"].localeCompare(a.metadata["publication-date"]));
 
-const byId = keyByToMap(all, (item) =>
-	item.id
-);
+const byId = keyByToMap(all, (item) => item.id);
 
 export type PathfinderResource = (typeof all)[number];
 

@@ -10,13 +10,15 @@ import { TableOfContents } from "#/components/table-of-contents.tsx";
 
 interface FloatingTableOfContentsProps {
 	closeLabel: string;
+	currentSectionId?: string;
+	headingSections?: Record<string, string>;
 	label: string;
 	tableOfContents: TableOfContentsTree;
 	toggleLabel: string;
 }
 
 export function FloatingTableOfContents(props: Readonly<FloatingTableOfContentsProps>): ReactNode {
-	const { closeLabel, label, tableOfContents, toggleLabel } = props;
+	const { closeLabel, currentSectionId, headingSections, label, tableOfContents, toggleLabel } = props;
 
 	return (
 		<nav aria-label={label}>
@@ -55,6 +57,8 @@ export function FloatingTableOfContents(props: Readonly<FloatingTableOfContentsP
 									</Button>
 
 									<TableOfContents
+										currentSectionId={currentSectionId}
+										headingSections={headingSections}
 										onChange={() => {
 											requestAnimationFrame(() => {
 												close();

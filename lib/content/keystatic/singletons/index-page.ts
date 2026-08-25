@@ -4,7 +4,7 @@ import { fields, singleton } from "@keystatic/core";
 import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 
-export const createIndexPage = createSingleton("/index-page/", (paths, locale) => 
+export const createIndexPage = createSingleton("/index-page/", (paths, locale) =>
 	singleton({
 		label: "Home page",
 		path: paths.contentPath,
@@ -262,5 +262,5 @@ export const createIndexPage = createSingleton("/index-page/", (paths, locale) =
 				},
 			),
 		},
-	})
+	}),
 );
