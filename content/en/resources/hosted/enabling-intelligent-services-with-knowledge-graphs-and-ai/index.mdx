@@ -1,0 +1,175 @@
+---
+title: Enabling Intelligent Services with Knowledge Graphs and AI
+locale: en
+publication-date: 2026-08-31
+version: 1.0.0
+authors:
+  - himmiche-aida
+  - somenzi-miriana
+editors: []
+contributors: []
+tags:
+  - artificial-intelligence
+  - cultural-heritage
+  - information-architecture
+  - information-retrieval
+  - knowledge-representation
+sources:
+  - artemis
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >-
+    This resource explores how Knowledge Graphs and Artificial Intelligence can
+    be combined to make complex cultural heritage information more accessible,
+    searchable, and trustworthy. It introduces graph structures, the limitations
+    of Large Language Models, and the ARTEMIS Artemisia Oracle pipeline for
+    transforming unstructured documentation into ontology-aligned knowledge. It
+    also examines vector embeddings, semantic similarity search,
+    natural-language exploration, and the role of structured knowledge and human
+    validation in developing intelligent services for Heritage Digital Twins.
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+dariah-working-groups: []
+---
+## **Introduction**
+
+Cultural heritage is rarely understandable as a collection of isolated objects. A monument can be connected to people, places, events, materials, scientific analyses, documents, images, excavation contexts, conservation activities, and changing interpretations. Heritage knowledge is therefore inherently relational: much of its meaning emerges from the connections among different pieces of information.
+
+Graphs provide a useful way to represent this relational structure. They model entities as nodes and relationships as edges, making it possible to describe not only individual heritage entities but also the connections that give them context. 
+
+Artificial Intelligence (AI) offers powerful methods for working with large and heterogeneous heritage collections, but AI systems also introduce important limitations. Large Language Models (LLMs), for example, generate text from statistical patterns rather than retrieving verified facts from a database. Their outputs can therefore be fluent and plausible while still being incorrect. Knowledge Graphs can complement LLMs by supplying structured, semantically explicit, and verifiable context.
+
+This resource introduces the relationship between Knowledge Graphs and AI in the ARTEMIS context. It follows the path from basic graph concepts and the complexity of cultural heritage knowledge to LLM limitations, AI-assisted knowledge extraction, ontology alignment, representation learning, similarity search, natural-language exploration, and the development of intelligent services.\
+
+
+## Learning Outcomes
+
+After completing this resource, learners will be able to:
+
+* explain how nodes, edges, and multiplex networks represent cultural heritage knowledge;
+* identify the challenges that complex, heterogeneous, and distributed heritage data pose for humans and AI;
+* distinguish LLM-generated predictions from verified factual retrieval and explain why hallucinations occur;
+* describe how Knowledge Graphs, ontologies, and human validation can support more reliable and explainable AI systems;
+* outline the main stages of the Artemisia Oracle knowledge-extraction pipeline;
+* explain how vector embeddings, semantic similarity search, and natural-language interfaces support the exploration of cultural heritage knowledge.
+
+## **Target Audience**
+
+This resource is intended for:
+
+* students and early-career researchers in Digital Humanities, Cultural Heritage Studies, Archaeology, History, Heritage Science, Computer Science, and related fields;
+* cultural heritage professionals interested in Knowledge Graphs, semantic technologies, and AI-assisted research;
+* researchers working with heterogeneous or distributed cultural heritage data;
+* educators seeking an introductory resource on Knowledge Graphs and AI in cultural heritage;
+* practitioners interested in semantic search, knowledge extraction, and intelligent services for Heritage Digital Twins.
+
+## **Intended Impact**
+
+Upon completion of this resource, learners will have gained an introductory understanding of how Knowledge Graphs and AI can be combined to make complex cultural heritage information more accessible, searchable, and usable. They will be able to explain why AI alone is not sufficient for trustworthy heritage applications, how semantic structures can provide grounding and traceability, and how representation learning can support exploration beyond exact keyword matching.
+
+Learners should also be able to critically assess AI-enabled heritage services by asking where their knowledge comes from, how concepts are represented, whether results can be traced to structured evidence, and where human validation remains necessary.
+
+## **Requirements**
+
+No prior programming experience or detailed knowledge of machine learning is required.
+
+A basic understanding of:
+
+* cultural heritage documentation;
+* digital cultural heritage collections;
+* metadata and data structures;
+* ontologies or semantic modelling
+
+is beneficial but not essential.
+
+## **Suggested Learning Path**
+
+This resource is designed as a continuation of **Semantic Modelling for Heritage Digital Twins: Ontologies and Interoperability**. Learners who are new to semantic modelling are encouraged to complete that resource first, as it introduces ontologies, interoperability, semantic relationships, and Knowledge Graph structures that are used throughout the present resource.
+
+
+
+## **Enabling Intelligent Services with Knowledge Graphs and AI**
+
+### **Heritage Is Naturally a Graph**
+
+When we think about cultural heritage, it is easy to focus on individual objects: an artefact, a building, a document, or a work of art. Yet the meaning of a heritage entity usually depends on a wider network of relationships. An object may have been created by a particular person, found at a particular place, documented by a report, analysed using a scientific method, or connected to a historical event.
+
+A **graph** is a mathematical representation of such a system. It contains:
+
+* **nodes**, which represent entities such as objects, people, places, documents, materials, or events;
+* **edges**, which represent relationships between those entities.
+
+<Figure src="/assets/content/assets/en/resources/hosted/enabling-intelligent-services-with-knowledge-graphs-and-ai/formal-graph-definition.jpg" alt="formal mathematical definition of a graph" alignment="stretch">
+
+</Figure>
+
+For example, a graph might represent the statements:
+
+* an object **was created by** a person;
+* an object **is located in** a place;
+* an object **is documented in** a report.
+
+The important point is that the relationships are not secondary metadata. They are part of the knowledge itself. In cultural heritage, understanding how entities connect is often as important as describing the entities individually.
+
+### **From Single-Layer Graphs to Multiplex Heritage Networks**
+
+A simple graph can model one type of relationship. Cultural heritage knowledge, however, rarely consists of only one relationship type. The same entities can be connected in several different ways at the same time.
+
+Cultural heritage can be described as a **multiplex network**: a network in which multiple relationship layers coexist. These layers can include:
+
+* a **material layer**, connecting objects with materials, techniques, or physical properties;
+* a **spatial layer**, connecting entities with locations, sites, or landscapes;
+* a **temporal layer**, connecting them with periods, events, and chronological relationships;
+* a **social layer**, connecting people, institutions, communities, and social roles;
+* a **documentation layer**, connecting entities with sources, images, reports, and provenance information.
+
+<Figure src="/assets/content/assets/en/resources/hosted/enabling-intelligent-services-with-knowledge-graphs-and-ai/multiplex-network.jpg" alt="Illustration of how a Single-Layer Network can be stored in a Knowledgegraph to create a Multiplex Network" alignment="stretch">
+
+</Figure>
+
+These layers do not represent separate worlds. They describe different perspectives on the same heritage entities. A single artefact may therefore simultaneously participate in material, spatial, temporal, social, and documentary relationships.
+
+This multiplex structure is one reason cultural heritage data becomes difficult to manage. The challenge is not merely the number of records, but the number and diversity of meaningful connections among them.
+
+<Quiz>
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      A digital record describes a Roman amphora. It connects the amphora to its excavation site, the clay from which it was produced, the historical period in which it was made, the workshop associated with its production, and a modern conservation report. 
+
+      What makes this representation a multiplex heritage network rather than simply a larger single-layer graph?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        The amphora is represented by more than one digital record.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        All information about the amphora has been merged into one large text field.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        The same heritage entity is connected through different kinds of relationships representing several dimensions of knowledge.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        The network contains a very high number of nodes, regardless of the types of relationships between them.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
+
+
+
+
+
+
+
