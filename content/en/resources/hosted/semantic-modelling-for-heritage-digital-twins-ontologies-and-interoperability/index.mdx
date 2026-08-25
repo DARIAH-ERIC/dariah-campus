@@ -134,3 +134,89 @@ Creating such a model is collaborative. Ontologists contribute modelling practic
     </QuizImageDropZone>
   </QuizImageDropZones>
 </Quiz>
+
+## **Ontologies and Databases: Different Purposes**
+
+A database is a representation mechanism designed to meet the requirements of a particular application. Its schema is closely related to implementation choices, and when requirements change, the viewpoint and schema may need to change as well. This supports efficient application-specific processing, but it can also introduce conceptual simplifications and shortcuts.
+
+Interoperability becomes difficult when different systems describe the same reality in different ways. As illustrated below with separate excavation and museum databases: one uses fields such as Artifact and SU, while the other uses Item, Room and Showcase. Even when both databases contain information about the same kinds of objects, their structures and labels do not automatically reveal how their meanings correspond.
+
+<Figure src="/assets/content/assets/en/resources/hosted/semantic-modelling-for-heritage-digital-twins-ontologies-and-interoperability/databases.jpg" alt="Example of two databases describing the same objects in different ways" alignment="stretch">
+
+</Figure>
+
+Semantic graphs provide a more flexible layer. They function like a shared language for data by defining a conceptual "grammar" and "lexicon" and then allowing users to combine concepts as needed. Machine-readable languages such as RDF and OWL can express these structures independently from a specific application.
+
+<Figure src="/assets/content/assets/en/resources/hosted/semantic-modelling-for-heritage-digital-twins-ontologies-and-interoperability/mapping-of-different-databases.jpg" alt="Mapping of different databases" alignment="stretch">
+
+</Figure>
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      Diagnose the Interoperability problem: An excavation database stores a field called "Artefact" while a museum database uses "Item" for the same kind of cultural object. Why is simple technical merging not enough?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Because the two databases necessarily contain different objects.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Because different labels and structures may represent the same underlying    meaning, and that meaning must be made explicit.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Because relational databases cannot store cultural heritage information.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Because every database must use exactly the same software.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
+
+## **Making Meaning Explicit with Semantic Relations**
+
+Semantic modelling captures not only categories but also the meaning of relationships. A cultural object connected to a place may have been found there or stored there; these are not equivalent statements. In the same way, a cultural object can be linked to temporal entities through different relationships such as being created at one time and found at another.
+
+These explicit relations transform implicit assumptions into machine-readable knowledge. Instead of relying on column names or local conventions, the graph states what a connection means. This is essential when information from different archives and workflows needs to be interpreted together.
+
+### **Reactive Heritage Digital Twins: Three Connected Layers**
+
+The ARTEMIS model connects three broad layers. The physical world includes tangible and intangible heritage assets, actors, places, events and primary data. Digital representations describe the digital world, including representations, 3D content, transformations and software processes. Reactive behaviour adds observations, simulations, what-if scenarios, monitoring, decision-support and reactions.
+
+<Figure src="/assets/content/assets/en/resources/hosted/semantic-modelling-for-heritage-digital-twins-ontologies-and-interoperability/reactive-layers.jpg" alt="Three Reactive Layers of an RHDT: Physical World, Digital Representations, and Reactive Behaviour" alignment="stretch">
+
+</Figure>
+
+The ARTEMIS ontology provides the semantic framework that connects these layers. This makes it possible to move from descriptions of a cultural entity to digital processes and then to observations or simulations that can support decisions.
+
+<Quiz>
+  <QuizImageDropZones distractors={[]} instantFeedback={false}>
+    <QuizQuestion>
+      **Sort the RHDT Layers:**
+
+      Sort each item into Physical World, Digital Representation or Reactive Behaviour.
+    </QuizQuestion>
+
+    <QuizImageDropZone label="Physical World" shape="rectangle" items={[{"label":"heritage asset"},{"label":"actor"}]}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="Digital Representations" shape="rectangle" items={[{"label":"3D content"},{"label":"transformation process "}]}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="Reactive Behaviour" shape="rectangle" items={[{"label":"monitoring"},{"label":"what-if simulation"},{"label":"decision-support"}]}>
+
+    </QuizImageDropZone>
+  </QuizImageDropZones>
+</Quiz>
