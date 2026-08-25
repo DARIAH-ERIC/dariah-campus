@@ -33,6 +33,8 @@ translations: []
 dariah-national-consortia: []
 dariah-working-groups: []
 ---
+This resource is based on the presentation *AI and Knowledge Generation* by Aida Himmiche and Miriana Somenzi (ARIADNE), developed for the ARTEMIS Summer School 2026 in Hof, Germany. It builds on the concepts introduced in the session and uses examples from digital cultural heritage to explore how Large Language Models generate information, use context, and can be grounded through structured knowledge.
+
 ## **Introduction**
 
 Cultural heritage is rarely understandable as a collection of isolated objects. A monument can be connected to people, places, events, materials, scientific analyses, documents, images, excavation contexts, conservation activities, and changing interpretations. Heritage knowledge is therefore inherently relational: much of its meaning emerges from the connections among different pieces of information.
@@ -87,9 +89,7 @@ is beneficial but not essential.
 
 This resource is designed as a continuation of **Semantic Modelling for Heritage Digital Twins: Ontologies and Interoperability**. Learners who are new to semantic modelling are encouraged to complete that resource first, as it introduces ontologies, interoperability, semantic relationships, and Knowledge Graph structures that are used throughout the present resource.
 
-## **Enabling Intelligent Services with Knowledge Graphs and AI**
-
-### **Heritage Is Naturally a Graph**
+## **1. Heritage Is Naturally a Graph**
 
 When we think about cultural heritage, it is easy to focus on individual objects: an artefact, a building, a document, or a work of art. Yet the meaning of a heritage entity usually depends on a wider network of relationships. An object may have been created by a particular person, found at a particular place, documented by a report, analysed using a scientific method, or connected to a historical event.
 
@@ -110,7 +110,7 @@ For example, a graph might represent the statements:
 
 The important point is that the relationships are not secondary metadata. They are part of the knowledge itself. In cultural heritage, understanding how entities connect is often as important as describing the entities individually.
 
-### **From Single-Layer Graphs to Multiplex Heritage Networks**
+## **2. From Single-Layer Graphs to Multiplex Heritage Networks**
 
 A simple graph can model one type of relationship. Cultural heritage knowledge, however, rarely consists of only one relationship type. The same entities can be connected in several different ways at the same time.
 
@@ -164,7 +164,7 @@ This multiplex structure is one reason cultural heritage data becomes difficult 
   </QuizChoice>
 </Quiz>
 
-### **The Complexity Challenge: Why Turn to AI?**
+## **3. The Complexity Challenge: Why Turn to AI?**
 
 Heritage knowledge can contain large numbers of entities, sources, relationship types, and competing perspectives. The volume and diversity of this information can exceed what one person, or even one disciplinary team, can realistically process within a reasonable amount of time.
 
@@ -172,7 +172,7 @@ AI therefore appears attractive because it can assist with tasks involving large
 
 This creates a central tension for cultural heritage applications: AI can help us work with complexity, but AI systems themselves need to be critically evaluated and grounded in reliable knowledge.
 
-### **Why Large Language Models Can Hallucinate**
+## **4. Why Large Language Models Can Hallucinate**
 
 Large Language Models do not function as databases of verified facts. They learn statistical patterns from large amounts of training data. When generating a response, an LLM predicts likely next tokens based on those learned patterns and the context available in the current interaction.
 
@@ -337,5 +337,31 @@ The final output is ontology-aligned knowledge for the ARTEMIS Knowledge Base, w
 
 This pipeline illustrates an important principle: AI-assisted extraction is useful when it feeds into a semantic structure rather than remaining as isolated generated text.
 
+### **Why Cultural Heritage Data Challenges AI**
 
+Cultural heritage data poses particular challenges because the knowledge is not only large. It is heterogeneous in several different ways.
 
+* **Multi-modal:** heritage can be described through text, images, 3D models, scientific analyses, and archival records.
+* **Semantic:** meaning depends on relationships between people, places, events, materials, objects, and other entities.
+* **Distributed:** information is fragmented across independent repositories and institutions.
+* **Incomplete:** records can contain missing information, uncertainty, and interpretations that change over time.
+
+Heritage data is fragile, complex, distributed, and difficult to search. Physical objects may deteriorate, cultural memory may be lost, and a heritage entity's history can be too rich to fit comfortably into a rigid data structure.
+
+For AI, this means that meaningful reasoning cannot begin with isolated pieces of evidence alone. The heterogeneous evidence must first be brought into a coherent representation.
+
+### **The Limits of Traditional Retrieval**
+
+Traditional retrieval systems often rely on lexical matching between a user's query and indexed documents.
+
+This approach works well when:
+
+* the same terminology is used in both query and data;
+* metadata is consistent;
+* important relationships are explicitly stated.
+
+Cultural heritage information often violates these assumptions. Different institutions may use different vocabularies for similar concepts. Relevant evidence can be split across several records. Important connections may be implicit rather than written as a single searchable phrase.
+
+As a result, a system based only on exact words can miss relevant information even when the underlying concepts are strongly related.
+
+The challenge is therefore to move from searching only for matching words toward searching for related meaning.
