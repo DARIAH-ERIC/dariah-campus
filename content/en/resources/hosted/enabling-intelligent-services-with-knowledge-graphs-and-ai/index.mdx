@@ -224,5 +224,118 @@ However, attention is not the same as factual verification. Attention weights re
   </QuizChoice>
 </Quiz>
 
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      What does attention do?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        It checks every generated statement against a trusted cultural heritage database.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        It assigns different levels of relevance to parts of the available context when generating the next token.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        It helps the model identify relationships between tokens, even when they are far apart in the context.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        It permanently stores factual information encountered during a conversation.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        It converts structured data such as a Knowledge Graph directly into a database table.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
+
+### **Grounding AI with Knowledge Graphs**
+
+Knowledge Graphs can complement LLMs by providing structured, explicit, and verifiable context.
+
+An LLM is useful for working with natural language and extracting patterns from unstructured text. A Knowledge Graph, by contrast, represents entities and relationships in a structured semantic form. Combining the two creates a complementary workflow:
+
+* the LLM can help identify entities, concepts, relationships, and contextual information in unstructured heritage documentation;
+* domain ontologies can provide controlled semantic structures for interpreting and aligning those extracted elements;
+* the resulting Knowledge Graph can organise the extracted information as explicit, machine-readable relationships;
+* the Knowledge Graph can then provide structured context for AI-assisted querying and exploration.
+
+In ARTEMIS, this complementary relationship is used to support more reliable and explainable AI systems. The Knowledge Graph does not simply add more text to an LLM prompt. It provides an explicit semantic structure that can be inspected, queried, and connected to the underlying heritage knowledge.
+
+### **The Knowledge Extraction Bottleneck**
+
+Knowledge Graphs do not appear automatically from existing heritage documentation. Someone must identify relevant entities, materials, places, periods, events, and relationships and align them with domain concepts.
+
+Traditionally, much of this work is manual. Experts need to read reports, interpret terminology, identify relationships, and decide how information maps to an ontology. With large collections of scientific reports and heritage documentation, this process becomes slow and resource-intensive.
+
+This is the knowledge extraction bottleneck: the gap between the large amount of unstructured documentation that already exists and the structured, ontology-aligned knowledge needed for a Knowledge Graph.
+
+AI can assist with this process, but the goal is not uncontrolled automatic extraction. The aim is to combine machine-assisted extraction with ontology alignment, confidence estimation, and structured output.
+
+### **Artemisia Oracle: From Documents to Ontology-Aligned Knowledge**
+
+Artemisia Oracle is the ARTEMIS AI-assisted pipeline for transforming unstructured cultural heritage documentation into structured, ontology-aligned knowledge.The pipeline can be understood as four connected stages.
+
+<Figure src="/assets/content/assets/en/resources/hosted/enabling-intelligent-services-with-knowledge-graphs-and-ai/artemisia-pipeline.jpg" alt="Artemisia AI assisted Pipeline" alignment="stretch">
+
+</Figure>
+
+#### **1. Ingestion and Preprocessing**
+
+The first stage prepares source documents for analysis including:
+
+* text normalisation and language handling;
+* structural analysis and layout detection;
+* separation and alignment of text and visual elements;
+* content preparation for analysis.
+
+The result is processed content that can be used by the subsequent extraction stage.
+
+#### **2. Contextual Extraction and Embedding**
+
+The second stage uses an LLM to identify information such as:
+
+* entities;
+* relationships;
+* events;
+* materials;
+* places;
+* actors;
+* analyses.
+
+At the same time, embeddings are generated and stored so that semantic similarity can later be used during alignment and retrieval.
+
+#### **3. Ontology-Aware Semantic Alignment**
+
+The third stage aligns extracted information with ontology concepts.
+
+The presentation describes a hybrid approach that combines:
+
+* ontology indexing;
+* lexical retrieval;
+* embedding similarity;
+* candidate ranking.
+
+The LLM based ontology-linking component uses the extracted mention and its surrounding textual context to select the most appropriate mapping from the retrieved ontology candidates and assign a confidence score. When the mapping remains uncertain, the system does not force an ontology assignment but retains the candidate mappings for expert review and selection. The resulting mappings are subsequently validated by domain experts before being expressed as ontology-aligned RDF triples
+
+#### **4. Output**
+
+The final output is ontology-aligned knowledge for the ARTEMIS Knowledge Base, with RDF/Turtle serialization as a machine-readable representation.
+
+This pipeline illustrates an important principle: AI-assisted extraction is useful when it feeds into a semantic structure rather than remaining as isolated generated text.
+
 
 
