@@ -41,8 +41,7 @@ Graphs provide a useful way to represent this relational structure. They model e
 
 Artificial Intelligence (AI) offers powerful methods for working with large and heterogeneous heritage collections, but AI systems also introduce important limitations. Large Language Models (LLMs), for example, generate text from statistical patterns rather than retrieving verified facts from a database. Their outputs can therefore be fluent and plausible while still being incorrect. Knowledge Graphs can complement LLMs by supplying structured, semantically explicit, and verifiable context.
 
-This resource introduces the relationship between Knowledge Graphs and AI in the ARTEMIS context. It follows the path from basic graph concepts and the complexity of cultural heritage knowledge to LLM limitations, AI-assisted knowledge extraction, ontology alignment, representation learning, similarity search, natural-language exploration, and the development of intelligent services.\
-
+This resource introduces the relationship between Knowledge Graphs and AI in the ARTEMIS context. It follows the path from basic graph concepts and the complexity of cultural heritage knowledge to LLM limitations, AI-assisted knowledge extraction, ontology alignment, representation learning, similarity search, natural-language exploration, and the development of intelligent services.\\
 
 ## Learning Outcomes
 
@@ -87,8 +86,6 @@ is beneficial but not essential.
 ## **Suggested Learning Path**
 
 This resource is designed as a continuation of **Semantic Modelling for Heritage Digital Twins: Ontologies and Interoperability**. Learners who are new to semantic modelling are encouraged to complete that resource first, as it introduces ontologies, interoperability, semantic relationships, and Knowledge Graph structures that are used throughout the present resource.
-
-
 
 ## **Enabling Intelligent Services with Knowledge Graphs and AI**
 
@@ -169,7 +166,37 @@ This multiplex structure is one reason cultural heritage data becomes difficult 
 
 
 
+### **The Complexity Challenge: Why Turn to AI?**
 
+Heritage knowledge can contain large numbers of entities, sources, relationship types, and competing perspectives. The volume and diversity of this information can exceed what one person, or even one disciplinary team, can realistically process within a reasonable amount of time.
+
+AI therefore appears attractive because it can assist with tasks involving large amounts of information. But the question is not simply whether AI can process more data. The more important question is whether the resulting output can be trusted.
+
+This creates a central tension for cultural heritage applications: AI can help us work with complexity, but AI systems themselves need to be critically evaluated and grounded in reliable knowledge.
+
+
+
+### **Why Large Language Models Can Hallucinate**
+
+Large Language Models do not function as databases of verified facts. They learn statistical patterns from large amounts of training data. When generating a response, an LLM predicts likely next tokens based on those learned patterns and the context available in the current interaction.
+
+<Figure src="/assets/content/assets/en/resources/hosted/enabling-intelligent-services-with-knowledge-graphs-and-ai/database-vs-llm.jpg" alt="How a Database vs. a LLM give answers" alignment="stretch">
+
+</Figure>
+
+This distinction is important. A generated statement can sound convincing because it follows familiar linguistic and conceptual patterns, while still being unsupported or incorrect.
+
+A hallucination is therefore not necessarily the result of the model "ignoring" relevant information. The system may generate a highly plausible continuation even when the underlying claim is wrong, missing, or insufficiently supported.
+
+
+
+### **Attention and Context**
+
+Modern LLMs are built on the Transformer architecture. A central mechanism is attention, which allows a model to assign different levels of relevance to different parts of the available context when producing the next token.
+
+Attention improves the model's ability to work with relationships across a text. It can identify which parts of the context appear most relevant to the current prediction.
+
+However, attention is not the same as factual verification. Attention weights represent statistical relevance. A model can focus on the most relevant passage and still generate an incorrect answer if the generation process is not grounded in verified knowledge.
 
 
 
