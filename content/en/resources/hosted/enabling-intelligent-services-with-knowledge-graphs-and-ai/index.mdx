@@ -262,7 +262,7 @@ However, attention is not the same as factual verification. Attention weights re
   </QuizChoice>
 </Quiz>
 
-### **Grounding AI with Knowledge Graphs**
+## **5. Grounding AI with Knowledge Graphs**
 
 Knowledge Graphs can complement LLMs by providing structured, explicit, and verifiable context.
 
@@ -275,7 +275,7 @@ An LLM is useful for working with natural language and extracting patterns from 
 
 In ARTEMIS, this complementary relationship is used to support more reliable and explainable AI systems. The Knowledge Graph does not simply add more text to an LLM prompt. It provides an explicit semantic structure that can be inspected, queried, and connected to the underlying heritage knowledge.
 
-### **The Knowledge Extraction Bottleneck**
+### **6. The Knowledge Extraction Bottleneck**
 
 Knowledge Graphs do not appear automatically from existing heritage documentation. Someone must identify relevant entities, materials, places, periods, events, and relationships and align them with domain concepts.
 
@@ -285,7 +285,7 @@ This is the knowledge extraction bottleneck: the gap between the large amount of
 
 AI can assist with this process, but the goal is not uncontrolled automatic extraction. The aim is to combine machine-assisted extraction with ontology alignment, confidence estimation, and structured output.
 
-### **Artemisia Oracle: From Documents to Ontology-Aligned Knowledge**
+### **7. Artemisia Oracle: From Documents to Ontology-Aligned Knowledge**
 
 Artemisia Oracle is the ARTEMIS AI-assisted pipeline for transforming unstructured cultural heritage documentation into structured, ontology-aligned knowledge.The pipeline can be understood as four connected stages.
 
@@ -293,7 +293,7 @@ Artemisia Oracle is the ARTEMIS AI-assisted pipeline for transforming unstructur
 
 </Figure>
 
-#### **1. Ingestion and Preprocessing**
+### **7.1. Ingestion and Preprocessing**
 
 The first stage prepares source documents for analysis including:
 
@@ -304,7 +304,7 @@ The first stage prepares source documents for analysis including:
 
 The result is processed content that can be used by the subsequent extraction stage.
 
-#### **2. Contextual Extraction and Embedding**
+### **7.2. Contextual Extraction and Embedding**
 
 The second stage uses an LLM to identify information such as:
 
@@ -318,7 +318,7 @@ The second stage uses an LLM to identify information such as:
 
 At the same time, embeddings are generated and stored so that semantic similarity can later be used during alignment and retrieval.
 
-#### **3. Ontology-Aware Semantic Alignment**
+### **7.3. Ontology-Aware Semantic Alignment**
 
 The third stage aligns extracted information with ontology concepts.
 
@@ -331,13 +331,13 @@ The presentation describes a hybrid approach that combines:
 
 The LLM based ontology-linking component uses the extracted mention and its surrounding textual context to select the most appropriate mapping from the retrieved ontology candidates and assign a confidence score. When the mapping remains uncertain, the system does not force an ontology assignment but retains the candidate mappings for expert review and selection. The resulting mappings are subsequently validated by domain experts before being expressed as ontology-aligned RDF triples
 
-#### **4. Output**
+### **7.4. Output**
 
 The final output is ontology-aligned knowledge for the ARTEMIS Knowledge Base, with RDF/Turtle serialization as a machine-readable representation.
 
 This pipeline illustrates an important principle: AI-assisted extraction is useful when it feeds into a semantic structure rather than remaining as isolated generated text.
 
-### **Why Cultural Heritage Data Challenges AI**
+## **8. Why Cultural Heritage Data Challenges AI**
 
 Cultural heritage data poses particular challenges because the knowledge is not only large. It is heterogeneous in several different ways.
 
@@ -365,3 +365,94 @@ Cultural heritage information often violates these assumptions. Different instit
 As a result, a system based only on exact words can miss relevant information even when the underlying concepts are strongly related.
 
 The challenge is therefore to move from searching only for matching words toward searching for related meaning.
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      A researcher uses one term for a production technique, while the relevant records use a different but semantically related term. Why might a traditional lexical search miss the records?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Because lexical retrieval depends heavily on matching terminology.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Because lexical retrieval always converts terms into semantic embeddings first.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Because lexical retrieval can only search images.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Because Knowledge Graphs prevent synonyms from being used.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
+
+## **9. Representation Learning for Knowledge Graphs**
+
+To compare information based on meaning rather than only on exact words, AI systems need numerical representations.
+
+The presentation introduces vector embeddings as a common numerical language for Knowledge Graph elements. An embedding can be understood as a semantic fingerprint: a sequence of numbers representing aspects of an entity's meaning and context.
+
+Once entities are represented in a shared embedding space, their relative positions can be compared. If two entities are semantically similar in the representation learned by the system, their vectors will tend to be closer together than vectors representing unrelated entities.
+
+This makes it possible to use Knowledge Graphs in ways that go beyond exact symbolic matching. Representation learning can support search and exploration across large graphs by preserving useful patterns of similarity at different levels of meaning.
+
+It is important, however, to interpret similarity carefully. Being close in an embedding space does not mean that two heritage objects are identical. It means that the model has represented them as similar according to features and relationships reflected in the learned representation.
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      What Is a Vector Embedding?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        It stores the complete meaning of an entity as a human-readable set of definitions and relationships.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        It represents an entity, token, or piece of information as a numerical vector in a multidimensional space.**\&#xA;**
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        It can place semantically similar items close to one another, allowing similarity to be estimated mathematically.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        It guarantees that two nearby vectors describe entities with exactly the same meaning.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        It can support semantic search by comparing similarity rather than relying only on exact keyword matches.**\&#xA;**
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        It preserves all explicit relationships and constraints of an ontology or Knowledge Graph.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
+
+
+
