@@ -120,18 +120,17 @@ An ontology represents a shared understanding of a domain agreed by a community 
 Creating such a model is collaborative. Ontologists contribute modelling practices, technologists build the digital infrastructure, and content providers continuously evaluate and update the descriptions.
 
 <Quiz>
-  <QuizDragTheWords caseSensitive={false} distractors={[]} instantFeedback={false}>
-    Coin  @@Entity@@
+  <QuizImageDropZones distractors={[]} instantFeedback={false}>
+    <QuizQuestion>
+      Entity or Relationship?
+    </QuizQuestion>
 
-    Pompeii  @@Entity@@
+    <QuizImageDropZone label="Entity" shape="rectangle" items={[{"label":"Coin"},{"label":"Pompeii"},{"label":"1981"}]}>
 
-    Found in @@Relationship@@
+    </QuizImageDropZone>
 
-    1981 @@Entity@@
+    <QuizImageDropZone label="Relationship" shape="rectangle" items={[{"label":"Found in"},{"label":"Stored in"},{"label":"Created "}]}>
 
-    Stored in @@Relationship@@
-
-    Created @@Relationship@@
-  </QuizDragTheWords>
+    </QuizImageDropZone>
+  </QuizImageDropZones>
 </Quiz>
-
