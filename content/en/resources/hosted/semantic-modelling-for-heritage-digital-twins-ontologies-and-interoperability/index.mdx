@@ -220,3 +220,58 @@ The ARTEMIS ontology provides the semantic framework that connects these layers.
     </QuizImageDropZone>
   </QuizImageDropZones>
 </Quiz>
+
+## **Ontology Design Principles**
+
+The ARTEMIS ontology follows five design principles. Semantic interoperability supports shared understanding across systems. Event-centric traceability captures how knowledge is produced. Modular extensibility allows new domains to be added without redesigning the entire model. Provenance preservation tracks origins and transformations. Flexible granularity allows both detailed and lightweight documentation.
+
+### **1. Semantic Interoperability**
+
+Semantic interoperability means that different systems can exchange information while preserving a **shared understanding of what that information means**. The challenge is therefore not only whether two systems can transfer data, but whether they interpret concepts and relationships in compatible ways. A museum database may use the label *Item* while an excavation database uses *Artifact*; if both refer to a cultural object, the ontology provides a shared conceptual layer through which that equivalence can be understood.
+
+Within ARTEMIS, this principle is supported by reusing common conceptual models and semantic standards rather than forcing all partners to adopt the same local database structure. The wider architecture connects to the CIDOC CRM ecosystem and is complemented by shared identifiers, vocabularies, and standard semantic technologies. This makes it possible for specialised systems to remain different at the implementation level while still contributing to a coherent knowledge structure.
+
+In practical terms, semantic interoperability is what enables cross-domain questions to be asked across documentation, heritage science, monitoring, 3D information, and digital operations without first flattening all of those domains into one identical schema.
+
+### **2. Event-Centric Traceability**
+
+Event-centric traceability focuses on capturing **how knowledge is produced**. Instead of representing only a final result - for example, an XRF dataset, a cleaned 3D mesh, or a simulation output - the model also represents the activity that generated it. This allows the knowledge graph to connect outputs to the people, instruments, places, time-spans, methods, software, or other resources involved in their production.
+
+The event-centric perspective is especially important in cultural heritage because observations and interpretations are rarely context-free. A scientific measurement has meaning partly because we know which investigation produced it, under which conditions, and in relation to which heritage object. Similarly, a 3D model becomes more informative when the transformation steps that produced a later version are represented as explicit operations rather than hidden as undocumented file history.
+
+Traceability therefore turns a collection of results into a sequence of documented activities. It allows a learner or researcher to ask not only **“What data do we have?”** but also **“How did this knowledge come into being?”**
+
+### **3. Modular Extensibility**
+
+Modular extensibility allows ARTEMIS to support specialised domains without redesigning the whole ontology whenever a new type of data or workflow is introduced. The presentation distinguishes a common semantic backbone from domain-specific modules such as Heritage Science, 3D Information, Digital Operations, and Services. Each module can represent concepts that are specific to its domain while remaining connected to shared entities such as heritage assets, actors, places, events, time-spans, and digital objects.
+
+This balances two competing needs. On one hand, a single highly generic model may be too weak to describe the details required by specialist communities. On the other hand, completely independent domain models can create new semantic silos. A modular architecture allows specialisation while preserving consistency at the points where domains meet.
+
+For a Reactive Heritage Digital Twin, this is crucial because new data sources may appear over time. A project can extend the model with additional domain knowledge while continuing to reuse the shared conceptual structure that connects existing information.
+
+### **4. Provenance Preservation**
+
+Provenance preservation ensures that the **origin and transformation history of information remains explicit**. It answers questions such as: Which source was used? Which process transformed it? Which parameters or software were involved? Which output was derived from which earlier version? In ARTEMIS, provenance is therefore not an optional note attached at the end of a workflow; it is part of the structure of the knowledge model.
+
+The 3D Information and Digital Operations examples make this principle concrete. A raw 3D model can be linked to a mesh-cleaning operation and then to a cleaned model, while the operation itself can record inputs, outputs, parameters, software, and services. This creates an evidence chain that can be followed backwards from a derived result to its origin.
+
+Provenance preservation supports trust, reproducibility, and critical interpretation. Two outputs may look similar but have different evidential value if they were produced from different source data or through different transformations. By keeping these histories connected, ARTEMIS makes those differences inspectable.
+
+### **5. Flexible Granularity**
+
+Flexible granularity means that the same semantic framework can support both **detailed and lightweight documentation**. Not every project has the same resources, research questions, or data availability, and not every workflow needs the same level of description. ARTEMIS therefore allows information to be represented at a level of detail appropriate to the task while still using a compatible conceptual structure.
+
+A lightweight record might state that a digital operation produced a new 3D model. A more detailed record could additionally describe the software, parameters, input model, date, responsible actor, and specific transformation method. Both descriptions can remain meaningful within the same ontology because the model does not require every possible detail to be present in every case.
+
+This principle lowers the barrier to adoption while leaving room for richer documentation when needed. It also supports progressive enrichment: a project can begin with a relatively simple description and add further detail as new evidence, resources, or use cases become available.
+
+### **How the Five Principles Reinforce One Another**
+
+The ARTEMIS ontology is guided by five design principles: **semantic interoperability, event-centric traceability, modular extensibility, provenance preservation, and flexible granularity**. These principles are not isolated technical features. Together, they determine how heterogeneous heritage knowledge can be connected, how the production of that knowledge can be reconstructed, and how the model can remain useful across different domains and levels of documentation.
+
+The five principles work most effectively as a connected set. **Semantic interoperability** establishes shared meaning across systems. **Modular extensibility** allows specialised domains to participate without losing that common meaning. **Event-centric traceability** represents the activities through which knowledge is produced, while **provenance preservation** keeps the origins and transformation chains of the resulting information explicit. **Flexible granularity** allows all of this to be documented at an appropriate level of detail rather than imposing a single level of complexity on every project.
+
+The distinction between event-centric traceability and provenance preservation is particularly useful. Event-centric traceability emphasises the **activity itself** - what happened, who or what participated, and in which context. Provenance preservation emphasises the **lineage of information** - where a result came from and how it was transformed. In practice, the two principles strongly reinforce one another: modelling an activity as an event provides the structure through which provenance can be expressed and queried.
+
+Consider the fictional Temple of Athena scenario. A laser-scanning campaign produces a raw 3D model, a mesh-cleaning operation transforms it into a new version, humidity monitoring produces observations, and a simulation uses selected inputs to assess moisture risk. Semantic interoperability connects these domains; event-centric traceability records the activities; provenance preservation links results to their sources and transformations; modular extensibility keeps the specialised domains distinct but connected; and flexible granularity allows each step to be documented with more or less detail depending on the needs of the project.
+
