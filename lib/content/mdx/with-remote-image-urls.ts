@@ -17,7 +17,9 @@ export const withRemoteImageUrls: Plugin<[WithRemoteImageUrlsOptions], Root> = f
 
 	return function transformer(tree, vfile) {
 		function getImagePath(src: unknown): string | null {
-			if (typeof src !== "string") {return null;}
+			if (typeof src !== "string") {
+				return null;
+			}
 
 			if (src.startsWith("/")) {
 				return `${baseUrl}/public${src}`;
@@ -34,20 +36,30 @@ export const withRemoteImageUrls: Plugin<[WithRemoteImageUrlsOptions], Root> = f
 		}
 
 		visit(tree, (node, index, parent) => {
-			if (parent == null) {return;}
-			if (index == null) {return;}
+			if (parent == null) {
+				return;
+			}
+			if (index == null) {
+				return;
+			}
 
 			if (node.type === "element" && node.tagName === "img") {
 				const path = getImagePath(node.properties.src);
-				if (path == null) {return;}
+				if (path == null) {
+					return;
+				}
 				node.properties.src = path;
 			} else if (node.type === "mdxJsxFlowElement" && node.name != null && components.includes(node.name)) {
-				const attribute = node.attributes.find((attribute) => 
-					attribute.type === "mdxJsxAttribute" && attribute.name === "src"
+				const attribute = node.attributes.find(
+					(attribute) => attribute.type === "mdxJsxAttribute" && attribute.name === "src",
 				);
-				if (attribute?.value == null) {return;}
+				if (attribute?.value == null) {
+					return;
+				}
 				const path = getImagePath(attribute.value);
-				if (path == null) {return;}
+				if (path == null) {
+					return;
+				}
 				attribute.value = path;
 			}
 		});

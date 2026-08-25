@@ -61,6 +61,10 @@ test-results/
 # generated content
 .content/
 
+# e2e fixture content, created by `e2e:fixtures:create`
+/content/*/resources/hosted/e2e-*/
+/public/assets/content/assets/*/resources/hosted/e2e-*/
+
 # generated metadata dump
 public/metadata/*.json
 

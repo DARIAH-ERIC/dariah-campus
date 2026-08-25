@@ -89,6 +89,16 @@ export function QuizChoiceQuestionPreview(props: Readonly<QuizChoiceQuestionPrev
 	return children;
 }
 
+interface QuizQuestionPreviewProps {
+	children: ReactNode;
+}
+
+export function QuizQuestionPreview(props: Readonly<QuizQuestionPreviewProps>): ReactNode {
+	const { children } = props;
+
+	return children;
+}
+
 interface QuizErrorMessagePreviewProps {
 	children: ReactNode;
 }

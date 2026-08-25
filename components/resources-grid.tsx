@@ -23,13 +23,12 @@ interface ResourcesGridProps {
 		contentType: ContentType | "curriculum" | "event" | "pathfinder";
 		summary: { content: string; title: string };
 	}>;
-	variant?: "default" | "search";
 }
 
 export function ResourcesGrid(props: Readonly<ResourcesGridProps>): ReactNode {
-	const { peopleLabel, resources, variant } = props;
+	const { peopleLabel, resources } = props;
 
-	const columns = useMasonryLayout(resources, variant);
+	const columns = useMasonryLayout(resources);
 
 	if (columns != null) {
 		return (

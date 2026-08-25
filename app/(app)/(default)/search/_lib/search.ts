@@ -37,6 +37,8 @@ export interface SearchData extends ResourceSearchResult<FacetAttribute> {}
 
 type SearchParameterRecord = Record<string, Array<string> | string | undefined>;
 
+export const emptyFilters: SearchState["filters"] = toRecord(facetAttributes, () => []);
+
 export const emptySearchData: SearchData = {
 	items: [],
 	pagination: { page: 1, perPage: limit, total: 0, totalPages: 0 },

@@ -17,15 +17,16 @@ import { createFootnote } from "#/lib/content/keystatic/components/footnote/inde
 import { createGrid } from "#/lib/content/keystatic/components/grid/index.tsx";
 import { createHeadingId } from "#/lib/content/keystatic/components/heading-id/index.tsx";
 import { createImageLayers } from "#/lib/content/keystatic/components/image-layers/index.tsx";
-import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
+import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createTabs } from "#/lib/content/keystatic/components/tabs/index.tsx";
 import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx";
+import { createWorksheet } from "#/lib/content/keystatic/components/worksheet/index.tsx";
 import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 import * as validation from "#/lib/content/keystatic/validation.ts";
 import { contentLanguages, contentLicenses, socialMediaKinds } from "#/lib/content/options.ts";
 
-export const createResourcesEvents = createCollection("/resources/events/", (paths, locale) => 
+export const createResourcesEvents = createCollection("/resources/events/", (paths, locale) =>
 	collection({
 		label: "Events",
 		path: paths.contentPath,
@@ -270,6 +271,7 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 					...createCarousel(paths, locale),
 					// ...createDiagram(paths, locale),
 					...createDisclosure(paths, locale),
+					...createWorksheet(paths, locale),
 					...createEmbed(paths, locale),
 					...createFigure(paths, locale),
 					...createFootnote(paths, locale),
@@ -358,6 +360,7 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 								...createCarousel(paths, locale),
 								// ...createDiagram(paths, locale),
 								...createDisclosure(paths, locale),
+								...createWorksheet(paths, locale),
 								...createEmbed(paths, locale),
 								...createFigure(paths, locale),
 								...createFootnote(paths, locale),
@@ -446,6 +449,7 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 											...createCarousel(paths, locale),
 											// ...createDiagram(paths, locale),
 											...createDisclosure(paths, locale),
+											...createWorksheet(paths, locale),
 											...createEmbed(paths, locale),
 											...createFigure(paths, locale),
 											...createFootnote(paths, locale),
@@ -512,5 +516,5 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 			}),
 			draft: fields.ignored(),
 		},
-	})
+	}),
 );

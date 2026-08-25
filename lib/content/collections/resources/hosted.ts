@@ -5,6 +5,7 @@ import { VFile } from "vfile";
 import { reader } from "#/lib/content/keystatic/reader.ts";
 import { type CompileOptions, compile } from "#/lib/content/mdx/compile.ts";
 import {
+	createContentSectionsPlugin,
 	createCustomHeadingIdsPlugin,
 	createHeadingIdsPlugin,
 	createIframeTitlesPlugin,
@@ -40,9 +41,17 @@ const compileOptions: CompileOptions = {
 		createCustomHeadingIdsPlugin(),
 		createHeadingIdsPlugin(),
 		createIframeTitlesPlugin(["Embed", "Video"]),
-		createImageSizesPlugin(["CarouselItem", "Figure", "ImageLayer", "QuizImageHotspots", "VideoCard"]),
+		createImageSizesPlugin([
+			"CarouselItem",
+			"Figure",
+			"ImageLayer",
+			"QuizImageDropZones",
+			"QuizImageHotspots",
+			"VideoCard",
+		]),
 		createMermaidDiagramsPlugin(),
 		createSyntaxHighlighterPlugin(),
+		createContentSectionsPlugin(),
 		createTableOfContentsPlugin(),
 		createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
 	],
@@ -64,6 +73,7 @@ export const resourcesHosted = createCollection({
 		const output = await compile(input, compileOptions);
 		const module = context.createJavaScriptImport<MDXContent>(String(output));
 		const tableOfContents = output.data.tableOfContents;
+		const sections = output.data.sections ?? [];
 		const featuredImage =
 			metadata["featured-image"] != null ? await getImageDimensions(metadata["featured-image"]) : null;
 
@@ -74,6 +84,7 @@ export const resourcesHosted = createCollection({
 				...metadata,
 				"featured-image": featuredImage,
 			},
+			sections,
 			tableOfContents,
 		};
 	},

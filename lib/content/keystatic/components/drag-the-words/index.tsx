@@ -8,7 +8,7 @@ import { DragTheWordsPreview } from "#/lib/content/keystatic/components/drag-the
 export const createQuizDragTheWords = createComponent((_paths, _locale) => {
 	return {
 		QuizDragTheWords: wrapper({
-			label: "Quiz - Drag the words",
+			label: "Drag the words",
 			description: "An interactive drag-the-words exercise.",
 			icon: <FormInputIcon />,
 			forSpecificLocations: true,

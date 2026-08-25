@@ -1,20 +1,14 @@
 "use client";
 
-
 import { type UseObjectUrlParams, useObjectUrl } from "@acdh-oeaw/keystatic-lib/preview";
 import { Button } from "@keystar/ui/button";
 import { NotEditable } from "@keystatic/core";
 import cn from "clsx/lite";
 import { MapPinIcon } from "lucide-react";
-import {
-	type CSSProperties,
-	type ReactNode,
-	type PointerEvent as ReactPointerEvent,
-	useCallback,
-	useRef,
-	useState,
-} from "react";
+import { type CSSProperties, type ReactNode, type PointerEvent as ReactPointerEvent, useRef } from "react";
 import { createPortal } from "react-dom";
+
+import { useImageOverlay } from "#/lib/content/keystatic/components/use-image-overlay.ts";
 
 interface QuizImageHotspotsPreviewProps {
 	alt?: string;
@@ -27,7 +21,7 @@ export function QuizImageHotspotsPreview(props: Readonly<QuizImageHotspotsPrevie
 	const url = useObjectUrl(src);
 
 	return (
-		<figure className="grid gap-y-3 rounded-md border border-neutral-200 p-3">
+		<figure className="grid grid-cols-[minmax(0,1fr)] gap-y-3 rounded-md border border-neutral-200 p-3">
 			<NotEditable>
 				<div className="relative isolate overflow-hidden rounded-md min-block-12" data-hotspot-overlay="">
 					{url != null ? (
@@ -41,7 +35,7 @@ export function QuizImageHotspotsPreview(props: Readonly<QuizImageHotspotsPrevie
 				</div>
 			</NotEditable>
 			<figcaption>
-				<div aria-label="Hotspots" className="grid gap-y-3" role="list">
+				<div aria-label="Hotspots" className="grid grid-cols-[minmax(0,1fr)] gap-y-3" role="list">
 					{children}
 				</div>
 			</figcaption>
@@ -72,20 +66,21 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 		startX: number;
 		startY: number;
 	} | null>(null);
-	const [overlay, setOverlay] = useState<HTMLElement | null>(null);
+	const { initCard, overlay, size } = useImageOverlay("[data-hotspot-overlay]");
 	const x = value.x ?? 50;
 	const y = value.y ?? 50;
-	const initCard = useCallback((element: HTMLDivElement | null) => {
-		const overlay = element?.closest("figure")?.querySelector<HTMLElement>("[data-hotspot-overlay]");
-		setOverlay(overlay ?? null);
-	}, []);
+	/** The same point in the image's own pixels, which is the number an author reads off an image editor. */
+	const pointInPixels =
+		size == null ? null : { x: Math.round((x / 100) * size.inlinePx), y: Math.round((y / 100) * size.blockPx) };
 	const style = {
 		"--hotspot-x": `${String(x)}%`,
 		"--hotspot-y": `${String(y)}%`,
 	} as CSSProperties;
 
 	function getPosition(clientX: number, clientY: number): { x: number; y: number } | null {
-		if (overlay == null) {return null;}
+		if (overlay == null) {
+			return null;
+		}
 
 		const bounds = overlay.getBoundingClientRect();
 		const x = Math.min(Math.max(((clientX - bounds.left) / bounds.width) * 100, 0), 100);
@@ -96,7 +91,9 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 
 	function previewPointerPosition(event: ReactPointerEvent<HTMLButtonElement>): void {
 		const position = getPosition(event.clientX, event.clientY);
-		if (position == null) {return;}
+		if (position == null) {
+			return;
+		}
 
 		event.currentTarget.style.setProperty("--hotspot-x", `${String(position.x)}%`);
 		event.currentTarget.style.setProperty("--hotspot-y", `${String(position.y)}%`);
@@ -122,7 +119,9 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 								ArrowUp: [0, -step],
 							}[event.key];
 
-							if (movement == null) {return;}
+							if (movement == null) {
+								return;
+							}
 							event.preventDefault();
 							onChange({
 								...value,
@@ -131,7 +130,9 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 							});
 						}}
 						onPointerDown={(event) => {
-							if (event.button !== 0) {return;}
+							if (event.button !== 0) {
+								return;
+							}
 							onSelect();
 							event.preventDefault();
 							event.stopPropagation();
@@ -144,27 +145,39 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 							};
 						}}
 						onPointerMove={(event) => {
-							if (!event.currentTarget.hasPointerCapture(event.pointerId)) {return;}
+							if (!event.currentTarget.hasPointerCapture(event.pointerId)) {
+								return;
+							}
 							const drag = dragStateRef.current;
-							if (drag?.pointerId !== event.pointerId) {return;}
+							if (drag?.pointerId !== event.pointerId) {
+								return;
+							}
 
 							if (!drag.hasMoved) {
 								const deltaX = event.clientX - drag.startX;
 								const deltaY = event.clientY - drag.startY;
-								if (Math.hypot(deltaX, deltaY) < 4) {return;}
+								if (Math.hypot(deltaX, deltaY) < 4) {
+									return;
+								}
 								drag.hasMoved = true;
 							}
 							previewPointerPosition(event);
 						}}
 						onPointerUp={(event) => {
-							if (!event.currentTarget.hasPointerCapture(event.pointerId)) {return;}
+							if (!event.currentTarget.hasPointerCapture(event.pointerId)) {
+								return;
+							}
 							const hasMoved = dragStateRef.current?.hasMoved === true;
 							event.currentTarget.releasePointerCapture(event.pointerId);
 							dragStateRef.current = null;
-							if (!hasMoved) {return;}
+							if (!hasMoved) {
+								return;
+							}
 
 							const position = getPosition(event.clientX, event.clientY);
-							if (position != null) {onChange({ ...value, ...position });}
+							if (position != null) {
+								onChange({ ...value, ...position });
+							}
 						}}
 						style={style}
 						type="button"
@@ -190,8 +203,17 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 			<NotEditable>
 				{marker}
 				<div className="flex items-center justify-between gap-x-3">
-					<p className="flex-1 truncate text-sm font-medium min-inline-0">
-						{value.label || "Untitled hotspot"} ({x.toFixed(1)}%, {y.toFixed(1)}%)
+					<p className="flex-1 text-sm font-medium min-inline-0">
+						{value.label || "Untitled hotspot"}{" "}
+						<span className="font-normal text-(--kui-color-foreground-neutral-secondary)">
+							at {x.toFixed(1)}%, {y.toFixed(1)}%
+							{pointInPixels != null ? (
+								<>
+									{" "}
+									&asymp; {pointInPixels.x}, {pointInPixels.y}&nbsp;px
+								</>
+							) : null}
+						</span>
 					</p>
 					{onEditChildren != null ? (
 						<Button onFocus={onSelect} onPress={onEditChildren} prominence="low">

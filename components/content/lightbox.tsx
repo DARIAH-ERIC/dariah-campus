@@ -18,7 +18,10 @@ export function LightBox(props: Readonly<LightBoxProps>): ReactNode {
 	return (
 		<ModalOverlay>
 			<Modal className="fixed inset-0 bg-neutral-800 p-4 text-white">
-				<Dialog aria-label={dialogLabel} className="grid grid-rows-[auto_1fr_auto] gap-y-4 outline-none block-full inline-full">
+				<Dialog
+					aria-label={dialogLabel}
+					className="grid grid-rows-[auto_1fr_auto] gap-y-4 outline-none block-full inline-full"
+				>
 					<header className="flex justify-end">
 						<Button
 							className="rounded-full transition hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-white"

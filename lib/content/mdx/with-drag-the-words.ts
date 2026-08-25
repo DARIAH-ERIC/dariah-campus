@@ -5,7 +5,7 @@ import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
 // oxlint-disable-next-line prefer-named-capture-group
-const BLANK_PATTERN = /@@([^@]+)@#/g;
+const BLANK_PATTERN = /@@([^@]+)@@/g;
 
 /**
  * Parses the inner content of a blank marker. The hint follows `::`. Examples: `Paris` → answer: "Paris", hint:
@@ -98,16 +98,22 @@ function splitTextNode(
 export const withDragTheWords: Plugin<[], Root> = function withDragTheWords() {
 	return function transformer(tree, file) {
 		visit(tree, "mdxJsxFlowElement", (dragTheWordsNode) => {
-			if (dragTheWordsNode.name !== "QuizDragTheWords") { return; }
+			if (dragTheWordsNode.name !== "QuizDragTheWords") {
+				return;
+			}
 
 			let blankCount = 0;
 			const allAnswers: Array<string> = [];
 
 			visit(dragTheWordsNode as unknown as Root, "text", (textNode: Text, index, parent) => {
-				if (parent == null || index == null) { return; }
+				if (parent == null || index == null) {
+					return;
+				}
 
 				BLANK_PATTERN.lastIndex = 0;
-				if (!BLANK_PATTERN.test(textNode.value)) { return; }
+				if (!BLANK_PATTERN.test(textNode.value)) {
+					return;
+				}
 
 				const { nodes, nextId, answers } = splitTextNode(textNode, blankCount);
 				blankCount = nextId;

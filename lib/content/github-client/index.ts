@@ -4,10 +4,10 @@ import { assert, createUrl } from "@acdh-oeaw/lib";
 import { createGitHubReader } from "@keystatic/core/reader/github";
 import { cache } from "react";
 
-import { client } from "#/lib/content/client/index.ts";
 import type { Curriculum } from "#/lib/content/client/curricula.ts";
 import type { Documentation } from "#/lib/content/client/documentation.ts";
 import type { IndexPage } from "#/lib/content/client/index-page.ts";
+import { client } from "#/lib/content/client/index.ts";
 import type { Person } from "#/lib/content/client/people.ts";
 import type { EventResource } from "#/lib/content/client/resources/events.ts";
 import type { ExternalResource } from "#/lib/content/client/resources/external.ts";
@@ -18,6 +18,7 @@ import type { Tag } from "#/lib/content/client/tags.ts";
 import { config } from "#/lib/content/keystatic/config.ts";
 import { evaluate } from "#/lib/content/mdx/evaluate.ts";
 import {
+	createContentSectionsPlugin,
 	createCustomHeadingIdsPlugin,
 	createHeadingIdsPlugin,
 	createIframeTitlesPlugin,
@@ -52,11 +53,19 @@ const createEvaluateOptions = (baseUrl: string) => {
 			createIframeTitlesPlugin(["Embed", "Video"]),
 			createMermaidDiagramsPlugin(),
 			createSyntaxHighlighterPlugin(),
+			createContentSectionsPlugin(),
 			createTableOfContentsPlugin(),
 			createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
-			createRemoteImageUrlsPlugin(baseUrl, ["CarouselItem", "Figure", "ImageLayer", "QuizImageHotspots", "VideoCard"]),
+			createRemoteImageUrlsPlugin(baseUrl, [
+				"CarouselItem",
+				"Figure",
+				"ImageLayer",
+				"QuizImageDropZones",
+				"QuizImageHotspots",
+				"VideoCard",
+			]),
 		],
-	}
+	};
 };
 
 export const createGitHubClient = cache(function createGitHubClient({
@@ -243,13 +252,14 @@ export const createGitHubClient = cache(function createGitHubClient({
 			const { content, ...metadata } = data;
 
 			const href = `/documentation/${id}`;
-			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
+			const { default: component, sections, tableOfContents } = await evaluate(content, evaluateOptions);
 
 			return {
 				id,
 				content: component,
 				href,
 				metadata,
+				sections,
 				tableOfContents,
 			};
 		},
@@ -279,12 +289,23 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const { content, ...metadata } = data;
 
+			const href = `/people/${id}`;
 			const { default: component } = await evaluate(content, evaluateOptions);
 			const image = createGitHubUrl(metadata.image);
+			const hasContent = content.trim().length > 0;
+
+			// TODO: read from prebuilt client?
+			const person = await client.collections.people.get(id);
+			const curricula = person?.curricula ?? [];
+			const resources = person?.resources ?? [];
 
 			return {
 				id,
 				content: component,
+				hasContent,
+				href,
+				curricula,
+				resources,
 				metadata: {
 					...metadata,
 					image,
@@ -449,7 +470,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 			const { content, ...metadata } = data;
 
 			const href = `/resources/hosted/${id}`;
-			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
+			const { default: component, sections, tableOfContents } = await evaluate(content, evaluateOptions);
 			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
@@ -469,6 +490,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 				},
 				curricula,
 				related,
+				sections,
 				tableOfContents,
 			};
 		},
@@ -613,12 +635,25 @@ export const createGitHubClient = cache(function createGitHubClient({
 
 			const { content, ...metadata } = data;
 
+			const href = `/topics/${id}`;
 			const { default: component } = await evaluate(content, evaluateOptions);
+
+			// TODO: read from prebuilt client?
+			const tag = await client.collections.tags.get(id);
+			const curricula = tag?.curricula ?? [];
+			const resources = tag?.resources ?? [];
 
 			return {
 				id,
 				content: component,
-				metadata,
+				href,
+				curricula,
+				resources,
+				metadata: {
+					...metadata,
+					/** The body as plain text, for contexts which cannot render the compiled mdx, e.g. a search facet listbox. */
+					description: content.trim(),
+				},
 			};
 		},
 	};
