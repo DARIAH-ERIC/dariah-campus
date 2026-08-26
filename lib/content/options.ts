@@ -1,3 +1,5 @@
+import { isRTL } from "react-aria-components";
+
 export const calloutKinds = [
 	{ label: "Caution", value: "caution" },
 	{ label: "Important", value: "important" },
@@ -95,10 +97,8 @@ export const inlineLanguages = [
 
 export type InlineLanguage = (typeof inlineLanguages)[number]["value"];
 
-const rtlLanguages = new Set<InlineLanguage>(["ar", "he", "fa", "ur"]);
-
 export function getTextDirection(language: InlineLanguage): "ltr" | "rtl" {
-	return rtlLanguages.has(language) ? "rtl" : "ltr";
+	return isRTL(language) ? "rtl" : "ltr";
 }
 
 export type LinkKind = (typeof linkKinds)[number]["value"];
