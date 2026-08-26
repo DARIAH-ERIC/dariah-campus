@@ -79,6 +79,28 @@ export const linkKinds = [
 	{ label: "Documentation", value: "documentation" },
 ] as const;
 
+export const inlineLanguages = [
+	{ label: "Arabic", value: "ar" },
+	{ label: "English", value: "en" },
+	{ label: "French", value: "fr" },
+	{ label: "German", value: "de" },
+	{ label: "Hebrew", value: "he" },
+	{ label: "Italian", value: "it" },
+	{ label: "Latin", value: "la" },
+	{ label: "Persian", value: "fa" },
+	{ label: "Russian", value: "ru" },
+	{ label: "Spanish", value: "es" },
+	{ label: "Urdu", value: "ur" },
+] as const;
+
+export type InlineLanguage = (typeof inlineLanguages)[number]["value"];
+
+const rtlLanguages = new Set<InlineLanguage>(["ar", "he", "fa", "ur"]);
+
+export function getTextDirection(language: InlineLanguage): "ltr" | "rtl" {
+	return rtlLanguages.has(language) ? "rtl" : "ltr";
+}
+
 export type LinkKind = (typeof linkKinds)[number]["value"];
 
 export const socialMediaKinds = [

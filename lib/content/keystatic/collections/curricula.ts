@@ -21,6 +21,7 @@ import { createLinkButton } from "#/lib/content/keystatic/components/link-button
 import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createQuiz } from "#/lib/content/keystatic/components/quiz/index.tsx";
 // import { createQuiz } from "#/lib/content/keystatic/components/quiz/index.tsx";
+import { createLanguage } from "@/lib/content/keystatic/components/language/index.tsx";
 import { createTabs } from "#/lib/content/keystatic/components/tabs/index.tsx";
 import { createVideoCard } from "#/lib/content/keystatic/components/video-card/index.tsx";
 import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx";
@@ -168,6 +169,7 @@ export const createCurricula = createCollection("/curricula/", (paths, locale) =
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
 					...createQuiz(paths, locale),
+					...createLanguage(paths, locale),
 					...createTabs(paths, locale),
 					...createVideo(paths, locale),
 					...createVideoCard(paths, locale),
