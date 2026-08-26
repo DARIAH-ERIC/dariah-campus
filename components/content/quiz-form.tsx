@@ -3,8 +3,8 @@
 import { AlertCircleIcon, CheckIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
-import { useQuizContext } from "#/components/content/quiz.tsx";
 import { QuizControls } from "#/components/content/quiz-controls.tsx";
+import { useQuizContext } from "#/components/content/quiz.tsx";
 
 interface QuizFormProps {
 	children: ReactNode;

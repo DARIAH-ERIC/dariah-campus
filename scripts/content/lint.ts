@@ -24,7 +24,7 @@ import { createVideoUrl } from "#/lib/navigation/create-video-url.ts";
 
 const skipUrlPatterns = [/^(?!https?:\/\/)/i];
 
-interface Options { }
+interface Options {}
 
 /** @see https://github.com/remarkjs/remark-lint-no-dead-urls */
 async function rule(tree: Root, file: VFile, _options: Options) {
@@ -32,11 +32,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 	const nodesByUrl = new Map<string, Array<Node>>();
 
 	function add(value: string, node: Node) {
-		if (
-			skipUrlPatterns.some((pattern) =>
-				pattern.test(value)
-			)
-		) {
+		if (skipUrlPatterns.some((pattern) => pattern.test(value))) {
 			return;
 		}
 
@@ -67,13 +63,9 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 
 					const directory = relative(file.cwd, file.dirname!);
 
-					const socialMediaIds = new Set<string>(socialMediaKinds
-						.map((kind) =>
-							kind.value
-						)
-						.filter((value) =>
-							value !== "email"
-						));
+					const socialMediaIds = new Set<string>(
+						socialMediaKinds.map((kind) => kind.value).filter((value) => value !== "email"),
+					);
 
 					if (directory.includes("events")) {
 						const result = v.parse(
@@ -162,8 +154,8 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 
 			case "mdxJsxFlowElement": {
 				function getAttributeValue(node: MdxJsxFlowElement, name: string) {
-					const value = node.attributes.find((attribute) =>
-						attribute.type === "mdxJsxAttribute" && attribute.name === name
+					const value = node.attributes.find(
+						(attribute) => attribute.type === "mdxJsxAttribute" && attribute.name === name,
 					)?.value;
 
 					assert(
@@ -194,9 +186,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 						const provider = getAttributeValue(node, "provider");
 						assert(
 							includes(
-								videoProviders.map((provider) =>
-									provider.value
-								),
+								videoProviders.map((provider) => provider.value),
 								provider,
 							),
 							`Invalid \`provider\` attribute on \`${node.name}\` component in \`${file.path}\`.`,
@@ -213,8 +203,8 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 
 			case "mdxJsxTextElement": {
 				function getAttributeExpressionValue(node: MdxJsxTextElement, name: string) {
-					const value = node.attributes.find((attribute) =>
-						attribute.type === "mdxJsxAttribute" && attribute.name === name
+					const value = node.attributes.find(
+						(attribute) => attribute.type === "mdxJsxAttribute" && attribute.name === name,
 					)?.value;
 
 					assert(

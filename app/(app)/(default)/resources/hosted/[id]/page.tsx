@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { Fragment, type ReactNode } from "react";
 
 import { Citation } from "#/components/citation.tsx";
+import { ContentSectionNavigation } from "#/components/content-section-navigation.tsx";
+import { createContentSection } from "#/components/content/content-section.tsx";
 import { CurriculaList } from "#/components/curricula-list.tsx";
 import { FloatingTableOfContents } from "#/components/floating-table-of-contents.tsx";
 import { PeopleList } from "#/components/people-list.tsx";
@@ -20,6 +22,7 @@ import { env } from "#/configs/env.config.ts";
 import { client } from "#/lib/content/client/index.ts";
 import { createClient } from "#/lib/content/create-client.ts";
 import { createResourceMetadata } from "#/lib/content/utils/create-resource-metadata.ts";
+import { getCurrentContentSection, getHeadingSections } from "#/lib/content/utils/get-content-sections.ts";
 import { getMetadata } from "#/lib/i18n/metadata.ts";
 import { createFullUrl } from "#/lib/navigation/create-full-url.ts";
 import { pickRandom } from "#/lib/utils/pick-random.ts";
@@ -100,7 +103,7 @@ export async function generateMetadata(props: Readonly<HostedResourcePageProps>)
 }
 
 export default async function HostedResourcePage(props: Readonly<HostedResourcePageProps>): Promise<ReactNode> {
-	const { params } = props;
+	const { params, searchParams } = props;
 
 	const t = await getTranslations("HostedResourcePage");
 
@@ -135,6 +138,14 @@ export default async function HostedResourcePage(props: Readonly<HostedResourceP
 	const tableOfContents = resource.tableOfContents;
 	const related = pickRandom(Array.from(resource.related), 4);
 
+	/**
+	 * Only resources which are actually split up into sections read search params, so every other resource is still
+	 * prerendered.
+	 */
+	const sections = resource.sections;
+	const currentSection = sections.length > 1 ? getCurrentContentSection(sections, (await searchParams).section) : null;
+	const headingSections = currentSection != null ? getHeadingSections(sections) : undefined;
+
 	async function getTranslationMetadata(id: string) {
 		const resource = await client.collections.resources.get(id);
 		assert(resource, `Missing resource "${id}".`);
@@ -162,9 +173,9 @@ export default async function HostedResourcePage(props: Readonly<HostedResourceP
 
 	return (
 		<div>
-			<div className="mx-auto grid max-w-screen-lg gap-y-10 px-4 py-8 inline-full xs:px-8 xs:py-16 xl:grid-cols-(--content-layout) xl:gap-x-8 xl:gap-y-0 xl:max-inline-none">
+			<div className="mx-auto grid max-w-screen-lg gap-y-10 px-4 py-8 inline-full xs:px-8 xs:py-16 xl:grid-cols-(--content-layout) xl:gap-x-(--content-layout-gap) xl:gap-y-0 xl:max-inline-none">
 				<aside
-					className="sticky inset-bs-24 hidden gap-y-8 justify-self-end overflow-y-auto p-6 text-sm text-neutral-500 inline-full max-block-screen max-inline-xs xl:flex xl:flex-col 2xl:p-8"
+					className="sticky inset-bs-24 hidden gap-y-8 justify-self-end overflow-y-auto p-6 text-sm text-neutral-500 inline-full max-block-screen max-inline-(--size-sidebar) xl:flex xl:flex-col 2xl:p-8"
 					style={{ maxHeight: "calc(100dvh - 12px - var(--page-header-height))" }}
 				>
 					<div className="flex flex-col gap-y-5">
@@ -301,8 +312,15 @@ export default async function HostedResourcePage(props: Readonly<HostedResourceP
 						translations={translations}
 					>
 						<div className="prose">
-							<Content />
+							<Content
+								components={
+									currentSection != null ? { ContentSection: createContentSection(currentSection.id) } : undefined
+								}
+							/>
 						</div>
+						{currentSection != null ? (
+							<ContentSectionNavigation currentSectionId={currentSection.id} sections={sections} />
+						) : null}
 					</Resource>
 					<div className="mx-auto mbs-12 flex flex-col gap-y-12 border-bs border-neutral-200 pbs-12 text-sm text-neutral-500 inline-full max-inline-(--size-content) xl:hidden">
 						<ResourceDetails
@@ -372,7 +390,7 @@ export default async function HostedResourcePage(props: Readonly<HostedResourceP
 				{resource.metadata["table-of-contents"] && tableOfContents != null && tableOfContents.length > 0 ? (
 					<Fragment>
 						<aside
-							className="sticky inset-bs-24 hidden overflow-y-auto p-6 text-sm text-neutral-500 inline-full max-block-screen max-inline-xs xl:flex xl:flex-col 2xl:p-8"
+							className="sticky inset-bs-24 hidden overflow-y-auto p-6 text-sm text-neutral-500 inline-full max-block-screen max-inline-(--size-sidebar) xl:flex xl:flex-col 2xl:p-8"
 							style={{
 								maxHeight: "calc(100dvh - 12px - var(--page-header-height))",
 							}}
@@ -380,6 +398,8 @@ export default async function HostedResourcePage(props: Readonly<HostedResourceP
 							<TableOfContents
 								aria-labelledby="table-of-contents"
 								className="space-y-2 inline-full"
+								currentSectionId={currentSection?.id}
+								headingSections={headingSections}
 								tableOfContents={tableOfContents}
 								title={
 									<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id="table-of-contents">
@@ -391,6 +411,8 @@ export default async function HostedResourcePage(props: Readonly<HostedResourceP
 						<aside className="xl:hidden">
 							<FloatingTableOfContents
 								closeLabel={t("close")}
+								currentSectionId={currentSection?.id}
+								headingSections={headingSections}
 								label={t("table-of-contents")}
 								tableOfContents={tableOfContents}
 								toggleLabel={t("toggle-table-of-contents")}

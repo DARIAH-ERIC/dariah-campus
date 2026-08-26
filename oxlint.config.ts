@@ -28,6 +28,7 @@ const config = defineConfig({
 		typeCheck: true,
 	},
 	rules: {
+		"no-redeclare": "off",
 		"no-restricted-imports": ["error", baseRestrictedImports],
 	},
 	settings: {
@@ -38,7 +39,7 @@ const config = defineConfig({
 	},
 	overrides: [
 		{
-			files: ["configs/**/*.ts"],
+			files: ["configs/**/*.ts", "vitest.config.ts"],
 			rules: {
 				"import/no-default-export": "off",
 			},

@@ -46,7 +46,9 @@ export function Callout(props: Readonly<CalloutProps>): ReactNode {
 	return (
 		<aside className={calloutStyles({ kind })}>
 			<CalloutHeader kind={kind} title={title} />
-			<div className="min-inline-0 **:first:mbs-0 **:last:mbe-0 [&_a]:underline [&_a:hover]:no-underline">{children}</div>
+			<div className="min-inline-0 **:first:mbs-0 **:last:mbe-0 [&_a]:underline [&_a:hover]:no-underline">
+				{children}
+			</div>
 		</aside>
 	);
 }

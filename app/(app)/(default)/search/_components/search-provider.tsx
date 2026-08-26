@@ -8,12 +8,14 @@ import {
 	type SearchState,
 	createSearchParameters,
 	createSearchStateFromUrl,
+	emptyFilters,
 	emptySearchData,
 	search,
 } from "#/app/(app)/(default)/search/_lib/search.ts";
 import type { SearchError } from "#/lib/search/index.ts";
 
 interface SearchContextValue extends SearchData {
+	clearFilters: () => void;
 	error: SearchError | null;
 	hasData: boolean;
 	isLoading: boolean;
@@ -91,6 +93,14 @@ export function SearchProvider(props: Readonly<SearchProviderProps>): ReactNode 
 	const value = useMemo<SearchContextValue>(() => {
 		return {
 			...data,
+			clearFilters() {
+				abortControllerRef.current?.abort();
+				setIsLoading(true);
+				setError(null);
+				setState((state) => {
+					return { ...state, filters: emptyFilters };
+				});
+			},
 			error,
 			hasData,
 			isLoading,

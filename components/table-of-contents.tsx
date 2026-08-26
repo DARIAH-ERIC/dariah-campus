@@ -15,6 +15,10 @@ interface TableOfContentsProps {
 	"aria-labelledby"?: string;
 	"aria-label"?: string;
 	className?: string;
+	/** Identifier of the section which is currently displayed, when the content is split up into sections. */
+	currentSectionId?: string;
+	/** Maps heading identifiers to the section they occur in, when the content is split up into sections. */
+	headingSections?: Record<string, string>;
 	onChange?: () => void;
 	tableOfContents: TableOfContentsTree;
 	title?: ReactNode;
@@ -22,7 +26,7 @@ interface TableOfContentsProps {
 }
 
 export function TableOfContents(props: Readonly<TableOfContentsProps>): ReactNode {
-	const { className, onChange, tableOfContents, title, variant } = props;
+	const { className, currentSectionId, headingSections, onChange, tableOfContents, title, variant } = props;
 
 	const labelProps = useLabels(props);
 
@@ -43,7 +47,9 @@ export function TableOfContents(props: Readonly<TableOfContentsProps>): ReactNod
 		<nav {...labelProps} ref={containerRef} className={className}>
 			{title}
 			<TableOfContentsLevel
+				currentSectionId={currentSectionId}
 				headings={tableOfContents}
+				headingSections={headingSections}
 				highlightedHeadingId={highlightedHeadingId}
 				onChange={onChange}
 				variant={variant}
@@ -53,15 +59,17 @@ export function TableOfContents(props: Readonly<TableOfContentsProps>): ReactNod
 }
 
 interface TableOfContentsLevelProps {
+	currentSectionId?: string;
 	depth?: number;
 	headings: TableOfContentsTree | undefined;
+	headingSections?: Record<string, string>;
 	highlightedHeadingId: string | undefined;
 	onChange?: () => void;
 	variant?: "default" | "panel";
 }
 
 function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): ReactNode {
-	const { depth = 0, headings, onChange, variant } = props;
+	const { currentSectionId, depth = 0, headings, headingSections, onChange, variant } = props;
 
 	if (!isNonEmptyArray(headings)) {
 		return null;
@@ -73,6 +81,9 @@ function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): React
 		<ol className={spacing} style={{ marginLeft: depth * 8 }}>
 			{headings.map((heading, index) => {
 				const isHighlighted = heading.id === props.highlightedHeadingId;
+				/** Headings in other sections are only reachable by also switching to that section. */
+				const sectionId = heading.id != null ? headingSections?.[heading.id] : undefined;
+				const searchParams = sectionId != null && sectionId !== currentSectionId ? { section: sectionId } : undefined;
 
 				return (
 					<li key={index} className={spacing}>
@@ -83,7 +94,7 @@ function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): React
 									"relative flex scroll-my-8 rounded-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700",
 									isHighlighted ? "pointer-events-none font-bold" : undefined,
 								)}
-								href={createHref({ hash: heading.id })}
+								href={createHref({ hash: heading.id, searchParams })}
 								onPress={onChange}
 							>
 								{isHighlighted ? (
@@ -98,9 +109,12 @@ function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): React
 							<span>{heading.value}</span>
 						)}
 						<TableOfContentsLevel
+							currentSectionId={currentSectionId}
 							depth={depth + 1}
 							headings={heading.children}
+							headingSections={headingSections}
 							highlightedHeadingId={props.highlightedHeadingId}
+							onChange={onChange}
 							variant={variant}
 						/>
 					</li>

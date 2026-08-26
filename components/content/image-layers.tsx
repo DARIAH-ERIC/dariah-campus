@@ -22,9 +22,7 @@ export function ImageLayers(props: Readonly<ImageLayersProps>): ReactNode {
 	const t = useTranslations("content.ImageLayers");
 
 	/** Layers without image are ignored, because the cms allows inserting empty layers. */
-	const layers = getChildrenElements<ImageLayerProps>(children).filter((layer) =>
-		isNonEmptyString(layer.props.src)
-	);
+	const layers = getChildrenElements<ImageLayerProps>(children).filter((layer) => isNonEmptyString(layer.props.src));
 
 	const [index, setIndex] = useState(0);
 
@@ -145,8 +143,8 @@ interface ButtonProps extends ComponentPropsWithRef<"button"> {
 }
 
 /**
- * Note that the buttons are never actually disabled, they are only marked as `aria-disabled`, so keyboard
- * focus is not lost when the first or last layer is reached.
+ * Note that the buttons are never actually disabled, they are only marked as `aria-disabled`, so keyboard focus is not
+ * lost when the first or last layer is reached.
  */
 function Button(props: Readonly<ButtonProps>): ReactNode {
 	const { children } = props;

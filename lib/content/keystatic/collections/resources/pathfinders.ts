@@ -18,14 +18,16 @@ import { createGrid } from "#/lib/content/keystatic/components/grid/index.tsx";
 import { createH5PWrapper } from "#/lib/content/keystatic/components/h5p-wrapper/index.tsx";
 import { createHeadingId } from "#/lib/content/keystatic/components/heading-id/index.tsx";
 import { createImageLayers } from "#/lib/content/keystatic/components/image-layers/index.tsx";
-import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
+import { createLanguage } from "#/lib/content/keystatic/components/language/index.tsx";
 import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
+import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createTabs } from "#/lib/content/keystatic/components/tabs/index.tsx";
 import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx";
+import { createWorksheet } from "#/lib/content/keystatic/components/worksheet/index.tsx";
 import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
 import { contentLanguages, contentLicenses } from "#/lib/content/options.ts";
 
-export const createResourcesPathfinders = createCollection("/resources/pathfinders/", (paths, locale) => 
+export const createResourcesPathfinders = createCollection("/resources/pathfinders/", (paths, locale) =>
 	collection({
 		label: "Pathfinders",
 		path: paths.contentPath,
@@ -125,6 +127,7 @@ export const createResourcesPathfinders = createCollection("/resources/pathfinde
 					...createCarousel(paths, locale),
 					// ...createDiagram(paths, locale),
 					...createDisclosure(paths, locale),
+					...createWorksheet(paths, locale),
 					...createEmbed(paths, locale),
 					...createFigure(paths, locale),
 					...createFootnote(paths, locale),
@@ -132,6 +135,7 @@ export const createResourcesPathfinders = createCollection("/resources/pathfinde
 					...createImageLayers(paths, locale),
 					...createH5PWrapper(paths, locale),
 					...createHeadingId(paths, locale),
+					...createLanguage(paths, locale),
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
 					...createTabs(paths, locale),
@@ -166,5 +170,5 @@ export const createResourcesPathfinders = createCollection("/resources/pathfinde
 			}),
 			draft: fields.ignored(),
 		},
-	})
+	}),
 );

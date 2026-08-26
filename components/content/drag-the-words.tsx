@@ -4,8 +4,9 @@ import { useTranslations } from "next-intl";
 import { type DragEvent, type ReactNode, createContext, use, useMemo, useState } from "react";
 import { Button, Dialog, DialogTrigger, Menu, MenuItem, MenuTrigger, Popover, Separator } from "react-aria-components";
 
-import { type QuizPageStatus, useQuizContext } from "#/components/content/quiz.tsx";
+import { getSortKey } from "#/components/content/get-sort-key.ts";
 import { QuizControls } from "#/components/content/quiz-controls.tsx";
+import { type QuizPageStatus, useQuizContext } from "#/components/content/quiz.tsx";
 
 /**
  * Keyboard and touch users open a blank and choose from the remaining words, so focus never leaves the reading order.
@@ -41,19 +42,6 @@ function isCorrectAnswer(input: string, answer: string, caseSensitive: boolean):
 		return input.trim() === answer;
 	}
 	return input.trim().toLowerCase() === answer.toLowerCase();
-}
-
-/**
- * Stable string hash used to order the word bank. Sorting by it scrambles the words without correlating to blank order,
- * and gives the same result on the server and the client - a random shuffle would not survive hydration.
- */
-function sortKey(value: string): number {
-	let n = 0;
-	for (let i = 0; i < value.length; i++) {
-		// oxlint-disable-next-line unicorn/prefer-code-point
-		n = (n * 31 + value.charCodeAt(i)) % 2147483647;
-	}
-	return n;
 }
 
 /**
@@ -127,61 +115,35 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 			return { id: `word-${String(index)}`, text: answer };
 		});
 		const decoys = (typeof distractors === "string" ? distractors.split(",") : distractors)
-			.map((word) =>
-				word.trim()
-			)
+			.map((word) => word.trim())
 			.filter(Boolean)
 			.map((text, index) => {
 				return { id: `distractor-${String(index)}`, text };
 			});
 		// oxlint-disable-next-line unicorn/no-array-sort
-		return [...fromBlanks, ...decoys].sort((a, b) =>
-			sortKey(a.text) - sortKey(b.text)
-		);
+		return [...fromBlanks, ...decoys].sort((a, b) => getSortKey(a.text) - getSortKey(b.text));
 	}, [answers, distractors]);
 
-	const [placements, setPlacements] = useState<Array<string | null>>(() =>
-		Array.from({ length: count }, () =>
-			null
-		)
-	);
-	const [touched, setTouched] = useState<Array<boolean>>(() =>
-		Array.from({ length: count }, () =>
-			false
-		)
-	);
+	const [placements, setPlacements] = useState<Array<string | null>>(() => Array.from({ length: count }, () => null));
+	const [touched, setTouched] = useState<Array<boolean>>(() => Array.from({ length: count }, () => false));
 	const [isBankDropTarget, setIsBankDropTarget] = useState(false);
 
 	const isReadOnly = status === "solved";
 
-	const bank = words.filter((word) =>
-		!placements.includes(word.id)
-	);
+	const bank = words.filter((word) => !placements.includes(word.id));
 
 	/** Two blanks can share an answer, so the same text may sit in the bank twice. */
-	const availableWords = bank.filter((word, index) =>
-		(
-			bank.findIndex((candidate) =>
-				candidate.text === word.text
-			) === index
-		)
+	const availableWords = bank.filter(
+		(word, index) => bank.findIndex((candidate) => candidate.text === word.text) === index,
 	);
 
 	function putWord(wordId: string, blankId: number) {
-		setPlacements((prev) =>
-			moveWord(prev, wordId, blankId)
-		);
-		setTouched((prev) =>
-			prev.map((wasTouched, i) =>
-				i === blankId ? true : wasTouched
-			)
-		);
+		setPlacements((prev) => moveWord(prev, wordId, blankId));
+		setTouched((prev) => prev.map((wasTouched, i) => (i === blankId ? true : wasTouched)));
 	}
 
 	function returnWord(wordId: string) {
-		setPlacements((prev) =>
-			moveWord(prev, wordId, null)
-		);
+		setPlacements((prev) => moveWord(prev, wordId, null));
 	}
 
 	const ctx: DragTheWordsContextValue = {
@@ -203,24 +165,14 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 	};
 
 	const correctCount = placements.filter((wordId, i) => {
-		const word = words.find((candidate) =>
-			candidate.id === wordId
-		);
+		const word = words.find((candidate) => candidate.id === wordId);
 		return word != null && isCorrectAnswer(word.text, answers[i] ?? "", caseSensitive);
 	}).length;
 
 	function reset() {
-		setPlacements(
-			Array.from({ length: count }, () =>
-				null
-			),
-		);
+		setPlacements(Array.from({ length: count }, () => null));
 		setStatus("idle");
-		setTouched(
-			Array.from({ length: count }, () =>
-				false
-			),
-		);
+		setTouched(Array.from({ length: count }, () => false));
 	}
 
 	return (
@@ -259,7 +211,7 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 					 * blank's menu, so making them tab stops would only lengthen the tab order.
 					 * They stay readable, and draggable for mouse users.
 					 *
-					 * Placed words stay in the list, greyed out, so the bank keeps a fixed size
+					 * Placed words leave an empty slot behind, so the bank keeps a fixed size
 					 * instead of reflowing after every move. Used entries are hidden from
 					 * assistive technology, leaving the list as the set still available.
 					 */}
@@ -273,7 +225,7 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 									aria-hidden={isUsed}
 									className={`rounded-md border px-2 py-0.5 text-center font-mono text-sm wrap-break-word ${
 										isUsed
-											? "cursor-default border-neutral-200 bg-neutral-100 text-neutral-400"
+											? "cursor-default border-dashed border-neutral-300 bg-neutral-50"
 											: "cursor-grab border-neutral-300 bg-white text-neutral-700"
 									}`}
 									draggable={!isUsed}
@@ -281,7 +233,8 @@ export function QuizDragTheWords(props: Readonly<QuizDragTheWordsProps>): ReactN
 										startWordDrag(event, word.id, word.text);
 									}}
 								>
-									{word.text}
+									{/* Greyed-out text light enough to read as "used" would not meet contrast, so the word only holds the slot open. */}
+									<span className={isUsed ? "invisible" : undefined}>{word.text}</span>
 								</li>
 							);
 						})}
@@ -345,9 +298,7 @@ export function Drop(props: Readonly<DropProps>): ReactNode {
 		ctx;
 
 	const isReadOnly = status === "solved";
-	const placedWord = words.find((word) =>
-		word.id === placements[id]
-	);
+	const placedWord = words.find((word) => word.id === placements[id]);
 	const displayText = isReadOnly ? answer : placedWord?.text;
 
 	const isValidated =
@@ -407,8 +358,11 @@ export function Drop(props: Readonly<DropProps>): ReactNode {
 					offset={4}
 					placement="bottom start"
 				>
+					{/*
+					 * The menu is named after its trigger by react-aria, which already reads as "Blank <n>. Select a
+					 * word.", so a label of its own would only be overridden.
+					 */}
 					<Menu
-						aria-label={t("choose-answer-label", { index: String(id + 1) })}
 						className="outline-none"
 						onAction={(key) => {
 							if (key === removeAction) {
@@ -418,18 +372,16 @@ export function Drop(props: Readonly<DropProps>): ReactNode {
 							putWord(String(key), id);
 						}}
 					>
-						{availableWords.map((word) =>
-							(
-								<MenuItem
-									key={word.id}
-									className="cursor-pointer px-3 py-1 font-mono text-sm text-neutral-700 outline-none focus:bg-brand-50 focus:text-brand-700"
-									id={word.id}
-									textValue={word.text}
-								>
-									{word.text}
-								</MenuItem>
-							)
-						)}
+						{availableWords.map((word) => (
+							<MenuItem
+								key={word.id}
+								className="cursor-pointer px-3 py-1 font-mono text-sm text-neutral-700 outline-none focus:bg-brand-50 focus:text-brand-700"
+								id={word.id}
+								textValue={word.text}
+							>
+								{word.text}
+							</MenuItem>
+						))}
 						{placedWord != null ? (
 							<>
 								<Separator className="my-1 border-bs border-neutral-200" />

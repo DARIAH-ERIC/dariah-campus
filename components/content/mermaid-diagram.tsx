@@ -24,7 +24,9 @@ export function MermaidDiagram(props: Readonly<MermaidDiagramProps>): ReactNode 
 			const { default: mermaid } = await import("mermaid");
 
 			const result = await mermaid.render(id, diagram);
-			if (isCanceled) {return;}
+			if (isCanceled) {
+				return;
+			}
 			setSvg(result.svg);
 
 			const blob = new Blob([result.svg], { type: "image/svg+xml" });

@@ -225,6 +225,21 @@ export function createSearchService(params: CreateSearchServiceParams) {
 					searchParams: SearchResourcesParams<FacetField>,
 					options?: SearchOptions,
 				): Promise<Result<ResourceSearchResult<FacetField>, SearchAbortedError | SearchError>> {
+					/**
+					 * The typesense client caches in-flight promises keyed on the request parameters, and the abort signal is not
+					 * part of that key. A cancelled request therefore leaves its rejected promise behind, and the search which
+					 * superseded it - which usually differs only in the refinement that was just toggled, and is identical again
+					 * as soon as that toggle is undone - would be served that rejection instead of hitting the network, for as
+					 * long as `cacheSearchResultsForSeconds`. Dropping the cache when we cancel keeps the replacement honest.
+					 */
+					options?.abortSignal?.addEventListener(
+						"abort",
+						() => {
+							client.clearCache();
+						},
+						{ once: true },
+					);
+
 					return Result.tryPromise({
 						try() {
 							return searchCollection<ResourceDocument, typeof resourcesCollection, FacetField>(
