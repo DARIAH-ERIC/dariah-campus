@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import {  type InlineLanguage, getTextDirection} from "@/lib/content/options";
+import { type InlineLanguage, getTextDirection } from "@/lib/content/options";
 
 interface LanguageProps {
 	children: ReactNode;
