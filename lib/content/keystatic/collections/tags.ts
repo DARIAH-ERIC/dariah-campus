@@ -1,8 +1,8 @@
 import { createCollection } from "@acdh-oeaw/keystatic-lib";
 import { collection, fields } from "@keystatic/core";
 
-export const createTags = createCollection("/tags/", (paths, _locale) => {
-	return collection({
+export const createTags = createCollection("/tags/", (paths, _locale) =>
+	collection({
 		label: "Tags",
 		path: paths.contentPath,
 		format: { contentField: "content" },
@@ -29,5 +29,5 @@ export const createTags = createCollection("/tags/", (paths, _locale) => {
 				components: {},
 			}),
 		},
-	});
-});
+	}),
+);

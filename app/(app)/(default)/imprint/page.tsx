@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { PageTitle } from "@/components/page-title";
-import { createClient } from "@/lib/content/create-client";
+import { PageTitle } from "#/components/page-title.tsx";
+import { createClient } from "#/lib/content/create-client.ts";
 
 export const revalidate = 2592000; /** 30 days. */
 
@@ -25,7 +25,7 @@ export default async function ImprintPage(): Promise<ReactNode> {
 	const Content = (await client.singletons.legalNotice.get()).content;
 
 	return (
-		<div className="mx-auto grid w-full max-w-screen-lg content-start gap-y-24 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
+		<div className="mx-auto grid max-w-screen-lg content-start gap-y-24 px-4 py-8 inline-full xs:px-8 xs:py-16 md:py-24">
 			<div className="grid gap-y-4">
 				<PageTitle>{t("title")}</PageTitle>
 			</div>

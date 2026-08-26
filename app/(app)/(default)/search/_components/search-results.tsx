@@ -5,8 +5,8 @@ import cn from "clsx/lite";
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { useSearch } from "@/app/(app)/(default)/search/_components/search-provider";
-import { ResourcesGrid } from "@/components/resources-grid";
+import { useSearch } from "#/app/(app)/(default)/search/_components/search-provider.tsx";
+import { ResourcesGrid } from "#/components/resources-grid.tsx";
 
 interface SearchResultsProps {
 	peopleLabel: string;
@@ -16,7 +16,7 @@ interface SearchResultsProps {
 export function SearchResults(props: Readonly<SearchResultsProps>): ReactNode {
 	const { peopleLabel, peopleById } = props;
 
-	const { error, hits, isLoading } = useSearch();
+	const { error, isLoading, items: hits } = useSearch();
 
 	const items = hits.map((hit) => {
 		const {
@@ -29,7 +29,7 @@ export function SearchResults(props: Readonly<SearchResultsProps>): ReactNode {
 			summary,
 			"summary-title": summaryTitle,
 			title,
-		} = hit;
+		} = hit.document;
 
 		const people = peopleIds.map((id) => {
 			const person = peopleById.get(id);
@@ -60,7 +60,7 @@ export function SearchResults(props: Readonly<SearchResultsProps>): ReactNode {
 
 	return (
 		<div className={cn("transition-opacity", isLoading ? "opacity-75" : "opacity-100")}>
-			<ResourcesGrid peopleLabel={peopleLabel} resources={items} variant="search" />
+			<ResourcesGrid peopleLabel={peopleLabel} resources={items} />
 		</div>
 	);
 }

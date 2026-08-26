@@ -1,21 +1,14 @@
 "use client";
 
-/* eslint-disable react/jsx-no-literals */
-
-import { useObjectUrl, type UseObjectUrlParams } from "@acdh-oeaw/keystatic-lib/preview";
+import { type UseObjectUrlParams, useObjectUrl } from "@acdh-oeaw/keystatic-lib/preview";
 import { Button } from "@keystar/ui/button";
 import { NotEditable } from "@keystatic/core";
 import cn from "clsx/lite";
 import { MapPinIcon } from "lucide-react";
-import {
-	type CSSProperties,
-	type PointerEvent as ReactPointerEvent,
-	type ReactNode,
-	useCallback,
-	useRef,
-	useState,
-} from "react";
+import { type CSSProperties, type ReactNode, type PointerEvent as ReactPointerEvent, useRef } from "react";
 import { createPortal } from "react-dom";
+
+import { useImageOverlay } from "#/lib/content/keystatic/components/use-image-overlay.ts";
 
 interface QuizImageHotspotsPreviewProps {
 	alt?: string;
@@ -23,31 +16,26 @@ interface QuizImageHotspotsPreviewProps {
 	src: UseObjectUrlParams | null;
 }
 
-export function QuizImageHotspotsPreview(
-	props: Readonly<QuizImageHotspotsPreviewProps>,
-): ReactNode {
+export function QuizImageHotspotsPreview(props: Readonly<QuizImageHotspotsPreviewProps>): ReactNode {
 	const { alt = "", children, src } = props;
 	const url = useObjectUrl(src);
 
 	return (
-		<figure className="grid gap-y-3 rounded-md border border-neutral-200 p-3">
+		<figure className="grid grid-cols-[minmax(0,1fr)] gap-y-3 rounded-md border border-neutral-200 p-3">
 			<NotEditable>
-				<div
-					className="relative isolate min-h-12 overflow-hidden rounded-md"
-					data-hotspot-overlay=""
-				>
+				<div className="relative isolate overflow-hidden rounded-md min-block-12" data-hotspot-overlay="">
 					{url != null ? (
-						// eslint-disable-next-line @next/next/no-img-element
-						<img alt={alt} className="h-auto w-full" draggable={false} src={url} />
+						// oxlint-disable-next-line @next/next/no-img-element
+						<img alt={alt} className="block-auto inline-full" draggable={false} src={url} />
 					) : (
-						<div className="grid min-h-32 place-items-center bg-neutral-100 text-neutral-500">
+						<div className="grid place-items-center bg-neutral-100 text-neutral-500 min-block-32">
 							Choose an image to place hotspots.
 						</div>
 					)}
 				</div>
 			</NotEditable>
 			<figcaption>
-				<div aria-label="Hotspots" className="grid gap-y-3" role="list">
+				<div aria-label="Hotspots" className="grid grid-cols-[minmax(0,1fr)] gap-y-3" role="list">
 					{children}
 				</div>
 			</figcaption>
@@ -78,22 +66,21 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 		startX: number;
 		startY: number;
 	} | null>(null);
-	const [overlay, setOverlay] = useState<HTMLElement | null>(null);
+	const { initCard, overlay, size } = useImageOverlay("[data-hotspot-overlay]");
 	const x = value.x ?? 50;
 	const y = value.y ?? 50;
-	const initCard = useCallback((element: HTMLDivElement | null) => {
-		const overlay = element
-			?.closest("figure")
-			?.querySelector<HTMLElement>("[data-hotspot-overlay]");
-		setOverlay(overlay ?? null);
-	}, []);
+	/** The same point in the image's own pixels, which is the number an author reads off an image editor. */
+	const pointInPixels =
+		size == null ? null : { x: Math.round((x / 100) * size.inlinePx), y: Math.round((y / 100) * size.blockPx) };
 	const style = {
 		"--hotspot-x": `${String(x)}%`,
 		"--hotspot-y": `${String(y)}%`,
 	} as CSSProperties;
 
 	function getPosition(clientX: number, clientY: number): { x: number; y: number } | null {
-		if (overlay == null) return null;
+		if (overlay == null) {
+			return null;
+		}
 
 		const bounds = overlay.getBoundingClientRect();
 		const x = Math.min(Math.max(((clientX - bounds.left) / bounds.width) * 100, 0), 100);
@@ -104,7 +91,9 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 
 	function previewPointerPosition(event: ReactPointerEvent<HTMLButtonElement>): void {
 		const position = getPosition(event.clientX, event.clientY);
-		if (position == null) return;
+		if (position == null) {
+			return;
+		}
 
 		event.currentTarget.style.setProperty("--hotspot-x", `${String(position.x)}%`);
 		event.currentTarget.style.setProperty("--hotspot-y", `${String(position.y)}%`);
@@ -117,7 +106,7 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 					<button
 						aria-label={`Move hotspot: ${value.label || "Untitled hotspot"}`}
 						className={cn(
-							"absolute top-(--hotspot-y) left-(--hotspot-x) grid size-9 -translate-1/2 touch-none place-items-center rounded-full border-2 border-white bg-brand-700 text-white shadow-md outline-none transition hover:scale-110 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2",
+							"absolute inset-s-(--hotspot-x) inset-bs-(--hotspot-y) grid -translate-1/2 touch-none place-items-center rounded-full border-2 border-white bg-brand-700 text-white shadow-md transition outline-none block-9 inline-9 hover:scale-110 focus-visible:ring-2 focus-visible:ring-brand-700 focus-visible:ring-offset-2",
 							isSelected ? "scale-125 bg-brand-900 ring-4 ring-brand-300" : undefined,
 						)}
 						onFocus={onSelect}
@@ -130,7 +119,9 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 								ArrowUp: [0, -step],
 							}[event.key];
 
-							if (movement == null) return;
+							if (movement == null) {
+								return;
+							}
 							event.preventDefault();
 							onChange({
 								...value,
@@ -139,7 +130,9 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 							});
 						}}
 						onPointerDown={(event) => {
-							if (event.button !== 0) return;
+							if (event.button !== 0) {
+								return;
+							}
 							onSelect();
 							event.preventDefault();
 							event.stopPropagation();
@@ -152,38 +145,50 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 							};
 						}}
 						onPointerMove={(event) => {
-							if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+							if (!event.currentTarget.hasPointerCapture(event.pointerId)) {
+								return;
+							}
 							const drag = dragStateRef.current;
-							if (drag?.pointerId !== event.pointerId) return;
+							if (drag?.pointerId !== event.pointerId) {
+								return;
+							}
 
 							if (!drag.hasMoved) {
 								const deltaX = event.clientX - drag.startX;
 								const deltaY = event.clientY - drag.startY;
-								if (Math.hypot(deltaX, deltaY) < 4) return;
+								if (Math.hypot(deltaX, deltaY) < 4) {
+									return;
+								}
 								drag.hasMoved = true;
 							}
 							previewPointerPosition(event);
 						}}
 						onPointerUp={(event) => {
-							if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+							if (!event.currentTarget.hasPointerCapture(event.pointerId)) {
+								return;
+							}
 							const hasMoved = dragStateRef.current?.hasMoved === true;
 							event.currentTarget.releasePointerCapture(event.pointerId);
 							dragStateRef.current = null;
-							if (!hasMoved) return;
+							if (!hasMoved) {
+								return;
+							}
 
 							const position = getPosition(event.clientX, event.clientY);
-							if (position != null) onChange({ ...value, ...position });
+							if (position != null) {
+								onChange({ ...value, ...position });
+							}
 						}}
 						style={style}
 						type="button"
 					>
-						<MapPinIcon aria-hidden={true} className="size-5" />
+						<MapPinIcon aria-hidden={true} className="block-5 inline-5" />
 					</button>,
 					overlay,
 				);
 
 	return (
-		// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- Pointer convenience; the pin and Edit button provide keyboard selection.
+		// oxlint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- Pointer convenience; the pin and Edit button provide keyboard selection.
 		<div
 			ref={initCard}
 			className={cn(
@@ -198,8 +203,17 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 			<NotEditable>
 				{marker}
 				<div className="flex items-center justify-between gap-x-3">
-					<p className="min-w-0 flex-1 truncate text-sm font-medium">
-						{value.label || "Untitled hotspot"} ({x.toFixed(1)}%, {y.toFixed(1)}%)
+					<p className="flex-1 text-sm font-medium min-inline-0">
+						{value.label || "Untitled hotspot"}{" "}
+						<span className="font-normal text-(--kui-color-foreground-neutral-secondary)">
+							at {x.toFixed(1)}%, {y.toFixed(1)}%
+							{pointInPixels != null ? (
+								<>
+									{" "}
+									&asymp; {pointInPixels.x}, {pointInPixels.y}&nbsp;px
+								</>
+							) : null}
+						</span>
 					</p>
 					{onEditChildren != null ? (
 						<Button onFocus={onSelect} onPress={onEditChildren} prominence="low">
@@ -209,9 +223,7 @@ export function QuizImageHotspotEditor(props: Readonly<QuizImageHotspotEditorPro
 				</div>
 			</NotEditable>
 			{children != null ? (
-				<div className="mt-3 min-h-20 border-t border-(--kui-color-alias-border-idle) pt-3">
-					{children}
-				</div>
+				<div className="mbs-3 border-bs border-(--kui-color-alias-border-idle) pbs-3 min-block-20">{children}</div>
 			) : null}
 		</div>
 	);
