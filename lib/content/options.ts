@@ -83,10 +83,12 @@ export const linkKinds = [
 
 export const inlineLanguages = [
 	{ label: "Arabic", value: "ar" },
+	{ label: "Chinese", value: "zh" },
 	{ label: "English", value: "en" },
 	{ label: "French", value: "fr" },
 	{ label: "German", value: "de" },
 	{ label: "Hebrew", value: "he" },
+	{ label: "Hindi", value: "hi" },
 	{ label: "Italian", value: "it" },
 	{ label: "Latin", value: "la" },
 	{ label: "Persian", value: "fa" },
