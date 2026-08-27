@@ -19,9 +19,11 @@ import { createH5PWrapper } from "#/lib/content/keystatic/components/h5p-wrapper
 import { createHeadingId } from "#/lib/content/keystatic/components/heading-id/index.tsx";
 import { createImageComparisonSlider } from "#/lib/content/keystatic/components/image-comparison-slider/index.tsx";
 import { createImageLayers } from "#/lib/content/keystatic/components/image-layers/index.tsx";
+import { createLanguage } from "#/lib/content/keystatic/components/language/index.tsx";
 import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
 import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createQuiz } from "#/lib/content/keystatic/components/quiz/index.tsx";
+import { createSplitPoint } from "#/lib/content/keystatic/components/split-point/index.tsx";
 import { createTabs } from "#/lib/content/keystatic/components/tabs/index.tsx";
 import { createVideoCard } from "#/lib/content/keystatic/components/video-card/index.tsx";
 import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx";
@@ -143,9 +145,11 @@ export const createResourcesHosted = createCollection("/resources/hosted/", (pat
 					...createHeadingId(paths, locale),
 					...createImageComparisonSlider(paths, locale),
 					...createImageLayers(paths, locale),
+					...createLanguage(paths, locale),
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
 					...createQuiz(paths, locale),
+					...createSplitPoint(paths, locale),
 					...createTabs(paths, locale),
 					...createVideo(paths, locale),
 					...createVideoCard(paths, locale),

@@ -16,6 +16,7 @@ import {
 import withHeadingIds from "rehype-slug";
 import type { Pluggable } from "unified";
 
+import { withContentSections } from "#/lib/content/mdx/with-content-sections.ts";
 import { withMermaidDiagrams } from "#/lib/content/mdx/with-mermaid-diagrams.ts";
 import { withRemoteImageUrls } from "#/lib/content/mdx/with-remote-image-urls.ts";
 
@@ -35,6 +36,10 @@ const syntaxHighlighterConfig: RehypeShikiOptions = {
 		transformerNotationWordHighlight({ matchAlgorithm: "v3" }),
 	],
 };
+
+export function createContentSectionsPlugin() {
+	return withContentSections satisfies Pluggable;
+}
 
 export function createCustomHeadingIdsPlugin() {
 	return withCustomHeadingIds satisfies Pluggable;
