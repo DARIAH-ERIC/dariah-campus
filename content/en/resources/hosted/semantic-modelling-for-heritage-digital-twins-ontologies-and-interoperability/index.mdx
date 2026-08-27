@@ -34,7 +34,7 @@ This resource is based on the presentation *Semantic Modelling for Heritage Digi
 
 ## **Introduction**
 
-Heritage Digital Twins bring together much more than three-dimensional geometry. In the ARTEMIS approach, a Heritage Digital Twin represents the complex of available knowledge about a real-world cultural entity, including historical, material, environmental, technical and scientific information. This makes integration a central challenge: heritage knowledge is produced by different communities, stored in different systems and expressed through different structures and vocabularies.
+Heritage Digital Twins (HDT) bring together much more than three-dimensional geometry. In the ARTEMIS approach, a Heritage Digital Twin represents the complex of available knowledge about a real-world cultural entity, including historical, material, environmental, technical and scientific information. This makes integration a central challenge: heritage knowledge is produced by different communities, stored in different systems and expressed through different structures and vocabularies.
 
 Semantic modelling addresses this challenge by making the meaning of data explicit. Ontologies provide shared concepts and relationships that allow people and systems to describe entities such as heritage assets, actors, places, events and time-spans in a consistent way. In ARTEMIS, these semantic foundations are extended into a modular framework for Reactive Heritage Digital Twins (RHDTs), connecting physical heritage, digital representations, observations, workflows, services and decision-support processes.
 
@@ -119,7 +119,7 @@ Within ARTEMIS, a Heritage Digital Twin is therefore understood as the complex o
 
 ## **Ontologies: Shaping Knowledge**
 
-Ontologies provide concepts for modelling digital entities and relationships for connecting them. Examples of concepts include people and institutions, cultural objects, places, events, dates or temporal periods, names and types. Relationships express how these concepts are connected, for example when an event happens in a place or when actors and objects participate in an event.
+Ontologies provide concepts for modelling digital entities. In an ontology, we can represent connections and relationships between these digital entities, too Examples of entities include people and institutions, cultural objects, places, events, dates or temporal periods, names and types. Relationships express how these entities are connected, for example when an event happens in a place or when actors and objects participate in an event.
 
 An ontology represents a shared understanding of a domain agreed by a community of agents. This shared understanding supports accurate communication of meaning and, in turn, interoperability, reuse and sharing. The goal is not to describe the entire world. Instead, an ontology creates a working model for a domain and provides definitions that can support integration and reuse while remaining open to future development.
 
@@ -160,7 +160,7 @@ Semantic graphs provide a more flexible layer. They function like a shared langu
 <Quiz>
   <QuizChoice variant="single">
     <QuizChoiceQuestion>
-      Diagnose the Interoperability problem: An excavation database stores a field called "Artefact" while a museum database uses "Item" for the same kind of cultural object. Why is simple technical merging not enough?
+      Diagnose the interoperability problem: An excavation database stores a field called "Artefact" while a museum database uses "Item" for the same kind of cultural object. Why is simple technical merging not enough?
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="incorrect">
@@ -171,7 +171,7 @@ Semantic graphs provide a more flexible layer. They function like a shared langu
 
     <QuizChoiceAnswer kind="correct">
       <QuizChoiceAnswerLabel>
-        Because different labels and structures may represent the same underlying    meaning, and that meaning must be made explicit.
+        Because different labels and structures may represent the same underlying meaning. That meaning must be made explicit.
       </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
@@ -277,7 +277,7 @@ This principle lowers the barrier to adoption while leaving room for richer docu
 
 ### **How the Five Principles Reinforce One Another**
 
-The ARTEMIS ontology is guided by five design principles: **semantic interoperability, event-centric traceability, modular extensibility, provenance preservation, and flexible granularity**. These principles are not isolated technical features. Together, they determine how heterogeneous heritage knowledge can be connected, how the production of that knowledge can be reconstructed, and how the model can remain useful across different domains and levels of documentation.
+The ARTEMIS ontology is guided by five design principles: **semantic interoperability, event-centric traceability, modular extensibility, provenance preservation,** and **flexible granularity**. These principles are not isolated technical features. Together, they determine how heterogeneous heritage knowledge can be connected, how the production of that knowledge can be reconstructed, and how the model can remain useful across different domains and levels of documentation.
 
 The five principles work most effectively as a connected set. **Semantic interoperability** establishes shared meaning across systems. **Modular extensibility** allows specialised domains to participate without losing that common meaning. **Event-centric traceability** represents the activities through which knowledge is produced, while **provenance preservation** keeps the origins and transformation chains of the resulting information explicit. **Flexible granularity** allows all of this to be documented at an appropriate level of detail rather than imposing a single level of complexity on every project.
 
@@ -323,9 +323,9 @@ ARTEMIS extends existing semantic ecosystems rather than creating a completely n
 
 </Figure>
 
-The Common Entities Module provides the shared semantic backbone used across the architecture. It covers heritage assets, actors, places, events, time-spans and digital objects. Other modules specialise this backbone for different kinds of data and processes.
+The **Common Entities Module** provides the shared semantic backbone used across the architecture. It covers heritage assets, actors, places, events, time-spans and digital objects. Other modules specialise this backbone for different kinds of data and processes.
 
-The Heritage Science Module represents scientific investigations as traceable activities linking heritage objects, instruments, samples, measurements, datasets, results and interpretations. The Digital Operations Module represents computational operations as events and captures inputs, outputs, parameters, software, services, devices and computational provenance. The 3D Information Module treats 3D models as evolving digital assets and connects transformations and versions through explicit provenance. The Services Module distinguishes services, software and operations while describing access points, versions and operational integration.
+The **Heritage Science Module** represents scientific investigations as traceable activities linking heritage objects, instruments, samples, measurements, datasets, results and interpretations. The **Digital Operations Module** represents computational operations as events and captures inputs, outputs, parameters, software, services, devices and computational provenance. The 3D Information Module treats 3D models as evolving digital assets and connects transformations and versions through explicit provenance. The Services Module distinguishes services, software and operations while describing access points, versions and operational integration.
 
 <Quiz>
   <QuizImageDropZones src="/assets/content/assets/en/resources/hosted/semantic-modelling-for-heritage-digital-twins-ontologies-and-interoperability/artemis-modules.jpg" distractors={[]} instantFeedback={false}>
