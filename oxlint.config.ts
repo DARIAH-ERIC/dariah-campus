@@ -28,6 +28,7 @@ const config = defineConfig({
 		typeCheck: true,
 	},
 	rules: {
+		"no-redeclare": "off",
 		"no-restricted-imports": ["error", baseRestrictedImports],
 	},
 	settings: {
