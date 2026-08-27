@@ -1,5 +1,6 @@
 import { Callout } from "#/components/content/callout.tsx";
 import { Carousel, CarouselItem } from "#/components/content/carousel.tsx";
+import { ContentSection } from "#/components/content/content-section.tsx";
 import { Diagram, DiagramCaption, DiagramCodeBlock } from "#/components/content/diagram.tsx";
 import { Disclosure } from "#/components/content/disclosure.tsx";
 import { Drop, QuizDragTheWords } from "#/components/content/drag-the-words.tsx";
@@ -11,6 +12,7 @@ import { Grid, GridItem } from "#/components/content/grid.tsx";
 import { ImageComparisonSlider } from "#/components/content/image-comparison-slider.tsx";
 import { QuizImageDropZone, QuizImageDropZones } from "#/components/content/image-drop-zones.tsx";
 import { ImageLayer, ImageLayers } from "#/components/content/image-layers.tsx";
+import { Language, LanguageBlock } from "#/components/content/language.tsx";
 import { LinkButton } from "#/components/content/link-button.tsx";
 import { Link as ContentLink } from "#/components/content/link.tsx";
 import { MermaidDiagram } from "#/components/content/mermaid-diagram.tsx";
@@ -44,6 +46,7 @@ export const components = {
 	Callout,
 	Carousel,
 	CarouselItem,
+	ContentSection,
 	Diagram,
 	DiagramCaption,
 	DiagramCodeBlock,
@@ -61,6 +64,8 @@ export const components = {
 	GridItem,
 	img: Image,
 	ImageComparisonSlider,
+	Language,
+	LanguageBlock,
 	ImageLayer,
 	ImageLayers,
 	Link: ContentLink,

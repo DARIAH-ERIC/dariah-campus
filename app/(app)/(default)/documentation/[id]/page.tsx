@@ -3,6 +3,8 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Fragment, type ReactNode } from "react";
 
+import { ContentSectionNavigation } from "#/components/content-section-navigation.tsx";
+import { createContentSection } from "#/components/content/content-section.tsx";
 import { FloatingTableOfContents } from "#/components/floating-table-of-contents.tsx";
 import { Link } from "#/components/link.tsx";
 import { PageLead } from "#/components/page-lead.tsx";
@@ -10,6 +12,7 @@ import { PageTitle } from "#/components/page-title.tsx";
 import { TableOfContents } from "#/components/table-of-contents.tsx";
 import { client } from "#/lib/content/client/index.ts";
 import { createClient } from "#/lib/content/create-client.ts";
+import { getCurrentContentSection, getHeadingSections } from "#/lib/content/utils/get-content-sections.ts";
 
 interface DocumentationPageProps extends PageProps<"/documentation/[id]"> {}
 
@@ -45,7 +48,7 @@ export async function generateMetadata(props: Readonly<DocumentationPageProps>):
 }
 
 export default async function DocumentationPage(props: Readonly<DocumentationPageProps>): Promise<ReactNode> {
-	const { params } = props;
+	const { params, searchParams } = props;
 
 	const t = await getTranslations("DocumentationPage");
 
@@ -65,6 +68,11 @@ export default async function DocumentationPage(props: Readonly<DocumentationPag
 	const tableOfContents = page.tableOfContents ?? [];
 
 	const docs = await client.collections.documentation.all();
+
+	/** Only pages which are actually split up into sections read search params, so every other page is still prerendered. */
+	const sections = page.sections;
+	const currentSection = sections.length > 1 ? getCurrentContentSection(sections, (await searchParams).section) : null;
+	const headingSections = currentSection != null ? getHeadingSections(sections) : undefined;
 
 	return (
 		<div>
@@ -103,7 +111,10 @@ export default async function DocumentationPage(props: Readonly<DocumentationPag
 						<PageLead>{lead}</PageLead>
 					</div>
 
-					<nav aria-labelledby="docs-nav" className="grid content-start gap-y-2 inline-full 2xl:hidden">
+					<nav
+						aria-labelledby="docs-nav"
+						className="mx-auto grid content-start gap-y-2 inline-full max-inline-(--size-content) 2xl:hidden"
+					>
 						<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id="docs-nav">
 							{t("navigation")}
 						</h2>
@@ -126,10 +137,19 @@ export default async function DocumentationPage(props: Readonly<DocumentationPag
 						</ul>
 					</nav>
 
-					<div className="prose max-inline-(--size-content)">
-						<article>
-							<Content />
-						</article>
+					<div className="mx-auto inline-full max-inline-(--size-content)">
+						<div className="prose">
+							<article>
+								<Content
+									components={
+										currentSection != null ? { ContentSection: createContentSection(currentSection.id) } : undefined
+									}
+								/>
+							</article>
+						</div>
+						{currentSection != null ? (
+							<ContentSectionNavigation currentSectionId={currentSection.id} sections={sections} />
+						) : null}
 					</div>
 				</div>
 
@@ -144,6 +164,8 @@ export default async function DocumentationPage(props: Readonly<DocumentationPag
 							<TableOfContents
 								aria-labelledby="table-of-contents"
 								className="space-y-2 inline-full"
+								currentSectionId={currentSection?.id}
+								headingSections={headingSections}
 								tableOfContents={tableOfContents}
 								title={
 									<h2
@@ -159,6 +181,8 @@ export default async function DocumentationPage(props: Readonly<DocumentationPag
 						<aside className="2xl:hidden">
 							<FloatingTableOfContents
 								closeLabel={t("close")}
+								currentSectionId={currentSection?.id}
+								headingSections={headingSections}
 								label={t("table-of-contents")}
 								tableOfContents={tableOfContents}
 								toggleLabel={t("toggle-table-of-contents")}
