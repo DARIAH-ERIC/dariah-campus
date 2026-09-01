@@ -221,4 +221,20 @@ IoCT provides access to real-time information from the physical environment. The
   </QuizImageDropZones>
 </Quiz>
 
-\\
+### Why Microservices?
+
+The microservice approach separates individual capabilities and gives each of them a clearly defined function. A service can register an IoCT node, retrieve sensor data, define a decision rule, run a simulation, publish a result, or provide data for an AR/VR environment. Because these capabilities can be developed independently and accessed through standardised APIs, they can be integrated, reused, and adapted to different heritage assets and scenarios.
+
+The purpose of this separation is not to create more isolated tools. Instead, the services are intended to serve as building blocks that can be combined into larger Digital Twin processes.
+
+### Three Design Principles
+
+For these building blocks to remain useful across different applications, three properties are particularly important: modularity, scalability, and interoperability. They address different aspects of the same architectural challenge—how to keep the ecosystem flexible while allowing its components to work together.
+
+Modularity begins by giving each microservice a clearly defined responsibility. Monitoring, simulation, visualisation, and control do not need to be embedded in one large application. Instead, individual services can be selected and combined according to the requirements of a particular heritage application. A service can therefore be reused, extended, or replaced without requiring the entire system to be redesigned.
+
+Once services are separated in this way, the ecosystem can also grow. Scalability means that new services can be added as new requirements emerge and that existing services can be reused across different applications and heritage pilots. The system must also cope with operational demands such as continuous sensor streams, real-time monitoring, simulations, and visualisation. Distributed infrastructure and asynchronous communication support this growth. Scalability is thus not only a matter of processing more data; it also concerns the ability to support more functions, applications, and scenarios.
+
+Growth and reuse only work, however, if the different components can communicate. An RHDT brings together sensors and actuators, 3D models, semantic knowledge graphs, simulation services, and AR/VR environments. Interoperability allows these heterogeneous elements to exchange information and participate in the same Digital Twin environment. REST APIs and asynchronous communication provide technical mechanisms for this exchange, while semantic alignment with the ARTEMIS ontology and Knowledge Base provides a common conceptual framework. Reusable service descriptions and shared process templates further support the integration of individual services into larger workflows.
+
+\
