@@ -1,18 +1,30 @@
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@swc/core'
-  - '@tailwindcss/oxide'
-  - esbuild
-  - sharp
-  - simple-git-hooks
-  - typesense-instantsearch-adapter
-  - unrs-resolver
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  esbuild: true
+  lefthook: true
+  sharp: true
+
+engineStrict: true
+
+minimumReleaseAge: 1440
+
+minimumReleaseAgeExclude:
+  - react
+  - react-dom
+  - next
+  - '@next/env@16.3.3'
+  - '@next/swc-darwin-arm64@16.3.3'
+  - '@next/swc-darwin-x64@16.3.3'
+  - '@next/swc-linux-arm64-gnu@16.3.3'
+  - '@next/swc-linux-arm64-musl@16.3.3'
+  - '@next/swc-linux-x64-gnu@16.3.3'
+  - '@next/swc-linux-x64-musl@16.3.3'
+  - '@next/swc-win32-arm64-msvc@16.3.3'
+  - '@next/swc-win32-x64-msvc@16.3.3'
 
 patchedDependencies:
-  '@keystar/ui': patches/@keystar__ui.patch
-  '@keystatic/core@0.5.48': patches/@keystatic__core@0.5.48.patch
+  "@keystatic/core": patches/@keystatic__core.patch
   next: patches/next.patch
 
 shellEmulator: true
-
-strictDepBuilds: true

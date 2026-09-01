@@ -2,8 +2,8 @@ import { createCollection } from "@acdh-oeaw/content-lib";
 import type { MDXContent } from "mdx/types";
 import { VFile } from "vfile";
 
-import { reader } from "@/lib/content/keystatic/reader";
-import { compile, type CompileOptions } from "@/lib/content/mdx/compile";
+import { reader } from "#/lib/content/keystatic/reader.ts";
+import { type CompileOptions, compile } from "#/lib/content/mdx/compile.ts";
 import {
 	createCustomHeadingIdsPlugin,
 	createHeadingIdsPlugin,
@@ -13,15 +13,17 @@ import {
 	createSyntaxHighlighterPlugin,
 	createTableOfContentsPlugin,
 	createUnwrappedMdxFlowContentPlugin,
-} from "@/lib/content/mdx/rehype-plugins";
+} from "#/lib/content/mdx/rehype-plugins.ts";
 import {
+	createDragTheWordsPlugin,
+	createFillInTheBlankPlugin,
 	createFootnotesPlugin,
 	createGitHubMarkdownPlugin,
 	createTypographicQuotesPlugin,
-} from "@/lib/content/mdx/remark-plugins";
-import { createRemarkRehypeOptions } from "@/lib/content/mdx/remark-rehype-options";
-import { getImageDimensions } from "@/lib/content/utils/get-image-dimensions";
-import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
+} from "#/lib/content/mdx/remark-plugins.ts";
+import { createRemarkRehypeOptions } from "#/lib/content/mdx/remark-rehype-options.ts";
+import { getImageDimensions } from "#/lib/content/utils/get-image-dimensions.ts";
+import { defaultLocale, getIntlLanguage } from "#/lib/i18n/locales.ts";
 
 const locale = defaultLocale;
 
@@ -30,13 +32,22 @@ const compileOptions: CompileOptions = {
 		createGitHubMarkdownPlugin(),
 		createFootnotesPlugin(),
 		createTypographicQuotesPlugin(getIntlLanguage(locale)),
+		createFillInTheBlankPlugin(),
+		createDragTheWordsPlugin(),
 	],
 	remarkRehypeOptions: createRemarkRehypeOptions(locale),
 	rehypePlugins: [
 		createCustomHeadingIdsPlugin(),
 		createHeadingIdsPlugin(),
 		createIframeTitlesPlugin(["Embed", "Video"]),
-		createImageSizesPlugin(["Figure", "VideoCard"]),
+		createImageSizesPlugin([
+			"CarouselItem",
+			"Figure",
+			"ImageLayer",
+			"QuizImageDropZones",
+			"QuizImageHotspots",
+			"VideoCard",
+		]),
 		createMermaidDiagramsPlugin(),
 		createSyntaxHighlighterPlugin(),
 		createTableOfContentsPlugin(),
@@ -57,11 +68,17 @@ export const curricula = createCollection({
 		const input = new VFile({ path: item.absoluteFilePath, value: content });
 		const output = await compile(input, compileOptions);
 		const module = context.createJavaScriptImport<MDXContent>(String(output));
+
+		const supplementaryInput = new VFile({
+			path: item.absoluteFilePath,
+			value: metadata["supplementary-information"],
+		});
+		const supplementaryOutput = await compile(supplementaryInput, compileOptions);
+		const supplementaryModule = context.createJavaScriptImport<MDXContent>(String(supplementaryOutput));
+
 		const tableOfContents = output.data.tableOfContents;
 		const featuredImage =
-			metadata["featured-image"] != null
-				? await getImageDimensions(metadata["featured-image"])
-				: null;
+			metadata["featured-image"] != null ? await getImageDimensions(metadata["featured-image"]) : null;
 
 		return {
 			id: item.id,
@@ -70,6 +87,7 @@ export const curricula = createCollection({
 				...metadata,
 				"content-type": "curriculum" as const,
 				"featured-image": featuredImage,
+				"supplementary-information": { content: supplementaryModule },
 			},
 			tableOfContents,
 		};

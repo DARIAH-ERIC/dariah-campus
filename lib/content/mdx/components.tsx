@@ -1,31 +1,62 @@
-import { Callout } from "@/components/content/callout";
-import { Diagram, DiagramCaption, DiagramCodeBlock } from "@/components/content/diagram";
-import { Disclosure } from "@/components/content/disclosure";
-import { Embed } from "@/components/content/embed";
-import { ExternalResource } from "@/components/content/external-resource";
-import { Figure } from "@/components/content/figure";
-import { Grid, GridItem } from "@/components/content/grid";
-import { ImageComparisonSlider } from "@/components/content/image-comparison-slider";
-import { Link as ContentLink } from "@/components/content/link";
-import { LinkButton } from "@/components/content/link-button";
-import { MermaidDiagram } from "@/components/content/mermaid-diagram";
-import { Quiz, QuizErrorMessage, QuizSuccessMessage } from "@/components/content/quiz";
-import { QuizChoice, QuizChoiceAnswer, QuizChoiceQuestion } from "@/components/content/quiz-choice";
-import { QuizTextInput } from "@/components/content/quiz-text-input";
-import { TableOfContents } from "@/components/content/table-of-contents";
-import { Tab, Tabs } from "@/components/content/tabs";
-import { Video } from "@/components/content/video";
-import { VideoCard } from "@/components/content/video-card";
-import { Image } from "@/components/image";
-import { Link } from "@/components/link";
+import { Callout } from "#/components/content/callout.tsx";
+import { Carousel, CarouselItem } from "#/components/content/carousel.tsx";
+import { ContentSection } from "#/components/content/content-section.tsx";
+import { Diagram, DiagramCaption, DiagramCodeBlock } from "#/components/content/diagram.tsx";
+import { Disclosure } from "#/components/content/disclosure.tsx";
+import { Drop, QuizDragTheWords } from "#/components/content/drag-the-words.tsx";
+import { Embed } from "#/components/content/embed.tsx";
+import { ExternalResource } from "#/components/content/external-resource.tsx";
+import { Figure } from "#/components/content/figure.tsx";
+import { Blank, QuizFillInTheBlank } from "#/components/content/fill-in-the-blank.tsx";
+import { Grid, GridItem } from "#/components/content/grid.tsx";
+import { ImageComparisonSlider } from "#/components/content/image-comparison-slider.tsx";
+import { QuizImageDropZone, QuizImageDropZones } from "#/components/content/image-drop-zones.tsx";
+import { ImageLayer, ImageLayers } from "#/components/content/image-layers.tsx";
+import { Language, LanguageBlock } from "#/components/content/language.tsx";
+import { LinkButton } from "#/components/content/link-button.tsx";
+import { Link as ContentLink } from "#/components/content/link.tsx";
+import { MermaidDiagram } from "#/components/content/mermaid-diagram.tsx";
+import {
+	QuizChoice,
+	QuizChoiceAnswer,
+	QuizChoiceAnswerErrorMessage,
+	QuizChoiceAnswerLabel,
+	QuizChoiceQuestion,
+} from "#/components/content/quiz-choice.tsx";
+import { QuizImageHotspot, QuizImageHotspots } from "#/components/content/quiz-image-hotspots.tsx";
+import { QuizQuestion } from "#/components/content/quiz-question.tsx";
+import { Quiz, QuizErrorMessage, QuizSuccessMessage } from "#/components/content/quiz.tsx";
+import { TableOfContents } from "#/components/content/table-of-contents.tsx";
+import { Tab, Tabs } from "#/components/content/tabs.tsx";
+import { VideoCard } from "#/components/content/video-card.tsx";
+import { Video } from "#/components/content/video.tsx";
+import {
+	Worksheet,
+	WorksheetDescription,
+	WorksheetQuestion,
+	WorksheetSection,
+	WorksheetSectionDescription,
+} from "#/components/content/worksheet.tsx";
+import { Image } from "#/components/image.tsx";
+import { Link } from "#/components/link.tsx";
 
 export const components = {
 	a: Link,
+	Blank,
 	Callout,
+	Carousel,
+	CarouselItem,
+	ContentSection,
 	Diagram,
 	DiagramCaption,
 	DiagramCodeBlock,
 	Disclosure,
+	Worksheet,
+	WorksheetDescription,
+	WorksheetQuestion,
+	WorksheetSection,
+	WorksheetSectionDescription,
+	Drop,
 	Embed,
 	ExternalResource,
 	Figure,
@@ -33,16 +64,28 @@ export const components = {
 	GridItem,
 	img: Image,
 	ImageComparisonSlider,
+	Language,
+	LanguageBlock,
+	ImageLayer,
+	ImageLayers,
 	Link: ContentLink,
 	LinkButton,
 	MermaidDiagram,
 	Quiz,
 	QuizChoice,
 	QuizChoiceAnswer,
+	QuizChoiceAnswerErrorMessage,
+	QuizChoiceAnswerLabel,
 	QuizChoiceQuestion,
 	QuizErrorMessage,
+	QuizDragTheWords,
+	QuizFillInTheBlank,
+	QuizImageDropZone,
+	QuizImageDropZones,
+	QuizImageHotspot,
+	QuizImageHotspots,
+	QuizQuestion,
 	QuizSuccessMessage,
-	QuizTextInput,
 	Tab,
 	TableOfContents,
 	Tabs,

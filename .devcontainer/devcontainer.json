@@ -5,13 +5,11 @@
 		"vscode": {
 			"extensions": [
 				"bradlc.vscode-tailwindcss",
-				"dbaeumer.vscode-eslint",
 				"editorconfig.editorconfig",
 				"github.vscode-github-actions",
-				"lokalise.i18n-ally",
 				"mikestead.dotenv",
 				"ms-playwright.playwright",
-				"prettier.prettier-vscode",
+				"oxc.oxc-vscode",
 				"stylelint.vscode-stylelint",
 				"unifiedjs.vscode-mdx"
 			]

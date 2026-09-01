@@ -1,34 +1,32 @@
 import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
 import { Fragment, type ReactNode } from "react";
 
-import { Citation } from "@/components/citation";
-import { CurriculaList } from "@/components/curricula-list";
-import { FloatingTableOfContents } from "@/components/floating-table-of-contents";
-import { PeopleList } from "@/components/people-list";
-import { ReUseConditions } from "@/components/re-use-conditions";
-import { RelatedResourcesList } from "@/components/related-resources-list";
-import { Resource } from "@/components/resource";
-import { ResourceMetadata } from "@/components/resource-metadata";
-import { TableOfContents } from "@/components/table-of-contents";
-import { TagsList } from "@/components/tags-list";
-import { TranslationOf } from "@/components/translation-of";
-import { TranslationsList } from "@/components/translations-list";
-import { env } from "@/config/env.config";
-import { client } from "@/lib/content/client";
-import { createClient } from "@/lib/content/create-client";
-import { createResourceMetadata } from "@/lib/content/utils/create-resource-metadata";
-import { getMetadata } from "@/lib/i18n/metadata";
-import { createFullUrl } from "@/lib/navigation/create-full-url";
-import { pickRandom } from "@/lib/utils/pick-random";
+import { Citation } from "#/components/citation.tsx";
+import { CurriculaList } from "#/components/curricula-list.tsx";
+import { FloatingTableOfContents } from "#/components/floating-table-of-contents.tsx";
+import { PeopleList } from "#/components/people-list.tsx";
+import { ReUseConditions } from "#/components/re-use-conditions.tsx";
+import { RelatedResourcesList } from "#/components/related-resources-list.tsx";
+import { ResourceDetails } from "#/components/resource-details.tsx";
+import { Resource } from "#/components/resource.tsx";
+import { TableOfContents } from "#/components/table-of-contents.tsx";
+import { TagsList } from "#/components/tags-list.tsx";
+import { TranslationOf } from "#/components/translation-of.tsx";
+import { TranslationsList } from "#/components/translations-list.tsx";
+import { env } from "#/configs/env.config.ts";
+import { client } from "#/lib/content/client/index.ts";
+import { createClient } from "#/lib/content/create-client.ts";
+import { createResourceMetadata } from "#/lib/content/utils/create-resource-metadata.ts";
+import { getMetadata } from "#/lib/i18n/metadata.ts";
+import { createFullUrl } from "#/lib/navigation/create-full-url.ts";
+import { pickRandom } from "#/lib/utils/pick-random.ts";
 
 interface ExternalResourcePageProps extends PageProps<"/resources/external/[id]"> {}
 
-export async function generateStaticParams(): Promise<
-	Array<Pick<Awaited<ExternalResourcePageProps["params"]>, "id">>
-> {
+export async function generateStaticParams(): Promise<Array<Pick<Awaited<ExternalResourcePageProps["params"]>, "id">>> {
 	const ids = await client.collections.resourcesExternal.ids();
 
 	return ids.map((id) => {
@@ -36,9 +34,7 @@ export async function generateStaticParams(): Promise<
 	});
 }
 
-export async function generateMetadata(
-	props: Readonly<ExternalResourcePageProps>,
-): Promise<Metadata> {
+export async function generateMetadata(props: Readonly<ExternalResourcePageProps>): Promise<Metadata> {
 	const { params } = props;
 
 	const meta = await getMetadata();
@@ -103,9 +99,7 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default async function ExternalResourcePage(
-	props: Readonly<ExternalResourcePageProps>,
-): Promise<ReactNode> {
+export default async function ExternalResourcePage(props: Readonly<ExternalResourcePageProps>): Promise<ReactNode> {
 	const { params } = props;
 
 	const t = await getTranslations("ExternalResourcePage");
@@ -124,7 +118,6 @@ export default async function ExternalResourcePage(
 	const {
 		authors,
 		contributors,
-		doi,
 		editors,
 		"featured-image": featuredImage,
 		license,
@@ -153,74 +146,93 @@ export default async function ExternalResourcePage(
 		};
 	}
 
-	const translations = await Promise.all(_translations.map(getTranslationMetadata));
-	const isTranslationOf =
-		_isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
+	const translations = await Promise.all(_translations.map((v) => getTranslationMetadata(v)));
+	const isTranslationOf = _isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
+	const [contentLicense, resourceSources] = await Promise.all([
+		client.collections.contentLicenses.get(license),
+		Promise.all(
+			sources.map(async (id) => {
+				const source = await client.collections.sources.get(id);
+				assert(source, `Missing source "${id}".`);
+				const { name } = source.metadata;
+				return { id, name };
+			}),
+		),
+	]);
 
 	return (
 		<div>
-			<div className="mx-auto grid w-full max-w-screen-lg gap-y-10 px-4 py-8 xs:px-8 xs:py-16 2xl:max-w-none 2xl:grid-cols-(--content-layout) 2xl:gap-x-10 2xl:gap-y-0">
+			<div className="mx-auto grid max-w-screen-lg gap-y-10 px-4 py-8 inline-full xs:px-8 xs:py-16 xl:grid-cols-(--content-layout) xl:gap-x-(--content-layout-gap) xl:gap-y-0 xl:max-inline-none">
 				<aside
-					className="sticky top-24 hidden max-h-screen w-full max-w-xs gap-y-8 justify-self-end overflow-y-auto p-8 text-sm text-neutral-500 2xl:flex 2xl:flex-col"
+					className="sticky inset-bs-24 hidden gap-y-8 justify-self-end overflow-y-auto p-6 text-sm text-neutral-500 inline-full max-block-screen max-inline-(--size-sidebar) xl:flex xl:flex-col 2xl:p-8"
 					style={{ maxHeight: "calc(100dvh - 12px - var(--page-header-height))" }}
 				>
-					<PeopleList
-						label={t("authors")}
-						people={await Promise.all(
-							authors.map(async (id) => {
-								const person = await client.collections.people.get(id);
-								assert(person, `Missing person "${id}".`);
-								const { image, name } = person.metadata;
-								return { id, image, name };
-							}),
-						)}
-					/>
-					<PeopleList
-						label={t("contributors")}
-						people={await Promise.all(
-							contributors.map(async (id) => {
-								const person = await client.collections.people.get(id);
-								assert(person, `Missing person "${id}".`);
-								const { image, name } = person.metadata;
-								return { id, image, name };
-							}),
-						)}
-					/>
-					<PeopleList
-						label={t("editors")}
-						people={await Promise.all(
-							editors.map(async (id) => {
-								const person = await client.collections.people.get(id);
-								assert(person, `Missing person "${id}".`);
-								const { image, name } = person.metadata;
-								return { id, image, name };
-							}),
-						)}
-					/>
-					<TagsList
-						label={t("tags")}
-						tags={await Promise.all(
-							tags.map(async (id) => {
-								const tag = await client.collections.tags.get(id);
-								assert(tag, `Missing tag "${id}".`);
-								const { name } = tag.metadata;
-								return { id, name };
-							}),
-						)}
-					/>
-					<TranslationsList label={t("translations")} translations={translations} />
-					<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
-					<CurriculaList
-						curricula={await Promise.all(
-							resource.curricula.map(async (id) => {
-								const curriculum = await client.collections.curricula.get(id);
-								assert(curriculum, `Missing curriculum "${id}".`);
-								const { title } = curriculum.metadata;
-								return { id, title, href: curriculum.href };
-							}),
-						)}
-						label={t("contained-in-curricula", { count: resource.curricula.length })}
-					/>
+					<div className="flex flex-col gap-y-5">
+						<PeopleList
+							label={t("authors")}
+							people={await Promise.all(
+								authors.map(async (id) => {
+									const person = await client.collections.people.get(id);
+									assert(person, `Missing person "${id}".`);
+									const { image, name } = person.metadata;
+									return { id, image, name };
+								}),
+							)}
+						/>
+						<PeopleList
+							label={t("contributors")}
+							people={await Promise.all(
+								contributors.map(async (id) => {
+									const person = await client.collections.people.get(id);
+									assert(person, `Missing person "${id}".`);
+									const { image, name } = person.metadata;
+									return { id, image, name };
+								}),
+							)}
+						/>
+						<PeopleList
+							label={t("editors")}
+							people={await Promise.all(
+								editors.map(async (id) => {
+									const person = await client.collections.people.get(id);
+									assert(person, `Missing person "${id}".`);
+									const { image, name } = person.metadata;
+									return { id, image, name };
+								}),
+							)}
+						/>
+						<TagsList
+							label={t("tags")}
+							tags={await Promise.all(
+								tags.map(async (id) => {
+									const tag = await client.collections.tags.get(id);
+									assert(tag, `Missing tag "${id}".`);
+									const { name } = tag.metadata;
+									return { id, name };
+								}),
+							)}
+						/>
+						<TranslationsList label={t("translations")} translations={translations} />
+						<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
+						<CurriculaList
+							curricula={await Promise.all(
+								resource.curricula.map(async (id) => {
+									const curriculum = await client.collections.curricula.get(id);
+									assert(curriculum, `Missing curriculum "${id}".`);
+									const { title } = curriculum.metadata;
+									return { id, title, href: curriculum.href };
+								}),
+							)}
+							label={t("contained-in-curricula", { count: resource.curricula.length })}
+						/>
+						<ResourceDetails
+							license={contentLicense ?? { label: "Unknown" }}
+							locale={contentLocale}
+							originalPublicationDate={new Date(remote["publication-date"])}
+							publicationDate={new Date(publicationDate)}
+							sources={resourceSources}
+						/>
+					</div>
 					<Citation
 						authors={await Promise.all(
 							authors.map(async (id) => {
@@ -256,7 +268,7 @@ export default async function ExternalResourcePage(
 					<ReUseConditions />
 				</aside>
 
-				<div className="min-w-0">
+				<div className="min-inline-0">
 					<Resource
 						authors={await Promise.all(
 							authors.map(async (id) => {
@@ -286,7 +298,14 @@ export default async function ExternalResourcePage(
 							<Content />
 						</div>
 					</Resource>
-					<div className="mx-auto mt-12 flex w-full max-w-(--size-content) flex-col gap-y-12 border-t border-neutral-200 pt-12 text-sm text-neutral-500 2xl:hidden">
+					<div className="mx-auto mbs-12 flex flex-col gap-y-12 border-bs border-neutral-200 pbs-12 text-sm text-neutral-500 inline-full max-inline-(--size-content) xl:hidden">
+						<ResourceDetails
+							license={contentLicense ?? { label: "Unknown" }}
+							locale={contentLocale}
+							originalPublicationDate={new Date(remote["publication-date"])}
+							publicationDate={new Date(publicationDate)}
+							sources={resourceSources}
+						/>
 						<Citation
 							authors={await Promise.all(
 								authors.map(async (id) => {
@@ -321,43 +340,6 @@ export default async function ExternalResourcePage(
 						/>
 						<ReUseConditions />
 					</div>
-					<ResourceMetadata
-						authors={await Promise.all(
-							authors.map(async (id) => {
-								const person = await client.collections.people.get(id);
-								assert(person, `Missing person "${id}".`);
-								const { image, name } = person.metadata;
-								return { id, image, name };
-							}),
-						)}
-						contentType={resource.metadata["content-type"]}
-						doi={doi}
-						license={
-							(await client.collections.contentLicenses.get(license)) ?? { label: "Unknown" }
-						}
-						locale={contentLocale}
-						publicationDate={new Date(publicationDate)}
-						remotePublicationDate={new Date(remote["publication-date"])}
-						remoteUrl={remote.url}
-						sources={await Promise.all(
-							sources.map(async (id) => {
-								const source = await client.collections.sources.get(id);
-								assert(source, `Missing source "${id}".`);
-								const { name } = source.metadata;
-								return { id, name };
-							}),
-						)}
-						tags={await Promise.all(
-							tags.map(async (id) => {
-								const tag = await client.collections.tags.get(id);
-								assert(tag, `Missing tag "${id}".`);
-								const { name } = tag.metadata;
-								return { id, name };
-							}),
-						)}
-						title={title}
-						version={version}
-					/>
 					<RelatedResourcesList
 						resources={await Promise.all(
 							related.map(async (id) => {
@@ -375,31 +357,26 @@ export default async function ExternalResourcePage(
 					/>
 				</div>
 
-				{resource.metadata["table-of-contents"] &&
-				tableOfContents != null &&
-				tableOfContents.length > 0 ? (
+				{resource.metadata["table-of-contents"] && tableOfContents != null && tableOfContents.length > 0 ? (
 					<Fragment>
 						<aside
-							className="sticky top-24 hidden max-h-screen w-full max-w-xs overflow-y-auto p-8 text-sm text-neutral-500 2xl:flex 2xl:flex-col"
+							className="sticky inset-bs-24 hidden overflow-y-auto p-6 text-sm text-neutral-500 inline-full max-block-screen max-inline-(--size-sidebar) xl:flex xl:flex-col 2xl:p-8"
 							style={{
 								maxHeight: "calc(100dvh - 12px - var(--page-header-height))",
 							}}
 						>
 							<TableOfContents
 								aria-labelledby="table-of-contents"
-								className="w-full space-y-2"
+								className="space-y-2 inline-full"
 								tableOfContents={tableOfContents}
 								title={
-									<h2
-										className="text-xs font-bold tracking-wide text-neutral-600 uppercase"
-										id="table-of-contents"
-									>
+									<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id="table-of-contents">
 										{t("table-of-contents")}
 									</h2>
 								}
 							/>
 						</aside>
-						<aside className="2xl:hidden">
+						<aside className="xl:hidden">
 							<FloatingTableOfContents
 								closeLabel={t("close")}
 								label={t("table-of-contents")}

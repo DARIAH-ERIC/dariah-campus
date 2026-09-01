@@ -1,8 +1,8 @@
 import { createCollection } from "@acdh-oeaw/keystatic-lib";
 import { collection, fields } from "@keystatic/core";
 
-export const createTags = createCollection("/tags/", (paths, _locale) => {
-	return collection({
+export const createTags = createCollection("/tags/", (paths, _locale) =>
+	collection({
 		label: "Tags",
 		path: paths.contentPath,
 		format: { contentField: "content" },
@@ -18,6 +18,7 @@ export const createTags = createCollection("/tags/", (paths, _locale) => {
 			}),
 			content: fields.mdx({
 				label: "Description",
+				description: "Please add a short description for the tag (ca. 50 words)",
 				options: {
 					blockquote: false,
 					codeBlock: false,
@@ -28,5 +29,5 @@ export const createTags = createCollection("/tags/", (paths, _locale) => {
 				components: {},
 			}),
 		},
-	});
-});
+	}),
+);

@@ -1,0 +1,492 @@
+diff --git a/dist/declarations/src/content-components.d.ts b/dist/declarations/src/content-components.d.ts
+index b3307a2f735fb445e6969a03ef5b00ddd7457eb0..383922ac52b5b64a8445098f92fb5033365c7b44 100644
+--- a/dist/declarations/src/content-components.d.ts
++++ b/dist/declarations/src/content-components.d.ts
+@@ -7,6 +7,14 @@ type WrapperComponentConfig<Schema extends Record<string, ComponentSchema>> = {
+     icon?: ReactElement;
+     schema: Schema;
+     forSpecificLocations?: boolean;
++    editChildrenIn?: 'inline' | 'modal';
++    /** Visible label for the rich text the component wraps, in the edit dialog. */
++    contentLabel?: string;
++    /**
++     * How many of the edit dialog's twelve columns each field of `schema` spans, in order. One span is
++     * required per field and the total must be a multiple of twelve.
++     */
++    layout?: number[];
+ } & ({
+     ContentView?: (props: {
+         value: ParsedValueForComponentSchema<ObjectField<Schema>>;
+@@ -17,6 +25,8 @@ type WrapperComponentConfig<Schema extends Record<string, ComponentSchema>> = {
+         value: ParsedValueForComponentSchema<ObjectField<Schema>>;
+         onChange(value: ParsedValueForComponentSchema<ObjectField<Schema>>): void;
+         onRemove(): void;
++        onEditChildren?(): void;
++        onSelect(): void;
+         isSelected: boolean;
+         children: ReactNode;
+     }) => ReactNode;
+diff --git a/dist/index-4767f7d9.js b/dist/index-4767f7d9.js
+index f5ec4804d44bcd3d32407281c0b69e980db7dbfe..17769be8bc94b31cda1a9bed29189b6f42216013 100644
+--- a/dist/index-4767f7d9.js
++++ b/dist/index-4767f7d9.js
+@@ -19844,7 +19844,7 @@ function FormValue(props) {
+   } = useDialogContainer();
+   return /*#__PURE__*/jsxs(Fragment, {
+     children: [/*#__PURE__*/jsx(Content, {
+-      children: /*#__PURE__*/jsx(Flex, {
++      children: /*#__PURE__*/jsxs(Flex, {
+         id: formId,
+         elementType: "form",
+         onSubmit: event => {
+@@ -19859,10 +19859,10 @@ function FormValue(props) {
+         },
+         direction: "column",
+         gap: "xxlarge",
+-        children: /*#__PURE__*/jsx(FormValueContentFromPreviewProps, {
++        children: [/*#__PURE__*/jsx(FormValueContentFromPreviewProps, {
+           ...previewProps,
+           forceValidation: forceValidation
+-        })
++        }), props.children]
+       })
+     }), /*#__PURE__*/jsxs(ButtonGroup, {
+       children: [/*#__PURE__*/jsx(Button, {
+@@ -20139,26 +20139,121 @@ function deserializeProps(node) {
+     return false;
+   }
+ }
++function WrapperEditDialog(props) {
++  const [childrenValue, setChildrenValue] = useState(() => props.editChildren ? createEditorState(props.node.type.schema.topNodeType.create(null, props.node.content)) : null);
++  return /*#__PURE__*/jsxs(Dialog, {
++    children: [/*#__PURE__*/jsxs(Heading, {
++      children: ["Edit ", props.component.label]
++    }), /*#__PURE__*/jsx(FormValue, {
++      schema: props.schema,
++      value: props.value,
++      onSave: value => {
++        props.runCommand((state, dispatch) => {
++          if (dispatch) {
++            const pos = props.getPos();
++            const currentNode = state.doc.nodeAt(pos);
++            if (!currentNode) return false;
++            let tr = state.tr.setNodeAttribute(pos, "props", toSerialized(value, props.schema.fields));
++            if (childrenValue) {
++              tr = tr.replaceWith(pos + 1, pos + currentNode.nodeSize - 1, childrenValue.doc.content);
++            }
++            dispatch(tr);
++          }
++          return true;
++        });
++      },
++      children: childrenValue && /*#__PURE__*/jsxs(Flex, {
++        direction: "column",
++        gap: "medium",
++        children: [/*#__PURE__*/jsx(FieldLabel, {
++          elementType: "span",
++          children: props.component.contentLabel ?? `${props.component.label} content`
++        }), /*#__PURE__*/jsx(Box, {
++          border: "color.alias.borderIdle",
++          borderRadius: "medium",
++          overflow: "hidden",
++          children: /*#__PURE__*/jsx(Editor, {
++            value: childrenValue,
++            onChange: setChildrenValue,
++            "aria-label": props.component.contentLabel ?? `${props.component.label} content`
++          })
++        })]
++      })
++    })]
++  });
++}
++function HiddenWrapperChildren(props) {
++  return /*#__PURE__*/jsx("div", {
++    hidden: true,
++    children: props.children
++  });
++}
++function CustomWrapperNodeView(props) {
++  const [isOpen, setIsOpen] = useState(false);
++  const runCommand = useEditorDispatchCommand();
++  const editorViewRef = useEditorViewRef();
++  const value = useDeserializedValue(props.node.attrs.props, props.component.schema);
++  const schema = {
++    kind: "object",
++    fields: props.component.schema,
++    layout: props.component.layout
++  };
++  const editChildren = props.component.editChildrenIn === "modal";
++  const NodeView = props.component.NodeView;
++  return /*#__PURE__*/jsxs(Fragment, {
++    children: [/*#__PURE__*/jsx(NodeView, {
++      isSelected: props.hasNodeSelection,
++      onRemove: () => {
++        runCommand((state, dispatch) => {
++          if (dispatch) {
++            const pos = props.getPos();
++            dispatch(state.tr.delete(pos, pos + props.node.nodeSize));
++          }
++          return true;
++        });
++      },
++      onChange: value => {
++        runCommand((state, dispatch) => {
++          if (dispatch) {
++            dispatch(state.tr.setNodeAttribute(props.getPos(), "props", toSerialized(value, schema.fields)));
++          }
++          return true;
++        });
++      },
++      onEditChildren: editChildren ? () => setIsOpen(true) : undefined,
++      onSelect: () => {
++        const view = editorViewRef.current;
++        if (!view) return;
++        view.dispatch(view.state.tr.setSelection(NodeSelection.create(view.state.doc, props.getPos())));
++      },
++      value: value,
++      children: editChildren ? null : props.children
++    }), editChildren && /*#__PURE__*/jsx(HiddenWrapperChildren, {
++      children: props.children
++    }), /*#__PURE__*/jsx(DialogContainer, {
++      onDismiss: () => setIsOpen(false),
++      children: isOpen && /*#__PURE__*/jsx(WrapperEditDialog, {
++        component: props.component,
++        editChildren: true,
++        getPos: props.getPos,
++        node: props.node,
++        runCommand: runCommand,
++        schema: schema,
++        value: value
++      })
++    })]
++  });
++}
+ function BlockWrapper(props) {
+-  const $ = c(37);
+   const [isOpen, setIsOpen] = useState(false);
+   const runCommand = useEditorDispatchCommand();
+-  let t0;
+-  let t1;
+-  if ($[0] !== props.component.schema) {
+-    t1 = {
+-      kind: "object",
+-      fields: props.component.schema
+-    };
+-    $[0] = props.component.schema;
+-    $[1] = t1;
+-  } else {
+-    t1 = $[1];
+-  }
+-  t0 = t1;
+-  const schema = t0;
++  const schema = {
++    kind: "object",
++    fields: props.component.schema
++  };
+   const value = useDeserializedValue(props.node.attrs.props, props.component.schema);
+-  const t2 = `${classes.blockParent} ${css({
++  const editChildren = props.component.kind === "wrapper" && props.component.editChildrenIn === "modal";
++  const className = `${classes.blockParent} ${css({
+     marginBlock: "1em",
+     position: "relative",
+     ...(props.hasNodeSelection ? {
+@@ -20172,175 +20267,61 @@ function BlockWrapper(props) {
+       }
+     } : {})
+   })}${props.hasNodeSelection ? ` ${classes.hideselection}` : ""}`;
+-  const t3 = props.hasNodeSelection ? "color.alias.borderSelected" : "color.alias.borderDisabled";
+-  const t4 = props.hasNodeSelection ? "color.alias.backgroundSelected" : "color.alias.backgroundIdle";
+-  const t5 = props.hasNodeSelection ? tokenSchema.color.foreground.accent : tokenSchema.color.foreground.neutralTertiary;
+-  let t6;
+-  if ($[2] !== t5) {
+-    t6 = css({
+-      color: t5,
+-      textTransform: "uppercase",
+-      fontWeight: tokenSchema.typography.fontWeight.semibold,
+-      fontSize: "0.9rem"
+-    });
+-    $[2] = t5;
+-    $[3] = t6;
+-  } else {
+-    t6 = $[3];
+-  }
+-  let t7;
+-  if ($[4] !== runCommand || $[5] !== props) {
+-    t7 = () => {
+-      runCommand((state, dispatch) => {
+-        if (dispatch) {
+-          dispatch(state.tr.setSelection(NodeSelection.create(state.doc, props.getPos())));
+-        }
+-        return true;
+-      });
+-    };
+-    $[4] = runCommand;
+-    $[5] = props;
+-    $[6] = t7;
+-  } else {
+-    t7 = $[6];
+-  }
+-  let t8;
+-  if ($[7] !== t6 || $[8] !== t7 || $[9] !== props.component.label) {
+-    t8 = /*#__PURE__*/jsx(Box, {
+-      flex: 1,
+-      paddingX: "regular",
+-      paddingY: "small",
+-      UNSAFE_className: t6,
+-      onClick: t7,
+-      children: props.component.label
+-    });
+-    $[7] = t6;
+-    $[8] = t7;
+-    $[9] = props.component.label;
+-    $[10] = t8;
+-  } else {
+-    t8 = $[10];
+-  }
+-  let t9;
+-  if ($[11] !== props.component.schema) {
+-    t9 = !!Object.keys(props.component.schema).length && /*#__PURE__*/jsx(Button, {
+-      prominence: "low",
+-      onPress: () => {
+-        setIsOpen(true);
+-      },
+-      UNSAFE_className: css({
+-        borderBottomRightRadius: 0
+-      }),
+-      children: "Edit"
+-    });
+-    $[11] = props.component.schema;
+-    $[12] = t9;
+-  } else {
+-    t9 = $[12];
+-  }
+-  let t10;
+-  if ($[13] !== t4 || $[14] !== t8 || $[15] !== props.toolbar || $[16] !== t9) {
+-    t10 = /*#__PURE__*/jsxs(Flex, {
+-      backgroundColor: t4,
+-      contentEditable: false,
+-      alignItems: "center",
+-      "data-ignore-content": "",
+-      children: [t8, props.toolbar, t9]
+-    });
+-    $[13] = t4;
+-    $[14] = t8;
+-    $[15] = props.toolbar;
+-    $[16] = t9;
+-    $[17] = t10;
+-  } else {
+-    t10 = $[17];
+-  }
+-  let t11;
+-  if ($[18] !== props.children) {
+-    t11 = /*#__PURE__*/jsx(Box, {
+-      padding: "regular",
+-      children: props.children
+-    });
+-    $[18] = props.children;
+-    $[19] = t11;
+-  } else {
+-    t11 = $[19];
+-  }
+-  let t12;
+-  if ($[20] !== t2 || $[21] !== t3 || $[22] !== t10 || $[23] !== t11) {
+-    t12 = /*#__PURE__*/jsxs(Box, {
+-      UNSAFE_className: t2,
+-      border: t3,
++  const labelClassName = css({
++    color: props.hasNodeSelection ? tokenSchema.color.foreground.accent : tokenSchema.color.foreground.neutralTertiary,
++    textTransform: "uppercase",
++    fontWeight: tokenSchema.typography.fontWeight.semibold,
++    fontSize: "0.9rem"
++  });
++  return /*#__PURE__*/jsxs(Fragment, {
++    children: [/*#__PURE__*/jsxs(Box, {
++      UNSAFE_className: className,
++      border: props.hasNodeSelection ? "color.alias.borderSelected" : "color.alias.borderDisabled",
+       borderRadius: "regular",
+-      children: [t10, t11]
+-    });
+-    $[20] = t2;
+-    $[21] = t3;
+-    $[22] = t10;
+-    $[23] = t11;
+-    $[24] = t12;
+-  } else {
+-    t12 = $[24];
+-  }
+-  let t13;
+-  if ($[25] === Symbol.for("react.memo_cache_sentinel")) {
+-    t13 = () => {
+-      setIsOpen(false);
+-    };
+-    $[25] = t13;
+-  } else {
+-    t13 = $[25];
+-  }
+-  let t14;
+-  if ($[26] !== isOpen || $[27] !== props || $[28] !== runCommand || $[29] !== schema || $[30] !== value) {
+-    t14 = isOpen && /*#__PURE__*/jsxs(Dialog, {
+-      children: [/*#__PURE__*/jsxs(Heading, {
+-        children: ["Edit ", props.component.label]
+-      }), /*#__PURE__*/jsx(FormValue, {
+-        schema: schema,
+-        value: value,
+-        onSave: value_0 => {
+-          runCommand((state_0, dispatch_0) => {
+-            if (dispatch_0) {
+-              dispatch_0(state_0.tr.setNodeAttribute(props.getPos(), "props", toSerialized(value_0, schema.fields)));
+-            }
+-            return true;
+-          });
+-        }
++      children: [/*#__PURE__*/jsxs(Flex, {
++        backgroundColor: props.hasNodeSelection ? "color.alias.backgroundSelected" : "color.alias.backgroundIdle",
++        contentEditable: false,
++        alignItems: "center",
++        "data-ignore-content": "",
++        children: [/*#__PURE__*/jsx(Box, {
++          flex: 1,
++          paddingX: "regular",
++          paddingY: "small",
++          UNSAFE_className: labelClassName,
++          onClick: () => {
++            runCommand((state, dispatch) => {
++              if (dispatch) dispatch(state.tr.setSelection(NodeSelection.create(state.doc, props.getPos())));
++              return true;
++            });
++          },
++          children: props.component.label
++        }), props.toolbar, (!!Object.keys(props.component.schema).length || editChildren) && /*#__PURE__*/jsx(Button, {
++          prominence: "low",
++          onPress: () => setIsOpen(true),
++          UNSAFE_className: css({
++            borderBottomRightRadius: 0
++          }),
++          children: "Edit"
++        })]
++      }), editChildren ? /*#__PURE__*/jsx(HiddenWrapperChildren, {
++        children: props.children
++      }) : /*#__PURE__*/jsx(Box, {
++        padding: "regular",
++        children: props.children
+       })]
+-    });
+-    $[26] = isOpen;
+-    $[27] = props;
+-    $[28] = runCommand;
+-    $[29] = schema;
+-    $[30] = value;
+-    $[31] = t14;
+-  } else {
+-    t14 = $[31];
+-  }
+-  let t15;
+-  if ($[32] !== t14) {
+-    t15 = /*#__PURE__*/jsx(DialogContainer, {
+-      onDismiss: t13,
+-      children: t14
+-    });
+-    $[32] = t14;
+-    $[33] = t15;
+-  } else {
+-    t15 = $[33];
+-  }
+-  let t16;
+-  if ($[34] !== t12 || $[35] !== t15) {
+-    t16 = /*#__PURE__*/jsxs(Fragment, {
+-      children: [t12, t15]
+-    });
+-    $[34] = t12;
+-    $[35] = t15;
+-    $[36] = t16;
+-  } else {
+-    t16 = $[36];
+-  }
+-  return t16;
++    }), /*#__PURE__*/jsx(DialogContainer, {
++      onDismiss: () => setIsOpen(false),
++      children: isOpen && /*#__PURE__*/jsx(WrapperEditDialog, {
++        component: props.component,
++        editChildren: editChildren,
++        getPos: props.getPos,
++        node: props.node,
++        runCommand: runCommand,
++        schema: schema,
++        value: value
++      })
++    })]
++  });
+ }
+ function getCustomNodeSpecs(components) {
+   const componentNames = new Map(Object.keys(components).map((name, i) => [name, `component${i}`]));
+@@ -20430,26 +20411,11 @@ function getCustomNodeSpecs(components) {
+           component: function Block(props) {
+             const runCommand = useEditorDispatchCommand();
+             const value = useDeserializedValue(props.node.attrs.props, component.schema);
+-            return 'NodeView' in component && component.NodeView ? /*#__PURE__*/jsx(component.NodeView, {
+-              isSelected: props.hasNodeSelection || props.isNodeCompletelyWithinSelection,
+-              onRemove: () => {
+-                runCommand((state, dispatch) => {
+-                  if (dispatch) {
+-                    const pos = props.getPos();
+-                    dispatch(state.tr.delete(pos, pos + props.node.nodeSize));
+-                  }
+-                  return true;
+-                });
+-              },
+-              onChange: value => {
+-                runCommand((state, dispatch) => {
+-                  if (dispatch) {
+-                    dispatch(state.tr.setNodeAttribute(props.getPos(), 'props', toSerialized(value, schema.fields)));
+-                  }
+-                  return true;
+-                });
+-              },
+-              value: value,
++            return 'NodeView' in component && component.NodeView ? /*#__PURE__*/jsx(CustomWrapperNodeView, {
++              component: component,
++              getPos: props.getPos,
++              hasNodeSelection: props.hasNodeSelection || props.isNodeCompletelyWithinSelection,
++              node: props.node,
+               children: props.children
+             }) : /*#__PURE__*/jsx(BlockWrapper, {
+               node: props.node,
+diff --git a/dist/keystatic-core-ui.js b/dist/keystatic-core-ui.js
+index 51149d2be2069d3c7a6f08110a850f51820666b4..43ac39df5398697ec1d848e7dc15149b527cf0bb 100644
+--- a/dist/keystatic-core-ui.js
++++ b/dist/keystatic-core-ui.js
+@@ -1494,7 +1494,7 @@ function ForkRepoDialog(props) {
+       props.onDismiss();
+     },
+     children: [/*#__PURE__*/jsx(Heading, {
+-      children: "Fork Repo"
++      children: "Suggest changes"
+     }), state.kind === 'error' ? /*#__PURE__*/jsxs(Fragment, {
+       children: [/*#__PURE__*/jsx(Content, {
+         children: /*#__PURE__*/jsx(Notice, {
+@@ -1514,20 +1514,11 @@ function ForkRepoDialog(props) {
+           direction: "column",
+           marginBottom: "large",
+           children: [/*#__PURE__*/jsx(Text, {
+-            children: "You don't have permission to write to this repo so to save your changes, you need to fork the repo."
+-          }), /*#__PURE__*/jsxs(Text, {
+-            children: ["To start,", ' ', /*#__PURE__*/jsx(TextLink, {
+-              href: `https://github.com/${serializeRepoConfig(props.config.storage.repo)}/fork`,
+-              target: "_blank",
+-              rel: "noopener noreferrer",
+-              children: "fork the repo on GitHub"
+-            }), ". Then, come back to this page and", ' ', /*#__PURE__*/jsx(TextLink, {
+-              href: `https://github.com/apps/${appSlug === null || appSlug === void 0 ? void 0 : appSlug.value}/installations/new?state=close`,
+-              target: "_blank",
+-              rel: "noopener noreferrer",
+-              children: "install the Keystatic GitHub App on your fork."
+-            })]
+-          })]
++						children: ["Only contributors with write privileges can propose changes through the DARIAH-Campus Content Management System. If you haven’t contributed to DARIAH-Campus before, you can get in touch with us at", ' ', /*#__PURE__*/jsx(TextLink, {
++							href: `mailto:info@dariah.eu`,
++							children: "info@dariah.eu"
++						})]
++					})]
+         })
+       })
+     })]

@@ -7,24 +7,28 @@ import {
 import { readonly } from "@acdh-oeaw/keystatic-lib/fields/readonly";
 import { collection, fields } from "@keystatic/core";
 
-import { createCallout } from "@/lib/content/keystatic/components/callout";
-// import { createDiagram } from "@/lib/content/keystatic/components/diagram";
-import { createDisclosure } from "@/lib/content/keystatic/components/disclosure";
-import { createEmbed } from "@/lib/content/keystatic/components/embed";
-import { createFigure } from "@/lib/content/keystatic/components/figure";
-import { createFootnote } from "@/lib/content/keystatic/components/footnote";
-import { createGrid } from "@/lib/content/keystatic/components/grid";
-import { createHeadingId } from "@/lib/content/keystatic/components/heading-id";
-import { createLink } from "@/lib/content/keystatic/components/link";
-import { createLinkButton } from "@/lib/content/keystatic/components/link-button";
-import { createTabs } from "@/lib/content/keystatic/components/tabs";
-import { createVideo } from "@/lib/content/keystatic/components/video";
-import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
-import * as validation from "@/lib/content/keystatic/validation";
-import { contentLanguages, contentLicenses, socialMediaKinds } from "@/lib/content/options";
+import { createCallout } from "#/lib/content/keystatic/components/callout/index.tsx";
+import { createCarousel } from "#/lib/content/keystatic/components/carousel/index.tsx";
+// import { createDiagram } from "#/lib/content/keystatic/components/diagram/index.tsx";
+import { createDisclosure } from "#/lib/content/keystatic/components/disclosure/index.tsx";
+import { createEmbed } from "#/lib/content/keystatic/components/embed/index.tsx";
+import { createFigure } from "#/lib/content/keystatic/components/figure/index.tsx";
+import { createFootnote } from "#/lib/content/keystatic/components/footnote/index.tsx";
+import { createGrid } from "#/lib/content/keystatic/components/grid/index.tsx";
+import { createHeadingId } from "#/lib/content/keystatic/components/heading-id/index.tsx";
+import { createImageLayers } from "#/lib/content/keystatic/components/image-layers/index.tsx";
+import { createLanguage } from "#/lib/content/keystatic/components/language/index.tsx";
+import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
+import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
+import { createTabs } from "#/lib/content/keystatic/components/tabs/index.tsx";
+import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx";
+import { createWorksheet } from "#/lib/content/keystatic/components/worksheet/index.tsx";
+import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
+import * as validation from "#/lib/content/keystatic/validation.ts";
+import { contentLanguages, contentLicenses, socialMediaKinds } from "#/lib/content/options.ts";
 
-export const createResourcesEvents = createCollection("/resources/events/", (paths, locale) => {
-	return collection({
+export const createResourcesEvents = createCollection("/resources/events/", (paths, locale) =>
+	collection({
 		label: "Events",
 		path: paths.contentPath,
 		format: { contentField: "content" },
@@ -258,20 +262,24 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 				options: {
 					...createContentFieldOptions(paths),
 					/**
-					 * Prefer `<Link>` component over regular markdown links.
-					 * Note that this also disables *parsing* regular markdown links.
+					 * Prefer `<Link>` component over regular markdown links. Note that this also disables _parsing_ regular
+					 * markdown links.
 					 */
 					// link: false,
 				},
 				components: {
 					...createCallout(paths, locale),
+					...createCarousel(paths, locale),
 					// ...createDiagram(paths, locale),
 					...createDisclosure(paths, locale),
+					...createWorksheet(paths, locale),
 					...createEmbed(paths, locale),
 					...createFigure(paths, locale),
 					...createFootnote(paths, locale),
 					...createGrid(paths, locale),
 					...createHeadingId(paths, locale),
+					...createImageLayers(paths, locale),
+					...createLanguage(paths, locale),
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
 					...createTabs(paths, locale),
@@ -344,20 +352,24 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 							options: {
 								...createContentFieldOptions(paths),
 								/**
-								 * Prefer `<Link>` component over regular markdown links.
-								 * Note that this also disables *parsing* regular markdown links.
+								 * Prefer `<Link>` component over regular markdown links. Note that this also disables _parsing_ regular
+								 * markdown links.
 								 */
 								// link: false,
 							},
 							components: {
 								...createCallout(paths, locale),
+								...createCarousel(paths, locale),
 								// ...createDiagram(paths, locale),
 								...createDisclosure(paths, locale),
+								...createWorksheet(paths, locale),
 								...createEmbed(paths, locale),
 								...createFigure(paths, locale),
 								...createFootnote(paths, locale),
 								...createGrid(paths, locale),
 								...createHeadingId(paths, locale),
+								...createImageLayers(paths, locale),
+								...createLanguage(paths, locale),
 								...createLink(paths, locale),
 								...createLinkButton(paths, locale),
 								...createTabs(paths, locale),
@@ -430,20 +442,24 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 										options: {
 											...createContentFieldOptions(paths),
 											/**
-											 * Prefer `<Link>` component over regular markdown links.
-											 * Note that this also disables *parsing* regular markdown links.
+											 * Prefer `<Link>` component over regular markdown links. Note that this also disables _parsing_
+											 * regular markdown links.
 											 */
 											// link: false,
 										},
 										components: {
 											...createCallout(paths, locale),
+											...createCarousel(paths, locale),
 											// ...createDiagram(paths, locale),
 											...createDisclosure(paths, locale),
+											...createWorksheet(paths, locale),
 											...createEmbed(paths, locale),
 											...createFigure(paths, locale),
 											...createFootnote(paths, locale),
 											...createGrid(paths, locale),
 											...createHeadingId(paths, locale),
+											...createImageLayers(paths, locale),
+											...createLanguage(paths, locale),
 											...createLink(paths, locale),
 											...createLinkButton(paths, locale),
 											...createTabs(paths, locale),
@@ -492,11 +508,17 @@ export const createResourcesEvents = createCollection("/resources/events/", (pat
 				collection: withI18nPrefix("dariah-national-consortia", locale),
 				description: "DARIAH member countries contributing to resource (where applicable)",
 			}),
+			"dariah-working-groups": fields.multiRelationship({
+				label: "DARIAH working groups",
+				validation: { length: { min: 0 } },
+				collection: withI18nPrefix("dariah-working-groups", locale),
+				description: "DARIAH working groups contributing to resource (where applicable)",
+			}),
 			doi: readonly({
 				label: "PID (readonly)",
 				description: "Automatically assigned Handle PID.",
 			}),
 			draft: fields.ignored(),
 		},
-	});
-});
+	}),
+);

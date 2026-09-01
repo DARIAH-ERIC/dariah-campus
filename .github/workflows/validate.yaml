@@ -33,22 +33,30 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
+        with:
+          cache: true
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Format
         run: pnpm run format:check
+
+      # Needs neither generated content nor a search server, so it runs before the expensive steps.
+      - name: Run unit tests
+        run: pnpm run test
+
+      - name: Create e2e fixture content
+        run: pnpm run e2e:fixtures:create
 
       - name: Transform content
         run: pnpm run content:build
@@ -62,16 +70,13 @@ jobs:
       - name: Typecheck
         run: pnpm run types:check
 
-      - name: Test
-        run: pnpm run test
-
       - name: Get playwright version
         run: |
           PLAYWRIGHT_VERSION=$(pnpm ls @playwright/test --json | jq --raw-output '.[0].devDependencies["@playwright/test"].version')
           echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
 
       - name: Cache playwright browsers
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: cache-playwright-browsers
         with:
           path: "~/.cache/ms-playwright"
@@ -86,23 +91,31 @@ jobs:
 
       # https://nextjs.org/docs/pages/building-your-application/deploying/ci-build-caching#github-actions
       - name: Cache Next.js build output
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: "${{ github.workspace }}/.next/cache"
           key: "${{ matrix.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}"
 
       - name: Start typesense server and populate search index
         run: |
-          touch .env.local
-          pnpm run dev:typesense:up
+          set -euo pipefail
+          pnpm run dev:services:up
           echo "Waiting for Typesense to be ready..."
-          until curl -s -o /dev/null -w "%{http_code}" -H "X-TYPESENSE-API-KEY: $TYPESENSE-API-KEY" http://localhost:8108/health | grep -q 200; do
+          until curl -s -o /dev/null -w "%{http_code}" -H "X-TYPESENSE-API-KEY: $TYPESENSE_ADMIN_API_KEY" http://localhost:8108/health | grep -q 200; do
             echo -n "."
             sleep 1
           done
-          pnpm run typesense:collection:create
-          pnpm run typesense:collection:seed
-          echo NEXT_PUBLIC_TYPESENSE_SEARCH_API_KEY=$(pnpm run typesense:api-key:create | awk -F'"' '{print $2}') >> $GITHUB_ENV
+          pnpm run search:collections:create
+          pnpm run search:collections:update
+          SEARCH_API_KEY="$(pnpm --silent run search:api-keys:generate --raw)"
+          if [ -z "$SEARCH_API_KEY" ]; then
+            echo "Failed to generate search api key." >&2
+            exit 1
+          fi
+          {
+            echo "NEXT_PUBLIC_TYPESENSE_SEARCH_API_KEY=$SEARCH_API_KEY"
+            echo "TYPESENSE_SEARCH_API_KEY=$SEARCH_API_KEY"
+          } >> "$GITHUB_ENV"
 
       - name: Build app
         run: pnpm run build
@@ -111,9 +124,9 @@ jobs:
         run: pnpm run test:e2e
 
       - name: Stop typesense server
-        run: pnpm run dev:typesense:down
+        run: pnpm run dev:services:down
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
           name: playwright-report

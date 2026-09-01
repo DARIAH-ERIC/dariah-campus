@@ -1,28 +1,35 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
-import { createComponent } from "@acdh-oeaw/keystatic-lib";
+import { createAssetOptions, createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { repeating, wrapper } from "@keystatic/core/content-components";
 import { MessageCircleQuestionIcon } from "lucide-react";
 
+import { createQuizDragTheWords } from "#/lib/content/keystatic/components/drag-the-words/index.tsx";
+import { createQuizFillInTheBlank } from "#/lib/content/keystatic/components/fill-in-the-blank/index.tsx";
+import { createQuizImageDropZones } from "#/lib/content/keystatic/components/image-drop-zones/index.tsx";
 import {
+	QuizChoiceAnswerErrorMessagePreview,
+	QuizChoiceAnswerLabelPreview,
 	QuizChoiceAnswerPreview,
 	QuizChoicePreview,
 	QuizChoiceQuestionPreview,
 	QuizErrorMessagePreview,
+	QuizImageHotspotEditor,
+	QuizImageHotspotsPreview,
 	QuizPreview,
+	QuizQuestionPreview,
 	QuizSuccessMessagePreview,
-	QuizTextInputPreview,
-} from "@/lib/content/keystatic/components/quiz/preview";
+} from "#/lib/content/keystatic/components/quiz/preview.tsx";
 
-export const createQuiz = createComponent((_paths, _locale) => {
+export const createQuiz = createComponent((paths, locale) => {
 	return {
+		...createQuizImageDropZones(paths, locale),
+		...createQuizDragTheWords(paths, locale),
+		...createQuizFillInTheBlank(paths, locale),
 		Quiz: repeating({
 			label: "Quiz",
 			description: "An interactive quiz.",
 			icon: <MessageCircleQuestionIcon />,
-			children: ["QuizChoice", "QuizTextInput"],
-			validation: { children: { min: 1 } },
+			children: ["QuizChoice", "QuizImageHotspots", "QuizFillInTheBlank", "QuizDragTheWords", "QuizImageDropZones"],
 			schema: {},
 			ContentView(props) {
 				const { children } = props;
@@ -31,23 +38,18 @@ export const createQuiz = createComponent((_paths, _locale) => {
 			},
 		}),
 		QuizChoice: repeating({
-			label: "Choice quiz",
-			description: "A single or multiple choice quiz.",
+			label: "Multiple choice",
+			description: "A quiz with one or more correct answers.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
-			children: [
-				"QuizChoiceQuestion",
-				"QuizChoiceAnswer",
-				"QuizSuccessMessage",
-				"QuizErrorMessage",
-			],
+			children: ["QuizChoiceQuestion", "QuizChoiceAnswer", "QuizSuccessMessage", "QuizErrorMessage"],
 			validation: { children: { min: 1 } },
 			schema: {
 				variant: fields.select({
 					label: "Variant",
 					options: [
-						{ label: "Single choice", value: "single" },
-						{ label: "Multiple choice", value: "multiple" },
+						{ label: "Single correct answer", value: "single" },
+						{ label: "Multiple correct answers", value: "multiple" },
 					],
 					defaultValue: "multiple",
 				}),
@@ -67,11 +69,83 @@ export const createQuiz = createComponent((_paths, _locale) => {
 				);
 			},
 		}),
-		QuizChoiceAnswer: wrapper({
-			label: "Answer",
-			description: "An answer in a single/multiple choice quiz.",
+		QuizImageHotspots: repeating({
+			label: "Image hotspots",
+			description: "An image with points that reveal explanatory content.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
+			children: ["QuizQuestion", "QuizImageHotspot"],
+			validation: { children: { min: 1 } },
+			schema: {
+				src: fields.image({
+					label: "Image",
+					validation: { isRequired: true },
+					...createAssetOptions(paths.assetPath),
+				}),
+				alt: fields.text({
+					label: "Image description for assistive technology",
+					description:
+						"Describe the image and the relevant spatial information; leave empty only if the image is decorative.",
+					validation: { isRequired: false },
+				}),
+				presentation: fields.select({
+					label: "Hotspot content presentation",
+					description:
+						"Inline panels sit beside or below the image. Modal side panels provide more room for longer content. Anchored popovers work best for short explanations.",
+					options: [
+						{ label: "Inline panel", value: "inline" },
+						{ label: "Modal side panel", value: "sidepanel" },
+						{ label: "Anchored popover", value: "popover" },
+					],
+					defaultValue: "inline",
+				}),
+			},
+			ContentView(props) {
+				const { children, value } = props;
+
+				return (
+					<QuizImageHotspotsPreview alt={value.alt} src={value.src}>
+						{children}
+					</QuizImageHotspotsPreview>
+				);
+			},
+		}),
+		QuizImageHotspot: wrapper({
+			label: "Image hotspot",
+			description: "A point on the image that opens explanatory content.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			editChildrenIn: "modal",
+			schema: {
+				label: fields.text({
+					label: "Hotspot label",
+					description: "Identifies the hotspot to screen-reader users and titles its popover.",
+					validation: { isRequired: true },
+				}),
+				x: fields.number({
+					label: "Horizontal position (%)",
+					defaultValue: 50,
+					step: 0.1,
+					validation: { isRequired: true, min: 0, max: 100 },
+				}),
+				y: fields.number({
+					label: "Vertical position (%)",
+					defaultValue: 50,
+					step: 0.1,
+					validation: { isRequired: true, min: 0, max: 100 },
+				}),
+			},
+			NodeView(props) {
+				return <QuizImageHotspotEditor {...props} />;
+			},
+		}),
+		QuizChoiceAnswer: repeating({
+			label: "Answer",
+			description: "An answer in a multiple choice quiz.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			children: ["QuizChoiceAnswerLabel", "QuizChoiceAnswerErrorMessage"],
+			validation: { children: { min: 1, max: 2 } },
 			schema: {
 				kind: fields.select({
 					label: "Kind",
@@ -88,9 +162,45 @@ export const createQuiz = createComponent((_paths, _locale) => {
 				return <QuizChoiceAnswerPreview kind={value.kind}>{children}</QuizChoiceAnswerPreview>;
 			},
 		}),
+		QuizChoiceAnswerLabel: wrapper({
+			label: "Answer text",
+			description: "The text displayed next to the answer control.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			schema: {},
+			ContentView(props) {
+				const { children } = props;
+
+				return <QuizChoiceAnswerLabelPreview>{children}</QuizChoiceAnswerLabelPreview>;
+			},
+		}),
+		QuizChoiceAnswerErrorMessage: wrapper({
+			label: "Answer error message",
+			description: "Rich-text feedback shown when this answer's selected state is incorrect.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			schema: {},
+			ContentView(props) {
+				const { children } = props;
+
+				return <QuizChoiceAnswerErrorMessagePreview>{children}</QuizChoiceAnswerErrorMessagePreview>;
+			},
+		}),
+		QuizQuestion: wrapper({
+			label: "Question",
+			description: "The task the exercise sets, shown above it.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			schema: {},
+			ContentView(props) {
+				const { children } = props;
+
+				return <QuizQuestionPreview>{children}</QuizQuestionPreview>;
+			},
+		}),
 		QuizChoiceQuestion: wrapper({
 			label: "Question",
-			description: "A question in a single/multiple choice quiz.",
+			description: "A question in a multiple choice quiz.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
 			schema: {},
@@ -122,18 +232,6 @@ export const createQuiz = createComponent((_paths, _locale) => {
 				const { children } = props;
 
 				return <QuizSuccessMessagePreview>{children}</QuizSuccessMessagePreview>;
-			},
-		}),
-		QuizTextInput: wrapper({
-			label: "Text input quiz.",
-			description: "A text input quiz.",
-			icon: <MessageCircleQuestionIcon />,
-			forSpecificLocations: true,
-			schema: {},
-			ContentView(props) {
-				const { children } = props;
-
-				return <QuizTextInputPreview>{children}</QuizTextInputPreview>;
 			},
 		}),
 	};

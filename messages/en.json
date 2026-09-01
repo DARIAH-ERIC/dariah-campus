@@ -1,14 +1,88 @@
 {
 	"content": {
+		"Carousel": {
+			"carousel": "carousel",
+			"label": "Slides",
+			"next-slide": "Next slide",
+			"picker-item-label": "Slide {index}",
+			"picker-label": "Choose slide to display",
+			"previous-slide": "Previous slide",
+			"slide": "slide",
+			"slide-label": "Slide {index} of {total}"
+		},
+		"ImageComparisonSlider": {
+			"separator-label": "Use arrow keys to move separator"
+		},
+		"ImageLayers": {
+			"fewer-layers": "Show fewer layers",
+			"label": "Image layers",
+			"layer-label": "Layer {index}",
+			"more-layers": "Show more layers",
+			"output": "{label} ({index} of {total})"
+		},
+		"QuizDragTheWords": {
+			"blank-label-empty": "Blank {index}. Select a word.",
+			"blank-label-filled": "Blank {index}. Currently {word}.",
+			"remove-word": "Remove word",
+			"check": "Check",
+			"hint-label": "Show hint",
+			"reset": "Reset",
+			"score": "{correct} / {total} correct",
+			"show-solution": "Show solution",
+			"word-bank-label": "Answers"
+		},
+		"QuizFillInTheBlank": {
+			"blank-label": "Blank {index}",
+			"check": "Check",
+			"hint-label": "Show hint",
+			"reset": "Reset",
+			"score": "{correct} / {total} correct",
+			"show-solution": "Show solution"
+		},
+		"QuizImageDropZones": {
+			"check": "Check",
+			"explanations-label": "What the drop zones mean",
+			"item-bank-label": "Items",
+			"item-label": "{item}. Choose a drop zone.",
+			"placed-item-label": "{item}, in {zone}. Remove.",
+			"placed-item-label-correct": "{item}, in {zone}. Correct. Remove.",
+			"placed-item-label-incorrect": "{item}, in {zone}. Incorrect. Remove.",
+			"reset": "Reset",
+			"score": "{correct} / {total} correct",
+			"show-solution": "Show solution",
+			"solution-item-label": "{item}, in {zone}.",
+			"zone-label": "Drop zone {index}"
+		},
+		"QuizImageHotspots": {
+			"close": "Close annotation",
+			"hotspot-label": "Hotspot {index}",
+			"inline-panel-label": "Image annotation",
+			"select-hotspot": "Select a point on the image to view its annotation."
+		},
 		"QuizControls": {
 			"correct": "Correct!",
 			"incorrect": "Incorrect!",
 			"next-question": "Next question",
+			"page-label": "Question {index} of {total}",
 			"previous-question": "Previous question",
 			"validate": "Check answer"
 		},
-		"QuizTextInput": {
-			"label": "Answer"
+		"Worksheet": {
+			"download": "Download document",
+			"generated": "Generated on {date}.",
+			"next": "Next",
+			"not-answered": "Not answered",
+			"previous": "Back",
+			"print": "Print or save as PDF",
+			"progress-label": "Form progress",
+			"reset": "Clear answers",
+			"reset-confirm": "Confirm clearing answers",
+			"review": "Review answers",
+			"section-label": "Section {index}",
+			"source": "Source",
+			"step-label": "Step {index} of {total}",
+			"summary": "Summary",
+			"title": "Worksheet"
 		}
 	},
 	"mdx": {
@@ -30,6 +104,13 @@
 			"webinar-recording": "Webinar recording",
 			"website": "Website"
 		}
+	},
+	"ContentSectionNavigation": {
+		"label": "Sections",
+		"next": "Next",
+		"position": "Section {current, number} of {total, number}",
+		"previous": "Previous",
+		"section": "Section {index, number}"
 	},
 	"CourseRegistryPage": {
 		"meta": {
@@ -126,6 +207,9 @@
 		"table-of-contents": "Table of contents",
 		"toggle-table-of-contents": "Toggle table of contents"
 	},
+	"Domain": {
+		"label": "Domain"
+	},
 	"ErrorPage": {
 		"meta": {
 			"title": "Error"
@@ -201,6 +285,12 @@
 		"search": "Search",
 		"submit-search-form": "Submit"
 	},
+	"Language": {
+		"label": "Language"
+	},
+	"License": {
+		"label": "License"
+	},
 	"Loading": {
 		"loading": "Loading"
 	},
@@ -212,6 +302,9 @@
 			"title": "Page not found"
 		},
 		"title": "Page not found"
+	},
+	"OriginalPublicationDate": {
+		"label": "Originally published"
 	},
 	"PathfinderResourcePage": {
 		"authors": "Authors",
@@ -231,6 +324,15 @@
 			"title": "Pathfinders"
 		},
 		"title": "Pathfinders"
+	},
+	"PersonPage": {
+		"authors": "Authors",
+		"curricula": "Curricula",
+		"editors": "Editors",
+		"resources": "Resources"
+	},
+	"PublicationDate": {
+		"label": "Published to DARIAH-Campus"
 	},
 	"PreviewCard": {
 		"authors": "Authors",
@@ -262,33 +364,6 @@
 		"tags": "Topics",
 		"translations": "Translations"
 	},
-	"ResourceMetadata": {
-		"authors": "Authors",
-		"content-type": "Content type",
-		"content-types": {
-			"audio": "Audio",
-			"curriculum": "Curriculum",
-			"event": "Event",
-			"pathfinder": "Pathfinder",
-			"slides": "Slides",
-			"training-module": "Training module",
-			"video": "Video",
-			"webinar-recording": "Webinar recording",
-			"website": "Website"
-		},
-		"domain": "Domain",
-		"label": "Full metadata",
-		"license": "License",
-		"language": "Language",
-		"pid": "PID",
-		"publication-date": "Published to DARIAH-Campus",
-		"remote-publication-date": "Originally published",
-		"remote-url": "URL",
-		"sources": "Sources",
-		"tags": "Topics",
-		"title": "Title",
-		"version": "Version"
-	},
 	"ResourcePreviewCard": {
 		"coming-soon": "Coming soon!"
 	},
@@ -306,7 +381,7 @@
 	"SearchPage": {
 		"authors": "Authors",
 		"authors-editors-contributors": "Authors, editors, and contributors",
-		"close": "Close",
+		"clear-filters": "Clear all filters",
 		"content-types": "Content types",
 		"filter-label": "Filter {attribute} values",
 		"filter-placeholder": "Filter...",
@@ -315,11 +390,12 @@
 			"title": "Search"
 		},
 		"nothing-found": "Nothing found",
+		"open-value-page": "Open the page for {value}",
 		"people": "People",
+		"results-found": "{count, plural, =0 {Nothing found.} =1 {One result found.} other {# results found.}}",
 		"search": "Search",
-		"search-filter": "Filter",
-		"show-less-label": "Show less",
-		"show-more-label": "Show more",
+		"searching": "Searching",
+		"selected-filters": "Selected filters",
 		"sources": "Sources",
 		"tags": "Topics",
 		"title": "Search"
@@ -332,16 +408,28 @@
 	"SocialMediaShareLinks": {
 		"share-link": "Share link on {platform}"
 	},
+	"Sources": {
+		"label": "Sources"
+	},
 	"SourcePage": {
 		"authors": "Authors",
+		"curricula": "Curricula",
+		"editors": "Editors",
 		"resources": "Resources"
 	},
 	"SourcesPage": {
+		"curricula": "{count, plural, =0 {no curricula} =1 {one curriculum} other {# curricula}}",
 		"lead": "DARIAH learning resources don't all live in one place. Here you can explore our materials based on the context in which they were produced.",
 		"meta": {
 			"title": "Sources"
 		},
 		"resources": "{count, plural, =0 {no resources} =1 {one resource} other {# resources}}",
 		"title": "Sources"
+	},
+	"TopicPage": {
+		"authors": "Authors",
+		"curricula": "Curricula",
+		"editors": "Editors",
+		"resources": "Resources"
 	}
 }

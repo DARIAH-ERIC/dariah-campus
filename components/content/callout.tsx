@@ -1,16 +1,9 @@
 import { capitalize, isNonEmptyString } from "@acdh-oeaw/lib";
 import { styles } from "@acdh-oeaw/style-variants";
-import {
-	AlertTriangleIcon,
-	BoltIcon,
-	InfoIcon,
-	LightbulbIcon,
-	type LucideIcon,
-	PencilIcon,
-} from "lucide-react";
+import { AlertTriangleIcon, BoltIcon, InfoIcon, LightbulbIcon, type LucideIcon, PencilIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
-import type { CalloutKind } from "@/lib/content/options";
+import type { CalloutKind } from "#/lib/content/options.ts";
 
 const icons: Record<Exclude<CalloutKind, "none">, LucideIcon> = {
 	caution: BoltIcon,
@@ -21,7 +14,7 @@ const icons: Record<Exclude<CalloutKind, "none">, LucideIcon> = {
 };
 
 const calloutStyles = styles({
-	base: "my-12 grid gap-y-3 rounded-md border p-6 shadow [&_*]:text-inherit [&_*::marker]:text-inherit",
+	base: "my-12 grid gap-y-3 rounded-md border p-6 shadow-sm **:text-inherit [&_*::marker]:text-inherit",
 	variants: {
 		kind: {
 			caution:
@@ -53,7 +46,7 @@ export function Callout(props: Readonly<CalloutProps>): ReactNode {
 	return (
 		<aside className={calloutStyles({ kind })}>
 			<CalloutHeader kind={kind} title={title} />
-			<div className="min-w-0 **:first:mt-0 **:last:mb-0 [&_a]:underline [&_a:hover]:no-underline">
+			<div className="min-inline-0 **:first:mbs-0 **:last:mbe-0 [&_a]:underline [&_a:hover]:no-underline">
 				{children}
 			</div>
 		</aside>
@@ -75,7 +68,7 @@ function CalloutHeader(props: Readonly<CalloutHeaderProps>): ReactNode {
 
 		return (
 			<strong className="flex items-center gap-x-2 font-bold">
-				<Icon aria-hidden={true} className="size-5 shrink-0" />
+				<Icon aria-hidden={true} className="shrink-0 block-5 inline-5" />
 				<span>{hasTitle ? title : capitalize(kind)}</span>
 			</strong>
 		);

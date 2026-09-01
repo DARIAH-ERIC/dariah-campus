@@ -6,68 +6,69 @@ import { SKIP, visit } from "unist-util-visit";
 
 interface WithMermaidDiagramsOptions {}
 
-export const withMermaidDiagrams: Plugin<[WithMermaidDiagramsOptions], Root> =
-	function withMermaidDiagrams(_options) {
-		return function transformer(tree) {
-			visit(tree, "element", (node, index, parent) => {
-				if (index == null) return;
+export const withMermaidDiagrams: Plugin<[WithMermaidDiagramsOptions], Root> = function withMermaidDiagrams(_options) {
+	return function transformer(tree) {
+		visit(tree, "element", (node, index, parent) => {
+			if (index == null) {
+				return;
+			}
 
-				if (
-					// eslint-disable-next-line @typescript-eslint/prefer-optional-chain
-					parent == null ||
-					parent.type !== "element" ||
-					parent.tagName !== "pre" ||
-					node.tagName !== "code"
-				) {
-					return;
-				}
+			if (
+				// oxlint-disable-next-line @typescript-eslint/prefer-optional-chain
+				parent == null ||
+				parent.type !== "element" ||
+				parent.tagName !== "pre" ||
+				node.tagName !== "code"
+			) {
+				return;
+			}
 
-				const isMermaidDiagram =
-					Array.isArray(node.properties.className) &&
-					node.properties.className.some((className) => {
-						return className === "language-mermaid";
-					});
+			const isMermaidDiagram =
+				Array.isArray(node.properties.className) &&
+				node.properties.className.some((className) => className === "language-mermaid");
 
-				if (!isMermaidDiagram) return;
+			if (!isMermaidDiagram) {
+				return;
+			}
 
-				const diagram = toString(node);
+			const diagram = toString(node);
 
-				const component: MdxJsxFlowElement = {
-					type: "mdxJsxFlowElement" as const,
-					name: "MermaidDiagram",
-					attributes: [
-						{
-							type: "mdxJsxAttribute",
-							name: "diagram",
-							value: {
-								type: "mdxJsxAttributeValueExpression",
-								value: diagram,
-								data: {
-									estree: {
-										type: "Program",
-										body: [
-											{
-												type: "ExpressionStatement",
-												expression: {
-													type: "Literal",
-													value: diagram,
-													raw: JSON.stringify(diagram),
-												},
+			const component: MdxJsxFlowElement = {
+				type: "mdxJsxFlowElement" as const,
+				name: "MermaidDiagram",
+				attributes: [
+					{
+						type: "mdxJsxAttribute",
+						name: "diagram",
+						value: {
+							type: "mdxJsxAttributeValueExpression",
+							value: diagram,
+							data: {
+								estree: {
+									type: "Program",
+									body: [
+										{
+											type: "ExpressionStatement",
+											expression: {
+												type: "Literal",
+												value: diagram,
+												raw: JSON.stringify(diagram),
 											},
-										],
-										sourceType: "module",
-										comments: [],
-									},
+										},
+									],
+									sourceType: "module",
+									comments: [],
 								},
 							},
 						},
-					],
-					children: [],
-				};
+					},
+				],
+				children: [],
+			};
 
-				Object.assign(parent, component);
+			Object.assign(parent, component);
 
-				return SKIP;
-			});
-		};
+			return SKIP;
+		});
 	};
+};

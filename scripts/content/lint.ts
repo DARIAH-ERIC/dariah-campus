@@ -19,8 +19,8 @@ import type { VFile } from "vfile";
 import { reporter } from "vfile-reporter";
 import * as YAML from "yaml";
 
-import { socialMediaKinds, videoProviders } from "@/lib/content/options";
-import { createVideoUrl } from "@/lib/navigation/create-video-url";
+import { socialMediaKinds, videoProviders } from "#/lib/content/options.ts";
+import { createVideoUrl } from "#/lib/navigation/create-video-url.ts";
 
 const skipUrlPatterns = [/^(?!https?:\/\/)/i];
 
@@ -32,11 +32,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 	const nodesByUrl = new Map<string, Array<Node>>();
 
 	function add(value: string, node: Node) {
-		if (
-			skipUrlPatterns.some((pattern) => {
-				return pattern.test(value);
-			})
-		) {
+		if (skipUrlPatterns.some((pattern) => pattern.test(value))) {
 			return;
 		}
 
@@ -59,7 +55,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 	}
 
 	visit(tree, (node) => {
-		// eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
+		// oxlint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
 		switch (node.type) {
 			case "yaml": {
 				try {
@@ -67,13 +63,9 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 
 					const directory = relative(file.cwd, file.dirname!);
 
-					const socialMediaIds: Array<string> = socialMediaKinds
-						.map((kind) => {
-							return kind.value;
-						})
-						.filter((value) => {
-							return value !== "email";
-						});
+					const socialMediaIds = new Set<string>(
+						socialMediaKinds.map((kind) => kind.value).filter((value) => value !== "email"),
+					);
 
 					if (directory.includes("events")) {
 						const result = v.parse(
@@ -90,7 +82,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 										),
 									}),
 								),
-								social: v.array(v.object({ discriminant: v.string(), value: v.string() })),
+								social: v.optional(v.array(v.object({ discriminant: v.string(), value: v.string() })), []),
 							}),
 							frontmatter,
 						);
@@ -116,7 +108,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 						}
 
 						for (const social of result.social) {
-							if (socialMediaIds.includes(social.discriminant)) {
+							if (socialMediaIds.has(social.discriminant)) {
 								add(social.value, node);
 							}
 						}
@@ -136,13 +128,13 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 					if (directory.includes("people")) {
 						const result = v.parse(
 							v.object({
-								social: v.array(v.object({ discriminant: v.string(), value: v.string() })),
+								social: v.optional(v.array(v.object({ discriminant: v.string(), value: v.string() })), []),
 							}),
 							frontmatter,
 						);
 
 						for (const social of result.social) {
-							if (socialMediaIds.includes(social.discriminant)) {
+							if (socialMediaIds.has(social.discriminant)) {
 								add(social.value, node);
 							}
 						}
@@ -162,9 +154,9 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 
 			case "mdxJsxFlowElement": {
 				function getAttributeValue(node: MdxJsxFlowElement, name: string) {
-					const value = node.attributes.find((attribute) => {
-						return attribute.type === "mdxJsxAttribute" && attribute.name === name;
-					})?.value;
+					const value = node.attributes.find(
+						(attribute) => attribute.type === "mdxJsxAttribute" && attribute.name === name,
+					)?.value;
 
 					assert(
 						isNonEmptyString(value),
@@ -174,7 +166,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 					return value;
 				}
 
-				// eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
+				// oxlint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
 				switch (node.name) {
 					case "Embed": {
 						add(getAttributeValue(node, "src"), node);
@@ -194,9 +186,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 						const provider = getAttributeValue(node, "provider");
 						assert(
 							includes(
-								videoProviders.map((provider) => {
-									return provider.value;
-								}),
+								videoProviders.map((provider) => provider.value),
 								provider,
 							),
 							`Invalid \`provider\` attribute on \`${node.name}\` component in \`${file.path}\`.`,
@@ -213,9 +203,9 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 
 			case "mdxJsxTextElement": {
 				function getAttributeExpressionValue(node: MdxJsxTextElement, name: string) {
-					const value = node.attributes.find((attribute) => {
-						return attribute.type === "mdxJsxAttribute" && attribute.name === name;
-					})?.value;
+					const value = node.attributes.find(
+						(attribute) => attribute.type === "mdxJsxAttribute" && attribute.name === name,
+					)?.value;
 
 					assert(
 						value != null && typeof value === "object",
@@ -225,16 +215,13 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 					return value;
 				}
 
-				// eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
+				// oxlint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
 				switch (node.name) {
 					case "Link":
 					case "LinkButton": {
 						const link = getAttributeExpressionValue(node, "link");
 						const value = JSON.parse(link.value) as unknown;
-						const result = v.safeParse(
-							v.object({ discriminant: v.literal("external"), value: v.string() }),
-							value,
-						);
+						const result = v.safeParse(v.object({ discriminant: v.literal("external"), value: v.string() }), value);
 
 						if (result.success) {
 							add(result.output.value, node);
@@ -268,6 +255,7 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 		for (const node of nodes) {
 			for (const message of result.messages) {
 				/** Avoid printing full fetch error stacks. */
+				// oxlint-disable-next-line unicorn/no-instanceof-builtins
 				if (message.cause instanceof Error) {
 					message.cause.stack = "";
 				}
@@ -280,18 +268,11 @@ async function rule(tree: Root, file: VFile, _options: Options) {
 				issue.fatal = message.fatal;
 			}
 
-			if (
-				result.permanent === true &&
-				result.status === "alive" &&
-				new URL(url).href !== result.url
-			) {
-				const message = file.message(
-					`Unexpected redirecting URL \`${url}\`, expected final URL \`${result.url}\``,
-					{
-						ancestors: [node],
-						place: node.position,
-					},
-				);
+			if (result.permanent === true && result.status === "alive" && new URL(url).href !== result.url) {
+				const message = file.message(`Unexpected redirecting URL \`${url}\`, expected final URL \`${result.url}\``, {
+					ancestors: [node],
+					place: node.position,
+				});
 				message.actual = url;
 				message.expected = [result.url];
 			}

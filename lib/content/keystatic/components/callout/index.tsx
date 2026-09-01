@@ -1,12 +1,10 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { wrapper } from "@keystatic/core/content-components";
 import { InfoIcon } from "lucide-react";
 
-import { CalloutPreview } from "@/lib/content/keystatic/components/callout/preview";
-import { calloutKinds } from "@/lib/content/options";
+import { CalloutPreview } from "#/lib/content/keystatic/components/callout/preview.tsx";
+import { calloutKinds } from "#/lib/content/options.ts";
 
 export const createCallout = createComponent((_paths, _locale) => {
 	return {

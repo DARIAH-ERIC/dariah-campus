@@ -1,7 +1,10 @@
-/* eslint-disable react/jsx-no-literals */
-
 import { NotEditable } from "@keystatic/core";
 import type { ReactNode } from "react";
+
+export {
+	QuizImageHotspotEditor,
+	QuizImageHotspotsPreview,
+} from "#/lib/content/keystatic/components/quiz/image-hotspots-preview.tsx";
 
 interface QuizPreviewProps {
 	children: ReactNode;
@@ -44,13 +47,53 @@ export function QuizChoiceAnswerPreview(props: Readonly<QuizChoiceAnswerPreviewP
 	);
 }
 
+interface QuizChoiceAnswerLabelPreviewProps {
+	children: ReactNode;
+}
+
+export function QuizChoiceAnswerLabelPreview(props: Readonly<QuizChoiceAnswerLabelPreviewProps>): ReactNode {
+	const { children } = props;
+
+	return (
+		<div>
+			<NotEditable>Answer text:</NotEditable>
+			{children}
+		</div>
+	);
+}
+
+interface QuizChoiceAnswerErrorMessagePreviewProps {
+	children: ReactNode;
+}
+
+export function QuizChoiceAnswerErrorMessagePreview(
+	props: Readonly<QuizChoiceAnswerErrorMessagePreviewProps>,
+): ReactNode {
+	const { children } = props;
+
+	return (
+		<div>
+			<NotEditable>Error message:</NotEditable>
+			{children}
+		</div>
+	);
+}
+
 interface QuizChoiceQuestionPreviewProps {
 	children: ReactNode;
 }
 
-export function QuizChoiceQuestionPreview(
-	props: Readonly<QuizChoiceQuestionPreviewProps>,
-): ReactNode {
+export function QuizChoiceQuestionPreview(props: Readonly<QuizChoiceQuestionPreviewProps>): ReactNode {
+	const { children } = props;
+
+	return children;
+}
+
+interface QuizQuestionPreviewProps {
+	children: ReactNode;
+}
+
+export function QuizQuestionPreview(props: Readonly<QuizQuestionPreviewProps>): ReactNode {
 	const { children } = props;
 
 	return children;
@@ -70,19 +113,7 @@ interface QuizSuccessMessagePreviewProps {
 	children: ReactNode;
 }
 
-export function QuizSuccessMessagePreview(
-	props: Readonly<QuizSuccessMessagePreviewProps>,
-): ReactNode {
-	const { children } = props;
-
-	return children;
-}
-
-interface QuizTextInputPreviewProps {
-	children: ReactNode;
-}
-
-export function QuizTextInputPreview(props: Readonly<QuizTextInputPreviewProps>): ReactNode {
+export function QuizSuccessMessagePreview(props: Readonly<QuizSuccessMessagePreviewProps>): ReactNode {
 	const { children } = props;
 
 	return children;

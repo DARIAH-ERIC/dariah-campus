@@ -1,8 +1,10 @@
+import { constants } from "node:crypto";
+
 import { assert, createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 import { Agent, fetch } from "undici";
 import { v7 as uuid } from "uuid";
 
-import { env } from "@/config/env.config";
+import { env } from "#/configs/env.config.ts";
 
 const baseUrl = env.HANDLE_PROVIDER;
 const key = env.HANDLE_KEY;
@@ -10,19 +12,18 @@ const cert = env.HANDLE_CERT;
 const prefix = env.HANDLE_PREFIX;
 const resolver = env.HANDLE_RESOLVER;
 
-/**
- * We have to use `undici` directly, instead of how it is exposed via `node`,
- * to be able to set a custom https agent for client certificates.
- *
- * @see https://github.com/nodejs/node/issues/43187
- * @see https://github.com/nodejs/node/issues/48977
- * @see https://github.com/nodejs/undici/issues/1489
- */
 const agent = new Agent({
 	connect: {
 		key,
 		cert,
 		rejectUnauthorized: false,
+		/**
+		 * The server resumes the TLS session during renegotiation (using the ticket from the initial handshake), which
+		 * causes an abbreviated handshake with no CertificateRequest. Without CertificateRequest the client never sends its
+		 * cert and the server returns 401. SSL_OP_NO_TICKET disables session tickets so renegotiation always does a full
+		 * handshake with CertificateRequest, allowing the client cert to be sent.
+		 */
+		secureOptions: constants.SSL_OP_NO_TICKET,
 	},
 });
 
