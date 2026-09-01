@@ -4,7 +4,7 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "explicit"
 	},
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.defaultFormatter": "oxc.oxc-vscode",
 	"editor.detectIndentation": false,
 	"editor.formatOnSave": true,
 	"editor.inlayHints.enabled": "offUnlessPressed",
@@ -12,10 +12,9 @@
 	"editor.quickSuggestions": {
 		"strings": true
 	},
-	"editor.rulers": [100],
+	"editor.rulers": [120],
 	"editor.stickyScroll.enabled": true,
-	"eslint.enable": true,
-	"eslint.validate": ["javascript", "typescript", "typescriptreact"],
+	"emmet.showExpandedAbbreviation": "never",
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
@@ -29,17 +28,19 @@
 		"content/**": true,
 		"public/**": true
 	},
-	"i18n-ally.annotations": false,
-	"i18n-ally.enabledFrameworks": ["next-intl"],
-	"i18n-ally.keepFulfilled": true,
-	"i18n-ally.keystyle": "nested",
-	"i18n-ally.localesPaths": ["./messages"],
-	"i18n-ally.review.enabled": false,
-	"i18n-ally.sortKeys": true,
-	"i18n-ally.tabStyle": "tab",
+	"js/ts.inlayHints.parameterNames.enabled": "all",
+	"js/ts.preferences.autoImportFileExcludePatterns": [
+		"lucide-react",
+		"next/router.d.ts",
+		"next/dist/client/router.d.ts"
+	],
+	"js/ts.preferences.importModuleSpecifier": "non-relative",
+	"js/ts.preferences.preferTypeOnlyAutoImports": true,
+	"js/ts.tsdk.path": "node_modules/typescript/lib",
+	"js/ts.tsdk.promptToUseWorkspaceVersion": true,
 	"less.validate": false,
 	"mdx.server.enable": true,
-	"prettier.ignorePath": ".gitignore",
+	"oxc.enable.oxfmt": true,
 	"scss.validate": false,
 	"search.exclude": {
 		".content/**": true,
@@ -51,16 +52,6 @@
 	"tailwindCSS.classFunctions": ["cn", "styles"],
 	"tailwindCSS.validate": true,
 	"terminal.integrated.enablePersistentSessions": false,
-	"typescript.enablePromptUseWorkspaceTsdk": true,
-	"typescript.inlayHints.parameterNames.enabled": "all",
-	"typescript.preferences.autoImportFileExcludePatterns": [
-		"lucide-react",
-		"next/router.d.ts",
-		"next/dist/client/router.d.ts"
-	],
-	"typescript.preferences.importModuleSpecifier": "non-relative",
-	"typescript.preferences.preferTypeOnlyAutoImports": true,
-	"typescript.tsdk": "node_modules/typescript/lib",
 	"workbench.editor.customLabels.patterns": {
 		"**/app/**/error.tsx": "${dirname} - error",
 		"**/app/**/forbidden.tsx": "${dirname} - forbidden",
