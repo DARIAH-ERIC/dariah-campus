@@ -281,6 +281,33 @@ Growth and reuse only work, however, if the different components can communicate
   </QuizChoice>
 </Quiz>
 
+## Service Domains and Orchestration
+
+### Service Domains
+
+The ARTEMIS services are organised into four domains that correspond to different capabilities within the RHDT lifecycle. IoCT Services support monitoring, sensor management, decision rules, and actuator control. Simulation Services provide functions such as illumination, crowd simulation, and geometric alignment. AR/VR Services support annotation, geometry optimisation, remote rendering, and immersive interaction. Cataloguing Services connect the system with the Knowledge Base and support semantic data and metadata representation.
+
+Together, these domains create a path from observation and modelling through simulation and decision-making to action and visualisation.
+
+### Infrastructure and Service Catalog
+
+The service domains are supported by an infrastructure that connects APIs and gateways with data resources such as an Operational Data Store, NoSQL, graph and relational databases, and the Knowledge Base. The Service Catalog makes the available capabilities easier to use by describing each service in terms of its domain, role in the Digital Twin lifecycle, inputs and outputs, API access, interaction mode, and connections to other services.
+
+This makes the catalog a bridge between technical capabilities and heritage use cases. Workflows can be designed by selecting and combining appropriate services before the resulting application is implemented.
+
+### Orchestration
+
+Once the services are available, they need to be coordinated. Orchestration provides this coordination by placing service calls into defined sequences. A service may depend on the result of an earlier step, and a workflow may combine services from several domains. Complete RHDT functions therefore emerge from the coordinated execution of multiple services.
+
+### Three Workflow Examples
+
+Consider first an IoCT workflow. A sensor is registered and onboarded, an actuator is registered, and the nodes are connected to an asset and project. Sensor data can then be submitted and evaluated by a decision rule. In the humidity example, a streamed value is compared with a threshold such as H > 65%. When the condition is met, a command is sent to an actuator, and the event is logged and visualised. The sequence turns simple sensor connectivity into reactive control.
+
+A simulation workflow follows a different sequence. A session for geometric alignment is created and validated, parts are added, transformations are set, and the status of the parts is checked before the alignment operation takes place. The session is then ended. The individual steps together create the computational context required for the simulation.
+
+Remote rendering in an AR/VR environment follows the same principle. A session is created and validated, asset rendering is requested and its status checked, a camera is created and its transformation updated, and the current frame is retrieved before the session ends. Immersive visualisation therefore becomes part of an orchestrated workflow rather than an isolated function.
+
+\
 
 
 \\
