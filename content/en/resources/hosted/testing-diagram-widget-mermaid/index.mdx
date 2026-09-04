@@ -20,12 +20,19 @@ translations: []
 dariah-national-consortia: []
 dariah-working-groups: []
 ---
+You can use mermaid to create a diagram from a code block.
+
 <Diagram link={false}>
   <DiagramCodeBlock>
-    !\[]\(https\://mermaid.ink/img/pako:eNpdUMtqwzAQ\_BWxZxP8kuXomARCKaWFpj0UXYS1cQSWZGQJmob8e2UH99C97M7MjgbtDTqnEDiMGknQYUCy01MXdSB7Z6doxqCdJYfote3J6ZO8edd7aYzBSViSSsDJSx2cnz6eBRBOqrb5rzx5HKRVi1y2bJWPu93rwtFtu3LvwesuDNcUb5AcpO1S8MNIGWTQe62ABx8xA4PeyBnCbbYLCBc0KICnUeFZxiEIEPaebKO0X86Z1eld7C\_Az3KYEoqjkgEPWs4\_-2M9WoV-76INwOuKLY8Av8E38KKtNkWV1wWtU9sy2mZwBc6KTTODsszplhXlPYOfJTXfsLRXNZTmDS3apikzQDXf5uVx\_s7Zs-7h\_gssZXo8?type=png)
+    ```mermaid
+    graph LR;
+      accTitle: Shakespeare is author of Hamlet.
+      accDescr: A diagram showing that Shakespeare is the author of Hamlet.
+      Shakespeare-->|is author of| Hamlet;
+    ```
   </DiagramCodeBlock>
 
   <DiagramCaption>
-    Biscuit Consumption During TV Programmes
+    This diagram describes that Shakespeare is the author of the play Hamlet. The diagram describes the relationsship of the entities Shakespeare and Hamlet.
   </DiagramCaption>
 </Diagram>
