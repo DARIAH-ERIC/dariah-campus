@@ -1,0 +1,56 @@
+---
+title: Testing Diagram Widget (Mermaid)
+locale: en
+publication-date: 2026-09-03
+version: 1.0.0
+authors:
+  - garnett-vicky
+editors: []
+contributors: []
+tags:
+  - digital-history
+sources:
+  - dariah
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: thm6uetnywteagwGAETNSRYMETNYBT
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+dariah-working-groups: []
+---
+You can use Mermaid to create a diagram from a code block.
+
+<Diagram link={false}>
+  <DiagramCodeBlock>
+    ```mermaid
+    flowchart TD
+        cookie_monster["Cookie Monster"] -->|wants| biscuits
+        biscuits -->|on Monday| chocolate_chip["chocolate chip"]
+        biscuits -->|on Tuesday| custard_cream["custard cream"]
+        biscuits -->|on Friday| gingerbread
+    ```
+  </DiagramCodeBlock>
+
+  <DiagramCaption>
+    On the cookie monster's biscuit preferences.
+  </DiagramCaption>
+</Diagram>
+
+Mermaid allows to visualise your information as diagrams.
+
+<Diagram link={false}>
+  <DiagramCodeBlock>
+    ```mermaid
+    graph LR
+        accTitle: Shakespeare is author of Hamlet.
+        accDescr: A diagram showing that Shakespeare is the author of Hamlet.
+        shakespeare["Shakespeare"] -->|is author of| hamlet["Hamlet"]
+    ```
+  </DiagramCodeBlock>
+
+  <DiagramCaption>
+    This diagram describes that Shakespeare is the author of the play Hamlet. The diagram describes the relationship of the entities Shakespeare and Hamlet.
+  </DiagramCaption>
+</Diagram>
