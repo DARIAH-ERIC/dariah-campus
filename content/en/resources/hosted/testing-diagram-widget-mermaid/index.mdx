@@ -20,15 +20,33 @@ translations: []
 dariah-national-consortia: []
 dariah-working-groups: []
 ---
-You can use mermaid to create a diagram from a code block.
+You can use Mermaid to create a diagram from a code block.
 
 <Diagram link={false}>
   <DiagramCodeBlock>
     ```mermaid
-    graph LR;
-      accTitle: Shakespeare is author of Hamlet.
-      accDescr: A diagram showing that Shakespeare is the author of Hamlet.
-      Shakespeare-->|is author of| Hamlet;
+    flowchart TD
+        cookie_monster["Cookie Monster"] -->|wants| biscuits
+        biscuits -->|on Monday| chocolate_chip["chocolate chip"]
+        biscuits -->|on Tuesday| custard_cream["custard cream"]
+        biscuits -->|on Friday| gingerbread
+    ```
+  </DiagramCodeBlock>
+
+  <DiagramCaption>
+    On the cookie monster's preferences.
+  </DiagramCaption>
+</Diagram>
+
+Mermaid allows to visualise your information as diagrams.
+
+<Diagram link={false}>
+  <DiagramCodeBlock>
+    ```mermaid
+    graph LR
+        accTitle: Shakespeare is author of Hamlet.
+        accDescr: A diagram showing that Shakespeare is the author of Hamlet.
+        shakespeare["Shakespeare"] -->|is author of| hamlet["Hamlet"]
     ```
   </DiagramCodeBlock>
 
