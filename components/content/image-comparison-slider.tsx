@@ -28,13 +28,15 @@ const step = 10;
 interface ImageComparisonSliderProps {
 	children?: ReactNode;
 	left: string;
+	leftAlt?: string;
 	/** @default "horizontal" */
 	orientation?: Orientation;
 	right: string;
+	rightAlt?: string;
 }
 
 export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps>): ReactNode {
-	const { children, left, orientation = "horizontal", right } = props;
+	const { children, left, leftAlt = "", orientation = "horizontal", right, rightAlt = "" } = props;
 
 	const t = useTranslations("content.ImageComparisonSlider");
 
@@ -99,7 +101,7 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 			>
 				{/* oxlint-disable-next-line @next/next/no-img-element */}
 				<img
-					alt=""
+					alt={leftAlt}
 					className={cn(
 						"object-cover select-none [grid-area:1/-1] block-full inline-full max-block-[min(60vh,32rem)]",
 						orientation === "vertical" ? "rounded-t" : "rounded-s",
@@ -115,7 +117,7 @@ export function ImageComparisonSlider(props: Readonly<ImageComparisonSliderProps
 				/>
 				{/* oxlint-disable-next-line @next/next/no-img-element */}
 				<img
-					alt=""
+					alt={rightAlt}
 					className={cn(
 						"object-cover select-none [grid-area:1/-1] block-full inline-full max-block-[min(60vh,32rem)]",
 						orientation === "vertical" ? "rounded-b" : "rounded-e",
