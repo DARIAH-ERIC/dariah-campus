@@ -11,6 +11,7 @@ import { ExternalResource } from "#/components/content/external-resource.tsx";
 import { Figure } from "#/components/content/figure.tsx";
 import { Blank, QuizFillInTheBlank } from "#/components/content/fill-in-the-blank.tsx";
 import { Grid, GridItem } from "#/components/content/grid.tsx";
+import { H5PWrapper } from "#/components/content/h5p-wrapper.tsx";
 import { ImageComparisonSlider } from "#/components/content/image-comparison-slider.tsx";
 import { QuizImageDropZone, QuizImageDropZones } from "#/components/content/image-drop-zones.tsx";
 import { ImageLayer, ImageLayers } from "#/components/content/image-layers.tsx";
