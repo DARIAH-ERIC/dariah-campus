@@ -18,6 +18,7 @@ import { createGrid } from "#/lib/content/keystatic/components/grid/index.tsx";
 import { createH5PWrapper } from "#/lib/content/keystatic/components/h5p-wrapper/index.tsx";
 import { createHeadingId } from "#/lib/content/keystatic/components/heading-id/index.tsx";
 import { createImageLayers } from "#/lib/content/keystatic/components/image-layers/index.tsx";
+import { createLanguage } from "#/lib/content/keystatic/components/language/index.tsx";
 import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
 import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
 import { createTabs } from "#/lib/content/keystatic/components/tabs/index.tsx";
@@ -134,6 +135,7 @@ export const createResourcesPathfinders = createCollection("/resources/pathfinde
 					...createImageLayers(paths, locale),
 					...createH5PWrapper(paths, locale),
 					...createHeadingId(paths, locale),
+					...createLanguage(paths, locale),
 					...createLink(paths, locale),
 					...createLinkButton(paths, locale),
 					...createTabs(paths, locale),

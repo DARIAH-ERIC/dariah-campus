@@ -141,7 +141,7 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 			/** Ignore unavailable or corrupted storage, the form still works without it. */
 		}
 
-		// oxlint-disable-next-line react/react-compiler
+		// oxlint-disable-next-line react/set-state-in-effect -- Restore persisted form state after hydration.
 		setState({ isRestored: true, values: restored });
 	}, [documentTitle]);
 

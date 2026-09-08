@@ -1,3 +1,5 @@
+import { isRTL } from "react-aria-components";
+
 export const calloutKinds = [
 	{ label: "Caution", value: "caution" },
 	{ label: "Important", value: "important" },
@@ -78,6 +80,28 @@ export const linkKinds = [
 	{ label: "Search", value: "search" },
 	{ label: "Documentation", value: "documentation" },
 ] as const;
+
+export const inlineLanguages = [
+	{ label: "Arabic", value: "ar" },
+	{ label: "Chinese", value: "zh" },
+	{ label: "English", value: "en" },
+	{ label: "French", value: "fr" },
+	{ label: "German", value: "de" },
+	{ label: "Hebrew", value: "he" },
+	{ label: "Hindi", value: "hi" },
+	{ label: "Italian", value: "it" },
+	{ label: "Latin", value: "la" },
+	{ label: "Persian", value: "fa" },
+	{ label: "Russian", value: "ru" },
+	{ label: "Spanish", value: "es" },
+	{ label: "Urdu", value: "ur" },
+] as const;
+
+export type InlineLanguage = (typeof inlineLanguages)[number]["value"];
+
+export function getTextDirection(language: InlineLanguage): "ltr" | "rtl" {
+	return isRTL(language) ? "rtl" : "ltr";
+}
 
 export type LinkKind = (typeof linkKinds)[number]["value"];
 

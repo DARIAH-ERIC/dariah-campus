@@ -51,8 +51,12 @@ const config = defineConfig({
 		"jsx-a11y/scope": "error",
 		"jsx-a11y/tabindex-no-positive": "error",
 
+		"react/error-boundaries": "error",
 		"react/exhaustive-deps": "error",
 		"react/forward-ref-uses-ref": "error",
+		"react/globals": "error",
+		"react/immutability": "error",
+		"react/incompatible-library": "error",
 		"react/jsx-key": "error",
 		"react/jsx-no-duplicate-props": "error",
 		"react/jsx-no-undef": "error",
@@ -68,7 +72,15 @@ const config = defineConfig({
 		"react/no-this-in-sfc": "error",
 		"react/no-unsafe": "error",
 		"react/no-will-update-set-state": "error",
+		"react/preserve-manual-memoization": "error",
+		"react/purity": "error",
+		"react/refs": "error",
+		"react/set-state-in-effect": "error",
+		"react/set-state-in-render": "error",
+		"react/static-components": "error",
+		"react/use-memo": "error",
 		"react/void-dom-elements-no-children": "error",
+		"react/void-use-memo": "error",
 
 		/**
 		 * ================================================================================================================
@@ -76,9 +88,13 @@ const config = defineConfig({
 		 * ================================================================================================================
 		 */
 
+		"react/capitalized-calls": "warn",
+		"react/exhaustive-effect-dependencies": "warn",
+		"react/hooks": "warn",
 		"react/iframe-missing-sandbox": "warn",
 		"react/jsx-no-comment-textnodes": "warn",
 		"react/jsx-no-script-url": "warn",
+		"react/memo-dependencies": "warn",
 		"react/no-namespace": "error",
 		"react/no-unstable-nested-components": "error",
 		"react/react-in-jsx-scope": "off",
@@ -92,6 +108,7 @@ const config = defineConfig({
 
 		"react/jsx-no-constructed-context-values": "warn",
 		"react/no-array-index-key": "off",
+		"react/no-deriving-state-in-effects": "error",
 		"react/no-object-type-as-default-prop": "warn",
 
 		/**
@@ -118,6 +135,7 @@ const config = defineConfig({
 		"react/button-has-type": "error",
 		"react/forbid-dom-props": "off",
 		"react/forbid-elements": "off",
+		"react/invariant": "off",
 		"react/jsx-filename-extension": "off",
 		"react/jsx-no-literals": "off",
 		"react/no-clone-element": "warn",
@@ -127,6 +145,10 @@ const config = defineConfig({
 		"react/no-unknown-property": "warn",
 		"react/only-export-components": "off",
 		"react/prefer-function-component": "error",
+		"react/rule-suppression": "off",
+		"react/syntax": "off",
+		"react/todo": "off",
+		"react/unsupported-syntax": "error",
 
 		/**
 		 * ================================================================================================================
@@ -155,7 +177,6 @@ const config = defineConfig({
 		 * ================================================================================================================
 		 */
 
-		"react/react-compiler": "error",
 		"react/require-render-return": "off",
 	},
 });
