@@ -9,8 +9,7 @@ type: content
 body:
   - type: markdown
     attributes:
-      value:
-        Thanks for suggesting a new resource. Please fill out this form and we will get back to you
+      value: Thanks for suggesting a new resource. Please fill out this form and we will get back to you
         asap!
   - type: input
     id: title
@@ -39,8 +38,7 @@ body:
     id: tags
     attributes:
       label: Topics (keywords)
-      description:
-        Comma-separated list of topics. Please have a look at the [list of existing
+      description: Comma-separated list of topics. Please have a look at the [list of existing
         topics](https://campus.dariah.eu/search).
   - type: textarea
     id: learning-outcomes

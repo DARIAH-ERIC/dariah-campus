@@ -1,8 +1,8 @@
 import cn from "clsx/lite";
 import type { ReactNode } from "react";
 
-import { Image } from "@/components/image";
-import type { FigureAlignment } from "@/lib/content/options";
+import { Image } from "#/components/image.tsx";
+import type { FigureAlignment } from "#/lib/content/options.ts";
 
 interface FigureProps {
 	/** @default "stretch" */
@@ -34,16 +34,10 @@ export function Figure(props: Readonly<FigureProps>): ReactNode {
 
 	return (
 		<figure
-			className={cn(
-				"flex flex-col",
-				alignment === "center" ? "justify-center" : undefined,
-				figureStyles[alignment],
-			)}
+			className={cn("flex flex-col", alignment === "center" ? "justify-center" : undefined, figureStyles[alignment])}
 		>
 			<Image alt={alt} height={height} src={src} width={width} />
-			<figcaption className={isFloating ? "sm:contain-inline-size" : undefined}>
-				{children}
-			</figcaption>
+			<figcaption className={isFloating ? "sm:contain-inline-size" : undefined}>{children}</figcaption>
 		</figure>
 	);
 }

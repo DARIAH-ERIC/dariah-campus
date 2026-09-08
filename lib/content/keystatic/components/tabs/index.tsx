@@ -1,11 +1,9 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { repeating, wrapper } from "@keystatic/core/content-components";
 import { CaptionsIcon } from "lucide-react";
 
-import { TabPreview, TabsPreview } from "@/lib/content/keystatic/components/tabs/preview";
+import { TabPreview, TabsPreview } from "#/lib/content/keystatic/components/tabs/preview.tsx";
 
 export const createTabs = createComponent((_paths, _locale) => {
 	return {

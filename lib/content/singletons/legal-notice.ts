@@ -4,22 +4,16 @@ import { createCollection } from "@acdh-oeaw/content-lib";
 import type { MDXContent } from "mdx/types";
 import { VFile } from "vfile";
 
-// import { reader } from "@/lib/content/keystatic/reader";
-import { compile, type CompileOptions } from "@/lib/content/mdx/compile";
-import {
-	createGitHubMarkdownPlugin,
-	createTypographicQuotesPlugin,
-} from "@/lib/content/mdx/remark-plugins";
-import { createRemarkRehypeOptions } from "@/lib/content/mdx/remark-rehype-options";
-import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
+// import { reader } from "#/lib/content/keystatic/reader.ts";
+import { type CompileOptions, compile } from "#/lib/content/mdx/compile.ts";
+import { createGitHubMarkdownPlugin, createTypographicQuotesPlugin } from "#/lib/content/mdx/remark-plugins.ts";
+import { createRemarkRehypeOptions } from "#/lib/content/mdx/remark-rehype-options.ts";
+import { defaultLocale, getIntlLanguage } from "#/lib/i18n/locales.ts";
 
 const locale = defaultLocale;
 
 const compileOptions: CompileOptions = {
-	remarkPlugins: [
-		createGitHubMarkdownPlugin(),
-		createTypographicQuotesPlugin(getIntlLanguage(locale)),
-	],
+	remarkPlugins: [createGitHubMarkdownPlugin(), createTypographicQuotesPlugin(getIntlLanguage(locale))],
 	remarkRehypeOptions: createRemarkRehypeOptions(locale),
 	rehypePlugins: [],
 };

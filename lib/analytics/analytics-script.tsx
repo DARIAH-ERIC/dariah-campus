@@ -7,7 +7,7 @@ import Script from "next/script";
 import { useReportWebVitals } from "next/web-vitals";
 import { Fragment, type ReactNode, Suspense, useEffect } from "react";
 
-import { env } from "@/config/env.config";
+import { env } from "#/configs/env.config.ts";
 
 declare global {
 	interface Window {
@@ -23,12 +23,13 @@ interface AnalyticsProps {
 export function AnalyticsScript(props: Readonly<AnalyticsProps>): ReactNode {
 	const { baseUrl, id } = props;
 
-	if (baseUrl == null || id == null) return null;
+	if (baseUrl == null || id == null) {
+		return null;
+	}
 
 	return (
 		<Fragment>
 			<Script
-				// eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
 				dangerouslySetInnerHTML={{
 					__html: `(${String(createAnalyticsScript)})("${baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`}", "${String(id)}");`,
 				}}
@@ -50,7 +51,7 @@ function createAnalyticsScript(baseUrl: string, id: number): void {
 	_paq.push(["setSiteId", id]);
 	const d = document,
 		g = d.createElement("script"),
-		s = d.getElementsByTagName("script")[0];
+		s = d.querySelectorAll("script")[0];
 	g.async = true;
 	g.src = `${u}matomo.js`;
 	s?.parentNode?.insertBefore(g, s);

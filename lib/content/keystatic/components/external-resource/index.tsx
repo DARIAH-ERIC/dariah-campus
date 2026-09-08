@@ -1,11 +1,9 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { block } from "@keystatic/core/content-components";
 import { BookIcon } from "lucide-react";
 
-import { ExternalResourcePreview } from "@/lib/content/keystatic/components/external-resource/preview";
+import { ExternalResourcePreview } from "#/lib/content/keystatic/components/external-resource/preview.tsx";
 
 export const createExternalResource = createComponent((_paths, _locale) => {
 	return {

@@ -1,23 +1,23 @@
 import { withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { config as createConfig } from "@keystatic/core";
 
-import { env } from "@/config/env.config";
-import { createCurricula } from "@/lib/content/keystatic/collections/curricula";
-import { createDariahNationalConsortia } from "@/lib/content/keystatic/collections/dariah-national-consortia";
-import { createDariahWorkingGroups } from "@/lib/content/keystatic/collections/dariah-working-groups";
-import { createDocumentation } from "@/lib/content/keystatic/collections/documentation";
-import { createPeople } from "@/lib/content/keystatic/collections/people";
-import { createResourcesEvents } from "@/lib/content/keystatic/collections/resources/events";
-import { createResourcesExternal } from "@/lib/content/keystatic/collections/resources/external";
-import { createResourcesHosted } from "@/lib/content/keystatic/collections/resources/hosted";
-import { createResourcesPathfinders } from "@/lib/content/keystatic/collections/resources/pathfinders";
-import { createSources } from "@/lib/content/keystatic/collections/sources";
-import { createTags } from "@/lib/content/keystatic/collections/tags";
-import { Logo } from "@/lib/content/keystatic/logo";
-import { createIndexPage } from "@/lib/content/keystatic/singletons/index-page";
-import { createMetadata } from "@/lib/content/keystatic/singletons/metadata";
-import { createNavigation } from "@/lib/content/keystatic/singletons/navigation";
-import { defaultLocale, getIntlLanguage } from "@/lib/i18n/locales";
+import { env } from "#/configs/env.config.ts";
+import { createCurricula } from "#/lib/content/keystatic/collections/curricula.ts";
+import { createDariahNationalConsortia } from "#/lib/content/keystatic/collections/dariah-national-consortia.ts";
+import { createDariahWorkingGroups } from "#/lib/content/keystatic/collections/dariah-working-groups.ts";
+import { createDocumentation } from "#/lib/content/keystatic/collections/documentation.ts";
+import { createPeople } from "#/lib/content/keystatic/collections/people.ts";
+import { createResourcesEvents } from "#/lib/content/keystatic/collections/resources/events.ts";
+import { createResourcesExternal } from "#/lib/content/keystatic/collections/resources/external.ts";
+import { createResourcesHosted } from "#/lib/content/keystatic/collections/resources/hosted.ts";
+import { createResourcesPathfinders } from "#/lib/content/keystatic/collections/resources/pathfinders.ts";
+import { createSources } from "#/lib/content/keystatic/collections/sources.ts";
+import { createTags } from "#/lib/content/keystatic/collections/tags.ts";
+import { Logo } from "#/lib/content/keystatic/logo.tsx";
+import { createIndexPage } from "#/lib/content/keystatic/singletons/index-page.ts";
+import { createMetadata } from "#/lib/content/keystatic/singletons/metadata.ts";
+import { createNavigation } from "#/lib/content/keystatic/singletons/navigation.ts";
+import { defaultLocale, getIntlLanguage } from "#/lib/i18n/locales.ts";
 
 const locale = getIntlLanguage(defaultLocale);
 

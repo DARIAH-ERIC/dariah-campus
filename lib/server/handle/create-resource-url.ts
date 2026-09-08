@@ -1,6 +1,6 @@
 import { assert, createUrl } from "@acdh-oeaw/lib";
 
-import { env } from "@/config/env.config";
+import { env } from "#/configs/env.config.ts";
 
 export function createResourceUrl(path: string): URL {
 	const message = `Invalid resource path: ${path}`;

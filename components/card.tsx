@@ -49,7 +49,7 @@ export function CardFooter(props: Readonly<CardFooterProps>): ReactNode {
 	const { children } = props;
 
 	return (
-		<footer className="flex h-20 items-center justify-between border-t border-neutral-200 bg-neutral-100 px-10 py-5">
+		<footer className="flex items-center justify-between border-bs border-neutral-200 bg-neutral-100 px-10 py-5 block-20">
 			{children}
 		</footer>
 	);

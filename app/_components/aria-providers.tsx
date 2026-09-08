@@ -2,12 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
-import {
-	I18nProvider as AriaI18nProvider,
-	RouterProvider as AriaRouterProvider,
-} from "react-aria-components";
+import { I18nProvider as AriaI18nProvider, RouterProvider as AriaRouterProvider } from "react-aria-components";
 
-import type { IntlLocale } from "@/lib/i18n/locales";
+import type { IntlLocale } from "#/lib/i18n/locales.ts";
 
 interface AriaProvidersProps {
 	children: ReactNode;
@@ -21,7 +18,7 @@ export function AriaProviders(props: Readonly<AriaProvidersProps>): ReactNode {
 
 	return (
 		<AriaI18nProvider locale={locale}>
-			{/* eslint-disable-next-line @typescript-eslint/unbound-method */}
+			{/* oxlint-disable-next-line @typescript-eslint/unbound-method */}
 			<AriaRouterProvider navigate={router.push}>{children}</AriaRouterProvider>
 		</AriaI18nProvider>
 	);

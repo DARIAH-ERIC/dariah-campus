@@ -1,6 +1,6 @@
 import { cookies, draftMode } from "next/headers";
 
-import { env } from "@/config/env.config";
+import { env } from "#/configs/env.config.ts";
 
 type PreviewMode =
 	| {

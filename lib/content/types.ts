@@ -1,5 +1,5 @@
-import type { components } from "@/lib/content/mdx/components";
-import type { IntlLanguage } from "@/lib/i18n/locales";
+import type { components } from "#/lib/content/mdx/components.tsx";
+import type { IntlLanguage } from "#/lib/i18n/locales.ts";
 
 declare global {
 	type MDXProvidedComponents = typeof components;
@@ -23,8 +23,8 @@ export interface SingletonClient<T> {
 }
 
 export interface Client {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// oxlint-disable-next-line @typescript-eslint/no-explicit-any
 	collections: Record<string, CollectionClient<any>>;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// oxlint-disable-next-line @typescript-eslint/no-explicit-any
 	singletons: Record<string, SingletonClient<any>>;
 }

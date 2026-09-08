@@ -1,11 +1,9 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createComponent } from "@acdh-oeaw/keystatic-lib";
 import { wrapper } from "@keystatic/core/content-components";
 import { LinkIcon } from "lucide-react";
 
-import { LinkButtonPreview } from "@/lib/content/keystatic/components/link-button/preview";
-import { createLinkSchema } from "@/lib/content/keystatic/utils/create-link-schema";
+import { LinkButtonPreview } from "#/lib/content/keystatic/components/link-button/preview.tsx";
+import { createLinkSchema } from "#/lib/content/keystatic/utils/create-link-schema.ts";
 
 export const createLinkButton = createComponent((paths, locale) => {
 	return {

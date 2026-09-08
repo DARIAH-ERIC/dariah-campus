@@ -1,0 +1,258 @@
+---
+title: E2E Content Widgets
+locale: en
+publication-date: 2026-08-20
+version: 1.0.0
+authors:
+  - siam-omar
+editors: []
+contributors: []
+tags:
+  - data-management
+sources:
+  - acdh
+license: cc-by-4.0
+table-of-contents: false
+summary:
+  content: Fixture resource for the end-to-end test suite. Copied into the content
+    collection by `pnpm run e2e:fixtures:create`, and never committed, so it is
+    not part of any real deployment.
+content-type: training-module
+---
+
+## Worksheet
+
+<Worksheet title="Research data plan">
+  <WorksheetDescription>
+    Answers stay in this browser. See the [DARIAH website](https://www.dariah.eu) for **more guidance**:
+
+    * Nothing is uploaded anywhere.
+    * You can download the result as a document.
+
+  </WorksheetDescription>
+
+  <WorksheetSection title="Data collection">
+    <WorksheetSectionDescription>
+      Describe what you intend to collect.
+    </WorksheetSectionDescription>
+
+    <WorksheetQuestion label="Which data will you collect?" description="Include formats and expected volume." placeholder="For example: interview transcripts" variant="long" />
+
+    <WorksheetQuestion label="Who owns the data?" variant="short" />
+
+  </WorksheetSection>
+
+  <WorksheetSection title="Data sharing">
+    <WorksheetQuestion label="Where will you deposit the data?" variant="short" />
+  </WorksheetSection>
+</Worksheet>
+
+## Worksheet with empty fields
+
+The cms saves entries even when a required field was left empty, so an untitled worksheet, untitled
+sections, a question without a prompt and a section without questions all have to be survivable.
+
+<Worksheet>
+  <WorksheetSection>
+    <WorksheetQuestion label="Which sources did you consult?" variant="short" />
+
+    <WorksheetQuestion label="" variant="short" />
+
+  </WorksheetSection>
+
+<WorksheetSection title="Discarded section">
+	<WorksheetSectionDescription>This section is dropped, because it has no questions.</WorksheetSectionDescription>
+</WorksheetSection>
+
+  <WorksheetSection>
+    <WorksheetQuestion label="What would you do differently?" variant="short" />
+  </WorksheetSection>
+</Worksheet>
+
+## Quiz with an answer error message
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      Which of these are version control systems?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Git
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Markdown
+      </QuizChoiceAnswerLabel>
+
+      <QuizChoiceAnswerErrorMessage>
+        Markdown is a markup language, not a version control system.
+      </QuizChoiceAnswerErrorMessage>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Zenodo
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+  </QuizChoice>
+</Quiz>
+
+## Quiz, fill in the blank
+
+<Quiz>
+	<QuizFillInTheBlank>
+		Git stores every change as a @@commit@@, and a named line of development is called a @@branch//branches@@.
+	</QuizFillInTheBlank>
+</Quiz>
+
+## Quiz, drag the words
+
+<Quiz>
+	<QuizDragTheWords distractors="merge, rebase">
+		You publish local changes with @@push@@, and integrate remote changes with @@pull@@.
+	</QuizDragTheWords>
+</Quiz>
+
+## Quiz, image drop zones
+
+<Quiz>
+	<QuizImageDropZones
+		alt="A plan of a church"
+		distractors="Cloister"
+		src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/annotated.png"
+	>
+		<QuizQuestion>
+			Drag each description onto the **part of the church** it names.
+		</QuizQuestion>
+
+    	<QuizImageDropZone label="Nave" items={["Long central hall"]} x={5} y={10} width={40} height={30}>
+    		The hall the congregation sits in, running the length of the building.
+    	</QuizImageDropZone>
+
+    	<QuizImageDropZone label="Apse" shape="ellipse" items={[{ label: "Semicircular recess" }, { label: "East end" }]} x={55} y={55} width={40} height={30} />
+    </QuizImageDropZones>
+
+</Quiz>
+
+## Quiz, image drop zones without a background image
+
+<Quiz>
+	<QuizImageDropZones>
+		<QuizImageDropZone label="Version control" items={["Git"]} />
+
+    	<QuizImageDropZone label="Repository hosting" items={["GitHub", "GitLab"]} />
+    </QuizImageDropZones>
+
+</Quiz>
+
+## Quiz, image drop zones with instant feedback
+
+<Quiz>
+	<QuizImageDropZones instantFeedback={true}>
+		<QuizImageDropZone label="Primary sources" items={["Charter"]} />
+
+    	<QuizImageDropZone label="Secondary sources" items={["Monograph"]} />
+    </QuizImageDropZones>
+
+</Quiz>
+
+## Carousel
+
+<Carousel label="Fixture slides">
+  <CarouselItem alt="First slide" src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/layer-1.png">
+    Caption of the first slide
+  </CarouselItem>
+
+<CarouselItem alt="Second slide" src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/layer-2.png">
+	Caption of the second slide
+</CarouselItem>
+
+  <CarouselItem alt="Third slide" src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/layer-3.png">
+    Caption of the third slide
+  </CarouselItem>
+</Carousel>
+
+## Image layers
+
+<ImageLayers label="Excavation phases">
+  <ImageLayer alt="Base layer" label="Base" src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/layer-1.png" />
+
+<ImageLayer
+	alt="Second layer"
+	label="Walls"
+	src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/layer-2.png"
+/>
+
+  <ImageLayer alt="Third layer" src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/layer-3.png" />
+</ImageLayers>
+
+## Image comparison slider
+
+<ImageComparisonSlider
+	left="/assets/content/assets/en/resources/hosted/e2e-content-widgets/layer-1.png"
+	right="/assets/content/assets/en/resources/hosted/e2e-content-widgets/layer-3.png"
+>
+	Before and after conservation
+</ImageComparisonSlider>
+
+## Quiz, image hotspots
+
+<Quiz>
+  <QuizImageHotspots alt="An annotated plan" presentation="inline" src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/annotated.png">
+    <QuizQuestion>
+      Select each marker to read what that **part of the church** was for.
+    </QuizQuestion>
+
+    <QuizImageHotspot label="Nave" x={30} y={40}>
+      The central aisle of the building.
+    </QuizImageHotspot>
+
+    <QuizImageHotspot label="Apse" x={70} y={60}>
+      The semicircular recess at the east end.
+    </QuizImageHotspot>
+
+  </QuizImageHotspots>
+</Quiz>
+
+## Tabs
+
+<Tabs>
+  <Tab title="Command line">
+    Run `git status` to see what changed.
+  </Tab>
+
+  <Tab title="Graphical client">
+    Open the repository and look at the changes pane.
+  </Tab>
+</Tabs>
+
+## Disclosure
+
+<Disclosure title="Supplementary reading">Hidden until the summary is activated.</Disclosure>
+
+## Callout, figure and grid
+
+<Callout kind="tip" title="A tip">
+	Callouts carry a title and rich text.
+</Callout>
+
+<Figure alt="A figure" src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/layer-2.png">
+	Caption of the figure
+</Figure>
+
+<Grid layout="two-columns">
+  <GridItem>
+    Left hand column.
+  </GridItem>
+
+  <GridItem>
+    Right hand column.
+  </GridItem>
+</Grid>
+
+<LinkButton link={{ discriminant: "external", value: "https://www.dariah.eu" }}>Visit DARIAH</LinkButton>

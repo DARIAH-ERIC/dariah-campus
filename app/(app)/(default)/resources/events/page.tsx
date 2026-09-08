@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { PageTitle } from "@/components/page-title";
-import { ResourcesGrid } from "@/components/resources-grid";
-import { createClient } from "@/lib/content/create-client";
+import { PageTitle } from "#/components/page-title.tsx";
+import { ResourcesGrid } from "#/components/resources-grid.tsx";
+import { createClient } from "#/lib/content/create-client.ts";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("EventResourcesPage");
@@ -57,7 +57,7 @@ export default async function EventResourcesPage(): Promise<ReactNode> {
 	);
 
 	return (
-		<div className="mx-auto grid w-full max-w-7xl content-start gap-y-12 px-4 py-8 xs:px-8 xs:py-16 md:py-24">
+		<div className="mx-auto grid content-start gap-y-12 px-4 py-8 inline-full max-inline-7xl xs:px-8 xs:py-16 md:py-24">
 			<div className="grid gap-y-4">
 				<PageTitle>{t("title")}</PageTitle>
 			</div>

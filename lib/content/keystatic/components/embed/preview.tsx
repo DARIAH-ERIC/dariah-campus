@@ -13,11 +13,11 @@ export function EmbedPreview(props: Readonly<EmbedPreviewProps>): ReactNode {
 		<figure className="grid gap-y-2">
 			<NotEditable>
 				{src != null ? (
-					// eslint-disable-next-line jsx-a11y/iframe-has-title
+					// oxlint-disable-next-line jsx-a11y/iframe-has-title
 					<iframe
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						allowFullScreen={true}
-						className="aspect-square w-full overflow-hidden rounded-lg border border-neutral-200 bg-white"
+						className="aspect-square overflow-hidden rounded-lg border border-neutral-200 bg-white inline-full"
 						loading="lazy"
 						sandbox=""
 						src={src}
