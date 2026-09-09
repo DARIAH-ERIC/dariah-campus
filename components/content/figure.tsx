@@ -8,7 +8,7 @@ interface FigureProps {
 	/** @default "stretch" */
 	alignment?: FigureAlignment;
 	alt?: string;
-	children: ReactNode;
+	children?: ReactNode;
 	/** Maybe added by `with-image-sizes` mdx plugin. */
 	height?: number;
 	src: string;
