@@ -1,0 +1,513 @@
+---
+title: >-
+  Reactive Heritage Digital Twins: A Comprehensive Overview of the ARTEMIS
+  Ecosystem
+locale: en
+publication-date: 2026-09-25
+version: 1.0.0
+authors:
+  - mena-fady
+editors:
+  - albrecht-marlene
+contributors: []
+tags:
+  - cultural-heritage
+  - design-thinking
+sources:
+  - acdh
+  - artemis
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >-
+    This learning resource introduces the concept of Reactive Heritage Digital
+    Twins (RHDTs) and their role in addressing the dynamic challenges of
+    cultural heritage preservation. It explores the transition from static to
+    reactive digital twins, including key concepts, challenges, use cases, and
+    enabling technologies. Using the ARTEMIS project as a practical example,
+    learners will gain insights into the architecture, services, and real-world
+    implementation of RHDTs for monitoring, analysing, and protecting cultural
+    heritage assets.
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+dariah-working-groups: []
+---
+This resource is based on the presentation *Reactive Heritage Digital Twins: A Comprehensive Overview of the ARTEMIS Ecosystem* by Fady Mena (Smart Education Lab), developed for the ARTEMIS Summer School 2026 in Hof, Germany. This learning resource shows how a Reactive Heritage Digital Twin, based on the ARTEMIS architecture, connects cultural heritage assets with modular, scalable, and interoperable digital services for continuous observation, analysis, decision support, and reactive control, using the Pigmeos Mosaic and the Smart Display Case as practical examples of preventive and data-informed heritage management.
+
+## Introduction
+
+The preservation and management of cultural heritage face increasingly complex challenges, ranging from slow degradation processes to sudden environmental events and the need for sustainable public access. Traditional approaches, such as manual inspections and static digital twins, often fall short of addressing the dynamic requirements of heritage conservation. Reactive Heritage Digital Twins (RHDTs) offer an innovative solution by enabling real-time monitoring, analysis, and protection of physical heritage assets through their digital counterparts. The ARTEMIS project, funded by the European Union, provides a modular, domain-oriented service ecosystem designed to support the development and application of RHDTs. This resource offers an in-depth exploration of the concepts, challenges, and applications of RHDTs, as well as the architecture and practical implementations of the ARTEMIS system.
+
+## Learning Objectives
+
+Upon completing this resource, learners will be able to:
+
+* Explain the differences between static and reactive digital twins;
+* Identify the challenges and limitations of traditional digital twin approaches in cultural heritage;
+* Describe the architecture and functionality of the ARTEMIS ecosystem;
+* Understand the role of IoT, simulations, and AR/VR in the development of RHDTs;
+* Recognize the practical applications of ARTEMIS pilots for preventive conservation and risk management;
+* Analyze the importance of interoperability and modularity for the scalability of RHDTs;
+* Reflect on the opportunities and limitations of implementing RHDTs in diverse heritage contexts.
+
+## Target Audience
+
+This resource is intended for:
+
+* Students and researchers in Digital Humanities, Heritage Studies, Architecture, Archaeology, and Conservation;
+* Cultural heritage professionals interested in data-driven and collaborative workflows;
+* Developers and practitioners exploring the application of IoT, simulations, and immersive technologies in heritage contexts;
+* Decision-makers seeking innovative approaches to heritage preservation and management.
+
+## Intended Impact
+
+The ARTEMIS ecosystem and RHDTs aim to transform cultural heritage preservation by:
+
+* **Enhancing preventive conservation**: Continuous monitoring and predictive insights reduce the risk of damage and degradation.
+* **Supporting evidence-based decision-making**: Automated rules, simulations, and collaborative tools enable informed conservation strategies.
+* **Promoting interdisciplinary collaboration**: Shared digital environments bring together archaeologists, architects, engineers, and site managers to develop holistic solutions.
+* **Improving accessibility and sustainability**: Immersive technologies allow remote exploration of inaccessible sites, ensuring broader engagement with heritage assets.
+* **Advancing technological innovation**: Modular and scalable systems provide a flexible framework for adapting to evolving heritage needs and technological advancements.
+
+## Why Reactive Digital Twins?
+
+### Digital Twins in Cultural Heritage
+
+A Digital Twin represents, monitors, and enables interaction with a physical asset through a digital counterpart. In cultural heritage, this counterpart can bring together 3D models, sensor data, simulation outputs, documentation, and semantic information. Combining these sources creates a richer basis for preservation, condition monitoring, risk mitigation, and research and user experiences.
+
+Structural monitoring provides one example. Digital representations can be connected with observations of a physical heritage asset so that its condition can be considered alongside the information already available about it.
+
+### Cultural Heritage Challenges
+
+The need for continuous observation becomes clear when considering the different processes that affect heritage assets. Humidity, temperature, and light can change over time. Materials can deteriorate through ageing, fatigue, and biological processes. Shocks, vibration, tampering, disasters, and extreme weather can introduce additional risks.
+
+<Figure src="/assets/content/assets/en/resources/hosted/reactive-heritage-digital-twins-a-comprehensive-overview-of-the-artemis-ecosystem/screenshot-2026-08-11-153906.png" alt="The figure highlights four main categories of risks to cultural heritage: environmental fluctuations (humidity, temperature, light), material degradation (ageing, fatigue, biological processes), structural and human risks (shocks, vibration, tampering, disasters), and exceptional events such as extreme weather." alignment="stretch">
+  Cultural Heritage Challenges
+</Figure>
+
+Periodic inspection provides important information, but it cannot capture all of these dynamics. Continuous monitoring makes it possible to observe changes as they occur, identify anomalies earlier, and provide stronger evidence for preventive conservation.\\
+
+<Callout kind="important">
+  **The aim of the project is to move from reactive restoration after damage towards data-supported prevention before damage.**
+</Callout>
+
+### From Static to Reactive Digital Twins
+
+A static Digital Twin can bring together comprehensive digital information about a heritage asset, but many existing solutions remain fragmented. 3D reconstruction, semantic modelling, environmental monitoring, and other functions may operate as separate systems. This makes it difficult to connect tools and data, scale solutions across different heritage scenarios, and link monitoring directly to analysis and action.
+
+<Figure src="/assets/content/assets/en/resources/hosted/reactive-heritage-digital-twins-a-comprehensive-overview-of-the-artemis-ecosystem/screenshot-2026-08-11-154252.png" alt="The figure illustrates the transition from a Static Heritage Digital Twin, based mainly on manually updated historical and documentation data, to a Reactive Heritage Digital Twin. The reactive approach continuously connects the physical asset with its digital counterpart through sensing, data ingestion, analysis, decision-making, and action/visualisation." alignment="stretch">
+  How to go from a Static Heritage DT to a Reactive Heritage DT
+</Figure>
+
+A Reactive Heritage Digital Twin addresses this gap by maintaining a connection between the physical asset and its digital counterpart. Information can move through a continuous operational loop: Sense → Ingest → Simulate/Analyse → Decide → Act/Visualise.
+
+The distinction is therefore not simply between two kinds of digital models. An RHDT adds a reactive dimension: it can respond to observations and support decision-making and what-if reasoning. The digital counterpart becomes part of an active preservation process rather than serving only as a repository of information.
+
+<Callout kind="important">
+  **The RHDT is an active system for decision support and preservation, rather than only a digital archive.**
+</Callout>
+
+<Quiz>
+  <QuizChoice variant="single" buttonLabel="Check answer">
+    <QuizChoiceQuestion>
+      What is the most important difference between a static Digital Twin and a Reactive Heritage Digital Twin (RHDT)?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        An RHDT contains only 3D models, while a static Digital Twin uses sensor data.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        An RHDT can process observations, respond to them, and support decision-making and action.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        An RHDT mainly serves as a digital archive for historical documents.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        An RHDT replaces all physical sensors with simulations.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Yes, that's the correct answer!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that's not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+<Quiz>
+  <QuizChoice variant="single" buttonLabel="Check answer">
+    <QuizChoiceQuestion>
+      What is the primary goal of moving from reactive approaches to Reactive Heritage Digital Twins?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        To completely eliminate the need for manual inspections.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        To reduce costs by removing specialised staff.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        To replace all traditional conservation methods.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        To move towards data-supported prevention before damage occurs.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Yes, that's the correct answer!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that's not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+## The ARTEMIS Service Ecosystem
+
+Making such a reactive system work requires more than a collection of individual tools. ARTEMIS provides a domain-oriented service ecosystem in which sensors, semantic knowledge, simulations, and immersive interaction can be connected through reusable microservices.
+
+IoCT provides access to real-time information from the physical environment. The Semantic Knowledge Base contributes heritage context and metadata. Simulation supports prediction and what-if tests, while AR/VR provides interactive visualisation. These capabilities become parts of the same ecosystem rather than isolated applications.
+
+<Quiz>
+  <QuizImageDropZones src="/assets/content/assets/en/resources/hosted/reactive-heritage-digital-twins-a-comprehensive-overview-of-the-artemis-ecosystem/screenshot-2026-08-26-131945.png" alt="Matching exercise on the ARTEMIS microservices" distractors={[]} instantFeedback={false}>
+    <QuizQuestion>
+
+    </QuizQuestion>
+
+    <QuizImageDropZone label="IoCT" shape="rectangle" items={[{"label":"real-time physical data"}]} x={8.1} y={31.8} width={21.1} height={6.9}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="Semantic KB" shape="rectangle" items={[{"label":"heritage context & metadata"}]} x={71.3} y={32.2} width={20.5} height={7.2}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="Simulation" shape="rectangle" items={[{"label":"prediction and what-if tests"}]} x={8.2} y={91.7} width={21} height={6.8}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="AR/VR" shape="rectangle" items={[{"label":"interactive visualization"}]} x={71.3} y={91.4} width={21} height={6.3}>
+
+    </QuizImageDropZone>
+  </QuizImageDropZones>
+</Quiz>
+
+### Why Microservices?
+
+The microservice approach separates individual capabilities and gives each of them a clearly defined function. A service can register an IoCT node, retrieve sensor data, define a decision rule, run a simulation, publish a result, or provide data for an AR/VR environment. Because these capabilities can be developed independently and accessed through standardised APIs, they can be integrated, reused, and adapted to different heritage assets and scenarios.
+
+The purpose of this separation is not to create more isolated tools. Instead, the services are intended to serve as building blocks that can be combined into larger Digital Twin processes.
+
+### Three Design Principles
+
+For these building blocks to remain useful across different applications, three properties are particularly important: modularity, scalability, and interoperability. They address different aspects of the same architectural challenge—how to keep the ecosystem flexible while allowing its components to work together.
+
+Modularity begins by giving each microservice a clearly defined responsibility. Monitoring, simulation, visualisation, and control do not need to be embedded in one large application. Instead, individual services can be selected and combined according to the requirements of a particular heritage application. A service can therefore be reused, extended, or replaced without requiring the entire system to be redesigned.
+
+Once services are separated in this way, the ecosystem can also grow. Scalability means that new services can be added as new requirements emerge and that existing services can be reused across different applications and heritage pilots. The system must also cope with operational demands such as continuous sensor streams, real-time monitoring, simulations, and visualisation. Distributed infrastructure and asynchronous communication support this growth. Scalability is thus not only a matter of processing more data; it also concerns the ability to support more functions, applications, and scenarios.
+
+Growth and reuse only work, however, if the different components can communicate. An RHDT brings together sensors and actuators, 3D models, semantic knowledge graphs, simulation services, and AR/VR environments. Interoperability allows these heterogeneous elements to exchange information and participate in the same Digital Twin environment. REST APIs and asynchronous communication provide technical mechanisms for this exchange, while semantic alignment with the ARTEMIS ontology and Knowledge Base provides a common conceptual framework. Reusable service descriptions and shared process templates further support the integration of individual services into larger workflows.
+
+<Callout kind="important">
+  **Modularity provides the building blocks, scalability allows the ecosystem to grow, and interoperability allows those building blocks to work together.**
+</Callout>
+
+<Quiz>
+  <QuizChoice variant="single" buttonLabel="Check answer">
+    <QuizChoiceQuestion>
+      Why are modularity, scalability, and interoperability important for the ARTEMIS ecosystem?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        They allow services to be combined flexibly, enable the ecosystem to grow, and allow different components to communicate with each other.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        They ensure that all functions are combined into one large application.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        They reduce the number of sensors required for monitoring.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        They make simulation and AR/VR applications unnecessary.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Yes, that's the correct answer!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that's not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+## Service Domains and Orchestration
+
+### Service Domains
+
+The ARTEMIS services are organised into four domains that correspond to different capabilities within the RHDT lifecycle. IoCT Services support monitoring, sensor management, decision rules, and actuator control. Simulation Services provide functions such as illumination, crowd simulation, and geometric alignment. AR/VR Services support annotation, geometry optimisation, remote rendering, and immersive interaction. Cataloguing Services connect the system with the Knowledge Base and support semantic data and metadata representation.
+
+Together, these domains create a path from observation and modelling through simulation and decision-making to action and visualisation.
+
+### Infrastructure and Service Catalog
+
+The service domains are supported by an infrastructure that connects APIs and gateways with data resources such as an Operational Data Store, NoSQL, graph and relational databases, and the Knowledge Base. The Service Catalog makes the available capabilities easier to use by describing each service in terms of its domain, role in the Digital Twin lifecycle, inputs and outputs, API access, interaction mode, and connections to other services.
+
+This makes the catalog a bridge between technical capabilities and heritage use cases. Workflows can be designed by selecting and combining appropriate services before the resulting application is implemented.
+
+### Orchestration
+
+Once the services are available, they need to be coordinated. Orchestration provides this coordination by placing service calls into defined sequences. A service may depend on the result of an earlier step, and a workflow may combine services from several domains. Complete RHDT functions therefore emerge from the coordinated execution of multiple services.
+
+### Three Workflow Examples
+
+Consider first an IoCT workflow. A sensor is registered and onboarded, an actuator is registered, and the nodes are connected to an asset and project. Sensor data can then be submitted and evaluated by a decision rule. In the humidity example, a streamed value is compared with a threshold such as H > 65%. When the condition is met, a command is sent to an actuator, and the event is logged and visualised. The sequence turns simple sensor connectivity into reactive control.
+
+A simulation workflow follows a different sequence. A session for geometric alignment is created and validated, parts are added, transformations are set, and the status of the parts is checked before the alignment operation takes place. The session is then ended. The individual steps together create the computational context required for the simulation.
+
+Remote rendering in an AR/VR environment follows the same principle. A session is created and validated, asset rendering is requested and its status checked, a camera is created and its transformation updated, and the current frame is retrieved before the session ends. Immersive visualisation therefore becomes part of an orchestrated workflow rather than an isolated function.
+
+<Callout kind="important">
+  **Orchestration turns individual capabilities into processes that can support complete RHDT functions.**
+</Callout>
+
+<Quiz>
+  <QuizChoice variant="single" buttonLabel="Check answer">
+    <QuizChoiceQuestion>
+      What is the main function of orchestration in the ARTEMIS ecosystem?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        To replace individual microservices with a single monolithic application.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        To eliminate the need for standardised APIs.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        To coordinate services into defined sequences to create complete RHDT workflows.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        To manage only the AR/VR visualisation components.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Yes, that's the correct answer!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that's not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+<Quiz>
+  <QuizChoice variant="single" buttonLabel="Check answer">
+    <QuizChoiceQuestion>
+      The ARTEMIS services are organised into four main domains. Which combination is correct?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Database, Frontend, Backend, Mobile
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        IoCT, Simulation, AR/VR, Cataloguing
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Sensors, Actuators, Cameras, GPS
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Analytics, Reporting, Visualisation, Storage
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Yes, that's the correct answer!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that's not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+## ARTEMIS Pilots
+
+### Pilot #2 – Pigmeos Mosaic at Itálica
+
+Preventive conservation at the Itálica archaeological site provides a concrete setting for the RHDT approach. The Pigmeos Mosaic is represented through high-resolution 3D models while real-time IoT data provides information about its surrounding and physical conditions.
+
+Temperature, humidity, light, moisture, and ground-movement data can be visualised directly over the mosaic surface within the RHDT. This brings the spatial representation and the environmental observations together. A collaborative VR environment supports joint risk assessment and the evaluation of early signs of deterioration.
+
+### Pilot #4 – Smart Display Case
+
+The Smart Display Case applies the same principles to a museum environment. IoT nodes monitor environmental conditions, support anti-tampering, and synchronise the Digital Twin with the physical display case. Temperature, humidity, and camera data are collected, while actuators can manage microclimate conditions and protect the asset when security threats occur.
+
+Continuous monitoring is combined with automated response, providing a system that can support curators, conservators, museum operators, and technical staff.
+
+### Pilot #4 Architecture and the Physical-Digital Loop
+
+The Smart Display Case is organised in several layers. Sensors and actuators form the physical IoCT layer. MQTT and an API Gateway provide communication, while the data layer contains a Time-Series Database and a Triple Store. Above this, microservices and a Rule Engine form the service layer, followed by the application layer with the Digital Twin, Viewer, and Dashboard.
+
+<Figure src="/assets/content/assets/en/resources/hosted/reactive-heritage-digital-twins-a-comprehensive-overview-of-the-artemis-ecosystem/artemis-3d.png" alt="Picture showing the ARTEMIS Smart Display Case" alignment="stretch">
+  Smart Display Case
+</Figure>
+
+Connecting the physical environment to this architecture involves designing an ARTEMIS-API-compliant node, installing it in the real environment, and configuring it within the Digital Twin. Sensor information can then travel through MQTT and the microservices to applications.
+
+The flow can also move in the opposite direction. Sensor data can be processed by rules and services and sent through MQTT to an actuator, which changes something in the physical environment. Threshold rules, automation, alerts, and potentially AI-supported decision-making can therefore connect digital analysis with physical action.
+
+<Callout kind="important">
+  **The RHDT closes the loop between physical change, digital data, analysis, decision-making, and physical response.**
+</Callout>
+
+<Quiz>
+  <QuizChoice variant="single" buttonLabel="Check answer">
+    <QuizChoiceQuestion>
+      Which situation best describes the “Physical-Digital Loop” of an RHDT?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        A 3D model is created and then permanently stored.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Sensor data is collected but not further processed.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        A change in the physical environment is detected by sensors, digitally analysed, and can trigger a response in the physical environment.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        A cultural heritage object is viewed exclusively in a VR environment.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Yes, that's the correct answer!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that's not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+<Quiz>
+  <QuizChoice variant="single" buttonLabel="Check answer">
+    <QuizChoiceQuestion>
+      How is the RHDT used in the case of the Pigmeos Mosaic at Itálica?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        To visualise real-time IoT data overlaid on the 3D model within a collaborative VR environment for joint risk assessment.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Only to create a digital copy of the artwork for archival purposes.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Exclusively to document the current state of the mosaic.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        To physically replace the original mosaic with a digital reconstruction.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Yes, that's the correct answer!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that's not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+## From Digital Data to Preventive Action
+
+An RHDT becomes particularly useful when observation does not remain an endpoint. Physical changes are transformed into digital data, processed through ARTEMIS services, and made available for monitoring and response. The IoT node provides the bridge that makes this connection possible.
+
+In practical work, this loop can be made tangible by creating an ARTEMIS IoT Node and connecting it to the relevant Digital Twin services. The focus is on making the relationship between the physical environment and the digital system visible.
+
+## Conclusion
+
+Cultural heritage requires digital systems that can respond to change. Static and fragmented tools can provide valuable information, but a Reactive Heritage Digital Twin connects that information to continuous observation, analysis, decision-making, and response.
+
+ARTEMIS provides the architecture for this approach. Its microservices separate individual capabilities while keeping them available for reuse. Modularity makes the services adaptable, scalability allows the ecosystem to grow, and interoperability allows heterogeneous components to communicate. Orchestration then combines these components into workflows for monitoring, simulation, immersive visualisation, and reactive control.
+
+The Pigmeos Mosaic and Smart Display Case illustrate how these principles can be applied to concrete heritage situations. In both cases, the value of the RHDT lies in connecting the physical asset with a digital environment in which observations can support preventive and data-informed action.
