@@ -220,19 +220,33 @@ In a multiple choice quiz, every answer has an 'Answer text', which is what lear
   </QuizChoice>
 </Quiz>
 
-
-
 #### Drag The Words Quiz
 
 with this dynamic quiz, learners can use word tiles to fill in the blanks in a statement to test their knowledge.
-
-
 
 <Quiz>
   <QuizDragTheWords caseSensitive={false} distractors={["house","nest","burren","sett"]} instantFeedback>
     Bees live in a @@hive::rhymes with 'chive'@@
   </QuizDragTheWords>
 </Quiz>
+
+
+
+#### Fill In The Blanks Quiz
+
+Similar to the 'Drag the Words' quiz, learners can test their knowledge by filling in the blanks in a statement or sentence, except in this case they type the word in directly.
+
+<Quiz>
+  <QuizFillInTheBlank caseSensitive={false} validateOnBlur={false}>
+    The Beatles came from the UK city of @@Liverpool@@.\
+    \
+    The four members of the band were @@John Lennon//Paul McCartney//Ringo Starr//George Harrison@@, @@John Lennon//Paul McCartney//Ringo Starr//George Harrison@@, @@John Lennon//Paul McCartney//Ringo Starr//George Harrison@@, @@John Lennon//Paul McCartney//Ringo Starr//George Harrison@@.\
+    \
+    One of their famous songs was called "I Am The @@Walrus:: large aquatic mammal@@
+  </QuizFillInTheBlank>
+</Quiz>
+
+
 
 ## Tabs
 
