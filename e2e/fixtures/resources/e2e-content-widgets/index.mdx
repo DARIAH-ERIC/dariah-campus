@@ -139,25 +139,93 @@ sections, a question without a prompt and a section without questions all have t
 
 </Quiz>
 
-## Quiz, image drop zones without a background image
+## Quiz, image drop zones with instant feedback
 
 <Quiz>
-	<QuizImageDropZones>
-		<QuizImageDropZone label="Version control" items={["Git"]} />
+	<QuizImageDropZones
+		alt="A plan of a church"
+		instantFeedback={true}
+		src="/assets/content/assets/en/resources/hosted/e2e-content-widgets/annotated.png"
+	>
+		<QuizImageDropZone label="Primary sources" items={["Charter"]} x={5} y={10} width={40} height={30} />
 
-    	<QuizImageDropZone label="Repository hosting" items={["GitHub", "GitLab"]} />
+    	<QuizImageDropZone label="Secondary sources" items={["Monograph"]} x={55} y={55} width={40} height={30} />
     </QuizImageDropZones>
 
 </Quiz>
 
-## Quiz, image drop zones with instant feedback
+## Quiz, matching
 
 <Quiz>
-	<QuizImageDropZones instantFeedback={true}>
-		<QuizImageDropZone label="Primary sources" items={["Charter"]} />
+	<QuizMatching distractors="Cloister">
+		<QuizQuestion>
+			Sort each **tool** into its category.
+		</QuizQuestion>
 
-    	<QuizImageDropZone label="Secondary sources" items={["Monograph"]} />
-    </QuizImageDropZones>
+    	<QuizMatchingZone label="Version control" items={["Git"]}>
+    		Tracks every change to a set of files.
+    	</QuizMatchingZone>
+
+    	<QuizMatchingZone label="Repository hosting" items={["GitHub", "GitLab"]} />
+    </QuizMatching>
+
+</Quiz>
+
+## Quiz, matching with ordered zones
+
+<Quiz>
+	<QuizMatching orderedZones={true} distractors="Metadata broker">
+		<QuizMatchingZone label="Access the Cloud" items={["Single Entry Point"]}>
+    		Everything starts at the single entry point.
+    	</QuizMatchingZone>
+
+    	<QuizMatchingZone label="Prepare the collection" items={["Collection Ingestion Tool"]} />
+
+    	<QuizMatchingZone label="Connect to related heritage" items={["Knowledge Graph"]} />
+    </QuizMatching>
+
+</Quiz>
+
+## Quiz, matching with instant feedback
+
+<Quiz>
+	<QuizMatching instantFeedback={true}>
+		<QuizMatchingZone label="Manuscripts" items={["Codex"]} />
+
+    	<QuizMatchingZone label="Printed books" items={["Incunable"]} />
+    </QuizMatching>
+
+</Quiz>
+
+## Quiz, ordering
+
+<Quiz>
+	<QuizOrdering>
+		<QuizQuestion>
+			Put the steps of a **Git workflow** in order.
+		</QuizQuestion>
+
+    	<QuizOrderingItem label="Clone the repository">
+    		A local copy is the starting point for every change.
+    	</QuizOrderingItem>
+
+    	<QuizOrderingItem label="Commit a change" />
+
+    	<QuizOrderingItem label="Push to the remote" />
+    </QuizOrdering>
+
+</Quiz>
+
+## Quiz, ordering with instant feedback
+
+<Quiz>
+	<QuizOrdering instantFeedback={true}>
+		<QuizOrderingItem label="Transcribe" />
+
+    	<QuizOrderingItem label="Annotate" />
+
+    	<QuizOrderingItem label="Publish" />
+    </QuizOrdering>
 
 </Quiz>
 
