@@ -70,7 +70,9 @@ Beneath this are the creative elements for content (7), data (8), pages (9) and 
 
 The process for editing and creating a new branch and a new resource or data file will be outlined further in other sections of this documentation.
 
-## Creating a New Branch (main section title)
+<SplitPoint />
+
+## Creating a New Branch
 
 In all cases when adding a new resource, or adding a new person, you want to create a new 'branch'. To do this, first go to the **dashboard**.
 
@@ -92,11 +94,13 @@ Once you have hit the 'create' button, you will notice that there is now a new b
 
 The branch you have created will then be accessible from the branch drop down menu on the left-hand navigation panel whenever you go into the CMS. You should make sure that you save any changes you make to this branch as you make edits. Once the edits you have made have been published onto the 'main' branch in DARIAH-Campus, your own branch will be deleted. If you want to make future changes to your resource after that, you will have to create a new branch using this same method.
 
-## Creating and Editing New People (Main page title)
+<SplitPoint />
+
+## Creating and Editing New People
 
 Now that you are familiar with what the different buttons on the Dashboard do, you can start to draft up and edit content. For the most part this will be creating new learning resources, but it is also possible that you will have to create or edit a 'person' profile. For reasons that will become apparent as we move through this guide, it is best to either make sure that all the people you want to list as authors, contributing authors and/or editors for your resource are already in the system, or to add them in your 'New Resource Branch' first before you make a start on the content of your resource. We therefore begin with this process.
 
-## Check for Existing 'People' Files
+### Check for Existing 'People' Files
 
 Before you begin creating any new 'Person' profile, you need to first check that they aren't already in the system, in order to avoid duplications. You can do this in the CMS and also on the main DARIAH-Campus website. But, as we are discussing the CMS here, we will focus on that method.
 
@@ -106,7 +110,7 @@ From the dashboard, select the 'People' option. This will bring you to the full 
   Do bear in mind that some non-English spellings may have been 'normalised' to make them more URL friendly, so letters such as 'ð', 'œ', 'ü' or 'æ' may have been re-cast as 'd', 'oe', 'ue' or 'a'. An example could be the name 'Wünsche' spelled 'Wuensche', or 'Sigurðarsson' becoming 'Sigurdarsson'
 </Callout>
 
-## Creating a New 'People' file
+### Creating a New 'People' file
 
 If you have verified that the person you want to add definitely isn't already in the system, you can proceed to add them.
 
@@ -152,7 +156,7 @@ This will now enable the editorial team to look at the new Person file you have 
 
 But for now, your work creating a new person is done!
 
-## Editing an Existing Profile
+### Editing an Existing Profile
 
 Sometimes you might need to update a profile for a person.  This might be to change the image associated with them, or to add a 'Description' if they are to be included as an author or speaker in a Captured Event resource.
 
@@ -165,11 +169,13 @@ Sometimes you might need to update a profile for a person.  This might be to cha
 3. Make the changes you need to.
 4. Make sure that you click on the 'Save' button at the top, and then follow the same procedure as given above to create a new pull request (see '***Sending Your New 'Person' for Publication***').
 
-## Creating/ Editing a Hosted Resource (Main page title)
+<SplitPoint />
+
+## Creating/ Editing a Hosted Resource
 
 First things first, you need to create a new branch for your new resource. You can do this by first making sure you are on the 'Main' Branch, and then clicking the 'Create New Branch' button. You will be presented with a pop-up window where you can add your branch name, remembering to replace spaces with hyphens.
 
-## Adding the Hosted Resource Metadata
+### Adding the Hosted Resource Metadata
 
 The metadata requirements for a hosted resource are less than for an external resource, but there are still some items to pay attention to.
 
@@ -223,7 +229,7 @@ Finally, **Sources** are selected in the same way as for Authors and Tags. The '
 
 This completes all the metadata fields for a hosted resource, and at this point you can now 'Create' your initial draft by clicking on the blue button in the top right-hand corner of the screen. This will save all the metadata. Once you have created the draft, the blue button will change to say 'Save'. We recommend that you save your work frequently to avoid any loss of content.
 
-## Writing the Content of Your Hosted Resource
+### Writing the Content of Your Hosted Resource
 
 The large middle field in the CMS is your main content creation area. This is where you will write your hosted resource. There are a few things to keep in mind in relation to the house style, specifically around the types of headings used, and the order in which they appear. For that reason, as part of this step by step guide, an 'Example Hosted Resource' has been created for you to refer to when drafting up content. You can find the latest preview of the 'Example Hosted Resource' by clicking on the most recent 'View Deployment' on this Pull Request. You can view the House Style here.
 
@@ -415,12 +421,16 @@ The link button now has a URL attached to it. You can then click in the link but
 
 </Figure>
 
-#### Quiz
+### Quizzes
 
 \
 The 'Quiz' option allows you to create a quiz or self-assessment either at the end of a section or the end of the entire resource. A quiz can contain multiple pages and mix multiple-choice questions, image hotspots, fill-in-the-blank exercises, and drag-the-words exercises. Learners use the previous and next controls to move through the pages.
 
-Once you have inserted a Quiz, use the 'Insert' button inside the quiz block to add each quiz page. When you add a multiple-choice page, a box will appear with its own 'Insert' and 'Edit' buttons. Its 'Insert' menu provides four options: add a Question; give an Answer; write a quiz success message for a correct answer; or write a quiz error message for when the learner gets the question wrong.
+Once you have inserted a Quiz, use the 'Insert' button inside the quiz block to add the quiz type of your choice.
+
+#### Multiple Choice Quiz
+
+When you add a multiple-choice page, a box will appear with its own 'Insert' and 'Edit' buttons. Its 'Insert' menu provides four options: add a Question; give an Answer; write a quiz success message for a correct answer; or write a quiz error message for when the learner gets the question wrong.
 
 <Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/4.18a.-adding-a-quiz.jpg" alignment="center">
 
@@ -454,8 +464,6 @@ To add a ‘Fill in the blank’ exercise, insert a Quiz from the Widget menu, t
 * Multiple accepted answers (syntax: @@answer1//answer2@@)
 * Answer with hint (syntax: @@answer::hint@@)
 
-
-
 You can make the answers case sensitive if necessary by clicking on the ‘edit’ button and selecting this option.
 
 For the ‘Single accepted answer’, you simply replace the ‘answer’ with the correct answer, e.g. The colour of grass is @@green@@.
@@ -465,8 +473,6 @@ For ‘Multiple accepted answers, you replace the different numbered instances o
 You can also combine this function if you want the learner to list all the possible right answers.  For this, though, you will need to change the order in which the answers appear in the syntax, e.g. “Bumblebees are often striped in two colours:  @@black//yellow@@ and @@yellow//black@@”.  This is because the widget will pick the first option in each syntax field when giving the learner clicks on the ‘Show Solution’ button.  
 
 If you want to add a hint to an answer, you can do so using the ‘Answer with hint’ syntax.  Here you give the correct answer, and then type in a hint after the double colons, e.g. “Bees will do what is known as a @@waggledance::a dance that involves a specific movement of their bums@@”.  This will then give the learner an option to view a hint if they need one.
-
-
 
 <Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/fitb-1-editing.jpg" alignment="stretch">
 
@@ -484,7 +490,80 @@ Once learners have filled in their answers, they can then click on the ‘Check�
 
 </Figure>
 
-#### Tabs
+#### Quiz - Drag the Words
+
+Select the ‘Quiz’ widget from the widget dropdown menu.  You will then see a box appear in the CMS.  If you click on ‘Insert’, a further dropdown menu will appear with the different quiz options. Select ‘Drag The Words’.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/drag-words-1.png" alignment="stretch">
+
+</Figure>
+
+The box will change to show a text box with some sample text in it.  If you click on the ‘edit’ button, a pop-up window appears where you can will see a check box to make the responses case sensitive, the option to add ‘distractor’ words (wrong answers), and another check-box to allow learners to get immediate feedback when they attempt the quiz.\
+\
+Here we have added in a series of wrong answers to the unfinished sentence ‘Bees live in a…’.   Once you have finished adding your ‘distractor’ words, click on ‘done’.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/drag-words-2.png" alignment="stretch">
+
+</Figure>
+
+You can now begin drafting up your question (you can do this before you add your distractor words as well, of course).  The syntax you need to use is demonstrated in the quiz box.  Essentially, you can type out your sentence that you want the learner to complete, and then for the blank space, you use the correct answer surrounded by “@”, so the layout looks like this:\
+\
+“Bees live in a @@hive@@.”
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/drag-words-3.png" alignment="stretch">
+
+</Figure>
+
+You can also add a hint for learners as well, by adding a double-colon and then the hint, structured as:
+
+“Bees live in a @@hive::sounds like ‘five’@@. &#x20;
+
+When the quiz is published, learners will be able to click on the hint option and see this hint text.\
+\
+The published version in the finished resource then shows a box where the sentence with the blank space appears on the left, and all the options, both correct and incorrect, appear as draggable words on the right-hand side.  The learner clicks on their chosen word, and drags it over to the blank space which will turn blue.
+
+If you ticked the checkbox to enable immediate feedback, the blank space will immediately turn red to indicate a wrong answer, or green to indicate a correct answer.  If you didn’t select this option, then the learner can click on ‘Check’ to see how they did.
+
+
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/drag-words-6.png" alignment="stretch">
+
+</Figure>
+
+#### Image Dropzone Quiz
+
+Learners can use the Image Dropzone quiz to match words by dragging words over to a ‘dropzone’.  Select the ‘Quiz’ widget, and in the ‘Insert’ dropdown menu, select ‘Image Dropzone’.  
+
+A box will appear showing a space for an image, and a box for a question.  Click on the ‘edit’ button.  This will bring up a pop-up window where you can: (a) Add a background image for your quiz that the dropzones will be drawn over; (b) provide an image description (alt text) to support learners who use a screen reader; (c) add optional ‘distractors’ - purposefully wrong answers to make the quiz a little bit harder if you want to challenge your learners, and; (d) determine whether or not you want to give learners instant feedback by checking the option box.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/image-dropzone-1.jpg" alignment="stretch">
+
+</Figure>
+
+When you click on ‘Done’, the image will now be displayed in the ‘background image’ window.  From here, you can start to add your ‘dropzones’ to the image.  Click on ‘insert’ and select ‘image dropzone’.  An editable ‘Untitled drop zone’ box will appear with the options to ‘draw’ a dropzone and then edit it.  Click on ‘draw’, and you will then be able to draw a rectangle by clicking and dragging the mouse over the part of the image you want a dropzone to sit in.  If you want this to be a perfectly square shaped dropzone, you will need to hold either the ctrl key (Windows) or cmd (Mac) while you drag your mouse. 
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/image-dropzone-2.jpg" alignment="stretch">
+
+</Figure>
+
+Click on the ‘Edit’ option for your dropzone, and a new pop-up window will appear.  Within this window, you will be able to: (a) give the dropzone a meaningful label which will be provided as an option for screenreaders; (b) decide if the shape of the dropzone will be a rectangle or an ellipse using the dropdown menu; (c ) define the correct answer for this dropzone.  You can add as many correct answers for this dropzone as you like; (d) determine the position and dimensions of the dropzone through its horizontal and vertical position, and defining the height and width; and (e) provide some text for the learner to understand what the dropzone means, which is revealed once the exercise has been answered.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/image-dropzone-3.jpg" alignment="stretch">
+
+</Figure>
+
+Do this for as many different dropzones as you want to create. When you’ve finished adding and editing all of your dropzones, you will see them listed underneath the background image and question box.  You can also redraw individual dropzones without having to re-enter the dropzone information again by clicking on ‘Redraw’.\
+
+
+In the published version, the image is displayed with the dropzones, and the options for answers are presented as moveable tiles underneath.  The learner can either drag the word tile into the dropzone, or select the dropzone by clicking on the wordtile and the dropzone labels will appear for the learner to choose from.
+
+<Figure src="/assets/content/assets/en/documentation/introduction-to-the-dariah-campus-content-management-system/image-dropzone-4.jpg" alignment="stretch">
+
+</Figure>
+
+
+
+### Tabs
 
 Tabs offer a different layout for text, particularly if that text is related in some way. They work in a similar way to the 'disclosure' option in that they can reveal text, but more than one tab can be added to a block.
 
@@ -500,7 +579,7 @@ When this is published, the tabs all appear lined up horizontally, and are click
 
 </Figure>
 
-#### Video Card
+### Video Card
 
 There are two options for adding videos to your resources. The first shown here is the 'Video Card' option. This allows you to add some brief contextualising text and then links out to a video. When this is played, the video will expand to fill the screen.
 
@@ -524,7 +603,7 @@ You are also asked to add your own thumbnail image for this video card. You can 
 
 </Figure>
 
-#### Video
+### Video
 
 The 'Video' option is a bit different to the 'Video Card' option as it allows you to embed a video within the content of the resource you are writing. This is particularly useful if you are creating a new 'Hosted' resource directly on DARIAH-Campus, and want to embed a video to illustrate or demonstrate an issue or provocation.
 
@@ -562,15 +641,17 @@ The screen will now change to show you the actual pull request that your draft i
 
 You can continue to edit your hosted resource in the CMS to refine it, or as required by the Editorial Team. Once everyone is happy, the Editorial Team will publish this to DARIAH-Campus for you.
 
-## Creating/ Editing an Event (main page title)
+<SplitPoint />
+
+## Creating/ Editing an Event
 
 The 'Captured Event' format is designed to compile all the outputs from a live event, be it in person or online, and present them in an easy-to-access structured format.  An event can include videos of presentations, the slides that accompany them, handouts and preparatory notes to any new tool walk-throughs in the event, as well as the option to include photographs and speaker biographies.
 
-## Creating a New Branch for your Captured Event
+### Creating a New Branch for your Captured Event
 
 As with all changes, edits and additions you make to DARIAH-Campus, the first thing you need to do is to create a new branch for your new event.
 
-## Adding and Updating Event Authors in the CMS
+### Adding and Updating Event Authors in the CMS
 
 With the 'Events' format, **we strongly recommend adding any new people you want to include in the 'Authors' field before you begin drafting up the event content itself**. This is because there are a lot of mandatory fields in the Events template, and the system will not allow you to 'save' the content without all these fields populated. You will need to save the content before you move to a different part of the dashboard in order to retain the content. By adding any new authors first, you can avoid the annoyance of losing content you've already filled in.
 
@@ -592,7 +673,7 @@ You should ensure that this field is filled in for all the speakers and authors 
   When adding a description or biography to your 'person' file, make sure that it is **NOT** specific to the event, rather that it is a more general use biography. If they are part of a future event, that same biography will be used there as well.
 </Callout>
 
-### Who can be listed as an 'Author' for an event?
+#### Who can be listed as an 'Author' for an event?
 
 It is important to note that 'Authors' in an event can include, but are not limited to the following roles:
 
@@ -605,7 +686,7 @@ It is important to note that 'Authors' in an event can include, but are not limi
 
 Who you add as an 'Author' in this section is open to interpretation, however we do encourage consideration of the different roles and contributions that are made in order to run a successful event, and that you give credit in an appropriate manner.
 
-## The Event Working Space
+### The Event Working Space
 
 When you first go to create a new Captured Event resource (from here on just called 'event resource'), you will notice that the layout of the workspace is different to other resource types, assuming you are already familiar with producing those. In the case of the event resource there is a much more rigid structure that organises the information in a specific way on the website. For this reason, the bulk of information that is to be entered is divided into sections.
 
@@ -615,7 +696,7 @@ When you first go to create a new Captured Event resource (from here on just cal
   To save yourself time, it might be useful to go through the event template and add in 'filler' content to the mandatory fields that can be corrected and edited before submitting the work in a Pull Request for review.
 </Callout>
 
-## Event Metadata
+### Event Metadata
 
 The first field is the **title of the resource**. This in turn generates the 'slug' for the url of the resource, based on the title.
 
@@ -713,13 +794,13 @@ If the title of your event is very long, you can also use the 'Summary Title' fi
 
 </Figure>
 
-## Event Content
+### Event Content
 
-### 'Content' field
+#### 'Content' field
 
 This is the least structured part of the event, but we still recommend certain aspects are included here.
 
-#### About
+##### About
 
 You can call this whatever you would like, but we recommend that you include at the beginning some information about the event itself, the topics it covered and how they are conveyed in this published version. You can elaborate on how the live event itself handled the delivery and if there are any key differences that you have had to make accommodations for in this 'captured' published version.
 
@@ -727,7 +808,7 @@ We also recommend that you include some Learning Outcomes to help users understa
 
 You should also include any acknowledgements required for funding or institutional support. You can do this either in this introductory section, or you may wish to add a special section for this further down, whichever you feel most appropriate.
 
-#### Event Credits for the Organising Team
+##### Event Credits for the Organising Team
 
 It is always nice to acknowledge all members of the team that put together the event, not just the speakers. You can do this maybe as a sub-section for 'About'. Acknowledgement not only includes that for the event programme committee, but it could also include the volunteers who helped out on the day, the team members elsewhere in the project who provide necessary support such as the logistics, admin, communications and marketing, or post-event support in the form of collating content to get it published here on Campus.
 
@@ -767,7 +848,7 @@ When published, the tabs will be interactive for users to click through, with a 
 
 To exit the tabs and the callout, click the 'Enter/Return' key on your laptop at least three times to bring the cursor out into the main content editing window. From here you can continue editing your event description.
 
-#### Other Information to include in the 'Content' field
+##### Other Information to include in the 'Content' field
 
 In addition to the information about the event itself, acknowledgements and credits, you may also wish to include the following:
 
@@ -862,7 +943,7 @@ The **DOI** field is not editable, this is automatically generated when the reso
 
 Finally at the bottom there is a field that says '**PID (readonly)**'. You can ignore this field. This is an automatically generated field and has been designed so that it can't be edited.
 
-## Saving Your 'Event' for Publication
+### Saving Your 'Event' for Publication
 
 After doing so much work, you may wish to 'Create' a pull request, and save your work. You can of course do this at any point in the editing process once the required event metadata has been entered. Exactly when you choose to create the pull request and save your work is up to you, depending on your own practices, although we recommend saving frequently after a set of changes to ensure nothing is lost in the unlikely event of a website crash, or if you have to step away from your computer.
 
@@ -886,13 +967,15 @@ The screen will now change to show you the actual pull request that your draft i
 
 You can continue to edit your event in the CMS to refine it, or as required by the Editorial Team. Once everyone is happy, the Editorial Team will publish this to DARIAH-Campus for you.
 
-## Creating / Editing a Pathfinder (main page title)
+<SplitPoint />
+
+## Creating / Editing a Pathfinder
 
 The 'Pathfinder' resource on DARIAH-Campus offers a slightly different approach to sharing knowledge and training materials. They serve in many ways as a 'state of the art' / 'literature review' for a subject, but with a focus specifically on training materials. They are created in a very similar way to a 'Hosted Resource'.
 
 First things first, you need to start a new branch for your new resource. As has been shown in earlier sections, you can do this by first making sure you are on the 'Main' Branch, and then clicking the 'Create New Branch' button. You will be presented with a pop-up window where you can add your branch name, remembering to replace spaces with hyphens.
 
-## Adding the Pathfinder Resource Metadata
+### Adding the Pathfinder Resource Metadata
 
 The metadata requirements for a pathfinder resource are less than for an external resource, but there are still some items to pay attention to.
 
@@ -940,7 +1023,7 @@ The **PID** field is not editable, this is automatically generated when the reso
 
 This completes all the metadata fields for a pathfinder resource, and at this point you can now 'Create' your initial draft by clicking on the blue button in the top right-hand corner of the screen. This will save all the metadata. Once you have created the draft, the blue button will change to say 'Save'. We recommend that you save your work frequently to avoid any loss of content.
 
-## Writing the Content of your Pathfinder Resource
+### Writing the Content of your Pathfinder Resource
 
 The large middle field in the CMS is your main content creation area. This is where you will write your pathfinder resource. There are a few things to keep in mind in relation to the house style, specifically around the types of headings used, and the order in which they appear. For that reason, as part of this step by step guide, an 'Example Pathfinder Resource' has been created for you to refer to when drafting up content. You can find the latest preview of the 'Example Pathfinder Resource' by clicking on the most recent 'View Deployment' on this Pull Request. You can view the ***House Style*** here.
 
@@ -1144,11 +1227,11 @@ Once you have entered all this and clicked 'Done', the video thumbnail will appe
 
 Remember to save your work as you go along!
 
-### Finishing touches
+#### Finishing Touches
 
 Before you send off your pathfinder for review, take a moment to check that you have all the required metadata fields filled in, that you have an introduction, learning outcomes and a conclusion that summarises what has been covered in the pathfinder resource and how they relate to the learning outcomes.
 
-## Saving your Pathfinder Resource for Publication
+### Saving your Pathfinder Resource for Publication
 
 After doing so much work, you may wish to 'Create' a pull request, and save your work. You can of course do this at any point in the editing process once the required event metadata has been entered. Exactly when you choose to create the pull request and save your work is up to you, depending on your own practices, although we recommend saving frequently after a set of changes to ensure nothing is lost in the unlikely event of a website crash, or if you have to step away from your computer.
 
@@ -1172,7 +1255,9 @@ The screen will now change to show you the actual pull request that your draft i
 
 This link will always bring you to the latest successfully built preview of your resource. You can click on this to see how your resource looks on the DARIAH-Campus website. **Do note, this is only a preview link, and should not be shared in any official capacity.**
 
-## Creating / Editing an External Resource (main page title)
+<SplitPoint />
+
+## Creating / Editing an External Resource
 
 In the new content management system, all resource types have their own templates and different requirements in terms of information and metadata. Therefore it is important that you select the correct resource type template that you want to create. If you are looking to edit an existing external resource, you will find all the published external resources filed accordingly in the CMS, and listed alphabetically.
 
@@ -1190,7 +1275,7 @@ The workspace for an external resource has two main parts. In the middle (1) is 
 
 </Figure>
 
-## The Metadata Fields for an External Resource
+### The Metadata Fields for an External Resource
 
 The first field is the **title of the resource**. This in turn generates the 'slug' for the url of the resource, based on the title.
 
@@ -1250,12 +1335,10 @@ Finally, you will be asked to select from the dropdown menu what type of resourc
 
 </Figure>
 
-That concludes the metadata for the resource. Now you can start writing the more descriptive information.
+That concludes the metadata for the resource. Now you can start writing the more descriptive information.\
 
-\
-\\
 
-## Writing the Descriptive Content for an External Resource
+### Writing the Descriptive Content for an External Resource
 
 The large middle window of the screen is the field for writing the more descriptive content for your resource. You type directly into this field, and can use the formatting options available to you to ensure it matches the ***House Style***.
 
@@ -1293,9 +1376,8 @@ You will now see the 'external resource' box with all this information entered i
 
 And that is the widget created!
 
-## Saving Your External Resource Draft
+### Saving Your External Resource Draft
 
-\
 At this point, you may wish to 'Create' a pull request, and save your work. You can of course do this at any point in the editing process once the required metadata has been entered. In the case shown in the figure below, this was done before adding the 'External Resource' widget. When you choose to create the pull request and save your work is up to you, depending on your own practices, although we recommend saving frequently after a set of changes to ensure nothing is lost in the unlikely event of a website crash, or if you have to step away from your computer.
 
 To create a draft, click on the blue button in the top right-hand corner of the screen saying 'Create'.
@@ -1324,17 +1406,19 @@ This will bring you to the GitHub site, where you can create the Pull Request by
 
 The screen will now change to show you the actual pull request that your draft is filed in on GitHub. After a short while, a 'Vercel bot' will post an automatic message to the Pull Request which includes a table showing a summary of the latest updates. In this table you will see a link to 'Visit Preview'. This link will always bring you to the latest successfully built preview of your resource. You can click on this to see how your resource looks on the DARIAH-Campus website. **Do note, this is only a preview link, and should not be shared in any official capacity.**
 
-## Creating a Curriculum (main page title)
+<SplitPoint />
+
+## Creating a Curriculum
 
 It's possible that once you have a few items in DARIAH Campus that fit a theme, or were created as part of a wider training programme, you may want to create a curriculum. This allows you the opportunity to 'link' your items in DARIAH-Campus to show users how your resources fit together. This also enables users to find your materials more quickly.\\
 
-## Getting started
+### Getting started
 
 As with all resource types, you will need to create a new branch to work on to develop your curriculum. From the home dashboard, make sure that first of all the branch you are currently on is 'Main'. Click on the 'New Branch' button and give your branch a name (remember to use hyphens between words rather than spaces). Click on 'Create'. You can go to the '***Creating a New Branch***' page to see how to do this in more detail if you need to.
 
 To create a curriculum, navigate to 'Curricula' on the home dashboard, and click on 'Add'.
 
-## Adding the Curriculum Metadata
+### Adding the Curriculum Metadata
 
 The first field is the **title of the curriculum**. This in turn generates the 'slug' for the url of the resource, based on the title.
 
@@ -1376,7 +1460,7 @@ The **PID** (persistent identifier) field is not editable, this is automatically
 
 This completes all the metadata fields for a Curriculum, and at this point you can now 'Create' your initial draft by clicking on the blue button in the top right-hand corner of the screen. This will save all the metadata. Once you have created the draft, the blue button will change to say 'Save'. We recommend that you save your work frequently to avoid any loss of content.
 
-## Writing your Curriculum Description
+### Writing your Curriculum Description
 
 The content field where you can get creative writing your curriculum description will be familiar to you as you have already published resources on Campus.
 
@@ -1388,9 +1472,8 @@ For the most part, you won't need to add any of the widgets, as these are not re
 
 You can use any of the formatting options available in the formatting bar to support this.
 
-## Saving Your 'Curriculum' for Publication
+### Saving Your 'Curriculum' for Publication
 
-\
 Once you are happy with your curriculum, you may wish to 'create' a pull request, and save your work. You can of course do this at any point in the editing process once the required event metadata has been entered. Exactly when you choose to create the pull request and save your work is up to you, depending on your own practices, although we recommend saving frequently after a set of changes.
 
 To create a draft, click on the blue button in the top right-hand corner of the screen saying 'Create'. Once you do this, a green message will display momentarily at the bottom of the screen saying 'Entry Created'. The blue button will now change to say 'Save'.
