@@ -309,7 +309,7 @@ Artemisia Oracle is the ARTEMIS AI-assisted pipeline for transforming unstructur
   <ImageLayer src="/assets/content/assets/en/resources/hosted/enabling-intelligent-services-with-knowledge-graphs-and-ai/pipeline-4.jpg" label="4. step: Output" alt="4. step: Output" />
 </ImageLayers>
 
-### **1. Ingestion and Preprocessing**
+#### **1. Ingestion and Preprocessing**
 
 The first stage prepares source documents for analysis including:
 
@@ -320,7 +320,7 @@ The first stage prepares source documents for analysis including:
 
 The result is processed content that can be used by the subsequent extraction stage.
 
-### **2. Contextual Extraction and Embedding**
+#### **2. Contextual Extraction and Embedding**
 
 The second stage uses an LLM to identify information such as:
 
@@ -334,7 +334,7 @@ The second stage uses an LLM to identify information such as:
 
 At the same time, embeddings are generated and stored so that semantic similarity can later be used during alignment and retrieval.
 
-### **3. Ontology-Aware Semantic Alignment**
+#### **3. Ontology-Aware Semantic Alignment**
 
 The third stage aligns extracted information with ontology concepts.
 
@@ -347,7 +347,7 @@ The presentation describes a hybrid approach that combines:
 
 The LLM based ontology-linking component uses the extracted mention and its surrounding textual context to select the most appropriate mapping from the retrieved ontology candidates and assign a confidence score. When the mapping remains uncertain, the system does not force an ontology assignment but retains the candidate mappings for expert review and selection. The resulting mappings are subsequently validated by domain experts before being expressed as ontology-aligned RDF triples
 
-### **4. Output**
+#### **4. Output**
 
 The final output is ontology-aligned knowledge for the ARTEMIS Knowledge Base, with RDF/Turtle serialization as a machine-readable representation.
 
