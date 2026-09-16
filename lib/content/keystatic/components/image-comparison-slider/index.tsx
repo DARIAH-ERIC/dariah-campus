@@ -17,10 +17,22 @@ export const createImageComparisonSlider = createComponent((paths, _locale) => {
 					validation: { isRequired: true },
 					...createAssetOptions(paths.assetPath),
 				}),
+				leftAlt: fields.text({
+					label: "Left image description for assistive technology",
+					description:
+						"Leave empty if the image is only decorative or already explained in the text. Both descriptions are read out one after the other, so describe what differs instead of repeating shared context.",
+					validation: { isRequired: false },
+				}),
 				right: fields.image({
 					label: "Right image",
 					validation: { isRequired: true },
 					...createAssetOptions(paths.assetPath),
+				}),
+				rightAlt: fields.text({
+					label: "Right image description for assistive technology",
+					description:
+						"Leave empty if the image is only decorative or already explained in the text. Both descriptions are read out one after the other, so describe what differs instead of repeating shared context.",
+					validation: { isRequired: false },
 				}),
 				orientation: fields.select({
 					label: "Orientation",
@@ -35,7 +47,13 @@ export const createImageComparisonSlider = createComponent((paths, _locale) => {
 				const { children, value } = props;
 
 				return (
-					<ImageComparisonSliderPreview left={value.left} orientation={value.orientation} right={value.right}>
+					<ImageComparisonSliderPreview
+						left={value.left}
+						leftAlt={value.leftAlt}
+						orientation={value.orientation}
+						right={value.right}
+						rightAlt={value.rightAlt}
+					>
 						{children}
 					</ImageComparisonSliderPreview>
 				);

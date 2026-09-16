@@ -2,36 +2,9 @@ import type { ReactNode } from "react";
 
 import { getChildrenByType } from "#/components/content/get-children-by-type.ts";
 import { getChildrenElements } from "#/components/content/get-children-elements.ts";
-import { getSortKey } from "#/components/content/get-sort-key.ts";
-import {
-	type DropZone,
-	type DropZoneItem,
-	QuizImageDropZonesForm,
-} from "#/components/content/image-drop-zones-form.tsx";
+import { type ItemsInput, getDropZoneItems } from "#/components/content/get-drop-zone-items.ts";
+import { type DropZone, QuizImageDropZonesForm } from "#/components/content/image-drop-zones-form.tsx";
 import { QuizQuestion } from "#/components/content/quiz-question.tsx";
-
-/** An item as the cms writes it. Kept an object so a field can be added to it without rewriting existing content. */
-interface Item {
-	label: string;
-}
-
-/**
- * A list of items from the cms, or - in hand-written mdx, where an object per item would only be noise - a list of
- * labels or a single comma separated string.
- */
-function toItems(value: Array<Item> | Array<string> | string | undefined): Array<Item> {
-	if (value == null) {
-		return [];
-	}
-
-	const entries = typeof value === "string" ? value.split(",") : value;
-
-	return entries
-		.map((entry) => {
-			return { label: (typeof entry === "string" ? entry : entry.label).trim() };
-		})
-		.filter((entry) => entry.label !== "");
-}
 
 interface QuizImageDropZonesProps {
 	alt?: string;
@@ -40,10 +13,11 @@ interface QuizImageDropZonesProps {
 	 * Decoy items that join the bank but belong in no zone, so the exercise cannot be solved by elimination. Leaving them
 	 * in the bank is part of the correct answer.
 	 */
-	distractors?: Array<Item> | Array<string> | string;
+	distractors?: ItemsInput;
 	height?: number;
 	/** Mark each item right or wrong as soon as it lands in a zone. */
 	instantFeedback?: boolean;
+	/** The image the zones are placed on. An exercise without one has nothing to position its zones against. */
 	src?: string;
 	width?: number;
 }
@@ -78,24 +52,16 @@ export function QuizImageDropZones(props: Readonly<QuizImageDropZonesProps>): Re
 		};
 	});
 
-	/**
-	 * Every zone contributes the items which belong in it, and the distractors belong in none. They are ordered so the
-	 * two are indistinguishable, and so the bank does not give away which zone an item was authored for.
-	 */
-	const items: Array<DropZoneItem> = [
-		...dropZones.flatMap((zone, zoneIndex) =>
-			toItems(zone.props.items).map((item, index) => {
-				return { id: `item-${String(zoneIndex)}-${String(index)}`, label: item.label, zoneIndex };
-			}),
-		),
-		...toItems(distractors).map((item, index) => {
-			return { id: `distractor-${String(index)}`, label: item.label, zoneIndex: null };
-		}),
-		// oxlint-disable-next-line unicorn/no-array-sort
-	].sort((a, b) => getSortKey(a.label) - getSortKey(b.label));
+	const items = getDropZoneItems(
+		dropZones.map((zone) => zone.props.items),
+		distractors,
+	);
 
-	/** The cms saves entries even when a required field was left empty, so an exercise nobody can solve is dropped. */
-	if (zones.length === 0 || items.length === 0) {
+	/**
+	 * The cms saves entries even when a required field was left empty, so an exercise nobody can solve is dropped. Zones
+	 * which are not placed on an image belong in `QuizMatching`.
+	 */
+	if (src == null || zones.length === 0 || items.length === 0) {
 		return null;
 	}
 
@@ -116,10 +82,10 @@ export function QuizImageDropZones(props: Readonly<QuizImageDropZonesProps>): Re
 interface QuizImageDropZoneProps {
 	/** Explains what belongs in this zone, and is revealed once the exercise has been answered. Optional. */
 	children?: ReactNode;
-	/** Percentages of the background image, used only when the exercise has one. */
+	/** Percentages of the background image. */
 	height?: number;
 	/** The items which belong in this zone. See `toItems` for the shapes an author can write. */
-	items?: Array<Item> | Array<string> | string;
+	items?: ItemsInput;
 	label?: string;
 	/** An ellipse is inscribed in the same box as a rectangle, and only takes drops inside its outline. */
 	shape?: "ellipse" | "rectangle";
