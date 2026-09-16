@@ -12,9 +12,12 @@ import { Grid, GridItem } from "#/components/content/grid.tsx";
 import { ImageComparisonSlider } from "#/components/content/image-comparison-slider.tsx";
 import { QuizImageDropZone, QuizImageDropZones } from "#/components/content/image-drop-zones.tsx";
 import { ImageLayer, ImageLayers } from "#/components/content/image-layers.tsx";
+import { Language, LanguageBlock } from "#/components/content/language.tsx";
 import { LinkButton } from "#/components/content/link-button.tsx";
 import { Link as ContentLink } from "#/components/content/link.tsx";
+import { QuizMatching, QuizMatchingZone } from "#/components/content/matching.tsx";
 import { MermaidDiagram } from "#/components/content/mermaid-diagram.tsx";
+import { QuizOrdering, QuizOrderingItem } from "#/components/content/ordering.tsx";
 import {
 	QuizChoice,
 	QuizChoiceAnswer,
@@ -63,6 +66,8 @@ export const components = {
 	GridItem,
 	img: Image,
 	ImageComparisonSlider,
+	Language,
+	LanguageBlock,
 	ImageLayer,
 	ImageLayers,
 	Link: ContentLink,
@@ -81,6 +86,10 @@ export const components = {
 	QuizImageDropZones,
 	QuizImageHotspot,
 	QuizImageHotspots,
+	QuizMatching,
+	QuizMatchingZone,
+	QuizOrdering,
+	QuizOrderingItem,
 	QuizQuestion,
 	QuizSuccessMessage,
 	Tab,
