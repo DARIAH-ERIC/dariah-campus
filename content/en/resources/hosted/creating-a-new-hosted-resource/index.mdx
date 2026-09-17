@@ -145,8 +145,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam interdum placerat n
 
 If you are familiar with the Mermaid website for creating visually appealing diagrams, you can also bring them over into your learning resource.  For example:
 
-
-
 <Diagram link={false}>
   <DiagramCodeBlock>
     ```mermaid
@@ -206,6 +204,36 @@ Having two images side by side for comparison can be very useful.  This widget a
 <ImageComparisonSlider left="/assets/content/assets/en/resources/hosted/creating-a-new-hosted-resource/1778-jan-van-jagen.png" leftAlt="map of the Netherlands from 1778" right="/assets/content/assets/en/resources/hosted/creating-a-new-hosted-resource/1850-daniel-van-veelwaard.png" rightAlt="map of the Netherlands from 1850 with provinces indicated with different coloured borders." orientation="horizontal">
   Comparing maps of the Netherlands: slide 1 from 1778, slide 2 from 1850 (both images from the Rijksmuseum)
 </ImageComparisonSlider>
+
+#### Image Hotspots
+
+
+
+Use an Image Hotspot (currently located under 'Quizzes' in the CMS) to allow learners to scroll or trace over and image to reveal specific information.  You can try this out on the treasure map below.
+
+
+
+<Quiz>
+  <QuizImageHotspots src="/assets/content/assets/en/resources/hosted/creating-a-new-hosted-resource/free-fantasy-map.jpg" alt="a pirate's treasure map." presentation="popover">
+    <QuizQuestion>
+      Click on the map markers to reveal more information.
+    </QuizQuestion>
+
+    <QuizImageHotspot label="Scholar's Fell" x={68.6} y={36.9}>
+      Add some information here for learners to interact with and learn from.
+    </QuizImageHotspot>
+
+    <QuizImageHotspot label="Library Bay" x={23.3} y={40.3}>
+      You can upload your own background image and add hotspots to specific spaces on that image that might be meaningful to the information you are trying to convey.
+    </QuizImageHotspot>
+
+    <QuizImageHotspot label="Metadata Moor" x={22.1} y={72.2}>
+      You can turn this into a quiz to help learners find the correct answer as well, if you wanted to.
+    </QuizImageHotspot>
+  </QuizImageHotspots>
+</Quiz>
+
+
 
 ## Quizzes
 
