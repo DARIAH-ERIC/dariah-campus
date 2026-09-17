@@ -426,11 +426,11 @@ In **ML / DL apporaches** extracting relations is usualy treated as a text class
 
 ### USE CASE: The “Research Spotlight” digital workflow
 
-Following the same line of creating a scholarly knowledge graph regarding research activities, methods and goals -as a use case example- we will implement the above IE steps into a digital workflow. To do so we need to employ the various digital methods described above on a dataset from reasearch publications in order to extract, dissambiguate, link and interrelate entities regarding research activities, research methods and reasearch goals. For the purposes of this use case we will use [Research Spotlight (RS)](https://marketplace.sshopencloud.eu/tool-or-service/R60WeD) a digital workflow specifically designed for educational purposes, that incorporates all the nessecary modules including DL models that are already pretrained on the specific entity types for the task at hand.
+Following the same line of creating a scholarly knowledge graph regarding research activities, methods and goals -as a use case example- we will incorporate the above IE steps into a digital workflow. To do so we need to employ the various digital methods described above on a dataset from reasearch publications in order to extract, dissambiguate, link and interrelate entities regarding research activities, research methods and reasearch goals. For the purposes of this use case we will use [Research Spotlight (RS)](https://marketplace.sshopencloud.eu/tool-or-service/R60WeD) a digital workflow specifically designed for educational purposes, that incorporates all the nessecary modules including DL models that are already pretrained on the specific entity types for the task at hand.
 
-[RS's github implementation](https://github.com/athenarc/research-spotlight) provides a modular notebook-based process, organised into a sequence of Jupyter/Google Colab cells. This format allows the technical process to be divided into smaller, traceable steps, each corresponding to a specific operation performed on the input datasets. Each module follows a broadly similar structure: configuration of paths and dependencies, definition of the relevant functions, execution of the module on the input dataset, and, where useful, inspection or visualisation of the output.&#x20;
+[RS's github implementation](https://github.com/athenarc/research-spotlight) provides a modular notebook-based process, organised into a sequence of Jupyter/Google Colab cells. This format allows the technical process to be divided into smaller, traceable steps, each corresponding to a specific operation performed on the input datasets. Each module follows a broadly similar structure: configuration of paths and dependencies, definition of the relevant functions, execution of the module on the input dataset, and -where useful- inspection or visualisation of the output.&#x20;
 
-More specifically, based pn our use case example, the RS notebook is organized into **five main modules**:
+More specifically, based on our use case example, the RS notebook is organized into **five main modules**:
 
 1. **Text Extraction**\
    Extract text from PDF files.
@@ -445,8 +445,6 @@ More specifically, based pn our use case example, the RS notebook is organized i
 6. **RDF Generation**\
    Generate RDF triples based on linked data standards for the Semantic Web.
 
-For demonstration purposes&#x20;
-
 <Callout kind="none" title="Research Spotlight and the 2nd ATRIUM Mutual Learning Exercise">
   On June 9 2026, Research Spotlight was presented in the [second Mutual Learning Exercise (MLE)](https://atrium-research.eu/news/atrium-second-mutual-learning-exercise/) a workshop format designed to promote mutual learning and the exchange of experiences among participants within the scope of the ATRIUM project.
 
@@ -456,6 +454,20 @@ For demonstration purposes&#x20;
 </Callout>
 
 ### EXERCISE
+
+Visit the <Link link={{"discriminant":"external"}}>[Research Spotlight githup repository](https://github.com/athenarc/research-spotlight/tree/main)</Link>. After reading the documentation, download the notebook and run it as a local jypyter notebook or in google colab. First create the folder structure as described in the notebook and set up the NER Server on your local environment by runing on your terminal/cmd the following commands:
+
+```
+# Install llama.cpp on your machine and run this on your termimal:
+llama serve -hf ggml-org/GLM-OCR-GGUF:F16 --port 8080 
+ 
+# Setup the NER server on your machine and run it using: 
+python ner_server.py
+```
+
+
+
+Go through each module and execute -in order of appearance- each cell under the sections: 1. Text Extraction, 2. Entity Disambiguation, 3. Entity Linking & 4.Relation Extraction. Try experimenting with various datasets included in the repository and watch the different results.&#x20;
 
 ---
 
