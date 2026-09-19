@@ -535,35 +535,33 @@ Imagine you are building a database tracking the networks of 15th-century painte
 
 ### Publishing as Linked Open Data
 
-Designing URIs for a digital humanities project requires a careful balance between **machine readability**, **human clarity**, and **long-term stability**. Because URIs serve as permanent identifiers for cultural, historical, or literary entities, how you structure them determines how easily other scholars can link to your work.
+Moving your dataset from a local spreadsheet to the Semantic Web means transitioning from isolated digital archiving to **collaborative web-scale data integration**.
 
-**1. Designing the URI Namespace**
+**1. Content Negotiation: The Bridge Between Humans and Machines**
 
-The namespace consists of your protocol, domain, and base path. It should reflect the institutional home of the project and the broad category of the resources.
+One of the most important concepts for digital humanists to grasp is **Content Negotiation**. A single HTTP URI can serve different versions of reality depending on who is asking:
 
-* **Bad Practice:** `http://localhost:8080/my_project_v2/test_output/` (Tied to a temporary server and local folder structures).
-* **Good Practice:** `https://muralhistoryproject.org` (Clear, institutional, and independent of backend software).
+* If a **human scholar** enters the URI into a standard web browser, the server detects the browser's request for `text/html` and serves a **beautifully rendered webpage** with images and text.
+* If a **semantic web crawler** requests the exact same URI, the server detects a request for `application/rdf+xml` or `text/turtle` and delivers raw **machine-readable graph data** via a HTTP 303 redirection.
 
-**2. Selecting a Separation Strategy: Hash vs. Slash**
+**2. Mapping to Standard Ontologies**
 
-When a machine requests information about a URI, it handles the connection differently based on whether you use a hashtag (`#`) or a slash (`/`):
+To make your digital humanities data discoverable, you must avoid inventing unique field names where standard ones already exist. Instead, map your data to universally recognized vocabularies:
 
-* **Hash URIs (`#`):** The web browser or client downloads the entire file before looking for the identifier after the `#`. This is ideal for **small vocabularies** or small datasets where everything fits in a single file.
-  * *Example:* `https://muralhistoryproject.org`
-* **Slash URIs (`/`):** Each identifier represents a unique web request. The server dynamically fetches only the data relevant to that specific entity. This is necessary for **large datasets** containing thousands of historical figures, places, or artifacts.
-  * *Example:* `https://muralhistoryproject.org`
+* **Dublin Core (dc):** For basic bibliographic metadata (e.g., creator, date, publisher).
+* **CIDOC CRM:** For complex cultural heritage event modeling (e.g., documenting the relocation, damage, and restoration history of an artifact).
+* **Friend of a Friend (FOAF):** For describing social networks, relationships, and basic biographical data of historical actors.
 
-**3. Best Practices for Minting Identifiers**
+**3. Applying Open Licenses**
 
-* **Enforce Persistence:** Content management systems change, but URIs should not. Never include file extensions (like `.php` or `.html`) or database-specific frameworks in the URI path.
-* **Human-Readable vs. Opaque IDs:** You can use meaningful names or random numbers for your final token. While human-readable tokens (e.g., `/person/william-shakespeare`) are easy to write, opaque IDs (e.g., Using VIAF codes like `/person/96994048`) prevent broken links if a historical figure's spelling is corrected later.
+Data cannot be truly "Linked Open Data" without legal clarity. Clearly embed machine-readable licensing terms (such as Creative Commons CC-BY or CC0 Public Domain Dedication) within the RDF metadata itself so algorithms know they have permission to index and analyze your collection.
 
-**4. Real-World Use Case: Prosopography of Renaissance Artists**
+**4. Real-World Use Case: The Cross-Institutional Manuscript Network**
 
-Imagine you are building a database tracking the networks of 15th-century painters in Florence.
+Consider two digital humanities projects: Project A (in Paris) archives medieval illumination data, while Project B (in London) logs scribal handwriting styles.
 
-* **The Challenge:** Artists often share identical names, or their names are spelled differently across archival records (e.g., *Sandro Botticelli* vs. *Alessandro di Mariano Filipepi*).
-* **The URI Solution:** You mint an opaque identifier based on a controlled numbering system, mapping it as `https://florentinedata.org`. Even if you update the primary display label or fix a typo in the biographical text, the global identifier remains unchanged. External graphs tracking historical contracts or pigments can safely point to `a7492` without risking dead links.
+* **The Challenge:** Historically, these projects lived in isolated silos, forcing a scholar studying a single book to manually search both sites.
+* **The LOD Solution:** By mapping their fields to **CIDOC CRM** and opening up their endpoints using content negotiation, a third-party app can run a single query across both servers. The app aggregates Paris's data about the manuscript's decorations with London's data about its text scripts, revealing that a book housed in Paris was actually decorated by a scribe who spent most of their career in London.
 
 ### The Five-Star Linked Open Data
 
