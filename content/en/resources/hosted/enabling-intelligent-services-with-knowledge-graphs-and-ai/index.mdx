@@ -71,7 +71,7 @@ Upon completion of this resource, learners will have gained an introductory unde
 
 Learners should also be able to critically assess AI-enabled heritage services by asking where their knowledge comes from, how concepts are represented, whether results can be traced to structured evidence, and where human validation remains necessary.
 
-## **Requirements**
+## Requirements
 
 No prior programming experience or detailed knowledge of machine learning is required.
 
@@ -84,11 +84,11 @@ A basic understanding of:
 
 is beneficial but not essential.
 
-## **Suggested Learning Path**
+## Suggested Learning Path
 
 This resource is designed as a continuation of **Semantic Modelling for Heritage Digital Twins: Ontologies and Interoperability**. Learners who are new to semantic modelling are encouraged to complete that resource first, as it introduces ontologies, interoperability, semantic relationships, and Knowledge Graph structures that are used throughout the present resource.
 
-## **Heritage Is Naturally a Graph**
+## Heritage Is Naturally a Graph
 
 When we think about cultural heritage, it is easy to focus on individual objects: an artefact, a building, a document, or a work of art. Yet the meaning of a heritage entity usually depends on a wider network of relationships. An object may have been created by a particular person, found at a particular place, documented by a report, analysed using a scientific method, or connected to a historical event.
 
@@ -109,7 +109,7 @@ For example, a graph might represent the statements:
 
 The important point is that the relationships are not secondary metadata. They are part of the knowledge itself. In cultural heritage, understanding how entities connect is often as important as describing the entities individually.
 
-## **From Single-Layer Graphs to Multiplex Heritage Networks**
+## From Single-Layer Graphs to Multiplex Heritage Networks
 
 A simple graph can model one type of relationship. Cultural heritage knowledge, however, rarely consists of only one relationship type. The same entities can be connected in several different ways at the same time.
 
@@ -122,7 +122,6 @@ Cultural heritage can be described as a **multiplex network**: a network in whic
 * a **documentation layer**, connecting entities with sources, images, reports, and provenance information.
 
 <Figure src="/assets/content/assets/en/resources/hosted/enabling-intelligent-services-with-knowledge-graphs-and-ai/multiplex-network.jpg" alt="how a Single-Layer Network can be stored in a Knowledgegraph to create a Multiplex Network" alignment="stretch">
-
 </Figure>
 
 These layers do not represent separate worlds. They describe different perspectives on the same heritage entities. A single artefact may therefore simultaneously participate in material, spatial, temporal, social, and documentary relationships.
@@ -167,7 +166,7 @@ This multiplex structure is one reason cultural heritage data becomes difficult 
   </QuizChoice>
 </Quiz>
 
-## **The Complexity Challenge: Why Turn to AI?**
+## The Complexity Challenge: Why Turn to AI?
 
 Heritage knowledge can contain large numbers of entities, sources, relationship types, and competing perspectives. The volume and diversity of this information can exceed what one person, or even one disciplinary team, can realistically process within a reasonable amount of time.
 
@@ -175,12 +174,11 @@ AI therefore appears attractive because it can assist with tasks involving large
 
 This creates a central tension for cultural heritage applications: AI can help us work with complexity, but AI systems themselves need to be critically evaluated and grounded in reliable knowledge.
 
-## **Why Large Language Models Can Hallucinate**
+## Why Large Language Models Can Hallucinate
 
 Large Language Models do not function as databases of verified facts. They learn statistical patterns from large amounts of training data. When generating a response, an LLM predicts likely next tokens based on those learned patterns and the context available in the current interaction.
 
 <Figure src="/assets/content/assets/en/resources/hosted/enabling-intelligent-services-with-knowledge-graphs-and-ai/database-vs-llm.jpg" alt="How a Database vs. a LLM give answers" alignment="left-one-third">
-
 </Figure>
 
 This distinction is important. A generated statement can sound convincing because it follows familiar linguistic and conceptual patterns, while still being unsupported or incorrect.
@@ -223,7 +221,7 @@ A hallucination is therefore not necessarily the result of the model "ignoring" 
   </QuizChoice>
 </Quiz>
 
-### **Attention and Context**
+### Attention and Context
 
 Modern LLMs are built on the Transformer architecture. A central mechanism is attention, which allows a model to assign different levels of relevance to different parts of the available context when producing the next token.
 
@@ -273,7 +271,7 @@ However, attention is not the same as factual verification. Attention weights re
   </QuizChoice>
 </Quiz>
 
-## **Grounding AI with Knowledge Graphs**
+## Grounding AI with Knowledge Graphs
 
 Knowledge Graphs can complement LLMs by providing structured, explicit, and verifiable context.
 
@@ -286,7 +284,7 @@ An LLM is useful for working with natural language and extracting patterns from 
 
 In ARTEMIS, this complementary relationship is used to support more reliable and explainable AI systems. The Knowledge Graph does not simply add more text to an LLM prompt. It provides an explicit semantic structure that can be inspected, queried, and connected to the underlying heritage knowledge.
 
-### **The Knowledge Extraction Bottleneck**
+### The Knowledge Extraction Bottleneck
 
 Knowledge Graphs do not appear automatically from existing heritage documentation. Someone must identify relevant entities, materials, places, periods, events, and relationships and align them with domain concepts.
 
@@ -296,7 +294,7 @@ This is the knowledge extraction bottleneck: the gap between the large amount of
 
 AI can assist with this process, but the goal is not uncontrolled automatic extraction. The aim is to combine machine-assisted extraction with ontology alignment, confidence estimation, and structured output.
 
-### **Artemisia Oracle: From Documents to Ontology-Aligned Knowledge**
+### Artemisia Oracle: From Documents to Ontology-Aligned Knowledge
 
 Artemisia Oracle is the ARTEMIS AI-assisted pipeline for transforming unstructured cultural heritage documentation into structured, ontology-aligned knowledge. The pipeline can be understood as four connected stages.
 
@@ -310,7 +308,7 @@ Artemisia Oracle is the ARTEMIS AI-assisted pipeline for transforming unstructur
   <ImageLayer src="/assets/content/assets/en/resources/hosted/enabling-intelligent-services-with-knowledge-graphs-and-ai/pipeline-4.jpg" label="4. step: Output" alt="4. step: Output" />
 </ImageLayers>
 
-#### **1. Ingestion and Preprocessing**
+#### 1. Ingestion and Preprocessing
 
 The first stage prepares source documents for analysis including:
 
@@ -321,7 +319,7 @@ The first stage prepares source documents for analysis including:
 
 The result is processed content that can be used by the subsequent extraction stage.
 
-#### **2. Contextual Extraction and Embedding**
+#### 2. Contextual Extraction and Embedding
 
 The second stage uses an LLM to identify information such as:
 
@@ -335,7 +333,7 @@ The second stage uses an LLM to identify information such as:
 
 At the same time, embeddings are generated and stored so that semantic similarity can later be used during alignment and retrieval.
 
-#### **3. Ontology-Aware Semantic Alignment**
+#### 3. Ontology-Aware Semantic Alignment
 
 The third stage aligns extracted information with ontology concepts.
 
@@ -348,13 +346,13 @@ The presentation describes a hybrid approach that combines:
 
 The LLM based ontology-linking component uses the extracted mention and its surrounding textual context to select the most appropriate mapping from the retrieved ontology candidates and assign a confidence score. When the mapping remains uncertain, the system does not force an ontology assignment but retains the candidate mappings for expert review and selection. The resulting mappings are subsequently validated by domain experts before being expressed as ontology-aligned RDF triples
 
-#### **4. Output**
+#### 4. Output
 
 The final output is ontology-aligned knowledge for the ARTEMIS Knowledge Base, with RDF/Turtle serialization as a machine-readable representation.
 
 This pipeline illustrates an important principle: AI-assisted extraction is useful when it feeds into a semantic structure rather than remaining as isolated generated text.
 
-## **Why Cultural Heritage Data Challenges AI**
+## Why Cultural Heritage Data Challenges AI
 
 Cultural heritage data poses particular challenges because the knowledge is not only large. It is heterogeneous in several different ways.
 
@@ -367,7 +365,7 @@ Heritage data is fragile, complex, distributed, and difficult to search. Physica
 
 For AI, this means that meaningful reasoning cannot begin with isolated pieces of evidence alone. The heterogeneous evidence must first be brought into a coherent representation.
 
-### **The Limits of Traditional Retrieval**
+### The Limits of Traditional Retrieval
 
 Traditional retrieval systems often rely on lexical matching between a user's query and indexed documents.
 
@@ -419,7 +417,7 @@ The challenge is therefore to move from searching only for matching words toward
   </QuizChoice>
 </Quiz>
 
-## **Representation Learning for Knowledge Graphs**
+## Representation Learning for Knowledge Graphs
 
 To compare information based on meaning rather than only on exact words, AI systems need numerical representations.
 
@@ -479,7 +477,7 @@ It is important, however, to interpret similarity carefully. Being close in an e
   </QuizChoice>
 </Quiz>
 
-## **Similarity Search Across Heritage Knowledge**
+## Similarity Search Across Heritage Knowledge
 
 Similarity search can be done across several kinds of cultural heritage relationships, including:
 
@@ -495,7 +493,7 @@ For example, two objects might be related because of a shared production context
 
 This provides an important contrast with traditional retrieval. Instead of asking only, "Which record contains these words?", a semantic system can support questions closer to, "Which entities are related in a meaningful way to this one?"
 
-## **Chat with Artemisia: Lowering the Technical Barrier**
+## Chat with Artemisia: Lowering the Technical Barrier
 
 Knowledge Graphs are powerful, but querying them can require knowledge of metadata structures, graph schemas, or query languages such as SPARQL. Chat with Artemisia is an interface that lowers this barrier through AI-assisted interaction.
 
@@ -508,7 +506,7 @@ It highlights four capabilities:
 
 The important point is that natural-language interaction becomes an access layer to semantically structured knowledge. The conversational interface does not replace the Knowledge Graph; it helps users work with it.
 
-## **From Search to Intelligent Services**
+## From Search to Intelligent Services
 
 The final part of the presentation points beyond search and conversational access toward intelligent services such as predicting deterioration or simulating scenarios.
 
@@ -518,7 +516,7 @@ The presentation introduces these directions at a conceptual level. It does not 
 
 **structured knowledge → semantic access → AI-assisted exploration → intelligent services**
 
-## **Conclusion**
+## Conclusion
 
 Cultural heritage is naturally relational. Its meaning is distributed across entities, sources, disciplines, and different kinds of relationships. Graphs offer a way to make those relationships explicit, while multiplex networks help describe the layered complexity of heritage knowledge.
 
