@@ -1,7 +1,7 @@
 import { createSingleton, withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { fields, singleton } from "@keystatic/core";
 
-import { createLinkSchema } from "@/lib/content/keystatic/utils/create-link-schema";
+import { createLinkSchema } from "#/lib/content/keystatic/utils/create-link-schema.ts";
 
 export const createNavigation = createSingleton("/navigation/", (paths, locale) => {
 	const link = createLinkSchema(paths.downloadPath, locale);

@@ -2,23 +2,17 @@
 
 import type { AriaLabelingProps, DOMProps } from "@react-types/shared";
 
-import { useId } from "@/lib/hooks/use-id";
+import { useId } from "#/lib/hooks/use-id.ts";
 
 /**
  * Copied from `react-aria`, because it currently does not work in server components.
  *
  * @see https://github.com/adobe/react-spectrum/blob/main/packages/%40react-aria/utils/src/useLabels.ts
  */
-export function useLabels(
-	props: AriaLabelingProps & DOMProps,
-	defaultLabel?: string,
-): AriaLabelingProps & DOMProps {
+export function useLabels(props: AriaLabelingProps & DOMProps, defaultLabel?: string): AriaLabelingProps & DOMProps {
 	let { id, "aria-label": label, "aria-labelledby": labelledBy } = props;
 
-	/**
-	 * If there is both an aria-label and aria-labelledby, combine them by pointing
-	 * to the element itself.
-	 */
+	/** If there is both an aria-label and aria-labelledby, combine them by pointing to the element itself. */
 	id = useId(id);
 	if (labelledBy && label) {
 		const ids = new Set([id, ...labelledBy.trim().split(/\s+/)]);
