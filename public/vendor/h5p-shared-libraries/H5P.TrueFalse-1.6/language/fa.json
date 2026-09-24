@@ -1,0 +1,159 @@
+{
+  "semantics": [
+    {
+      "label": "رسانه",
+      "fields": [
+        {
+          "label": "نوع",
+          "description": "با استفاده از این گزینه، رسانه‌ای را به‌صورت اختیاری برای نمایش در بالای این سؤال مشخص می‌کنید."
+        },
+        {
+          "label": "Disable image zooming"
+        }
+      ]
+    },
+    {
+      "label": "سؤال"
+    },
+    {
+      "label": "پاسخ درست",
+      "options": [
+        {
+          "label": "درست"
+        },
+        {
+          "label": "غلط"
+        }
+      ]
+    },
+    {
+      "label": "ترجمه‌های رابط کاربری برای سؤالات درست / نادرست",
+      "fields": [
+        {
+          "label": "برچسبی برای دکمۀ درست",
+          "default": "درست"
+        },
+        {
+          "label": "برچسبی برای دکمۀ غلط",
+          "default": "غلط"
+        },
+        {
+          "label": "متن بازخورد",
+          "default": "شما @scoreاز مجموع  @total دریافت کرده‌اید",
+          "description": "متن بازخورد، متغیرهای در دسترس: @score and @total.مثلاً:  'You got @score of @total possible points'"
+        },
+        {
+          "label": "متنی برای دکمۀ «بررسی»",
+          "default": "بررسی"
+        },
+        {
+          "label": "متنی برای دکمۀ «نمایش راه‌حل»",
+          "default": "نمایش راه‌حل"
+        },
+        {
+          "label": "متنی برای دکمۀ «تلاش دوباره»",
+          "default": "تلاش دوباره"
+        },
+        {
+          "label": "پاسخ نادرست",
+          "default": "پاسخ نادرست"
+        },
+        {
+          "label": "پاسخ درست",
+          "default": "پاسخ درست"
+        },
+        {
+          "label": "نمایش متنی نوارنمره برای افرادی که از نرم‌افزار مبدل متن به صدا استفاده می‌کنند",
+          "default": "شما  :num از مجموع  :total امتیاز دریافت کرده‌اید"
+        },
+        {
+          "label": "Assistive technology description for \"Check\" button",
+          "default": "Check the answers. The responses will be marked as correct, incorrect, or unanswered."
+        },
+        {
+          "label": "Assistive technology description for \"Show Solution\" button",
+          "default": "Show the solution. The task will be marked with its correct solution."
+        },
+        {
+          "label": "Assistive technology description for \"Retry\" button",
+          "default": "Retry the task. Reset all responses and start the task over again."
+        }
+      ]
+    },
+    {
+      "label": "تنظیمات بعد از آزمون",
+      "description": "این گزینه‌ها به شما این امکان را می‌دهد تا چگونگی رفتار این محتوا را کنترل کنید.",
+      "fields": [
+        {
+          "label": "فعالسازی دکمۀ «تلاش دوباره»"
+        },
+        {
+          "label": "فعالسازی دکمۀ «نمایش راه‌حل»"
+        },
+        {
+          "label": "فعالسازی دکمۀ «بررسی»"
+        },
+        {
+          "label": "نمایش پیام تأیید بر روی دکمۀ «بررسی»"
+        },
+        {
+          "label": "نمایش پیام تأیید بر روی «تلاش دوباره»"
+        },
+        {
+          "label": "کنترل پاسخ خودکار",
+          "description": "در نظر بگیرید که با فعالسازی این گزینه، دسترس‌پذیری تحت تأثیر قرار می‌گیرد."
+        },
+        {
+          "label": "بازخورد پاسخ درست",
+          "description": "این گزینه، متن پیش‌فرض بازخورد را حذف خواهد کرد. متغیرهای در دسترس@score و @total "
+        },
+        {
+          "label": "بازخورد پاسخ نادرست",
+          "description": "این گزینه، متن پیش‌فرض بازخورد را حذف خواهد کرد. متغیرهای در دسترس@score و @total "
+        }
+      ]
+    },
+    {
+      "label": "پیام بررسی تأیید",
+      "fields": [
+        {
+          "label": "متن سرصفحه",
+          "default": "به پایان رسید؟"
+        },
+        {
+          "label": "بدنۀ متن",
+          "default": "آیا از خاتمۀ کار اطمینان دارید؟"
+        },
+        {
+          "label": "برچسب دکمۀ لغو",
+          "default": "لغو"
+        },
+        {
+          "label": "برچسب دکمۀ تأیید",
+          "default": "پایان"
+        }
+      ]
+    },
+    {
+      "label": "پیام تأیید تلاش دوباره",
+      "fields": [
+        {
+          "label": "متن سرصفحه",
+          "default": "دوباره تلاش می‌کنید؟"
+        },
+        {
+          "label": "بدنۀ متن",
+          "default": "آیا دوباره تلاش می‌کنید؟"
+        },
+        {
+          "label": "برچسب دکمۀ لغو",
+          "default": "لغو"
+        },
+        {
+          "label": "برچسب دکمۀ تأیید",
+          "default": "تأیید"
+        }
+      ]
+    }
+  ]
+}
