@@ -8,9 +8,9 @@ import * as v from "valibot";
 import { matter } from "vfile-matter";
 import * as YAML from "yaml";
 
-import { env } from "@/config/env.config";
-import { createHandle } from "@/lib/server/handle/create-handle";
-import { createResourceUrl } from "@/lib/server/handle/create-resource-url";
+import { env } from "#/configs/env.config.ts";
+import { createHandle } from "#/lib/server/handle/create-handle.ts";
+import { createResourceUrl } from "#/lib/server/handle/create-resource-url.ts";
 
 const ArgsInputSchema = v.object({
 	resource: v.pipe(v.string(), v.nonEmpty()),
@@ -37,7 +37,7 @@ async function create() {
 	matter(vfile, { strip: true });
 	const metadata = vfile.data.matter as { doi?: string };
 
-	// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+	// oxlint-disable-next-line @typescript-eslint/strict-boolean-expressions
 	if (metadata.doi) {
 		return null;
 	}

@@ -1,9 +1,9 @@
 import { useTranslations } from "next-intl";
 import { type ComponentProps, type FC, type ReactNode, Suspense } from "react";
 
-import { CopyrightNotice } from "@/app/(app)/(default)/_components/copyright-notice";
-import { Image } from "@/components/image";
-import { Link } from "@/components/link";
+import { CopyrightNotice } from "#/app/(app)/(default)/_components/copyright-notice.tsx";
+import { Image } from "#/components/image.tsx";
+import { Link } from "#/components/link.tsx";
 import {
 	BlueskyIcon,
 	EmailIcon,
@@ -18,14 +18,14 @@ import {
 	TwitterIcon,
 	WebsiteIcon,
 	YouTubeIcon,
-} from "@/components/social-media-icons";
-import type { SocialMediaKind } from "@/lib/content/options";
-import { useMetadata } from "@/lib/i18n/metadata";
-import { createHref } from "@/lib/navigation/create-href";
-import type { NavigationItem } from "@/lib/navigation/navigation";
-import by from "@/public/assets/images/by.svg";
-import cc from "@/public/assets/images/cc.svg";
-import eu from "@/public/assets/images/logo-eu.svg";
+} from "#/components/social-media-icons.tsx";
+import type { SocialMediaKind } from "#/lib/content/options.ts";
+import { useMetadata } from "#/lib/i18n/metadata.ts";
+import { createHref } from "#/lib/navigation/create-href.ts";
+import type { NavigationItem } from "#/lib/navigation/navigation.ts";
+import by from "#/public/assets/images/by.svg";
+import cc from "#/public/assets/images/cc.svg";
+import eu from "#/public/assets/images/logo-eu.svg";
 
 const socialMediaIcons: Record<SocialMediaKind, FC<{ className?: string }>> = {
 	bluesky: BlueskyIcon,
@@ -100,22 +100,17 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 			className="flex flex-col gap-y-6 bg-brand-950 px-4 py-16 text-sm font-medium text-neutral-400 xs:px-8"
 		>
 			<nav aria-label={t("navigation.label")}>
-				<ul
-					className="flex flex-col items-center justify-center gap-y-3 md:flex-row md:gap-x-6 md:gap-y-0"
-					role="list"
-				>
-					{Object.entries(navigation).map(([key, link]) => {
-						return (
-							<li key={key} className="inline-flex">
-								<Link
-									className="rounded-sm p-2 text-center transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
-									href={link.href}
-								>
-									{link.label}
-								</Link>
-							</li>
-						);
-					})}
+				<ul className="flex flex-col items-center justify-center gap-y-3 md:flex-row md:gap-x-6 md:gap-y-0" role="list">
+					{Object.entries(navigation).map(([key, link]) => (
+						<li key={key} className="inline-flex">
+							<Link
+								className="rounded-sm p-2 text-center transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
+								href={link.href}
+							>
+								{link.label}
+							</Link>
+						</li>
+					))}
 				</ul>
 			</nav>
 			<nav aria-label={t("navigation-social-media.label")} className="flex flex-col items-center">
@@ -131,7 +126,7 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 									className="inline-block rounded-sm p-2 transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
 									href={kind === "email" ? `mailto:${href}` : href}
 								>
-									<Icon className="size-4" />
+									<Icon className="block-4 inline-4" />
 								</a>
 							</li>
 						);
@@ -140,27 +135,21 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 			</nav>
 			<div className="mx-auto flex max-w-screen-lg flex-col items-center justify-between gap-y-8 text-xs font-normal xs:flex-row xs:gap-x-8 xs:gap-y-0">
 				<div className="flex items-center gap-x-4">
-					<Image alt="" className="h-6 w-9 shrink-0" src={eu} />
+					<Image alt="" className="shrink-0 block-6 inline-9" src={eu} />
 					<span>{t("funding")}</span>
 				</div>
 				<div className="flex items-center justify-end gap-x-4">
-					<span className="text-right">
+					<span className="text-end">
 						{t.rich("license", {
+							// oxlint-disable-next-line react/no-unstable-nested-components
 							link(chunks) {
-								return (
-									<a
-										className="rounded-sm transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
-										href="https://creativecommons.org/licenses/by/4.0/"
-									>
-										{chunks}
-									</a>
-								);
+								return <LicenseLink>{chunks}</LicenseLink>;
 							},
 						})}
 					</span>
 					<span className="flex shrink-0 items-center">
-						<Image alt="" className="size-6 shrink-0" src={cc} />
-						<Image alt="" className="size-6 shrink-0" src={by} />
+						<Image alt="" className="shrink-0 block-6 inline-6" src={cc} />
+						<Image alt="" className="shrink-0 block-6 inline-6" src={by} />
 					</span>
 				</div>
 			</div>
@@ -177,5 +166,22 @@ export function DefaultFooter(props: Readonly<DefaultFooterProps>): ReactNode {
 				</Link>
 			</small>
 		</footer>
+	);
+}
+
+interface LicenseLinkProps {
+	children: ReactNode;
+}
+
+function LicenseLink(props: Readonly<LicenseLinkProps>): ReactNode {
+	const { children } = props;
+
+	return (
+		<a
+			className="rounded-sm transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-neutral-400"
+			href="https://creativecommons.org/licenses/by/4.0/"
+		>
+			{children}
+		</a>
 	);
 }
