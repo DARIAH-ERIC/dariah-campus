@@ -1,20 +1,26 @@
 "use client";
 
+import { LoaderCircleIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
-import { useStats } from "react-instantsearch-core";
+
+import { useSearch } from "#/app/(app)/(default)/search/_components/search-provider.tsx";
 
 export function SearchStats(): ReactNode {
-	const stats = useStats();
+	const t = useTranslations("SearchPage");
+	const { hasData, isLoading, pagination } = useSearch();
 
 	return (
-		<div className="mx-auto text-sm text-neutral-600">
-			<span>
-				{stats.nbHits === 0
-					? "Nothing found."
-					: stats.nbHits === 1
-						? "One result found."
-						: `${String(stats.nbHits)} results found.`}
-			</span>
+		<div className="grid place-items-center text-sm text-neutral-600 block-5 inline-full" role="status">
+			{isLoading ? (
+				<span className="col-start-1 row-start-1 inline-flex animate-in justify-end delay-150 duration-0 fill-mode-both fade-in inline-full">
+					<LoaderCircleIcon aria-hidden={true} className="animate-spin block-5 inline-5" />
+					<span className="sr-only">{t("searching")}</span>
+				</span>
+			) : null}
+			{hasData || !isLoading ? (
+				<span className="col-start-1 row-start-1">{t("results-found", { count: pagination.total })}</span>
+			) : null}
 		</div>
 	);
 }

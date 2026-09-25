@@ -3,11 +3,11 @@ import { getFormatter } from "next-intl/server";
 import { type Entry, rss } from "xast-util-feed";
 import { toXml } from "xast-util-to-xml";
 
-import { env } from "@/config/env.config";
-import { client } from "@/lib/content/client";
-import { defaultLocale } from "@/lib/i18n/locales";
-import { getMetadata } from "@/lib/i18n/metadata";
-import { createFullUrl } from "@/lib/navigation/create-full-url";
+import { env } from "#/configs/env.config.ts";
+import { client } from "#/lib/content/client/index.ts";
+import { defaultLocale } from "#/lib/i18n/locales.ts";
+import { getMetadata } from "#/lib/i18n/metadata.ts";
+import { createFullUrl } from "#/lib/navigation/create-full-url.ts";
 
 const baseUrl = env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL;
 const locale = defaultLocale;
@@ -29,12 +29,8 @@ export async function createFeed(): Promise<string> {
 	const resources = await client.collections.resources.all();
 	const people = await client.collections.people.all();
 	const tags = await client.collections.tags.all();
-	const peopleById = keyByToMap(people, (person) => {
-		return person.id;
-	});
-	const tagsById = keyByToMap(tags, (tag) => {
-		return tag.id;
-	});
+	const peopleById = keyByToMap(people, (person) => person.id);
+	const tagsById = keyByToMap(tags, (tag) => tag.id);
 
 	resources.forEach((resource) => {
 		const authors = resource.metadata.authors.map((id) => {

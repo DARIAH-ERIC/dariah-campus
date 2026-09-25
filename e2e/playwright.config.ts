@@ -1,24 +1,28 @@
-/* eslint-disable no-restricted-syntax */
-
 import { join } from "node:path";
 
 import { isNonEmptyString } from "@acdh-oeaw/lib";
-import { defineConfig, devices, type PlaywrightTestConfig } from "@playwright/test";
-import { config as dotenv } from "dotenv";
-import { expand } from "dotenv-expand";
+import { config as dotenv } from "@dotenvx/dotenvx";
+import { type PlaywrightTestConfig, defineConfig, devices } from "@playwright/test";
 import isCI from "is-in-ci";
 
 /**
- * Reading `.env` files here instead of using `dotenv-cli` so environment variables are
- * available to the vs code plugin as well.
+ * Reading `.env` files here instead of using `dotenvx run` so environment variables are available to the vs code plugin
+ * as well.
  */
-for (const envFilePath of [".env.test.local", ".env.local", ".env.test", ".env"]) {
-	expand(dotenv({ path: join(process.cwd(), envFilePath), quiet: true }));
-}
+dotenv({
+	path: [".env.test.local", ".env.local", ".env.test", ".env"].map((filePath) =>
+		join(import.meta.dirname, "..", filePath),
+	),
+	ignore: ["MISSING_ENV_FILE"],
+	quiet: true,
+});
+
+type WebServer = Extract<NonNullable<PlaywrightTestConfig["webServer"]>, { command: string }>;
 
 function getConfig():
 	| { kind: "remote"; baseUrl: string; webServer: undefined }
-	| { kind: "local"; baseUrl: string; webServer: PlaywrightTestConfig["webServer"] } {
+	| { kind: "local"; baseUrl: string; webServer: WebServer } {
+	// oxlint-disable-next-line node/no-process-env
 	const remoteBaseUrl = process.env.PLAYWRIGHT_TEST_APP_BASE_URL;
 
 	if (isNonEmptyString(remoteBaseUrl)) {
@@ -29,6 +33,7 @@ function getConfig():
 		};
 	}
 
+	// oxlint-disable-next-line node/no-process-env
 	const port = Number(process.env.PORT) || 3000;
 	const baseUrl = `http://localhost:${String(port)}`;
 
@@ -44,6 +49,12 @@ function getConfig():
 }
 
 const config = getConfig();
+
+const webServers: Array<WebServer> = [];
+
+if (config.webServer != null) {
+	webServers.push(config.webServer);
+}
 
 export default defineConfig({
 	testDir: "../e2e",
@@ -72,24 +83,6 @@ export default defineConfig({
 			name: "webkit",
 			use: { ...devices["Desktop Safari"] },
 		},
-		/** Test against mobile viewports. */
-		// {
-		//     name: "Mobile Chrome",
-		//     use: { ...devices["Pixel 5"] },
-		// },
-		// {
-		//     name: "Mobile Safari",
-		//     use: { ...devices["iPhone 12"] },
-		// },
-		/** Test against branded browsers. */
-		// {
-		//     name: "Microsoft Edge",
-		//     use: { ...devices["Desktop Edge"], channel: "msedge" },
-		// },
-		// {
-		//     name: "Google Chrome",
-		//     use: { ...devices["Desktop Chrome"], channel: "chrome" },
-		// },
 	],
-	webServer: config.webServer,
+	webServer: webServers,
 });

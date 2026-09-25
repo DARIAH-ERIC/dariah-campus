@@ -2,8 +2,8 @@ import { isNonEmptyString } from "@acdh-oeaw/lib";
 import { NotEditable } from "@keystatic/core";
 import type { ReactNode } from "react";
 
-import type { VideoProvider } from "@/lib/content/options";
-import { createVideoUrl } from "@/lib/navigation/create-video-url";
+import type { VideoProvider } from "#/lib/content/options.ts";
+import { createVideoUrl } from "#/lib/navigation/create-video-url.ts";
 
 interface VideoPreviewProps {
 	children?: ReactNode;
@@ -21,11 +21,11 @@ export function VideoPreview(props: Readonly<VideoPreviewProps>): ReactNode {
 		<figure className="grid gap-y-2">
 			<NotEditable>
 				{href != null ? (
-					// eslint-disable-next-line jsx-a11y/iframe-has-title
+					// oxlint-disable-next-line jsx-a11y/iframe-has-title
 					<iframe
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						allowFullScreen={true}
-						className="aspect-video w-full overflow-hidden rounded-lg border border-neutral-200"
+						className="aspect-video overflow-hidden rounded-lg border border-neutral-200 inline-full"
 						loading="lazy"
 						src={href}
 					/>

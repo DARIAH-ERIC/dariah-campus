@@ -1,25 +1,25 @@
 import { withI18nPrefix } from "@acdh-oeaw/keystatic-lib";
 import { createUrl } from "@acdh-oeaw/lib";
 import { PencilIcon } from "lucide-react";
-import type { StaticImageData } from "next/image";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { Attachments } from "@/components/attachments";
-import { Image } from "@/components/image";
-import { Links } from "@/components/links";
-import { Organisations } from "@/components/organisations";
-import { PageTitle } from "@/components/page-title";
-import { People } from "@/components/people";
-import { SocialMedia } from "@/components/social-media";
-import { SocialMediaShareLinks } from "@/components/social-media-share-links";
-import { Tags } from "@/components/tags";
-import { TranslationOf } from "@/components/translation-of";
-import { Translations } from "@/components/translations";
-import { env } from "@/config/env.config";
-import type { SocialMediaKind } from "@/lib/content/options";
-import { getIntlLanguage } from "@/lib/i18n/locales";
-import { createFullUrl } from "@/lib/navigation/create-full-url";
+import { Attachments } from "#/components/attachments.tsx";
+import { Image } from "#/components/image.tsx";
+import { Links } from "#/components/links.tsx";
+import { Organisations } from "#/components/organisations.tsx";
+import { PageTitle } from "#/components/page-title.tsx";
+import { People } from "#/components/people.tsx";
+import { SocialMediaShareLinks } from "#/components/social-media-share-links.tsx";
+import { SocialMedia } from "#/components/social-media.tsx";
+import { Tags } from "#/components/tags.tsx";
+import { TranslationOf } from "#/components/translation-of.tsx";
+import { Translations } from "#/components/translations.tsx";
+import { env } from "#/configs/env.config.ts";
+import type { SocialMediaKind } from "#/lib/content/options.ts";
+import { getIntlLanguage } from "#/lib/i18n/locales.ts";
+import { createFullUrl } from "#/lib/navigation/create-full-url.ts";
 
 interface ResourceProps {
 	attachments?: Array<{ label: string; file: string }>;
@@ -70,28 +70,22 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 	const t = useTranslations("Resource");
 	const format = useFormatter();
 
-	const href = String(
-		createFullUrl({ baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL, pathname: _href }),
-	);
+	const href = String(createFullUrl({ baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL, pathname: _href }));
 
 	return (
-		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
+		<article className="mx-auto space-y-10 inline-full max-inline-(--size-content)">
 			<header className="space-y-10">
 				<PageTitle>{title}</PageTitle>
-				<div className="space-y-6 border-y border-neutral-200 py-10 2xl:hidden">
+				<div className="space-y-6 border-y border-neutral-200 py-10 xl:hidden">
 					{location != null ? (
 						<div className="flex flex-col gap-y-2 text-sm text-neutral-500">
-							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">
-								{t("location")}
-							</div>
+							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("location")}</div>
 							<div>{location}</div>
 						</div>
 					) : null}
 					{startDate ? (
 						<div className="flex flex-col gap-y-2 text-sm text-neutral-500">
-							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">
-								{t("date")}
-							</div>
+							<div className="text-xs font-bold tracking-wide text-neutral-600 uppercase">{t("date")}</div>
 							<div>
 								{endDate
 									? format.dateTimeRange(startDate, endDate, { dateStyle: "long" })
@@ -113,7 +107,7 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 				{featuredImage != null ? (
 					<Image
 						alt=""
-						className="mb-8 w-full overflow-hidden rounded-lg border border-neutral-200 object-cover"
+						className="mbe-8 overflow-hidden rounded-lg border border-neutral-200 object-cover inline-full"
 						preload={true}
 						sizes="720px"
 						src={featuredImage}
@@ -121,11 +115,11 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 				) : null}
 				{children}
 			</div>
-			<footer className="pt-2">
+			<footer className="pbs-2">
 				<SocialMediaShareLinks href={href} title={title} />
-				<div className="flex justify-end text-right">
+				<div className="flex justify-end text-end">
 					<a
-						className="inline-flex items-center gap-x-1.5 text-right text-sm text-brand-700 transition hover:text-brand-800 hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-800"
+						className="inline-flex items-center gap-x-1.5 text-end text-sm text-brand-700 transition hover:text-brand-800 hover:underline focus:outline-none focus-visible:ring focus-visible:ring-brand-800"
 						href={String(
 							createUrl({
 								baseUrl: env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL,
@@ -134,8 +128,8 @@ export function Resource(props: Readonly<ResourceProps>): ReactNode {
 						)}
 						target="_blank"
 					>
-						<PencilIcon className="size-4 shrink-0" />
-						<span className="text-right">{t("suggest-changes-to-resource")}</span>
+						<PencilIcon className="shrink-0 block-4 inline-4" />
+						<span className="text-end">{t("suggest-changes-to-resource")}</span>
 					</a>
 				</div>
 			</footer>

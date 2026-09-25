@@ -1,7 +1,7 @@
 import { Fira_Code, Roboto } from "next/font/google";
 
 export const body = Roboto({
-	style: ["normal"],
+	style: ["normal", "italic"],
 	subsets: ["latin"],
 	variable: "--_font-body",
 });

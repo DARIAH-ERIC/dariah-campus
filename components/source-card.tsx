@@ -1,9 +1,9 @@
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
-import { Image } from "@/components/image";
-import { Link } from "@/components/link";
+import { Card, CardContent, CardFooter, CardTitle } from "#/components/card.tsx";
+import { Image } from "#/components/image.tsx";
+import { Link } from "#/components/link.tsx";
 
 interface SearchCardProps {
 	count: string;
@@ -20,7 +20,7 @@ export function SourceCard(props: Readonly<SearchCardProps>): ReactNode {
 		<Card>
 			<Image
 				alt=""
-				className="aspect-[1.25] w-full border-b border-neutral-200 object-cover"
+				className="aspect-[1.25] border-be border-neutral-200 object-cover inline-full"
 				sizes="800px"
 				src={image}
 			/>

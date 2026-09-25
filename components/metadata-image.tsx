@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 import { ImageResponse } from "next/og";
 
-import type { IntlLocale } from "@/lib/i18n/locales";
+import type { IntlLocale } from "#/lib/i18n/locales.ts";
 
 interface MetadataImageProps {
 	locale: IntlLocale;
@@ -14,9 +14,7 @@ interface MetadataImageProps {
 export async function MetadataImage(props: Readonly<MetadataImageProps>): Promise<ImageResponse> {
 	const { locale, size, title } = props;
 
-	const font = await readFile(
-		join(process.cwd(), "public", "assets", "fonts", "roboto-semibold.ttf"),
-	);
+	const font = await readFile(join(process.cwd(), "public", "assets", "fonts", "roboto-semibold.ttf"));
 
 	return new ImageResponse(
 		<div

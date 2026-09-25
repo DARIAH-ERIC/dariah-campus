@@ -7,21 +7,21 @@ import {
 import { readonly } from "@acdh-oeaw/keystatic-lib/fields/readonly";
 import { collection, fields } from "@keystatic/core";
 
-import { createCallout } from "@/lib/content/keystatic/components/callout";
-import { createExternalResource } from "@/lib/content/keystatic/components/external-resource";
-import { createFigure } from "@/lib/content/keystatic/components/figure";
-import { createGrid } from "@/lib/content/keystatic/components/grid";
-import { createHeadingId } from "@/lib/content/keystatic/components/heading-id";
-import { createLink } from "@/lib/content/keystatic/components/link";
-import { createLinkButton } from "@/lib/content/keystatic/components/link-button";
-import { createQuiz } from "@/lib/content/keystatic/components/quiz";
-import { createVideo } from "@/lib/content/keystatic/components/video";
-import { createVideoCard } from "@/lib/content/keystatic/components/video-card";
-import { createPreviewUrl } from "@/lib/content/keystatic/utils/create-preview-url";
-import { contentLanguages, contentLicenses, contentTypes } from "@/lib/content/options";
+import { createCallout } from "#/lib/content/keystatic/components/callout/index.tsx";
+import { createExternalResource } from "#/lib/content/keystatic/components/external-resource/index.tsx";
+import { createFigure } from "#/lib/content/keystatic/components/figure/index.tsx";
+import { createGrid } from "#/lib/content/keystatic/components/grid/index.tsx";
+import { createHeadingId } from "#/lib/content/keystatic/components/heading-id/index.tsx";
+import { createLinkButton } from "#/lib/content/keystatic/components/link-button/index.tsx";
+import { createLink } from "#/lib/content/keystatic/components/link/index.tsx";
+import { createQuiz } from "#/lib/content/keystatic/components/quiz/index.tsx";
+import { createVideoCard } from "#/lib/content/keystatic/components/video-card/index.tsx";
+import { createVideo } from "#/lib/content/keystatic/components/video/index.tsx";
+import { createPreviewUrl } from "#/lib/content/keystatic/utils/create-preview-url.ts";
+import { contentLanguages, contentLicenses, contentTypes } from "#/lib/content/options.ts";
 
-export const createResourcesExternal = createCollection("/resources/external/", (paths, locale) => {
-	return collection({
+export const createResourcesExternal = createCollection("/resources/external/", (paths, locale) =>
+	collection({
 		label: "External resources",
 		path: paths.contentPath,
 		format: { contentField: "content" },
@@ -134,8 +134,8 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 				options: {
 					...createContentFieldOptions(paths),
 					/**
-					 * Prefer `<Link>` component over regular markdown links.
-					 * Note that this also disables *parsing* regular markdown links.
+					 * Prefer `<Link>` component over regular markdown links. Note that this also disables _parsing_ regular
+					 * markdown links.
 					 */
 					// link: false,
 				},
@@ -180,5 +180,5 @@ export const createResourcesExternal = createCollection("/resources/external/", 
 			}),
 			draft: fields.ignored(),
 		},
-	});
-});
+	}),
+);
