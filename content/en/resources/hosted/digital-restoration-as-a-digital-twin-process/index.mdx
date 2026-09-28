@@ -310,4 +310,45 @@ Pairwise alignment can be requested when needed. Local registration can be used,
   </QuizChoice>
 </Quiz>
 
-\\
+## Shape Prediction and Prosthesis
+
+Once fragments have been assembled, missing or complementary parts can be generated from shape priors. The expected overall shape of the object can provide one source of information, while self-similarities such as symmetries and repetitive patterns provide others. Additional priors include axial and planar symmetry, contour continuity, statistical similarity, similar objects, partial-object retrieval and non-rigid fitting.
+
+Symmetry is described as the most reliable source of geometric information. For cylindrical objects, shape can be computed through revolution after detecting an axis; for non-cylindrical objects, self-registration can be used.
+
+Prosthetic geometry can then be derived by subtracting the assembled fragments from the predicted shape. Volume subtraction is described as reliable and error-free in this context, and the resulting geometry is suitable for 3D printing. In this way, the Digital Twin cycle can return from digital reconstruction to physical space.
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      Which types of objects are more likely to have their missing pieces reliably estimated and 3D printed by an algorithm?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Statues of humans or animals
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Clay toys
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Engraved ornaments
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Burial pots\
+
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
+
+\
