@@ -220,8 +220,7 @@ One strategy is to identify surfaces that are potentially fractured and to exclu
 
     <QuizChoiceAnswer kind="incorrect">
       <QuizChoiceAnswerLabel>
-        Increase the resolution of all fragments to make the correspondences more precise.\
-
+        Increase the resolution of all fragments to make the correspondences more precise.\\
       </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
 
@@ -242,8 +241,35 @@ One strategy is to identify surfaces that are potentially fractured and to exclu
         Replace geometric alignment with manual pose estimation for the assembly in every case.
       </QuizChoiceAnswerLabel>
     </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Yes, that’s the correct answer!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that’s not the right answer. Try again!
+    </QuizErrorMessage>
   </QuizChoice>
 </Quiz>
 
+Manual vs Automatic Anastylosis\
+
+
+
+Manual Anastylosis begins with a virtual workspace in which fragments can be manipulated directly. This makes experimentation possible, but manual work can be imprecise and time-consuming.
+
+Automatic clustering can produce precise recommendations, but the number of possible combinations creates a very large search space. Manual or automatic constraints therefore become important. The computational process can also be slow, and in a fully offline workflow experts mainly verify or reject the recommendations rather than continuously directing the computation.
+
+The offline workflow consists of facet extraction, classification, pair-wise alignment and multi-part reassembly. It aims to avoid trivial matches and reduce the search space. For each facet pair, error can be estimated and a pose computed, followed by global optimization, fragment clustering and alignment. Preemptive pair-wise alignment and pre-segmentation can further reduce the computational burden, although global registration remains necessary and expensive.
+
 \
+What About the Human Expert?
+----------------------------
+
+A more interactive approach places the human expert directly within the computational process. Restoration becomes user-driven: the user provides constraints, manipulates fragments, inspects recommendations and performs integrity checks while computation continues progressively.
+
+The computer contributes pairwise matching, combinatorial optimization and bundle adjustment, while the user remains involved in the decisions that shape the reconstruction. In the interactive workflow, facet extraction and classification are followed by pair-wise alignment and incremental multi-part reassembly. For each facet pair, error can be estimated and a pose computed, after which greedy optimization, fragment clustering and alignment can take place.
+
+Pairwise alignment can be requested when needed. Local registration can be used, allowing the computational steps to be interleaved with user interaction. The goal is therefore not to remove the expert from the process, but to combine human experimentation and judgement with computational assistance.
+
 \
