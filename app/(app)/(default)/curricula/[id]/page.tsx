@@ -1,29 +1,28 @@
 import { assert } from "@acdh-oeaw/lib";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { Citation } from "@/components/citation";
-import { Curriculum } from "@/components/curriculum";
-import { CurriculumResourcesList } from "@/components/curriculum-resources-list";
-import { PeopleList } from "@/components/people-list";
-import { ReUseConditions } from "@/components/re-use-conditions";
-import { RelatedCurriculaList } from "@/components/related-curricula-list";
-import { TagsList } from "@/components/tags-list";
-import { TranslationOf } from "@/components/translation-of";
-import { TranslationsList } from "@/components/translations-list";
-import { env } from "@/config/env.config";
-import { client } from "@/lib/content/client";
-import { createClient } from "@/lib/content/create-client";
-import { createFullUrl } from "@/lib/navigation/create-full-url";
-import { pickRandom } from "@/lib/utils/pick-random";
+import { Citation } from "#/components/citation.tsx";
+import { CurriculumResourcesList } from "#/components/curriculum-resources-list.tsx";
+import { Curriculum } from "#/components/curriculum.tsx";
+import { PeopleList } from "#/components/people-list.tsx";
+import { ReUseConditions } from "#/components/re-use-conditions.tsx";
+import { RelatedCurriculaList } from "#/components/related-curricula-list.tsx";
+import { Sources } from "#/components/sources.tsx";
+import { TagsList } from "#/components/tags-list.tsx";
+import { TranslationOf } from "#/components/translation-of.tsx";
+import { TranslationsList } from "#/components/translations-list.tsx";
+import { env } from "#/configs/env.config.ts";
+import { client } from "#/lib/content/client/index.ts";
+import { createClient } from "#/lib/content/create-client.ts";
+import { createFullUrl } from "#/lib/navigation/create-full-url.ts";
+import { pickRandom } from "#/lib/utils/pick-random.ts";
 
 interface CurriculumPageProps extends PageProps<"/curricula/[id]"> {}
 
-export async function generateStaticParams(): Promise<
-	Array<Pick<Awaited<CurriculumPageProps["params"]>, "id">>
-> {
+export async function generateStaticParams(): Promise<Array<Pick<Awaited<CurriculumPageProps["params"]>, "id">>> {
 	const ids = await client.collections.curricula.ids();
 
 	return ids.map((id) => {
@@ -55,9 +54,7 @@ export async function generateMetadata(props: Readonly<CurriculumPageProps>): Pr
 	return metadata;
 }
 
-export default async function CurriculumPage(
-	props: Readonly<CurriculumPageProps>,
-): Promise<ReactNode> {
+export default async function CurriculumPage(props: Readonly<CurriculumPageProps>): Promise<ReactNode> {
 	const { params } = props;
 
 	const t = await getTranslations("CurriculumPage");
@@ -79,6 +76,7 @@ export default async function CurriculumPage(
 		"featured-image": featuredImage,
 		"publication-date": publicationDate,
 		resources,
+		sources,
 		tags,
 		title,
 		translations: _translations,
@@ -103,15 +101,22 @@ export default async function CurriculumPage(
 		};
 	}
 
-	const translations = await Promise.all(_translations.map(getTranslationMetadata));
-	const isTranslationOf =
-		_isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
+	const translations = await Promise.all(_translations.map((id) => getTranslationMetadata(id)));
+	const isTranslationOf = _isTranslationOf != null ? await getTranslationMetadata(_isTranslationOf) : null;
+	const curriculumSources = await Promise.all(
+		sources.map(async (id) => {
+			const source = await client.collections.sources.get(id);
+			assert(source, `Missing source "${id}".`);
+			const { name } = source.metadata;
+			return { id, name };
+		}),
+	);
 
 	return (
 		<div>
-			<div className="mx-auto grid w-full max-w-screen-lg gap-y-10 px-4 py-8 xs:px-8 xs:py-16 xl:max-w-none xl:grid-cols-(--content-layout) xl:gap-x-8 xl:gap-y-0">
+			<div className="mx-auto grid max-w-screen-lg gap-y-10 px-4 py-8 inline-full xs:px-8 xs:py-16 xl:grid-cols-(--content-layout) xl:gap-x-(--content-layout-gap) xl:gap-y-0 xl:max-inline-none">
 				<aside
-					className="sticky top-24 hidden max-h-screen w-full max-w-xs gap-y-8 justify-self-end overflow-y-auto p-6 text-sm text-neutral-500 xl:flex xl:flex-col 2xl:p-8"
+					className="sticky inset-bs-24 hidden gap-y-8 justify-self-end overflow-y-auto p-6 text-sm text-neutral-500 inline-full max-block-screen max-inline-(--size-sidebar) xl:flex xl:flex-col 2xl:p-8"
 					style={{ maxHeight: "calc(100dvh - 12px - var(--page-header-height))" }}
 				>
 					<PeopleList
@@ -143,9 +148,8 @@ export default async function CurriculumPage(
 						resources={await Promise.all(
 							resources.map(async ({ value: id, discriminant: type }) => {
 								/**
-								 * Resolving `type` inline instead of calling
-								 * `client.collections.resources.get(id)` so this works with the github reader
-								 * in preview mode.
+								 * Resolving `type` inline instead of calling `client.collections.resources.get(id)` so this works with
+								 * the github reader in preview mode.
 								 */
 								function getResource() {
 									switch (type) {
@@ -174,6 +178,9 @@ export default async function CurriculumPage(
 							}),
 						)}
 					/>
+					<dl className="flex flex-col gap-y-5">
+						<Sources sources={curriculumSources} />
+					</dl>
 					<Citation
 						authors={await Promise.all(
 							editors.map(async (id) => {
@@ -200,7 +207,7 @@ export default async function CurriculumPage(
 					<ReUseConditions />
 				</aside>
 
-				<div className="min-w-0">
+				<div className="min-inline-0">
 					<Curriculum
 						editors={await Promise.all(
 							editors.map(async (id) => {
@@ -215,9 +222,8 @@ export default async function CurriculumPage(
 						resources={await Promise.all(
 							resources.map(async ({ value: id, discriminant: type }) => {
 								/**
-								 * Resolving `type` inline instead of calling
-								 * `client.collections.resources.get(id)` so this works with the github reader
-								 * in preview mode.
+								 * Resolving `type` inline instead of calling `client.collections.resources.get(id)` so this works with
+								 * the github reader in preview mode.
 								 */
 								function getResource() {
 									switch (type) {
@@ -258,6 +264,7 @@ export default async function CurriculumPage(
 								};
 							}),
 						)}
+						sources={curriculumSources}
 						tags={await Promise.all(
 							tags.map(async (id) => {
 								const tag = await client.collections.tags.get(id);
@@ -273,7 +280,7 @@ export default async function CurriculumPage(
 							<Content />
 						</div>
 					</Curriculum>
-					<div className="mx-auto w-full max-w-(--size-content) space-y-10">
+					<div className="mx-auto space-y-10 inline-full max-inline-(--size-content)">
 						<div className="prose">
 							<Supplementary />
 						</div>
@@ -288,7 +295,7 @@ export default async function CurriculumPage(
 						)}
 					/>
 
-					<div className="mx-auto mt-12 flex w-full max-w-(--size-content) flex-col gap-y-12 border-t border-neutral-200 pt-12 text-sm text-neutral-500 xl:hidden">
+					<div className="mx-auto mbs-12 flex flex-col gap-y-12 border-bs border-neutral-200 pbs-12 text-sm text-neutral-500 inline-full max-inline-(--size-content) xl:hidden">
 						<Citation
 							authors={await Promise.all(
 								editors.map(async (id) => {

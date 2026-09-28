@@ -1,11 +1,11 @@
 import { useTranslations } from "next-intl";
 import { Fragment, type ReactNode, Suspense } from "react";
 
-import { DefaultFooter } from "@/app/(app)/(default)/_components/default-footer";
-import { DefaultHeader } from "@/app/(app)/(default)/_components/default-header";
-import { Main } from "@/components/main";
-import { PreviewModeBanner } from "@/components/preview-mode-banner";
-import { SkipLink } from "@/components/skip-link";
+import { DefaultFooter } from "#/app/(app)/(default)/_components/default-footer.tsx";
+import { DefaultHeader } from "#/app/(app)/(default)/_components/default-header.tsx";
+import { Main } from "#/components/main.tsx";
+import { PreviewModeBanner } from "#/components/preview-mode-banner.tsx";
+import { SkipLink } from "#/components/skip-link.tsx";
 
 const mainContentId = "main-content";
 
@@ -24,10 +24,10 @@ export default function DefaultLayout(props: Readonly<DefaultLayoutProps>): Reac
 				<PreviewModeBanner />
 			</Suspense>
 
-			<div className="relative isolate grid min-h-full grid-rows-[auto_1fr_auto]">
+			<div className="relative isolate grid grid-rows-[auto_1fr_auto] min-block-full">
 				<DefaultHeader />
 
-				<Main className="min-w-0 flex-1" id={mainContentId}>
+				<Main className="flex-1 min-inline-0" id={mainContentId}>
 					{children}
 				</Main>
 

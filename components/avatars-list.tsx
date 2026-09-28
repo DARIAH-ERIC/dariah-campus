@@ -1,7 +1,7 @@
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { Image } from "@/components/image";
+import { Image } from "#/components/image.tsx";
 
 const maxAvatars = 3;
 
@@ -23,20 +23,18 @@ export function AvatarsList(props: Readonly<AvatarsListProps>): ReactNode {
 				<dt className="sr-only">{label}</dt>
 				<dd>
 					<ul className="flex items-center gap-x-1">
-						{avatars.slice(0, maxAvatars).map((avatar) => {
-							return (
-								<li key={avatar.id} className="flex">
-									<span className="sr-only">{avatar.name}</span>
-									<Image
-										alt=""
-										className="size-8 rounded-full object-cover"
-										height={32}
-										src={avatar.image}
-										width={32}
-									/>
-								</li>
-							);
-						})}
+						{avatars.slice(0, maxAvatars).map((avatar) => (
+							<li key={avatar.id} className="flex">
+								<span className="sr-only">{avatar.name}</span>
+								<Image
+									alt=""
+									className="rounded-full object-cover block-8 inline-8"
+									height={32}
+									src={avatar.image}
+									width={32}
+								/>
+							</li>
+						))}
 					</ul>
 				</dd>
 			</div>

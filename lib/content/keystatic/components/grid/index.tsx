@@ -1,12 +1,10 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { repeating, wrapper } from "@keystatic/core/content-components";
 import { GridIcon, SquareIcon } from "lucide-react";
 
-import { GridItemPreview, GridPreview } from "@/lib/content/keystatic/components/grid/preview";
-import { gridAlignments, gridLayouts } from "@/lib/content/options";
+import { GridItemPreview, GridPreview } from "#/lib/content/keystatic/components/grid/preview.tsx";
+import { gridAlignments, gridLayouts } from "#/lib/content/options.ts";
 
 export const createGrid = createComponent((_paths, _locale) => {
 	return {

@@ -1,15 +1,15 @@
 import { getTranslations } from "next-intl/server";
 import type { ComponentProps, ReactNode } from "react";
 
-import { MobileNavSidePanel } from "@/app/(app)/(default)/_components/mobile-nav-side-panel";
-import { StickyHeader } from "@/app/(app)/(default)/_components/sticky-header";
-import { Image } from "@/components/image";
-import { Link } from "@/components/link";
-import { NavLink } from "@/components/nav-link";
-import { createClient } from "@/lib/content/create-client";
-import { createHref } from "@/lib/navigation/create-href";
-import type { NavigationLink, NavigationSeparator } from "@/lib/navigation/navigation";
-import logo from "@/public/assets/images/logo-dariah-campus.svg";
+import { MobileNavSidePanel } from "#/app/(app)/(default)/_components/mobile-nav-side-panel.tsx";
+import { StickyHeader } from "#/app/(app)/(default)/_components/sticky-header.tsx";
+import { Image } from "#/components/image.tsx";
+import { Link } from "#/components/link.tsx";
+import { NavLink } from "#/components/nav-link.tsx";
+import { createClient } from "#/lib/content/create-client.ts";
+import { createHref } from "#/lib/navigation/create-href.ts";
+import type { NavigationLink, NavigationSeparator } from "#/lib/navigation/navigation.ts";
+import logo from "#/public/assets/images/logo-dariah-campus.svg";
 
 interface DefaultHeaderProps extends ComponentProps<"header"> {}
 
@@ -37,7 +37,7 @@ export async function DefaultHeader(props: Readonly<DefaultHeaderProps>): Promis
 				className="shrink-0 rounded-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 				href={navigation.home.href}
 			>
-				<Image alt="" className="h-auto w-36 xl:w-48" loading="eager" preload={true} src={logo} />
+				<Image alt="" className="block-auto inline-36 xl:inline-48" loading="eager" preload={true} src={logo} />
 				<span className="sr-only">{navigation.home.label}</span>
 			</Link>
 
@@ -61,9 +61,7 @@ export async function DefaultHeader(props: Readonly<DefaultHeaderProps>): Promis
 							}
 
 							case "separator": {
-								return (
-									<li key={key} className="h-full w-px border-l-neutral-200" role="separator" />
-								);
+								return <li key={key} aria-hidden={true} className="border-s-neutral-200 block-full inline-px" />;
 							}
 						}
 					})}

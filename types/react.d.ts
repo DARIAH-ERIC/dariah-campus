@@ -1,8 +1,6 @@
 declare module "react" {
-	// eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
-	interface CSSProperties {
-		[key: `--${string}`]: number | string | null;
-	}
+	interface CSSProperties extends Record<`--${string}`, number | string | null> {}
 }
 
+// oxlint-disable-next-line unicorn/require-module-specifiers
 export {};

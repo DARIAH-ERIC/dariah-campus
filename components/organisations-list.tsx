@@ -1,7 +1,7 @@
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { Image } from "@/components/image";
+import { Image } from "#/components/image.tsx";
 
 interface OrganisationsListProps {
 	label: ReactNode;
@@ -33,7 +33,7 @@ export function OrganisationsList(props: Readonly<OrganisationsListProps>): Reac
 										<Image
 											alt=""
 											/** FIXME: Inverting the logo because they are all white. */
-											className="h-14 object-contain p-3 opacity-50 invert"
+											className="object-contain p-3 opacity-50 invert block-14"
 											src={logo}
 										/>
 									</div>

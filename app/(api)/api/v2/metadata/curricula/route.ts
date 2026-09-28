@@ -2,8 +2,8 @@ import { createRouteHandler, toOpenApiSchema } from "@acdh-oeaw/openapi-nextjs";
 import { type NextRequest, NextResponse } from "next/server";
 import * as v from "valibot";
 
-import _curricula from "@/public/metadata/curricula.json";
-import { curriculumMetadataSchema } from "@/scripts/api/metadata-schemas";
+import _curricula from "#/public/metadata/curricula.json";
+import { curriculumMetadataSchema } from "#/scripts/api/metadata-schemas.ts";
 
 const searchParamsSchema = v.object({
 	limit: v.nullish(
@@ -80,12 +80,9 @@ export const GET = createRouteHandler(
 
 			const items =
 				searchParams["publication-year"] != null
-					? _items.filter((item) => {
-							return (
-								new Date(item["publication-date"]).getUTCFullYear() ===
-								searchParams["publication-year"]
-							);
-						})
+					? _items.filter(
+							(item) => new Date(item["publication-date"]).getUTCFullYear() === searchParams["publication-year"],
+						)
 					: _items;
 
 			const { limit, offset } = searchParams;

@@ -1,11 +1,9 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { inline } from "@keystatic/core/content-components";
 import { HashIcon } from "lucide-react";
 
-import { HeadingIdPreview } from "@/lib/content/keystatic/components/heading-id/preview";
+import { HeadingIdPreview } from "#/lib/content/keystatic/components/heading-id/preview.tsx";
 
 export const createHeadingId = createComponent((_paths, _locale) => {
 	return {

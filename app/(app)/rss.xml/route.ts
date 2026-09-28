@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-import { createFeed } from "@/lib/rss/create-feed";
+import { createFeed } from "#/lib/rss/create-feed.ts";
 
 export const dynamic = "force-static";
 
