@@ -168,7 +168,7 @@ Completeness is likewise not always required. A 3D model does not need to be com
 <Quiz>
   <QuizChoice variant="multiple" buttonLabel="Check answer">
     <QuizChoiceQuestion>
-      **A restoration team is working with highly detailed 3D scans of fragments of an archaeological object, all resting on an intact, flat side, which is hard to scan due to the weight of the pieces. The models contain a very large number of points, including many areas with little or no relevant surface variation. Based on the approach described in the resource, what would be the most appropriate strategy?**
+      A restoration team is working with highly detailed 3D scans of fragments of an archaeological object, all resting on an intact, flat side, which is hard to scan due to the weight of the pieces. The models contain a very large number of points, including many areas with little or no relevant surface variation. Based on the approach described in the resource, what would be the most appropriate strategy?
     </QuizChoiceQuestion>
 
     <QuizChoiceAnswer kind="incorrect">
@@ -205,7 +205,45 @@ Completeness is likewise not always required. A 3D model does not need to be com
   </QuizChoice>
 </Quiz>
 
+## Surface Classification
+
+\
+Automatic reassembly depends on distinguishing useful correspondences from trivial ones. Not all surface regions are equally important because typical solvers minimize distances based on geometry, texture, saliency or related criteria. Fragmentary material can easily produce misleading correspondences, whereas silhouettes and landmarks are particularly important for intact parts.
+
+One strategy is to identify surfaces that are potentially fractured and to exclude trivially smooth surfaces, which are typical failure cases. The classification can use conservative thresholds because false-positive fractures are not considered a major problem: feature-rich intact surfaces will not align with corresponding fractured regions. ARTEMIS alignment services can perform the associated preprocessing behind the scenes.
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      An automatic reassembly system repeatedly proposes matches between smooth, non-fractured areas of different fragments. Which approach best addresses this problem according to the resource?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Increase the resolution of all fragments to make the correspondences more precise.\
+
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Prioritise large surface regions during alignment.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Classify potentially fractured surfaces and exclude trivially smooth regions that can produce misleading matches.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Replace geometric alignment with manual pose estimation for the assembly in every case.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
+
 \
 \
-\
-\\
