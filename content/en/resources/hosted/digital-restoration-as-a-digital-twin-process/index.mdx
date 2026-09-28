@@ -74,3 +74,134 @@ For learners who are new to digital restoration and Heritage Digital Twins, it i
 * **Alignment / Registration:** Positioning digital fragments in relation to each other.
 * **Shape Prior:** Geometric information that helps guide reconstruction.
 * **User in the Loop:** Combining computational methods with human expertise.
+
+## Heritage Digital Twins in Restoration
+
+Heritage Digital Twins often emerge from restoration projects of considerable complexity. Within such projects, a Digital Twin can support project monitoring and asset management while also bringing together visualization, measurements, spatial annotations and metadata. These functions can in turn contribute to decision support.
+
+Renderings of Notre-Dame Cathedral from Iconem provide one example. Another important example is the n-Dame\_Heritage Advanced ERC Grant program at CNRS, led by Livio De Luca. Here, collaborative documentation of media and 3D assets, 3D annotation, and the integration of photographic and 3D data illustrate how different forms of information can be brought together within a digital heritage environment.
+
+\
+Simulation in Heritage Digital Twins
+------------------------------------
+
+Simulation adds another dimension to the Digital Twin. In Cultural Heritage, computer simulations can be used to construct plausible 'what if' scenarios. They can help estimate parameters of a problem, predict the state of an object or site at a future point in time, assess the impact of an intervention, and explore hypotheses. The underlying methodology is closely related to engineering problems and to Digital Twins developed in engineering contexts.
+
+### Reliability of simulations
+
+The reliability of such simulations depends first on the quality and completeness of the input. How accurately are the input data modelled, and how completely have the parameters affecting the process been captured? It also depends on the simulation model itself: whether the relevant control parameters have been accounted for and how well the actual process has been mapped to an algorithm.
+
+<Figure alignment="stretch">
+
+</Figure>
+
+### Potential simulations for HDTs
+
+Several types of simulation are relevant to Heritage Digital Twins. Mechanical simulations can address archaeological and architectural sites, including stability and seismic analysis. Chemical and erosion simulations can be used for deterioration estimation. Radiative and heat-transfer simulations can support work with indoor and outdoor exhibitions and museums. Digital Anastylosis addresses the reconstruction of monuments and objects, while fluid and particle simulations can contribute to disaster control, for example in relation to floods, fire and debris accumulation. Specialized simulations can also address situations such as visitor or crowd flow.
+
+### Mechanical simulations
+
+Mechanical simulation is common in civil engineering and can also be useful for heritage sites. Commercial FEM solvers are available, the software is established and validated, and BIM integration pipelines exist. At the same time, heritage-site materials have already undergone alterations caused by stress and chemical processes. These changes can increase the unreliability of simulations based on assumptions about material behaviour.
+
+
+
+### Chemical simulations
+
+Chemical simulation presents a different set of difficulties. The processes are often too material-specific to generalize into a simulator, while their temporal progress is too slow to observe and validate in vivo, even when processes are accelerated. Detailed spectrographic data may also be required. Within the context covered here, such approaches had not actually worked in real cases of Cultural-Heritage objects. The PRESIOUS project is cited as an example of work on predictive digitization, restoration and degradation assessment of cultural heritage objects.
+
+### Radiative / Heat Transfer
+
+Radiative and heat-transfer simulation is more mature as a computational field. It is well studied in computer graphics and FEM, and both open and commercial solutions are available. Typical input data are relatively well known and freely available. The remaining limitations include the small number of niche dedicated software solutions and the need for reliable input, including photometric measurements and material properties. LOTUS and GLIDE are cited as related projects, and lighting simulation is intended to be provided openly as a service by ARTEMIS.
+
+### Computed Digital Anastylosis
+
+Computed Digital Anastylosis deals with the virtual restoration of fragmentary and disassembled material from objects and archaeological sites. It is a well-studied area in computer graphics and an important restoration task. A minimum requirement is partial geometry scans. At the same time, there are relatively few niche open dedicated software solutions and computational approaches vary considerably. Part-alignment simulation is intended to be provided openly as an ARTEMIS service.
+
+
+
+### Fluid/ Particle Simulations
+
+Fluid and particle simulations provide another application area for Heritage Digital Twins. They are driven by technologies developed in the CGI and visual-effects industry, with established high-quality commercial simulators, GPU-accelerated solutions and open alternatives available. At the same time, fire simulation remains challenging because of its unpredictability and is not necessarily intended to reproduce fully realistic behaviour.
+
+## The Virtual Reassembly / Anastylosis Problem
+
+At an abstract level, reassembly is a 2D or 3D puzzle. In practice, however, many of the elements that would normally define a puzzle are uncertain. The target objects may not be obvious, the number of missing pieces may be unknown, and even the total number of fragments may be uncertain. The shape and number of contact sides are not fixed, and in some cases the final shape itself is not well defined.
+
+Constraints and shape priors can reduce this uncertainty. Useful information includes planarity, axial symmetry, textural and geometric landmarks such as tool marks, bracket holes and patterns, as well as the overall expected shape. Even with such constraints, the search space can grow explosively. Uncertainty and the dispersion of fragmentary material can therefore become significant obstacles for restoration work.
+
+\
+Types of Material
+-----------------
+
+The suitability of virtual reconstruction varies with the material. Rigid materials include potsherds, masonry and statuary blocks, as well as other thin fragments such as bone, metallic sherds and blades. These materials may be broken, intact but disassembled, or both. Deformable materials include textiles, wood, hardened leather, ivory, papyri and metallic foils.
+
+Materials such as papyrus, paper, cloth and metallic sheets can be particularly difficult because they may bend substantially. Reconstruction may require 'unwrapping', which introduces significant human or computational error. Not every deformation is recoverable, especially where unknown plastic effects are involved, and specialized digitization such as CT may be required. Chemical damage or fusion, for example through burning, creates further complications.
+
+Originally hard materials can also deform under stress and chemical alteration. Wood, bone and solid metallic objects may still retain landmarks despite these changes. A combination of ruled or manual pre-deformation and non-rigid alignment is described as an effective approach. The Vesuvius Challenge is referenced in this context.
+
+\
+Why Go Digital?
+---------------
+
+Digital restoration changes what can be manipulated and tested. Material that is difficult to handle or physically inaccessible can be worked with in a virtual environment. The virtual setting also allows restoration hypotheses to be explored without necessarily being constrained by the physical behaviour of the material. Most importantly, digital restoration is non-destructive: assemblies can be undone, and even extreme hypotheses can be tested without changing the physical object.
+
+This also makes it possible to retain several hypotheses and versions rather than committing to a single reconstruction. Digital methods can process and compare artefacts at a level of detail that is difficult to attain manually, and they allow observations to be considered at larger scales. Precise measurements can be performed, results can be visualized, and virtual access can be provided to assemblies that would be impossible or very difficult to inspect physically.
+
+The digital environment also supports communication and collaboration. Research results can be shared, virtual workspaces can support joint work, and digital representations can be used for presentation and education. Remote resources can be accessed, including assets owned by third parties.
+
+## A Digital Restoration Pipeline
+
+A computational restoration Digital Twin can be organized as a pipeline beginning with 3D digitization. The resulting data then undergo geometry processing, followed by multi-part assembly and, where appropriate, object completion. The process connects physical objects with digitized geometry such as point clouds, meshes and volume data, simplified geometry, features, metadata and segmentation information. Once fragments have been assembled, the resulting geometry can support measurements and renderings, and augmented geometry can potentially be returned to physical space, for example through 3D printing.
+
+## Digital Surrogates
+
+A digital surrogate represents the closest fidelity to the actual object that can be achieved digitally. Other, more theoretical representations can be derived from it for particular purposes. Such digital surrogates enable preservation by re-mediation, access, and information processing and analysis.
+
+For a restoration Digital Twin, digital data are a means to an end. The relevant information therefore needs to be sampled and retained according to the purpose of the analysis. In this computational context, human perception factors are not the criterion for deciding what information is necessary.
+
+## Digital 3D Asset Requirements
+
+Different versions of a 3D asset can serve different purposes. One version may be suitable for documentation and physical reproduction, another for geometry analysis and high-fidelity visualization, and another for fast preview and web-based presentation.
+
+Any digitized 3D model can potentially be used. Meshes are preferred, while point clouds can also be used. 3D Gaussian splats are not considered suitable here because they are volumetric data. Volumetric data are possible, but can be problematic in many cases.
+
+Very high resolution is not necessarily beneficial. Medium-quality models can be sufficient, particularly because many fragments are already deteriorated. Additional points may simply introduce noise, smooth out relevant surface features and make computations unnecessarily difficult. Surfaces can therefore be sub-sampled so that detectable relief variations are retained. Simplification methods commonly collapse low-curvature polygon edges while preserving geometric detail; MeshLab is mentioned as a free tool.
+
+Completeness is likewise not always required. A 3D model does not need to be complete or watertight if it sufficiently represents the critical surfaces, including contacts, volume-defining corners and salient features.
+
+<Quiz>
+  <QuizChoice variant="multiple" buttonLabel="Check answer">
+    <QuizChoiceQuestion>
+      **A restoration team is working with highly detailed 3D scans of fragments of an archaeological object, all resting on an intact, flat side, which is hard to scan due to the weight of the pieces. The models contain a very large number of points, including many areas with little or no relevant surface variation. Based on the approach described in the resource, what would be the most appropriate strategy?**
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Always retain the highest possible resolution because more data necessarily improve reassembly.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Simplify or sub-sample the models, while preserving critical surfaces, contacts and salient features.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Uniformly decimate the surface of the objects, prioritizing equal spacing of all surface samples.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Rescan the fragments to capture the fragments’ surfaces from all sides and create watertight, high-detail 3D models.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
+
+\
+\
+\
+\
