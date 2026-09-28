@@ -358,4 +358,61 @@ Prosthetic geometry can then be derived by subtracting the assembled fragments f
   </QuizChoice>
 </Quiz>
 
-\\
+## ARTEMIS Geometric Alignment Services
+
+ARTEMIS provides geometric alignment services for 3D models representing partial objects, partial or complementary scans, and fragments or parts that need to be assembled. The services include hierarchical clustering and bundle adjustment for refining already aligned geometry. Both local and global registration are supported, together with optional tether points or anchors whose influence can be varied. Automatic simplification and preprocessing can be handled on the server, while server-side caching and synchronization support collaborative projects.
+
+The services are exposed through REST API calls and are intended for application developers. They can be used from web-based, mobile or desktop applications. The infrastructure described for ARTEMIS includes a dedicated server environment at AUEB, a Node.js application server and native C++/CUDA backend servers. Authentication and Digital-Twin transactions remain centralized through the main ARTEMIS infrastructure.
+
+## A Typical Workflow
+
+\
+A typical session begins by initializing a project and adding Digital-Twin parts such as F1 and F2. Once the Digital-Twin session has been initialized, the user can manipulate the parts in the client application. Their poses are updated and an alignment of \<F1, F2> is requested. The client then polls for the alignment result and can group the two parts.
+
+The same cycle can be extended by adding F3. The user again interacts with the parts, updates the poses of the existing group and F3, and requests an alignment of \<F1-F2, F3>. After the result is returned, the three parts can be grouped and a bundle adjustment can refine the assembled geometry. The workflow therefore alternates between user interaction and on-demand computational services.
+
+Parts may already reside on the server when they are reused, and additional services can be called for tasks such as mesh simplification and annotation. In collaborative work, synchronization calls can lock transformations while tasks performed by other users are still pending.
+
+\
+What Is Next? Priorities for Accessible Digital Restoration
+-----------------------------------------------------------
+
+The next step is to make the digital restoration pipeline more accessible and to remove significant bottlenecks. A central priority is a user-centric approach in which Cultural-Heritage experts remain at the forefront while unnecessary computational complexity is kept out of the user experience. Focused, intuitive and usable tools are preferred over all-encompassing solutions that are difficult to use and maintain.
+
+This direction includes a transition from desktop applications to the web, greater use of cloud-based infrastructure, access from different platforms including mobile devices, open access, and extensibility for specialized needs. Paid services and applications are explicitly regarded as unsuitable for the Cultural-Heritage community.
+
+Digitization as a Bottleneck\
+
+
+
+Digitization is a major bottleneck because computational restoration requires digital data. System and interface complexity can add another barrier. The appropriate response is not necessarily to digitize everything at maximum resolution. The purpose of digitization needs to be considered in relation to the task.
+
+For artefact documentation, detailed 3D digitization can be high-resolution, high-precision and complete, but this approach is slow. Restoration can instead work with approximate 3D digitization using variable resolution, moderate precision and partial geometry. The aim is then to capture restoration-specific geometric details, prioritize important surfaces such as fractured or characteristic regions, predict or omit missing geometry, capture multiple fragments simultaneously and automate cleanup.
+
+Partial geometry is therefore acceptable for digital restoration tasks. The specific digitization technology is less important than how scanning is performed and processed. Affordable and accessible approaches such as Structure from Motion photogrammetry can be useful when combined with appropriate post-processing, including automatic segmentation of multiple fragments and automatic cleanup.
+
+\
+The Role of AI
+--------------
+
+Deep learning has proven useful for specific tasks, but its role in geometric object restoration is described as overrated. The reasons include the need for large training collections, which are not generally available for Cultural-Heritage objects, the risk of overfitting to specific categories, and the computational resources required.
+
+Procedural methods are described as still vastly outperforming deep-learning approaches in this context. At the same time, successful methods from computer vision may contribute to restoration through object-based retrieval, automatic image annotation, automatic shape completion using geometric transformers, and graph-based combinatorial optimization for puzzling.
+
+## Collaboration
+
+\
+Restoration requires collective work, and the Digital Twin needs to support the same kind of collaboration. A digital restoration workspace should allow several experts to work independently and jointly in real time, share and comment on results, represent multiple interpretations and versions, and share both the experience and the data.
+
+The web provides a suitable environment for this kind of shared workspace. At the same time, digital restoration does not need to reproduce every physical action literally. The physical experience can be transferred more subtly, with a virtual metaphor for a physical task being sufficient.
+
+## Conclusion
+
+Digital restoration combines digital representation with computational analysis, simulation, virtual reassembly and collaboration. The Digital Twin provides a basis for working with cultural-heritage objects beyond what is possible through physical manipulation alone. It can support the exploration of hypotheses, the comparison of possible assemblies and the generation of complementary geometry.
+
+The quality of the result depends not simply on how much data are collected, but on whether the digital representation contains the information required for the restoration task. Critical surfaces, contacts and features may matter more than complete, high-resolution geometry. This makes task-specific digitization and preprocessing central parts of the workflow.
+
+At the same time, computational restoration benefits from keeping the expert involved. Interactive, user-driven approaches combine human constraints and experimentation with pairwise matching, optimization, alignment and refinement. The broader direction is toward accessible, web-based and collaborative tools in which the computational complexity supports the work without becoming the focus of the user's experience.
+
+\
+\
