@@ -21,8 +21,8 @@ export const createQuizImageDropZones = createComponent((paths, _locale) => {
 				src: fields.image({
 					label: "Background image",
 					description:
-						"Optional. With an image the drop zones are placed on top of it, without one they are laid out in a grid - which suits matching, ordering and grouping exercises.",
-					validation: { isRequired: false },
+						"The drop zones are placed on top of it. For zones without an image use the matching exercise instead.",
+					validation: { isRequired: true },
 					...createAssetOptions(paths.assetPath),
 				}),
 				alt: fields.text({
@@ -115,10 +115,7 @@ export const createQuizImageDropZones = createComponent((paths, _locale) => {
 						},
 					},
 				),
-				/**
-				 * Left empty the zone is not placed yet, and the editor asks for it to be drawn onto the image. Zones in an
-				 * exercise without a background image stay empty for good, because there is nothing to position them against.
-				 */
+				/** Left empty the zone is not placed yet, and the editor asks for it to be drawn onto the image. */
 				x: fields.number({
 					label: "Horizontal position (%)",
 					description: "From the image's left edge.",

@@ -521,7 +521,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 			const { content, ...metadata } = data;
 
 			const href = `/resources/pathfinders/${id}`;
-			const { default: component, tableOfContents } = await evaluate(content, evaluateOptions);
+			const { default: component, sections, tableOfContents } = await evaluate(content, evaluateOptions);
 			const featuredImage = metadata["featured-image"] != null ? createGitHubUrl(metadata["featured-image"]) : null;
 
 			// TODO: read from prebuilt client?
@@ -542,6 +542,7 @@ export const createGitHubClient = cache(function createGitHubClient({
 				},
 				curricula,
 				related,
+				sections,
 				tableOfContents,
 			};
 		},
