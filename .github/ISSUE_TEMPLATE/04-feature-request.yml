@@ -3,6 +3,7 @@ description: Suggest an idea for DARIAH-Campus
 assignees:
   - babslgam
   - stefanprobst
+  - vickygarnett
 labels:
   - needs-review
 type: feature
