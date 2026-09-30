@@ -423,8 +423,6 @@ Available at: [https://www.arcgis.com/features/free-trial.html](https://www.arcg
 
 * Download, Install and Authorise ArcMap with extensions. Once you have created the account, you will receive an e-mail with detailed steps and the authorisation code for ArcMap. This is the main tool you will be using throughout this unit.
 
-
-
 ##### **Software Download - Mac Users**
 
 ArcGIS for Desktop has been developed for Windows Operating systems. To run ArcGIS 10.x on an Apple Macintosh computer, the Mac must be set up to run Windows by following one of two installation options:
@@ -453,13 +451,13 @@ Launch ArcMap. Before preparing for the actual analysis we first need to add a b
   *Figure 12. Adding map from ArcGIS Online.*
 </Figure>
 
-<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/9ba055fc0f23e81fd6618b47bf4bc3fbff180da7-36214.PNG" alt="identifier" alignment="stretch">
-  *Figure 13. Image data points and Identify window in ArcMap.*
-</Figure>
-
 #### **Data Management**
 
 On the right of the ArcMap interface, open the **Catalog** menu. Here you will find all sets of tools (toolboxes) required for setting up and running the analysis. First, you will have to convert your geotagged image data to points.&#x20;
+
+<Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/9ba055fc0f23e81fd6618b47bf4bc3fbff180da7-36214.PNG" alt="identifier" alignment="stretch">
+  *Figure 13. Image data points and Identify window in ArcMap.*
+</Figure>
 
 Under **Data Management Tools.tbx**, go to **Photos>Geotagged Photos To Points**. In the **Input Folder** field, navigate to the directory where you have saved your geotagged images from the Image Geotagging section and select the respective folder. To do this, you will need first to establish a folder connection so that ArcMap knows each time where you keep your data.&#x20;
 
@@ -475,11 +473,11 @@ Also, you can change the **Symbology** properties to enhance the visual output o
 
 Once the data are ready for analysis you will proceed with building the conceptual model for the analysis. On the toolbar, go to **Geoprocessing** and select **ModelBuilder**. Begin creating the model by dragging the image layer from the ArcMap Table of Contents into the model. Next add the **Copy Features** geoprocessing tool to your model (drag from ArcToolbox). The Copy Features tool is located in **Data Management Tools>Features toolset**. **Connect** the Calls object to the Copy Features tool which will order a copy of the feature class because we are going to use tools that will change the geometry of the original input feature class. You can rename the Copy Features output to *Collected\_Photos*. To do this, double‐click on the Copy Features tool and change the Output Feature Class.
 
+Add the **Integrate** tool to the model (drag from ArcToolbox). The Integrate tool is located in **Data Management Tools>Feature Class toolset**. This function will aggregate image points that are within a given distance range or XY or on top of each other and will create an attribute value associated with each feature which will be used as the Hotspot analysis Input field. The Integrate tool allows moving all image points that occur within a specified distance into a single location where they can be counted using the **Collect Events** tool. Use the Connect Tool to connect Collected\_Photos to Integrate. Then double click the Integrate tool and enter 6m for the XY tolerance parameters. This distance means that any image taken within a radius of 6 meters of another will be considered by Integrate process. Rename the Integrate Feature Output to Integrate Output (right click>rename). So far, your model should look like the model in Figure 14.
+
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/014281a2373c1dedfa35cccc5e2c3c169e06e936-36215.PNG" alt="modelbuilder1" alignment="stretch">
   *Figure 14. The conceptual model at the Integrate stage.*
 </Figure>
-
-Add the **Integrate** tool to the model (drag from ArcToolbox). The Integrate tool is located in **Data Management Tools>Feature Class toolset**. This function will aggregate image points that are within a given distance range or XY or on top of each other and will create an attribute value associated with each feature which will be used as the Hotspot analysis Input field. The Integrate tool allows moving all image points that occur within a specified distance into a single location where they can be counted using the **Collect Events** tool. Use the Connect Tool to connect Collected\_Photos to Integrate. Then double click the Integrate tool and enter 6m for the XY tolerance parameters. This distance means that any image taken within a radius of 6 meters of another will be considered by Integrate process. Rename the Integrate Feature Output to Integrate Output (right click>rename). So far, your model should look like the model in Figure 14.
 
 Add the **Collect Events** tool located in **Spatial Statistics Tools>Utilities toolset**. The Collect Events tool will create a new feature class with a count field indicating the number of coincident image points at each location. The Integrate and Collect Events tools use the same input file, but since the first step of the point aggregation process is the Integrate tool, the Collect Events tool must not run until after the Integrate tool is finished making points within a radius of 6m. To set this parameter, right‐click on the Collect Events tool and select **Properties**. Under the **Preconditions tab,** set **Integrate Output** as a precondition. Rename the Collect Events output to **WeightedPhotos** by double‐clicking on the Collect Events tool and changing the Output Weighted Point Feature Class. Double-click on the Results and notice that a count field is created which will indicate the number of images aggregated in one location based on the analysis parameters.
 
@@ -497,11 +495,13 @@ Add the **Hot Spot Analysis (Getis Ord GI\*)** tool to your model by dragging fr
   *Figure 15: The final conceptual model of Hotspot Analysis.*
 </Figure>
 
-Right-click on HotSpot Results and select **Add To Display**. This will ensure that when the model is run the results layer will be added to the map display. The final model should look like Figure 15. Run the model and go to the map area to see the displayed results and play around with the visualisation options. Right-click the generated hotspot layer and go to **Properties**. Choose **Symbology>Graduated symbols** and set parameters as shown in Figure 16. You can also choose the **Graduated Colours** option. Go back to map and explore the results of the Hotspot analysis.
+Right-click on HotSpot Results and select **Add To Display**. This will ensure that when the model is run the results layer will be added to the map display. The final model should look like Figure 15. Run the model and go to the map area to see the displayed results and play around with the visualisation options. Right-click the generated hotspot layer and go to **Properties**. Choose **Symbology>Graduated symbols** and set parameters as shown in Figure 16.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/82091cbdf892d495693ca6c87456e385b274cb42-36217.PNG" alt="Symbology" alignment="stretch">
   *Figure 16. Symbology settings.*
 </Figure>
+
+&#x20;You can also choose the **Graduated Colours** option. Go back to map and explore the results of the Hotspot analysis.
 
 <Figure src="/assets/content/assets/en/resources/hosted/spatial-image-analytics/ef0dbbe31833c8bcba3d5215c2f327934d05a10f-36218.PNG" alt="HS_final" alignment="stretch">
   *Figure 17. ArcMap interface with displayed Hotspot results*
