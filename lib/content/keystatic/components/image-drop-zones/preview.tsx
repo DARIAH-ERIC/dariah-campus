@@ -33,7 +33,7 @@ export function QuizImageDropZonesPreview(props: Readonly<QuizImageDropZonesPrev
 						<img alt={alt} className="block-auto inline-full" draggable={false} src={url} />
 					) : (
 						<div className="grid place-items-center bg-neutral-100 p-3 text-center text-neutral-500 min-block-32">
-							Without a background image the drop zones are laid out in a grid, and their positions are ignored.
+							Add a background image to place the drop zones on.
 						</div>
 					)}
 				</div>
@@ -516,7 +516,7 @@ export function QuizImageDropZoneEditor(props: Readonly<QuizImageDropZoneEditorP
 							</span>
 						) : (
 							<span className="font-normal text-(--kui-color-foreground-neutral-secondary)">
-								{hasImage ? "not placed yet" : "laid out in a grid"}
+								{hasImage ? "not placed yet" : "no image to place it on yet"}
 							</span>
 						)}
 					</p>
