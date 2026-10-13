@@ -160,7 +160,7 @@ There are several XML schemas in which parliamentary proceedings can be encoded.
   Figure 6. An exemplification of the TEI schema for speech as used for Slovenian parliamentary proceedings.
 </Figure>
 
-### Metadata
+#### Metadata
 
 Parliamentary records are rich in extralinguistic markup on the speech level (e.g. parliamentary session, date, meeting item, speaking time) and also on the speaker level (e.g. speaker’s name, date of birth, gender, education, party affiliation). Metadata can be used by researchers as variables in their analysis or for fine-grained filtering of the research data.
 
@@ -176,7 +176,7 @@ Parliamentary records are rich in extralinguistic markup on the speech level (e.
   Figure 9. Representation and text production of female members of the Danish parliament.
 </Figure>
 
-### Linguistic Annotations and Text Enrichment
+#### Linguistic Annotations and Text Enrichment
 
 In addition to the extralinguistic metadata, parliamentary records are typically further enriched with different levels of linguistic annotations. The most standard are tokenization (identifying words and, typically, punctuation marks), sentence segmentation (marking sentence boundaries), morphosyntactic tagging (adding information on the part of speech and other morphosyntactic characteristics of each word token in the corpus) and lemmatization (providing the base dictionary forms of the inflected words).
 
@@ -962,16 +962,6 @@ In the bibliography compiled in the ‘Further Learning’ tab hereunder is a sn
 As often underlined, newspapers both in analogue and digital format, constitute a massive, overwhelming source. The hope brought by the digitisation is the possibility to apply algorithms and text mining tools to help organise their content. A popular solution appeared to be topic modelling. This algorithm helps identify how some words tend to appear together in individual texts. Topic modelling relies on the assumption that some topics are frequently expressed in a similar word combination and defines from a collection of texts, a series of topics expressed by words that tend to co-occur. The output of the topic modelling is twofold: a list of co-occurring words defining the topics, and the distribution of these topics across a collection of documents. The most popular application of that principle is the latent Dirichlet allocation (LDA) that calculates the probability of words to co-occur. The interest in using topic modelling to index digitised newspapers can be found on the libraries side as well as on the research side. However, because of its probabilistic nature, it is not fully reliable and because of its unsupervised nature, it is not always easy to use the produced topics. The main advantage of the topic modelling is that because it is data driven, it can help to gain first insights into a newspaper collections and it links articles together that do not necessarily share keywords but are of semantically similar content.
 
 Aside from the principles of the algorithm, topic modelling has a set of technical positive and negative sides. Topic modelling can function with several languages, with OCR mistakes but will be impacted by both. At the same time, it can help even identify recurrent OCR mistakes. The major hindrance for applying topic modelling to digitised newspapers collections is however the segmentation of the newspapers contents. Indeed: the topic modelling functions best if it can identify the words that appear in one document and if all articles of a given issue are merged in one document, the observation of co-occurring words will be distorted. The biggest “noise” is potentially created by advertisements where image and text are mixed up. The pre-processing steps, such as the removal of stopwords (common words carrying no autonomous meaning) or the lemmatisation (the reduction to the core form of the words), impacts the outcome of topic modelling as well.
-
-## ~~The topic modelling is being implemented as an exploration feature in the *impresso* project’s interface:~~
-
-## ~~See the presentation of how topic modelling has been applied in the context of *impresso* : [https://impresso-project.ch/news/2018/09/07/tradingzone-tm.html](https://impresso-project.ch/news/2018/09/07/tradingzone-tm.html) ***DEAD LINK***~~
-
-## ~~and what is the outcome: [https://impresso-project.ch/news/2019/03/05/Explore\_TM.html](https://impresso-project.ch/news/2019/03/05/Explore_TM.html) ***DEAD LINK***~~
-
-## ~~This video shows how topics can sometimes correspond to article type, for example ‘horoscopes’:~~
-
-## **~~VIDEO UNAVAILABLE~~**
 
 ### Further Reading for "Collections of Digital Newspapers as Historical Sources"
 
