@@ -1,0 +1,463 @@
+---
+title: Digital Restoration as a Digital Twin Process
+locale: en
+publication-date: 2026-09-28
+version: 1.0.0
+authors:
+  - papaioannou-georgios
+editors:
+  - albrecht-marlene
+contributors: []
+tags:
+  - cultural-heritage
+sources:
+  - artemis
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >-
+    This learning resource introduces digital restoration and the role of
+    Heritage Digital Twins in documenting, analysing and reconstructing
+    cultural-heritage objects. It focuses on virtual anastylosis and
+    computational reassembly, explaining key challenges such as fragment
+    uncertainty, 3D data preparation, alignment and missing-geometry prediction.
+    Emphasis is placed on the collaboration between computational methods and
+    human expertise through user-in-the-loop approaches. The resource is aimed
+    at learners in cultural heritage, archaeology, conservation, restoration and
+    digital humanities, with no advanced technical background required.
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+dariah-working-groups: []
+---
+(in progress)
+
+This resource is based on the presentation by Georgios Papaioannou (University of Athens) on digital restoration, virtual anastylosis and Heritage Digital Twins developed for the ARTEMIS Summer School 2026 in Hof, Germany. It builds on the concepts introduced in the session and uses examples from cultural-heritage restoration to explore how 3D digitisation, computational reassembly and human expertise can support the analysis, reconstruction and interpretation of fragmented objects. 
+
+## Introduction
+
+Digital restoration brings together Cultural-Heritage expertise, 3D digitisation and computational methods to support the documentation, analysis and reconstruction of cultural-heritage objects and sites. Within this context, a Heritage Digital Twin can provide a digital environment for working with 3D data, annotations, measurements and different restoration hypotheses.
+
+This resource focuses in particular on **virtual Anastylosis and reassembly**: the computational reconstruction of fragmented or disassembled objects. It introduces the main challenges of this process, from uncertain fragment configurations and large search spaces to the different geometric and material properties of heritage objects. It also explores how 3D data is prepared for computational restoration, how fragments can be aligned and assembled, and how missing geometry can be predicted.
+
+A central theme is the relationship between **computational methods and human expertise**. Rather than replacing the restoration expert, interactive approaches allow computational processes and expert decisions to work together. The resource also considers how services such as ARTEMIS can support this workflow and how web-based, accessible and collaborative environments can make digital restoration more practical for the Cultural-Heritage community.
+
+## Learning Objectives
+
+By the end of the resource, learners will be able to:
+
+* explain the role of Heritage Digital Twins in digital restoration, including how they support documentation, analysis and the exploration of reconstruction hypotheses;
+* describe the main challenges and data requirements of virtual anastylosis and computational reassembly, including fragment uncertainty, large search spaces and the preparation of suitable 3D data;
+* distinguish between manual, automatic and interactive restoration approaches, and explain how human expertise contributes to “user-in-the-loop” workflows;
+* understand key computational concepts and collaborative challenges in digital restoration, including geometric alignment, shape prediction, prosthetic geometry, accessibility and web-based collaboration.
+
+## Target Audience
+
+The resource is aimed at students, researchers and professionals in **Cultural Heritage, archaeology, conservation, restoration and digital humanities**, as well as learners interested in 3D and computational methods. No advanced technical background is required.
+
+## Intended Impact
+
+The resource aims to provide a clear understanding of how digital and computational methods can support restoration. It highlights the importance of **task-oriented digitisation, human–computer collaboration and accessible digital tools**, while showing how Digital Twins can support the exploration, analysis and reconstruction of cultural-heritage objects.
+
+## Requirements
+
+No prior technical knowledge is required. A basic familiarity with archaeological objects, cultural-heritage restoration, or digital documentation is helpful but not essential.
+
+## Suggested Learning Path
+
+For learners who are new to digital restoration and Heritage Digital Twins, it is recommended to first watch the video resource [*Reconstruction of Archaeological Objects as a Digital Twin*](https://campus.dariah.eu/resources/hosted/reconstruction-of-archaeological-objects-as-a-digital-twin). The video introduces how the physical restoration and reassembly of archaeological objects can be transformed into a digital environment, where computational methods can be used to explore and test restoration hypotheses in a non-invasive way. The present text resource builds on these concepts by providing a broader introduction to digital restoration, virtual Anastylosis, 3D data, computational reassembly and the role of human expertise.
+
+## Essential Terminology
+
+* **Heritage Digital Twin:** Digital representation of a cultural-heritage object or site.
+* **Digital Restoration:** Using digital and computational methods to support restoration.
+* **Digital Anastylosis / Reassembly:** Virtual reconstruction of fragmented objects.
+* **3D Digitisation:** Creating digital representations of physical objects.
+* **Alignment / Registration:** Positioning digital fragments in relation to each other.
+* **Shape Prior:** Geometric information that helps guide reconstruction.
+* **User in the Loop:** Combining computational methods with human expertise.
+
+## Heritage Digital Twins in Restoration
+
+Heritage Digital Twins often emerge from restoration projects of considerable complexity. Within such projects, a Digital Twin can support project monitoring and asset management while also bringing together visualization, measurements, spatial annotations and metadata. These functions can in turn contribute to decision support.
+
+Renderings of Notre-Dame Cathedral from Iconem provide one example. Another important example is the n-Dame\_Heritage Advanced ERC Grant program at CNRS, led by Livio De Luca. Here, collaborative documentation of media and 3D assets, 3D annotation, and the integration of photographic and 3D data illustrate how different forms of information can be brought together within a digital heritage environment.
+
+<Figure src="/assets/content/assets/en/resources/hosted/digital-restoration-as-a-digital-twin-process/inzteroperability.png" alt="The figure shows an interoperability framework that enables the integration and correlation of heterogeneous digital data from different systems and applications. By connecting 3D models, images, and digital documentation, the framework supports accessible and user-friendly access to cultural heritage information." alignment="stretch">
+  Interoperability framework for the correlation and integration of heterogeneous digital cultural heritage data across different systems and applications
+</Figure>
+
+\
+Simulation in Heritage Digital Twins
+------------------------------------
+
+Simulation adds another dimension to the Digital Twin. In Cultural Heritage, computer simulations can be used to construct plausible 'what if' scenarios. They can help estimate parameters of a problem, predict the state of an object or site at a future point in time, assess the impact of an intervention, and explore hypotheses. The underlying methodology is closely related to engineering problems and to Digital Twins developed in engineering contexts.
+
+### Reliability of simulations
+
+The reliability of such simulations depends first on the quality and completeness of the input. How accurately are the input data modelled, and how completely have the parameters affecting the process been captured? It also depends on the simulation model itself: whether the relevant control parameters have been accounted for and how well the actual process has been mapped to an algorithm.
+
+### Potential simulations for HDTs
+
+Several types of simulation are relevant to Heritage Digital Twins. Mechanical simulations can address archaeological and architectural sites, including stability and seismic analysis. Chemical and erosion simulations can be used for deterioration estimation. Radiative and heat-transfer simulations can support work with indoor and outdoor exhibitions and museums. Digital Anastylosis addresses the reconstruction of monuments and objects, while fluid and particle simulations can contribute to disaster control, for example in relation to floods, fire and debris accumulation. Specialized simulations can also address situations such as visitor or crowd flow.
+
+### Mechanical simulations
+
+Mechanical simulation is common in civil engineering and can also be useful for heritage sites. Commercial FEM solvers are available, the software is established and validated, and BIM integration pipelines exist. At the same time, heritage-site materials have already undergone alterations caused by stress and chemical processes. These changes can increase the unreliability of simulations based on assumptions about material behaviour.
+
+<Figure src="/assets/content/assets/en/resources/hosted/digital-restoration-as-a-digital-twin-process/boegen-saeule.png" alt="The figure shows the use of 3D point cloud data for the geometric analysis of historic architectural elements. The comparison between the recorded structure and the 3D model highlights irregularities and anomalies caused by non-uniform erosion, supporting the assessment and documentation of structural conditions." alignment="stretch">
+  3D point cloud-based analysis of a historic structural element, highlighting geometric anomalies associated with non-uniform erosion. Adapted from Almac, Pekmezci and Ahunbay (2016).
+</Figure>
+
+### Chemical simulations
+
+Chemical simulation presents a different set of difficulties. The processes are often too material-specific to generalize into a simulator, while their temporal progress is too slow to observe and validate in vivo, even when processes are accelerated. Detailed spectrographic data may also be required. Within the context covered here, such approaches had not actually worked in real cases of Cultural-Heritage objects. The PRESIOUS project is cited as an example of work on predictive digitization, restoration and degradation assessment of cultural heritage objects.
+
+<Figure src="/assets/content/assets/en/resources/hosted/digital-restoration-as-a-digital-twin-process/erosion-measurements.png" alt="The figure shows experimental approaches for investigating material degradation under environmental stress conditions. Acid rain and freeze–thaw cycles are simulated in controlled laboratory experiments, while parameters such as temperature, pH, and CO₂ concentration are monitored to assess their influence on erosion and material deterioration." alignment="stretch">
+  Laboratory experiments for assessing material erosion and degradation under acid rain and freeze–thaw conditions, including the monitoring of environmental parameters. Source: PRESIOUS project (2013–2016).
+</Figure>
+
+### Radiative / Heat Transfer
+
+Radiative and heat-transfer simulation is more mature as a computational field. It is well studied in computer graphics and FEM, and both open and commercial solutions are available. Typical input data are relatively well known and freely available. The remaining limitations include the small number of niche dedicated software solutions and the need for reliable input, including photometric measurements and material properties. LOTUS and GLIDE are cited as related projects, and lighting simulation is intended to be provided openly as a service by ARTEMIS.
+
+<Figure src="/assets/content/assets/en/resources/hosted/digital-restoration-as-a-digital-twin-process/heat.png" alt="The figure shows the use of digital 3D environments for analysing and optimising lighting conditions. By combining 3D models, virtual representations, and lighting simulations, different illumination scenarios can be visualised and evaluated in relation to spatial conditions and the presentation of cultural heritage objects." alignment="stretch">
+  Digital 3D environments for lighting simulation and optimisation, illustrating the integration of 3D models, virtual visualisation, and illumination analysis. Sources: LOTUS (2022–2024) and GLIDE (2014–2015).
+</Figure>
+
+### Computed Digital Anastylosis
+
+Computed Digital Anastylosis deals with the virtual restoration of fragmentary and disassembled material from objects and archaeological sites. It is a well-studied area in computer graphics and an important restoration task. A minimum requirement is partial geometry scans. At the same time, there are relatively few niche open dedicated software solutions and computational approaches vary considerably. Part-alignment simulation is intended to be provided openly as an ARTEMIS service.
+
+<Figure src="/assets/content/assets/en/resources/hosted/digital-restoration-as-a-digital-twin-process/anastylosis.png" alt="The figure shows the use of 3D digitisation and virtual reconstruction for the documentation and analysis of cultural heritage objects. Detailed 3D models allow fragmented and damaged elements to be digitally assembled, visualised, and examined, supporting restoration planning and the assessment of material condition." alignment="stretch">
+  3D digitisation and virtual reconstruction of fragmented cultural heritage objects for documentation, restoration, and degradation assessment. Source: PRESIOUS project (2013–2016).
+</Figure>
+
+### Fluid/ Particle Simulations
+
+Fluid and particle simulations provide another application area for Heritage Digital Twins. They are driven by technologies developed in the CGI and visual-effects industry, with established high-quality commercial simulators, GPU-accelerated solutions and open alternatives available. At the same time, fire simulation remains challenging because of its unpredictability and is not necessarily intended to reproduce fully realistic behaviour.
+
+## The Virtual Reassembly / Anastylosis Problem
+
+At an abstract level, reassembly is a 2D or 3D puzzle. In practice, however, many of the elements that would normally define a puzzle are uncertain. The target objects may not be obvious, the number of missing pieces may be unknown, and even the total number of fragments may be uncertain. The shape and number of contact sides are not fixed, and in some cases the final shape itself is not well defined.
+
+Constraints and shape priors can reduce this uncertainty. Useful information includes planarity, axial symmetry, textural and geometric landmarks such as tool marks, bracket holes and patterns, as well as the overall expected shape. Even with such constraints, the search space can grow explosively. Uncertainty and the dispersion of fragmentary material can therefore become significant obstacles for restoration work.
+
+\
+Types of Material
+-----------------
+
+The suitability of virtual reconstruction varies with the material. Rigid materials include potsherds, masonry and statuary blocks, as well as other thin fragments such as bone, metallic sherds and blades. These materials may be broken, intact but disassembled, or both. Deformable materials include textiles, wood, hardened leather, ivory, papyri and metallic foils.
+
+Materials such as papyrus, paper, cloth and metallic sheets can be particularly difficult because they may bend substantially. Reconstruction may require 'unwrapping', which introduces significant human or computational error. Not every deformation is recoverable, especially where unknown plastic effects are involved, and specialized digitization such as CT may be required. Chemical damage or fusion, for example through burning, creates further complications.
+
+Originally hard materials can also deform under stress and chemical alteration. Wood, bone and solid metallic objects may still retain landmarks despite these changes. A combination of ruled or manual pre-deformation and non-rigid alignment is described as an effective approach. The Vesuvius Challenge is referenced in this context.
+
+\
+Why Go Digital?
+---------------
+
+Digital restoration changes what can be manipulated and tested. Material that is difficult to handle or physically inaccessible can be worked with in a virtual environment. The virtual setting also allows restoration hypotheses to be explored without necessarily being constrained by the physical behaviour of the material. Most importantly, digital restoration is non-destructive: assemblies can be undone, and even extreme hypotheses can be tested without changing the physical object.
+
+This also makes it possible to retain several hypotheses and versions rather than committing to a single reconstruction. Digital methods can process and compare artefacts at a level of detail that is difficult to attain manually, and they allow observations to be considered at larger scales. Precise measurements can be performed, results can be visualized, and virtual access can be provided to assemblies that would be impossible or very difficult to inspect physically.
+
+The digital environment also supports communication and collaboration. Research results can be shared, virtual workspaces can support joint work, and digital representations can be used for presentation and education. Remote resources can be accessed, including assets owned by third parties.
+
+## A Digital Restoration Pipeline
+
+A computational restoration Digital Twin can be organized as a pipeline beginning with 3D digitization. The resulting data then undergo geometry processing, followed by multi-part assembly and, where appropriate, object completion. The process connects physical objects with digitized geometry such as point clouds, meshes and volume data, simplified geometry, features, metadata and segmentation information. Once fragments have been assembled, the resulting geometry can support measurements and renderings, and augmented geometry can potentially be returned to physical space, for example through 3D printing.
+
+<Quiz>
+  <QuizImageDropZones src="/assets/content/assets/en/resources/hosted/digital-restoration-as-a-digital-twin-process/restoration-pipeline.png" alt="The figure shows a matching exercise illustrating a human–computer workflow for the digital reconstruction of fragmented cultural heritage objects. The process progresses from the physical identification and sorting of fragments by humans, through computer-assisted analysis and matching, to collaborative reconstruction and a digitally generated restoration." distractors={[]} instantFeedback={false}>
+    <QuizQuestion>
+      Please arrange the terms according to the correct restoration pipeline.
+    </QuizQuestion>
+
+    <QuizImageDropZone label="3D digitization" shape="rectangle" items={[]} x={4.7} y={11.9} width={16.8} height={17.2}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="Geometry processing" shape="rectangle" items={[]} x={28.5} y={11.9} width={16.8} height={16.7}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="Multi-part assembly" shape="rectangle" items={[]} x={52.8} y={12.1} width={17} height={17.3}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="Object  completion" shape="rectangle" items={[]} x={76.8} y={11.9} width={17} height={16.7}>
+
+    </QuizImageDropZone>
+  </QuizImageDropZones>
+</Quiz>
+
+## Digital Surrogates
+
+A digital surrogate represents the closest fidelity to the actual object that can be achieved digitally. Other, more theoretical representations can be derived from it for particular purposes. Such digital surrogates enable preservation by re-mediation, access, and information processing and analysis.
+
+For a restoration Digital Twin, digital data are a means to an end. The relevant information therefore needs to be sampled and retained according to the purpose of the analysis. In this computational context, human perception factors are not the criterion for deciding what information is necessary.
+
+## Digital 3D Asset Requirements
+
+Different versions of a 3D asset can serve different purposes. One version may be suitable for documentation and physical reproduction, another for geometry analysis and high-fidelity visualization, and another for fast preview and web-based presentation.
+
+Any digitized 3D model can potentially be used. Meshes are preferred, while point clouds can also be used. 3D Gaussian splats are not considered suitable here because they are volumetric data. Volumetric data are possible, but can be problematic in many cases.
+
+Very high resolution is not necessarily beneficial. Medium-quality models can be sufficient, particularly because many fragments are already deteriorated. Additional points may simply introduce noise, smooth out relevant surface features and make computations unnecessarily difficult. Surfaces can therefore be sub-sampled so that detectable relief variations are retained. Simplification methods commonly collapse low-curvature polygon edges while preserving geometric detail; MeshLab is mentioned as a free tool.
+
+Completeness is likewise not always required. A 3D model does not need to be complete or watertight if it sufficiently represents the critical surfaces, including contacts, volume-defining corners and salient features.
+
+<Quiz>
+  <QuizChoice variant="multiple" buttonLabel="Check answer">
+    <QuizChoiceQuestion>
+      A restoration team is working with highly detailed 3D scans of fragments of an archaeological object, all resting on an intact, flat side, which is hard to scan due to the weight of the pieces. The models contain a very large number of points, including many areas with little or no relevant surface variation. Based on the approach described in the resource, what would be the most appropriate strategy?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Always retain the highest possible resolution because more data necessarily improve reassembly.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Simplify or sub-sample the models, while preserving critical surfaces, contacts and salient features.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Uniformly decimate the surface of the objects, prioritizing equal spacing of all surface samples.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Rescan the fragments to capture the fragments’ surfaces from all sides and create watertight, high-detail 3D models.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Yes, that’s the correct answer!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that’s not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+## Surface Classification
+
+\
+Automatic reassembly depends on distinguishing useful correspondences from trivial ones. Not all surface regions are equally important because typical solvers minimize distances based on geometry, texture, saliency or related criteria. Fragmentary material can easily produce misleading correspondences, whereas silhouettes and landmarks are particularly important for intact parts.
+
+One strategy is to identify surfaces that are potentially fractured and to exclude trivially smooth surfaces, which are typical failure cases. The classification can use conservative thresholds because false-positive fractures are not considered a major problem: feature-rich intact surfaces will not align with corresponding fractured regions. ARTEMIS alignment services can perform the associated preprocessing behind the scenes.
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      An automatic reassembly system repeatedly proposes matches between smooth, non-fractured areas of different fragments. Which approach best addresses this problem according to the resource?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Increase the resolution of all fragments to make the correspondences more precise.\\
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Prioritise large surface regions during alignment.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Classify potentially fractured surfaces and exclude trivially smooth regions that can produce misleading matches.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Replace geometric alignment with manual pose estimation for the assembly in every case.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Yes, that’s the correct answer!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that’s not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+## Manual vs Automatic Anastylosis
+
+Manual Anastylosis begins with a virtual workspace in which fragments can be manipulated directly. This makes experimentation possible, but manual work can be imprecise and time-consuming.
+
+Automatic clustering can produce precise recommendations, but the number of possible combinations creates a very large search space. Manual or automatic constraints therefore become important. The computational process can also be slow, and in a fully offline workflow experts mainly verify or reject the recommendations rather than continuously directing the computation.
+
+The offline workflow consists of facet extraction, classification, pair-wise alignment and multi-part reassembly. It aims to avoid trivial matches and reduce the search space. For each facet pair, error can be estimated and a pose computed, followed by global optimization, fragment clustering and alignment. Preemptive pair-wise alignment and pre-segmentation can further reduce the computational burden, although global registration remains necessary and expensive.
+
+\
+What About the Human Expert?
+----------------------------
+
+A more interactive approach places the human expert directly within the computational process. Restoration becomes user-driven: the user provides constraints, manipulates fragments, inspects recommendations and performs integrity checks while computation continues progressively.
+
+The computer contributes pairwise matching, combinatorial optimization and bundle adjustment, while the user remains involved in the decisions that shape the reconstruction. In the interactive workflow, facet extraction and classification are followed by pair-wise alignment and incremental multi-part reassembly. For each facet pair, error can be estimated and a pose computed, after which greedy optimization, fragment clustering and alignment can take place.
+
+Pairwise alignment can be requested when needed. Local registration can be used, allowing the computational steps to be interleaved with user interaction. The goal is therefore not to remove the expert from the process, but to combine human experimentation and judgement with computational assistance.
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      Why does the interactive “user in the loop” approach offer a different model of computational restoration than a fully offline automatic workflow?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        It removes computational alignment and relies entirely on expert judgement.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        It allows computational processes to be performed progressively and in response to user constraints, manipulation and evaluation.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        It guarantees that the computational system will produce a single correct reconstruction.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        It prevents the use of optimisation and alignment algorithms.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Yes, that’s the correct answer!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that’s not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+## Shape Prediction and Prosthesis
+
+Once fragments have been assembled, missing or complementary parts can be generated from shape priors. The expected overall shape of the object can provide one source of information, while self-similarities such as symmetries and repetitive patterns provide others. Additional priors include axial and planar symmetry, contour continuity, statistical similarity, similar objects, partial-object retrieval and non-rigid fitting.
+
+Symmetry is described as the most reliable source of geometric information. For cylindrical objects, shape can be computed through revolution after detecting an axis; for non-cylindrical objects, self-registration can be used.
+
+Prosthetic geometry can then be derived by subtracting the assembled fragments from the predicted shape. Volume subtraction is described as reliable and error-free in this context, and the resulting geometry is suitable for 3D printing. In this way, the Digital Twin cycle can return from digital reconstruction to physical space.
+
+<Figure src="/assets/content/assets/en/resources/hosted/digital-restoration-as-a-digital-twin-process/fragment.png" alt="The figure shows the digital reconstruction of a fragmented cultural heritage object. Individual fragments are digitally aligned and reassembled to reconstruct the original form, while highlighted areas indicate reconstructed or digitally completed sections. This approach supports the analysis, documentation, and virtual restoration of damaged objects." alignment="stretch">
+  Digital reassembly and virtual reconstruction of fragmented cultural heritage elements, illustrating the alignment of individual fragments and the reconstruction of missing sections.
+</Figure>
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      Which types of objects are more likely to have their missing pieces reliably estimated and 3D printed by an algorithm?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Statues of humans or animals
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Clay toys
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Engraved ornaments
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Burial pots
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Yes, that’s the correct answer!
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that’s not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+## ARTEMIS Geometric Alignment Services
+
+ARTEMIS provides geometric alignment services for 3D models representing partial objects, partial or complementary scans, and fragments or parts that need to be assembled. The services include hierarchical clustering and bundle adjustment for refining already aligned geometry. Both local and global registration are supported, together with optional tether points or anchors whose influence can be varied. Automatic simplification and preprocessing can be handled on the server, while server-side caching and synchronization support collaborative projects.
+
+The services are exposed through REST API calls and are intended for application developers. They can be used from web-based, mobile or desktop applications. The infrastructure described for ARTEMIS includes a dedicated server environment at AUEB, a Node.js application server and native C++/CUDA backend servers. Authentication and Digital-Twin transactions remain centralized through the main ARTEMIS infrastructure.
+
+## A Typical Workflow
+
+\
+A typical session begins by initializing a project and adding Digital-Twin parts such as F1 and F2. Once the Digital-Twin session has been initialized, the user can manipulate the parts in the client application. Their poses are updated and an alignment of \<F1, F2> is requested. The client then polls for the alignment result and can group the two parts.
+
+The same cycle can be extended by adding F3. The user again interacts with the parts, updates the poses of the existing group and F3, and requests an alignment of \<F1-F2, F3>. After the result is returned, the three parts can be grouped and a bundle adjustment can refine the assembled geometry. The workflow therefore alternates between user interaction and on-demand computational services.
+
+Parts may already reside on the server when they are reused, and additional services can be called for tasks such as mesh simplification and annotation. In collaborative work, synchronization calls can lock transformations while tasks performed by other users are still pending.
+
+\
+What Is Next? Priorities for Accessible Digital Restoration
+-----------------------------------------------------------
+
+The next step is to make the digital restoration pipeline more accessible and to remove significant bottlenecks. A central priority is a user-centric approach in which Cultural-Heritage experts remain at the forefront while unnecessary computational complexity is kept out of the user experience. Focused, intuitive and usable tools are preferred over all-encompassing solutions that are difficult to use and maintain.
+
+This direction includes a transition from desktop applications to the web, greater use of cloud-based infrastructure, access from different platforms including mobile devices, open access, and extensibility for specialized needs. Paid services and applications are explicitly regarded as unsuitable for the Cultural-Heritage community.
+
+## Digitization as a Bottleneck
+
+Digitization is a major bottleneck because computational restoration requires digital data. System and interface complexity can add another barrier. The appropriate response is not necessarily to digitize everything at maximum resolution. The purpose of digitization needs to be considered in relation to the task.
+
+For artefact documentation, detailed 3D digitization can be high-resolution, high-precision and complete, but this approach is slow. Restoration can instead work with approximate 3D digitization using variable resolution, moderate precision and partial geometry. The aim is then to capture restoration-specific geometric details, prioritize important surfaces such as fractured or characteristic regions, predict or omit missing geometry, capture multiple fragments simultaneously and automate cleanup.
+
+Partial geometry is therefore acceptable for digital restoration tasks. The specific digitization technology is less important than how scanning is performed and processed. Affordable and accessible approaches such as Structure from Motion photogrammetry can be useful when combined with appropriate post-processing, including automatic segmentation of multiple fragments and automatic cleanup.
+
+\
+The Role of AI
+--------------
+
+Deep learning has proven useful for specific tasks, but its role in geometric object restoration is described as overrated. The reasons include the need for large training collections, which are not generally available for Cultural-Heritage objects, the risk of overfitting to specific categories, and the computational resources required.
+
+Procedural methods are described as still vastly outperforming deep-learning approaches in this context. At the same time, successful methods from computer vision may contribute to restoration through object-based retrieval, automatic image annotation, automatic shape completion using geometric transformers, and graph-based combinatorial optimization for puzzling.
+
+## Collaboration
+
+\
+Restoration requires collective work, and the Digital Twin needs to support the same kind of collaboration. A digital restoration workspace should allow several experts to work independently and jointly in real time, share and comment on results, represent multiple interpretations and versions, and share both the experience and the data.
+
+The web provides a suitable environment for this kind of shared workspace. At the same time, digital restoration does not need to reproduce every physical action literally. The physical experience can be transferred more subtly, with a virtual metaphor for a physical task being sufficient.
+
+## Conclusion
+
+Digital restoration combines digital representation with computational analysis, simulation, virtual reassembly and collaboration. The Digital Twin provides a basis for working with cultural-heritage objects beyond what is possible through physical manipulation alone. It can support the exploration of hypotheses, the comparison of possible assemblies and the generation of complementary geometry.
+
+The quality of the result depends not simply on how much data are collected, but on whether the digital representation contains the information required for the restoration task. Critical surfaces, contacts and features may matter more than complete, high-resolution geometry. This makes task-specific digitization and preprocessing central parts of the workflow.
+
+At the same time, computational restoration benefits from keeping the expert involved. Interactive, user-driven approaches combine human constraints and experimentation with pairwise matching, optimization, alignment and refinement. The broader direction is toward accessible, web-based and collaborative tools in which the computational complexity supports the work without becoming the focus of the user's experience.
+
+<Callout kind="none">
+  The present resource has been supported by the European Union in the framework of the ARTEMIS project, funded by the European Union under Grant Agreement No. 101188009. Views and opinions expressed are, however, those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.
+</Callout>
