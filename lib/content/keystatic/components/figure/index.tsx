@@ -1,12 +1,10 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createAssetOptions, createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { wrapper } from "@keystatic/core/content-components";
 import { ImageIcon } from "lucide-react";
 
-import { FigurePreview } from "@/lib/content/keystatic/components/figure/preview";
-import { figureAlignments } from "@/lib/content/options";
+import { FigurePreview } from "#/lib/content/keystatic/components/figure/preview.tsx";
+import { figureAlignments } from "#/lib/content/options.ts";
 
 export const createFigure = createComponent((paths, _locale) => {
 	return {
@@ -22,8 +20,7 @@ export const createFigure = createComponent((paths, _locale) => {
 				}),
 				alt: fields.text({
 					label: "Image description for assistive technology",
-					description:
-						"Leave empty if the image is only decorative or already explained in the text",
+					description: "Leave empty if the image is only decorative or already explained in the text",
 					validation: { isRequired: false },
 				}),
 				alignment: fields.select({

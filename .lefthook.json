@@ -1,0 +1,20 @@
+{
+	"$schema": "./node_modules/lefthook/schema.json",
+	"pre-commit": {
+		"commands": {
+			"oxlint": {
+				"run": "oxlint --fix --report-unused-disable-directives --type-aware --type-check {staged_files}",
+				"stage_fixed": true
+			},
+			"stylelint": {
+				"glob": "*.css",
+				"run": "stylelint --fix {staged_files}",
+				"stage_fixed": true
+			},
+			"oxfmt": {
+				"run": "oxfmt --no-error-on-unmatched-pattern --write {staged_files}",
+				"stage_fixed": true
+			}
+		}
+	}
+}

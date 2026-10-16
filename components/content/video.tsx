@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-import type { VideoProvider } from "@/lib/content/options";
-import { createVideoUrl } from "@/lib/navigation/create-video-url";
+import type { VideoProvider } from "#/lib/content/options.ts";
+import { createVideoUrl } from "#/lib/navigation/create-video-url.ts";
 
 interface VideoProps {
 	children: ReactNode;
@@ -22,7 +22,7 @@ export function Video(props: Readonly<VideoProps>): ReactNode {
 			<iframe
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				allowFullScreen={true}
-				className="aspect-video w-full overflow-hidden rounded-lg border border-neutral-200"
+				className="aspect-video overflow-hidden rounded-lg border border-neutral-200 inline-full"
 				loading="lazy"
 				src={src}
 				title={title}

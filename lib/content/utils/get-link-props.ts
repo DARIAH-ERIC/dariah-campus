@@ -1,11 +1,11 @@
 import type { ValueForReading } from "@keystatic/core";
 
-import type { createLinkSchema } from "@/lib/content/keystatic/utils/create-link-schema";
-import { createHref } from "@/lib/navigation/create-href";
+import type { createLinkSchema } from "#/lib/content/keystatic/utils/create-link-schema.ts";
+import { createHref } from "#/lib/navigation/create-href.ts";
 
 export type LinkSchema = ValueForReading<ReturnType<typeof createLinkSchema>>;
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+// oxlint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function getLinkProps(params: LinkSchema) {
 	switch (params.discriminant) {
 		case "curricula": {

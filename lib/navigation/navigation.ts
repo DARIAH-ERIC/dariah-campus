@@ -22,8 +22,4 @@ export interface NavigationMenu {
 	children: Record<string, NavigationMenuItem>;
 }
 
-export type NavigationItem =
-	| NavigationAction
-	| NavigationLink
-	| NavigationSeparator
-	| NavigationMenu;
+export type NavigationItem = NavigationAction | NavigationLink | NavigationSeparator | NavigationMenu;

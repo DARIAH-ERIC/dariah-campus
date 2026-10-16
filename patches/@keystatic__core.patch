@@ -1,7 +1,36 @@
+diff --git a/dist/declarations/src/content-components.d.ts b/dist/declarations/src/content-components.d.ts
+index b3307a2f735fb445e6969a03ef5b00ddd7457eb0..383922ac52b5b64a8445098f92fb5033365c7b44 100644
+--- a/dist/declarations/src/content-components.d.ts
++++ b/dist/declarations/src/content-components.d.ts
+@@ -7,6 +7,14 @@ type WrapperComponentConfig<Schema extends Record<string, ComponentSchema>> = {
+     icon?: ReactElement;
+     schema: Schema;
+     forSpecificLocations?: boolean;
++    editChildrenIn?: 'inline' | 'modal';
++    /** Visible label for the rich text the component wraps, in the edit dialog. */
++    contentLabel?: string;
++    /**
++     * How many of the edit dialog's twelve columns each field of `schema` spans, in order. One span is
++     * required per field and the total must be a multiple of twelve.
++     */
++    layout?: number[];
+ } & ({
+     ContentView?: (props: {
+         value: ParsedValueForComponentSchema<ObjectField<Schema>>;
+@@ -17,6 +25,8 @@ type WrapperComponentConfig<Schema extends Record<string, ComponentSchema>> = {
+         value: ParsedValueForComponentSchema<ObjectField<Schema>>;
+         onChange(value: ParsedValueForComponentSchema<ObjectField<Schema>>): void;
+         onRemove(): void;
++        onEditChildren?(): void;
++        onSelect(): void;
+         isSelected: boolean;
+         children: ReactNode;
+     }) => ReactNode;
 diff --git a/dist/index-4767f7d9.js b/dist/index-4767f7d9.js
+index f5ec4804d44bcd3d32407281c0b69e980db7dbfe..17769be8bc94b31cda1a9bed29189b6f42216013 100644
 --- a/dist/index-4767f7d9.js
 +++ b/dist/index-4767f7d9.js
-@@ -19844,7 +19844,7 @@
+@@ -19844,7 +19844,7 @@ function FormValue(props) {
    } = useDialogContainer();
    return /*#__PURE__*/jsxs(Fragment, {
      children: [/*#__PURE__*/jsx(Content, {
@@ -10,7 +39,7 @@ diff --git a/dist/index-4767f7d9.js b/dist/index-4767f7d9.js
          id: formId,
          elementType: "form",
          onSubmit: event => {
-@@ -19859,10 +19859,10 @@
+@@ -19859,10 +19859,10 @@ function FormValue(props) {
          },
          direction: "column",
          gap: "xxlarge",
@@ -23,7 +52,7 @@ diff --git a/dist/index-4767f7d9.js b/dist/index-4767f7d9.js
        })
      }), /*#__PURE__*/jsxs(ButtonGroup, {
        children: [/*#__PURE__*/jsx(Button, {
-@@ -20139,26 +20139,113 @@
+@@ -20139,26 +20139,121 @@ function deserializeProps(node) {
      return false;
    }
  }
@@ -50,15 +79,22 @@ diff --git a/dist/index-4767f7d9.js b/dist/index-4767f7d9.js
 +          return true;
 +        });
 +      },
-+      children: childrenValue && /*#__PURE__*/jsx(Box, {
-+        border: "color.alias.borderIdle",
-+        borderRadius: "medium",
-+        overflow: "hidden",
-+        children: /*#__PURE__*/jsx(Editor, {
-+          value: childrenValue,
-+          onChange: setChildrenValue,
-+          "aria-label": `${props.component.label} content`
-+        })
++      children: childrenValue && /*#__PURE__*/jsxs(Flex, {
++        direction: "column",
++        gap: "medium",
++        children: [/*#__PURE__*/jsx(FieldLabel, {
++          elementType: "span",
++          children: props.component.contentLabel ?? `${props.component.label} content`
++        }), /*#__PURE__*/jsx(Box, {
++          border: "color.alias.borderIdle",
++          borderRadius: "medium",
++          overflow: "hidden",
++          children: /*#__PURE__*/jsx(Editor, {
++            value: childrenValue,
++            onChange: setChildrenValue,
++            "aria-label": props.component.contentLabel ?? `${props.component.label} content`
++          })
++        })]
 +      })
 +    })]
 +  });
@@ -76,7 +112,8 @@ diff --git a/dist/index-4767f7d9.js b/dist/index-4767f7d9.js
 +  const value = useDeserializedValue(props.node.attrs.props, props.component.schema);
 +  const schema = {
 +    kind: "object",
-+    fields: props.component.schema
++    fields: props.component.schema,
++    layout: props.component.layout
 +  };
 +  const editChildren = props.component.editChildrenIn === "modal";
 +  const NodeView = props.component.NodeView;
@@ -153,7 +190,7 @@ diff --git a/dist/index-4767f7d9.js b/dist/index-4767f7d9.js
      marginBlock: "1em",
      position: "relative",
      ...(props.hasNodeSelection ? {
-@@ -20172,175 +20259,61 @@
+@@ -20172,175 +20267,61 @@ function BlockWrapper(props) {
        }
      } : {})
    })}${props.hasNodeSelection ? ` ${classes.hideselection}` : ""}`;
@@ -382,7 +419,7 @@ diff --git a/dist/index-4767f7d9.js b/dist/index-4767f7d9.js
  }
  function getCustomNodeSpecs(components) {
    const componentNames = new Map(Object.keys(components).map((name, i) => [name, `component${i}`]));
-@@ -20430,26 +20403,11 @@
+@@ -20430,26 +20411,11 @@ function getCustomNodeSpecs(components) {
            component: function Block(props) {
              const runCommand = useEditorDispatchCommand();
              const value = useDeserializedValue(props.node.attrs.props, component.schema);
@@ -414,28 +451,8 @@ diff --git a/dist/index-4767f7d9.js b/dist/index-4767f7d9.js
                children: props.children
              }) : /*#__PURE__*/jsx(BlockWrapper, {
                node: props.node,
-diff --git a/dist/declarations/src/content-components.d.ts b/dist/declarations/src/content-components.d.ts
---- a/dist/declarations/src/content-components.d.ts
-+++ b/dist/declarations/src/content-components.d.ts
-@@ -7,6 +7,7 @@
-     icon?: ReactElement;
-     schema: Schema;
-     forSpecificLocations?: boolean;
-+    editChildrenIn?: 'inline' | 'modal';
- } & ({
-     ContentView?: (props: {
-         value: ParsedValueForComponentSchema<ObjectField<Schema>>;
-@@ -17,6 +18,8 @@
-         value: ParsedValueForComponentSchema<ObjectField<Schema>>;
-         onChange(value: ParsedValueForComponentSchema<ObjectField<Schema>>): void;
-         onRemove(): void;
-+        onEditChildren?(): void;
-+        onSelect(): void;
-         isSelected: boolean;
-         children: ReactNode;
-     }) => ReactNode;
 diff --git a/dist/keystatic-core-ui.js b/dist/keystatic-core-ui.js
-index 24d47136e7317bab8f460a8eab537a5bbd0072c0..364c640755c0e665d493703513745846b84d0b11 100644
+index 51149d2be2069d3c7a6f08110a850f51820666b4..43ac39df5398697ec1d848e7dc15149b527cf0bb 100644
 --- a/dist/keystatic-core-ui.js
 +++ b/dist/keystatic-core-ui.js
 @@ -1494,7 +1494,7 @@ function ForkRepoDialog(props) {

@@ -1,11 +1,9 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { wrapper } from "@keystatic/core/content-components";
 import { AppWindowIcon } from "lucide-react";
 
-import { EmbedPreview } from "@/lib/content/keystatic/components/embed/preview";
+import { EmbedPreview } from "#/lib/content/keystatic/components/embed/preview.tsx";
 
 export const createEmbed = createComponent((_paths, _locale) => {
 	return {

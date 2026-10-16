@@ -3,8 +3,8 @@
 import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { SourceCard } from "@/components/source-card";
-import { useMasonryLayout } from "@/lib/hooks/use-masonry-layout";
+import { SourceCard } from "#/components/source-card.tsx";
+import { useMasonryLayout } from "#/lib/hooks/use-masonry-layout.ts";
 
 interface SourcesGridProps {
 	sources: Array<{
@@ -25,33 +25,27 @@ export function SourcesGrid(props: Readonly<SourcesGridProps>): ReactNode {
 	if (columns != null) {
 		return (
 			<ul className="flex space-x-6">
-				{columns.map((sources, index) => {
-					return (
-						<div key={index} className="flex-1 space-y-6" role="presentation">
-							{sources.map((source) => {
-								return (
-									// eslint-disable-next-line jsx-a11y/no-redundant-roles
-									<li key={source.id} role="listitem">
-										<SourceCard {...source} />
-									</li>
-								);
-							})}
-						</div>
-					);
-				})}
+				{columns.map((sources, index) => (
+					<div key={index} className="flex-1 space-y-6" role="presentation">
+						{sources.map((source) => (
+							// oxlint-disable-next-line jsx-a11y/no-redundant-roles
+							<li key={source.id} role="listitem">
+								<SourceCard {...source} />
+							</li>
+						))}
+					</div>
+				))}
 			</ul>
 		);
 	}
 
 	return (
 		<ul className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-			{sources.map((source) => {
-				return (
-					<li key={source.id}>
-						<SourceCard {...source} />
-					</li>
-				);
-			})}
+			{sources.map((source) => (
+				<li key={source.id}>
+					<SourceCard {...source} />
+				</li>
+			))}
 		</ul>
 	);
 }

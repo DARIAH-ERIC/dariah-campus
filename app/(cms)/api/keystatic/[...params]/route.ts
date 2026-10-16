@@ -1,7 +1,7 @@
 import { makeRouteHandler } from "@keystatic/next/route-handler";
 
-import { config } from "@/lib/content/keystatic/config";
-import { rewriteUrl } from "@/lib/content/keystatic/utils/rewrite-url";
+import { config } from "#/lib/content/keystatic/config.ts";
+import { rewriteUrl } from "#/lib/content/keystatic/utils/rewrite-url.ts";
 
 const { GET: _GET, POST: _POST } = makeRouteHandler({ config });
 

@@ -8,7 +8,7 @@ import {
 	Tabs as AriaTabs,
 } from "react-aria-components";
 
-import { getChildrenElements } from "@/components/content/get-children-elements";
+import { getChildrenElements } from "#/components/content/get-children-elements.ts";
 
 interface TabsProps {
 	children: ReactNode;
@@ -21,7 +21,7 @@ export function Tabs(props: Readonly<TabsProps>): ReactNode {
 
 	return (
 		<AriaTabs className="my-4">
-			<AriaTabList className="my-4 flex flex-wrap items-center gap-x-4 border-b border-neutral-200">
+			<AriaTabList className="my-4 flex flex-wrap items-center gap-x-4 border-be border-neutral-200">
 				{tabs.map((tab, index) => {
 					const { title } = tab.props;
 
@@ -30,7 +30,7 @@ export function Tabs(props: Readonly<TabsProps>): ReactNode {
 					return (
 						<AriaTab
 							key={id}
-							className="-mb-px cursor-default border-b-2 border-transparent py-3 transition selected:border-current selected:font-bold"
+							className="-mbe-px cursor-default border-be-2 border-transparent py-3 transition selected:border-current selected:font-bold"
 							id={id}
 						>
 							{title}
@@ -55,9 +55,7 @@ export function Tabs(props: Readonly<TabsProps>): ReactNode {
 }
 
 interface TabProps {
-	// eslint-disable-next-line @eslint-react/no-unused-props
 	children: ReactNode;
-	// eslint-disable-next-line @eslint-react/no-unused-props
 	title: string;
 }
 

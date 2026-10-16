@@ -1,6 +1,6 @@
 /**
- * Since react 19, the global jsx namespace intentionally no longer points to react,
- * however not all of the ecosystem has caught up yet.
+ * Since react 19, the global jsx namespace intentionally no longer points to react, however not all of the ecosystem
+ * has caught up yet.
  */
 
 import type * as runtime from "react/jsx-runtime";
