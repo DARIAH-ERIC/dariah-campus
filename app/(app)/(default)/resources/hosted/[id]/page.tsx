@@ -296,7 +296,7 @@ export default async function HostedResourcePage(props: Readonly<HostedResourceP
 							}),
 						)}
 						collection={`resources-${resource.kind}`}
-						featuredImage={featuredImage}
+						featuredImage={currentSection == null || currentSection === sections[0] ? featuredImage : null}
 						href={resource.href}
 						id={resource.id}
 						isTranslationOf={isTranslationOf}
