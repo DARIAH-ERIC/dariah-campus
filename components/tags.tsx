@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
-import { Link } from "@/components/link";
-import { createSearchUrl } from "@/lib/navigation/create-search-url";
+import { Link } from "#/components/link.tsx";
 
 interface TagsProps {
 	label: ReactNode;
@@ -27,7 +26,7 @@ export function Tags(props: Readonly<TagsProps>): ReactNode {
 							<li key={id} className="inline leading-none">
 								<Link
 									className="transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-									href={createSearchUrl({ tags: [id] })}
+									href={`/topics/${id}`}
 								>
 									{name}
 								</Link>

@@ -1,17 +1,16 @@
 import { groupByToMap, keyByToMap } from "@acdh-oeaw/lib";
-import collection from "@content/curricula";
 
-import type { CollectionClient } from "@/lib/content/types";
+import type { CollectionClient } from "#/lib/content/types.ts";
+import collection from "#content/curricula";
 
-const byTagId = groupByToMap(Array.from(collection.values()), (entry) => {
-	return entry.document.metadata.tags;
-});
+const byTagId = groupByToMap(Array.from(collection.values()), (entry) => entry.document.metadata.tags);
 
 //
 
 const ids = Array.from(collection.keys());
 
 const all = Array.from(collection.values())
+	// oxlint-disable-next-line oxc/no-map-spread
 	.map((entry) => {
 		const href = `/curricula/${entry.document.id}`;
 
@@ -35,13 +34,10 @@ const all = Array.from(collection.values())
 			related,
 		};
 	})
-	.sort((a, z) => {
-		return z.metadata["publication-date"].localeCompare(a.metadata["publication-date"]);
-	});
+	// oxlint-disable-next-line unicorn/no-array-sort
+	.sort((a, z) => z.metadata["publication-date"].localeCompare(a.metadata["publication-date"]));
 
-const byId = keyByToMap(all, (item) => {
-	return item.id;
-});
+const byId = keyByToMap(all, (item) => item.id);
 
 export type Curriculum = (typeof all)[number];
 

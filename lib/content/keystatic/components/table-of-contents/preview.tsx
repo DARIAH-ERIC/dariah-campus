@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-literals */
-
 import type { ReactNode } from "react";
 
 interface TableOfContentsPreviewProps {

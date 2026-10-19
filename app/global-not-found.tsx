@@ -4,15 +4,15 @@ import { useMessages, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { DocumentBody } from "@/app/_components/document-body";
-import { HtmlDocument } from "@/app/_components/html-document";
-import { Providers } from "@/app/_components/providers";
-import { Main } from "@/components/main";
-import { PageTitle } from "@/components/page-title";
-import { defaultLocale } from "@/lib/i18n/locales";
-import { getMetadata } from "@/lib/i18n/metadata";
+import { DocumentBody } from "#/app/_components/document-body.tsx";
+import { HtmlDocument } from "#/app/_components/html-document.tsx";
+import { Providers } from "#/app/_components/providers.tsx";
+import { Main } from "#/components/main.tsx";
+import { PageTitle } from "#/components/page-title.tsx";
+import { defaultLocale } from "#/lib/i18n/locales.ts";
+import { getMetadata } from "#/lib/i18n/metadata.ts";
 
-export { viewport } from "@/app/_lib/viewport.config";
+export { viewport } from "#/app/_lib/viewport.config.ts";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("GlobalNotFoundPage");
@@ -42,7 +42,7 @@ export default function GlobalNotFoundPage(): ReactNode {
 		<HtmlDocument locale={locale}>
 			<DocumentBody>
 				<Providers locale={locale} messages={pick(messages, ["GlobalNotFoundPage"])}>
-					<Main className="grid min-h-[calc(100dvh-100px)] place-content-center place-items-center">
+					<Main className="grid place-content-center place-items-center min-block-[calc(100dvh-100px)]">
 						<PageTitle>{t("title")}</PageTitle>
 					</Main>
 				</Providers>

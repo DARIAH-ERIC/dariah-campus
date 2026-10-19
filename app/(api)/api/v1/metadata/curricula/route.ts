@@ -1,26 +1,16 @@
 import { type NextRequest, NextResponse } from "next/server";
 import * as v from "valibot";
 
-import _curricula from "@/public/metadata/legacy/curricula.json";
+import _curricula from "#/public/metadata/legacy/curricula.json";
 
 const { curricula } = _curricula;
 
 const searchParamsInputSchema = v.object({
 	limit: v.nullish(
-		v.pipe(
-			v.string(),
-			v.transform(Number),
-			v.number(),
-			v.integer(),
-			v.minValue(1),
-			v.maxValue(250),
-		),
+		v.pipe(v.string(), v.transform(Number), v.number(), v.integer(), v.minValue(1), v.maxValue(250)),
 		"100",
 	),
-	offset: v.nullish(
-		v.pipe(v.string(), v.transform(Number), v.number(), v.integer(), v.minValue(0)),
-		"0",
-	),
+	offset: v.nullish(v.pipe(v.string(), v.transform(Number), v.number(), v.integer(), v.minValue(0)), "0"),
 });
 
 export function GET(request: NextRequest): NextResponse {

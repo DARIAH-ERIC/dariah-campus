@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
-import { Link } from "@/components/link";
-import { createSearchUrl } from "@/lib/navigation/create-search-url";
+import { Link } from "#/components/link.tsx";
 
 interface TagsListProps {
 	label: ReactNode;
@@ -11,7 +10,9 @@ interface TagsListProps {
 export function TagsList(props: Readonly<TagsListProps>): ReactNode {
 	const { label, tags } = props;
 
-	if (tags.length === 0) return null;
+	if (tags.length === 0) {
+		return null;
+	}
 
 	return (
 		<div className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
@@ -25,7 +26,7 @@ export function TagsList(props: Readonly<TagsListProps>): ReactNode {
 							<li key={id} className="inline list-none">
 								<Link
 									className="transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
-									href={createSearchUrl({ tags: [id] })}
+									href={`/topics/${id}`}
 								>
 									{name}
 								</Link>

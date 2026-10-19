@@ -14,8 +14,8 @@ import {
 	TwitterIcon,
 	WebsiteIcon,
 	YouTubeIcon,
-} from "@/components/social-media-icons";
-import type { SocialMediaKind } from "@/lib/content/options";
+} from "#/components/social-media-icons.tsx";
+import type { SocialMediaKind } from "#/lib/content/options.ts";
 
 const logos: Record<SocialMediaKind, FC<{ className?: string }>> = {
 	bluesky: BlueskyIcon,
@@ -41,7 +41,9 @@ interface SocialMediaListProps {
 export function SocialMediaList(props: Readonly<SocialMediaListProps>): ReactNode {
 	const { label, social } = props;
 
-	if (social.length === 0) return null;
+	if (social.length === 0) {
+		return null;
+	}
 
 	return (
 		<div className="flex flex-col gap-y-1.5 text-sm text-neutral-500">
@@ -59,7 +61,7 @@ export function SocialMediaList(props: Readonly<SocialMediaListProps>): ReactNod
 									className="transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 									href={value}
 								>
-									<Logo aria-hidden={true} className="inline size-5 text-neutral-500" />
+									<Logo aria-hidden={true} className="inline text-neutral-500 block-5 inline-5" />
 									<span className="sr-only">{discriminant}</span>
 								</a>
 							</li>

@@ -1,26 +1,41 @@
 {
-	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": "@acdh-oeaw/tsconfig",
+	"$schema": "https://www.schemastore.org/tsconfig",
 	"compilerOptions": {
+		"allowArbitraryExtensions": true,
+		"allowImportingTsExtensions": true,
+		"allowJs": false,
+		"erasableSyntaxOnly": true,
+		"incremental": true,
+		"isolatedModules": true,
 		"jsx": "react-jsx",
+		"lib": ["dom", "esnext"],
+		"module": "preserve",
+		"moduleDetection": "force",
+		"noEmit": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitReturns": true,
+		"noPropertyAccessFromIndexSignature": false,
+		"noUncheckedIndexedAccess": true,
 		"paths": {
 			"@/*": ["./*"],
-			"@content/*": ["./.content/generated/*"]
+			"#/*": ["./*"],
+			"#content/*": ["./.content/generated/*"]
 		},
-		"plugins": [{ "name": "next" }]
+		"plugins": [{ "name": "next" }],
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "esnext",
+		"types": ["node", "react", "react-dom"],
+		"verbatimModuleSyntax": true
 	},
 	"include": [
-		"./next-env.d.ts",
-		"./**/*.js",
-		// "./**/*.mdx",
-		"./**/*.ts",
-		"./**/*.tsx",
-		"./types/**/*.d.ts",
-		".next/types/**/*.ts"
+		"types/**/*.d.ts",
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		".next/dev/types/**/*.ts"
 	],
-	"exclude": [".content", ".next", "content", "node_modules", "out", "public"],
-	"mdx": {
-		"checkMdx": false,
-		"plugins": ["remark-frontmatter", "remark-gfm"]
-	}
+	"exclude": [".content/", "content/", "dist/", "node_modules/", "out/", "public/"]
 }
