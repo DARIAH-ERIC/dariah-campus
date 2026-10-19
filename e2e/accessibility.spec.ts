@@ -204,4 +204,69 @@ test.describe("accessibility", () => {
 
 		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
 	});
+
+	/**
+	 * Ordering keeps every item's control while it moves, marks the items in place once checked, and reports each move
+	 * through a live region - each of which is a chance to get the accessible names and roles wrong.
+	 */
+	test("has no violations with ordering items moved and checked", async ({ page }) => {
+		const quiz = page.getByRole("complementary").filter({
+			has: page.getByRole("button", { name: "Clone the repository" }),
+		});
+
+		await quiz.getByRole("button", { name: "Commit a change, position 3 of 3. Choose a position." }).click();
+		await page.getByRole("menuitem", { name: "Position 2" }).click();
+
+		await quiz.getByRole("button", { exact: true, name: "Check" }).click();
+
+		await expect(
+			quiz.getByRole("button", { name: "Commit a change, position 2 of 3. Correct. Choose a position." }),
+		).toBeVisible();
+
+		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+
+	/** Every item offers its positions through a menu, which is the path keyboard and touch users take. */
+	test("has no violations in an open ordering item menu", async ({ page }) => {
+		const quiz = page.getByRole("complementary").filter({
+			has: page.getByRole("button", { name: "Clone the repository" }),
+		});
+
+		await quiz.getByRole("button", { name: "Push to the remote, position 2 of 3. Choose a position." }).click();
+
+		await expect(
+			page.getByRole("menu", { name: "Push to the remote, position 2 of 3. Choose a position." }),
+		).toBeVisible();
+
+		const violations = await getViolations(page, menuSelector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
+
+	/**
+	 * Ordered matching has every state of image drop zones plus a movable zone: a menu button inside a group, a position
+	 * that is marked in place or not, and a live region reporting each move.
+	 */
+	test("has no violations with ordered zones moved and checked", async ({ page }) => {
+		const quiz = page.getByRole("complementary").filter({
+			has: page.getByRole("group", { name: "Access the Cloud" }),
+		});
+
+		await quiz.getByRole("button", { name: "Single Entry Point. Choose a zone." }).click();
+		await page.getByRole("menuitem", { name: "Access the Cloud" }).click();
+		await quiz.getByRole("button", { name: "Access the Cloud, position 2 of 3. Choose a position." }).click();
+		await page.getByRole("menuitem", { name: "Position 1" }).click();
+
+		await quiz.getByRole("button", { exact: true, name: "Check" }).click();
+
+		await expect(
+			quiz.getByRole("button", { name: "Access the Cloud, position 1 of 3. Correct. Choose a position." }),
+		).toBeVisible();
+
+		const violations = await getViolations(page, selector, { runOnly: { type: "tag", values: tags } });
+
+		expect(getViolationIds(violations), formatViolations(violations).join("\n")).toStrictEqual(knownViolations);
+	});
 });

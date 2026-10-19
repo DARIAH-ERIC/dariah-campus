@@ -13,7 +13,7 @@ export function LanguageBlockPreview(props: Readonly<LanguageBlockPreviewProps>)
 	const direction = getTextDirection(lang);
 
 	return (
-		<div className={direction === "rtl" ? "text-end" : "text-start"} dir={direction} lang={lang}>
+		<div className="text-start" dir={direction} lang={lang}>
 			{children}
 		</div>
 	);

@@ -5,6 +5,7 @@ import { VFile } from "vfile";
 import { reader } from "#/lib/content/keystatic/reader.ts";
 import { type CompileOptions, compile } from "#/lib/content/mdx/compile.ts";
 import {
+	createContentSectionsPlugin,
 	createCustomHeadingIdsPlugin,
 	createHeadingIdsPlugin,
 	createIframeTitlesPlugin,
@@ -39,6 +40,7 @@ const compileOptions: CompileOptions = {
 		createImageSizesPlugin(["CarouselItem", "Figure", "ImageLayer", "VideoCard"]),
 		createMermaidDiagramsPlugin(),
 		createSyntaxHighlighterPlugin(),
+		createContentSectionsPlugin(),
 		createTableOfContentsPlugin(),
 		createUnwrappedMdxFlowContentPlugin(["LinkButton"]),
 	],
@@ -60,6 +62,7 @@ export const resourcesPathfinders = createCollection({
 		const output = await compile(input, compileOptions);
 		const module = context.createJavaScriptImport<MDXContent>(String(output));
 		const tableOfContents = output.data.tableOfContents;
+		const sections = output.data.sections ?? [];
 		const featuredImage =
 			metadata["featured-image"] != null ? await getImageDimensions(metadata["featured-image"]) : null;
 
@@ -71,6 +74,7 @@ export const resourcesPathfinders = createCollection({
 				"content-type": "pathfinder" as const,
 				"featured-image": featuredImage,
 			},
+			sections,
 			tableOfContents,
 		};
 	},

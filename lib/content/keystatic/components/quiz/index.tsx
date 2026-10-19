@@ -6,6 +6,8 @@ import { MessageCircleQuestionIcon } from "lucide-react";
 import { createQuizDragTheWords } from "#/lib/content/keystatic/components/drag-the-words/index.tsx";
 import { createQuizFillInTheBlank } from "#/lib/content/keystatic/components/fill-in-the-blank/index.tsx";
 import { createQuizImageDropZones } from "#/lib/content/keystatic/components/image-drop-zones/index.tsx";
+import { createQuizMatching } from "#/lib/content/keystatic/components/matching/index.tsx";
+import { createQuizOrdering } from "#/lib/content/keystatic/components/ordering/index.tsx";
 import {
 	QuizChoiceAnswerErrorMessagePreview,
 	QuizChoiceAnswerLabelPreview,
@@ -25,11 +27,21 @@ export const createQuiz = createComponent((paths, locale) => {
 		...createQuizImageDropZones(paths, locale),
 		...createQuizDragTheWords(paths, locale),
 		...createQuizFillInTheBlank(paths, locale),
+		...createQuizMatching(paths, locale),
+		...createQuizOrdering(paths, locale),
 		Quiz: repeating({
 			label: "Quiz",
 			description: "An interactive quiz.",
 			icon: <MessageCircleQuestionIcon />,
-			children: ["QuizChoice", "QuizImageHotspots", "QuizFillInTheBlank", "QuizDragTheWords", "QuizImageDropZones"],
+			children: [
+				"QuizChoice",
+				"QuizImageHotspots",
+				"QuizFillInTheBlank",
+				"QuizDragTheWords",
+				"QuizImageDropZones",
+				"QuizMatching",
+				"QuizOrdering",
+			],
 			schema: {},
 			ContentView(props) {
 				const { children } = props;

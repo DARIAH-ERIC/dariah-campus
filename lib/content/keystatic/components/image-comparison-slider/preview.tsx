@@ -9,13 +9,15 @@ import { type ReactNode, useCallback, useState } from "react";
 interface ImageComparisonSliderPreviewProps {
 	children?: ReactNode;
 	left: UseObjectUrlParams | null;
+	leftAlt?: string;
 	/** @default "horizontal" */
 	orientation?: "horizontal" | "vertical";
 	right: UseObjectUrlParams | null;
+	rightAlt?: string;
 }
 
 export function ImageComparisonSliderPreview(props: Readonly<ImageComparisonSliderPreviewProps>): ReactNode {
-	const { children, left: _left, orientation = "horizontal", right: _right } = props;
+	const { children, left: _left, leftAlt = "", orientation = "horizontal", right: _right, rightAlt = "" } = props;
 
 	const left = useObjectUrl(_left) ?? undefined;
 	const right = useObjectUrl(_right) ?? undefined;
@@ -74,7 +76,7 @@ export function ImageComparisonSliderPreview(props: Readonly<ImageComparisonSlid
 			>
 				{/* oxlint-disable-next-line @next/next/no-img-element */}
 				<img
-					alt=""
+					alt={leftAlt}
 					className={cn(
 						"object-cover select-none [grid-area:1/-1] block-full! inline-full! max-block-[min(60vh,32rem)]",
 						orientation === "vertical" ? "rounded-t" : "rounded-s",
@@ -90,7 +92,7 @@ export function ImageComparisonSliderPreview(props: Readonly<ImageComparisonSlid
 				/>
 				{/* oxlint-disable-next-line @next/next/no-img-element */}
 				<img
-					alt=""
+					alt={rightAlt}
 					className={cn(
 						"object-cover select-none [grid-area:1/-1] block-full! inline-full! max-block-[min(60vh,32rem)]",
 						orientation === "vertical" ? "rounded-b" : "rounded-e",
