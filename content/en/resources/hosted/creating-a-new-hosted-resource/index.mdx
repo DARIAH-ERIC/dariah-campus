@@ -85,8 +85,6 @@ It is likely that you might have some footnotes that you want to add to your res
   Use an Info 'callout' like this to highlight some specific information that you want to stick in people's minds.
 </Callout>
 
-
-
 ### Second Subheading: Making Use of the Widgets!
 
 There are several widget options from the widget dropdown menu at the very end of the formatting bar.  The various widget options are demonstrated here.  Again, you can find out how to use these widgets in our <Link link={{"discriminant":"documentation","value":{"id":"introduction-to-the-dariah-campus-content-management-system"}}}>'Introduction to the DARIAH-Campus Content Management System' documentation.</Link>
@@ -344,6 +342,68 @@ Use the 'Image Dropzone Quiz' to allow learners to drag word-tiles into a 'dropz
     </QuizImageDropZone>
   </QuizImageDropZones>
 </Quiz>
+
+### Matching Quiz
+
+<Quiz>
+  <QuizMatching orderedZones={false} distractors={[{"label":"Pink Lemonade"},{"label":"Obsidian"}]} instantFeedback>
+    <QuizQuestion>
+      Match the items to their colours
+    </QuizQuestion>
+
+    <QuizMatchingZone label="Red" items={[{"label":"Roses"},{"label":"Strawberries"},{"label":"Raspberries"}]}>
+      These are all items that are red!
+    </QuizMatchingZone>
+
+    <QuizMatchingZone label="Blue" items={[{"label":"Sky"},{"label":"Sea"}]}>
+      These are items that are blue!
+    </QuizMatchingZone>
+
+    <QuizMatchingZone label="Green" items={[{"label":"Grass"},{"label":"Snooker Table Covers"},{"label":"Oxidised Copper"}]}>
+      These are all items that are green!
+    </QuizMatchingZone>
+
+    <QuizMatchingZone label="Yellow" items={[{"label":"Custard"},{"label":"Sun"},{"label":"Buttercups"}]}>
+      These are all things that are yellow!
+    </QuizMatchingZone>
+  </QuizMatching>
+</Quiz>
+
+### Ordering Quiz
+
+<Quiz>
+  <QuizOrdering instantFeedback={false}>
+    <QuizQuestion>
+      Put these items in the correct order
+    </QuizQuestion>
+
+    <QuizOrderingItem label="Spring">
+      New birth, daffodils, rainy showers
+    </QuizOrderingItem>
+
+    <QuizOrderingItem label="Summer">
+      Beaches, ice cream, suntan lotion
+    </QuizOrderingItem>
+
+    <QuizOrderingItem label="Autumn">
+      Orange leaves, windy weather, put on a jumper!
+    </QuizOrderingItem>
+
+    <QuizOrderingItem label="Winter">
+      Frosty mornings, snowmen, gloves and scarves
+    </QuizOrderingItem>
+  </QuizOrdering>
+</Quiz>
+
+
+
+
+
+
+
+
+
+
 
 ## Tabs
 
