@@ -27,7 +27,10 @@ import { getMetadata } from "#/lib/i18n/metadata.ts";
 import { createFullUrl } from "#/lib/navigation/create-full-url.ts";
 import { pickRandom } from "#/lib/utils/pick-random.ts";
 
-interface PathfinderResourcePageProps extends PageProps<"/resources/pathfinders/[id]"> {}
+/** Also renders sections other than the first one, via `[section]/page.tsx`. */
+interface PathfinderResourcePageProps {
+	params: Promise<{ id: string; section?: string }>;
+}
 
 export async function generateStaticParams(): Promise<
 	Array<Pick<Awaited<PathfinderResourcePageProps["params"]>, "id">>
@@ -105,11 +108,11 @@ export async function generateMetadata(props: Readonly<PathfinderResourcePagePro
 }
 
 export default async function PathfinderResourcePage(props: Readonly<PathfinderResourcePageProps>): Promise<ReactNode> {
-	const { params, searchParams } = props;
+	const { params } = props;
 
 	const t = await getTranslations("PathfinderResourcePage");
 
-	const { id: _id } = await params;
+	const { id: _id, section: _section } = await params;
 	const id = decodeURIComponent(_id);
 
 	const client = await createClient();
@@ -140,13 +143,12 @@ export default async function PathfinderResourcePage(props: Readonly<PathfinderR
 	const tableOfContents = resource.tableOfContents;
 	const related = pickRandom(Array.from(resource.related), 4);
 
-	/**
-	 * Only resources which are actually split up into sections read search params, so every other resource is still
-	 * prerendered.
-	 */
 	const sections = resource.sections;
-	const currentSection = sections.length > 1 ? getCurrentContentSection(sections, (await searchParams).section) : null;
-	const headingSections = currentSection != null ? getHeadingSections(sections) : undefined;
+	const currentSection = getCurrentContentSection(
+		sections,
+		_section != null ? decodeURIComponent(_section) : undefined,
+	);
+	const headingSections = currentSection != null ? getHeadingSections(resource.href, sections) : undefined;
 
 	async function getTranslationMetadata(id: string) {
 		const resource = await client.collections.resources.get(id);
@@ -321,7 +323,7 @@ export default async function PathfinderResourcePage(props: Readonly<PathfinderR
 							/>
 						</div>
 						{currentSection != null ? (
-							<ContentSectionNavigation currentSectionId={currentSection.id} sections={sections} />
+							<ContentSectionNavigation currentSectionId={currentSection.id} href={resource.href} sections={sections} />
 						) : null}
 					</Resource>
 					<div className="mx-auto mbs-12 flex flex-col gap-y-12 border-bs border-neutral-200 pbs-12 text-sm text-neutral-500 inline-full max-inline-(--size-content) xl:hidden">
