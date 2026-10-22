@@ -5,6 +5,7 @@ import type { MetadataRoute } from "next";
 
 import { env } from "#/configs/env.config.ts";
 import { client } from "#/lib/content/client/index.ts";
+import { getContentSectionHrefs } from "#/lib/content/utils/get-content-sections.ts";
 import { createFullUrl } from "#/lib/navigation/create-full-url.ts";
 
 const baseUrl = env.NEXT_PUBLIC_APP_PRODUCTION_BASE_URL;
@@ -45,6 +46,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
 	(await client.collections.resources.all()).map((resource) => {
 		routes.push(resource.href);
+
+		if ("sections" in resource) {
+			routes.push(...getContentSectionHrefs(resource.href, resource.sections));
+		}
 	});
 	(await client.collections.curricula.all()).map((curriculum) => {
 		routes.push(curriculum.href);
@@ -60,6 +65,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	});
 	(await client.collections.documentation.all()).map((page) => {
 		routes.push(page.href);
+		routes.push(...getContentSectionHrefs(page.href, page.sections));
 	});
 
 	const entries = routes.map((pathname) => {
