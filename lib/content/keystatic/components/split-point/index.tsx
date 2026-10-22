@@ -16,7 +16,7 @@ export const createSplitPoint = createComponent((_paths, _locale) => {
 				id: fields.text({
 					label: "ID",
 					description:
-						'Identifies the section in the page url, e.g. "?section=getting-started". Generated when left empty, but then changes whenever a section is inserted before it.',
+						'Identifies the section in the page url, e.g. "/getting-started". Generated when left empty, but then changes whenever a section is inserted before it.',
 					validation: { isRequired: false, pattern: validation.urlSlugOptional },
 				}),
 			},

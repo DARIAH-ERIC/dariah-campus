@@ -14,7 +14,10 @@ import { client } from "#/lib/content/client/index.ts";
 import { createClient } from "#/lib/content/create-client.ts";
 import { getCurrentContentSection, getHeadingSections } from "#/lib/content/utils/get-content-sections.ts";
 
-interface DocumentationPageProps extends PageProps<"/documentation/[id]"> {}
+/** Also renders sections other than the first one, via `[section]/page.tsx`. */
+interface DocumentationPageProps {
+	params: Promise<{ id: string; section?: string }>;
+}
 
 export async function generateStaticParams(): Promise<Array<Pick<Awaited<DocumentationPageProps["params"]>, "id">>> {
 	const ids = await client.collections.documentation.ids();
@@ -48,11 +51,11 @@ export async function generateMetadata(props: Readonly<DocumentationPageProps>):
 }
 
 export default async function DocumentationPage(props: Readonly<DocumentationPageProps>): Promise<ReactNode> {
-	const { params, searchParams } = props;
+	const { params } = props;
 
 	const t = await getTranslations("DocumentationPage");
 
-	const { id: _id } = await params;
+	const { id: _id, section: _section } = await params;
 	const id = decodeURIComponent(_id);
 
 	const client = await createClient();
@@ -69,10 +72,12 @@ export default async function DocumentationPage(props: Readonly<DocumentationPag
 
 	const docs = await client.collections.documentation.all();
 
-	/** Only pages which are actually split up into sections read search params, so every other page is still prerendered. */
 	const sections = page.sections;
-	const currentSection = sections.length > 1 ? getCurrentContentSection(sections, (await searchParams).section) : null;
-	const headingSections = currentSection != null ? getHeadingSections(sections) : undefined;
+	const currentSection = getCurrentContentSection(
+		sections,
+		_section != null ? decodeURIComponent(_section) : undefined,
+	);
+	const headingSections = currentSection != null ? getHeadingSections(page.href, sections) : undefined;
 
 	return (
 		<div>
@@ -148,7 +153,7 @@ export default async function DocumentationPage(props: Readonly<DocumentationPag
 							</article>
 						</div>
 						{currentSection != null ? (
-							<ContentSectionNavigation currentSectionId={currentSection.id} sections={sections} />
+							<ContentSectionNavigation currentSectionId={currentSection.id} href={page.href} sections={sections} />
 						) : null}
 					</div>
 				</div>
