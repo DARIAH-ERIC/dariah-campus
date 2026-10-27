@@ -44,8 +44,6 @@ After completing this training resource, learners should be able to:
 
 This module is accompanied by examples, reflexive activities and concrete use cases related to multilingual projects.
 
-
-
 ## 1. Know the Strategies, Tools and Standards to manage Multilingual Research Data
 
 **Introductory context**
@@ -58,21 +56,50 @@ In the following, we give main recommendations for which sources for web identif
 
 [Wikimedia tools](https://en.wikipedia.org/wiki/Wikimedia_movement#Content_projects) are interoperable and multilingual from the start, enabling the integration of researchers' content and data in the semantic web to expand research impact beyond Academia.
 
-[MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) is a multilingual documentation platform with advanced collaborative features that is used by Wikipedia and the other Wikimedia tools.
-
-Wikibase is a set of MediaWiki extensions that enables the use of semantically organized data. This suite supports the [Wikidata](http://wikidata.org/) platform.&#x20;
-
-<Figure src="/assets/content/assets/en/resources/hosted/multilinguality-from-research-data-management-to-publishing/wikidata-logo.svg.png" alt="Wikidata logo" alignment="stretch">
-
-</Figure>
-
-It can also be used by researchers with no maintenance costs in a [cloud service](https://www.wikibase.cloud/). Researchers may create Wikibase.cloud service instances to host their own documentation and data and connect it to Wikidata, functioning as an indexer hub, enabling federated queries with organizations like GLAM (Galleries, Libraries, Archives and Museums) institutions ([GLAM cultural heritage](https://en.wikipedia.org/wiki/GLAM_\(cultural_heritage\))).
-
 <Figure src="/assets/content/assets/en/resources/hosted/multilinguality-from-research-data-management-to-publishing/wikimedia-logo.svg.png" alt="Wikimedia logo" alignment="center">
 
 </Figure>
 
+[MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) is a multilingual documentation platform with advanced collaborative features that is used by Wikipedia and the other Wikimedia tools.
+
+Wikibase is a set of MediaWiki extensions that enables the use of semantically organized data. This suite supports the [Wikidata](http://wikidata.org/) platform.&#x20;
+
+It can also be used by researchers with no maintenance costs in a [cloud service](https://www.wikibase.cloud/). Researchers may create Wikibase.cloud service instances to host their own documentation and data and connect it to Wikidata, functioning as an indexer hub, enabling federated queries with organizations like GLAM (Galleries, Libraries, Archives and Museums) institutions ([GLAM cultural heritage](https://en.wikipedia.org/wiki/GLAM_\(cultural_heritage\))).
+
+<Figure src="/assets/content/assets/en/resources/hosted/multilinguality-from-research-data-management-to-publishing/paris-orsay-museum-inside-overview.jpeg" alt="Interior view of the Musée d'Orsay in Paris" alignment="stretch">
+
+</Figure>
+
+Wikisource is the digital library for hosting texts in public domain and creative commons licences. It integrates powerful OCR (Optical Character Recognition) and HTR (Handwritten Text Recognition)  tools (free credits within Wikisource) to enable digital publishing and content linking.
+
+[Wikipedia](https://www.wikipedia.org/) uses an encyclopedic, simpler language and may be used to reference researchers publications. An interesting academic extension activity is to promote editathons in the language of target communities and reach wider publics.
 
 
 
+#### Set of recommendations and examples
+
+1. Use a database solution that provides a multilingual user interface
+
+[Wikibase](https://marketplace.sshopencloud.eu/tool-or-service/ETC9Ld) is a set of extensions to MediaWiki, which is available in 215 languages. [Translations are crowdsourced](https://translatewiki.net/), you can contribute. To learn more about Wikibase, visit [DHwiki Wikibase](https://marketplace.sshopencloud.eu/tool-or-service/tuV3dg). Wikibase supports URI natively, in a way that users see entity labels in their preferred language, while, under the hood, the entity is represented by a web identifier, which is the same for all its labels, in all available languages.
+
+2. Do not use literal values (names) for representing entities, and make use of established Linked Data identifiers instead.&#x20;
+
+Choose identifiers that lead to human readable labels in multiple languages. [CESSDA](https://marketplace.sshopencloud.eu/tool-or-service/TxIgnX) (Consortium of European Social Science Data Archives) lists vocabularies that contain such multilingual identifiers. A general source for multilingually labelled identifiers for entities of all domains is Wikidata. 
+
+**Examples:**
+
+* Instead of “Edinburgh”, use [http://www.wikidata.org/entity/Q23436](http://www.wikidata.org/entity/Q23436) or [https://www.geonames.org/2650225](https://www.geonames.org/2650225) 
+* Instead of a literal like “nominative”, or items in a Linked Data vocabulary that has no multilingual labels for most of the entities it describes (see [LexInfo](http://www.lexinfo.net/ontology/3.0/lexinfo#nominativeCase)), use [http://www.wikidata.org/entity/Q131105](http://www.wikidata.org/entity/Q131105) or [http://www.lexinfo.net/ontology/3.0/lexinfo#nominativeCase](http://www.lexinfo.net/ontology/3.0/lexinfo#nominativeCase)
+* Instead of “Torre di Pisa”, use [http://www.wikidata.org/entity/Q39054](http://www.wikidata.org/entity/Q39054) or [https://www.geonames.org/6269273](https://www.geonames.org/6269273)
+* Instead of “The Buddha” use [http://www.wikidata.org/entity/Q9441](http://www.wikidata.org/entity/Q9441), instead of “Angela Davis” use [https://www.wikidata.org/wiki/Q160456](https://www.wikidata.org/wiki/Q160456) (or [https://viaf.org/viaf/108895419](https://viaf.org/viaf/108895419)) 
+* For subject headings or content-describing keywords, instead of an English-centered vocabulary like LCSH, use Wikidata (e.g. “Archaeology”, [http://www.wikidata.org/entity/Q23498](http://www.wikidata.org/entity/Q23498) (see [in LCSH](https://id.loc.gov/authorities/subjects/sh85006507.html))
+* For dates and time spans, use Wikidata (e.g. “20th century”: [http://www.wikidata.org/entity/Q6927](http://www.wikidata.org/entity/Q6927)), or PeriodO ([https://perio.do/en/](https://perio.do/en/))
+* Not only for entities like the above, but also for a property or “relation”, instead of “born in” or “has birthplace” or a Linked Data vocabulary that has no multilingual labels (see this property e.g. [in schema.org](https://schema.org/birthPlace)) use [http://www.wikidata.org/entity/P19](http://www.wikidata.org/entity/P19)
+
+3. Using URI (identifiers on the web) instead of literal values will, by the way, make your dataset ready for [Linked Data](https://www.wikidata.org/wiki/Q515701).
+
+For sharing your research data as [Five-Star Open Data](https://5stardata.info), you should use W3C-recommended ontologies for modeling your data. For example, for lexical data, you would use [Ontolex-Lemon](https://en.wikipedia.org/wiki/OntoLex).
+
+4. If a Wikidata entity misses a label in one of the languages you want to cover, just add it to Wikidata, so that it becomes available for everyone.
+5. If you have a dataset containing literal values, you can use [OpenRefine](https://marketplace.sshopencloud.eu/tool-or-service/hpBfcf) for finding the corresponding identifiers, e.g. in Wikidata.
 
