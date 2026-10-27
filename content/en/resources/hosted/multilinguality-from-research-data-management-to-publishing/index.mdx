@@ -74,8 +74,6 @@ Wikisource is the digital library for hosting texts in public domain and creativ
 
 [Wikipedia](https://www.wikipedia.org/) uses an encyclopedic, simpler language and may be used to reference researchers publications. An interesting academic extension activity is to promote editathons in the language of target communities and reach wider publics.
 
-
-
 #### Set of recommendations and examples
 
 1. Use a database solution that provides a multilingual user interface
@@ -102,4 +100,58 @@ For sharing your research data as [Five-Star Open Data](https://5stardata.info),
 
 4. If a Wikidata entity misses a label in one of the languages you want to cover, just add it to Wikidata, so that it becomes available for everyone.
 5. If you have a dataset containing literal values, you can use [OpenRefine](https://marketplace.sshopencloud.eu/tool-or-service/hpBfcf) for finding the corresponding identifiers, e.g. in Wikidata.
+
+
+
+### 1.2 CLARIN Open Source tools for Multilingual Text Analysis
+
+The Common Language Resources and Technology Infrastructure (CLARIN) platform is a digital research infrastructure that provides language data, tools, and services for researchers in the humanities and social sciences following FAIR principles. This platform is multilingual and supports low-resource and underrepresented languages. It maps Natural Language Processing tools to support text and analysis (e.g., Part of Speech, Named Entity Recognition, Open Large Language Models, dictionaries, parallel corpora). It actively supports projects like[ ](https://www.clarin.eu/content/industry-and-beyond)[LLMs4EU](https://www.llms4eu.eu/) to build open multilingual Artificial Intelligence models for underrepresented European languages.
+
+The[ Language Resource Switchboard](https://switchboard.clarin.eu/) is the CLARIN tool that enables the language detection of uploaded resources and lists all compatible NLP tools available in the CLARIN repository.
+
+The [Virtual Language Observatory](https://vlo.clarin.eu) (VLO) enables researchers to explore linguistic resources, services and tools available within CLARIN and related communities. Its aim is to provide an easy-to-use interface, allowing for a uniform search and discovery process for a large number of resources from a wide variety of domains and providers. 
+
+## 2. Plan Multilingual Research Data
+
+**Introductory context**
+
+Making research data multilingual contributes to the implementation of the FAIR principles and supports more inclusive, accessible and equitable research practices. 
+
+Research data are not produced in a linguistically neutral environment. Throughout the research lifecycle, researchers make decisions about which languages to use when formulating research questions, engaging with participants, collecting and interpreting data, collaborating with others, documenting research processes and sharing results. These decisions can influence not only how research data are communicated, but also how knowledge is produced, understood, recognised and reused.
+
+Language is therefore not simply a means of accessing research data; it can also shape what those data mean, how they are interpreted and whose knowledge is represented.
+
+For example, when data are collected in one language but analysed or documented in another, certain concepts, categories or culturally specific meanings may be transformed, simplified or lost through translation. Similarly, the decision to describe a dataset exclusively in English may increase its visibility within international academic infrastructures while limiting its discoverability and usability among the communities from which the data originated.
+
+This highlights the importance of considering the linguistic dimensions of research data throughout their lifecycle, rather than treating multilingualism solely as a matter of dissemination.
+
+Planning multilingual research data also means recognising that language choices are shaped by institutional expectations, disciplinary conventions, available resources and unequal relations of linguistic power. Not all languages enjoy the same levels of visibility, technological support or recognition within research environments. Consequently, decisions about which languages to include, prioritise or exclude may affect who can participate in research and whose knowledge becomes accessible or reusable.
+
+Researchers should consider which communities may benefit from their data, which linguistic resources those communities use, and which elements of the research data require multilingual representation. These may include metadata, documentation, research instruments, terminology, variable descriptions, codebooks and other materials necessary for understanding and reusing the data.
+
+Ultimately, planning multilingual research data is both a practical and a reflective process. It involves anticipating linguistic needs, identifying potential barriers and considering how language choices may enable or constrain participation in the production and reuse of knowledge.
+
+### 2.1 Include Language Diversity in your Data Management Plan (DMP) and use Descriptive Metadata
+
+In your DMP, include your outputs and data in the language of the country of study to make sure it’s accessible and visible to the local communities, and ensure inclusivity (avoid research extractivism). You have to make sure your research process is aligned with [CARE ](https://www.gida-global.org/careprinciples)principles.
+
+In your DMP, translate your researcher profile into the language of the community you will be working with.
+
+Using descriptive metadata is key to ensure findability of research data. For content indexation, libraries use controlled vocabularies instead of freely chosen keywords. The Library of Congress Subject Headings (LCSH) are a widely used controlled vocabulary for that purpose. The use of Linked Data enhances multilinguality. 
+
+**Example:**
+
+If you use Wikidata ID instead of LCSH terms as descriptors for your content, these descriptors are accessible using labels in multiple languages. For this example, see this <Link link={{"discriminant":"external"}}>qu</Link><Link link={{"discriminant":"external","value":"https://qlever.dev/wikidata/RkxNYT"}}>ery</Link>, where you can choose to see LCSH in your language through Wikidata.
+
+### 2.2 Use a Workflow to manage a Corpora in Under-Resourced Languages
+
+The workflow [‘Managing corpora in under-resourced languages’](https://marketplace.sshopencloud.eu/workflow/fbXfuH) provides a complete set of steps to manage your corpora while staying compliant with FAIR and Open Science principles. Best practices, dedicated tools and references to other workflows are provided. 
+
+* Preparing material
+* Documenting your Corpora
+* Creating metadata
+* Using standardised vocabularies
+* Updating your Data Management Plan
+* Assigning (open) license
+* Versioning
 
