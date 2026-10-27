@@ -199,7 +199,7 @@ Different versions of a 3D asset can serve different purposes. One version may b
 
 Any digitized 3D model can potentially be used. Meshes are preferred, while point clouds can also be used. 3D Gaussian splats are not considered suitable here because they are volumetric data. Volumetric data are possible, but can be problematic in many cases.
 
-Very high resolution is not necessarily beneficial. Medium-quality models can be sufficient, particularly because many fragments are already deteriorated. Additional points may simply introduce noise, smooth out relevant surface features and make computations unnecessarily difficult. Surfaces can therefore be sub-sampled so that detectable relief variations are retained. Simplification methods commonly collapse low-curvature polygon edges while preserving geometric detail; MeshLab is mentioned as a free tool.
+Very high resolution is not necessarily beneficial. Medium-quality models can be sufficient, particularly because many fragments are already deteriorated. Additional points may simply introduce noise, smooth out relevant surface features and make computations unnecessarily difficult. Surfaces can therefore be sub-sampled so that detectable relief variations are retained. Simplification methods commonly collapse low-curvature polygon edges while preserving geometric detail. MeshLab is a freely available tool for this purpose.
 
 Completeness is likewise not always required. A 3D model does not need to be complete or watertight if it sufficiently represents the critical surfaces, including contacts, volume-defining corners and salient features.
 
