@@ -13,14 +13,24 @@ export interface LinkProps
 }
 
 export function Link(props: Readonly<LinkProps>): ReactNode {
-	const { children, ...rest } = props;
+	const { children, onNavigate, prefetch, replace, scroll, shallow, ...rest } = props;
 
 	return (
 		<AriaLink
 			{...rest}
 			render={(domProps, renderProps) => {
 				if ("href" in domProps && domProps.href && !renderProps.isDisabled) {
-					return <NextLink {...domProps} />;
+					/** `react-aria` filters out props which are not dom attributes, so pass `next/link` props explicitly. */
+					return (
+						<NextLink
+							{...domProps}
+							onNavigate={onNavigate}
+							prefetch={prefetch}
+							replace={replace}
+							scroll={scroll}
+							shallow={shallow}
+						/>
+					);
 				}
 
 				return (
