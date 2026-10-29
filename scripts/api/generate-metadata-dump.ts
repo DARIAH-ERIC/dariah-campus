@@ -9,8 +9,12 @@ import { resources as sharedMetadata } from "#/lib/content/shared-metadata.confi
 import {
 	type CurriculumMetadata,
 	type ResourceMetadata,
+	type SourceMetadata,
+	type TagMetadata,
 	curriculumMetadataSchema,
 	resourceMetadataSchema,
+	sourceMetadataSchema,
+	tagMetadataSchema,
 } from "#/scripts/api/metadata-schemas.ts";
 
 const formatters = {
@@ -34,6 +38,8 @@ async function loadJsonDir<T extends Record<string, unknown>>(dir: string): Prom
 export async function createMetadata(): Promise<{
 	curricula: Array<CurriculumMetadata>;
 	resources: Array<ResourceMetadata>;
+	sources: Array<SourceMetadata>;
+	tags: Array<TagMetadata>;
 }> {
 	const contentDir = join(process.cwd(), "content", "en");
 
@@ -180,16 +186,28 @@ export async function createMetadata(): Promise<{
 		);
 	}
 
+	/** Sources and tags, used to constrain api filter values. */
+
+	const sources = (await client.collections.sources.all()).map((item) => {
+		return { id: item.id, name: item.metadata.name };
+	});
+
+	const tags = (await client.collections.tags.all()).map((item) => {
+		return { id: item.id, name: item.metadata.name };
+	});
+
 	return {
 		curricula: v.parse(v.array(curriculumMetadataSchema), curricula),
 		resources: v.parse(v.array(resourceMetadataSchema), resources),
+		sources: v.parse(v.array(sourceMetadataSchema), sources),
+		tags: v.parse(v.array(tagMetadataSchema), tags),
 	};
 }
 
 async function generate() {
 	const start = performance.now();
 
-	const { curricula, resources } = await createMetadata();
+	const { curricula, resources, sources, tags } = await createMetadata();
 
 	const outputFolder = join(process.cwd(), "public", "metadata");
 
@@ -197,6 +215,12 @@ async function generate() {
 		encoding: "utf-8",
 	});
 	await writeFile(join(outputFolder, "resources.json"), JSON.stringify(resources), {
+		encoding: "utf-8",
+	});
+	await writeFile(join(outputFolder, "sources.json"), JSON.stringify(sources), {
+		encoding: "utf-8",
+	});
+	await writeFile(join(outputFolder, "tags.json"), JSON.stringify(tags), {
 		encoding: "utf-8",
 	});
 
