@@ -431,7 +431,7 @@ The services are exposed through REST API calls and are intended for application
 
 A typical session begins by initializing a project and adding Digital-Twin parts such as F1 and F2. Once the Digital-Twin session has been initialized, the user can manipulate the parts in the client application. Their poses are updated and an alignment of \<F1, F2> is requested. The client then polls for the alignment result and can group the two parts.
 
-The same cycle can be extended by adding F3. The user again interacts with the parts, updates the poses of the existing group and F3, and requests an alignment of \<F1-F2, F3>. After the result is returned, the three parts can be grouped and a bundle adjustment can refine the assembled geometry. The workflow therefore alternates between user interaction and on-demand computational services.
+The same cycle can be extended by adding F3. The user again interacts with the parts, updates the poses of the existing group and F3, and requests an alignment of \<F1-F2, F3>. After the server returns the result, the client can group the three parts, and a bundle adjustment can refine the assembled geometr&#x79;**.** The workflow therefore alternates between user interaction and on-demand computational services.
 
 Parts may already reside on the server when they are reused, and additional services can be called for tasks such as mesh simplification and annotation. In collaborative work, synchronization calls can lock transformations while tasks performed by other users are still pending.
 
