@@ -1,0 +1,292 @@
+---
+title: Multilinguality from Research Data Management to Publishing
+locale: en
+publication-date: 2026-10-16
+version: 1.0.0
+authors:
+  - gouzi-francoise
+  - lindemann-david
+  - montes-carlos-soler
+  - ortega-sara-franco
+  - trigo-luis
+editors: []
+contributors: []
+tags:
+  - data-management
+  - linked-open-data
+  - scholarly-publishing
+sources:
+  - dariah
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >
+    This resource equips researchers with strategies to manage, publish, and
+    disseminate multilingual research data. It covers data management plans,
+    Linked Data identifiers, FAIR and CARE principles, and language-aware
+    publishing. Through practical examples and reflective activities, it
+    promotes inclusivity, local community engagement, and reduced English
+    dominance in scholarly communication.
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+dariah-working-groups:
+  - dhwiki
+  - research-data-management
+  - multilingual-dh
+---
+## Learning outcomes
+
+After completing this training resource, learners should be able to:
+
+* Know the strategies, tools, and standards to manage multilingual research data
+* Plan multilingual research data in order to improve findability and visibility of language diversity
+* Publish and disseminate multilingual research
+
+This module is accompanied by examples, reflexive activities and concrete use cases related to multilingual projects.
+
+## 1. Know the Strategies, Tools and Standards to manage Multilingual Research Data
+
+**Introductory context**
+
+A research dataset typically contains data about entities and/or relations between entities. If your goal is to make your research dataset readable in several languages, you do not need to translate the names of the entities you describe to other languages. You would rather choose to describe these entities using a Uniform Resource Identifier (URI), which enables you to retrieve multilingual labels (and more), and use these as entity descriptor, instead of literal values (names). If you start from an existing dataset containing literal values instead of identifiers, you can use tools like [OpenRefine](https://marketplace.sshopencloud.eu/tool-or-service/hpBfcf) for finding the URI you need.
+
+In the following, we give main recommendations for which sources for web identifiers to choose, together with examples. Clicking on the URI, you get to lists of multilingual entity labels (and more information). If you use a Linked Data database software, you can import all these labels (together with any other information found in these sources) into your own database environment.
+
+### 1.1 Open Source Wikimedia tools and platforms for multilingual purposes 
+
+[Wikimedia tools](https://en.wikipedia.org/wiki/Wikimedia_movement#Content_projects) are interoperable and multilingual from the start, enabling the integration of researchers' content and data in the semantic web to expand research impact beyond Academia.
+
+<Figure src="/assets/content/assets/en/resources/hosted/multilinguality-from-research-data-management-to-publishing/wikimedia-logo.svg.png" alt="Wikimedia logo" alignment="center">
+
+</Figure>
+
+[MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) is a multilingual documentation platform with advanced collaborative features that is used by Wikipedia and the other Wikimedia tools.
+
+Wikibase is a set of MediaWiki extensions that enables the use of semantically organized data. This suite supports the [Wikidata](http://wikidata.org/) platform.&#x20;
+
+It can also be used by researchers with no maintenance costs in a [cloud service](https://www.wikibase.cloud/). Researchers may create Wikibase.cloud service instances to host their own documentation and data and connect it to Wikidata, functioning as an indexer hub, enabling federated queries with organizations like GLAM (Galleries, Libraries, Archives and Museums) institutions ([GLAM cultural heritage](https://en.wikipedia.org/wiki/GLAM_\(cultural_heritage\))).
+
+<Figure src="/assets/content/assets/en/resources/hosted/multilinguality-from-research-data-management-to-publishing/paris-orsay-museum-inside-overview.jpeg" alt="Interior view of the Musée d'Orsay in Paris" alignment="stretch">
+
+</Figure>
+
+Wikisource is the digital library for hosting texts in public domain and creative commons licences. It integrates powerful OCR (Optical Character Recognition) and HTR (Handwritten Text Recognition)  tools (free credits within Wikisource) to enable digital publishing and content linking.
+
+[Wikipedia](https://www.wikipedia.org/) uses an encyclopedic, simpler language and may be used to reference researchers publications. An interesting academic extension activity is to promote editathons in the language of target communities and reach wider publics.
+
+#### Set of recommendations and examples
+
+1. Use a database solution that provides a multilingual user interface
+
+[Wikibase](https://marketplace.sshopencloud.eu/tool-or-service/ETC9Ld) is a set of extensions to MediaWiki, which is available in 215 languages. [Translations are crowdsourced](https://translatewiki.net/), you can contribute. To learn more about Wikibase, visit [DHwiki Wikibase](https://marketplace.sshopencloud.eu/tool-or-service/tuV3dg). Wikibase supports URI natively, in a way that users see entity labels in their preferred language, while, under the hood, the entity is represented by a web identifier, which is the same for all its labels, in all available languages.
+
+2. Do not use literal values (names) for representing entities, and make use of established Linked Data identifiers instead.&#x20;
+
+Choose identifiers that lead to human readable labels in multiple languages. [CESSDA](https://marketplace.sshopencloud.eu/tool-or-service/TxIgnX) (Consortium of European Social Science Data Archives) lists vocabularies that contain such multilingual identifiers. A general source for multilingually labelled identifiers for entities of all domains is Wikidata. 
+
+**Examples:**
+
+* Instead of “Edinburgh”, use [http://www.wikidata.org/entity/Q23436](http://www.wikidata.org/entity/Q23436) or [https://www.geonames.org/2650225](https://www.geonames.org/2650225) 
+* Instead of a literal like “nominative”, or items in a Linked Data vocabulary that has no multilingual labels for most of the entities it describes (see [LexInfo](http://www.lexinfo.net/ontology/3.0/lexinfo#nominativeCase)), use [http://www.wikidata.org/entity/Q131105](http://www.wikidata.org/entity/Q131105) or [http://www.lexinfo.net/ontology/3.0/lexinfo#nominativeCase](http://www.lexinfo.net/ontology/3.0/lexinfo#nominativeCase)
+* Instead of “Torre di Pisa”, use [http://www.wikidata.org/entity/Q39054](http://www.wikidata.org/entity/Q39054) or [https://www.geonames.org/6269273](https://www.geonames.org/6269273)
+* Instead of “The Buddha” use [http://www.wikidata.org/entity/Q9441](http://www.wikidata.org/entity/Q9441), instead of “Angela Davis” use [https://www.wikidata.org/wiki/Q160456](https://www.wikidata.org/wiki/Q160456) (or [https://viaf.org/viaf/108895419](https://viaf.org/viaf/108895419)) 
+* For subject headings or content-describing keywords, instead of an English-centered vocabulary like LCSH, use Wikidata (e.g. “Archaeology”, [http://www.wikidata.org/entity/Q23498](http://www.wikidata.org/entity/Q23498) (see [in LCSH](https://id.loc.gov/authorities/subjects/sh85006507.html))
+* For dates and time spans, use Wikidata (e.g. “20th century”: [http://www.wikidata.org/entity/Q6927](http://www.wikidata.org/entity/Q6927)), or PeriodO ([https://perio.do/en/](https://perio.do/en/))
+* Not only for entities like the above, but also for a property or “relation”, instead of “born in” or “has birthplace” or a Linked Data vocabulary that has no multilingual labels (see this property e.g. [in schema.org](https://schema.org/birthPlace)) use [http://www.wikidata.org/entity/P19](http://www.wikidata.org/entity/P19)
+
+3. Using URI (identifiers on the web) instead of literal values will, by the way, make your dataset ready for [Linked Data](https://www.wikidata.org/wiki/Q515701).
+
+For sharing your research data as [Five-Star Open Data](https://5stardata.info), you should use W3C-recommended ontologies for modeling your data. For example, for lexical data, you would use [Ontolex-Lemon](https://en.wikipedia.org/wiki/OntoLex).
+
+4. If a Wikidata entity misses a label in one of the languages you want to cover, just add it to Wikidata, so that it becomes available for everyone.
+5. If you have a dataset containing literal values, you can use [OpenRefine](https://marketplace.sshopencloud.eu/tool-or-service/hpBfcf) for finding the corresponding identifiers, e.g. in Wikidata.
+
+### 1.2 CLARIN Open Source tools for Multilingual Text Analysis
+
+The Common Language Resources and Technology Infrastructure (CLARIN) platform is a digital research infrastructure that provides language data, tools, and services for researchers in the humanities and social sciences following FAIR principles. This platform is multilingual and supports low-resource and underrepresented languages. It maps Natural Language Processing tools to support text and analysis (e.g., Part of Speech, Named Entity Recognition, Open Large Language Models, dictionaries, parallel corpora). It actively supports projects like[ ](https://www.clarin.eu/content/industry-and-beyond)[LLMs4EU](https://www.llms4eu.eu/) to build open multilingual Artificial Intelligence models for underrepresented European languages.
+
+The[ Language Resource Switchboard](https://switchboard.clarin.eu/) is the CLARIN tool that enables the language detection of uploaded resources and lists all compatible NLP tools available in the CLARIN repository.
+
+The [Virtual Language Observatory](https://vlo.clarin.eu) (VLO) enables researchers to explore linguistic resources, services and tools available within CLARIN and related communities. Its aim is to provide an easy-to-use interface, allowing for a uniform search and discovery process for a large number of resources from a wide variety of domains and providers. 
+
+## 2. Plan Multilingual Research Data
+
+**Introductory context**
+
+Making research data multilingual contributes to the implementation of the FAIR principles and supports more inclusive, accessible and equitable research practices. 
+
+Research data are not produced in a linguistically neutral environment. Throughout the research lifecycle, researchers make decisions about which languages to use when formulating research questions, engaging with participants, collecting and interpreting data, collaborating with others, documenting research processes and sharing results. These decisions can influence not only how research data are communicated, but also how knowledge is produced, understood, recognised and reused.
+
+Language is therefore not simply a means of accessing research data; it can also shape what those data mean, how they are interpreted and whose knowledge is represented.
+
+For example, when data are collected in one language but analysed or documented in another, certain concepts, categories or culturally specific meanings may be transformed, simplified or lost through translation. Similarly, the decision to describe a dataset exclusively in English may increase its visibility within international academic infrastructures while limiting its discoverability and usability among the communities from which the data originated.
+
+This highlights the importance of considering the linguistic dimensions of research data throughout their lifecycle, rather than treating multilingualism solely as a matter of dissemination.
+
+Planning multilingual research data also means recognising that language choices are shaped by institutional expectations, disciplinary conventions, available resources and unequal relations of linguistic power. Not all languages enjoy the same levels of visibility, technological support or recognition within research environments. Consequently, decisions about which languages to include, prioritise or exclude may affect who can participate in research and whose knowledge becomes accessible or reusable.
+
+Researchers should consider which communities may benefit from their data, which linguistic resources those communities use, and which elements of the research data require multilingual representation. These may include metadata, documentation, research instruments, terminology, variable descriptions, codebooks and other materials necessary for understanding and reusing the data.
+
+Ultimately, planning multilingual research data is both a practical and a reflective process. It involves anticipating linguistic needs, identifying potential barriers and considering how language choices may enable or constrain participation in the production and reuse of knowledge.
+
+### 2.1 Include Language Diversity in your Data Management Plan (DMP) and use Descriptive Metadata
+
+In your DMP, include your outputs and data in the language of the country of study to make sure it’s accessible and visible to the local communities, and ensure inclusivity (avoid research extractivism). You have to make sure your research process is aligned with [CARE ](https://www.gida-global.org/careprinciples)principles.
+
+In your DMP, translate your researcher profile into the language of the community you will be working with.
+
+Using descriptive metadata is key to ensure findability of research data. For content indexation, libraries use controlled vocabularies instead of freely chosen keywords. The Library of Congress Subject Headings (LCSH) are a widely used controlled vocabulary for that purpose. The use of Linked Data enhances multilinguality. 
+
+**Example:**
+
+If you use Wikidata ID instead of LCSH terms as descriptors for your content, these descriptors are accessible using labels in multiple languages. For this example, see this <Link link={{"discriminant":"external"}}>qu</Link><Link link={{"discriminant":"external","value":"https://qlever.dev/wikidata/RkxNYT"}}>ery</Link>, where you can choose to see LCSH in your language through Wikidata.
+
+### 2.2 Use a Workflow to manage a Corpora in Under-Resourced Languages
+
+The workflow [‘Managing corpora in under-resourced languages’](https://marketplace.sshopencloud.eu/workflow/fbXfuH) provides a complete set of steps to manage your corpora while staying compliant with FAIR and Open Science principles. Best practices, dedicated tools and references to other workflows are provided. 
+
+* Preparing material
+* Documenting your Corpora
+* Creating metadata
+* Using standardised vocabularies
+* Updating your Data Management Plan
+* Assigning (open) license
+* Versioning
+
+### 2.3 Take into account [CARE](https://www.gida-global.org/careprinciples) principles in your DMP
+
+Collective Benefit and Authority to Control is most of the time enabled by providing key research processes and results documentation in the language of the community that is being studied.
+
+* For digital content that is culturally sensitive, researchers may use a baseline license from [Creative Commons](https://creativecommons.org/): Creative Commons Attribution-Non Commercial-No Derivatives (CC BY-NC-ND)
+* For signaling cultural sensitive and communicate community-defined protocols for its use, researchers may use [Traditional Knowledge Labels - TK Labels](https://onlineacademiccommunity.uvic.ca/scholarlycommunications/2022/08/08/tk-labels-indigenous-peoples-assert-sovereignty-knowledges/)
+* To ensure openness does not compromise collective benefit, consider adopting Less Open Equity-based Licenses - [NOODLE](https://openfuture.eu/publication/noodl-an-experiment-in-equitable-data-licensing-promise-and-limits/) 
+
+Implementing licenses and practices that align with CARE principles to ensure community-centric control may also imply using the community’s own hardware and human maintenance infrastructure. Linked open data ecosystems like Wikidata, Wikibase.cloud, and Wikimedia Commons and other public infrastructure operate under very strict open licensing frameworks that strictly enforce FAIR principles. The [Very Small GLAM](https://meta.wikimedia.org/wiki/Very_Small_GLAM) project describes the implementation of Wikimedia-based tools on-premise. Even if an on-premise setup may be ideal as a sovereign solution, it may still require too many resources. A sub-optimal alternative may be to use other [hosting services](https://dhwiki.wikibase.cloud/wiki/Structure_and_features_of_Wikibase_for_DH#Wikibase%20Hosting%20Solutions).
+
+### 2.4 Sociolinguistic approach of multilingual research
+
+Planning multilingual research data therefore involves more than translating datasets or metadata after research has been completed. It requires recognising linguistic diversity as an integral dimension of research data management from the outset.
+
+This is particularly relevant when research involves communities whose languages differ from those predominantly used in academic institutions, scientific publications or research infrastructures. If a researcher's target community communicates in a different language, members of that community should, wherever possible, be able to discover, access, understand and reuse the research data in ways that are linguistically meaningful to them.
+
+Communities that currently lack the institutional, financial or technical resources to conduct similar research independently may nevertheless possess valuable linguistic, cultural and contextual knowledge that enables them to interpret, enrich and reuse existing data. Providing multilingual research resources can help create opportunities for these communities to engage with research findings, develop new applications and contribute to further knowledge production.
+
+**Example:** This is an example of a linguistically inclusive project and live corpus of underrepresented languages: “[*Creole Connections*](https://www.creoleconnections.cahss.ed.ac.uk/interactive/)*. An interactive research project”*.
+
+<Embed src="https://www.creoleconnections.cahss.ed.ac.uk/interactive/">
+  Creole Connections emerged from an urgent need to share the stories, needs and experiences voiced across the Raizal-Creole diaspora in order to build back ancestral connections, forge intergenerational exchange, and develop prosperous futures. The sets of thematized videos are organised according to location of interview, and present Raizal-Creole concerns and aspirations from a diverse range of views and positionalities.
+</Embed>
+
+## 3. Publish and disseminate Multilingual Research
+
+Currently, 95% of all global scientific publications are published in English. The second language used is Spanish which accounts for 1% of the total (González Alcaide et al., 2009; Badillo, 2022; Instituto Cervantes, 2023). This has many implications at many levels. Citizens engagement with scientific discoveries across disciplines is highly dependent on access to the appropriate content in their mother tongue. The progress of new technologies in machine translation of texts opens up a new range of opportunities, and challenges, for the use of languages other than English in research. However, the absence of a significant body of (scientific) publications in a particular language is hindering the research and development of the necessary AI tools. An increasing number of scholars are drawing attention to the challenges posed to researchers, science, and society by the emphasis on using English as the primary language for scholarly communication.
+
+### 3.1 Activity “*Inside a multilingual research journal”*
+
+Academic publishing is a key site in which decisions about language, audience, visibility, and scholarly legitimacy are made. Journals working in multilingual fields must negotiate the role of English as a dominant language of international academic communication alongside the languages that constitute their objects of study and scholarly communities.
+
+<Callout kind="note">
+  In this activity, we will analyse a number of research journals to explore how they can operate within a bilingual or multilingual research environment.
+
+  First, choose one of the following three journals in the area of the Humanities, and begin by looking at the journal's aims and scope, author guidelines, recent issues, article titles, abstracts, keywords, and other relevant sections.
+</Callout>
+
+<Grid layout="three-columns" alignment="stretch">
+  <GridItem alignment="stretch">
+    <Link link={{"discriminant":"external","value":"https://www.tandfonline.com/journals/rslt20"}}>*Journal of Spanish Language Teaching*</Link>
+  </GridItem>
+
+  <GridItem alignment="stretch">
+    <Link link={{"discriminant":"external","value":"https://modernlanguagesopen.org/"}}>*Modern Languages Open*</Link>
+  </GridItem>
+
+  <GridItem alignment="stretch">
+    <Link link={{"discriminant":"external","value":"https://transformations.episciences.org/"}}>*Transformations: A DARIAH Journal*</Link>
+  </GridItem>
+</Grid>
+
+<Worksheet title="**Recommendations and good practices**">
+  <WorksheetDescription>
+    As you explore a potential journal for publication, do not focus only on the language in which full articles are written. Consider all the different spaces in which languages appear.
+  </WorksheetDescription>
+
+  <WorksheetSection title="Use the following questions to guide your investigation">
+    <WorksheetSectionDescription>
+      * What languages does the journal accept for publication?
+      * Is there an explicit language policy? 
+      * How does the journal describe its relationship with the different languages they publish in and the international research community?
+    </WorksheetSectionDescription>
+  </WorksheetSection>
+</Worksheet>
+
+### 3.2 Reflexive activity
+
+Choose one research project (your own or a hypothetical one) involving more than one language. Imagine that you are preparing an article based on this research.
+
+<Callout kind="note" title="Think about the following questions:">
+  * In which language would you write the article, and why?
+  * In which language(s) would you provide the title, abstract, and keywords?
+  * How would you present quotations or data originally produced in another language?
+  * Which audiences would gain access to the research through your language choices? Which audiences might be excluded?
+  * How might your decisions change if your priority were international visibility, local impact, or participant/community accessibility?
+</Callout>
+
+**Examples of recommendable Journals enabling multilingual publishing:**
+
+You should prioritise journals where abstract and keywords in a second language should be mandatory.
+
+* [Publishing House](https://conductscience.org/resources/multilingual-publishing) containing useful terminology;
+* [Transformations Journal](https://transformations.episciences.org/), Diamond Open Access: authors are asked to provide abstract and keywords in a language different to the article language. Special issues are welcoming submissions in other language than English;
+* [Modern Languages Open ](https://modernlanguagesopen.org/)(MLO) Journal where you can publish in more than one language;
+* [Journal of Spanish Language Teaching ](https://www.tandfonline.com/journals/rslt20)Q1 Spanish-English journal with three articles in English and three in Spanish in each volume, book reviews aim to cover the book in the opposite language to give them more visibility; 
+* [Revista Colombiana de Tecnologias de Avanzada](https://ojs.unipamplona.edu.co/rcta/issue/view/328) where articles have to be submitted in English and Spanish
+
+## Concluding remarks
+
+The rich environment of Wikimedia and CLARIN tools and standards is central to support researchers in making their research dataset readable in several languages but also to ensure findability, accessibility, and reproducibility of multilingual data. 
+
+Refining multilingual research processes in your DMP or using specific workflows are also very helpful to manage your corpora while staying compliant with FAIR and Open Science principles.
+
+These recommendations and best practices contribute to promoting inclusivity, local community engagement, and reduced English dominance in scholarly communication.
+
+By integrating multilingual considerations into research data management from the beginning, researchers can contribute to FAIRer research practices while supporting greater linguistic diversity, more equitable access to knowledge and broader opportunities for meaningful data reuse.
+
+<Callout kind="note" title="Acknowledgements">
+  The present resource was created during the workshop "Research Data Management Tools and Strategies for Language Diversity”. The workshop was run by the DARIAH Working Groups Multilingual DH and Research Data Management, financed by the DARIAH-EU Funding Scheme for Working Group Activities 2026-27, and hosted by the University of Edinburgh on 3rd and 4th September 2026. Principal investigator was Alíz Horváth; the related grant was administered by the Central European University. Further financial support was provided by the Society of Spanish Researchers in the United Kingdom (SRUK/CERU), the King’s College London, the Etxepare Euskal Institutua, the Fundación Española para la Ciencia y la Tecnología (FECYT) and the University of Edinburgh.
+</Callout>
+
+**Organisations involved in this resource** 
+
+* DARIAH-EU 
+* The University of Edinburgh
+* Spanish Researchers in the United Kingdom (SRUK/CERU)
+* Fundación Española para la Ciencia y la Tecnología (FECYT)
+* The Etxepare Basque Institute
+* King’s College London
+
+**Further learning**
+
+We also invite users to discover another module related-topic hosted in CAMPUS “Datasheets for publishing data about under-resourced languages” \[ADD LINK]. \[ADD LINK to the other OERs].
+
+<Disclosure title="Bibliography">
+  Colin-Arce, A.,  Amell, B.,  (2025), "Multilingualism in Open Access Scholarly Publishing", HSSCommons, [https://doi.org/10.25547/3GS3-6R44](https://doi.org/10.25547/3GS3-6R44)
+
+  Curry MJ, Lillis T. Multilingualism in academic writing for publication: Putting English in its place. *Language Teaching*. (2024); 57(1): 87-100. [https://doi.org/10.1017/S0261444822000040](https://doi.org/10.1017/S0261444822000040) 
+
+  Erzsébet Tóth-Czifra, Marta Błaszczyńska, Francesco Gelati, Femmy Admiraal, Mirjam Blümm, Erik Buelinckx, Vera Chiquet, Rita Gautschy, Peter Gietz, Péter Király, Maria Vivas-Romero, Walter Scholger, Bartłomiej Szleszyński, & Ulrike Wuttke. (2023). Research Data Management for Arts and Humanities: Integrating Voices of the Community. Zenodo.[ https://doi.org/10.5281/zenodo.8059626](https://doi.org/10.5281/zenodo.8059626) 
+
+  Grallert, T., Horvath, A., Spence, P., Battaner Moro, E., Boot, P., Candela, G., del Rio Riande, G., Khemka, A., le Rell, A., McGinn, E., Mende, J.-K., Miyagawa, S., Müller-Laackman, J., Nagasaki, K., Sanz, A., Sigurðarson, E. S., Tekgürler, M., Tharsen, J., Viglianti, R., … Wrisley, D. J. (2026). Manifesto for Multilingual Digital Humanities. Zenodo.[ https://doi.org/10.5281/zenodo.21431692](https://doi.org/10.5281/zenodo.21431692) 
+
+  Kátia Monteiro, Eliana Hirano. (2026). Balancing the North and the South: A Brazilian perspective on multilingual publishing, *Journal of English for Academic Purposes* ; Volume 81, [https://doi.org/10.1016/j.jeap.2026.101678](https://doi.org/10.1016/j.jeap.2026.101678)
+
+  Kulczycki E, Guns R, Pölönen J, et al. (2020). Multilingual publishing in the social sciences and humanities: A seven-country European study. *J. Assoc. Inf. Sci. Technol*. ; Volume 71: 1371–1385, [ https://doi.org/10.1002/asi.24336](https://doi.org/10.1002/asi.24336)  
+
+  Lindemann, D., Candela, G., Marchetti, A., Pellizzari di San Girolamo, C. C., Olea, I., Varvantakis, C., Assis, T., Moitinho de Almeida, V., Obregón Sierra, Á., Salgado, A., Santiago Faria, A., Schöch, C., & Trigo, L. (2026). The Wikibase Ecosystem in DH and GLAM. *Transformations*, Volume 2 “The Past” (Research paper), [https://doi.org/10.46298/transformations.17200](https://doi.org/10.46298/transformations.17200)
+
+  Lorella Viola, Paul Spence (Eds). (2024). Multilingual Digital Humanities, Routledge & CRC Press,  246 p. ISBN 9781032494173
+
+  Olea, I. (2026, March 24). Very Small GLAM. Wikimedia Meta-Wiki. [https://meta.wikimedia.org/wiki/Very\_Small\_GLAM](https://meta.wikimedia.org/wiki/Very_Small_GLAM) 
+
+  Pölönen, J. (Ed.), Garnier-Rizet, M., Greco, G. M., Kulczycki, E., Brasil Varandas Pinto, A. L., Conceição, M. C., Cots, J.-M., Dantas, L., Dendrinos, B., García-Sánchez, S., Laihonen, P., Soler Montes, C., Ochsner, M., Peruginelli, G., Rafols, I., & Urbanc, M. (2025). *Implementation Proposal for Language-Aware Assessments*. CoARA WG on Multilingualism and Language Biases in Research Assessment. [https://doi.org/10.5281/zenodo.17881907](https://doi.org/10.5281/zenodo.17881907) 
+</Disclosure>
