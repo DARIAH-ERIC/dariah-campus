@@ -1,7 +1,7 @@
 ---
 title: Datasheets for Publishing Data about Under-resourced Languages
 locale: en
-publication-date: 2026-10-15
+publication-date: 2026-10-30
 version: 1.0.0
 authors:
   - gelati-francesco
@@ -32,15 +32,17 @@ dariah-working-groups:
   - multilingual-dh
   - research-data-management
 ---
+## Datasheets for Publishing Data about Under-resourced Languages
+
 ## Learning Outcomes
 
 After completing this training resource, learners should be able to:
 
-* understand what datasheets are and what they enable us to do;
-* know how datasheets are structured, and which fields are relevant for language data;
+* understand what *datasheets* are and what they enable us to do;
+* identify which metadata fields are relevant for language data;
 
-- create a datasheet about an under-resourced language dataset;
-- generate a datasheet in a variety of file-formats.
+- create a *datasheet* about an under-resourced language dataset;
+- generate a *datasheet* in a variety of file-formats.
 
 ## Prerequisites
 
@@ -52,11 +54,11 @@ Previous knowledge is recommended on:
 
 ## **Introduction**
 
-A tremendous amount of digital objects and collections are being produced by (digital) humanists as well as by GLAM (Galleries, Libraries, Archives and Museums) professionals. Initiatives such as [Collections as data](https://collectionsasdata.github.io/) promote publishing and sharing of digital collections, and support computational reuse according to [FAIR](https://www.gofair.foundation/fair-principles) (Findable, Accessible, Interoperable and Reusable) and [CARE](https://www.gida-global.org/careprinciples) (Collective Benefit, Authority to Control, Responsibility, and Ethics) principles.
+A high amount of digital objects and collections are produced by (digital) humanists as well as by GLAM (Galleries, Libraries, Archives and Museums) professionals. Initiatives such as [Collections as data](https://collectionsasdata.github.io/) promote publishing and sharing of digital collections, and support computational reuse according to [FAIR](https://www.gofair.foundation/fair-principles) (Findable, Accessible, Interoperable and Reusable) and [CARE](https://www.gida-global.org/careprinciples) (Collective Benefit, Authority to Control, Responsibility, and Ethics) principles.
 
-Since 2018, [datasheets for cultural heritage datasets](https://doi.org/10.5334/johd.124) have emerged as a powerful, technology-agnostic tool to provide robust and well-curated documentation about digital collections. Moreover, datasheets provide clear provenance data and are aligned with recent undertakings in the European research infrastructure in Europe, such as the [European data space for cultural heritage](https://www.dataspace-culturalheritage.eu/en).
+Since 2018, [datasheets for cultural heritage datasets](https://doi.org/10.5334/johd.124) have emerged as a powerful, technology-agnostic tool to provide robust and well-curated documentation about digital collections. Moreover, *datasheets* provide clear provenance data and are aligned with recent undertakings in the European research infrastructure in Europe, such as the [European data space for cultural heritage](https://www.dataspace-culturalheritage.eu/en).
 
-This Open Educational Resource (OER) will focus on using datasheets in order to share data about under-resourced languages. 
+This Open Educational Resource (OER) will focus on using *datasheets* in order to share data about under-resourced languages. 
 
 ## **Datasheets for Cultural Heritage**
 
@@ -64,19 +66,19 @@ According to the [Europeana Working Group on Datasheets for Digital Cultural Her
 
 #####  ‘a datasheet is a standardised publication format for documenting a dataset, providing the context needed for reusing the data’. 
 
-Datasheets facilitate better communication between dataset creators and dataset consumers. For potential users of a dataset, such as researchers and practitioners, a datasheet provides clear information for making informed decisions about reuse. This is particularly helpful for mitigating societal biases if deploying the data for machine learning or building AI models.
+*Datasheets* facilitate better communication between dataset creators and dataset consumers. For potential users of a dataset, such as researchers and practitioners, a *datasheet* provides clear information for making informed decisions about reuse. This is particularly helpful for mitigating societal biases for instance when deploying the data for machine learning or Large Language Models (LLMs).
 
-A datasheet includes a selection of metadata categories to describe a dataset’s provenance. These categories include traditional fields such as title, date of publication and authors, but also more advanced and detailed metadata information such as biases, missing information or known examples of use. Refer to the [documentation](https://doi.org/10.5281/zenodo.15828222) for a detailed description of the categories included. 
+A *datasheet* includes a selection of metadata categories to describe a dataset’s provenance. These categories include traditional fields such as title, date of publication and authors, but also more advanced metadata information such as biases, missing information or known examples of use. Refer to the [documentation](https://doi.org/10.5281/zenodo.15828222) for a detailed description of the categories included. 
 
 ## **Datasheets for Under-resourced Languages**
 
-Because most data repositories for language data are English-enhanced (e.g. [Zenodo](https://zenodo.org/), [Dataverse](https://dataverse.org/) and [DSpace](https://marketplace.sshopencloud.eu/tool-or-service/UAGfsc)), it is worth paying attention to the alignment between metadata specifications in different languages. In this sense, datasheets provide an agreed-upon framework for describing the content and technical details of a dataset, particularly for under-represented languages and corpora. In addition, datasheets provide ethical and legal information that is often omitted in other leading frameworks, but which is essential for responsible reuse. Therefore, datasheets provide an excellent solution for achieving transparency when sharing data. 
+Because most data repositories for language data are English-enhanced (e.g. [Zenodo](https://zenodo.org/), [Dataverse](https://dataverse.org/) and [DSpace](https://marketplace.sshopencloud.eu/tool-or-service/UAGfsc)), it is worth paying attention to the alignment between metadata specifications in different languages. In this sense, *datasheets* provide an agreed-upon framework for describing the content and technical details of a dataset, particularly for under-represented languages and corpora. In addition, *datasheets* provide ethical and legal information that is often omitted in other leading frameworks, but which is essential for responsible reuse. Therefore, *datasheets* represent an excellent solution for achieving transparency, improving accessibility and enhancing visibility. 
 
-Most of the Datasheets metadata fields are relevant for under-resourced language datasets. Particularly important for minoritised languages is explicitly documenting ethical considerations and the collaborations that surfaced the data (particularly the role of native speaker collaborators). Additionally, including linguistic data on these languages is important because it facilitates their visibility in the digital world, increases their accessibility and promotes further research into them through data reuse. 
+Most of the *datasheets* metadata fields are relevant for under-resourced language datasets. Particularly important for minoritised languages is explicitly documenting ethical considerations and the collaborations that surfaced the data (particularly the role of native speaker collaborators).
 
 ## **Sidedoc**
 
-As a recent and useful resource created by the working group, [Sidedoc](https://sidedoc.app/) allows users to create, edit and manage datasheets efficiently. Its editing interface allows datasheets to be exported in human- and machine-readable formats such as PDF, markdown and JSON. It also provides more advanced export formats, such as [JSON-LD](https://json-ld.org/) combined with [DCAT-AP](https://op.europa.eu/en/web/eu-vocabularies/dcat-ap) as a semantic model to describe the documentation. Please note that Sidedoc was in beta when this material was written.
+As a recent and useful resource created by the working group, [Sidedoc](https://sidedoc.app/) (and its <Link link={{"discriminant":"external","value":"https://sidedoc.app/beta/2/"}}>beta version</Link>) allows users to create, edit and manage datasheets efficiently. Its editing interface allows datasheets to be exported in human- and machine-readable formats such as PDF, markdown and JSON. It also provides more advanced export formats, such as [JSON-LD](https://json-ld.org/) combined with [DCAT-AP](https://op.europa.eu/en/web/eu-vocabularies/dcat-ap) as a semantic model to describe the documentation. Please note that Sidedoc was in beta when this material was written.
 
 <Tabs>
   <Tab title="Exercise n°1: find the most relevant fields">
@@ -118,7 +120,7 @@ The present resource was created during the workshop "Research Data Management T
 
 ## **Further Learning Options**
 
-other 3 OERs. 
+other 3 Edinburgh OERs. 
 
 ## **Organisations Involved**
 
