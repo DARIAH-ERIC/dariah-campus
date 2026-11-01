@@ -716,8 +716,6 @@ WHERE {
 ORDER BY ?year
 ```
 
-
-
 <Callout kind="tip" title="How the Engine Processes This Query:">
   1. **Prefix Lookup**: Replaces shortcuts like `dc:title` with their full URIs (e.g., `http://purl.org`).
   2. **Subject Binding**: Identifies a resource (`?letter`) and groups its properties using the semicolon shortcut (`creator`, `title`, and `date`).
@@ -865,9 +863,9 @@ ORDER BY ?birthYear
 #### **Behind the Scenes: How the Federated Engine Works**
 
 1. **Local Resolution:** The local engine scans your database for any resources matching `?manuscript dc:creator ?authorURI` and maps out those URIs.
-2. **Sub-query Delegation:** The engine groups all valid matching `?authorURI` variables and passes them as parameters in a remote HTTP request directly to the Wikidata engine \[10.2].
-3. **Remote Execution:** Wikidata computes the labels and birth dates exclusively for those specific authors and hands a structural variable block back to your local environment \[10.2].
-4. **Data Aggregation:** Your local triplestore performs an implicit join, projecting a final single table that blends your local titles with global, live metadata \[10.2, 18.2.4.4].
+2. **Sub-query Delegation:** The engine groups all valid matching `?authorURI` variables and passes them as parameters in a remote HTTP request directly to the Wikidata engine.
+3. **Remote Execution:** Wikidata computes the labels and birth dates exclusively for those specific authors and hands a structural variable block back to your local environment.
+4. **Data Aggregation:** Your local triplestore performs an implicit join, projecting a final single table that blends your local titles with global, live metadata.
 
 Through federation, Digital Humanities projects don't need to rebuild information ecosystems from scratch. Instead, they operate as nodes in an open, interconnected library spanning the entire web.
 
