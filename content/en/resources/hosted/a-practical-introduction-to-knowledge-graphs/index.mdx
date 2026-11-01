@@ -799,17 +799,6 @@ Up to this point, we have treated local databases and public endpoints as separa
 
 Instead of downloading millions of entries from a public registry to your local server, SPARQL allows you to perform <Link link={{"discriminant":"external","value":"https://www.w3.org/TR/sparql11-federated-query/"}}>**Federated Queries**</Link> using the `SERVICE` keyword. This technique enables your local query engine to process local patterns and seamlessly instruct a remote public endpoint to evaluate specific sub-patterns over the internet in real-time.
 
-**mermaid**
-
-```
-graph TD
-    A[Your Local SPARQL Query] -->|1. Matches Local Triples| B(Local Graph: Private Letters)
-    A -->|2. SERVICE Keyword| C[Internet Pipeline]
-    C -->|3. Evaluates Remote Sub-Pattern| D(Public Endpoint: Wikidata)
-    B --> E[Unified Results Table]
-    D --> E
-```
-
 The syntax relies on wrapping a sub-pattern inside a `SERVICE` block accompanied by the absolute IRI of the target public endpoint:
 
 ##### **sparql**
