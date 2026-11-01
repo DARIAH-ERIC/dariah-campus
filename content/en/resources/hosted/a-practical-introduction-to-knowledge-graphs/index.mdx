@@ -653,7 +653,7 @@ A Basic Graph Pattern is simply a set of triple patterns. Just like RDF triples,
 
 * Triple patterns inside the curly brackets `{}` are separated by a period (`.`), which acts like a logical **AND**.
 
-##### **sparql**
+##### **SPARQL**
 
 ```
 PREFIX ex: <http://example.org>
@@ -696,7 +696,7 @@ A `FILTER` evaluates a condition as true or false. If a graph match evaluates to
 
 Let’s apply these concepts to a real-world scenario. Imagine we are working with a digital collection of historical correspondence. We want to find **the titles and publication years of all letters written by an author named "Mary Shelley", but only those published after 1818 (the publication year of *Frankenstein*)**.
 
-##### **sparql**
+##### **SPARQL**
 
 ```
 PREFIX dc: <http://purl.org>
@@ -739,7 +739,7 @@ When interacting with public knowledge bases, the two most common entry points a
 
 Suppose we are building an interactive timeline of **women writers who were born in Paris during the 19th century**. Instead of scanning history books manually, we can formulate a single SPARQL query to retrieve this structured list from Wikidata's public endpoint:
 
-##### **sparql**
+##### **SPARQL**
 
 ```
 # Wikidata public endpoint example
@@ -770,7 +770,7 @@ ORDER BY ?birthDate
 
 Imagine a digital art historian analyzing the geography of the Impressionist movement. They want to find **the names and gallery locations of all paintings created by Claude Monet**. By executing a query against DBpedia's public SPARQL endpoint, they can generate an immediate inventory of his surviving works:
 
-##### **sparql**
+##### **SPARQL**
 
 ```
 # DBpedia public endpoint example
@@ -801,7 +801,7 @@ Instead of downloading millions of entries from a public registry to your local 
 
 The syntax relies on wrapping a sub-pattern inside a `SERVICE` block accompanied by the absolute IRI of the target public endpoint:
 
-##### **sparql**
+##### **SPARQL**
 
 ```
 WHERE {
@@ -821,7 +821,7 @@ Imagine you are managing a specialized digital archive containing metadata for a
 
 By executing a single federated query on your local endpoint, you can bind your local variables (`?authorURI`) to Wikidata’s global database IDs, executing a live lookup that merges your local data with global web knowledge:
 
-##### sparql
+##### **SPARQL**
 
 ```
 
