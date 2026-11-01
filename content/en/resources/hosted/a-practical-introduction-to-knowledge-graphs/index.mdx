@@ -821,9 +821,9 @@ Imagine you are managing a specialized digital archive containing metadata for a
 
 By executing a single federated query on your local endpoint, you can bind your local variables (`?authorURI`) to Wikidata’s global database IDs, executing a live lookup that merges your local data with global web knowledge:
 
+```
 ##### **sparql**
 
-```
 # Executed on your LOCAL triplestore
 PREFIX dc: <http://purl.org>
 PREFIX ex: <http://example.org>
@@ -849,12 +849,12 @@ WHERE {
 ORDER BY ?birthYear
 ```
 
-#### **Behind the Scenes: How the Federated Engine Works**
-
-1. **Local Resolution:** The local engine scans your database for any resources matching `?manuscript dc:creator ?authorURI` and maps out those URIs.
-2. **Sub-query Delegation:** The engine groups all valid matching `?authorURI` variables and passes them as parameters in a remote HTTP request directly to the Wikidata engine.
-3. **Remote Execution:** Wikidata computes the labels and birth dates exclusively for those specific authors and hands a structural variable block back to your local environment.
-4. **Data Aggregation:** Your local triplestore performs an implicit join, projecting a final single table that blends your local titles with global, live metadata.
+<Callout kind="tip" title="Behind the Scenes: How the Federated Engine Works">
+  1. **Local Resolution:** The local engine scans your database for any resources matching `?manuscript dc:creator ?authorURI` and maps out those URIs.
+  2. **Sub-query Delegation:** The engine groups all valid matching `?authorURI` variables and passes them as parameters in a remote HTTP request directly to the Wikidata engine.
+  3. **Remote Execution:** Wikidata computes the labels and birth dates exclusively for those specific authors and hands a structural variable block back to your local environment.
+  4. **Data Aggregation:** Your local triplestore performs an implicit join, projecting a final single table that blends your local titles with global, live metadata.
+</Callout>
 
 Through federation, Digital Humanities projects don't need to rebuild information ecosystems from scratch. Instead, they operate as nodes in an open, interconnected library spanning the entire web.
 
