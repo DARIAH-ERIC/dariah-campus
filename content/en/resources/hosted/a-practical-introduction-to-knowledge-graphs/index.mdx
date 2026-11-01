@@ -473,7 +473,7 @@ Go through each module and execute -in order of appearance- each cell under the 
 
 As we explored earlier, the main idea behind the Semantic Web vision was to publish structured information (not just datasets but each individual data element) by describing their intended semantics as a directed, labeled graph of inter-related instances, so that it can be processed by machines.&#x20;
 
-The implementation of the above principles led to the creation of the RDF RDFS and OWL data models that provide the frameworks for building “inter-related instances” and the SPARQL language for querying them. In fact, this concept of iter-relating published data where each data element can be accessed individually through basic web protocols is what led to the idea of “Linked Data”. The latter can be seen as a set of best practices for publishing data on the web in a machine-readable, interconnected format with the goal to create a global graph of data where different datasets can be linked together and accessed easily. More specifically the Linked Data principles can be summarized as follows:
+The implementation of the above principles led to the creation of the RDF, RDFS and OWL data models that provide the frameworks for building “inter-related instances” and the SPARQL language for querying them. In fact, this concept of iter-relating published data where each data element can be accessed individually through basic web protocols is what led to the idea of “Linked Data”. The latter can be seen as a set of best practices for publishing data on the web in a machine-readable, interconnected format with the goal to create a global graph of data where different datasets can be linked together and accessed easily. More specifically the Linked Data principles can be summarized as follows:
 
 1. Use URIs as names for things
 2. Use HTTP URIs so that people can look up those names.
@@ -503,14 +503,14 @@ The protocol, along with the domain and the path, constitute the namespace of th
 
 Designing URIs for a digital humanities project requires a careful balance between **machine readability**, **human clarity**, and **long-term stability**. Because URIs serve as permanent identifiers for cultural, historical, or literary entities, how you structure them determines how easily other scholars can link to your work.
 
-**1. Designing the URI Namespace**
+#### **Designing the URI Namespace**
 
 The namespace consists of your protocol, domain, and base path. It should reflect the institutional home of the project and the broad category of the resources.
 
 * **Bad Practice:** `http://localhost:8080/my_project_v2/test_output/` (Tied to a temporary server and local folder structures).
 * **Good Practice:** `https://muralhistoryproject.org` (Clear, institutional, and independent of backend software).
 
-**2. Selecting a Separation Strategy: Hash vs. Slash**
+#### **Selecting a Separation Strategy: Hash vs. Slash**
 
 When a machine requests information about a URI, it handles the connection differently based on whether you use a hashtag (`#`) or a slash (`/`):
 
@@ -519,17 +519,10 @@ When a machine requests information about a URI, it handles the connection diffe
 * **Slash URIs (`/`):** Each identifier represents a unique web request. The server dynamically fetches only the data relevant to that specific entity. This is necessary for **large datasets** containing thousands of historical figures, places, or artifacts.
   * *Example:* `https://muralhistoryproject.org`
 
-**3. Best Practices for Minting Identifiers**
+#### **Best Practices for Minting Identifiers**
 
 * **Enforce Persistence:** Content management systems change, but URIs should not. Never include file extensions (like `.php` or `.html`) or database-specific frameworks in the URI path.
 * **Human-Readable vs. Opaque IDs:** You can use meaningful names or random numbers for your final token. While human-readable tokens (e.g., `/person/william-shakespeare`) are easy to write, opaque IDs (e.g., Using VIAF codes like `/person/96994048`) prevent broken links if a historical figure's spelling is corrected later.
-
-**4. Real-World Use Case: Prosopography of Renaissance Artists**
-
-Imagine you are building a database tracking the networks of 15th-century painters in Florence.
-
-* **The Challenge:** Artists often share identical names, or their names are spelled differently across archival records (e.g., *Sandro Botticelli* vs. *Alessandro di Mariano Filipepi*).
-* **The URI Solution:** You mint an opaque identifier based on a controlled numbering system, mapping it as `https://florentinedata.org`. Even if you update the primary display label or fix a typo in the biographical text, the global identifier remains unchanged. External graphs tracking historical contracts or pigments can safely point to `a7492` without risking dead links.
 
 ---
 
@@ -537,31 +530,24 @@ Imagine you are building a database tracking the networks of 15th-century painte
 
 Moving your dataset from a local spreadsheet to the Semantic Web means transitioning from isolated digital archiving to **collaborative web-scale data integration**.
 
-**1. Content Negotiation: The Bridge Between Humans and Machines**
+#### **Content Negotiation: The Bridge Between Humans and Machines**
 
 One of the most important concepts for digital humanists to grasp is **Content Negotiation**. A single HTTP URI can serve different versions of reality depending on who is asking:
 
 * If a **human scholar** enters the URI into a standard web browser, the server detects the browser's request for `text/html` and serves a **beautifully rendered webpage** with images and text.
 * If a **semantic web crawler** requests the exact same URI, the server detects a request for `application/rdf+xml` or `text/turtle` and delivers raw **machine-readable graph data** via a HTTP 303 redirection.
 
-**2. Mapping to Standard Ontologies**
+#### **Mapping to Standard Ontologies**
 
-To make your digital humanities data discoverable, you must avoid inventing unique field names where standard ones already exist. Instead, map your data to universally recognized vocabularies:
+To make your data discoverable, you must avoid inventing unique field names where standard ones already exist. Instead, map your data to universally recognized vocabularies:
 
-* **Dublin Core (dc):** For basic bibliographic metadata (e.g., creator, date, publisher).
-* **CIDOC CRM:** For complex cultural heritage event modeling (e.g., documenting the relocation, damage, and restoration history of an artifact).
-* **Friend of a Friend (FOAF):** For describing social networks, relationships, and basic biographical data of historical actors.
+* <Link link={{"discriminant":"external","value":"https://www.dublincore.org/"}}>**Dublin Core (dc)**</Link>**:** For basic bibliographic metadata (e.g., creator, date, publisher).
+* <Link link={{"discriminant":"external","value":"https://cidoc-crm.org/"}}>**CIDOC CRM**</Link>**:** For complex cultural heritage event modeling (e.g., documenting the relocation, damage, and restoration history of an artifact).
+* <Link link={{"discriminant":"external","value":"https://xmlns.com/foaf/spec/"}}>**Friend of a Friend (FOAF)**</Link>**:** For describing social networks, relationships, and basic biographical data of historical actors.
 
-**3. Applying Open Licenses**
+#### **Applying Open Licenses**
 
-Data cannot be truly "Linked Open Data" without legal clarity. Clearly embed machine-readable licensing terms (such as Creative Commons CC-BY or CC0 Public Domain Dedication) within the RDF metadata itself so algorithms know they have permission to index and analyze your collection.
-
-**4. Real-World Use Case: The Cross-Institutional Manuscript Network**
-
-Consider two digital humanities projects: Project A (in Paris) archives medieval illumination data, while Project B (in London) logs scribal handwriting styles.
-
-* **The Challenge:** Historically, these projects lived in isolated silos, forcing a scholar studying a single book to manually search both sites.
-* **The LOD Solution:** By mapping their fields to **CIDOC CRM** and opening up their endpoints using content negotiation, a third-party app can run a single query across both servers. The app aggregates Paris's data about the manuscript's decorations with London's data about its text scripts, revealing that a book housed in Paris was actually decorated by a scribe who spent most of their career in London.
+Data cannot be truly "Linked Open Data" without legal clarity. Clearly embed machine-readable licensing terms (such as <Link link={{"discriminant":"external","value":"https://creativecommons.org/licenses/by/4.0/deed.en"}}>Creative Commons CC-BY</Link> or <Link link={{"discriminant":"external","value":"https://creativecommons.org/publicdomain/zero/1.0/deed.en"}}>CC0 Public Domain Dedication</Link>) within the RDF metadata itself so algorithms know they have permission to index and analyze your collection.
 
 ### The Five-Star Linked Open Data
 
@@ -576,45 +562,45 @@ Developed by World Wide Web inventor Sir Tim Berners-Lee, this deployment scheme
 
 ```
 
-**⭐️ Star 1: Available on the Web (Any Format)**
+#### **⭐️ Star 1: Available on the Web (Any Format)**
 
 Your data is online and legally open, but locked in a format that machines cannot easily parse.
 
-* **DH Example:** A scanned PDF of a 19th-century ship ledger or a JPEG image of a text transcription.
+* **Example:** A scanned PDF of a 19th-century ship ledger or a JPEG image of a text transcription.
 * **Pros/Cons:** Great for human reading; terrible for computational text analysis or sorting.
 * **Use Case:** A regional historical society uploads a high-resolution scan of an early town layout map under a public domain license. While human researchers can view the map on a tablet, a computer program cannot automatically parse the names of the property owners or calculate spatial coordinates without human transcription.
 
-**⭐️⭐️ Star 2: Structured Data (Proprietary)**
+#### **⭐️⭐️ Star 2: Structured Data (Proprietary)**
 
 The data can now be easily manipulated by software, but it requires proprietary commercial applications to run seamlessly.
 
-* **DH Example:** A historical census uploaded as a Microsoft Excel (`.xlsx`) file.
+* **Example:** A historical census uploaded as a Microsoft Excel (`.xlsx`) file.
 * **Pros/Cons:** You can easily sort tables and run formulas, but the data is locked inside a corporate software ecosystem.
 * **Use Case:** A research team extracts the name, occupation, and tax records from the town map and inputs them into Microsoft Excel. They can now calculate total tax revenues or filter by occupation, but users must own Excel or rely on proprietary parsing libraries to read the file accurately.
 
-**⭐️⭐️⭐️ Star 3: Non-Proprietary Structured Data**
+#### **⭐️⭐️⭐️ Star 3: Non-Proprietary Structured Data**
 
 The data is structured using an open format that anyone can parse with free, open-source software tools.
 
-* **DH Example:** Exporting that same historical census spreadsheet into a Comma-Separated Values (`.csv`) file.
+* **Example:** Exporting that same historical census spreadsheet into a Comma-Separated Values (`.csv`) file.
 * **Pros/Cons:** Highly accessible and preservation-friendly. However, the data elements still lack global context; a column named "Location" has no universal meaning outside of your specific file.
 * **Use Case:** To make the data open to everyone, the research team converts the Excel document to a `.csv` file. Now, a Python script or an open-source tool like R can open the file natively. However, the column labeled `Owner` is just text. The machine doesn't know if "John Smith" refers to the famous local blacksmith or a completely different merchant with the same name.
 
-**⭐️⭐️⭐️⭐️ Star 4: RDF and URIs (The Semantic Leap)**
+#### **⭐️⭐️⭐️⭐️ Star 4: RDF and URIs (The Semantic Leap)**
 
 This is where the project enters the Semantic Web. You stop using text strings in tables and start using global URIs. Instead of writing the text string "London" in a spreadsheet cell, you point to a stable URI.
 
-* **DH Example:** Representing a collection using RDF triples where the subject, predicate, and object all resolve via HTTP URIs.
+* **Example:** Representing a collection using RDF triples where the subject, predicate, and object all resolve via HTTP URIs.
 * **Pros/Cons:** Your data structure is globally unique and fully machine-comprehensible. The downside is a steeper learning curve for project staff.
-* **Use Case:** The team converts the CSV table into an RDF graph. The text string "John Smith" becomes a subject URI: `https://townhistory.org`. The relationship is defined using a standard ontology predicate (`foaf:knows`), and his property location is identified by a local URI. Now, the machine treats "John Smith" as a distinct historical entity, not just an arbitrary sequence of letters.
+* **Use Case:** The team converts the CSV table into an RDF graph. The text string "John Smith" becomes a subject URI: `https://townhistory.org/person/john-smith`. The relationship is defined using a standard ontology predicate (`foaf:knows`), and his property location is identified by a local URI. Now, the machine treats "John Smith" as a distinct historical entity, not just an arbitrary sequence of letters.
 
-**⭐️⭐️⭐️⭐️⭐️ Star 5: Linked Outward to the World**
+#### **⭐️⭐️⭐️⭐️⭐️ Star 5: Linked Outward to the World**
 
 The pinnacle of Linked Open Data. Your project explicitly links its internal URIs to external master authorities.
 
-* **DH Example:** You connect your local project URI for "London" to the global **GeoNames** database or your resource for "Rembrandt" to the **Getty Union List of Artist Names (ULAN)**.
+* **Example:** You connect your local project URI for "London" to the global <Link link={{"discriminant":"external","value":"https://www.geonames.org/"}}>**GeoNames**</Link> database or your resource for "Rembrandt" to the <Link link={{"discriminant":"external","value":"https://www.getty.edu/research/tools/vocabularies/ulan/"}}>**Getty Union List of Artist Names**</Link>**&#x20;(ULAN)**.
 * **Pros/Cons:** Your project instantly inherits the vast contextual metadata of the global web. A scholar browsing a completely different database in another country can now discover your unique digital humanities collection automatically through these shared links.
-* **Use Case:** The team connects `https://townhistory.org` to his entry in the **Virtual International Authority File (VIAF)** and his property location to a **GeoNames** URI. Suddenly, your small town database is part of the global knowledge web. A researcher in another country looking up John Smith's trade connections via British library archives is automatically redirected to your local project, discovering his local property history and map placements without ever knowing your specific website existed beforehand.
+* **Use Case:** The team connects `https://townhistory.org/person/john-smith` to his entry in the [**Virtual International Authority File**](https://viaf.org/en)**&#x20;(VIAF)** and his property location to a **GeoNames** URI. Suddenly, your small town database is part of the global knowledge web. A researcher in another country looking up John Smith's trade connections via British library archives is automatically redirected to your local project, discovering his local property history and map placements without ever knowing your specific website existed beforehand.
 
 ### USE CASE: publish a scholarly knowledge graph as Linked Open Data
 
