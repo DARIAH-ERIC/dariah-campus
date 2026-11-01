@@ -635,7 +635,7 @@ In our example we use the SELECT DISTINCT clause to declare that we want to perf
 
 For readability purposes we use the shortcut foaf instead of the entire URI of the relationship ([http://xmlns.com/foaf](http://xmlns.com/foaf)). This shortcut declaration is optional and can take place in the beginning of the query using the PREFIX clause. Another optional declaration can take place at the end of the query using various modifiers that describe how the retrieved results should be presented (e.g. in which order, how many, etc.). In our example, we use two modifiers: the first (“order by”) to declare that we want the results (values of the variable ?name) to be presented in alphabetical order and the second (“limit”) to declare that we want to display only the first 10 of those results.
 
-A SPARQL query can be executed in a triple store via a SPARQL endpoint. Running it, would cause the traversal of the KG and the retrieval of all the values that match the specified pattern (i.e. are connected with any resource through the foaf:name property in our case). After the values are retrieved, they are sorted in alphabetical order and then the first ten are displayed to the user (as specified by the modifiers order by and limit respectively). For a thorough exploration of the SPARQL language you can visit the official SPARQL W3C website.
+A SPARQL query can be executed in a triple store via a SPARQL endpoint. Running it, would cause the traversal of the KG and the retrieval of all the values that match the specified pattern (i.e. are connected with any resource through the foaf:name property in our case). After the values are retrieved, they are sorted in alphabetical order and then the first ten are displayed to the user (as specified by the modifiers order by and limit respectively). For a thorough exploration of the SPARQL language you can visit the official [SPARQL W3C website](https://www.w3.org/TR/sparql11-query/).
 
 <Callout kind="note" title="Triple stores and Endpoints">
   A triple store (or RDF store) is **a specialized graph database management system designed to store, query, and manage data structured as triples**—Subject-Predicate-Object statements—which form the foundation of knowledge graphs. They are highly efficient for storing semantic, interconnected data, utilizing the Resource Description Framework (RDF) and querying via SPARQL to link diverse datasets. 
@@ -643,9 +643,233 @@ A SPARQL query can be executed in a triple store via a SPARQL endpoint. Running 
   A SPARQL endpoint is a web-based service (URL) that allows users to query **RDF** datasets using the **SPARQL query language**. It acts as a gateway to a Knowledge Graph or triplestore, receiving HTTP requests and returning data in formats like JSON, XML, or RDF. These endpoints enable decentralized, interoperable data access across the web. 
 </Callout>
 
+### **Graph Patterns and Graph Matching**
+
+The core mechanism of a SPARQL `WHERE` clause relies on **graph matching**. Because RDF data is structured as a web of interconnected triples (Subject \\(\rightarrow \\) Predicate \\(\rightarrow \\) Object), a SPARQL query acts as a template or a "blueprint" with missing pieces. The query engine overlays this blueprint onto the Knowledge Graph, searching for subgraphs that exactly match the structure you defined, and binds the matching data to your variables (`?variables`).
+
+#### **Basic Graph Patterns (BGPs)**
+
+A Basic Graph Pattern is simply a set of triple patterns. Just like RDF triples, each triple pattern in a `WHERE` clause consists of a subject, a predicate, and an object—but any of these components can be replaced by a variable.
+
+* Triple patterns inside the curly brackets `{}` are separated by a period (`.`), which acts like a logical **AND**.
+
+##### **sparql**
+
+```
+PREFIX ex: <http://example.org>
+PREFIX foaf: <http://xmlns.com>
+
+SELECT ?author ?book
+WHERE {
+  ?book ex:hasAuthor ?author .
+  ?author foaf:name "Virginia Woolf" .
+}
+```
+
+*In this pattern, the engine searches for a resource (`?book`) that has an author (`?author`), **AND** that same author must have the literal name "Virginia Woolf".*
+
+#### **Syntax Shortcuts for Cleaner Queries**
+
+When dealing with complex digital humanities datasets (like metadata for thousands of manuscripts or historical figures), writing out every single triple pattern can make queries long and hard to read. SPARQL provides two major syntactic shortcuts:
+
+* **The Semicolon (`;`)**: Used when you want to query multiple predicates and objects for the exact same subject.
+* **The Comma (`,`)**: Used when you want to query multiple objects that share both the same subject and the same predicate.
+
+| **Standard Pattern**                                      | **Shortcut Equivalent**                                  |
+| --------------------------------------------------------- | -------------------------------------------------------- |
+| `?person foaf:name ?name .` `?person foaf:mbox ?email .`  | `?person foaf:name ?name ;`         `foaf:mbox ?email .` |
+| `?book ex:genre "Fiction" .` `?book ex:genre "History" .` | `?book ex:genre "Fiction" , "History" .`                 |
+
+#### **Filtering and Refining DH Data**
+
+In digital humanities projects, you often need to narrow down results based on specific criteria, such as historical periods, geographic locations, or string matches. This is achieved using the `FILTER` clause.
+
+A `FILTER` evaluates a condition as true or false. If a graph match evaluates to false, it is dropped from the final results.
+
+**Common DH Filter Functions**
+
+* **`FILTER (?date > 1800)`**: Restricts numerical or date values (e.g., finding works published after the dawn of the 19th century).
+* **`FILTER (lang(?title) = "en")`**: Filters literal values by their language tag, which is crucial for multilingual archival datasets.
+* **`FILTER (regex(?name, "London", "i"))`**: Uses Regular Expressions to find text patterns (e.g., matching "London", "london", or "Londonderry"). The `"i"` modifier makes the match case-insensitive.
+
+#### **Practical Example: Querying a DH Dataset**
+
+Let’s apply these concepts to a real-world scenario. Imagine we are working with a digital collection of historical correspondence. We want to find **the titles and publication years of all letters written by an author named "Mary Shelley", but only those published after 1818 (the publication year of *Frankenstein*)**.
+
+##### **sparql**
+
+```
+PREFIX dc: <http://purl.org>
+PREFIX bio: <http://purl.org>
+PREFIX foaf: <http://xmlns.com>
+
+SELECT ?letterTitle ?year
+WHERE {
+  ?letter dc:creator ?author ;
+          dc:title ?letterTitle ;
+          dc:date ?year .
+  
+  ?author foaf:name "Mary Shelley" .
+  
+  FILTER (?year > 1818)
+}
+ORDER BY ?year
+```
+
+
+
+<Callout kind="tip" title="How the Engine Processes This Query:">
+  1. **Prefix Lookup**: Replaces shortcuts like `dc:title` with their full URIs (e.g., `http://purl.org`).
+  2. **Subject Binding**: Identifies a resource (`?letter`) and groups its properties using the semicolon shortcut (`creator`, `title`, and `date`).
+  3. **Graph Intersection**: Matches that `?letter`'s creator with a `?author` node whose `foaf:name` literal is precisely `"Mary Shelley"`.
+  4. **Constraint Filtering**: Evaluates the `?year` literal. It discards letters from 1816 or 1818, keeping only those from 1819 onward.
+  5. **Modification**: Sorts the matching letters chronologically (`ORDER BY ?year`) before presenting the final table to the researcher.
+</Callout>
+
 ### Querying public knowledge bases
 
-### USE CASE: querying scholarly knowledge
+One of the most powerful features of the Semantic Web is that you are not restricted to querying your own local data. Because Knowledge Graphs rely on globally unique URIs, anyone can query openly accessible datasets over the web using public **SPARQL endpoints**. For Digital Humanities researchers, this means we can cross-reference our local archival materials with massive, collaborative central knowledge bases to enrich our research instantly.
+
+When interacting with public knowledge bases, the two most common entry points are:
+
+* **The Web-based Interface:** A graphic interface (GUI) provided by repositories where researchers can write, test, and view the results of their SPARQL queries directly in a web browser.
+* **The API Endpoint:** A direct communication pipeline used by programming languages (like Python or R) to fetch data straight into a research environment or data visualization workflow.
+
+#### **Case Study 1: Extracting Biographical Data from Wikidata**
+
+[**Wikidata**](https://www.wikidata.org/) is a massive, multi-lingual public knowledge base that acts as the central data repository for Wikipedia. In digital humanities, it is an invaluable source for gathering structured metadata about historical figures, places, and cultural artifacts.
+
+Suppose we are building an interactive timeline of **women writers who were born in Paris during the 19th century**. Instead of scanning history books manually, we can formulate a single SPARQL query to retrieve this structured list from Wikidata's public endpoint:
+
+##### **sparql**
+
+```
+# Wikidata public endpoint example
+PREFIX wd: 
+PREFIX wdt: <http://wikidata.org>
+PREFIX rdfs: <http://w3.org>
+
+SELECT DISTINCT ?writer ?name ?birthDate
+WHERE {
+  ?writer wdt:P106 wd:Q36180 ;       # Occupation: Writer
+          wdt:P21  wd:Q6581072 ;     # Gender: Female
+          wdt:P19  wd:Q90 ;          # Place of Birth: Paris
+          wdt:P569 ?birthDate .      # Has a Birth Date
+  
+  # Filter for dates between Jan 1, 1801 and Dec 31, 1900
+  FILTER(?birthDate >= "1801-01-01"^^xsd:dateTime && ?birthDate <= "1900-12-31"^^xsd:dateTime)
+  
+  # Fetch the label in English
+  ?writer rdfs:label ?name .
+  FILTER(LANG(?name) = "en")
+}
+ORDER BY ?birthDate
+```
+
+#### **Case Study 2: Exploring Art History Collections via DBpedia**
+
+[**DBpedia**](https://www.dbpedia.org/) functions similarly to Wikidata by converting the unstructured, textual "infoboxes" of Wikipedia pages into a massive RDF knowledge graph. It is highly optimized for tracing relationships across broad cultural disciplines.
+
+Imagine a digital art historian analyzing the geography of the Impressionist movement. They want to find **the names and gallery locations of all paintings created by Claude Monet**. By executing a query against DBpedia's public SPARQL endpoint, they can generate an immediate inventory of his surviving works:
+
+##### **sparql**
+
+```
+# DBpedia public endpoint example
+PREFIX dbo: <http://dbpedia.org>
+PREFIX dbr: <http://dbpedia.org>
+PREFIX rdfs: <http://w3.org>
+
+SELECT DISTINCT ?paintingLabel ?museumLabel
+WHERE {
+  ?painting dbo:author dbr:Claude_Monet ;    # Author is Claude Monet
+            dbo:museum ?museum .             # Housed in museum
+            
+  # Fetch English labels for the artwork and the museum
+  ?painting rdfs:label ?paintingLabel .
+  ?museum rdfs:label ?museumLabel .
+  
+  FILTER(LANG(?paintingLabel) = "en")
+  FILTER(LANG(?museumLabel) = "en")
+}
+LIMIT 50
+```
+
+### **Federated Queries: Bridging Local Data and Public Knowledge Base Networks**
+
+Up to this point, we have treated local databases and public endpoints as separate entities. However, real-world digital humanities research frequently requires combining them. For instance, you might have a local, custom dataset tracking a specific network of 19th-century private correspondences, but you lack their global biographical metadata (such as their precise birth coordinates or alternative multilingual names).
+
+Instead of downloading millions of entries from a public registry to your local server, SPARQL allows you to perform <Link link={{"discriminant":"external","value":"https://www.w3.org/TR/sparql11-federated-query/"}}>**Federated Queries**</Link> using the `SERVICE` keyword. This technique enables your local query engine to process local patterns and seamlessly instruct a remote public endpoint to evaluate specific sub-patterns over the internet in real-time.
+
+**mermaid**
+
+```
+graph TD
+    A[Your Local SPARQL Query] -->|1. Matches Local Triples| B(Local Graph: Private Letters)
+    A -->|2. SERVICE Keyword| C[Internet Pipeline]
+    C -->|3. Evaluates Remote Sub-Pattern| D(Public Endpoint: Wikidata)
+    B --> E[Unified Results Table]
+    D --> E
+```
+
+The syntax relies on wrapping a sub-pattern inside a `SERVICE` block accompanied by the absolute IRI of the target public endpoint:
+
+##### **sparql**
+
+```
+WHERE {
+  # Pattern 1: Matched against your local graph
+  ?localItem ex:hasAuthor ?authorURI .
+  
+  # Pattern 2: Sent over the web to a public endpoint
+  SERVICE <URL_OF_PUBLIC_ENDPOINT> {
+    ?authorURI wdt:P19 ?birthPlace .
+  }
+}
+```
+
+#### **Case Study 3: Enriching a Local Archive with Wikidata**
+
+Imagine you are managing a specialized digital archive containing metadata for a collection of scanned historical manuscripts. Your local triple store records which author wrote which manuscript, but your database does not store the author's full birth or death dates.
+
+By executing a single federated query on your local endpoint, you can bind your local variables (`?authorURI`) to Wikidata’s global database IDs, executing a live lookup that merges your local data with global web knowledge:
+
+##### **sparql**
+
+```
+# Executed on your LOCAL triplestore
+PREFIX dc: <http://purl.org>
+PREFIX ex: <http://example.org>
+PREFIX wdt: <http://wikidata.org>
+PREFIX rdfs: <http://w3.org>
+
+SELECT ?manuscript ?title ?authorName ?birthYear
+WHERE {
+  # 1. Gather properties from your local dataset
+  ?manuscript dc:title ?title ;
+              dc:creator ?authorURI .
+              
+  # 2. Open a live connection to Wikidata's public service pipeline
+  SERVICE <https://wikidata.org> {
+    ?authorURI wdt:P569 ?birthDate . # Wikidata property for date of birth
+    ?authorURI rdfs:label ?authorName .
+    FILTER(LANG(?authorName) = "en")
+  }
+  
+  # 3. Extract just the numerical year using an expression function
+  BIND(YEAR(?birthDate) AS ?birthYear)
+}
+ORDER BY ?birthYear
+```
+
+#### **Behind the Scenes: How the Federated Engine Works**
+
+1. **Local Resolution:** The local engine scans your database for any resources matching `?manuscript dc:creator ?authorURI` and maps out those URIs.
+2. **Sub-query Delegation:** The engine groups all valid matching `?authorURI` variables and passes them as parameters in a remote HTTP request directly to the Wikidata engine \[10.2].
+3. **Remote Execution:** Wikidata computes the labels and birth dates exclusively for those specific authors and hands a structural variable block back to your local environment \[10.2].
+4. **Data Aggregation:** Your local triplestore performs an implicit join, projecting a final single table that blends your local titles with global, live metadata \[10.2, 18.2.4.4].
+
+Through federation, Digital Humanities projects don't need to rebuild information ecosystems from scratch. Instead, they operate as nodes in an open, interconnected library spanning the entire web.
 
 ### EXERCISE
 
