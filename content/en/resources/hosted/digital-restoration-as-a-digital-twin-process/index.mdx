@@ -10,6 +10,8 @@ editors:
 contributors: []
 tags:
   - cultural-heritage
+  - 3d-modelling
+  - computational-imaging
 sources:
   - artemis
 license: cc-by-4.0
@@ -431,9 +433,9 @@ Prosthetic geometry can then be derived by subtracting the assembled fragments f
 
 ## ARTEMIS Geometric Alignment Services
 
-ARTEMIS provides geometric alignment services for 3D models representing partial objects, partial or complementary scans, and fragments or parts that need to be assembled. The services include hierarchical clustering and bundle adjustment for refining already aligned geometry. Both local and global registration are supported, together with optional tether points or anchors whose influence can be varied. The server automatically simplifies and preprocesses the models, while server-side caching and synchronization support collaborative projects.
+ARTEMIS provides geometric alignment services for 3D models representing partial objects, complementary scans, fragments, or components that need to be assembled. These services support both local and global registration and include hierarchical clustering and bundle adjustment to refine geometry that has already been approximately aligned. Optional tether points or anchors can also be used, with adjustable influence on the alignment process. To support efficient processing, the server automatically simplifies and preprocesses the uploaded models. Server-side caching and synchronization further enable collaborative workflows.
 
-The services are exposed through REST API calls and are intended for application developers. They can be used from web-based, mobile or desktop applications. The infrastructure described for ARTEMIS includes a dedicated server environment at Athens University of Economics and Business (AEUB), a Node.js application server and native C++/CUDA backend servers. Authentication and Digital-Twin transactions remain centralized through the main ARTEMIS infrastructure.
+The services are exposed through REST API calls and are primarily intended for application developers. They can be integrated into web-based, mobile, or desktop applications. The ARTEMIS infrastructure includes a dedicated server environment hosted at the Athens University of Economics and Business (AUEB), a Node.js application server, and native C++/CUDA backend servers. Authentication and Digital Twin transactions remain centralized through the main ARTEMIS infrastructure.
 
 ## A Typical Workflow
 
