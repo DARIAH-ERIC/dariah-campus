@@ -260,6 +260,8 @@ The processing workflow continues with **camera alignment** based on Structure f
 
 Image-based methods offer several strengths. They provide rich visual and color information, achieve good geometric consistency, and can be applied at different scales and in different contexts. In comparison with many range-based systems, image-based approaches also require lower equipment costs. However, the quality of the resulting models depends on image quality and lighting conditions. Certain surface materials remain difficult to document, and external metric references may be required to ensure reliable scaling and positioning of the reconstructed model.
 
+***Picture Gallery: Image Processing Workflow***
+
 ## **Topographic Techniques**
 
 Topographic techniques provide accurate spatial reference information that supports three-dimensional documentation. The presentation introduces two principal technologies: **Global Navigation Satellite Systems (GNSS)** and **Total Stations**.
@@ -276,8 +278,58 @@ Several AI-based approaches are currently being explored. These include **Neural
 
 The presentation identifies several strengths of AI-based techniques. They can support the reconstruction of incomplete datasets, automate selected processing tasks, improve visual realism, and facilitate the analysis of large amounts of data. At the same time, important limitations remain. AI-generated results may provide limited or no metric reliability, many methods rely on implicit representations that are difficult to interpret, and the internal operation of many models remains largely opaque. In addition, the quality of the results may be influenced by biases present in the training data.
 
+***→ pro cons***
+
 Rather than replacing established survey techniques, AI-based methods currently represent an additional component within the broader documentation workflow. Their integration with more established acquisition methods continues to be an active area of development in cultural heritage digitization.
 
+## **3D Model Types**
+
+Different acquisition techniques produce different types of three-dimensional models. Each model type represents heritage data in a different way and is therefore suitable for different applications. The presentation distinguishes between four principal model types: **Point Clouds**, **Textured Meshes**, **Gaussian Splats**, and **Building Information Models (BIM/H-BIM)**. Together, these models illustrate how the same documentation process can produce different forms of digital representation depending on the intended use.
+
+### **Point Clouds**
+
+A point cloud is a collection of points distributed in three-dimensional space that represents the geometry of an object, building, or environment. Each point is defined by its three-dimensional coordinates and may contain additional information describing the recorded surface. According to the presentation, the principal attributes of a point cloud include XYZ coordinates, RGB colour values, laser intensity, scalar fields, point classification, reference systems, and metadata describing the acquisition process.
+
+Point clouds constitute the primary output of many reality-based survey techniques and provide a highly accurate metric representation of cultural heritage. They support measurements, geometric inspection, and technical analyses, including the calculation of distances, areas, volumes, deformations, and deviations. Furthermore, point clouds can be visualised within three-dimensional software environments and serve as the basis for the extraction of plans, elevations, sections, and profiles.
+
+Within cultural heritage, point clouds also support structural assessment, restoration activities, and documentation workflows. They can be integrated into BIM or GIS environments and shared through web-based visualisation platforms. Because they preserve measured geometric information, point clouds often represent the fundamental dataset from which additional digital products are generated.
+
+### **Textured Meshes**
+
+A mesh represents a continuous three-dimensional surface composed of connected vertices, edges, and faces, which are most commonly organized as triangles. In addition to its geometric structure, a mesh may include information describing surface orientation, colour, texture coordinates, textures, and material properties. Together, these elements produce a digital representation that combines geometry with the visual appearance of the documented object.
+
+Within cultural heritage documentation, textured meshes provide a surface-based representation of buildings, archaeological remains, and artefacts. The combination of geometry and texture enables photorealistic documentation while supporting the analysis of materials, colours, decorative elements, and patterns of deterioration. Consequently, textured meshes contribute not only to documentation but also to restoration, reconstruction, interpretation, and dissemination.
+
+Meshes also support the segmentation and annotation of materials, construction phases, or conservation issues. In addition, they can be used to generate derived products such as orthophotos, sections, and profiles. Simplified mesh models may also be prepared for web platforms, virtual reality, augmented reality, and museum applications, extending the accessibility of digital heritage documentation to different audiences.
+
+### **Gaussian Splats**
+
+Gaussian Splats represent a more recent approach to three-dimensional visualisation. Rather than describing a surface through connected polygons, this representation consists of numerous optimised volumetric primitives, referred to as three-dimensional Gaussians. According to the presentation, each Gaussian is characterised by its position in space, anisotropic covariance, opacity, and colour or radiance information.
+
+The principal application of Gaussian Splats is real-time photorealistic rendering. Within cultural heritage, this representation supports the visual interpretation of spaces, materials, colours, and lighting conditions. It enables real-time navigation through complex heritage environments and contributes to immersive experiences delivered through web applications, virtual reality, augmented reality, and museum installations. The presentation also notes that Gaussian Splats are effective for rendering visually challenging materials, including reflective or transparent surfaces.
+
+By supporting highly realistic visualisation, Gaussian Splats extend the possibilities for the communication and dissemination of cultural heritage through digital environments.
+
+## **Building Information Modelling and Heritage BIM**
+
+Building Information Modelling (BIM) is presented as a digital methodology for representing and managing buildings through parametric objects enriched with geometric, technical, and management information. Rather than representing only geometry, BIM organizes information into semantic building elements and associates these elements with parameters, materials, documentation, and relationships. The principal characteristics of BIM models include semantic objects, parametric geometry, metadata, material information, and historical phases.
+
+Within the field of cultural heritage, BIM has been further developed into **Heritage Building Information Modelling (H-BIM)**. H-BIM extends BIM principles to historic buildings by integrating documentation, survey data, and information related to conservation and restoration. According to the presentation, H-BIM supports the structured organization of knowledge concerning heritage buildings and frequently incorporates point clouds, meshes, and orthophotos generated through laser scanning and photogrammetry.
+
+The presentation identifies several applications of H-BIM within cultural heritage. These include the organization of knowledge concerning geometry, materials, historical phases, and documentation; the integration of survey data; the management of conservation information; restoration planning; the extraction of measurements and reports; and the long-term management of maintenance, monitoring, and digital twin development. In this way, H-BIM provides a structured framework that combines documentation with information management throughout the lifecycle of a heritage asset.
+
+## **Conclusions**
+
+Three-dimensional documentation has become an important component of cultural heritage research, conservation, and management. As presented throughout this learning resource, the documentation process involves much more than the creation of a digital model. It begins with the definition of documentation objectives, continues through the selection of appropriate acquisition methods, and includes the management of metadata, paradata, and interoperable digital resources. These different stages contribute to the production of reliable and reusable documentation.
+
+Different acquisition techniques provide complementary perspectives on cultural heritage. Range-based methods, image-based methods, topographic techniques, and emerging AI-based approaches each contribute different types of information and may be combined according to the objectives of a documentation project. The resulting datasets can subsequently be represented as point clouds, textured meshes, Gaussian Splats, or H-BIM models, depending on the intended application.
+
+Throughout the presentation, particular emphasis is placed on the importance of methodological awareness. Digital documentation is presented not simply as a technical procedure but as a structured process in which every methodological decision influences the resulting dataset. Reliable documentation therefore depends not only on the choice of technology but also on the transparent documentation of the acquisition process and the careful management of the resulting information.
+
+Finally, the presentation illustrates how three-dimensional documentation forms the basis for more advanced digital heritage applications, including Reactive Heritage Digital Twins. By combining high-quality survey data with information management, visualisation, and simulation, digital documentation contributes to new approaches for the study, conservation, management, and communication of cultural heritage.
+
+\
+\
 \
 \\
 
