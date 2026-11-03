@@ -35,7 +35,11 @@ dariah-working-groups:
   - research-data-management
   - multilingual-dh
 ---
-## Learning outcomes
+## Introduction
+
+How to ensure output dissemination & data sharing in multiple languages in multiple countries? How to ensure scientific content is described with appropriate descriptive multilingual metadata to ensure good 'findability' and visibility? This resource equips researchers with strategies to manage, publish, and disseminate multilingual research data. It covers data management plans, Linked Data identifiers, FAIR (Findable, Accessible, Interoperable, and Reusable) and CARE (Collective Benefit; Authority to Control; Responsibility; Ethics) principles, and language-aware publishing. Through practical examples and reflective activities, it promotes inclusivity, local community engagement, and reduced English dominance in scholarly communication. It is aimed at Digital humanists, and researchers in Linguistics or Humanities.
+
+## Learning Outcomes
 
 After completing this training resource, learners should be able to:
 
@@ -45,15 +49,15 @@ After completing this training resource, learners should be able to:
 
 This module is accompanied by examples, reflexive activities and concrete use cases related to multilingual projects.
 
-## 1. Know the Strategies, Tools and Standards to manage Multilingual Research Data
+## 1. Know the Strategies, Tools and Standards to Manage Multilingual Research Data
 
-**Introductory context**
+**Introductory Context**
 
 A research dataset typically contains data about entities and/or relations between entities. If your goal is to make your research dataset readable in several languages, you do not need to translate the names of the entities you describe to other languages. You would rather choose to describe these entities using a Uniform Resource Identifier (URI), which enables you to retrieve multilingual labels (and more), and use these as entity descriptor, instead of literal values (names). If you start from an existing dataset containing literal values instead of identifiers, you can use tools like [OpenRefine](https://marketplace.sshopencloud.eu/tool-or-service/hpBfcf) for finding the URI you need.
 
 In the following, we give main recommendations for which sources for web identifiers to choose, together with examples. Clicking on the URI, you get to lists of multilingual entity labels (and more information). If you use a Linked Data database software, you can import all these labels (together with any other information found in these sources) into your own database environment.
 
-### 1.1 Open Source Wikimedia tools and platforms for multilingual purposes 
+### 1.1 Open Source Wikimedia Tools and Platforms for Multilingual Purposes 
 
 [Wikimedia tools](https://en.wikipedia.org/wiki/Wikimedia_movement#Content_projects) are interoperable and multilingual from the start, enabling the integration of researchers' content and data in the semantic web to expand research impact beyond Academia.
 
@@ -75,7 +79,7 @@ Wikisource is the digital library for hosting texts in public domain and creativ
 
 [Wikipedia](https://www.wikipedia.org/) uses an encyclopedic, simpler language and may be used to reference researchers publications. An interesting academic extension activity is to promote editathons in the language of target communities and reach wider publics.
 
-#### Set of recommendations and examples
+#### Set of Recommendations and Examples
 
 1. Use a database solution that provides a multilingual user interface
 
@@ -102,7 +106,7 @@ For sharing your research data as [Five-Star Open Data](https://5stardata.info),
 4. If a Wikidata entity misses a label in one of the languages you want to cover, just add it to Wikidata, so that it becomes available for everyone.
 5. If you have a dataset containing literal values, you can use [OpenRefine](https://marketplace.sshopencloud.eu/tool-or-service/hpBfcf) for finding the corresponding identifiers, e.g. in Wikidata.
 
-### 1.2 CLARIN Open Source tools for Multilingual Text Analysis
+### 1.2 CLARIN Open Source Tools for Multilingual Text Analysis
 
 The Common Language Resources and Technology Infrastructure (CLARIN) platform is a digital research infrastructure that provides language data, tools, and services for researchers in the humanities and social sciences following FAIR principles. This platform is multilingual and supports low-resource and underrepresented languages. It maps Natural Language Processing tools to support text and analysis (e.g., Part of Speech, Named Entity Recognition, Open Large Language Models, dictionaries, parallel corpora). It actively supports projects like[ ](https://www.clarin.eu/content/industry-and-beyond)[LLMs4EU](https://www.llms4eu.eu/) to build open multilingual Artificial Intelligence models for underrepresented European languages.
 
@@ -130,7 +134,7 @@ Researchers should consider which communities may benefit from their data, which
 
 Ultimately, planning multilingual research data is both a practical and a reflective process. It involves anticipating linguistic needs, identifying potential barriers and considering how language choices may enable or constrain participation in the production and reuse of knowledge.
 
-### 2.1 Include Language Diversity in your Data Management Plan (DMP) and use Descriptive Metadata
+### 2.1 Include Language Diversity in your Data Management Plan (DMP) and Use Descriptive Metadata
 
 In your DMP, include your outputs and data in the language of the country of study to make sure it’s accessible and visible to the local communities, and ensure inclusivity (avoid research extractivism). You have to make sure your research process is aligned with [CARE ](https://www.gida-global.org/careprinciples)principles.
 
@@ -142,7 +146,7 @@ Using descriptive metadata is key to ensure findability of research data. For co
 
 If you use Wikidata ID instead of LCSH terms as descriptors for your content, these descriptors are accessible using labels in multiple languages. For this example, see this <Link link={{"discriminant":"external"}}>qu</Link><Link link={{"discriminant":"external","value":"https://qlever.dev/wikidata/RkxNYT"}}>ery</Link>, where you can choose to see LCSH in your language through Wikidata.
 
-### 2.2 Use a Workflow to manage a Corpora in Under-Resourced Languages
+### 2.2 Use a Workflow to Manage a Corpora in Under-Resourced Languages
 
 The workflow [‘Managing corpora in under-resourced languages’](https://marketplace.sshopencloud.eu/workflow/fbXfuH) provides a complete set of steps to manage your corpora while staying compliant with FAIR and Open Science principles. Best practices, dedicated tools and references to other workflows are provided. 
 
@@ -154,7 +158,7 @@ The workflow [‘Managing corpora in under-resourced languages’](https://marke
 * Assigning (open) license
 * Versioning
 
-### 2.3 Take into account [CARE](https://www.gida-global.org/careprinciples) principles in your DMP
+### 2.3 Take into account [CARE](https://www.gida-global.org/careprinciples) Principles in your DMP
 
 Collective Benefit and Authority to Control is most of the time enabled by providing key research processes and results documentation in the language of the community that is being studied.
 
@@ -164,7 +168,7 @@ Collective Benefit and Authority to Control is most of the time enabled by provi
 
 Implementing licenses and practices that align with CARE principles to ensure community-centric control may also imply using the community’s own hardware and human maintenance infrastructure. Linked open data ecosystems like Wikidata, Wikibase.cloud, and Wikimedia Commons and other public infrastructure operate under very strict open licensing frameworks that strictly enforce FAIR principles. The [Very Small GLAM](https://meta.wikimedia.org/wiki/Very_Small_GLAM) project describes the implementation of Wikimedia-based tools on-premise. Even if an on-premise setup may be ideal as a sovereign solution, it may still require too many resources. A sub-optimal alternative may be to use other [hosting services](https://dhwiki.wikibase.cloud/wiki/Structure_and_features_of_Wikibase_for_DH#Wikibase%20Hosting%20Solutions).
 
-### 2.4 Sociolinguistic approach of multilingual research
+### 2.4 Sociolinguistic Approach of Multilingual Research
 
 Planning multilingual research data therefore involves more than translating datasets or metadata after research has been completed. It requires recognising linguistic diversity as an integral dimension of research data management from the outset.
 
@@ -178,11 +182,11 @@ Communities that currently lack the institutional, financial or technical resour
   Creole Connections emerged from an urgent need to share the stories, needs and experiences voiced across the Raizal-Creole diaspora in order to build back ancestral connections, forge intergenerational exchange, and develop prosperous futures. The sets of thematized videos are organised according to location of interview, and present Raizal-Creole concerns and aspirations from a diverse range of views and positionalities.
 </Embed>
 
-## 3. Publish and disseminate Multilingual Research
+## 3. Publish and Disseminate Multilingual Research
 
 Currently, 95% of all global scientific publications are published in English. The second language used is Spanish which accounts for 1% of the total (González Alcaide et al., 2009; Badillo, 2022; Instituto Cervantes, 2023). This has many implications at many levels. Citizens engagement with scientific discoveries across disciplines is highly dependent on access to the appropriate content in their mother tongue. The progress of new technologies in machine translation of texts opens up a new range of opportunities, and challenges, for the use of languages other than English in research. However, the absence of a significant body of (scientific) publications in a particular language is hindering the research and development of the necessary AI tools. An increasing number of scholars are drawing attention to the challenges posed to researchers, science, and society by the emphasis on using English as the primary language for scholarly communication.
 
-### 3.1 Activity “*Inside a multilingual research journal”*
+### 3.1 Activity “*Inside a Multilingual Research Journal”*
 
 Academic publishing is a key site in which decisions about language, audience, visibility, and scholarly legitimacy are made. Journals working in multilingual fields must negotiate the role of English as a dominant language of international academic communication alongside the languages that constitute their objects of study and scholarly communities.
 
@@ -220,7 +224,7 @@ Academic publishing is a key site in which decisions about language, audience, v
   </WorksheetSection>
 </Worksheet>
 
-### 3.2 Reflexive activity
+### 3.2 Reflexive Activity
 
 Choose one research project (your own or a hypothetical one) involving more than one language. Imagine that you are preparing an article based on this research.
 
@@ -242,7 +246,7 @@ You should prioritise journals where abstract and keywords in a second language 
 * [Journal of Spanish Language Teaching ](https://www.tandfonline.com/journals/rslt20)Q1 Spanish-English journal with three articles in English and three in Spanish in each volume, book reviews aim to cover the book in the opposite language to give them more visibility; 
 * [Revista Colombiana de Tecnologias de Avanzada](https://ojs.unipamplona.edu.co/rcta/issue/view/328) where articles have to be submitted in English and Spanish
 
-## Concluding remarks
+## Concluding Remarks
 
 The rich environment of Wikimedia and CLARIN tools and standards is central to support researchers in making their research dataset readable in several languages but also to ensure findability, accessibility, and reproducibility of multilingual data. 
 
@@ -256,7 +260,9 @@ By integrating multilingual considerations into research data management from th
   The present resource was created during the workshop "Research Data Management Tools and Strategies for Language Diversity”. The workshop was run by the DARIAH Working Groups Multilingual DH and Research Data Management, financed by the DARIAH-EU Funding Scheme for Working Group Activities 2026-27, and hosted by the University of Edinburgh on 3rd and 4th September 2026. Principal investigator was Alíz Horváth; the related grant was administered by the Central European University. Further financial support was provided by the Society of Spanish Researchers in the United Kingdom (SRUK/CERU), the King’s College London, the Etxepare Euskal Institutua, the Fundación Española para la Ciencia y la Tecnología (FECYT) and the University of Edinburgh.
 </Callout>
 
-**Organisations involved in this resource** 
+
+
+**Organisations Involved in this Resource** 
 
 * DARIAH-EU 
 * The University of Edinburgh
@@ -265,7 +271,9 @@ By integrating multilingual considerations into research data management from th
 * The Etxepare Basque Institute
 * King’s College London
 
-**Further learning**
+
+
+**Further Learning**
 
 We also invite users to discover another module related-topic hosted in CAMPUS “Datasheets for publishing data about under-resourced languages” \[ADD LINK]. \[ADD LINK to the other OERs].
 
