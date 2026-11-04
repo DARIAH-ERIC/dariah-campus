@@ -6,7 +6,7 @@ import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
 export interface ContentSection {
-	/** Identifier used as `?section=` search parameter value. */
+	/** Identifier used as path segment in the section url, e.g. `/resources/hosted/[id]/[section]`. */
 	id: string;
 	/** Text content of the first heading in the section, used to label navigation controls. */
 	label: string | null;
