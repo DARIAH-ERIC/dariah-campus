@@ -7,6 +7,7 @@ import { ChevronRightIcon } from "lucide-react";
 import { type ReactNode, useEffect, useRef } from "react";
 
 import { Link } from "#/components/link.tsx";
+import type { ContentSectionLink } from "#/lib/content/utils/get-content-sections.ts";
 import { useLabels } from "#/lib/hooks/use-labels.ts";
 import { useTableOfContentsHighlight } from "#/lib/hooks/use-table-of-contents-highlight.ts";
 import { createHref } from "#/lib/navigation/create-href.ts";
@@ -18,7 +19,7 @@ interface TableOfContentsProps {
 	/** Identifier of the section which is currently displayed, when the content is split up into sections. */
 	currentSectionId?: string;
 	/** Maps heading identifiers to the section they occur in, when the content is split up into sections. */
-	headingSections?: Record<string, string>;
+	headingSections?: Record<string, ContentSectionLink>;
 	onChange?: () => void;
 	tableOfContents: TableOfContentsTree;
 	title?: ReactNode;
@@ -62,7 +63,7 @@ interface TableOfContentsLevelProps {
 	currentSectionId?: string;
 	depth?: number;
 	headings: TableOfContentsTree | undefined;
-	headingSections?: Record<string, string>;
+	headingSections?: Record<string, ContentSectionLink>;
 	highlightedHeadingId: string | undefined;
 	onChange?: () => void;
 	variant?: "default" | "panel";
@@ -82,8 +83,8 @@ function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): React
 			{headings.map((heading, index) => {
 				const isHighlighted = heading.id === props.highlightedHeadingId;
 				/** Headings in other sections are only reachable by also switching to that section. */
-				const sectionId = heading.id != null ? headingSections?.[heading.id] : undefined;
-				const searchParams = sectionId != null && sectionId !== currentSectionId ? { section: sectionId } : undefined;
+				const section = heading.id != null ? headingSections?.[heading.id] : undefined;
+				const pathname = section != null && section.id !== currentSectionId ? section.href : undefined;
 
 				return (
 					<li key={index} className={spacing}>
@@ -94,7 +95,7 @@ function TableOfContentsLevel(props: Readonly<TableOfContentsLevelProps>): React
 									"relative flex scroll-my-8 rounded-sm transition hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700",
 									isHighlighted ? "pointer-events-none font-bold" : undefined,
 								)}
-								href={createHref({ hash: heading.id, searchParams })}
+								href={createHref({ hash: heading.id, pathname })}
 								onPress={onChange}
 							>
 								{isHighlighted ? (
