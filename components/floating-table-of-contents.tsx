@@ -7,11 +7,12 @@ import { Fragment, type ReactNode } from "react";
 import { Button, Dialog, DialogTrigger, Modal, ModalOverlay } from "react-aria-components";
 
 import { TableOfContents } from "#/components/table-of-contents.tsx";
+import type { ContentSectionLink } from "#/lib/content/utils/get-content-sections.ts";
 
 interface FloatingTableOfContentsProps {
 	closeLabel: string;
 	currentSectionId?: string;
-	headingSections?: Record<string, string>;
+	headingSections?: Record<string, ContentSectionLink>;
 	label: string;
 	tableOfContents: TableOfContentsTree;
 	toggleLabel: string;

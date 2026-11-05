@@ -23,8 +23,8 @@ test.describe("split points", () => {
 		await expect(page.getByRole("navigation", { name: "Sections" })).toContainText("Section 1 of 3");
 	});
 
-	test("displays the section named by the search param", async ({ page }) => {
-		await page.goto(`${pathname}?section=last`);
+	test("displays the section named by the path segment", async ({ page }) => {
+		await page.goto(`${pathname}/last`);
 
 		await expect(page.getByRole("heading", { name: "The last section" })).toBeVisible();
 		await expect(page.getByRole("heading", { name: "Before the first split" })).toBeHidden();
@@ -32,9 +32,15 @@ test.describe("split points", () => {
 	});
 
 	test("falls back to the first section for an unknown section", async ({ page }) => {
-		await page.goto(`${pathname}?section=does-not-exist`);
+		await page.goto(`${pathname}/does-not-exist`);
 
 		await expect(page.getByRole("heading", { name: "Before the first split" })).toBeVisible();
+	});
+
+	test("displays not found page for nested section segments", async ({ page }) => {
+		const response = await page.goto(`${pathname}/last/does-not-exist`);
+
+		expect(response?.status()).toBe(404);
 	});
 
 	test("moves between sections", async ({ page }) => {
@@ -44,12 +50,12 @@ test.describe("split points", () => {
 
 		await navigation.getByRole("link", { name: /Next/ }).click();
 
-		await expect(page).toHaveURL(`${pathname}?section=section-2`);
+		await expect(page).toHaveURL(`${pathname}/section-2`);
 		await expect(page.getByRole("heading", { name: "The middle section" })).toBeVisible();
 
 		await navigation.getByRole("link", { name: /Previous/ }).click();
 
-		await expect(page).toHaveURL(`${pathname}?section=section-1`);
+		await expect(page).toHaveURL(pathname);
 		await expect(page.getByRole("heading", { name: "Before the first split" })).toBeVisible();
 	});
 
@@ -59,7 +65,7 @@ test.describe("split points", () => {
 		const navigation = page.getByRole("navigation", { name: "Sections" });
 		await expect(navigation.getByRole("link", { name: /Previous/ })).toBeHidden();
 
-		await page.goto(`${pathname}?section=last`);
+		await page.goto(`${pathname}/last`);
 		await expect(navigation.getByRole("link", { name: /Next/ })).toBeHidden();
 	});
 
@@ -77,12 +83,12 @@ test.describe("split points", () => {
 		);
 		await expect(tableOfContents.getByRole("link", { name: "A nested heading" })).toHaveAttribute(
 			"href",
-			"?section=section-2#a-nested-heading",
+			`${pathname}/section-2#a-nested-heading`,
 		);
 
 		await tableOfContents.getByRole("link", { name: "The last section" }).click();
 
-		await expect(page).toHaveURL(`${pathname}?section=last#the-last-section`);
+		await expect(page).toHaveURL(`${pathname}/last#the-last-section`);
 		await expect(page.getByRole("heading", { name: "The last section" })).toBeVisible();
 	});
 });

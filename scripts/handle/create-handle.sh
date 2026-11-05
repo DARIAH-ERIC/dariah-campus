@@ -11,21 +11,22 @@ repo="${VERCEL_GIT_REPO_OWNER}/${VERCEL_GIT_REPO_SLUG}"
 files=$(git diff --diff-filter=AMR --name-only ${VERCEL_GIT_PREVIOUS_SHA} ${VERCEL_GIT_COMMIT_SHA} -- 'content/*/curricula/**/index.mdx' 'content/*/resources/**/index.mdx' ':(exclude)content/*/resources/external/**' | xargs)
 
 if [[ -n "${files}" ]]; then
-  existing_pr=$(curl --fail --silent \
-    --header "Authorization: Bearer ${GITHUB_TOKEN}" \
-    --header "Accept: application/vnd.github+json" \
-    --header "X-GitHub-Api-Version: 2022-11-28" \
-    "https://api.github.com/repos/${repo}/pulls?head=${VERCEL_GIT_REPO_OWNER}:${branch}&base=main&state=open")
-
-  # The GitHub API returns an empty result set as "[\n\n]", not a literal "[]",
-  # so match on an actual pull request field instead of comparing the raw body.
-  if echo "${existing_pr}" | grep -q '"number"'; then
-    echo "Pull request already exists for ${branch}."
-    exit 0
+  # Two production builds can run concurrently (e.g. when two pull requests are merged
+  # in quick succession) and then share the same VERCEL_GIT_PREVIOUS_SHA, so the same
+  # resource can show up in both diffs. Skip resources which already have a handle
+  # waiting in an open pull request, so we don't mint a second one.
+  if ! pending=$(pnpm tsx ./scripts/handle/list-pending-handle-files.ts); then
+    echo "Failed to list open handle pull requests."
+    exit 1
   fi
 fi
 
 for file in $files; do
+  if grep -qxF "${file}" <<<"${pending}"; then
+    echo "Skipping ${file}, a pull request with its handle is already open."
+    continue
+  fi
+
   echo "Processing ${file}..."
 
   pnpm tsx ./scripts/handle/create-handle.ts --resource ${file}
