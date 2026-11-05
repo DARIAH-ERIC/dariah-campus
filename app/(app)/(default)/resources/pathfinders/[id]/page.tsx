@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { Fragment, type ReactNode } from "react";
 
 import { Citation } from "#/components/citation.tsx";
+import { ContentSectionNavigation } from "#/components/content-section-navigation.tsx";
+import { createContentSection } from "#/components/content/content-section.tsx";
 import { CurriculaList } from "#/components/curricula-list.tsx";
 import { FloatingTableOfContents } from "#/components/floating-table-of-contents.tsx";
 import { PeopleList } from "#/components/people-list.tsx";
@@ -20,11 +22,15 @@ import { env } from "#/configs/env.config.ts";
 import { client } from "#/lib/content/client/index.ts";
 import { createClient } from "#/lib/content/create-client.ts";
 import { createResourceMetadata } from "#/lib/content/utils/create-resource-metadata.ts";
+import { getCurrentContentSection, getHeadingSections } from "#/lib/content/utils/get-content-sections.ts";
 import { getMetadata } from "#/lib/i18n/metadata.ts";
 import { createFullUrl } from "#/lib/navigation/create-full-url.ts";
 import { pickRandom } from "#/lib/utils/pick-random.ts";
 
-interface PathfinderResourcePageProps extends PageProps<"/resources/pathfinders/[id]"> {}
+/** Also renders sections other than the first one, via `[section]/page.tsx`. */
+interface PathfinderResourcePageProps {
+	params: Promise<{ id: string; section?: string }>;
+}
 
 export async function generateStaticParams(): Promise<
 	Array<Pick<Awaited<PathfinderResourcePageProps["params"]>, "id">>
@@ -106,7 +112,7 @@ export default async function PathfinderResourcePage(props: Readonly<PathfinderR
 
 	const t = await getTranslations("PathfinderResourcePage");
 
-	const { id: _id } = await params;
+	const { id: _id, section: _section } = await params;
 	const id = decodeURIComponent(_id);
 
 	const client = await createClient();
@@ -136,6 +142,13 @@ export default async function PathfinderResourcePage(props: Readonly<PathfinderR
 	const Content = resource.content;
 	const tableOfContents = resource.tableOfContents;
 	const related = pickRandom(Array.from(resource.related), 4);
+
+	const sections = resource.sections;
+	const currentSection = getCurrentContentSection(
+		sections,
+		_section != null ? decodeURIComponent(_section) : undefined,
+	);
+	const headingSections = currentSection != null ? getHeadingSections(resource.href, sections) : undefined;
 
 	async function getTranslationMetadata(id: string) {
 		const resource = await client.collections.resources.get(id);
@@ -287,7 +300,7 @@ export default async function PathfinderResourcePage(props: Readonly<PathfinderR
 							}),
 						)}
 						collection={`resources-${resource.kind}`}
-						featuredImage={featuredImage}
+						featuredImage={currentSection == null || currentSection === sections[0] ? featuredImage : null}
 						href={resource.href}
 						id={resource.id}
 						isTranslationOf={isTranslationOf}
@@ -303,8 +316,15 @@ export default async function PathfinderResourcePage(props: Readonly<PathfinderR
 						translations={translations}
 					>
 						<div className="prose">
-							<Content />
+							<Content
+								components={
+									currentSection != null ? { ContentSection: createContentSection(currentSection.id) } : undefined
+								}
+							/>
 						</div>
+						{currentSection != null ? (
+							<ContentSectionNavigation currentSectionId={currentSection.id} href={resource.href} sections={sections} />
+						) : null}
 					</Resource>
 					<div className="mx-auto mbs-12 flex flex-col gap-y-12 border-bs border-neutral-200 pbs-12 text-sm text-neutral-500 inline-full max-inline-(--size-content) xl:hidden">
 						<ResourceDetails
@@ -382,6 +402,8 @@ export default async function PathfinderResourcePage(props: Readonly<PathfinderR
 							<TableOfContents
 								aria-labelledby="table-of-contents"
 								className="space-y-2 inline-full"
+								currentSectionId={currentSection?.id}
+								headingSections={headingSections}
 								tableOfContents={tableOfContents}
 								title={
 									<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id="table-of-contents">
@@ -393,6 +415,8 @@ export default async function PathfinderResourcePage(props: Readonly<PathfinderR
 						<aside className="xl:hidden">
 							<FloatingTableOfContents
 								closeLabel={t("close")}
+								currentSectionId={currentSection?.id}
+								headingSections={headingSections}
 								label={t("table-of-contents")}
 								tableOfContents={tableOfContents}
 								toggleLabel={t("toggle-table-of-contents")}

@@ -182,6 +182,20 @@ function getImageDropZonesQuiz(page: Page, zoneName: string): Locator {
 	});
 }
 
+/** The fixture has three matching exercises, told apart by a zone only one of them has. */
+function getMatchingQuiz(page: Page, zoneName: string): Locator {
+	return page.getByRole("complementary").filter({
+		has: page.getByRole("group", { name: zoneName }),
+	});
+}
+
+/** The fixture has two ordering exercises, told apart by an item only one of them has. */
+function getOrderingQuiz(page: Page, itemName: string): Locator {
+	return page.getByRole("complementary").filter({
+		has: page.getByRole("button", { name: itemName }),
+	});
+}
+
 /**
  * Native drag and drop, driven by real mouse events. `dragTo` is not used because it scrolls each end into view in
  * turn, which can push the other end off screen and leave the pointer moving over nothing.
@@ -722,21 +736,430 @@ test.describe("quiz, image drop zones", () => {
 
 		await expect(quiz.getByText("/ 2 correct")).toBeHidden();
 	});
+});
 
-	test("lays out the drop zones in a grid without a background image", async ({ page }) => {
+/**
+ * The items are scrambled by a hash of their labels rather than at random, so the order the exercise starts in is
+ * known: "Clone the repository", "Push to the remote", "Commit a change" - of which only the first is in place.
+ */
+test.describe("quiz, ordering", () => {
+	test.beforeEach(() => {
+		test.skip(
+			// oxlint-disable-next-line node/no-process-env
+			Boolean(process.env.PLAYWRIGHT_TEST_APP_BASE_URL),
+			"The content widget fixture is not part of a deployed app.",
+		);
+	});
+
+	test("renders the question and the items out of order", async ({ page }) => {
 		await page.goto(fixturePathname);
 
-		const quiz = getImageDropZonesQuiz(page, "Version control");
+		const quiz = getOrderingQuiz(page, "Clone the repository");
 		await expect(quiz).toBeVisible();
 
-		await expect(quiz.getByRole("img")).toHaveCount(0);
-		await expect(quiz.getByRole("list", { name: "Items" }).getByRole("listitem")).toHaveCount(3);
+		/**
+		 * The question is authored as content rather than a field, so it has to survive the pipeline as markup rather than
+		 * as an escaped string - and it must not be counted as an item.
+		 */
+		await expect(quiz.getByText("Put the steps of a")).toBeVisible();
+		await expect(quiz.getByRole("strong").filter({ hasText: "Git workflow" })).toBeVisible();
 
-		await quiz.getByRole("button", { name: "Git. Choose a drop zone." }).click();
+		await expect(quiz.getByRole("list", { name: "Items" }).getByRole("listitem")).toHaveCount(3);
+		await expect(
+			quiz.getByRole("button", { name: "Clone the repository, position 1 of 3. Choose a position." }),
+		).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Push to the remote, position 2 of 3. Choose a position." }),
+		).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Commit a change, position 3 of 3. Choose a position." }),
+		).toBeVisible();
+	});
+
+	/** Items are moved through each item's menu, which is what keyboard and touch users get. */
+	test("scores the sequence", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getOrderingQuiz(page, "Clone the repository");
+		const check = quiz.getByRole("button", { exact: true, name: "Check" });
+
+		await check.click();
+
+		await expect(quiz.getByText("1 / 3 in the right place")).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Clone the repository, position 1 of 3. Correct. Choose a position." }),
+		).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Push to the remote, position 2 of 3. Incorrect. Choose a position." }),
+		).toBeVisible();
+
+		await quiz.getByRole("button", { exact: true, name: "Reset" }).click();
+
+		await expect(quiz.getByText("in the right place")).toBeHidden();
+
+		await quiz.getByRole("button", { name: "Commit a change, position 3 of 3. Choose a position." }).click();
+		await page.getByRole("menuitem", { name: "Position 2" }).click();
+
+		/** The item it displaced moves along by one, rather than swapping places with it. */
+		await expect(
+			quiz.getByRole("button", { name: "Commit a change, position 2 of 3. Choose a position." }),
+		).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Push to the remote, position 3 of 3. Choose a position." }),
+		).toBeVisible();
+
+		await check.click();
+
+		await expect(quiz.getByText("3 / 3 in the right place")).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Push to the remote, position 3 of 3. Correct. Choose a position." }),
+		).toBeVisible();
+	});
+
+	test("fills in the solution on request", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getOrderingQuiz(page, "Clone the repository");
+		const explanation = quiz.getByText("A local copy is the starting point");
+
+		/** Held back while the exercise is still open, where it would give the answer away. */
+		await expect(explanation).toBeHidden();
+
+		await quiz.getByRole("button", { name: "Show solution" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Clone the repository, position 1 of 3." })).toBeDisabled();
+		await expect(quiz.getByRole("button", { name: "Commit a change, position 2 of 3." })).toBeDisabled();
+		await expect(quiz.getByRole("button", { name: "Push to the remote, position 3 of 3." })).toBeDisabled();
+
+		/** A widget emits no headings, so the section names itself with the importance `Callout` titles use. */
+		await expect(quiz.getByRole("strong").filter({ hasText: "What the items mean" })).toBeVisible();
+		await expect(explanation).toBeVisible();
+
+		/** Only the item the author explained gets an entry, so the unexplained ones are not listed as empty. */
+		await expect(quiz.getByRole("term")).toHaveText("Clone the repository");
+		await expect(quiz.getByRole("definition")).toHaveCount(1);
+	});
+
+	/**
+	 * A moved item keeps its control, so focus stays on it without help - but a change to its accessible name is not
+	 * announced, which is what the live region is for.
+	 */
+	test("keeps focus on the item it moves, and announces the move", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getOrderingQuiz(page, "Clone the repository");
+		const item = quiz.getByRole("button", { name: "Commit a change, position 3 of 3. Choose a position." });
+
+		await focusStably(item);
+		await item.press("Enter");
+		await page.getByRole("menuitem", { name: "Position 1" }).press("Enter");
+
+		await expect(
+			quiz.getByRole("button", { name: "Commit a change, position 1 of 3. Choose a position." }),
+		).toBeFocused();
+		await expect(
+			quiz.getByRole("status").filter({ hasText: "Commit a change moved to position 1 of 3." }),
+		).toBeAttached();
+	});
+
+	/** The item's own position is the one place it cannot be moved to, so the menu offers it greyed out. */
+	test("offers every position but the item's own", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getOrderingQuiz(page, "Clone the repository");
+
+		await quiz.getByRole("button", { name: "Push to the remote, position 2 of 3. Choose a position." }).click();
+
+		const menu = page.getByRole("menu");
+		await expect(menu.getByRole("menuitem")).toHaveCount(3);
+		await expect(menu.getByRole("menuitem", { name: "Position 2" })).toHaveAttribute("aria-disabled", "true");
+		await expect(menu.getByRole("menuitem", { name: "Position 1" })).not.toHaveAttribute("aria-disabled", "true");
+	});
+
+	/** Dragging is the enhancement over the menu: dropping an item onto another takes that item's position. */
+	test("moves an item by dragging it", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getOrderingQuiz(page, "Clone the repository");
+		const items = quiz.getByRole("list", { name: "Items" }).getByRole("listitem");
+
+		await items.first().scrollIntoViewIfNeeded();
+
+		// oxlint-disable-next-line playwright/no-raw-locators -- the grip is hidden from assistive technology, so it has no role or name to find it by.
+		const grip = items.filter({ hasText: "Commit a change" }).locator("span[aria-hidden] svg").first();
+
+		await dragOnto(page, grip, items.filter({ hasText: "Push to the remote" }));
+
+		await expect(
+			quiz.getByRole("button", { name: "Commit a change, position 2 of 3. Choose a position." }),
+		).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Push to the remote, position 3 of 3. Choose a position." }),
+		).toBeVisible();
+	});
+
+	/**
+	 * With instant feedback the marks land with the first move, so an item's accessible name has to change without a
+	 * Check press - and the score, which is the thing that reports a submitted answer, still must not. The initial
+	 * scramble stays unmarked, or it would give away which items already sit in place.
+	 */
+	test("marks the items as soon as one moves when instant feedback is on", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getOrderingQuiz(page, "Transcribe");
+
+		await expect(quiz.getByRole("button", { name: "Transcribe, position 1 of 3. Choose a position." })).toBeVisible();
+
+		await quiz.getByRole("button", { name: "Publish, position 2 of 3. Choose a position." }).click();
+		await page.getByRole("menuitem", { name: "Position 3" }).click();
+
+		await expect(
+			quiz.getByRole("button", { name: "Transcribe, position 1 of 3. Correct. Choose a position." }),
+		).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Annotate, position 2 of 3. Correct. Choose a position." }),
+		).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Publish, position 3 of 3. Correct. Choose a position." }),
+		).toBeVisible();
+
+		await expect(quiz.getByText("/ 3 in the right place")).toBeHidden();
+	});
+});
+
+test.describe("quiz, matching", () => {
+	test.beforeEach(() => {
+		test.skip(
+			// oxlint-disable-next-line node/no-process-env
+			Boolean(process.env.PLAYWRIGHT_TEST_APP_BASE_URL),
+			"The content widget fixture is not part of a deployed app.",
+		);
+	});
+
+	test("renders the question, the zones in a grid and the item bank", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getMatchingQuiz(page, "Version control");
+		await expect(quiz).toBeVisible();
+
+		await expect(quiz.getByText("Sort each")).toBeVisible();
+		await expect(quiz.getByRole("strong").filter({ hasText: "tool" })).toBeVisible();
+
+		await expect(quiz.getByRole("img")).toHaveCount(0);
+		await expect(quiz.getByRole("group", { name: "Version control" })).toBeVisible();
+		await expect(quiz.getByRole("group", { name: "Repository hosting" })).toBeVisible();
+
+		/** Three items which belong in a zone, plus the distractor. */
+		await expect(quiz.getByRole("list", { name: "Items" }).getByRole("listitem")).toHaveCount(4);
+		await expect(quiz.getByRole("button", { name: "Cloister. Choose a zone." })).toBeVisible();
+	});
+
+	test("scores the placed items", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getMatchingQuiz(page, "Version control");
+		const check = quiz.getByRole("button", { exact: true, name: "Check" });
+
+		await quiz.getByRole("button", { name: "Git. Choose a zone." }).click();
 		await page.getByRole("menuitem", { name: "Version control" }).click();
 
-		await quiz.getByRole("button", { exact: true, name: "Check" }).click();
+		await expect(
+			quiz.getByRole("group", { name: "Version control" }).getByRole("button", { name: "Git, in Version control" }),
+		).toBeVisible();
 
-		await expect(quiz.getByText("1 / 3 correct")).toBeVisible();
+		await check.click();
+
+		await expect(quiz.getByText("1 / 3 items correct")).toBeVisible();
+		/** The order of the zones is not part of this exercise, so it is not scored. */
+		await expect(quiz.getByText("zones in the right place")).toBeHidden();
+		await expect(quiz.getByRole("button", { name: "Git, in Version control. Correct. Remove." })).toBeVisible();
+	});
+
+	test("reveals what the zones mean once the exercise is answered", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getMatchingQuiz(page, "Version control");
+		const explanation = quiz.getByText("Tracks every change");
+
+		await expect(explanation).toBeHidden();
+
+		await quiz.getByRole("button", { name: "Show solution" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Git, in Version control." })).toBeDisabled();
+		await expect(quiz.getByRole("strong").filter({ hasText: "What the zones mean" })).toBeVisible();
+		await expect(explanation).toBeVisible();
+		await expect(quiz.getByRole("term")).toHaveText("Version control");
+		await expect(quiz.getByRole("definition")).toHaveCount(1);
+	});
+
+	test("marks an item as soon as it lands when instant feedback is on", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getMatchingQuiz(page, "Manuscripts");
+
+		await quiz.getByRole("button", { name: "Codex. Choose a zone." }).click();
+		await page.getByRole("menuitem", { name: "Manuscripts" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Codex, in Manuscripts. Correct. Remove." })).toBeVisible();
+
+		await quiz.getByRole("button", { name: "Incunable. Choose a zone." }).click();
+		await page.getByRole("menuitem", { name: "Manuscripts" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Incunable, in Manuscripts. Incorrect. Remove." })).toBeVisible();
+
+		await expect(quiz.getByText("items correct")).toBeHidden();
+	});
+});
+
+/**
+ * The zones are scrambled by a hash of their labels rather than at random, so the order the exercise starts in is
+ * known: "Connect to related heritage", "Access the Cloud", "Prepare the collection" - of which none is in place.
+ */
+test.describe("quiz, matching with ordered zones", () => {
+	test.beforeEach(() => {
+		test.skip(
+			// oxlint-disable-next-line node/no-process-env
+			Boolean(process.env.PLAYWRIGHT_TEST_APP_BASE_URL),
+			"The content widget fixture is not part of a deployed app.",
+		);
+	});
+
+	test("renders the zones out of order, in a single column", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getMatchingQuiz(page, "Access the Cloud");
+		await expect(quiz).toBeVisible();
+
+		await expect(quiz.getByRole("list", { name: "Zones" }).getByRole("listitem")).toHaveCount(3);
+		await expect(
+			quiz.getByRole("button", { name: "Connect to related heritage, position 1 of 3. Choose a position." }),
+		).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Access the Cloud, position 2 of 3. Choose a position." }),
+		).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Prepare the collection, position 3 of 3. Choose a position." }),
+		).toBeVisible();
+
+		/** Each zone is still a target for the items. */
+		await expect(quiz.getByRole("group", { name: "Access the Cloud" })).toBeVisible();
+		await expect(quiz.getByRole("list", { name: "Items" }).getByRole("listitem")).toHaveCount(4);
+	});
+
+	/** The answer is only correct when both the matches and the sequence are. */
+	test("scores the matches and the sequence separately", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getMatchingQuiz(page, "Access the Cloud");
+		const check = quiz.getByRole("button", { exact: true, name: "Check" });
+
+		await quiz.getByRole("button", { name: "Single Entry Point. Choose a zone." }).click();
+		await page.getByRole("menuitem", { name: "Access the Cloud" }).click();
+		await quiz.getByRole("button", { name: "Collection Ingestion Tool. Choose a zone." }).click();
+		await page.getByRole("menuitem", { name: "Prepare the collection" }).click();
+		await quiz.getByRole("button", { name: "Knowledge Graph. Choose a zone." }).click();
+		await page.getByRole("menuitem", { name: "Connect to related heritage" }).click();
+
+		await check.click();
+
+		await expect(quiz.getByText("3 / 3 items correct")).toBeVisible();
+		await expect(quiz.getByText("0 / 3 zones in the right place")).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Access the Cloud, position 2 of 3. Incorrect. Choose a position." }),
+		).toBeVisible();
+
+		/** The items stay where they were put, so only the zones need moving. */
+		await quiz
+			.getByRole("button", { name: "Access the Cloud, position 2 of 3. Incorrect. Choose a position." })
+			.click();
+		await page.getByRole("menuitem", { name: "Position 1" }).click();
+		await quiz
+			.getByRole("button", { name: "Prepare the collection, position 3 of 3. Incorrect. Choose a position." })
+			.click();
+		await page.getByRole("menuitem", { name: "Position 2" }).click();
+
+		await check.click();
+
+		await expect(quiz.getByText("3 / 3 zones in the right place")).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Connect to related heritage, position 3 of 3. Correct. Choose a position." }),
+		).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Single Entry Point, in Access the Cloud. Correct. Remove." }),
+		).toBeVisible();
+	});
+
+	test("fills in the solution on request", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getMatchingQuiz(page, "Access the Cloud");
+
+		await quiz.getByRole("button", { name: "Show solution" }).click();
+
+		await expect(quiz.getByRole("button", { name: "Access the Cloud, position 1 of 3." })).toBeDisabled();
+		await expect(quiz.getByRole("button", { name: "Prepare the collection, position 2 of 3." })).toBeDisabled();
+		await expect(quiz.getByRole("button", { name: "Connect to related heritage, position 3 of 3." })).toBeDisabled();
+		await expect(quiz.getByRole("button", { name: "Single Entry Point, in Access the Cloud." })).toBeDisabled();
+
+		/** The distractor belongs in no zone, so the solution leaves it in the bank. */
+		await expect(quiz.getByRole("group", { name: "Access the Cloud" }).getByText("Metadata broker")).toBeHidden();
+
+		await expect(quiz.getByText("Everything starts at the single entry point")).toBeVisible();
+	});
+
+	test("keeps focus on the zone it moves, and announces the move", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getMatchingQuiz(page, "Access the Cloud");
+		const zone = quiz.getByRole("button", { name: "Access the Cloud, position 2 of 3. Choose a position." });
+
+		await focusStably(zone);
+		await zone.press("Enter");
+		await page.getByRole("menuitem", { name: "Position 1" }).press("Enter");
+
+		await expect(
+			quiz.getByRole("button", { name: "Access the Cloud, position 1 of 3. Choose a position." }),
+		).toBeFocused();
+		await expect(
+			quiz.getByRole("status").filter({ hasText: "Access the Cloud moved to position 1 of 3." }),
+		).toBeAttached();
+	});
+
+	/** A zone is dragged by its grip, and an item by its own - so both drags have to land in the right handler. */
+	test("moves a zone by dragging it, and still takes items", async ({ page }) => {
+		await page.goto(fixturePathname);
+
+		const quiz = getMatchingQuiz(page, "Access the Cloud");
+		const zones = quiz.getByRole("list", { name: "Zones" }).getByRole("listitem");
+
+		await zones.first().scrollIntoViewIfNeeded();
+
+		// oxlint-disable-next-line playwright/no-raw-locators -- the grip is hidden from assistive technology, so it has no role or name to find it by.
+		const zoneGrip = zones.filter({ hasText: "Access the Cloud" }).locator("span[aria-hidden] svg").first();
+
+		await dragOnto(page, zoneGrip, zones.filter({ hasText: "Connect to related heritage" }));
+
+		await expect(
+			quiz.getByRole("button", { name: "Access the Cloud, position 1 of 3. Choose a position." }),
+		).toBeVisible();
+		await expect(
+			quiz.getByRole("button", { name: "Connect to related heritage, position 2 of 3. Choose a position." }),
+		).toBeVisible();
+
+		// oxlint-disable-next-line playwright/no-raw-locators -- as above.
+		const itemGrip = quiz
+			.getByRole("list", { name: "Items" })
+			.getByRole("listitem")
+			.filter({ hasText: "Single Entry Point" })
+			.locator("span[aria-hidden] svg")
+			.first();
+
+		await dragOnto(page, itemGrip, quiz.getByRole("group", { name: "Access the Cloud" }));
+
+		await expect(quiz.getByRole("button", { name: "Single Entry Point, in Access the Cloud" })).toBeVisible();
+		/** Dropping an item onto a zone must not have moved the zone. */
+		await expect(
+			quiz.getByRole("button", { name: "Access the Cloud, position 1 of 3. Choose a position." }),
+		).toBeVisible();
 	});
 });

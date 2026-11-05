@@ -13,6 +13,7 @@ export type CalloutKind = (typeof calloutKinds)[number]["value"];
 
 export const contentLanguages = [
 	{ label: "English", value: "en" },
+	{ label: "French", value: "fr" },
 	{ label: "German", value: "de" },
 	{ label: "Swedish", value: "sv" },
 ] as const;
