@@ -5,7 +5,7 @@ import * as validation from "#/lib/content/keystatic/validation.ts";
 import { linkKinds } from "#/lib/content/options.ts";
 import type { IntlLanguage } from "#/lib/i18n/locales.ts";
 
-// oxlint-disable-next-line typescript/no-unnecessary-type-parameters typescript/explicit-module-boundary-types
+// oxlint-disable-next-line typescript/explicit-module-boundary-types
 export function createLinkSchema<TPath extends `/${string}/`>(
 	downloadPath: Paths<TPath>["downloadPath"],
 	locale: IntlLanguage,

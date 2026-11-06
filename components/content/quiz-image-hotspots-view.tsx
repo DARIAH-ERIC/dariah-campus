@@ -73,7 +73,7 @@ export function QuizImageHotspotsView(props: Readonly<QuizImageHotspotsViewProps
 				<div
 					className={cn(
 						"not-prose grid gap-4",
-						presentation === "inline" ? "@[48rem]:grid-cols-[minmax(0,3fr)_minmax(16rem,2fr)]" : undefined,
+						presentation === "inline" ? "@3xl:grid-cols-[minmax(0,3fr)_minmax(16rem,2fr)]" : undefined,
 					)}
 				>
 					<div className="relative isolate self-start overflow-hidden rounded-md">

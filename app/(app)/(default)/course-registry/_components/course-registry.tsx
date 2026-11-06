@@ -18,6 +18,7 @@ export function CourseRegistry(): ReactNode {
 					<LoadingIndicator />
 				</div>
 			) : null}
+			{/* oxlint-disable-next-line react/iframe-missing-sandbox -- The course registry is a full interactive application from a partner. */}
 			<iframe
 				className="relative block-full inline-full"
 				loading="lazy"

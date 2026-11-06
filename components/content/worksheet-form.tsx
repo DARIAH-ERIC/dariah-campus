@@ -177,6 +177,7 @@ export function WorksheetForm(props: Readonly<WorksheetFormProps>): ReactNode {
 			descriptionHtml: serializeRichText(descriptionRef.current),
 			labels: {
 				emptyAnswer: t("not-answered"),
+				// oxlint-disable-next-line react/purity -- Only called from the print and download event handlers, not during render.
 				generated: t("generated", { date: dateTime(new Date(), { dateStyle: "long" }) }),
 				source: t("source"),
 			},
