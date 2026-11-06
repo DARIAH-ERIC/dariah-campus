@@ -30,6 +30,7 @@ export function MermaidDiagram(props: Readonly<MermaidDiagramProps>): ReactNode 
 			setSvg(result.svg);
 
 			const blob = new Blob([result.svg], { type: "image/svg+xml" });
+			// oxlint-disable-next-line react/immutability -- Local to this effect run, and only read by its cleanup.
 			url = URL.createObjectURL(blob);
 			setHref(url);
 		}

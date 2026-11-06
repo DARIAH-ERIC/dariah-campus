@@ -21,7 +21,7 @@ export function VideoPreview(props: Readonly<VideoPreviewProps>): ReactNode {
 		<figure className="grid gap-y-2">
 			<NotEditable>
 				{href != null ? (
-					// oxlint-disable-next-line jsx-a11y/iframe-has-title
+					// oxlint-disable-next-line jsx-a11y/iframe-has-title react/iframe-missing-sandbox -- Third-party video players need scripts and same-origin storage, which leaves a sandbox with nothing to restrict.
 					<iframe
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						allowFullScreen={true}

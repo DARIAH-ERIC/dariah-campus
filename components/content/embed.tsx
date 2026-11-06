@@ -12,6 +12,7 @@ export function Embed(props: Readonly<EmbedProps>): ReactNode {
 
 	return (
 		<figure className="flex flex-col">
+			{/* oxlint-disable-next-line react/iframe-missing-sandbox -- Editors embed arbitrary interactive content, which needs its own scripts and storage. */}
 			<iframe
 				allowFullScreen={true}
 				className="aspect-video overflow-hidden rounded-lg border border-neutral-200 bg-white inline-full"
