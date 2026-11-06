@@ -2,6 +2,7 @@
 	"$schema": "https://json.schemastore.org/stylelintrc.json",
 	"rules": {
 		"annotation-no-unknown": true,
+		"at-charset-rule-no-invalid": true,
 		"at-rule-descriptor-no-unknown": true,
 		"at-rule-descriptor-value-no-unknown": true,
 		"at-rule-no-deprecated": true,
@@ -55,11 +56,15 @@
 		"property-no-deprecated": true,
 		"property-no-unknown": true,
 		"selector-anb-no-unmatchable": true,
+		"selector-no-deprecated": true,
+		"selector-no-invalid": true,
+		"selector-no-unmatchable": true,
 		"selector-pseudo-class-no-unknown": true,
 		"selector-pseudo-element-no-unknown": true,
 		"selector-type-no-unknown": [true, { "ignore": ["custom-elements"] }],
 		"string-no-newline": [true, { "ignore": ["at-rule-preludes", "declaration-values"] }],
 		"syntax-string-no-invalid": true,
+		"value-no-invalid": true,
 
 		"alpha-value-notation": [
 			"percentage",
@@ -92,7 +97,6 @@
 		"custom-media-pattern": "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
 		"custom-property-pattern": "^_?([a-z][a-z0-9]*)(--?[a-z0-9]+)*$",
 		"declaration-block-no-redundant-longhand-properties": true,
-		"declaration-block-single-line-max-declarations": 1,
 		"declaration-empty-line-before": [
 			"always",
 			{
