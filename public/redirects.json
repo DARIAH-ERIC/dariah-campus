@@ -1336,6 +1336,11 @@
 			"permanent": true
 		},
 		{
+			"source": "/resources/external/introduction-to-research-infrastructures",
+			"destination": "/resources/hosted/introduction-to-research-infrastructures",
+			"permanent": true
+		},
+		{
 			"source": "/sources/acdh-ch",
 			"destination": "/sources/acdh",
 			"permanent": false
