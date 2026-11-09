@@ -1,12 +1,12 @@
-import type metadata from "@/content/en/metadata/index.json";
-import { getIntlLanguage, type IntlLocale } from "@/lib/i18n/locales";
-import type messages from "@/messages/en.json";
+import type metadata from "#/content/en/metadata/index.json";
+import { type IntlLocale, getIntlLanguage } from "#/lib/i18n/locales.ts";
+import type messages from "#/messages/en.json";
 
 type Messages = typeof messages;
 type Metadata = typeof metadata;
 type SocialMediaKind = Metadata["social"][number]["kind"];
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+// oxlint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function getIntlMessages(locale: IntlLocale) {
 	const language = getIntlLanguage(locale);
 

@@ -1,12 +1,12 @@
-import "@/styles/index.css";
-import "@/styles/cms.css";
+import "#/styles/index.css";
+import "#/styles/cms.css";
 
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { LocalizedStringProvider } from "react-aria-components/i18n";
 
-import KeystaticApp from "@/app/(cms)/keystatic/keystatic";
-import { getMetadata } from "@/lib/i18n/metadata";
+import KeystaticApp from "#/app/(cms)/keystatic/keystatic.ts";
+import { getMetadata } from "#/lib/i18n/metadata.ts";
 
 const locale = "en";
 

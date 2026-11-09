@@ -1,32 +1,32 @@
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import { readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 import { assert, log } from "@acdh-oeaw/lib";
 import * as v from "valibot";
 
-import { client } from "@/lib/content/client";
-import { resources as sharedMetadata } from "@/lib/content/shared-metadata.config";
+import { client } from "#/lib/content/client/index.ts";
+import { resources as sharedMetadata } from "#/lib/content/shared-metadata.config.ts";
 import {
 	type CurriculumMetadata,
-	curriculumMetadataSchema,
 	type ResourceMetadata,
+	type SourceMetadata,
+	type TagMetadata,
+	curriculumMetadataSchema,
 	resourceMetadataSchema,
-} from "@/scripts/api/metadata-schemas";
+	sourceMetadataSchema,
+	tagMetadataSchema,
+} from "#/scripts/api/metadata-schemas.ts";
 
 const formatters = {
 	duration: new Intl.NumberFormat("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
 };
 
-async function loadJsonDir<T extends Record<string, unknown>>(
-	dir: string,
-): Promise<Map<string, T>> {
+async function loadJsonDir<T extends Record<string, unknown>>(dir: string): Promise<Map<string, T>> {
 	const files = await readdir(dir);
 	const map = new Map<string, T>();
 	await Promise.all(
 		files
-			.filter((f) => {
-				return f.endsWith(".json");
-			})
+			.filter((f) => f.endsWith(".json"))
 			.map(async (file) => {
 				const raw = await readFile(join(dir, file), "utf-8");
 				map.set(file.slice(0, -5), JSON.parse(raw) as T);
@@ -38,6 +38,10 @@ async function loadJsonDir<T extends Record<string, unknown>>(
 export async function createMetadata(): Promise<{
 	curricula: Array<CurriculumMetadata>;
 	resources: Array<ResourceMetadata>;
+	sources: Array<SourceMetadata>;
+	tags: Array<TagMetadata>;
+	nationalConsortia: Array<string>;
+	workingGroups: Array<string>;
 }> {
 	const contentDir = join(process.cwd(), "content", "en");
 
@@ -62,17 +66,16 @@ export async function createMetadata(): Promise<{
 		};
 	}
 
+	// oxlint-disable-next-line unicorn/consistent-function-scoping
 	async function createPerson(id: string) {
 		const person = await client.collections.people.get(id);
 		assert(person, `Missing person "${id}".`);
 		const { name, social } = person.metadata;
-		const orcid =
-			social.find((s) => {
-				return s.discriminant === "orcid";
-			})?.value ?? null;
+		const orcid = social.find((s) => s.discriminant === "orcid")?.value ?? null;
 		return { id, name, orcid };
 	}
 
+	// oxlint-disable-next-line unicorn/consistent-function-scoping
 	async function createSource(id: string) {
 		const source = await client.collections.sources.get(id);
 		assert(source, `Missing source "${id}".`);
@@ -80,6 +83,7 @@ export async function createMetadata(): Promise<{
 		return { id, name };
 	}
 
+	// oxlint-disable-next-line unicorn/consistent-function-scoping
 	async function createTag(id: string) {
 		const tag = await client.collections.tags.get(id);
 		assert(tag, `Missing tag "${id}".`);
@@ -93,7 +97,9 @@ export async function createMetadata(): Promise<{
 	await Promise.all(
 		(await client.collections.curricula.all()).map(async (item) => {
 			const isDraft = "draft" in item.metadata && item.metadata.draft === true;
-			if (isDraft) return;
+			if (isDraft) {
+				return;
+			}
 
 			curricula.push({
 				id: item.id,
@@ -108,15 +114,12 @@ export async function createMetadata(): Promise<{
 				"publication-date": item.metadata["publication-date"],
 				"content-type": "curriculum",
 				tags: await Promise.all(item.metadata.tags.map(createTag)),
-				editors:
-					"editors" in item.metadata
-						? await Promise.all(item.metadata.editors.map(createPerson))
-						: [],
+				editors: "editors" in item.metadata ? await Promise.all(item.metadata.editors.map(createPerson)) : [],
+				sources: "sources" in item.metadata ? await Promise.all(item.metadata.sources.map(createSource)) : [],
 				resources: item.metadata.resources.map((resource) => {
 					return { id: resource.value, collection: resource.discriminant };
 				}),
-				"dariah-national-consortia":
-					item.metadata["dariah-national-consortia"].map(createNationalConsortium),
+				"dariah-national-consortia": item.metadata["dariah-national-consortia"].map(createNationalConsortium),
 				"dariah-working-groups": item.metadata["dariah-working-groups"].map(createWorkingGroup),
 				domain: sharedMetadata.domain,
 				"target-group": sharedMetadata["target-group"],
@@ -136,7 +139,9 @@ export async function createMetadata(): Promise<{
 			(await client.collections[name].all()).map(async (item) => {
 				const isDraft = "draft" in item.metadata && item.metadata.draft === true;
 
-				if (isDraft) return;
+				if (isDraft) {
+					return;
+				}
 
 				const resource = {
 					id: item.id,
@@ -153,20 +158,11 @@ export async function createMetadata(): Promise<{
 					"content-type": item.metadata["content-type"],
 					tags: await Promise.all(item.metadata.tags.map(createTag)),
 					authors: await Promise.all(item.metadata.authors.map(createPerson)),
-					editors:
-						"editors" in item.metadata
-							? await Promise.all(item.metadata.editors.map(createPerson))
-							: [],
+					editors: "editors" in item.metadata ? await Promise.all(item.metadata.editors.map(createPerson)) : [],
 					contributors:
-						"contributors" in item.metadata
-							? await Promise.all(item.metadata.contributors.map(createPerson))
-							: [],
-					sources:
-						"sources" in item.metadata
-							? await Promise.all(item.metadata.sources.map(createSource))
-							: [],
-					"dariah-national-consortia":
-						item.metadata["dariah-national-consortia"].map(createNationalConsortium),
+						"contributors" in item.metadata ? await Promise.all(item.metadata.contributors.map(createPerson)) : [],
+					sources: "sources" in item.metadata ? await Promise.all(item.metadata.sources.map(createSource)) : [],
+					"dariah-national-consortia": item.metadata["dariah-national-consortia"].map(createNationalConsortium),
 					"dariah-working-groups": item.metadata["dariah-working-groups"].map(createWorkingGroup),
 					domain: sharedMetadata.domain,
 					"target-group": sharedMetadata["target-group"],
@@ -192,16 +188,30 @@ export async function createMetadata(): Promise<{
 		);
 	}
 
+	/** Sources and tags, used to constrain api filter values. */
+
+	const sources = (await client.collections.sources.all()).map((item) => {
+		return { id: item.id, name: item.metadata.name };
+	});
+
+	const tags = (await client.collections.tags.all()).map((item) => {
+		return { id: item.id, name: item.metadata.name };
+	});
+
 	return {
 		curricula: v.parse(v.array(curriculumMetadataSchema), curricula),
 		resources: v.parse(v.array(resourceMetadataSchema), resources),
+		sources: v.parse(v.array(sourceMetadataSchema), sources),
+		tags: v.parse(v.array(tagMetadataSchema), tags),
+		nationalConsortia: Array.from(consortiaData.keys()).toSorted(),
+		workingGroups: Array.from(workingGroupsData.keys()).toSorted(),
 	};
 }
 
 async function generate() {
 	const start = performance.now();
 
-	const { curricula, resources } = await createMetadata();
+	const { curricula, resources, sources, tags, nationalConsortia, workingGroups } = await createMetadata();
 
 	const outputFolder = join(process.cwd(), "public", "metadata");
 
@@ -209,6 +219,18 @@ async function generate() {
 		encoding: "utf-8",
 	});
 	await writeFile(join(outputFolder, "resources.json"), JSON.stringify(resources), {
+		encoding: "utf-8",
+	});
+	await writeFile(join(outputFolder, "sources.json"), JSON.stringify(sources), {
+		encoding: "utf-8",
+	});
+	await writeFile(join(outputFolder, "tags.json"), JSON.stringify(tags), {
+		encoding: "utf-8",
+	});
+	await writeFile(join(outputFolder, "dariah-national-consortia.json"), JSON.stringify(nationalConsortia), {
+		encoding: "utf-8",
+	});
+	await writeFile(join(outputFolder, "dariah-working-groups.json"), JSON.stringify(workingGroups), {
 		encoding: "utf-8",
 	});
 

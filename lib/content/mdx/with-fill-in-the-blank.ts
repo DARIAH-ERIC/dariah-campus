@@ -1,23 +1,16 @@
 import { valueToEstree } from "estree-util-value-to-estree";
 import type { Parent, Root, Text } from "mdast";
-import type {
-	MdxJsxAttribute,
-	MdxJsxAttributeValueExpression,
-	MdxJsxTextElement,
-} from "mdast-util-mdx-jsx";
+import type { MdxJsxAttribute, MdxJsxAttributeValueExpression, MdxJsxTextElement } from "mdast-util-mdx-jsx";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
+// oxlint-disable-next-line prefer-named-capture-group
 const BLANK_PATTERN = /@@([^@]+)@@/g;
 
 /**
- * Parses the inner content of a blank marker.
- * Answers are separated by `//`, hint follows `::`.
- * Examples:
- *   `Paris`                → answers: ["Paris"],          hint: undefined
- *   `Paris//paris`         → answers: ["Paris", "paris"], hint: undefined
- *   `Paris::capital city`  → answers: ["Paris"],          hint: "capital city"
- *   `Paris//paris::hint`   → answers: ["Paris", "paris"], hint: "hint"
+ * Parses the inner content of a blank marker. Answers are separated by `//`, hint follows `::`. Examples: `Paris` →
+ * answers: ["Paris"], hint: undefined `Paris//paris` → answers: ["Paris", "paris"], hint: undefined `Paris::capital
+ * city` → answers: ["Paris"], hint: "capital city" `Paris//paris::hint` → answers: ["Paris", "paris"], hint: "hint"
  */
 function parseBlankContent(inner: string): { answers: Array<string>; hint: string | undefined } {
 	const sepIdx = inner.indexOf("::");
@@ -25,9 +18,7 @@ function parseBlankContent(inner: string): { answers: Array<string>; hint: strin
 	const hint = sepIdx === -1 ? undefined : inner.slice(sepIdx + 2).trim() || undefined;
 	const answers = answerPart
 		.split("//")
-		.map((a) => {
-			return a.trim();
-		})
+		.map((a) => a.trim())
 		.filter(Boolean);
 	return { answers, hint };
 }
@@ -48,11 +39,7 @@ function createValueAttribute(name: string, value: unknown): MdxJsxAttribute {
 	return { type: "mdxJsxAttribute", name, value: expression };
 }
 
-function createBlankNode(
-	answers: Array<string>,
-	hint: string | undefined,
-	id: number,
-): MdxJsxTextElement {
+function createBlankNode(answers: Array<string>, hint: string | undefined, id: number): MdxJsxTextElement {
 	const attributes: Array<MdxJsxAttribute> = [
 		{ type: "mdxJsxAttribute", name: "id", value: String(id) },
 		createValueAttribute("answer", answers),
@@ -94,33 +81,41 @@ function splitTextNode(
 }
 
 /**
- * Remark plugin that transforms `@@answer@@` markers inside `<QuizFillInTheBlank>`
- * into `<Blank id={n} answer={["..."]} hint="..." />` JSX text elements.
+ * Remark plugin that transforms `@@answer@@` markers inside `<QuizFillInTheBlank>` into `<Blank id={n} answer={["..."]}
+ * hint="..." />` JSX text elements.
  *
  * Also injects onto `<QuizFillInTheBlank>`:
- *   - `blankCount={n}` - total number of blanks
- *   - `answers={[["answer1","answer2"], ["ans3"]]}` - correct answers by blank index,
- *     enabling score computation in the parent without walking children at runtime.
+ *
+ * - `blankCount={n}` - total number of blanks
+ * - `answers={[["answer1","answer2"], ["ans3"]]}` - correct answers by blank index, enabling score computation in the
+ *   parent without walking children at runtime.
  *
  * Blank syntax:
- *   @@answer@@               - one accepted answer
- *   @@answer1//answer2@@           - multiple accepted answers
- *   @@answer::hint@@         - answer with a hint
- *   @@answer1//answer2::hint@@     - multiple answers with a hint
+ *
+ * @@answer@@ - one accepted answer
+ * @@answer1//answer2@@ - multiple accepted answers
+ * @@answer::hint@@ - answer with a hint
+ * @@answer1//answer2::hint@@ - multiple answers with a hint
  */
 export const withFillInTheBlank: Plugin<[], Root> = function withFillInTheBlank() {
 	return function transformer(tree) {
 		visit(tree, "mdxJsxFlowElement", (fillInTheBlankNode) => {
-			if (fillInTheBlankNode.name !== "QuizFillInTheBlank") return;
+			if (fillInTheBlankNode.name !== "QuizFillInTheBlank") {
+				return;
+			}
 
 			let blankCount = 0;
 			const allAnswerGroups: Array<Array<string>> = [];
 
 			visit(fillInTheBlankNode as unknown as Root, "text", (textNode: Text, index, parent) => {
-				if (parent == null || index == null) return;
+				if (parent == null || index == null) {
+					return;
+				}
 
 				BLANK_PATTERN.lastIndex = 0;
-				if (!BLANK_PATTERN.test(textNode.value)) return;
+				if (!BLANK_PATTERN.test(textNode.value)) {
+					return;
+				}
 
 				const { nodes, nextId, answerGroups } = splitTextNode(textNode, blankCount);
 				blankCount = nextId;

@@ -1,18 +1,19 @@
-import type { StaticImageData } from "next/image";
 import { useFormatter, useTranslations } from "next-intl";
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 
-import { AvatarsList } from "@/components/avatars-list";
-import { Card, CardContent, CardFooter, CardTitle } from "@/components/card";
-import { ContentTypeIcon } from "@/components/content-type-icon";
-import { Image } from "@/components/image";
-import { Link } from "@/components/link";
-import { PageTitle } from "@/components/page-title";
-import { People } from "@/components/people";
-import { Tags } from "@/components/tags";
-import { TranslationOf } from "@/components/translation-of";
-import { Translations } from "@/components/translations";
-import type { ContentType } from "@/lib/content/options";
+import { AvatarsList } from "#/components/avatars-list.tsx";
+import { Card, CardContent, CardFooter, CardTitle } from "#/components/card.tsx";
+import { ContentTypeIcon } from "#/components/content-type-icon.tsx";
+import { Image } from "#/components/image.tsx";
+import { Link } from "#/components/link.tsx";
+import { PageTitle } from "#/components/page-title.tsx";
+import { People } from "#/components/people.tsx";
+import { Sources } from "#/components/sources.tsx";
+import { Tags } from "#/components/tags.tsx";
+import { TranslationOf } from "#/components/translation-of.tsx";
+import { Translations } from "#/components/translations.tsx";
+import type { ContentType } from "#/lib/content/options.ts";
 
 interface CurriculumProps {
 	children: ReactNode;
@@ -39,28 +40,20 @@ interface CurriculumProps {
 		summary: { title: string; content: string };
 		title: string;
 	}>;
+	sources: Array<{ id: string; name: string }>;
 	tags: Array<{ id: string; name: string }>;
 	title: string;
 	translations: Array<{ id: string; href: string; title: string; locale: string }>;
 }
 
 export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
-	const {
-		children,
-		editors,
-		featuredImage,
-		isTranslationOf,
-		resources,
-		tags,
-		title,
-		translations,
-	} = props;
+	const { children, editors, featuredImage, isTranslationOf, resources, sources, tags, title, translations } = props;
 
 	const t = useTranslations("Curriculum");
 	const _format = useFormatter();
 
 	return (
-		<article className="mx-auto w-full max-w-(--size-content) space-y-10">
+		<article className="mx-auto space-y-10 inline-full max-inline-(--size-content)">
 			<header className="space-y-10">
 				<PageTitle>{title}</PageTitle>
 				<div className="space-y-6 border-y border-neutral-200 py-10 xl:hidden">
@@ -68,13 +61,16 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 					<Tags label={t("tags")} tags={tags} />
 					<Translations label={t("translations")} translations={translations} />
 					<TranslationOf label={t("is-translation-of")} resource={isTranslationOf} />
+					<dl>
+						<Sources sources={sources} />
+					</dl>
 				</div>
 			</header>
 			<div>
 				{featuredImage != null ? (
 					<Image
 						alt=""
-						className="mb-8 w-full overflow-hidden rounded-lg border border-neutral-200 object-cover"
+						className="mbe-8 overflow-hidden rounded-lg border border-neutral-200 object-cover inline-full"
 						preload={true}
 						sizes="720px"
 						src={featuredImage}
@@ -101,8 +97,8 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 												className="rounded-sm transition after:absolute after:inset-0 hover:text-brand-700 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 												href={href ?? undefined}
 											>
-												<span className="mr-2 inline-flex text-brand-700">
-													<ContentTypeIcon className="size-5 shrink-0" kind={contentType} />
+												<span className="me-2 inline-flex text-brand-700">
+													<ContentTypeIcon className="shrink-0 block-5 inline-5" kind={contentType} />
 												</span>
 												<span>{summary.title || title}</span>
 											</Link>
@@ -116,9 +112,7 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 									</CardContent>
 									<CardFooter>
 										<AvatarsList avatars={authors} label={t("authors")} />
-										{href == null ? (
-											<span className="text-sm text-neutral-500">{t("coming-soon")}</span>
-										) : null}
+										{href == null ? <span className="text-sm text-neutral-500">{t("coming-soon")}</span> : null}
 									</CardFooter>
 								</Card>
 							</li>
@@ -126,7 +120,7 @@ export function Curriculum(props: Readonly<CurriculumProps>): ReactNode {
 					})}
 				</ol>
 			</div>
-			<footer className="pt-2"></footer>
+			<footer className="pbs-2"></footer>
 		</article>
 	);
 }

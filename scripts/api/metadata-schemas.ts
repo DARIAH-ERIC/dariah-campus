@@ -1,5 +1,13 @@
 import * as v from "valibot";
 
+export const sourceMetadataSchema = v.object({ id: v.string(), name: v.string() });
+
+export type SourceMetadata = v.InferOutput<typeof sourceMetadataSchema>;
+
+export const tagMetadataSchema = v.object({ id: v.string(), name: v.string() });
+
+export type TagMetadata = v.InferOutput<typeof tagMetadataSchema>;
+
 export const curriculumMetadataSchema = v.object({
 	id: v.string(),
 	collection: v.literal("curriculum"),
@@ -14,6 +22,7 @@ export const curriculumMetadataSchema = v.object({
 	"content-type": v.literal("curriculum"),
 	tags: v.array(v.object({ id: v.string(), name: v.string() })),
 	editors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
+	sources: v.optional(v.array(v.object({ id: v.string(), name: v.string() })), []),
 	resources: v.array(v.object({ id: v.string(), collection: v.string() })),
 	domain: v.string(),
 	"target-group": v.string(),
@@ -21,10 +30,7 @@ export const curriculumMetadataSchema = v.object({
 		v.array(v.object({ code: v.string(), "sshoc-marketplace-id": v.string() })),
 		[],
 	),
-	"dariah-working-groups": v.optional(
-		v.array(v.object({ slug: v.string(), "sshoc-marketplace-id": v.string() })),
-		[],
-	),
+	"dariah-working-groups": v.optional(v.array(v.object({ slug: v.string(), "sshoc-marketplace-id": v.string() })), []),
 });
 
 export type CurriculumMetadata = v.InferOutput<typeof curriculumMetadataSchema>;
@@ -43,9 +49,7 @@ const baseResourceFields = {
 	tags: v.array(v.object({ id: v.string(), name: v.string() })),
 	authors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
 	editors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
-	contributors: v.array(
-		v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) }),
-	),
+	contributors: v.array(v.object({ id: v.string(), name: v.string(), orcid: v.nullable(v.string()) })),
 	sources: v.array(v.object({ id: v.string(), name: v.string() })),
 	domain: v.string(),
 	"target-group": v.string(),
@@ -53,10 +57,7 @@ const baseResourceFields = {
 		v.array(v.object({ code: v.string(), "sshoc-marketplace-id": v.string() })),
 		[],
 	),
-	"dariah-working-groups": v.optional(
-		v.array(v.object({ slug: v.string(), "sshoc-marketplace-id": v.string() })),
-		[],
-	),
+	"dariah-working-groups": v.optional(v.array(v.object({ slug: v.string(), "sshoc-marketplace-id": v.string() })), []),
 };
 
 const eventResourceSchema = v.object({

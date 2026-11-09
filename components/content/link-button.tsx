@@ -1,8 +1,8 @@
 import cn from "clsx/lite";
 import type { ReactNode } from "react";
 
-import { Link } from "@/components/content/link";
-import type { LinkSchema } from "@/lib/content/utils/get-link-props";
+import { Link } from "#/components/content/link.tsx";
+import type { LinkSchema } from "#/lib/content/utils/get-link-props.ts";
 
 interface LinkButtonProps {
 	children: ReactNode;

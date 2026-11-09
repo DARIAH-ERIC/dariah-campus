@@ -1,5 +1,3 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { repeating, wrapper } from "@keystatic/core/content-components";
@@ -9,7 +7,7 @@ import {
 	DiagramCaptionPreview,
 	DiagramCodeBlockPreview,
 	DiagramPreview,
-} from "@/lib/content/keystatic/components/diagram/preview";
+} from "#/lib/content/keystatic/components/diagram/preview.tsx";
 
 export const createDiagram = createComponent((_paths, _locale) => {
 	return {

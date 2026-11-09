@@ -14,23 +14,10 @@ interface CreateMetadataParams {
 }
 
 export function createResourceMetadata(params: CreateMetadataParams): Metadata {
-	const {
-		authors,
-		contributors,
-		license,
-		locale,
-		publicationDate,
-		siteTitle,
-		summary,
-		tags,
-		title,
-		url,
-	} = params;
+	const { authors, contributors, license, locale, publicationDate, siteTitle, summary, tags, title, url } = params;
 
 	const metadata: Metadata = {
-		/**
-		 * Open graph.
-		 */
+		/** Open graph. */
 		openGraph: {
 			type: "article",
 			title,
@@ -38,12 +25,10 @@ export function createResourceMetadata(params: CreateMetadataParams): Metadata {
 		},
 
 		other: {
-			/**
-			 * Dublin Core.
-			 */
+			/** Dublin Core. */
 			"schema.DCTERMS": "http://purl.org/dc/terms/",
 			"schema.DC": "http://purl.org/dc/elements/1.1/",
-			/** meta */
+			/** Meta */
 			"DC.title": title,
 			"DC.creator": authors,
 			"DC.contributor": contributors ?? [],

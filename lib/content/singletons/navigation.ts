@@ -1,6 +1,6 @@
 import { createCollection } from "@acdh-oeaw/content-lib";
 
-import { reader } from "@/lib/content/keystatic/reader";
+import { reader } from "#/lib/content/keystatic/reader.ts";
 
 export const navigation = createCollection({
 	name: "navigation",

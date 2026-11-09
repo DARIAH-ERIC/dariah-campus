@@ -3,9 +3,9 @@
 import cn from "clsx/lite";
 import type { ReactNode } from "react";
 
-import { Link } from "@/components/link";
-import { useTableOfContentsHighlight } from "@/lib/hooks/use-table-of-contents-highlight";
-import { createHref } from "@/lib/navigation/create-href";
+import { Link } from "#/components/link.tsx";
+import { useTableOfContentsHighlight } from "#/lib/hooks/use-table-of-contents-highlight.ts";
+import { createHref } from "#/lib/navigation/create-href.ts";
 
 interface CurriculumResourcesListProps {
 	label: ReactNode;
@@ -17,12 +17,14 @@ export function CurriculumResourcesList(props: Readonly<CurriculumResourcesListP
 
 	const highlightId = useTableOfContentsHighlight();
 
-	if (resources.length === 0) return null;
+	if (resources.length === 0) {
+		return null;
+	}
 
 	const id = "curriculum-list";
 
 	return (
-		<nav aria-labelledby="curriculum-list" className="w-full space-y-2">
+		<nav aria-labelledby="curriculum-list" className="space-y-2 inline-full">
 			<h2 className="text-xs font-bold tracking-wide text-neutral-600 uppercase" id={id}>
 				{label}
 			</h2>

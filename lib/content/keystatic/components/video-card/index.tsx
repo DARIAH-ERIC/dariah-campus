@@ -1,13 +1,11 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createAssetOptions, createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { block } from "@keystatic/core/content-components";
 import { VideoIcon } from "lucide-react";
 
-import { VideoCardPreview } from "@/lib/content/keystatic/components/video-card/preview";
-import * as validation from "@/lib/content/keystatic/validation";
-import { videoProviders } from "@/lib/content/options";
+import { VideoCardPreview } from "#/lib/content/keystatic/components/video-card/preview.tsx";
+import * as validation from "#/lib/content/keystatic/validation.ts";
+import { videoProviders } from "#/lib/content/options.ts";
 
 export const createVideoCard = createComponent((paths, _locale) => {
 	return {

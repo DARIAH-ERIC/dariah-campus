@@ -10,9 +10,7 @@ export function H5PWrapperPreview(props: Readonly<H5PWrapperPreviewProps>): Reac
 
 	return (
 		<NotEditable className="inline">
-			<span className="border-neutral-200 bg-neutral-100 px-2 text-neutral-700 opacity-50">
-				{children}
-			</span>
+			<span className="border-neutral-200 bg-neutral-100 px-2 text-neutral-700 opacity-50">{children}</span>
 		</NotEditable>
 	);
 }

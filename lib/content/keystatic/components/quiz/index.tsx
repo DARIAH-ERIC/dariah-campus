@@ -1,12 +1,13 @@
-/* eslint-disable @eslint-react/prefer-read-only-props */
-
 import { createAssetOptions, createComponent } from "@acdh-oeaw/keystatic-lib";
 import { fields } from "@keystatic/core";
 import { repeating, wrapper } from "@keystatic/core/content-components";
 import { MessageCircleQuestionIcon } from "lucide-react";
 
-import { createQuizDragTheWords } from "@/lib/content/keystatic/components/drag-the-words";
-import { createQuizFillInTheBlank } from "@/lib/content/keystatic/components/fill-in-the-blank";
+import { createQuizDragTheWords } from "#/lib/content/keystatic/components/drag-the-words/index.tsx";
+import { createQuizFillInTheBlank } from "#/lib/content/keystatic/components/fill-in-the-blank/index.tsx";
+import { createQuizImageDropZones } from "#/lib/content/keystatic/components/image-drop-zones/index.tsx";
+import { createQuizMatching } from "#/lib/content/keystatic/components/matching/index.tsx";
+import { createQuizOrdering } from "#/lib/content/keystatic/components/ordering/index.tsx";
 import {
 	QuizChoiceAnswerErrorMessagePreview,
 	QuizChoiceAnswerLabelPreview,
@@ -17,18 +18,30 @@ import {
 	QuizImageHotspotEditor,
 	QuizImageHotspotsPreview,
 	QuizPreview,
+	QuizQuestionPreview,
 	QuizSuccessMessagePreview,
-} from "@/lib/content/keystatic/components/quiz/preview";
+} from "#/lib/content/keystatic/components/quiz/preview.tsx";
 
 export const createQuiz = createComponent((paths, locale) => {
 	return {
+		...createQuizImageDropZones(paths, locale),
 		...createQuizDragTheWords(paths, locale),
 		...createQuizFillInTheBlank(paths, locale),
+		...createQuizMatching(paths, locale),
+		...createQuizOrdering(paths, locale),
 		Quiz: repeating({
 			label: "Quiz",
 			description: "An interactive quiz.",
 			icon: <MessageCircleQuestionIcon />,
-			children: ["QuizChoice", "QuizImageHotspots", "QuizFillInTheBlank", "QuizDragTheWords"],
+			children: [
+				"QuizChoice",
+				"QuizImageHotspots",
+				"QuizFillInTheBlank",
+				"QuizDragTheWords",
+				"QuizImageDropZones",
+				"QuizMatching",
+				"QuizOrdering",
+			],
 			schema: {},
 			ContentView(props) {
 				const { children } = props;
@@ -37,16 +50,11 @@ export const createQuiz = createComponent((paths, locale) => {
 			},
 		}),
 		QuizChoice: repeating({
-			label: "Quiz - Multiple choice",
+			label: "Multiple choice",
 			description: "A quiz with one or more correct answers.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
-			children: [
-				"QuizChoiceQuestion",
-				"QuizChoiceAnswer",
-				"QuizSuccessMessage",
-				"QuizErrorMessage",
-			],
+			children: ["QuizChoiceQuestion", "QuizChoiceAnswer", "QuizSuccessMessage", "QuizErrorMessage"],
 			validation: { children: { min: 1 } },
 			schema: {
 				variant: fields.select({
@@ -74,11 +82,11 @@ export const createQuiz = createComponent((paths, locale) => {
 			},
 		}),
 		QuizImageHotspots: repeating({
-			label: "Quiz - Image hotspots",
+			label: "Image hotspots",
 			description: "An image with points that reveal explanatory content.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
-			children: ["QuizImageHotspot"],
+			children: ["QuizQuestion", "QuizImageHotspot"],
 			validation: { children: { min: 1 } },
 			schema: {
 				src: fields.image({
@@ -187,9 +195,19 @@ export const createQuiz = createComponent((paths, locale) => {
 			ContentView(props) {
 				const { children } = props;
 
-				return (
-					<QuizChoiceAnswerErrorMessagePreview>{children}</QuizChoiceAnswerErrorMessagePreview>
-				);
+				return <QuizChoiceAnswerErrorMessagePreview>{children}</QuizChoiceAnswerErrorMessagePreview>;
+			},
+		}),
+		QuizQuestion: wrapper({
+			label: "Question",
+			description: "The task the exercise sets, shown above it.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			schema: {},
+			ContentView(props) {
+				const { children } = props;
+
+				return <QuizQuestionPreview>{children}</QuizQuestionPreview>;
 			},
 		}),
 		QuizChoiceQuestion: wrapper({

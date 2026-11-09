@@ -9,12 +9,15 @@ node_modules/
 .env.keys
 .env.local
 .env.*.local
+/docker/.env
 
 # caches
-.eslintcache
-.prettiercache
+.cache/
 .stylelintcache
 *.tsbuildinfo
+
+# turborepo
+.turbo/
 
 # performance profiles
 *.cpuprofile
@@ -34,27 +37,47 @@ node_modules/
 next-env.d.ts
 out/
 
-# self-signed certificates
-certificates
-
 # i18n
-/content/**/*.d.json.ts
-/messages/**/*.d.json.ts
+*.d.json.ts
+
+# package build artefacts
+dist/
+
+# self-signed certificates
+certificates/
 
 # test
-/coverage/
+coverage/
 
 # playwright
-/blob-report/
-/playwright/.cache/
-/playwright-report/
-/test-results/
+.playwright/
+.playwright-cli/
+blob-report/
+playwright/.auth/
+playwright/.cache/
+playwright-report/
+test-results/
 
 # generated content
 .content/
 
+# e2e fixture content, created by `e2e:fixtures:create`
+/content/*/resources/hosted/e2e-*/
+/public/assets/content/assets/*/resources/hosted/e2e-*/
+
 # generated metadata dump
-/public/metadata/*.json
+public/metadata/*.json
 
 # openapi
 public/openapi.*
+
+# ai
+.agents/
+.claude/
+.codex
+.pi/
+.playwright-cli/
+AGENTS.md
+CLAUDE.md
+opensrc/
+skills-lock.json

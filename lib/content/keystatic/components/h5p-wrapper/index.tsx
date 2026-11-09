@@ -3,7 +3,7 @@ import { readonly } from "@acdh-oeaw/keystatic-lib/fields/readonly";
 import { block } from "@keystatic/core/content-components";
 import { HashIcon } from "lucide-react";
 
-import { H5PWrapperPreview } from "@/lib/content/keystatic/components/h5p-wrapper/preview";
+import { H5PWrapperPreview } from "#/lib/content/keystatic/components/h5p-wrapper/preview.tsx";
 
 export const createH5PWrapper = createComponent((_paths, _locale) => {
 	return {

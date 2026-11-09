@@ -1,8 +1,8 @@
-import { client } from "@/lib/content/client";
-import { createGitHubClient } from "@/lib/content/github-client";
-import { getPreviewMode } from "@/lib/content/github-client/get-preview-mode";
+import { client } from "#/lib/content/client/index.ts";
+import { getPreviewMode } from "#/lib/content/github-client/get-preview-mode.ts";
+import { createGitHubClient } from "#/lib/content/github-client/index.ts";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+// oxlint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function createClient() {
 	const preview = await getPreviewMode();
 

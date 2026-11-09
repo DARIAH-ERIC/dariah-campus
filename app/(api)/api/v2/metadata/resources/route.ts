@@ -2,8 +2,17 @@ import { createRouteHandler, toOpenApiSchema } from "@acdh-oeaw/openapi-nextjs";
 import { type NextRequest, NextResponse } from "next/server";
 import * as v from "valibot";
 
-import _resources from "@/public/metadata/resources.json";
-import { resourceMetadataSchema } from "@/scripts/api/metadata-schemas";
+import _nationalConsortia from "#/public/metadata/dariah-national-consortia.json";
+import _workingGroups from "#/public/metadata/dariah-working-groups.json";
+import _resources from "#/public/metadata/resources.json";
+import _sources from "#/public/metadata/sources.json";
+import _tags from "#/public/metadata/tags.json";
+import { resourceMetadataSchema, sourceMetadataSchema, tagMetadataSchema } from "#/scripts/api/metadata-schemas.ts";
+
+const sources = v.parse(v.array(sourceMetadataSchema), _sources);
+const tags = v.parse(v.array(tagMetadataSchema), _tags);
+const nationalConsortia = v.parse(v.array(v.string()), _nationalConsortia);
+const workingGroups = v.parse(v.array(v.string()), _workingGroups);
 
 const searchParamsSchema = v.object({
 	limit: v.nullish(
@@ -31,6 +40,34 @@ const searchParamsSchema = v.object({
 		v.pipe(
 			v.array(v.picklist(["event", "external", "hosted", "pathfinder"])),
 			v.description("Filter by resource kinds."),
+		),
+		[],
+	),
+	source: v.nullish(
+		v.pipe(
+			v.array(v.picklist(sources.map((item) => item.id))),
+			v.description("Filter by source ids. Matches items with any of the given sources."),
+		),
+		[],
+	),
+	topic: v.nullish(
+		v.pipe(
+			v.array(v.picklist(tags.map((item) => item.id))),
+			v.description("Filter by topic ids. Matches items with any of the given topics."),
+		),
+		[],
+	),
+	"dariah-national-consortia": v.nullish(
+		v.pipe(
+			v.array(v.picklist(nationalConsortia)),
+			v.description("Filter by DARIAH national consortium codes. Matches items with any of the given codes."),
+		),
+		[],
+	),
+	"dariah-working-groups": v.nullish(
+		v.pipe(
+			v.array(v.picklist(workingGroups)),
+			v.description("Filter by DARIAH working group slugs. Matches items with any of the given slugs."),
 		),
 		[],
 	),
@@ -81,24 +118,51 @@ export const GET = createRouteHandler(
 				offset: url.searchParams.get("offset"),
 				kind: url.searchParams.getAll("kind"),
 				"publication-year": url.searchParams.get("publication-year"),
+				source: url.searchParams.getAll("source"),
+				topic: url.searchParams.getAll("topic"),
+				"dariah-national-consortia": url.searchParams.getAll("dariah-national-consortia"),
+				"dariah-working-groups": url.searchParams.getAll("dariah-working-groups"),
 			});
 
 			const _items =
 				searchParams.kind.length === 0
 					? resources
-					: resources.filter((resource) => {
-							return searchParams.kind.includes(resource.kind);
-						});
+					: resources.filter((resource) => searchParams.kind.includes(resource.kind));
 
-			const items =
-				searchParams["publication-year"] != null
-					? _items.filter((item) => {
-							return (
-								new Date(item["publication-date"]).getUTCFullYear() ===
-								searchParams["publication-year"]
-							);
-						})
-					: _items;
+			const items = _items.filter((item) => {
+				if (
+					searchParams["publication-year"] != null &&
+					new Date(item["publication-date"]).getUTCFullYear() !== searchParams["publication-year"]
+				) {
+					return false;
+				}
+
+				if (searchParams.source.length > 0 && !item.sources.some((source) => searchParams.source.includes(source.id))) {
+					return false;
+				}
+
+				if (searchParams.topic.length > 0 && !item.tags.some((tag) => searchParams.topic.includes(tag.id))) {
+					return false;
+				}
+
+				if (
+					searchParams["dariah-national-consortia"].length > 0 &&
+					!item["dariah-national-consortia"].some((consortium) =>
+						searchParams["dariah-national-consortia"].includes(consortium.code),
+					)
+				) {
+					return false;
+				}
+
+				if (
+					searchParams["dariah-working-groups"].length > 0 &&
+					!item["dariah-working-groups"].some((group) => searchParams["dariah-working-groups"].includes(group.slug))
+				) {
+					return false;
+				}
+
+				return true;
+			});
 
 			const { limit, offset } = searchParams;
 			const total = items.length;

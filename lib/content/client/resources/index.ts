@@ -1,25 +1,21 @@
 import { keyByToMap } from "@acdh-oeaw/lib";
 
-import type { CollectionClient } from "@/lib/content/types";
+import { type EventResource, client as events } from "#/lib/content/client/resources/events.ts";
+import { type ExternalResource, client as external } from "#/lib/content/client/resources/external.ts";
+import { type HostedResource, client as hosted } from "#/lib/content/client/resources/hosted.ts";
+import { type PathfinderResource, client as pathfinders } from "#/lib/content/client/resources/pathfinders.ts";
+import type { CollectionClient } from "#/lib/content/types.ts";
 
-import { client as events, type EventResource } from "./events";
-import { client as external, type ExternalResource } from "./external";
-import { client as hosted, type HostedResource } from "./hosted";
-import { client as pathfinders, type PathfinderResource } from "./pathfinders";
+// oxlint-disable-next-line node/no-top-level-await
+const ids = (await Promise.all([events.ids(), external.ids(), hosted.ids(), pathfinders.ids()])).flat();
 
-const ids = (
-	await Promise.all([events.ids(), external.ids(), hosted.ids(), pathfinders.ids()])
-).flat();
-
+// oxlint-disable-next-line node/no-top-level-await
 const all = (await Promise.all([events.all(), external.all(), hosted.all(), pathfinders.all()]))
 	.flat()
-	.sort((a, z) => {
-		return z.metadata["publication-date"].localeCompare(a.metadata["publication-date"]);
-	});
+	// oxlint-disable-next-line unicorn/no-array-sort
+	.sort((a, z) => z.metadata["publication-date"].localeCompare(a.metadata["publication-date"]));
 
-const byId = keyByToMap(all, (item) => {
-	return item.id;
-});
+const byId = keyByToMap(all, (item) => item.id);
 
 type Resource = EventResource | ExternalResource | HostedResource | PathfinderResource;
 

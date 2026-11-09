@@ -17,7 +17,7 @@ export function ExternalResource(props: Readonly<ExternalResourceProps>): ReactN
 			<strong className="text-2xl font-bold">{title}</strong>
 			<div className="text-neutral-500">{subtitle}</div>
 			<a
-				className="mt-2 inline-flex rounded-full bg-brand-700 px-4 py-2 font-medium text-white no-underline transition select-none hover:bg-brand-900 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
+				className="mbs-2 inline-flex rounded-full bg-brand-700 px-4 py-2 font-medium text-white no-underline transition select-none hover:bg-brand-900 focus:outline-none focus-visible:ring focus-visible:ring-brand-700"
 				href={url}
 				target="_blank"
 			>
