@@ -1,7 +1,7 @@
-diff --git a/dist/declarations/src/content-components.d.ts b/dist/declarations/src/content-components.d.ts
+diff --git i/dist/declarations/src/content-components.d.ts w/dist/declarations/src/content-components.d.ts
 index b3307a2f735fb445e6969a03ef5b00ddd7457eb0..383922ac52b5b64a8445098f92fb5033365c7b44 100644
---- a/dist/declarations/src/content-components.d.ts
-+++ b/dist/declarations/src/content-components.d.ts
+--- i/dist/declarations/src/content-components.d.ts
++++ w/dist/declarations/src/content-components.d.ts
 @@ -7,6 +7,14 @@ type WrapperComponentConfig<Schema extends Record<string, ComponentSchema>> = {
      icon?: ReactElement;
      schema: Schema;
@@ -26,11 +26,11 @@ index b3307a2f735fb445e6969a03ef5b00ddd7457eb0..383922ac52b5b64a8445098f92fb5033
          isSelected: boolean;
          children: ReactNode;
      }) => ReactNode;
-diff --git a/dist/index-4767f7d9.js b/dist/index-4767f7d9.js
-index f5ec4804d44bcd3d32407281c0b69e980db7dbfe..17769be8bc94b31cda1a9bed29189b6f42216013 100644
---- a/dist/index-4767f7d9.js
-+++ b/dist/index-4767f7d9.js
-@@ -19844,7 +19844,7 @@ function FormValue(props) {
+diff --git i/dist/index-3c244051.js w/dist/index-3c244051.js
+index 233c8ca00c98b9ceec745b211cb5057911c2bf2d..237dc135a6fdd691c3c5b5cfca83580fcba4eb17 100644
+--- i/dist/index-3c244051.js
++++ w/dist/index-3c244051.js
+@@ -19853,7 +19853,7 @@ function FormValue(props) {
    } = useDialogContainer();
    return /*#__PURE__*/jsxs(Fragment, {
      children: [/*#__PURE__*/jsx(Content, {
@@ -39,7 +39,7 @@ index f5ec4804d44bcd3d32407281c0b69e980db7dbfe..17769be8bc94b31cda1a9bed29189b6f
          id: formId,
          elementType: "form",
          onSubmit: event => {
-@@ -19859,10 +19859,10 @@ function FormValue(props) {
+@@ -19868,10 +19868,10 @@ function FormValue(props) {
          },
          direction: "column",
          gap: "xxlarge",
@@ -52,10 +52,12 @@ index f5ec4804d44bcd3d32407281c0b69e980db7dbfe..17769be8bc94b31cda1a9bed29189b6f
        })
      }), /*#__PURE__*/jsxs(ButtonGroup, {
        children: [/*#__PURE__*/jsx(Button, {
-@@ -20139,26 +20139,121 @@ function deserializeProps(node) {
+@@ -20148,26 +20148,121 @@ function deserializeProps(node) {
      return false;
    }
  }
+-function BlockWrapper(props) {
+-  const $ = c(37);
 +function WrapperEditDialog(props) {
 +  const [childrenValue, setChildrenValue] = useState(() => props.editChildren ? createEditorState(props.node.type.schema.topNodeType.create(null, props.node.content)) : null);
 +  return /*#__PURE__*/jsxs(Dialog, {
@@ -106,10 +108,25 @@ index f5ec4804d44bcd3d32407281c0b69e980db7dbfe..17769be8bc94b31cda1a9bed29189b6f
 +  });
 +}
 +function CustomWrapperNodeView(props) {
-+  const [isOpen, setIsOpen] = useState(false);
-+  const runCommand = useEditorDispatchCommand();
+   const [isOpen, setIsOpen] = useState(false);
+   const runCommand = useEditorDispatchCommand();
+-  let t0;
+-  let t1;
+-  if ($[0] !== props.component.schema) {
+-    t1 = {
+-      kind: "object",
+-      fields: props.component.schema
+-    };
+-    $[0] = props.component.schema;
+-    $[1] = t1;
+-  } else {
+-    t1 = $[1];
+-  }
+-  t0 = t1;
+-  const schema = t0;
 +  const editorViewRef = useEditorViewRef();
-+  const value = useDeserializedValue(props.node.attrs.props, props.component.schema);
+   const value = useDeserializedValue(props.node.attrs.props, props.component.schema);
+-  const t2 = `${classes.blockParent} ${css({
 +  const schema = {
 +    kind: "object",
 +    fields: props.component.schema,
@@ -161,36 +178,20 @@ index f5ec4804d44bcd3d32407281c0b69e980db7dbfe..17769be8bc94b31cda1a9bed29189b6f
 +    })]
 +  });
 +}
- function BlockWrapper(props) {
--  const $ = c(37);
-   const [isOpen, setIsOpen] = useState(false);
-   const runCommand = useEditorDispatchCommand();
--  let t0;
--  let t1;
--  if ($[0] !== props.component.schema) {
--    t1 = {
--      kind: "object",
--      fields: props.component.schema
--    };
--    $[0] = props.component.schema;
--    $[1] = t1;
--  } else {
--    t1 = $[1];
--  }
--  t0 = t1;
--  const schema = t0;
++function BlockWrapper(props) {
++  const [isOpen, setIsOpen] = useState(false);
++  const runCommand = useEditorDispatchCommand();
 +  const schema = {
 +    kind: "object",
 +    fields: props.component.schema
 +  };
-   const value = useDeserializedValue(props.node.attrs.props, props.component.schema);
--  const t2 = `${classes.blockParent} ${css({
++  const value = useDeserializedValue(props.node.attrs.props, props.component.schema);
 +  const editChildren = props.component.kind === "wrapper" && props.component.editChildrenIn === "modal";
 +  const className = `${classes.blockParent} ${css({
      marginBlock: "1em",
      position: "relative",
      ...(props.hasNodeSelection ? {
-@@ -20172,175 +20267,61 @@ function BlockWrapper(props) {
+@@ -20181,175 +20276,61 @@ function BlockWrapper(props) {
        }
      } : {})
    })}${props.hasNodeSelection ? ` ${classes.hideselection}` : ""}`;
@@ -419,7 +420,7 @@ index f5ec4804d44bcd3d32407281c0b69e980db7dbfe..17769be8bc94b31cda1a9bed29189b6f
  }
  function getCustomNodeSpecs(components) {
    const componentNames = new Map(Object.keys(components).map((name, i) => [name, `component${i}`]));
-@@ -20430,26 +20411,11 @@ function getCustomNodeSpecs(components) {
+@@ -20439,26 +20420,11 @@ function getCustomNodeSpecs(components) {
            component: function Block(props) {
              const runCommand = useEditorDispatchCommand();
              const value = useDeserializedValue(props.node.attrs.props, component.schema);
@@ -451,11 +452,11 @@ index f5ec4804d44bcd3d32407281c0b69e980db7dbfe..17769be8bc94b31cda1a9bed29189b6f
                children: props.children
              }) : /*#__PURE__*/jsx(BlockWrapper, {
                node: props.node,
-diff --git a/dist/keystatic-core-ui.js b/dist/keystatic-core-ui.js
-index 51149d2be2069d3c7a6f08110a850f51820666b4..43ac39df5398697ec1d848e7dc15149b527cf0bb 100644
---- a/dist/keystatic-core-ui.js
-+++ b/dist/keystatic-core-ui.js
-@@ -1494,7 +1494,7 @@ function ForkRepoDialog(props) {
+diff --git i/dist/keystatic-core-ui.js w/dist/keystatic-core-ui.js
+index 2f8809b7a3292d0c35cd7617b561195fec49f083..b88c0080862b28c61d0108ef0f96ba7feeb08350 100644
+--- i/dist/keystatic-core-ui.js
++++ w/dist/keystatic-core-ui.js
+@@ -1505,7 +1505,7 @@ function ForkRepoDialog(props) {
        props.onDismiss();
      },
      children: [/*#__PURE__*/jsx(Heading, {
@@ -464,7 +465,7 @@ index 51149d2be2069d3c7a6f08110a850f51820666b4..43ac39df5398697ec1d848e7dc15149b
      }), state.kind === 'error' ? /*#__PURE__*/jsxs(Fragment, {
        children: [/*#__PURE__*/jsx(Content, {
          children: /*#__PURE__*/jsx(Notice, {
-@@ -1514,20 +1514,11 @@ function ForkRepoDialog(props) {
+@@ -1525,20 +1525,11 @@ function ForkRepoDialog(props) {
            direction: "column",
            marginBottom: "large",
            children: [/*#__PURE__*/jsx(Text, {

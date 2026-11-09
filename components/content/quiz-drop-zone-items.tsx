@@ -87,6 +87,7 @@ export function useItemPlacements(items: Array<DropZoneItem>, isReadOnly: boolea
 
 		const refs = movedItem.to === "zone" ? placedItemRefs : bankItemRefs;
 		refs.current.get(movedItem.index)?.focus();
+		// oxlint-disable-next-line react/exhaustive-effect-dependencies -- Placements are the trigger: the moved item's button only exists once they have rendered.
 	}, [placements]);
 
 	function place(itemIndex: number, zoneIndex: number | null) {

@@ -19,6 +19,7 @@ export function Video(props: Readonly<VideoProps>): ReactNode {
 
 	return (
 		<figure className="grid gap-y-2">
+			{/* oxlint-disable-next-line react/iframe-missing-sandbox -- Third-party video players need scripts and same-origin storage, which leaves a sandbox with nothing to restrict. */}
 			<iframe
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				allowFullScreen={true}
