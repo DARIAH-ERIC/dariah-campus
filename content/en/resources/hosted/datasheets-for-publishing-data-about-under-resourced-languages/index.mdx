@@ -1,0 +1,147 @@
+---
+title: Datasheets for Publishing Data about Under-resourced Languages
+locale: en
+publication-date: 2026-10-30
+version: 1.0.0
+authors:
+  - gelati-francesco
+  - candela-gustavo
+  - dominguez-veronica
+  - lamb-william
+  - minichiello-chiara
+  - molineaux-benjamin
+  - lopez-jose-angel-tejero
+editors: []
+contributors: []
+tags:
+  - metadata
+  - data-management
+sources:
+  - dariah
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >-
+    This resource introduces Datasheets as a powerful tool to provide
+    information about datasets you would like to share. Furthermore, it explains
+    how Datasheets can be used when working with under-resourced languages.
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+dariah-working-groups:
+  - multilingual-dh
+  - research-data-management
+---
+## Datasheets for Publishing Data about Under-resourced Languages
+
+## Learning Outcomes
+
+After completing this training resource, learners should be able to:
+
+* understand what *datasheets* are and what they enable us to do;
+* identify which metadata fields are relevant for language data;
+
+- create a *datasheet* about an under-resourced language dataset;
+- generate a *datasheet* in a variety of file-formats.
+
+## Prerequisites
+
+Previous knowledge is recommended on:
+
+* the importance of multilingualism in digital humanities;
+* language diversity in the digital cultural heritage sector;
+* the initiative “Collections as Data” available on [DARIAH Campus](https://hdl.handle.net/21.11159/019595c5-1bc8-751c-8201-bcdb34955a96).
+
+## **Introduction**
+
+A high amount of digital objects and collections are produced by (digital) humanists as well as by GLAM (Galleries, Libraries, Archives and Museums) professionals. Initiatives such as [Collections as data](https://collectionsasdata.github.io/) promote publishing and sharing of digital collections, and support computational reuse according to [FAIR](https://www.gofair.foundation/fair-principles) (Findable, Accessible, Interoperable and Reusable) and [CARE](https://www.gida-global.org/careprinciples) (Collective Benefit, Authority to Control, Responsibility, and Ethics) principles.
+
+Since 2018, [datasheets for cultural heritage datasets](https://doi.org/10.5334/johd.124) have emerged as a powerful, technology-agnostic tool to provide robust and well-curated documentation about digital collections. Moreover, *datasheets* provide clear provenance data and are aligned with recent undertakings in the European research infrastructure in Europe, such as the [European data space for cultural heritage](https://www.dataspace-culturalheritage.eu/en).
+
+This Open Educational Resource (OER) will focus on using *datasheets* in order to share data about under-resourced languages. 
+
+## **Datasheets for Cultural Heritage**
+
+According to the [Europeana Working Group on Datasheets for Digital Cultural Heritage](https://pro.europeana.eu/project/datasheets-for-digital-cultural-heritage-working-group),
+
+#####  ‘a datasheet is a standardised publication format for documenting a dataset, providing the context needed for reusing the data’. 
+
+*Datasheets* facilitate better communication between dataset creators and dataset consumers. For potential users of a dataset, such as researchers and practitioners, a *datasheet* provides clear information for making informed decisions about reuse. This is particularly helpful for mitigating societal biases for instance when deploying the data for machine learning or Large Language Models (LLMs).
+
+A *datasheet* includes a selection of metadata categories to describe a dataset’s provenance. These categories include traditional fields such as title, date of publication and authors, but also more advanced metadata information such as biases, missing information or known examples of use. Refer to the [documentation](https://doi.org/10.5281/zenodo.15828222) for a detailed description of the categories included. 
+
+## **Datasheets for Under-resourced Languages**
+
+Because most data repositories for language data are English-enhanced (e.g. [Zenodo](https://zenodo.org/), [Dataverse](https://dataverse.org/) and [DSpace](https://marketplace.sshopencloud.eu/tool-or-service/UAGfsc)), it is worth paying attention to the alignment between metadata specifications in different languages. In this sense, *datasheets* provide an agreed-upon framework for describing the content and technical details of a dataset, particularly for under-represented languages and corpora. In addition, *datasheets* provide ethical and legal information that is often omitted in other leading frameworks, but which is essential for responsible reuse. Therefore, *datasheets* represent an excellent solution for achieving transparency, improving accessibility and enhancing visibility. 
+
+Most of the *datasheets* metadata fields are relevant for under-resourced language datasets. Particularly important for minoritised languages is explicitly documenting ethical considerations and the collaborations that surfaced the data (particularly the role of native speaker collaborators).
+
+## **Sidedoc**
+
+As a recent and useful resource created by the working group, [Sidedoc](https://sidedoc.app/) (and its <Link link={{"discriminant":"external","value":"https://sidedoc.app/beta/2/"}}>beta version</Link>) allows users to create, edit and manage datasheets efficiently. Its editing interface allows datasheets to be exported in human- and machine-readable formats such as PDF, markdown and JSON. It also provides more advanced export formats, such as [JSON-LD](https://json-ld.org/) combined with [DCAT-AP](https://op.europa.eu/en/web/eu-vocabularies/dcat-ap) as a semantic model to describe the documentation. Please note that Sidedoc was in beta when this material was written.
+
+<Tabs>
+  <Tab title="Exercise n°1: find the most relevant fields">
+    Read the Datasheets metadata fields here: [https://doi.org/10.5281/zenodo.8375033](https://doi.org/10.5281/zenodo.8375033) . Which ones do you think are the most relevant for minoritised languages?
+  </Tab>
+
+  <Tab title="Exercise n°2: find the metadatum">
+    As an example, you can find here a dataset on the Nganasan language (Siberia), hosted by the University of Hamburg: [**https://doi.org/10.25592/uhhfdm.11121**](https://doi.org/10.25592/uhhfdm.11121)**.** Have a look at the documentation and try to find the following metadata
+
+    * Contributors 
+    * Temporal coverage
+    * Data provenance
+    * Personal or other sensitive information
+  </Tab>
+</Tabs>
+
+## **Using Datasheets for an Under-resourced Linguistic Corpus**
+
+The Annotated Reference Corpus of Scottish Gaelic ([ARCOSG](https://datashare.ed.ac.uk/items/3ee1fdc7-ca14-4dca-9b31-489428410d74)) is an 80k-word, part-of-speech tagged dataset hosted within the University of Edinburgh’s institutional repository for research data. [Scottish Gaelic](https://en.wikipedia.org/wiki/Scottish_Gaelic) is an endangered minority language currently spoken by about 70k people in Scotland. Released in 2016, ARCOSG is the first publicly-available tagged corpus of Gaelic. It has since been used for linguistic research and language technology development (e.g. part-of-speech taggers).&#x20;
+
+<Tabs>
+  <Tab title="Exercise n°3: create your own Datasheet!">
+    Using Sidedoc (beta version: [https://sidedoc.app/beta/2/](https://sidedoc.app/beta/2/); released version: [https://sidedoc.app/](https://sidedoc.app/)), try to to create a datasheet about these two under-resourced linguistic corpora:
+
+    * [**http://www.amc-resources.lel.ed.ac.uk/CHM/**](http://www.amc-resources.lel.ed.ac.uk/CHM/) (University of Edinburgh – Corpus of Historical Mapudungun);
+    * [**https://ailla.utexas.org/collections/**](https://ailla.utexas.org/collections/) (University of Texas – AILLA The Archive of Indigenous Language of Latin America).
+
+    Please compare your results with [https://doi.org/10.5281/zenodo.22305682](https://doi.org/10.5281/zenodo.22305682).
+  </Tab>
+</Tabs>
+
+## **Concluding Remarks**
+
+Datasheets provide a standardized way to document datasets clearly and transparently — especially their provenance, ethical and legal context, and limitations. This is particularly important for under-resourced and minoritised language corpora, where such information supports responsible reuse and helps prevent bias or misuse. Tools like Sidedoc make creating these datasheets easier and enable sharing in both human- and machine-readable formats.
+
+## **Acknowledgements** 
+
+The present resource was created during the workshop "Research Data Management Tools and Strategies for Language Diversity”. The workshop was run by the DARIAH Working Groups Multilingual DH and Research Data Management, financed by the DARIAH-EU Funding Scheme for Working Group Activities 2026-27, and hosted by the University of Edinburgh on 3rd and 4th September 2026. Principal investigator was Alíz Horváth; the related grant was administered by the Central European University. Further financial support was provided by the Society of Spanish Researchers in the United Kingdom (SRUK/CERU), the King’s College London, the Etxepare Euskal Institutua, the Fundación Española para la Ciencia y la Tecnología (FECYT) and the University of Edinburgh. 
+
+## **Further Learning Options**
+
+other 3 Edinburgh OERs. 
+
+## **Organisations Involved**
+
+* DARIAH-EU 
+* University of Edinburgh
+* Spanish Researchers in the United Kingdom (SRUK/CERU)
+* Fundación Española para la Ciencia y la Tecnología (FECYT)
+* The Etxepare Basque Institute
+* King’s College London
+* University of Hamburg
+
+<Disclosure title="Bibliography">
+  Alkemade, Henk, Gustavo Candela, Steven Claeyssens, et al. *Datasheets for Digital Cultural Heritage Datasets*. July 7, 2025. [https://doi.org/10.5281/ZENODO.15828222](https://doi.org/10.5281/ZENODO.15828222).
+
+  Alkemade, Henk, Steven Claeyssens, Giovanni Colavizza, et al. “Datasheets for Digital Cultural Heritage Datasets.” *Journal of Open Humanities Data* 9 (October 2023): 17. [https://doi.org/10.5334/johd.124](https://doi.org/10.5334/johd.124).
+
+  Candela, Gustavo, Sally Chambers, Alba Irollo, et al. “A Workflow to Publish Collections as Data: Looking Back at Europeana.Eu and Forward to the Common European Data Space for Cultural Heritage.” *Transformations: A DARIAH Journal* (2025). [https://doi.org/10.46298/transformations.14774](https://doi.org/10.46298/transformations.14774).
+
+  Gebru, Timnit, Jamie Morgenstern, Briana Vecchione, et al. (2018). Datasheets for Datasets. (Preprint). [http://arxiv.org/abs/1803.09010](http://arxiv.org/abs/1803.09010). 
+
+  Gebru, Timnit, Jamie Morgenstern, Briana Vecchione, et al. “Datasheets for Datasets.” *Communications of the ACM* 64, no. 12 (2021): 86–92. [https://doi.org/10.1145/3458723](https://doi.org/10.1145/3458723).
+
+  Salman, Aliyev, Aliyev Ceyhun, Mammadova Zeynab, and Akhundov Ayaz. "Language Documentation, Ethics, and Artificial Intelligence: Technical-Ethical Challenges for Minority Languages." *Research Reviews* 11 (2025): 285-289. [https://ojs.scipub.de/index.php/RR/article/view/7151](https://ojs.scipub.de/index.php/RR/article/view/7151).  
+</Disclosure>
