@@ -40,6 +40,8 @@ export async function createMetadata(): Promise<{
 	resources: Array<ResourceMetadata>;
 	sources: Array<SourceMetadata>;
 	tags: Array<TagMetadata>;
+	nationalConsortia: Array<string>;
+	workingGroups: Array<string>;
 }> {
 	const contentDir = join(process.cwd(), "content", "en");
 
@@ -201,13 +203,15 @@ export async function createMetadata(): Promise<{
 		resources: v.parse(v.array(resourceMetadataSchema), resources),
 		sources: v.parse(v.array(sourceMetadataSchema), sources),
 		tags: v.parse(v.array(tagMetadataSchema), tags),
+		nationalConsortia: Array.from(consortiaData.keys()).toSorted(),
+		workingGroups: Array.from(workingGroupsData.keys()).toSorted(),
 	};
 }
 
 async function generate() {
 	const start = performance.now();
 
-	const { curricula, resources, sources, tags } = await createMetadata();
+	const { curricula, resources, sources, tags, nationalConsortia, workingGroups } = await createMetadata();
 
 	const outputFolder = join(process.cwd(), "public", "metadata");
 
@@ -221,6 +225,12 @@ async function generate() {
 		encoding: "utf-8",
 	});
 	await writeFile(join(outputFolder, "tags.json"), JSON.stringify(tags), {
+		encoding: "utf-8",
+	});
+	await writeFile(join(outputFolder, "dariah-national-consortia.json"), JSON.stringify(nationalConsortia), {
+		encoding: "utf-8",
+	});
+	await writeFile(join(outputFolder, "dariah-working-groups.json"), JSON.stringify(workingGroups), {
 		encoding: "utf-8",
 	});
 
