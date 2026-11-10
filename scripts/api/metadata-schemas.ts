@@ -1,5 +1,13 @@
 import * as v from "valibot";
 
+export const sourceMetadataSchema = v.object({ id: v.string(), name: v.string() });
+
+export type SourceMetadata = v.InferOutput<typeof sourceMetadataSchema>;
+
+export const tagMetadataSchema = v.object({ id: v.string(), name: v.string() });
+
+export type TagMetadata = v.InferOutput<typeof tagMetadataSchema>;
+
 export const curriculumMetadataSchema = v.object({
 	id: v.string(),
 	collection: v.literal("curriculum"),
