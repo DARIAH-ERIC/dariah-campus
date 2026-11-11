@@ -56,11 +56,11 @@ Here is an overview:
 | Meta v1   | [https://api.opencitations.net/meta/v1](https://api.opencitations.net/meta/v1)     | What are the title, authors, venue and publication date of a work?                                  |
 | SKG-IF v1 | [https://api.opencitations.net/skg-if/v1](https://api.opencitations.net/skg-if/v1) | What are all the articles that contain the terms “infrastructure” and “federation” in their titles? |
 
-## What Will You Do in This Tutorial?
+### What Will You Do in This Tutorial?
 
 We will start small, by retrieving a single number: the citation count of one article. Step by step, we will then list the works that cite it, look up their metadata, and filter, sort and export the results. By the end of the tutorial, you will have a short Python script that combines the Index and Meta APIs to answer a concrete question: *which of the works citing that article were published in a given journal?* For each one, the script prints its publication date, venue and title. Finally, we will take a quick look at the new SKG-IF API.
 
-## Before You Start
+### Before You Start
 
 To follow along, you will need:
 
@@ -69,7 +69,7 @@ To follow along, you will need:
 
 **Note:** The scripts are written in Python, but the APIs are language-independent: any language that can send an HTTP request will work just as well.
 
-## Learning Outcomes
+### Learning Outcomes
 
 At the end of this tutorial, you will be able to:
 
@@ -80,7 +80,7 @@ At the end of this tutorial, you will be able to:
 * combine the Index and Meta APIs in a Python script
 * send a first query to the SKG-IF API
 
-## Identifiers
+### Identifiers
 
 To ask the APIs about a work, you include its identifier in the request Uniform Resource Locator (URL), written as `prefix:value`.
 
@@ -98,7 +98,7 @@ For example, the Digital Object Identifier (DOI) `10.1162/qss_a_00023` becomes: 
 
 **Note:** there is a rate limit for the API usage. APIs accept 180 requests per minute per IP address. That is fine for interactive work and for a few thousand works. For larger jobs, for instance when asking for the metadata of a large collection of resources, use the [OpenCitations data dumps](https://download.opencitations.net/) instead of the API.
 
-### A Closer Look at OMIDs
+#### A Closer Look at OMIDs
 
 The **OMID** (OpenCitations Meta Identifier) is OpenCitations' own identifier. Every entity in the dataset gets one, and its form tells you what kind of entity it refers to:
 
