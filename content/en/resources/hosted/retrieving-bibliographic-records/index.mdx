@@ -127,3 +127,43 @@ client should use in the next call. Its value can change from call to call, so t
 have to extract is. In the above links you can find more detailed information and examples.
 
 There are different implementations of OAI-PMH clients in Python, we use [Mathias Loesch](https://github.com/mloesch)'s [Sickle](https://github.com/mloesch/sickle) module (version 0.7.0) to retrieve the Estonian National Bibliography from the [DataLab](https://digilab.rara.ee/en/), the data sharing platform of the Estonian National Library. At the time of writing it returns almost 410 000 MARCXML records. We save them into local files each containing 100 000 records. As OAI-PMH is based on XML technology we use the [lxml](https://lxml.de/) module (version 6.0.0), a lightweight XML and HTML processing toolbox.
+
+```python
+import io
+import sys
+import os
+from lxml import etree
+from sickle import Sickle
+
+if len(sys.argv) == 1:                                  # <1>
+    print('Please give a directory name')
+    exit()
+dir = sys.argv[1]                                       # <2>
+if not os.path.exists(dir):
+    os.mkdir(dir)
+print('saving to %s' % (dir))
+
+namespaces = {                                          # <3>
+    'oai': 'http://www.openarchives.org/OAI/2.0/',
+    'marc21': 'http://www.loc.gov/MARC21/slim'
+}
+
+header = '<?xml version="1.0" encoding="utf8"?>' + "\n" \ # <4>
+       + '<collection>' + "\n"
+footer = '</collection>'
+```
+
+1. When we run Python, the `sys.argv` list contains the arguments we passed to the interpreter.
+   The `len()` function returns the number of elements in a collection, so it gives here
+   the number of arguments. The first argument is the name of the current script, so if the
+   number here is zero it means that the script itself does not have any argument. We should
+   pass at least one argument: the name of the directory where the script will store the
+   records -- if we don't provide it, the script will send us a message and stop running
+   (with the `exit()` function).
+2. If we provide an argument it will be stored as the name of the output directory. Then
+   it creates the directory if it does not already exist, and notify us.
+3. `namespaces` variable registers the XML namespaces the process needs - otherwise the
+   XPath expressions would not work.
+4. `header` and `footer` needs at the beginning and end of the output XML files. The XML
+   files are hierarchical: their main content is a list of MARC records, and their parent
+   element will be the `<collection>`.
