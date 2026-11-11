@@ -107,8 +107,6 @@ The **OMID** (OpenCitations Meta Identifier) is OpenCitations' own identifier. E
 
 You will meet OMIDs in almost every API response. They are also the only identifier that every work in the dataset is guaranteed to have, which makes them the most reliable way to refer to a work when a DOI or PMID is not available.
 
-
-
 ### A Quick Quiz Before Moving On
 
 <Quiz>
@@ -196,7 +194,7 @@ One of the most basic pieces of information you can retrieve is the citation/ref
 To do that we use the **Index API** and the "`/citation-count/`" operation:
 
 ```bash
-curl https://api.opencitations.net/index/v2/citation-count/doi:10.1162/qss_a_00023
+curl 'https://api.opencitations.net/index/v2/citation-count/doi:10.1162/qss_a_00023'
 ```
 
 Result:
@@ -231,7 +229,7 @@ On the other hand, we can get the references as well. This is done using the ope
 The call is done in the same way:
 
 ```bash
-curl https://api.opencitations.net/index/v2/reference-count/doi:10.1162/qss_a_00023
+curl 'https://api.opencitations.net/index/v2/reference-count/doi:10.1162/qss_a_00023'
 ```
 
 Result:
@@ -251,7 +249,7 @@ To count the citations of all the publications published under a given journal, 
 For instance, when looking for journal "*Quantitative Science Studies" -> (**ISSN** 2641-3337)*, (the journal of the previous example article):
 
 ```bash
-curl https://api.opencitations.net/index/v2/venue-citation-count/issn:2641-3337
+curl 'https://api.opencitations.net/index/v2/venue-citation-count/issn:2641-3337'
 ```
 
 Result:
@@ -271,7 +269,7 @@ Result:
 The API operation "`/citations/`" returns one row for each work that cites the given one. On the other hand, "`/references/`" does the same for the works it cites. Both return the whole list in a single response and use the same fields.
 
 ```bash
-curl https://api.opencitations.net/index/v2/citations/doi:10.1162/qss_a_00023
+curl 'https://api.opencitations.net/index/v2/citations/doi:10.1162/qss_a_00023'
 ```
 
 Result (only 1 row is shown):
@@ -314,7 +312,7 @@ In the OpenCitations Index the two numbers are the **OMIDs** of the two works. I
 To fetch one citation, pass the OCI to `/citation/` without the `oci:` prefix:
 
 ```bash
-curl https://api.opencitations.net/index/v2/citation/06013224311-062501777134
+curl 'https://api.opencitations.net/index/v2/citation/06013224311-062501777134'
 ```
 
 Result:
@@ -342,7 +340,7 @@ The **Index** tells you which works are linked, but not what they are. Titles, a
 The metadata of the previous example article (using its DOI value):
 
 ```bash
-curl https://api.opencitations.net/meta/v1/metadata/doi:10.1162/qss_a_00023
+curl 'https://api.opencitations.net/meta/v1/metadata/doi:10.1162/qss_a_00023'
 ```
 
 Result:
