@@ -27,7 +27,7 @@ index b3307a2f735fb445e6969a03ef5b00ddd7457eb0..383922ac52b5b64a8445098f92fb5033
          children: ReactNode;
      }) => ReactNode;
 diff --git a/dist/index-4767f7d9.js b/dist/index-4767f7d9.js
-index f5ec4804d44bcd3d32407281c0b69e980db7dbfe..17769be8bc94b31cda1a9bed29189b6f42216013 100644
+index f5ec4804d44bcd3d32407281c0b69e980db7dbfe..d25eca60e7e25cb3a3cc850cdc2172e3255ee2ad 100644
 --- a/dist/index-4767f7d9.js
 +++ b/dist/index-4767f7d9.js
 @@ -19844,7 +19844,7 @@ function FormValue(props) {
@@ -451,6 +451,15 @@ index f5ec4804d44bcd3d32407281c0b69e980db7dbfe..17769be8bc94b31cda1a9bed29189b6f
                children: props.children
              }) : /*#__PURE__*/jsx(BlockWrapper, {
                node: props.node,
+@@ -27036,7 +27002,7 @@ function markdocNodeToProseMirrorNode(node, parentType) {
+     }
+     return schema.nodes.code_block.createAndFill({
+       language
+-    }, schema.schema.text(node.value));
++    }, node.value ? schema.schema.text(node.value) : undefined);
+   }
+   if (node.type === 'thematicBreak') {
+     if (!schema.nodes.divider) return notAllowed(node, parentType);
 diff --git a/dist/keystatic-core-ui.js b/dist/keystatic-core-ui.js
 index 51149d2be2069d3c7a6f08110a850f51820666b4..43ac39df5398697ec1d848e7dc15149b527cf0bb 100644
 --- a/dist/keystatic-core-ui.js
