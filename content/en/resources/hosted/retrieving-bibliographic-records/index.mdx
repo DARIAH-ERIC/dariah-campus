@@ -214,12 +214,12 @@ def write_output(xmlrecords, file_counter, dir_name):           # <1>
 Then we create some variables to store the harvested records, and keeping status information, then initialize and start the harvester.
 
 ```Python
-xmlrecords = []                                                  # <1>
+xmlrecords = []                                                                   # <1>
 file_counter = 0
 record_counter = 0
 
-sickle = Sickle('https://data.digar.ee/repox/OAIHandler', max_retries=4) # <2>
-it = sickle.ListRecords(metadataPrefix='marc21xml', set='erb')  # <3>
+sickle = Sickle('https://data.digar.ee/repox/OAIHandler', max_retries=4)          # <2>
+it = sickle.ListRecords(metadataPrefix='marc21xml', set='erb')                    # <3>
 ```
 
 1. Initialisation of the necessary variables: the collector of the individual records,
@@ -236,18 +236,18 @@ it = sickle.ListRecords(metadataPrefix='marc21xml', set='erb')  # <3>
 In the following the script iterates over the individual XML responses of the calls.
 
 ```Python
-for content in it:                                                               # <1>
-    tree = etree.ElementTree(content)                                            # <2>      
+for content in it:                                                               #  <1>
+    tree = etree.ElementTree(content)                                            #  <2>      
 
     records = tree.xpath(
-                  '/oai:record[*]/oai:metadata/marc21:record',                   # <3>
+                  '/oai:record[*]/oai:metadata/marc21:record',                   #  <3>
                   namespaces=namespaces)
-    for record in records:                                                       # <4>
-        xmlrecord = etree\                                                       # <5>
-              .tostring(record, encoding='utf8', method='xml')\                  # <6>
-              .decode("utf-8")\                                                  # <7>
-              .replace("<?xml version='1.0' encoding='utf8'?>\n", '')            # <8>
-        xmlrecords.append(xmlrecord)                                             # <9>
+    for record in records:                                                       #  <4>
+        xmlrecord = etree\                                                       #  <5>
+              .tostring(record, encoding='utf8', method='xml')\                  #  <6>
+              .decode("utf-8")\                                                  #  <7>
+              .replace("<?xml version='1.0' encoding='utf8'?>\n", '')            #  <8>
+        xmlrecords.append(xmlrecord)                                             #  <9>
         record_counter += 1                                                      # <10>
 
     if len(xmlrecords) >= 100000:                                                # <11>
