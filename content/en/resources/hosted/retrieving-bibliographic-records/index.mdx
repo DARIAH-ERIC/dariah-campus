@@ -722,24 +722,25 @@ So these two functions call each other until there is a "next" link on the page.
 
 ```python
 def extract_translations(doc):
-    global record_counter, authors, translators                                   # <1>
-    items = doc.findall('body/table[@class="restable"]/tr/td[@class="res2"]', {}) # <2>
+    global record_counter, authors, translators                          #  1.
+    path = 'body/table[@class="restable"]/tr/td[@class="res2"]'
+    items = doc.findall(path, {})                                        #  2.
     for item in items:
-        record = {'id': record_counter}                                          # <3>
-        spans = item.findall('span')                                             # <4>
+        record = {'id': record_counter}                                  #  3.
+        spans = item.findall('span')                                     #  4.
         for span in spans:
-            key = span.get('class')                                              # <5>
-            if key == 'sn_pub':                                                  # <6>
+            key = span.get('class')                                      #  5.
+            if key == 'sn_pub':                                          #  6.
                 subs = span.findall('span')
                 for sub in subs:
-                    extract_key_value(record, sub)                               # <7>
+                    extract_key_value(record, sub)                       #  7.
             else:
-                extract_key_value(record, span)                                  # <8>
-        record, record_authors, record_translators = normalize_record(record)    # <9>
-        records.append(record)                                                   # <10>
-        authors += record_authors                                                # <11>
-        translators += record_translators
-        record_counter += 1                                                      # <12>
+                extract_key_value(record, span)                          #  8.
+        record, rec_authors, rec_translators = normalize_record(record)  #  9.
+        records.append(record)                                           # 10.
+        authors += rec_authors                                           # 11.
+        translators += rec_translators
+        record_counter += 1                                              # 12.
 ```
 
 1. the method uses some global variables, we make it possible with the `global` keyword
