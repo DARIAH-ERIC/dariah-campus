@@ -167,3 +167,35 @@ footer = '</collection>'
 4. `header` and `footer` needs at the beginning and end of the output XML files. The XML
    files are hierarchical: their main content is a list of MARC records, and their parent
    element will be the `<collection>`.
+
+To save the records we have to do several things, like naming an output file, insert header and footer. We should save records several times, so if we have such repeatable task, it is always suggested to create a method.
+
+```Python
+def write_output(xmlrecords, file_counter, dir_name):           # <1>
+    """
+    Writes MARC records to file
+    Parameters                              
+    ----------
+    xmlrecords : list
+        A list of string contains the individual MARCXML records
+    file_counter : int
+        A file name counter
+    dir_name : int
+        The name of the output directory
+    """
+    file_name = os.path.join(dir_name, f'{file_counter:06}.xml') # <2>
+    print(file_name)                                             # <3>
+    with io.open(file_name, 'w', encoding='utf8') as f:          # <4>
+        f.write(header)                                          # <5>
+        f.write("\n".join(xmlrecords) + "\n")                    # <6>
+        f.write(footer)                                          # <7>
+```
+
+1. A `write_output()` function creates the output files in the specified directory. It prints the XML header, join together and prints the XML records, and finally prints the XML footer.
+2. To create an output file name might looks a bit complicated at first sight. The os.path.join function is a safe way to create a path in your operating system – you might know that the directory separator character is different in Windows (`\`) than in Mac and Linux (`/`). With this function Python returns the path syntax that fits to your OS. In this case it has two parameters: a directory name, and a file name. We generate the later with the f-string syntax. `{file_counter:06}` returns a string that takes the value of the `file_counter` variable (a number) and pad it with zeros on the left side up to six characters so 1 becomes `000001`, 1000 becomes `001000` etc. The last part of the f-string append this with the file extension.
+3. Just for logging the progress it prints out the generated path.
+4. opens the file in writing mode with UTF-8 character encoding
+5. first, writes out the above defined XML header
+6. then, joins the individual XML records to a single string and writes it
+   (alternatively we could iterate over the records and write them one by one).
+7. finally, writes out the XML footer (the closing collection tag).
