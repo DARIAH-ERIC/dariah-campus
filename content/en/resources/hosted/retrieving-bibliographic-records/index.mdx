@@ -100,3 +100,30 @@ At the end of the process we will have a file `raw-data/lnb/natl_bibliography-20
 
 The code of this section is available at `scripts/ch3a-download-a-file.py` of the repository.
 
+## APIs to retrieve records
+
+### OAI-PMH
+
+> The Open Archives Initiative Protocol for Metadata Harvesting (OAI-PMH) is a
+> low-barrier mechanism for repository interoperability. Data Providers are repositories
+> that expose structured metadata via OAI-PMH. Service Providers then make OAI-PMH
+> service requests to harvest that metadata. OAI-PMH is a set of six verbs or services
+> that are invoked within HTTP.
+> From [https://www.openarchives.org/pmh/](https://www.openarchives.org/pmh/)
+
+The protocol provides 6 'verbs' or endpoints to retrieve information:
+
+* [GetRecord](https://www.openarchives.org/OAI/openarchivesprotocol.html#GetRecord): to retrieve an individual metadata record
+* [Identify](https://www.openarchives.org/OAI/openarchivesprotocol.html#Identify): information about a repository
+* [ListIdentifiers](https://www.openarchives.org/OAI/openarchivesprotocol.html#ListIdentifiers): to harvest record identifiers
+* [ListMetadataFormats](https://www.openarchives.org/OAI/openarchivesprotocol.html#ListMetadataFormats): to retrieve the metadata formats available from a repository. These formats are alternative XML representations of the same content, but it also happens that a library provides different content via different formats. In the `ListIdentifiers` and `ListRecords` verbs it is used as the `metadataPrefix` parameter. At least one format, the Dublin Core is mandatory.
+* [ListRecords](https://www.openarchives.org/OAI/openarchivesprotocol.html#ListRecords): to harvest records
+* [ListSets](https://www.openarchives.org/OAI/openarchivesprotocol.html#ListSets): to retrieve the set structure of a repository. Sets are optional collections within a repository, e.g. there might be individual sets according to the physical collections of a library.
+
+The response of these verbs is always XML. For the List\* verbs the maintainer of the service
+sets a pager size, so you do not retrieve all records at once, only limited number (e.g. 100).
+The pagination is implemented by a distinct XML element called `resumptionToken`, which the
+client should use in the next call. Its value can change from call to call, so the client always
+have to extract is. In the above links you can find more detailed information and examples.
+
+There are different implementations of OAI-PMH clients in Python, we use [Mathias Loesch](https://github.com/mloesch)'s [Sickle](https://github.com/mloesch/sickle) module (version 0.7.0) to retrieve the Estonian National Bibliography from the [DataLab](https://digilab.rara.ee/en/), the data sharing platform of the Estonian National Library. At the time of writing it returns almost 410 000 MARCXML records. We save them into local files each containing 100 000 records. As OAI-PMH is based on XML technology we use the [lxml](https://lxml.de/) module (version 6.0.0), a lightweight XML and HTML processing toolbox.
