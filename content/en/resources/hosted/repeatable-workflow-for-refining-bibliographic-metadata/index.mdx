@@ -84,7 +84,7 @@ Identify where the source records contain evidence for each concept needed by th
 
 Below we will look at two examples from the ESTC workflow: Unifying the values in the publication year field (**Example A**), and gathering evidence for publication places from various fields, and collecting them together as unified structured values (**Example B**).
 
-<Callout kind="note" title="Example A: Publication year input">
+<Disclosure title="Example A: Publication year input">
   Publication year mainly resides in MARC21 field **260 $c**. Roman numerals, brackets, uncertainty, approximate dates and wording are all encoded in the same field. Some examples from the year data:
 
   | Encoding                             | Example value          | Record |
@@ -99,7 +99,9 @@ Below we will look at two examples from the ESTC workflow: Unifying the values i
   | Range in words                       | between 1760 and 1800] | N71859 |
 
   Related dates elsewhere in the record may describe something different: for example, 240 $f supplies a date associated with a work.
-</Callout>
+</Disclosure>
+
+---
 
 <Disclosure title="Example B: Publication place input">
   The below table illustrates the input values of the place name processing code. Note how, even if the source data is more structured, there still is considerable variation in its form and content.
@@ -122,7 +124,7 @@ Use the research question or intended use to define a concise output structure. 
 
 In rare cases, data does not conform to expectations: In the examples below, the record T146309 has links to both London and Paris in the place-link file. It counts once in the master record table and twice in the place-link table. Joining the links to the record table produces two rows for that record. Whether this is appropriate depends on what is being counted.
 
-<Callout kind="note" title="Example A: Publication year output">
+<Disclosure title="Example A: Publication year output">
   Looking at the year table output, we see that it keeps the original transcription and adds parsed values:
 
   | estc\_id | original       | publication\_year\_from | publication\_year\_till | publication\_year | uncertain | circa | range |
@@ -132,7 +134,9 @@ In rare cases, data does not conform to expectations: In the examples below, the
   | N62219   | ca. 1785-1800] | 1785                    | 1800                    | 1785              | FALSE     | TRUE  | TRUE  |
 
   The question mark in \[1787?] sets the uncertain -flag, while the single year is kept. ca. 1785-1800] gives both endpoints and sets circa and range; publication\_year takes the first endpoint. Keeping the table at one row per identifier ensures that it can be joined to the record core without multiplying rows.
-</Callout>
+</Disclosure>
+
+---
 
 <Disclosure title="Example B: Publication place output">
   The place link table excerpt below has one row for each record–place association. As mentioned, record T146309 has two links in the file:
@@ -152,8 +156,6 @@ In rare cases, data does not conform to expectations: In the examples below, the
 **Divide the work into parts** that can be developed and checked independently. For each part, specify its source data, expected result, responsible contributor, transformations and checks. Contributors can then work on different fields while using agreed identifiers and compatible inputs.
 
 Separate the **shared data arrangement** from the organisation of the code. Keep an identifiable, versioned source snapshot and checked component outputs in a shared data location. Keep processing code and run instructions in version-controlled repositories (See e.g. <Link link={{"discriminant":"curricula","value":{"id":"introduction-to-git"}}}>DARIAH-CAMPUS tutorials on Git</Link>). One repository or several can work, provided contributors know which inputs to use and how their outputs will connect. Large or restricted datasets need an appropriate data store separate from the code repositories.
-
-
 
 <Callout kind="important" title="Planning guideline">
   **Before proceeding, agree on:**
@@ -177,3 +179,95 @@ Separate the **shared data arrangement** from the organisation of the code. Keep
 Begin with a small sample and inspect values in context. Record the rules before applying them more widely, and retain source statements alongside derived values.
 
 The examples below describe choices in an ESTC implementation. They demonstrate how to make decisions explicit, but those decisions should be reassessed when the data or intended use changes. Distinguish source evidence, its interpretation and any additional grouping introduced for analysis.
+
+<Disclosure title="Example A: publication years workflow">
+  *See the examples on inputs and outputs above.*
+
+  The year table begins with the transcription from 260 $c, stored unchanged in an original column and connected to the ESTC identifier. Parsed values can therefore be checked against the catalogue text.
+
+  The examples illustrate several patterns:
+
+  * **"1711."** supplies a single year, 1711.
+  * **"\[1787?]"** supplies a year while retaining the question mark as an uncertainty flag.
+  * **"ca. 1785-1800]"** supplies two endpoints and retains both approximation and range flags.
+  * **"between 1700 and 1799]"** supplies an interval whose endpoints should remain available.
+
+  These distinctions affect interpretation. A range is not equivalent to a precisely dated publication, and an approximate date is not the same as an unqualified one. Missing or unparsed values should remain identifiable rather than being silently converted into apparently exact dates.
+
+  Before analysing intervals, decide how they will be treated. Selecting one endpoint can simplify aggregation, but it also affects the apparent distribution of publications over time. A record dated between 1700 and 1799 cannot confidently be assigned to the first decade of that century.
+</Disclosure>
+
+---
+
+<Disclosure title="Example B: publication places workflow">
+  *See the examples on inputs and outputs above.*
+
+  The place workflow brings together **structured place information** and **imprint statements**. It begins with field 752, retaining country, state or region, and place components. A record may have more than one such statement, so the output must preserve multiple associations.
+
+  The implementation applies explicit rules to these components. Examples include removing punctuation from matching values, expanding abbreviations, reorganising country and state information, and mapping variant place names. Keep the unmodified source values so that each transformation remains inspectable.
+
+  Some rules standardise expression; others introduce analytical categories. Expanding St Andrews to Saint Andrews differs from grouping Twickenham or Croydon under London. The latter may support a study of a wider publishing area while obscuring distinctions needed for local history. Preserve the more specific source place and document the grouping separately. Decisions about historical names and geographical hierarchies should likewise state their purpose.
+
+  Uncertainty expressions should also remain available. A bracketed place, a question mark and a correction introduced by “i.e.” are different features. Recording them helps readers examine interpretations, but simply counting the features does not establish a calibrated scale of confidence.
+
+  The workflow connects harmonised place descriptions to **Getty Thesaurus of Geographic Names (TGN)** identifiers where a suitable match is available. Authority resources support identification; shared names and plausible coordinates alone do not guarantee that a match is correct.
+</Disclosure>
+
+### Make decisions inspectable
+
+For derived values, retain or link to the source statement, transformation rule, supporting resource and unresolved alternatives. Record external-resource versions where available, or the retrieval date and query details where the resource changes over time.
+
+Explicit parsing rules suit regular, well-understood patterns. Machine-learning or generative-AI systems can propose interpretations of ambiguous statements, but their outputs require evaluation. Record the model version, instructions and review procedure, preserve the input evidence, and use evaluation examples that were not used to develop the method. These are possible extensions of the workflow, not prerequisites for following this lesson.
+
+## 4. Validate and evaluate
+
+Validate each component as it is developed, then check the assembled tables. Structural validation asks whether the data follow their declared organisation. Evaluation of interpretation asks whether derived values are supported by the source evidence. Both are necessary.
+
+<Callout kind="important" title="Planning guidelines">
+  **Structural checks include:**
+
+  * Required fields and expected data types.
+  * Unique identifiers where one row per identifier is required.
+  * Valid links between tables.
+  * Expected row counts before and after joins.
+  * Unexpected changes in value distributions or missing information.
+  * Traceability from derived values to source evidence.
+</Callout>
+
+Interpretive evaluation requires reviewed examples. Include ordinary and difficult cases when developing the method, and use a separate representative sample when estimating performance across the dataset. A collection of difficult examples is useful for finding weaknesses, but it does not by itself measure how frequently those weaknesses occur.
+
+Define what counts as correct, incorrect, partly correct or unresolved. For a place match, distinguish correct interpretation of the catalogue statement from correct identification of the historical publication place. Agreement with the catalogue does not independently establish historical truth.
+
+<Disclosure title="Evaluation example: Publication places">
+  Evaluate the two stages (data parsing and linking to TGN) separately:
+
+  * **Place-name parsing:** Select a representative sample of records that was not used to develop the parsing rules. Have a reviewer identify the place name or names supported by each source statement, then compare these with the parsed output. Classify each result as correct, partly correct, incorrect or unresolved, and report the counts and denominator. This tests whether the process extracts and represents the source information; it does not establish that the source statement itself gives the historically correct place.
+  * **TGN matching:** Independently review whether each parsed place has been linked to the appropriate TGN entry. Use documented evidence and criteria to classify each link as correct, incorrect, ambiguous or unmatched. This tests entity identification, not parsing: a correctly parsed name can still be linked to the wrong entity, and a correct link does not show that the name was parsed correctly.
+</Disclosure>
+
+A published evaluation should identify the tested data and code versions, sampling procedure, review criteria and results before corrections. Explain how corrections were incorporated and whether a further evaluation was performed.
+
+## 5. Publish a documented dataset
+
+Plan for publication from the beginning so that decisions, code and data remain understandable as the work progresses. A partial dataset can be useful when its scope, status and limitations are explicit.
+
+A release should include:
+
+* Refined tables and a field dictionary explaining identifiers, units and relationships.
+* Source-snapshot and processing-code versions.
+* External authority-resource versions or retrieval information.
+* Code or processing instructions, with key decisions documented.
+* A validation and evaluation summary.
+* Known limitations, unresolved cases and unfinished components.
+* Access conditions, reuse conditions and licensing information for data and code.
+* A citation identifying the particular release.
+
+Choose a repository according to preservation needs, access conditions and institutional or funder requirements. Options include general-purpose repositories such as Zenodo, Dataverse repositories and institutional services. Library and research-data support colleagues can help assess the appropriate route. Use a code repository for active development and connect it to the archived release where appropriate.
+
+A persistent identifier helps users locate and cite a release, but does not itself establish data quality. Clearly identify the files and versions used in an analysis, and explain changes between releases. Check source terms and third-party material before selecting reuse conditions.
+
+For an ESTC release, document how the refined tables relate to the source catalogue and to the COMHIS/estcr harmonised data used by the project. Identify the actual source and transformation versions rather than assuming that similarly named files are equivalent. The supplied examples describe a particular workflow and should not be presented as documentation of every subsequent release.
+
+## Practical exercise
+
+Work with a small supplied selection of ESTC records, or a comparable sample from another catalogue. State the intended use and identify what each output row represents. Include straightforward cases and cases involving uncertainty, date ranges or multiple places.
