@@ -60,7 +60,8 @@ Refining a large dataset is an iterative process. For example, work on publicati
 1. **Map and plan.** Understand the source fields and decide what the research-ready output should represent.
 2. **Plan the work.** Agree and set shared conventions, divide tasks and identify which steps rely on earlier results.
 3. **Extract and refine.** Transform one field at a time, retaining evidence and unresolved cases.
-4. **Validate and publish.** Test the results and publish them with code, documentation and a clear statement of scope.
+4. **Validate and evaluate.** Test the results and determine the accuracy of the results.
+5. **Publish.** Publish the data with code, documentation and a clear statement of scope.
 
 Data and research publications can progress in tandem: E.g. a first data publication can contain the refined year table and place links while actor identification continues. Number the release and document its source snapshot and the versions of its year and place tables. Actor data can be added in a later version, noting changes to the earlier tables. Researchers can cite the version they used (see publication section below), and work with the data at each stage as methods and evidence develop.
 
@@ -249,24 +250,24 @@ A published evaluation should identify the tested data and code versions, sampli
 
 ## 5. Publish a documented dataset
 
-Plan for publication from the beginning so that decisions, code and data remain understandable as the work progresses. A partial dataset can be useful when its scope, status and limitations are explicit.
+**Plan for publication from the beginning** so that decisions, code and data remain understandable as the work progresses. A partial dataset can be useful when its scope, status and limitations are explicit.
 
-A release should include:
+<Callout kind="important" title="Planning guidelines">
+  **A release should include:**
 
-* Refined tables and a field dictionary explaining identifiers, units and relationships.
-* Source-snapshot and processing-code versions.
-* External authority-resource versions or retrieval information.
-* Code or processing instructions, with key decisions documented.
-* A validation and evaluation summary.
-* Known limitations, unresolved cases and unfinished components.
-* Access conditions, reuse conditions and licensing information for data and code.
-* A citation identifying the particular release.
+  * Citating guidelines identifying the particular release.
+  * Refined tables and a field dictionary explaining identifiers, units and relationships.
+  * Notes on Source- and processing-code versions.
+  * External authority-resource versions (e.g. TGN above) or retrieval information.
+  * Code or processing instructions, with key decisions documented.
+  * A validation and evaluation summary.
+  * Known limitations, unresolved cases and unfinished components.
+  * Access conditions, reuse conditions and licensing information for data and code.
+</Callout>
 
-Choose a repository according to preservation needs, access conditions and institutional or funder requirements. Options include general-purpose repositories such as Zenodo, Dataverse repositories and institutional services. Library and research-data support colleagues can help assess the appropriate route. Use a code repository for active development and connect it to the archived release where appropriate.
+Choose a repository according to preservation needs, access conditions and institutional or funder requirements. Options include general-purpose repositories such as **Zenodo**, **Dataverse** and institutional services. Library and research-data support colleagues can help assess the appropriate route. Use a code repository (most likely **Github**) for active development and connect it to the archived release where appropriate.
 
-A persistent identifier helps users locate and cite a release, but does not itself establish data quality. Clearly identify the files and versions used in an analysis, and explain changes between releases. Check source terms and third-party material before selecting reuse conditions.
-
-For an ESTC release, document how the refined tables relate to the source catalogue and to the COMHIS/estcr harmonised data used by the project. Identify the actual source and transformation versions rather than assuming that similarly named files are equivalent. The supplied examples describe a particular workflow and should not be presented as documentation of every subsequent release.
+**A persistent identifier** helps users locate and cite a release. Clearly identify the files and versions used in an analysis, and explain changes between releases. Check source terms and third-party material before selecting reuse conditions.
 
 ## Practical exercise
 
