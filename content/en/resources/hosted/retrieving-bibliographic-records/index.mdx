@@ -687,9 +687,9 @@ that triggers the following:
 
 ```Python
 def request_page(it_params):
-    cache_file = os.path.join(cache_dir, f'results_{it_params['fr']}.html') # <1>
-    if os.path.exists(cache_file):                                          # <2>
-        with open(cache_file, 'r') as f:                                    # <3>
+    cache_file = os.path.join(cache_dir, f'results_{it_params['fr']}.html')       # <1>
+    if os.path.exists(cache_file):                                                # <2>
+        with open(cache_file, 'r') as f:                                          # <3>
             content = f.read()
         process_page(content)
     else:
