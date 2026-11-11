@@ -104,6 +104,8 @@ The **OMID** (OpenCitations Meta Identifier) is OpenCitations' own identifier. E
 
 You will meet OMIDs in almost every API response. They are also the only identifier that every work in the dataset is guaranteed to have, which makes them the most reliable way to refer to a work when a DOI or PMID is not available.
 
+<SplitPoint />
+
 ## Step 1: Get the Citation/Reference Count
 
 One of the most basic pieces of information you can retrieve is the citation/reference count of a given publication.
@@ -179,6 +181,8 @@ Result:
 ]
 ```
 
+<SplitPoint />
+
 ## Step 2: List Who Cites a Work
 
 The API operation "`/citations/`" returns one row for each work that cites the given one. On the other hand, "`/references/`" does the same for the works it cites. Both return the whole list in a single response and use the same fields.
@@ -216,6 +220,8 @@ Result (only 1 row is shown):
 | `journal_sc` | `yes` when citing and cited work appear in the same journal                                                                              |
 | `author_sc`  | `yes` when the two works share at least one author                                                                                       |
 
+<SplitPoint />
+
 ## Step 3: Look Up a Single Citation
 
 Each citation has its own persistent identifier, the Open Citation Identifier (OCI). Its full form is `oci:` followed by two numbers joined by a hyphen, such as "*`oci:06013224311-062501777134`*".
@@ -243,6 +249,8 @@ Result:
     }
 ]
 ```
+
+<SplitPoint />
 
 ## Step 4: Get the Metadata
 
@@ -317,6 +325,8 @@ Result:
 2025-07-30 Representing Provenance And Track Changes Of Cultural Heritage Metadata In RDF: A Survey Of Existing Approaches
 ```
 
+<SplitPoint />
+
 ## Step 5: Filter, Sort and Export
 
 Every operation of both APIs accepts the same query parameters, applied on the server after the data is retrieved. They run in a fixed order: first all `require`, then all `filter`, then `sort`, and finally `format`. You can repeat a parameter, for example "`require=volume&require=issue`".
@@ -349,6 +359,8 @@ oci,citing,cited,creation,timespan,journal_sc,author_sc
  06013224311-062501777134,omid:br/06013224311 doi:10.1007/s11192-026-05540-1,omid:br/062501777134 doi:10.1162/qss_a_00023 openalex:W3106215946,2026-02-14,P6Y0M,no,no
 [...]
 ```
+
+<SplitPoint />
 
 ## Putting It All Together With a Python Script
 
@@ -421,6 +433,8 @@ Save it as ***citing\_in\_venue.py*** and run it with "*python3 citing\_in\_venu
 [...]
 ```
 
+<SplitPoint />
+
 ## New SKG-IF API
 
 The [Scientific Knowledge Graphs Interoperability Framework (SKG-IF)](https://skg-if.github.io) is a Research Data Alliance standard that enables discovery and analysis across sources of research information developed independently. Despite using different data models and technologies to manage their data, sources adopting SKG-IF also expose their data according to the [SKG-IF data model](https://skg-if.github.io/data-model/), accessible via a shared [Open REST API specification](https://skg-if.github.io/api/). OpenCitations is one of the first [sources implementing an SKG-IF API endpoint](https://skg-if.github.io/api/docs/api-implementors.html), which is available at [https://api.opencitations.net/skg-if/v1](https://api.opencitations.net/skg-if/v1).
@@ -468,6 +482,8 @@ The result is returned in a special kind of JSON format called [JSON for Linked 
 ```
 
 For more information about the various fields a response from an SKG-IF API returns, we suggest reading the [SKG-IF format description](https://skg-if.github.io/interoperability-framework/) on the official website of the standard.
+
+<SplitPoint />
 
 ## Good Practices
 
