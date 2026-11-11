@@ -104,51 +104,29 @@ The **OMID** (OpenCitations Meta Identifier) is OpenCitations' own identifier. E
 
 You will meet OMIDs in almost every API response. They are also the only identifier that every work in the dataset is guaranteed to have, which makes them the most reliable way to refer to a work when a DOI or PMID is not available.
 
-\{% Quiz %}
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      I want the list of all the works that cite my paper, and I have its DOI. Which endpoint should I use?
+    </QuizChoiceQuestion>
 
-\{% QuizChoice variant="multiple" %}
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        * Index API – `/citation-count/`
+        * Index API – `/references/`
+        * Meta API – `/metadata/`
 
-\{% QuizChoiceQuestion %}
 
-I want the list of all the works that cite my paper, and I have its DOI. Which endpoint should I use?
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
 
-\{% /QuizChoiceQuestion %}
-
-\{% QuizChoiceAnswer kind="correct" %}
-
-\{% QuizChoiceAnswerLabel %}
-
-\- \*\*Index API – \`/citations/\`\*\*
-
-\{% /QuizChoiceAnswerLabel %}
-
-\{% /QuizChoiceAnswer %}
-
-\{% QuizChoiceAnswer kind="incorrect" %}
-
-\{% QuizChoiceAnswerLabel %}
-
-\- Index API – \`/citation-count/\`
-
-\{% /QuizChoiceAnswerLabel %}
-
-\{% QuizChoiceAnswerLabel %}
-
-Meta API – /metadata/
-
-\{% /QuizChoiceAnswerLabel %}
-
-\{% QuizChoiceAnswerLabel %}
-
-\- Index API – \`/references/\`
-
-\{% /QuizChoiceAnswerLabel %}
-
-\{% /QuizChoiceAnswer %}
-
-\{% /QuizChoice %}
-
-\{% /Quiz %}
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        * **Index API – `/citations/`**
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
 
 <SplitPoint />
 
