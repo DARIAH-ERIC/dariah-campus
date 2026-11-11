@@ -51,13 +51,13 @@ In this training material we will work with different directories:
 The first programming task is to create these directories. To create them we use the `os` Python library that provides standard operating system functions, such as `makedirs` that creates a directory.
 
 ```python
-import os                                    # <1>
+import os                                                               # 1.
 
-directories = ['data', 'raw-data', 'plots']  # <2>
+directories = ['data', 'raw-data', 'plots']                             # 2.
 
-for directory in directories:                # <3>
-    if not os.path.exists(directory):        # <4>
-        os.makedirs(directory)               # <5>
+for directory in directories:                                           # 3.
+    if not os.path.exists(directory):                                   # 4.
+        os.makedirs(directory)                                          # 5.
 ```
 
 1. imports the `os` library
@@ -74,20 +74,20 @@ The code of this section is available at `scripts/ch3a-create-directories.py` of
 You can find a list of downloadable library catalogues [ḣere](https://github.com/pkiraly/qa-catalogue#datasources). Now download a relatively small file with MARC records of the Latvian National Bibliography (2014-2023) provided by the [Open Data Portal](https://dati.lnb.lv/) of the National Library of Latvia. The files are compressed with zip, so in order to use them we should extract them, and because the zip file contains a `data` subdirectory, we rename that to `lnb` (after the domain name of the National Library of Latvia).
 
 ```python
-import urllib.request                                                  # <1>
-import zipfile                                                         # <1>
-import os                                                              # <1>
+import urllib.request                                                   # 1.
+import zipfile                                                          # 1.
+import os                                                               # 1.
 
-url = 'https://dati.lnb.lv/files/natl_bibliography-2014-2023-marc.zip' # <2>
-target_dir = 'raw-data'                                                # <2>
-target_file = target_dir + '/lnb-natl_bibliography-2014-2023-marc.zip' # <2>
+url = 'https://dati.lnb.lv/files/natl_bibliography-2014-2023-marc.zip'  # 2.
+target_dir = 'raw-data'                                                 # 2.
+target_file = target_dir + '/lnb-natl_bibliography-2014-2023-marc.zip'  # 2.
 
-urllib.request.urlretrieve(url, target_file)                           # <3>
+urllib.request.urlretrieve(url, target_file)                            # 3.
 
-with zipfile.ZipFile(target_file, 'r') as zip_ref:                     # <4>
+with zipfile.ZipFile(target_file, 'r') as zip_ref:                      # 4.
     zip_ref.extractall(target_dir)
 
-os.rename(target_dir + '/data', target_dir + '/lnb')                   # <5>
+os.rename(target_dir + '/data', target_dir + '/lnb')                    # 5.
 ```
 
 1. Imports the Python libraries: `urllib` for the download, and `zipfile` for uncompressing
@@ -135,20 +135,20 @@ import os
 from lxml import etree
 from sickle import Sickle
 
-if len(sys.argv) == 1:                                  # <1>
+if len(sys.argv) == 1:                                                  # 1.
     print('Please give a directory name')
     exit()
-dir = sys.argv[1]                                       # <2>
+dir = sys.argv[1]                                                       # 2.
 if not os.path.exists(dir):
     os.mkdir(dir)
 print('saving to %s' % (dir))
 
-namespaces = {                                          # <3>
+namespaces = {                                                          # 3.
     'oai': 'http://www.openarchives.org/OAI/2.0/',
     'marc21': 'http://www.loc.gov/MARC21/slim'
 }
 
-header = '<?xml version="1.0" encoding="utf8"?>' + "\n" \ # <4>
+header = '<?xml version="1.0" encoding="utf8"?>' + "\n" \               # 4.
        + '<collection>' + "\n"
 footer = '</collection>'
 ```
@@ -171,7 +171,7 @@ footer = '</collection>'
 To save the records we have to do several things, like naming an output file, insert header and footer. We should save records several times, so if we have such repeatable task, it is always suggested to create a method.
 
 ```python
-def write_output(xmlrecords, file_counter, dir_name):           # <1>
+def write_output(xmlrecords, file_counter, dir_name):                  # 1.
     """
     Writes MARC records to file
     Parameters                              
@@ -183,12 +183,12 @@ def write_output(xmlrecords, file_counter, dir_name):           # <1>
     dir_name : int
         The name of the output directory
     """
-    file_name = os.path.join(dir_name, f'{file_counter:06}.xml') # <2>
-    print(file_name)                                             # <3>
-    with io.open(file_name, 'w', encoding='utf8') as f:          # <4>
-        f.write(header)                                          # <5>
-        f.write("\n".join(xmlrecords) + "\n")                    # <6>
-        f.write(footer)                                          # <7>
+    file_name = os.path.join(dir_name, f'{file_counter:06}.xml')        # 2.
+    print(file_name)                                                    # 3.
+    with io.open(file_name, 'w', encoding='utf8') as f:                 # 4.
+        f.write(header)                                                 # 5.
+        f.write("\n".join(xmlrecords) + "\n")                           # 6.
+        f.write(footer)                                                 # 7.
 ```
 
 1. A `write_output()` function creates the output files in the specified directory. It prints the XML header, join together and prints the XML records, and finally prints the XML footer.
@@ -203,12 +203,12 @@ def write_output(xmlrecords, file_counter, dir_name):           # <1>
 Then we create some variables to store the harvested records, and keeping status information, then initialize and start the harvester.
 
 ```python
-xmlrecords = []                                                                   # <1>
+xmlrecords = []                                                         # 1.
 file_counter = 0
 record_counter = 0
-
-sickle = Sickle('https://data.digar.ee/repox/OAIHandler', max_retries=4)          # <2>
-it = sickle.ListRecords(metadataPrefix='marc21xml', set='erb')                    # <3>
+base_url = 'https://data.digar.ee/repox/OAIHandler'
+sickle = Sickle(base_url, max_retries=4)                                # 2.
+it = sickle.ListRecords(metadataPrefix='marc21xml', set='erb')          # 3.
 ```
 
 1. Initialisation of the necessary variables: the collector of the individual records,
@@ -225,23 +225,23 @@ it = sickle.ListRecords(metadataPrefix='marc21xml', set='erb')                  
 In the following the script iterates over the individual XML responses of the calls.
 
 ```python
-for content in it:                                                               #  <1>
-    tree = etree.ElementTree(content)                                            #  <2>      
+for content in it:                                                      #  1.
+    tree = etree.ElementTree(content)                                   #  2.
 
     records = tree.xpath(
-                  '/oai:record[*]/oai:metadata/marc21:record',                   #  <3>
+                  '/oai:record[*]/oai:metadata/marc21:record',          #  3.
                   namespaces=namespaces)
-    for record in records:                                                       #  <4>
-        xmlrecord = etree\                                                       #  <5>
-              .tostring(record, encoding='utf8', method='xml')\                  #  <6>
-              .decode("utf-8")\                                                  #  <7>
-              .replace("<?xml version='1.0' encoding='utf8'?>\n", '')            #  <8>
-        xmlrecords.append(xmlrecord)                                             #  <9>
-        record_counter += 1                                                      # <10>
+    for record in records:                                              #  4.
+        xmlrecord = etree\                                              #  5.
+              .tostring(record, encoding='utf8', method='xml')\         #  6.
+              .decode("utf-8")\                                         #  7.
+              .replace("<?xml version='1.0' encoding='utf8'?>\n", '')   #  8.
+        xmlrecords.append(xmlrecord)                                    #  9.
+        record_counter += 1                                             # 10.
 
-    if len(xmlrecords) >= 100000:                                                # <11>
-        write_output(xmlrecords, file_counter, dir)                              # <12>
-        xmlrecords = []                                                          # <13>
+    if len(xmlrecords) >= 100000:                                       # 11.
+        write_output(xmlrecords, file_counter, dir)                     # 12.
+        xmlrecords = []                                                 # 13.
         file_counter += 1
 ```
 
@@ -263,9 +263,9 @@ for content in it:                                                              
 Since during the iteration we collect records, but do not save the list to file only when the list size reaches a limit, there is a chance that when the iteration ends we still have unsaved record. So we should save them and print a report.
 
 ```python
-if len(xmlrecords) > 0:                                                           # <1>
+if len(xmlrecords) > 0:                                                           # 1.
     write_output(xmlrecords, file_counter, dir)
-print('saved %d records to %d files' % (record_counter, file_counter))            # <2>
+print('saved %d records to %d files' % (record_counter, file_counter))            # 2.
 ```
 
 1. after the iteration if the record collection is not empty write it to a file
@@ -302,19 +302,19 @@ be called bdsutils (short for Bibliographic Data Science utilities). This is the
 import urllib.request
 import zipfile
 
-target_dir = 'raw-data'                                                           # <1>
+target_dir = 'raw-data'                                                 # 1.
 
-def download_and_unzip(url, target_file):                                         # <2>
-    """                                                                           # <3>
-    Download a zip file, and uncompress it                                        # <3>
+def download_and_unzip(url, target_file):                               # 2.
+    """                                                                 # 3.
+    Download a zip file, and uncompress it                              # 3.
     
-    Parameters                                                                    # <3>
-    ----------                                                                    # <3>
-    url : str                                                                     # <3>
-        The URL of the zip file to download                                       # <3>
-    sound : str                                                                   # <3>
-        The local file name                                                       # <3>
-    """                                                                           # <3>
+    Parameters                                                          # 3.
+    ----------                                                          # 3.
+    url : str                                                           # 3.
+        The URL of the zip file to download                             # 3.
+    sound : str                                                         # 3.
+        The local file name                                             # 3.
+    """                                                                 # 3.
 
     urllib.request.urlretrieve(url, target_file)
 
@@ -335,19 +335,19 @@ The file is available in the repository as `scripts/bdsutils.py`.
 Once we have this utility script, we can create the specific one for *FBTEE*. This zip file does not contain directories, only a single file *`chop_leeds_ac_uk.sql`*.
 
 ```python
-from bdsutils import target_dir, download_and_unzip                               # <1>
+from bdsutils import target_dir, download_and_unzip                     # 1.
 import os
 
-url = 'https://fbtee.uws.edu.au/stn/database/download/STN_database.zip'           # <2>
+url = 'https://fbtee.uws.edu.au/stn/database/download/STN_database.zip' # 2.
 target_file = target_dir + '/stn_database.zip'
 
-download_and_unzip(url, target_file)                                              # <3>
+download_and_unzip(url, target_file)                                    # 3.
 
 directory = target_dir + '/fbtee'
-if not os.path.exists(directory):                                                 # <4>
+if not os.path.exists(directory):                                       # 4.
     os.mkdir(directory)
 
-os.rename(target_dir + '/chop_leeds_ac_uk.sql',                                   # <5>
+os.rename(target_dir + '/chop_leeds_ac_uk.sql',                         # 5.
           directory + '/chop_leeds_ac_uk.sql')
 ```
 
@@ -592,13 +592,13 @@ There are a number of technical possibilities to parse HTML. Since IT’s HTML p
 which unfortunately a ‘retired’ lesson, since the HTML page on which the author demonstrates the strength of the library is no longer available, but still a good introduction, and one can apply the methods on IT.
 
 ```python
-import requests                                                                   # <1>
-import lxml.html                                                                  # <2>
+import requests                                                         # 1.
+import lxml.html                                                        # 2.
 import os
-import re                                                                         # <3>
-import urllib.parse                                                               # <4>
-import csv                                                                        # <5>
-from collections import Counter # <6>
+import re                                                               # 3.
+import urllib.parse                                                     # 4.
+import csv                                                              # 5.
+from collections import Counter # 6.
 ```
 
 1. we use another URL handling library: the [request library](https://requests.readthedocs.io/en/latest/) that provides more convenient methods for the same task as the urllib package. The request package needs installation with a `pip install request`.
@@ -640,10 +640,10 @@ def create_dir(dir):
 Then we use it in the web scraping script:
 
 ```python
-import bsutils                                                                    # <1>
+import bsutils                                                          # 1.
 ...
-create_dir('cache')                                                               # <2>
-cache_dir = os.path.join('cache', 'it')                                           # <3>
+create_dir('cache')                                                     # 2.
+cache_dir = os.path.join('cache', 'it')                                 # 3.
 create_dir(cache_dir)
 ```
 
@@ -654,11 +654,11 @@ create_dir(cache_dir)
 We also have to create containers for the data we plan to extract.
 
 ```python
-records = []                                                                      # <1>
-authors = []                                                                      # <2>
+records = []                                                            # 1.
+authors = []                                                            # 2.
 translators = []
-record_counter = 1                                                                # <3>
-field_names = Counter({})                                                         # <4>
+record_counter = 1                                                      # 3.
+field_names = Counter({})                                               # 4.
 ```
 
 1. `record` (a list of dictionaries) will contain our records.
@@ -676,19 +676,21 @@ that triggers the following:
 
 ```python
 def request_page(it_params):
-    cache_file = os.path.join(cache_dir, f'results_{it_params['fr']}.html')       # <1>
-    if os.path.exists(cache_file):                                                # <2>
-        with open(cache_file, 'r') as f:                                          # <3>
+    file_name = f'results_{it_params['fr']}.html'
+    cache_file = os.path.join(cache_dir, file_name)                     # 1.
+    if os.path.exists(cache_file):                                      # 2.
+        with open(cache_file, 'r') as f:                                # 3.
             content = f.read()
         process_page(content)
     else:
-        response = requests.get(base_url, params=it_params)                       # <4>
-        if response.status_code == 200:                                           # <5>
-            content = response.text                                               # <6>
-            if re.search('The requested URL was rejected.', content) is None:     # <7>
-                with open(cache_file, 'wb') as f:                                 # <8>
+        response = requests.get(base_url, params=it_params)             # 4.
+        if response.status_code == 200:                                 # 5.
+            content = response.text                                     # 6.
+            error_message = 'The requested URL was rejected.'
+            if re.search(error_message, content) is None:               # 7.
+                with open(cache_file, 'wb') as f:                       # 8.
                     f.write(response.content)
-            process_page(content)                                                 # <9>
+            process_page(content)                                       # 9.
 ```
 
 1. defines the cache file name out of the current URL's `fr` parameter (the offset of the first record in the page from the first record in the hit list).
@@ -703,12 +705,12 @@ def request_page(it_params):
 
 ```python
 def process_page(content):
-    doc = lxml.html.fromstring(content)                                  # 1.
-    extract_translations(doc)                                            # 2.
-    from_param = extract_next_link(doc)                                  # 3.
-    if from_param != None:                                               # 4.
-        it_params['fr'] = from_param                                     # 5.
-        request_page(it_params)                                          # 6.
+    doc = lxml.html.fromstring(content)                                 # 1.
+    extract_translations(doc)                                           # 2.
+    from_param = extract_next_link(doc)                                 # 3.
+    if from_param != None:                                              # 4.
+        it_params['fr'] = from_param                                    # 5.
+        request_page(it_params)                                         # 6.
 ```
 
 1. the lxml library parses the document into an internal object
