@@ -488,7 +488,9 @@ For more information about the various fields a response from an SKG-IF API retu
 
 <SplitPoint />
 
-## Good Practices
+## Concluding Remarks
+
+### Good Practices
 
 **Always send the prefix.** Write `doi:10.1162/qss_a_00023`, not the bare DOI. Every operation checks the identifier against a pattern, listed under *Parameter(s)* in the [Index API](https://api.opencitations.net/index/v2) and [Meta API](https://api.opencitations.net/meta/v1) reference pages.
 
@@ -498,13 +500,13 @@ For more information about the various fields a response from an SKG-IF API retu
 
 **Switch to the dumps for bulk work.** Above a few thousand works, the [OpenCitations data dumps](https://download.opencitations.net/) are faster for you and lighter for the service. At 180 requests per minute, 5,000 citation counts already take about 28 minutes.
 
-## Conclusion
+### Conclusion
 
 In this tutorial we used the Index API to count and list the citations of an article, and the Meta API to get the metadata of the citing works. We filtered, sorted and exported the results, combined the two APIs in a Python script, and sent a first query to the new SKG-IF API.
 
 To go further, you can try the other operations listed in the API reference pages, or download the OpenCitations data dumps for larger analyses.
 
-## Further Reading
+### Further Reading
 
 * [OpenCitations Index API documentation](https://api.opencitations.net/index/v2)
 * [OpenCitations Meta API documentation](https://api.opencitations.net/meta/v1)
