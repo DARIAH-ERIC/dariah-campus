@@ -750,10 +750,10 @@ def extract_translations(doc):
    (inside the current cell), and iterate over them
 5. the semantic information is found in the class attribute, so we should save it
 6. however there is a special span: `sn_pub` is a container of other spans, and we have to run a second iteration to extract its children
-7. and 8. at the end we call the extract\_key\_value() method with the record structure and the
+7. and 8. at the end we call the `extract\_key\_value()` method with the record structure and the
    current (non complex) span element. It extracts the value and stores it in the record
 8. ditto
-9. after processing all spans we should normalize the record with the normalize\_record() method. It returns the normalized method, the list of authors, authors and translators
+9. after processing all spans we should normalize the record with the `normalize\_record()` method. It returns the normalized method, the list of authors, authors and translators
 10. as record is a single dictionary it can be appended easily to the list of records
 11. however as authors and translators are list of dictionaries, append() can not be used here,
     we should concatenate the lists
