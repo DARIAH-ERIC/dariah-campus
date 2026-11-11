@@ -34,29 +34,45 @@ dariah-working-groups:
 ---
 ## Introduction
 
-Lorem ipsum
+Bibliographic metadata supports the description, discovery and interpretation of published material. Using it for new purposes—such as analysing publishing patterns, connecting collections or preparing reusable datasets—requires understanding how records were created and how their information can be transformed. This material presents a repeatable workflow for assessing, refining, validating and publishing bibliographic metadata while preserving its source evidence and uncertainty.
 
-## Learning Outcomes
+The material is intended for researchers, librarians, cataloguers, metadata and research-data specialists, and others interested in working with bibliographic data. These readers bring complementary expertise: knowledge of collections and cataloguing practices, historical and subject knowledge, and experience with data modelling and processing. The workflow provides a common framework for making decisions and evaluating results across these roles.
 
-* outcome 1
-* outcome 2
+Publication years and places in the <Link link={{"discriminant":"external","value":"https://datb.cerl.org/estc/"}}>English Short Title Catalogue</Link> (ESTC) provide the worked examples. They demonstrate how to inspect source records, define an output structure, organise connected processing tasks, evaluate transformations and prepare a documented release. The principles can be adapted to other catalogues and purposes. Familiarity with tables is helpful; MARC fields and other technical concepts are introduced where they are needed.
 
-Test text test text
+## Learning outcomes
 
-admadölksa
+By the end of this lesson, you should be able to:
 
+* Explain how a catalogue’s purpose, coverage and cataloguing history affect its use in research.
+* Define a research or data-reuse objective, identify relevant source fields and specify what each output row represents.
+* Organise refinement into clearly documented tasks with distinct responsibilities and dependencies.
+* Understand the weorkflow for the example cases of: Refining dates and places while retaining source statements, uncertainty and unresolved cases.
+* Distinguish structural validation from evaluation of the accuracy of the results.
+* Prepare a versioned dataset with sufficient documentation for others to assess and reuse.
 
+## Workflow structure
 
-| **Encoding**                         | **Example value**      | **Record** |
-| ------------------------------------ | ---------------------- | ---------- |
-| Plain year                           | \[1708]                | N72338     |
-| Uncertain (question mark)            | \[1787?]               | N72335     |
-| Roman numerals with a bracketed year | M.DCC.LXVI. \[1766]    | N71014     |
-| Roman numerals, no brackets          | MDCCLXXIV. 1774.       | N10003     |
-| Circa                                | \[ca. 1740]            | N71861     |
-| Circa and uncertain                  | \[ca. 1719?]           | N34110     |
-| Range                                | \[1791 - 1839]         | N71524     |
-| Range in words                       | between 1760 and 1800] | N71859     |
+When starting to work on a new dataset, one should keep in mind an eventual end goal of a data publication- this approach will help with keeping the work documented and rigorous through the process.
+
+Refining a large dataset is an iterative process. For example, work on publication years may reveal a need to distinguish date ranges; place processing may expose uncertainty in imprints or differences in cataloguing practice. These findings may lead to changes in the output structure, processing rules or research question. Keeping successive versions to make those changes traceable. The following steps describe a sensible approach to such a task:
+
+1. **Map and plan.** Understand the source fields and decide what the research-ready output should represent.
+2. **Plan the work.** Agree and set shared conventions, divide tasks and identify which steps rely on earlier results.
+3. **Extract and refine.** Transform one field at a time, retaining evidence and unresolved cases.
+4. **Validate and publish.** Test the results and publish them with code, documentation and a clear statement of scope.
+
+Data and research publications can progress in tandem: E.g. a first data publication can contain the refined year table and place links while actor identification continues. Number the release and document its source snapshot and the versions of its year and place tables. Actor data can be added in a later version, noting changes to the earlier tables. Researchers can cite the version they used (see publication section below), and work with the data at each stage as methods and evidence develop.
+
+<Callout kind="tip" title="Leading principle">
+  The most important principle is that an eventual data publication is part of the plan from the start. Even if questions of e.g. publication rights, channels, or strategy have not been sorted out, this mode of thinking will help with keeping the workflow quality high.
+</Callout>
+
+## 1. Map the source and plan the output
+
+Before writing transformation rules, examine the source, its history and the intended use. The ESTC brings together records created over an extended period by different contributing institutions. Cataloguing conventions have varied across institutions and over time. An apparent inconsistency may reflect historical variation, a cataloguing decision or an error; examine the record before changing it.
+
+Also consider what the catalogue covers. The absence of a record does not establish that a publication never existed. Likewise, information absent from a catalogue record may be present in the physical object or another source. Refinement should make available evidence easier to use without concealing these limits.
 
 
 
