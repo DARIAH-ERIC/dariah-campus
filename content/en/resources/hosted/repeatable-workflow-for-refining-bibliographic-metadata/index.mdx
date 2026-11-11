@@ -74,5 +74,29 @@ Before writing transformation rules, examine the source, its history and the int
 
 Also consider what the catalogue covers. The absence of a record does not establish that a publication never existed. Likewise, information absent from a catalogue record may be present in the physical object or another source. Refinement should make available evidence easier to use without concealing these limits.
 
+### Choose the unit of analysis - standardising the research inputs
+
+Reserch, especially quantitative approaches, needs data units that represents similar items. With biblographic data this might not be the case: Decide whether each output row represents a catalogue record, an edition, a work or a surviving copy. In these ESTC examples, a decision was made to equate an ESTC MARC record with an edition of a work, even though this is not always the case in the catalogue, but explicitly stating such choices will help with resolving ambiguity present in the source data. The year table presented in the below examples has one row per record identifier. Place data uses a separate link for each record–place association.
+
+In rare cases, data does not conform to expectations: For example, the record T146309 has links to both London and Paris in the place-link file. It counts once in the master record table and twice in the place-link table. Joining the links to the record table produces two rows for that record. Whether this is appropriate depends on what is being counted.
+
+Looking at the year table output, we see that it keeps the original transcription and adds parsed values:
+
+| estc\_id | original       | publication\_year\_from | publication\_year\_till | publication\_year | uncertain | circa | range |
+| -------- | -------------- | ----------------------- | ----------------------- | ----------------- | --------- | ----- | ----- |
+| N72335   | \[1787?]       | 1787                    | NA                      | 1787              | TRUE      | FALSE | FALSE |
+| T146309  | 1711.          | 1711                    | NA                      | 1711              | FALSE     | FALSE | FALSE |
+| N62219   | ca. 1785-1800] | 1785                    | 1800                    | 1785              | FALSE     | TRUE  | TRUE  |
+
+The question mark in \[1787?] sets the uncertain -flag, while the single year is kept. ca. 1785-1800] gives both endpoints and sets circa and range; publication\_year takes the first endpoint. Keeping the table at one row per identifier ensures that it can be joined to the record core without multiplying rows.
+
+The place link table excerpt below has one row for each record–place association. As mentioned, record T146309 has two links in the file:
+
+| estc\_id | geo\_id                                                                 |
+| -------- | ----------------------------------------------------------------------- |
+| T146309  | \<http\://vocab.getty.edu/tgn/7011781> (London, England, Great Britain) |
+| T146309  | \<http\://vocab.getty.edu/tgn/7008038> (Paris, France)                  |
 
 
+
+xxx
