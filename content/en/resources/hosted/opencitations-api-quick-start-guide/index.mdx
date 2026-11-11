@@ -36,6 +36,23 @@ dariah-national-consortia: []
 dariah-working-groups:
   - bibliographical-data-bibliodata
 ---
+OpenCitations is an independent not-for-profit infrastructure organization for open scholarship that publishes open bibliographic and citation data, free for anyone to reuse. This tutorial is for people with a technical background, such as developers, data librarians or researchers who write small scripts, who have never used the OpenCitations Application Programming Interfaces (APIs).
+
+## Learning Outcomes
+
+At the end of this tutorial, you will be able to:
+
+* get the citation and reference count of a work with the Index API
+* list the works that cite a work, or that a work cites
+* get the bibliographic metadata of a work with the Meta API
+* filter, sort and export the results
+* combine the Index and Meta APIs in a Python script
+* send a first query to the SKG-IF API
+
+## What Will You Do in This Tutorial?
+
+We will start small, by retrieving a single number: the citation count of one article. Step by step, we will then list the works that cite it, look up their metadata, and filter, sort and export the results. By the end of the tutorial, you will have a short Python script that combines the Index and Meta APIs to answer a concrete question: *which of the works citing that article were published in a given journal?* For each one, the script prints its publication date, venue and title. Finally, we will take a quick look at the new SKG-IF API.
+
 ## Overview
 
 OpenCitations provides open access to its data through three Representational State Transfer (REST) Application Programming Interfaces (APIs):
@@ -56,10 +73,6 @@ Here is an overview:
 | Meta v1   | [https://api.opencitations.net/meta/v1](https://api.opencitations.net/meta/v1)     | What are the title, authors, venue and publication date of a work?                                  |
 | SKG-IF v1 | [https://api.opencitations.net/skg-if/v1](https://api.opencitations.net/skg-if/v1) | What are all the articles that contain the terms “infrastructure” and “federation” in their titles? |
 
-### What Will You Do in This Tutorial?
-
-We will start small, by retrieving a single number: the citation count of one article. Step by step, we will then list the works that cite it, look up their metadata, and filter, sort and export the results. By the end of the tutorial, you will have a short Python script that combines the Index and Meta APIs to answer a concrete question: *which of the works citing that article were published in a given journal?* For each one, the script prints its publication date, venue and title. Finally, we will take a quick look at the new SKG-IF API.
-
 ### Before You Start
 
 To follow along, you will need:
@@ -68,17 +81,6 @@ To follow along, you will need:
 * **Python 3** with the '*requests*' library, for the scripts later in the tutorial
 
 **Note:** The scripts are written in Python, but the APIs are language-independent: any language that can send an HTTP request will work just as well.
-
-## Learning Outcomes
-
-At the end of this tutorial, you will be able to:
-
-* get the citation and reference count of a work with the Index API
-* list the works that cite a work, or that a work cites
-* get the bibliographic metadata of a work with the Meta API
-* filter, sort and export the results
-* combine the Index and Meta APIs in a Python script
-* send a first query to the SKG-IF API
 
 ### Identifiers
 
