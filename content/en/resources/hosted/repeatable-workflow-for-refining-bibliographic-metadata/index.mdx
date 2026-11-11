@@ -64,7 +64,7 @@ Refining a large dataset is an iterative process. For example, work on publicati
 
 Data and research publications can progress in tandem: E.g. a first data publication can contain the refined year table and place links while actor identification continues. Number the release and document its source snapshot and the versions of its year and place tables. Actor data can be added in a later version, noting changes to the earlier tables. Researchers can cite the version they used (see publication section below), and work with the data at each stage as methods and evidence develop.
 
-<Callout kind="tip" title="Leading principle">
+<Callout kind="important" title="Leading principle">
   The most important principle is that an eventual data publication is part of the plan from the start. Even if questions of e.g. publication rights, channels, or strategy have not been sorted out, this mode of thinking will help with keeping the workflow quality high.
 </Callout>
 
@@ -78,25 +78,77 @@ Also consider what the catalogue covers. The absence of a record does not establ
 
 Reserch, especially quantitative approaches, needs data units that represents similar items. With biblographic data this might not be the case: Decide whether each output row represents a catalogue record, an edition, a work or a surviving copy. In these ESTC examples, a decision was made to equate an ESTC MARC record with an edition of a work, even though this is not always the case in the catalogue, but explicitly stating such choices will help with resolving ambiguity present in the source data. The year table presented in the below examples has one row per record identifier. Place data uses a separate link for each record–place association.
 
-In rare cases, data does not conform to expectations: For example, the record T146309 has links to both London and Paris in the place-link file. It counts once in the master record table and twice in the place-link table. Joining the links to the record table produces two rows for that record. Whether this is appropriate depends on what is being counted.
+### Build a field map - how the source matches the output
 
-Looking at the year table output, we see that it keeps the original transcription and adds parsed values:
+Identify where the source records contain evidence for each concept needed by the project. A concept may appear in several MARC fields, and one field may contain several kinds of information, as illustrated by the examples below.
 
-| estc\_id | original       | publication\_year\_from | publication\_year\_till | publication\_year | uncertain | circa | range |
-| -------- | -------------- | ----------------------- | ----------------------- | ----------------- | --------- | ----- | ----- |
-| N72335   | \[1787?]       | 1787                    | NA                      | 1787              | TRUE      | FALSE | FALSE |
-| T146309  | 1711.          | 1711                    | NA                      | 1711              | FALSE     | FALSE | FALSE |
-| N62219   | ca. 1785-1800] | 1785                    | 1800                    | 1785              | FALSE     | TRUE  | TRUE  |
+Below we will look at two examples from the ESTC workflow: Unifying the values in the publication year field (**Example A**), and gathering evidence for publication places from various fields, and collecting them together as unified structured values (**Example B**).
 
-The question mark in \[1787?] sets the uncertain -flag, while the single year is kept. ca. 1785-1800] gives both endpoints and sets circa and range; publication\_year takes the first endpoint. Keeping the table at one row per identifier ensures that it can be joined to the record core without multiplying rows.
+<Callout kind="note" title="Example A: Publication year input">
+  Publication year mainly resides in MARC21 field **260 $c**. Roman numerals, brackets, uncertainty, approximate dates and wording are all encoded in the same field. Some examples from the year data:
 
-The place link table excerpt below has one row for each record–place association. As mentioned, record T146309 has two links in the file:
+  | Encoding                             | Example value          | Record |
+  | ------------------------------------ | ---------------------- | ------ |
+  | Plain year                           | \[1708]                | N72338 |
+  | Uncertain (question mark)            | \[1787?]               | N72335 |
+  | Roman numerals with a bracketed year | M.DCC.LXVI. \[1766]    | N71014 |
+  | Roman numerals, no brackets          | MDCCLXXIV. 1774.       | N10003 |
+  | Circa                                | \[ca. 1740]            | N71861 |
+  | Circa and uncertain                  | \[ca. 1719?]           | N34110 |
+  | Range                                | \[1791 - 1839]         | N71524 |
+  | Range in words                       | between 1760 and 1800] | N71859 |
 
-| estc\_id | geo\_id                                                                 |
-| -------- | ----------------------------------------------------------------------- |
-| T146309  | \<http\://vocab.getty.edu/tgn/7011781> (London, England, Great Britain) |
-| T146309  | \<http\://vocab.getty.edu/tgn/7008038> (Paris, France)                  |
+  Related dates elsewhere in the record may describe something different: for example, 240 $f supplies a date associated with a work.
+</Callout>
 
+<Disclosure title="Example B: Publication place input">
+  The below table illustrates the input values of the place name processing code. Note how, even if the source data is more structured, there still is considerable variation in its form and content.
 
+  | Field                      | Example value                                                      |
+  | -------------------------- | ------------------------------------------------------------------ |
+  | 752 $a, $b, $d             | Great Britain, England, London.                                    |
+  | 752 $c, $f                 | Dorset, Dorchester. ($c county, $d town) and Westminster. ($f)     |
+  | 752 with no $b or $c       | Ireland, Dublin.                                                   |
+  | 260 $a imprint place       | Westminster :, Dorchester :                                        |
+  | 260 $a in brackets         | \[London] :                                                        |
+  | 500 $a note on the imprint | Imprint from colophon.                                             |
+  | 500 $a note on a pseudonym | Isaac Bickerstaff is a pseudonym, and this is possibly a pastiche. |
+  | 008 country code           | enk (England), ie (Ireland)                                        |
 
-xxx
+  ###
+</Disclosure>
+
+###
+
+### Design an output that can grow
+
+Use the research question or intended use to define a concise output structure. Keep source statements available alongside interpreted values and connect them through stable identifiers. Store repeated values in linked tables, and distinguish absent information from information that is present but unresolved.
+
+In rare cases, data does not conform to expectations: In the examples below, the record T146309 has links to both London and Paris in the place-link file. It counts once in the master record table and twice in the place-link table. Joining the links to the record table produces two rows for that record. Whether this is appropriate depends on what is being counted.
+
+<Callout kind="note" title="Example A: Publication year output">
+  Looking at the year table output, we see that it keeps the original transcription and adds parsed values:
+
+  | estc\_id | original       | publication\_year\_from | publication\_year\_till | publication\_year | uncertain | circa | range |
+  | -------- | -------------- | ----------------------- | ----------------------- | ----------------- | --------- | ----- | ----- |
+  | N72335   | \[1787?]       | 1787                    | NA                      | 1787              | TRUE      | FALSE | FALSE |
+  | T146309  | 1711.          | 1711                    | NA                      | 1711              | FALSE     | FALSE | FALSE |
+  | N62219   | ca. 1785-1800] | 1785                    | 1800                    | 1785              | FALSE     | TRUE  | TRUE  |
+
+  The question mark in \[1787?] sets the uncertain -flag, while the single year is kept. ca. 1785-1800] gives both endpoints and sets circa and range; publication\_year takes the first endpoint. Keeping the table at one row per identifier ensures that it can be joined to the record core without multiplying rows.
+</Callout>
+
+<Disclosure title="Example B: Publication place output">
+  The place link table excerpt below has one row for each record–place association. As mentioned, record T146309 has two links in the file:
+
+  | estc\_id | geo\_id                                                                                                      |
+  | -------- | ------------------------------------------------------------------------------------------------------------ |
+  | T146309  | \<[http://vocab.getty.edu/tgn/7011781](http://vocab.getty.edu/tgn/7011781)> (London, England, Great Britain) |
+  | T146309  | \<[http://vocab.getty.edu/tgn/7008038](http://vocab.getty.edu/tgn/7008038)> (Paris, France)                  |
+
+  ###
+</Disclosure>
+
+<Callout kind="tip" title="Planning exercise">
+  For a record associated with two publication places, decide whether the intended analysis counts one record or two record–place associations. Explain the difference and document the choice.
+</Callout>
