@@ -703,12 +703,12 @@ def request_page(it_params):
 
 ```python
 def process_page(content):
-    doc = lxml.html.fromstring(content)                                           # <1>
-    extract_translations(doc)                                                     # <2>
-    from_param = extract_next_link(doc)                                           # <3>
-    if from_param != None:                                                        # <4>
-        it_params['fr'] = from_param                                              # <5>
-        request_page(it_params)                                                   # <6>
+    doc = lxml.html.fromstring(content)                                       # <1>
+    extract_translations(doc)                                                 # <2>
+    from_param = extract_next_link(doc)                                       # <3>
+    if from_param != None:                                                    # <4>
+        it_params['fr'] = from_param                                          # <5>
+        request_page(it_params)                                               # <6>
 ```
 
 1. the lxml library parses the document into an internal object
