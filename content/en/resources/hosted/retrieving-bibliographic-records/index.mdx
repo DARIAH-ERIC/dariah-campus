@@ -51,13 +51,13 @@ In this textbook we will work with different directories:
 The first programming task is to create these directories. To create them we use the `os` Python library that provides standard operating system functions, such as `makedirs` that creates a directory.
 
 ```python
-import os # <1>
+import os                                    # <1>
 
-directories = ['data', 'raw-data', 'plots'] # <2>
+directories = ['data', 'raw-data', 'plots']  # <2>
 
-for directory in directories:  # <3>
-    if not os.path.exists(directory): # <4>
-        os.makedirs(directory) # <5>
+for directory in directories:                # <3>
+    if not os.path.exists(directory):        # <4>
+        os.makedirs(directory)               # <5>
 ```
 
 1. imports the `os` library
@@ -71,11 +71,7 @@ The code of this section is available at `scripts/ch3a-create-directories.py` of
 
 ## Download a MARCXML file
 
-You can find a list of downloadable library catalogues [ḣere](https://github.com/pkiraly/qa-catalogue#datasources).
-Now download a relatively small file with MARC records of the Latvian National Bibliography (2014-2023) provided
-by the [Open Data Portal](https://dati.lnb.lv/) of the National Library of Latvia.
-The files are compressed with zip, so in order to use them we should extract them, and
-because the zip file contains a `data` subdirectory, we rename that to `lnb` (after the domain name of the National Library of Latvia).
+You can find a list of downloadable library catalogues [ḣere](https://github.com/pkiraly/qa-catalogue#datasources). Now download a relatively small file with MARC records of the Latvian National Bibliography (2014-2023) provided by the [Open Data Portal](https://dati.lnb.lv/) of the National Library of Latvia. The files are compressed with zip, so in order to use them we should extract them, and because the zip file contains a `data` subdirectory, we rename that to `lnb` (after the domain name of the National Library of Latvia).
 
 ```python
 import urllib.request                         # <1>
