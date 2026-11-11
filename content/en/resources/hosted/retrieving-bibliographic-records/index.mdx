@@ -191,9 +191,7 @@ def write_output(xmlrecords, file_counter, dir_name):           # <1>
         f.write(footer)                                          # <7>
 ```
 
-1. A `write_output()` function creates the output files in the specified directory. It
-   prints the XML header, join together and prints the XML records, and finally prints the
-   XML footer.
+1. A `write_output()` function creates the output files in the specified directory. It prints the XML header, join together and prints the XML records, and finally prints the XML footer.
 2. To create an output file name might looks a bit complicated at first sight. The os.path.join function is a safe way to create a path in your operating system – you might know that the directory separator character is different in Windows (`\`) than in Mac and Linux (`/`). With this function Python returns the path syntax that fits to your OS. In this case it has two parameters: a directory name, and a file name. We generate the later with the f-string syntax. `{file_counter:06}` returns a string that takes the value of the `file_counter` variable (a number) and pad it with zeros on the left side up to six characters so 1 becomes `000001`, 1000 becomes `001000` etc. The last part of the f-string append this with the file extension.
 3. Just for logging the progress it prints out the generated path.
 4. opens the file in writing mode with UTF-8 character encoding
