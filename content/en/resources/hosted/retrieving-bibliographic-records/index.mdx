@@ -763,15 +763,15 @@ def extract_translations(doc):
 def extract_key_value(record, span):
     fields = ['auth_name', 'auth_firstname',
               'transl_name', 'transl_firstname']
-    key = re.sub(r'^sn_', '', span.get('class'))                        # 1
-    if key not in fields:                                               # 2
+    key = re.sub(r'^sn_', '', span.get('class'))                        # 1.
+    if key not in fields:                                               # 2.
         field_names.update([key])
-    if key not in record:                                               # 3
+    if key not in record:                                               # 3.
         record[key] = []
-    record[key].append(span.text)                                       # 4
+    record[key].append(span.text)                                       # 4.
 ```
 
-1. the key of the field is derived from the class attribute, but the 'sn\_' string from its beginning should be removed with a regular expression. [re.sub](https://docs.python.org/3/library/re.html#re.sub) has three mandatory parameters: pattern, replacement and the input string. `^` is a building block of regular expressions, meaning the beginning of the string, so it will not match same string elsewhere (see the full syntax [here](https://docs.python.org/3/library/re.html#regular-expression-syntax))
+1. the key of the field is derived from the class attribute, but the 'sn\_' prefix from its beginning should be removed with a regular expression. [re.sub](https://docs.python.org/3/library/re.html#re.sub) has three mandatory parameters: pattern, replacement and the input string. `^` is a building block of regular expressions, meaning the beginning of the string, so it will not match same string elsewhere (see the full syntax [here](https://docs.python.org/3/library/re.html#regular-expression-syntax))
 2. author and translator names will be stored in a distinct table, but we count how many times
    the rest appear in the pages.
 3. we expect that each field is repeatable, so if the key is not available in the dictionary, we initialize it as a list
@@ -779,15 +779,15 @@ def extract_key_value(record, span):
 
 ```python
 def extract_next_link(doc):
-    xpath = 'body/table[@class="nav"]/tr[1]/td[@class="next"]/a'        # 1
+    xpath = 'body/table[@class="nav"]/tr[1]/td[@class="next"]/a'        # 1.
     next = doc.findall(xpath, {})
-    if len(next) > 0:                                                   # 2
-        link = next[0].get('href')                                      # 3
-        parsed_link = urllib.parse.urlparse(link)                       # 4
-        parameters = urllib.parse.parse_qs(parsed_link.query)           # 5
-        if 'fr' in parameters and len(parameters['fr']) == 1:           # 6
-            return parameters['fr'][0]                                  # 7
-    return None                                                         # 8
+    if len(next) > 0:                                                   # 2.
+        link = next[0].get('href')                                      # 3.
+        parsed_link = urllib.parse.urlparse(link)                       # 4.
+        parameters = urllib.parse.parse_qs(parsed_link.query)           # 5.
+        if 'fr' in parameters and len(parameters['fr']) == 1:           # 6.
+            return parameters['fr'][0]                                  # 7.
+    return None                                                         # 8.
 ```
 
 1. XPath expression of the "next" link
@@ -808,16 +808,17 @@ As mentioned above there are two things we should improve in the extracted recor
 
 ```python
 def normalize_record(record):
-    fields = ['auth_name', 'auth_firstname', 'transl_name', 'transl_firstname']
+    fields = ['auth_name', 'auth_firstname', 
+              'transl_name', 'transl_firstname']
 
-    for key, value in record.items():                                             # <1>
-        if key not in fields:                                                     # <2>
-            record[key] = ', '.join(value)                                        # <3>
+    for key, value in record.items():                                   # 1.
+        if key not in fields:                                           # 2.
+            record[key] = ', '.join(value)                              # 3.
 
-    authors = extract_names(record, 'auth_name', 'auth_firstname')                # <4>
+    authors = extract_names(record, 'auth_name', 'auth_firstname')      # 4.
     translators = extract_names(record, 'transl_name', 'transl_firstname')
 
-    return record, authors, translators                                           # <5>
+    return record, authors, translators                                 # 5.
 ```
 
 1. iterates over the key-value pairs of the dictionary
@@ -834,20 +835,21 @@ The extract\_names() method however is not that simple as it seems to be. There 
 
 ```python
 def extract_names(record, lastname_key, firstname_key):
-    name_records = []                                                            # <1>
-    i = -1                                                                       # <2>
-    if lastname_key in record:                                                   # <3>
-        firstnames = record.get(firstname_key, [])                               # <4>
-        for name in record.get(lastname_key):                                    # <5>
-            name_record = {'rid': record['id'], 'last': name, 'first': None}     # <6>
-            if name != 'et al.':                                                 # <7>
-                i += 1                                                           # <8>
-                if (len(firstnames) > i):                                        # <9>
+    name_records = []                                                   #  1.
+    i = -1                                                              #  2.
+    if lastname_key in record:                                          #  3.
+        firstnames = record.get(firstname_key, [])                      #  4.
+        for name in record.get(lastname_key):                           #  5.
+            name_record = {'rid': record['id'], 
+                           'last': name, 'first': None}                 #  6.
+            if name != 'et al.':                                        #  7.
+                i += 1                                                  #  8.
+                if (len(firstnames) > i):                               #  9.
                     name_record['first'] = firstnames[i]
             name_records.append(name_record)
 
-        del record[lastname_key]                                                 # <10>
-        if len(firstnames) > 0:                                                  # <11>
+        del record[lastname_key]                                        # 10.
+        if len(firstnames) > 0:                                         # 11.
             del record[firstname_key]
     
     return name_records
@@ -872,17 +874,17 @@ What remained is to save the extracted data into CSV files:
 create_diroutput_dir = os.path.join('raw-data', 'it')
 create_dir(output_dir)
 
-output_file = os.path.join(output_dir, 'it.csv')                                  # <1>
+output_file = os.path.join(output_dir, 'it.csv')                        # 1.
 with open(output_file, 'w', encoding='utf-8') as csv_file: 
-    column_names = ['id'] + list(field_names.keys())                              # <2>
-    output_writer = csv.DictWriter(csv_file, fieldnames=column_names)             # <3>
-    output_writer.writeheader()                                                   # <4>
-    output_writer.writerows(records)                                              # <5>
+    column_names = ['id'] + list(field_names.keys())                    # 2.
+    output_writer = csv.DictWriter(csv_file, fieldnames=column_names)   # 3.
+    output_writer.writeheader()                                         # 4.
+    output_writer.writerows(records)                                    # 5.
 
-column_names=['rid', 'last', 'first']                                             # <6>
-names = {'authors.csv': authors, 'translators.csv': translators}                  # <7>
-for file_name, data in names.items():                                             # <8>
-    output_file = os.path.join(output_dir, file_name)                             # <9>
+column_names=['rid', 'last', 'first']                                   # 6.
+names = {'authors.csv': authors, 'translators.csv': translators}        # 7.
+for file_name, data in names.items():                                   # 8.
+    output_file = os.path.join(output_dir, file_name)                   # 9.
     with open(output_file, 'w', encoding='utf-8') as csv_file:
         output_writer = csv.DictWriter(csv_file, fieldnames=column_names)
         output_writer.writeheader()
