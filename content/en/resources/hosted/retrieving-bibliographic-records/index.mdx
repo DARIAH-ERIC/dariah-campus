@@ -761,13 +761,14 @@ def extract_translations(doc):
 
 ```python
 def extract_key_value(record, span):
-    fields = ['auth_name', 'auth_firstname', 'transl_name', 'transl_firstname']
-    key = re.sub(r'^sn_', '', span.get('class'))                                  # <1>
-    if key not in fields:                                                         # <2>
+    fields = ['auth_name', 'auth_firstname',
+              'transl_name', 'transl_firstname']
+    key = re.sub(r'^sn_', '', span.get('class'))                        # 1
+    if key not in fields:                                               # 2
         field_names.update([key])
-    if key not in record:                                                         # <3>
+    if key not in record:                                               # 3
         record[key] = []
-    record[key].append(span.text)                                                 # <4>
+    record[key].append(span.text)                                       # 4
 ```
 
 1. the key of the field is derived from the class attribute, but the 'sn\_' string from its beginning should be removed with a regular expression. [re.sub](https://docs.python.org/3/library/re.html#re.sub) has three mandatory parameters: pattern, replacement and the input string. `^` is a building block of regular expressions, meaning the beginning of the string, so it will not match same string elsewhere (see the full syntax [here](https://docs.python.org/3/library/re.html#regular-expression-syntax))
@@ -778,17 +779,18 @@ def extract_key_value(record, span):
 
 ```python
 def extract_next_link(doc):
-    next = doc.findall('body/table[@class="nav"]/tr[1]/td[@class="next"]/a', {})  # <1>
-    if len(next) > 0:                                                             # <2>
-        link = next[0].get('href')                                                # <3>
-        parsed_link = urllib.parse.urlparse(link)                                 # <4>
-        parameters = urllib.parse.parse_qs(parsed_link.query)                     # <5>
-        if 'fr' in parameters and len(parameters['fr']) == 1:                     # <6>
-            return parameters['fr'][0]                                            # <7>
-    return None                                                                   # <8>
+    xpath = 'body/table[@class="nav"]/tr[1]/td[@class="next"]/a'        # 1
+    next = doc.findall(xpath, {})
+    if len(next) > 0:                                                   # 2
+        link = next[0].get('href')                                      # 3
+        parsed_link = urllib.parse.urlparse(link)                       # 4
+        parameters = urllib.parse.parse_qs(parsed_link.query)           # 5
+        if 'fr' in parameters and len(parameters['fr']) == 1:           # 6
+            return parameters['fr'][0]                                  # 7
+    return None                                                         # 8
 ```
 
-1. extracts the "next" link
+1. XPath expression of the "next" link
 2. it is not available on the last page, so it should be checked if it is processable
 3. the *fr* parameter is available in the href attribute of the first (and only) "next" link
 4. parses it with the urllib's [method](https://docs.python.org/3/library/urllib.parse.html#urllib.parse.urlparse), that returns a fixed structure: [6-item named tuple](https://docs.python.org/3/library/urllib.parse.html#urllib.parse.ParseResult).
