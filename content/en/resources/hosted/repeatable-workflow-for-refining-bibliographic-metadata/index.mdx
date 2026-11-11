@@ -64,7 +64,7 @@ Refining a large dataset is an iterative process. For example, work on publicati
 
 Data and research publications can progress in tandem: E.g. a first data publication can contain the refined year table and place links while actor identification continues. Number the release and document its source snapshot and the versions of its year and place tables. Actor data can be added in a later version, noting changes to the earlier tables. Researchers can cite the version they used (see publication section below), and work with the data at each stage as methods and evidence develop.
 
-<Callout kind="important" title="Leading principle">
+<Callout kind="important" title="Planning guideline">
   The most important principle is that an eventual data publication is part of the plan from the start. Even if questions of e.g. publication rights, channels, or strategy have not been sorted out, this mode of thinking will help with keeping the workflow quality high.
 </Callout>
 
@@ -146,3 +146,34 @@ In rare cases, data does not conform to expectations: In the examples below, the
 <Callout kind="tip" title="Planning exercise">
   For a record associated with two publication places, decide whether the intended analysis counts one record or two record–place associations. Explain the difference and document the choice.
 </Callout>
+
+## 2. Plan a repeatable workflow
+
+**Divide the work into parts** that can be developed and checked independently. For each part, specify its source data, expected result, responsible contributor, transformations and checks. Contributors can then work on different fields while using agreed identifiers and compatible inputs.
+
+Separate the **shared data arrangement** from the organisation of the code. Keep an identifiable, versioned source snapshot and checked component outputs in a shared data location. Keep processing code and run instructions in version-controlled repositories (See e.g. <Link link={{"discriminant":"curricula","value":{"id":"introduction-to-git"}}}>DARIAH-CAMPUS tutorials on Git</Link>). One repository or several can work, provided contributors know which inputs to use and how their outputs will connect. Large or restricted datasets need an appropriate data store separate from the code repositories.
+
+
+
+<Callout kind="important" title="Planning guideline">
+  **Before proceeding, agree on:**
+
+  * Identifiers, file formats, column names, separators and character encodings.
+  * How missing, uncertain and multiple values will be represented.
+  * Where approved inputs and outputs can be found, and how their versions are identified.
+  * How each processing step is run and checked.
+  * Which steps depend on earlier results.
+  * How corrections are communicated and incorporated into later releases.
+</Callout>
+
+**Dependencies** matter. In the ESTC workflow, actor identification uses harmonised titles, places and years. A correction to these inputs may require actor matching to be revisited. Record the input versions used by each component so that these consequences can be identified.
+
+<Callout kind="tip" title="Data subset release">
+  A checked subset can be released while other components remain unfinished. Document the included fields, unfinished work, source snapshot and processing version. Later releases should explain changes to existing tables as well as additions.
+</Callout>
+
+## 3. Extract, refine and unify the fields
+
+Begin with a small sample and inspect values in context. Record the rules before applying them more widely, and retain source statements alongside derived values.
+
+The examples below describe choices in an ESTC implementation. They demonstrate how to make decisions explicit, but those decisions should be reassessed when the data or intended use changes. Distinguish source evidence, its interpretation and any additional grouping introduced for analysis.
