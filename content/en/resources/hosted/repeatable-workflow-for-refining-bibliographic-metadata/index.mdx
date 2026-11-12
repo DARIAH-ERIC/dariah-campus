@@ -1,0 +1,316 @@
+---
+title: Repeatable workflow for refining bibliographic metadata
+locale: en
+publication-date: 2026-11-11
+version: 1.0.0
+authors:
+  - vaara-ville
+  - tolonen-mikko
+editors: []
+contributors: []
+tags:
+  - digital-history
+  - data-management
+sources:
+  - dariah
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >-
+    A repeatable workflow for turning bibliographic catalogue records into
+    research-ready data. Using publication years and places in the English Short
+    Title Catalogue (ESTC), it guides readers through understanding source
+    records, planning shared data and processing conventions, refining,
+    evaluating results, and publishing documented datasets. The examples show
+    how to preserve original statements, uncertainty, and unresolved cases while
+    making transformations and limitations traceable. The workflow is intended
+    for researchers and data professionals, and can be adapted to other
+    catalogues and research purposes.
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+dariah-working-groups:
+  - bibliographical-data-bibliodata
+---
+## Introduction
+
+Bibliographic metadata supports the description, discovery and interpretation of published material. Using it for new purposes—such as analysing publishing patterns, connecting collections or preparing reusable datasets—requires understanding how records were created and how their information can be transformed. This material presents a repeatable workflow for assessing, refining, validating and publishing bibliographic metadata while preserving its source evidence and uncertainty.
+
+The material is intended for researchers, librarians, cataloguers, metadata and research-data specialists, and others interested in working with bibliographic data. These readers bring complementary expertise: knowledge of collections and cataloguing practices, historical and subject knowledge, and experience with data modelling and processing. The workflow provides a common framework for making decisions and evaluating results across these roles.
+
+Publication years and places in the <Link link={{"discriminant":"external","value":"https://datb.cerl.org/estc/"}}>English Short Title Catalogue</Link> (ESTC) provide the worked examples. They demonstrate how to inspect source records, define an output structure, organise connected processing tasks, evaluate transformations and prepare a documented release. The principles can be adapted to other catalogues and purposes. Familiarity with tables is helpful; MARC fields and other technical concepts are introduced where they are needed.
+
+## Learning outcomes
+
+By the end of this lesson, you should be able to:
+
+* Explain how a catalogue’s purpose, coverage and cataloguing history affect its use in research.
+* Define a research or data-reuse objective, identify relevant source fields and specify what each output row represents.
+* Organise refinement into clearly documented tasks with distinct responsibilities and dependencies.
+* Understand the weorkflow for the example cases of: Refining dates and places while retaining source statements, uncertainty and unresolved cases.
+* Distinguish structural validation from evaluation of the accuracy of the results.
+* Prepare a versioned dataset with sufficient documentation for others to assess and reuse.
+
+## Workflow structure
+
+When starting to work on a new dataset, one should keep in mind an eventual end goal of a data publication- this approach will help with keeping the work documented and rigorous through the process. The steps and guidelinews described in this lesson describe an ideal situation- in practice some can be left for later, or skipped altogether. As long as the idea of a data publication is kept more or less constantly in mind during the process, sufficient attention to documentation and traceability should follow.
+
+Refining a large dataset is an iterative process. For example, work on publication years may reveal a need to distinguish date ranges; place processing may expose uncertainty in imprints or differences in cataloguing practice. These findings may lead to changes in the output structure, processing rules or research question. Keeping successive versions to make those changes traceable. The following steps describe a sensible approach to such a task:
+
+1. **Map and plan.** Understand the source fields and decide what the research-ready output should represent.
+2. **Plan the work.** Agree and set shared conventions, divide tasks and identify which steps rely on earlier results.
+3. **Extract and refine.** Transform one field at a time, retaining evidence and unresolved cases.
+4. **Validate and evaluate.** Test the results and determine the accuracy of the results.
+5. **Publish.** Publish the data with code, documentation and a clear statement of scope.
+
+Data and research publications can progress in tandem: E.g. a first data publication can contain the refined year table and place links while actor identification continues. Number the release and document its source snapshot and the versions of its year and place tables. Actor data can be added in a later version, noting changes to the earlier tables. Researchers can cite the version they used (see publication section below), and work with the data at each stage as methods and evidence develop.
+
+<Callout kind="important" title="Planning guideline">
+  The most important principle is that an eventual **data publication is part of the plan from the start**. Even if questions of e.g. publication rights, channels, or strategy have not been sorted out, this mode of thinking will help with keeping the workflow quality high.&#x20;
+</Callout>
+
+## 1. Map the source and plan the output
+
+Before writing transformation rules, examine the source, its history and the intended use. The ESTC brings together records created over an extended period by different contributing institutions. Cataloguing conventions have varied across institutions and over time. An apparent inconsistency may reflect historical variation, a cataloguing decision or an error; examine the record before changing it.
+
+Also consider what the catalogue covers. The absence of a record does not establish that a publication never existed. Likewise, information absent from a catalogue record may be present in the physical object or another source. Refinement should make available evidence easier to use without concealing these limits.
+
+### Choose the unit of analysis - standardising the research inputs
+
+Reserch, especially quantitative approaches, needs data units that represents similar items. With biblographic data this might not be the case: Decide whether each output row represents a catalogue record, an edition, a work or a surviving copy. In these ESTC examples, a decision was made to equate an ESTC MARC record with an edition of a work, even though this is not always the case in the catalogue, but explicitly stating such choices will help with resolving ambiguity present in the source data. The year table presented in the below examples has one row per record identifier. Place data uses a separate link for each record–place association.
+
+### Build a field map - how the source matches the output
+
+Identify where the source records contain evidence for each concept needed by the project. A concept may appear in several MARC fields, and one field may contain several kinds of information, as illustrated by the examples below.
+
+Below we will look at two examples from the ESTC workflow: Unifying the values in the publication year field (**Example A**), and gathering evidence for publication places from various fields, and collecting them together as unified structured values (**Example B**).
+
+<Disclosure title="Example A: Publication year input">
+  Publication year mainly resides in MARC21 field **260 $c**. Roman numerals, brackets, uncertainty, approximate dates and wording are all encoded in the same field. Some examples from the year data:
+
+  | Encoding                             | Example value          | Record |
+  | ------------------------------------ | ---------------------- | ------ |
+  | Plain year                           | \[1708]                | N72338 |
+  | Uncertain (question mark)            | \[1787?]               | N72335 |
+  | Roman numerals with a bracketed year | M.DCC.LXVI. \[1766]    | N71014 |
+  | Roman numerals, no brackets          | MDCCLXXIV. 1774.       | N10003 |
+  | Circa                                | \[ca. 1740]            | N71861 |
+  | Circa and uncertain                  | \[ca. 1719?]           | N34110 |
+  | Range                                | \[1791 - 1839]         | N71524 |
+  | Range in words                       | between 1760 and 1800] | N71859 |
+
+  Related dates elsewhere in the record may describe something different: for example, 240 $f supplies a date associated with a work.
+</Disclosure>
+
+---
+
+<Disclosure title="Example B: Publication place input">
+  The below table illustrates the input values of the place name processing code. Note how, even if the source data is more structured, there still is considerable variation in its form and content.
+
+  | Field                      | Example value                                                      |
+  | -------------------------- | ------------------------------------------------------------------ |
+  | 752 $a, $b, $d             | Great Britain, England, London.                                    |
+  | 752 $c, $f                 | Dorset, Dorchester. ($c county, $d town) and Westminster. ($f)     |
+  | 752 with no $b or $c       | Ireland, Dublin.                                                   |
+  | 260 $a imprint place       | Westminster :, Dorchester :                                        |
+  | 260 $a in brackets         | \[London] :                                                        |
+  | 500 $a note on the imprint | Imprint from colophon.                                             |
+  | 500 $a note on a pseudonym | Isaac Bickerstaff is a pseudonym, and this is possibly a pastiche. |
+  | 008 country code           | enk (England), ie (Ireland)                                        |
+</Disclosure>
+
+### Design an output that can grow
+
+Use the research question or intended use to define a concise output structure. Keep source statements available alongside interpreted values and connect them through stable identifiers. Store repeated values in linked tables, and distinguish absent information from information that is present but unresolved.
+
+<Callout kind="tip" title="Data (structure) principles">
+  Priciples for structuring data have been around for a long time. Good ones to get to know, before or during settling on the format of your own data include the **tidy** and **FAIR** -priciples.
+
+  **Tidy** is especially useful in when deciding on concrete formatting of the output tales, and give very practical recommendations. It is strongly recommended to have a look. <Link link={{"discriminant":"external","value":"https://data.europa.eu/apps/data-visualisation-guide/intro-to-tidy-data"}}>Tidy principles are described e.g. here.</Link>
+
+  FAIR principles are looser descriptive guidelines, and are worth reading through. <Link link={{"discriminant":"external","value":"https://www.gofair.foundation/fair-principles"}}>See the documentation on FAIR foundation home.</Link>
+</Callout>
+
+In rare cases, data does not conform to expectations: In the examples below, the record T146309 has links to both London and Paris in the place-link file. It counts once in the master record table and twice in the place-link table. Joining the links to the record table produces two rows for that record. Whether this is appropriate depends on what is being counted.
+
+<Disclosure title="Example A: Publication year output">
+  Looking at the year table output, we see that it keeps the original transcription and adds parsed values:
+
+  | estc\_id | original       | publication\_year\_from | publication\_year\_till | publication\_year | uncertain | circa | range |
+  | -------- | -------------- | ----------------------- | ----------------------- | ----------------- | --------- | ----- | ----- |
+  | N72335   | \[1787?]       | 1787                    | NA                      | 1787              | TRUE      | FALSE | FALSE |
+  | T146309  | 1711.          | 1711                    | NA                      | 1711              | FALSE     | FALSE | FALSE |
+  | N62219   | ca. 1785-1800] | 1785                    | 1800                    | 1785              | FALSE     | TRUE  | TRUE  |
+
+  The question mark in \[1787?] sets the uncertain -flag, while the single year is kept. ca. 1785-1800] gives both endpoints and sets circa and range; publication\_year takes the first endpoint. Keeping the table at one row per identifier ensures that it can be joined to the record core without multiplying rows.
+</Disclosure>
+
+---
+
+<Disclosure title="Example B: Publication place output">
+  The place link table excerpt below has one row for each record–place association. As mentioned, record T146309 has two links in the file:
+
+  | estc\_id | geo\_id                                                                                                      |
+  | -------- | ------------------------------------------------------------------------------------------------------------ |
+  | T146309  | \<[http://vocab.getty.edu/tgn/7011781](http://vocab.getty.edu/tgn/7011781)> (London, England, Great Britain) |
+  | T146309  | \<[http://vocab.getty.edu/tgn/7008038](http://vocab.getty.edu/tgn/7008038)> (Paris, France)                  |
+</Disclosure>
+
+<Callout kind="tip" title="Planning exercise">
+  For a record associated with two publication places, decide whether the intended analysis counts one record or two record–place associations. Explain the difference and document the choice.
+</Callout>
+
+## 2. Plan a repeatable workflow
+
+**Divide the work into parts** that can be developed and checked independently. For each part, specify its source data, expected result, responsible contributor, transformations and checks. Contributors can then work on different fields while using agreed identifiers and compatible inputs.
+
+Separate the **shared data arrangement** from the organisation of the code. Keep an identifiable, versioned source snapshot and checked component outputs in a shared data location. Keep processing code and run instructions in version-controlled repositories (See e.g. <Link link={{"discriminant":"curricula","value":{"id":"introduction-to-git"}}}>DARIAH-CAMPUS tutorials on Git</Link>). One repository or several can work, provided contributors know which inputs to use and how their outputs will connect. Large or restricted datasets need an appropriate data store separate from the code repositories.
+
+<Callout kind="important" title="Planning guideline">
+  **Before proceeding, agree on:**
+
+  * Identifiers, file formats, column names, separators and character encodings.
+  * How missing, uncertain and multiple values will be represented.
+  * Where approved inputs and outputs can be found, and how their versions are identified.
+  * How each processing step is run and checked.
+  * Which steps depend on earlier results.
+  * How corrections are communicated and incorporated into later releases.
+</Callout>
+
+**Dependencies** matter. In the ESTC workflow, actor identification uses harmonised titles, places and years. A correction to these inputs may require actor matching to be revisited. Record the input versions used by each component so that these consequences can be identified.
+
+<Callout kind="tip" title="Data subset release">
+  A checked subset can be released while other components remain unfinished. Document the included fields, unfinished work, source snapshot and processing version. Later releases should explain changes to existing tables as well as additions.
+</Callout>
+
+## 3. Extract, refine and unify the fields
+
+Begin with a small sample and inspect values in context. Record the rules before applying them more widely, and retain source statements alongside derived values.
+
+The examples below describe choices in an ESTC implementation. They demonstrate how to make decisions explicit, but those decisions should be reassessed when the data or intended use changes. Distinguish source evidence, its interpretation and any additional grouping introduced for analysis.
+
+<Disclosure title="Example A: publication years workflow">
+  *See the examples on inputs and outputs above.*
+
+  The year table begins with the transcription from 260 $c, stored unchanged in an original column and connected to the ESTC identifier. Parsed values can therefore be checked against the catalogue text.
+
+  The examples illustrate several patterns:
+
+  * **"1711."** supplies a single year, 1711.
+  * **"\[1787?]"** supplies a year while retaining the question mark as an uncertainty flag.
+  * **"ca. 1785-1800]"** supplies two endpoints and retains both approximation and range flags.
+  * **"between 1700 and 1799]"** supplies an interval whose endpoints should remain available.
+
+  These distinctions affect interpretation. A range is not equivalent to a precisely dated publication, and an approximate date is not the same as an unqualified one. Missing or unparsed values should remain identifiable rather than being silently converted into apparently exact dates.
+
+  Before analysing intervals, decide how they will be treated. Selecting one endpoint can simplify aggregation, but it also affects the apparent distribution of publications over time. A record dated between 1700 and 1799 cannot confidently be assigned to the first decade of that century.
+</Disclosure>
+
+---
+
+<Disclosure title="Example B: publication places workflow">
+  *See the examples on inputs and outputs above.*
+
+  The place workflow brings together **structured place information** and **imprint statements**. It begins with field 752, retaining country, state or region, and place components. A record may have more than one such statement, so the output must preserve multiple associations.
+
+  The implementation applies explicit rules to these components. Examples include removing punctuation from matching values, expanding abbreviations, reorganising country and state information, and mapping variant place names. Keep the unmodified source values so that each transformation remains inspectable.
+
+  Some rules standardise expression; others introduce analytical categories. Expanding St Andrews to Saint Andrews differs from grouping Twickenham or Croydon under London. The latter may support a study of a wider publishing area while obscuring distinctions needed for local history. Preserve the more specific source place and document the grouping separately. Decisions about historical names and geographical hierarchies should likewise state their purpose.
+
+  Uncertainty expressions should also remain available. A bracketed place, a question mark and a correction introduced by “i.e.” are different features. Recording them helps readers examine interpretations, but simply counting the features does not establish a calibrated scale of confidence.
+
+  The workflow connects harmonised place descriptions to **Getty Thesaurus of Geographic Names (TGN)** identifiers where a suitable match is available. Authority resources support identification; shared names and plausible coordinates alone do not guarantee that a match is correct.
+</Disclosure>
+
+### Make decisions inspectable
+
+For derived values, retain or link to the source statement, transformation rule, supporting resource and unresolved alternatives. Record external-resource versions where available, or the retrieval date and query details where the resource changes over time. Document the workflow logic somehow- ideally in a separate text file in the same repositoryas the code.&#x20;
+
+Explicit parsing rules suit regular, well-understood patterns. Machine-learning or generative-AI systems can propose interpretations of ambiguous statements, but their outputs require evaluation.
+
+Good docmentation practices include recording versions of models and libraries, including clear running instructions and describing the review procedure, preserving the input evidence, and using evaluation examples that were not used to develop the method.
+
+## 4. Validate and evaluate
+
+Validate each component as it is developed, then check the assembled tables. Structural validation asks whether the data processing pipeline follows its intended logic. Evaluation of interpretation asks whether derived values are supported by the source evidence. Both are necessary.
+
+<Callout kind="important" title="Planning guidelines">
+  **Structural checks include:**
+
+  * Required fields and expected data types.
+  * Unique identifiers where one row per identifier is required.
+  * Valid links between tables.
+  * Expected row counts before and after joins.
+  * Unexpected changes in value distributions or missing information.
+  * Traceability from derived values to source evidence.
+</Callout>
+
+Interpretive evaluation requires reviewed examples. Include ordinary and difficult cases when developing the method, and use a separate representative sample when estimating performance across the dataset. A collection of difficult examples is useful for finding weaknesses, but it does not by itself measure how frequently those weaknesses occur.
+
+Define what counts as correct, incorrect, partly correct or unresolved. E.g. for a place match, distinguish correct interpretation of the catalogue statement from correct identification of the historical publication place.
+
+<Disclosure title="Evaluation example: Publication places">
+  Evaluate the two stages (data parsing and linking to TGN) separately:
+
+  * **Place-name parsing:** Select a representative sample of records that was not used to develop the parsing rules. Have a reviewer identify the place name or names supported by each source statement, then compare these with the parsed output. Classify each result as correct, partly correct, incorrect or unresolved, and report the counts and denominator. This tests whether the process extracts and represents the source information; it does not establish that the source statement itself gives the historically correct place.
+  * **TGN matching:** Independently review whether each parsed place has been linked to the appropriate TGN entry. Use documented evidence and criteria to classify each link as correct, incorrect, ambiguous or unmatched. This tests entity identification, not parsing: a correctly parsed name can still be linked to the wrong entity, and a correct link does not show that the name was parsed correctly.
+</Disclosure>
+
+In an ideal world, a published evaluation should identify the tested data and code versions, sampling procedure, review criteria and results before corrections. Often, a bit more lax approach might be sufficient, but at least the process should be described.
+
+## 5. Publish a documented dataset
+
+**Plan for publication from the beginning** so that decisions, code and data remain understandable as the work progresses. A partial dataset can be useful as well when its scope, status and limitations are explicitly stated, and publication can happen in stages, with later publications extending and widening the scope of an initial data release. This approach can be incorporated in DOI (see below) versioning.
+
+<Callout kind="important" title="Planning guidelines">
+  **A release should include:**
+
+  * Citating guidelines identifying the particular release, along with a persistent identifier.
+  * Documentation explaining identifiers, variables, units and relationships within the dataset.
+  * Information about the processing code versions, and possibly references to the repositories holding it.
+  * External authority-resource versions (e.g. TGN in the Publication place example above) or retrieval information.
+  * Code or processing instructions, with key decisions documented (likely in a separate code repository).
+  * A validation and evaluation summary.
+  * Known limitations, unresolved cases and unfinished components.
+  * Access conditions, reuse conditions and licensing information for data and code.
+</Callout>
+
+Choose a data repository according to preservation needs, access conditions and institutional or funder requirements. Options include general-purpose repositories such as <Link link={{"discriminant":"external","value":"https://zenodo.org/"}}>**Zenodo**</Link>, national repositories, such as the Finnish <Link link={{"discriminant":"external","value":"https://www.fairdata.fi/en/ida/"}}>**CSC IDA**</Link>, and institutional services offered by most universities. Library and research-data support colleagues can help assess the appropriate route. Use a code repository (most likely <Link link={{"discriminant":"external","value":"https://github.com/"}}>**Github**</Link>) for active development and connect it to the archived release where appropriate.
+
+**A persistent identifier** (see e.g. <Link link={{"discriminant":"external","value":"https://help.zenodo.org/docs/deposit/describe-records/reserve-doi/"}}>Zenodo guide for getting a DOI</Link>) helps users locate and cite a release, and is necessary for making the data properly citable. Clearly identify the files and versions used in an analysis, and explain changes between releases. Check source terms and third-party material before selecting reuse conditions.
+
+A smart publication strategy can be to publish the dataset and research using it separately. There are Digital Humanities oriented venues that are especially suitable channels for a data publication, such as the <Link link={{"discriminant":"external","value":"https://openhumanitiesdata.metajnl.com/"}}>Journal of Open Humanities Data</Link>, and <Link link={{"discriminant":"external","value":"https://researchdatajournal.org/"}}>Research Data Journal for the Humanities and Social Sciences</Link>. Journals such as <Link link={{"discriminant":"external","value":"https://dhq.digitalhumanities.org/"}}>Digital Humanities Quarterly</Link> offer publication avenues for paers describing a refinement workflow.
+
+## Conclusion
+
+Refining bibliographic metadata connects knowledge of catalogues and collections with data modelling, evaluation and interpretation. Define what the data represent, distinguish source evidence from derived values, and record the decisions connecting them. Aim for a data publication.
+
+Researchers, library professionals and other contributors can participate at different points of a workflow. Shared identifiers, documented dependencies and evaluated releases allow their contributions to accumulate. The aim is to produce data whose meaning, transformations and limitations remain understandable to its potential users.
+
+## References and working materials
+
+### Bibliographic data and workflows
+
+Görmar, M., Lindquist, T., Mäkelä, E., & Boveland, C. (2026). Using bibliographic data for historical research: Two workflows for the VD17 catalogue. *Transformations: A DARIAH Journal*. <Link link={{"discriminant":"external","value":"https://doi.org/10.46298/transformations.17213"}}>[https://doi.org/10.46298/transformations.17213](https://doi.org/10.46298/transformations.17213)</Link>
+
+Lahti, L., Marjanen, J., Roivainen, H., & Tolonen, M. (2019). Bibliographic data science and the history of the book (c. 1500–1800). *Cataloging & Classification Quarterly, 57*(1), 5–23. <Link link={{"discriminant":"external","value":"https://doi.org/10.1080/01639374.2018.1543747"}}>[https://doi.org/10.1080/01639374.2018.1543747](https://doi.org/10.1080/01639374.2018.1543747)</Link>
+
+Lahti, L., Vaara, V., Marjanen, J., & Tolonen, M. (2019). Best practices in bibliographic data science. In J. H. Jantunen, S. Brunni, N. Kunnas, S. Palviainen, & K. Västi (Eds.), *Proceedings of the Research Data and Humanities (RDHUM) 2019 Conference: Data, methods and tools* (pp. 57–65). University of Oulu. <Link link={{"discriminant":"external","value":"https://www.utupub.fi/server/api/core/bitstreams/3e17b694-fb6e-47e5-8596-41613cc7138d/content"}}>[https://www.utupub.fi/server/api/core/bitstreams/3e17b694-fb6e-47e5-8596-41613cc7138d/content](https://www.utupub.fi/server/api/core/bitstreams/3e17b694-fb6e-47e5-8596-41613cc7138d/content)</Link>
+
+Malínek, V., Umerle, T., Gray, E., Heibi, I., Király, P., Klaes, C., Korytkowski, P., Lindemann, D., Moretti, A., Panušková, C., Péter, R., Tolonen, M., Tomczyńska, A., & Vimr, O. (2024). Open bibliographical data workflows and the multilinguality challenge. *Journal of Open Humanities Data, 10*, Article 27. <Link link={{"discriminant":"external","value":"https://doi.org/10.5334/johd.190"}}>[https://doi.org/10.5334/johd.190](https://doi.org/10.5334/johd.190)</Link>
+
+### Research using ESTC data
+
+Tiihonen, I., & Hinderks, K. (2025). Genre classification workflow for the English Short Title Catalogue (ESTC). *Transformations: A DARIAH Journal*. <Link link={{"discriminant":"external","value":"https://doi.org/10.46298/transformations.14754"}}>[https://doi.org/10.46298/transformations.14754](https://doi.org/10.46298/transformations.14754)</Link>
+
+Tiihonen, I., Lahti, L., & Tolonen, M. (2024). Print culture and economic constraints: A quantitative analysis of book prices in eighteenth-century Britain. *Explorations in Economic History, 94*, Article 101614. <Link link={{"discriminant":"external","value":"https://doi.org/10.1016/j.eeh.2024.101614"}}>[https://doi.org/10.1016/j.eeh.2024.101614](https://doi.org/10.1016/j.eeh.2024.101614)</Link>
+
+Tolonen, M., Lahti, L., Roivainen, H., & Marjanen, J. (2019). A quantitative approach to book-printing in Sweden and Finland, 1640–1828. *Historical Methods: A Journal of Quantitative and Interdisciplinary History, 52*(1), 57–78. <Link link={{"discriminant":"external","value":"https://doi.org/10.1080/01615440.2018.1526657"}}>[https://doi.org/10.1080/01615440.2018.1526657](https://doi.org/10.1080/01615440.2018.1526657)</Link>
+
+### Standards and project materials
+
+Library of Congress. (n.d.). *MARC 21 format for bibliographic data*. Retrieved November 12, 2026, from <Link link={{"discriminant":"external","value":"https://www.loc.gov/marc/bibliographic/"}}>[https://www.loc.gov/marc/bibliographic/](https://www.loc.gov/marc/bibliographic/)</Link>
+
+Wickham, H. (2014). Tidy data. *Journal of Statistical Software, 59*(10), 1–23. <Link link={{"discriminant":"external","value":"https://doi.org/10.18637/jss.v059.i10"}}>[https://doi.org/10.18637/jss.v059.i10](https://doi.org/10.18637/jss.v059.i10)</Link>
+
+Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., Appleton, G., Axton, M., Baak, A., Blomberg, N., Boiten, J.-W., Bonino da Silva Santos, L., Bourne, P. E., Bouwman, J., Brookes, A. J., Clark, T., Crosas, M., Dillo, I., Dumon, O., Edmunds, S., Evelo, C. T., Finkers, R., . . . Mons, B. (2016). The FAIR guiding principles for scientific data management and stewardship. *Scientific Data, 3*, Article 160018. <Link link={{"discriminant":"external","value":"https://doi.org/10.1038/sdata.2016.18"}}>[https://doi.org/10.1038/sdata.2016.18](https://doi.org/10.1038/sdata.2016.18)</Link>
