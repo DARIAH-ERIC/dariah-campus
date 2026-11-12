@@ -1,0 +1,499 @@
+---
+title: From 3D Documentation to Reactive Heritage Digital Twins
+locale: en
+publication-date: 2026-11-03
+version: 1.0.0
+authors:
+  - sterpin-andrea
+  - maietti-federica
+editors:
+  - albrecht-marlene
+contributors: []
+tags:
+  - 3d-modelling
+  - computational-imaging
+  - cultural-heritage
+  - e-heritage
+sources:
+  - artemis
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >-
+    Cultural heritage faces growing risks from climate change, disasters,
+    degradation, and conflict, making reliable documentation essential for
+    preservation. This learning resource introduces 3D documentation as a
+    methodological process for recording, analysing, managing, and communicating
+    heritage knowledge. It explains key survey methods, modelling approaches,
+    metadata, paradata, interoperability, and FAIR data principles, emphasizing
+    reliability and reuse over visual appearance alone. It also addresses
+    emerging developments, including AI-supported workflows, different 3D model
+    types, and Reactive Heritage Digital Twins for conservation, research, and
+    public engagement.
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+dariah-working-groups: []
+---
+(in progress)
+
+This resource is based on the presentation by Federica Maietti and Andrea Sterpin, developed for the ARTEMIS learning activities on 3D documentation and digital cultural heritage. It builds on the concepts introduced in the session and uses examples from cultural heritage documentation to explain how three-dimensional data are acquired, processed, managed, and reused.
+
+## **Introduction**
+
+Cultural heritage is increasingly exposed to a wide range of natural and human-induced risks. Climate change, natural disasters, environmental degradation, and conflicts threaten monuments, archaeological sites, historic buildings, museum collections, and documentary heritage. Damage to these assets often results in an irreversible loss of cultural knowledge, making documentation an essential component of heritage protection. International initiatives have therefore recognized digital technologies as an important means of preserving knowledge about cultural heritage and supporting its long-term conservation.
+
+Among these technologies, **three-dimensional (3D) documentation** has become one of the most significant developments in cultural heritage practice. Unlike conventional two-dimensional documentation, 3D approaches enable the recording of the **geometry, appearance, and spatial relationships of heritage assets** in a **measurable and reusable digital form**. These digital representations support not only the recording of the current condition of an object or site but also its analysis, conservation, interpretation, management, and communication. As digital technologies continue to evolve, 3D documentation also provides the foundation for **interactive applications, including virtual and augmented reality**, as well as for the emerging concept of **Reactive Heritage Digital Twins (RHDT)**.
+
+This learning resource introduces the principles of 3D documentation for cultural heritage and explains how different survey methods, data management practices, and modelling approaches contribute to the creation of reliable digital representations. Rather than presenting individual technologies in isolation, it emphasizes that heritage documentation is fundamentally a methodological process. The objective is not simply to produce a visually convincing 3D model, but to create reliable, well-documented, and reusable knowledge that can support research, conservation, management, and public communication.
+
+The resource first examines the motivations for heritage digitization before introducing the principal approaches to 3D modelling. It then discusses the importance of **metadata, paradata, interoperability,** and **FAIR data principles**, followed by an overview of reality-based documentation methods, including r**ange-based, image-based,** and **topographic techniques.** Finally, it presents recent developments such as AI-supported workflows, different categories of 3D models, and their role within Reactive Heritage Digital Twins.
+
+## **Learning Outcomes**
+
+After completing this module, learners will be able to:
+
+* **Understand key challenges in heritage digitization** and recognize the importance of critical assessment in planning, producing, and interpreting 3D heritage data.
+* **Identify the main principles, techniques, and instruments used in 3D survey and documentation** for cultural heritage.
+* **Assess the strengths, limitations, and appropriate applications of different 3D acquisition methods**.
+* **Explain the role of metadata, paradata, and data management** in making 3D documentation reliable, interoperable, and reusable, and connect these workflows to the broader concept of heritage digital twins.
+
+## **Target Audience**
+
+This learning resource is aimed at students, early-career researchers, and heritage professionals in the fields of cultural heritage, archaeology, architecture, conservation, and the digital humanities. It is suitable for learners seeking an introduction to contemporary 3D documentation methods and their role in heritage research, conservation, and management.
+
+## **Intended Impact**
+
+This module provides learners with a solid understanding of the principles and workflows of 3D documentation for cultural heritage. By introducing key acquisition methods, data management practices, and the concept of Reactive Heritage Digital Twins, it promotes critical and informed use of digital technologies and supports the creation of reliable, reusable, and interoperable heritage data.
+
+## **Requirements**
+
+No prior experience with 3D documentation or digital surveying is required. A basic understanding of cultural heritage and an interest in digital methods are recommended. The module is designed as an introductory resource and can be completed independently or as part of a university course or professional training programme.
+
+## **Suggested Learning Path**
+
+Before starting this module, learners are encouraged to watch two introductory videos from the ARTEMIS Learning Series.
+
+The first video, [Digitisation in Heritage: for Conservation, Risk Prevention and Simulation](https://campus.dariah.eu/resources/hosted/digitisation-in-heritage-for-conservation-risk-prevention-and-simulation) by Federica Maietti, introduces the broader context of digital heritage conservation. It discusses the challenges posed by natural and human-induced threats to cultural heritage, outlines the role of digital technologies in conservation and risk prevention, and presents the concept of Reactive Heritage Digital Twins as an integrated framework for documentation, monitoring, simulation, and decision support.
+
+The second video, [3D Acquisition Technique and Aware Heritage Modelling](https://campus.dariah.eu/resources/hosted/3-d-acquisition-technique-and-aware-heritage-modelling) by Andrea Sterpin, focuses on the methodological foundations of 3D documentation. It presents the main 3D modelling approaches, introduces the principal reality-based acquisition techniques, and explains the concept of Aware Heritage Modelling, highlighting the importance of metadata, paradata, and methodological awareness in producing reliable, transparent, and reusable digital heritage data.
+
+Together, these videos provide the conceptual and methodological background for this learning resource. While the first introduces the broader challenges and objectives of heritage digitization, the second explains the methods and workflows used to create high-quality digital representations of cultural heritage. They therefore offer an ideal starting point for the learning path and prepare learners for the topics explored in greater depth throughout this module.
+
+## **Heritage Documentation and Digital Innovation**
+
+The documentation of cultural heritage has always been a fundamental activity for research, conservation, and management. Accurate documentation records the current condition of monuments, archaeological sites, historic buildings, and artifacts, providing a basis for future investigations and interventions. Today, digital technologies have considerably expanded the possibilities for documenting cultural heritage by allowing the acquisition, management, and dissemination of large amounts of information.
+
+The growing importance of digital documentation is closely linked to the increasing vulnerability of cultural heritage. Natural disasters, environmental change, and human activities can alter or destroy cultural assets within a very short period of time. International organizations and European research programmes therefore recognize digital documentation as an essential component of heritage preservation strategies. Rather than replacing the physical heritage itself, digital documentation preserves knowledge about heritage assets and provides a reliable record that can be consulted and reused in the future.
+
+Over the past decade, several European initiatives have promoted the digitization of cultural heritage and have highlighted the importance of common standards, interoperability, and long-term accessibility of digital resources. These initiatives emphasize that digital documentation should support scientific research, conservation practice, education, and public dissemination while ensuring that digital data remain accessible and reusable over time.
+
+Within this context, three-dimensional documentation has become one of the most significant technological developments in heritage documentation. Compared with conventional two-dimensional documentation, 3D technologies capture not only the visual appearance of an object or monument but also its geometry and spatial relationships. As a result, they provide a comprehensive representation that can support a wide range of applications throughout the documentation and conservation process.
+
+## **Why 3D in Cultural Heritage?**
+
+The use of three-dimensional technologies in cultural heritage serves several complementary purposes.
+
+The first purpose is **documentation**. Three-dimensional acquisition techniques allow the detailed recording of buildings, monuments, archaeological sites, and artifacts by capturing their geometry together with visual and contextual information. The resulting datasets provide an accurate digital representation of the documented heritage asset and form the basis for subsequent analyses and applications.
+
+A second purpose is **analysis**. Three-dimensional documentation supports scientific investigation by enabling accurate measurements and geometric analyses. It also provides valuable information for conservation planning and contributes to the understanding and interpretation of cultural heritage. Reliable three-dimensional data therefore become an important source of information for researchers and heritage professionals.
+
+A further objective is **digital preservation**. High-quality digital documentation contributes to safeguarding cultural memory against degradation, natural disasters, and conflicts by preserving detailed records of heritage assets in digital form. Although digital documentation cannot replace the original heritage, it provides an enduring source of knowledge that may become particularly valuable if the physical asset is altered or lost.
+
+Finally, three-dimensional documentation supports **communication**. Digital models facilitate the visualization of cultural heritage for different audiences, including researchers, conservation professionals, cultural institutions, educators, and the general public. Through digital platforms and interactive visualization, 3D models contribute to education, dissemination, and public engagement.
+
+These different purposes demonstrate that 3D documentation is not limited to the production of visually realistic models. Instead, it represents a versatile tool that supports documentation, research, preservation, and communication within a common digital framework.
+
+## **3D Modelling Approaches**
+
+Different approaches can be adopted when creating three-dimensional models of cultural heritage. The choice of approach depends on the available information, the objectives of the documentation project, and the intended use of the resulting model.
+
+**Source-based modelling** relies on historical and documentary sources. Drawings, photographs, maps, written documentation, and other archival materials provide the basis for reconstructing buildings, monuments, or archaeological remains. This approach is particularly relevant when documenting heritage that has been modified or no longer exists in its original form. Since the resulting models are derived from documentary evidence, their quality depends on the availability and reliability of the sources used.
+
+**Reality-based modelling** is based on direct measurements acquired through survey technologies. Instead of reconstructing geometry from historical documentation, this approach captures the existing physical object using instruments such as laser scanners or digital cameras. The resulting models provide reliable geometric information because they are derived from measured data rather than interpretation. Reality-based modelling therefore plays a central role in documentation, conservation, monitoring, and research.
+
+A third approach is **hybrid modelling**, which combines documentary sources with measured data. Historical documentation can complement reality-based surveys by providing information about missing elements, earlier construction phases, or features that are no longer preserved. By integrating different sources of information, hybrid modelling enables more comprehensive digital representations of cultural heritage.
+
+Rather than representing competing methodologies, these three approaches should be understood as complementary strategies. Depending on the objectives of a documentation project, one approach may be more appropriate than another, while in many cases a combination of documentary evidence and direct measurements provides the most comprehensive representation of a heritage asset.
+
+<Quiz>
+  <QuizImageDropZones src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/3modeling.png" alt="Three church façade images representing source-based, reality-based, and hybrid 3D modeling approaches for a matching exercise." distractors={[]} instantFeedback={false}>
+    <QuizImageDropZone label="Source-based" shape="rectangle" items={[{"label":"Modeling from historical and documentary sources."}]} x={0.9} y={69.1} width={31.3} height={28.5}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="Reality-based" shape="rectangle" items={[{"label":"Modeling from direct sensor measurements."}]} x={34.6} y={68.8} width={31.3} height={29.4}>
+
+    </QuizImageDropZone>
+
+    <QuizImageDropZone label="Hybrid" shape="rectangle" items={[{"label":"Modeling combining measurements and documentary sources."}]} x={68.2} y={68.5} width={31.2} height={29.7}>
+
+    </QuizImageDropZone>
+
+    <QuizQuestion>
+      Match each description to the correct 3D modeling approach: source-based, reality-based, or hybrid.
+    </QuizQuestion>
+  </QuizImageDropZones>
+</Quiz>
+
+<Quiz>
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      Which statement best describes the relationship between Reality-Based Modelling and Hybrid Modelling?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Reality-based modelling uses historical documentation, whereas hybrid modelling uses only direct measurements.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Hybrid modelling replaces reality-based modelling in cultural heritage documentation.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Both approaches rely exclusively on historical maps and photographs.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Hybrid modelling combines documentary sources with direct survey data, while reality-based modelling is based on direct sensor measurements.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct! Reality-based modeling uses direct measurements from the existing physical heritage asset. Hybrid modeling combines those direct measurements with other sources, such as historical documents, drawings, photographs, or archival records.
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that’s not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+## **Aware Heritage Modelling**
+
+The digitization of cultural heritage does not end with the generation of a three-dimensional model. Equally important is the management, organization, and documentation of the data produced throughout the documentation process. A 3D model only becomes a reliable resource when the associated information is preserved together with the model itself. This includes not only the digital files but also the documentation of how they were created, processed, and managed.
+
+To ensure that 3D documentation remains usable over time, digital models should be stored in appropriate and interoperable file formats. Interoperability allows data to be exchanged between different software environments and enables their use in different research, conservation, and documentation contexts. Choosing suitable formats is therefore an essential part of the documentation process rather than a task that follows the completion of the survey.
+
+Another fundamental component of heritage documentation is the use of metadata. Metadata provides structured information describing the digital dataset and supports its interpretation and reuse. By documenting characteristics such as acquisition parameters, processing information, or technical specifications, metadata ensures that the resulting dataset can be understood and reused beyond the original project.
+
+In addition to metadata, the documentation process should include **paradata**. While metadata describes the dataset itself, paradata documents the processes and decisions involved in creating and processing the data. They record the methodological choices made during acquisition, processing, and modelling, thereby increasing the transparency of the documentation process.
+
+The organization and dissemination of digital heritage data should also follow the FAIR principles. According to these principles, digital datasets should be **Findable**, allowing users to discover them easily; **Accessible**, ensuring that they can be obtained and consulted; **Interoperable**, allowing them to be used across different systems; and **Reusable**, enabling their application in new contexts and future projects. Together, these principles contribute to the long-term value and sustainability of digital heritage documentation.
+
+Aware Heritage Modelling therefore places the emphasis not only on the production of three-dimensional models but also on the reliability of the entire documentation process. Understanding the limitations of different acquisition methods, documenting methodological choices, and producing reliable datasets are central elements of this approach. Rather than focusing exclusively on the final 3D model, Aware Heritage Modelling aims to create structured and reusable knowledge about cultural heritage.
+
+<Figure src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/bild1.png" alt="The image explains source-based 3D modeling from historical data. It shows how architectural drawings, excavation reports, archaeological plans, paintings, and modern photographs are combined to create a reconstructed 3D model. The final model uses colors to show different levels of certainty, from high certainty to speculative reconstruction." alignment="stretch">
+  Source-based 3D modeling combines historical, archaeological, iconographic, and modern data to create a transparent reconstruction that shows both evidence and uncertainty.
+</Figure>
+
+## **From 3D Documentation to Reactive Heritage Digital Twins**
+
+Recent developments in digital heritage increasingly build upon high-quality three-dimensional documentation to create more comprehensive digital environments. Within this context, the ARTEMIS project introduces the concept of the **Reactive Heritage Digital Twin (RHDT)**, which extends traditional 3D documentation by integrating different types of information into a common digital framework.
+
+One of the key components of this approach is **integrated data management**, which provides access to an extensive archive of scientific and technical reports related to cultural heritage. By connecting documentation with additional sources of information, digital datasets become part of a broader knowledge environment that supports research and conservation activities.
+
+Another component is **advanced visualization and simulation**. Reactive Heritage Digital Twins support virtual restoration experiments that allow conservation strategies to be explored before physical interventions are carried out. They also enable predictive analyses of material degradation, providing additional information for heritage conservation and management.
+
+The ARTEMIS project further identifies RHDT technologies that support preventive conservation and the monitoring of historical artifacts through real-time interactive models. In this way, three-dimensional documentation becomes part of a broader digital environment that combines documentation, information management, visualization, and simulation.
+
+<Figure src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/artemis-key-components.png" alt="The image presents three key components of Reactive Heritage Digital Twins: integrated data management, advanced visualization and simulation, and RHDT technologies for real-time monitoring and preventive conservation of cultural heritage." alignment="stretch">
+  ARTEMIS Key components
+</Figure>
+
+### **Reality-Based Modelling**
+
+Reality-based modelling refers to the creation of three-dimensional models from direct sensor measurements. Unlike source-based approaches, which rely on historical or documentary sources, reality-based modelling records the existing physical object through surveying technologies. As a result, the quality of the final model depends not only on the chosen technology but also on the methodological decisions taken throughout the documentation process.
+
+Every acquisition campaign represents a methodological construction. Before any data are collected, it is necessary to define the purpose of the survey. The objectives of the investigation determine which information is required and influence all subsequent decisions within the documentation workflow. Closely related to this is the required level of detail. Different applications demand different levels of geometric resolution and accuracy, and these requirements must be considered during survey planning. Finally, the anticipated future use of the data also influences the acquisition strategy, since datasets intended for different purposes may require different documentation approaches.
+
+Reality-based documentation is therefore more than a process of collecting measurements. The survey represents a form of oriented interpretation in which methodological decisions determine what is recorded and how it is recorded. Consequently, there is no single correct way of documenting a heritage asset. Every survey reflects explicit or implicit choices concerning the objectives of the documentation and the characteristics of the heritage being investigated. For this reason, the presentation emphasizes that **the survey is not neutral**.
+
+The planning of a reality-based survey involves several interconnected activities. The objectives of the project are first defined, followed by the organization of the survey team and planned activities. Operational conditions are then assessed in order to identify constraints and opportunities that may influence the documentation process. Based on these considerations, appropriate techniques and tools are selected. Rather than following a rigid sequence, these activities form a flexible workflow that can be adapted to the requirements of individual projects.
+
+Reality-based modelling is based on three complementary families of acquisition techniques: **range-based methods**, **image-based methods**, and **topographic techniques**. Each family employs different principles for recording three-dimensional information and provides different types of data. In practice, these techniques are frequently combined in order to exploit their complementary characteristics and meet the specific objectives of a documentation project.
+
+The following sections introduce these three families of acquisition techniques together with more recent AI-based approaches that are currently being explored within the field of cultural heritage digitization.
+
+<Quiz>
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      According to the learning resource, why is a heritage survey considered "not neutral"?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Because every survey is influenced by methodological choices, including its objectives, level of detail, and intended future use.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Because all survey techniques produce different levels of geometric accuracy.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Because laser scanning always produces more accurate results than photogrammetry.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Because survey results depend exclusively on the equipment used.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct! A heritage survey is shaped by methodological decisions. Before data are collected, the survey team decides what the purpose of the survey is, which level of detail is needed, which areas should be documented, which techniques should be used, and how the data will be used in the future. These choices influence what is recorded and how the heritage asset is represented. Therefore, a survey is not a completely neutral recording of reality, but a process guided by specific objectives and decisions.
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that’s not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+### **3D Acquisition Techniques**
+
+Reality-based modelling relies on different acquisition techniques that record the geometry and appearance of cultural heritage. The choice of method depends on the objectives of the survey, the characteristics of the heritage asset, and the required level of detail and accuracy. Three principal families of acquisition techniques can be distinguished: **range-based methods, image-based methods,** and **topographic techniques**. In addition, recent developments in artificial intelligence have introduced new approaches that complement existing documentation workflows.
+
+### **Range-Based Methods**
+
+Range-based methods determine the three-dimensional position of an object by directly measuring the distance between the sensor and the target surface. Although different technologies are available, they all share the same objective of producing accurate geometric information through direct distance measurements.
+
+Different systems employ different principles for measuring distance. **Time-of-Flight** systems determine the distance by measuring the time required for a laser pulse to travel from the instrument to the object and back. According to the presentation, this principle is particularly suitable for long-range surveys, especially in outdoor or architectural contexts. **Phase Shift** systems measure the phase difference of a modulated laser signal and enable rapid acquisition in indoor and medium-range environments. **Triangulation** systems project laser or structured light onto the surface and calculate the three-dimensional position from the geometric relationship between the emitter, the sensor, and the target. This approach provides high accuracy at short range. These different measurement principles represent different balances between acquisition range, speed, and accuracy.
+
+Range-based acquisition systems are available in different configurations depending on the characteristics of the survey. Tripod-based systems perform fixed-station laser scanning and are commonly used for the accurate documentation of built environments. Mobile systems are mounted on moving platforms and support the continuous mapping of extended environments. Handheld systems provide greater flexibility for the close-range acquisition of small objects and detailed features.
+
+The processing workflow begins with **scan acquisition**, during which multiple scans are collected from different viewpoints. The individual scans are subsequently combined through **registration**, which aligns the datasets within a common coordinate system. The registered point clouds are then processed through **filtering** to remove unwanted measurements before being merged into a **unified point cloud**. Depending on the intended application, the workflow may continue with optional **mesh generation and texturing**, producing a continuous surface model enriched with color information.
+
+Range-based methods offer several advantages. They provide high geometric accuracy, produce measurements that are independent of lighting conditions, and enable the rapid acquisition of dense datasets. At the same time, they also present limitations. The equipment is generally associated with higher costs, some surface materials remain difficult to record, and the acquired data provide limited chromatic information compared with image-based approaches.
+
+<Grid layout="two-columns" alignment="stretch">
+  <GridItem alignment="stretch">
+    Strengths:
+
+    * high geometric accuracy;&#x20;
+    * measurements independent of lighting conditions;
+    * rapid acquisition of dense datasets.
+  </GridItem>
+
+  <GridItem alignment="stretch">
+    Limitations:&#x20;
+
+    * high equipment costs;
+    * problematic surfaces;
+    * limited chromatic information.
+  </GridItem>
+</Grid>
+
+***Range-based methods: Typical processing workflow***
+
+<Carousel loop={false}>
+  <CarouselItem src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/rbm-1.png" alt="Grayscale point cloud scan of an enclosed courtyard captured from an oblique viewpoint, showing the surrounding building facade, trees, vegetation, and ground surface. An orange spherical marker highlights a selected spatial position within the scanned environment.">
+    Scan acquisition 1
+  </CarouselItem>
+
+  <CarouselItem src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/rbm-2.png" alt="Grayscale point cloud reconstruction of the courtyard showing the surrounding architecture, trees, and ground geometry. An orange spherical marker is positioned above the ground, with a corresponding shadow indicating its spatial location.">
+    Scan acquisition 2
+  </CarouselItem>
+
+  <CarouselItem src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/rbm-3.png" alt="Grayscale point cloud scan of the courtyard from another viewpoint, showing the building facade, trees, vegetation, and paved pathways. An orange spherical marker highlights a selected position in the three-dimensional scene.">
+    Scan acquisition 3
+  </CarouselItem>
+
+  <CarouselItem src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/rbm-4.png" alt="Grayscale point cloud reconstruction of the courtyard showing the surrounding two-story building, trees, vegetation, and ground surface. Three orange spherical markers highlight selected spatial positions within the scanned environment.">
+    Registration
+  </CarouselItem>
+
+  <CarouselItem src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/rbm-5.png" alt="Registered point cloud of the courtyard showing the building facades, windows, doors, and ground surface. Three orange spherical markers indicate selected spatial locations within the aligned three-dimensional dataset.">
+    Filtering
+  </CarouselItem>
+
+  <CarouselItem src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/rbm-6.png" alt="Processed grayscale point cloud of the courtyard after filtering, with the orange spherical markers removed. The surrounding building and courtyard geometry remain visible, illustrating the cleaned three-dimensional scan data.">
+    Unified point cloud
+  </CarouselItem>
+
+  <CarouselItem src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/rbm-7.png" alt="Grayscale three-dimensional reconstruction of the courtyard, showing the surrounding building facades, windows, ground surface, and various objects within the scene. The geometry is represented without applied color textures.">
+    Optional: Mesh generation and texturing
+  </CarouselItem>
+
+  <CarouselItem src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/rbm-8.png" alt="Textured three-dimensional mesh of the courtyard, showing the reconstructed building facades in reddish-brown tones, green vegetation, paved surfaces, and vehicles. Applied color and texture information provide a more realistic representation of the reconstructed environment.">
+    Optional: Mesh generation and texturing
+  </CarouselItem>
+</Carousel>
+
+## **Image-Based Methods**
+
+Image-based methods reconstruct three-dimensional geometry from photographic images. Within cultural heritage documentation, these methods are primarily based on the principles of photogrammetry and make use of overlapping images to derive the three-dimensional structure of an object or site.
+
+The photogrammetric workflow begins with **image acquisition**, during which a series of overlapping photographs is collected. The images are subsequently processed through **Structure from Motion (SfM)**, which estimates the position and orientation of the camera for each photograph. Once the camera geometry has been determined, **Multi-View Stereo (MVS)** is used to generate a dense point cloud representing the documented object.
+
+The processing workflow continues with **camera alignment** based on Structure from Motion, followed by the generation of a **dense point cloud** using Multi-View Stereo. The dense point cloud is then converted into a **mesh model**, which is subsequently enriched through **texture generation** to produce a realistic representation of the documented object or monument.
+
+Image-based methods offer several strengths. They provide rich visual and color information, achieve good geometric consistency, and can be applied at different scales and in different contexts. In comparison with many range-based systems, image-based approaches also require lower equipment costs. However, the quality of the resulting models depends on image quality and lighting conditions. Certain surface materials remain difficult to document, and external metric references may be required to ensure reliable scaling and positioning of the reconstructed model.
+
+<Carousel loop={false}>
+  <CarouselItem src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/ipw-1.jpg" alt="Three-dimensional point cloud of a reclining classical sculpture, with blue rectangular markers indicating camera positions and orientations distributed around the object. The visualization illustrates camera alignment through Structure from Motion (SfM).">
+    Camera alignment - Structure from Motion (SfM)
+  </CarouselItem>
+
+  <CarouselItem src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/ipw-2.jpg" alt="Dense point cloud reconstruction of a reclining classical sculpture, showing detailed surface geometry, including facial features, curly hair, and folded arms. The high density of points illustrates the result of Multi-View Stereo (MVS) processing.">
+    Dense point cloud generation - Multi-View Stereo (MVS)
+  </CarouselItem>
+
+  <CarouselItem src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/mesh.png" alt="Three-dimensional triangular mesh model of a reclining classical sculpture, displayed with a blue wireframe overlay. The interconnected triangular faces represent the reconstructed surface geometry and illustrate the mesh generation stage of the photogrammetric workflow.">
+    Mesh model generation
+  </CarouselItem>
+
+  <CarouselItem src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/not-mesh.png" alt="Textured three-dimensional model of a reclining classical sculpture, displaying its natural stone-like appearance, including surface discoloration, weathering, and detailed sculptural features. The applied texture provides a realistic visual representation of the reconstructed object.">
+    Texture generation
+  </CarouselItem>
+</Carousel>
+
+## **Topographic Techniques**
+
+Topographic techniques provide accurate spatial reference information that supports three-dimensional documentation. The presentation introduces two principal technologies: **Global Navigation Satellite Systems (GNSS)** and **Total Stations**.
+
+GNSS is a satellite-based positioning system used to determine precise coordinates on the Earth's surface. Total Stations measure angles and distances in order to determine accurate three-dimensional point coordinates. Within cultural heritage documentation, these technologies are primarily employed to establish metric control, provide accurate scaling, and support the georeferencing of survey data.
+
+Compared with laser scanning and photogrammetry, topographic techniques produce relatively sparse measurements and provide limited descriptive information. They are therefore generally used as supporting techniques within broader documentation workflows rather than as stand-alone methods for recording heritage geometry.
+
+<Figure src="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/topo-tech.png" alt="Illustrated overview of surveying equipment used for precise three-dimensional data acquisition. The left panel shows GNSS (Global Navigation Satellite System) equipment, including a GNSS receiver mounted on a survey pole, a receiver with handheld controller, and a drone-mounted RTK GNSS module. GNSS uses satellite-based positioning to determine precise coordinates on the Earth's surface. The right panel shows a total station with a prism target, a surveying instrument mounted on a tripod, and a close-up view of the device. A total station measures horizontal and vertical angles and distances to determine precise three-dimensional point coordinates." alignment="stretch">
+  Topographic techniques
+</Figure>
+
+## **AI-Based Techniques**
+
+Artificial intelligence is becoming increasingly relevant within the field of cultural heritage digitization. According to the presentation, AI does not replace traditional acquisition techniques but extends their capabilities by supporting new forms of reconstruction, interpretation, visualization, and data processing.
+
+<Callout kind="note">
+  ![](/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/grafik.png)
+</Callout>
+
+Several AI-based approaches are currently being explored. These include **Neural Radiance Fields (NeRF)**, **3D generation from text or a single image**, **monocular depth estimation**, and **semantic segmentation**. Together, these approaches demonstrate the growing role of artificial intelligence in the processing and interpretation of three-dimensional heritage data.
+
+<Grid layout="two-columns" alignment="stretch">
+  <GridItem alignment="stretch">
+    Strengths:
+
+    * handling incomplete datasets;
+    * task automation;&#x20;
+    * improved visual realism;
+    * large-scale data analysis.
+  </GridItem>
+
+  <GridItem alignment="stretch">
+    Limitations:
+
+    * limited or absent metric reliability;
+    * often implicit representations;
+    * black-box-models;
+    * bias in training data.
+  </GridItem>
+</Grid>
+
+Rather than replacing established survey techniques, AI-based methods currently represent an additional component within the broader documentation workflow. Their integration with more established acquisition methods continues to be an active area of development in cultural heritage digitization.
+
+## **3D Model Types**
+
+Different acquisition techniques produce different types of three-dimensional models. Each model type represents heritage data in a different way and is therefore suitable for different applications. The presentation distinguishes between four principal model types: **Point Clouds**, **Textured Meshes**, **Gaussian Splats**, and **Building Information Models (BIM/H-BIM)**. Together, these models illustrate how the same documentation process can produce different forms of digital representation depending on the intended use.
+
+### **Point Clouds**
+
+A point cloud is a collection of **points distributed in three-dimensional space** that represents the geometry of an **object, building, or environment**. Each point is defined by its **three-dimensional coordinates** and may contain additional information describing the recorded surface. According to the presentation, the principal attributes of a point cloud include XYZ coordinates, RGB color values, laser intensity, scalar fields, point classification, reference systems, and metadata describing the acquisition process.
+
+Point clouds constitute the primary output of many reality-based survey techniques and provide a highly accurate metric representation of cultural heritage. They support measurements, geometric inspection, and technical analyses, including the calculation of distances, areas, volumes, deformations, and deviations. Furthermore, point clouds can be visualized within three-dimensional software environments and serve as the basis for the extraction of plans, elevations, sections, and profiles.
+
+Within cultural heritage, point clouds also support structural assessment, restoration activities, and documentation workflows. They can be integrated into BIM or GIS environments and shared through web-based visualization platforms. Because they preserve measured geometric information, point clouds often represent the fundamental dataset from which additional digital products are generated.
+
+### **Textured Meshes**
+
+A mesh represents a continuous three-dimensional surface composed of connected vertices, edges, and faces, which are most commonly organized as triangles. In addition to its geometric structure, a mesh may include information describing surface orientation, color, texture coordinates, textures, and material properties. Together, these elements produce a digital representation that combines geometry with the visual appearance of the documented object.
+
+Within cultural heritage documentation, textured meshes provide a **surface-based representation of buildings, archaeological remains, and artifacts**. The combination of geometry and texture enables photorealistic documentation while supporting the analysis of materials, colors, decorative elements, and patterns of deterioration. Consequently, textured meshes contribute not only to documentation but also to restoration, reconstruction, interpretation, and dissemination.
+
+Meshes also support the segmentation and annotation of materials, construction phases, or conservation issues. In addition, they can be used to generate derived products such as orthophotos, sections, and profiles. Simplified mesh models may also be prepared for web platforms, virtual reality, augmented reality, and museum applications, extending the accessibility of digital heritage documentation to different audiences.
+
+<ImageComparisonSlider left="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/not-mesh.png" leftAlt="Close-up view of a reclining classical sculpture, displayed with its original stone-like appearance and surface texture. The model shows the detailed facial features, curly hair, and folded arms without a visible wireframe" right="/assets/content/assets/en/resources/hosted/from-3-d-documentation-to-reactive-heritage-digital-twins/mesh.png" rightAlt="Close-up view of a three-dimensional mesh model of the same reclining classical sculpture. The surface is covered with a dense blue triangular wireframe, revealing the polygonal structure and geometric detail of the reconstructed figure." orientation="horizontal">
+  Textured mesh
+</ImageComparisonSlider>
+
+### **Gaussian Splats**
+
+Gaussian Splats represent a more recent approach to three-dimensional visualization. Rather than describing a surface through connected polygons, this representation consists of numerous optimized volumetric primitives, referred to as three-dimensional Gaussians. According to the presentation, each Gaussian is characterized by its position in space, anisotropic covariance, opacity, and color or radiance information.
+
+The principal application of Gaussian Splats is **real-time photorealistic rendering**. Within cultural heritage, this representation supports the visual interpretation of **spaces, materials, colors, and lighting conditions**. It enables real-time navigation through complex heritage environments and contributes to immersive experiences delivered through web applications, virtual reality, augmented reality, and museum installations. The presentation also notes that Gaussian Splats are effective for rendering visually challenging materials, including reflective or transparent surfaces.
+
+By supporting highly realistic visualization, Gaussian Splats extend the possibilities for the communication and dissemination of cultural heritage through digital environments.
+
+## **Building Information Modelling and Heritage BIM**
+
+Building Information Modelling (BIM) is presented as a digital methodology for representing and managing buildings through parametric objects enriched with geometric, technical, and management information. Rather than representing only geometry, BIM organizes information into semantic building elements and associates these elements with parameters, materials, documentation, and relationships. The principal characteristics of BIM models include semantic objects, parametric geometry, metadata, material information, and historical phases.
+
+Within the field of cultural heritage, BIM has been further developed into **Heritage Building Information Modelling (H-BIM)**. H-BIM extends BIM principles to historic buildings by integrating documentation, survey data, and information related to conservation and restoration. According to the presentation, H-BIM supports the structured organization of knowledge concerning heritage buildings and frequently incorporates point clouds, meshes, and orthophotos generated through laser scanning and photogrammetry.
+
+The presentation identifies several applications of H-BIM within cultural heritage. These include the organization of knowledge concerning geometry, materials, historical phases, and documentation; the integration of survey data; the management of conservation information; restoration planning; the extraction of measurements and reports; and the long-term management of maintenance, monitoring, and digital twin development. In this way, H-BIM provides a structured framework that combines documentation with information management throughout the lifecycle of a heritage asset.
+
+<Quiz>
+  <QuizChoice variant="single">
+    <QuizChoiceQuestion>
+      A heritage institution wants to create a long-term digital resource for a historic building. The resource should support conservation planning, future monitoring, public communication, and possible integration into a Reactive Heritage Digital Twin. Which strategy best reflects the principles discussed in this module?
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Create a visually impressive 3D model as quickly as possible and store only the final file, because future users mainly need the visual result.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Use one acquisition method only, avoid combining datasets, and focus on producing a model that works in a single software environment.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Plan the survey according to clear objectives, combine appropriate acquisition methods when needed, document metadata and paradata, use interoperable formats, and manage the data according to FAIR principles.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Use AI-generated reconstruction to fill all missing information and treat the result as a complete and objective record of the historic building.
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizSuccessMessage>
+      Correct! Reliable 3D heritage documentation requires clear planning, suitable acquisition methods, transparent documentation, interoperable data formats, and long-term data management. Metadata and paradata help future users understand how the data were created and how they should be interpreted. FAIR principles support findability, accessibility, interoperability, and reuse. These elements are essential if 3D documentation is to support conservation, monitoring, communication, and integration into more advanced environments such as Reactive Heritage Digital Twins.
+    </QuizSuccessMessage>
+
+    <QuizErrorMessage>
+      Sorry, that’s not the right answer. Try again!
+    </QuizErrorMessage>
+  </QuizChoice>
+</Quiz>
+
+## **Conclusions**
+
+**Three-dimensional documentation** has become an important component of cultural heritage **research, conservation, and management**. As presented throughout this learning resource, the documentation process involves much more than the creation of a digital model. It begins with the definition of documentation objectives, continues through the selection of appropriate acquisition methods, and includes the management of metadata, paradata, and interoperable digital resources. These different stages contribute to the production of **reliable and reusable documentation**.
+
+Different acquisition techniques provide complementary perspectives on cultural heritage. **Range-based methods, image-based methods, topographic techniques**, and **emerging AI-based approaches** each contribute different types of information and may be combined according to the objectives of a documentation project. The resulting datasets can subsequently be represented as point clouds, textured meshes, Gaussian Splats, or H-BIM models, depending on the intended application.
+
+Throughout the presentation, particular emphasis is placed on the importance of methodological awareness. Digital documentation is presented not simply as a technical procedure but as a structured process in which every methodological decision influences the resulting dataset. Reliable documentation therefore depends **not only on the choice of technology** but also on the **transparent documentation** of the acquisition process and the **careful management** of the resulting information.
+
+Finally, the presentation illustrates how three-dimensional documentation forms the basis for more advanced digital heritage applications, including Reactive Heritage Digital Twins. By combining high-quality survey data with information management, visualization, and simulation, digital documentation contributes to new approaches for the study, conservation, management, and communication of cultural heritage.
+
+<Callout kind="none">
+  The present resource has been supported by the European Union in the framework of the ARTEMIS project, funded by the European Union under Grant Agreement No. 101188009. Views and opinions expressed are, however, those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.
+</Callout>
