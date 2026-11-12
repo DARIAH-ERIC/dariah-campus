@@ -53,7 +53,7 @@ By the end of this lesson, you should be able to:
 
 ## Workflow structure
 
-When starting to work on a new dataset, one should keep in mind an eventual end goal of a data publication- this approach will help with keeping the work documented and rigorous through the process.
+When starting to work on a new dataset, one should keep in mind an eventual end goal of a data publication- this approach will help with keeping the work documented and rigorous through the process. The steps and guidelinews described in this lesson describe an ideal situation- in practice some can be left for later, or skipped altogether. As long as the idea of a data publication is kept more or less constantly in mind during the process, sufficient attention to documentation and traceability should follow.
 
 Refining a large dataset is an iterative process. For example, work on publication years may reveal a need to distinguish date ranges; place processing may expose uncertainty in imprints or differences in cataloguing practice. These findings may lead to changes in the output structure, processing rules or research question. Keeping successive versions to make those changes traceable. The following steps describe a sensible approach to such a task:
 
@@ -66,7 +66,7 @@ Refining a large dataset is an iterative process. For example, work on publicati
 Data and research publications can progress in tandem: E.g. a first data publication can contain the refined year table and place links while actor identification continues. Number the release and document its source snapshot and the versions of its year and place tables. Actor data can be added in a later version, noting changes to the earlier tables. Researchers can cite the version they used (see publication section below), and work with the data at each stage as methods and evidence develop.
 
 <Callout kind="important" title="Planning guideline">
-  The most important principle is that an eventual data publication is part of the plan from the start. Even if questions of e.g. publication rights, channels, or strategy have not been sorted out, this mode of thinking will help with keeping the workflow quality high.
+  The most important principle is that an eventual **data publication is part of the plan from the start**. Even if questions of e.g. publication rights, channels, or strategy have not been sorted out, this mode of thinking will help with keeping the workflow quality high.&#x20;
 </Callout>
 
 ## 1. Map the source and plan the output
@@ -216,13 +216,15 @@ The examples below describe choices in an ESTC implementation. They demonstrate 
 
 ### Make decisions inspectable
 
-For derived values, retain or link to the source statement, transformation rule, supporting resource and unresolved alternatives. Record external-resource versions where available, or the retrieval date and query details where the resource changes over time.
+For derived values, retain or link to the source statement, transformation rule, supporting resource and unresolved alternatives. Record external-resource versions where available, or the retrieval date and query details where the resource changes over time. Document the workflow logic somehow- ideally in a separate text file in the same repositoryas the code.&#x20;
 
-Explicit parsing rules suit regular, well-understood patterns. Machine-learning or generative-AI systems can propose interpretations of ambiguous statements, but their outputs require evaluation. Record the model version, instructions and review procedure, preserve the input evidence, and use evaluation examples that were not used to develop the method. These are possible extensions of the workflow, not prerequisites for following this lesson.
+Explicit parsing rules suit regular, well-understood patterns. Machine-learning or generative-AI systems can propose interpretations of ambiguous statements, but their outputs require evaluation.
+
+Good docmentation practices include recording versions of models and libraries, including clear running instructions and describing the review procedure, preserving the input evidence, and using evaluation examples that were not used to develop the method.
 
 ## 4. Validate and evaluate
 
-Validate each component as it is developed, then check the assembled tables. Structural validation asks whether the data follow their declared organisation. Evaluation of interpretation asks whether derived values are supported by the source evidence. Both are necessary.
+Validate each component as it is developed, then check the assembled tables. Structural validation asks whether the data processing pipeline follows its intended logic. Evaluation of interpretation asks whether derived values are supported by the source evidence. Both are necessary.
 
 <Callout kind="important" title="Planning guidelines">
   **Structural checks include:**
@@ -237,7 +239,7 @@ Validate each component as it is developed, then check the assembled tables. Str
 
 Interpretive evaluation requires reviewed examples. Include ordinary and difficult cases when developing the method, and use a separate representative sample when estimating performance across the dataset. A collection of difficult examples is useful for finding weaknesses, but it does not by itself measure how frequently those weaknesses occur.
 
-Define what counts as correct, incorrect, partly correct or unresolved. For a place match, distinguish correct interpretation of the catalogue statement from correct identification of the historical publication place. Agreement with the catalogue does not independently establish historical truth.
+Define what counts as correct, incorrect, partly correct or unresolved. E.g. for a place match, distinguish correct interpretation of the catalogue statement from correct identification of the historical publication place.
 
 <Disclosure title="Evaluation example: Publication places">
   Evaluate the two stages (data parsing and linking to TGN) separately:
@@ -246,25 +248,25 @@ Define what counts as correct, incorrect, partly correct or unresolved. For a pl
   * **TGN matching:** Independently review whether each parsed place has been linked to the appropriate TGN entry. Use documented evidence and criteria to classify each link as correct, incorrect, ambiguous or unmatched. This tests entity identification, not parsing: a correctly parsed name can still be linked to the wrong entity, and a correct link does not show that the name was parsed correctly.
 </Disclosure>
 
-A published evaluation should identify the tested data and code versions, sampling procedure, review criteria and results before corrections. Explain how corrections were incorporated and whether a further evaluation was performed.
+In an ideal world, a published evaluation should identify the tested data and code versions, sampling procedure, review criteria and results before corrections. Often, a bit more lax approach might be sufficient, but at least the process should be described.
 
 ## 5. Publish a documented dataset
 
-**Plan for publication from the beginning** so that decisions, code and data remain understandable as the work progresses. A partial dataset can be useful as well when its scope, status and limitations are explicitly stated.
+**Plan for publication from the beginning** so that decisions, code and data remain understandable as the work progresses. A partial dataset can be useful as well when its scope, status and limitations are explicitly stated, and publication can happen in stages, with later publications extending and widening the scope of an initial data release. This approach can be incorporated in DOI (see below) versioning.
 
 <Callout kind="important" title="Planning guidelines">
   **A release should include:**
 
-  * Citating guidelines identifying the particular release.
-  * Refined tables and a field dictionary explaining identifiers, units and relationships.
-  * Notes on Source- and processing-code versions.
+  * Citating guidelines identifying the particular release, along with a persistent identifier.
+  * Documentation explaining identifiers, variables, units and relationships within the dataset.
+  * Information about the processing code versions, and possibly references to the repositories holding it.
   * External authority-resource versions (e.g. TGN in the Publication place example above) or retrieval information.
-  * Code or processing instructions, with key decisions documented.
+  * Code or processing instructions, with key decisions documented (likely in a separate code repository).
   * A validation and evaluation summary.
   * Known limitations, unresolved cases and unfinished components.
   * Access conditions, reuse conditions and licensing information for data and code.
 </Callout>
 
-Choose a repository according to preservation needs, access conditions and institutional or funder requirements. Options include general-purpose repositories such as **Zenodo**, **Dataverse** and institutional services. Library and research-data support colleagues can help assess the appropriate route. Use a code repository (most likely **Github**) for active development and connect it to the archived release where appropriate.
+Choose a data repository according to preservation needs, access conditions and institutional or funder requirements. Options include general-purpose repositories such as <Link link={{"discriminant":"external","value":"https://zenodo.org/"}}>**Zenodo**</Link>, national repositories, such as the Finnish <Link link={{"discriminant":"external","value":"https://www.fairdata.fi/en/ida/"}}>**CSC IDA**</Link>, and institutional services offered by most universities. Library and research-data support colleagues can help assess the appropriate route. Use a code repository (most likely <Link link={{"discriminant":"external","value":"https://github.com/"}}>**Github**</Link>) for active development and connect it to the archived release where appropriate.
 
-**A persistent identifier** (see e.g. <Link link={{"discriminant":"external","value":"https://help.zenodo.org/docs/deposit/describe-records/reserve-doi/"}}>Zenodo guide for getting a DOI</Link>) helps users locate and cite a release. Clearly identify the files and versions used in an analysis, and explain changes between releases. Check source terms and third-party material before selecting reuse conditions.
+**A persistent identifier** (see e.g. <Link link={{"discriminant":"external","value":"https://help.zenodo.org/docs/deposit/describe-records/reserve-doi/"}}>Zenodo guide for getting a DOI</Link>) helps users locate and cite a release, and is necessary for making the data properly citable. Clearly identify the files and versions used in an analysis, and explain changes between releases. Check source terms and third-party material before selecting reuse conditions.
