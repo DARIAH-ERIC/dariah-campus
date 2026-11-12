@@ -32,13 +32,13 @@ dariah-working-groups: []
 ---
 This resource is based on the presentation *Semantic Modelling for Heritage Digital Twins: Ontologies and Interoperability* by Vicky Dritsou and Achille Felicetti, developed for the ARTEMIS Summer School 2026 in Hof, Germany. It introduces key concepts of semantic modelling, ontologies and interoperability and illustrates how these are applied within the ARTEMIS approach to Reactive Heritage Digital Twins.
 
-## **Introduction**
+## Introduction
 
 Heritage Digital Twins (HDT) bring together much more than three-dimensional geometry. In the ARTEMIS approach, a Heritage Digital Twin represents the complex of available knowledge about a real-world cultural entity, including historical, material, environmental, technical and scientific information. This makes integration a central challenge: heritage knowledge is produced by different communities, stored in different systems and expressed through different structures and vocabularies.
 
 Semantic modelling addresses this challenge by making the meaning of data explicit. Ontologies provide shared concepts and relationships that allow people and systems to describe entities such as heritage assets, actors, places, events and time-spans in a consistent way. In ARTEMIS, these semantic foundations are extended into a modular framework for Reactive Heritage Digital Twins (RHDT), connecting physical heritage, digital representations, observations, workflows, services and decision-support processes.
 
-## **Learning Outcomes**
+## Learning Outcomes
 
 After completing this resource, learners will be able to:
 
@@ -48,7 +48,7 @@ After completing this resource, learners will be able to:
 * describe the main design principles and modules of the ARTEMIS ontology;
 * explain how ARTEMIS connects heterogeneous heritage data for interoperability, querying and decision support.
 
-## **Target Audience**
+## Target Audience
 
 This resource is intended for:
 
@@ -57,23 +57,23 @@ This resource is intended for:
 * data specialists and developers interested in semantic interoperability for cultural heritage;
 * educators seeking an introduction to ontologies, knowledge graphs and Heritage Digital Twins.
 
-## **Intended Impact**
+## Intended Impact
 
 Upon completion of this resource, learners will have an introductory understanding of why semantic modelling is necessary for Heritage Digital Twins and how ARTEMIS connects different kinds of heritage knowledge. They will be able to recognise interoperability problems in conventional data structures, interpret basic semantic relationships, describe the modular ARTEMIS ontology architecture, and discuss how semantic integration turns distributed data into a coherent knowledge structure that can support analysis and decision-making.
 
-## **Requirements**
+## Requirements
 
 * basic familiarity with cultural heritage documentation or digital heritage data is helpful;
 * a general understanding of databases, 3D models or research data is beneficial but not essential;
 * no prior experience with ontologies, RDF, OWL or SPARQL is required.
 
-## **Suggested Learning Path**
+## Suggested Learning Path
 
 It is recommended to begin with ***From 3D Documentation to Reactive Heritage Digital Twins***, which provides a broader introduction to the development and concept of Reactive Heritage Digital Twins.
 
 Learners can then continue with this resource to explore how semantic modelling, ontologies and interoperability support the integration of heterogeneous heritage information within the ARTEMIS framework.
 
-## **From Digital Twins to Heritage Digital Twins**
+## From Digital Twins to Heritage Digital Twins
 
 Digital Twins were first developed as detailed, interactive digital replicas of complex real-world objects, processes and systems. Typical capabilities include real-time monitoring and predictive simulation. The concept was adopted in fields such as scientific research, environmental engineering and urban planning, where digital replicas can support analysis, optimisation and the exploration of future scenarios.
 
@@ -117,9 +117,9 @@ Within ARTEMIS, a Heritage Digital Twin is therefore understood as the complex o
   </QuizChoice>
 </Quiz>
 
-## **Ontologies: Shaping Knowledge**
+## Ontologies: Shaping Knowledge
 
-Ontologies provide concepts for modelling digital entities. In an ontology, we can represent connections and relationships between these digital entities, too Examples of entities include people and institutions, cultural objects, places, events, dates or temporal periods, names and types. Relationships express how these entities are connected, for example when an event happens in a place or when actors and objects participate in an event.
+Ontologies provide concepts for modelling digital entities. In an ontology, we can represent connections and relationships between these digital entities, too. Examples of entities include people and institutions, cultural objects, places, events, dates or temporal periods, names and types. Relationships express how these entities are connected, for example when an event happens in a place or when actors and objects participate in an event.
 
 An ontology represents a shared understanding of a domain agreed by a community of agents. This shared understanding supports accurate communication of meaning and, in turn, interoperability, reuse and sharing. The goal is not to describe the entire world. Instead, an ontology creates a working model for a domain and provides definitions that can support integration and reuse while remaining open to future development.
 
@@ -141,7 +141,7 @@ Creating such a model is collaborative. Ontologists contribute modelling practic
   </QuizImageDropZones>
 </Quiz>
 
-## **Ontologies and Databases: Different Purposes**
+## Ontologies and Databases: Different Purposes
 
 A database is a representation mechanism designed to meet the requirements of a particular application. Its schema is closely related to implementation choices, and when requirements change, the viewpoint and schema may need to change as well. This supports efficient application-specific processing, but it can also introduce conceptual simplifications and shortcuts.
 
@@ -267,7 +267,7 @@ The 3D Information and Digital Operations examples make this principle concrete.
 
 Provenance preservation supports trust, reproducibility, and critical interpretation. Two outputs may look similar but have different evidential value if they were produced from different source data or through different transformations. By keeping these histories connected, ARTEMIS makes those differences inspectable.
 
-### **5. Flexible Granularity**
+### 5. Flexible Granularity
 
 Flexible granularity means that the same semantic framework can support both **detailed and lightweight documentation**. Not every project has the same resources, research questions, or data availability, and not every workflow needs the same level of description. ARTEMIS therefore allows information to be represented at a level of detail appropriate to the task while still using a compatible conceptual structure.
 
@@ -275,7 +275,7 @@ A lightweight record might state that a digital operation produced a new 3D mode
 
 This principle lowers the barrier to adoption while leaving room for richer documentation when needed. It also supports progressive enrichment: a project can begin with a relatively simple description and add further detail as new evidence, resources, or use cases become available.
 
-### **How the Five Principles Reinforce One Another**
+### How the Five Principles Reinforce One Another
 
 The ARTEMIS ontology is guided by five design principles: **semantic interoperability, event-centric traceability, modular extensibility, provenance preservation,** and **flexible granularity**. These principles are not isolated technical features. Together, they determine how heterogeneous heritage knowledge can be connected, how the production of that knowledge can be reconstructed, and how the model can remain useful across different domains and levels of documentation.
 
@@ -355,7 +355,7 @@ The **Heritage Science Module** represents scientific investigations as traceabl
   </QuizImageDropZones>
 </Quiz>
 
-## **From Semantic Models to Knowledge Graphs**
+## From Semantic Models to Knowledge Graphs
 
 In ARTEMIS, documentation, heritage science, 3D information, monitoring data, digital operations and digital services can be brought together in a shared knowledge base. The result is a network of connected entities, observations, processes and digital resources rather than a set of isolated files or databases.
 
@@ -365,7 +365,7 @@ The fictional Temple of Athena scenario illustrates this integration. The temple
 
 </Figure>
 
-## **Interoperability by Design**
+## Interoperability by Design
 
 ARTEMIS treats interoperability as something that is built into the model rather than added afterwards. The presentation highlights four components: shared conceptual models such as the CIDOC CRM ecosystem, shared identifiers such as persistent identifiers, shared vocabularies such as Getty AAT and PeriodO, and standard technologies such as RDF and SPARQL.
 
@@ -413,7 +413,7 @@ These components allow heterogeneous data to be connected without requiring all 
   </QuizChoice>
 </Quiz>
 
-## **What Semantics Enable**
+## What Semantics Enable
 
 Semantic integration enables more than storage. The presentation identifies provenance tracking, cross-domain querying, semantic reasoning and inference, knowledge integration, gap detection and evidence-based decision support as important outcomes. This is where semantic modelling reconnects to the idea of a Reactive Heritage Digital Twin: data becomes more useful when its meaning, origin and relationships are explicit.
 
