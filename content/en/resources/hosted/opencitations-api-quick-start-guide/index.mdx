@@ -1,0 +1,601 @@
+---
+title: 'OpenCitations APIs: A Quick Start'
+locale: en
+publication-date: 2026-11-11
+version: 1.0.0
+authors:
+  - petrella-mario
+  - heibi-ivan
+  - peroni-silvio
+editors: []
+contributors:
+  - di-giambattista-chiara
+tags:
+  - apis
+  - open-science
+  - open-access
+  - metadata
+  - fair
+  - semantic-web
+  - ontologies
+  - open-education
+sources:
+  - dariah
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >-
+    In this tutorial we explain how to use the OpenCitations APIs. We start with
+    a simple request to get the citation count of an article, then we see how to
+    get citations, references and metadata, and how to filter and sort the
+    results. At the end we write a small Python script and we take a quick look
+    at the new SKG-IF API.
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+dariah-working-groups:
+  - bibliographical-data-bibliodata
+---
+OpenCitations is an independent not-for-profit infrastructure organization for open scholarship that publishes open bibliographic and citation data, free for anyone to reuse. This tutorial is for people with a technical background, such as developers, data librarians or researchers who write small scripts, who have never used the OpenCitations Application Programming Interfaces (APIs).
+
+## Learning Outcomes
+
+At the end of this tutorial, you will be able to:
+
+* get the citation and reference count of a work with the Index API
+* list the works that cite a work, or that a work cites
+* get the bibliographic metadata of a work with the Meta API
+* filter, sort and export the results
+* combine the Index and Meta APIs in a Python script
+* send a first query to the SKG-IF API
+
+## What Will You Do in This Tutorial?
+
+We will start small, by retrieving a single number: the citation count of one article. Step by step, we will then list the works that cite it, look up their metadata, and filter, sort and export the results. By the end of the tutorial, you will have a short Python script that combines the Index and Meta APIs to answer a concrete question: *which of the works citing that article were published in a given journal?* For each one, the script prints its publication date, venue and title. Finally, we will take a quick look at the new SKG-IF API.
+
+## Overview
+
+OpenCitations provides open access to its data through three Representational State Transfer (REST) Application Programming Interfaces (APIs):
+
+* **Index API**: citation data (who cites whom)
+* **Meta API**: bibliographic metadata (titles, authors, venues, dates ... etc.)
+* **SKG-IF API**: bibliographic metadata (titles, authors, venues, dates ... etc.) and references (what is cited) compliant with the [Scientific Knowledge Graphs Interoperability Framework (SKG-IF)](https://skg-if.github.io) data model
+
+*All are free, require no registration, and respond to plain Hypertext Transfer Protocol (HTTP) GET requests. The response of the Index API and Meta API is provided in JavaScript Object Notation (JSON) or comma-separated values (CSV) format, while the response of the SKG-IF API is provided in JSON for Linked Data (JSON-LD) format (more information in the "New SKG-IF API" section).*
+
+Here is an overview:
+
+**Table 1.** The three OpenCitations APIs
+
+| **API**   | **Base URL**                                                                       | **Answers questions like**                                                                          |
+| --------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Index v2  | [https://api.opencitations.net/index/v2](https://api.opencitations.net/index/v2)   | How many works cite this article, and which ones                                                    |
+| Meta v1   | [https://api.opencitations.net/meta/v1](https://api.opencitations.net/meta/v1)     | What are the title, authors, venue and publication date of a work?                                  |
+| SKG-IF v1 | [https://api.opencitations.net/skg-if/v1](https://api.opencitations.net/skg-if/v1) | What are all the articles that contain the terms “infrastructure” and “federation” in their titles? |
+
+### Before You Start
+
+To follow along, you will need:
+
+* **A terminal** with '*curl*' installed (it comes preinstalled on macOS, most Linux distributions and recent versions of Windows). We will use it to send our first requests and inspect the raw responses
+* **Python 3** with the '*requests*' library, for the scripts later in the tutorial
+
+**Note:** The scripts are written in Python, but the APIs are language-independent: any language that can send an HTTP request will work just as well.
+
+### Identifiers
+
+To ask the APIs about a work, you include its identifier in the request Uniform Resource Locator (URL), written as `prefix:value`.
+
+For example, the Digital Object Identifier (DOI) `10.1162/qss_a_00023` becomes: `doi:10.1162/qss_a_00023`
+
+**Table 2.** Identifier prefixes accepted by the Index and Meta APIs
+
+| **Prefix**                                                                                 | **Index API**           | **Meta API** |
+| ------------------------------------------------------------------------------------------ | ----------------------- | ------------ |
+| `doi`                                                                                      | yes                     | yes          |
+| `pmid` (PubMed Identifier)                                                                 | yes                     | yes          |
+| `omid` (OpenCitations Meta Identifier)                                                     | yes                     | yes          |
+| `pmcid` (PubMed Central Identifier), `openalex`                                            | no                      | yes          |
+| `issn` (International Standard Serial Number), `isbn` (International Standard Book Number) | only for citation count | yes          |
+
+**Note:** there is a rate limit for the API usage. APIs accept 180 requests per minute per IP address. That is fine for interactive work and for a few thousand works. For larger jobs, for instance when asking for the metadata of a large collection of resources, use the [OpenCitations data dumps](https://download.opencitations.net/) instead of the API.
+
+#### A Closer Look at OMIDs
+
+The **OMID** (OpenCitations Meta Identifier) is OpenCitations' own identifier. Every entity in the dataset gets one, and its form tells you what kind of entity it refers to:
+
+* **omid:br/**... identifies a **bibliographic resource**, such as an article, a book or a journal
+* **omid:ra/**... identifies a **responsible agent**, such as a person or an organization
+
+You will meet OMIDs in almost every API response. They are also the only identifier that every work in the dataset is guaranteed to have, which makes them the most reliable way to refer to a work when a DOI or PMID is not available.
+
+### A Quick Quiz Before Moving On
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      Which requests can you make to the Meta API? (Select all that apply.)
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Get the title, authors and venue of a work
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Look up a single citation by its OCI
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Count the citations of a work
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Get all the works written by a person
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Get all the works edited by a person
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
+
+<Quiz>
+  <QuizChoice variant="multiple">
+    <QuizChoiceQuestion>
+      Which requests can you make to the Index API? (Select all that apply.)
+    </QuizChoiceQuestion>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Count the citations of a work
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        List the works that cite a work
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="correct">
+      <QuizChoiceAnswerLabel>
+        Count the references of a work
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Get the title and authors of a work
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+
+    <QuizChoiceAnswer kind="incorrect">
+      <QuizChoiceAnswerLabel>
+        Get all the works of a person from their ORCID
+      </QuizChoiceAnswerLabel>
+    </QuizChoiceAnswer>
+  </QuizChoice>
+</Quiz>
+
+<SplitPoint />
+
+## Step 1: Get the Citation/Reference Count
+
+One of the most basic pieces of information you can retrieve is the citation/reference count of a given publication.
+
+To do that we use the **Index API** and the "`/citation-count/`" operation:
+
+```bash
+curl 'https://api.opencitations.net/index/v2/citation-count/doi:10.1162/qss_a_00023'
+```
+
+Result:
+
+```json
+[
+     {
+         "count": "136"
+     }
+ ]
+```
+
+Two details are worth noting from the start:
+
+* **Every response is a JSON array**, even when it contains a single value. You will always need to access the first element (\[0]) to get the result.
+* **The count field is a string**, not a number. Convert it to an integer before doing any arithmetic with it.
+
+The following Python script shows both points in practice:
+
+```python
+import requests
+
+session = requests.Session()
+r = session.get('https://api.opencitations.net/index/v2/citation-count/doi:10.1162/qss_a_00023')
+r.raise_for_status()
+
+print(r.json()[0]["count"])  # >> 136
+```
+
+On the other hand, we can get the references as well. This is done using the operation "`/reference-count/`".
+
+The call is done in the same way:
+
+```bash
+curl 'https://api.opencitations.net/index/v2/reference-count/doi:10.1162/qss_a_00023'
+```
+
+Result:
+
+```json
+[
+    {
+        "count": "13"
+    }
+]
+```
+
+Not all the DOIs are part of the OpenCitations dataset – a DOI that OpenCitations does not recognize is not an error. For instance, `/citation-count/doi:10.9999/does-not-exist` returns a count of "`0`" with a normal response. A zero can therefore mean "never cited" or "not in OpenCitations at all". When the difference matters, look the work up in the Meta API (Step 4): an empty result there means OpenCitations has no record of it.
+
+To count the citations of all the publications published under a given journal, we use "`/venue-citation-count/`" with an **ISSN**.
+
+For instance, when looking for journal "*Quantitative Science Studies" -> (**ISSN** 2641-3337)*, (the journal of the previous example article):
+
+```bash
+curl 'https://api.opencitations.net/index/v2/venue-citation-count/issn:2641-3337'
+```
+
+Result:
+
+```json
+[
+    {
+        "count": "7982"
+    }
+]
+```
+
+<SplitPoint />
+
+## Step 2: List Who Cites a Work
+
+The API operation "`/citations/`" returns one row for each work that cites the given one. On the other hand, "`/references/`" does the same for the works it cites. Both return the whole list in a single response and use the same fields.
+
+```bash
+curl 'https://api.opencitations.net/index/v2/citations/doi:10.1162/qss_a_00023'
+```
+
+Result (only 1 row is shown):
+
+```
+[
+    {
+       "oci": "06013224311-062501777134",
+       "citing": "omid:br/06013224311 doi:10.1007/s11192-026-05540-1",
+       "cited": "omid:br/062501777134 doi:10.1162/qss_a_00023 openalex:W3106215946",
+       "creation": "2026-02-14",
+       "timespan": "P6Y0M",
+       "journal_sc": "no",
+       "author_sc": "no"
+    }
+ 	...
+]
+```
+
+**Table 3.** Fields returned by the `/citations/` and `/references/` operations
+
+| **Field**    | **Meaning**                                                                                                                              |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `oci`        | Identifier of the citation itself (see Step 3)                                                                                           |
+| `citing`     | Every known identifier of the citing work, separated by spaces                                                                           |
+| `cited`      | Every known identifier of the cited work, separated by spaces                                                                            |
+| `creation`   | Publication date of the citing work, which is when the citation was made. Precision varies: `2026`, `2022-06` and `2026-02-14` all occur |
+| `timespan`   | Time between the two publications as an XML Schema Definition (XSD) duration, for example `P6Y0M` for six years                          |
+| `journal_sc` | `yes` when citing and cited work appear in the same journal                                                                              |
+| `author_sc`  | `yes` when the two works share at least one author                                                                                       |
+
+<SplitPoint />
+
+## Step 3: Look Up a Single Citation
+
+Each citation has its own persistent identifier, the Open Citation Identifier (OCI). Its full form is `oci:` followed by two numbers joined by a hyphen, such as "*`oci:06013224311-062501777134`*".
+
+In the OpenCitations Index the two numbers are the **OMIDs** of the two works. In the example above, `06013224311` is `omid:br/06013224311` (the citing work) and `062501777134` is `omid:br/062501777134` (the cited one).
+
+To fetch one citation, pass the OCI to `/citation/` without the `oci:` prefix:
+
+```bash
+curl 'https://api.opencitations.net/index/v2/citation/06013224311-062501777134'
+```
+
+Result:
+
+```json
+[
+    {
+        "oci": "06013224311-062501777134",
+        "citing": "omid:br/06013224311 doi:10.1007/s11192-026-05540-1",
+        "cited": "omid:br/062501777134 doi:10.1162/qss_a_00023 openalex:W3106215946",
+        "creation": "2026-02-14",
+        "timespan": "P6Y0M",
+        "journal_sc": "no",
+        "author_sc": "no"
+    }
+]
+```
+
+<SplitPoint />
+
+## Step 4: Get the Metadata
+
+The **Index** tells you which works are linked, but not what they are. Titles, authors, venues and dates come from the Meta API, at "`/metadata/`":
+
+The metadata of the previous example article (using its DOI value):
+
+```bash
+curl 'https://api.opencitations.net/meta/v1/metadata/doi:10.1162/qss_a_00023'
+```
+
+Result:
+
+```json
+[
+     {
+         "id": "doi:10.1162/qss_a_00023 openalex:W3106215946 omid:br/062501777134",
+         "title": "OpenCitations, An Infrastructure Organization For Open Scholarship",
+         "author": "Peroni, Silvio [orcid:0000-0003-0530-4305 omid:ra/0614010840729]; Shotton, D M [orcid:0000-0001-5506-523X omid:ra/0621010775619]",
+         "pub_date": "2020-02",
+         "issue": "1",
+         "volume": "1",
+         "venue": "Quantitative Science Studies [issn:2641-3337 openalex:S4210195326 omid:br/062501778099]",
+         "page": "428-444",
+         "type": "journal article",
+         "publisher": "Mit Press [crossref:281 omid:ra/0610116105]",
+         "editor": ""
+     }
+ ]
+```
+
+A few conventions hold across all Meta responses:
+
+1. `author`, `editor`, `publisher` and `venue` contain a name followed by its identifiers in square brackets
+2. Multiple people in `author` or `editor` are separated by `;`
+3. A missing value is an empty string, never `null`
+4. `type` is plain text, such as `journal article`, `book` or `book chapter`.
+
+### Works by a Person
+
+Operations such as "`/author/`" and "`/editor/`" return every work linked to a person, identified by **ORCID** (Open Researcher and Contributor ID) or by **OMID**. Prefer the **ORCID**.
+
+The list can be long, so the example below keeps only works published after June 2025, newest first. The **`-G`** and **`--data-urlencode`** options let *curl* encode the **`>`** and the parentheses for you (Step 5 explains the parameters).
+
+```bash
+curl -G 'https://api.opencitations.net/meta/v1/author/orcid:0000-0003-0530-4305' \
+   --data-urlencode "filter=pub_date:>2025-06" \
+   --data-urlencode "sort=desc(pub_date)"
+```
+
+Let’s try it in a Python script:
+
+```python
+import requests
+
+#var
+META = "https://api.opencitations.net/meta/v1"
+
+session = requests.Session()
+works = session.get(
+     f"{META}/author/orcid:0000-0003-0530-4305", params={"filter": "pub_date:>2025-06", "sort": "desc(pub_date)"}, ).json()
+
+for w in works:
+     print(w["pub_date"], w["title"])
+```
+
+Result:
+
+```
+2026-02-14 Analysing The Coverage Of The University Of Bologna’s Bibliographic And Citation Metadata In OpenCitations Collections
+2025-10-27 CiteFusion: An Ensemble Framework For Citation Intent Classification Harnessing Dual-Model Binary Couples And SHAP Analyses
+2025-07-30 Representing Provenance And Track Changes Of Cultural Heritage Metadata In RDF: A Survey Of Existing Approaches
+```
+
+<SplitPoint />
+
+## Step 5: Filter, Sort and Export
+
+Every operation of both APIs accepts the same query parameters, applied on the server after the data is retrieved. They run in a fixed order: first all `require`, then all `filter`, then `sort`, and finally `format`. You can repeat a parameter, for example "`require=volume&require=issue`".
+
+**Table 4.** Query parameters accepted by the Index and Meta APIs
+
+| **Parameter**                               | **Example**             | **Effect**                                                                                                               |
+| ------------------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `require=<field>`                           | `require=volume`        | Drops the rows where the field is empty                                                                                  |
+| `filter=<field>:<op><value>`                | `filter=creation:>2024` | Keeps only matching rows. The operator is `=`, `<` or `>`. Without an operator the value is read as a regular expression |
+| `sort=asc(<field>)` or `sort=desc(<field>)` | `sort=desc(creation)`   | Sorts the rows by that field in descending order                                                                         |
+| `format=csv` or `format=json`               | `format=csv`            | Chooses the output format. It takes precedence over the `Accept` header                                                  |
+
+For example, these are the author self-citations of the example article, oldest first. The call returned 11 rows, from 2020 to 2024:
+
+```bash
+curl -G 'https://api.opencitations.net/index/v2/citations/doi:10.1162/qss_a_00023?filter=author_sc:yes&sort=asc(creation)'
+```
+
+Add `format=csv` to any call and the rows arrive as CSV with a header line, ready for a spreadsheet:
+
+```bash
+curl -G 'https://api.opencitations.net/index/v2/citations/doi:10.1162/qss_a_00023?sort=desc(creation)&format=csv' -o citations.csv
+```
+
+Example output of citations.csv:
+
+```csv
+oci,citing,cited,creation,timespan,journal_sc,author_sc
+06013224311-062501777134,omid:br/06013224311 doi:10.1007/s11192-026-05540-1,omid:br/062501777134 doi:10.1162/qss_a_00023 openalex:W3106215946,2026-02-14,P6Y0M,no,no
+[...]
+```
+
+<SplitPoint />
+
+## Putting It All Together With a Python Script
+
+So far, each step has used one API at a time. For more complex tasks, you may need to combine operations from different API endpoints.
+
+Take this one: *which works citing the example article were published in Scientometrics?*
+
+The **Index** knows who cites the article but not where those works were published. **Meta** knows where a work was published but not who it cites. The script answers the question in four moves:
+
+1. Ask the **Index** API for every citation of the article
+2. From each row, keep the **OMID** of the citing work
+3. Ask the **Meta** API for the metadata of those works, many at a time, and keep only the ones published in ‘Scientometrics’
+4. Sort the results and print them
+
+Let’s try with this Python script:
+
+```python
+import time
+import requests
+
+INDEX = "https://api.opencitations.net/index/v2"
+META = "https://api.opencitations.net/meta/v1"
+
+CITED = "doi:10.1162/qss_a_00023"  # the cited article
+VENUE = "issn:0138-9130"           # the journal to keep (Scientometrics); None keeps every venue
+BATCH = 50                         # identifiers per Meta call
+PAUSE = 60 / 180                   # seconds between calls: stays under 180 requests per minute
+
+session = requests.Session()
+
+
+def get(url, params=None):
+    r = session.get(url, params=params, timeout=60)
+    r.raise_for_status()
+    time.sleep(PAUSE)
+    return r.json()
+
+# 1. Index API: every work that cites the article
+citations = get(f"{INDEX}/citations/{CITED}")
+
+# 2. Keep the OMID of each citing work, the one identifier every work is guaranteed to have
+omids = [
+    next(i for i in c["citing"].split() if i.startswith("omid:"))
+    for c in citations
+]
+
+# 3. Meta API: metadata of the citing works, BATCH at a time, filtered by venue on the server
+params = {"filter": f"venue:{VENUE}"} if VENUE else None
+works = []
+for start in range(0, len(omids), BATCH):
+    ids = "__".join(omids[start:start + BATCH])
+    works += get(f"{META}/metadata/{ids}", params)
+
+# 4. Sort locally: a server-side sort would only order each batch on its own
+works.sort(key=lambda w: w["pub_date"], reverse=True)
+
+print(f"{len(works)} of {len(citations)} citing works")
+for w in works:
+    venue = w["venue"].split(" [")[0]
+    print(w["pub_date"], venue, w["title"], sep=" | ")
+```
+
+Save it as ***citing\_in\_venue.py*** and run it with "*python3 citing\_in\_venue.py*":
+
+```
+13 of 136 citing works
+2026-02-14 | Scientometrics | Analysing The Coverage Of The University Of Bologna’s Bibliographic And Citation Metadata In OpenCitations Collections
+2025-09-06 | Scientometrics | Academic Literature Recommendation In Large-Scale Citation Networks Enhanced By Large Language Models
+2025-02-14 | Scientometrics | Exploring ORCID Adoption And Metadata Presence In Spain’s Research Landscape
+[...]
+```
+
+<SplitPoint />
+
+## New SKG-IF API
+
+The [Scientific Knowledge Graphs Interoperability Framework (SKG-IF)](https://skg-if.github.io) is a Research Data Alliance standard that enables discovery and analysis across sources of research information developed independently. Despite using different data models and technologies to manage their data, sources adopting SKG-IF also expose their data according to the [SKG-IF data model](https://skg-if.github.io/data-model/), accessible via a shared [Open REST API specification](https://skg-if.github.io/api/). OpenCitations is one of the first [sources implementing an SKG-IF API endpoint](https://skg-if.github.io/api/docs/api-implementors.html), which is available at [https://api.opencitations.net/skg-if/v1](https://api.opencitations.net/skg-if/v1).
+
+SKG-IF APIs also offer ways to filter the results and to search them with free-text queries. In the following excerpt, we show how to look for all the articles (marked as *literature* in the SKG-IF data model) available in OpenCitations collections that include the terms "federation" and "infrastructure" in their title.
+
+```python
+import requests
+
+session = requests.Session()
+r = session.get("https://api.opencitations.net/skg-if/v1/products?filter=product_type:literature,cf.search.title:infrastructure%20federation")
+r.raise_for_status()
+
+print(r.json())  # >> 10 (out of 139, paginated)
+```
+
+Similarly, the call can be run using the *curl* command from shell:
+
+```bash
+curl 'https://api.opencitations.net/skg-if/v1/products?filter=product_type:literature,cf.search.title:infrastructure%20federation'
+```
+
+The result is returned in a special kind of JSON format called [JSON for Linked Data (JSON-LD)](https://json-ld.org/). At first sight, it is an easy-to-read format for humans. Behind its simple structure, however, it also contains Resource Description Framework (RDF) statements, which make the data machine-actionable and easier for machines to interpret. The following excerpt shows the main structures it includes:
+
+```
+{
+    "@context": [
+        "https://w3id.org/skg-if/context/1.1.0/skg-if.json",
+        "https://w3id.org/skg-if/context/1.0.0/skg-if-api.json",
+        {
+            "@base": "https://api.opencitations.net/"
+        }
+    ],
+    "meta": { ... info about metadata of the request ... },
+    "@graph": [
+        {
+            "local_identifier": "https://w3id.org/oc/meta/br/06010226620",
+            "product_type": "literature",
+            ... other metadata of the entity ...
+        },
+        { ... another entity ...},
+        ...
+    ],
+}
+```
+
+For more information about the various fields a response from an SKG-IF API returns, we suggest reading the [SKG-IF format description](https://skg-if.github.io/interoperability-framework/) on the official website of the standard.
+
+<SplitPoint />
+
+## Concluding Remarks
+
+### Good Practices
+
+**Always send the prefix.** Write `doi:10.1162/qss_a_00023`, not the bare DOI. Every operation checks the identifier against a pattern, listed under *Parameter(s)* in the [Index API](https://api.opencitations.net/index/v2) and [Meta API](https://api.opencitations.net/meta/v1) reference pages.
+
+**Read zero as "nothing found".** Unknown identifiers return a normal response with a count of "`0`". Before reporting a work as uncited, check that the Meta API knows it.
+
+**Pace your requests.** The limit is 180 requests per minute per IP address. A pause of one third of a second between calls, as in the script above, keeps you under it. Batch Meta lookups with `__` to make fewer calls.
+
+**Switch to the dumps for bulk work.** Above a few thousand works, the [OpenCitations data dumps](https://download.opencitations.net/) are faster for you and lighter for the service. At 180 requests per minute, 5,000 citation counts already take about 28 minutes.
+
+### Conclusion
+
+In this tutorial we used the Index API to count and list the citations of an article, and the Meta API to get the metadata of the citing works. We filtered, sorted and exported the results, combined the two APIs in a Python script, and sent a first query to the new <Link link={{"discriminant":"external","value":"https://api.opencitations.net/skg-if/v1"}}>SKG-IF API</Link>.
+
+To go further, you can try the other operations listed in the API reference pages, or <Link link={{"discriminant":"external","value":"https://download.opencitations.net/"}}>download the OpenCitations data dumps</Link> for larger analyses.
+
+### Further Reading
+
+* [OpenCitations Index API documentation](https://api.opencitations.net/index/v2)
+* [OpenCitations Meta API documentation](https://api.opencitations.net/meta/v1)
+* [OpenCitations SKG-IF API](https://api.opencitations.net/skg-if/v1)
+* [OpenCitations data dumps](https://download.opencitations.net/)
+* [Scientific Knowledge Graphs Interoperability Framework (SKG-IF)](https://skg-if.github.io)
+* [SKG-IF data model](https://skg-if.github.io/data-model/)
+* [SKG-IF Open REST API specification](https://skg-if.github.io/api/)
+* [SKG-IF API implementors](https://skg-if.github.io/api/docs/api-implementors.html)
+* [SKG-IF format description](https://skg-if.github.io/interoperability-framework/)
+* [JSON for Linked Data (JSON-LD)](https://json-ld.org/)
+* Peroni, S., & Shotton, D. (2020). OpenCitations, an infrastructure organization for open scholarship. *Quantitative Science Studies, 1*(1), 428–444. [https://doi.org/10.1162/qss\_a\_00023](https://doi.org/10.1162/qss_a_00023)
