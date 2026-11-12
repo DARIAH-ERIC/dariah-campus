@@ -123,6 +123,14 @@ Below we will look at two examples from the ESTC workflow: Unifying the values i
 
 Use the research question or intended use to define a concise output structure. Keep source statements available alongside interpreted values and connect them through stable identifiers. Store repeated values in linked tables, and distinguish absent information from information that is present but unresolved.
 
+<Callout kind="tip" title="Data (structure) principles">
+  Priciples for structuring data have been around for a long time. Good ones to get to know, before or during settling on the format of your own data include the **tidy** and **FAIR** -priciples.
+
+  **Tidy** is especially useful in when deciding on concrete formatting of the output tales, and give very practical recommendations. It is strongly recommended to have a look. <Link link={{"discriminant":"external","value":"https://data.europa.eu/apps/data-visualisation-guide/intro-to-tidy-data"}}>Tidy principles are described e.g. here.</Link>
+
+  FAIR principles are looser descriptive guidelines, and are worth reading through. <Link link={{"discriminant":"external","value":"https://www.gofair.foundation/fair-principles"}}>See the documentation on FAIR foundation home.</Link>
+</Callout>
+
 In rare cases, data does not conform to expectations: In the examples below, the record T146309 has links to both London and Paris in the place-link file. It counts once in the master record table and twice in the place-link table. Joining the links to the record table produces two rows for that record. Whether this is appropriate depends on what is being counted.
 
 <Disclosure title="Example A: Publication year output">
@@ -270,3 +278,33 @@ In an ideal world, a published evaluation should identify the tested data and co
 Choose a data repository according to preservation needs, access conditions and institutional or funder requirements. Options include general-purpose repositories such as <Link link={{"discriminant":"external","value":"https://zenodo.org/"}}>**Zenodo**</Link>, national repositories, such as the Finnish <Link link={{"discriminant":"external","value":"https://www.fairdata.fi/en/ida/"}}>**CSC IDA**</Link>, and institutional services offered by most universities. Library and research-data support colleagues can help assess the appropriate route. Use a code repository (most likely <Link link={{"discriminant":"external","value":"https://github.com/"}}>**Github**</Link>) for active development and connect it to the archived release where appropriate.
 
 **A persistent identifier** (see e.g. <Link link={{"discriminant":"external","value":"https://help.zenodo.org/docs/deposit/describe-records/reserve-doi/"}}>Zenodo guide for getting a DOI</Link>) helps users locate and cite a release, and is necessary for making the data properly citable. Clearly identify the files and versions used in an analysis, and explain changes between releases. Check source terms and third-party material before selecting reuse conditions.
+
+## Conclusion
+
+Refining bibliographic metadata connects knowledge of catalogues and collections with data modelling, evaluation and interpretation. Define what the data represent, distinguish source evidence from derived values, and record the decisions connecting them.
+
+Researchers, library professionals and other contributors can participate at different points in this workflow. Shared identifiers, documented dependencies and evaluated releases allow their contributions to accumulate. The aim is to produce data whose meaning, transformations and limitations remain understandable to its next users.
+
+**References and working materials**
+
+**Bibliographic data and workflows**
+
+Lahti, Leo, Jani Marjanen, Hege Roivainen and Mikko Tolonen. “Bibliographic Data Science and the History of the Book (c. 1500–1800).” Cataloging & Classification Quarterly 57(1) (2019), 5–23. https\://doi.org/10.1080/01639374.2018.1543747
+
+Lahti, Leo, Ville Vaara, Jani Marjanen and Mikko Tolonen. “Best practices in bibliographic data science.” Proceedings of the Research Data and Humanities (RDHUM) 2019 Conference, 57–65. https\://www\.utupub.fi/server/api/core/bitstreams/3e17b694-fb6e-47e5-8596-41613cc7138d/content
+
+“Open Bibliographical Data Workflows and the Multilinguality Challenge.” https\://doi.org/10.5334/johd.190
+
+**Research using ESTC data**
+
+Tiihonen, Iiro, and Kira Hinderks. “Genre Classification Workflow for the English Short Title Catalogue (ESTC).” Transformations: A DARIAH Journal, “Metadata-based workflows” (2025). https\://doi.org/10.46298/transformations.14754
+
+Tiihonen, Iiro, Leo Lahti and Mikko Tolonen. “Print culture and economic constraints: A quantitative analysis of book prices in eighteenth-century Britain.” Explorations in Economic History 94 (2024), article 101614. https\://doi.org/10.1016/j.eeh.2024.101614
+
+**Standards and project materials**
+
+MARC 21 Format for Bibliographic Data: https\://www\.loc.gov/marc/bibliographic/
+
+COMHIS/estcr harmonised ESTC project: https\://github.com/COMHIS/estcr
+
+FAIR principles: findability, accessibility, interoperability and reusability.
