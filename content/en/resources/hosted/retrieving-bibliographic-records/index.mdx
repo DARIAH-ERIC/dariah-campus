@@ -34,6 +34,7 @@ dariah-national-consortia: []
 dariah-working-groups:
   - bibliographical-data-bibliodata
 ---
+
 *This training material was completed by the DARIAH-ERIC Bibliographical Data Working Group within the BIBTRAIN – Bibliographical Data Training Materials project supported by DARIAH through DARIAH WG Call 2025-2027.*
 
 Bibliographic data can be retrieved in three main methods. The most convenient option is for these to be available as downloadable files (e.g., as reusable research data), however this type of data sharing is relatively rare. It is more common for data sources to be accessed through some kind of application programming interface. Various applications are available for the most common interfaces (OAI-PMH, Z39.50, SRW/SRU, SPARQL), so programming is not necessarily required, but time must be set aside to study the institution-specific settings and parameters of the interfaces. Finally, it is often the case that no previous opportunity was available. At this point, we extract the data from the HTML source of the website, assuming that the typographical formatting consistently indicates certain semantic elements17 – but in this case, it is worth consulting with the website operator to see if there are any other options not documented on the site. Whichever solution you choose, make sure that the data license allows reuse. After downloading the data, the first step is to import it. Programming libraries supporting various bibliographic formats are available; for MARC21, for example, there are ones for Java, Python, Go, JavaScript, R, PHP, and other programming languages. In this textbook we will work with Python, but the code could be adapted to other programming languages.
@@ -65,7 +66,7 @@ for directory in directories:                                           # 3.
         os.makedirs(directory)                                          # 5.
 ```
 
-1. imports the `os` library
+1. imports the [os](https://docs.python.org/3/library/os.html) library, that provides with operating system interfaces
 2. creates a list with three strings, the names of the directories
 3. iterates the directories one by one. In each iteration the name of the current
    directory will be stored in the variable `directory`
@@ -95,7 +96,7 @@ with zipfile.ZipFile(target_file, 'r') as zip_ref:                      # 4.
 os.rename(target_dir + '/data', target_dir + '/lnb')                    # 5.
 ```
 
-1. Imports the Python libraries: `urllib` for the download, and `zipfile` for uncompressing
+1. Imports standard Python libraries: [urllib.request](https://docs.python.org/3/library/urllib.html#module-urllib.request) for the download, and [zipfile](https://docs.python.org/3/library/zipfile.html) for uncompressing
 2. creats variables
 3. calls the download function with two arguments: the URL of the data source and the target file in our system
 4. uncompresses the zip file to our target directory
