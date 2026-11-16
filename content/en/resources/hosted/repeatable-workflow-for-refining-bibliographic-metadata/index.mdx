@@ -162,9 +162,9 @@ In rare cases, data does not conform to expectations: In the examples below, the
 
 ## 2. Plan a repeatable workflow
 
-**Divide the work into parts** that can be developed and checked independently. For each part, specify its source data, expected result, responsible contributor, transformations and checks. Contributors can then work on different fields while using agreed identifiers and compatible inputs.
+**Divide the work into parts** that can be developed and checked independently. For each part, specify its source data, expected result, responsible contributor, transformations and checks. Contributors can work on different fields concurrently while using agreed identifiers and compatible inputs.
 
-Separate the **shared data arrangement** from the organisation of the code. Keep an identifiable, versioned source snapshot and checked component outputs in a shared data location. Keep processing code and run instructions in version-controlled repositories (See e.g. <Link link={{"discriminant":"curricula","value":{"id":"introduction-to-git"}}}>DARIAH-CAMPUS tutorials on Git</Link>). One repository or several can work, provided contributors know which inputs to use and how their outputs will connect. Large or restricted datasets need an appropriate data store separate from the code repositories.
+Separate the **shared data arrangement** from the organisation of the code. Keep an identifiable, versioned source snapshot and component outputs in a shared data location (A **git repository** is often a sensible choice here, due to the ease of version tracking). Keep processing code and run instructions in version-controlled repositories (See e.g. <Link link={{"discriminant":"curricula","value":{"id":"introduction-to-git"}}}>DARIAH-CAMPUS tutorials on Git</Link>). One repository or several can work, provided contributors know which inputs to use and how their outputs will connect. Large or restricted datasets need an appropriate data store separate from the code repositories.
 
 <Callout kind="important" title="Planning guideline">
   **Before proceeding, agree on:**
@@ -177,7 +177,7 @@ Separate the **shared data arrangement** from the organisation of the code. Keep
   * How corrections are communicated and incorporated into later releases.
 </Callout>
 
-**Dependencies** matter. In the ESTC workflow, actor identification uses harmonised titles, places and years. A correction to these inputs may require actor matching to be revisited. Record the input versions used by each component so that these consequences can be identified.
+**Dependencies** matter. In the example ESTC workflow, actor identification uses harmonised titles, places and years. A correction to these inputs may require actor matching to be revisited. Record the input versions used by each component so that these consequences can be identified.
 
 <Callout kind="tip" title="Data subset release">
   A checked subset can be released while other components remain unfinished. Document the included fields, unfinished work, source snapshot and processing version. Later releases should explain changes to existing tables as well as additions.
