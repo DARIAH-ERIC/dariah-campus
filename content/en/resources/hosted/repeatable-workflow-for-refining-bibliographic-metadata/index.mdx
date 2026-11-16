@@ -131,7 +131,7 @@ Use the research question or intended use to define a concise output structure. 
   FAIR principles are looser descriptive guidelines, and are worth reading through. <Link link={{"discriminant":"external","value":"https://www.gofair.foundation/fair-principles"}}>See the documentation on FAIR foundation home.</Link>
 </Callout>
 
-In rare cases, data does not conform to expectations: In the examples below, the record T146309 has links to both London and Paris in the place-link file. It counts once in the master record table and twice in the place-link table. Joining the links to the record table produces two rows for that record. Whether this is appropriate depends on what is being counted.
+In rare cases, data does not conform to expectations: In the examples below, the record T146309 has links to both London and Paris in the place-link file. It counts once in the master record table and twice in the place-link table. Joining the links to the record table produces two rows for that record. Whether this is appropriate depends on what is being counted, but here the chosen data structure allows for multiple places associated with one publication.
 
 <Disclosure title="Example A: Publication year output">
   Looking at the year table output, we see that it keeps the original transcription and adds parsed values:
