@@ -71,17 +71,17 @@ Data and research publications can progress in tandem: E.g. a first data publica
 
 ## 1. Map the source and plan the output
 
-Before writing transformation rules, examine the source, its history and the intended use. The ESTC brings together records created over an extended period by different contributing institutions. Cataloguing conventions have varied across institutions and over time. An apparent inconsistency may reflect historical variation, a cataloguing decision or an error; examine the record before changing it.
+Before writing transformation rules, examine the source, its history and the intended use. The ESTC used in our examples brings together records created over an extended period by different contributing institutions. Cataloguing conventions typically vary across institutions and over time. An apparent inconsistency may reflect historical variation, a cataloguing decision or an error; examine the underlying reasons before deciding on the course of action.
 
 Also consider what the catalogue covers. The absence of a record does not establish that a publication never existed. Likewise, information absent from a catalogue record may be present in the physical object or another source. Refinement should make available evidence easier to use without concealing these limits.
 
-### Choose the unit of analysis - standardising the research inputs
+### Choose the unit of analysis - standardising the research outputs
 
-Reserch, especially quantitative approaches, needs data units that represents similar items. With biblographic data this might not be the case: Decide whether each output row represents a catalogue record, an edition, a work or a surviving copy. In these ESTC examples, a decision was made to equate an ESTC MARC record with an edition of a work, even though this is not always the case in the catalogue, but explicitly stating such choices will help with resolving ambiguity present in the source data. The year table presented in the below examples has one row per record identifier. Place data uses a separate link for each record–place association.
+Reserch, especially quantitative approaches, needs data units that represents similar items. With biblographic data this might not be the case with the original data source: Decide whether each output row represents a catalogue record, an edition, a work or a surviving copy. In these ESTC examples, a decision was made to equate an ESTC MARC record with an edition of a work, even though this is not always the case in the source catalogue (ESTC records can represent either editions, copies, or occasinally a multivolume group of copies of a single edition), but explicitly stating such choices will help with resolving ambiguity present in the source data. Consequently, the year table presented in the below examples has one row per record identifier. Place data, on the other hand, uses a separate link for each record–place association, akin to a relational database structure.
 
-### Build a field map - how the source matches the output
+### Build a map - how the source becomes the output
 
-Identify where the source records contain evidence for each concept needed by the project. A concept may appear in several MARC fields, and one field may contain several kinds of information, as illustrated by the examples below.
+Identify where the source records contain evidence for each concept needed by the project. A concept may appear in several MARC fields, and one field may contain several kinds of information, as illustrated in the examples below.
 
 Below we will look at two examples from the ESTC workflow: Unifying the values in the publication year field (**Example A**), and gathering evidence for publication places from various fields, and collecting them together as unified structured values (**Example B**).
 
@@ -99,13 +99,13 @@ Below we will look at two examples from the ESTC workflow: Unifying the values i
   | Range                                | \[1791 - 1839]         | N71524 |
   | Range in words                       | between 1760 and 1800] | N71859 |
 
-  Related dates elsewhere in the record may describe something different: for example, 240 $f supplies a date associated with a work.
+  Related dates elsewhere in the record may describe something different: for example, 240 $f supplies a date associated with a work, but can be used as additional evidence.&#x20;
 </Disclosure>
 
 ---
 
 <Disclosure title="Example B: Publication place input">
-  The below table illustrates the input values of the place name processing code. Note how, even if the source data is more structured, there still is considerable variation in its form and content.
+  The below table illustrates the input values of the place name processing code. Note how, even if the source data is more structured, there still is considerable variation in its form and content. The number of fields queried from the input data is considerably larger here than is the case with **Example A**, but in both cases, the the inputs are unified into a single uniform output item.
 
   | Field                      | Example value                                                      |
   | -------------------------- | ------------------------------------------------------------------ |
