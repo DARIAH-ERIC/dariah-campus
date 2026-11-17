@@ -27,12 +27,9 @@ async function main() {
 		return;
 	}
 
-	(await admin.collections.resources.create()).unwrap();
-	(await admin.collections.resources.truncate()).unwrap();
-
 	const documents = await createDocuments();
 
-	(await admin.collections.resources.ingest(documents)).unwrap();
+	(await admin.collections.resources.replace(documents)).unwrap();
 
 	log.success(`Successfully updated collection "${env.NEXT_PUBLIC_TYPESENSE_COLLECTION}".`);
 }
