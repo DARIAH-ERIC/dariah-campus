@@ -80,7 +80,11 @@ To follow along, you will need:
 * **A terminal** with '*curl*' installed (it comes preinstalled on macOS, most Linux distributions and recent versions of Windows). We will use it to send our first requests and inspect the raw responses
 * **Python 3** with the '*requests*' library, for the scripts later in the tutorial
 
-**Note:** The scripts are written in Python, but the APIs are language-independent: any language that can send an HTTP request will work just as well.
+
+
+<Callout kind="note">
+  The scripts are written in Python, but the APIs are language-independent: any language that can send an HTTP request will work just as well.
+</Callout>
 
 ### Identifiers
 
@@ -97,8 +101,6 @@ For example, the Digital Object Identifier (DOI) `10.1162/qss_a_00023` becomes: 
 | `omid` (OpenCitations Meta Identifier)                                                     | yes                     | yes          |
 | `pmcid` (PubMed Central Identifier), `openalex`                                            | no                      | yes          |
 | `issn` (International Standard Serial Number), `isbn` (International Standard Book Number) | only for citation count | yes          |
-
-
 
 <Callout kind="note">
   There is a rate limit for the API usage. APIs accept 180 requests per minute per IP address. That is fine for interactive work and for a few thousand works. For larger jobs, for instance when asking for the metadata of a large collection of resources, use the [OpenCitations data dumps](https://download.opencitations.net/) instead of the API.
@@ -248,7 +250,9 @@ Result:
 ]
 ```
 
-Not all the DOIs are part of the OpenCitations dataset – a DOI that OpenCitations does not recognize is not an error. For instance, `/citation-count/doi:10.9999/does-not-exist` returns a count of "`0`" with a normal response. A zero can therefore mean "never cited" or "not in OpenCitations at all". When the difference matters, look the work up in the Meta API (Step 4): an empty result there means OpenCitations has no record of it.
+<Callout kind="important">
+  Not all the DOIs are part of the OpenCitations dataset – a DOI that OpenCitations does not recognize is not an error. For instance, `/citation-count/doi:10.9999/does-not-exist` returns a count of "`0`" with a normal response. A zero can therefore mean "never cited" or "not in OpenCitations at all". When the difference matters, look the work up in the Meta API (Step 4): an empty result there means OpenCitations has no record of it.
+</Callout>
 
 To count the citations of all the publications published under a given journal, we use "`/venue-citation-count/`" with an **ISSN**.
 
