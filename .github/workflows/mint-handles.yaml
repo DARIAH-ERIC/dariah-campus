@@ -1,0 +1,97 @@
+name: Mint handles
+
+# Must never run concurrently with itself, otherwise resources end up with duplicate handles. A run
+# which is waiting in this group can be replaced by a newer one, which is fine: every run mints
+# handles for all resources which are still missing one, not only for the commit that triggered it.
+concurrency:
+  group: mint-handles
+  cancel-in-progress: false
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "content/**/index.mdx"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  mint-handles:
+    name: Mint handles
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
+      HANDLE_CERT: ${{ secrets.HANDLE_CERT }}
+      HANDLE_KEY: ${{ secrets.HANDLE_KEY }}
+      HANDLE_PREFIX: "21.11159"
+      HANDLE_PROVIDER: "https://vm02.pid.gwdg.de:8004"
+      HANDLE_RESOLVER: "https://hdl.handle.net/"
+      NEXT_PUBLIC_APP_BASE_URL: "https://campus.dariah.eu"
+      NEXT_PUBLIC_APP_PRODUCTION_BASE_URL: "https://campus.dariah.eu"
+      # Not used, but required by the environment variables schema.
+      NEXT_PUBLIC_TYPESENSE_COLLECTION: "dariah-campus"
+      NEXT_PUBLIC_TYPESENSE_HOST: "localhost"
+      NEXT_PUBLIC_TYPESENSE_PORT: "8108"
+      TYPESENSE_ADMIN_API_KEY: "xyz"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          cache: true
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: List resources with a pending handle
+        run: pnpm tsx ./scripts/handle/list-pending-handle-files.ts > "${RUNNER_TEMP}/pending.txt"
+
+      # Must happen after listing pending handles: a handle pull request merged in the meantime is no
+      # longer listed as open, so its `doi` has to be on the checked out commit.
+      - name: Update to latest main branch
+        run: |
+          git fetch --depth=1 origin main
+          git reset --hard FETCH_HEAD
+
+      - name: Mint handles
+        run: pnpm tsx ./scripts/handle/create-handle.ts --exclude "${RUNNER_TEMP}/pending.txt"
+
+      - name: Create pull request
+        run: |
+          if git diff --quiet -- content; then
+            echo "No new handles."
+            exit 0
+          fi
+
+          commit="$(git rev-parse HEAD)"
+          branch="content/add-handle-${commit:0:12}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add content
+          git commit --message "content: add handle [skip ci]"
+          git push --force origin "HEAD:refs/heads/${branch}"
+
+          gh pr create \
+            --base main \
+            --head "${branch}" \
+            --title "content: add handle" \
+            --body "Adds generated handle metadata for resources without a handle on ${commit}."
