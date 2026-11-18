@@ -59,6 +59,7 @@ const createEvaluateOptions = (baseUrl: string) => {
 			createRemoteImageUrlsPlugin(baseUrl, [
 				"CarouselItem",
 				"Figure",
+				"ImageComparisonSlider",
 				"ImageLayer",
 				"QuizImageDropZones",
 				"QuizImageHotspots",
