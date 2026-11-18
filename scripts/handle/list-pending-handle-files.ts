@@ -3,13 +3,12 @@ import * as v from "valibot";
 
 /**
  * Prints the paths of all files touched by open "content: add handle" pull requests, one per line, so
- * `create-handle.sh` can skip resources which already have a pending handle.
+ * `create-handle.ts` can skip resources which already have a pending handle.
  */
 
 const EnvSchema = v.object({
 	GITHUB_TOKEN: v.pipe(v.string(), v.nonEmpty()),
-	VERCEL_GIT_REPO_OWNER: v.pipe(v.string(), v.nonEmpty()),
-	VERCEL_GIT_REPO_SLUG: v.pipe(v.string(), v.nonEmpty()),
+	GITHUB_REPOSITORY: v.pipe(v.string(), v.nonEmpty()),
 });
 
 const branchPrefix = "content/add-handle-";
@@ -36,8 +35,7 @@ async function request<T>(url: string, schema: v.GenericSchema<unknown, T>, toke
 async function list() {
 	// oxlint-disable-next-line node/no-process-env
 	const env = v.parse(EnvSchema, process.env);
-	const repo = `${env.VERCEL_GIT_REPO_OWNER}/${env.VERCEL_GIT_REPO_SLUG}`;
-	const baseUrl = `https://api.github.com/repos/${repo}/pulls`;
+	const baseUrl = `https://api.github.com/repos/${env.GITHUB_REPOSITORY}/pulls`;
 
 	const pullRequests = await request(
 		`${baseUrl}?base=main&state=open&per_page=100`,
