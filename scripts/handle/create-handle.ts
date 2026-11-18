@@ -1,4 +1,4 @@
-import { writeFile } from "node:fs/promises";
+import { glob, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
 
@@ -8,30 +8,23 @@ import * as v from "valibot";
 import { matter } from "vfile-matter";
 import * as YAML from "yaml";
 
-import { env } from "#/configs/env.config.ts";
 import { createHandle } from "#/lib/server/handle/create-handle.ts";
 import { createResourceUrl } from "#/lib/server/handle/create-resource-url.ts";
 
+/**
+ * Mints a handle for every resource and curriculum without a `doi`. This only runs in the "Mint handles" github
+ * workflow, which never runs concurrently with itself: minting must not be moved back into the build, because
+ * concurrent builds mint duplicate handles.
+ */
+
 const ArgsInputSchema = v.object({
-	resource: v.pipe(v.string(), v.nonEmpty()),
+	/** Path to a file listing resources to skip, one per line. */
+	exclude: v.optional(v.pipe(v.string(), v.nonEmpty())),
 });
 
-async function create() {
-	const isProductionEnvironment = env.VERCEL_ENV === "production";
-	const isMainBranch = env.VERCEL_GIT_COMMIT_REF === "main";
+const patterns = ["content/*/curricula/*/index.mdx", "content/*/resources/*/*/index.mdx"];
 
-	if (!isProductionEnvironment || !isMainBranch) {
-		return null;
-	}
-
-	const args = parseArgs({ options: { resource: { type: "string", short: "r" } } });
-	const { resource: path } = v.parse(ArgsInputSchema, args.values);
-
-	/** External resources are hosted elsewhere and must not be assigned a handle. */
-	if (/[/\\]resources[/\\]external[/\\]/.test(path)) {
-		return null;
-	}
-
+async function createResourceHandle(path: string) {
 	const absoluteFilePath = join(process.cwd(), path);
 	const vfile = await read(absoluteFilePath, { encoding: "utf-8" });
 	matter(vfile, { strip: true });
@@ -54,15 +47,32 @@ async function create() {
 	return handle;
 }
 
-create()
-	.then((handle) => {
-		if (handle != null) {
-			log.success(`Successfully created handle "${handle}".`);
-		} else {
-			log.info("Skipped creating handle.");
+async function create() {
+	const args = parseArgs({ options: { exclude: { type: "string", short: "e" } } });
+	const { exclude } = v.parse(ArgsInputSchema, args.values);
+
+	const excluded = new Set(exclude != null ? (await readFile(exclude, { encoding: "utf-8" })).split("\n") : []);
+
+	for await (const path of glob(patterns)) {
+		/** External resources are hosted elsewhere and must not be assigned a handle. */
+		if (/[/\\]resources[/\\]external[/\\]/.test(path)) {
+			continue;
 		}
-	})
-	.catch((error: unknown) => {
-		log.error("Failed to create handle.\n", error);
-		process.exitCode = 1;
-	});
+
+		if (excluded.has(path)) {
+			log.info(`Skipping "${path}", a pull request with its handle is already open.`);
+			continue;
+		}
+
+		const handle = await createResourceHandle(path);
+
+		if (handle != null) {
+			log.success(`Successfully created handle "${String(handle)}" for "${path}".`);
+		}
+	}
+}
+
+create().catch((error: unknown) => {
+	log.error("Failed to create handles.\n", error);
+	process.exitCode = 1;
+});

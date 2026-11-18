@@ -50,17 +50,16 @@ export const withRemoteImageUrls: Plugin<[WithRemoteImageUrlsOptions], Root> = f
 				}
 				node.properties.src = path;
 			} else if (node.type === "mdxJsxFlowElement" && node.name != null && components.includes(node.name)) {
-				const attribute = node.attributes.find(
-					(attribute) => attribute.type === "mdxJsxAttribute" && attribute.name === "src",
-				);
-				if (attribute?.value == null) {
-					return;
+				const imageAttributes = node.name === "ImageComparisonSlider" ? ["left", "right"] : ["src"];
+				for (const attribute of node.attributes) {
+					if (attribute.type !== "mdxJsxAttribute" || !imageAttributes.includes(attribute.name)) {
+						continue;
+					}
+					const path = getImagePath(attribute.value);
+					if (path != null) {
+						attribute.value = path;
+					}
 				}
-				const path = getImagePath(attribute.value);
-				if (path == null) {
-					return;
-				}
-				attribute.value = path;
 			}
 		});
 	};
