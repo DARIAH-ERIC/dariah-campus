@@ -1,0 +1,610 @@
+---
+title: Exploring Bibliographic data and Texts with AVOBMAT
+locale: en
+publication-date: 2026-11-11
+version: 1.0.0
+authors:
+  - peter-robert
+editors: []
+contributors: []
+tags:
+  - data-visualisation
+  - corpus-analysis
+sources:
+  - dariah
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  content: >-
+    This hands-on module introduces AVOBMAT's workflow for searching, analysing
+    and visualising bibliographic metadata and texts. Using public DraCor and
+    ECCO TCP collections, learners practise corpus selection, metadata networks,
+    n-grams, word-frequency analysis and KWIC, while critically assessing
+    metadata enrichment, text normalisation, analytical settings and
+    reproducibility.
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+dariah-working-groups:
+  - bibliographical-data-bibliodata
+---
+## Introduction
+
+What can bibliographic records and digitised texts reveal about the past? Which apparent patterns reflect gaps or errors in the data? AVOBMAT provides an integrated environment for exploring metadata and full texts without programming. Using public databases, you will discover new insights, compare visualisations and textual passages, while considering how preprocessing, cleaning and selection affect conclusions of your research.
+
+This BibTrain training module, developed in the context of the DARIAH Bibliodata Working Group, focuses on the introduction of practical AVOBMAT-related text mining skills and their critical use. Fundamental terms are introduced where needed and explained in a selective glossary that you should consult if you encounter an unfamiliar concept.
+
+## Preparatory Notes
+
+Open the [AVOBMAT website](https://avobmat.hu/) (avobmat.hu) and select Sign In or Sign Up as appropriate. In the General Instance, use the ready-made public databases (currently 42 in number). Exercises will primarily draw on the [DraCor drama collections](https://dracor.org/) and two versions of the Eighteenth-century Collections Online TCP (ECCO TCP). No programming, local installation, special hardware or upload of your own data is required. The public [AVOBMAT GitHub repository](https://github.com/avobmat/general) provides sample files, technical guidance and manually corrected and enriched DraCor metadata for some activities and instructions about how to upload your own databases. Registered users can consult a comprehensive Help menu after logging in.
+
+## Prerequisites
+
+No prior knowledge of digital humanities, corpus linguistics or natural language processing (NLP) is needed.
+
+## Learning Outcomes
+
+After completing the full training module, you will be able to:
+
+* **Describe** the main stages of the AVOBMAT research workflow and use fundamental digital humanities terminology.
+* **Select, search and filter** textual and bibliographic collections to investigate humanities research questions.
+* **Apply and interpret** selected methods of text and metadata analysis, combining distant and close reading approaches.
+* **Critically evaluate** how corpus composition, metadata quality, preprocessing and analytical choices shape results, and document research decisions to support reproducibility.
+
+## What is AVOBMAT?
+
+AVOBMAT (Analysis and Visualization of Bibliographic Metadata and Texts) is a multilingual browser-based service developed by humanities researchers, software engineers and data scientists. It supports the analysis of public databases and, for authorised users, private collections. A corpus is a set of documents selected for analysis; its bibliographic metadata may record authors, titles, dates, genres and publication details.
+
+AVOBMAT combines two approaches. Metadata can reveal gaps, distributions and links among records; it can also define groups of texts for comparison, for example, plays written by different authors or in different periods. Distant reading identifies patterns, trends and connections across documents, where close reading focuses on the interpretations of individual passages. In AVOBMAT, researchers can move between close and distant reading.
+
+The main analytical functions include metadata analysis (e.g charts and networks), N-Gram Viewer, Word Frequencies (Word Count, Significant Text and TagSphere), Keyword-in-Context (KWIC), Lexical Diversity, Topic Modelling, Part-of-Speech Tagging and Named Entity Recognition and Linking. Linguistic support varies by language and model.
+
+The research workflow is documented, for example, in a <Link link={{"discriminant":"external","value":"https://doi.org/10.5334/johd.175"}}>peer-reviewed article</Link> (Péter et al., 2024) and an [SSH Open Marketplace workflow](https://marketplace.sshopencloud.eu/workflow/RzvCOP). The present training material develops introductory learning activities based on that workflow and related case studies.\
+
+
+<Video provider="youtube" id="qMFtFcBLo9Q">
+  Watch this introductory video (6 minutes). Optional.
+</Video>
+
+**Critical perspective.** A digitised collection reflects decisions about preservation, selection, cataloguing and transcription. AVOBMAT can expose missing metadata and unveil hidden, unexpected patterns, but neither a graph nor an automatically assigned label proves a historical claim.
+
+## 2. Workflow and Interface Overview
+
+### 2.1 The AVOBMAT Research Workflow
+
+The workflow has seven stages: Upload → Clean → Configure → Test → Select → Analyse → Export. It is iterative: an unexpected result may call for revising corpus selection, checking preprocessing or rerunning an analysis with different settings.\
+\
+
+
+
+
+***Figure 1.** The seven-stage AVOBMAT workflow. Arrows indicate that researchers may return to cleaning or selection after testing or analysing.*
+
+The public databases in these exercises have already been uploaded and processed. You will begin at Select, but can see the preprocessing and configuration settings of each database. It must be noted that users can upload, cleaning and configure their own databases, which is subject to permissions.
+
+### 2.2 Navigating the Interface
+
+Open Databases to select a collection. Within it, Search & Filter builds subcorpora, while the main menu opens Metadata Visualizations, N-Gram Viewer, Frequency Analyses, Keyword-in-Context (KWIC) and other analytical tools. Templates stores reusable configurations. For signed-in users, the Help contains detailed reference material concerning the interface overview, workflow and configuration with a glossary and appendices.
+
+***Figure 2.** The Databases screen, where researchers select an existing collection before opening its analytical tools.*
+
+To consult the processing settings of a database, open its three-dot (⋮) menu under Databases and select Configuration. You can view the saved parameters but you cannot edit them.
+
+## 3. Uploading and Preparing Collections
+
+AVOBMAT also enables eligible users to upload and analyse their own bibliographic or textual databases. Supported formats include:
+
+* CSV containing bibliographic metadata alone, including exports from [Zotero](https://www.zotero.org/);
+* CSV containing full texts or links to accompanying text files;
+* [Text Encoding Initiative (TEI) XML](https://tei-c.org/) with accompanying CSV metadata;
+* [Zotero](https://www.zotero.org/) RDF with associated files.
+
+Each uploaded record needs a unique Key and a Date field. Additional fields (such as Author, Title and Publication Place) support searching and comparison. Always document what a date represents, for example, publication rather than first performance.
+
+***Figure 3.** The data-review step allows you to check whether all record fields have been recognised.*
+
+In the GitHub repository the [sample upload databases folder](https://github.com/avobmat/general/tree/main/sample_upload_databases) contains detailed uploading guidance, example databases, fillable templates and a [CSV listing supported metadata field names](https://github.com/avobmat/general/blob/main/sample_upload_databases/avobmat_fillable_csv.csv). Uploading and preprocessing currently depend on access permissions; the introductory exercises use only public databases.
+
+**Metadata curation.** Available and missing fields, along with the richness and quality of the metadata, shape the research questions that can be asked. Exercise 4 will compare original DraCor metadata with manually corrected and enriched records, the latter corrections were made outside AVOBMAT.
+
+## 4. Cleaning and Configuring
+
+### 4.1 Why Data Preparation Matters
+
+Digitised texts are imperfect representations of printed or manuscript sources. Optical character recognition (OCR) can misread historical fonts; manually keyed or encoded transcriptions can also contain inconsistent characters. Such errors affect searching, word counts and linguistic annotation as well as all the analytical results.
+
+For example, the inconsistent transcription of the historical long s (ſ), inconsistent spelling and incorrect character substitutions may split one intended word into separate digital forms. Cleaning can improve retrieval, but the original readings and changes must remain inspectable.
+
+*Figure 4. A historical printed passage with noisy machine-readable text and a corrected version. The examples show why source inspection is crucial.*
+
+### 4.2 Cleaning and Preprocessing Options
+
+AVOBMAT offers text replacement (including regular expressions), removal of non-alphabetical tokens and filtering around keywords. Other options include tokenisation (dividing text into units), lemmatisation (mapping inflected forms to dictionary forms), lowercasing and stopword removal. Different analytical modules use different default configurations that you can modify. Consult the glossary for definitions.
+
+A parameter setting helpful for word frequencies may be unsuitable for another analysis. For example, removing frequent function words can obscure stylistic evidence, while spelling normalisation can conceal historically meaningful variants.
+
+***Figure 5.** AVOBMAT’s preprocessing configuration parameters for topic modelling, including lemmatisation, lowercasing, punctuation and stopword removal, and preview and template options.*
+
+### 4.3 Language, Testing and Reusable Configurations
+
+When uploading a collection, researchers can select a language or use automatic language detection. Disagreement with a catalogue language field might flag an error, although detected languages also require checking. Language-specific models support tasks such as lemmatisation, Part-of-Speech (POS) tagging and Named Entity Recognition (NER). Their availability varies according to languages. Inmost cases you can choose between small, large and transformer models, which determines the spped and accuracy of preprocessing. Saved settings can be consulted in Databases → ⋮ → Configuration.
+
+Create Preview tests selected settings on sample text before full processing. The results can be reviewed and the configuration saved as a template. Public collections already contain processed data; a repeatable procedure does not guarantee accurate annotations of historical texts.
+
+### 4.4 Case Study: The Long S Problem in ECCO TCP
+
+The long s (ſ) in early printed texts can be confused with f. Within one ECCO TCP text, theſe, thefe and these may refer to the same intended word but be counted as different tokens. This is a transcription problem, not evidence of three distinct historical words. In the original texts, long-s-affected tokens account for a reported 13.2% of ECCO TCP tokens. This variation can influence searches, word frequencies, POS tagging and practically all analyses. We normalised 98.8% of the words with long s in the ECCO TCP. The rest ambiguous forms still require checking.
+
+*Figure 6. Several representations of words affected by the historical long s, with their recorded frequencies in the original ECCO TCP corpus.*
+
+AVOBMAT provides two corresponding public databases with harmonised metadata:
+
+·        Eighteenth-century Collection Online TCP (original)
+
+·        Eighteenth-century Collection Online TCP (long s normalised)
+
+The same documents can therefore be compared before and after normalisation. The digital representation changes but the eighteenth-century text does not.
+
+**Research implication.** Correcting long-s variants may change the grammatical labels assigned in Part-of-Speech Tagging, as well as search and frequency results.
+
+#### *Exercise 1: Comparing Original and Normalised ECCO TCP*
+
+Aim: Compare the impact of long-s normalisation on an AVOBMAT analysis, using equivalent selections.
+
+1.        Open Eighteenth-century Collection Online TCP (original) → Part-of-Speech Tagging. Note the distribution of the grammatical categories for the collection or a chosen document.
+
+2.        Open Eighteenth-century Collection Online TCP (long s normalised). Repeat the analysis with the same document selection and settings. Identify at least one difference in the output.
+
+3.        In Search & Filter, examine variants such as these, theſe and thefe. Where possible, check matching documents in both versions. Which difference reflects digital transcription rather than historical language change?
+
+**Critical check.** Which other AVOBMAT results might change when the same intended word is split into different forms? Give one example from your comparisons.
+
+## 5. Search & Filter
+
+After opening a public database, use Search & Filter to select documents for subsequent analyses. The search box on the Databases page finds collections by name; Search & Filter searches inside the current collection. Your results depend on both the query and the records available.
+
+### 5.1 Finding Documents and Refining Searches
+
+Facet filters narrow the collection by the original and enriched metadata (such as author, date, gender of author). The date controls include On, Before, After and Between. The result count changes with each selection. Available facets depend on the database’s metadata, including the data concerning the semantically enriched texts: the recognized named entities of the full texts such as persons, locations and organizations are also integrated in the metadata search such as the faceted search.
+
+*Figure 7. Date and author facets in AVOBMAT’s Search & Filter interface.*
+
+Advanced Search supports field-specific queries, approximate (fuzzy) matching and proximity queries. Use these options when spelling varies or two terms must appear near one another. Consult the retrieved passages to check approximate matches.
+
+Commandline search uses Apache Lucene query syntax to combine text searches and metadata criteria. The full-text field is FT; for example, FT:king AND FT:queen selects documents containing both terms, whereas FT:king OR FT:queen includes documents containing either. The wildcard query FT:king\* can retrieve related word forms, but it may also include words such as kingdom. A broader query is not necessarily a better measure of a historical theme, that’s why it is important to examine the retrieved texts. Note that the abbreviations of all meradata fields can be found in  the Appendices of the Help menu and the GitHub repository.
+
+*Figure 8. Advanced and command-line search controls, including field selection, fuzzy matching, proximity, word order and a Lucene query..*
+
+### 5.2 Constructing and Evaluating a Research Subcorpus
+
+A subcorpus is not automatically representative. A keyword-defined selection excludes texts that discuss a topic using different vocabulary, and a date filter cannot compensate for missing digitised sources. Record the result count and coverage before interpreting distributions.
+
+#### *Exercise 2: Lucene Queries and Subcorpus Bias*
+
+Aim: Use Lucene to construct two samples of English drama and identify what the queries omit.
+
+1.  In public DraCor English dramas (not English Shakespeare dramas), open Search & Filter and note the document total.
+
+2.  In Commandline Search, run FT:king AND FT:queen; inspect its count, authors and dates.
+
+3.  Change AND to OR, run FT:king OR FT:queen, and compare result counts and period coverage. Which plays about monarchy might both queries miss?
+
+**iz 5a (single best answer). You want plays containing either king or queen, including those containing only one term. Which Lucene query should you run?**
+
+A. FT:king AND FT:queen
+
+B. FT:king OR FT:queen
+
+C. FT:"king queen"
+
+D. FT:king NOT FT:queen
+
+For further exploration, see [DraCor (Drama Corpora Project)](https://dracor.org/) documents the source collections. Chapter 6 will use the same corpus for metadata and textual analyses.
+
+## 6. Analysis: The Interplay of Distant and Close Reading
+
+Choose the analytical module according to your research question: Metadata Visualizations (bibliographic patterns and relationships); N-Gram Viewer (word trends); Word Count (common words); Significant Text (characteristic vocabulary); TagSphere (nearby words); KWIC (passages); Lexical Diversity (vocabulary variation); Topic Modelling (recurring word patterns); POS Tagging (grammar); and NER/Linking (named people, places and identities).
+
+### 6.1 Metadata Visualizations
+
+Metadata visualisations let you explore bibliographic distributions and inspect the data behind them. In a public database, open Metadata Visualizations and select a line, area, pie or bar chart, or a network. Choose the metadata fields relevant to your question.
+
+Time-series charts distinguish Aggregated View (counts) from Normalised View (proportions). Toggle categories in the legend to inspect missing values or individual series. Remember a high count a high count does mean a high proportion when document coverage differs. By the way, do not confuse chart normalisation with long-s text normalisation.
+
+*Figure 9. Distribution of recorded numbers of co-authors in the DraCor English drama collection. The graph represents works in the digital collection, not a complete census of historical theatre.*
+
+Networks connect values from up to three metadata fields. Select fields, inspect node and edge information and adjust the number of displayed values. These are relationships between recorded categories, not automatically links between individual historical collaborators.
+
+*Figure 10. Metadata network linking authors (blue), number of co-authors (red) and genre (green) in DraCor English drama. MISSING\_VALUE belongs to the genre field.*
+
+#### *Exercise 3: Testing Co-Authorship Patterns Across Genres*
+
+Aim: Test an impression from a metadata network against genre-specific counts and proportions.
+
+1.  In DraCor English dramas, clear filters and open Metadata Visualizations → Network. Select Authors, No. of co-authors and Genre. Which genre appears most closely associated with plays having co-authors?
+
+2.  In Search & Filter, select Comedy; plot No. of co-authors as a chart. Repeat for Tragedy and Tragicomedy with the same settings. For each, compare the number and proportion of plays with at least one recorded co-author, reporting missing counts separately.
+
+3.  Return to the full network. Does your first impression agree with these comparisons? Remember that the network shows author-to-category associations, not who collaborated with whom.
+
+**Quiz 6.1 (single best answer). Comedy appears to have the thickest co-authorship links in the network. How can you test whether it also has the highest *proportion* of co-authored plays?**
+
+A. Increase the number of visible network nodes
+
+B. Export the network as a PNG
+
+C. Filter by genre and compare co-author counts relative to plays with known counts
+
+D. Hide the missing-genre node and read the remaining links
+
+#### *Exercise 4: What Does Enriched DraCor Metadata Make Possible?*
+
+Aim: See how manually corrected and enriched records create new possibilities for metadata analysis.
+
+1.  Compare corresponding original DraCor records with AVOBMAT’s enriched/corrected DraCor metadata on GitHub. Identify two new fields and consult any Notes documenting the modifications.
+
+2.  Formulate at least one research question enabled by those additional fields, referring to a visible value or link. What would require checking the underlying records?
+
+Sources for Exercise 4: [DraCor English Drama Corpus](https://github.com/dracor-org/engdracor); [AVOBMAT enriched DraCor metadata](https://github.com/avobmat/general/tree/main/dracor_drama_metadata_enriched). The manual corrections and additions documented in the GitHub repository were made outside AVOBMAT; the platform makes them available for subsequent analysis.
+
+**Methodological point.** The links show relationships between metadata categories, not proof of individual collaborations.
+
+### 6.2 N-Gram Viewer
+
+The N-Gram Viewer tracks words or consecutive word sequences across the dates represented in a corpus. “king” is a unigram; “king of england” is a trigram. AVOBMAT can generate up to five-word sequences (depending on the database configuration) and display up to ten query n-grams.
+
+Enter the n-grams and compare Aggregated View (counts) with Normalised View (relative frequencies); toggle individual series in the legend. The saved maximum n-gram length, lemmatisation and lowercasing settings can be seen under Databases → ⋮ → Configuration. Relative frequencies help compare periods of different sizes but cannot correct missing sources.
+
+*Figure 11. Normalised frequencies of selected religious terms in DraCor English drama.*
+
+#### *Exercise 5: Comparing N-Gram Frequencies*
+
+Aim: Practise both graph modes and check whether a peak could reflect corpus coverage.
+
+1.  In the public DraCor English dramas collection, clear previous filters. Open N-Gram Viewer, enter god, church and saint, and examine Aggregated View. Note a year or period in which a term appears prominent.
+
+2.  Switch to Normalised View without changing the terms. Use the legend to isolate one series. Does the same peak remain prominent?
+
+3.  Check the number of documents for the selected period using Search & Filter or Metadata Visualizations. Record one interpretation that the charts support and one that the available corpus cannot establish.
+
+**Critical check —** Does the identified change survive normalisation? What do the document counts for that period show?
+
+**Quiz 6.2 (single best answer). Which control changes the graph from raw counts to relative frequencies without changing the texts analysed?**
+
+A. Maximum n-gram length
+
+B. Normalised View
+
+C. Number of query terms
+
+D. Legend visibility
+
+### 6.3 Word Frequencies
+
+The three Word Frequencies functions answer different questions:
+
+·        Word Count identifies common terms in the selected texts. Set Maximum number of words to control the display and inspect counts rather than relying on word-cloud size.
+
+·        Significant Text compares a filtered foreground with the background corpus to identify characteristic words. Choose a ranking metric (JLH, chi-square, mutual information or Google Normalised Distance), Maximum number of words and Number of sample documents. Rankings may change with those choices.
+
+·        TagSphere shows words near a keyword. Change Maximum word distance, Minimum word frequency and Context (Left, Right or Both); use the bar chart or table to inspect counts.
+
+Neighbouring words do not have the same meaning in every passage. Eexamine the underlying counts and, where needed, the texts.
+
+*Figure 12. Significant Text word cloud: vocabulary characteristic of Thomas Middleton’s plays relative to the DraCor English drama corpus, using JLH.*
+
+*Figure 13. The statistical ranking corresponding to the Significant Text word cloud.*
+
+Figures 14–15 illustrate TagSphere using Dan Brown’s novels, not DraCor.
+
+*Figure 14. TagSphere analysis of “god” in Dan Brown’s novels (word distance: 4; minimum frequency: 7; lemmatised texts with stopwords removed).*
+
+*Figure 15. Tabular view of the same TagSphere results, displaying word distance and frequencies.*
+
+#### *Exercise 6, Part A: From Distinctive Vocabulary to Word Neighbours*
+
+Aim: Find an author’s characteristic vocabulary and test how parameters affect the ranking and nearby words.
+
+1.  Filter DraCor English dramas to Thomas Middleton; open Significant Text. With JLH selected, inspect the word cloud and ranked values. Look for bashful (Figure 12) or choose another term in the live results.
+
+2.  Keep the filter and sampling fixed; change the ranking metric to chi-square. Compare the term’s ranking and note the Number of sample documents.
+
+3.  Open TagSphere and search the same term. Compare Maximum word distance = 2 and 5 with Context and Minimum word frequency unchanged. What difference does that setting make?
+
+**Critical check.** Identify one result affected by the ranking metric or context distance; report the setting you changed. Can you observe characteristic features of the different metrics in terms of identified word types in case of the Significant text analysis?
+
+**Quiz 6.3a (single best answer). Which function should you use to identify words unusually characteristic of Thomas Middleton’s plays compared with the wider DraCor English drama corpus?**
+
+A. Word Count
+
+B. Significant Text
+
+C. TagSphere
+
+D. Lexical Diversity
+
+**Quiz 6.3b (single best answer). In Significant Text, which setting determines how many foreground and background documents are sampled for the comparison?**
+
+A. Maximum number of words
+
+B. Number of sample documents
+
+C. Maximum word distance
+
+D. Length of context
+
+### 6.4 Keyword-in-Context (KWIC) for close reading
+
+KWIC displays search terms with their surrounding passages. After Significant Text, use it to check whether a high-ranking term is used as expected. Set Search phrase, Length of context (characters) and Number of documents (result limit); sort by author, title, year or text as appropriate.
+
+The example follows bashful from Middleton’s Significant Text ranking to occurrences in plays by Middleton, Dekker and Fletcher (Figure 16). A distinctive word is not necessarily exclusive. Increase Length of context when an excerpt is ambiguous.
+
+*Figure 16. KWIC results for “bashful” across DraCor English drama, including plays by Dekker, Fletcher and Middleton. The same term is visible in the Significant Text example in Figure 12. Source: AVOBMAT screenshot supplied by the author.*
+
+#### *Exercise 6, Part B: Checking the Context of a Distinctive Word*
+
+4.  Clear the Middleton author filter. Search bashful in KWIC, sort by Author, and inspect occurrences from Middleton and other playwrights.
+
+5.  Reapply the Middleton filter and increase Length of context. Give one interpretation supported by the passages and one they do not establish.
+
+**iz 6.4 (single best answer). Which KWIC parameter should you change to show more surrounding text around each occurrence of bashful?**
+
+A. Number of sample documents
+
+B. Length of context
+
+C. Maximum word distance
+
+D. Maximum number of words
+
+### 6.5 Lexical Diversity
+
+Lexical Diversity compares vocabulary variation across documents. A token is one word occurrence; a type is a unique form. Type–Token Ratio (TTR) divides types by tokens but is length-sensitive. AVOBMAT provides eight measures, including length-adjusted and window-based alternatives. A high score is not automatically evidence of “better”, more sophisticated writing.
+
+Sort documents by author, date, length or a diversity measure. Mean Segmental TTR (MSTTR) and Moving Average TTR (MATTR) use window lengths set during preprocessing; inspect them in Databases → ⋮ → Configuration. Figure 17 shows an illustrative Harry Potter dataset, not DraCor.
+
+*Figure 17. Example Lexical Diversity table for J. K. Rowling’s Harry Potter novels, with document lengths and lexical-diversity measures.*
+
+**Try it.** Sort the Lexical diversity table by document length, then by TTR. Do shorter texts tend to rank higher? Use the displayed token counts before comparing authors.
+
+**Quiz 6.5 (single best answer). Two plays differ greatly in length. Which approach gives a more defensible comparison of lexical diversity?**
+
+A. Compare only the raw number of word types
+
+B. Compare raw TTR without examining text length
+
+C. Compare their numbers of repeated words
+
+D. Consider a length-adjusted or window-based measure
+
+### 6.6 Topic Modelling
+
+Use Topic Modelling when you want to explore recurrent thematic word patterns in a collection without choosing every search term in advance. AVOBMAT applies Latent Dirichlet Allocation (LDA), which represents topics as distributions of words and documents as mixtures of topics. A topic is not automatically a historical or literary theme. Examine its characteristic words and the documents associated with it before naming it.
+
+Topic Documents shows texts or chunks most associated with each estimated topic; Topic Correlations explores associations between topics; Time Series displays their changing proportions by date. The views help frame hypotheses, not establish historical causality.
+
+Set Number of topics, Minimum frequency of words and Iterations; Alpha and Beta hyperparameters influence topic–document and topic–word distributions. After changing a parameter or the Vocabulary stopword list, select Run again. For public databases, inspect saved preprocessing choices through Databases → ⋮ → Configuration.
+
+*Figure 19. Normalised Topic Modelling time series for the Szegedi Egyetem Magazin (1953–2011). Each coloured band represents the share of a modelled topic, not a historical label supplied by the software.*
+
+**Try it.** In a public collection with Topic Modelling, try Topic Documents and Time Series. Remove an uninformative word from Vocabulary, select Run again, and compare the topic words. Does the revision change the evidence or merely the model output?
+
+**Quiz 6.6a (single best answer). You want to change how many topics the LDA analysis estimates. Which control should you use?**
+
+A. Iterations
+
+B. Number of topics
+
+C. Minimum frequency of words
+
+D. Alpha hyperparamter
+
+**Quiz 6.6b (single best answer). After removing an unwanted word using Vocabulary and stopword filtering, what do you have to do to apply the change to the topic model?**
+
+A. Switch to Topic Correlations
+
+B. Export the topic words
+
+C. Select Run again
+
+D. Hide a series in the legend
+
+### 6.7 Part-of-Speech Tagging
+
+Use Part-of-Speech (POS) Tagging to examine distributions of grammatical categories (for example, nouns, verbs and adjectives). AVOBMAT supplies a word-level table containing Word Form, Lemma, POS Tag, Relative Frequency, Count and Documents, plus statistical views. Word Form is the form in the source; Lemma is the dictionary form.
+
+The key choices happen during preprocessing, for example, the language model (small, large or transformer) and related cleaning settings affect the tags or forms available for analysis. With public collections, inspect those saved choices under Databases → three-dot menu → Configuration; sorting a table or changing a chart view does not rerun the tagger. For comparisons between periods, use relative frequencies alongside raw counts, and check that the periods contain enough documents.
+
+*Figure 20. Word-level POS results from an illustrative analysis of Dan Brown’s novels, showing word form, lemma, grammatical tag, relative frequency, count and document coverage.*
+
+**Try it.** In DraCor English dramas, open Part-of-Speech Tagging and inspect a noun and a verb. Compare their lemmas, counts and Documents values. Apply an author filter and check whether their relative frequencies change. An annotation should be checked against its textual context when uncertain.
+
+**Shakespeare POS distribution figure**
+
+**Quiz 6.7a (single best answer). A results row shows Word Form “considered”, Lemma “consider” and POS Tag “VERB”. What does the Lemma column identify?**
+
+A. The dictionary form used for analysis
+
+B. The document in which the word first appears
+
+C. The number of occurrences in the corpus
+
+D. The statistical model used to generate the tag
+
+**Quiz 6.7b (single best answer). You want to know whether a verb appears in many plays rather than many times in one play. Which result column is most useful?**
+
+A. Word Form
+
+B. Documents
+
+C. Lemma
+
+D. POS Tag
+
+### 6.8 Named Entity Recognition and Linking
+
+Named Entity Recognition (NER) finds names of people, places and organisations; Named Entity Linking (NEL) tries to associate recognised names with specific identifiers. AVOBMAT presents counts and highlighted passages, with external links where supported.
+
+The linked identifiers may refer to [Wikidata](https://www.wikidata.org/), [VIAF](https://viaf.org/) or [ISNI](https://isni.org/). Recognition and linking are separate operations: a correctly recognised name may be linked to the wrong person, especially in older texts where names, spellings or contexts are ambiguous. Note that supported categories of entities and linking depend on the selected language and model.
+
+*Figure 21. Named entity recognition and linking in an illustrative Dan Brown text: recognised entity categories, highlighted passages and an external-identifier pop-up.*
+
+**Quiz 6.8a (single best answer). You find a person’s name labelled PERSON, but no external identifier is displayed. Which process has definitely occurred?**
+
+A. Named Entity Linking
+
+B. Named Entity Recognition
+
+C. Topic Modelling
+
+D. Part-of-Speech Tagging
+
+**Quiz 6.8b (single best answer). An underlined historical personal name opens a Wikidata description for a modern person with the same name. What is the appropriate next action?**
+
+A. Accept the link because the spelling matches
+
+B. Remove every PERSON result in the corpus
+
+C. Examine the passage and treat the link as potentially mistaken
+
+D. Reclassify the entity as a date
+
+## 7. Exporting Results and Supporting Reproducible Research
+
+Export the evidence needed to inspect and reproduce an analysis, not just its appearance. Modules may offer PNG visualisations and CSV tables of numerical results; KWIC also supports exporting concordance information and Topic Modelling offers data exports.
+
+Configurations can be reused through templates and JSON import/export. For an existing database, examine saved preprocessing choices under Databases → ⋮ → Configuration. Sharing and editing rights depend on permissions. A configuration file documents parameter choices; it does not replace the underlying data.
+
+### Try it in AVOBMAT: Document and export an analysis
+
+Return to a DraCor N-Gram Viewer or Significant Text analysis, preserving its filters and settings.
+
+1.        Export the numerical results as CSV and, where available, save the chart as a PNG image.
+
+2.        From Databases → three-dot menu → Configuration, inspect the collection’s preprocessing settings. Note whether the texts were lowercased or lemmatised, and record the relevant analytical parameters and filters.
+
+3.        Write a brief methods note giving the database, filters, analysis and relevant settings. Can another learner reconstruct the output from your note and exports?
+
+**Quiz 7 (single best answer): You want another researcher to inspect the exact values behind an AVOBMAT frequency chart and understand how the corpus was processed. Which combination is most useful?**
+
+A. The PNG chart alone
+
+B. A CSV results table together with the database, filter and configuration details
+
+C. A screenshot of the public-database list without the analysis settings
+
+D. The graph title and a bibliography entry without the underlying values
+
+**Remember.** A PNG preserves the visual result; CSV values and documented corpus and configuration choices make the analysis inspectable.
+
+## Conclusion and Further Exploration
+
+You have selected and searched public collections, created metadata charts and networks, compared word-frequency analyses and checked passages with KWIC. The examples also showed how transcription, enrichment and automated annotations can change what AVOBMAT displays.
+
+For future projects, begin with a specific question, document how you selected and processed your data, and use more than one view of the evidence when needed. A network, word cloud or topic model can suggest a pattern over time; metadata inspection, comparison of settings and close reading help determine what the pattern supports. Researchers wishing to prepare their own collections can consult the public [AVOBMAT GitHub documentation and sample files](https://github.com/avobmat/general/tree/main/sample_upload_databases). The AVOBMAT Help menu provides more detailed instructions after login.
+
+## Glossary
+
+Selected terms used in this module, adapted from the AVOBMAT Help glossary. The full Help menu provides a wider technical glossary for registered users.
+
+**Aggregated View.** An AVOBMAT display of absolute counts rather than proportions, for example the number of records in each year.
+
+**Background set.** The broader corpus against which a filtered foreground set is compared in Significant Text.
+
+**Close reading.** Detailed examination of individual passages and their context, for example by following a term from a word-frequency result into KWIC.
+
+**Co-occurrence.** Words appearing near one another within a selected context window; TagSphere can visualise these relationships.
+
+**Corpus.** A collection of texts brought together for analysis, with or without associated bibliographic metadata.
+
+**CSV (comma-separated values).** A text-based format for tabular data, used by AVOBMAT to exchange datasets and analytical results.
+
+**Data curation.** Checking, correcting and documenting research data so that it can be interpreted and reused more reliably.
+
+**Data harmonisation.** Making equivalent values, labels or fields consistent across records or collections so that meaningful comparisons become possible.
+
+**Data provenance.** Information about where data came from and how it was selected, corrected, enriched or processed.
+
+**Distant reading.** Computational exploration of patterns and trends across many texts rather than interpreting individual short passages carefully (e.g. shades of meanings).
+
+**Foreground set.** A selected subset of documents compared with a background corpus in Significant Text.
+
+**Fuzzy search.** Retrieval of approximate word matches, useful where texts contain spelling variation or errors.
+
+**JLH (Joint Likelihood Hypothesis).** One of the statistical ranking measures available in Significant Text for comparing words in foreground and background sets.
+
+**Keyword-in-Context (KWIC).** A concordance view that displays matches with surrounding text so their use can be examined directly.
+
+**Latent Dirichlet Allocation (LDA).** The topic-modelling algorithm used by AVOBMAT to estimate patterns of word distributions across documents.
+
+**Lemma.** The dictionary or base form associated with an inflected word form, for example run for running.
+
+**Lemmatisation.** Optional linguistic processing that assigns word forms to their lemmas; its accuracy depends on the language model.
+
+**Lexical diversity.** A family of measures describing variation in the vocabulary of a text; values may depend strongly on text length.
+
+**Lucene query.** A structured search expression used in AVOBMAT Commandline Search, including field conditions and Boolean operators.
+
+**Metadata.** Information describing documents, such as author, date, title, genre or publishing details.
+
+**Metadata enrichment.** Adding or refining fields in existing records to support more detailed description or research questions.
+
+**N-gram.** A sequence of n consecutive words; a unigram has one word, a bigram two.
+
+**Named Entity Linking (NEL).** Matching a recognised name in a text to a particular external identifier (e.g. of Wikidata, VIAF) or authority record.
+
+**Named Entity Recognition (NER).** Automatically identifying and classifying mentions of people, places, organisations and other entity types in texts.
+
+**Normalised View.** An AVOBMAT chart showing proportions relative to a relevant total rather than the absolute numbers shown in Aggregated View.
+
+**Optical character recognition (OCR).** Computational conversion of images of printed or handwritten text into machine-readable characters; the output may contain recognition errors.
+
+**Part-of-Speech (POS) tagging.** Automatic assignment of grammatical labels, such as noun or verb, to words in context.
+
+**Preprocessing.** Operations applied to texts before analysis, including cleaning, tokenisation and optional linguistic annotation.
+
+**Proximity search.** Searching for terms that occur within a specified word distance of one another.
+
+**Relative frequency.** A frequency expressed in relation to a reference total, supporting comparisons of differently sized groups.
+
+**Reproducibility.** The capacity to repeat an analysis using identified data, filtering choices, processing settings and analytical parameters.
+
+**Significant Text.** AVOBMAT’s tool for ranking vocabulary distinctive of a selected foreground against a background corpus.
+
+**Stopwords.** Common words such as the or and that can be excluded by optional processing settings.
+
+**Subcorpus.** A set of documents selected from a larger corpus, for example by author, period or genre.
+
+**TagSphere.** AVOBMAT’s visualisation of words that co-occur near a selected term, controlled by context side, distance and frequency threshold.
+
+**Text normalisation.** Making different machine-readable forms more consistent, for example converting long-s variants; this is not the same as Normalised View.
+
+**Token.** One occurrence of a word or other unit in a processed text; repeated occurrences count separately.
+
+**Tokenisation.** Dividing text into units, often words, for computational processing.
+
+**Topic modelling.** Statistical estimation of recurring word patterns across documents; a topic requires interpretation rather than being a verified historical theme.
+
+**Type.** A distinct word form in a text, counted once even if it occurs repeatedly.
+
+**Type–token ratio (TTR).** The number of distinct word types divided by the number of tokens; sensitive to text length.
+
+**Word distance.** The number of words between a keyword and surrounding words in a contextual or proximity-based analysis.
+
+## References and Further Resources
+
+ADD I. Bard’s book chapter, Jessie Labov’s chapter, Cost Action published case study  
+
+Péter, R., Szántó, Z., Biacsi, Z., Berend, G., & Bilicki, V. (2024). Multilingual analysis and visualization of bibliographic metadata and texts with the AVOBMAT research tool. Journal of Open Humanities Data, 10, Article 23. [DOI: 10.5334/johd.175](https://doi.org/10.5334/johd.175)
+
+Péter, R. (2023). Multilingual analysis and visualization of bibliographic metadata and texts with AVOBMAT \[Research workflow]. SSH Open Marketplace. [SSH Open Marketplace record](https://marketplace.sshopencloud.eu/workflow/RzvCOP)
+
+AVOBMAT. (2026). Help \[Authenticated application documentation].
+
+Péter, R. (n.d.). \[Post about long-s normalisation in ECCO TCP and Evans TCP]. LinkedIn. [Read the research note](https://www.linkedin.com/feed/update/urn:li:activity:7432341438622961664/)
+
+AVOBMAT. (n.d.). Enriched and corrected DraCor drama metadata \[Data and documentation]. GitHub. [View enriched DraCor data](https://github.com/avobmat/general/tree/main/dracor_drama_metadata_enriched)
+
+DraCor Project. (n.d.). English Drama Corpus \[Dataset and source documentation]. GitHub. [View source corpus](https://github.com/dracor-org/engdracor)
+
+Blei, D. M., Ng, A. Y., & Jordan, M. I. (2003). Latent Dirichlet allocation. Journal of Machine Learning Research, 3, 993–1022.
