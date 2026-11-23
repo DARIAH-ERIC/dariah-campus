@@ -43,19 +43,16 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: main
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v6
+      # Installs the pnpm and node.js versions declared in `devEngines` in `package.json`.
+      - name: Install pnpm and node.js
+        uses: pnpm/setup@v3
         with:
           cache: true
-
-      - name: Use Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24.x
+          install: false
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

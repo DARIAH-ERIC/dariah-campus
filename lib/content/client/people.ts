@@ -1,6 +1,6 @@
 import { groupByToMap, keyByToMap, unique } from "@acdh-oeaw/lib";
 
-import type { CollectionClient } from "#/lib/content/types";
+import type { CollectionClient } from "#/lib/content/types.ts";
 import curricula from "#content/curricula";
 import collection from "#content/people";
 import events from "#content/resources-events";

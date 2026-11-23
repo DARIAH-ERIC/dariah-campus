@@ -4,9 +4,14 @@ import createNextIntlPlugin from "next-intl/plugin";
 /**
  * File extensions and import attributes are necessary for node.js native typescript resolution with
  * `--experimental-next-config-strip-types` next.js cli option.
+ *
+ * Relative paths instead of `#/` subpath imports, because `next typegen` does not support
+ * `--experimental-next-config-strip-types`, and the transpiled config cannot resolve `#/` imports.
  */
-import _redirectsIds from "#/public/redirects-ids.json" with { type: "json" };
-import _redirects from "#/public/redirects.json" with { type: "json" };
+// oxlint-disable-next-line no-restricted-imports
+import _redirectsIds from "./public/redirects-ids.json" with { type: "json" };
+// oxlint-disable-next-line no-restricted-imports
+import _redirects from "./public/redirects.json" with { type: "json" };
 
 const reactAriaPackages = [
 	"@react-stately",
