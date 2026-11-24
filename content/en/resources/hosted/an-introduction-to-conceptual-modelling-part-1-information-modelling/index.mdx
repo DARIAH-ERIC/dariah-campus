@@ -1,0 +1,155 @@
+---
+title: 'Part 1: Information Modelling'
+locale: en
+publication-date: 2017-03-13
+version: '1.0'
+authors:
+  - constantopoulos-panos
+editors: []
+contributors: []
+tags:
+  - modelling
+  - information-architecture
+  - data-modeling
+  - metadata
+sources:
+  - dariah
+  - dariah-teach
+license: cc-by-4.0
+table-of-contents: true
+summary:
+  title: 'Part 1: Information Modelling'
+  content: >-
+    This resource introduces the basics of data modelling, its principles and
+    techniques. It discusses models, symbolic structures in conceptual
+    modelling, representing a domain and formulating an elementary model.
+content-type: training-module
+translations: []
+dariah-national-consortia: []
+dariah-working-groups: []
+---
+## Learning goals
+
+This course is an introduction to conceptual modelling. We discuss the principles and techniques employed to formulate conceptual models, as well as elements of good modelling practice. *Conceptual models* describe a domain in terms of categories analogous to those of human cognition, so they are appropriate especially for analysis and upstream design tasks. They underpin the design and use of information structures for organizing and communicating knowledge and for documenting objects of inquiry. Especially in the humanities, information structure can be complex, while data can be ambiguous or incomplete, often admitting multiple and context-dependent interpretations, which models should be able to accommodate. We also introduce and discuss a class of conceptual models called *ontologies* which enjoy formality and wide scope and are ideally adopted by a community of practice. As such, ontologies support data integration and reuse and provide the basis for developing semantically interoperable data collections, thus promoting FAIRness of data. We provide a short overview of CIDOC CRM as a standard (ISO 21127) ontology for the cultural domain. Step-by-step examples are given, as well as a small set of exercises.
+
+## Learning outcomes
+
+Upon completion of this course, learners will be able to:
+●      Understand the methods of conceptual modelling.
+●      Construct a conceptual model based on domain analysis.
+●      Appreciate the scope of an ontology and use that as the basis for modelling.
+
+## Requirements
+
+No prior experience with data modeling and management or advanced digital tools is assumed. Basic digital literacy and curiosity about digital practices in the humanities and cultural heritage will help users take full advantage of this course. Prior introductory exposure to the basics of data management (e.g., COURSE XXX) is welcome as a contextual setting.
+
+<SplitPoint />
+
+## Information Modelling
+
+This module from the 'An Introduction to Conceptual Modelling' curriculum gives an introduction on what a data model is and the basic principles and techniques to formulating models that are used for reasoning tasks, both by humans and machines. The module continues to explain symbolic structures in conceptual modelling such as entities, attributes, relations, instances and classes. Furthermore, it discusses how domains are represented and formulates an elementary model for better understanding.
+
+<Video provider="youtube" id="AMlusuuAp1o">
+  Professor Panos Constantopoulos from the department of informatics at the Athens University of Economics and Business, and Digital Curation Unit 'Athena' Research Centre introduces the basic concepts of conceptual modelling followed by an example for better understanding.
+</Video>
+
+### Assignment 1: Creating an Elementary Model
+
+You are now invited to build a model to represent information about people and their participation in clubs.
+
+For each person we record the full name, social security number, telephone number, address and spouse/partner. For clubs we record the name, address, telephone number, and annual fee. We also record the members of the club, the president and the treasurer. For each membership we record the start and end date. Similarly, we record the start and end date of the president’s and treasurer’s terms.
+
+Using the simple graphical notation introduced previously, draw a model showing all entities and properties.
+
+<SplitPoint />
+
+## Building Conceptual Models
+
+This module from the 'An Introduction to Conceptual Modelling' curriculum contains two parts. The first part (2a) discusses entities and relations and attributes, two aspects of properties. Also, it explains what cardinality constraints are.
+
+The second part (2b) explores instantiation and classification: instances, classes and multiple instantiation. In addition, Dr Panos Constantopoulos explains what specialization and generalization are:  inheritance of properties, multiple generalization, genus-species hierarchies.
+
+This first video explains entities, properties: relations and attributes and cardinality constraints.
+
+<Video provider="youtube" id="tSqgIxKPZv8">
+  Panos Constantopoulos explains the building block of conceptual modelling and the process of conceptual modelling.
+</Video>
+
+Now that you have completed part 2a, it is time to learn more about instantiation / classification: instances, classes, multiple instantiation; and specialization / generalization: inheritance of properties, multiple generalization, genus-species hierarchies.
+
+<Video provider="youtube" id="yxiWWSe08Og">
+  Panos Constantopoulos explains in the second part the operations that are used to build models:to declare the property of a class, to declare which classes an object belongs to and to declare subclasses of a class. Everything we know about an object must be declared.
+</Video>
+
+### Assignment 2: Simple geography
+
+In this assignment you are invited to build an information model capable of addressing some of the requirements of a geographical information system.
+
+Draw a conceptual schema that supports the representation of statements like the ones below:
+
+* France is a country with an area of 643801 km2 and 67 million inhabitants. Its capital is Paris with 12 million inhabitants.
+* Thessaloniki is a city in Greece with 1 million inhabitants at a distance of 500 km from Athens.
+* Spain borders France, Portugal and Morocco.
+* The river Rhine is 1230 km long. It originates in Switzerland, flows through Germany, France and the Netherlands, and through the cities of Basel, Switzerland; Strasbourg, France; Worms, Basel and Cologne, Germany. It drains to the North Sea through the Netherlands.
+* The GDP of Germany was 2580.06 billion euro in 2010 and 282.82 billion euro in 2013.
+* The exports of cars of Japan to France in 1987 were worth 2 billion euro.
+* Spain has been a member of the EU since 1986.
+
+<SplitPoint />
+
+## Modelling practice
+
+This module from the 'An Introduction to Conceptual Modelling' curriculum explains how types or kinds can be represented in a model. Also, it dives into multiple classification vs. multiple generalization and mereology: part-whole relations. Finally, it looks into the representation of events and activities.
+
+<Video provider="youtube" id="zMcWT2dOTQc">
+  Panos Constantopoulos explains in this video how to address the problem of representing the type or kind of something in conceptual modelling.
+</Video>
+
+### Assignment 3: Modelling activities
+
+In the Archaeological Museum of Sparta the following two acts took place:
+
+* G.P., a farmer, donated to the Museum, with the mediation of the lawyer L.M., a squat lekythos which he found in his orchard.
+* Then, H.R., conservationist to the Museum, took the item to the conservation lab for cleaning.
+
+Formulate a model (schema + data) for representing the above state of affairs.
+
+### Assignment 4: Pets in the neighbourhood
+
+Draw a schema for the creation of a registry of pets in your neigbourhood.
+
+For each pet you need to record the species, gender, basic colour, size, owner, and a brief free text description.
+
+You also need to keep some information about persons with regard to their relation to animals. In particular, whether a person owns animals and which ones; relations, such as “likes”, “admires”, “has been bitten by”, etc., between persons and specific animals; and relations that express general dispositions of persons towards animals species, such as “is afraid of snakes”, “loves dogs”, “is allergic to cats”, etc.
+
+Finally, the species recorded should be connected with the zoological taxonomy.
+
+You are invited to explore two alternative approaches: (1) model species as classes which animals belong to; (2) model species as attribute values assigned to animals. Give examples of cases in which you might prefer one approach to the other.
+
+<SplitPoint />
+
+## From Models to Ontologies, and Back
+
+This final module discusses what ontologies are and why they are needed in conceptual modelling. Also, this resource provides a brief introduction to CIDOC CRM (Conceptual reference model), an ontology for cultural heritage.
+
+<Video provider="youtube" id="oD-XTd2UY1Y">
+  Panos Constantopoulos describes how models address the needs of particular applications and are for these. However, more general models can be abstracted and used as guides of other models that are being developed.
+</Video>
+
+<SplitPoint />
+
+## Suggested Reading
+
+A.Olivé (2007), Conceptual Modeling of Information Systems, Springer.
+
+M. Boman, J. Bubenko Jr., P. Johannesson, B. Wangler (1997), Conceptual Modelling, Prentice Hall.\\
+
+E. Hyvönen (2012), Publishing and Using Cultural Heritage Linked Data on the Semantic Web, Morgan & Claypool.\\
+
+R. Mizoguchi (2004), Tutorial on ontological engineering.                                                           [https://pdfs.semanticscholar.org/861c/49c728ac875bad0e2027dfc46036df20a3a4.pdf](https://pdfs.semanticscholar.org/861c/49c728ac875bad0e2027dfc46036df20a3a4.pdf)\\
+
+M. Doerr (2008), “Ontologies”, in DCC Digital Curation Manual.                                                [http://www.dcc.ac.uk/resources/curation-reference-manual/completed-chapters/ontologies](http://www.dcc.ac.uk/resources/curation-reference-manual/completed-chapters/ontologies)\\
+
+CIDOC CRM Version 6.1 (2015), Introduction, pp. vii - xx,                                                         [http://www.cidoc-crm.org/sites/default/files/cidoc\_crm\_version\_6.1.pdf  ](http://www.cidoc-crm.org/sites/default/files/cidoc_crm_version_6.1.pdf%20)\
+\
+Dominic Oldman and CRM Labs (2014), The  CIDOC Conceptual  Reference  Model (CIDOC-CRM): PRIMER (edited by Donna Kurtz),                                                        [http://www.cidoc-crm.org/docs/CRMPrimer\_v1.1.pdf](http://www.cidoc-crm.org/docs/CRMPrimer_v1.1.pdf)
