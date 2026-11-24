@@ -14,10 +14,6 @@ lockfile:
 
 minimumReleaseAge: 720
 
-minimumReleaseAgeExclude:
-  - '@acdh-oeaw/content-lib@0.2.0'
-  - '@acdh-oeaw/openapi-nextjs@0.0.4'
-
 patchedDependencies:
   "@keystatic/core": patches/@keystatic__core.patch
   next: patches/next.patch
