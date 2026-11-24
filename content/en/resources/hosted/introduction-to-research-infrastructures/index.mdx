@@ -66,7 +66,7 @@ Main Sections in this Module: ***(LINKS TO HEADINGS WHEN DONE)***
 
 * <Link link={{"discriminant":"hash","value":"#what-is-infrastructure"}}>What IS Infrastructure?</Link>
 * <Link link={{"discriminant":"hash","value":"#interoperability"}}>Interoperability</Link>
-* Sustainability
+* <Link link={{"discriminant":"hash","value":"#sustainability"}}>Sustainability</Link>
 * Methods and Tools
 * Networks
 * Critiques and Issues
@@ -168,14 +168,6 @@ At a very simple level, ‘data’ is a collection of observations, facts, objec
 
 Given this broad range of definitions and potential types of data, research infrastructures face an immense challenge in collecting appropriate digital data and making it available across a range of original sources but also for a variety of users.  For example, if an infrastructure has assembled a collection of audio recordings taken during the Hungarian Revolution of 1956, a linguist might review them to determine if a change has occurred in the syntax of Hungarian language (Magyar) between the mid-1950s and the present day, whereas a social historian might want to use the documents as evidence for shifts in public opinion over the course of events, or as related to social class, age or gender.  Each of these researchers is looking for something different in the same material: facilitating them both equally is the key challenge for data interoperability.
 
-**Further Learning (click to expand)**
-
-“What is Data?”  University of Guelph Library (YouTube Video)\
-[https://youtu.be/EMHP-q4GEDc](https://youtu.be/EMHP-q4GEDc)
-
-Daniel Rosenberg. ‘Data Before The Fact.’\
-[http://static1.1.sqspcdn.com/static/f/1133095/23310656/1376447540493/Rosenburg\_RawData.pdf?token=oQ2wpE89ZHxDxDmHt0hB1Obqy5M%3D](http://static1.1.sqspcdn.com/static/f/1133095/23310656/1376447540493/Rosenburg_RawData.pdf?token=oQ2wpE89ZHxDxDmHt0hB1Obqy5M%3D)
-
 ### What is Metadata?
 
 Put very simply, metadata is ‘data about data’.   Although this may sound a bit strange, it is actually something you probably use all the time.
@@ -214,22 +206,6 @@ Metadata in the form of catalogue records has a long and established record of f
 Metadata is at the core of most conceptions of data interoperability.  We must be wary, however: if metadata is too strict, we can run the risk of having to over simplify a description in such a way as to effectively ‘hide’ useful information from a future user.  A folklorist might have collected interview in which people occasionally share local songs: is that music or an interview?  In addition, a computer will not know if metadata is wrong.  A slip of the finger could easily hide one or more accounts of the Irish Easter Rising if the date recorded for them is 1816 rather than 1916.  Similarly, if the entry of information within that metadata field doesn’t conform to the standard data type required in that field, it will also be missed out by a search.  For example, if the date that an item was created is needed, and the format is numeric (e.g. ‘1947’), then a search looking for items created between 1930 and 1950 will ignore items that differ in format (e.g. ‘c1947’, or ‘1940s’).
 
 Problems also exist in the interpretation of what a particular metadata field refers to.  A field labelled ‘date,’ for example, is very open to interpretation.  This could mean the date the item was created (a painting, for example), the date the item was acquired by the museum or library, or the date that the item refers to (such as a biography written in the 20th century about a 16th century playwright).
-
-[Further Learning (click to expand)](#761_2)
-
-“What is Metadata?”\
-EDINA Datacentre\
-YouTube video (Uploaded 1st March 2011)\
-[https://youtu.be/96ncNPpohjo](https://youtu.be/96ncNPpohjo)
-
-“Basics of metadata”\
-Kathryn Lybarger for University of Kentucky Library\
-YouTube video (Uploaded 18th Oct 2012)\
-[https://youtu.be/-0vc6LeVa14](https://youtu.be/-0vc6LeVa14)
-
-Understanding Metadata\
-National Information Standards Organization (NISO) Information Booklet (2004)\
-[http://www.niso.org/publications/press/UnderstandingMetadata.pdf](http://www.niso.org/publications/press/UnderstandingMetadata.pdf)
 
 ### What Are Standards?
 
@@ -287,17 +263,15 @@ This is of course more complicated if the research topic covers more than one in
 
 This is a labour intensive task, and not one that would be sustainable on a large scale.  Indeed, in most cases an individual researcher will simply conduct separate searches and bring together (perhaps in his or her own custom schema) the relevant results.  If a research infrastructure is looking to present these collections together, however, then a much larger problem presents itself.  In order to harness the power of metadata across institutions or origins, many infrastructures develop “crosswalks” in order to translate similar information from one standard to another.  This will allow a more or less automated process to bring dissimilar standards together, harnessing the inherent strength of the standards to ensure continued searchability of results.
 
-[Further Learning (click to expand)](#711_2)
-
-Getty Vocabularies\
-[http://www.getty.edu/research/tools/vocabularies/](http://www.getty.edu/research/tools/vocabularies/)
-
-“The History of the Dublin Core Metadata Initiative”\
-[http://dublincore.org/about/history/](http://dublincore.org/about/history/)
-
 ### What Are Knowledge Representation Systems and ‘Ontologies’?
 
 In addition to metadata and standardised metadata schemas, research infrastructures can also use other forms of “knowledge representation system” to enhance the researcher’s experience of the interoperable data they present. When we talk about ‘Knowledge Representation Systems’ in research infrastructures, we usually mean a specific category of hierarchical systems of terms known more commonly as an ‘ontology’.  Before the digital age, philosophers referred to an ontology as “the study of the kinds of things that exist”.  Ontologies are similar to taxonomies, another knowledge organisation framework you probably remember from early lessons in biology.
+
+<Video provider="youtube" id="uFgGp9uF51c?si">
+  Ontologies Explained (in 5 minutes or less)
+</Video>
+
+
 
 #### Ontologies as Taxonomies
 
@@ -323,64 +297,108 @@ From this we can also infer: “MozzarellaCheese (S) isToppingof (V) Pizza1 (O)�
 
 This may seem largely the same, but being able to include inverses in our reasoning gives another layer to functionality.  In this way we can start to define the parameters that define pizzas:
 
-!\[INFRA101 Pizza Ontology]\(../../../../wp-content/uploads/2016/08/INFRA101-Pizza-Ontology-720x450.jpg)
+<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-research-infrastructures/infra-101-3-pizza-ontology.jpg" alt="A visual representation of an ontology in pizza form.  On the left is a pizza.  From the pizza is an arrow leading to a node that says 'pizza base'.  From the pizza base node, two further nodes branch, one saying 'flour type', the other saying 'base structure'.  From 'flour type' an arrow points to a list of flour types: 'Gluten Free', 'Wholemeal', and 'White'.  From the Base Structure node an arrow points to a list saying 'Deep pan', 'Thin and crispy', and Stuffed crust'." alignment="stretch">
+  The 'Pizza' Ontology visualised
+</Figure>
+
+
 
 In addition to lists of toppings, and indeed types of pizza bases, the ontology can also manage types of pizza which may be defined by certain rules (margherita has cheese and tomato only; vegetarian has no meat, etc.) or types of toppings with certain rules (spicy beef is very spicy, pineapple is not spicy).
 
 You can see how some of these relationships are assigned in a common ontology editor called Protege in the following image:
 
-!\[INFRA101 Ontologies image]\(../../../../wp-content/uploads/2016/08/INFRA101-Ontologies-image--708x450.jpg)
+<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-research-infrastructures/infra-101-4-ontologies-image-708x450.jpg" alt="The pizza ontology set out in the Protege interface." alignment="stretch">
+  Protege interface
+</Figure>
+
+
 
 By the time you have finished establishing the full range of categories and properties, you will have something that looks a bit like this:
 
-!\[INFRA101 Ontologies image 2]\(../../../../wp-content/uploads/2016/08/INFRA101-Ontologies-image-2.jpg)
+<Figure src="/assets/content/assets/en/resources/hosted/introduction-to-research-infrastructures/infra-101-5-ontologies-image-2.jpg" alt="The Protege interface showing an annotation template for an item in the 'pizza ontology'." alignment="stretch">
 
-[Further Learning (click to expand)](#560_2)
+</Figure>
 
-‘What is Ontology? Introduction to the word and the concept’.  Kent Lofgren.\
-(YouTube video)\
-[https://youtu.be/XTsaZWzVJ4c](https://youtu.be/XTsaZWzVJ4c)
 
-’05-04 Web Ontology Language – OWL’ Lecture by Dr. Harald Sack, 4th video in a lecture, that is part 5 of a series of lectures.\
-(YouTube video)\
-[https://youtu.be/LdsYkpFvYxU](https://youtu.be/LdsYkpFvYxU)
 
-‘A Simple Protege Tutorial’ playlist, 10 short videos in total.\
-Dr. Noureddin Sadawi\
-(YouTube video Playlist)\
-[https://youtu.be/R9ERlUgvgwM?list=PLea0WJq13cnAfCC0azrCyquCN\_tPelJN1](https://youtu.be/R9ERlUgvgwM?list=PLea0WJq13cnAfCC0azrCyquCN_tPelJN1)
+<Disclosure title="Further Learning for 'Interoperability'">
 
-‘Pizza Ontology’\
-Atif Khan\
-PDF / PowerPoint presentation\
-[https://cs.uwaterloo.ca/\~a78khan/docs/PizzaOntologyReview.pdf](https://cs.uwaterloo.ca/~a78khan/docs/PizzaOntologyReview.pdf)
 
-‘Pizzas in 10 Minutes’\
-A Quick Demonstration of Handy Shortcuts and Features.\
-Alan Rector\
-Wiki page\
-[http://protegewiki.stanford.edu/wiki/Protege4Pizzas10Minutes](http://protegewiki.stanford.edu/wiki/Protege4Pizzas10Minutes)
+  “What is Data?”  University of Guelph Library (YouTube Video)\
+  [https://youtu.be/EMHP-q4GEDc](https://youtu.be/EMHP-q4GEDc)
 
-‘Knowledge Representation and Reasoning’\
-Ronald J. Brachman & Hector J. Levesque\
-(Elsevier 2004)\
-Book\
-[http://www.cin.ufpe.br/\~mtcfa/files/in1122/Knowledge Representation and Reasoning.pdf](http://www.cin.ufpe.br/~mtcfa/files/in1122/Knowledge%20Representation%20and%20Reasoning.pdf)
+  Daniel Rosenberg. ‘Data Before The Fact.’\
+  [http://static1.1.sqspcdn.com/static/f/1133095/23310656/1376447540493/Rosenburg\_RawData.pdf?token=oQ2wpE89ZHxDxDmHt0hB1Obqy5M%3D](http://static1.1.sqspcdn.com/static/f/1133095/23310656/1376447540493/Rosenburg_RawData.pdf?token=oQ2wpE89ZHxDxDmHt0hB1Obqy5M%3D)
 
-‘What is a Knowledge Representation?’\
-This paper appeared as R. Davis, H. Shrobe, and P. Szolovits. What is a Knowledge Representation?\
-AI Magazine, 14(1):17-33, 1993\
-Journal article\
-[http://groups.csail.mit.edu/medg/ftp/psz/k-rep.html](http://groups.csail.mit.edu/medg/ftp/psz/k-rep.html)
+  “What is Metadata?”\
+  EDINA Datacentre\
+  YouTube video (Uploaded 1st March 2011)\
+  [https://youtu.be/96ncNPpohjo](https://youtu.be/96ncNPpohjo)
 
-Team Preservation and the Deadly Cryptic Conundrum\
-WePreserve\
-YouTube Video\
-[https://youtu.be/Yun9hkPPF9M](https://youtu.be/Yun9hkPPF9M)
+  “Basics of metadata”\
+  Kathryn Lybarger for University of Kentucky Library\
+  YouTube video (Uploaded 18th Oct 2012)\
+  [https://youtu.be/-0vc6LeVa14](https://youtu.be/-0vc6LeVa14)
+
+  Understanding Metadata\
+  National Information Standards Organization (NISO) Information Booklet (2004)\
+  [http://www.niso.org/publications/press/UnderstandingMetadata.pdf](http://www.niso.org/publications/press/UnderstandingMetadata.pdf)
+
+  Getty Vocabularies\
+  [http://www.getty.edu/research/tools/vocabularies/](http://www.getty.edu/research/tools/vocabularies/)
+
+  “The History of the Dublin Core Metadata Initiative”\
+  [http://dublincore.org/about/history/](http://dublincore.org/about/history/)
+
+  ‘What is Ontology? Introduction to the word and the concept’.  Kent Lofgren.\
+  (YouTube video)\
+  [https://youtu.be/XTsaZWzVJ4c](https://youtu.be/XTsaZWzVJ4c)
+
+  ’05-04 Web Ontology Language – OWL’ Lecture by Dr. Harald Sack, 4th video in a lecture, that is part 5 of a series of lectures.\
+  (YouTube video)\
+  [https://youtu.be/LdsYkpFvYxU](https://youtu.be/LdsYkpFvYxU)
+
+  ‘A Simple Protege Tutorial’ playlist, 10 short videos in total.\
+  Dr. Noureddin Sadawi\
+  (YouTube video Playlist)\
+  [https://youtu.be/R9ERlUgvgwM?list=PLea0WJq13cnAfCC0azrCyquCN\_tPelJN1](https://youtu.be/R9ERlUgvgwM?list=PLea0WJq13cnAfCC0azrCyquCN_tPelJN1)
+
+  ‘Pizza Ontology’\
+  Atif Khan\
+  PDF / PowerPoint presentation\
+  [https://cs.uwaterloo.ca/\~a78khan/docs/PizzaOntologyReview.pdf](https://cs.uwaterloo.ca/~a78khan/docs/PizzaOntologyReview.pdf)
+
+  ‘Pizzas in 10 Minutes’\
+  A Quick Demonstration of Handy Shortcuts and Features.\
+  Alan Rector\
+  Wiki page\
+  [http://protegewiki.stanford.edu/wiki/Protege4Pizzas10Minutes](http://protegewiki.stanford.edu/wiki/Protege4Pizzas10Minutes)
+
+  ‘Knowledge Representation and Reasoning’\
+  Ronald J. Brachman & Hector J. Levesque\
+  (Elsevier 2004)\
+  Book\
+  [http://www.cin.ufpe.br/\~mtcfa/files/in1122/Knowledge Representation and Reasoning.pdf](http://www.cin.ufpe.br/~mtcfa/files/in1122/Knowledge%20Representation%20and%20Reasoning.pdf)
+
+  ‘What is a Knowledge Representation?’\
+  This paper appeared as R. Davis, H. Shrobe, and P. Szolovits. What is a Knowledge Representation?\
+  AI Magazine, 14(1):17-33, 1993\
+  Journal article\
+  [http://groups.csail.mit.edu/medg/ftp/psz/k-rep.html](http://groups.csail.mit.edu/medg/ftp/psz/k-rep.html)
+
+  Team Preservation and the Deadly Cryptic Conundrum\
+  WePreserve\
+  YouTube Video\
+  [https://youtu.be/Yun9hkPPF9M](https://youtu.be/Yun9hkPPF9M)
+</Disclosure>
+
+
+
+
 
 <SplitPoint />
 
-## Sustainability
+## Sustainability<HeadingId id="sustainability" />
 
 ### Introduction to Sustainability
 
