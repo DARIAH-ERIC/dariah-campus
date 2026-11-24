@@ -104,7 +104,7 @@
 	"devDependencies": {
 		"@acdh-oeaw/content-lib": "^0.2.0",
 		"@dotenvx/dotenvx": "^2.38.2",
-		"@playwright/test": "^1.65.1",
+		"@playwright/test": "^1.64.1",
 		"@react-types/shared": "^3.37.0",
 		"@shikijs/transformers": "^4.6.0",
 		"@tailwindcss/turbopack": "^4.3.5",
