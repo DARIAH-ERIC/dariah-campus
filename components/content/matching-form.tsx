@@ -368,7 +368,7 @@ export function QuizMatchingForm(props: Readonly<QuizMatchingFormProps>): ReactN
 						{zoneOrder.map((zoneIndex, position) => renderOrderedZone(zoneIndex, position))}
 					</ol>
 				) : (
-					<div className="grid gap-3 @[36rem]:grid-cols-2">{zones.map((_, zoneIndex) => renderZone(zoneIndex))}</div>
+					<div className="grid gap-3 @xl:grid-cols-2">{zones.map((_, zoneIndex) => renderZone(zoneIndex))}</div>
 				)}
 
 				<ItemBank

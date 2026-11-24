@@ -16,11 +16,6 @@
 		"noImplicitReturns": true,
 		"noPropertyAccessFromIndexSignature": false,
 		"noUncheckedIndexedAccess": true,
-		"paths": {
-			"@/*": ["./*"],
-			"#/*": ["./*"],
-			"#content/*": ["./.content/generated/*"]
-		},
 		"plugins": [{ "name": "next" }],
 		"resolveJsonModule": true,
 		"skipLibCheck": true,

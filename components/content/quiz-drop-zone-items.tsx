@@ -74,7 +74,10 @@ export function useItemPlacements(items: Array<DropZoneItem>, isReadOnly: boolea
 	 */
 	const bankItemRefs = useRef<Map<number, HTMLButtonElement | null>>(new Map());
 	const placedItemRefs = useRef<Map<number, HTMLButtonElement | null>>(new Map());
-	/** Set while an item is on its way somewhere, and read once the button it moved to has rendered. */
+	/**
+	 * Set while an item is on its way somewhere, and read once the button it moved to has rendered. The effect below runs
+	 * after every render, since the ref - not any state - is what says an item has moved.
+	 */
 	const movedItemRef = useRef<{ index: number; to: "bank" | "zone" } | null>(null);
 
 	useEffect(() => {
@@ -87,7 +90,7 @@ export function useItemPlacements(items: Array<DropZoneItem>, isReadOnly: boolea
 
 		const refs = movedItem.to === "zone" ? placedItemRefs : bankItemRefs;
 		refs.current.get(movedItem.index)?.focus();
-	}, [placements]);
+	});
 
 	function place(itemIndex: number, zoneIndex: number | null) {
 		setPlacements((placements) => placements.map((placement, index) => (index === itemIndex ? zoneIndex : placement)));

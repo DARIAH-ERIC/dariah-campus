@@ -1,11 +1,6 @@
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-	resolve: {
-		alias: {
-			"#/": `${import.meta.dirname}/`,
-		},
-	},
 	test: {
 		env: {
 			/** The modules under test import the env config, which is not what these tests are about. */

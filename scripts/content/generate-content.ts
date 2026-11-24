@@ -15,7 +15,7 @@ async function generate(): Promise<void> {
 	const mode = v.parse(positionalArgsSchema, positionals.at(0));
 
 	const processor = await createContentProcessor({
-		configFilePath: "./lib/content/config",
+		configFilePath: "./lib/content/config.ts",
 	});
 
 	async function build() {
