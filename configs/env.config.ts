@@ -45,7 +45,8 @@ const validate = define({
 		KEYSTATIC_SECRET: v.optional(v.pipe(v.string(), v.nonEmpty())),
 		NEXT_RUNTIME: v.optional(v.picklist(["edge", "nodejs"])),
 		PORT: v.optional(v.pipe(v.string(), v.toNumber(), v.integer(), v.minValue(1))),
-		TYPESENSE_ADMIN_API_KEY: v.pipe(v.string(), v.nonEmpty()),
+		/** Only needed for search index administration scripts, should not be exposed to preview deployments. */
+		TYPESENSE_ADMIN_API_KEY: v.optional(v.pipe(v.string(), v.nonEmpty())),
 		VERCEL_ENV: v.optional(v.pipe(v.string(), v.nonEmpty())),
 		VERCEL_GIT_COMMIT_REF: v.optional(v.pipe(v.string(), v.nonEmpty())),
 	}),
