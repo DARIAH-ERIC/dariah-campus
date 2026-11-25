@@ -10,8 +10,14 @@ type SocialMediaKind = Metadata["social"][number]["kind"];
 export async function getIntlMessages(locale: IntlLocale) {
 	const language = getIntlLanguage(locale);
 
-	const _messages = (await import(`@/messages/${language}.json`)) as Messages;
-	const _metadata = (await import(`@/content/${language}/metadata/index.json`)) as Metadata;
+	/**
+	 * Relative paths instead of `#/` subpath imports, because turbopack cannot resolve subpath imports in dynamic
+	 * `import()` statements with a placeholder.
+	 *
+	 * @see {@link https://github.com/vercel/next.js/issues/97533}
+	 */
+	const _messages = (await import(`../../messages/${language}.json`)) as Messages;
+	const _metadata = (await import(`../../content/${language}/metadata/index.json`)) as Metadata;
 
 	const _social: Record<string, string> = {};
 

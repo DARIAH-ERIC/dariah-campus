@@ -3,8 +3,8 @@ import { fields } from "@keystatic/core";
 import { mark, wrapper } from "@keystatic/core/content-components";
 import { LanguagesIcon, PilcrowLeftIcon } from "lucide-react";
 
-import { LanguageBlockPreview } from "@/lib/content/keystatic/components/language/preview";
-import { inlineLanguages } from "@/lib/content/options";
+import { LanguageBlockPreview } from "#/lib/content/keystatic/components/language/preview.tsx";
+import { inlineLanguages } from "#/lib/content/options.ts";
 
 export const createLanguage = createComponent((_paths, _locale) => {
 	return {
